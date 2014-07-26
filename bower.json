@@ -1,15 +1,19 @@
 {
-  "name": "marked",
-  "version": "0.3.2",
-  "homepage": "https://github.com/chjj/marked",
+  "name": "mdast",
+  "description": "Speedy Markdown parser for multipurpose analysis",
+  "homepage": "https://github.com/wooorm/mdast",
   "authors": [
-    "Christopher Jeffrey <chjjeffrey@gmail.com>"
+    "Christopher Jeffrey <chjjeffrey@gmail.com>",
+    "Titus Wormer <tituswormer@gmail.com>"
   ],
-  "description": "A markdown parser built for speed",
   "keywords": [
     "markdown",
     "markup",
-    "html"
+    "abstract",
+    "syntax",
+    "tree",
+    "json",
+    "ast"
   ],
   "main": "lib/marked.js",
   "license": "MIT",

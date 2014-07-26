@@ -1,22 +1,43 @@
 {
-  "name": "marked",
-  "description": "A markdown parser built for speed",
+  "name": "mdast",
+  "version": "0.0.1",
+  "description": "Speedy Markdown parser for multipurpose analysis",
   "author": "Christopher Jeffrey",
-  "version": "0.3.2",
-  "main": "./lib/marked.js",
-  "bin": "./bin/marked",
-  "man": "./man/marked.1",
-  "preferGlobal": true,
-  "repository": "git://github.com/chjj/marked.git",
-  "homepage": "https://github.com/chjj/marked",
-  "bugs": { "url": "http://github.com/chjj/marked/issues" },
-  "license": "MIT",
-  "keywords": ["markdown", "markup", "html"],
-  "tags": ["markdown", "markup", "html"],
-  "devDependencies": {
-    "markdown": "*",
-    "showdown": "*",
-    "robotskirt": "*"
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
+  "keywords": [
+    "markdown",
+    "markup",
+    "abstract",
+    "syntax",
+    "tree",
+    "json",
+    "ast"
+  ],
+  "main": "./lib/mdast.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wooorm/mdast.git"
   },
-  "scripts": { "test": "node test", "bench": "node test --bench" }
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^0.7.4",
+    "istanbul": "^0.3.0",
+    "jscs": "^1.5.8",
+    "markdown": "*",
+    "matcha": "^0.5.0",
+    "mocha": "^1.21.0",
+    "robotskirt": "*",
+    "showdown": "*"
+  },
+  "scripts": {
+    "test": "node test",
+    "bench": "node test --bench",
+
+    "lint": "npm run lint-api && npm run lint-style",
+    "lint-api": "node_modules/.bin/eslint index.js lib/mdast.js --env node --env browser --rule 'no-spaced-func: false, consistent-return: false, no-loop-func: false, quotes: [2, single]'",
+    "lint-style": "node_modules/.bin/jscs index.js lib/mdast.js --reporter=inline",
+    "make": "npm run lint"
+  }
 }

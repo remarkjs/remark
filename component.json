@@ -1,10 +1,19 @@
 {
-  "name": "marked",
-  "version": "0.3.2",
-  "repo": "chjj/marked",
-  "description": "A markdown parser built for speed",
-  "keywords": ["markdown", "markup", "html"],
-  "scripts": ["lib/marked.js"],
-  "main": "lib/marked.js",
+  "name": "mdast",
+  "version": "0.0.1",
+  "description": "Speedy Markdown parser for multipurpose analysis",
+  "repository": "wooorm/mdast",
+  "keywords": [
+    "markdown",
+    "markup",
+    "abstract",
+    "syntax",
+    "tree",
+    "json",
+    "ast"
+  ],
+  "scripts": [
+    "lib/mdast.js"
+  ],
   "license": "MIT"
 }
