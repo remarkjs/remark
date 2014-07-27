@@ -4,22 +4,7 @@
     "children": [
       {
         "type": "text",
-        "value": "In Markdown 1.0.0 and earlier. Version"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": true,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "This line turns into a list item.\nundefined\nundefined\nundefined"
-          }
-        ]
+        "value": "In Markdown 1.0.0 and earlier. Version\n8. This line turns into a list item.\nBecause a hard-wrapped line in the\nmiddle of a paragraph looked like a\nlist item."
       }
     ]
   },
@@ -28,22 +13,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Here's one with a bullet."
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "criminey."
-          }
-        ]
+        "value": "Here's one with a bullet.\n* criminey."
       }
     ]
   }

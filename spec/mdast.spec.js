@@ -16,7 +16,7 @@ describe('msast.Parser()', function () {});
 describe('msast.Lexer()', function () {});
 
 describe('fixtures', function () {
-    var validateInput, validateInputs;
+    var validateInput, validateInputs, optionsMap;
 
     validateInputs = function (children) {
         children.forEach(validateInput);
@@ -161,13 +161,32 @@ describe('fixtures', function () {
         throw new Error('Unknown token of type `' + type + '`');
     };
 
+    optionsMap = {
+        'gfm' : ['gfm', true],
+        'nogfm' : ['gfm', false],
+        'tables' : ['tables', true],
+        'notables' : ['tables', false],
+        'breaks' : ['breaks', true],
+        'nobreaks' : ['breaks', false],
+        'pedantic' : ['pedantic', true],
+        'nopedantic' : ['pedantic', false],
+        'smartlists' : ['smartlists', true],
+        'nosmartlists' : ['smartlists', false]
+    }
+
     fs.readdirSync(path.join(__dirname, 'input')).filter(function (filepath) {
         return filepath.indexOf('.') !== 0;
     }).forEach(function (filepath) {
-        var filename, input, output;
+        var options, filename, input, output;
 
         filename = filepath.split('.');
         filename.pop();
+
+        if (filename.length === 2) {
+            options = {};
+            options[optionsMap[filename[1]][0]] = optionsMap[filename[1]][1];
+        }
+
         filename = filename.join('.');
 
         input = fs.readFileSync(
@@ -180,7 +199,7 @@ describe('fixtures', function () {
             'utf-8'
         );
 
-        input = mdast(input);
+        input = mdast(input, options);
         validateInputs(input);
 
         it('should work on ' + filename, function () {

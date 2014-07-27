@@ -4,7 +4,21 @@
     "children": [
       {
         "type": "text",
-        "value": "Look at the\npretty line\nbreaks."
+        "value": "Look at the"
+      },
+      {
+        "type": "br"
+      },
+      {
+        "type": "text",
+        "value": "pretty line"
+      },
+      {
+        "type": "br"
+      },
+      {
+        "type": "text",
+        "value": "breaks."
       }
     ]
   }
