@@ -44,7 +44,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<aside>This will make me fail the test because\nmarkdown.js doesnt acknowledge arbitrary html blocks =/</aside>\n\n"
   },
   {
@@ -56,8 +55,7 @@
         "children": [
           {
             "type": "text",
-            "value": "List Item 1",
-            "children": []
+            "value": "List Item 1"
           }
         ]
       },
@@ -66,8 +64,7 @@
         "children": [
           {
             "type": "text",
-            "value": "List Item 2",
-            "children": []
+            "value": "List Item 2"
           },
           {
             "type": "list",
@@ -78,7 +75,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "undefined\nundefined"
+                    "value": "New List Item 1\nundefined"
                   }
                 ]
               },
@@ -87,7 +84,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "undefined\nundefined"
+                    "value": "New List Item 2\nundefined"
                   },
                   {
                     "type": "code",
@@ -100,7 +97,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "undefined\nundefined"
+                    "value": "New List Item 3\nundefined"
                   }
                 ]
               }
@@ -113,13 +110,7 @@
         "children": [
           {
             "type": "text",
-            "value": "List Item 3",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "List Item 3\nundefined"
           }
         ]
       },
@@ -128,13 +119,7 @@
         "children": [
           {
             "type": "text",
-            "value": "List Item 4",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "List Item 4\nundefined"
           }
         ]
       }
@@ -158,25 +143,39 @@
         "children": [
           {
             "type": "listItem",
-            "children": []
+            "children": [
+              {
+                "type": "text",
+                "value": "bq Item 1"
+              }
+            ]
           },
           {
             "type": "listItem",
             "children": [
+              {
+                "type": "text",
+                "value": "bq Item 2"
+              },
               {
                 "type": "list",
                 "ordered": false,
                 "children": [
                   {
                     "type": "listItem",
-                    "children": []
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "New bq Item 1"
+                      }
+                    ]
                   },
                   {
                     "type": "listItem",
                     "children": [
                       {
                         "type": "text",
-                        "value": "undefined\nundefined"
+                        "value": "New bq Item 2\nundefined"
                       }
                     ]
                   }

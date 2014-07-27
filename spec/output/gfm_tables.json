@@ -2,8 +2,27 @@
   {
     "type": "table",
     "header": [
-      "Heading 1",
-      "Heading 2"
+      [
+        {
+          "type": "text",
+          "value": "Heading 1"
+        }
+      ],
+      [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "H"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "eading 2"
+        }
+      ]
     ],
     "align": [
       null,
@@ -11,22 +30,62 @@
     ],
     "cells": [
       [
-        "Cell 1",
-        "Cell 2"
+        [
+          {
+            "type": "text",
+            "value": "Cell 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 2"
+          }
+        ]
       ],
       [
-        "Cell 3",
-        "Cell 4"
+        [
+          {
+            "type": "text",
+            "value": "Cell 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 4"
+          }
+        ]
       ]
     ]
   },
   {
     "type": "table",
     "header": [
-      "Header 1",
-      "Header 2",
-      "Header 3",
-      "Header 4"
+      [
+        {
+          "type": "text",
+          "value": "Header 1"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 2"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 3"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 4"
+        }
+      ]
     ],
     "align": [
       "center",
@@ -36,16 +95,56 @@
     ],
     "cells": [
       [
-        "Cell 1",
-        "Cell 2",
-        "Cell 3",
-        "Cell 4"
+        [
+          {
+            "type": "text",
+            "value": "Cell 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 4"
+          }
+        ]
       ],
       [
-        "Cell 5",
-        "Cell 6",
-        "Cell 7",
-        "Cell 8"
+        [
+          {
+            "type": "text",
+            "value": "Cell 5"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 6"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 7"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 8"
+          }
+        ]
       ]
     ]
   },
@@ -56,8 +155,18 @@
   {
     "type": "table",
     "header": [
-      "Header 1",
-      "Header 2"
+      [
+        {
+          "type": "text",
+          "value": "Header 1"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 2"
+        }
+      ]
     ],
     "align": [
       null,
@@ -65,22 +174,62 @@
     ],
     "cells": [
       [
-        "Cell 1",
-        "Cell 2"
+        [
+          {
+            "type": "text",
+            "value": "Cell 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 2"
+          }
+        ]
       ],
       [
-        "Cell 3",
-        "Cell 4"
+        [
+          {
+            "type": "text",
+            "value": "Cell 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 4"
+          }
+        ]
       ]
     ]
   },
   {
     "type": "table",
     "header": [
-      "Header 1",
-      "Header 2",
-      "Header 3",
-      "Header 4"
+      [
+        {
+          "type": "text",
+          "value": "Header 1"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 2"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 3"
+        }
+      ],
+      [
+        {
+          "type": "text",
+          "value": "Header 4"
+        }
+      ]
     ],
     "align": [
       "left",
@@ -90,16 +239,61 @@
     ],
     "cells": [
       [
-        "Cell 1",
-        "Cell 2",
-        "Cell 3",
-        "Cell 4"
+        [
+          {
+            "type": "text",
+            "value": "Cell 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 4"
+          }
+        ]
       ],
       [
-        "*Cell 5*",
-        "Cell 6",
-        "Cell 7",
-        "Cell 8"
+        [
+          {
+            "type": "emphasis",
+            "children": [
+              {
+                "type": "text",
+                "value": "Cell 5"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 6"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 7"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Cell 8"
+          }
+        ]
       ]
     ]
   }

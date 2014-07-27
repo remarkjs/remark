@@ -435,27 +435,11 @@
     "children": [
       {
         "type": "text",
-        "value": "Backslashing should suppress "
-      },
-      {
-        "type": "escape",
-        "value": "["
+        "value": "Backslashing should suppress [this] and "
       },
       {
         "type": "text",
-        "value": "this] and "
-      },
-      {
-        "type": "text",
-        "value": "[this"
-      },
-      {
-        "type": "escape",
-        "value": "]"
-      },
-      {
-        "type": "text",
-        "value": "."
+        "value": "[this]."
       }
     ]
   },

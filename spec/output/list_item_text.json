@@ -8,8 +8,7 @@
         "children": [
           {
             "type": "text",
-            "value": "item1",
-            "children": []
+            "value": "item1"
           },
           {
             "type": "list",
@@ -17,14 +16,18 @@
             "children": [
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "item2"
+                  }
+                ]
               }
             ]
           },
           {
             "type": "text",
-            "value": "text",
-            "children": []
+            "value": "text"
           }
         ]
       }

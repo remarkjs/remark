@@ -16,12 +16,15 @@
         "type": "listItem",
         "children": [
           {
+            "type": "text",
+            "value": "hello"
+          },
+          {
             "type": "blockquote",
             "children": [
               {
                 "type": "text",
-                "value": "world",
-                "children": []
+                "value": "world"
               }
             ]
           }

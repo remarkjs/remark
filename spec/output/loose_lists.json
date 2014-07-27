@@ -8,19 +8,18 @@
         "children": [
           {
             "type": "text",
-            "value": "hello",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined\nundefined\nundefined"
-              }
-            ]
+            "value": "hello\nundefined\nundefined\nundefined"
           }
         ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "you"
+          }
+        ]
       }
     ]
   },
@@ -42,8 +41,7 @@
         "children": [
           {
             "type": "text",
-            "value": "hello",
-            "children": []
+            "value": "hello"
           },
           {
             "type": "list",
@@ -54,13 +52,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "world",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "undefined\nundefined\nundefined\nundefined"
-                      }
-                    ]
+                    "value": "world\nundefined\nundefined\nundefined"
                   }
                 ]
               },
@@ -69,8 +61,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "today",
-                    "children": []
+                    "value": "today"
                   }
                 ]
               }
@@ -80,7 +71,12 @@
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hi"
+          }
+        ]
       }
     ]
   },
@@ -93,8 +89,7 @@
         "children": [
           {
             "type": "text",
-            "value": "hello",
-            "children": []
+            "value": "hello"
           }
         ]
       },
@@ -103,42 +98,16 @@
         "children": [
           {
             "type": "text",
-            "value": "world",
-            "children": []
+            "value": "world"
           }
         ]
       },
       {
         "type": "listItem",
-        "children": []
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "looseItem",
         "children": [
           {
             "type": "text",
-            "value": "world",
-            "children": []
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi",
-            "children": []
+            "value": "hi"
           }
         ]
       }
@@ -150,53 +119,28 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "looseItem",
         "children": [
           {
             "type": "text",
-            "value": "world",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "hello"
           }
         ]
       },
       {
-        "type": "listItem",
-        "children": []
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "listItem",
-        "children": []
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
       },
       {
         "type": "looseItem",
         "children": [
           {
             "type": "text",
-            "value": "how",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "hi"
           }
         ]
       }
@@ -208,15 +152,10 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "looseItem",
         "children": [
           {
             "type": "text",
-            "value": "world",
-            "children": []
+            "value": "hello"
           }
         ]
       },
@@ -225,13 +164,82 @@
         "children": [
           {
             "type": "text",
-            "value": "how",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "world\nundefined"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hi"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "how\nundefined"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "how\nundefined"
           }
         ]
       }

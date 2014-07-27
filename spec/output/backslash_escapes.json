@@ -13,11 +13,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Backslash: "
-      },
-      {
-        "type": "escape",
-        "value": "\\"
+        "value": "Backslash: \\"
       }
     ]
   },
@@ -26,11 +22,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Backtick: "
-      },
-      {
-        "type": "escape",
-        "value": "`"
+        "value": "Backtick: `"
       }
     ]
   },
@@ -39,11 +31,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Asterisk: "
-      },
-      {
-        "type": "escape",
-        "value": "*"
+        "value": "Asterisk: *"
       }
     ]
   },
@@ -52,11 +40,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Underscore: "
-      },
-      {
-        "type": "escape",
-        "value": "_"
+        "value": "Underscore: _"
       }
     ]
   },
@@ -65,11 +49,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Left brace: "
-      },
-      {
-        "type": "escape",
-        "value": "{"
+        "value": "Left brace: {"
       }
     ]
   },
@@ -78,11 +58,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Right brace: "
-      },
-      {
-        "type": "escape",
-        "value": "}"
+        "value": "Right brace: }"
       }
     ]
   },
@@ -91,11 +67,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Left bracket: "
-      },
-      {
-        "type": "escape",
-        "value": "["
+        "value": "Left bracket: ["
       }
     ]
   },
@@ -104,11 +76,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Right bracket: "
-      },
-      {
-        "type": "escape",
-        "value": "]"
+        "value": "Right bracket: ]"
       }
     ]
   },
@@ -117,11 +85,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Left paren: "
-      },
-      {
-        "type": "escape",
-        "value": "("
+        "value": "Left paren: ("
       }
     ]
   },
@@ -130,11 +94,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Right paren: "
-      },
-      {
-        "type": "escape",
-        "value": ")"
+        "value": "Right paren: )"
       }
     ]
   },
@@ -143,11 +103,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Greater-than: "
-      },
-      {
-        "type": "escape",
-        "value": ">"
+        "value": "Greater-than: >"
       }
     ]
   },
@@ -156,11 +112,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Hash: "
-      },
-      {
-        "type": "escape",
-        "value": "#"
+        "value": "Hash: #"
       }
     ]
   },
@@ -169,11 +121,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Period: "
-      },
-      {
-        "type": "escape",
-        "value": "."
+        "value": "Period: ."
       }
     ]
   },
@@ -182,11 +130,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Bang: "
-      },
-      {
-        "type": "escape",
-        "value": "!"
+        "value": "Bang: !"
       }
     ]
   },
@@ -195,11 +139,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Plus: "
-      },
-      {
-        "type": "escape",
-        "value": "+"
+        "value": "Plus: +"
       }
     ]
   },
@@ -208,11 +148,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Minus: "
-      },
-      {
-        "type": "escape",
-        "value": "-"
+        "value": "Minus: -"
       }
     ]
   },
@@ -459,16 +395,8 @@
     "type": "paragraph",
     "children": [
       {
-        "type": "escape",
-        "value": "*"
-      },
-      {
         "type": "text",
-        "value": "asterisks"
-      },
-      {
-        "type": "escape",
-        "value": "*"
+        "value": "*asterisks*"
       }
     ]
   },
@@ -476,16 +404,8 @@
     "type": "paragraph",
     "children": [
       {
-        "type": "escape",
-        "value": "_"
-      },
-      {
         "type": "text",
-        "value": "underscores"
-      },
-      {
-        "type": "escape",
-        "value": "_"
+        "value": "_underscores_"
       }
     ]
   },
@@ -493,16 +413,8 @@
     "type": "paragraph",
     "children": [
       {
-        "type": "escape",
-        "value": "`"
-      },
-      {
         "type": "text",
-        "value": "backticks"
-      },
-      {
-        "type": "escape",
-        "value": "`"
+        "value": "`backticks`"
       }
     ]
   },

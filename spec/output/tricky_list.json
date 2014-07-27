@@ -32,7 +32,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hello world"
+          }
+        ]
       }
     ]
   },
@@ -69,7 +74,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hello world"
+          }
+        ]
       }
     ]
   },
@@ -106,7 +116,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "Hello world"
+          }
+        ]
       }
     ]
   },
@@ -143,7 +158,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hello world"
+          }
+        ]
       }
     ]
   }

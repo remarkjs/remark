@@ -49,15 +49,37 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "In a list?"
+          }
+        ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "link",
+            "href": "http://example.com/",
+            "children": [
+              {
+                "type": "text",
+                "value": "http://example.com/"
+              }
+            ],
+            "title": null
+          }
+        ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "It should."
+          }
+        ]
       }
     ]
   },

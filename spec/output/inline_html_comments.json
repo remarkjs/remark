@@ -10,12 +10,10 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<!-- This is a simple comment -->\n"
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<!--\n        This is another comment.\n-->\n"
   },
   {
@@ -29,7 +27,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<!-- one comment block -- -- with two comments -->\n"
   },
   {

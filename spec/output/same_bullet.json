@@ -5,15 +5,30 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "test"
+          }
+        ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "test"
+          }
+        ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "test"
+          }
+        ]
       }
     ]
   }

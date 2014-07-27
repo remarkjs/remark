@@ -110,7 +110,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "how are you"
+          }
+        ]
       }
     ]
   },
@@ -125,7 +130,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<div>how are you</div>\n\n"
   },
   {
@@ -171,7 +175,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<div>hello</div>\n\n"
   },
   {

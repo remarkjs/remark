@@ -17,7 +17,7 @@
         "children": [
           {
             "type": "text",
-            "value": "undefined\nundefined\nundefined\nundefined"
+            "value": "This line turns into a list item.\nundefined\nundefined\nundefined"
           }
         ]
       }
@@ -38,7 +38,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "criminey."
+          }
+        ]
       }
     ]
   }

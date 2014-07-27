@@ -11,7 +11,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a href=\"/projects/markdown/basics\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a class=\"selected\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>\n\n\n"
   },
   {
@@ -22,20 +21,67 @@
         "type": "listItem",
         "children": [
           {
+            "href": "#overview",
+            "title": null,
+            "children": [
+              {
+                "type": "text",
+                "value": "Overview"
+              }
+            ],
+            "type": "link"
+          },
+          {
             "type": "list",
             "ordered": false,
             "children": [
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#philosophy",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Philosophy"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#html",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Inline HTML"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#autoescape",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Automatic Escaping for Special Characters"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               }
             ]
           }
@@ -45,32 +91,115 @@
         "type": "listItem",
         "children": [
           {
+            "href": "#block",
+            "title": null,
+            "children": [
+              {
+                "type": "text",
+                "value": "Block Elements"
+              }
+            ],
+            "type": "link"
+          },
+          {
             "type": "list",
             "ordered": false,
             "children": [
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#p",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Paragraphs and Line Breaks"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#header",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Headers"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#blockquote",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Blockquotes"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#list",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Lists"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#precode",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Code Blocks"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#hr",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Horizontal Rules"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               }
             ]
           }
@@ -80,24 +209,83 @@
         "type": "listItem",
         "children": [
           {
+            "href": "#span",
+            "title": null,
+            "children": [
+              {
+                "type": "text",
+                "value": "Span Elements"
+              }
+            ],
+            "type": "link"
+          },
+          {
             "type": "list",
             "ordered": false,
             "children": [
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#link",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Links"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#em",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Emphasis"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#code",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Code"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#img",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Images"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               }
             ]
           }
@@ -107,16 +295,51 @@
         "type": "listItem",
         "children": [
           {
+            "href": "#misc",
+            "title": null,
+            "children": [
+              {
+                "type": "text",
+                "value": "Miscellaneous"
+              }
+            ],
+            "type": "link"
+          },
+          {
             "type": "list",
             "ordered": false,
             "children": [
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#backslash",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Backslash Escapes"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               },
               {
                 "type": "listItem",
-                "children": []
+                "children": [
+                  {
+                    "href": "#autolink",
+                    "title": null,
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Automatic Links"
+                      }
+                    ],
+                    "type": "link"
+                  }
+                ]
               }
             ]
           }
@@ -162,12 +385,10 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h2 id=\"overview\">Overview</h2>\n\n"
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"philosophy\">Philosophy</h3>\n\n"
   },
   {
@@ -283,29 +504,12 @@
     "children": [
       {
         "type": "text",
-        "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like "
-      },
-      {
-        "type": "escape",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": "emphasis"
-      },
-      {
-        "type": "escape",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": ". Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
+        "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like *emphasis*. Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
       }
     ]
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"html\">Inline HTML</h3>\n\n"
   },
   {
@@ -539,7 +743,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"autoescape\">Automatic Escaping for Special Characters</h3>\n\n"
   },
   {
@@ -774,12 +977,10 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h2 id=\"block\">Block Elements</h2>\n\n\n"
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"p\">Paragraphs and Line Breaks</h3>\n\n"
   },
   {
@@ -895,7 +1096,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"header\">Headers</h3>\n\n"
   },
   {
@@ -1003,7 +1203,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"blockquote\">Blockquotes</h3>\n\n"
   },
   {
@@ -1101,7 +1300,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"list\">Lists</h3>\n\n"
   },
   {
@@ -1431,7 +1629,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"precode\">Code Blocks</h3>\n\n"
   },
   {
@@ -1581,7 +1778,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"hr\">Horizontal Rules</h3>\n\n"
   },
   {
@@ -1610,12 +1806,10 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h2 id=\"span\">Span Elements</h2>\n\n"
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"link\">Links</h3>\n\n"
   },
   {
@@ -1775,28 +1969,43 @@
         "children": [
           {
             "type": "text",
-            "value": "undefined\nundefined"
+            "value": "Square brackets containing the link identifier (optionally\nundefined"
           }
         ]
-      },
-      {
-        "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "listItem",
-        "children": []
       },
       {
         "type": "listItem",
         "children": [
           {
             "type": "text",
-            "value": "undefined\nundefined"
+            "value": "followed by a colon;"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "followed by one or more spaces (or tabs);"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "followed by the URL for the link;"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "optionally followed by a title attribute for the link, enclosed\nundefined"
           }
         ]
       }
@@ -2018,7 +2227,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"em\">Emphasis</h3>\n\n"
   },
   {
@@ -2173,7 +2381,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"code\">Code</h3>\n\n"
   },
   {
@@ -2316,7 +2523,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"img\">Images</h3>\n\n"
   },
   {
@@ -2391,14 +2597,18 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
-      },
-      {
-        "type": "listItem",
         "children": [
           {
             "type": "text",
-            "value": "undefined\nundefined"
+            "value": "An exclamation mark: "
+          },
+          {
+            "type": "code",
+            "value": "!"
+          },
+          {
+            "type": "text",
+            "value": ";"
           }
         ]
       },
@@ -2407,7 +2617,24 @@
         "children": [
           {
             "type": "text",
-            "value": "undefined\nundefined\nundefined"
+            "value": "followed by a set of square brackets, containing the "
+          },
+          {
+            "type": "code",
+            "value": "alt"
+          },
+          {
+            "type": "text",
+            "value": "\nundefined"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "followed by a set of parentheses, containing the URL or path to\nundefined\nundefined"
           }
         ]
       }
@@ -2461,12 +2688,10 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h2 id=\"misc\">Miscellaneous</h2>\n\n"
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"autolink\">Automatic Links</h3>\n\n"
   },
   {
@@ -2541,7 +2766,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<h3 id=\"backslash\">Backslash Escapes</h3>\n\n"
   },
   {

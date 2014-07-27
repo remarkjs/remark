@@ -1,7 +1,6 @@
 [
   {
     "type": "html",
-    "pre": false,
     "value": "<p>Already linked: <a href=\"http://example.com/\">http://example.com/</a>.</p>\n\n"
   },
   {

@@ -18,8 +18,7 @@
         "children": [
           {
             "type": "text",
-            "value": "bar:",
-            "children": []
+            "value": "bar:"
           },
           {
             "type": "blockquote",
@@ -32,6 +31,10 @@
                     "type": "listItem",
                     "children": [
                       {
+                        "type": "text",
+                        "value": "one"
+                      },
+                      {
                         "type": "list",
                         "ordered": false,
                         "children": [
@@ -39,20 +42,39 @@
                             "type": "listItem",
                             "children": [
                               {
+                                "type": "text",
+                                "value": "two"
+                              },
+                              {
                                 "type": "list",
                                 "ordered": false,
                                 "children": [
                                   {
                                     "type": "listItem",
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "three"
+                                      }
+                                    ]
                                   },
                                   {
                                     "type": "listItem",
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "four"
+                                      }
+                                    ]
                                   },
                                   {
                                     "type": "listItem",
-                                    "children": []
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "five"
+                                      }
+                                    ]
                                   }
                                 ]
                               }
@@ -73,11 +95,11 @@
         "children": [
           {
             "type": "text",
-            "value": "foo:",
-            "children": []
+            "value": "foo:"
           },
           {
             "type": "code",
+            "lang": null,
             "value": " line 1\n line 2"
           }
         ]
@@ -87,8 +109,7 @@
         "children": [
           {
             "type": "text",
-            "value": "foo:",
-            "children": []
+            "value": "foo:"
           },
           {
             "type": "list",
@@ -99,8 +120,15 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "foo `bar` bar:",
-                    "children": []
+                    "value": "foo "
+                  },
+                  {
+                    "type": "code",
+                    "value": "bar"
+                  },
+                  {
+                    "type": "text",
+                    "value": " bar:"
                   },
                   {
                     "type": "code",
@@ -114,8 +142,15 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "foo `bar` bar:",
-                    "children": []
+                    "value": "foo "
+                  },
+                  {
+                    "type": "code",
+                    "value": "bar"
+                  },
+                  {
+                    "type": "text",
+                    "value": " bar:"
                   },
                   {
                     "type": "code",
@@ -129,8 +164,15 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "foo `bar` bar:",
-                    "children": []
+                    "value": "foo "
+                  },
+                  {
+                    "type": "code",
+                    "value": "bar"
+                  },
+                  {
+                    "type": "text",
+                    "value": " bar:"
                   },
                   {
                     "type": "code",
@@ -144,8 +186,15 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "foo `bar` bar:",
-                    "children": []
+                    "value": "foo "
+                  },
+                  {
+                    "type": "code",
+                    "value": "bar"
+                  },
+                  {
+                    "type": "text",
+                    "value": " bar:"
                   },
                   {
                     "type": "code",
@@ -158,8 +207,7 @@
                 "children": [
                   {
                     "type": "text",
-                    "value": "foo",
-                    "children": []
+                    "value": "foo"
                   }
                 ]
               }

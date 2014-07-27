@@ -8,13 +8,7 @@
         "children": [
           {
             "type": "text",
-            "value": "this is a list item",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "this is a list item\nundefined"
           }
         ]
       },
@@ -23,13 +17,7 @@
         "children": [
           {
             "type": "text",
-            "value": "this is a list item",
-            "children": [
-              {
-                "type": "text",
-                "value": "undefined\nundefined"
-              }
-            ]
+            "value": "this is a list item\nundefined"
           }
         ]
       }

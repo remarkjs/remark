@@ -56,11 +56,21 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
       },
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "[3]: hello"
+          }
+        ]
       }
     ]
   },
@@ -70,7 +80,12 @@
     "children": [
       {
         "type": "listItem",
-        "children": []
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
       }
     ]
   },

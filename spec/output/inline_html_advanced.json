@@ -10,7 +10,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<div>foo</div>\n\n"
   },
   {
@@ -24,7 +23,6 @@
   },
   {
     "type": "html",
-    "pre": false,
     "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
   }
 ]
