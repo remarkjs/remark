@@ -1,0 +1,513 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Foo "
+      },
+      {
+        "href": "/url/",
+        "title": "Title",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Foo "
+      },
+      {
+        "href": "/url/",
+        "title": "Title",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Foo "
+      },
+      {
+        "href": "/url/",
+        "title": "Title",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "With "
+      },
+      {
+        "href": "/url/",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "embedded "
+          },
+          {
+            "type": "text",
+            "value": "[brackets]"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Indented "
+      },
+      {
+        "href": "/url",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "once"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Indented "
+      },
+      {
+        "href": "/url",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "twice"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Indented "
+      },
+      {
+        "href": "/url",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "thrice"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Indented "
+      },
+      {
+        "type": "text",
+        "value": "[four]"
+      },
+      {
+        "type": "text",
+        "value": "[] times."
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "[four]: /url"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " should work"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "So should "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "But not "
+      },
+      {
+        "type": "text",
+        "value": "[that] "
+      },
+      {
+        "type": "text",
+        "value": "[]."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Nor "
+      },
+      {
+        "type": "text",
+        "value": "[that]"
+      },
+      {
+        "type": "text",
+        "value": "[]."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Nor "
+      },
+      {
+        "type": "text",
+        "value": "[that]."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "[Something in brackets like "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " should work]"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "[Same with "
+      },
+      {
+        "href": "foo",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": ".]"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "In this case, "
+      },
+      {
+        "href": "/somethingelse/",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " points to something else."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Backslashing should suppress "
+      },
+      {
+        "type": "escape",
+        "value": "["
+      },
+      {
+        "type": "text",
+        "value": "this] and "
+      },
+      {
+        "type": "text",
+        "value": "[this"
+      },
+      {
+        "type": "escape",
+        "value": "]"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Here's one where the "
+      },
+      {
+        "href": "/url/",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "link \nbreaks"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " across lines."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Here's another where the "
+      },
+      {
+        "href": "/url/",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "link \nbreaks"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " across lines, but with a line-ending space."
+      }
+    ]
+  }
+]

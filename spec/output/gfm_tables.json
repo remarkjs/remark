@@ -1,0 +1,106 @@
+[
+  {
+    "type": "table",
+    "header": [
+      "Heading 1",
+      "Heading 2"
+    ],
+    "align": [
+      null,
+      null
+    ],
+    "cells": [
+      [
+        "Cell 1",
+        "Cell 2"
+      ],
+      [
+        "Cell 3",
+        "Cell 4"
+      ]
+    ]
+  },
+  {
+    "type": "table",
+    "header": [
+      "Header 1",
+      "Header 2",
+      "Header 3",
+      "Header 4"
+    ],
+    "align": [
+      "center",
+      "right",
+      "left",
+      null
+    ],
+    "cells": [
+      [
+        "Cell 1",
+        "Cell 2",
+        "Cell 3",
+        "Cell 4"
+      ],
+      [
+        "Cell 5",
+        "Cell 6",
+        "Cell 7",
+        "Cell 8"
+      ]
+    ]
+  },
+  {
+    "type": "code",
+    "value": "Test code"
+  },
+  {
+    "type": "table",
+    "header": [
+      "Header 1",
+      "Header 2"
+    ],
+    "align": [
+      null,
+      null
+    ],
+    "cells": [
+      [
+        "Cell 1",
+        "Cell 2"
+      ],
+      [
+        "Cell 3",
+        "Cell 4"
+      ]
+    ]
+  },
+  {
+    "type": "table",
+    "header": [
+      "Header 1",
+      "Header 2",
+      "Header 3",
+      "Header 4"
+    ],
+    "align": [
+      "left",
+      "center",
+      "right",
+      null
+    ],
+    "cells": [
+      [
+        "Cell 1",
+        "Cell 2",
+        "Cell 3",
+        "Cell 4"
+      ],
+      [
+        "*Cell 5*",
+        "Cell 6",
+        "Cell 7",
+        "Cell 8"
+      ]
+    ]
+  }
+]

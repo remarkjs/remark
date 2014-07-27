@@ -1,0 +1,150 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "strong",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " "
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "strong",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " "
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "strong",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " "
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "strong",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " "
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  }
+]

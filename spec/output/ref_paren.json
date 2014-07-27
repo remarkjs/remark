@@ -1,0 +1,18 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "href": "/url",
+        "title": "there",
+        "children": [
+          {
+            "type": "text",
+            "value": "hi"
+          }
+        ],
+        "type": "link"
+      }
+    ]
+  }
+]

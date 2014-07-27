@@ -1,0 +1,50 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Foo "
+      },
+      {
+        "href": "/url/",
+        "title": "Title with \"quotes\" inside",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Foo "
+      },
+      {
+        "href": "/url/",
+        "title": "Title with \"quotes\" inside",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  }
+]

@@ -1,0 +1,33 @@
+[
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "item1",
+            "children": []
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "children": [
+              {
+                "type": "listItem",
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "text",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

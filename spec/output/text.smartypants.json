@@ -1,0 +1,29 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Hello world 'how' \"are\" you -- today..."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "\"It's a more 'challenging' smartypants test...\""
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "'And,' as a bonus -- \"one\nmultiline\" test!"
+      }
+    ]
+  }
+]

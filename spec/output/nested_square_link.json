@@ -1,0 +1,26 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "href": "/url",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "the "
+          },
+          {
+            "type": "code",
+            "value": "]"
+          },
+          {
+            "type": "text",
+            "value": " character"
+          }
+        ],
+        "type": "link"
+      }
+    ]
+  }
+]

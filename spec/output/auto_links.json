@@ -1,0 +1,106 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Link: "
+      },
+      {
+        "type": "link",
+        "href": "http://example.com/",
+        "children": [
+          {
+            "type": "text",
+            "value": "http://example.com/"
+          }
+        ],
+        "title": null
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "With an ampersand: "
+      },
+      {
+        "type": "link",
+        "href": "http://example.com/?foo=1&bar=2",
+        "children": [
+          {
+            "type": "text",
+            "value": "http://example.com/?foo=1&bar=2"
+          }
+        ],
+        "title": null
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Blockquoted: "
+          },
+          {
+            "type": "link",
+            "href": "http://example.com/",
+            "children": [
+              {
+                "type": "text",
+                "value": "http://example.com/"
+              }
+            ],
+            "title": null
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Auto-links should not occur here: "
+      },
+      {
+        "type": "code",
+        "value": "<http://example.com/>"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "    or here: <http://example.com/>"
+  }
+]

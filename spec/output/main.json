@@ -1,0 +1,269 @@
+[
+  {
+    "type": "heading",
+    "depth": 1,
+    "children": [
+      {
+        "type": "text",
+        "value": "A heading"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Just a note, I've found that I can't test my markdown parser vs others.\nFor example, both markdown.js and showdown code blocks in lists wrong. They're\nalso completely "
+      },
+      {
+        "href": "http://google.com/",
+        "title": "Google",
+        "children": [
+          {
+            "type": "text",
+            "value": "inconsistent"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " with regards to paragraphs in list items."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "A link. Not anymore."
+      }
+    ]
+  },
+  {
+    "type": "html",
+    "pre": false,
+    "value": "<aside>This will make me fail the test because\nmarkdown.js doesnt acknowledge arbitrary html blocks =/</aside>\n\n"
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "List Item 1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "List Item 2",
+            "children": []
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "children": [
+              {
+                "type": "listItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "undefined\nundefined"
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "undefined\nundefined"
+                  },
+                  {
+                    "type": "code",
+                    "value": "Code goes here.\nLots of it..."
+                  }
+                ]
+              },
+              {
+                "type": "listItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "undefined\nundefined"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "List Item 3",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "List Item 4",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Paragraph."
+      }
+    ]
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "list",
+        "ordered": false,
+        "children": [
+          {
+            "type": "listItem",
+            "children": []
+          },
+          {
+            "type": "listItem",
+            "children": [
+              {
+                "type": "list",
+                "ordered": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "children": []
+                  },
+                  {
+                    "type": "listItem",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "undefined\nundefined"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Another blockquote!\nI really need to get\nmore creative with\nmockup text..\nmarkdown.js breaks here again"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "depth": 2,
+    "children": [
+      {
+        "type": "text",
+        "value": "Another Heading"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Hello "
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "world"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": ". Here is a "
+      },
+      {
+        "href": "//hello",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "link"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": ".\nAnd an image "
+      },
+      {
+        "href": "src",
+        "title": null,
+        "type": "image",
+        "alt": "alt"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "Code goes here.\nLots of it..."
+  }
+]

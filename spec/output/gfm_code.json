@@ -1,0 +1,22 @@
+[
+  {
+    "type": "code",
+    "lang": "js",
+    "value": "var a = 'hello';\nconsole.log(a + ' world');"
+  },
+  {
+    "type": "code",
+    "lang": "bash",
+    "value": "echo \"hello, ${WORLD}\""
+  },
+  {
+    "type": "code",
+    "lang": "longfence",
+    "value": "Q: What do you call a tall person who sells stolen goods?"
+  },
+  {
+    "type": "code",
+    "lang": "ManyTildes",
+    "value": "A longfence!"
+  }
+]

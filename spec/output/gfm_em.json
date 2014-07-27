@@ -1,0 +1,11 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "These words should_not_be_emphasized."
+      }
+    ]
+  }
+]

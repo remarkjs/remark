@@ -1,0 +1,11 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Look at the\npretty line\nbreaks."
+      }
+    ]
+  }
+]

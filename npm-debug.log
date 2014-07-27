@@ -1,0 +1,26 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'run', 'test' ]
+2 info using npm@1.4.9
+3 info using node@v0.11.13
+4 verbose run-script [ 'pretest', 'test', 'posttest' ]
+5 info pretest mdast@0.0.1
+6 info test mdast@0.0.1
+7 verbose unsafe-perm in lifecycle true
+8 info mdast@0.0.1 Failed to exec test script
+9 error mdast@0.0.1 test: `_mocha --reporter spec --check-leaks -u exports spec/mdast.spec.js`
+9 error Exit status 1
+10 error Failed at the mdast@0.0.1 test script.
+10 error This is most likely a problem with the mdast package,
+10 error not with npm itself.
+10 error Tell the author that this fails on your system:
+10 error     _mocha --reporter spec --check-leaks -u exports spec/mdast.spec.js
+10 error You can get their info via:
+10 error     npm owner ls mdast
+10 error There is likely additional logging output above.
+11 error System Darwin 13.3.0
+12 error command "/usr/local/bin/node" "/usr/local/bin/npm" "run" "test"
+13 error cwd /Users/wooorm/Dropbox/studie/3_4/afstudeerproject/re/_base/wooorm/mdast
+14 error node -v v0.11.13
+15 error npm -v 1.4.9
+16 error code ELIFECYCLE
+17 verbose exit [ 1, true ]

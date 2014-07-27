@@ -1,0 +1,601 @@
+[
+  {
+    "type": "heading",
+    "depth": 2,
+    "children": [
+      {
+        "type": "text",
+        "value": "Unordered"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Asterisks tight:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Asterisks loose:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "asterisk 1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "asterisk 2",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "asterisk 3",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Pluses tight:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Pluses loose:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Plus 1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Plus 2",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Plus 3",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Minuses tight:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Minuses loose:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Minus 1",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Minus 2",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Minus 3",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "depth": 2,
+    "children": [
+      {
+        "type": "text",
+        "value": "Ordered"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Tight:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "and:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Loose using tabs:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "First",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Second",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Third",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "and using spaces:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "One",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Two",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Three",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Multiple paragraphs:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Item 1, graf one.",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined\nundefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Item 2.",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Item 3.",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "heading",
+    "depth": 2,
+    "children": [
+      {
+        "type": "text",
+        "value": "Nested"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "list",
+            "ordered": false,
+            "children": [
+              {
+                "type": "listItem",
+                "children": [
+                  {
+                    "type": "list",
+                    "ordered": false,
+                    "children": [
+                      {
+                        "type": "listItem",
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Here's another:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "code",
+            "value": " * Fee\n * Fie\n * Foe"
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Same thing but with paragraphs:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "First",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Second:",
+            "children": []
+          },
+          {
+            "type": "code",
+            "value": " * Fee\n * Fie\n * Foe"
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "Third",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "This was an error in Markdown 1.0.1:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "this",
+            "children": []
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "children": [
+              {
+                "type": "listItem",
+                "children": []
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": "that",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

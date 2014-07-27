@@ -1,0 +1,34 @@
+[
+  {
+    "type": "blockquote",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "A list within a blockquote:"
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "children": [
+          {
+            "type": "listItem",
+            "children": []
+          },
+          {
+            "type": "listItem",
+            "children": []
+          },
+          {
+            "type": "listItem",
+            "children": []
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -1,0 +1,24 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "hello "
+      },
+      {
+        "type": "delete",
+        "children": [
+          {
+            "type": "text",
+            "value": "hi"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " world"
+      }
+    ]
+  }
+]

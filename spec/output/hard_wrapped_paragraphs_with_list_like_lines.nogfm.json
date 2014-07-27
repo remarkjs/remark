@@ -1,0 +1,45 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "In Markdown 1.0.0 and earlier. Version"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "listItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "undefined\nundefined\nundefined\nundefined"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Here's one with a bullet."
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,240 @@
+[
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined\nundefined\nundefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "better behavior:"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello",
+            "children": []
+          },
+          {
+            "type": "list",
+            "ordered": false,
+            "children": [
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "world",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "undefined\nundefined\nundefined\nundefined"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "today",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hello",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "hi",
+            "children": []
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "how",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "world",
+            "children": []
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "how",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

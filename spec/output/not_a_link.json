@@ -1,0 +1,15 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "escape",
+        "value": "["
+      },
+      {
+        "type": "text",
+        "value": "test](not a link)"
+      }
+    ]
+  }
+]

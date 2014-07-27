@@ -1,0 +1,125 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Dashes:"
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "    ---"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "    - - -"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Asterisks:"
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "    ***"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "    * * *"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Underscores:"
+      }
+    ]
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "___"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "hr"
+  },
+  {
+    "type": "code",
+    "value": "_ _ _"
+  }
+]

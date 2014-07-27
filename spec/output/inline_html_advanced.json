@@ -1,0 +1,30 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Simple block on one line:"
+      }
+    ]
+  },
+  {
+    "type": "html",
+    "pre": false,
+    "value": "<div>foo</div>\n\n"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And nested without indentation:"
+      }
+    ]
+  },
+  {
+    "type": "html",
+    "pre": false,
+    "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
+  }
+]

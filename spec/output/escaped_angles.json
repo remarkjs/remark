@@ -1,0 +1,11 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "escape",
+        "value": ">"
+      }
+    ]
+  }
+]

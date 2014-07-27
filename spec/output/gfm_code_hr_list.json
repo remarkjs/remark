@@ -1,0 +1,172 @@
+[
+  {
+    "type": "heading",
+    "depth": 2,
+    "children": [
+      {
+        "type": "text",
+        "value": "foo"
+      }
+    ]
+  },
+  {
+    "type": "list",
+    "ordered": true,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "bar:",
+            "children": []
+          },
+          {
+            "type": "blockquote",
+            "children": [
+              {
+                "type": "list",
+                "ordered": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "children": [
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "children": [
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "children": []
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "children": []
+                                  }
+                                ]
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "foo:",
+            "children": []
+          },
+          {
+            "type": "code",
+            "value": " line 1\n line 2"
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "foo:",
+            "children": []
+          },
+          {
+            "type": "list",
+            "ordered": true,
+            "children": [
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "foo `bar` bar:",
+                    "children": []
+                  },
+                  {
+                    "type": "code",
+                    "lang": "erb",
+                    "value": " some code here"
+                  }
+                ]
+              },
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "foo `bar` bar:",
+                    "children": []
+                  },
+                  {
+                    "type": "code",
+                    "lang": "erb",
+                    "value": " foo\n ---\n bar\n ---\n foo\n bar"
+                  }
+                ]
+              },
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "foo `bar` bar:",
+                    "children": []
+                  },
+                  {
+                    "type": "code",
+                    "lang": "html",
+                    "value": " ---\n foo\n foo\n ---\n bar"
+                  }
+                ]
+              },
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "foo `bar` bar:",
+                    "children": []
+                  },
+                  {
+                    "type": "code",
+                    "value": " foo\n ---\n bar"
+                  }
+                ]
+              },
+              {
+                "type": "looseItem",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "foo",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

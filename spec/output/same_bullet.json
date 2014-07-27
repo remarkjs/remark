@@ -1,0 +1,20 @@
+[
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      },
+      {
+        "type": "listItem",
+        "children": []
+      }
+    ]
+  }
+]

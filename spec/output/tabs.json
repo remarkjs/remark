@@ -1,0 +1,77 @@
+[
+  {
+    "type": "list",
+    "ordered": false,
+    "children": [
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "this is a list item",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "looseItem",
+        "children": [
+          {
+            "type": "text",
+            "value": "this is a list item",
+            "children": [
+              {
+                "type": "text",
+                "value": "undefined\nundefined"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Code:"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "    this code block is indented by one tab"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And:"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "            this code block is indented by two tabs"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "And:"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "    +        this is an example list item\n            indented with tabs\n\n    +   this is an example list item\n        indented with spaces"
+  }
+]

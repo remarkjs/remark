@@ -1,0 +1,572 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "These should all get escaped:"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Backslash: "
+      },
+      {
+        "type": "escape",
+        "value": "\\"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Backtick: "
+      },
+      {
+        "type": "escape",
+        "value": "`"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Asterisk: "
+      },
+      {
+        "type": "escape",
+        "value": "*"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Underscore: "
+      },
+      {
+        "type": "escape",
+        "value": "_"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left brace: "
+      },
+      {
+        "type": "escape",
+        "value": "{"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right brace: "
+      },
+      {
+        "type": "escape",
+        "value": "}"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left bracket: "
+      },
+      {
+        "type": "escape",
+        "value": "["
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right bracket: "
+      },
+      {
+        "type": "escape",
+        "value": "]"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left paren: "
+      },
+      {
+        "type": "escape",
+        "value": "("
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right paren: "
+      },
+      {
+        "type": "escape",
+        "value": ")"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Greater-than: "
+      },
+      {
+        "type": "escape",
+        "value": ">"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Hash: "
+      },
+      {
+        "type": "escape",
+        "value": "#"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Period: "
+      },
+      {
+        "type": "escape",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Bang: "
+      },
+      {
+        "type": "escape",
+        "value": "!"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Plus: "
+      },
+      {
+        "type": "escape",
+        "value": "+"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Minus: "
+      },
+      {
+        "type": "escape",
+        "value": "-"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "These should not, because they occur within a code block:"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "    Backslash: \\\\\n\n    Backtick: \\`\n\n    Asterisk: \\*\n\n    Underscore: \\_\n\n    Left brace: \\{\n\n    Right brace: \\}\n\n    Left bracket: \\[\n\n    Right bracket: \\]\n\n    Left paren: \\(\n\n    Right paren: \\)\n\n    Greater-than: \\>\n\n    Hash: \\#\n\n    Period: \\.\n\n    Bang: \\!\n\n    Plus: \\+\n\n    Minus: \\-"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Nor should these, which occur in code spans:"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Backslash: "
+      },
+      {
+        "type": "code",
+        "value": "\\\\"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Backtick: "
+      },
+      {
+        "type": "code",
+        "value": "\\` "
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Asterisk: "
+      },
+      {
+        "type": "code",
+        "value": "\\*"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Underscore: "
+      },
+      {
+        "type": "code",
+        "value": "\\_"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left brace: "
+      },
+      {
+        "type": "code",
+        "value": "\\{"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right brace: "
+      },
+      {
+        "type": "code",
+        "value": "\\}"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left bracket: "
+      },
+      {
+        "type": "code",
+        "value": "\\["
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right bracket: "
+      },
+      {
+        "type": "code",
+        "value": "\\]"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Left paren: "
+      },
+      {
+        "type": "code",
+        "value": "\\("
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Right paren: "
+      },
+      {
+        "type": "code",
+        "value": "\\)"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Greater-than: "
+      },
+      {
+        "type": "code",
+        "value": "\\>"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Hash: "
+      },
+      {
+        "type": "code",
+        "value": "\\#"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Period: "
+      },
+      {
+        "type": "code",
+        "value": "\\."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Bang: "
+      },
+      {
+        "type": "code",
+        "value": "\\!"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Plus: "
+      },
+      {
+        "type": "code",
+        "value": "\\+"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Minus: "
+      },
+      {
+        "type": "code",
+        "value": "\\-"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "These should get escaped, even though they're matching pairs for\nother Markdown constructs:"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "escape",
+        "value": "*"
+      },
+      {
+        "type": "text",
+        "value": "asterisks"
+      },
+      {
+        "type": "escape",
+        "value": "*"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "escape",
+        "value": "_"
+      },
+      {
+        "type": "text",
+        "value": "underscores"
+      },
+      {
+        "type": "escape",
+        "value": "_"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "escape",
+        "value": "`"
+      },
+      {
+        "type": "text",
+        "value": "backticks"
+      },
+      {
+        "type": "escape",
+        "value": "`"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "This is a code span with a literal backslash-backtick sequence: "
+      },
+      {
+        "type": "code",
+        "value": "\\` "
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "This is a tag with unescaped backticks "
+      },
+      {
+        "type": "html",
+        "value": "<span attr='`ticks`'>"
+      },
+      {
+        "type": "text",
+        "value": "bar"
+      },
+      {
+        "type": "html",
+        "value": "</span>"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "This is a tag with backslashes "
+      },
+      {
+        "type": "html",
+        "value": "<span attr='\\\\backslashes\\\\'>"
+      },
+      {
+        "type": "text",
+        "value": "bar"
+      },
+      {
+        "type": "html",
+        "value": "</span>"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  }
+]
