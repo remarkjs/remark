@@ -1,0 +1,142 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "perform"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "complicated"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "task"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "do"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "and"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "do"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "that"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "and"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "another_thing"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "perform"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "complicated"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "task"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "do"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "this"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "and"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "do"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "that"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "and"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "another*thing"
+      }
+    ]
+  }
+]

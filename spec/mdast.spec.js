@@ -177,14 +177,22 @@ describe('fixtures', function () {
     fs.readdirSync(path.join(__dirname, 'input')).filter(function (filepath) {
         return filepath.indexOf('.') !== 0;
     }).forEach(function (filepath) {
-        var options, filename, input, output;
+        var options, filename, input, output, flag, index;
 
         filename = filepath.split('.');
         filename.pop();
 
-        if (filename.length === 2) {
+
+        if (filename.length > 1) {
+            index = 0;
             options = {};
-            options[optionsMap[filename[1]][0]] = optionsMap[filename[1]][1];
+
+            while (filename[++index]) {
+                flag = optionsMap[filename[index]];
+                options[flag[0]] = flag[1];
+            }
+
+            console.log(options);
         }
 
         filename = filename.join('.');

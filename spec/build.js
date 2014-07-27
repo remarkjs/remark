@@ -5,32 +5,36 @@ fs.readdirSync('./spec/input').filter(function (path) {
     return path.indexOf('.') !== 0;
 }).forEach(function (path) {
     var filename = path.split('.'),
-        options, option;
+        flag, options, index;
 
     filename.pop();
 
-    if (filename.length === 2) {
-        option = filename[1];
+    if (filename.length > 1) {
+        index = 0;
         options = {};
 
-        if (option === 'gfm' || option === 'nogfm') {
-            options.gfm = option === 'gfm';
-        }
+        while (filename[++index]) {
+            flag = filename[index];
 
-        if (option === 'tables' || option === 'notables') {
-            options.tables = option === 'tables';
-        }
+            if (flag === 'gfm' || flag === 'nogfm') {
+                options.gfm = flag === 'gfm';
+            }
 
-        if (option === 'breaks' || option === 'nobreaks') {
-            options.breaks = option === 'breaks';
-        }
+            if (flag === 'tables' || flag === 'notables') {
+                options.tables = flag === 'tables';
+            }
 
-        if (option === 'pedantic' || option === 'nopedantic') {
-            options.pedantic = option === 'pedantic';
-        }
+            if (flag === 'breaks' || flag === 'nobreaks') {
+                options.breaks = flag === 'breaks';
+            }
 
-        if (option === 'smartlists' || option === 'nosmartlists') {
-            options.smartLists = option === 'smartlists';
+            if (flag === 'pedantic' || flag === 'nopedantic') {
+                options.pedantic = flag === 'pedantic';
+            }
+
+            if (flag === 'smartlists' || flag === 'nosmartlists') {
+                options.smartLists = flag === 'smartlists';
+            }
         }
     }
 
