@@ -1,0 +1,68 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "| Heading 1 | "
+      },
+      {
+        "type": "strong",
+        "children": [
+          {
+            "type": "text",
+            "value": "H"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "eading 2\n| --------- | ---------\n| Cell 1    | Cell 2\n| Cell 3    | Cell 4"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "| Header 1 | Header 2 | Header 3 | Header 4 |\n| :------: | -------: | :------- | -------- |\n| Cell 1   | Cell 2   | Cell 3   | Cell 4   |\n| Cell 5   | Cell 6   | Cell 7   | Cell 8   |"
+      }
+    ]
+  },
+  {
+    "type": "code",
+    "value": "Test code"
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Header 1 | Header 2\n-------- | --------\nCell 1   | Cell 2\nCell 3   | Cell 4"
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Header 1|Header 2|Header 3|Header 4\n:-------|:------:|-------:|--------\nCell 1  |Cell 2  |Cell 3  |Cell 4\n"
+      },
+      {
+        "type": "emphasis",
+        "children": [
+          {
+            "type": "text",
+            "value": "Cell 5"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": "|Cell 6  |Cell 7  |Cell 8"
+      }
+    ]
+  }
+]
