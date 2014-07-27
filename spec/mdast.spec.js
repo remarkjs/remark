@@ -172,7 +172,7 @@ describe('fixtures', function () {
         'nopedantic' : ['pedantic', false],
         'smartlists' : ['smartlists', true],
         'nosmartlists' : ['smartlists', false]
-    }
+    };
 
     fs.readdirSync(path.join(__dirname, 'input')).filter(function (filepath) {
         return filepath.indexOf('.') !== 0;
