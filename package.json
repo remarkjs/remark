@@ -35,11 +35,14 @@
     "//test": "node test",
     "//bench": "node test --bench",
 
-    "lint": "npm run lint-api && npm run lint-style",
-    "lint-api": "node_modules/.bin/eslint index.js lib/mdast.js --env node --env browser --rule 'no-spaced-func: false, consistent-return: false, no-loop-func: false, quotes: [2, single]'",
-    "lint-style": "node_modules/.bin/jscs index.js lib/mdast.js --reporter=inline",
-
     "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports spec/mdast.spec.js",
-    "make": "npm run lint"
+
+    "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
+    "lint-test": "node_modules/.bin/eslint spec/mdast.spec.js --env node --env mocha --rule 'quotes: [2, single]'",
+    "lint-api": "node_modules/.bin/eslint index.js lib/mdast.js --env node --env browser --rule 'no-spaced-func: false, consistent-return: false, no-loop-func: false, quotes: [2, single]'",
+    "lint-style": "node_modules/.bin/jscs index.js lib/mdast.js spec/mdast.spec.js --reporter=inline",
+
+    "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/mdast.spec.js",
+    "make": "npm run lint && npm run coverage"
   }
 }

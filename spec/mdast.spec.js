@@ -2,7 +2,8 @@
 
 var mdast = require('..'),
     assert = require('assert'),
-    fs = require('fs');
+    fs = require('fs'),
+    path = require('path');
 
 describe('mdast()', function () {
     it('should be of type `function`', function () {
@@ -15,12 +16,15 @@ describe('msast.Parser()', function () {});
 describe('msast.Lexer()', function () {});
 
 describe('fixtures', function () {
-    function validateInputs(children) {
-        children.forEach(validateInput);
-    }
+    var validateInput, validateInputs;
 
-    function validateInput(context) {
-        var keys = Object.keys(context);
+    validateInputs = function (children) {
+        children.forEach(validateInput);
+    };
+
+    validateInput = function (context) {
+        var keys = Object.keys(context),
+            type = context.type;
 
         if (!('type' in context)) {
             console.log('Context without type property:\n', context);
@@ -37,10 +41,10 @@ describe('fixtures', function () {
         }
 
         if (
-            context.type === 'paragraph' ||
-            context.type === 'blockquote' ||
-            context.type === 'looseItem' ||
-            context.type === 'listItem'
+            type === 'paragraph' ||
+            type === 'blockquote' ||
+            type === 'looseItem' ||
+            type === 'listItem'
         ) {
             assert(keys.length === 2);
             assert('children' in context);
@@ -48,7 +52,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'heading') {
+        if (type === 'heading') {
             assert(keys.length === 3);
             assert(context.depth > 0);
             assert(context.depth <= 6);
@@ -57,24 +61,27 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'code') {
+        if (type === 'code') {
             assert(keys.length === 2 || keys.length === 3);
             assert('value' in context);
 
             if ('lang' in context) {
-                assert(context.lang === null || typeof context.lang === 'string')
+                assert(
+                    context.lang === null ||
+                    typeof context.lang === 'string'
+                );
             }
 
             return;
         }
 
-        if (context.type === 'hr' || context.type === 'br') {
+        if (type === 'hr' || type === 'br') {
             assert(keys.length === 1);
 
             return;
         }
 
-        if (context.type === 'list') {
+        if (type === 'list') {
             assert('children' in context);
             assert(typeof context.ordered === 'boolean');
             assert(keys.length === 3);
@@ -82,7 +89,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'text') {
+        if (type === 'text') {
             assert(keys.length === 2);
             assert('value' in context);
 
@@ -90,9 +97,9 @@ describe('fixtures', function () {
         }
 
         if (
-            context.type === 'strong' ||
-            context.type === 'emphasis' ||
-            context.type === 'delete'
+            type === 'strong' ||
+            type === 'emphasis' ||
+            type === 'delete'
         ) {
             assert(keys.length === 2);
             assert('children' in context);
@@ -100,7 +107,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'link') {
+        if (type === 'link') {
             assert('children' in context);
             assert(
                 context.title === null ||
@@ -112,7 +119,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'image') {
+        if (type === 'image') {
             assert(context.title === null || typeof context.alt === 'string');
             assert(typeof context.alt === 'string');
             assert(typeof context.href === 'string');
@@ -121,7 +128,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'table') {
+        if (type === 'table') {
             context.header.forEach(validateInputs);
 
             context.cells.forEach(function (row) {
@@ -136,7 +143,7 @@ describe('fixtures', function () {
                     align === 'left' ||
                     align === 'right' ||
                     align === 'center'
-                )
+                );
             });
 
             assert(keys.length === 4);
@@ -144,7 +151,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (context.type === 'html') {
+        if (type === 'html') {
             assert(keys.length === 2);
             assert('value' in context);
 
@@ -152,19 +159,27 @@ describe('fixtures', function () {
         }
 
         throw new Error('Unknown token of type `' + type + '`');
-    }
+    };
 
-    fs.readdirSync(__dirname + '/input').filter(function (path) {
-        return path.indexOf('.') !== 0;
-    }).forEach(function (path) {
-        var filename, input, output, json;
+    fs.readdirSync(path.join(__dirname, 'input')).filter(function (filepath) {
+        return filepath.indexOf('.') !== 0;
+    }).forEach(function (filepath) {
+        var filename, input, output;
 
-        filename = path.split('.');
+        filename = filepath.split('.');
         filename.pop();
         filename = filename.join('.');
 
-        input = fs.readFileSync(__dirname + '/input/' + path, 'utf-8');
-        output = fs.readFileSync(__dirname + '/output/' + filename + '.json', 'utf-8');
+        input = fs.readFileSync(
+            path.join(__dirname, 'input', filepath),
+            'utf-8'
+        );
+
+        output = fs.readFileSync(
+            path.join(__dirname, 'output', filename + '.json'),
+            'utf-8'
+        );
+
         input = mdast(input);
         validateInputs(input);
 
@@ -173,6 +188,5 @@ describe('fixtures', function () {
 
             assert(JSON.stringify(input) === JSON.stringify(output));
         });
-    })
-    
+    });
 });
