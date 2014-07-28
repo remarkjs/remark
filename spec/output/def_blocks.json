@@ -34,7 +34,7 @@
     ]
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "blockquote",

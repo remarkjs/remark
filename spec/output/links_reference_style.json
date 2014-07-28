@@ -193,7 +193,7 @@
     "value": "[four]: /url"
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "paragraph",
@@ -444,7 +444,7 @@
     ]
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "paragraph",

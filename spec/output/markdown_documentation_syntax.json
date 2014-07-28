@@ -381,7 +381,7 @@
     ]
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "html",
@@ -973,7 +973,7 @@
     ]
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "html",
@@ -1802,7 +1802,7 @@
     "value": "* * *\n\n***\n\n*****\n\n- - -\n\n---------------------------------------\n\n    _ _ _"
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "html",
@@ -2684,7 +2684,7 @@
     ]
   },
   {
-    "type": "hr"
+    "type": "horizontalRule"
   },
   {
     "type": "html",

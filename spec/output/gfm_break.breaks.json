@@ -7,14 +7,14 @@
         "value": "Look at the"
       },
       {
-        "type": "br"
+        "type": "break"
       },
       {
         "type": "text",
         "value": "pretty line"
       },
       {
-        "type": "br"
+        "type": "break"
       },
       {
         "type": "text",

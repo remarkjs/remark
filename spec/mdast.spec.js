@@ -72,7 +72,7 @@ describe('fixtures', function () {
             return;
         }
 
-        if (type === 'hr' || type === 'br') {
+        if (type === 'horizontalRule' || type === 'break') {
             assert(keys.length === 1);
 
             return;
@@ -117,7 +117,10 @@ describe('fixtures', function () {
         }
 
         if (type === 'image') {
-            assert(context.title === null || typeof context.title === 'string');
+            assert(
+                context.title === null ||
+                typeof context.title === 'string'
+            );
             assert(typeof context.alt === 'string');
             assert(typeof context.href === 'string');
             assert(keys.length === 4);
@@ -177,7 +180,6 @@ describe('fixtures', function () {
         filename = filepath.split('.');
         filename.pop();
 
-
         if (filename.length > 1) {
             index = 0;
             options = {};
@@ -206,7 +208,16 @@ describe('fixtures', function () {
         it('should work on ' + filename, function () {
             output = JSON.parse(output);
 
-            assert(JSON.stringify(input) === JSON.stringify(output));
+            try {
+                assert(JSON.stringify(input) === JSON.stringify(output));
+            } catch (error) {
+                console.log(
+                    JSON.stringify(input, null, 2),
+                    JSON.stringify(output, null, 2)
+                );
+
+                throw error;
+            }
         });
     });
 });
