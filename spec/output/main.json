@@ -257,6 +257,16 @@
       },
       {
         "type": "text",
+        "value": ".\nAnd an image with an empty alt attribute "
+      },
+      {
+        "href": "src",
+        "title": null,
+        "type": "image",
+        "alt": null
+      },
+      {
+        "type": "text",
         "value": "."
       }
     ]

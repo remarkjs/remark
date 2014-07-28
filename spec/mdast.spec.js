@@ -121,7 +121,10 @@ describe('fixtures', function () {
                 context.title === null ||
                 typeof context.title === 'string'
             );
-            assert(typeof context.alt === 'string');
+            assert(
+                context.alt === null ||
+                typeof context.alt === 'string'
+            );
             assert(typeof context.href === 'string');
             assert(keys.length === 4);
 
