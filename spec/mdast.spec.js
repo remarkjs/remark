@@ -26,10 +26,7 @@ describe('fixtures', function () {
         var keys = Object.keys(context),
             type = context.type;
 
-        if (!('type' in context)) {
-            console.log('Context without type property:\n', context);
-            throw new Error('Context without type property');
-        }
+        assert('type' in context);
 
         if ('children' in context) {
             assert(Array.isArray(context.children));
@@ -120,7 +117,7 @@ describe('fixtures', function () {
         }
 
         if (type === 'image') {
-            assert(context.title === null || typeof context.alt === 'string');
+            assert(context.title === null || typeof context.title === 'string');
             assert(typeof context.alt === 'string');
             assert(typeof context.href === 'string');
             assert(keys.length === 4);
@@ -151,14 +148,12 @@ describe('fixtures', function () {
             return;
         }
 
-        if (type === 'html') {
-            assert(keys.length === 2);
-            assert('value' in context);
-
-            return;
-        }
-
-        throw new Error('Unknown token of type `' + type + '`');
+        /* This is the last possible type. If more types are added, they
+         * should be added before this block, or the type:html tests should
+         * be wrapped in an if statement. */
+        assert(type === 'html');
+        assert(keys.length === 2);
+        assert('value' in context);
     };
 
     optionsMap = {
