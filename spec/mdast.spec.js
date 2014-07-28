@@ -214,11 +214,13 @@ describe('fixtures', function () {
             try {
                 assert(JSON.stringify(input) === JSON.stringify(output));
             } catch (error) {
+                /* istanbul ignore next: Shouldn't reach, helps debugging. */
                 console.log(
                     JSON.stringify(input, null, 2),
                     JSON.stringify(output, null, 2)
                 );
 
+                /* istanbul ignore next: Shouldn't reach, helps debugging. */
                 throw error;
             }
         });
