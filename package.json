@@ -31,17 +31,17 @@
     "showdown": "*"
   },
   "scripts": {
-    "//test": "node test",
-    "//bench": "node test --bench",
-
     "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports spec/mdast.spec.js",
-
-    "lint": "npm run lint-api && npm run lint-test && npm run lint-style",
+    "test-travis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks -u exports spec/mdast.spec.js",
+    "lint": "npm run-script lint-api && npm run-script lint-test && npm run-script lint-benchmark && npm run-script lint-style",
+    "lint-api": "node_modules/.bin/eslint index.js --env node --env browser --rule 'quotes: [2, single], no-spaced-func: false'",
     "lint-test": "node_modules/.bin/eslint spec/mdast.spec.js --env node --env mocha --rule 'quotes: [2, single]'",
-    "lint-api": "node_modules/.bin/eslint index.js lib/mdast.js --env node --env browser --rule 'no-spaced-func: false, consistent-return: false, no-loop-func: false, quotes: [2, single]'",
-    "lint-style": "node_modules/.bin/jscs index.js lib/mdast.js spec/mdast.spec.js --reporter=inline",
-
+    "lint-benchmark": "node_modules/.bin/eslint benchmark/index.js --env node --global suite,set,bench --rule 'quotes: [2, single]'",
+    "lint-style": "node_modules/.bin/jscs index.js spec/mdast.spec.js benchmark/index.js --reporter=inline",
+    "install-browser-test": "npm install browserify",
+    "build-browser-test": "node_modules/.bin/browserify spec/mdast.spec.js -o spec/browser.spec.js",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/mdast.spec.js",
-    "make": "npm run lint && npm run coverage"
+    "benchmark": "node_modules/.bin/matcha",
+    "make": "npm run-script lint && npm run-script coverage"
   }
 }
