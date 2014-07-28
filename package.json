@@ -15,7 +15,6 @@
     "json",
     "ast"
   ],
-  "main": "./lib/mdast.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/wooorm/mdast.git"
