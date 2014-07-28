@@ -49,7 +49,7 @@ Another Heading
 -------------
 
 Hello *world*. Here is a [link](//hello).
-And an image ![alt](src).
+And an image ![alt](src "a title").
 
     Code goes here.
     Lots of it...
