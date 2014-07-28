@@ -28,6 +28,54 @@
     "children": [
       {
         "type": "text",
+        "value": "Link to an email: "
+      },
+      {
+        "type": "link",
+        "href": "mailto:somename@example.com",
+        "children": [
+          {
+            "type": "text",
+            "value": "somename@example.com"
+          }
+        ],
+        "title": null
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Link to an email: "
+      },
+      {
+        "type": "link",
+        "href": "mailto:somename@example.com",
+        "children": [
+          {
+            "type": "text",
+            "value": "somename@example.com"
+          }
+        ],
+        "title": null
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
         "value": "With an ampersand: "
       },
       {
