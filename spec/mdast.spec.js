@@ -186,8 +186,6 @@ describe('fixtures', function () {
                 flag = optionsMap[filename[index]];
                 options[flag[0]] = flag[1];
             }
-
-            console.log(options);
         }
 
         filename = filename.join('.');
