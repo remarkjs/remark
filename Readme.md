@@ -1,28 +1,122 @@
 # mdast
 
-> marked, without the HTML features: Just JSON output.
+**mdast** is speedy Markdown parser (not compiler) for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
 
-## Install
+## Installation
+
+npm:
+```sh
+$ npm install mdast
+```
+
+Component.js:
+```sh
+$ component install wooorm/mdast
+```
+
+Bower:
+```sh
+$ bower install mdast
+```
 
 ## Usage
 
-Minimal usage:
-
+### Markdown:
 ```js
-var mdast = require('mdast');
-console.log(mdast('I am using __markdown__.'));
-// TODO: example output
+var marked = require('marked');
+
+marked('Some *emphasis*,  **strongness**, and `code`.');
 ```
 
-Example setting options with default values:
+Output:
 
-```js
-// TODO: example input/output with options.
+```json
+[
+    {
+        "type": "paragraph",
+        "children": [
+            {
+                "type": "text",
+                "value": "Some "
+            },
+            {
+                "type": "emphasis",
+                "children": [
+                    {
+                        "type": "text",
+                        "value": "emphasis"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "value": ",  "
+            },
+            {
+                "type": "strong",
+                "children": [
+                    {
+                        "type": "text",
+                        "value": "strongness"
+                    }
+                ]
+            },
+            {
+                "type": "text",
+                "value": ", and "
+            },
+            {
+                "type": "code",
+                "value": "code"
+            },
+            {
+                "type": "text",
+                "value": "."
+            }
+        ]
+    }
+]
 ```
 
-Note! Yes, marked exposes a simple JSON through its [lexer](https://github.com/wooorm/marked#pro-level), but its just block leven, not inline.
+### Github Flavored Markdown
+
+```js
+marked('hello ~~hi~~ world', {
+    'gfm' : true
+});
+```
+
+```json
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "hello "
+      },
+      {
+        "type": "delete",
+        "children": [
+          {
+            "type": "text",
+            "value": "hi"
+          }
+        ]
+      },
+      {
+        "type": "text",
+        "value": " world"
+      }
+    ]
+  }
+]
+```
+
 
 ## License
+
+This project was initially a fork of [marked](https://github.com/chjj/marked).
 
 Copyright (c) 2011-2014, Christopher Jeffrey. (MIT License)
 Copyright (c) 2014, Titus Wormer. (MIT License)
