@@ -1,11 +1,6 @@
 {
   "name": "mdast",
   "description": "Speedy Markdown parser for multipurpose analysis",
-  "homepage": "https://github.com/wooorm/mdast",
-  "authors": [
-    "Christopher Jeffrey <chjjeffrey@gmail.com>",
-    "Titus Wormer <tituswormer@gmail.com>"
-  ],
   "keywords": [
     "markdown",
     "markup",
@@ -15,14 +10,27 @@
     "json",
     "ast"
   ],
-  "main": "lib/marked.js",
+  "authors": [
+    "Christopher Jeffrey <chjjeffrey@gmail.com>",
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
   "license": "MIT",
+  "repository": {
+      "type": "git",
+      "url": "https://github.com/wooorm/parse-latin.git"
+  },
+  "main": "index.js",
   "ignore": [
-    "**/.*",
+    ".*",
+    "*.log",
+    "*.md",
+    "component.json",
+    "package.json",
+    "coverage",
+    "benchmark",
+    "spec",
+    "components",
     "node_modules",
-    "bower_components",
-    "app/bower_components",
-    "test",
-    "tests"
+    "bower_components"
   ]
 }
