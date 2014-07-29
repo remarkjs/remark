@@ -2,7 +2,6 @@
   "name": "mdast",
   "version": "0.0.1",
   "description": "Speedy Markdown parser for multipurpose analysis",
-  "repository": "wooorm/mdast",
   "keywords": [
     "markdown",
     "markup",
@@ -12,8 +11,9 @@
     "json",
     "ast"
   ],
+  "repository": "wooorm/mdast",
   "scripts": [
-    "lib/mdast.js"
+    "index.js"
   ],
   "license": "MIT"
 }
