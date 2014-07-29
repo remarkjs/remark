@@ -1,5 +1,8 @@
 language: node_js
+before_install:
+- npm update -g npm
+script: npm run-script test-travis
 node_js:
-  - "0.10"
-  - "0.8"
-  - "0.6"
+- '0.10'
+- '0.11'
+after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
