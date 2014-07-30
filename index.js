@@ -181,7 +181,7 @@ block.tables = merge({}, block.gfm, {
 
 footnoteDefinition = /^ *\[\^([^\]]+)\]: *([^\n]+(\n+ +[^\n]+)*)\n*/;
 
-var markedDefaults = {
+var mdastDefaults = {
     'gfm' : true,
     'tables' : true,
     'footnotes' : false,
@@ -197,7 +197,7 @@ function Lexer(options) {
     this.tokens = [];
     this.tokens.links = {};
     this.tokens.footnotes = null;
-    this.options = options || markedDefaults;
+    this.options = options || mdastDefaults;
     this.rules = block.normal;
 
     if (this.options.gfm) {
@@ -949,7 +949,7 @@ InlineLexer.prototype.outputLink = function (cap, link) {
 function Parser(options) {
     this.tokens = [];
     this.token = null;
-    this.options = options || markedDefaults;
+    this.options = options || mdastDefaults;
 }
 
 /**
@@ -1113,9 +1113,9 @@ Parser.prototype.tok = function () {
  * Marked
  */
 
-function marked(value, options) {
+function mdast(value, options) {
     if (options) {
-        options = merge({}, markedDefaults, options);
+        options = merge({}, mdastDefaults, options);
     }
 
     var tokens = Lexer.lex(value, options);
@@ -1127,8 +1127,8 @@ function marked(value, options) {
  * Expose
  */
 
-marked.Parser = Parser;
+mdast.Parser = Parser;
 
-marked.Lexer = Lexer;
+mdast.Lexer = Lexer;
 
-module.exports = marked;
+module.exports = mdast;
