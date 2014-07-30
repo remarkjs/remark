@@ -1,9 +1,10 @@
 'use strict';
 
-var mdast = require('..'),
-    assert = require('assert'),
-    fs = require('fs'),
-    path = require('path');
+var mdast, assert, fixtures, validateToken, validateTokens;
+
+mdast = require('..');
+assert = require('assert');
+fixtures = require('./fixtures.js');
 
 describe('mdast()', function () {
     it('should be of type `function`', function () {
@@ -15,209 +16,166 @@ describe('msast.Parser()', function () {});
 
 describe('msast.Lexer()', function () {});
 
-describe('fixtures', function () {
-    var validateInput, validateInputs, optionsMap;
+validateTokens = function (children) {
+    children.forEach(validateToken);
+};
 
-    validateInputs = function (children) {
-        children.forEach(validateInput);
-    };
+validateToken = function (context) {
+    var keys = Object.keys(context),
+        type = context.type;
 
-    validateInput = function (context) {
-        var keys = Object.keys(context),
-            type = context.type;
+    assert('type' in context);
 
-        assert('type' in context);
+    if ('children' in context) {
+        assert(Array.isArray(context.children));
+        validateTokens(context.children);
+    }
 
-        if ('children' in context) {
-            assert(Array.isArray(context.children));
-            validateInputs(context.children);
-        }
+    if ('value' in context) {
+        assert(typeof context.value === 'string');
+    }
 
-        if ('value' in context) {
-            assert(typeof context.value === 'string');
-        }
+    if (
+        type === 'paragraph' ||
+        type === 'blockquote' ||
+        type === 'looseItem' ||
+        type === 'listItem'
+    ) {
+        assert(keys.length === 2);
+        assert('children' in context);
 
-        if (
-            type === 'paragraph' ||
-            type === 'blockquote' ||
-            type === 'looseItem' ||
-            type === 'listItem'
-        ) {
-            assert(keys.length === 2);
-            assert('children' in context);
+        return;
+    }
 
-            return;
-        }
+    if (type === 'heading') {
+        assert(keys.length === 3);
+        assert(context.depth > 0);
+        assert(context.depth <= 6);
+        assert('children' in context);
 
-        if (type === 'heading') {
-            assert(keys.length === 3);
-            assert(context.depth > 0);
-            assert(context.depth <= 6);
-            assert('children' in context);
+        return;
+    }
 
-            return;
-        }
+    if (type === 'code') {
+        assert(keys.length === 2 || keys.length === 3);
+        assert('value' in context);
 
-        if (type === 'code') {
-            assert(keys.length === 2 || keys.length === 3);
-            assert('value' in context);
-
-            if ('lang' in context) {
-                assert(
-                    context.lang === null ||
-                    typeof context.lang === 'string'
-                );
-            }
-
-            return;
-        }
-
-        if (type === 'horizontalRule' || type === 'break') {
-            assert(keys.length === 1);
-
-            return;
-        }
-
-        if (type === 'list') {
-            assert('children' in context);
-            assert(typeof context.ordered === 'boolean');
-            assert(keys.length === 3);
-
-            return;
-        }
-
-        if (type === 'text') {
-            assert(keys.length === 2);
-            assert('value' in context);
-
-            return;
-        }
-
-        if (
-            type === 'strong' ||
-            type === 'emphasis' ||
-            type === 'delete'
-        ) {
-            assert(keys.length === 2);
-            assert('children' in context);
-
-            return;
-        }
-
-        if (type === 'link') {
-            assert('children' in context);
+        if ('lang' in context) {
             assert(
-                context.title === null ||
-                typeof context.title === 'string'
+                context.lang === null ||
+                typeof context.lang === 'string'
             );
-            assert(typeof context.href === 'string');
-            assert(keys.length === 4);
-
-            return;
         }
 
-        if (type === 'image') {
-            assert(
-                context.title === null ||
-                typeof context.title === 'string'
-            );
-            assert(
-                context.alt === null ||
-                typeof context.alt === 'string'
-            );
-            assert(typeof context.href === 'string');
-            assert(keys.length === 4);
+        return;
+    }
 
-            return;
-        }
+    if (type === 'horizontalRule' || type === 'break') {
+        assert(keys.length === 1);
 
-        if (type === 'table') {
-            context.header.forEach(validateInputs);
+        return;
+    }
 
-            context.cells.forEach(function (row) {
-                row.forEach(validateInputs);
-            });
+    if (type === 'list') {
+        assert('children' in context);
+        assert(typeof context.ordered === 'boolean');
+        assert(keys.length === 3);
 
-            assert(Array.isArray(context.align));
+        return;
+    }
 
-            context.align.forEach(function (align) {
-                assert(
-                    align === null ||
-                    align === 'left' ||
-                    align === 'right' ||
-                    align === 'center'
-                );
-            });
-
-            assert(keys.length === 4);
-
-            return;
-        }
-
-        /* This is the last possible type. If more types are added, they
-         * should be added before this block, or the type:html tests should
-         * be wrapped in an if statement. */
-        assert(type === 'html');
+    if (type === 'text') {
         assert(keys.length === 2);
         assert('value' in context);
-    };
 
-    optionsMap = {
-        'gfm' : ['gfm', true],
-        'nogfm' : ['gfm', false],
-        'tables' : ['tables', true],
-        'notables' : ['tables', false],
-        'breaks' : ['breaks', true],
-        'nobreaks' : ['breaks', false],
-        'pedantic' : ['pedantic', true],
-        'nopedantic' : ['pedantic', false],
-        'smartlists' : ['smartlists', true],
-        'nosmartlists' : ['smartlists', false]
-    };
+        return;
+    }
 
-    fs.readdirSync(path.join(__dirname, 'input')).filter(function (filepath) {
-        return filepath.indexOf('.') !== 0;
-    }).forEach(function (filepath) {
-        var options, filename, input, output, flag, index;
+    if (
+        type === 'strong' ||
+        type === 'emphasis' ||
+        type === 'delete'
+    ) {
+        assert(keys.length === 2);
+        assert('children' in context);
 
-        filename = filepath.split('.');
-        filename.pop();
+        return;
+    }
 
-        if (filename.length > 1) {
-            index = 0;
-            options = {};
-
-            while (filename[++index]) {
-                flag = optionsMap[filename[index]];
-                options[flag[0]] = flag[1];
-            }
-        }
-
-        filename = filename.join('.');
-
-        input = fs.readFileSync(
-            path.join(__dirname, 'input', filepath),
-            'utf-8'
+    if (type === 'link') {
+        assert('children' in context);
+        assert(
+            context.title === null ||
+            typeof context.title === 'string'
         );
+        assert(typeof context.href === 'string');
+        assert(keys.length === 4);
 
-        output = fs.readFileSync(
-            path.join(__dirname, 'output', filename + '.json'),
-            'utf-8'
+        return;
+    }
+
+    if (type === 'image') {
+        assert(
+            context.title === null ||
+            typeof context.title === 'string'
         );
+        assert(
+            context.alt === null ||
+            typeof context.alt === 'string'
+        );
+        assert(typeof context.href === 'string');
+        assert(keys.length === 4);
 
-        input = mdast(input, options);
-        validateInputs(input);
+        return;
+    }
 
-        it('should work on ' + filename, function () {
-            output = JSON.parse(output);
+    if (type === 'table') {
+        context.header.forEach(validateTokens);
+
+        context.cells.forEach(function (row) {
+            row.forEach(validateTokens);
+        });
+
+        assert(Array.isArray(context.align));
+
+        context.align.forEach(function (align) {
+            assert(
+                align === null ||
+                align === 'left' ||
+                align === 'right' ||
+                align === 'center'
+            );
+        });
+
+        assert(keys.length === 4);
+
+        return;
+    }
+
+    /* This is the last possible type. If more types are added, they
+     * should be added before this block, or the type:html tests should
+     * be wrapped in an if statement. */
+    assert(type === 'html');
+    assert(keys.length === 2);
+    assert('value' in context);
+};
+
+describe('fixtures', function () {
+    fixtures.forEach(function (fixture) {
+        it('should work on ' + fixture.name, function () {
+            var results = mdast(fixture.input, fixture.options),
+                baseline = fixture.output;
+
+            validateTokens(results);
+            baseline = JSON.parse(baseline);
 
             try {
-                assert(JSON.stringify(input) === JSON.stringify(output));
+                assert(JSON.stringify(results) === JSON.stringify(baseline));
             } catch (error) {
                 /* istanbul ignore next: Shouldn't reach, helps debugging. */
                 console.log(
-                    JSON.stringify(input, null, 2),
-                    JSON.stringify(output, null, 2)
+                    JSON.stringify(results, null, 2),
+                    JSON.stringify(baseline, null, 2)
                 );
 
                 /* istanbul ignore next: Shouldn't reach, helps debugging. */
