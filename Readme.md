@@ -31,51 +31,54 @@ marked('Some *emphasis*,  **strongness**, and `code`.');
 Output:
 
 ```json
-[
-    {
-        "type": "paragraph",
-        "children": [
-            {
-                "type": "text",
-                "value": "Some "
-            },
-            {
-                "type": "emphasis",
-                "children": [
-                    {
-                        "type": "text",
-                        "value": "emphasis"
-                    }
-                ]
-            },
-            {
-                "type": "text",
-                "value": ",  "
-            },
-            {
-                "type": "strong",
-                "children": [
-                    {
-                        "type": "text",
-                        "value": "strongness"
-                    }
-                ]
-            },
-            {
-                "type": "text",
-                "value": ", and "
-            },
-            {
-                "type": "code",
-                "value": "code"
-            },
-            {
-                "type": "text",
-                "value": "."
-            }
-        ]
-    }
-]
+{
+    "type" : "root",
+    "children" : [
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "value": "Some "
+                },
+                {
+                    "type": "emphasis",
+                    "children": [
+                        {
+                            "type": "text",
+                            "value": "emphasis"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "value": ",  "
+                },
+                {
+                    "type": "strong",
+                    "children": [
+                        {
+                            "type": "text",
+                            "value": "strongness"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "value": ", and "
+                },
+                {
+                    "type": "code",
+                    "value": "code"
+                },
+                {
+                    "type": "text",
+                    "value": "."
+                }
+            ]
+        }
+    ]
+}
 ```
 
 ### Github Flavored Markdown
@@ -86,31 +89,36 @@ marked('hello ~~hi~~ world', {
 });
 ```
 
+Output:
+
 ```json
-[
-  {
-    "type": "paragraph",
+{
+    "type": "root",
     "children": [
-      {
-        "type": "text",
-        "value": "hello "
-      },
-      {
-        "type": "delete",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " world"
-      }
+        {
+            "type": "paragraph",
+            "children": [
+                {
+                    "type": "text",
+                    "value": "hello "
+                },
+                {
+                    "type": "delete",
+                    "children": [
+                        {
+                            "type": "text",
+                            "value": "hi"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "value": " world"
+                }
+            ]
+        }
     ]
-  }
-]
+}
 ```
 
 
