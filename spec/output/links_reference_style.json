@@ -84,11 +84,7 @@
         "children": [
           {
             "type": "text",
-            "value": "embedded "
-          },
-          {
-            "type": "text",
-            "value": "[brackets]"
+            "value": "embedded [brackets]"
           }
         ],
         "type": "link"
@@ -176,15 +172,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Indented "
-      },
-      {
-        "type": "text",
-        "value": "[four]"
-      },
-      {
-        "type": "text",
-        "value": "[] times."
+        "value": "Indented [four][] times."
       }
     ]
   },
@@ -316,15 +304,7 @@
     "children": [
       {
         "type": "text",
-        "value": "But not "
-      },
-      {
-        "type": "text",
-        "value": "[that] "
-      },
-      {
-        "type": "text",
-        "value": "[]."
+        "value": "But not [that] []."
       }
     ]
   },
@@ -333,15 +313,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Nor "
-      },
-      {
-        "type": "text",
-        "value": "[that]"
-      },
-      {
-        "type": "text",
-        "value": "[]."
+        "value": "Nor [that][]."
       }
     ]
   },
@@ -350,11 +322,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Nor "
-      },
-      {
-        "type": "text",
-        "value": "[that]."
+        "value": "Nor [that]."
       }
     ]
   },
@@ -435,11 +403,7 @@
     "children": [
       {
         "type": "text",
-        "value": "Backslashing should suppress [this] and "
-      },
-      {
-        "type": "text",
-        "value": "[this]."
+        "value": "Backslashing should suppress [this] and [this]."
       }
     ]
   },

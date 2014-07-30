@@ -738,12 +738,19 @@ InlineLexer.prototype.output = function (value) {
             link = this.links[link.toLowerCase()];
 
             if (!link || !link.href) {
-                tokens.push({
-                    'type' : 'text',
-                    'value' : cap[0].charAt(0)
-                });
+                prev = tokens[tokens.length - 1];
+
+                if (prev && prev.type === 'text') {
+                    prev.value += cap[0].charAt(0);
+                } else {
+                    tokens.push({
+                        'type' : 'text',
+                        'value' : cap[0].charAt(0)
+                    });
+                }
 
                 value = cap[0].substring(1) + value;
+
                 continue;
             }
 

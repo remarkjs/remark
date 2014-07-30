@@ -1852,11 +1852,7 @@
     "children": [
       {
         "type": "text",
-        "value": "In both styles, the link text is delimited by "
-      },
-      {
-        "type": "text",
-        "value": "[square brackets]."
+        "value": "In both styles, the link text is delimited by [square brackets]."
       }
     ]
   },
