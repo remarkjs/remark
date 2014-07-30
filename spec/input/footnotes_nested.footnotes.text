@@ -1,0 +1,8 @@
+A paragraph containing a footnote[^1].
+
+[^1]: "A footnote"[^2].
+
+[^2]: ...containing itself[^2], a link[^3], and an invalid footnote[^4].
+
+[^3]: http://example.com
+

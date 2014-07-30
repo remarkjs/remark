@@ -1,0 +1,15 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "This is an example of an inline footnote."
+      },
+      {
+        "type": "footnote",
+        "id": "footnote-1"
+      }
+    ]
+  }
+]

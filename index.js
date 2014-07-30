@@ -7,7 +7,7 @@
 /* istanbul ignore next: noop */
 function noop() {}
 
-var objectHasOwnProperty, noopExpression;
+var objectHasOwnProperty, noopExpression, footnoteDefinition, uid;
 
 noopExpression = {
     'exec' : noop
@@ -53,6 +53,16 @@ function merge(context) {
     return context;
 }
 
+uid = 0;
+
+/**
+ * Get a uid;
+ */
+function getUID(value) {
+    uid += 1;
+    return value + uid;
+}
+
 /**
  * Helpers
  */
@@ -81,6 +91,7 @@ var block = {
     ),
     'linkDefinition' :
         /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
+    'footnoteDefinition' : noopExpression,
     'table' : noopExpression,
     'paragraph' : new RegExp(
         '^((' +
@@ -168,9 +179,12 @@ block.tables = merge({}, block.gfm, {
     'table' : /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/
 });
 
+footnoteDefinition = /^ *\[\^([^\]]+)\]: *([^\n]+(\n+ +[^\n]+)*)\n*/;
+
 var markedDefaults = {
     'gfm' : true,
     'tables' : true,
+    'footnotes' : false,
     'breaks' : false,
     'pedantic' : false
 };
@@ -182,6 +196,7 @@ var markedDefaults = {
 function Lexer(options) {
     this.tokens = [];
     this.tokens.links = {};
+    this.tokens.footnotes = null;
     this.options = options || markedDefaults;
     this.rules = block.normal;
 
@@ -191,6 +206,11 @@ function Lexer(options) {
         } else {
             this.rules = block.gfm;
         }
+    }
+
+    if (this.options.footnotes) {
+        this.tokens.footnotes = {};
+        this.rules.footnoteDefinition = footnoteDefinition;
     }
 }
 
@@ -452,6 +472,23 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
+        // footnoteDefinition
+        if (
+            this.options.footnotes && !bq && top &&
+            (cap = this.rules.footnoteDefinition.exec(value))
+        ) {
+            value = value.substring(cap[0].length);
+
+            i = this.tokens.length;
+
+            this.token(cap[2].replace(/^ {4}/gm, ''), top, true);
+
+            this.tokens.footnotes[cap[1].toLowerCase()] =
+                this.tokens.splice(i);
+
+            continue;
+        }
+
         // table (gfm)
         if (top && (cap = this.rules.table.exec(value))) {
             value = value.substring(cap[0].length);
@@ -599,9 +636,10 @@ inline.breaks = merge({}, inline.gfm, {
  * Inline Lexer & Compiler
  */
 
-function InlineLexer(links, options) {
+function InlineLexer(links, footnotes, options) {
     this.options = options;
     this.links = links;
+    this.footnotes = footnotes;
     this.rules = inline.normal;
 
     if (this.options.gfm) {
@@ -627,7 +665,7 @@ InlineLexer.rules = inline;
 
 InlineLexer.prototype.output = function (value) {
     var tokens = [],
-        link, text, href, cap, prev;
+        link, footnote, text, href, cap, prev;
 
     /* eslint-disable no-cond-assign */
     while (value) {
@@ -734,10 +772,44 @@ InlineLexer.prototype.output = function (value) {
             (cap = this.rules.invalidLink.exec(value))
         ) {
             value = value.substring(cap[0].length);
-            link = (cap[2] || cap[1]).replace(/\s+/g, ' ');
-            link = this.links[link.toLowerCase()];
+            text = (cap[2] || cap[1]).replace(/\s+/g, ' ');
+
+            if (this.footnotes && text.charAt(0) === '^') {
+                footnote = this.footnotes[text.substr(1)];
+
+                if (footnote) {
+                    tokens.push({
+                        'type' : 'footnote',
+                        'id' : text.substr(1)
+                    });
+                    continue;
+                }
+            }
+
+            link = this.links[text.toLowerCase()];
 
             if (!link || !link.href) {
+                if (
+                    this.footnotes &&
+                    text.charAt(0) === '^' &&
+                    text.indexOf(' ') > -1
+                ) {
+                    text = text.substr(1);
+                    footnote = getUID('footnote-');
+
+                    this.footnotes[footnote] = [{
+                        'type' : 'paragraph',
+                        'children' : text
+                    }];
+
+                    tokens.push({
+                        'type' : 'footnote',
+                        'id' : footnote
+                    });
+
+                    continue;
+                }
+
                 prev = tokens[tokens.length - 1];
 
                 if (prev && prev.type === 'text') {
@@ -883,10 +955,24 @@ function Parser(options) {
 /**
  * Static Parse Method
  */
-
 Parser.parse = function (value, options) {
-    var parser = new Parser(options);
-    return parser.parse(value);
+    var parser = new Parser(options),
+        footnotes = value.footnotes,
+        footnote, tokens;
+
+    parser.inline = new InlineLexer(value.links, footnotes, parser.options);
+
+    tokens = parser.parse(value);
+
+    if (footnotes) {
+        for (footnote in footnotes) {
+            footnotes[footnote] = parser.parse(footnotes[footnote]);
+        }
+
+        tokens.footnotes = footnotes;
+    }
+
+    return tokens;
 };
 
 /**
@@ -894,7 +980,6 @@ Parser.parse = function (value, options) {
  */
 
 Parser.prototype.parse = function (value) {
-    this.inline = new InlineLexer(value.links, this.options);
     this.tokens = value.reverse();
 
     var out = [];

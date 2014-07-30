@@ -10,12 +10,12 @@ optionsMap = {
     'nogfm' : ['gfm', false],
     'tables' : ['tables', true],
     'notables' : ['tables', false],
+    'footnotes' : ['footnotes', true],
+    'nofootnotes' : ['footnotes', false],
     'breaks' : ['breaks', true],
     'nobreaks' : ['breaks', false],
     'pedantic' : ['pedantic', true],
-    'nopedantic' : ['pedantic', false],
-    'smartlists' : ['smartlists', true],
-    'nosmartlists' : ['smartlists', false]
+    'nopedantic' : ['pedantic', false]
 };
 
 fixtures = fs.readdirSync(path.join(__dirname, 'input'))

@@ -47,6 +47,13 @@ validateToken = function (context) {
         return;
     }
 
+    if (type === 'footnote') {
+        assert(keys.length === 2);
+        assert('id' in context);
+
+        return;
+    }
+
     if (type === 'heading') {
         assert(keys.length === 3);
         assert(context.depth > 0);

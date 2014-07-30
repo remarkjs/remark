@@ -1,0 +1,51 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Here is some text containing a footnote"
+      },
+      {
+        "type": "footnote",
+        "id": "somesamplefootnote"
+      },
+      {
+        "type": "text",
+        "value": ". You can then continue your thought..."
+      }
+    ]
+  },
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "Even go to a new "
+      },
+      {
+        "href": "http://example.com",
+        "title": null,
+        "children": [
+          {
+            "type": "text",
+            "value": "paragraph"
+          }
+        ],
+        "type": "link"
+      },
+      {
+        "type": "text",
+        "value": " and the footnotes will go to the bottom of the document"
+      },
+      {
+        "type": "footnote",
+        "id": "documentdetails"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  }
+]

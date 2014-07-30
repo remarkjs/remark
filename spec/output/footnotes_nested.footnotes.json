@@ -1,0 +1,19 @@
+[
+  {
+    "type": "paragraph",
+    "children": [
+      {
+        "type": "text",
+        "value": "A paragraph containing a footnote"
+      },
+      {
+        "type": "footnote",
+        "id": "1"
+      },
+      {
+        "type": "text",
+        "value": "."
+      }
+    ]
+  }
+]
