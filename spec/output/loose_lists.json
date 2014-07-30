@@ -1,248 +1,252 @@
-[
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello\nundefined\nundefined\nundefined"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "you"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "better behavior:"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "world\nundefined\nundefined\nundefined"
-                  }
-                ]
-              },
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "today"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "world"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "world"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "world\nundefined"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "world"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "how\nundefined"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "world"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "how\nundefined"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello\nundefined\nundefined\nundefined"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "you"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "better behavior:"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "world\nundefined\nundefined\nundefined"
+                    }
+                  ]
+                },
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "today"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "world\nundefined"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hi"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "how\nundefined"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "how\nundefined"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

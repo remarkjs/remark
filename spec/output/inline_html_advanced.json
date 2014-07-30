@@ -1,28 +1,32 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Simple block on one line:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>foo</div>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "And nested without indentation:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Simple block on one line:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>foo</div>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And nested without indentation:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
+    }
+  ],
+  "footnotes": null
+}

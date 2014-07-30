@@ -1,60 +1,64 @@
-[
-  {
-    "type": "html",
-    "value": "<p>Already linked: <a href=\"http://example.com/\">http://example.com/</a>.</p>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Already linked: "
-      },
-      {
-        "href": "http://example.com/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "http://example.com/"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Already linked: "
-      },
-      {
-        "type": "html",
-        "value": "<a href=\"http://example.com/\">"
-      },
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "text",
-            "value": "http://example.com/"
-          }
-        ]
-      },
-      {
-        "type": "html",
-        "value": "</a>"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "html",
+      "value": "<p>Already linked: <a href=\"http://example.com/\">http://example.com/</a>.</p>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Already linked: "
+        },
+        {
+          "href": "http://example.com/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "http://example.com/"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Already linked: "
+        },
+        {
+          "type": "html",
+          "value": "<a href=\"http://example.com/\">"
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://example.com/"
+            }
+          ]
+        },
+        {
+          "type": "html",
+          "value": "</a>"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

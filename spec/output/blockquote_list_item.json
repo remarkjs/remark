@@ -1,35 +1,39 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This fails in markdown.pl and upskirt:"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          },
-          {
-            "type": "blockquote",
-            "children": [
-              {
-                "type": "text",
-                "value": "world"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This fails in markdown.pl and upskirt:"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            },
+            {
+              "type": "blockquote",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

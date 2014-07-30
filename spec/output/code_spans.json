@@ -1,57 +1,61 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "code",
-        "value": "<test a=\""
-      },
-      {
-        "type": "text",
-        "value": " content of attribute "
-      },
-      {
-        "type": "code",
-        "value": "\">"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Fix for backticks within HTML tag: "
-      },
-      {
-        "type": "html",
-        "value": "<span attr='`ticks`'>"
-      },
-      {
-        "type": "text",
-        "value": "like this"
-      },
-      {
-        "type": "html",
-        "value": "</span>"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's how you put "
-      },
-      {
-        "type": "code",
-        "value": "`backticks` "
-      },
-      {
-        "type": "text",
-        "value": " in a code span."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "code",
+          "value": "<test a=\""
+        },
+        {
+          "type": "text",
+          "value": " content of attribute "
+        },
+        {
+          "type": "code",
+          "value": "\">"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Fix for backticks within HTML tag: "
+        },
+        {
+          "type": "html",
+          "value": "<span attr='`ticks`'>"
+        },
+        {
+          "type": "text",
+          "value": "like this"
+        },
+        {
+          "type": "html",
+          "value": "</span>"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's how you put "
+        },
+        {
+          "type": "code",
+          "value": "`backticks` "
+        },
+        {
+          "type": "text",
+          "value": " in a code span."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

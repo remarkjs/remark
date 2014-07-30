@@ -1,56 +1,60 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "test "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "test"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": " test"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "test "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "test"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": " test"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "test "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "test"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " test"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "test "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "test"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " test"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

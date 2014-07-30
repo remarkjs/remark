@@ -1,39 +1,43 @@
-[
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "foo"
-          }
-        ]
-      },
-      {
-        "type": "blockquote",
-        "children": [
-          {
-            "type": "paragraph",
-            "children": [
-              {
-                "type": "text",
-                "value": "bar"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "foo"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "foo"
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "bar"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "foo"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

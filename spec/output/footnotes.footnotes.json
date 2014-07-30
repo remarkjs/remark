@@ -1,51 +1,115 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here is some text containing a footnote"
+        },
+        {
+          "type": "footnote",
+          "id": "somesamplefootnote"
+        },
+        {
+          "type": "text",
+          "value": ". You can then continue your thought..."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Even go to a new "
+        },
+        {
+          "href": "http://example.com",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "paragraph"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " and the footnotes will go to the bottom of the document"
+        },
+        {
+          "type": "footnote",
+          "id": "documentdetails"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "somesamplefootnote": [
       {
-        "type": "text",
-        "value": "Here is some text containing a footnote"
-      },
-      {
-        "type": "footnote",
-        "id": "somesamplefootnote"
-      },
-      {
-        "type": "text",
-        "value": ". You can then continue your thought..."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Even go to a new "
-      },
-      {
-        "href": "http://example.com",
-        "title": null,
+        "type": "paragraph",
         "children": [
           {
             "type": "text",
-            "value": "paragraph"
+            "value": "Here is the text of the footnote itself."
           }
-        ],
-        "type": "link"
+        ]
+      }
+    ],
+    "documentdetails": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Depending on the "
+          },
+          {
+            "type": "strong",
+            "children": [
+              {
+                "type": "text",
+                "value": "final"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " form of your document, of course. See the documentation and experiment."
+          }
+        ]
       },
       {
-        "type": "text",
-        "value": " and the footnotes will go to the bottom of the document"
-      },
-      {
-        "type": "footnote",
-        "id": "documentdetails"
-      },
-      {
-        "type": "text",
-        "value": "."
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "This footnote has a second "
+          },
+          {
+            "href": "http://example.com",
+            "title": null,
+            "children": [
+              {
+                "type": "text",
+                "value": "paragraph"
+              }
+            ],
+            "type": "link"
+          },
+          {
+            "type": "text",
+            "value": "."
+          }
+        ]
       }
     ]
   }
-]
+}

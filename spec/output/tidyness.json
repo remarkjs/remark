@@ -1,49 +1,53 @@
-[
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "A list within a blockquote:"
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "ordered": false,
-        "children": [
-          {
-            "type": "listItem",
-            "children": [
-              {
-                "type": "text",
-                "value": "asterisk 1"
-              }
-            ]
-          },
-          {
-            "type": "listItem",
-            "children": [
-              {
-                "type": "text",
-                "value": "asterisk 2"
-              }
-            ]
-          },
-          {
-            "type": "listItem",
-            "children": [
-              {
-                "type": "text",
-                "value": "asterisk 3"
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "A list within a blockquote:"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "children": [
+            {
+              "type": "listItem",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 1"
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 2"
+                }
+              ]
+            },
+            {
+              "type": "listItem",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 3"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

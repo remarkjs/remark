@@ -1,36 +1,40 @@
-[
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "item1"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "item2"
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": "text"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "item1"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "item2"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "text"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

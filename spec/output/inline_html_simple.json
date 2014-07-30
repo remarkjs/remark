@@ -1,164 +1,168 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's a simple block:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>\n        foo\n</div>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This should be a code block, though:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <div>\n            foo\n    </div>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "As should this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <div>foo</div>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Now, nested:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>\n        <div>\n                <div>\n                        foo\n                </div>\n        </div>\n</div>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This should just be an HTML comment:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<!-- Comment -->\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Multiline:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<!--\nBlah\nBlah\n-->\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Code block:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <!-- Comment -->"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Just plain comment, with trailing spaces on the line:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<!-- foo -->   \n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Code:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <hr>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Hr's:"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<hr>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr>   \n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr>  \n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr> \n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr class=\"foo\" id=\"bar\" />\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr class=\"foo\" id=\"bar\"/>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<hr class=\"foo\" id=\"bar\" >\n\n"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's a simple block:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>\n        foo\n</div>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This should be a code block, though:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <div>\n            foo\n    </div>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "As should this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <div>foo</div>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Now, nested:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>\n        <div>\n                <div>\n                        foo\n                </div>\n        </div>\n</div>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This should just be an HTML comment:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<!-- Comment -->\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Multiline:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<!--\nBlah\nBlah\n-->\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Code block:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <!-- Comment -->"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Just plain comment, with trailing spaces on the line:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<!-- foo -->   \n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Code:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <hr>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hr's:"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<hr>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr>   \n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr>  \n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr> \n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\" />\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\"/>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\" >\n\n"
+    }
+  ],
+  "footnotes": null
+}

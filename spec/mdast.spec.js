@@ -22,7 +22,8 @@ validateTokens = function (children) {
 
 validateToken = function (context) {
     var keys = Object.keys(context),
-        type = context.type;
+        type = context.type,
+        key;
 
     assert('type' in context);
 
@@ -33,6 +34,18 @@ validateToken = function (context) {
 
     if ('value' in context) {
         assert(typeof context.value === 'string');
+    }
+
+    if (type === 'root') {
+        assert('children' in context);
+
+        if (context.footnotes) {
+            for (key in context.footnotes) {
+                validateTokens(context.footnotes[key]);
+            }
+        }
+
+        return;
     }
 
     if (
@@ -170,18 +183,18 @@ validateToken = function (context) {
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
         it('should work on ' + fixture.name, function () {
-            var results = mdast(fixture.input, fixture.options),
+            var root = mdast(fixture.input, fixture.options),
                 baseline = fixture.output;
 
-            validateTokens(results);
+            validateToken(root);
             baseline = JSON.parse(baseline);
 
             try {
-                assert(JSON.stringify(results) === JSON.stringify(baseline));
+                assert(JSON.stringify(root) === JSON.stringify(baseline));
             } catch (error) {
                 /* istanbul ignore next: Shouldn't reach, helps debugging. */
                 console.log(
-                    JSON.stringify(results, null, 2),
+                    JSON.stringify(root, null, 2),
                     JSON.stringify(baseline, null, 2)
                 );
 

@@ -1,45 +1,49 @@
-[
-  {
-    "type": "code",
-    "value": "    code block on the first line"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Regular text."
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "code block indented by spaces"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Regular text."
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    the lines in this block  \n    all contain trailing spaces  "
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Regular Text."
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    code block on the last line"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "code",
+      "value": "    code block on the first line"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Regular text."
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "code block indented by spaces"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Regular text."
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    the lines in this block  \n    all contain trailing spaces  "
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Regular Text."
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    code block on the last line"
+    }
+  ],
+  "footnotes": null
+}

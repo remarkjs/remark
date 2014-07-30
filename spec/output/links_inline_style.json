@@ -1,166 +1,170 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Just a "
-      },
-      {
-        "href": "/url/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "URL"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/",
-        "title": "title",
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/",
-        "title": "title preceded by two spaces",
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/",
-        "title": "title preceded by a tab",
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/",
-        "title": "title has spaces afterward",
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/has space",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url/has space/",
-        "title": "url has space and title",
-        "children": [
-          {
-            "type": "text",
-            "value": "URL and title"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "Empty"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Just a "
+        },
+        {
+          "href": "/url/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "URL"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/",
+          "title": "title",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/",
+          "title": "title preceded by two spaces",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/",
+          "title": "title preceded by a tab",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/",
+          "title": "title has spaces afterward",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/has space",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url/has space/",
+          "title": "url has space and title",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "Empty"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

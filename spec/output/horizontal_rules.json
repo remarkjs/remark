@@ -1,125 +1,129 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Dashes:"
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "    ---"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "    - - -"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Asterisks:"
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "    ***"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "    * * *"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Underscores:"
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "___"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "code",
-    "value": "_ _ _"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Dashes:"
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "    ---"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "    - - -"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Asterisks:"
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "    ***"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "    * * *"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Underscores:"
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "___"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "code",
+      "value": "_ _ _"
+    }
+  ],
+  "footnotes": null
+}

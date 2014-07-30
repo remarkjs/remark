@@ -1,300 +1,304 @@
-[
-  {
-    "type": "table",
-    "header": [
-      [
-        {
-          "type": "text",
-          "value": "Heading 1"
-        }
-      ],
-      [
-        {
-          "type": "strong",
-          "children": [
-            {
-              "type": "text",
-              "value": "H"
-            }
-          ]
-        },
-        {
-          "type": "text",
-          "value": "eading 2"
-        }
-      ]
-    ],
-    "align": [
-      null,
-      null
-    ],
-    "cells": [
-      [
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "table",
+      "header": [
         [
           {
             "type": "text",
-            "value": "Cell 1"
+            "value": "Heading 1"
           }
         ],
         [
           {
-            "type": "text",
-            "value": "Cell 2"
-          }
-        ]
-      ],
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 3"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 4"
-          }
-        ]
-      ]
-    ]
-  },
-  {
-    "type": "table",
-    "header": [
-      [
-        {
-          "type": "text",
-          "value": "Header 1"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 2"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 3"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 4"
-        }
-      ]
-    ],
-    "align": [
-      "center",
-      "right",
-      "left",
-      null
-    ],
-    "cells": [
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 1"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 2"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 3"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 4"
-          }
-        ]
-      ],
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 5"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 6"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 7"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 8"
-          }
-        ]
-      ]
-    ]
-  },
-  {
-    "type": "code",
-    "value": "Test code"
-  },
-  {
-    "type": "table",
-    "header": [
-      [
-        {
-          "type": "text",
-          "value": "Header 1"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 2"
-        }
-      ]
-    ],
-    "align": [
-      null,
-      null
-    ],
-    "cells": [
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 1"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 2"
-          }
-        ]
-      ],
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 3"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 4"
-          }
-        ]
-      ]
-    ]
-  },
-  {
-    "type": "table",
-    "header": [
-      [
-        {
-          "type": "text",
-          "value": "Header 1"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 2"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 3"
-        }
-      ],
-      [
-        {
-          "type": "text",
-          "value": "Header 4"
-        }
-      ]
-    ],
-    "align": [
-      "left",
-      "center",
-      "right",
-      null
-    ],
-    "cells": [
-      [
-        [
-          {
-            "type": "text",
-            "value": "Cell 1"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 2"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 3"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 4"
-          }
-        ]
-      ],
-      [
-        [
-          {
-            "type": "emphasis",
+            "type": "strong",
             "children": [
               {
                 "type": "text",
-                "value": "Cell 5"
+                "value": "H"
               }
             ]
-          }
-        ],
-        [
+          },
           {
             "type": "text",
-            "value": "Cell 6"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 7"
-          }
-        ],
-        [
-          {
-            "type": "text",
-            "value": "Cell 8"
+            "value": "eading 2"
           }
         ]
+      ],
+      "align": [
+        null,
+        null
+      ],
+      "cells": [
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 1"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 2"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 3"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 4"
+            }
+          ]
+        ]
       ]
-    ]
-  }
-]
+    },
+    {
+      "type": "table",
+      "header": [
+        [
+          {
+            "type": "text",
+            "value": "Header 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 4"
+          }
+        ]
+      ],
+      "align": [
+        "center",
+        "right",
+        "left",
+        null
+      ],
+      "cells": [
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 1"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 2"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 3"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 4"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 5"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 6"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 7"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 8"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "code",
+      "value": "Test code"
+    },
+    {
+      "type": "table",
+      "header": [
+        [
+          {
+            "type": "text",
+            "value": "Header 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 2"
+          }
+        ]
+      ],
+      "align": [
+        null,
+        null
+      ],
+      "cells": [
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 1"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 2"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 3"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 4"
+            }
+          ]
+        ]
+      ]
+    },
+    {
+      "type": "table",
+      "header": [
+        [
+          {
+            "type": "text",
+            "value": "Header 1"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 2"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 3"
+          }
+        ],
+        [
+          {
+            "type": "text",
+            "value": "Header 4"
+          }
+        ]
+      ],
+      "align": [
+        "left",
+        "center",
+        "right",
+        null
+      ],
+      "cells": [
+        [
+          [
+            {
+              "type": "text",
+              "value": "Cell 1"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 2"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 3"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 4"
+            }
+          ]
+        ],
+        [
+          [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Cell 5"
+                }
+              ]
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 6"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 7"
+            }
+          ],
+          [
+            {
+              "type": "text",
+              "value": "Cell 8"
+            }
+          ]
+        ]
+      ]
+    }
+  ],
+  "footnotes": null
+}

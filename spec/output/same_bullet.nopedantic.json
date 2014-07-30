@@ -1,47 +1,51 @@
-[
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "test"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "test"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "test"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "test"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "test"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "test"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

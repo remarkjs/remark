@@ -1,143 +1,147 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "AT&T has an ampersand in their name."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "AT&amp;T is another way to write it."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This & that."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "4 < 5."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "6 > 5."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's a "
-      },
-      {
-        "href": "http://example.com/?foo=1&bar=2",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "link"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " with an ampersand in the URL."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's a link with an amersand in the link text: "
-      },
-      {
-        "href": "http://att.com/",
-        "title": "AT&T",
-        "children": [
-          {
-            "type": "text",
-            "value": "AT&T"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's an inline "
-      },
-      {
-        "href": "/script?foo=1&bar=2",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "link"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's an inline "
-      },
-      {
-        "href": "/script?foo=1&bar=2",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "link"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "AT&T has an ampersand in their name."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "AT&amp;T is another way to write it."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This & that."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "4 < 5."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "6 > 5."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's a "
+        },
+        {
+          "href": "http://example.com/?foo=1&bar=2",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "link"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " with an ampersand in the URL."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's a link with an amersand in the link text: "
+        },
+        {
+          "href": "http://att.com/",
+          "title": "AT&T",
+          "children": [
+            {
+              "type": "text",
+              "value": "AT&T"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's an inline "
+        },
+        {
+          "href": "/script?foo=1&bar=2",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "link"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's an inline "
+        },
+        {
+          "href": "/script?foo=1&bar=2",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "link"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

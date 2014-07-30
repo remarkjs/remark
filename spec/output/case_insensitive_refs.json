@@ -1,18 +1,22 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "hi"
-          }
-        ],
-        "type": "link"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "hi"
+            }
+          ],
+          "type": "link"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

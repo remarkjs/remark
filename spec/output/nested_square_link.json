@@ -1,26 +1,30 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/url",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "the "
-          },
-          {
-            "type": "code",
-            "value": "]"
-          },
-          {
-            "type": "text",
-            "value": " character"
-          }
-        ],
-        "type": "link"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/url",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "the "
+            },
+            {
+              "type": "code",
+              "value": "]"
+            },
+            {
+              "type": "text",
+              "value": " character"
+            }
+          ],
+          "type": "link"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

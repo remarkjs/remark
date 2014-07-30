@@ -1,22 +1,26 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world\n"
-      },
-      {
-        "type": "link",
-        "href": "http://example.com",
-        "children": [
-          {
-            "type": "text",
-            "value": "http://example.com"
-          }
-        ],
-        "title": null
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world\n"
+        },
+        {
+          "type": "link",
+          "href": "http://example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://example.com"
+            }
+          ],
+          "title": null
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

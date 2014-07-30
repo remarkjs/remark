@@ -1,220 +1,224 @@
-[
-  {
-    "type": "heading",
-    "depth": 2,
-    "children": [
-      {
-        "type": "text",
-        "value": "foo"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": true,
-    "children": [
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "bar:"
-          },
-          {
-            "type": "blockquote",
-            "children": [
-              {
-                "type": "list",
-                "ordered": false,
-                "children": [
-                  {
-                    "type": "listItem",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "one"
-                      },
-                      {
-                        "type": "list",
-                        "ordered": false,
-                        "children": [
-                          {
-                            "type": "listItem",
-                            "children": [
-                              {
-                                "type": "text",
-                                "value": "two"
-                              },
-                              {
-                                "type": "list",
-                                "ordered": false,
-                                "children": [
-                                  {
-                                    "type": "listItem",
-                                    "children": [
-                                      {
-                                        "type": "text",
-                                        "value": "three"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "type": "listItem",
-                                    "children": [
-                                      {
-                                        "type": "text",
-                                        "value": "four"
-                                      }
-                                    ]
-                                  },
-                                  {
-                                    "type": "listItem",
-                                    "children": [
-                                      {
-                                        "type": "text",
-                                        "value": "five"
-                                      }
-                                    ]
-                                  }
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "foo:"
-          },
-          {
-            "type": "code",
-            "lang": null,
-            "value": " line 1\n line 2"
-          }
-        ]
-      },
-      {
-        "type": "looseItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "foo:"
-          },
-          {
-            "type": "list",
-            "ordered": true,
-            "children": [
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "foo "
-                  },
-                  {
-                    "type": "code",
-                    "value": "bar"
-                  },
-                  {
-                    "type": "text",
-                    "value": " bar:"
-                  },
-                  {
-                    "type": "code",
-                    "lang": "erb",
-                    "value": " some code here"
-                  }
-                ]
-              },
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "foo "
-                  },
-                  {
-                    "type": "code",
-                    "value": "bar"
-                  },
-                  {
-                    "type": "text",
-                    "value": " bar:"
-                  },
-                  {
-                    "type": "code",
-                    "lang": "erb",
-                    "value": " foo\n ---\n bar\n ---\n foo\n bar"
-                  }
-                ]
-              },
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "foo "
-                  },
-                  {
-                    "type": "code",
-                    "value": "bar"
-                  },
-                  {
-                    "type": "text",
-                    "value": " bar:"
-                  },
-                  {
-                    "type": "code",
-                    "lang": "html",
-                    "value": " ---\n foo\n foo\n ---\n bar"
-                  }
-                ]
-              },
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "foo "
-                  },
-                  {
-                    "type": "code",
-                    "value": "bar"
-                  },
-                  {
-                    "type": "text",
-                    "value": " bar:"
-                  },
-                  {
-                    "type": "code",
-                    "value": " foo\n ---\n bar"
-                  }
-                ]
-              },
-              {
-                "type": "looseItem",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "foo"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "foo"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "children": [
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "bar:"
+            },
+            {
+              "type": "blockquote",
+              "children": [
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "children": [
+                    {
+                      "type": "listItem",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "one"
+                        },
+                        {
+                          "type": "list",
+                          "ordered": false,
+                          "children": [
+                            {
+                              "type": "listItem",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "two"
+                                },
+                                {
+                                  "type": "list",
+                                  "ordered": false,
+                                  "children": [
+                                    {
+                                      "type": "listItem",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "value": "three"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "listItem",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "value": "four"
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "type": "listItem",
+                                      "children": [
+                                        {
+                                          "type": "text",
+                                          "value": "five"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "foo:"
+            },
+            {
+              "type": "code",
+              "lang": null,
+              "value": " line 1\n line 2"
+            }
+          ]
+        },
+        {
+          "type": "looseItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "foo:"
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "children": [
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "foo "
+                    },
+                    {
+                      "type": "code",
+                      "value": "bar"
+                    },
+                    {
+                      "type": "text",
+                      "value": " bar:"
+                    },
+                    {
+                      "type": "code",
+                      "lang": "erb",
+                      "value": " some code here"
+                    }
+                  ]
+                },
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "foo "
+                    },
+                    {
+                      "type": "code",
+                      "value": "bar"
+                    },
+                    {
+                      "type": "text",
+                      "value": " bar:"
+                    },
+                    {
+                      "type": "code",
+                      "lang": "erb",
+                      "value": " foo\n ---\n bar\n ---\n foo\n bar"
+                    }
+                  ]
+                },
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "foo "
+                    },
+                    {
+                      "type": "code",
+                      "value": "bar"
+                    },
+                    {
+                      "type": "text",
+                      "value": " bar:"
+                    },
+                    {
+                      "type": "code",
+                      "lang": "html",
+                      "value": " ---\n foo\n foo\n ---\n bar"
+                    }
+                  ]
+                },
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "foo "
+                    },
+                    {
+                      "type": "code",
+                      "value": "bar"
+                    },
+                    {
+                      "type": "text",
+                      "value": " bar:"
+                    },
+                    {
+                      "type": "code",
+                      "value": " foo\n ---\n bar"
+                    }
+                  ]
+                },
+                {
+                  "type": "looseItem",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "foo"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

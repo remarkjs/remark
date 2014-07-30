@@ -1,15 +1,44 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is an example of an inline footnote."
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-1"
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "footnote-1": [
       {
-        "type": "text",
-        "value": "This is an example of an inline footnote."
-      },
-      {
-        "type": "footnote",
-        "id": "footnote-1"
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "This is the "
+          },
+          {
+            "type": "emphasis",
+            "children": [
+              {
+                "type": "text",
+                "value": "actual"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " footnote."
+          }
+        ]
       }
     ]
   }
-]
+}

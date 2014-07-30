@@ -1,33 +1,37 @@
-[
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Example:"
-          }
-        ]
-      },
-      {
-        "type": "code",
-        "value": "sub status {\n    print \"working\";\n}"
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Or:"
-          }
-        ]
-      },
-      {
-        "type": "code",
-        "value": "sub status {\n    return \"working\";\n}"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Example:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "value": "sub status {\n    print \"working\";\n}"
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Or:"
+            }
+          ]
+        },
+        {
+          "type": "code",
+          "value": "sub status {\n    return \"working\";\n}"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

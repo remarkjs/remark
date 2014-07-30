@@ -1,197 +1,201 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world\n    how are you\n    how are you"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "lang": null,
-    "value": "how are you"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "heading",
-    "depth": 1,
-    "children": [
-      {
-        "type": "text",
-        "value": "how are you"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "heading",
-    "depth": 1,
-    "children": [
-      {
-        "type": "text",
-        "value": "how are you"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "how are you"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "how are you"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>how are you</div>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello world\n"
-      },
-      {
-        "type": "html",
-        "value": "<span>"
-      },
-      {
-        "type": "text",
-        "value": "how are you"
-      },
-      {
-        "type": "html",
-        "value": "</span>"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "hello "
-      },
-      {
-        "href": "/are/you",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "world"
-          }
-        ],
-        "type": "link"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<div>hello</div>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "html",
-        "value": "<span>"
-      },
-      {
-        "type": "text",
-        "value": "hello"
-      },
-      {
-        "type": "html",
-        "value": "</span>"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world\n    how are you\n    how are you"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "how are you"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "how are you"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "how are you"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "how are you"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "how are you"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>how are you</div>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world\n"
+        },
+        {
+          "type": "html",
+          "value": "<span>"
+        },
+        {
+          "type": "text",
+          "value": "how are you"
+        },
+        {
+          "type": "html",
+          "value": "</span>"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello "
+        },
+        {
+          "href": "/are/you",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ],
+          "type": "link"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<div>hello</div>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "html",
+          "value": "<span>"
+        },
+        {
+          "type": "text",
+          "value": "hello"
+        },
+        {
+          "type": "html",
+          "value": "</span>"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

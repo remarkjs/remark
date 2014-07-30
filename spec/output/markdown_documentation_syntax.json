@@ -1,2801 +1,2805 @@
-[
-  {
-    "type": "heading",
-    "depth": 1,
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown: Syntax"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a href=\"/projects/markdown/basics\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a class=\"selected\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>\n\n\n"
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "href": "#overview",
-            "title": null,
-            "children": [
-              {
-                "type": "text",
-                "value": "Overview"
-              }
-            ],
-            "type": "link"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#philosophy",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Philosophy"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#html",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Inline HTML"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#autoescape",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Automatic Escaping for Special Characters"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "href": "#block",
-            "title": null,
-            "children": [
-              {
-                "type": "text",
-                "value": "Block Elements"
-              }
-            ],
-            "type": "link"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#p",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Paragraphs and Line Breaks"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#header",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Headers"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#blockquote",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Blockquotes"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#list",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Lists"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#precode",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Code Blocks"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#hr",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Horizontal Rules"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "href": "#span",
-            "title": null,
-            "children": [
-              {
-                "type": "text",
-                "value": "Span Elements"
-              }
-            ],
-            "type": "link"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#link",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Links"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#em",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Emphasis"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#code",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Code"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#img",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Images"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "href": "#misc",
-            "title": null,
-            "children": [
-              {
-                "type": "text",
-                "value": "Miscellaneous"
-              }
-            ],
-            "type": "link"
-          },
-          {
-            "type": "list",
-            "ordered": false,
-            "children": [
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#backslash",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Backslash Escapes"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              },
-              {
-                "type": "listItem",
-                "children": [
-                  {
-                    "href": "#autolink",
-                    "title": null,
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "Automatic Links"
-                      }
-                    ],
-                    "type": "link"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "text",
-            "value": "Note:"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " This document is itself written using Markdown; you\ncan "
-      },
-      {
-        "href": "/projects/markdown/syntax.text",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "see the source for it by adding '.text' to the URL"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "html",
-    "value": "<h2 id=\"overview\">Overview</h2>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"philosophy\">Philosophy</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown is intended to be as easy-to-read and easy-to-write as is feasible."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Readability, however, is emphasized above all else. A Markdown-formatted\ndocument should be publishable as-is, as plain text, without looking\nlike it's been marked up with tags or formatting instructions. While\nMarkdown's syntax has been influenced by several existing text-to-HTML\nfilters -- including "
-      },
-      {
-        "href": "http://docutils.sourceforge.net/mirror/setext.html",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "Setext"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "href": "http://www.aaronsw.com/2002/atx/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "atx"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "href": "http://textism.com/tools/textile/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "Textile"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "href": "http://docutils.sourceforge.net/rst.html",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "reStructuredText"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ",\n"
-      },
-      {
-        "href": "http://www.triptico.com/software/grutatxt.html",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "Grutatext"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ", and "
-      },
-      {
-        "href": "http://ettext.taint.org/doc/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "EtText"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " -- the single biggest source of\ninspiration for Markdown's syntax is the format of plain text email."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like *emphasis*. Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"html\">Inline HTML</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown's syntax is intended for one purpose: to be used as a\nformat for "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "writing"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " for the web."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown is not a replacement for HTML, or even close to it. Its\nsyntax is very small, corresponding only to a very small subset of\nHTML tags. The idea is "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "not"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " to create a syntax that makes it easier\nto insert HTML tags. In my opinion, HTML tags are already easy to\ninsert. The idea for Markdown is to make it easy to read, write, and\nedit prose. HTML is a "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "publishing"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " format; Markdown is a "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "writing"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": "\nformat. Thus, Markdown's formatting syntax only addresses issues that\ncan be conveyed in plain text."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "For any markup that is not covered by Markdown's syntax, you simply\nuse HTML itself. There's no need to preface it or delimit it to\nindicate that you're switching from Markdown to HTML; you just use\nthe tags."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The only restrictions are that block-level HTML elements -- e.g. "
-      },
-      {
-        "type": "code",
-        "value": "<div>"
-      },
-      {
-        "type": "text",
-        "value": ",\n"
-      },
-      {
-        "type": "code",
-        "value": "<table>"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "type": "code",
-        "value": "<pre>"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "type": "code",
-        "value": "<p>"
-      },
-      {
-        "type": "text",
-        "value": ", etc. -- must be separated from surrounding\ncontent by blank lines, and the start and end tags of the block should\nnot be indented with tabs or spaces. Markdown is smart enough not\nto add extra (unwanted) "
-      },
-      {
-        "type": "code",
-        "value": "<p>"
-      },
-      {
-        "type": "text",
-        "value": " tags around HTML block-level tags."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "For example, to add an HTML table to a Markdown article:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is a regular paragraph.\n\n<table>\n    <tr>\n        <td>Foo</td>\n    </tr>\n</table>\n\nThis is another regular paragraph."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Note that Markdown formatting syntax is not processed within block-level\nHTML tags. E.g., you can't use Markdown-style "
-      },
-      {
-        "type": "code",
-        "value": "*emphasis*"
-      },
-      {
-        "type": "text",
-        "value": " inside an\nHTML block."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Span-level HTML tags -- e.g. "
-      },
-      {
-        "type": "code",
-        "value": "<span>"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "type": "code",
-        "value": "<cite>"
-      },
-      {
-        "type": "text",
-        "value": ", or "
-      },
-      {
-        "type": "code",
-        "value": "<del>"
-      },
-      {
-        "type": "text",
-        "value": " -- can be\nused anywhere in a Markdown paragraph, list item, or header. If you\nwant, you can even use HTML tags instead of Markdown formatting; e.g. if\nyou'd prefer to use HTML "
-      },
-      {
-        "type": "code",
-        "value": "<a>"
-      },
-      {
-        "type": "text",
-        "value": " or "
-      },
-      {
-        "type": "code",
-        "value": "<img>"
-      },
-      {
-        "type": "text",
-        "value": " tags instead of Markdown's\nlink or image syntax, go right ahead."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Unlike block-level HTML tags, Markdown syntax "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "is"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " processed within\nspan-level tags."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"autoescape\">Automatic Escaping for Special Characters</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "In HTML, there are two characters that demand special treatment: "
-      },
-      {
-        "type": "code",
-        "value": "<"
-      },
-      {
-        "type": "text",
-        "value": "\nand "
-      },
-      {
-        "type": "code",
-        "value": "&"
-      },
-      {
-        "type": "text",
-        "value": ". Left angle brackets are used to start tags; ampersands are\nused to denote HTML entities. If you want to use them as literal\ncharacters, you must escape them as entities, e.g. "
-      },
-      {
-        "type": "code",
-        "value": "&lt;"
-      },
-      {
-        "type": "text",
-        "value": ", and\n"
-      },
-      {
-        "type": "code",
-        "value": "&amp;"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Ampersands in particular are bedeviling for web writers. If you want to\nwrite about 'AT&T', you need to write '"
-      },
-      {
-        "type": "code",
-        "value": "AT&amp;T"
-      },
-      {
-        "type": "text",
-        "value": "'. You even need to\nescape ampersands within URLs. Thus, if you want to link to:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "http://images.google.com/images?num=30&q=larry+bird"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "you need to encode the URL as:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "http://images.google.com/images?num=30&amp;q=larry+bird"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "in your anchor tag "
-      },
-      {
-        "type": "code",
-        "value": "href"
-      },
-      {
-        "type": "text",
-        "value": " attribute. Needless to say, this is easy to\nforget, and is probably the single most common source of HTML validation\nerrors in otherwise well-marked-up web sites."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown allows you to use these characters naturally, taking care of\nall the necessary escaping for you. If you use an ampersand as part of\nan HTML entity, it remains unchanged; otherwise it will be translated\ninto "
-      },
-      {
-        "type": "code",
-        "value": "&amp;"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "So, if you want to include a copyright symbol in your article, you can write:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "&copy;"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "and Markdown will leave it alone. But if you write:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "AT&T"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown will translate it to:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "AT&amp;T"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Similarly, because Markdown supports "
-      },
-      {
-        "href": "#html",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "inline HTML"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": ", if you use\nangle brackets as delimiters for HTML tags, Markdown will treat them as\nsuch. But if you write:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "4 < 5"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown will translate it to:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "4 &lt; 5"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "However, inside Markdown code spans and blocks, angle brackets and\nampersands are "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "always"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " encoded automatically. This makes it easy to use\nMarkdown to write about HTML code. (As opposed to raw HTML, which is a\nterrible format for writing about HTML syntax, because every single "
-      },
-      {
-        "type": "code",
-        "value": "<"
-      },
-      {
-        "type": "text",
-        "value": "\nand "
-      },
-      {
-        "type": "code",
-        "value": "&"
-      },
-      {
-        "type": "text",
-        "value": " in your example code needs to be escaped.)"
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "html",
-    "value": "<h2 id=\"block\">Block Elements</h2>\n\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"p\">Paragraphs and Line Breaks</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "A paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing but spaces or tabs is considered\nblank.) Normal paragraphs should not be intended with spaces or tabs."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The implication of the \"one or more consecutive lines of text\" rule is\nthat Markdown supports \"hard-wrapped\" text paragraphs. This differs\nsignificantly from most other text-to-HTML formatters (including Movable\nType's \"Convert Line Breaks\" option) which translate every line break\ncharacter in a paragraph into a "
-      },
-      {
-        "type": "code",
-        "value": "<br />"
-      },
-      {
-        "type": "text",
-        "value": " tag."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "When you "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "do"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " want to insert a "
-      },
-      {
-        "type": "code",
-        "value": "<br />"
-      },
-      {
-        "type": "text",
-        "value": " break tag using Markdown, you\nend a line with two or more spaces, then type return."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Yes, this takes a tad more effort to create a "
-      },
-      {
-        "type": "code",
-        "value": "<br />"
-      },
-      {
-        "type": "text",
-        "value": ", but a simplistic\n\"every line break is a "
-      },
-      {
-        "type": "code",
-        "value": "<br />"
-      },
-      {
-        "type": "text",
-        "value": "\" rule wouldn't work for Markdown.\nMarkdown's email-style "
-      },
-      {
-        "href": "#blockquote",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "blockquoting"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " and multi-paragraph "
-      },
-      {
-        "href": "#list",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "list items"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "\nwork best -- and look better -- when you format them with hard breaks."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"header\">Headers</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown supports two styles of headers, "
-      },
-      {
-        "href": "http://docutils.sourceforge.net/mirror/setext.html",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "Setext"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "href": "http://www.aaronsw.com/2002/atx/",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "atx"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Setext-style headers are \"underlined\" using equal signs (for first-level\nheaders) and dashes (for second-level headers). For example:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is an H1\n=============\n\nThis is an H2\n-------------"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Any number of underlining "
-      },
-      {
-        "type": "code",
-        "value": "="
-      },
-      {
-        "type": "text",
-        "value": "'s or "
-      },
-      {
-        "type": "code",
-        "value": "-"
-      },
-      {
-        "type": "text",
-        "value": "'s will work."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Atx-style headers use 1-6 hash characters at the start of the line,\ncorresponding to header levels 1-6. For example:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "# This is an H1\n\n## This is an H2\n\n###### This is an H6"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Optionally, you may \"close\" atx-style headers. This is purely\ncosmetic -- you can use this if you think it looks better. The\nclosing hashes don't even need to match the number of hashes\nused to open the header. (The number of opening hashes\ndetermines the header level.) :"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "# This is an H1 #\n\n## This is an H2 ##\n\n### This is an H3 ######"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"blockquote\">Blockquotes</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown uses email-style "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": " characters for blockquoting. If you're\nfamiliar with quoting passages of text in an email message, then you\nknow how to create a blockquote in Markdown. It looks best if you hard\nwrap the text and put a "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": " before every line:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n> \n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n> id sem consectetuer libero luctus adipiscing."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown allows you to be lazy and only put the "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": " before the first\nline of a hard-wrapped paragraph:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\nVestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n\n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\nid sem consectetuer libero luctus adipiscing."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by\nadding additional levels of "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": ":"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "> This is the first level of quoting.\n>\n> > This is nested blockquote.\n>\n> Back to the first level."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Blockquotes can contain other Markdown elements, including headers, lists,\nand code blocks:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    > ## This is a header.\n    > \n    > 1.   This is the first list item.\n    > 2.   This is the second list item.\n    > \n    > Here's some example code:\n    > \n    >     return shell_exec(\"echo $input | $markdown_script\");"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Any decent text editor should make email-style quoting easy. For\nexample, with BBEdit, you can make a selection and choose Increase\nQuote Level from the Text menu."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"list\">Lists</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown supports ordered (numbered) and unordered (bulleted) lists."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Unordered lists use asterisks, pluses, and hyphens -- interchangably\n-- as list markers:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Red\n*   Green\n*   Blue"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "is equivalent to:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "+   Red\n+   Green\n+   Blue"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "and:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "-   Red\n-   Green\n-   Blue"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Ordered lists use numbers followed by periods:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1.  Bird\n2.  McHale\n3.  Parish"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "It's important to note that the actual numbers you use to mark the\nlist have no effect on the HTML output Markdown produces. The HTML\nMarkdown produces from the above list is:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ol>\n<li>Bird</li>\n<li>McHale</li>\n<li>Parish</li>\n</ol>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "If you instead wrote the list in Markdown like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1.  Bird\n1.  McHale\n1.  Parish"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "or even:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "3. Bird\n1. McHale\n8. Parish"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "you'd get the exact same HTML output. The point is, if you want to,\nyou can use ordinal numbers in your ordered Markdown lists, so that\nthe numbers in your source match the numbers in your published HTML.\nBut if you want to be lazy, you don't have to."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "If you do use lazy list numbering, however, you should still start the\nlist with the number 1. At some point in the future, Markdown may support\nstarting ordered lists at an arbitrary number."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "List markers typically start at the left margin, but may be indented by\nup to three spaces. List markers must be followed by one or more spaces\nor a tab."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To make lists look nice, you can wrap items with hanging indents:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n    viverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n    Suspendisse id sem consectetuer libero luctus adipiscing."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "But if you want to be lazy, you don't have to:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\nviverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\nSuspendisse id sem consectetuer libero luctus adipiscing."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "If list items are separated by blank lines, Markdown will wrap the\nitems in "
-      },
-      {
-        "type": "code",
-        "value": "<p>"
-      },
-      {
-        "type": "text",
-        "value": " tags in the HTML output. For example, this input:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Bird\n*   Magic"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will turn into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ul>\n<li>Bird</li>\n<li>Magic</li>\n</ul>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "But this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Bird\n\n*   Magic"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will turn into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ul>\n<li><p>Bird</p></li>\n<li><p>Magic</p></li>\n</ul>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "List items may consist of multiple paragraphs. Each subsequent\nparagraph in a list item must be intended by either 4 spaces\nor one tab:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1.  This is a list item with two paragraphs. Lorem ipsum dolor\n    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n    mi posuere lectus.\n\n    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n    sit amet velit.\n\n2.  Suspendisse id sem consectetuer libero luctus adipiscing."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "It looks nice if you indent every line of the subsequent\nparagraphs, but here again, Markdown will allow you to be\nlazy:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   This is a list item with two paragraphs.\n\n    This is the second paragraph in the list item. You're\nonly required to indent the first line. Lorem ipsum dolor\nsit amet, consectetuer adipiscing elit.\n\n*   Another item in the same list."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To put a blockquote within a list item, the blockquote's "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": "\ndelimiters need to be indented:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   A list item with a blockquote:\n\n    > This is a blockquote\n    > inside a list item."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To put a code block within a list item, the code block needs\nto be indented "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "twice"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " -- 8 spaces or two tabs:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   A list item with a code block:\n\n        <code goes here>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "It's worth noting that it's possible to trigger an ordered list by\naccident, by writing something like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1986. What a great season."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "In other words, a "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "number-period-space"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " sequence at the beginning of a\nline. To avoid this, you can backslash-escape the period:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1986\\. What a great season."
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"precode\">Code Blocks</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Pre-formatted code blocks are used for writing about programming or\nmarkup source code. Rather than forming normal paragraphs, the lines\nof a code block are interpreted literally. Markdown wraps a code block\nin both "
-      },
-      {
-        "type": "code",
-        "value": "<pre>"
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "code",
-        "value": "<code>"
-      },
-      {
-        "type": "text",
-        "value": " tags."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To produce a code block in Markdown, simply indent every line of the\nblock by at least 4 spaces or 1 tab. For example, given this input:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is a normal paragraph:\n\n    This is a code block."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown will generate:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>This is a normal paragraph:</p>\n\n<pre><code>This is a code block.\n</code></pre>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "One level of indentation -- 4 spaces or 1 tab -- is removed from each\nline of the code block. For example, this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "Here is an example of AppleScript:\n\n    tell application \"Foo\"\n        beep\n    end tell"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will turn into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>Here is an example of AppleScript:</p>\n\n<pre><code>tell application \"Foo\"\n    beep\nend tell\n</code></pre>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "A code block continues until it reaches a line that is not indented\n(or the end of the article)."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Within a code block, ampersands ("
-      },
-      {
-        "type": "code",
-        "value": "&"
-      },
-      {
-        "type": "text",
-        "value": ") and angle brackets ("
-      },
-      {
-        "type": "code",
-        "value": "<"
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": ")\nare automatically converted into HTML entities. This makes it very\neasy to include example HTML source code using Markdown -- just paste\nit and indent it, and Markdown will handle the hassle of encoding the\nampersands and angle brackets. For example, this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <div class=\"footer\">\n        &copy; 2004 Foo Corporation\n    </div>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will turn into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<pre><code>&lt;div class=\"footer\"&gt;\n    &amp;copy; 2004 Foo Corporation\n&lt;/div&gt;\n</code></pre>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Regular Markdown syntax is not processed within code blocks. E.g.,\nasterisks are just literal asterisks within a code block. This means\nit's also easy to use Markdown to write about Markdown's own syntax."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"hr\">Horizontal Rules</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "You can produce a horizontal rule tag ("
-      },
-      {
-        "type": "code",
-        "value": "<hr>"
-      },
-      {
-        "type": "text",
-        "value": ") by placing three or\nmore hyphens, asterisks, or underscores on a line by themselves. If you\nwish, you may use spaces between the hyphens or asterisks. Each of the\nfollowing lines will produce a horizontal rule:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "* * *\n\n***\n\n*****\n\n- - -\n\n---------------------------------------\n\n    _ _ _"
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "html",
-    "value": "<h2 id=\"span\">Span Elements</h2>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"link\">Links</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown supports two style of links: "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "inline"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "reference"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "In both styles, the link text is delimited by [square brackets]."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To create an inline link, use a set of regular parentheses immediately\nafter the link text's closing square bracket. Inside the parentheses,\nput the URL where you want the link to point, along with an "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "optional"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": "\ntitle for the link, surrounded in quotes. For example:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is [an example](http://example.com/ \"Title\") inline link.\n\n[This link](http://example.net/) has no title attribute."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Will produce:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>This is <a href=\"http://example.com/\" title=\"Title\">\nan example</a> inline link.</p>\n\n<p><a href=\"http://example.net/\">This link</a> has no\ntitle attribute.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "If you're referring to a local resource on the same server, you can\nuse relative paths:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "See my [About](/about/) page for details."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Reference-style links use a second set of square brackets, inside\nwhich you place a label of your choosing to identify the link:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is [an example][id] reference-style link."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "You can optionally use a space to separate the sets of brackets:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is [an example] [id] reference-style link."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Then, anywhere in the document, you define your link label like this,\non a line by itself:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "[id]: http://example.com/  \"Optional Title Here\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "That is:"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "Square brackets containing the link identifier (optionally\nundefined"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "followed by a colon;"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "followed by one or more spaces (or tabs);"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "followed by the URL for the link;"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "optionally followed by a title attribute for the link, enclosed\nundefined"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The link URL may, optionally, be surrounded by angle brackets:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "[id]: <http://example.com/>  \"Optional Title Here\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "You can put the title attribute on the next line and use extra spaces\nor tabs for padding, which tends to look better with longer URLs:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "[id]: http://example.com/longish/path/to/resource/here\n    \"Optional Title Here\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Link definitions are only used for creating links during Markdown\nprocessing, and are stripped from your document in the HTML output."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Link definition names may constist of letters, numbers, spaces, and punctuation -- but they are "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "not"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " case sensitive. E.g. these two links:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    [link text][a]\n    [link text][A]"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "are equivalent."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "implicit link name"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " shortcut allows you to omit the name of the\nlink, in which case the link text itself is used as the name.\nJust use an empty set of square brackets -- e.g., to link the word\n\"Google\" to the google.com web site, you could simply write:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    [Google][]"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "And then define the link:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    [Google]: http://google.com/"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Because link names may contain spaces, this shortcut even works for\nmultiple words in the link text:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    Visit [Daring Fireball][] for more information."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "And then define the link:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    [Daring Fireball]: http://daringfireball.net/"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Link definitions can be placed anywhere in your Markdown document. I\ntend to put them immediately after each paragraph in which they're\nused, but if you want, you can put them all at the end of your\ndocument, sort of like footnotes."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Here's an example of reference links in action:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I get 10 times more traffic from [Google] [1] than from\n[Yahoo] [2] or [MSN] [3].\n\n  [1]: http://google.com/        \"Google\"\n  [2]: http://search.yahoo.com/  \"Yahoo Search\"\n  [3]: http://search.msn.com/    \"MSN Search\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Using the implicit link name shortcut, you could instead write:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I get 10 times more traffic from [Google][] than from\n[Yahoo][] or [MSN][].\n\n  [google]: http://google.com/        \"Google\"\n  [yahoo]:  http://search.yahoo.com/  \"Yahoo Search\"\n  [msn]:    http://search.msn.com/    \"MSN Search\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Both of the above examples will produce the following HTML output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from\n<a href=\"http://search.yahoo.com/\" title=\"Yahoo Search\">Yahoo</a>\nor <a href=\"http://search.msn.com/\" title=\"MSN Search\">MSN</a>.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "For comparison, here is the same paragraph written using\nMarkdown's inline link style:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I get 10 times more traffic from [Google](http://google.com/ \"Google\")\nthan from [Yahoo](http://search.yahoo.com/ \"Yahoo Search\") or\n[MSN](http://search.msn.com/ \"MSN Search\")."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The point of reference-style links is not that they're easier to\nwrite. The point is that with reference-style links, your document\nsource is vastly more readable. Compare the above examples: using\nreference-style links, the paragraph itself is only 81 characters\nlong; with inline-style links, it's 176 characters; and as raw HTML,\nit's 234 characters. In the raw HTML, there's more markup than there\nis text."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "With Markdown's reference-style links, a source document much more\nclosely resembles the final output, as rendered in a browser. By\nallowing you to move the markup-related metadata out of the paragraph,\nyou can add links without interrupting the narrative flow of your\nprose."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"em\">Emphasis</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown treats asterisks ("
-      },
-      {
-        "type": "code",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": ") and underscores ("
-      },
-      {
-        "type": "code",
-        "value": "_"
-      },
-      {
-        "type": "text",
-        "value": ") as indicators of\nemphasis. Text wrapped with one "
-      },
-      {
-        "type": "code",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": " or "
-      },
-      {
-        "type": "code",
-        "value": "_"
-      },
-      {
-        "type": "text",
-        "value": " will be wrapped with an\nHTML "
-      },
-      {
-        "type": "code",
-        "value": "<em>"
-      },
-      {
-        "type": "text",
-        "value": " tag; double "
-      },
-      {
-        "type": "code",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": "'s or "
-      },
-      {
-        "type": "code",
-        "value": "_"
-      },
-      {
-        "type": "text",
-        "value": "'s will be wrapped with an HTML\n"
-      },
-      {
-        "type": "code",
-        "value": "<strong>"
-      },
-      {
-        "type": "text",
-        "value": " tag. E.g., this input:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*single asterisks*\n\n_single underscores_\n\n**double asterisks**\n\n__double underscores__"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will produce:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<em>single asterisks</em>\n\n<em>single underscores</em>\n\n<strong>double asterisks</strong>\n\n<strong>double underscores</strong>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "You can use whichever style you prefer; the lone restriction is that\nthe same character must be used to open and close an emphasis span."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Emphasis can be used in the middle of a word:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "un*fucking*believable"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "But if you surround an "
-      },
-      {
-        "type": "code",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": " or "
-      },
-      {
-        "type": "code",
-        "value": "_"
-      },
-      {
-        "type": "text",
-        "value": " with spaces, it'll be treated as a\nliteral asterisk or underscore."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To produce a literal asterisk or underscore at a position where it\nwould otherwise be used as an emphasis delimiter, you can backslash\nescape it:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "\\*this text is surrounded by literal asterisks\\*"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"code\">Code</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To indicate a span of code, wrap it with backtick quotes ("
-      },
-      {
-        "type": "code",
-        "value": "` "
-      },
-      {
-        "type": "text",
-        "value": ").\nUnlike a pre-formatted code block, a code span indicates code within a\nnormal paragraph. For example:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "Use the `printf()` function."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will produce:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>Use the <code>printf()</code> function.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To include a literal backtick character within a code span, you can use\nmultiple backticks as the opening and closing delimiters:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "``There is a literal backtick (`) here.``"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "which will produce this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p><code>There is a literal backtick (`) here.</code></p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The backtick delimiters surrounding a code span may include spaces --\none after the opening, one before the closing. This allows you to place\nliteral backtick characters at the beginning or end of a code span:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    A single backtick in a code span: `` ` ``\n\n    A backtick-delimited string in a code span: `` `foo` ``"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "will produce:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "    <p>A single backtick in a code span: <code>`</code></p>\n\n    <p>A backtick-delimited string in a code span: <code>`foo`</code></p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "With a code span, ampersands and angle brackets are encoded as HTML\nentities automatically, which makes it easy to include example HTML\ntags. Markdown will turn this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "Please don't use any `<blink>` tags."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "You can write this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "`&#8212;` is the decimal-encoded equivalent of `&mdash;`."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "to produce:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p><code>&amp;#8212;</code> is the decimal-encoded\nequivalent of <code>&amp;mdash;</code>.</p>"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"img\">Images</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Admittedly, it's fairly difficult to devise a \"natural\" syntax for\nplacing images into a plain text document format."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown uses an image syntax that is intended to resemble the syntax\nfor links, allowing for two styles: "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "inline"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "reference"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Inline image syntax looks like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "![Alt text](/path/to/img.jpg)\n\n![Alt text](/path/to/img.jpg \"Optional title\")"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "That is:"
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "An exclamation mark: "
-          },
-          {
-            "type": "code",
-            "value": "!"
-          },
-          {
-            "type": "text",
-            "value": ";"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "followed by a set of square brackets, containing the "
-          },
-          {
-            "type": "code",
-            "value": "alt"
-          },
-          {
-            "type": "text",
-            "value": "\nundefined"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "followed by a set of parentheses, containing the URL or path to\nundefined\nundefined"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Reference-style image syntax looks like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "![Alt text][id]"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Where \"id\" is the name of a defined image reference. Image references\nare defined using syntax identical to link references:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "[id]: url/to/image  \"Optional title attribute\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "As of this writing, Markdown has no syntax for specifying the\ndimensions of an image; if this is important to you, you can simply\nuse regular HTML "
-      },
-      {
-        "type": "code",
-        "value": "<img>"
-      },
-      {
-        "type": "text",
-        "value": " tags."
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "html",
-    "value": "<h2 id=\"misc\">Miscellaneous</h2>\n\n"
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"autolink\">Automatic Links</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown supports a shortcut style for creating \"automatic\" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<http://example.com/>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown will turn this into:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<a href=\"http://example.com/\">http://example.com/</a>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Automatic links for email addresses work similarly, except that\nMarkdown will also perform a bit of randomized decimal and hex\nentity-encoding to help obscure your address from address-harvesting\nspambots. For example, Markdown will turn this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<address@example.com>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "into something like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<a href=\"&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;\n&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;\n&#109;\">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;\n&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "which will render in a browser as a clickable link to \"address@example.com\"."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "(This sort of entity-encoding trick will indeed fool many, if not\nmost, address-harvesting bots, but it definitely won't fool all of\nthem. It's better than nothing, but an address published in this way\nwill probably eventually start receiving spam.)"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<h3 id=\"backslash\">Backslash Escapes</h3>\n\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown allows you to use backslash escapes to generate literal\ncharacters which would otherwise have special meaning in Markdown's\nformatting syntax. For example, if you wanted to surround a word with\nliteral asterisks (instead of an HTML "
-      },
-      {
-        "type": "code",
-        "value": "<em>"
-      },
-      {
-        "type": "text",
-        "value": " tag), you can backslashes\nbefore the asterisks, like this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "\\*literal asterisks\\*"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown provides backslash escapes for the following characters:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n    +        plus sign\n    -        minus sign (hyphen)\n.   dot\n!   exclamation mark"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown: Syntax"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a href=\"/projects/markdown/basics\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a class=\"selected\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>\n\n\n"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "href": "#overview",
+              "title": null,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Overview"
+                }
+              ],
+              "type": "link"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#philosophy",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Philosophy"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#html",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Inline HTML"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#autoescape",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Automatic Escaping for Special Characters"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "href": "#block",
+              "title": null,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Block Elements"
+                }
+              ],
+              "type": "link"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#p",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Paragraphs and Line Breaks"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#header",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Headers"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#blockquote",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Blockquotes"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#list",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Lists"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#precode",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Code Blocks"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#hr",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Horizontal Rules"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "href": "#span",
+              "title": null,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Span Elements"
+                }
+              ],
+              "type": "link"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#link",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Links"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#em",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Emphasis"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#code",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Code"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#img",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Images"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "href": "#misc",
+              "title": null,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Miscellaneous"
+                }
+              ],
+              "type": "link"
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#backslash",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Backslash Escapes"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                },
+                {
+                  "type": "listItem",
+                  "children": [
+                    {
+                      "href": "#autolink",
+                      "title": null,
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "Automatic Links"
+                        }
+                      ],
+                      "type": "link"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " This document is itself written using Markdown; you\ncan "
+        },
+        {
+          "href": "/projects/markdown/syntax.text",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "see the source for it by adding '.text' to the URL"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "html",
+      "value": "<h2 id=\"overview\">Overview</h2>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"philosophy\">Philosophy</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown is intended to be as easy-to-read and easy-to-write as is feasible."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Readability, however, is emphasized above all else. A Markdown-formatted\ndocument should be publishable as-is, as plain text, without looking\nlike it's been marked up with tags or formatting instructions. While\nMarkdown's syntax has been influenced by several existing text-to-HTML\nfilters -- including "
+        },
+        {
+          "href": "http://docutils.sourceforge.net/mirror/setext.html",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "Setext"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "href": "http://www.aaronsw.com/2002/atx/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "atx"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "href": "http://textism.com/tools/textile/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "Textile"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "href": "http://docutils.sourceforge.net/rst.html",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "reStructuredText"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ",\n"
+        },
+        {
+          "href": "http://www.triptico.com/software/grutatxt.html",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "Grutatext"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ", and "
+        },
+        {
+          "href": "http://ettext.taint.org/doc/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "EtText"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " -- the single biggest source of\ninspiration for Markdown's syntax is the format of plain text email."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like *emphasis*. Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"html\">Inline HTML</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown's syntax is intended for one purpose: to be used as a\nformat for "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "writing"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " for the web."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown is not a replacement for HTML, or even close to it. Its\nsyntax is very small, corresponding only to a very small subset of\nHTML tags. The idea is "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "not"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " to create a syntax that makes it easier\nto insert HTML tags. In my opinion, HTML tags are already easy to\ninsert. The idea for Markdown is to make it easy to read, write, and\nedit prose. HTML is a "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "publishing"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " format; Markdown is a "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "writing"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "\nformat. Thus, Markdown's formatting syntax only addresses issues that\ncan be conveyed in plain text."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For any markup that is not covered by Markdown's syntax, you simply\nuse HTML itself. There's no need to preface it or delimit it to\nindicate that you're switching from Markdown to HTML; you just use\nthe tags."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The only restrictions are that block-level HTML elements -- e.g. "
+        },
+        {
+          "type": "code",
+          "value": "<div>"
+        },
+        {
+          "type": "text",
+          "value": ",\n"
+        },
+        {
+          "type": "code",
+          "value": "<table>"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "<pre>"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "<p>"
+        },
+        {
+          "type": "text",
+          "value": ", etc. -- must be separated from surrounding\ncontent by blank lines, and the start and end tags of the block should\nnot be indented with tabs or spaces. Markdown is smart enough not\nto add extra (unwanted) "
+        },
+        {
+          "type": "code",
+          "value": "<p>"
+        },
+        {
+          "type": "text",
+          "value": " tags around HTML block-level tags."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For example, to add an HTML table to a Markdown article:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is a regular paragraph.\n\n<table>\n    <tr>\n        <td>Foo</td>\n    </tr>\n</table>\n\nThis is another regular paragraph."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note that Markdown formatting syntax is not processed within block-level\nHTML tags. E.g., you can't use Markdown-style "
+        },
+        {
+          "type": "code",
+          "value": "*emphasis*"
+        },
+        {
+          "type": "text",
+          "value": " inside an\nHTML block."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Span-level HTML tags -- e.g. "
+        },
+        {
+          "type": "code",
+          "value": "<span>"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "<cite>"
+        },
+        {
+          "type": "text",
+          "value": ", or "
+        },
+        {
+          "type": "code",
+          "value": "<del>"
+        },
+        {
+          "type": "text",
+          "value": " -- can be\nused anywhere in a Markdown paragraph, list item, or header. If you\nwant, you can even use HTML tags instead of Markdown formatting; e.g. if\nyou'd prefer to use HTML "
+        },
+        {
+          "type": "code",
+          "value": "<a>"
+        },
+        {
+          "type": "text",
+          "value": " or "
+        },
+        {
+          "type": "code",
+          "value": "<img>"
+        },
+        {
+          "type": "text",
+          "value": " tags instead of Markdown's\nlink or image syntax, go right ahead."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Unlike block-level HTML tags, Markdown syntax "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "is"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " processed within\nspan-level tags."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"autoescape\">Automatic Escaping for Special Characters</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In HTML, there are two characters that demand special treatment: "
+        },
+        {
+          "type": "code",
+          "value": "<"
+        },
+        {
+          "type": "text",
+          "value": "\nand "
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": ". Left angle brackets are used to start tags; ampersands are\nused to denote HTML entities. If you want to use them as literal\ncharacters, you must escape them as entities, e.g. "
+        },
+        {
+          "type": "code",
+          "value": "&lt;"
+        },
+        {
+          "type": "text",
+          "value": ", and\n"
+        },
+        {
+          "type": "code",
+          "value": "&amp;"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ampersands in particular are bedeviling for web writers. If you want to\nwrite about 'AT&T', you need to write '"
+        },
+        {
+          "type": "code",
+          "value": "AT&amp;T"
+        },
+        {
+          "type": "text",
+          "value": "'. You even need to\nescape ampersands within URLs. Thus, if you want to link to:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "http://images.google.com/images?num=30&q=larry+bird"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "you need to encode the URL as:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "http://images.google.com/images?num=30&amp;q=larry+bird"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "in your anchor tag "
+        },
+        {
+          "type": "code",
+          "value": "href"
+        },
+        {
+          "type": "text",
+          "value": " attribute. Needless to say, this is easy to\nforget, and is probably the single most common source of HTML validation\nerrors in otherwise well-marked-up web sites."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown allows you to use these characters naturally, taking care of\nall the necessary escaping for you. If you use an ampersand as part of\nan HTML entity, it remains unchanged; otherwise it will be translated\ninto "
+        },
+        {
+          "type": "code",
+          "value": "&amp;"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "So, if you want to include a copyright symbol in your article, you can write:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "&copy;"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and Markdown will leave it alone. But if you write:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "AT&T"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown will translate it to:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "AT&amp;T"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Similarly, because Markdown supports "
+        },
+        {
+          "href": "#html",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "inline HTML"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": ", if you use\nangle brackets as delimiters for HTML tags, Markdown will treat them as\nsuch. But if you write:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "4 < 5"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown will translate it to:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "4 &lt; 5"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "However, inside Markdown code spans and blocks, angle brackets and\nampersands are "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "always"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " encoded automatically. This makes it easy to use\nMarkdown to write about HTML code. (As opposed to raw HTML, which is a\nterrible format for writing about HTML syntax, because every single "
+        },
+        {
+          "type": "code",
+          "value": "<"
+        },
+        {
+          "type": "text",
+          "value": "\nand "
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": " in your example code needs to be escaped.)"
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "html",
+      "value": "<h2 id=\"block\">Block Elements</h2>\n\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"p\">Paragraphs and Line Breaks</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing but spaces or tabs is considered\nblank.) Normal paragraphs should not be intended with spaces or tabs."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The implication of the \"one or more consecutive lines of text\" rule is\nthat Markdown supports \"hard-wrapped\" text paragraphs. This differs\nsignificantly from most other text-to-HTML formatters (including Movable\nType's \"Convert Line Breaks\" option) which translate every line break\ncharacter in a paragraph into a "
+        },
+        {
+          "type": "code",
+          "value": "<br />"
+        },
+        {
+          "type": "text",
+          "value": " tag."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "When you "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "do"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " want to insert a "
+        },
+        {
+          "type": "code",
+          "value": "<br />"
+        },
+        {
+          "type": "text",
+          "value": " break tag using Markdown, you\nend a line with two or more spaces, then type return."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Yes, this takes a tad more effort to create a "
+        },
+        {
+          "type": "code",
+          "value": "<br />"
+        },
+        {
+          "type": "text",
+          "value": ", but a simplistic\n\"every line break is a "
+        },
+        {
+          "type": "code",
+          "value": "<br />"
+        },
+        {
+          "type": "text",
+          "value": "\" rule wouldn't work for Markdown.\nMarkdown's email-style "
+        },
+        {
+          "href": "#blockquote",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "blockquoting"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " and multi-paragraph "
+        },
+        {
+          "href": "#list",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "list items"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "\nwork best -- and look better -- when you format them with hard breaks."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"header\">Headers</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports two styles of headers, "
+        },
+        {
+          "href": "http://docutils.sourceforge.net/mirror/setext.html",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "Setext"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "href": "http://www.aaronsw.com/2002/atx/",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "atx"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Setext-style headers are \"underlined\" using equal signs (for first-level\nheaders) and dashes (for second-level headers). For example:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is an H1\n=============\n\nThis is an H2\n-------------"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Any number of underlining "
+        },
+        {
+          "type": "code",
+          "value": "="
+        },
+        {
+          "type": "text",
+          "value": "'s or "
+        },
+        {
+          "type": "code",
+          "value": "-"
+        },
+        {
+          "type": "text",
+          "value": "'s will work."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Atx-style headers use 1-6 hash characters at the start of the line,\ncorresponding to header levels 1-6. For example:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "# This is an H1\n\n## This is an H2\n\n###### This is an H6"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Optionally, you may \"close\" atx-style headers. This is purely\ncosmetic -- you can use this if you think it looks better. The\nclosing hashes don't even need to match the number of hashes\nused to open the header. (The number of opening hashes\ndetermines the header level.) :"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "# This is an H1 #\n\n## This is an H2 ##\n\n### This is an H3 ######"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"blockquote\">Blockquotes</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown uses email-style "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": " characters for blockquoting. If you're\nfamiliar with quoting passages of text in an email message, then you\nknow how to create a blockquote in Markdown. It looks best if you hard\nwrap the text and put a "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": " before every line:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n> \n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n> id sem consectetuer libero luctus adipiscing."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown allows you to be lazy and only put the "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": " before the first\nline of a hard-wrapped paragraph:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\nVestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n\n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\nid sem consectetuer libero luctus adipiscing."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by\nadding additional levels of "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": ":"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "> This is the first level of quoting.\n>\n> > This is nested blockquote.\n>\n> Back to the first level."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Blockquotes can contain other Markdown elements, including headers, lists,\nand code blocks:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    > ## This is a header.\n    > \n    > 1.   This is the first list item.\n    > 2.   This is the second list item.\n    > \n    > Here's some example code:\n    > \n    >     return shell_exec(\"echo $input | $markdown_script\");"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Any decent text editor should make email-style quoting easy. For\nexample, with BBEdit, you can make a selection and choose Increase\nQuote Level from the Text menu."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"list\">Lists</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports ordered (numbered) and unordered (bulleted) lists."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Unordered lists use asterisks, pluses, and hyphens -- interchangably\n-- as list markers:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Red\n*   Green\n*   Blue"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "is equivalent to:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "+   Red\n+   Green\n+   Blue"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "-   Red\n-   Green\n-   Blue"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ordered lists use numbers followed by periods:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1.  Bird\n2.  McHale\n3.  Parish"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It's important to note that the actual numbers you use to mark the\nlist have no effect on the HTML output Markdown produces. The HTML\nMarkdown produces from the above list is:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ol>\n<li>Bird</li>\n<li>McHale</li>\n<li>Parish</li>\n</ol>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you instead wrote the list in Markdown like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1.  Bird\n1.  McHale\n1.  Parish"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "or even:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "3. Bird\n1. McHale\n8. Parish"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "you'd get the exact same HTML output. The point is, if you want to,\nyou can use ordinal numbers in your ordered Markdown lists, so that\nthe numbers in your source match the numbers in your published HTML.\nBut if you want to be lazy, you don't have to."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you do use lazy list numbering, however, you should still start the\nlist with the number 1. At some point in the future, Markdown may support\nstarting ordered lists at an arbitrary number."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "List markers typically start at the left margin, but may be indented by\nup to three spaces. List markers must be followed by one or more spaces\nor a tab."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To make lists look nice, you can wrap items with hanging indents:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n    viverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n    Suspendisse id sem consectetuer libero luctus adipiscing."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "But if you want to be lazy, you don't have to:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\nviverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\nSuspendisse id sem consectetuer libero luctus adipiscing."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If list items are separated by blank lines, Markdown will wrap the\nitems in "
+        },
+        {
+          "type": "code",
+          "value": "<p>"
+        },
+        {
+          "type": "text",
+          "value": " tags in the HTML output. For example, this input:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Bird\n*   Magic"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will turn into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ul>\n<li>Bird</li>\n<li>Magic</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "But this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Bird\n\n*   Magic"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will turn into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ul>\n<li><p>Bird</p></li>\n<li><p>Magic</p></li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "List items may consist of multiple paragraphs. Each subsequent\nparagraph in a list item must be intended by either 4 spaces\nor one tab:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1.  This is a list item with two paragraphs. Lorem ipsum dolor\n    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n    mi posuere lectus.\n\n    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n    sit amet velit.\n\n2.  Suspendisse id sem consectetuer libero luctus adipiscing."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It looks nice if you indent every line of the subsequent\nparagraphs, but here again, Markdown will allow you to be\nlazy:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   This is a list item with two paragraphs.\n\n    This is the second paragraph in the list item. You're\nonly required to indent the first line. Lorem ipsum dolor\nsit amet, consectetuer adipiscing elit.\n\n*   Another item in the same list."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To put a blockquote within a list item, the blockquote's "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": "\ndelimiters need to be indented:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   A list item with a blockquote:\n\n    > This is a blockquote\n    > inside a list item."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To put a code block within a list item, the code block needs\nto be indented "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "twice"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " -- 8 spaces or two tabs:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   A list item with a code block:\n\n        <code goes here>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It's worth noting that it's possible to trigger an ordered list by\naccident, by writing something like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1986. What a great season."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In other words, a "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "number-period-space"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " sequence at the beginning of a\nline. To avoid this, you can backslash-escape the period:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1986\\. What a great season."
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"precode\">Code Blocks</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Pre-formatted code blocks are used for writing about programming or\nmarkup source code. Rather than forming normal paragraphs, the lines\nof a code block are interpreted literally. Markdown wraps a code block\nin both "
+        },
+        {
+          "type": "code",
+          "value": "<pre>"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "<code>"
+        },
+        {
+          "type": "text",
+          "value": " tags."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To produce a code block in Markdown, simply indent every line of the\nblock by at least 4 spaces or 1 tab. For example, given this input:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is a normal paragraph:\n\n    This is a code block."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown will generate:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>This is a normal paragraph:</p>\n\n<pre><code>This is a code block.\n</code></pre>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "One level of indentation -- 4 spaces or 1 tab -- is removed from each\nline of the code block. For example, this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "Here is an example of AppleScript:\n\n    tell application \"Foo\"\n        beep\n    end tell"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will turn into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>Here is an example of AppleScript:</p>\n\n<pre><code>tell application \"Foo\"\n    beep\nend tell\n</code></pre>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A code block continues until it reaches a line that is not indented\n(or the end of the article)."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Within a code block, ampersands ("
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": ") and angle brackets ("
+        },
+        {
+          "type": "code",
+          "value": "<"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": ")\nare automatically converted into HTML entities. This makes it very\neasy to include example HTML source code using Markdown -- just paste\nit and indent it, and Markdown will handle the hassle of encoding the\nampersands and angle brackets. For example, this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <div class=\"footer\">\n        &copy; 2004 Foo Corporation\n    </div>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will turn into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<pre><code>&lt;div class=\"footer\"&gt;\n    &amp;copy; 2004 Foo Corporation\n&lt;/div&gt;\n</code></pre>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Regular Markdown syntax is not processed within code blocks. E.g.,\nasterisks are just literal asterisks within a code block. This means\nit's also easy to use Markdown to write about Markdown's own syntax."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"hr\">Horizontal Rules</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can produce a horizontal rule tag ("
+        },
+        {
+          "type": "code",
+          "value": "<hr>"
+        },
+        {
+          "type": "text",
+          "value": ") by placing three or\nmore hyphens, asterisks, or underscores on a line by themselves. If you\nwish, you may use spaces between the hyphens or asterisks. Each of the\nfollowing lines will produce a horizontal rule:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "* * *\n\n***\n\n*****\n\n- - -\n\n---------------------------------------\n\n    _ _ _"
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "html",
+      "value": "<h2 id=\"span\">Span Elements</h2>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"link\">Links</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports two style of links: "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "inline"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "reference"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In both styles, the link text is delimited by [square brackets]."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To create an inline link, use a set of regular parentheses immediately\nafter the link text's closing square bracket. Inside the parentheses,\nput the URL where you want the link to point, along with an "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "optional"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "\ntitle for the link, surrounded in quotes. For example:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is [an example](http://example.com/ \"Title\") inline link.\n\n[This link](http://example.net/) has no title attribute."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Will produce:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>This is <a href=\"http://example.com/\" title=\"Title\">\nan example</a> inline link.</p>\n\n<p><a href=\"http://example.net/\">This link</a> has no\ntitle attribute.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you're referring to a local resource on the same server, you can\nuse relative paths:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "See my [About](/about/) page for details."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style links use a second set of square brackets, inside\nwhich you place a label of your choosing to identify the link:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is [an example][id] reference-style link."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can optionally use a space to separate the sets of brackets:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is [an example] [id] reference-style link."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Then, anywhere in the document, you define your link label like this,\non a line by itself:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "[id]: http://example.com/  \"Optional Title Here\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "That is:"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "Square brackets containing the link identifier (optionally\nundefined"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "followed by a colon;"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "followed by one or more spaces (or tabs);"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "followed by the URL for the link;"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "optionally followed by a title attribute for the link, enclosed\nundefined"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The link URL may, optionally, be surrounded by angle brackets:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "[id]: <http://example.com/>  \"Optional Title Here\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can put the title attribute on the next line and use extra spaces\nor tabs for padding, which tends to look better with longer URLs:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "[id]: http://example.com/longish/path/to/resource/here\n    \"Optional Title Here\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link definitions are only used for creating links during Markdown\nprocessing, and are stripped from your document in the HTML output."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link definition names may constist of letters, numbers, spaces, and punctuation -- but they are "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "not"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " case sensitive. E.g. these two links:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    [link text][a]\n    [link text][A]"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "are equivalent."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "implicit link name"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " shortcut allows you to omit the name of the\nlink, in which case the link text itself is used as the name.\nJust use an empty set of square brackets -- e.g., to link the word\n\"Google\" to the google.com web site, you could simply write:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    [Google][]"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And then define the link:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    [Google]: http://google.com/"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Because link names may contain spaces, this shortcut even works for\nmultiple words in the link text:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    Visit [Daring Fireball][] for more information."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And then define the link:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    [Daring Fireball]: http://daringfireball.net/"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link definitions can be placed anywhere in your Markdown document. I\ntend to put them immediately after each paragraph in which they're\nused, but if you want, you can put them all at the end of your\ndocument, sort of like footnotes."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's an example of reference links in action:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I get 10 times more traffic from [Google] [1] than from\n[Yahoo] [2] or [MSN] [3].\n\n  [1]: http://google.com/        \"Google\"\n  [2]: http://search.yahoo.com/  \"Yahoo Search\"\n  [3]: http://search.msn.com/    \"MSN Search\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Using the implicit link name shortcut, you could instead write:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I get 10 times more traffic from [Google][] than from\n[Yahoo][] or [MSN][].\n\n  [google]: http://google.com/        \"Google\"\n  [yahoo]:  http://search.yahoo.com/  \"Yahoo Search\"\n  [msn]:    http://search.msn.com/    \"MSN Search\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Both of the above examples will produce the following HTML output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from\n<a href=\"http://search.yahoo.com/\" title=\"Yahoo Search\">Yahoo</a>\nor <a href=\"http://search.msn.com/\" title=\"MSN Search\">MSN</a>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "For comparison, here is the same paragraph written using\nMarkdown's inline link style:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I get 10 times more traffic from [Google](http://google.com/ \"Google\")\nthan from [Yahoo](http://search.yahoo.com/ \"Yahoo Search\") or\n[MSN](http://search.msn.com/ \"MSN Search\")."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The point of reference-style links is not that they're easier to\nwrite. The point is that with reference-style links, your document\nsource is vastly more readable. Compare the above examples: using\nreference-style links, the paragraph itself is only 81 characters\nlong; with inline-style links, it's 176 characters; and as raw HTML,\nit's 234 characters. In the raw HTML, there's more markup than there\nis text."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "With Markdown's reference-style links, a source document much more\nclosely resembles the final output, as rendered in a browser. By\nallowing you to move the markup-related metadata out of the paragraph,\nyou can add links without interrupting the narrative flow of your\nprose."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"em\">Emphasis</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown treats asterisks ("
+        },
+        {
+          "type": "code",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": ") and underscores ("
+        },
+        {
+          "type": "code",
+          "value": "_"
+        },
+        {
+          "type": "text",
+          "value": ") as indicators of\nemphasis. Text wrapped with one "
+        },
+        {
+          "type": "code",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": " or "
+        },
+        {
+          "type": "code",
+          "value": "_"
+        },
+        {
+          "type": "text",
+          "value": " will be wrapped with an\nHTML "
+        },
+        {
+          "type": "code",
+          "value": "<em>"
+        },
+        {
+          "type": "text",
+          "value": " tag; double "
+        },
+        {
+          "type": "code",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": "'s or "
+        },
+        {
+          "type": "code",
+          "value": "_"
+        },
+        {
+          "type": "text",
+          "value": "'s will be wrapped with an HTML\n"
+        },
+        {
+          "type": "code",
+          "value": "<strong>"
+        },
+        {
+          "type": "text",
+          "value": " tag. E.g., this input:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*single asterisks*\n\n_single underscores_\n\n**double asterisks**\n\n__double underscores__"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will produce:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<em>single asterisks</em>\n\n<em>single underscores</em>\n\n<strong>double asterisks</strong>\n\n<strong>double underscores</strong>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can use whichever style you prefer; the lone restriction is that\nthe same character must be used to open and close an emphasis span."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Emphasis can be used in the middle of a word:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "un*fucking*believable"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "But if you surround an "
+        },
+        {
+          "type": "code",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": " or "
+        },
+        {
+          "type": "code",
+          "value": "_"
+        },
+        {
+          "type": "text",
+          "value": " with spaces, it'll be treated as a\nliteral asterisk or underscore."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To produce a literal asterisk or underscore at a position where it\nwould otherwise be used as an emphasis delimiter, you can backslash\nescape it:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "\\*this text is surrounded by literal asterisks\\*"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"code\">Code</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To indicate a span of code, wrap it with backtick quotes ("
+        },
+        {
+          "type": "code",
+          "value": "` "
+        },
+        {
+          "type": "text",
+          "value": ").\nUnlike a pre-formatted code block, a code span indicates code within a\nnormal paragraph. For example:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "Use the `printf()` function."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will produce:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>Use the <code>printf()</code> function.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To include a literal backtick character within a code span, you can use\nmultiple backticks as the opening and closing delimiters:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "``There is a literal backtick (`) here.``"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "which will produce this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p><code>There is a literal backtick (`) here.</code></p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The backtick delimiters surrounding a code span may include spaces --\none after the opening, one before the closing. This allows you to place\nliteral backtick characters at the beginning or end of a code span:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    A single backtick in a code span: `` ` ``\n\n    A backtick-delimited string in a code span: `` `foo` ``"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "will produce:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "    <p>A single backtick in a code span: <code>`</code></p>\n\n    <p>A backtick-delimited string in a code span: <code>`foo`</code></p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "With a code span, ampersands and angle brackets are encoded as HTML\nentities automatically, which makes it easy to include example HTML\ntags. Markdown will turn this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "Please don't use any `<blink>` tags."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "You can write this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "`&#8212;` is the decimal-encoded equivalent of `&mdash;`."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "to produce:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p><code>&amp;#8212;</code> is the decimal-encoded\nequivalent of <code>&amp;mdash;</code>.</p>"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"img\">Images</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Admittedly, it's fairly difficult to devise a \"natural\" syntax for\nplacing images into a plain text document format."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown uses an image syntax that is intended to resemble the syntax\nfor links, allowing for two styles: "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "inline"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "reference"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inline image syntax looks like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "![Alt text](/path/to/img.jpg)\n\n![Alt text](/path/to/img.jpg \"Optional title\")"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "That is:"
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "An exclamation mark: "
+            },
+            {
+              "type": "code",
+              "value": "!"
+            },
+            {
+              "type": "text",
+              "value": ";"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "followed by a set of square brackets, containing the "
+            },
+            {
+              "type": "code",
+              "value": "alt"
+            },
+            {
+              "type": "text",
+              "value": "\nundefined"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "followed by a set of parentheses, containing the URL or path to\nundefined\nundefined"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style image syntax looks like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "![Alt text][id]"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Where \"id\" is the name of a defined image reference. Image references\nare defined using syntax identical to link references:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "[id]: url/to/image  \"Optional title attribute\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "As of this writing, Markdown has no syntax for specifying the\ndimensions of an image; if this is important to you, you can simply\nuse regular HTML "
+        },
+        {
+          "type": "code",
+          "value": "<img>"
+        },
+        {
+          "type": "text",
+          "value": " tags."
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "html",
+      "value": "<h2 id=\"misc\">Miscellaneous</h2>\n\n"
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"autolink\">Automatic Links</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports a shortcut style for creating \"automatic\" links for URLs and email addresses: simply surround the URL or email address with angle brackets. What this means is that if you want to show the actual text of a URL or email address, and also have it be a clickable link, you can do this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<http://example.com/>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown will turn this into:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<a href=\"http://example.com/\">http://example.com/</a>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Automatic links for email addresses work similarly, except that\nMarkdown will also perform a bit of randomized decimal and hex\nentity-encoding to help obscure your address from address-harvesting\nspambots. For example, Markdown will turn this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<address@example.com>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "into something like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<a href=\"&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;\n&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;\n&#109;\">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;\n&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "which will render in a browser as a clickable link to \"address@example.com\"."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "(This sort of entity-encoding trick will indeed fool many, if not\nmost, address-harvesting bots, but it definitely won't fool all of\nthem. It's better than nothing, but an address published in this way\nwill probably eventually start receiving spam.)"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"backslash\">Backslash Escapes</h3>\n\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown allows you to use backslash escapes to generate literal\ncharacters which would otherwise have special meaning in Markdown's\nformatting syntax. For example, if you wanted to surround a word with\nliteral asterisks (instead of an HTML "
+        },
+        {
+          "type": "code",
+          "value": "<em>"
+        },
+        {
+          "type": "text",
+          "value": " tag), you can backslashes\nbefore the asterisks, like this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "\\*literal asterisks\\*"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown provides backslash escapes for the following characters:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n    +        plus sign\n    -        minus sign (hyphen)\n.   dot\n!   exclamation mark"
+    }
+  ],
+  "footnotes": null
+}

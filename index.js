@@ -968,11 +968,13 @@ Parser.parse = function (value, options) {
         for (footnote in footnotes) {
             footnotes[footnote] = parser.parse(footnotes[footnote]);
         }
-
-        tokens.footnotes = footnotes;
     }
 
-    return tokens;
+    return {
+        'type' : 'root',
+        'children' : tokens,
+        'footnotes' : footnotes
+    };
 };
 
 /**

@@ -1,105 +1,109 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This is the "
-      },
-      {
-        "href": "/simple",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "simple case"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This one has a "
-      },
-      {
-        "href": "/foo",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "line \nbreak"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This one has a "
-      },
-      {
-        "href": "/foo",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "line \nbreak"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " with a line-ending space."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "href": "/that",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "this"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " and the "
-      },
-      {
-        "href": "/other",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "other"
-          }
-        ],
-        "type": "link"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is the "
+        },
+        {
+          "href": "/simple",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "simple case"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This one has a "
+        },
+        {
+          "href": "/foo",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "line \nbreak"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This one has a "
+        },
+        {
+          "href": "/foo",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "line \nbreak"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " with a line-ending space."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "href": "/that",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "this"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " and the "
+        },
+        {
+          "href": "/other",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "other"
+            }
+          ],
+          "type": "link"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

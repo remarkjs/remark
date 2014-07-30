@@ -1,41 +1,45 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Paragraph one."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<!-- This is a simple comment -->\n"
-  },
-  {
-    "type": "html",
-    "value": "<!--\n        This is another comment.\n-->\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Paragraph two."
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<!-- one comment block -- -- with two comments -->\n"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The end."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Paragraph one."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<!-- This is a simple comment -->\n"
+    },
+    {
+      "type": "html",
+      "value": "<!--\n        This is another comment.\n-->\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Paragraph two."
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<!-- one comment block -- -- with two comments -->\n"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The end."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

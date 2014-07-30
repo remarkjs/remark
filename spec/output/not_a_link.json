@@ -1,11 +1,15 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "[test](not a link)"
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "[test](not a link)"
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

@@ -1,120 +1,124 @@
-[
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "href": "foo",
-            "title": null,
-            "children": [
-              {
-                "type": "text",
-                "value": "1"
-              }
-            ],
-            "type": "link"
-          },
-          {
-            "type": "text",
-            "value": ": hello"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "horizontalRule"
-  },
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      },
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "[3]: hello"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "list",
-    "ordered": false,
-    "children": [
-      {
-        "type": "listItem",
-        "children": [
-          {
-            "type": "text",
-            "value": "hello"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "foo\nbar"
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "blockquote",
-    "children": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "bar"
-          }
-        ]
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "href": "foo",
+              "title": null,
+              "children": [
+                {
+                  "type": "text",
+                  "value": "1"
+                }
+              ],
+              "type": "link"
+            },
+            {
+              "type": "text",
+              "value": ": hello"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "horizontalRule"
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "[3]: hello"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "children": [
+            {
+              "type": "text",
+              "value": "hello"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "foo\nbar"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "bar"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

@@ -1,774 +1,778 @@
-[
-  {
-    "type": "heading",
-    "depth": 1,
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown: Basics"
-      }
-    ]
-  },
-  {
-    "type": "html",
-    "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a class=\"selected\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a href=\"/projects/markdown/syntax\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>\n\n\n"
-  },
-  {
-    "type": "heading",
-    "depth": 2,
-    "children": [
-      {
-        "type": "text",
-        "value": "Getting the Gist of Markdown's Formatting Syntax"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "This page offers a brief overview of what it's like to use Markdown.\nThe "
-      },
-      {
-        "href": "/projects/markdown/syntax",
-        "title": "Markdown Syntax",
-        "children": [
-          {
-            "type": "text",
-            "value": "syntax page"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " provides complete, detailed documentation for\nevery feature, but Markdown should be very easy to pick up simply by\nlooking at a few examples of it in action. The examples on this page\nare written in a before/after style, showing example syntax and the\nHTML output produced by Markdown."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "It's also helpful to simply try Markdown out; the "
-      },
-      {
-        "href": "/projects/markdown/dingus",
-        "title": "Markdown Dingus",
-        "children": [
-          {
-            "type": "text",
-            "value": "Dingus"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": " is a\nweb application that allows you type your own Markdown-formatted text\nand translate it to XHTML."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "text",
-            "value": "Note:"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " This document is itself written using Markdown; you\ncan "
-      },
-      {
-        "href": "/projects/markdown/basics.text",
-        "title": null,
-        "children": [
-          {
-            "type": "text",
-            "value": "see the source for it by adding '.text' to the URL"
-          }
-        ],
-        "type": "link"
-      },
-      {
-        "type": "text",
-        "value": "."
-      }
-    ]
-  },
-  {
-    "type": "heading",
-    "depth": 2,
-    "children": [
-      {
-        "type": "text",
-        "value": "Paragraphs, Headers, Blockquotes"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "A paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing spaces or tabs is considered\nblank.) Normal paragraphs should not be intended with spaces or tabs."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown offers two styles of headers: "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "Setext"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "atx"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": ".\nSetext-style headers for "
-      },
-      {
-        "type": "code",
-        "value": "<h1>"
-      },
-      {
-        "type": "text",
-        "value": " and "
-      },
-      {
-        "type": "code",
-        "value": "<h2>"
-      },
-      {
-        "type": "text",
-        "value": " are created by\n\"underlining\" with equal signs ("
-      },
-      {
-        "type": "code",
-        "value": "="
-      },
-      {
-        "type": "text",
-        "value": ") and hyphens ("
-      },
-      {
-        "type": "code",
-        "value": "-"
-      },
-      {
-        "type": "text",
-        "value": "), respectively.\nTo create an atx-style header, you put 1-6 hash marks ("
-      },
-      {
-        "type": "code",
-        "value": "#"
-      },
-      {
-        "type": "text",
-        "value": ") at the\nbeginning of the line -- the number of hashes equals the resulting\nHTML header level."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Blockquotes are indicated using email-style '"
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": "' angle brackets."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "A First Level Header\n====================\n\nA Second Level Header\n---------------------\n\nNow is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.\n\nThe quick brown fox jumped over the lazy\ndog's back.\n\n### Header 3\n\n> This is a blockquote.\n> \n> This is the second paragraph in the blockquote.\n>\n> ## This is an H2 in a blockquote"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n\n    <p>This is the second paragraph in the blockquote.</p>\n\n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>"
-  },
-  {
-    "type": "heading",
-    "depth": 3,
-    "children": [
-      {
-        "type": "text",
-        "value": "Phrase Emphasis"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown uses asterisks and underscores to indicate spans of emphasis."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "Some of these words *are emphasized*.\nSome of these words _are emphasized also_.\n\nUse two asterisks for **strong emphasis**.\nOr, if you prefer, __use two underscores instead__."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>Some of these words <em>are emphasized</em>.\nSome of these words <em>are emphasized also</em>.</p>\n\n<p>Use two asterisks for <strong>strong emphasis</strong>.\nOr, if you prefer, <strong>use two underscores instead</strong>.</p>"
-  },
-  {
-    "type": "heading",
-    "depth": 2,
-    "children": [
-      {
-        "type": "text",
-        "value": "Lists"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Unordered (bulleted) lists use asterisks, pluses, and hyphens ("
-      },
-      {
-        "type": "code",
-        "value": "*"
-      },
-      {
-        "type": "text",
-        "value": ",\n"
-      },
-      {
-        "type": "code",
-        "value": "+"
-      },
-      {
-        "type": "text",
-        "value": ", and "
-      },
-      {
-        "type": "code",
-        "value": "-"
-      },
-      {
-        "type": "text",
-        "value": ") as list markers. These three markers are\ninterchangable; this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   Candy.\n*   Gum.\n*   Booze."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "+   Candy.\n+   Gum.\n+   Booze."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "and this:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "-   Candy.\n-   Gum.\n-   Booze."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "all produce the same output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ul>\n<li>Candy.</li>\n<li>Gum.</li>\n<li>Booze.</li>\n</ul>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Ordered (numbered) lists use regular numbers, followed by periods, as\nlist markers:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "1.  Red\n2.  Green\n3.  Blue"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ol>\n<li>Red</li>\n<li>Green</li>\n<li>Blue</li>\n</ol>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "If you put blank lines between items, you'll get "
-      },
-      {
-        "type": "code",
-        "value": "<p>"
-      },
-      {
-        "type": "text",
-        "value": " tags for the\nlist item text. You can create multi-paragraph list items by indenting\nthe paragraphs by 4 spaces or 1 tab:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "*   A list item.\n\n    With multiple paragraphs.\n\n*   Another item in the list."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<ul>\n<li><p>A list item.</p>\n<p>With multiple paragraphs.</p></li>\n<li><p>Another item in the list.</p></li>\n</ul>"
-  },
-  {
-    "type": "heading",
-    "depth": 3,
-    "children": [
-      {
-        "type": "text",
-        "value": "Links"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown supports two styles for creating links: "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "inline"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " and\n"
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "reference"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": ". With both styles, you use square brackets to delimit the\ntext you want to turn into a link."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Inline-style links use parentheses immediately after the link text.\nFor example:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is an [example link](http://example.com/)."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>This is an <a href=\"http://example.com/\">\nexample link</a>.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Optionally, you may include a title attribute in the parentheses:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "This is an [example link](http://example.com/ \"With a Title\")."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>This is an <a href=\"http://example.com/\" title=\"With a Title\">\nexample link</a>.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Reference-style links allow you to refer to your links by names, which\nyou define elsewhere in your document:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I get 10 times more traffic from [Google][1] than from\n[Yahoo][2] or [MSN][3].\n\n[1]: http://google.com/        \"Google\"\n[2]: http://search.yahoo.com/  \"Yahoo Search\"\n[3]: http://search.msn.com/    \"MSN Search\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from <a href=\"http://search.yahoo.com/\"\ntitle=\"Yahoo Search\">Yahoo</a> or <a href=\"http://search.msn.com/\"\ntitle=\"MSN Search\">MSN</a>.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "The title attribute is optional. Link names may contain letters,\nnumbers and spaces, but are "
-      },
-      {
-        "type": "emphasis",
-        "children": [
-          {
-            "type": "text",
-            "value": "not"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " case sensitive:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I start my morning with a cup of coffee and\n[The New York Times][NY Times].\n\n[ny times]: http://www.nytimes.com/"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>I start my morning with a cup of coffee and\n<a href=\"http://www.nytimes.com/\">The New York Times</a>.</p>"
-  },
-  {
-    "type": "heading",
-    "depth": 3,
-    "children": [
-      {
-        "type": "text",
-        "value": "Images"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Image syntax is very much like link syntax."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Inline (titles are optional):"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "![alt text](/path/to/img.jpg \"Title\")"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Reference-style:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "![alt text][id]\n\n[id]: /path/to/img.jpg \"Title\""
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Both of the above examples produce the same output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<img src=\"/path/to/img.jpg\" alt=\"alt text\" title=\"Title\" />"
-  },
-  {
-    "type": "heading",
-    "depth": 3,
-    "children": [
-      {
-        "type": "text",
-        "value": "Code"
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "In a regular paragraph, you can create code span by wrapping text in\nbacktick quotes. Any ampersands ("
-      },
-      {
-        "type": "code",
-        "value": "&"
-      },
-      {
-        "type": "text",
-        "value": ") and angle brackets ("
-      },
-      {
-        "type": "code",
-        "value": "<"
-      },
-      {
-        "type": "text",
-        "value": " or\n"
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": ") will automatically be translated into HTML entities. This makes\nit easy to use Markdown to write about HTML example code:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "I strongly recommend against using any `<blink>` tags.\n\nI wish SmartyPants used named entities like `&mdash;`\ninstead of decimal-encoded entites like `&#8212;`."
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>I strongly recommend against using any\n<code>&lt;blink&gt;</code> tags.</p>\n\n<p>I wish SmartyPants used named entities like\n<code>&amp;mdash;</code> instead of decimal-encoded\nentites like <code>&amp;#8212;</code>.</p>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "To specify an entire block of pre-formatted code, indent every line of\nthe block by 4 spaces or 1 tab. Just like with code spans, "
-      },
-      {
-        "type": "code",
-        "value": "&"
-      },
-      {
-        "type": "text",
-        "value": ", "
-      },
-      {
-        "type": "code",
-        "value": "<"
-      },
-      {
-        "type": "text",
-        "value": ",\nand "
-      },
-      {
-        "type": "code",
-        "value": ">"
-      },
-      {
-        "type": "text",
-        "value": " characters will be escaped automatically."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Markdown:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:\n\n    <blockquote>\n        <p>For example.</p>\n    </blockquote>"
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Output:"
-      }
-    ]
-  },
-  {
-    "type": "code",
-    "value": "<p>If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:</p>\n\n<pre><code>&lt;blockquote&gt;\n    &lt;p&gt;For example.&lt;/p&gt;\n&lt;/blockquote&gt;\n</code></pre>"
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown: Basics"
+        }
+      ]
+    },
+    {
+      "type": "html",
+      "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a class=\"selected\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a href=\"/projects/markdown/syntax\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>\n\n\n"
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Getting the Gist of Markdown's Formatting Syntax"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This page offers a brief overview of what it's like to use Markdown.\nThe "
+        },
+        {
+          "href": "/projects/markdown/syntax",
+          "title": "Markdown Syntax",
+          "children": [
+            {
+              "type": "text",
+              "value": "syntax page"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " provides complete, detailed documentation for\nevery feature, but Markdown should be very easy to pick up simply by\nlooking at a few examples of it in action. The examples on this page\nare written in a before/after style, showing example syntax and the\nHTML output produced by Markdown."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It's also helpful to simply try Markdown out; the "
+        },
+        {
+          "href": "/projects/markdown/dingus",
+          "title": "Markdown Dingus",
+          "children": [
+            {
+              "type": "text",
+              "value": "Dingus"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": " is a\nweb application that allows you type your own Markdown-formatted text\nand translate it to XHTML."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note:"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " This document is itself written using Markdown; you\ncan "
+        },
+        {
+          "href": "/projects/markdown/basics.text",
+          "title": null,
+          "children": [
+            {
+              "type": "text",
+              "value": "see the source for it by adding '.text' to the URL"
+            }
+          ],
+          "type": "link"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Paragraphs, Headers, Blockquotes"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing spaces or tabs is considered\nblank.) Normal paragraphs should not be intended with spaces or tabs."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown offers two styles of headers: "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "Setext"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "atx"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ".\nSetext-style headers for "
+        },
+        {
+          "type": "code",
+          "value": "<h1>"
+        },
+        {
+          "type": "text",
+          "value": " and "
+        },
+        {
+          "type": "code",
+          "value": "<h2>"
+        },
+        {
+          "type": "text",
+          "value": " are created by\n\"underlining\" with equal signs ("
+        },
+        {
+          "type": "code",
+          "value": "="
+        },
+        {
+          "type": "text",
+          "value": ") and hyphens ("
+        },
+        {
+          "type": "code",
+          "value": "-"
+        },
+        {
+          "type": "text",
+          "value": "), respectively.\nTo create an atx-style header, you put 1-6 hash marks ("
+        },
+        {
+          "type": "code",
+          "value": "#"
+        },
+        {
+          "type": "text",
+          "value": ") at the\nbeginning of the line -- the number of hashes equals the resulting\nHTML header level."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Blockquotes are indicated using email-style '"
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": "' angle brackets."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "A First Level Header\n====================\n\nA Second Level Header\n---------------------\n\nNow is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.\n\nThe quick brown fox jumped over the lazy\ndog's back.\n\n### Header 3\n\n> This is a blockquote.\n> \n> This is the second paragraph in the blockquote.\n>\n> ## This is an H2 in a blockquote"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n\n    <p>This is the second paragraph in the blockquote.</p>\n\n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>"
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Phrase Emphasis"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown uses asterisks and underscores to indicate spans of emphasis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "Some of these words *are emphasized*.\nSome of these words _are emphasized also_.\n\nUse two asterisks for **strong emphasis**.\nOr, if you prefer, __use two underscores instead__."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>Some of these words <em>are emphasized</em>.\nSome of these words <em>are emphasized also</em>.</p>\n\n<p>Use two asterisks for <strong>strong emphasis</strong>.\nOr, if you prefer, <strong>use two underscores instead</strong>.</p>"
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Lists"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Unordered (bulleted) lists use asterisks, pluses, and hyphens ("
+        },
+        {
+          "type": "code",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": ",\n"
+        },
+        {
+          "type": "code",
+          "value": "+"
+        },
+        {
+          "type": "text",
+          "value": ", and "
+        },
+        {
+          "type": "code",
+          "value": "-"
+        },
+        {
+          "type": "text",
+          "value": ") as list markers. These three markers are\ninterchangable; this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   Candy.\n*   Gum.\n*   Booze."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "+   Candy.\n+   Gum.\n+   Booze."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and this:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "-   Candy.\n-   Gum.\n-   Booze."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "all produce the same output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ul>\n<li>Candy.</li>\n<li>Gum.</li>\n<li>Booze.</li>\n</ul>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ordered (numbered) lists use regular numbers, followed by periods, as\nlist markers:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "1.  Red\n2.  Green\n3.  Blue"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ol>\n<li>Red</li>\n<li>Green</li>\n<li>Blue</li>\n</ol>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you put blank lines between items, you'll get "
+        },
+        {
+          "type": "code",
+          "value": "<p>"
+        },
+        {
+          "type": "text",
+          "value": " tags for the\nlist item text. You can create multi-paragraph list items by indenting\nthe paragraphs by 4 spaces or 1 tab:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "*   A list item.\n\n    With multiple paragraphs.\n\n*   Another item in the list."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<ul>\n<li><p>A list item.</p>\n<p>With multiple paragraphs.</p></li>\n<li><p>Another item in the list.</p></li>\n</ul>"
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Links"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports two styles for creating links: "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "inline"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " and\n"
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "reference"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ". With both styles, you use square brackets to delimit the\ntext you want to turn into a link."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inline-style links use parentheses immediately after the link text.\nFor example:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is an [example link](http://example.com/)."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>This is an <a href=\"http://example.com/\">\nexample link</a>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Optionally, you may include a title attribute in the parentheses:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "This is an [example link](http://example.com/ \"With a Title\")."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>This is an <a href=\"http://example.com/\" title=\"With a Title\">\nexample link</a>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style links allow you to refer to your links by names, which\nyou define elsewhere in your document:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I get 10 times more traffic from [Google][1] than from\n[Yahoo][2] or [MSN][3].\n\n[1]: http://google.com/        \"Google\"\n[2]: http://search.yahoo.com/  \"Yahoo Search\"\n[3]: http://search.msn.com/    \"MSN Search\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from <a href=\"http://search.yahoo.com/\"\ntitle=\"Yahoo Search\">Yahoo</a> or <a href=\"http://search.msn.com/\"\ntitle=\"MSN Search\">MSN</a>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The title attribute is optional. Link names may contain letters,\nnumbers and spaces, but are "
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "not"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " case sensitive:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I start my morning with a cup of coffee and\n[The New York Times][NY Times].\n\n[ny times]: http://www.nytimes.com/"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>I start my morning with a cup of coffee and\n<a href=\"http://www.nytimes.com/\">The New York Times</a>.</p>"
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Images"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image syntax is very much like link syntax."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inline (titles are optional):"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "![alt text](/path/to/img.jpg \"Title\")"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "![alt text][id]\n\n[id]: /path/to/img.jpg \"Title\""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Both of the above examples produce the same output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<img src=\"/path/to/img.jpg\" alt=\"alt text\" title=\"Title\" />"
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Code"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In a regular paragraph, you can create code span by wrapping text in\nbacktick quotes. Any ampersands ("
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": ") and angle brackets ("
+        },
+        {
+          "type": "code",
+          "value": "<"
+        },
+        {
+          "type": "text",
+          "value": " or\n"
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": ") will automatically be translated into HTML entities. This makes\nit easy to use Markdown to write about HTML example code:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "I strongly recommend against using any `<blink>` tags.\n\nI wish SmartyPants used named entities like `&mdash;`\ninstead of decimal-encoded entites like `&#8212;`."
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>I strongly recommend against using any\n<code>&lt;blink&gt;</code> tags.</p>\n\n<p>I wish SmartyPants used named entities like\n<code>&amp;mdash;</code> instead of decimal-encoded\nentites like <code>&amp;#8212;</code>.</p>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To specify an entire block of pre-formatted code, indent every line of\nthe block by 4 spaces or 1 tab. Just like with code spans, "
+        },
+        {
+          "type": "code",
+          "value": "&"
+        },
+        {
+          "type": "text",
+          "value": ", "
+        },
+        {
+          "type": "code",
+          "value": "<"
+        },
+        {
+          "type": "text",
+          "value": ",\nand "
+        },
+        {
+          "type": "code",
+          "value": ">"
+        },
+        {
+          "type": "text",
+          "value": " characters will be escaped automatically."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:\n\n    <blockquote>\n        <p>For example.</p>\n    </blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "value": "<p>If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:</p>\n\n<pre><code>&lt;blockquote&gt;\n    &lt;p&gt;For example.&lt;/p&gt;\n&lt;/blockquote&gt;\n</code></pre>"
+    }
+  ],
+  "footnotes": null
+}

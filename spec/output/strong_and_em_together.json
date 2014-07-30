@@ -1,94 +1,98 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "This is strong and em."
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "So is "
-      },
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "this"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " word."
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "This is strong and em."
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "So is "
-      },
-      {
-        "type": "strong",
-        "children": [
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "this"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "value": " word."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "This is strong and em."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "So is "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " word."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "This is strong and em."
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "So is "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " word."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}

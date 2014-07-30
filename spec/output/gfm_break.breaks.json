@@ -1,25 +1,29 @@
-[
-  {
-    "type": "paragraph",
-    "children": [
-      {
-        "type": "text",
-        "value": "Look at the"
-      },
-      {
-        "type": "break"
-      },
-      {
-        "type": "text",
-        "value": "pretty line"
-      },
-      {
-        "type": "break"
-      },
-      {
-        "type": "text",
-        "value": "breaks."
-      }
-    ]
-  }
-]
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Look at the"
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "pretty line"
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "breaks."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}
