@@ -6,7 +6,7 @@
       "ordered": false,
       "children": [
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -39,7 +39,7 @@
       "ordered": false,
       "children": [
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -50,7 +50,7 @@
               "ordered": false,
               "children": [
                 {
-                  "type": "looseItem",
+                  "type": "listItem",
                   "children": [
                     {
                       "type": "text",
@@ -59,7 +59,7 @@
                   ]
                 },
                 {
-                  "type": "looseItem",
+                  "type": "listItem",
                   "children": [
                     {
                       "type": "text",
@@ -87,7 +87,7 @@
       "ordered": false,
       "children": [
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -96,7 +96,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -129,7 +129,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -138,7 +138,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -162,7 +162,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -204,7 +204,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -228,7 +228,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",
@@ -237,7 +237,7 @@
           ]
         },
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",

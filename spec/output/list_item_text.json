@@ -6,7 +6,7 @@
       "ordered": false,
       "children": [
         {
-          "type": "looseItem",
+          "type": "listItem",
           "children": [
             {
               "type": "text",

@@ -1083,6 +1083,10 @@ Parser.prototype.tok = function () {
 
         token.children = children;
 
+        if (type === 'looseItem') {
+            token.type = 'listItem';
+        }
+
         return token;
     }
 
