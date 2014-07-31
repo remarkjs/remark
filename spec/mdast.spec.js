@@ -151,7 +151,7 @@ validateToken = function (context) {
     if (type === 'table') {
         context.header.forEach(validateTokens);
 
-        context.cells.forEach(function (row) {
+        context.rows.forEach(function (row) {
             row.forEach(validateTokens);
         });
 
