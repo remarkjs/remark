@@ -9,6 +9,7 @@
           "value": "Foo "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": "Title",
           "children": [
@@ -16,8 +17,7 @@
               "type": "text",
               "value": "bar"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -33,6 +33,7 @@
           "value": "Foo "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": "Title",
           "children": [
@@ -40,8 +41,7 @@
               "type": "text",
               "value": "bar"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -57,6 +57,7 @@
           "value": "Foo "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": "Title",
           "children": [
@@ -64,8 +65,7 @@
               "type": "text",
               "value": "bar"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -81,6 +81,7 @@
           "value": "With "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": null,
           "children": [
@@ -88,8 +89,7 @@
               "type": "text",
               "value": "embedded [brackets]"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -105,6 +105,7 @@
           "value": "Indented "
         },
         {
+          "type": "link",
           "href": "/url",
           "title": null,
           "children": [
@@ -112,8 +113,7 @@
               "type": "text",
               "value": "once"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -129,6 +129,7 @@
           "value": "Indented "
         },
         {
+          "type": "link",
           "href": "/url",
           "title": null,
           "children": [
@@ -136,8 +137,7 @@
               "type": "text",
               "value": "twice"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -153,6 +153,7 @@
           "value": "Indented "
         },
         {
+          "type": "link",
           "href": "/url",
           "title": null,
           "children": [
@@ -160,8 +161,7 @@
               "type": "text",
               "value": "thrice"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -189,6 +189,7 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -196,8 +197,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -213,6 +213,7 @@
           "value": "So should "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -220,8 +221,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -237,6 +237,7 @@
           "value": "And "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -244,8 +245,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -261,6 +261,7 @@
           "value": "And "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -268,8 +269,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -285,6 +285,7 @@
           "value": "And "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -292,8 +293,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -336,6 +336,7 @@
           "value": "[Something in brackets like "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -343,8 +344,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -360,6 +360,7 @@
           "value": "[Same with "
         },
         {
+          "type": "link",
           "href": "foo",
           "title": null,
           "children": [
@@ -367,8 +368,7 @@
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -384,15 +384,15 @@
           "value": "In this case, "
         },
         {
-          "href": "/somethingelse/",
+          "type": "link",
           "title": null,
+          "href": "/somethingelse/",
           "children": [
             {
               "type": "text",
               "value": "this"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -420,6 +420,7 @@
           "value": "Here's one where the "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": null,
           "children": [
@@ -427,8 +428,7 @@
               "type": "text",
               "value": "link \nbreaks"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -444,6 +444,7 @@
           "value": "Here's another where the "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": null,
           "children": [
@@ -451,8 +452,7 @@
               "type": "text",
               "value": "link \nbreaks"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",

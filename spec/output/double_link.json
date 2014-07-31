@@ -13,15 +13,15 @@
           "value": "Already linked: "
         },
         {
-          "href": "http://example.com/",
+          "type": "link",
           "title": null,
+          "href": "http://example.com/",
           "children": [
             {
               "type": "text",
               "value": "http://example.com/"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",

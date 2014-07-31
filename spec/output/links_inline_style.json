@@ -9,15 +9,15 @@
           "value": "Just a "
         },
         {
-          "href": "/url/",
+          "type": "link",
           "title": null,
+          "href": "/url/",
           "children": [
             {
               "type": "text",
               "value": "URL"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -29,15 +29,15 @@
       "type": "paragraph",
       "children": [
         {
-          "href": "/url/",
+          "type": "link",
           "title": "title",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
               "value": "URL and title"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -49,15 +49,15 @@
       "type": "paragraph",
       "children": [
         {
-          "href": "/url/",
+          "type": "link",
           "title": "title preceded by two spaces",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
               "value": "URL and title"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -69,35 +69,35 @@
       "type": "paragraph",
       "children": [
         {
-          "href": "/url/",
+          "type": "link",
           "title": "title preceded by a tab",
-          "children": [
-            {
-              "type": "text",
-              "value": "URL and title"
-            }
-          ],
-          "type": "link"
-        },
-        {
-          "type": "text",
-          "value": "."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "children": [
-        {
           "href": "/url/",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
           "title": "title has spaces afterward",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
               "value": "URL and title"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -109,15 +109,15 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "link",
+          "title": null,
           "href": "/url/has space",
-          "title": null,
           "children": [
             {
               "type": "text",
               "value": "URL and title"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -129,15 +129,15 @@
       "type": "paragraph",
       "children": [
         {
-          "href": "/url/has space/",
+          "type": "link",
           "title": "url has space and title",
+          "href": "/url/has space/",
           "children": [
             {
               "type": "text",
               "value": "URL and title"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -149,15 +149,15 @@
       "type": "paragraph",
       "children": [
         {
-          "href": "",
+          "type": "link",
           "title": null,
+          "href": "",
           "children": [
             {
               "type": "text",
               "value": "Empty"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",

@@ -19,6 +19,7 @@
           "value": "Just a note, I've found that I can't test my markdown parser vs others.\nFor example, both markdown.js and showdown code blocks in lists wrong. They're\nalso completely "
         },
         {
+          "type": "link",
           "href": "http://google.com/",
           "title": "Google",
           "children": [
@@ -26,8 +27,7 @@
               "type": "text",
               "value": "inconsistent"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -237,24 +237,24 @@
           "value": ". Here is a "
         },
         {
-          "href": "//hello",
+          "type": "link",
           "title": null,
+          "href": "//hello",
           "children": [
             {
               "type": "text",
               "value": "link"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ".\nAnd an image "
         },
         {
-          "href": "src",
-          "title": "a title",
           "type": "image",
+          "title": "a title",
+          "src": "src",
           "alt": "alt"
         },
         {
@@ -262,9 +262,9 @@
           "value": ".\nAnd an image with an empty alt attribute "
         },
         {
-          "href": "src",
-          "title": null,
           "type": "image",
+          "title": null,
+          "src": "src",
           "alt": null
         },
         {

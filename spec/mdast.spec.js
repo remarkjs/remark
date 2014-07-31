@@ -51,7 +51,6 @@ validateToken = function (context) {
     if (
         type === 'paragraph' ||
         type === 'blockquote' ||
-        type === 'looseItem' ||
         type === 'listItem'
     ) {
         assert(keys.length === 2);
@@ -143,7 +142,7 @@ validateToken = function (context) {
             context.alt === null ||
             typeof context.alt === 'string'
         );
-        assert(typeof context.href === 'string');
+        assert(typeof context.src === 'string');
         assert(keys.length === 4);
 
         return;

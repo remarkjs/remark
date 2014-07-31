@@ -163,6 +163,7 @@
           "value": "hello "
         },
         {
+          "type": "link",
           "href": "/are/you",
           "title": null,
           "children": [
@@ -170,8 +171,7 @@
               "type": "text",
               "value": "world"
             }
-          ],
-          "type": "link"
+          ]
         }
       ]
     },

@@ -56,6 +56,7 @@
             "value": ", a link"
           },
           {
+            "type": "link",
             "href": "http://example.com",
             "title": null,
             "children": [
@@ -63,8 +64,7 @@
                 "type": "text",
                 "value": "^3"
               }
-            ],
-            "type": "link"
+            ]
           },
           {
             "type": "text",

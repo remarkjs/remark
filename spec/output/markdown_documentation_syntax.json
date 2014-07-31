@@ -23,15 +23,15 @@
           "type": "listItem",
           "children": [
             {
-              "href": "#overview",
+              "type": "link",
               "title": null,
+              "href": "#overview",
               "children": [
                 {
                   "type": "text",
                   "value": "Overview"
                 }
-              ],
-              "type": "link"
+              ]
             },
             {
               "type": "list",
@@ -41,15 +41,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#philosophy",
+                      "type": "link",
                       "title": null,
+                      "href": "#philosophy",
                       "children": [
                         {
                           "type": "text",
                           "value": "Philosophy"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -57,15 +57,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#html",
+                      "type": "link",
                       "title": null,
+                      "href": "#html",
                       "children": [
                         {
                           "type": "text",
                           "value": "Inline HTML"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -73,15 +73,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#autoescape",
+                      "type": "link",
                       "title": null,
+                      "href": "#autoescape",
                       "children": [
                         {
                           "type": "text",
                           "value": "Automatic Escaping for Special Characters"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 }
@@ -93,15 +93,15 @@
           "type": "listItem",
           "children": [
             {
-              "href": "#block",
+              "type": "link",
               "title": null,
+              "href": "#block",
               "children": [
                 {
                   "type": "text",
                   "value": "Block Elements"
                 }
-              ],
-              "type": "link"
+              ]
             },
             {
               "type": "list",
@@ -111,15 +111,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#p",
+                      "type": "link",
                       "title": null,
+                      "href": "#p",
                       "children": [
                         {
                           "type": "text",
                           "value": "Paragraphs and Line Breaks"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -127,15 +127,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#header",
+                      "type": "link",
                       "title": null,
+                      "href": "#header",
                       "children": [
                         {
                           "type": "text",
                           "value": "Headers"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -143,15 +143,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#blockquote",
+                      "type": "link",
                       "title": null,
+                      "href": "#blockquote",
                       "children": [
                         {
                           "type": "text",
                           "value": "Blockquotes"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -159,15 +159,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#list",
+                      "type": "link",
                       "title": null,
+                      "href": "#list",
                       "children": [
                         {
                           "type": "text",
                           "value": "Lists"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -175,15 +175,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#precode",
+                      "type": "link",
                       "title": null,
+                      "href": "#precode",
                       "children": [
                         {
                           "type": "text",
                           "value": "Code Blocks"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -191,15 +191,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#hr",
+                      "type": "link",
                       "title": null,
+                      "href": "#hr",
                       "children": [
                         {
                           "type": "text",
                           "value": "Horizontal Rules"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 }
@@ -211,15 +211,15 @@
           "type": "listItem",
           "children": [
             {
-              "href": "#span",
+              "type": "link",
               "title": null,
+              "href": "#span",
               "children": [
                 {
                   "type": "text",
                   "value": "Span Elements"
                 }
-              ],
-              "type": "link"
+              ]
             },
             {
               "type": "list",
@@ -229,15 +229,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#link",
+                      "type": "link",
                       "title": null,
+                      "href": "#link",
                       "children": [
                         {
                           "type": "text",
                           "value": "Links"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -245,15 +245,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#em",
+                      "type": "link",
                       "title": null,
+                      "href": "#em",
                       "children": [
                         {
                           "type": "text",
                           "value": "Emphasis"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -261,15 +261,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#code",
+                      "type": "link",
                       "title": null,
+                      "href": "#code",
                       "children": [
                         {
                           "type": "text",
                           "value": "Code"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -277,15 +277,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#img",
+                      "type": "link",
                       "title": null,
+                      "href": "#img",
                       "children": [
                         {
                           "type": "text",
                           "value": "Images"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 }
@@ -297,15 +297,15 @@
           "type": "listItem",
           "children": [
             {
-              "href": "#misc",
+              "type": "link",
               "title": null,
+              "href": "#misc",
               "children": [
                 {
                   "type": "text",
                   "value": "Miscellaneous"
                 }
-              ],
-              "type": "link"
+              ]
             },
             {
               "type": "list",
@@ -315,15 +315,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#backslash",
+                      "type": "link",
                       "title": null,
+                      "href": "#backslash",
                       "children": [
                         {
                           "type": "text",
                           "value": "Backslash Escapes"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 },
@@ -331,15 +331,15 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "href": "#autolink",
+                      "type": "link",
                       "title": null,
+                      "href": "#autolink",
                       "children": [
                         {
                           "type": "text",
                           "value": "Automatic Links"
                         }
-                      ],
-                      "type": "link"
+                      ]
                     }
                   ]
                 }
@@ -366,6 +366,7 @@
           "value": " This document is itself written using Markdown; you\ncan "
         },
         {
+          "type": "link",
           "href": "/projects/markdown/syntax.text",
           "title": null,
           "children": [
@@ -373,8 +374,7 @@
               "type": "text",
               "value": "see the source for it by adding '.text' to the URL"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -410,6 +410,7 @@
           "value": "Readability, however, is emphasized above all else. A Markdown-formatted\ndocument should be publishable as-is, as plain text, without looking\nlike it's been marked up with tags or formatting instructions. While\nMarkdown's syntax has been influenced by several existing text-to-HTML\nfilters -- including "
         },
         {
+          "type": "link",
           "href": "http://docutils.sourceforge.net/mirror/setext.html",
           "title": null,
           "children": [
@@ -417,14 +418,14 @@
               "type": "text",
               "value": "Setext"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ", "
         },
         {
+          "type": "link",
           "href": "http://www.aaronsw.com/2002/atx/",
           "title": null,
           "children": [
@@ -432,14 +433,14 @@
               "type": "text",
               "value": "atx"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ", "
         },
         {
+          "type": "link",
           "href": "http://textism.com/tools/textile/",
           "title": null,
           "children": [
@@ -447,14 +448,14 @@
               "type": "text",
               "value": "Textile"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ", "
         },
         {
+          "type": "link",
           "href": "http://docutils.sourceforge.net/rst.html",
           "title": null,
           "children": [
@@ -462,14 +463,14 @@
               "type": "text",
               "value": "reStructuredText"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ",\n"
         },
         {
+          "type": "link",
           "href": "http://www.triptico.com/software/grutatxt.html",
           "title": null,
           "children": [
@@ -477,14 +478,14 @@
               "type": "text",
               "value": "Grutatext"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": ", and "
         },
         {
+          "type": "link",
           "href": "http://ettext.taint.org/doc/",
           "title": null,
           "children": [
@@ -492,8 +493,7 @@
               "type": "text",
               "value": "EtText"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -903,15 +903,15 @@
           "value": "Similarly, because Markdown supports "
         },
         {
-          "href": "#html",
+          "type": "link",
           "title": null,
+          "href": "#html",
           "children": [
             {
               "type": "text",
               "value": "inline HTML"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -1065,6 +1065,7 @@
           "value": "\" rule wouldn't work for Markdown.\nMarkdown's email-style "
         },
         {
+          "type": "link",
           "href": "#blockquote",
           "title": null,
           "children": [
@@ -1072,14 +1073,14 @@
               "type": "text",
               "value": "blockquoting"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": " and multi-paragraph "
         },
         {
+          "type": "link",
           "href": "#list",
           "title": null,
           "children": [
@@ -1087,8 +1088,7 @@
               "type": "text",
               "value": "list items"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -1108,6 +1108,7 @@
           "value": "Markdown supports two styles of headers, "
         },
         {
+          "type": "link",
           "href": "http://docutils.sourceforge.net/mirror/setext.html",
           "title": null,
           "children": [
@@ -1115,14 +1116,14 @@
               "type": "text",
               "value": "Setext"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
           "value": " and "
         },
         {
+          "type": "link",
           "href": "http://www.aaronsw.com/2002/atx/",
           "title": null,
           "children": [
@@ -1130,8 +1131,7 @@
               "type": "text",
               "value": "atx"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",

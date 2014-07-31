@@ -466,6 +466,7 @@ Lexer.prototype.token = function (value, top, bq) {
         if ((!bq && top) && (cap = this.rules.linkDefinition.exec(value))) {
             value = value.substring(cap[0].length);
             this.tokens.links[cap[1].toLowerCase()] = {
+                'type' : null,
                 'href' : cap[2],
                 'title' : cap[3]
             };
@@ -665,7 +666,7 @@ InlineLexer.rules = inline;
 
 InlineLexer.prototype.output = function (value) {
     var tokens = [],
-        link, footnote, text, href, cap, prev;
+        link, footnote, text, href, cap, prev, t;
 
     /* eslint-disable no-cond-assign */
     while (value) {
@@ -757,8 +758,8 @@ InlineLexer.prototype.output = function (value) {
             value = value.substring(cap[0].length);
             this.inLink = true;
 
-            tokens.push(this.outputLink(cap, {
-                'href' : cap[2],
+            tokens.push(this.outputLink(cap, cap[2], {
+                'type' : null,
                 'title' : cap[3]
             }));
 
@@ -828,7 +829,7 @@ InlineLexer.prototype.output = function (value) {
 
             this.inLink = true;
 
-            tokens.push(this.outputLink(cap, link));
+            tokens.push(this.outputLink(cap, link.href, link));
 
             this.inLink = false;
             continue;
@@ -926,16 +927,18 @@ InlineLexer.prototype.output = function (value) {
  * Compile Link
  */
 
-InlineLexer.prototype.outputLink = function (cap, link) {
+InlineLexer.prototype.outputLink = function (cap, href, link) {
     if (!link.title) {
         link.title = null;
     }
 
     if (cap[0].charAt(0) !== '!') {
-        link.children = this.output(cap[1]);
         link.type = 'link';
+        link.href = href;
+        link.children = this.output(cap[1]);
     } else {
         link.type = 'image';
+        link.src = href;
         link.alt = cap[1] || null;
     }
 

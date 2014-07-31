@@ -33,6 +33,7 @@
           "value": "This page offers a brief overview of what it's like to use Markdown.\nThe "
         },
         {
+          "type": "link",
           "href": "/projects/markdown/syntax",
           "title": "Markdown Syntax",
           "children": [
@@ -40,8 +41,7 @@
               "type": "text",
               "value": "syntax page"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -57,6 +57,7 @@
           "value": "It's also helpful to simply try Markdown out; the "
         },
         {
+          "type": "link",
           "href": "/projects/markdown/dingus",
           "title": "Markdown Dingus",
           "children": [
@@ -64,8 +65,7 @@
               "type": "text",
               "value": "Dingus"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -90,6 +90,7 @@
           "value": " This document is itself written using Markdown; you\ncan "
         },
         {
+          "type": "link",
           "href": "/projects/markdown/basics.text",
           "title": null,
           "children": [
@@ -97,8 +98,7 @@
               "type": "text",
               "value": "see the source for it by adding '.text' to the URL"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",

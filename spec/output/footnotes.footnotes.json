@@ -26,6 +26,7 @@
           "value": "Even go to a new "
         },
         {
+          "type": "link",
           "href": "http://example.com",
           "title": null,
           "children": [
@@ -33,8 +34,7 @@
               "type": "text",
               "value": "paragraph"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -94,6 +94,7 @@
             "value": "This footnote has a second "
           },
           {
+            "type": "link",
             "href": "http://example.com",
             "title": null,
             "children": [
@@ -101,8 +102,7 @@
                 "type": "text",
                 "value": "paragraph"
               }
-            ],
-            "type": "link"
+            ]
           },
           {
             "type": "text",

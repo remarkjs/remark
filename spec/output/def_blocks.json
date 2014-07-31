@@ -17,6 +17,7 @@
           "type": "paragraph",
           "children": [
             {
+              "type": "link",
               "href": "foo",
               "title": null,
               "children": [
@@ -24,8 +25,7 @@
                   "type": "text",
                   "value": "1"
                 }
-              ],
-              "type": "link"
+              ]
             },
             {
               "type": "text",

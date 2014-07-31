@@ -5,6 +5,7 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "link",
           "href": "/url",
           "title": null,
           "children": [
@@ -12,8 +13,7 @@
               "type": "text",
               "value": "hi"
             }
-          ],
-          "type": "link"
+          ]
         }
       ]
     }

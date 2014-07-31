@@ -9,6 +9,7 @@
           "value": "Foo "
         },
         {
+          "type": "link",
           "href": "/url/",
           "title": "Title with \"quotes\" inside",
           "children": [
@@ -16,8 +17,7 @@
               "type": "text",
               "value": "bar"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
@@ -33,15 +33,15 @@
           "value": "Foo "
         },
         {
-          "href": "/url/",
+          "type": "link",
           "title": "Title with \"quotes\" inside",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
               "value": "bar"
             }
-          ],
-          "type": "link"
+          ]
         },
         {
           "type": "text",
