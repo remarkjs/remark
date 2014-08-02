@@ -21,7 +21,7 @@ $ bower install mdast
 
 ## Usage
 
-See (Nodes)[#nodes] for information about he returned nodes.
+See [Nodes](#nodes) for information about he returned nodes.
 
 ### Markdown:
 ```js
