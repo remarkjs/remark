@@ -1,9 +1,5 @@
 'use strict';
 
-/**
- * Block-Level Grammar
- */
-
 /* istanbul ignore next: noop */
 function noop() {}
 
@@ -254,12 +250,12 @@ Lexer.prototype.token = function (value, top, bq) {
 
     /* eslint-disable no-cond-assign */
     while (value) {
-        // newline
+        /* One or more newline characters. */
         if (cap = this.rules.newline.exec(value)) {
             value = value.substring(cap[0].length);
         }
 
-        // code
+        /* Code blocks (with indent), without language. */
         if (cap = this.rules.code.exec(value)) {
             value = value.substring(cap[0].length);
             cap = cap[0].replace(/^ {4}/gm, '');
@@ -272,7 +268,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // fences (gfm)
+        /* Fenced code blocks, optionally with language */
         if (cap = this.rules.fences.exec(value)) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -283,7 +279,8 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // heading
+        /* Heading suffixed (and optionally, affixed) by one to six hashes.
+         * */
         if (cap = this.rules.heading.exec(value)) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -294,7 +291,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // table no leading pipe (gfm)
+        /* A GFM table, without leading pipes. */
         if (top && (cap = this.rules.looseTable.exec(value))) {
             value = value.substring(cap[0].length);
 
@@ -327,7 +324,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // lineHeading
+        /* Heading followed by a line of equals-symbols or dashes. */
         if (cap = this.rules.lineHeading.exec(value)) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -338,7 +335,8 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // horizontalRule
+        /* Horizontal rule: three or more dashes, plusses, or asterisks,
+         * optionally with spaces in between. */
         if (cap = this.rules.horizontalRule.exec(value)) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -347,7 +345,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // blockquote
+        /* Blockquote: block level nodes prefixed by greater-than signs. */
         if (cap = this.rules.blockquote.exec(value)) {
             value = value.substring(cap[0].length);
 
@@ -357,9 +355,8 @@ Lexer.prototype.token = function (value, top, bq) {
 
             cap = cap[0].replace(/^ *> ?/gm, '');
 
-            // Pass `top` to keep the current
-            // 'toplevel' state. This is exactly
-            // how markdown.pl works.
+            /* Pass `top` to keep the current 'toplevel' state. This is
+             * exactly how markdown.pl works. */
             this.token(cap, top, true);
 
             this.tokens.push({
@@ -369,7 +366,8 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // list
+        /* List: mostly just multiple list items, dashes, plusses, asterisks,
+         * or numbers. */
         if (cap = this.rules.list.exec(value)) {
             value = value.substring(cap[0].length);
             bullet = cap[2];
@@ -379,7 +377,7 @@ Lexer.prototype.token = function (value, top, bq) {
                 'ordered' : bullet.length > 1
             });
 
-            // Get each top-level item.
+            /* Get each top-level item. */
             cap = cap[0].match(this.rules.item);
 
             next = false;
@@ -389,13 +387,12 @@ Lexer.prototype.token = function (value, top, bq) {
             for (; i < l; i++) {
                 item = cap[i];
 
-                // Remove the list item's bullet
-                // so it is seen as the next token.
+                /* Remove the list item's bullet so it is seen as the
+                 * next token. */
                 space = item.length;
                 item = item.replace(/^ *([*+-]|\d+\.) +/, '');
 
-                // Outdent whatever the
-                // list item contains. Hacky.
+                /* Exdent whatever the list item contains. Hacky. */
                 if (item.indexOf('\n ') !== -1) {
                     space -= item.length;
 
@@ -407,8 +404,8 @@ Lexer.prototype.token = function (value, top, bq) {
                         );
                 }
 
-                // Determine whether the next list item belongs here.
-                // Backpedal if it does not belong in this list.
+                /* Determine whether the next list item belongs here.
+                 * Backpedal if it does not belong in this list. */
                 if (!this.options.pedantic && i !== l - 1) {
                     b = block.bullet.exec(cap[i + 1])[0];
                     if (
@@ -420,9 +417,8 @@ Lexer.prototype.token = function (value, top, bq) {
                     }
                 }
 
-                // Determine whether item is loose or not.
-                // Use: /(^|\n)(?! )[^\n]+\n\n(?!\s*$)/
-                // for discount behavior.
+                /* Determine whether item is loose or not. Use:
+                 * /(^|\n)(?! )[^\n]+\n\n(?!\s*$)/ for discount behavior. */
                 loose = next || /\n\n(?!\s*$)/.test(item);
                 if (i !== l - 1) {
                     next = item.charAt(item.length - 1) === '\n';
@@ -437,7 +433,7 @@ Lexer.prototype.token = function (value, top, bq) {
                         'listItem'
                 });
 
-                // Recurse.
+                /* Tokenise the list item. */
                 this.token(item, false, bq);
 
                 this.tokens.push({
@@ -452,7 +448,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // html
+        /* Embedded HTML */
         if (cap = this.rules.html.exec(value)) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -462,7 +458,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // linkDefinition
+        /* Link definition. */
         if ((!bq && top) && (cap = this.rules.linkDefinition.exec(value))) {
             value = value.substring(cap[0].length);
             this.tokens.links[cap[1].toLowerCase()] = {
@@ -473,7 +469,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // footnoteDefinition
+        /* Footnote definition. */
         if (
             this.options.footnotes && !bq && top &&
             (cap = this.rules.footnoteDefinition.exec(value))
@@ -490,7 +486,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // table (gfm)
+        /* Normal table (GFM). */
         if (top && (cap = this.rules.table.exec(value))) {
             value = value.substring(cap[0].length);
 
@@ -527,7 +523,7 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // top-level paragraph
+        /* Paragraph. */
         if (top && (cap = this.rules.paragraph.exec(value))) {
             value = value.substring(cap[0].length);
             this.tokens.push({
@@ -539,9 +535,9 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        // text
+        /* Text */
         if (cap = this.rules.text.exec(value)) {
-            // Top-level should never reach here.
+            /* Top-level should never reach here. */
             value = value.substring(cap[0].length);
             this.tokens.push({
                 'type' : 'text',
@@ -552,8 +548,7 @@ Lexer.prototype.token = function (value, top, bq) {
 
         /* istanbul ignore if: Shouldnt reach here. */
         if (value) {
-            throw new
-                Error('Infinite loop on byte: ' + value.charCodeAt(0));
+            throw new Error('Infinite loop on byte: ' + value.charCodeAt(0));
         }
     }
     /* eslint-enable no-cond-assign */
@@ -670,7 +665,7 @@ InlineLexer.prototype.output = function (value) {
 
     /* eslint-disable no-cond-assign */
     while (value) {
-        /* escape */
+        /* Escape character (e.g., `\*\*not strong\*\*`). */
         cap = this.rules.escape.exec(value);
 
         if (cap) {
@@ -690,7 +685,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        /* autoLink */
+        /* A link between pointy brackets. (e.g., `<some@thing.com>`). */
         cap = this.rules.autoLink.exec(value);
 
         if (cap) {
@@ -719,7 +714,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // URL (gfm)
+        /* A plain URL, without angle/square brackets (GFM). */
         if (!this.inLink && (cap = this.rules.URL.exec(value))) {
             value = value.substring(cap[0].length);
 
@@ -736,7 +731,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // tag
+        /* HTML Tag */
         if (cap = this.rules.tag.exec(value)) {
             if (!this.inLink && /^<a /i.test(cap[0])) {
                 this.inLink = true;
@@ -753,7 +748,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // link
+        /* A proper Markdown link. */
         if (cap = this.rules.link.exec(value)) {
             value = value.substring(cap[0].length);
             this.inLink = true;
@@ -767,7 +762,9 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // referenceLink, invalidLink
+        /* A reference link (where its attributes are made available through
+         * link definitions), or invalid links (only one set of brackets).
+         * The latter also catches footnotes. */
         if (
             (cap = this.rules.referenceLink.exec(value)) ||
             (cap = this.rules.invalidLink.exec(value))
@@ -835,7 +832,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // strong
+        /* Strong text. */
         cap = this.rules.strong.exec(value);
 
         if (cap) {
@@ -849,7 +846,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // emphasis
+        /* Emphasised text. */
         if (cap = this.rules.emphasis.exec(value)) {
             value = value.substring(cap[0].length);
 
@@ -861,7 +858,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // Inline code
+        /* Inline code. */
         if (cap = this.rules.code.exec(value)) {
             value = value.substring(cap[0].length);
 
@@ -873,7 +870,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // break
+        /* A break (only supported in GFM) */
         if (cap = this.rules.break.exec(value)) {
             value = value.substring(cap[0].length);
 
@@ -884,7 +881,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // deletion (gfm)
+        /* Deleted text (GFM) */
         if (cap = this.rules.deletion.exec(value)) {
             value = value.substring(cap[0].length);
 
@@ -896,7 +893,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        // text
+        /* Plain text. */
         /* istanbul ignore else: Shouldn't reach else. */
         if (cap = this.rules.text.exec(value)) {
             value = value.substring(cap[0].length);
@@ -1036,10 +1033,7 @@ Parser.prototype.tok = function () {
         children, columns, endToken, iterator, columnIterator, length,
         columnLength;
 
-    if (
-        type === 'horizontalRule' || type === 'code' || type === 'html'
-        /* || type === 'space'*/
-    ) {
+    if (type === 'horizontalRule' || type === 'code' || type === 'html') {
         return token;
     }
 
