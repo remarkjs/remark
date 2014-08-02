@@ -1,16 +1,9 @@
 'use strict';
 
-/* istanbul ignore next: noop */
-function noop() {}
-
-var objectHasOwnProperty, noopExpression, footnoteDefinition, uid,
+var objectHasOwnProperty, footnoteDefinition, uid,
     gfmCodeFences, gfmParagraph, gfmLooseTable, gfmTable, breaksBreak,
     breaksText, gfmText, gfmDeletion, gfmURL, gfmEscape, pedanticEmphasis,
     breaksGFMText, pedanticStrong;
-
-noopExpression = {
-    'exec' : noop
-};
 
 function replace(regex, opt) {
     regex = regex.source;
@@ -69,10 +62,8 @@ function getUID(value) {
 var block = {
     'newline' : /^\n+/,
     'code' : /^( {4}[^\n]+\n*)+/,
-    'fences' : noopExpression,
     'horizontalRule' : /^( *[-*_]){3,} *(?:\n+|$)/,
     'heading' : /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
-    'looseTable' : noopExpression,
     'lineHeading' : /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
     'blockquote' : /^( *>[^\n]+(\n(?!linkDefinition)[^\n]+)*\n*)+/,
     'list' : new RegExp(
@@ -90,8 +81,6 @@ var block = {
     ),
     'linkDefinition' :
         /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
-    'footnoteDefinition' : noopExpression,
-    'table' : noopExpression,
     'paragraph' : new RegExp(
         '^((' +
             '?:[^\\n]+\\n?(?!' +
@@ -266,7 +255,7 @@ Lexer.prototype.token = function (value, top, bq) {
         }
 
         /* Fenced code blocks, optionally with language */
-        if (cap = this.rules.fences.exec(value)) {
+        if (this.rules.fences && (cap = this.rules.fences.exec(value))) {
             value = value.substring(cap[0].length);
             tokens.push({
                 'type' : 'code',
@@ -289,7 +278,10 @@ Lexer.prototype.token = function (value, top, bq) {
         }
 
         /* A GFM table, without leading pipes. */
-        if (top && (cap = this.rules.looseTable.exec(value))) {
+        if (
+            this.rules.looseTable && top &&
+            (cap = this.rules.looseTable.exec(value))
+        ) {
             value = value.substring(cap[0].length);
 
             item = {
@@ -476,7 +468,7 @@ Lexer.prototype.token = function (value, top, bq) {
 
         /* Footnote definition. */
         if (
-            this.options.footnotes && !bq && top &&
+            this.rules.footnoteDefinition && !bq && top &&
             (cap = this.rules.footnoteDefinition.exec(value))
         ) {
             value = value.substring(cap[0].length);
@@ -492,7 +484,7 @@ Lexer.prototype.token = function (value, top, bq) {
         }
 
         /* Normal table (GFM). */
-        if (top && (cap = this.rules.table.exec(value))) {
+        if (this.rules.table && top && (cap = this.rules.table.exec(value))) {
             value = value.substring(cap[0].length);
 
             item = {
@@ -568,7 +560,6 @@ Lexer.prototype.token = function (value, top, bq) {
 var inline = {
     'escape' : /^\\([\\`*{}\[\]()#+\-.!_>])/,
     'autoLink' : /^<([^ >]+(@|:\/)[^ >]+)>/,
-    'URL' : noopExpression,
     'tag' : /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
     'link' : /^!?\[(inside)\]\(href\)/,
     'referenceLink' : /^!?\[(inside)\]\s*\[([^\]]*)\]/,
@@ -577,7 +568,6 @@ var inline = {
     'emphasis' : /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
     'code' : /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
     'break' : /^ {2,}\n(?!\s*$)/,
-    'deletion' : noopExpression,
     'text' : /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
     'inside' : /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
     'href' : /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/
@@ -726,7 +716,10 @@ InlineLexer.prototype.output = function (value) {
         }
 
         /* A plain URL, without angle/square brackets (GFM). */
-        if (!this.inLink && (cap = this.rules.URL.exec(value))) {
+        if (
+            this.rules.URL && !this.inLink &&
+            (cap = this.rules.URL.exec(value))
+        ) {
             value = value.substring(cap[0].length);
 
             tokens.push({
@@ -893,7 +886,10 @@ InlineLexer.prototype.output = function (value) {
         }
 
         /* Deleted text (GFM) */
-        if (cap = this.rules.deletion.exec(value)) {
+        if (
+            this.rules.deletion &&
+            (cap = this.rules.deletion.exec(value))
+        ) {
             value = value.substring(cap[0].length);
 
             tokens.push({
