@@ -1,5 +1,5 @@
 
-n.n.n / 2014-08-02
+0.0.3 / 2014-08-02
 ==================
 
  * Add documentation for settings

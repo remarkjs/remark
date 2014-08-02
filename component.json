@@ -1,6 +1,6 @@
 {
   "name": "mdast",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Speedy Markdown parser for multipurpose analysis",
   "keywords": [
     "markdown",
