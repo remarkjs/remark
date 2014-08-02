@@ -129,39 +129,7 @@
     },
     {
       "type": "html",
-      "value": "<hr>\n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr>\n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr>\n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr>   \n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr>  \n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr> \n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr class=\"foo\" id=\"bar\" />\n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr class=\"foo\" id=\"bar\"/>\n\n"
-    },
-    {
-      "type": "html",
-      "value": "<hr class=\"foo\" id=\"bar\" >\n\n"
+      "value": "<hr>\n\n<hr>\n\n<hr>\n\n<hr>   \n\n<hr>  \n\n<hr> \n\n<hr class=\"foo\" id=\"bar\" />\n\n<hr class=\"foo\" id=\"bar\"/>\n\n<hr class=\"foo\" id=\"bar\" >\n\n"
     }
   ],
   "footnotes": null

@@ -244,9 +244,10 @@ Lexer.prototype.lex = function (value) {
  */
 
 Lexer.prototype.token = function (value, top, bq) {
-    var next, loose, cap, bullet, b, item, space, i, l;
+    var tokens, next, prev, loose, cap, bullet, b, item, space, i, l;
 
     value = value.replace(/^ +$/gm, '');
+    tokens = this.tokens;
 
     /* eslint-disable no-cond-assign */
     while (value) {
@@ -259,7 +260,7 @@ Lexer.prototype.token = function (value, top, bq) {
         if (cap = this.rules.code.exec(value)) {
             value = value.substring(cap[0].length);
             cap = cap[0].replace(/^ {4}/gm, '');
-            this.tokens.push({
+            tokens.push({
                 'type' : 'code',
                 'value' : this.options.pedantic ?
                     cap :
@@ -271,7 +272,7 @@ Lexer.prototype.token = function (value, top, bq) {
         /* Fenced code blocks, optionally with language */
         if (cap = this.rules.fences.exec(value)) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'code',
                 'lang' : cap[2] || null,
                 'value' : cap[3]
@@ -283,7 +284,7 @@ Lexer.prototype.token = function (value, top, bq) {
          * */
         if (cap = this.rules.heading.exec(value)) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'heading',
                 'depth' : cap[1].length,
                 'children' : cap[2]
@@ -319,7 +320,7 @@ Lexer.prototype.token = function (value, top, bq) {
                 item.rows[i] = item.rows[i].split(/ *\| */);
             }
 
-            this.tokens.push(item);
+            tokens.push(item);
 
             continue;
         }
@@ -327,7 +328,7 @@ Lexer.prototype.token = function (value, top, bq) {
         /* Heading followed by a line of equals-symbols or dashes. */
         if (cap = this.rules.lineHeading.exec(value)) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'heading',
                 'depth' : cap[2] === '=' ? 1 : 2,
                 'children' : cap[1]
@@ -339,7 +340,7 @@ Lexer.prototype.token = function (value, top, bq) {
          * optionally with spaces in between. */
         if (cap = this.rules.horizontalRule.exec(value)) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'horizontalRule'
             });
             continue;
@@ -349,7 +350,7 @@ Lexer.prototype.token = function (value, top, bq) {
         if (cap = this.rules.blockquote.exec(value)) {
             value = value.substring(cap[0].length);
 
-            this.tokens.push({
+            tokens.push({
                 'type' : 'blockquote'
             });
 
@@ -359,7 +360,7 @@ Lexer.prototype.token = function (value, top, bq) {
              * exactly how markdown.pl works. */
             this.token(cap, top, true);
 
-            this.tokens.push({
+            tokens.push({
                 'type' : 'blockquoteEnd'
             });
 
@@ -372,7 +373,7 @@ Lexer.prototype.token = function (value, top, bq) {
             value = value.substring(cap[0].length);
             bullet = cap[2];
 
-            this.tokens.push({
+            tokens.push({
                 'type' : 'list',
                 'ordered' : bullet.length > 1
             });
@@ -427,7 +428,7 @@ Lexer.prototype.token = function (value, top, bq) {
                     }
                 }
 
-                this.tokens.push({
+                tokens.push({
                     'type' : loose ?
                         'looseItem' :
                         'listItem'
@@ -436,12 +437,12 @@ Lexer.prototype.token = function (value, top, bq) {
                 /* Tokenise the list item. */
                 this.token(item, false, bq);
 
-                this.tokens.push({
+                tokens.push({
                     'type' : 'listItemEnd'
                 });
             }
 
-            this.tokens.push({
+            tokens.push({
                 'type' : 'listEnd'
             });
 
@@ -451,17 +452,25 @@ Lexer.prototype.token = function (value, top, bq) {
         /* Embedded HTML */
         if (cap = this.rules.html.exec(value)) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
-                'type' : 'html',
-                'value' : cap[0]
-            });
+
+            prev = tokens[tokens.length - 1];
+
+            if (prev && prev.type === 'html') {
+                prev.value += cap[0];
+            } else {
+                tokens.push({
+                    'type' : 'html',
+                    'value' : cap[0]
+                });
+            }
+
             continue;
         }
 
         /* Link definition. */
         if ((!bq && top) && (cap = this.rules.linkDefinition.exec(value))) {
             value = value.substring(cap[0].length);
-            this.tokens.links[cap[1].toLowerCase()] = {
+            tokens.links[cap[1].toLowerCase()] = {
                 'type' : null,
                 'href' : cap[2],
                 'title' : cap[3]
@@ -476,12 +485,12 @@ Lexer.prototype.token = function (value, top, bq) {
         ) {
             value = value.substring(cap[0].length);
 
-            i = this.tokens.length;
+            i = tokens.length;
 
             this.token(cap[2].replace(/^ {4}/gm, ''), top, true);
 
-            this.tokens.footnotes[cap[1].toLowerCase()] =
-                this.tokens.splice(i);
+            tokens.footnotes[cap[1].toLowerCase()] =
+                tokens.splice(i);
 
             continue;
         }
@@ -518,7 +527,7 @@ Lexer.prototype.token = function (value, top, bq) {
                     .split(/ *\| */);
             }
 
-            this.tokens.push(item);
+            tokens.push(item);
 
             continue;
         }
@@ -526,7 +535,7 @@ Lexer.prototype.token = function (value, top, bq) {
         /* Paragraph. */
         if (top && (cap = this.rules.paragraph.exec(value))) {
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'paragraph',
                 'children' : cap[1].charAt(cap[1].length - 1) === '\n' ?
                     cap[1].slice(0, -1) :
@@ -539,7 +548,7 @@ Lexer.prototype.token = function (value, top, bq) {
         if (cap = this.rules.text.exec(value)) {
             /* Top-level should never reach here. */
             value = value.substring(cap[0].length);
-            this.tokens.push({
+            tokens.push({
                 'type' : 'text',
                 'value' : cap[0]
             });
@@ -553,7 +562,7 @@ Lexer.prototype.token = function (value, top, bq) {
     }
     /* eslint-enable no-cond-assign */
 
-    return this.tokens;
+    return tokens;
 };
 
 /**

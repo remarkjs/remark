@@ -12,11 +12,7 @@
     },
     {
       "type": "html",
-      "value": "<!-- This is a simple comment -->\n"
-    },
-    {
-      "type": "html",
-      "value": "<!--\n        This is another comment.\n-->\n"
+      "value": "<!-- This is a simple comment -->\n<!--\n        This is another comment.\n-->\n"
     },
     {
       "type": "paragraph",
