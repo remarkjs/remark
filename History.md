@@ -1,4 +1,14 @@
 
+n.n.n / 2014-08-02
+==================
+
+ * Add documentation for settings
+ * Fix option mechanism so different settings can work together
+ * Add functionality to merge HTML nodes
+ * Fix mailto removal in implicit links
+ * Add more verbose comments
+ * Fix typo in docs
+
 0.0.2 / 2014-07-31
 ==================
 
