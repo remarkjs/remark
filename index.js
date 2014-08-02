@@ -693,10 +693,13 @@ InlineLexer.prototype.output = function (value) {
 
             /* If the second group catched an at-symbol: */
             if (cap[2] === '@') {
-                text = cap[1].charAt(6) === ':' ?
-                    cap[1].substring(7) :
-                    cap[1];
-                href = 'mailto:' + text;
+                href = text = cap[1];
+
+                if (text.substr(0, 7) !== 'mailto:') {
+                    href = 'mailto:' + text;
+                } else {
+                    text = text.substr(7);
+                }
             } else {
                 href = text = cap[1];
             }
