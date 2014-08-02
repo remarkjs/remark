@@ -25,101 +25,335 @@ See [Nodes](#nodes) for information about he returned nodes.
 
 ### Markdown:
 ```js
-var marked = require('marked');
+var mdast = require('mdast');
 
-marked('Some *emphasis*,  **strongness**, and `code`.');
+mdast('Some *emphasis*,  **strongness**, and `code`.');
 ```
 
-Output:
+Yields:
 
 ```json
 {
-    "type" : "root",
-    "children" : [
+  "type" : "root",
+  "children" : [
+    {
+      "type": "paragraph",
+      "children": [
         {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "text",
-                    "value": "Some "
-                },
-                {
-                    "type": "emphasis",
-                    "children": [
-                        {
-                            "type": "text",
-                            "value": "emphasis"
-                        }
-                    ]
-                },
-                {
-                    "type": "text",
-                    "value": ",  "
-                },
-                {
-                    "type": "strong",
-                    "children": [
-                        {
-                            "type": "text",
-                            "value": "strongness"
-                        }
-                    ]
-                },
-                {
-                    "type": "text",
-                    "value": ", and "
-                },
-                {
-                    "type": "code",
-                    "value": "code"
-                },
-                {
-                    "type": "text",
-                    "value": "."
-                }
-            ]
+          "type": "text",
+          "value": "Some "
+        },
+        {
+          "type": "emphasis",
+          "children": [{
+            "type": "text",
+            "value": "emphasis"
+          }]
+        },
+        {
+          "type": "text",
+          "value": ",  "
+        },
+        {
+          "type": "strong",
+          "children": [{
+            "type": "text",
+            "value": "strongness"
+          }]
+        },
+        {
+          "type": "text",
+          "value": ", and "
+        },
+        {
+          "type": "code",
+          "value": "code"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
-    ]
+      ]
+    }
+  ]
 }
 ```
 
 ### Github Flavoured Markdown
+defaults to true.
 
 ```js
-marked('hello ~~hi~~ world', {
+mdast('hello ~~hi~~ world', {
     'gfm' : true
 });
 ```
 
-Output:
+Yields:
 
 ```json
 {
-    "type": "root",
-    "children": [
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
         {
-            "type": "paragraph",
-            "children": [
-                {
-                    "type": "text",
-                    "value": "hello "
-                },
-                {
-                    "type": "delete",
-                    "children": [
-                        {
-                            "type": "text",
-                            "value": "hi"
-                        }
-                    ]
-                },
-                {
-                    "type": "text",
-                    "value": " world"
-                }
-            ]
+          "type": "text",
+          "value": "hello "
+        },
+        {
+          "type": "delete",
+          "children": [{
+            "type": "text",
+            "value": "hi"
+          }]
+        },
+        {
+          "type": "text",
+          "value": " world"
         }
+      ]
+    }
+  ]
+}
+```
+
+### Tables
+defaults to true.
+
+```js
+var source =
+    'Header 1 | Header 2\n' +
+    ':------- | -------:\n' +
+    'Cell 1   | Cell 2\n' +
+    'Cell 3   | Cell 4\n';
+
+mdast(source, {
+    'tables' : true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "table",
+      "header": [
+        [{
+          "type": "text",
+          "value": "Header 1"
+        }],
+        [{
+          "type": "text",
+          "value": "Header 2"
+        }]
+      ],
+      "align": ["left", "right"],
+      "rows": [
+        [
+          [{
+            "type": "text",
+            "value": "Cell 1"
+          }],
+          [{
+            "type": "text",
+            "value": "Cell 2"
+          }]
+        ],
+        [
+          [{
+            "type": "text",
+            "value": "Cell 3"
+          }],
+          [{
+            "type": "text",
+            "value": "Cell 4"
+          }]
+        ]
+      ]
+    }
+  ]
+}
+```
+
+### Pedantic
+“Pedantic”, used by Gruber's Markdown, matches emphasis-marks inside words. It's mostly not what you want.
+
+Defaults to false.
+
+```js
+mdast('some_file_name', {
+    'pedantic' : true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "some"
+        },
+        {
+          "type": "emphasis",
+          "children": [{
+            "type": "text",
+            "value": "file"
+          }]
+        },
+        {
+          "type": "text",
+          "value": "name"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### Breaks
+“Breaks” prettifies line breaks inside a paragraph.
+
+Defaults to false.
+
+```js
+mdast('A\nparagraph', {
+    'gfm' : true,
+    'breaks' : true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A"
+        },
+        {
+          "type": "break"
+        },
+        {
+          "type": "text",
+          "value": "paragraph"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Whereas with breaks false (and GFM true), mdast would yield:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [{
+        "type": "text",
+        "value": "A\nparagraph"
+      }]
+    }
+  ]
+}
+```
+
+### Footnotes
+“Footnotes” enables use of inline- and reference-style footnotes.
+Its also possible to reference other footnotes inside footnotes.
+
+Defaults to false.
+
+```js
+var source =
+    'Something something[^or something?]\n' +
+    'And something else[^1]\n\n' +
+    '[^1]: This content here can contains paragraphs,\n' +
+    '   - and lists\n';
+
+mdast(source, {
+    'footnotes' : true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Something something"
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-1"
+        },
+        {
+          "type": "text",
+          "value": "\nAnd something else"
+        },
+        {
+          "type": "footnote",
+          "id": "1"
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "1": [
+      {
+        "type": "paragraph",
+        "children": [{
+          "type": "text",
+          "value": "This content here can contains paragraphs,"
+        }]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "children": [
+          {
+            "type": "listItem",
+            "children": [{
+              "type": "text",
+              "value": "and lists"
+            }]
+          }
+        ]
+      }
+    ],
+    "footnote-1": [
+      {
+        "type": "paragraph",
+        "children": [{
+          "type": "text",
+          "value": "or something?"
+        }]
+      }
     ]
+  }
 }
 ```
 
@@ -256,7 +490,7 @@ interface HorizontalRule <: Node {
 ```
 
 ### Break
-Github Flavoured Markdown is a lot smarter about what's a paragraph, and what isn't. Thus, it supports line breaks.
+If you want, you can use `"breaks": true`, and instead of newlines, break nodes will show up.
 
 ```idl
 interface Break <: Node {
@@ -312,9 +546,10 @@ interface Image <: Parent {
     alt: string | null;
     src: string;
 }
+```
 
 ### Footnote
-A footnote. These occur as inline nodes, but also inside the "footnote" object on [root](#root).
+A footnote. These occur as inline nodes.
 
 ```idl
 interface Footnote <: Node {

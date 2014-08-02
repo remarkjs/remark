@@ -881,7 +881,7 @@ InlineLexer.prototype.output = function (value) {
             continue;
         }
 
-        /* A break (only supported in GFM) */
+        /* A break. */
         if (cap = this.rules.break.exec(value)) {
             value = value.substring(cap[0].length);
 
