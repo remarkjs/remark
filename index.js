@@ -3,7 +3,10 @@
 /* istanbul ignore next: noop */
 function noop() {}
 
-var objectHasOwnProperty, noopExpression, footnoteDefinition, uid;
+var objectHasOwnProperty, noopExpression, footnoteDefinition, uid,
+    gfmCodeFences, gfmParagraph, gfmLooseTable, gfmTable, breaksBreak,
+    breaksText, gfmText, gfmDeletion, gfmURL, gfmEscape, pedanticEmphasis,
+    breaksGFMText, pedanticStrong;
 
 noopExpression = {
     'exec' : noop
@@ -142,38 +145,29 @@ block.paragraph = replace(block.paragraph)
     ();
 
 /**
- * Normal Block Grammar
+ * GFM + Tables Block Grammar
  */
 
-block.normal = merge({}, block);
+gfmLooseTable =
+    /^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/;
+
+gfmTable = /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/;
 
 /**
  * GFM Block Grammar
  */
 
-block.gfm = merge({}, block.normal, {
-    'fences' : /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/,
-    'paragraph' : /^/
-});
+gfmCodeFences = /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/;
 
-block.gfm.paragraph = replace(block.paragraph)
+gfmParagraph = replace(block.paragraph)
     (
         '(?!', '(?!' +
-        block.gfm.fences.source.replace('\\1', '\\2') +
+        gfmCodeFences.source.replace('\\1', '\\2') +
         '|' +
         block.list.source.replace('\\1', '\\3') +
         '|'
-    )();
-
-/**
- * GFM + Tables Block Grammar
- */
-
-block.tables = merge({}, block.gfm, {
-    'looseTable' :
-        /^ *(\S.*\|.*)\n *([-:]+ *\|[-| :]*)\n((?:.*\|.*(?:\n|$))*)\n*/,
-    'table' : /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/
-});
+    )
+    ();
 
 footnoteDefinition = /^ *\[\^([^\]]+)\]: *([^\n]+(\n+ +[^\n]+)*)\n*/;
 
@@ -194,13 +188,15 @@ function Lexer(options) {
     this.tokens.links = {};
     this.tokens.footnotes = null;
     this.options = options || mdastDefaults;
-    this.rules = block.normal;
+    this.rules = merge({}, block);
 
     if (this.options.gfm) {
+        this.rules.paragraph = gfmParagraph;
+        this.rules.fences = gfmCodeFences;
+
         if (this.options.tables) {
-            this.rules = block.tables;
-        } else {
-            this.rules = block.gfm;
+            this.rules.table = gfmTable;
+            this.rules.looseTable = gfmLooseTable;
         }
     }
 
@@ -582,11 +578,10 @@ var inline = {
     'code' : /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
     'break' : /^ {2,}\n(?!\s*$)/,
     'deletion' : noopExpression,
-    'text' : /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/
+    'text' : /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
+    'inside' : /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
+    'href' : /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/
 };
-
-inline.inside = /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;
-inline.href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
 
 inline.link = replace(inline.link)
     ('inside', inline.inside)
@@ -598,44 +593,37 @@ inline.referenceLink = replace(inline.referenceLink)
     ();
 
 /**
- * Normal Inline Grammar
- */
-
-inline.normal = merge({}, inline);
-
-/**
  * Pedantic Inline Grammar
  */
 
-inline.pedantic = merge({}, inline.normal, {
-    'strong' :
-        /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
-    'emphasis' :
-        /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
-});
+pedanticStrong =
+    /^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/;
+
+pedanticEmphasis =
+    /^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/;
 
 /**
  * GFM Inline Grammar
  */
 
-inline.gfm = merge({}, inline.normal, {
-    'escape' : replace(inline.escape)('])', '~|])')(),
-    'URL' : /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
-    'deletion' : /^~~(?=\S)([\s\S]*?\S)~~/,
-    'text' : replace(inline.text)
-        (']|', '~]|')
-        ('|', '|https?://|')
-        ()
-});
+gfmEscape = replace(inline.escape)('])', '~|])')();
+
+gfmURL = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
+
+gfmDeletion = /^~~(?=\S)([\s\S]*?\S)~~/;
+
+gfmText = replace(inline.text)
+    (']|', '~]|')
+    ('|', '|https?://|')
+    ();
 
 /**
  * GFM + Line Breaks Inline Grammar
  */
 
-inline.breaks = merge({}, inline.gfm, {
-    'break' : replace(inline.break)('{2,}', '*')(),
-    'text' : replace(inline.gfm.text)('{2,}', '*')()
-});
+breaksBreak = replace(inline.break)('{2,}', '*')();
+breaksGFMText = replace(gfmText)('{2,}', '*')();
+breaksText = replace(inline.text)('{2,}', '*')();
 
 /**
  * Inline Lexer & Compiler
@@ -645,16 +633,27 @@ function InlineLexer(links, footnotes, options) {
     this.options = options;
     this.links = links;
     this.footnotes = footnotes;
-    this.rules = inline.normal;
+    this.rules = merge({}, inline);
+
+    if (this.options.breaks) {
+        this.rules.break = breaksBreak;
+        this.rules.text = breaksText;
+    }
 
     if (this.options.gfm) {
+        this.rules.text = gfmText;
+        this.rules.deletion = gfmDeletion;
+        this.rules.URL = gfmURL;
+        this.rules.escape = gfmEscape;
+
         if (this.options.breaks) {
-            this.rules = inline.breaks;
-        } else {
-            this.rules = inline.gfm;
+            this.rules.text = breaksGFMText;
         }
-    } else if (this.options.pedantic) {
-        this.rules = inline.pedantic;
+    }
+
+    if (this.options.pedantic) {
+        this.rules.strong = pedanticStrong;
+        this.rules.emphasis = pedanticEmphasis;
     }
 }
 
@@ -670,7 +669,7 @@ InlineLexer.rules = inline;
 
 InlineLexer.prototype.output = function (value) {
     var tokens = [],
-        link, footnote, text, href, cap, prev, t;
+        link, footnote, text, href, cap, prev;
 
     /* eslint-disable no-cond-assign */
     while (value) {
