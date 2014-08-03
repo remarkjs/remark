@@ -567,6 +567,21 @@ interface Text <: Text {
 }
 ```
 
+## Benchmark
+
+Run the benchmark yourself:
+
+```sh
+$ npm run benchmark
+```
+
+On a MacBook Air, it parser about 5 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that's the [entire works of Shakespeare](http://vintagezen.com/zen/2013/4/1/plain-text), in a second.
+
+```
+             benchmarks * 56 fixtures (total: 47Kb markdown)
+    110 op/s » mdast -- this module
+```
+
 ## License
 
 This project was initially a fork of [marked](https://github.com/chjj/marked).

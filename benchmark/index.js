@@ -13,8 +13,6 @@ fixtures.forEach(function (fixture) {
     fixtureSize += fixture.size;
 });
 
-console.log(fixtureSize);
-
 fixtureSize = Math.round(fixtureSize / 1024);
 
 suite(
