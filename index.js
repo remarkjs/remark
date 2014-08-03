@@ -719,13 +719,33 @@ function InlineLexer(links, footnotes, options) {
 
 InlineLexer.rules = inline;
 
+InlineLexer.prototype.outputInline = function (tokens, type, value) {
+    tokens.push({
+        'type' : type,
+        'children' : this.output(value)
+    });
+};
+
+InlineLexer.prototype.outputRaw = function (tokens, type, value) {
+    var prev = tokens[tokens.length - 1];
+
+    if (prev && prev.type === type && 'value' in prev) {
+        prev.value += value;
+    } else {
+        tokens.push({
+            'type' : type,
+            'value' : value
+        });
+    }
+};
+
 /**
  * Lexing/Compiling
  */
 
 InlineLexer.prototype.output = function (value) {
     var tokens = [],
-        link, footnote, text, href, match, prev;
+        link, footnote, text, href, match;
 
     while (value) {
         /* Escape character (e.g., `\*\*not strong\*\*`). */
@@ -734,16 +754,7 @@ InlineLexer.prototype.output = function (value) {
         if (match) {
             value = value.substring(match[0].length);
 
-            prev = tokens[tokens.length - 1];
-
-            if (prev && prev.type === 'text') {
-                prev.value += match[1];
-            } else {
-                tokens.push({
-                    'type' : 'text',
-                    'value' : match[1]
-                });
-            }
+            this.outputRaw(tokens, 'text', match[1]);
 
             continue;
         }
@@ -810,12 +821,10 @@ InlineLexer.prototype.output = function (value) {
             } else if (this.inLink && /^<\/a>/i.test(match[0])) {
                 this.inLink = false;
             }
+
             value = value.substring(match[0].length);
 
-            tokens.push({
-                'type' : 'html',
-                'value' : match[0]
-            });
+            this.outputRaw(tokens, 'html', match[0]);
 
             continue;
         }
@@ -825,6 +834,7 @@ InlineLexer.prototype.output = function (value) {
 
         if (match) {
             value = value.substring(match[0].length);
+
             this.inLink = true;
 
             tokens.push(this.outputLink(match, match[2], {
@@ -839,11 +849,12 @@ InlineLexer.prototype.output = function (value) {
         /* A reference link (where its attributes are made available through
          * link definitions), or invalid links (only one set of brackets).
          * The latter also catches footnotes. */
-        if (
-            (match = this.rules.referenceLink.exec(value)) ||
-            (match = this.rules.invalidLink.exec(value))
-        ) {
+        match = this.rules.referenceLink.exec(value) ||
+            this.rules.invalidLink.exec(value);
+
+        if (match) {
             value = value.substring(match[0].length);
+
             text = (match[2] || match[1]).replace(/\s+/g, ' ');
 
             if (this.footnotes && text.charAt(0) === '^') {
@@ -854,6 +865,7 @@ InlineLexer.prototype.output = function (value) {
                         'type' : 'footnote',
                         'id' : text.substr(1)
                     });
+
                     continue;
                 }
             }
@@ -882,16 +894,7 @@ InlineLexer.prototype.output = function (value) {
                     continue;
                 }
 
-                prev = tokens[tokens.length - 1];
-
-                if (prev && prev.type === 'text') {
-                    prev.value += match[0].charAt(0);
-                } else {
-                    tokens.push({
-                        'type' : 'text',
-                        'value' : match[0].charAt(0)
-                    });
-                }
+                this.outputRaw(tokens, 'text', match[0].charAt(0));
 
                 value = match[0].substring(1) + value;
 
@@ -903,6 +906,7 @@ InlineLexer.prototype.output = function (value) {
             tokens.push(this.outputLink(match, link.href, link));
 
             this.inLink = false;
+
             continue;
         }
 
@@ -912,10 +916,7 @@ InlineLexer.prototype.output = function (value) {
         if (match) {
             value = value.substring(match[0].length);
 
-            tokens.push({
-                'type' : 'strong',
-                'children' : this.output(match[2] || match[1])
-            });
+            this.outputInline(tokens, 'strong', match[2] || match[1]);
 
             continue;
         }
@@ -926,10 +927,7 @@ InlineLexer.prototype.output = function (value) {
         if (match) {
             value = value.substring(match[0].length);
 
-            tokens.push({
-                'type' : 'emphasis',
-                'children' : this.output(match[2] || match[1])
-            });
+            this.outputInline(tokens, 'emphasis', match[2] || match[1]);
 
             continue;
         }
@@ -940,10 +938,7 @@ InlineLexer.prototype.output = function (value) {
         if (match) {
             value = value.substring(match[0].length);
 
-            tokens.push({
-                'type' : 'code',
-                'value' : match[2]
-            });
+            this.outputRaw(tokens, 'code', match[2]);
 
             continue;
         }
@@ -968,10 +963,7 @@ InlineLexer.prototype.output = function (value) {
         ) {
             value = value.substring(match[0].length);
 
-            tokens.push({
-                'type' : 'delete',
-                'children' : this.output(match[1])
-            });
+            this.outputInline(tokens, 'delete', match[1]);
 
             continue;
         }
@@ -983,16 +975,7 @@ InlineLexer.prototype.output = function (value) {
         if (match) {
             value = value.substring(match[0].length);
 
-            prev = tokens[tokens.length - 1];
-
-            if (prev && prev.type === 'text') {
-                prev.value += match[0];
-            } else {
-                tokens.push({
-                    'type' : 'text',
-                    'value' : match[0]
-                });
-            }
+            this.outputRaw(tokens, 'text', match[0]);
 
             continue;
         }
