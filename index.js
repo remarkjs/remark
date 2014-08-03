@@ -232,124 +232,150 @@ Lexer.prototype.lex = function (value) {
  */
 
 Lexer.prototype.token = function (value, top, bq) {
-    var tokens, next, prev, loose, cap, bullet, b, item, space, i, l;
+    var tokens, next, prev, loose, match, bullet, b, item, space, i, l;
 
     value = value.replace(/^ +$/gm, '');
     tokens = this.tokens;
 
-    /* eslint-disable no-cond-assign */
     while (value) {
         /* One or more newline characters. */
-        if (cap = this.rules.newline.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.newline.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
         }
 
+        match = this.rules.code.exec(value);
+
         /* Code blocks (with indent), without language. */
-        if (cap = this.rules.code.exec(value)) {
-            value = value.substring(cap[0].length);
-            cap = cap[0].replace(/^ {4}/gm, '');
+        if (match) {
+            value = value.substring(match[0].length);
+            match = match[0].replace(/^ {4}/gm, '');
+
             tokens.push({
                 'type' : 'code',
                 'value' : this.options.pedantic ?
-                    cap :
-                    cap.replace(/\n+$/, '')
+                    match :
+                    match.replace(/\n+$/, '')
             });
+
             continue;
         }
 
         /* Fenced code blocks, optionally with language */
-        if (this.rules.fences && (cap = this.rules.fences.exec(value))) {
-            value = value.substring(cap[0].length);
-            tokens.push({
-                'type' : 'code',
-                'lang' : cap[2] || null,
-                'value' : cap[3]
-            });
-            continue;
+        if (this.rules.fences) {
+            match = this.rules.fences.exec(value);
+
+            if (match) {
+                value = value.substring(match[0].length);
+
+                tokens.push({
+                    'type' : 'code',
+                    'lang' : match[2] || null,
+                    'value' : match[3]
+                });
+
+                continue;
+            }
         }
 
-        /* Heading suffixed (and optionally, affixed) by one to six hashes.
-         * */
-        if (cap = this.rules.heading.exec(value)) {
-            value = value.substring(cap[0].length);
+        /* Heading suffixed (optionally, affixed) by one to six hashes. */
+        match = this.rules.heading.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
+
             tokens.push({
                 'type' : 'heading',
-                'depth' : cap[1].length,
-                'children' : cap[2]
+                'depth' : match[1].length,
+                'children' : match[2]
             });
+
             continue;
         }
 
         /* A GFM table, without leading pipes. */
-        if (
-            this.rules.looseTable && top &&
-            (cap = this.rules.looseTable.exec(value))
-        ) {
-            value = value.substring(cap[0].length);
+        if (top && this.rules.looseTable) {
+            match = this.rules.looseTable.exec(value);
 
-            item = {
-                'type' : 'table',
-                'header' :
-                    cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
-                'align' : cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
-                'rows' : cap[3].replace(/\n$/, '').split('\n')
-            };
+            if (match) {
+                value = value.substring(match[0].length);
 
-            for (i = 0; i < item.align.length; i++) {
-                if (/^ *-+: *$/.test(item.align[i])) {
-                    item.align[i] = 'right';
-                } else if (/^ *:-+: *$/.test(item.align[i])) {
-                    item.align[i] = 'center';
-                } else if (/^ *:-+ *$/.test(item.align[i])) {
-                    item.align[i] = 'left';
-                } else {
-                    item.align[i] = null;
+                item = {
+                    'type' : 'table',
+                    'header' :
+                        match[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
+                    'align' :
+                        match[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+                    'rows' : match[3].replace(/\n$/, '').split('\n')
+                };
+
+                for (i = 0; i < item.align.length; i++) {
+                    if (/^ *-+: *$/.test(item.align[i])) {
+                        item.align[i] = 'right';
+                    } else if (/^ *:-+: *$/.test(item.align[i])) {
+                        item.align[i] = 'center';
+                    } else if (/^ *:-+ *$/.test(item.align[i])) {
+                        item.align[i] = 'left';
+                    } else {
+                        item.align[i] = null;
+                    }
                 }
+
+                for (i = 0; i < item.rows.length; i++) {
+                    item.rows[i] = item.rows[i].split(/ *\| */);
+                }
+
+                tokens.push(item);
+
+                continue;
             }
-
-            for (i = 0; i < item.rows.length; i++) {
-                item.rows[i] = item.rows[i].split(/ *\| */);
-            }
-
-            tokens.push(item);
-
-            continue;
         }
 
         /* Heading followed by a line of equals-symbols or dashes. */
-        if (cap = this.rules.lineHeading.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.lineHeading.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
+
             tokens.push({
                 'type' : 'heading',
-                'depth' : cap[2] === '=' ? 1 : 2,
-                'children' : cap[1]
+                'depth' : match[2] === '=' ? 1 : 2,
+                'children' : match[1]
             });
+
             continue;
         }
 
         /* Horizontal rule: three or more dashes, plusses, or asterisks,
          * optionally with spaces in between. */
-        if (cap = this.rules.horizontalRule.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.horizontalRule.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
+
             tokens.push({
                 'type' : 'horizontalRule'
             });
+
             continue;
         }
 
         /* Blockquote: block level nodes prefixed by greater-than signs. */
-        if (cap = this.rules.blockquote.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.blockquote.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'blockquote'
             });
 
-            cap = cap[0].replace(/^ *> ?/gm, '');
+            match = match[0].replace(/^ *> ?/gm, '');
 
             /* Pass `top` to keep the current 'toplevel' state. This is
              * exactly how markdown.pl works. */
-            this.token(cap, top, true);
+            this.token(match, top, true);
 
             tokens.push({
                 'type' : 'blockquoteEnd'
@@ -360,9 +386,11 @@ Lexer.prototype.token = function (value, top, bq) {
 
         /* List: mostly just multiple list items, dashes, plusses, asterisks,
          * or numbers. */
-        if (cap = this.rules.list.exec(value)) {
-            value = value.substring(cap[0].length);
-            bullet = cap[2];
+        match = this.rules.list.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
+            bullet = match[2];
 
             tokens.push({
                 'type' : 'list',
@@ -370,14 +398,14 @@ Lexer.prototype.token = function (value, top, bq) {
             });
 
             /* Get each top-level item. */
-            cap = cap[0].match(this.rules.item);
+            match = match[0].match(this.rules.item);
 
             next = false;
-            l = cap.length;
+            l = match.length;
             i = 0;
 
             for (; i < l; i++) {
-                item = cap[i];
+                item = match[i];
 
                 /* Remove the list item's bullet so it is seen as the
                  * next token. */
@@ -399,12 +427,12 @@ Lexer.prototype.token = function (value, top, bq) {
                 /* Determine whether the next list item belongs here.
                  * Backpedal if it does not belong in this list. */
                 if (!this.options.pedantic && i !== l - 1) {
-                    b = block.bullet.exec(cap[i + 1])[0];
+                    b = block.bullet.exec(match[i + 1])[0];
                     if (
                         bullet !== b &&
                         !(bullet.length > 1 && b.length > 1)
                     ) {
-                        value = cap.slice(i + 1).join('\n') + value;
+                        value = match.slice(i + 1).join('\n') + value;
                         i = l - 1;
                     }
                 }
@@ -441,17 +469,19 @@ Lexer.prototype.token = function (value, top, bq) {
         }
 
         /* Embedded HTML */
-        if (cap = this.rules.html.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.html.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
 
             prev = tokens[tokens.length - 1];
 
             if (prev && prev.type === 'html') {
-                prev.value += cap[0];
+                prev.value += match[0];
             } else {
                 tokens.push({
                     'type' : 'html',
-                    'value' : cap[0]
+                    'value' : match[0]
                 });
             }
 
@@ -459,90 +489,118 @@ Lexer.prototype.token = function (value, top, bq) {
         }
 
         /* Link definition. */
-        if ((!bq && top) && (cap = this.rules.linkDefinition.exec(value))) {
-            value = value.substring(cap[0].length);
-            tokens.links[cap[1].toLowerCase()] = {
-                'type' : null,
-                'href' : cap[2],
-                'title' : cap[3]
-            };
-            continue;
+        if (!bq && top) {
+            match = this.rules.linkDefinition.exec(value);
+
+            if (match) {
+                value = value.substring(match[0].length);
+
+                tokens.links[match[1].toLowerCase()] = {
+                    'type' : null,
+                    'href' : match[2],
+                    'title' : match[3]
+                };
+
+                continue;
+            }
         }
 
         /* Footnote definition. */
-        if (
-            this.rules.footnoteDefinition && !bq && top &&
-            (cap = this.rules.footnoteDefinition.exec(value))
-        ) {
-            value = value.substring(cap[0].length);
+        if (!bq && top) {
+            if (this.rules.footnoteDefinition) {
+                match = this.rules.footnoteDefinition.exec(value);
 
-            i = tokens.length;
+                if (match) {
+                    value = value.substring(match[0].length);
 
-            this.token(cap[2].replace(/^ {4}/gm, ''), top, true);
+                    i = tokens.length;
 
-            tokens.footnotes[cap[1].toLowerCase()] =
-                tokens.splice(i);
+                    this.token(match[2].replace(/^ {4}/gm, ''), top, true);
 
-            continue;
+                    tokens.footnotes[match[1].toLowerCase()] =
+                        tokens.splice(i);
+
+                    continue;
+                }
+            }
         }
 
         /* Normal table (GFM). */
-        if (this.rules.table && top && (cap = this.rules.table.exec(value))) {
-            value = value.substring(cap[0].length);
+        if (this.rules.table && top) {
+            match = this.rules.table.exec(value);
 
-            item = {
-                'type' : 'table',
-                'header' :
-                    cap[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
-                'align' :
-                    cap[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
-                'rows' :
-                    cap[3].replace(/(?: *\| *)?\n$/, '').split('\n')
-            };
+            if (match) {
+                value = value.substring(match[0].length);
 
-            for (i = 0; i < item.align.length; i++) {
-                if (/^ *-+: *$/.test(item.align[i])) {
-                    item.align[i] = 'right';
-                } else if (/^ *:-+: *$/.test(item.align[i])) {
-                    item.align[i] = 'center';
-                } else if (/^ *:-+ *$/.test(item.align[i])) {
-                    item.align[i] = 'left';
-                } else {
-                    item.align[i] = null;
+                item = {
+                    'type' : 'table',
+                    'header' :
+                        match[1].replace(/^ *| *\| *$/g, '').split(/ *\| */),
+                    'align' :
+                        match[2].replace(/^ *|\| *$/g, '').split(/ *\| */),
+                    'rows' :
+                        match[3].replace(/(?: *\| *)?\n$/, '').split('\n')
+                };
+
+                for (i = 0; i < item.align.length; i++) {
+                    if (/^ *-+: *$/.test(item.align[i])) {
+                        item.align[i] = 'right';
+                    } else if (/^ *:-+: *$/.test(item.align[i])) {
+                        item.align[i] = 'center';
+                    } else if (/^ *:-+ *$/.test(item.align[i])) {
+                        item.align[i] = 'left';
+                    } else {
+                        item.align[i] = null;
+                    }
                 }
+
+                for (i = 0; i < item.rows.length; i++) {
+                    item.rows[i] = item.rows[i]
+                        .replace(/^ *\| *| *\| *$/g, '')
+                        .split(/ *\| */);
+                }
+
+                tokens.push(item);
+
+                continue;
             }
-
-            for (i = 0; i < item.rows.length; i++) {
-                item.rows[i] = item.rows[i]
-                    .replace(/^ *\| *| *\| *$/g, '')
-                    .split(/ *\| */);
-            }
-
-            tokens.push(item);
-
-            continue;
         }
 
         /* Paragraph. */
-        if (top && (cap = this.rules.paragraph.exec(value))) {
-            value = value.substring(cap[0].length);
-            tokens.push({
-                'type' : 'paragraph',
-                'children' : cap[1].charAt(cap[1].length - 1) === '\n' ?
-                    cap[1].slice(0, -1) :
-                    cap[1]
-            });
-            continue;
+        if (top) {
+            match = this.rules.paragraph.exec(value);
+
+            /* istanbul ignore else: Shouldnt reach else. */
+            if (match) {
+                value = value.substring(match[0].length);
+
+                if (match[1].charAt(match[1].length - 1) === '\n') {
+                    match = match[1].slice(0, -1);
+                } else {
+                    match = match[1];
+                }
+
+                tokens.push({
+                    'type' : 'paragraph',
+                    'children' : match
+                });
+
+                continue;
+            }
         }
 
         /* Text */
-        if (cap = this.rules.text.exec(value)) {
+        match = this.rules.text.exec(value);
+
+        if (match) {
             /* Top-level should never reach here. */
-            value = value.substring(cap[0].length);
+            value = value.substring(match[0].length);
+
             tokens.push({
                 'type' : 'text',
-                'value' : cap[0]
+                'value' : match[0]
             });
+
             continue;
         }
 
@@ -551,7 +609,6 @@ Lexer.prototype.token = function (value, top, bq) {
             throw new Error('Infinite loop on byte: ' + value.charCodeAt(0));
         }
     }
-    /* eslint-enable no-cond-assign */
 
     return tokens;
 };
@@ -668,24 +725,23 @@ InlineLexer.rules = inline;
 
 InlineLexer.prototype.output = function (value) {
     var tokens = [],
-        link, footnote, text, href, cap, prev;
+        link, footnote, text, href, match, prev;
 
-    /* eslint-disable no-cond-assign */
     while (value) {
         /* Escape character (e.g., `\*\*not strong\*\*`). */
-        cap = this.rules.escape.exec(value);
+        match = this.rules.escape.exec(value);
 
-        if (cap) {
-            value = value.substring(cap[0].length);
+        if (match) {
+            value = value.substring(match[0].length);
 
             prev = tokens[tokens.length - 1];
 
             if (prev && prev.type === 'text') {
-                prev.value += cap[1];
+                prev.value += match[1];
             } else {
                 tokens.push({
                     'type' : 'text',
-                    'value' : cap[1]
+                    'value' : match[1]
                 });
             }
 
@@ -693,14 +749,14 @@ InlineLexer.prototype.output = function (value) {
         }
 
         /* A link between pointy brackets. (e.g., `<some@thing.com>`). */
-        cap = this.rules.autoLink.exec(value);
+        match = this.rules.autoLink.exec(value);
 
-        if (cap) {
-            value = value.substring(cap[0].length);
+        if (match) {
+            value = value.substring(match[0].length);
 
             /* If the second group catched an at-symbol: */
-            if (cap[2] === '@') {
-                href = text = cap[1];
+            if (match[2] === '@') {
+                href = text = match[1];
 
                 if (text.substr(0, 7) !== 'mailto:') {
                     href = 'mailto:' + text;
@@ -708,7 +764,7 @@ InlineLexer.prototype.output = function (value) {
                     text = text.substr(7);
                 }
             } else {
-                href = text = cap[1];
+                href = text = match[1];
             }
 
             tokens.push({
@@ -725,50 +781,55 @@ InlineLexer.prototype.output = function (value) {
         }
 
         /* A plain URL, without angle/square brackets (GFM). */
-        if (
-            this.rules.URL && !this.inLink &&
-            (cap = this.rules.URL.exec(value))
-        ) {
-            value = value.substring(cap[0].length);
+        if (this.rules.URL && !this.inLink) {
+            match = this.rules.URL.exec(value);
 
-            tokens.push({
-                'type' : 'link',
-                'href' : cap[1],
-                'children' : [{
-                    'type' : 'text',
-                    'value' : cap[1]
-                }],
-                'title' : null
-            });
+            if (match) {
+                value = value.substring(match[0].length);
 
-            continue;
+                tokens.push({
+                    'type' : 'link',
+                    'href' : match[1],
+                    'children' : [{
+                        'type' : 'text',
+                        'value' : match[1]
+                    }],
+                    'title' : null
+                });
+
+                continue;
+            }
         }
 
         /* HTML Tag */
-        if (cap = this.rules.tag.exec(value)) {
-            if (!this.inLink && /^<a /i.test(cap[0])) {
+        match = this.rules.tag.exec(value);
+
+        if (match) {
+            if (!this.inLink && /^<a /i.test(match[0])) {
                 this.inLink = true;
-            } else if (this.inLink && /^<\/a>/i.test(cap[0])) {
+            } else if (this.inLink && /^<\/a>/i.test(match[0])) {
                 this.inLink = false;
             }
-            value = value.substring(cap[0].length);
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'html',
-                'value' : cap[0]
+                'value' : match[0]
             });
 
             continue;
         }
 
         /* A proper Markdown link. */
-        if (cap = this.rules.link.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.link.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
             this.inLink = true;
 
-            tokens.push(this.outputLink(cap, cap[2], {
+            tokens.push(this.outputLink(match, match[2], {
                 'type' : null,
-                'title' : cap[3]
+                'title' : match[3]
             }));
 
             this.inLink = false;
@@ -779,11 +840,11 @@ InlineLexer.prototype.output = function (value) {
          * link definitions), or invalid links (only one set of brackets).
          * The latter also catches footnotes. */
         if (
-            (cap = this.rules.referenceLink.exec(value)) ||
-            (cap = this.rules.invalidLink.exec(value))
+            (match = this.rules.referenceLink.exec(value)) ||
+            (match = this.rules.invalidLink.exec(value))
         ) {
-            value = value.substring(cap[0].length);
-            text = (cap[2] || cap[1]).replace(/\s+/g, ' ');
+            value = value.substring(match[0].length);
+            text = (match[2] || match[1]).replace(/\s+/g, ' ');
 
             if (this.footnotes && text.charAt(0) === '^') {
                 footnote = this.footnotes[text.substr(1)];
@@ -824,68 +885,74 @@ InlineLexer.prototype.output = function (value) {
                 prev = tokens[tokens.length - 1];
 
                 if (prev && prev.type === 'text') {
-                    prev.value += cap[0].charAt(0);
+                    prev.value += match[0].charAt(0);
                 } else {
                     tokens.push({
                         'type' : 'text',
-                        'value' : cap[0].charAt(0)
+                        'value' : match[0].charAt(0)
                     });
                 }
 
-                value = cap[0].substring(1) + value;
+                value = match[0].substring(1) + value;
 
                 continue;
             }
 
             this.inLink = true;
 
-            tokens.push(this.outputLink(cap, link.href, link));
+            tokens.push(this.outputLink(match, link.href, link));
 
             this.inLink = false;
             continue;
         }
 
         /* Strong text. */
-        cap = this.rules.strong.exec(value);
+        match = this.rules.strong.exec(value);
 
-        if (cap) {
-            value = value.substring(cap[0].length);
+        if (match) {
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'strong',
-                'children' : this.output(cap[2] || cap[1])
+                'children' : this.output(match[2] || match[1])
             });
 
             continue;
         }
 
         /* Emphasised text. */
-        if (cap = this.rules.emphasis.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.emphasis.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'emphasis',
-                'children' : this.output(cap[2] || cap[1])
+                'children' : this.output(match[2] || match[1])
             });
 
             continue;
         }
 
         /* Inline code. */
-        if (cap = this.rules.code.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.code.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'code',
-                'value' : cap[2]
+                'value' : match[2]
             });
 
             continue;
         }
 
         /* A break. */
-        if (cap = this.rules.break.exec(value)) {
-            value = value.substring(cap[0].length);
+        match = this.rules.break.exec(value);
+
+        if (match) {
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'break'
@@ -897,31 +964,33 @@ InlineLexer.prototype.output = function (value) {
         /* Deleted text (GFM) */
         if (
             this.rules.deletion &&
-            (cap = this.rules.deletion.exec(value))
+            (match = this.rules.deletion.exec(value))
         ) {
-            value = value.substring(cap[0].length);
+            value = value.substring(match[0].length);
 
             tokens.push({
                 'type' : 'delete',
-                'children' : this.output(cap[1])
+                'children' : this.output(match[1])
             });
 
             continue;
         }
 
         /* Plain text. */
+        match = this.rules.text.exec(value);
+
         /* istanbul ignore else: Shouldn't reach else. */
-        if (cap = this.rules.text.exec(value)) {
-            value = value.substring(cap[0].length);
+        if (match) {
+            value = value.substring(match[0].length);
 
             prev = tokens[tokens.length - 1];
 
             if (prev && prev.type === 'text') {
-                prev.value += cap[0];
+                prev.value += match[0];
             } else {
                 tokens.push({
                     'type' : 'text',
-                    'value' : cap[0]
+                    'value' : match[0]
                 });
             }
 
@@ -931,7 +1000,6 @@ InlineLexer.prototype.output = function (value) {
         /* istanbul ignore next: Shouldn't reach else. */
         throw new Error('Infinite loop on byte: ' + value.charCodeAt(0));
     }
-    /* eslint-enable no-cond-assign */
 
     return tokens;
 };
@@ -940,19 +1008,19 @@ InlineLexer.prototype.output = function (value) {
  * Compile Link
  */
 
-InlineLexer.prototype.outputLink = function (cap, href, link) {
+InlineLexer.prototype.outputLink = function (match, href, link) {
     if (!link.title) {
         link.title = null;
     }
 
-    if (cap[0].charAt(0) !== '!') {
+    if (match[0].charAt(0) !== '!') {
         link.type = 'link';
         link.href = href;
-        link.children = this.output(cap[1]);
+        link.children = this.output(match[1]);
     } else {
         link.type = 'image';
         link.src = href;
-        link.alt = cap[1] || null;
+        link.alt = match[1] || null;
     }
 
     return link;
@@ -982,7 +1050,10 @@ Parser.parse = function (value, options) {
 
     if (footnotes) {
         for (footnote in footnotes) {
-            footnotes[footnote] = parser.parse(footnotes[footnote]);
+            /* istanbul ignore else: hasownproperty */
+            if (objectHasOwnProperty.call(footnotes, footnote)) {
+                footnotes[footnote] = parser.parse(footnotes[footnote]);
+            }
         }
     }
 
