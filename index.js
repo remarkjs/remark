@@ -5,23 +5,8 @@ var objectHasOwnProperty, footnoteDefinition, uid,
     breaksText, gfmText, gfmDeletion, gfmURL, gfmEscape, pedanticEmphasis,
     breaksGFMText, pedanticStrong;
 
-function replace(regex, opt) {
-    regex = regex.source;
-    opt = opt || '';
-
-    function self(name, val) {
-        if (!name) {
-            return new RegExp(regex, opt);
-        }
-
-        val = val.source || val;
-        val = val.replace(/(^|[^\[])\^/g, '$1');
-        regex = regex.replace(name, val);
-
-        return self;
-    }
-
-    return self;
+function cleanExpression(expression) {
+    return (expression.source || expression).replace(/(^|[^\[])\^/g, '$1');
 }
 
 objectHasOwnProperty = Object.prototype.hasOwnProperty;
@@ -61,77 +46,102 @@ function getUID(value) {
 
 var block = {
     'newline' : /^\n+/,
+    'bullet' : /(?:[*+-]|\d+\.)/,
     'code' : /^( {4}[^\n]+\n*)+/,
     'horizontalRule' : /^( *[-*_]){3,} *(?:\n+|$)/,
     'heading' : /^ *(#{1,6}) *([^\n]+?) *#* *(?:\n+|$)/,
     'lineHeading' : /^([^\n]+)\n *(=|-){2,} *(?:\n+|$)/,
-    'blockquote' : /^( *>[^\n]+(\n(?!linkDefinition)[^\n]+)*\n*)+/,
-    'list' : new RegExp(
-        '^( *)(bullet) [\\s\\S]+?(?:' +
-            'horizontalRule|' +
-            'linkDefinition|' +
-            '\\n{2,}(?! )(?!\\1bullet )\\n*|' +
-            '\\s*$' +
-        ')'
-    ),
-    'html' : new RegExp(
-        '^ *(?:comment *(?:\\n|\\s*$)|' +
-        'closed *(?:\\n{2,}|\\s*$)|' +
-        'closing *(?:\\n{2,}|\\s*$))'
-    ),
     'linkDefinition' :
         /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?:\n+|$)/,
-    'paragraph' : new RegExp(
-        '^((' +
-            '?:[^\\n]+\\n?(?!' +
-                'horizontalRule|heading|lineHeading|blockquote|' +
-                'tag|linkDefinition' +
-            ')' +
-        ')+)\\n*'
-    ),
     'text' : /^[^\n]+/
 };
 
-block.bullet = /(?:[*+-]|\d+\.)/;
-block.item = /^( *)(bullet) [^\n]*(?:\n(?!\1bullet )[^\n]*)*/;
-block.item = replace(block.item, 'gm')
-    (/bullet/g, block.bullet)
-    ();
+block.item = new RegExp(
+    '^( *)(' +
+        cleanExpression(block.bullet) +
+    ') [^\\n]*(?:\\n(?!\\1' +
+        cleanExpression(block.bullet) +
+    ' )[^\\n]*)*',
+'gm');
 
-block.list = replace(block.list)
-    (/bullet/g, block.bullet)
-    ('horizontalRule', '\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))')
-    ('linkDefinition', '\\n+(?=' + block.linkDefinition.source + ')')
-    ();
+block.list = new RegExp(
+   '^( *)(' +
+       cleanExpression(block.bullet) +
+   ') [\\s\\S]+?(?:' +
 
-block.blockquote = replace(block.blockquote)
-    ('linkDefinition', block.linkDefinition)
-    ();
+       // Modified Horizontal rule:
+       '\\n+(?=\\1?(?:[-*_] *){3,}(?:\\n+|$))' +
+       '|' +
 
-block.tag = '(?!' +
+       // Modified Link Definition:
+       '\\n+(?=' + cleanExpression(block.linkDefinition) + ')' +
+
+       '|' +
+       '\\n{2,}(?! )(?!\\1' +
+           cleanExpression(block.bullet) +
+       ' )\\n*|' +
+       '\\s*$' +
+   ')'
+);
+
+block.blockquote = new RegExp(
+    '^( *>[^\\n]+(\\n(?!' +
+
+    cleanExpression(block.linkDefinition) +
+
+    ')[^\\n]+)*\\n*)+'
+);
+
+block.tag = (
+    '(?!' +
         '(?:' +
             'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|' +
             'var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|' +
             'span|br|wbr|ins|del|img' +
         ')\\b' +
     ')' +
-    '\\w+(?!:/|[^\\w\\s@]*@)\\b';
+    '\\w+(?!:' +
+        '/|[^\\w\\s@]*@' +
+    ')\\b'
+);
 
-block.html = replace(block.html)
-    ('comment', /<!--[\s\S]*?-->/)
-    ('closed', /<(tag)[\s\S]+?<\/\1>/)
-    ('closing', /<tag(?:"[^"]*"|'[^']*'|[^'">])*?>/)
-    (/tag/g, block.tag)
-    ();
+block.html = new RegExp(
+    '^ *(?:' +
 
-block.paragraph = replace(block.paragraph)
-    ('horizontalRule', block.horizontalRule)
-    ('heading', block.heading)
-    ('lineHeading', block.lineHeading)
-    ('blockquote', block.blockquote)
-    ('tag', '<' + block.tag)
-    ('linkDefinition', block.linkDefinition)
-    ();
+        // HTML comment.
+        cleanExpression('<!--[\\s\\S]*?-->') +
+        ' *(?:\\n|\\s*$)|' +
+
+        // Closed tag.
+        cleanExpression('<(' + block.tag + ')[\\s\\S]+?<\\/\\1>') +
+        ' *(?:\\n{2,}|\\s*$)|' +
+
+        // Closing tag.
+        cleanExpression(
+            '<' + block.tag + '(?:"[^"]*"|\'[^\']*\'|[^\'">])*?>'
+        ) +
+        ' *' +
+        '(?:\\n{2,}|\\s*$)' +
+    ')'
+);
+
+block.paragraph = new RegExp(
+    '^((' +
+        '?:[^\\n]+\\n?(?!' +
+            cleanExpression(block.horizontalRule) +
+            '|' +
+            cleanExpression(block.heading) +
+            '|' +
+            cleanExpression(block.lineHeading) +
+            '|' +
+            cleanExpression(block.blockquote) +
+            '|' +
+            cleanExpression('<' + block.tag) +
+            '|' +
+            cleanExpression(block.linkDefinition) +
+        ')' +
+    ')+)\\n*'
+);
 
 /**
  * GFM + Tables Block Grammar
@@ -148,15 +158,14 @@ gfmTable = /^ *\|(.+)\n *\|( *[-:]+[-| :]*)\n((?: *\|.*(?:\n|$))*)\n*/;
 
 gfmCodeFences = /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/;
 
-gfmParagraph = replace(block.paragraph)
-    (
-        '(?!', '(?!' +
-        gfmCodeFences.source.replace('\\1', '\\2') +
+gfmParagraph = new RegExp(
+    block.paragraph.source.replace('(?!', '(?!' +
+        cleanExpression(gfmCodeFences).replace('\\1', '\\2') +
         '|' +
-        block.list.source.replace('\\1', '\\3') +
+        cleanExpression(block.list).replace('\\1', '\\3') +
         '|'
     )
-    ();
+);
 
 footnoteDefinition = /^ *\[\^([^\]]+)\]: *([^\n]+(\n+ +[^\n]+)*)\n*/;
 
@@ -561,8 +570,6 @@ var inline = {
     'escape' : /^\\([\\`*{}\[\]()#+\-.!_>])/,
     'autoLink' : /^<([^ >]+(@|:\/)[^ >]+)>/,
     'tag' : /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
-    'link' : /^!?\[(inside)\]\(href\)/,
-    'referenceLink' : /^!?\[(inside)\]\s*\[([^\]]*)\]/,
     'invalidLink' : /^!?\[((?:\[[^\]]*\]|[^\[\]])*)\]/,
     'strong' : /^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
     'emphasis' : /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
@@ -573,14 +580,19 @@ var inline = {
     'href' : /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/
 };
 
-inline.link = replace(inline.link)
-    ('inside', inline.inside)
-    ('href', inline.href)
-    ();
+inline.link = new RegExp(
+    '^!?\\[(' +
+        cleanExpression(inline.inside) +
+    ')\\]\\(' +
+        cleanExpression(inline.href) +
+    '\\)'
+);
 
-inline.referenceLink = replace(inline.referenceLink)
-    ('inside', inline.inside)
-    ();
+inline.referenceLink = new RegExp(
+    '^!?\\[(' +
+        cleanExpression(inline.inside) +
+    ')\\]\\s*\\[([^\\]]*)\\]'
+);
 
 /**
  * Pedantic Inline Grammar
@@ -596,24 +608,27 @@ pedanticEmphasis =
  * GFM Inline Grammar
  */
 
-gfmEscape = replace(inline.escape)('])', '~|])')();
+gfmEscape = new RegExp(
+    inline.escape.source.replace('])', '~|])')
+);
 
 gfmURL = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
 
 gfmDeletion = /^~~(?=\S)([\s\S]*?\S)~~/;
 
-gfmText = replace(inline.text)
-    (']|', '~]|')
-    ('|', '|https?://|')
-    ();
+gfmText = new RegExp(
+    inline.text.source
+        .replace(']|', '~]|')
+        .replace('|', '|https?://|')
+);
 
 /**
  * GFM + Line Breaks Inline Grammar
  */
 
-breaksBreak = replace(inline.break)('{2,}', '*')();
-breaksGFMText = replace(gfmText)('{2,}', '*')();
-breaksText = replace(inline.text)('{2,}', '*')();
+breaksBreak = new RegExp(inline.break.source.replace('{2,}', '*'));
+breaksText = new RegExp(inline.text.source.replace('{2,}', '*'));
+breaksGFMText = new RegExp(gfmText.source.replace('{2,}', '*'));
 
 /**
  * Inline Lexer & Compiler
