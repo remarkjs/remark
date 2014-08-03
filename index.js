@@ -11,23 +11,17 @@ function cleanExpression(expression) {
 
 objectHasOwnProperty = Object.prototype.hasOwnProperty;
 
-function merge(context) {
-    var iterator = 0,
-        length = arguments.length,
-        target, key;
+function copy(target, context) {
+    var key;
 
-    while (++iterator < length) {
-        target = arguments[iterator];
-
-        for (key in target) {
-            /* istanbul ignore else: hasownproperty */
-            if (objectHasOwnProperty.call(target, key)) {
-                context[key] = target[key];
-            }
+    for (key in context) {
+        /* istanbul ignore else: hasownproperty */
+        if (objectHasOwnProperty.call(context, key)) {
+            target[key] = context[key];
         }
     }
 
-    return context;
+    return target;
 }
 
 uid = 0;
@@ -185,8 +179,8 @@ function Lexer(options) {
     this.tokens = [];
     this.tokens.links = {};
     this.tokens.footnotes = null;
-    this.options = options || mdastDefaults;
-    this.rules = merge({}, block);
+    this.options = options;
+    this.rules = copy({}, block);
 
     if (this.options.gfm) {
         this.rules.paragraph = gfmParagraph;
@@ -638,7 +632,7 @@ function InlineLexer(links, footnotes, options) {
     this.options = options;
     this.links = links;
     this.footnotes = footnotes;
-    this.rules = merge({}, inline);
+    this.rules = copy({}, inline);
 
     if (this.options.breaks) {
         this.rules.break = breaksBreak;
@@ -971,7 +965,7 @@ InlineLexer.prototype.outputLink = function (cap, href, link) {
 function Parser(options) {
     this.tokens = [];
     this.token = null;
-    this.options = options || mdastDefaults;
+    this.options = options;
 }
 
 /**
@@ -1139,13 +1133,15 @@ Parser.prototype.tok = function () {
  */
 
 function mdast(value, options) {
+    var settings = copy({}, mdastDefaults);
+
     if (options) {
-        options = merge({}, mdastDefaults, options);
+        copy(settings, options);
     }
 
-    var tokens = Lexer.lex(value, options);
+    var tokens = Lexer.lex(value, settings);
 
-    return Parser.parse(tokens, options);
+    return Parser.parse(tokens, settings);
 }
 
 /**
