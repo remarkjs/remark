@@ -13,7 +13,9 @@
   ],
   "repository": "wooorm/mdast",
   "scripts": [
-    "index.js"
+    "index.js",
+    "lib/parse/index.js",
+    "lib/stringify/index.js"
   ],
   "license": "MIT"
 }

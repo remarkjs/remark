@@ -6,15 +6,23 @@ mdast = require('..');
 assert = require('assert');
 fixtures = require('./fixtures.js');
 
-describe('mdast()', function () {
-    it('should be of type `function`', function () {
-        assert(typeof mdast === 'function');
+describe('mdast', function () {
+    it('should be of type `object`', function () {
+        assert(typeof mdast === 'object');
     });
 });
 
-describe('msast.Parser()', function () {});
+describe('mdast.parse()', function () {
+    it('should be of type `function`', function () {
+        assert(typeof mdast.parse === 'function');
+    });
+});
 
-describe('msast.Lexer()', function () {});
+describe('mdast.stringify()', function () {
+    it('should be of type `function`', function () {
+        assert(typeof mdast.stringify === 'function');
+    });
+});
 
 validateTokens = function (children) {
     children.forEach(validateToken);
@@ -182,8 +190,8 @@ validateToken = function (context) {
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
         it('should work on ' + fixture.name, function () {
-            var root = mdast(fixture.input, fixture.options),
-                baseline = fixture.output;
+            var root = mdast.parse(fixture.input, fixture.options),
+                baseline = fixture.tree;
 
             validateToken(root);
             baseline = JSON.parse(baseline);

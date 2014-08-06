@@ -27,7 +27,7 @@ See [Nodes](#nodes) for information about he returned nodes.
 ```js
 var mdast = require('mdast');
 
-mdast('Some *emphasis*,  **strongness**, and `code`.');
+mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
 ```
 
 Yields:
@@ -83,7 +83,7 @@ Yields:
 defaults to true.
 
 ```js
-mdast('hello ~~hi~~ world', {
+mdast.parse('hello ~~hi~~ world', {
     'gfm' : true
 });
 ```
@@ -128,7 +128,7 @@ var source =
     'Cell 1   | Cell 2\n' +
     'Cell 3   | Cell 4\n';
 
-mdast(source, {
+mdast.parse(source, {
     'tables' : true
 });
 ```
@@ -185,7 +185,7 @@ Yields:
 Defaults to false.
 
 ```js
-mdast('some_file_name', {
+mdast.parse('some_file_name', {
     'pedantic' : true
 });
 ```
@@ -226,7 +226,7 @@ Yields:
 Defaults to false.
 
 ```js
-mdast('A\nparagraph', {
+mdast.parse('A\nparagraph', {
     'gfm' : true,
     'breaks' : true
 });
@@ -258,7 +258,7 @@ Yields:
 }
 ```
 
-Whereas with breaks false (and GFM true), mdast would yield:
+Whereas with breaks false (and GFM true), mdast.parse would yield:
 
 ```json
 {
@@ -288,7 +288,7 @@ var source =
     '[^1]: This content here can contains paragraphs,\n' +
     '   - and lists\n';
 
-mdast(source, {
+mdast.parse(source, {
     'footnotes' : true
 });
 ```
@@ -360,7 +360,7 @@ Yields:
 ## Nodes
 
 ### Node
-mdast returns node objects---just plain vanilla JS objects. Every node implements the following "Node" interface.
+mdast.parse returns node objects---just plain vanilla JS objects. Every node implements the following "Node" interface.
 
 ```idl
 interface Node {
@@ -579,7 +579,7 @@ On a MacBook Air, it parser about 5 megabytes of markdown per second, depending 
 
 ```
              benchmarks * 56 fixtures (total: 47Kb markdown)
-    110 op/s » mdast -- this module
+    110 op/s » mdast.parse -- this module
 ```
 
 ## License

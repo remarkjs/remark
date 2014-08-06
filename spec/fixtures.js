@@ -22,7 +22,7 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
     .filter(function (filepath) {
         return filepath.indexOf('.') !== 0;
     }).map(function (filepath) {
-        var options, filename, input, output, flag, index, size;
+        var options, filename, input, tree, flag, index, size;
 
         filename = filepath.split('.');
         filename.pop();
@@ -43,15 +43,15 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
             path.join(__dirname, 'input', filepath), 'utf-8'
         );
 
-        output = fs.readFileSync(
-            path.join(__dirname, 'output', filename + '.json'), 'utf-8'
+        tree = fs.readFileSync(
+            path.join(__dirname, 'tree', filename + '.json'), 'utf-8'
         );
 
         size = fs.statSync(path.join(__dirname, 'input', filepath)).size;
 
         return {
             'input' : input,
-            'output' : output,
+            'tree' : tree,
             'options' : options,
             'size' : size,
             'name' : filename

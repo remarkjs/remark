@@ -20,7 +20,7 @@ suite(
     'Kb markdown)', function () {
         bench('mdast -- this module', function () {
             fixtures.forEach(function (fixture) {
-                mdast(fixture.input, fixture.options);
+                mdast.parse(fixture.input, fixture.options);
             });
         });
     }
