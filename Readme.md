@@ -141,38 +141,68 @@ Yields:
   "children": [
     {
       "type": "table",
-      "header": [
-        [{
-          "type": "text",
-          "value": "Header 1"
-        }],
-        [{
-          "type": "text",
-          "value": "Header 2"
-        }]
+      "align": [
+        "left",
+        "right"
       ],
-      "align": ["left", "right"],
-      "rows": [
-        [
-          [{
-            "type": "text",
-            "value": "Cell 1"
-          }],
-          [{
-            "type": "text",
-            "value": "Cell 2"
-          }]
-        ],
-        [
-          [{
-            "type": "text",
-            "value": "Cell 3"
-          }],
-          [{
-            "type": "text",
-            "value": "Cell 4"
-          }]
-        ]
+      "children": [
+        {
+          "type": "tableHeader",
+          "children": [
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Header 1"
+              }]
+            },
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Header 2"
+              }]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "children": [
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Cell 1"
+              }]
+            },
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Cell 2"
+              }]
+            }
+          ]
+        },
+        {
+          "type": "tableRow",
+          "children": [
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Cell 3"
+              }]
+            },
+            {
+              "type": "tableCell",
+              "children": [{
+                "type": "text",
+                "value": "Cell 4"
+              }]
+            }
+          ]
+        }
       ]
     }
   ]
@@ -459,24 +489,47 @@ interface ListItem <: Parent {
 ```
 
 ### Table
-An table is a bit different from all other nodes.
+Tabular data, with alignment. Its children are either tableHeader (the first child), or tableRow (all other children).
 
 - `table.align` is a list of align types.
-- `table.header` is a list of node lists.
-- `table.rows` is a matrix of node lists.
 
 ```idl
-interface Table <: Node {
+interface Table <: Parent {
     type: "table";
     align: [alignType];
-    header: [[node]];
-    rows: [[[node]]];
 }
 ```
 
 ```idl
 enum alignType {
     "left" | "right" | "center" | null;
+}
+```
+
+### TableHeader
+A table header. Its children are always `tableCell`.
+
+```idl
+interface TableHeader <: Parent {
+    type: "tableHeader";
+}
+```
+
+### TableRow
+A table row. Its children are always `tableCell`.
+
+```idl
+interface TableRow <: Parent {
+    type: "tableRow";
+}
+```
+
+### TableCell
+Tabular data cell.
+
+```idl
+interface TableCell <: Parent {
+    type: "tableCell";
 }
 ```
 

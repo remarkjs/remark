@@ -59,7 +59,13 @@ validateToken = function (context) {
     if (
         type === 'paragraph' ||
         type === 'blockquote' ||
-        type === 'listItem'
+        type === 'listItem' ||
+        type === 'tableHeader' ||
+        type === 'tableRow' ||
+        type === 'tableCell' ||
+        type === 'strong' ||
+        type === 'emphasis' ||
+        type === 'delete'
     ) {
         assert(keys.length === 2);
         assert('children' in context);
@@ -118,17 +124,6 @@ validateToken = function (context) {
         return;
     }
 
-    if (
-        type === 'strong' ||
-        type === 'emphasis' ||
-        type === 'delete'
-    ) {
-        assert(keys.length === 2);
-        assert('children' in context);
-
-        return;
-    }
-
     if (type === 'link') {
         assert('children' in context);
         assert(
@@ -157,11 +152,8 @@ validateToken = function (context) {
     }
 
     if (type === 'table') {
-        context.header.forEach(validateTokens);
-
-        context.rows.forEach(function (row) {
-            row.forEach(validateTokens);
-        });
+        assert(keys.length === 3);
+        assert('children' in context);
 
         assert(Array.isArray(context.align));
 
@@ -173,8 +165,6 @@ validateToken = function (context) {
                 align === 'center'
             );
         });
-
-        assert(keys.length === 4);
 
         return;
     }
