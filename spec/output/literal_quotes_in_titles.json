@@ -10,8 +10,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": "Title with \"quotes\" inside",
+          "href": "/url/",
           "children": [
             {
               "type": "text",

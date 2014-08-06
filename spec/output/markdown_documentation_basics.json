@@ -34,8 +34,8 @@
         },
         {
           "type": "link",
-          "href": "/projects/markdown/syntax",
           "title": "Markdown Syntax",
+          "href": "/projects/markdown/syntax",
           "children": [
             {
               "type": "text",
@@ -58,8 +58,8 @@
         },
         {
           "type": "link",
-          "href": "/projects/markdown/dingus",
           "title": "Markdown Dingus",
+          "href": "/projects/markdown/dingus",
           "children": [
             {
               "type": "text",
@@ -91,8 +91,8 @@
         },
         {
           "type": "link",
-          "href": "/projects/markdown/basics.text",
           "title": null,
+          "href": "/projects/markdown/basics.text",
           "children": [
             {
               "type": "text",

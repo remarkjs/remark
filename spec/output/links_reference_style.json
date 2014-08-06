@@ -10,8 +10,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": "Title",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
@@ -34,8 +34,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": "Title",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
@@ -58,8 +58,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": "Title",
+          "href": "/url/",
           "children": [
             {
               "type": "text",
@@ -82,8 +82,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": null,
+          "href": "/url/",
           "children": [
             {
               "type": "text",
@@ -106,8 +106,8 @@
         },
         {
           "type": "link",
-          "href": "/url",
           "title": null,
+          "href": "/url",
           "children": [
             {
               "type": "text",
@@ -130,8 +130,8 @@
         },
         {
           "type": "link",
-          "href": "/url",
           "title": null,
+          "href": "/url",
           "children": [
             {
               "type": "text",
@@ -154,8 +154,8 @@
         },
         {
           "type": "link",
-          "href": "/url",
           "title": null,
+          "href": "/url",
           "children": [
             {
               "type": "text",
@@ -190,8 +190,8 @@
       "children": [
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -214,8 +214,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -238,8 +238,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -262,8 +262,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -286,8 +286,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -337,8 +337,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -361,8 +361,8 @@
         },
         {
           "type": "link",
-          "href": "foo",
           "title": null,
+          "href": "foo",
           "children": [
             {
               "type": "text",
@@ -421,12 +421,12 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": null,
+          "href": "/url/",
           "children": [
             {
               "type": "text",
-              "value": "link \nbreaks"
+              "value": "link\nbreaks"
             }
           ]
         },
@@ -445,8 +445,8 @@
         },
         {
           "type": "link",
-          "href": "/url/",
           "title": null,
+          "href": "/url/",
           "children": [
             {
               "type": "text",

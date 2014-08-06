@@ -27,8 +27,8 @@
         },
         {
           "type": "link",
-          "href": "http://example.com",
           "title": null,
+          "href": "http://example.com",
           "children": [
             {
               "type": "text",
@@ -95,8 +95,8 @@
           },
           {
             "type": "link",
-            "href": "http://example.com",
             "title": null,
+            "href": "http://example.com",
             "children": [
               {
                 "type": "text",

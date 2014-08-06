@@ -10,8 +10,8 @@
         },
         {
           "type": "link",
-          "href": "/simple",
           "title": null,
+          "href": "/simple",
           "children": [
             {
               "type": "text",
@@ -34,12 +34,12 @@
         },
         {
           "type": "link",
-          "href": "/foo",
           "title": null,
+          "href": "/foo",
           "children": [
             {
               "type": "text",
-              "value": "line \nbreak"
+              "value": "line\nbreak"
             }
           ]
         },
@@ -58,8 +58,8 @@
         },
         {
           "type": "link",
-          "href": "/foo",
           "title": null,
+          "href": "/foo",
           "children": [
             {
               "type": "text",
@@ -78,8 +78,8 @@
       "children": [
         {
           "type": "link",
-          "href": "/that",
           "title": null,
+          "href": "/that",
           "children": [
             {
               "type": "text",
@@ -93,8 +93,8 @@
         },
         {
           "type": "link",
-          "href": "/other",
           "title": null,
+          "href": "/other",
           "children": [
             {
               "type": "text",

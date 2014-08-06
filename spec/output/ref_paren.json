@@ -6,8 +6,8 @@
       "children": [
         {
           "type": "link",
-          "href": "/url",
           "title": "there",
+          "href": "/url",
           "children": [
             {
               "type": "text",

@@ -55,8 +55,8 @@
         },
         {
           "type": "link",
-          "href": "http://example.com/?foo=1&bar=2",
           "title": null,
+          "href": "http://example.com/?foo=1&bar=2",
           "children": [
             {
               "type": "text",
@@ -79,8 +79,8 @@
         },
         {
           "type": "link",
-          "href": "http://att.com/",
           "title": "AT&T",
+          "href": "http://att.com/",
           "children": [
             {
               "type": "text",

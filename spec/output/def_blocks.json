@@ -18,8 +18,8 @@
           "children": [
             {
               "type": "link",
-              "href": "foo",
               "title": null,
+              "href": "foo",
               "children": [
                 {
                   "type": "text",
