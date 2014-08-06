@@ -243,6 +243,8 @@ Lexer.prototype.token = function (value, top, bq) {
 
         if (match) {
             value = value.substring(match[0].length);
+
+            continue;
         }
 
         match = this.rules.code.exec(value);
@@ -592,6 +594,7 @@ Lexer.prototype.token = function (value, top, bq) {
         /* Text */
         match = this.rules.text.exec(value);
 
+        /* istanbul ignore else: Shouldnt reach else. */
         if (match) {
             /* Top-level should never reach here. */
             value = value.substring(match[0].length);
@@ -604,10 +607,8 @@ Lexer.prototype.token = function (value, top, bq) {
             continue;
         }
 
-        /* istanbul ignore if: Shouldnt reach here. */
-        if (value) {
-            throw new Error('Infinite loop on byte: ' + value.charCodeAt(0));
-        }
+        /* istanbul ignore next: Shouldn't reach else. */
+        throw new Error('Infinite loop on byte: ' + value.charCodeAt(0));
     }
 
     return tokens;
