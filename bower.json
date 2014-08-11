@@ -17,7 +17,7 @@
   "license": "MIT",
   "repository": {
       "type": "git",
-      "url": "https://github.com/wooorm/parse-latin.git"
+      "url": "https://github.com/wooorm/mdast.git"
   },
   "main": "index.js",
   "ignore": [
