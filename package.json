@@ -43,21 +43,5 @@
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- spec/mdast.spec.js",
     "benchmark": "node_modules/.bin/matcha",
     "make": "npm run-script lint && npm run-script coverage"
-  },
-  "testling": {
-    "files": "spec/mdast.spec.js",
-    "harness": "mocha",
-    "browsers": [
-      "iexplore/latest",
-      "chrome/latest",
-      "chrome/canary",
-      "firefox/latest",
-      "firefox/nightly",
-      "opera/latest",
-      "opera/next",
-      "safari/latest",
-      "iphone/latest",
-      "android-browser/latest"
-    ]
   }
 }
