@@ -56,5 +56,8 @@
       "iphone/latest",
       "android-browser/latest"
     ]
+  },
+  "dependencies": {
+    "he": "^0.5.0"
   }
 }

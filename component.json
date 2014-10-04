@@ -17,5 +17,8 @@
     "lib/parse/index.js",
     "lib/stringify/index.js"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "mathiasbynens/he": "^0.5.0"
+  }
 }

@@ -16,8 +16,8 @@
   ],
   "license": "MIT",
   "repository": {
-      "type": "git",
-      "url": "https://github.com/wooorm/mdast.git"
+    "type": "git",
+    "url": "https://github.com/wooorm/mdast.git"
   },
   "main": "index.js",
   "ignore": [
@@ -32,5 +32,8 @@
     "components",
     "node_modules",
     "bower_components"
-  ]
+  ],
+  "dependencies": {
+    "he": "^0.5.0"
+  }
 }
