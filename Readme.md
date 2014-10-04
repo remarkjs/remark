@@ -640,4 +640,5 @@ On a MacBook Air, it parser about 5 megabytes of markdown per second, depending 
 This project was initially a fork of [marked](https://github.com/chjj/marked).
 
 Copyright (c) 2011-2014, Christopher Jeffrey. (MIT License)
-Copyright (c) 2014, Titus Wormer. (MIT License)
+
+MIT © 2014 Titus Wormer
