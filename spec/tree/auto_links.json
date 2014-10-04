@@ -10,14 +10,14 @@
         },
         {
           "type": "link",
+          "title": null,
           "href": "http://example.com/",
           "children": [
             {
               "type": "text",
               "value": "http://example.com/"
             }
-          ],
-          "title": null
+          ]
         },
         {
           "type": "text",
@@ -34,14 +34,14 @@
         },
         {
           "type": "link",
+          "title": null,
           "href": "mailto:somename@example.com",
           "children": [
             {
               "type": "text",
               "value": "somename@example.com"
             }
-          ],
-          "title": null
+          ]
         },
         {
           "type": "text",
@@ -58,14 +58,14 @@
         },
         {
           "type": "link",
+          "title": null,
           "href": "mailto:somename@example.com",
           "children": [
             {
               "type": "text",
               "value": "somename@example.com"
             }
-          ],
-          "title": null
+          ]
         },
         {
           "type": "text",
@@ -82,14 +82,14 @@
         },
         {
           "type": "link",
+          "title": null,
           "href": "http://example.com/?foo=1&bar=2",
           "children": [
             {
               "type": "text",
               "value": "http://example.com/?foo=1&bar=2"
             }
-          ],
-          "title": null
+          ]
         }
       ]
     },
@@ -111,14 +111,14 @@
           "children": [
             {
               "type": "link",
+              "title": null,
               "href": "http://example.com/",
               "children": [
                 {
                   "type": "text",
                   "value": "http://example.com/"
                 }
-              ],
-              "title": null
+              ]
             }
           ]
         },
@@ -145,14 +145,14 @@
             },
             {
               "type": "link",
+              "title": null,
               "href": "http://example.com/",
               "children": [
                 {
                   "type": "text",
                   "value": "http://example.com/"
                 }
-              ],
-              "title": null
+              ]
             }
           ]
         }

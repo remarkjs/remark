@@ -10,14 +10,14 @@
         },
         {
           "type": "link",
+          "title": null,
           "href": "http://example.com",
           "children": [
             {
               "type": "text",
               "value": "http://example.com"
             }
-          ],
-          "title": null
+          ]
         }
       ]
     }
