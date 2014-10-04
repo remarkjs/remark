@@ -2,6 +2,7 @@
   "name": "mdast",
   "version": "0.0.3",
   "description": "Speedy Markdown parser for multipurpose analysis",
+  "license": "MIT",
   "keywords": [
     "markdown",
     "markup",
@@ -11,15 +12,17 @@
     "json",
     "ast"
   ],
-  "author": "Christopher Jeffrey",
-  "contributors": [
-    "Titus Wormer <tituswormer@gmail.com>"
-  ],
-  "license": "MIT",
+  "dependencies": {
+    "he": "^0.5.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/wooorm/mdast.git"
   },
+  "author": "Christopher Jeffrey",
+  "contributors": [
+    "Titus Wormer <tituswormer@gmail.com>"
+  ],
   "devDependencies": {
     "eslint": "^0.8.0",
     "istanbul": "^0.3.0",
@@ -56,8 +59,5 @@
       "iphone/latest",
       "android-browser/latest"
     ]
-  },
-  "dependencies": {
-    "he": "^0.5.0"
   }
 }

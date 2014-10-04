@@ -2,6 +2,7 @@
   "name": "mdast",
   "version": "0.0.3",
   "description": "Speedy Markdown parser for multipurpose analysis",
+  "license": "MIT",
   "keywords": [
     "markdown",
     "markup",
@@ -11,14 +12,13 @@
     "json",
     "ast"
   ],
+  "dependencies": {
+    "mathiasbynens/he": "^0.5.0"
+  },
   "repository": "wooorm/mdast",
   "scripts": [
     "index.js",
     "lib/parse/index.js",
     "lib/stringify/index.js"
-  ],
-  "license": "MIT",
-  "dependencies": {
-    "mathiasbynens/he": "^0.5.0"
-  }
+  ]
 }
