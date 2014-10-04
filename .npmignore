@@ -1,2 +1,8 @@
-.git*
-test/
+node_modules
+bower_components
+components
+build
+.DS_STORE
+coverage
+*.log
+.travis.yml
