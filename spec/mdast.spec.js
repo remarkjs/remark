@@ -98,16 +98,21 @@ validateToken = function (context) {
         return;
     }
 
-    if (type === 'code') {
-        assert(keys.length === 2 || keys.length === 3);
+    if (type === 'inlineCode') {
+        assert(keys.length === 2);
         assert('value' in context);
 
-        if ('lang' in context) {
-            assert(
-                context.lang === null ||
-                typeof context.lang === 'string'
-            );
-        }
+        return;
+    }
+
+    if (type === 'code') {
+        assert(keys.length === 3);
+        assert('value' in context);
+
+        assert(
+            context.lang === null ||
+            typeof context.lang === 'string'
+        );
 
         return;
     }
