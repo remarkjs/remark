@@ -19,8 +19,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "bar:"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "bar:"
+                }
+              ]
             },
             {
               "type": "blockquote",
@@ -96,8 +101,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "foo:"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "foo:"
+                }
+              ]
             },
             {
               "type": "code",
@@ -110,8 +120,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "foo:"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "foo:"
+                }
+              ]
             },
             {
               "type": "list",
@@ -121,16 +136,21 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "foo "
-                    },
-                    {
-                      "type": "code",
-                      "value": "bar"
-                    },
-                    {
-                      "type": "text",
-                      "value": " bar:"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "foo "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "bar"
+                        },
+                        {
+                          "type": "text",
+                          "value": " bar:"
+                        }
+                      ]
                     },
                     {
                       "type": "code",
@@ -143,16 +163,21 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "foo "
-                    },
-                    {
-                      "type": "code",
-                      "value": "bar"
-                    },
-                    {
-                      "type": "text",
-                      "value": " bar:"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "foo "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "bar"
+                        },
+                        {
+                          "type": "text",
+                          "value": " bar:"
+                        }
+                      ]
                     },
                     {
                       "type": "code",
@@ -165,16 +190,21 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "foo "
-                    },
-                    {
-                      "type": "code",
-                      "value": "bar"
-                    },
-                    {
-                      "type": "text",
-                      "value": " bar:"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "foo "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "bar"
+                        },
+                        {
+                          "type": "text",
+                          "value": " bar:"
+                        }
+                      ]
                     },
                     {
                       "type": "code",
@@ -187,16 +217,21 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "foo "
-                    },
-                    {
-                      "type": "code",
-                      "value": "bar"
-                    },
-                    {
-                      "type": "text",
-                      "value": " bar:"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "foo "
+                        },
+                        {
+                          "type": "inlineCode",
+                          "value": "bar"
+                        },
+                        {
+                          "type": "text",
+                          "value": " bar:"
+                        }
+                      ]
                     },
                     {
                       "type": "code",
@@ -209,8 +244,13 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "foo"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "foo"
+                        }
+                      ]
                     }
                   ]
                 }

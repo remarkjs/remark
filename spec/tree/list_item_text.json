@@ -9,8 +9,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "item1"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "item1"
+                }
+              ]
             },
             {
               "type": "list",
@@ -28,8 +33,13 @@
               ]
             },
             {
-              "type": "text",
-              "value": "text"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "text"
+                }
+              ]
             }
           ]
         }

@@ -70,8 +70,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "asterisk 1"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 1"
+                }
+              ]
             }
           ]
         },
@@ -79,8 +84,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "asterisk 2"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 2"
+                }
+              ]
             }
           ]
         },
@@ -88,8 +98,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "asterisk 3"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "asterisk 3"
+                }
+              ]
             }
           ]
         }
@@ -157,8 +172,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Plus 1"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Plus 1"
+                }
+              ]
             }
           ]
         },
@@ -166,8 +186,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Plus 2"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Plus 2"
+                }
+              ]
             }
           ]
         },
@@ -175,8 +200,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Plus 3"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Plus 3"
+                }
+              ]
             }
           ]
         }
@@ -244,8 +274,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Minus 1"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Minus 1"
+                }
+              ]
             }
           ]
         },
@@ -253,8 +288,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Minus 2"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Minus 2"
+                }
+              ]
             }
           ]
         },
@@ -262,8 +302,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Minus 3"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Minus 3"
+                }
+              ]
             }
           ]
         }
@@ -380,8 +425,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "First"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "First"
+                }
+              ]
             }
           ]
         },
@@ -389,8 +439,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Second"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Second"
+                }
+              ]
             }
           ]
         },
@@ -398,8 +453,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Third"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Third"
+                }
+              ]
             }
           ]
         }
@@ -422,8 +482,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "One"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "One"
+                }
+              ]
             }
           ]
         },
@@ -431,8 +496,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Two"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Two"
+                }
+              ]
             }
           ]
         },
@@ -440,8 +510,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Three"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Three"
+                }
+              ]
             }
           ]
         }
@@ -478,8 +553,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Item 2."
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 2."
+                }
+              ]
             }
           ]
         },
@@ -487,8 +567,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Item 3."
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 3."
+                }
+              ]
             }
           ]
         }
@@ -613,8 +698,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "First"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "First"
+                }
+              ]
             }
           ]
         },
@@ -622,8 +712,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Second:"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Second:"
+                }
+              ]
             },
             {
               "type": "code",
@@ -636,8 +731,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Third"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Third"
+                }
+              ]
             }
           ]
         }
@@ -660,8 +760,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "this"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this"
+                }
+              ]
             },
             {
               "type": "list",
@@ -679,8 +784,13 @@
               ]
             },
             {
-              "type": "text",
-              "value": "that"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "that"
+                }
+              ]
             }
           ]
         }

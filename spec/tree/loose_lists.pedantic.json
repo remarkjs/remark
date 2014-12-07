@@ -47,8 +47,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             },
             {
               "type": "list",
@@ -110,8 +115,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         },
@@ -119,8 +129,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
             }
           ]
         },
@@ -152,8 +167,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
             }
           ]
         },
@@ -161,8 +181,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "hi"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hi"
+                }
+              ]
             }
           ]
         }
@@ -261,8 +286,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
             }
           ]
         },

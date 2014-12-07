@@ -56,8 +56,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "List Item 1"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "List Item 1"
+                }
+              ]
             }
           ]
         },
@@ -65,8 +70,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "List Item 2"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "List Item 2"
+                }
+              ]
             },
             {
               "type": "list",
