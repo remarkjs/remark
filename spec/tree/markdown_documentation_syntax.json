@@ -597,7 +597,7 @@
           "value": "The only restrictions are that block-level HTML elements -- e.g. "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<div>"
         },
         {
@@ -605,7 +605,7 @@
           "value": ",\n"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<table>"
         },
         {
@@ -613,7 +613,7 @@
           "value": ", "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<pre>"
         },
         {
@@ -621,7 +621,7 @@
           "value": ", "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<p>"
         },
         {
@@ -629,7 +629,7 @@
           "value": ", etc. -- must be separated from surrounding\ncontent by blank lines, and the start and end tags of the block should\nnot be indented with tabs or spaces. Markdown is smart enough not\nto add extra (unwanted) "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<p>"
         },
         {
@@ -660,7 +660,7 @@
           "value": "Note that Markdown formatting syntax is not processed within block-level\nHTML tags. E.g., you can't use Markdown-style "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*emphasis*"
         },
         {
@@ -677,7 +677,7 @@
           "value": "Span-level HTML tags -- e.g. "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<span>"
         },
         {
@@ -685,7 +685,7 @@
           "value": ", "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<cite>"
         },
         {
@@ -693,7 +693,7 @@
           "value": ", or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<del>"
         },
         {
@@ -701,7 +701,7 @@
           "value": " -- can be\nused anywhere in a Markdown paragraph, list item, or header. If you\nwant, you can even use HTML tags instead of Markdown formatting; e.g. if\nyou'd prefer to use HTML "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<a>"
         },
         {
@@ -709,7 +709,7 @@
           "value": " or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<img>"
         },
         {
@@ -752,7 +752,7 @@
           "value": "In HTML, there are two characters that demand special treatment: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<"
         },
         {
@@ -760,7 +760,7 @@
           "value": "\nand "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&"
         },
         {
@@ -768,7 +768,7 @@
           "value": ". Left angle brackets are used to start tags; ampersands are\nused to denote HTML entities. If you want to use them as literal\ncharacters, you must escape them as entities, e.g. "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&lt;"
         },
         {
@@ -776,7 +776,7 @@
           "value": ", and\n"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&amp;"
         },
         {
@@ -793,7 +793,7 @@
           "value": "Ampersands in particular are bedeviling for web writers. If you want to\nwrite about 'AT&T', you need to write '"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "AT&amp;T"
         },
         {
@@ -829,7 +829,7 @@
           "value": "in your anchor tag "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "href"
         },
         {
@@ -846,7 +846,7 @@
           "value": "Markdown allows you to use these characters naturally, taking care of\nall the necessary escaping for you. If you use an ampersand as part of\nan HTML entity, it remains unchanged; otherwise it will be translated\ninto "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&amp;"
         },
         {
@@ -961,7 +961,7 @@
           "value": " encoded automatically. This makes it easy to use\nMarkdown to write about HTML code. (As opposed to raw HTML, which is a\nterrible format for writing about HTML syntax, because every single "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<"
         },
         {
@@ -969,7 +969,7 @@
           "value": "\nand "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&"
         },
         {
@@ -1002,7 +1002,7 @@
           "value": "The implication of the \"one or more consecutive lines of text\" rule is\nthat Markdown supports \"hard-wrapped\" text paragraphs. This differs\nsignificantly from most other text-to-HTML formatters (including Movable\nType's \"Convert Line Breaks\" option) which translate every line break\ncharacter in a paragraph into a "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<br />"
         },
         {
@@ -1032,7 +1032,7 @@
           "value": " want to insert a "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<br />"
         },
         {
@@ -1049,7 +1049,7 @@
           "value": "Yes, this takes a tad more effort to create a "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<br />"
         },
         {
@@ -1057,7 +1057,7 @@
           "value": ", but a simplistic\n\"every line break is a "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<br />"
         },
         {
@@ -1161,7 +1161,7 @@
           "value": "Any number of underlining "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "="
         },
         {
@@ -1169,7 +1169,7 @@
           "value": "'s or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "-"
         },
         {
@@ -1218,7 +1218,7 @@
           "value": "Markdown uses email-style "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1226,7 +1226,7 @@
           "value": " characters for blockquoting. If you're\nfamiliar with quoting passages of text in an email message, then you\nknow how to create a blockquote in Markdown. It looks best if you hard\nwrap the text and put a "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1248,7 +1248,7 @@
           "value": "Markdown allows you to be lazy and only put the "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1270,7 +1270,7 @@
           "value": "Blockquotes can be nested (i.e. a blockquote-in-a-blockquote) by\nadding additional levels of "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1481,7 +1481,7 @@
           "value": "If list items are separated by blank lines, Markdown will wrap the\nitems in "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<p>"
         },
         {
@@ -1492,6 +1492,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Bird\n*   Magic"
     },
     {
@@ -1572,7 +1573,7 @@
           "value": "To put a blockquote within a list item, the blockquote's "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1666,7 +1667,7 @@
           "value": "Pre-formatted code blocks are used for writing about programming or\nmarkup source code. Rather than forming normal paragraphs, the lines\nof a code block are interpreted literally. Markdown wraps a code block\nin both "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<pre>"
         },
         {
@@ -1674,7 +1675,7 @@
           "value": " and "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<code>"
         },
         {
@@ -1756,7 +1757,7 @@
           "value": "Within a code block, ampersands ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&"
         },
         {
@@ -1764,7 +1765,7 @@
           "value": ") and angle brackets ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<"
         },
         {
@@ -1772,7 +1773,7 @@
           "value": " and "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -1821,7 +1822,7 @@
           "value": "You can produce a horizontal rule tag ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<hr>"
         },
         {
@@ -2280,7 +2281,7 @@
           "value": "Markdown treats asterisks ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*"
         },
         {
@@ -2288,7 +2289,7 @@
           "value": ") and underscores ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "_"
         },
         {
@@ -2296,7 +2297,7 @@
           "value": ") as indicators of\nemphasis. Text wrapped with one "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*"
         },
         {
@@ -2304,7 +2305,7 @@
           "value": " or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "_"
         },
         {
@@ -2312,7 +2313,7 @@
           "value": " will be wrapped with an\nHTML "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<em>"
         },
         {
@@ -2320,7 +2321,7 @@
           "value": " tag; double "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*"
         },
         {
@@ -2328,7 +2329,7 @@
           "value": "'s or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "_"
         },
         {
@@ -2336,7 +2337,7 @@
           "value": "'s will be wrapped with an HTML\n"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<strong>"
         },
         {
@@ -2395,7 +2396,7 @@
           "value": "But if you surround an "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*"
         },
         {
@@ -2403,7 +2404,7 @@
           "value": " or "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "_"
         },
         {
@@ -2438,7 +2439,7 @@
           "value": "To indicate a span of code, wrap it with backtick quotes ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "` "
         },
         {
@@ -2661,7 +2662,7 @@
               "value": "An exclamation mark: "
             },
             {
-              "type": "code",
+              "type": "inlineCode",
               "value": "!"
             },
             {
@@ -2734,7 +2735,7 @@
           "value": "As of this writing, Markdown has no syntax for specifying the\ndimensions of an image; if this is important to you, you can simply\nuse regular HTML "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<img>"
         },
         {
@@ -2836,7 +2837,7 @@
           "value": "Markdown allows you to use backslash escapes to generate literal\ncharacters which would otherwise have special meaning in Markdown's\nformatting syntax. For example, if you wanted to surround a word with\nliteral asterisks (instead of an HTML "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<em>"
         },
         {

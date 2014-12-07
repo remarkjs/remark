@@ -5,7 +5,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "hi ther `` ok ``` "
         }
       ]

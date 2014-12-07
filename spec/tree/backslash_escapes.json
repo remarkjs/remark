@@ -185,7 +185,7 @@
           "value": "Backslash: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\\\"
         }
       ]
@@ -198,7 +198,7 @@
           "value": "Backtick: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\` "
         }
       ]
@@ -211,7 +211,7 @@
           "value": "Asterisk: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\*"
         }
       ]
@@ -224,7 +224,7 @@
           "value": "Underscore: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\_"
         }
       ]
@@ -237,7 +237,7 @@
           "value": "Left brace: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\{"
         }
       ]
@@ -250,7 +250,7 @@
           "value": "Right brace: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\}"
         }
       ]
@@ -263,7 +263,7 @@
           "value": "Left bracket: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\["
         }
       ]
@@ -276,7 +276,7 @@
           "value": "Right bracket: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\]"
         }
       ]
@@ -289,7 +289,7 @@
           "value": "Left paren: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\("
         }
       ]
@@ -302,7 +302,7 @@
           "value": "Right paren: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\)"
         }
       ]
@@ -315,7 +315,7 @@
           "value": "Greater-than: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\>"
         }
       ]
@@ -328,7 +328,7 @@
           "value": "Hash: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\#"
         }
       ]
@@ -341,7 +341,7 @@
           "value": "Period: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\."
         }
       ]
@@ -354,7 +354,7 @@
           "value": "Bang: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\!"
         }
       ]
@@ -367,7 +367,7 @@
           "value": "Plus: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\+"
         }
       ]
@@ -380,7 +380,7 @@
           "value": "Minus: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\-"
         }
       ]
@@ -429,7 +429,7 @@
           "value": "This is a code span with a literal backslash-backtick sequence: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\\` "
         }
       ]

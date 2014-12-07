@@ -5,7 +5,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<test a=\""
         },
         {
@@ -13,7 +13,7 @@
           "value": " content of attribute "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "\">"
         }
       ]
@@ -47,7 +47,7 @@
           "value": "Here's how you put "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "`backticks` "
         },
         {

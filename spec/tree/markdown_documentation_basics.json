@@ -159,7 +159,7 @@
           "value": ".\nSetext-style headers for "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<h1>"
         },
         {
@@ -167,7 +167,7 @@
           "value": " and "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<h2>"
         },
         {
@@ -175,7 +175,7 @@
           "value": " are created by\n\"underlining\" with equal signs ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "="
         },
         {
@@ -183,7 +183,7 @@
           "value": ") and hyphens ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "-"
         },
         {
@@ -191,7 +191,7 @@
           "value": "), respectively.\nTo create an atx-style header, you put 1-6 hash marks ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "#"
         },
         {
@@ -208,7 +208,7 @@
           "value": "Blockquotes are indicated using email-style '"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -310,7 +310,7 @@
           "value": "Unordered (bulleted) lists use asterisks, pluses, and hyphens ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "*"
         },
         {
@@ -318,7 +318,7 @@
           "value": ",\n"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "+"
         },
         {
@@ -326,7 +326,7 @@
           "value": ", and "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "-"
         },
         {
@@ -418,7 +418,7 @@
           "value": "If you put blank lines between items, you'll get "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<p>"
         },
         {
@@ -695,7 +695,7 @@
           "value": "In a regular paragraph, you can create code span by wrapping text in\nbacktick quotes. Any ampersands ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&"
         },
         {
@@ -703,7 +703,7 @@
           "value": ") and angle brackets ("
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<"
         },
         {
@@ -711,7 +711,7 @@
           "value": " or\n"
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {
@@ -747,7 +747,7 @@
           "value": "To specify an entire block of pre-formatted code, indent every line of\nthe block by 4 spaces or 1 tab. Just like with code spans, "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "&"
         },
         {
@@ -755,7 +755,7 @@
           "value": ", "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<"
         },
         {
@@ -763,7 +763,7 @@
           "value": ",\nand "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": ">"
         },
         {

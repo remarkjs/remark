@@ -166,7 +166,7 @@
           "value": "Auto-links should not occur here: "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "<http://example.com/>"
         }
       ]

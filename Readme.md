@@ -66,7 +66,7 @@ Yields:
           "value": ", and "
         },
         {
-          "type": "code",
+          "type": "inlineCode",
           "value": "code"
         },
         {
@@ -451,12 +451,21 @@ interface Heading <: Parent {
 ```
 
 ### Code
-Occurring both inline and at block level. Code can sport a language tag (when using Github Flavoured Markdown fences).
+Occurs at block level (see `inlineCode` for code spans). Code sports a language tag (when using Github Flavoured Markdown fences, null otherwise).
 
 ```idl
 interface Code <: Text {
     type: "code";
     lang: string | null;
+}
+```
+
+### InlineCode
+Occurs at inline level (see `code` for code blocks). Inline code does not sport a `lang` tag.
+
+```idl
+interface InlineCode <: Text {
+    type: "inlineCode";
 }
 ```
 
@@ -502,7 +511,7 @@ interface Table <: Parent {
 
 ```idl
 enum alignType {
-    "left" | "right" | "center" | null;
+    "left" | "right" | "center";
 }
 ```
 
