@@ -1,4 +1,38 @@
 
+n.n.n / 2014-12-07
+==================
+
+ * Add near-finished stringifier
+ * Fix test for changes in inline-code/code
+ * Fix loose list-items by adding paragraph-nodes where needed
+ * Fix multiple direct sibling blockquotes from appearing
+ * Fix `undefined` in strings when using line-breaks inside list-items
+ * Add inline-code node for code-spans
+ * Remove null-type for table alignment
+ * Add better errors for fixtures in spec
+ * Add white-space trimming to code-blocks
+ * Refactor position of `title` attribute in parse-output
+ * Add he to API to decode HTML entities in `text`
+ * Fix style issues in API
+ * Update copyright in Readme.md
+ * Remove testling
+ * Refactor property order in bower.json, package.json, component.json
+ * Update .gitignore, .npmignore
+ * Add he as a dependency
+ * Update eslint, jscs, mocha
+ * Fix incorrect repo url
+ * Refactor table output
+ * Add initial work for both parse and stringify functionality
+ * Refactor inline lexer
+ * Add missing continue statement
+ * Remove extraneous rule in eslint target
+ * Refactor outputting similar nodes
+ * Remove conditional assignment
+ * Add benchmark to docs
+ * Add a faster option setting mechanism
+ * Add a simpler regular expression builder
+ * Remove unneeded noop
+
 0.0.3 / 2014-08-02
 ==================
 
