@@ -102,12 +102,7 @@
               "value": "foo\nbar"
             }
           ]
-        }
-      ]
-    },
-    {
-      "type": "blockquote",
-      "children": [
+        },
         {
           "type": "paragraph",
           "children": [
