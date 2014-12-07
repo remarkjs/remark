@@ -649,6 +649,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is a regular paragraph.\n\n<table>\n    <tr>\n        <td>Foo</td>\n    </tr>\n</table>\n\nThis is another regular paragraph."
     },
     {
@@ -803,6 +804,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "http://images.google.com/images?num=30&q=larry+bird"
     },
     {
@@ -816,6 +818,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "http://images.google.com/images?num=30&amp;q=larry+bird"
     },
     {
@@ -863,6 +866,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "&copy;"
     },
     {
@@ -876,6 +880,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "AT&T"
     },
     {
@@ -889,6 +894,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "AT&amp;T"
     },
     {
@@ -917,6 +923,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "4 < 5"
     },
     {
@@ -930,6 +937,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "4 &lt; 5"
     },
     {
@@ -1142,6 +1150,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is an H1\n=============\n\nThis is an H2\n-------------"
     },
     {
@@ -1180,6 +1189,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "# This is an H1\n\n## This is an H2\n\n###### This is an H6"
     },
     {
@@ -1193,6 +1203,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "# This is an H1 #\n\n## This is an H2 ##\n\n### This is an H3 ######"
     },
     {
@@ -1226,6 +1237,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\n> consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\n> Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n> \n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\n> id sem consectetuer libero luctus adipiscing."
     },
     {
@@ -1247,6 +1259,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "> This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,\nconsectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.\nVestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.\n\n> Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse\nid sem consectetuer libero luctus adipiscing."
     },
     {
@@ -1268,6 +1281,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "> This is the first level of quoting.\n>\n> > This is nested blockquote.\n>\n> Back to the first level."
     },
     {
@@ -1281,7 +1295,8 @@
     },
     {
       "type": "code",
-      "value": "    > ## This is a header.\n    > \n    > 1.   This is the first list item.\n    > 2.   This is the second list item.\n    > \n    > Here's some example code:\n    > \n    >     return shell_exec(\"echo $input | $markdown_script\");"
+      "lang": null,
+      "value": "> ## This is a header.\n> \n> 1.   This is the first list item.\n> 2.   This is the second list item.\n> \n> Here's some example code:\n> \n>     return shell_exec(\"echo $input | $markdown_script\");"
     },
     {
       "type": "paragraph",
@@ -1316,6 +1331,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Red\n*   Green\n*   Blue"
     },
     {
@@ -1329,6 +1345,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "+   Red\n+   Green\n+   Blue"
     },
     {
@@ -1342,6 +1359,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "-   Red\n-   Green\n-   Blue"
     },
     {
@@ -1355,6 +1373,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1.  Bird\n2.  McHale\n3.  Parish"
     },
     {
@@ -1368,6 +1387,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ol>\n<li>Bird</li>\n<li>McHale</li>\n<li>Parish</li>\n</ol>"
     },
     {
@@ -1381,6 +1401,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1.  Bird\n1.  McHale\n1.  Parish"
     },
     {
@@ -1394,6 +1415,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "3. Bird\n1. McHale\n8. Parish"
     },
     {
@@ -1434,6 +1456,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\n    Aliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\n    viverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\n    Suspendisse id sem consectetuer libero luctus adipiscing."
     },
     {
@@ -1447,6 +1470,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Lorem ipsum dolor sit amet, consectetuer adipiscing elit.\nAliquam hendrerit mi posuere lectus. Vestibulum enim wisi,\nviverra nec, fringilla in, laoreet vitae, risus.\n*   Donec sit amet nisl. Aliquam semper ipsum sit amet velit.\nSuspendisse id sem consectetuer libero luctus adipiscing."
     },
     {
@@ -1481,6 +1505,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ul>\n<li>Bird</li>\n<li>Magic</li>\n</ul>"
     },
     {
@@ -1494,6 +1519,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Bird\n\n*   Magic"
     },
     {
@@ -1507,6 +1533,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ul>\n<li><p>Bird</p></li>\n<li><p>Magic</p></li>\n</ul>"
     },
     {
@@ -1520,6 +1547,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1.  This is a list item with two paragraphs. Lorem ipsum dolor\n    sit amet, consectetuer adipiscing elit. Aliquam hendrerit\n    mi posuere lectus.\n\n    Vestibulum enim wisi, viverra nec, fringilla in, laoreet\n    vitae, risus. Donec sit amet nisl. Aliquam semper ipsum\n    sit amet velit.\n\n2.  Suspendisse id sem consectetuer libero luctus adipiscing."
     },
     {
@@ -1533,6 +1561,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   This is a list item with two paragraphs.\n\n    This is the second paragraph in the list item. You're\nonly required to indent the first line. Lorem ipsum dolor\nsit amet, consectetuer adipiscing elit.\n\n*   Another item in the same list."
     },
     {
@@ -1554,6 +1583,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   A list item with a blockquote:\n\n    > This is a blockquote\n    > inside a list item."
     },
     {
@@ -1580,6 +1610,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   A list item with a code block:\n\n        <code goes here>"
     },
     {
@@ -1593,6 +1624,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1986. What a great season."
     },
     {
@@ -1619,6 +1651,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1986\\. What a great season."
     },
     {
@@ -1661,6 +1694,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is a normal paragraph:\n\n    This is a code block."
     },
     {
@@ -1674,6 +1708,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>This is a normal paragraph:</p>\n\n<pre><code>This is a code block.\n</code></pre>"
     },
     {
@@ -1687,6 +1722,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "Here is an example of AppleScript:\n\n    tell application \"Foo\"\n        beep\n    end tell"
     },
     {
@@ -1700,6 +1736,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>Here is an example of AppleScript:</p>\n\n<pre><code>tell application \"Foo\"\n    beep\nend tell\n</code></pre>"
     },
     {
@@ -1746,7 +1783,8 @@
     },
     {
       "type": "code",
-      "value": "    <div class=\"footer\">\n        &copy; 2004 Foo Corporation\n    </div>"
+      "lang": null,
+      "value": "<div class=\"footer\">\n    &copy; 2004 Foo Corporation\n</div>"
     },
     {
       "type": "paragraph",
@@ -1759,6 +1797,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<pre><code>&lt;div class=\"footer\"&gt;\n    &amp;copy; 2004 Foo Corporation\n&lt;/div&gt;\n</code></pre>"
     },
     {
@@ -1793,6 +1832,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "* * *\n\n***\n\n*****\n\n- - -\n\n---------------------------------------\n\n    _ _ _"
     },
     {
@@ -1870,6 +1910,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is [an example](http://example.com/ \"Title\") inline link.\n\n[This link](http://example.net/) has no title attribute."
     },
     {
@@ -1883,6 +1924,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>This is <a href=\"http://example.com/\" title=\"Title\">\nan example</a> inline link.</p>\n\n<p><a href=\"http://example.net/\">This link</a> has no\ntitle attribute.</p>"
     },
     {
@@ -1896,6 +1938,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "See my [About](/about/) page for details."
     },
     {
@@ -1909,6 +1952,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is [an example][id] reference-style link."
     },
     {
@@ -1922,6 +1966,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is [an example] [id] reference-style link."
     },
     {
@@ -1935,6 +1980,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "[id]: http://example.com/  \"Optional Title Here\""
     },
     {
@@ -2008,6 +2054,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "[id]: <http://example.com/>  \"Optional Title Here\""
     },
     {
@@ -2021,6 +2068,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "[id]: http://example.com/longish/path/to/resource/here\n    \"Optional Title Here\""
     },
     {
@@ -2056,7 +2104,8 @@
     },
     {
       "type": "code",
-      "value": "    [link text][a]\n    [link text][A]"
+      "lang": null,
+      "value": "[link text][a]\n[link text][A]"
     },
     {
       "type": "paragraph",
@@ -2091,7 +2140,8 @@
     },
     {
       "type": "code",
-      "value": "    [Google][]"
+      "lang": null,
+      "value": "[Google][]"
     },
     {
       "type": "paragraph",
@@ -2104,7 +2154,8 @@
     },
     {
       "type": "code",
-      "value": "    [Google]: http://google.com/"
+      "lang": null,
+      "value": "[Google]: http://google.com/"
     },
     {
       "type": "paragraph",
@@ -2117,7 +2168,8 @@
     },
     {
       "type": "code",
-      "value": "    Visit [Daring Fireball][] for more information."
+      "lang": null,
+      "value": "Visit [Daring Fireball][] for more information."
     },
     {
       "type": "paragraph",
@@ -2130,7 +2182,8 @@
     },
     {
       "type": "code",
-      "value": "    [Daring Fireball]: http://daringfireball.net/"
+      "lang": null,
+      "value": "[Daring Fireball]: http://daringfireball.net/"
     },
     {
       "type": "paragraph",
@@ -2152,6 +2205,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I get 10 times more traffic from [Google] [1] than from\n[Yahoo] [2] or [MSN] [3].\n\n  [1]: http://google.com/        \"Google\"\n  [2]: http://search.yahoo.com/  \"Yahoo Search\"\n  [3]: http://search.msn.com/    \"MSN Search\""
     },
     {
@@ -2165,6 +2219,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I get 10 times more traffic from [Google][] than from\n[Yahoo][] or [MSN][].\n\n  [google]: http://google.com/        \"Google\"\n  [yahoo]:  http://search.yahoo.com/  \"Yahoo Search\"\n  [msn]:    http://search.msn.com/    \"MSN Search\""
     },
     {
@@ -2178,6 +2233,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from\n<a href=\"http://search.yahoo.com/\" title=\"Yahoo Search\">Yahoo</a>\nor <a href=\"http://search.msn.com/\" title=\"MSN Search\">MSN</a>.</p>"
     },
     {
@@ -2191,6 +2247,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I get 10 times more traffic from [Google](http://google.com/ \"Google\")\nthan from [Yahoo](http://search.yahoo.com/ \"Yahoo Search\") or\n[MSN](http://search.msn.com/ \"MSN Search\")."
     },
     {
@@ -2290,6 +2347,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*single asterisks*\n\n_single underscores_\n\n**double asterisks**\n\n__double underscores__"
     },
     {
@@ -2303,6 +2361,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<em>single asterisks</em>\n\n<em>single underscores</em>\n\n<strong>double asterisks</strong>\n\n<strong>double underscores</strong>"
     },
     {
@@ -2325,6 +2384,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "un*fucking*believable"
     },
     {
@@ -2363,6 +2423,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "\\*this text is surrounded by literal asterisks\\*"
     },
     {
@@ -2388,6 +2449,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "Use the `printf()` function."
     },
     {
@@ -2401,6 +2463,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>Use the <code>printf()</code> function.</p>"
     },
     {
@@ -2414,6 +2477,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "``There is a literal backtick (`) here.``"
     },
     {
@@ -2427,6 +2491,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p><code>There is a literal backtick (`) here.</code></p>"
     },
     {
@@ -2440,7 +2505,8 @@
     },
     {
       "type": "code",
-      "value": "    A single backtick in a code span: `` ` ``\n\n    A backtick-delimited string in a code span: `` `foo` ``"
+      "lang": null,
+      "value": "A single backtick in a code span: `` ` ``\n\nA backtick-delimited string in a code span: `` `foo` ``"
     },
     {
       "type": "paragraph",
@@ -2453,7 +2519,8 @@
     },
     {
       "type": "code",
-      "value": "    <p>A single backtick in a code span: <code>`</code></p>\n\n    <p>A backtick-delimited string in a code span: <code>`foo`</code></p>"
+      "lang": null,
+      "value": "<p>A single backtick in a code span: <code>`</code></p>\n\n<p>A backtick-delimited string in a code span: <code>`foo`</code></p>"
     },
     {
       "type": "paragraph",
@@ -2466,6 +2533,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "Please don't use any `<blink>` tags."
     },
     {
@@ -2479,6 +2547,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>Please don't use any <code>&lt;blink&gt;</code> tags.</p>"
     },
     {
@@ -2492,6 +2561,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "`&#8212;` is the decimal-encoded equivalent of `&mdash;`."
     },
     {
@@ -2505,6 +2575,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p><code>&amp;#8212;</code> is the decimal-encoded\nequivalent of <code>&amp;mdash;</code>.</p>"
     },
     {
@@ -2566,6 +2637,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "![Alt text](/path/to/img.jpg)\n\n![Alt text](/path/to/img.jpg \"Optional title\")"
     },
     {
@@ -2637,6 +2709,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "![Alt text][id]"
     },
     {
@@ -2650,6 +2723,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "[id]: url/to/image  \"Optional title attribute\""
     },
     {
@@ -2687,6 +2761,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<http://example.com/>"
     },
     {
@@ -2700,6 +2775,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<a href=\"http://example.com/\">http://example.com/</a>"
     },
     {
@@ -2713,6 +2789,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<address@example.com>"
     },
     {
@@ -2726,6 +2803,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<a href=\"&#x6D;&#x61;i&#x6C;&#x74;&#x6F;:&#x61;&#x64;&#x64;&#x72;&#x65;\n&#115;&#115;&#64;&#101;&#120;&#x61;&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;\n&#109;\">&#x61;&#x64;&#x64;&#x72;&#x65;&#115;&#115;&#64;&#101;&#120;&#x61;\n&#109;&#x70;&#x6C;e&#x2E;&#99;&#111;&#109;</a>"
     },
     {
@@ -2769,6 +2847,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "\\*literal asterisks\\*"
     },
     {
@@ -2782,6 +2861,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n    +        plus sign\n    -        minus sign (hyphen)\n.   dot\n!   exclamation mark"
     }
   ],

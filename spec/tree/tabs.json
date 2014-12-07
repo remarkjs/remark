@@ -36,7 +36,8 @@
     },
     {
       "type": "code",
-      "value": "    this code block is indented by one tab"
+      "lang": null,
+      "value": "this code block is indented by one tab"
     },
     {
       "type": "paragraph",
@@ -49,7 +50,8 @@
     },
     {
       "type": "code",
-      "value": "            this code block is indented by two tabs"
+      "lang": null,
+      "value": "this code block is indented by two tabs"
     },
     {
       "type": "paragraph",
@@ -62,7 +64,8 @@
     },
     {
       "type": "code",
-      "value": "    +        this is an example list item\n            indented with tabs\n\n    +   this is an example list item\n        indented with spaces"
+      "lang": null,
+      "value": "+        this is an example list item\n        indented with tabs\n\n+   this is an example list item\n    indented with spaces"
     }
   ],
   "footnotes": null

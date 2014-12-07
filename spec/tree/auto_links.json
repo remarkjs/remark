@@ -173,7 +173,8 @@
     },
     {
       "type": "code",
-      "value": "    or here: <http://example.com/>"
+      "lang": null,
+      "value": "or here: <http://example.com/>"
     }
   ],
   "footnotes": null

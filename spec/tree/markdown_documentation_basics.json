@@ -228,6 +228,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "A First Level Header\n====================\n\nA Second Level Header\n---------------------\n\nNow is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.\n\nThe quick brown fox jumped over the lazy\ndog's back.\n\n### Header 3\n\n> This is a blockquote.\n> \n> This is the second paragraph in the blockquote.\n>\n> ## This is an H2 in a blockquote"
     },
     {
@@ -241,6 +242,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n\n    <p>This is the second paragraph in the blockquote.</p>\n\n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>"
     },
     {
@@ -273,6 +275,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "Some of these words *are emphasized*.\nSome of these words _are emphasized also_.\n\nUse two asterisks for **strong emphasis**.\nOr, if you prefer, __use two underscores instead__."
     },
     {
@@ -286,6 +289,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>Some of these words <em>are emphasized</em>.\nSome of these words <em>are emphasized also</em>.</p>\n\n<p>Use two asterisks for <strong>strong emphasis</strong>.\nOr, if you prefer, <strong>use two underscores instead</strong>.</p>"
     },
     {
@@ -333,6 +337,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   Candy.\n*   Gum.\n*   Booze."
     },
     {
@@ -346,6 +351,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "+   Candy.\n+   Gum.\n+   Booze."
     },
     {
@@ -359,6 +365,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "-   Candy.\n-   Gum.\n-   Booze."
     },
     {
@@ -372,6 +379,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ul>\n<li>Candy.</li>\n<li>Gum.</li>\n<li>Booze.</li>\n</ul>"
     },
     {
@@ -385,6 +393,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "1.  Red\n2.  Green\n3.  Blue"
     },
     {
@@ -398,6 +407,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ol>\n<li>Red</li>\n<li>Green</li>\n<li>Blue</li>\n</ol>"
     },
     {
@@ -419,6 +429,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "*   A list item.\n\n    With multiple paragraphs.\n\n*   Another item in the list."
     },
     {
@@ -432,6 +443,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<ul>\n<li><p>A list item.</p>\n<p>With multiple paragraphs.</p></li>\n<li><p>Another item in the list.</p></li>\n</ul>"
     },
     {
@@ -490,6 +502,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is an [example link](http://example.com/)."
     },
     {
@@ -503,6 +516,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>This is an <a href=\"http://example.com/\">\nexample link</a>.</p>"
     },
     {
@@ -516,6 +530,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "This is an [example link](http://example.com/ \"With a Title\")."
     },
     {
@@ -529,6 +544,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>This is an <a href=\"http://example.com/\" title=\"With a Title\">\nexample link</a>.</p>"
     },
     {
@@ -542,6 +558,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I get 10 times more traffic from [Google][1] than from\n[Yahoo][2] or [MSN][3].\n\n[1]: http://google.com/        \"Google\"\n[2]: http://search.yahoo.com/  \"Yahoo Search\"\n[3]: http://search.msn.com/    \"MSN Search\""
     },
     {
@@ -555,6 +572,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from <a href=\"http://search.yahoo.com/\"\ntitle=\"Yahoo Search\">Yahoo</a> or <a href=\"http://search.msn.com/\"\ntitle=\"MSN Search\">MSN</a>.</p>"
     },
     {
@@ -581,6 +599,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I start my morning with a cup of coffee and\n[The New York Times][NY Times].\n\n[ny times]: http://www.nytimes.com/"
     },
     {
@@ -594,6 +613,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>I start my morning with a cup of coffee and\n<a href=\"http://www.nytimes.com/\">The New York Times</a>.</p>"
     },
     {
@@ -626,6 +646,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "![alt text](/path/to/img.jpg \"Title\")"
     },
     {
@@ -639,6 +660,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "![alt text][id]\n\n[id]: /path/to/img.jpg \"Title\""
     },
     {
@@ -652,6 +674,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<img src=\"/path/to/img.jpg\" alt=\"alt text\" title=\"Title\" />"
     },
     {
@@ -699,6 +722,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "I strongly recommend against using any `<blink>` tags.\n\nI wish SmartyPants used named entities like `&mdash;`\ninstead of decimal-encoded entites like `&#8212;`."
     },
     {
@@ -712,6 +736,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>I strongly recommend against using any\n<code>&lt;blink&gt;</code> tags.</p>\n\n<p>I wish SmartyPants used named entities like\n<code>&amp;mdash;</code> instead of decimal-encoded\nentites like <code>&amp;#8212;</code>.</p>"
     },
     {
@@ -758,6 +783,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:\n\n    <blockquote>\n        <p>For example.</p>\n    </blockquote>"
     },
     {
@@ -771,6 +797,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "<p>If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:</p>\n\n<pre><code>&lt;blockquote&gt;\n    &lt;p&gt;For example.&lt;/p&gt;\n&lt;/blockquote&gt;\n</code></pre>"
     }
   ],

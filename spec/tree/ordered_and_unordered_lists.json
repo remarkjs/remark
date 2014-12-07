@@ -575,7 +575,8 @@
             },
             {
               "type": "code",
-              "value": " * Fee\n * Fie\n * Foe"
+              "lang": null,
+              "value": "* Fee\n* Fie\n* Foe"
             }
           ]
         },
@@ -621,7 +622,8 @@
             },
             {
               "type": "code",
-              "value": " * Fee\n * Fie\n * Foe"
+              "lang": null,
+              "value": "* Fee\n* Fie\n* Foe"
             }
           ]
         },

@@ -24,7 +24,8 @@
     },
     {
       "type": "code",
-      "value": "    ---"
+      "lang": null,
+      "value": "---"
     },
     {
       "type": "horizontalRule"
@@ -40,7 +41,8 @@
     },
     {
       "type": "code",
-      "value": "    - - -"
+      "lang": null,
+      "value": "- - -"
     },
     {
       "type": "paragraph",
@@ -65,7 +67,8 @@
     },
     {
       "type": "code",
-      "value": "    ***"
+      "lang": null,
+      "value": "***"
     },
     {
       "type": "horizontalRule"
@@ -81,7 +84,8 @@
     },
     {
       "type": "code",
-      "value": "    * * *"
+      "lang": null,
+      "value": "* * *"
     },
     {
       "type": "paragraph",
@@ -106,6 +110,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "___"
     },
     {
@@ -122,6 +127,7 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "_ _ _"
     }
   ],

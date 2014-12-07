@@ -165,7 +165,8 @@
     },
     {
       "type": "code",
-      "value": "    Backslash: \\\\\n\n    Backtick: \\`\n\n    Asterisk: \\*\n\n    Underscore: \\_\n\n    Left brace: \\{\n\n    Right brace: \\}\n\n    Left bracket: \\[\n\n    Right bracket: \\]\n\n    Left paren: \\(\n\n    Right paren: \\)\n\n    Greater-than: \\>\n\n    Hash: \\#\n\n    Period: \\.\n\n    Bang: \\!\n\n    Plus: \\+\n\n    Minus: \\-"
+      "lang": null,
+      "value": "Backslash: \\\\\n\nBacktick: \\`\n\nAsterisk: \\*\n\nUnderscore: \\_\n\nLeft brace: \\{\n\nRight brace: \\}\n\nLeft bracket: \\[\n\nRight bracket: \\]\n\nLeft paren: \\(\n\nRight paren: \\)\n\nGreater-than: \\>\n\nHash: \\#\n\nPeriod: \\.\n\nBang: \\!\n\nPlus: \\+\n\nMinus: \\-"
     },
     {
       "type": "paragraph",

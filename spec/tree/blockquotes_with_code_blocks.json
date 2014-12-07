@@ -15,6 +15,7 @@
         },
         {
           "type": "code",
+          "lang": null,
           "value": "sub status {\n    print \"working\";\n}"
         },
         {
@@ -28,6 +29,7 @@
         },
         {
           "type": "code",
+          "lang": null,
           "value": "sub status {\n    return \"working\";\n}"
         }
       ]

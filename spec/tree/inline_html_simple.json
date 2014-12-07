@@ -25,7 +25,8 @@
     },
     {
       "type": "code",
-      "value": "    <div>\n            foo\n    </div>"
+      "lang": null,
+      "value": "<div>\n        foo\n</div>"
     },
     {
       "type": "paragraph",
@@ -38,7 +39,8 @@
     },
     {
       "type": "code",
-      "value": "    <div>foo</div>"
+      "lang": null,
+      "value": "<div>foo</div>"
     },
     {
       "type": "paragraph",
@@ -90,7 +92,8 @@
     },
     {
       "type": "code",
-      "value": "    <!-- Comment -->"
+      "lang": null,
+      "value": "<!-- Comment -->"
     },
     {
       "type": "paragraph",
@@ -116,7 +119,8 @@
     },
     {
       "type": "code",
-      "value": "    <hr>"
+      "lang": null,
+      "value": "<hr>"
     },
     {
       "type": "paragraph",

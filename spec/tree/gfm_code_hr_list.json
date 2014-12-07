@@ -102,7 +102,7 @@
             {
               "type": "code",
               "lang": null,
-              "value": " line 1\n line 2"
+              "value": "line 1\nline 2"
             }
           ]
         },
@@ -135,7 +135,7 @@
                     {
                       "type": "code",
                       "lang": "erb",
-                      "value": " some code here"
+                      "value": "some code here"
                     }
                   ]
                 },
@@ -157,7 +157,7 @@
                     {
                       "type": "code",
                       "lang": "erb",
-                      "value": " foo\n ---\n bar\n ---\n foo\n bar"
+                      "value": "foo\n---\nbar\n---\nfoo\nbar"
                     }
                   ]
                 },
@@ -179,7 +179,7 @@
                     {
                       "type": "code",
                       "lang": "html",
-                      "value": " ---\n foo\n foo\n ---\n bar"
+                      "value": "---\nfoo\nfoo\n---\nbar"
                     }
                   ]
                 },
@@ -200,7 +200,8 @@
                     },
                     {
                       "type": "code",
-                      "value": " foo\n ---\n bar"
+                      "lang": null,
+                      "value": "foo\n---\nbar"
                     }
                   ]
                 },
