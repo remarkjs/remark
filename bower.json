@@ -13,7 +13,8 @@
     "ast"
   ],
   "dependencies": {
-    "he": "^0.5.0"
+    "he": "^0.5.0",
+    "markdown-table": "^0.2.0"
   },
   "repository": {
     "type": "git",

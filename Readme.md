@@ -1,6 +1,8 @@
 # mdast
 
-**mdast** is speedy Markdown parser (not compiler) for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
+**mdast** is speedy Markdown parser for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
+
+It's close, but not yet there, to being able to compile the AST back to markdown again: it still has some slight issues with loose lists.
 
 ## Installation
 
@@ -24,10 +26,11 @@ $ bower install mdast
 See [Nodes](#nodes) for information about he returned nodes.
 
 ### Markdown:
+
 ```js
 var mdast = require('mdast');
 
-mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
+var ast = mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
 ```
 
 Yields:
@@ -78,6 +81,20 @@ Yields:
   ]
 }
 ```
+
+And passing that document into `mdast.stringify`
+
+```js
+mdast.stringify(ast);
+```
+
+Yields:
+
+```md
+Some *emphasis*,  **strongness**, and `code`\.
+```
+
+Yeah, the escaped period is nasty, but it works :)
 
 ### Github Flavoured Markdown
 defaults to true.

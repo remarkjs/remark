@@ -217,6 +217,25 @@ describe('fixtures', function () {
                 throw error;
             }
         });
+
+        it('should stringify `' + fixture.name + '` correctly', function () {
+            var generatedMarkdown,
+                generatedNode;
+
+            generatedMarkdown = mdast.stringify(node);
+            generatedNode = mdast.parse(generatedMarkdown, fixture.options);
+
+            try {
+                assert(stringify(node) === stringify(generatedNode));
+            } catch (error) {
+                logDifference(
+                    stringify(node, 0, 2), stringify(generatedNode, 0, 2)
+                );
+
+                /* istanbul ignore next: Shouldn't reach, helps debugging. */
+                throw error;
+            }
+        });
     });
 });
 

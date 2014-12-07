@@ -13,7 +13,8 @@
     "ast"
   ],
   "dependencies": {
-    "he": "^0.5.0"
+    "he": "^0.5.0",
+    "markdown-table": "^0.2.0"
   },
   "repository": {
     "type": "git",
@@ -24,6 +25,8 @@
     "Titus Wormer <tituswormer@gmail.com>"
   ],
   "devDependencies": {
+    "chalk": "^0.5.1",
+    "diff": "^1.0.8",
     "eslint": "^0.8.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.6.0",

@@ -13,7 +13,8 @@
     "ast"
   ],
   "dependencies": {
-    "mathiasbynens/he": "^0.5.0"
+    "mathiasbynens/he": "^0.5.0",
+    "wooorm/markdown-table": "^0.2.0"
   },
   "repository": "wooorm/mdast",
   "scripts": [
