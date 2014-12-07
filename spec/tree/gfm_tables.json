@@ -4,8 +4,8 @@
     {
       "type": "table",
       "align": [
-        null,
-        null
+        "left",
+        "left"
       ],
       "children": [
         {
@@ -94,7 +94,7 @@
         "center",
         "right",
         "left",
-        null
+        "left"
       ],
       "children": [
         {
@@ -224,13 +224,14 @@
     },
     {
       "type": "code",
+      "lang": null,
       "value": "Test code"
     },
     {
       "type": "table",
       "align": [
-        null,
-        null
+        "left",
+        "left"
       ],
       "children": [
         {
@@ -310,7 +311,7 @@
         "left",
         "center",
         "right",
-        null
+        "left"
       ],
       "children": [
         {
