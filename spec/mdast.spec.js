@@ -1,10 +1,16 @@
 'use strict';
 
-var mdast, assert, fixtures, validateToken, validateTokens;
+var mdast,
+    assert,
+    fixtures,
+    chalk,
+    diff;
 
 mdast = require('..');
 assert = require('assert');
 fixtures = require('./fixtures.js');
+chalk = require('chalk');
+diff = require('diff');
 
 describe('mdast', function () {
     it('should be of type `object`', function () {
@@ -23,6 +29,9 @@ describe('mdast.stringify()', function () {
         assert(typeof mdast.stringify === 'function');
     });
 });
+
+var validateToken,
+    validateTokens;
 
 validateTokens = function (children) {
     children.forEach(validateToken);
@@ -177,22 +186,26 @@ validateToken = function (context) {
     assert('value' in context);
 };
 
+var stringify;
+
+stringify = JSON.stringify;
+
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
-        it('should work on ' + fixture.name, function () {
-            var root = mdast.parse(fixture.input, fixture.options),
-                baseline = fixture.tree;
+        var baseline = JSON.parse(fixture.tree),
+            node;
 
-            validateToken(root);
-            baseline = JSON.parse(baseline);
+        it('should parse `' + fixture.name + '` correctly', function () {
+            node = mdast.parse(fixture.input, fixture.options);
+
+            validateToken(node);
 
             try {
-                assert(JSON.stringify(root) === JSON.stringify(baseline));
+                assert(stringify(node) === stringify(baseline));
             } catch (error) {
                 /* istanbul ignore next: Shouldn't reach, helps debugging. */
-                console.log(
-                    JSON.stringify(root, null, 2),
-                    JSON.stringify(baseline, null, 2)
+                logDifference(
+                    stringify(baseline, 0, 2), stringify(node, 0, 2)
                 );
 
                 /* istanbul ignore next: Shouldn't reach, helps debugging. */
@@ -201,3 +214,26 @@ describe('fixtures', function () {
         });
     });
 });
+
+function logDifference(value, alternative) {
+    var difference;
+
+    /* istanbul ignore next */
+    difference = diff.diffLines(value, alternative);
+
+    /* istanbul ignore next */
+    if (!difference || !difference.length) {
+        return;
+    }
+
+    /* istanbul ignore next */
+    difference.forEach(function (change) {
+        var colour;
+
+        colour = change.added ?
+            'green' :
+            change.removed ? 'red' : 'dim';
+
+        process.stderr.write(chalk[colour](change.value));
+    });
+}
