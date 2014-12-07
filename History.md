@@ -1,5 +1,5 @@
 
-n.n.n / 2014-12-07
+0.1.0-rc.1 / 2014-12-07
 ==================
 
  * Add near-finished stringifier
