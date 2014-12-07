@@ -77,7 +77,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "New List Item 1\nundefined"
+                      "value": "New List Item 1\nHi, this is a list item."
                     }
                   ]
                 },
@@ -86,7 +86,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "New List Item 2\nundefined"
+                      "value": "New List Item 2\nAnother item"
                     },
                     {
                       "type": "code",
@@ -100,7 +100,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "New List Item 3\nundefined"
+                      "value": "New List Item 3\nThe last item"
                     }
                   ]
                 }
@@ -112,8 +112,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "List Item 3\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "List Item 3\nThe final item."
+                }
+              ]
             }
           ]
         },
@@ -121,8 +126,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "List Item 4\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "List Item 4\nThe real final item."
+                }
+              ]
             }
           ]
         }
@@ -178,7 +188,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "New bq Item 2\nundefined"
+                          "value": "New bq Item 2\nText here"
                         }
                       ]
                     }

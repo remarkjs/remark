@@ -9,8 +9,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "hello\nundefined\nundefined\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello\nworld\nhow\nare"
+                }
+              ]
             }
           ]
         },
@@ -54,15 +59,20 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "world\nundefined"
+                      "value": "world\nhow"
                     }
                   ]
                 }
               ]
             },
             {
-              "type": "text",
-              "value": "are\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "are\nyou"
+                }
+              ]
             },
             {
               "type": "list",
@@ -175,8 +185,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "world\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world\nhow"
+                }
+              ]
             }
           ]
         },
@@ -217,8 +232,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "how\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare"
+                }
+              ]
             }
           ]
         }
@@ -250,8 +270,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "how\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare"
+                }
+              ]
             }
           ]
         }

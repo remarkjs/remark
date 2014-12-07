@@ -10,7 +10,7 @@
           "children": [
             {
               "type": "text",
-              "value": "hello\nundefined"
+              "value": "hello\nworld"
             }
           ]
         },
@@ -19,7 +19,7 @@
           "children": [
             {
               "type": "text",
-              "value": "how\nundefined"
+              "value": "how\nare"
             }
           ]
         }

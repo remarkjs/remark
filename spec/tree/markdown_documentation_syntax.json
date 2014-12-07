@@ -2002,7 +2002,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Square brackets containing the link identifier (optionally\nundefined"
+              "value": "Square brackets containing the link identifier (optionally\nindented from the left margin using up to three spaces);"
             }
           ]
         },
@@ -2038,7 +2038,7 @@
           "children": [
             {
               "type": "text",
-              "value": "optionally followed by a title attribute for the link, enclosed\nundefined"
+              "value": "optionally followed by a title attribute for the link, enclosed\nin double or single quotes."
             }
           ]
         }
@@ -2679,12 +2679,12 @@
               "value": "followed by a set of square brackets, containing the "
             },
             {
-              "type": "code",
+              "type": "inlineCode",
               "value": "alt"
             },
             {
               "type": "text",
-              "value": "\nundefined"
+              "value": "\nattribute text for the image;"
             }
           ]
         },
@@ -2693,7 +2693,15 @@
           "children": [
             {
               "type": "text",
-              "value": "followed by a set of parentheses, containing the URL or path to\nundefined\nundefined"
+              "value": "followed by a set of parentheses, containing the URL or path to\nthe image, and an optional "
+            },
+            {
+              "type": "inlineCode",
+              "value": "title"
+            },
+            {
+              "type": "text",
+              "value": " attribute enclosed in double\nor single quotes."
             }
           ]
         }

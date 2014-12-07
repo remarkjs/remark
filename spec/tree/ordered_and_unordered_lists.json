@@ -464,8 +464,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "Item 1, graf one.\nundefined\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 1, graf one.\nItem 2. graf two. The quick brown fox jumped over the lazy dog's\nback."
+                }
+              ]
             }
           ]
         },

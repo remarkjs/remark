@@ -9,8 +9,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "hello\nundefined\nundefined\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello\nworld\nhow\nare"
+                }
+              ]
             }
           ]
         },
@@ -53,8 +58,13 @@
                   "type": "listItem",
                   "children": [
                     {
-                      "type": "text",
-                      "value": "world\nundefined\nundefined\nundefined"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "world\nhow\nare\nyou"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -165,8 +175,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "world\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world\nhow"
+                }
+              ]
             }
           ]
         },
@@ -207,8 +222,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "how\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare"
+                }
+              ]
             }
           ]
         }
@@ -240,8 +260,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "how\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare"
+                }
+              ]
             }
           ]
         }

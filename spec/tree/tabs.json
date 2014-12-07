@@ -9,8 +9,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "this is a list item\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this is a list item\nindented with tabs"
+                }
+              ]
             }
           ]
         },
@@ -18,8 +23,13 @@
           "type": "listItem",
           "children": [
             {
-              "type": "text",
-              "value": "this is a list item\nundefined"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this is a list item\nindented with spaces"
+                }
+              ]
             }
           ]
         }
