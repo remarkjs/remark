@@ -1,5 +1,5 @@
 
-n.n.n / 2014-12-10
+0.1.0-rc.2 / 2014-12-10
 ==================
 
  * Add block-level nodes to every list-item
