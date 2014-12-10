@@ -19,28 +19,46 @@
           "children": [
             {
               "type": "listItem",
+              "loose": false,
               "children": [
                 {
-                  "type": "text",
-                  "value": "asterisk 1"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "asterisk 1"
+                    }
+                  ]
                 }
               ]
             },
             {
               "type": "listItem",
+              "loose": false,
               "children": [
                 {
-                  "type": "text",
-                  "value": "asterisk 2"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "asterisk 2"
+                    }
+                  ]
                 }
               ]
             },
             {
               "type": "listItem",
+              "loose": false,
               "children": [
                 {
-                  "type": "text",
-                  "value": "asterisk 3"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "asterisk 3"
+                    }
+                  ]
                 }
               ]
             }

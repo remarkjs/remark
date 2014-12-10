@@ -21,15 +21,21 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "link",
-              "title": null,
-              "href": "#overview",
+              "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "Overview"
+                  "type": "link",
+                  "title": null,
+                  "href": "#overview",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Overview"
+                    }
+                  ]
                 }
               ]
             },
@@ -39,15 +45,21 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#philosophy",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Philosophy"
+                          "type": "link",
+                          "title": null,
+                          "href": "#philosophy",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Philosophy"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -55,15 +67,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#html",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Inline HTML"
+                          "type": "link",
+                          "title": null,
+                          "href": "#html",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Inline HTML"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -71,15 +89,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#autoescape",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Automatic Escaping for Special Characters"
+                          "type": "link",
+                          "title": null,
+                          "href": "#autoescape",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Automatic Escaping for Special Characters"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -91,15 +115,21 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "link",
-              "title": null,
-              "href": "#block",
+              "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "Block Elements"
+                  "type": "link",
+                  "title": null,
+                  "href": "#block",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Block Elements"
+                    }
+                  ]
                 }
               ]
             },
@@ -109,15 +139,21 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#p",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Paragraphs and Line Breaks"
+                          "type": "link",
+                          "title": null,
+                          "href": "#p",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Paragraphs and Line Breaks"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -125,15 +161,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#header",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Headers"
+                          "type": "link",
+                          "title": null,
+                          "href": "#header",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Headers"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -141,15 +183,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#blockquote",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Blockquotes"
+                          "type": "link",
+                          "title": null,
+                          "href": "#blockquote",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Blockquotes"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -157,15 +205,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#list",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Lists"
+                          "type": "link",
+                          "title": null,
+                          "href": "#list",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Lists"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -173,15 +227,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#precode",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Code Blocks"
+                          "type": "link",
+                          "title": null,
+                          "href": "#precode",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Code Blocks"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -189,15 +249,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#hr",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Horizontal Rules"
+                          "type": "link",
+                          "title": null,
+                          "href": "#hr",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Horizontal Rules"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -209,15 +275,21 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "link",
-              "title": null,
-              "href": "#span",
+              "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "Span Elements"
+                  "type": "link",
+                  "title": null,
+                  "href": "#span",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Span Elements"
+                    }
+                  ]
                 }
               ]
             },
@@ -227,15 +299,21 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#link",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Links"
+                          "type": "link",
+                          "title": null,
+                          "href": "#link",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Links"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -243,15 +321,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#em",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Emphasis"
+                          "type": "link",
+                          "title": null,
+                          "href": "#em",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Emphasis"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -259,15 +343,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#code",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Code"
+                          "type": "link",
+                          "title": null,
+                          "href": "#code",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Code"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -275,15 +365,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#img",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Images"
+                          "type": "link",
+                          "title": null,
+                          "href": "#img",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Images"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -295,15 +391,21 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "link",
-              "title": null,
-              "href": "#misc",
+              "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "Miscellaneous"
+                  "type": "link",
+                  "title": null,
+                  "href": "#misc",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Miscellaneous"
+                    }
+                  ]
                 }
               ]
             },
@@ -313,15 +415,21 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#backslash",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Backslash Escapes"
+                          "type": "link",
+                          "title": null,
+                          "href": "#backslash",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Backslash Escapes"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -329,15 +437,21 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "link",
-                      "title": null,
-                      "href": "#autolink",
+                      "type": "paragraph",
                       "children": [
                         {
-                          "type": "text",
-                          "value": "Automatic Links"
+                          "type": "link",
+                          "title": null,
+                          "href": "#autolink",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "Automatic Links"
+                            }
+                          ]
                         }
                       ]
                     }
@@ -1999,46 +2113,76 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "Square brackets containing the link identifier (optionally\nindented from the left margin using up to three spaces);"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Square brackets containing the link identifier (optionally\nindented from the left margin using up to three spaces);"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "followed by a colon;"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "followed by a colon;"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "followed by one or more spaces (or tabs);"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "followed by one or more spaces (or tabs);"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "followed by the URL for the link;"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "followed by the URL for the link;"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "optionally followed by a title attribute for the link, enclosed\nin double or single quotes."
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "optionally followed by a title attribute for the link, enclosed\nin double or single quotes."
+                }
+              ]
             }
           ]
         }
@@ -2656,52 +2800,70 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "An exclamation mark: "
-            },
-            {
-              "type": "inlineCode",
-              "value": "!"
-            },
-            {
-              "type": "text",
-              "value": ";"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "An exclamation mark: "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "!"
+                },
+                {
+                  "type": "text",
+                  "value": ";"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "followed by a set of square brackets, containing the "
-            },
-            {
-              "type": "inlineCode",
-              "value": "alt"
-            },
-            {
-              "type": "text",
-              "value": "\nattribute text for the image;"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "followed by a set of square brackets, containing the "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "alt"
+                },
+                {
+                  "type": "text",
+                  "value": "\nattribute text for the image;"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "followed by a set of parentheses, containing the URL or path to\nthe image, and an optional "
-            },
-            {
-              "type": "inlineCode",
-              "value": "title"
-            },
-            {
-              "type": "text",
-              "value": " attribute enclosed in double\nor single quotes."
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "followed by a set of parentheses, containing the URL or path to\nthe image, and an optional "
+                },
+                {
+                  "type": "inlineCode",
+                  "value": "title"
+                },
+                {
+                  "type": "text",
+                  "value": " attribute enclosed in double\nor single quotes."
+                }
+              ]
             }
           ]
         }

@@ -17,6 +17,7 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -36,10 +37,16 @@
                   "children": [
                     {
                       "type": "listItem",
+                      "loose": false,
                       "children": [
                         {
-                          "type": "text",
-                          "value": "one"
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "one"
+                            }
+                          ]
                         },
                         {
                           "type": "list",
@@ -47,10 +54,16 @@
                           "children": [
                             {
                               "type": "listItem",
+                              "loose": false,
                               "children": [
                                 {
-                                  "type": "text",
-                                  "value": "two"
+                                  "type": "paragraph",
+                                  "children": [
+                                    {
+                                      "type": "text",
+                                      "value": "two"
+                                    }
+                                  ]
                                 },
                                 {
                                   "type": "list",
@@ -58,28 +71,46 @@
                                   "children": [
                                     {
                                       "type": "listItem",
+                                      "loose": false,
                                       "children": [
                                         {
-                                          "type": "text",
-                                          "value": "three"
+                                          "type": "paragraph",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "value": "three"
+                                            }
+                                          ]
                                         }
                                       ]
                                     },
                                     {
                                       "type": "listItem",
+                                      "loose": false,
                                       "children": [
                                         {
-                                          "type": "text",
-                                          "value": "four"
+                                          "type": "paragraph",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "value": "four"
+                                            }
+                                          ]
                                         }
                                       ]
                                     },
                                     {
                                       "type": "listItem",
+                                      "loose": false,
                                       "children": [
                                         {
-                                          "type": "text",
-                                          "value": "five"
+                                          "type": "paragraph",
+                                          "children": [
+                                            {
+                                              "type": "text",
+                                              "value": "five"
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
@@ -99,6 +130,7 @@
         },
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -118,6 +150,7 @@
         },
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -134,6 +167,7 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": true,
                   "children": [
                     {
                       "type": "paragraph",
@@ -161,6 +195,7 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": true,
                   "children": [
                     {
                       "type": "paragraph",
@@ -188,6 +223,7 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": true,
                   "children": [
                     {
                       "type": "paragraph",
@@ -215,6 +251,7 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": true,
                   "children": [
                     {
                       "type": "paragraph",
@@ -242,6 +279,7 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
                       "type": "paragraph",

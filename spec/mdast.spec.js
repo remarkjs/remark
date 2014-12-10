@@ -68,7 +68,6 @@ validateToken = function (context) {
     if (
         type === 'paragraph' ||
         type === 'blockquote' ||
-        type === 'listItem' ||
         type === 'tableHeader' ||
         type === 'tableRow' ||
         type === 'tableCell' ||
@@ -78,6 +77,14 @@ validateToken = function (context) {
     ) {
         assert(keys.length === 2);
         assert('children' in context);
+
+        return;
+    }
+
+    if (type === 'listItem') {
+        assert(keys.length === 3);
+        assert('children' in context);
+        assert('loose' in context);
 
         return;
     }

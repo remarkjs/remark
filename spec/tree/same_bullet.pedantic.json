@@ -7,28 +7,46 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "test"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "test"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "test"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "test"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "test"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "test"
+                }
+              ]
             }
           ]
         }

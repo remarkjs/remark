@@ -34,10 +34,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello world"
+                }
+              ]
             }
           ]
         }
@@ -76,10 +82,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello world"
+                }
+              ]
             }
           ]
         }
@@ -118,10 +130,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "Hello world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Hello world"
+                }
+              ]
             }
           ]
         }
@@ -160,10 +178,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello world"
+                }
+              ]
             }
           ]
         }
