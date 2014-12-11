@@ -2,9 +2,7 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
 
-**mdast** is speedy Markdown parser for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
-
-It's close, but not yet there, to being able to compile the AST back to markdown again: it still has some slight issues with loose lists.
+**mdast** is speedy Markdown parser (and stringifier) for multipurpose analysis (a syntax tree) in JavaScript. Node.JS and the browser. Lots of tests. 100% coverage.
 
 ## Installation
 
@@ -25,7 +23,7 @@ $ bower install mdast
 
 ## Usage
 
-See [Nodes](#nodes) for information about he returned nodes.
+See [Nodes](#nodes) for information about returned objects.
 
 ### Markdown:
 
@@ -84,7 +82,7 @@ Yields:
 }
 ```
 
-And passing that document into `mdast.stringify`
+And passing that document into `mdast.stringify`:
 
 ```js
 mdast.stringify(ast);
@@ -96,14 +94,15 @@ Yields:
 Some *emphasis*,  **strongness**, and `code`\.
 ```
 
-Yeah, the escaped period is nasty, but it works :)
+Yeah, the escaped period is nasty, but it works! :smile:
 
 ### Github Flavoured Markdown
-defaults to true.
+
+Defaults to `true`.
 
 ```js
 mdast.parse('hello ~~hi~~ world', {
-    'gfm' : true
+    'gfm': true
 });
 ```
 
@@ -138,7 +137,8 @@ Yields:
 ```
 
 ### Tables
-defaults to true.
+
+Defaults to `true`.
 
 ```js
 var source =
@@ -148,7 +148,7 @@ var source =
     'Cell 3   | Cell 4\n';
 
 mdast.parse(source, {
-    'tables' : true
+    'tables': true
 });
 ```
 
@@ -229,13 +229,14 @@ Yields:
 ```
 
 ### Pedantic
-“Pedantic”, used by Gruber's Markdown, matches emphasis-marks inside words. It's mostly not what you want.
 
-Defaults to false.
+“Pedantic”, used by Gruber’s Markdown, matches emphasis-marks inside words. It’s mostly not what you want.
+
+Defaults to `false`.
 
 ```js
 mdast.parse('some_file_name', {
-    'pedantic' : true
+    'pedantic': true
 });
 ```
 
@@ -270,14 +271,15 @@ Yields:
 ```
 
 ### Breaks
+
 “Breaks” prettifies line breaks inside a paragraph.
 
-Defaults to false.
+Defaults to `false`.
 
 ```js
 mdast.parse('A\nparagraph', {
-    'gfm' : true,
-    'breaks' : true
+    'gfm': true,
+    'breaks': true
 });
 ```
 
@@ -307,7 +309,7 @@ Yields:
 }
 ```
 
-Whereas with breaks false (and GFM true), mdast.parse would yield:
+Whereas with `breaks: false` (and `gfm: true`), `mdast.parse` would yield:
 
 ```json
 {
@@ -325,10 +327,12 @@ Whereas with breaks false (and GFM true), mdast.parse would yield:
 ```
 
 ### Footnotes
-“Footnotes” enables use of inline- and reference-style footnotes.
-Its also possible to reference other footnotes inside footnotes.
 
-Defaults to false.
+“Footnotes” enables use of inline- and reference-style footnotes.
+
+It’s possible to reference other footnotes inside footnotes.
+
+Defaults to `false`.
 
 ```js
 var source =
@@ -338,7 +342,7 @@ var source =
     '   - and lists\n';
 
 mdast.parse(source, {
-    'footnotes' : true
+    'footnotes': true
 });
 ```
 
@@ -409,7 +413,8 @@ Yields:
 ## Nodes
 
 ### Node
-mdast.parse returns node objects---just plain vanilla JS objects. Every node implements the following "Node" interface.
+
+`mdast.parse` returns node objects—plain vanilla objects. Every node implements the **[Node](#node)** interface:
 
 ```idl
 interface Node {
@@ -418,7 +423,8 @@ interface Node {
 ```
 
 ### Parent
-Most nodes implement the "Parent" interface (block/inline nodes which accept other nodes as children)...
+
+Most nodes implement the **[Parent](#parent)** interface (block/inline nodes which accept other nodes as children):
 
 ```idl
 interface Parent <: Node {
@@ -427,7 +433,8 @@ interface Parent <: Node {
 ```
 
 ### Text
-...all others, with the exception of [Table](#table), [HorizontalRule](#horizontalrule), [Break](#break), and [Footnote](#footnote), implement "Text" (nodes which accept a value.)
+
+All others, with the exception of **[Table](#table)**, **[HorizontalRule](#horizontalrule)**, **[Break](#break)**, and **[Footnote](#footnote)**, implement **[Text](#text)** (nodes which accept a value).
 
 ```idl
 interface Parent <: Text {
@@ -436,7 +443,8 @@ interface Parent <: Text {
 ```
 
 ### Root
-A root element houses all other nodes. In addition, it hold a footnote property, housing the content of [Footnote](#footnote)s by their keys (if "footnotes" is true in options, that is).
+
+A **[Root](#root)** houses all other nodes. In addition, it holds a `footnote` property, housing the content of [Footnote](#footnote)s by their keys (if `footnotes: true`, that is).
 
 ```idl
 interface Root <: Parent {
@@ -446,6 +454,7 @@ interface Root <: Parent {
 ```
 
 ### Paragraph
+
 ```idl
 interface Paragraph <: Parent {
     type: "paragraph";
@@ -453,6 +462,7 @@ interface Paragraph <: Parent {
 ```
 
 ### Blockquote
+
 ```idl
 interface Blockquote <: Parent {
     type: "blockquote";
@@ -460,6 +470,7 @@ interface Blockquote <: Parent {
 ```
 
 ### Heading
+
 A heading, just like with HMTL, greater-than-or-equal-to 0, lower-than-or-equal-to 6.
 
 ```idl
@@ -470,7 +481,8 @@ interface Heading <: Parent {
 ```
 
 ### Code
-Occurs at block level (see `inlineCode` for code spans). Code sports a language tag (when using Github Flavoured Markdown fences, null otherwise).
+
+Occurs at block level (see `inlineCode` for code spans). Code sports a language tag (when using Github Flavoured Markdown fences, `null` otherwise).
 
 ```idl
 interface Code <: Text {
@@ -480,7 +492,8 @@ interface Code <: Text {
 ```
 
 ### InlineCode
-Occurs at inline level (see `code` for code blocks). Inline code does not sport a `lang` tag.
+
+Occurs inline (see `code` for blocks). Inline code does not sport a `lang` tag.
 
 ```idl
 interface InlineCode <: Text {
@@ -489,6 +502,7 @@ interface InlineCode <: Text {
 ```
 
 ### HTML
+
 A string of raw HTML.
 
 ```idl
@@ -498,6 +512,7 @@ interface HTML <: Text {
 ```
 
 ### List
+
 A list.
 
 ```idl
@@ -508,16 +523,21 @@ interface List <: Parent {
 ```
 
 ### ListItem
-An item in a list (always occurs inside a list).
+
+An item in a list (only occurring in [**List**](#list)).
+
+Loose list-items often contain block-level elements and should be wrapped in newlines.
 
 ```idl
 interface ListItem <: Parent {
     type: "listItem";
+    loose: true | false;
 }
 ```
 
 ### Table
-Tabular data, with alignment. Its children are either tableHeader (the first child), or tableRow (all other children).
+
+Tabular data, with alignment. Its children are either [**TableHeader**](#tableheader) (the first child), or [**TableRow**](#tablerow) (all other children).
 
 - `table.align` is a list of align types.
 
@@ -535,7 +555,8 @@ enum alignType {
 ```
 
 ### TableHeader
-A table header. Its children are always `tableCell`.
+
+A table header. Its children are always [**TableCell**](#tablecell).
 
 ```idl
 interface TableHeader <: Parent {
@@ -544,7 +565,8 @@ interface TableHeader <: Parent {
 ```
 
 ### TableRow
-A table row. Its children are always `tableCell`.
+
+A table row. Its children are always [**TableCell**](#tablecell).
 
 ```idl
 interface TableRow <: Parent {
@@ -553,6 +575,7 @@ interface TableRow <: Parent {
 ```
 
 ### TableCell
+
 Tabular data cell.
 
 ```idl
@@ -562,6 +585,7 @@ interface TableCell <: Parent {
 ```
 
 ### HorizontalRule
+
 Just a horizontal rule.
 
 ```idl
@@ -571,6 +595,7 @@ interface HorizontalRule <: Node {
 ```
 
 ### Break
+
 If you want, you can use `"breaks": true`, and instead of newlines, break nodes will show up.
 
 ```idl
@@ -580,6 +605,7 @@ interface Break <: Node {
 ```
 
 ### Emphasis
+
 Slightly important text.
 
 ```idl
@@ -589,6 +615,7 @@ interface Emphasis <: Parent {
 ```
 
 ### Strong
+
 Super important text.
 
 ```idl
@@ -598,6 +625,7 @@ interface Strong <: Parent {
 ```
 
 ### Delete
+
 Content ready for removal.
 
 ```idl
@@ -607,6 +635,7 @@ interface Delete <: Parent {
 ```
 
 ### Link
+
 The humble hyperlink.
 
 ```idl
@@ -618,6 +647,7 @@ interface Link <: Parent {
 ```
 
 ### Image
+
 The figurative figure.
 
 ```idl
@@ -630,6 +660,7 @@ interface Image <: Parent {
 ```
 
 ### Footnote
+
 A footnote. These occur as inline nodes.
 
 ```idl
@@ -640,7 +671,8 @@ interface Footnote <: Node {
 ```
 
 ### Text
-Everything thats just text, is wrapped in a text node (d'oh):
+
+Everything that’s just text, is wrapped in a text node (d’oh):
 
 ```idl
 interface Text <: Text {
@@ -650,23 +682,17 @@ interface Text <: Text {
 
 ## Benchmark
 
-Run the benchmark yourself:
-
-```sh
-$ npm run benchmark
-```
-
-On a MacBook Air, it parser about 5 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that's the [entire works of Shakespeare](http://vintagezen.com/zen/2013/4/1/plain-text), in a second.
+On a MacBook Air, it parser about 3 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that’s more than the [entire works of Shakespeare](http://vintagezen.com/zen/2013/4/1/plain-text), in two seconds.
 
 ```
-             benchmarks * 56 fixtures (total: 47Kb markdown)
-    110 op/s » mdast.parse -- this module
+           benchmarks * 56 fixtures (total: 47Kb markdown)
+   64 op/s » mdast.parse
+  179 op/s » mdast.stringify
 ```
 
 ## License
 
-This project was initially a fork of [marked](https://github.com/chjj/marked).
+> This project was initially a fork of [marked](https://github.com/chjj/marked).
 
 Copyright (c) 2011-2014, Christopher Jeffrey. (MIT License)
-
-MIT © 2014 Titus Wormer
+MIT © [Titus Wormer](http://wooorm.com)
