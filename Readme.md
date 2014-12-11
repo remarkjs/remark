@@ -1,5 +1,7 @@
 # ![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
 
+[![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
+
 **mdast** is speedy Markdown parser for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
 
 It's close, but not yet there, to being able to compile the AST back to markdown again: it still has some slight issues with loose lists.
