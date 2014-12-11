@@ -1,4 +1,40 @@
 
+n.n.n / 2014-12-11
+==================
+
+ * Refactor `benchmark.js`
+ * Update keywords, description in `package.json`, `component.json`, `bower.json`
+ * Refactor `Readme.md`
+ * Add badges for travis, coveralls to `Readme.md`
+ * Add `logo.svg`
+ * Add missing `new` operator to `lib/stringify.js`
+ * Fix malformed `bower.json`
+ * Fix incorrect script reference in `component.json`
+ * Add strict mode to `index.js`
+ * Refactor `bower.json`
+ * Move `lib/stringify/index.js` to `lib/stringify.js`
+ * Move `lib/parse/index.js` to `lib/parse.js`
+ * Add npm deployment to `.travis.yml`
+ * Remove `before_install` script in `.travis.yml`
+ * Remove `Makefile`
+ * Refactor `.npmignore`
+ * Refactor `.gitignore`
+ * Add broader version ranges to `package.json`
+ * Update eslint
+ * Update matcha
+ * Update mocha
+ * Refactor npm scripts in `package.json`
+ * Move `test/mdast.spec.js` to `test/index.js`
+ * Move `spec/` to `test/`
+ * Move `benchmark/index.js` to `benchmark.js`
+ * Refactor to disallow spaces after object keys
+ * Add `.eslintrc`
+ * Fix spacing around inline-code containing backticks
+ * Refactor to simplify `spec/mdast.spec.js`
+ * Add benchmark for `mdast.stringify`
+ * Merge branch 'bug/fix-links'
+ * Remove failing fixtures
+
 0.1.0-rc.2 / 2014-12-10
 ==================
 
