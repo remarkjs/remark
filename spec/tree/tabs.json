@@ -7,6 +7,7 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -21,6 +22,7 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
               "type": "paragraph",

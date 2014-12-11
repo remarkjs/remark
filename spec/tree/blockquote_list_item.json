@@ -16,10 +16,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             },
             {
               "type": "blockquote",

@@ -99,24 +99,14 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "In a list?"
-            }
-          ]
-        },
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "link",
-              "title": null,
-              "href": "http://example.com/",
+              "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "http://example.com/"
+                  "value": "In a list?"
                 }
               ]
             }
@@ -124,10 +114,38 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "It should."
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "link",
+                  "title": null,
+                  "href": "http://example.com/",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "http://example.com/"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "It should."
+                }
+              ]
             }
           ]
         }

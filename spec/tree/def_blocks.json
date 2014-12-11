@@ -58,19 +58,31 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "[3]: hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "[3]: hello"
+                }
+              ]
             }
           ]
         }
@@ -82,10 +94,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         }

@@ -112,10 +112,16 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "how are you"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how are you"
+                }
+              ]
             }
           ]
         }

@@ -7,6 +7,7 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -21,10 +22,16 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "you"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "you"
+                }
+              ]
             }
           ]
         }
@@ -45,6 +52,7 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -61,10 +69,16 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "text",
-                      "value": "world\nhow"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "world\nhow"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -85,10 +99,16 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "text",
-                      "value": "today"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "today"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -98,87 +118,7 @@
         },
         {
           "type": "listItem",
-          "children": [
-            {
-              "type": "text",
-              "value": "hi"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "list",
-      "ordered": false,
-      "children": [
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "hello"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "world"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "text",
-              "value": "hi"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "type": "list",
-      "ordered": false,
-      "children": [
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "text",
-              "value": "hello"
-            }
-          ]
-        },
-        {
-          "type": "listItem",
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "world"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "type": "listItem",
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -199,15 +139,124 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hi"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "loose": true,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hi"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": false,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -222,10 +271,16 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hi"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hi"
+                }
+              ]
             }
           ]
         }
@@ -237,24 +292,37 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "world"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "world"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -275,15 +343,22 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -298,6 +373,7 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
               "type": "paragraph",

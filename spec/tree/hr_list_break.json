@@ -7,19 +7,31 @@
       "children": [
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "hello\nworld"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "hello\nworld"
+                }
+              ]
             }
           ]
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
-              "type": "text",
-              "value": "how\nare"
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare"
+                }
+              ]
             }
           ]
         }

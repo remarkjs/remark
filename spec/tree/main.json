@@ -54,6 +54,7 @@
       "children": [
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -68,6 +69,7 @@
         },
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -84,19 +86,31 @@
               "children": [
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "text",
-                      "value": "New List Item 1\nHi, this is a list item."
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 1\nHi, this is a list item."
+                        }
+                      ]
                     }
                   ]
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "text",
-                      "value": "New List Item 2\nAnother item"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 2\nAnother item"
+                        }
+                      ]
                     },
                     {
                       "type": "code",
@@ -107,10 +121,16 @@
                 },
                 {
                   "type": "listItem",
+                  "loose": false,
                   "children": [
                     {
-                      "type": "text",
-                      "value": "New List Item 3\nThe last item"
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 3\nThe last item"
+                        }
+                      ]
                     }
                   ]
                 }
@@ -120,6 +140,7 @@
         },
         {
           "type": "listItem",
+          "loose": true,
           "children": [
             {
               "type": "paragraph",
@@ -134,6 +155,7 @@
         },
         {
           "type": "listItem",
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -166,19 +188,31 @@
           "children": [
             {
               "type": "listItem",
+              "loose": false,
               "children": [
                 {
-                  "type": "text",
-                  "value": "bq Item 1"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "bq Item 1"
+                    }
+                  ]
                 }
               ]
             },
             {
               "type": "listItem",
+              "loose": false,
               "children": [
                 {
-                  "type": "text",
-                  "value": "bq Item 2"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "bq Item 2"
+                    }
+                  ]
                 },
                 {
                   "type": "list",
@@ -186,19 +220,31 @@
                   "children": [
                     {
                       "type": "listItem",
+                      "loose": false,
                       "children": [
                         {
-                          "type": "text",
-                          "value": "New bq Item 1"
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "New bq Item 1"
+                            }
+                          ]
                         }
                       ]
                     },
                     {
                       "type": "listItem",
+                      "loose": false,
                       "children": [
                         {
-                          "type": "text",
-                          "value": "New bq Item 2\nText here"
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "New bq Item 2\nText here"
+                            }
+                          ]
                         }
                       ]
                     }
