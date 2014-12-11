@@ -215,12 +215,12 @@ describe('fixtures', function () {
             try {
                 assert(stringify(node) === stringify(baseline));
             } catch (error) {
-                /* istanbul ignore next: Shouldn't reach, helps debugging. */
+                /* istanbul ignore next */
                 logDifference(
                     stringify(baseline, 0, 2), stringify(node, 0, 2)
                 );
 
-                /* istanbul ignore next: Shouldn't reach, helps debugging. */
+                /* istanbul ignore next */
                 throw error;
             }
         });
@@ -235,36 +235,33 @@ describe('fixtures', function () {
             try {
                 assert(stringify(node) === stringify(generatedNode));
             } catch (error) {
+                /* istanbul ignore next */
                 logDifference(
                     stringify(node, 0, 2), stringify(generatedNode, 0, 2)
                 );
 
-                /* istanbul ignore next: Shouldn't reach, helps debugging. */
+                /* istanbul ignore next */
                 throw error;
             }
         });
     });
 });
 
+/* istanbul ignore next */
 function logDifference(value, alternative) {
     var difference;
 
-    /* istanbul ignore next */
     difference = diff.diffLines(value, alternative);
 
-    /* istanbul ignore next */
     if (!difference || !difference.length) {
         return;
     }
 
-    /* istanbul ignore next */
     difference.forEach(function (change) {
         var colour;
 
-        colour = change.added ?
-            'green' :
-            change.removed ? 'red' : 'dim';
+        colour = change.added ? 'green' : change.removed ? 'red' : 'dim';
 
-        process.stderr.write(chalk[colour](change.value));
+        process.stdout.write(chalk[colour](change.value));
     });
 }
