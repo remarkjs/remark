@@ -1,11 +1,20 @@
 'use strict';
 
-/* eslint-disable no-cond-assign */
+/**
+ * Dependencies.
+ */
 
-var mdast, fixtures, fixtureSize;
+var mdast,
+    fixtures;
 
 mdast = require('./');
 fixtures = require('./test/fixtures.js');
+
+/**
+ * Calculate the fixture size in MB.
+ */
+
+var fixtureSize;
 
 fixtureSize = 0;
 
@@ -14,6 +23,10 @@ fixtures.forEach(function (fixture) {
 });
 
 fixtureSize = Math.round(fixtureSize / 1024);
+
+/**
+ * Benchmarks.
+ */
 
 suite(
     'benchmarks * ' + fixtures.length + ' fixtures (total: ' + fixtureSize +
