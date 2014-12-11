@@ -28,13 +28,13 @@
     ".*",
     "*.log",
     "*.md",
-    "component.json",
-    "package.json",
-    "coverage",
+    "build/",
+    "components/",
+    "coverage/",
+    "node_modules/",
+    "test/"
     "benchmark.js",
-    "test/",
-    "components",
-    "node_modules",
-    "bower_components"
+    "component.json",
+    "package.json"
   ]
 }
