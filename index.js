@@ -1,2 +1,2 @@
 exports.parse = require('./lib/parse.js');
-exports.stringify = require('./lib/stringify');
+exports.stringify = require('./lib/stringify.js');

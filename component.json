@@ -20,6 +20,6 @@
   "scripts": [
     "index.js",
     "lib/index.js",
-    "lib/stringify/index.js"
+    "lib/stringify.js"
   ]
 }

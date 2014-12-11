@@ -37,10 +37,10 @@
     "test": "node_modules/.bin/_mocha --reporter spec --check-leaks -u exports test/index.js",
     "test-travis": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha --report lcovonly -- --reporter spec --check-leaks -u exports test/index.js",
     "coverage": "node_modules/.bin/istanbul cover node_modules/.bin/_mocha -- -- test/index.js",
-    "lint-api": "node_modules/.bin/eslint index.js lib/parse.js lib/stringify/index.js",
+    "lint-api": "node_modules/.bin/eslint index.js lib/parse.js lib/stringify.js",
     "lint-test": "node_modules/.bin/eslint test/index.js test/fixtures.js --env mocha",
     "lint-benchmark": "node_modules/.bin/eslint benchmark.js --global suite,set,bench",
-    "lint-style": "node_modules/.bin/jscs index.js lib/parse.js lib/stringify/index.js test/index.js test/fixtures.js benchmark.js --reporter=inline",
+    "lint-style": "node_modules/.bin/jscs index.js lib/parse.js lib/stringify.js test/index.js test/fixtures.js benchmark.js --reporter=inline",
     "lint": "npm run lint-api && npm run lint-test && npm run lint-benchmark && npm run lint-style",
     "make": "npm run lint && npm run coverage",
     "benchmark": "node_modules/.bin/matcha benchmark.js"
