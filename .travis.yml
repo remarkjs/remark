@@ -4,3 +4,10 @@ node_js:
 - '0.10'
 - '0.11'
 after_script: npm install coveralls@2.10.0 && cat ./coverage/lcov.info | coveralls
+deploy:
+  provider: npm
+  email: tituswormer@gmail.com
+  api_key:
+    secure: bJsbyt/Q8hoYvScgDtd5Wf5T8+qku7o50MEN6F55HTqGiHEEheihNEcmlz4g6NSiddeytYzIDg3inkVO6y1zJT6xLQXH1skW8Vt82iYyIs3RxekGH+ZRAhEESLMoQdAOl6Hjk7YD8VIYzLPk0nWgUyuFg0+nD01vGsodc6tTZoc=
+  on:
+    repo: wooorm/mdast
