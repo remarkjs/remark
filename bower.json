@@ -32,7 +32,7 @@
     "components/",
     "coverage/",
     "node_modules/",
-    "test/"
+    "test/",
     "benchmark.js",
     "component.json",
     "package.json"
