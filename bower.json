@@ -28,6 +28,7 @@
     ".*",
     "*.log",
     "*.md",
+    "*.svg",
     "build/",
     "components/",
     "coverage/",

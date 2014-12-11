@@ -1,4 +1,4 @@
-# mdast
+# ![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
 
 **mdast** is speedy Markdown parser for multipurpose analysis (a syntax tree) in JavaScript. NodeJS, and the browser. Lots of tests. 100% coverage.
 
