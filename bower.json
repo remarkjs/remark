@@ -32,7 +32,7 @@
     "package.json",
     "coverage",
     "benchmark.js",
-    "spec",
+    "test/",
     "components",
     "node_modules",
     "bower_components"
