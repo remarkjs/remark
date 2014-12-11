@@ -4,8 +4,8 @@
 
 var mdast, fixtures, fixtureSize;
 
-mdast = require('..');
-fixtures = require('../spec/fixtures.js');
+mdast = require('./');
+fixtures = require('./test/fixtures.js');
 
 fixtureSize = 0;
 
