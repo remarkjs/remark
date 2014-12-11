@@ -1,7 +1,7 @@
 {
   "name": "mdast",
   "main": "index.js",
-  "description": "Speedy Markdown parser for multipurpose analysis",
+  "description": "Speedy Markdown parser/stringified for multipurpose analysis",
   "license": "MIT",
   "keywords": [
     "markdown",
@@ -10,7 +10,9 @@
     "syntax",
     "tree",
     "json",
-    "ast"
+    "ast",
+    "parse",
+    "stringify"
   ],
   "dependencies": {
     "he": "^0.5.0",
