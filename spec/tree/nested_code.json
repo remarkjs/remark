@@ -6,7 +6,16 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "hi ther `` ok ``` "
+          "value": "hi ther `` ok ```"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "`hi ther`"
         }
       ]
     }
