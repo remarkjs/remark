@@ -18,9 +18,15 @@ fixtureSize = Math.round(fixtureSize / 1024);
 suite(
     'benchmarks * ' + fixtures.length + ' fixtures (total: ' + fixtureSize +
     'Kb markdown)', function () {
-        bench('mdast -- this module', function () {
+        bench('mdast.parse', function () {
             fixtures.forEach(function (fixture) {
-                mdast.parse(fixture.input, fixture.options);
+                fixture.output = mdast.parse(fixture.input, fixture.options);
+            });
+        });
+
+        bench('mdast.stringify', function () {
+            fixtures.forEach(function (fixture) {
+                mdast.stringify(fixture.output);
             });
         });
     }
