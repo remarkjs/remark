@@ -19,7 +19,7 @@
   "repository": "wooorm/mdast",
   "scripts": [
     "index.js",
-    "lib/parse/index.js",
+    "lib/index.js",
     "lib/stringify/index.js"
   ]
 }
