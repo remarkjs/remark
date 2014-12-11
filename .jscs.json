@@ -45,7 +45,7 @@
   "disallowSpacesInsideParentheses": true,
   "requireSpacesInsideObjectBrackets": "all",
   "disallowDanglingUnderscores": true,
-  "requireSpaceAfterObjectKeys": true,
+  "disallowSpaceAfterObjectKeys": true,
   "requireCommaBeforeLineBreak": true,
   "requireOperatorBeforeLineBreak": [
     "?",

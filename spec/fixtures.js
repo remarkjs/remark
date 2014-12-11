@@ -6,16 +6,16 @@ fs = require('fs');
 path = require('path');
 
 optionsMap = {
-    'gfm' : ['gfm', true],
-    'nogfm' : ['gfm', false],
-    'tables' : ['tables', true],
-    'notables' : ['tables', false],
-    'footnotes' : ['footnotes', true],
-    'nofootnotes' : ['footnotes', false],
-    'breaks' : ['breaks', true],
-    'nobreaks' : ['breaks', false],
-    'pedantic' : ['pedantic', true],
-    'nopedantic' : ['pedantic', false]
+    'gfm': ['gfm', true],
+    'nogfm': ['gfm', false],
+    'tables': ['tables', true],
+    'notables': ['tables', false],
+    'footnotes': ['footnotes', true],
+    'nofootnotes': ['footnotes', false],
+    'breaks': ['breaks', true],
+    'nobreaks': ['breaks', false],
+    'pedantic': ['pedantic', true],
+    'nopedantic': ['pedantic', false]
 };
 
 fixtures = fs.readdirSync(path.join(__dirname, 'input'))
@@ -50,11 +50,11 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
         size = fs.statSync(path.join(__dirname, 'input', filepath)).size;
 
         return {
-            'input' : input,
-            'tree' : tree,
-            'options' : options,
-            'size' : size,
-            'name' : filename
+            'input': input,
+            'tree': tree,
+            'options': options,
+            'size': size,
+            'name': filename
         };
     }
 );
