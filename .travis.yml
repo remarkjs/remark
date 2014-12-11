@@ -1,6 +1,4 @@
 language: node_js
-before_install:
-- npm update -g npm
 script: npm run-script test-travis
 node_js:
 - '0.10'
