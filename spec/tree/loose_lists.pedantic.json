@@ -322,7 +322,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -373,7 +373,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
