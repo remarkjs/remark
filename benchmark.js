@@ -1,6 +1,6 @@
 'use strict';
 
-/**
+/*
  * Dependencies.
  */
 
@@ -10,7 +10,7 @@ var mdast,
 mdast = require('./');
 fixtures = require('./test/fixtures.js');
 
-/**
+/*
  * Calculate the fixture size in MB.
  */
 
@@ -24,7 +24,7 @@ fixtures.forEach(function (fixture) {
 
 fixtureSize = Math.round(fixtureSize / 1024);
 
-/**
+/*
  * Benchmarks.
  */
 

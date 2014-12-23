@@ -33,10 +33,20 @@ describe('mdast.stringify()', function () {
 var validateToken,
     validateTokens;
 
+/**
+ * Validate `children`.
+ *
+ * @param {Array.<Object>} children
+ */
 validateTokens = function (children) {
     children.forEach(validateToken);
 };
 
+/**
+ * Validate `context`.
+ *
+ * @param {Object} context
+ */
 validateToken = function (context) {
     var keys = Object.keys(context),
         type = context.type,
@@ -248,20 +258,25 @@ describe('fixtures', function () {
 });
 
 /* istanbul ignore next */
+
+/**
+ * Log the difference between `value` and `alternative`.
+ *
+ * @param {string} value
+ * @param {string} alternative
+ */
 function logDifference(value, alternative) {
     var difference;
 
     difference = diff.diffLines(value, alternative);
 
-    if (!difference || !difference.length) {
-        return;
+    if (difference && difference.length) {
+        difference.forEach(function (change) {
+            var colour;
+
+            colour = change.added ? 'green' : change.removed ? 'red' : 'dim';
+
+            process.stdout.write(chalk[colour](change.value));
+        });
     }
-
-    difference.forEach(function (change) {
-        var colour;
-
-        colour = change.added ? 'green' : change.removed ? 'red' : 'dim';
-
-        process.stdout.write(chalk[colour](change.value));
-    });
 }
