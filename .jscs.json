@@ -1,4 +1,20 @@
 {
+  "plugins": [
+    "jscs-jsdoc"
+  ],
+  "jsDoc": {
+    "checkAnnotations": "jsdoc3",
+    "checkParamNames": true,
+    "requireParamTypes": true,
+    "checkRedundantParams": true,
+    "checkReturnTypes": true,
+    "checkRedundantReturns": true,
+    "requireReturnTypes": true,
+    "checkTypes": "strictNativeCase",
+    "checkRedundantAccess": true,
+    "enforceExistence": true,
+    "requireHyphenBeforeDescription": true
+  },
   "requireCurlyBraces": [
     "if",
     "else",
@@ -33,9 +49,6 @@
     "beforeOpeningRoundBrace": true,
     "beforeOpeningCurlyBrace": true
   },
-  "requireSpacesInFunctionExpression": {
-    "beforeOpeningCurlyBrace": true
-  },
   "requireMultipleVarDecl": true,
   "requireBlocksOnNewline": true,
   "disallowPaddingNewlinesInBlocks": true,
@@ -64,32 +77,6 @@
     "<="
   ],
   "requireSpaceBeforeBinaryOperators": [
-    "=",
-    ",",
-    "+",
-    "-",
-    "/",
-    "*",
-    "==",
-    "===",
-    "!=",
-    "!=="
-  ],
-  "requireSpaceAfterBinaryOperators": [
-    "=",
-    ",",
-    "+",
-    "-",
-    "/",
-    "*",
-    "==",
-    "===",
-    "!=",
-    "!=="
-  ],
-  "disallowSpaceAfterPrefixUnaryOperators": ["++", "--", "+", "-", "~", "!"],
-  "disallowSpaceBeforePostfixUnaryOperators": ["++", "--"],
-  "requireSpaceBeforeBinaryOperators": [
     "+",
     "-",
     "/",
@@ -111,9 +98,28 @@
     "!=",
     "!=="
   ],
-  "disallowImplicitTypeConversion": ["numeric", "boolean", "binary", "string"],
+  "disallowSpaceAfterPrefixUnaryOperators": [
+    "++",
+    "--",
+    "+",
+    "-",
+    "~",
+    "!"
+  ],
+  "disallowSpaceBeforePostfixUnaryOperators": [
+    "++",
+    "--"
+  ],
+  "disallowImplicitTypeConversion": [
+    "numeric",
+    "boolean",
+    "binary",
+    "string"
+  ],
   "requireCamelCaseOrUpperCaseIdentifiers": true,
-  "disallowKeywords": ["with"],
+  "disallowKeywords": [
+    "with"
+  ],
   "disallowMultipleLineStrings": true,
   "disallowMultipleLineBreaks": true,
   "validateLineBreaks": "LF",
@@ -121,7 +127,9 @@
   "disallowMixedSpacesAndTabs": true,
   "disallowTrailingWhitespace": true,
   "disallowTrailingComma": true,
-  "disallowKeywordsOnNewLine": ["else"],
+  "disallowKeywordsOnNewLine": [
+    "else"
+  ],
   "requireLineFeedAtFileEnd": true,
   "maximumLineLength": 78,
   "requireCapitalizedConstructors": true,
