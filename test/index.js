@@ -12,6 +12,18 @@ fixtures = require('./fixtures.js');
 chalk = require('chalk');
 diff = require('diff');
 
+/*
+ * Settings.
+ */
+
+var INDENT;
+
+INDENT = 2;
+
+/*
+ * Tests.
+ */
+
 describe('mdast', function () {
     it('should be of type `object`', function () {
         assert(typeof mdast === 'object');
@@ -227,7 +239,8 @@ describe('fixtures', function () {
             } catch (error) {
                 /* istanbul ignore next */
                 logDifference(
-                    stringify(baseline, 0, 2), stringify(node, 0, 2)
+                    stringify(baseline, null, INDENT),
+                    stringify(node, null, INDENT)
                 );
 
                 /* istanbul ignore next */
@@ -247,7 +260,8 @@ describe('fixtures', function () {
             } catch (error) {
                 /* istanbul ignore next */
                 logDifference(
-                    stringify(node, 0, 2), stringify(generatedNode, 0, 2)
+                    stringify(node, null, INDENT),
+                    stringify(generatedNode, null, INDENT)
                 );
 
                 /* istanbul ignore next */
