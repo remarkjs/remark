@@ -30,16 +30,26 @@ describe('mdast', function () {
     });
 });
 
-describe('mdast.parse()', function () {
+describe('mdast.parse(value, options)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.parse === 'function');
     });
 });
 
-describe('mdast.stringify()', function () {
+describe('mdast.stringify(ast, options)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.stringify === 'function');
     });
+
+    it('should throw when `options.bullet` is not a valid bullet',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'bullet': true
+                });
+            }, /options\.bullet/);
+        }
+    );
 });
 
 var validateToken,
