@@ -17,20 +17,13 @@ path = require('path');
 var optionsMap;
 
 optionsMap = {
-    'gfm': ['gfm', true],
-    'nogfm': ['gfm', false],
-    'tables': ['tables', true],
-    'notables': ['tables', false],
-    'footnotes': ['footnotes', true],
-    'nofootnotes': ['footnotes', false],
-    'breaks': ['breaks', true],
-    'nobreaks': ['breaks', false],
-    'pedantic': ['pedantic', true],
-    'nopedantic': ['pedantic', false],
-    'setex': ['preferSetextHeadings', true],
-    'nosetex': ['preferSetextHeadings', false],
-    'output': ['output', true],
-    'nooutput': ['output', false]
+    'gfm': 'gfm',
+    'tables': 'tables',
+    'footnotes': 'footnotes',
+    'breaks': 'breaks',
+    'pedantic': 'pedantic',
+    'setex': 'preferSetextHeadings',
+    'output': 'output'
 };
 
 /*
@@ -49,6 +42,8 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
             tree,
             output,
             flag,
+            option,
+            value,
             index,
             size;
 
@@ -60,9 +55,22 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
             options = {};
 
             while (filename[++index]) {
-                flag = optionsMap[filename[index]];
+                flag = filename[index];
 
-                options[flag[0]] = flag[1];
+                if (flag.indexOf('=') !== -1) {
+                    option = flag.slice(0, flag.indexOf('='));
+                    value = flag.slice(flag.indexOf('=') + 1);
+                } else if (optionsMap[flag]) {
+                    option = flag;
+                    value = true;
+                } else if (flag.slice(0, 2) === 'no') {
+                    option = flag.slice(2);
+                    value = false;
+                }
+
+                option = optionsMap[option];
+
+                options[option] = value;
             }
         }
 
