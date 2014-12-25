@@ -227,7 +227,8 @@ stringify = JSON.stringify;
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
         var baseline = JSON.parse(fixture.tree),
-            node;
+            node,
+            markdown;
 
         it('should parse `' + fixture.name + '` correctly', function () {
             node = mdast.parse(fixture.input, fixture.options);
@@ -249,11 +250,10 @@ describe('fixtures', function () {
         });
 
         it('should stringify `' + fixture.name + '` correctly', function () {
-            var generatedMarkdown,
-                generatedNode;
+            var generatedNode;
 
-            generatedMarkdown = mdast.stringify(node);
-            generatedNode = mdast.parse(generatedMarkdown, fixture.options);
+            markdown = mdast.stringify(node, fixture.options);
+            generatedNode = mdast.parse(markdown, fixture.options);
 
             try {
                 assert(stringify(node) === stringify(generatedNode));
@@ -268,6 +268,22 @@ describe('fixtures', function () {
                 throw error;
             }
         });
+
+        if (fixture.output) {
+            it('should stringify `' + fixture.name + '` to its input',
+                function () {
+                    try {
+                        assert(fixture.input === markdown);
+                    } catch (error) {
+                        /* istanbul ignore next */
+                        logDifference(fixture.input, markdown);
+
+                        /* istanbul ignore next */
+                        throw error;
+                    }
+                }
+            );
+        }
     });
 });
 
