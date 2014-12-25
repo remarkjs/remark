@@ -114,7 +114,7 @@ Returns: An `Object`. See [Nodes](#nodes) for the AST specification.
 
 Parameters:
 
-- `ast` (`Object`) — An AST as returned by [mdast.parse](#mdast-parse-value-options);
+- `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`, `null`, `undefined`) — Optional options:
     - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext headings](#setext-headings).
 
