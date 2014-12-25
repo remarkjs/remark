@@ -1,4 +1,26 @@
 
+n.n.n / 2014-12-25
+==================
+
+  * Fix incorrect IDL in `Readme.md`
+  * Fix incorrect link in `Readme.md`
+  * Add proper `parse`, `stringify` docs to `Readme.md`
+  * Add useage example for setext-heading stringification to docs
+  * Add support for stringification to setex-style headings
+  * Add fixtures for setex style headings
+  * Add support for testing stringified output
+  * Add stringification of final new-line
+  * Remove stringification of superfluous new-lines
+  * Refactor `lib/parse.js` to cache expressions
+  * Refactor `test/index.js` to use constants
+  * Refactor `lib/stringify.js` to use constants
+  * Refactor `lib/parse.js` to use constants
+  * Refactor to adhere to strict jsdoc style
+  * Add jscs-jsdoc configuration to `.jscs.json`
+  * Add jscs-jsdoc as a dev-dependency
+  * Refactor npm scripts for changes in npm
+  * Update markdown-table
+
 0.1.0 / 2014-12-11
 ==================
 
