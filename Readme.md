@@ -410,6 +410,38 @@ Yields:
 }
 ```
 
+### Setext Headings
+
+When choosing to stringify to [Setext headings](http://en.wikipedia.org/wiki/Setext#Setext_tags), primary headings are underlined with equals-signs, and secondary headers with dashes.
+
+Defaults to `false`.
+
+```js
+var ast = mdast.parse(
+    '# First level\n' +
+    '\n' +
+    '## Second level\n' +
+    '\n' +
+    '### Third level\n'
+);
+
+mdast.stringify(ast, {
+    'preferSetextHeadings': true
+});
+```
+
+Yields:
+
+```md
+First level
+===========
+
+Second level
+------------
+
+### Third level
+```
+
 ## Nodes
 
 ### Node
