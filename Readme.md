@@ -116,7 +116,8 @@ Parameters:
 
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`, `null`, `undefined`) — Optional options:
-    - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext headings](#setext-headings).
+    - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
+    - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets).
 
 Returns: A `string`.
 
@@ -464,6 +465,36 @@ Second level
 ------------
 
 ### Third level
+```
+
+### List Item Bullets
+
+It’s possible to specify which bullet to use for unordered [lists](https://github.com/wooorm/mdast#list).
+
+Defaults to `"-"`.
+
+```js
+var ast = mdast.parse(
+    '- First level\n' +
+    '\n' +
+    '  - Second level\n' +
+    '\n' +
+    '    - Third level\n'
+);
+
+mdast.stringify(ast, {
+    'bullet': '*'
+});
+```
+
+Yields:
+
+```md
+* First level
+
+  * Second level
+
+    * Third level
 ```
 
 ## Nodes
