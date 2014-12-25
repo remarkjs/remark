@@ -23,7 +23,8 @@ optionsMap = {
     'breaks': 'breaks',
     'pedantic': 'pedantic',
     'setex': 'preferSetextHeadings',
-    'output': 'output'
+    'output': 'output',
+    'bullet': 'bullet'
 };
 
 /*
