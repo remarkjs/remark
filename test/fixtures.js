@@ -27,6 +27,8 @@ optionsMap = {
     'nobreaks': ['breaks', false],
     'pedantic': ['pedantic', true],
     'nopedantic': ['pedantic', false],
+    'setex': ['preferSetextHeadings', true],
+    'nosetex': ['preferSetextHeadings', false],
     'output': ['output', true],
     'nooutput': ['output', false]
 };
