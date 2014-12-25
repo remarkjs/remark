@@ -7,17 +7,17 @@
 ## Installation
 
 npm:
-```sh
+```bash
 $ npm install mdast
 ```
 
 Component.js:
-```sh
+```bash
 $ component install wooorm/mdast
 ```
 
 Bower:
-```sh
+```bash
 $ bower install mdast
 ```
 
@@ -25,7 +25,7 @@ $ bower install mdast
 
 See [Nodes](#nodes) for information about returned objects.
 
-### Markdown:
+### mdast
 
 ```js
 var mdast = require('mdast');
@@ -95,6 +95,30 @@ Some *emphasis*,  **strongness**, and `code`\.
 ```
 
 Yeah, the escaped period is nasty, but it works! :smile:
+
+### [mdast](#mdast).parse(value, options?)
+
+Parameters:
+
+- `value` (`string`) — Markdown document;
+- `options` (`Object`, `null`, `undefined`) — Optional options:
+    - `options.gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](#github-flavoured-markdown);
+    - `options.tables` (`boolean`, default: `true`). See [Tables](#tables);
+    - `options.pedantic` (`boolean`, default: `false`). See [Pedantic](#pedantic);
+    - `options.breaks` (`boolean`, default: `false`). See [Breaks](#breaks);
+    - `options.footnotes` (`boolean`, default: `false`). See [Footnotes](#footnotes).
+
+Returns: An `Object`. See [Nodes](#nodes) for the AST specification.
+
+### [mdast](#mdast).stringify(ast, options?)
+
+Parameters:
+
+- `ast` (`Object`) — An AST as returned by [mdast.parse](#mdast-parse-value-options);
+- `options` (`Object`, `null`, `undefined`) — Optional options:
+    - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext headings](#setext-headings).
+
+Returns: A `string`.
 
 ### Github Flavoured Markdown
 
