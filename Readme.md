@@ -493,7 +493,7 @@ interface Parent <: Node {
 All others, with the exception of **[Table](#table)**, **[HorizontalRule](#horizontalrule)**, **[Break](#break)**, and **[Footnote](#footnote)**, implement **[Text](#text)** (nodes which accept a value).
 
 ```idl
-interface Parent <: Text {
+interface Text <: Node {
     value: string;
 }
 ```
@@ -707,7 +707,7 @@ interface Link <: Parent {
 The figurative figure.
 
 ```idl
-interface Image <: Parent {
+interface Image <: Node {
     type: "image";
     title: string | null;
     alt: string | null;
@@ -731,7 +731,7 @@ interface Footnote <: Node {
 Everything that’s just text, is wrapped in a text node (d’oh):
 
 ```idl
-interface Text <: Text {
+interface TextNode <: Text {
     type: "text";
 }
 ```
