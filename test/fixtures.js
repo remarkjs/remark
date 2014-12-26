@@ -27,7 +27,9 @@ optionsMap = {
     'bullet': 'bullet',
     'horizontal-rule': 'horizontalRule',
     'horizontal-rule-spaces': 'horizontalRuleSpaces',
-    'horizontal-rule-repetition': 'horizontalRuleRepetition'
+    'horizontal-rule-repetition': 'horizontalRuleRepetition',
+    'emphasis': 'emphasis',
+    'strong': 'strong'
 };
 
 /*

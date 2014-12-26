@@ -100,6 +100,28 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.horizontalRuleRepetition/);
         }
     );
+
+    it('should throw when `options.emphasis` is not a ' +
+        'valid emphasis marker',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'emphasis': '-'
+                });
+            }, /options\.emphasis/);
+        }
+    );
+
+    it('should throw when `options.strong` is not a ' +
+        'valid emphasis marker',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'strong': '-'
+                });
+            }, /options\.strong/);
+        }
+    );
 });
 
 var validateToken,
