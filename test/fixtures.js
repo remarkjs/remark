@@ -24,7 +24,10 @@ optionsMap = {
     'pedantic': 'pedantic',
     'setex': 'preferSetextHeadings',
     'output': 'output',
-    'bullet': 'bullet'
+    'bullet': 'bullet',
+    'horizontal-rule': 'horizontalRule',
+    'horizontal-rule-spaces': 'horizontalRuleSpaces',
+    'horizontal-rule-repetition': 'horizontalRuleRepetition'
 };
 
 /*
@@ -70,6 +73,10 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
                 }
 
                 option = optionsMap[option];
+
+                if (option === 'horizontalRuleRepetition') {
+                    value = Number(value);
+                }
 
                 options[option] = value;
             }
