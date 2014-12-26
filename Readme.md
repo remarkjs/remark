@@ -115,9 +115,14 @@ Returns: An `Object`. See [Nodes](#nodes) for the AST specification.
 Parameters:
 
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
-- `options` (`Object`, `null`, `undefined`) — Optional options:
+- `options` (`Object`) — Optional options:
     - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
-    - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets).
+    - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
+    - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
+    - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
+    - `options.horizontalRuleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules).
+
+All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
 Returns: A `string`.
 
@@ -495,6 +500,34 @@ Yields:
   * Second level
 
     * Third level
+```
+
+### Horizontal Rules
+
+It’s possible to specify how to render horizontal rules.
+
+By default horizontal rules are rendered as three asterisks joined by spaces.
+
+```js
+var ast = mdast.parse(
+    'A rule:\n' +
+    '\n' +
+    '---\n'
+);
+
+mdast.stringify(ast, {
+    'horizontalRule': '*',
+    'horizontalRuleRepetition': 80 / 2,
+    'horizontalRuleSpaces': true
+});
+```
+
+Yields:
+
+```md
+A rule:
+
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ```
 
 ## Nodes
