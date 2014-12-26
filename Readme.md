@@ -120,7 +120,9 @@ Parameters:
     - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
     - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
     - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
-    - `options.horizontalRuleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules).
+    - `options.horizontalRuleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules);
+    - `options.strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](#emphasis-markers);
+    - `options.emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](#emphasis-markers).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
@@ -528,6 +530,33 @@ Yields:
 A rule:
 
 * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+```
+
+### Emphasis Markers
+
+It’s possible to specify how to render emphasis and strong nodes.
+
+By default, slight emphasis is wrapped in underscores, whereas strong emphasis is wrapped in (two) asterisks.
+
+```js
+var ast = mdast.parse(
+    '*emphasis*\n' +
+    '\n' +
+    '__strong__\n' +
+);
+
+mdast.stringify(ast, {
+    'emphasis': '_',
+    'strong': '*'
+});
+```
+
+Yields:
+
+```md
+_emphasis_
+
+**strong**
 ```
 
 ## Nodes
