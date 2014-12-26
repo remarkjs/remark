@@ -1,5 +1,5 @@
 
-n.n.n / 2014-12-26
+0.1.2 / 2014-12-26
 ==================
 
   * Merge branch 'feature/stringification/emphasis-and-strong'
