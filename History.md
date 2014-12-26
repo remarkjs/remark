@@ -1,4 +1,25 @@
 
+n.n.n / 2014-12-26
+==================
+
+  * Merge branch 'feature/stringification/emphasis-and-strong'
+  * Add support for stringification with emphasis options
+  * Add support for stringification with emphasis options
+  * Add tests for incorrect emphasis options
+  * Add fixtures for setting strong and emphasis style
+  * Refactor table-stringification
+  * Merge branch 'feature/add-prefered-horizontal-rule-stringification'
+  * Add docs for `options.horizontalRule` to `Readme.md`
+  * Add support for stringification with horizontal-rule options
+  * Add tests for incorrect horizontal-rule options
+  * Add fixtures for setting horizontal-rule styles
+  * Merge branch 'feature/add-prefered-bullet-stringification'
+  * Add docs for `options.button` to `Readme.md`
+  * Add test for stringification with invalid bullet option
+  * Add support for stringification with bullet options for unordered lists
+  * Add fixtures for setting bullets for unordered lists
+  * Add support for testing fixtures with options
+
 0.1.1 / 2014-12-25
 ==================
 
