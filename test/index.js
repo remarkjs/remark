@@ -41,13 +41,63 @@ describe('mdast.stringify(ast, options)', function () {
         assert(typeof mdast.stringify === 'function');
     });
 
-    it('should throw when `options.bullet` is not a valid bullet',
+    it('should throw when `options` is not an object', function () {
+        assert.throws(function () {
+            mdast.stringify({}, false);
+        }, /options/);
+    });
+
+    it('should throw when `options.bullet` is not a valid list bullet',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
                     'bullet': true
                 });
             }, /options\.bullet/);
+        }
+    );
+
+    it('should throw when `options.horizontalRule` is not a valid ' +
+        'horizontal rule bullet',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'horizontalRule': true
+                });
+            }, /options\.horizontalRule/);
+        }
+    );
+
+    it('should throw when `options.horizontalRuleSpaces` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'horizontalRuleSpaces': 1
+                });
+            }, /options\.horizontalRuleSpaces/);
+        }
+    );
+
+    it('should throw when `options.horizontalRuleRepetition` is not a ' +
+        'valid repetition count',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'horizontalRuleRepetition': 1
+                });
+            }, /options\.horizontalRuleRepetition/);
+
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'horizontalRuleRepetition': NaN
+                });
+            }, /options\.horizontalRuleRepetition/);
+
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'horizontalRuleRepetition': true
+                });
+            }, /options\.horizontalRuleRepetition/);
         }
     );
 });
