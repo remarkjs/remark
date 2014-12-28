@@ -122,6 +122,16 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.strong/);
         }
     );
+
+    it('should throw when `options.preferReferenceLinks` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'preferReferenceLinks': Infinity
+                });
+            }, /options\.preferReferenceLinks/);
+        }
+    );
 });
 
 var validateToken,
