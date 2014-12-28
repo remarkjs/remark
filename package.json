@@ -32,7 +32,7 @@
     "eslint": "^0.10.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
-    "jscs-jsdoc": "^0.3.0",
+    "jscs-jsdoc": "^0.4.0",
     "matcha": "^0.6.0",
     "mocha": "^2.0.0"
   },
