@@ -1,0 +1,35 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-1"
+        },
+        {
+          "type": "text",
+          "value": ". There should be a single new line after this:"
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "footnote-1": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "this should be inline"
+          }
+        ]
+      }
+    ]
+  }
+}
