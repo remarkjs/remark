@@ -1,0 +1,142 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Lorem ipsum dolor sit amet"
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Nulla finibus"
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-2"
+        },
+        {
+          "type": "text",
+          "value": " neque et diam rhoncus convallis."
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "footnote-1": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Consectetur "
+          },
+          {
+            "type": "strong",
+            "children": [
+              {
+                "type": "text",
+                "value": "adipiscing"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": " elit. Praesent dictum purus ullamcorper ligula semper pellentesque"
+          },
+          {
+            "type": "footnote",
+            "id": "footnote-3"
+          },
+          {
+            "type": "text",
+            "value": "."
+          }
+        ]
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "children": [
+          {
+            "type": "listItem",
+            "loose": false,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "Containing a list."
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "footnote-2": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Nam dictum sapien nec sem ultrices fermentum. Nulla "
+          },
+          {
+            "type": "strong",
+            "children": [
+              {
+                "type": "text",
+                "value": "facilisi"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ". In et feugiat massa."
+          }
+        ]
+      }
+    ],
+    "footnote-3": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Nunc dapibus ipsum ut mi "
+          },
+          {
+            "type": "emphasis",
+            "children": [
+              {
+                "type": "text",
+                "value": "ultrices"
+              }
+            ]
+          },
+          {
+            "type": "text",
+            "value": ", non euismod velit pretium."
+          }
+        ]
+      }
+    ]
+  }
+}

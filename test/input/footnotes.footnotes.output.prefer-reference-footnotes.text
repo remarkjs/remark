@@ -1,0 +1,9 @@
+Lorem ipsum dolor sit amet[^footnote-1].
+
+Nulla finibus[^footnote-2] neque et diam rhoncus convallis.
+
+[^footnote-1]: Consectetur **adipiscing** elit. Praesent dictum purus ullamcorper ligula semper pellentesque[^footnote-3].
+
+    - Containing a list.
+[^footnote-2]: Nam dictum sapien nec sem ultrices fermentum. Nulla **facilisi**. In et feugiat massa.
+[^footnote-3]: Nunc dapibus ipsum ut mi _ultrices_, non euismod velit pretium.

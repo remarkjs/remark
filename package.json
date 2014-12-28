@@ -40,10 +40,10 @@
     "test": "_mocha --check-leaks test/index.js",
     "test-travis": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
     "coverage": "istanbul cover _mocha -- -- test/index.js",
-    "lint-api": "eslint index.js lib/parse.js lib/stringify.js",
+    "lint-api": "eslint index.js lib/parse.js lib/stringify.js lib/utilities.js",
     "lint-test": "eslint --env mocha test/index.js test/fixtures.js",
     "lint-benchmark": "eslint --global suite,set,bench benchmark.js",
-    "lint-style": "jscs --reporter inline index.js lib/parse.js lib/stringify.js test/index.js test/fixtures.js benchmark.js",
+    "lint-style": "jscs --reporter inline index.js lib/parse.js lib/stringify.js lib/utilities.js test/index.js test/fixtures.js benchmark.js",
     "lint": "npm run lint-api && npm run lint-test && npm run lint-benchmark && npm run lint-style",
     "make": "npm run lint && npm run coverage",
     "benchmark": "matcha benchmark.js"

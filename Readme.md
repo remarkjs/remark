@@ -117,7 +117,8 @@ Parameters:
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
     - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
-    - `options.preferReferenceLinks` (`boolean`, default: `false`). See [Relative Links](#relative-links);
+    - `options.preferReferenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
+    - `options.preferReferenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
     - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
     - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
     - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
@@ -560,11 +561,11 @@ _emphasis_
 **strong**
 ```
 
-### Relative Links
+### Reference Links
 
 Instead of exposing links inline, it’s possible to stringify reference-style links.
 
-By default, links are stringigied inline.
+By default, links are stringified inline.
 
 ```js
 var ast = mdast.parse(
@@ -582,6 +583,31 @@ Yields:
 Lorem ipsum dolor sit [amet][1].
 
 [1]: http://amet.com "Amet"
+```
+
+### Inline Footnotes
+
+Instead of exposing reference-style footnotes, it’s possible to stringify inline footnotes (when possible).
+
+By default, footnotes are stringified after the document. By setting `preferReferenceFootnotes: false` footnotes containing a single paragraph can be stringified inline.
+
+```js
+var ast = mdast.parse(
+    'Some text[^1].\n' +
+    '\n' +
+    '[^1]: And a footnote\n', {
+    'footnotes': true
+});
+
+mdast.stringify(ast, {
+    'preferReferenceFootnotes': false
+});
+```
+
+Yields:
+
+```md
+Some text[^And a footnote].
 ```
 
 ## Nodes

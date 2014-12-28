@@ -30,7 +30,8 @@ optionsMap = {
     'horizontal-rule-repetition': 'horizontalRuleRepetition',
     'emphasis': 'emphasis',
     'strong': 'strong',
-    'prefer-reference-links': 'preferReferenceLinks'
+    'prefer-reference-links': 'preferReferenceLinks',
+    'prefer-reference-footnotes': 'preferReferenceFootnotes'
 };
 
 /*

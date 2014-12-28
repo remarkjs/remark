@@ -142,6 +142,17 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.preferReferenceLinks/);
         }
     );
+
+    it('should throw when `options.preferReferenceFootnotes` is not a ' +
+        'boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'preferReferenceFootnotes': -1
+                });
+            }, /options\.preferReferenceFootnotes/);
+        }
+    );
 });
 
 var validateToken,
