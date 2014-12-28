@@ -123,6 +123,16 @@ describe('mdast.stringify(ast, options)', function () {
         }
     );
 
+    it('should throw when `options.preferSetextHeadings` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'preferSetextHeadings': 0
+                });
+            }, /options\.preferSetextHeadings/);
+        }
+    );
+
     it('should throw when `options.preferReferenceLinks` is not a boolean',
         function () {
             assert.throws(function () {
