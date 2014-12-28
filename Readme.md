@@ -119,6 +119,7 @@ Parameters:
     - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
     - `options.preferReferenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
     - `options.preferReferenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
+    - `options.preferFences` (`boolean`, default: `false`). See [Fences](#fences);
     - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
     - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
     - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
@@ -609,6 +610,34 @@ Yields:
 ```md
 Some text[^And a footnote].
 ```
+
+### Fences
+
+By default, code blocks without a programming-language flag are stringified using indentation, instead of [GFMs fences](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks).
+
+```js
+var ast = mdast.parse(
+    'A code block:\n' +
+    '\n' +
+    '    alert(\'Hello World!\');\n'
+);
+
+mdast.stringify(ast, {
+    'preferFences': true
+});
+```
+
+Yields:
+
+``````md
+A code block:
+
+\```
+alert('Hello World!');
+\```
+``````
+
+The above example contains two slahes to make sure GitHub renders the markdown (in markdown) properly.
 
 ## Nodes
 

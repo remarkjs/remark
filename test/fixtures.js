@@ -31,7 +31,8 @@ optionsMap = {
     'emphasis': 'emphasis',
     'strong': 'strong',
     'prefer-reference-links': 'preferReferenceLinks',
-    'prefer-reference-footnotes': 'preferReferenceFootnotes'
+    'prefer-reference-footnotes': 'preferReferenceFootnotes',
+    'prefer-fences': 'preferFences'
 };
 
 /*

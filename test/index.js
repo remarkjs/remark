@@ -153,6 +153,16 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.preferReferenceFootnotes/);
         }
     );
+
+    it('should throw when `options.preferFences` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'preferFences': NaN
+                });
+            }, /options\.preferFences/);
+        }
+    );
 });
 
 var validateToken,

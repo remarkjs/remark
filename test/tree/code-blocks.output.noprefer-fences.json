@@ -1,0 +1,20 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A code block NOT using fences:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "alert('Hello World!');"
+    }
+  ],
+  "footnotes": null
+}
