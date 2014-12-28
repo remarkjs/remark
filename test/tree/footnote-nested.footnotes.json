@@ -1,0 +1,59 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A footnote"
+        },
+        {
+          "type": "footnote",
+          "id": "1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "1": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Including "
+          },
+          {
+            "type": "footnote",
+            "id": "footnote-1"
+          }
+        ]
+      }
+    ],
+    "footnote-1": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "another "
+          },
+          {
+            "type": "strong",
+            "children": [
+              {
+                "type": "text",
+                "value": "footnote"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
