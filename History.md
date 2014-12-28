@@ -1,5 +1,5 @@
 
-n.n.n / 2014-12-28
+0.1.3 / 2014-12-28
 ==================
 
   * Merge branch 'feature/stringification/preferred-code-block-style'
