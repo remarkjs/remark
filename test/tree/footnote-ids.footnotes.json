@@ -1,0 +1,62 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This example checks that "
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-2"
+        },
+        {
+          "type": "text",
+          "value": " IDs do not overwrite the user's IDs"
+        },
+        {
+          "type": "footnote",
+          "id": "footnote-1"
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": {
+    "footnote-1": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Old behavior would, for \"generated\", generate a footnote with an ID set to "
+          },
+          {
+            "type": "inlineCode",
+            "value": "footnote-1"
+          },
+          {
+            "type": "text",
+            "value": ", thus overwriting this footnote."
+          }
+        ]
+      }
+    ],
+    "footnote-2": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "the generated"
+          }
+        ]
+      }
+    ]
+  }
+}
