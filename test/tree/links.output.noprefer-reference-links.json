@@ -1,0 +1,93 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Lorem ipsum dolor sit "
+        },
+        {
+          "type": "link",
+          "title": "Amet",
+          "href": "http://amet.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "amet"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ", consectetur adipiscing elit. Praesent dictum purus ullamcorper ligula semper pellentesque."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Nulla "
+        },
+        {
+          "type": "link",
+          "title": "Finibus",
+          "href": "http://finibus.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "finibus"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " neque et diam rhoncus convallis. Nam dictum sapien nec sem ultrices fermentum. Nulla "
+        },
+        {
+          "type": "link",
+          "title": "Facilisi",
+          "href": "http://facilisi.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "facilisi"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": ". In et feugiat massa."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Donec sed sodales metus, ut aliquet quam. Suspendisse nec ipsum risus. Interdum et malesuada fames ac ante ipsum primis in "
+        },
+        {
+          "type": "link",
+          "title": "Faucibus",
+          "href": "http://faucibus.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "faucibus"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "."
+        }
+      ]
+    }
+  ],
+  "footnotes": null
+}
