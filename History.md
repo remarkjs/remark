@@ -1,4 +1,34 @@
 
+n.n.n / 2014-12-28
+==================
+
+  * Merge branch 'feature/stringification/preferred-code-block-style'
+  * Add documentation for preferred code block-style
+  * Add support for preferred code block-style
+  * Add tests for incorrect code block-style options
+  * Add fixtures preferred code block-style
+  * Merge branch 'feature/stringification/preferred-footnote-style'
+  * Add documentation for stringification with reference footnote options
+  * Add support for stringification with reference footnote options
+  * Move internal copy method over to `lib/utilities.js`
+  * Add tests for incorrect reference footnote options
+  * Add fixtures for stringification of inline- and reference-style footnotes
+  * Merge branch 'bug/parse/formatting-in-nested-footnotes'
+  * Fix a bug when nested footnotes contain formatting
+  * Merge branch 'bug/parse/fix-generating-unique-footnote-ids'
+  * Fix a bug when generating footnote ids
+  * Merge branch 'feature/stringification/preferred-link-style'
+  * Add documentation for stringification with reference link options
+  * Add support for stringification with reference link options
+  * Add tests for incorrect setext header options
+  * Add tests for incorrect reference link options
+  * Add fixtures for stringification of inline- and reference-style links
+  * Merge branch 'feature/stringification/less-escaped-characters'
+  * Remove escape from exclamation-marks
+  * Remove escape from dots when not preceded by a digit
+  * Remove superfluous escaped full-stops from fixtures
+  * Update jscs-jsdoc
+
 0.1.2 / 2014-12-26
 ==================
 
