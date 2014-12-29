@@ -28,6 +28,9 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com>"
   ],
+  "bin": {
+    "mdast": "cli.js"
+  },
   "devDependencies": {
     "chalk": "^0.5.0",
     "diff": "^1.0.0",
