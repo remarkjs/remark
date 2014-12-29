@@ -12,7 +12,9 @@
     "json",
     "ast",
     "parse",
-    "stringify"
+    "stringify",
+    "bin",
+    "cli"
   ],
   "dependencies": {
     "he": "^0.5.0",
