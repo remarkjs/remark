@@ -42,14 +42,6 @@ it "Should fail on stdin and files"
     cat History.md | ./cli.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
-# it "Should accept a value over stdin"
-#     result=`echo "phonetics" | ./cli.js` 2> /dev/null
-#     assert $result "P532"
-#
-# it "Should accept multiple values over stdin"
-#     result=`echo "phonetics unicorns" | ./cli.js` 2> /dev/null
-#     assert "$result" "P532 U526"
-#
 it "Should accept \`--ast\`"
     code=0
     ./cli.js --ast Readme.md > /dev/null 2>&1 || code=$?
