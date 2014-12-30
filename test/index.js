@@ -123,13 +123,13 @@ describe('mdast.stringify(ast, options)', function () {
         }
     );
 
-    it('should throw when `options.setextHeadings` is not a boolean',
+    it('should throw when `options.setext` is not a boolean',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
-                    'setextHeadings': 0
+                    'setext': 0
                 });
-            }, /options\.setextHeadings/);
+            }, /options\.setext/);
         }
     );
 

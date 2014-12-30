@@ -65,7 +65,7 @@ function help() {
         '',
         '# Pass stdin through mdast, with options',
         '$ cat Readme.md | ' + command + ' -o ' +
-            '"setex-headings, bullet: *" > Readme-new.md'
+            '"setext, bullet: *" > Readme-new.md'
     ].join('\n  ') + '\n';
 }
 
@@ -100,7 +100,7 @@ function getOptions() {
         '## [Stringify](https://github.com/wooorm/mdast#' +
             'mdaststringifyast-options)',
         '',
-        '-  `setex-headings` (boolean, default: false)',
+        '-  `setext` (boolean, default: false)',
         '-  `reference-links` (boolean, default: false)',
         '-  `reference-footnotes` (boolean, default: true)',
         '-  `fences` (boolean, default: false)',

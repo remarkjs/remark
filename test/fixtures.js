@@ -22,7 +22,7 @@ optionsMap = {
     'footnotes': 'footnotes',
     'breaks': 'breaks',
     'pedantic': 'pedantic',
-    'setex': 'setextHeadings',
+    'setext': 'setext',
     'output': 'output',
     'bullet': 'bullet',
     'horizontal-rule': 'horizontalRule',
