@@ -52,15 +52,15 @@ function help() {
         '  -h, --help            output usage information',
         '  -v, --version         output version number',
         '  -a, --ast             output AST information',
+        '      --options         output available settings',
         '  -o, --option <option> specify settings',
-        '      --options         list available settings',
         '',
         'Usage:',
         '',
         '# Pass `Readme.md` through mdast',
         '$ ' + command + ' Readme.md > Readme.md',
         '',
-        '# output phonetics for words from stdin',
+        '# Pass stdin through mdast, with options',
         '$ cat Readme.md | ' + command + ' -o ' +
             '"setex-headings, bullet: *" > Readme.md'
     ].join('\n  ') + '\n';
