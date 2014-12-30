@@ -43,7 +43,9 @@
   },
   "scripts": {
     "test": "_mocha --check-leaks test/index.js",
-    "test-travis": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
+    "test-cli": "bash test/cli.sh",
+    "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
+    "test-travis": "npm run test-cli && npm run test-coveralls",
     "coverage": "istanbul cover _mocha -- -- test/index.js",
     "lint-api": "eslint index.js lib/parse.js lib/stringify.js lib/utilities.js",
     "lint-cli": "eslint --rule no-process-exit:false cli.js",
