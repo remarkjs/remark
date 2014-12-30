@@ -133,7 +133,7 @@
     },
     {
       "type": "html",
-      "value": "<hr>\n\n<hr>\n\n<hr>\n\n<hr>   \n\n<hr>  \n\n<hr> \n\n<hr class=\"foo\" id=\"bar\" />\n\n<hr class=\"foo\" id=\"bar\"/>\n\n<hr class=\"foo\" id=\"bar\" >\n\n"
+      "value": "<hr>\n\n<hr>\n\n<hr>\n\n<hr>   \n\n<hr>  \n\n<hr> \n\n<hr class=\"foo\" id=\"bar\" />\n\n<hr class=\"foo\" id=\"bar\"/>\n\n<hr class=\"foo\" id=\"bar\" >\n"
     }
   ],
   "footnotes": null
