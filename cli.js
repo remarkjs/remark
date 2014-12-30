@@ -264,7 +264,8 @@ if (
     if (files[0]) {
         fs.readFile(files[0], function (exception, content) {
             if (exception) {
-                throw exception;
+                process.stderr.write(exception.message + '\n');
+                process.exit(1);
             }
 
             program(content.toString());
