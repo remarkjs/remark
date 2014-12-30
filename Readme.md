@@ -139,7 +139,7 @@ $ npm install --global mdast
 
 Use:
 
-```
+```text
 Usage: mdast [options] file
 
 Speedy Markdown parser/stringifier for multipurpose analysis
@@ -661,13 +661,13 @@ mdast.stringify(ast, {
 
 Yields:
 
-``````md
+````md
 A code block:
 
 \```
 alert('Hello World!');
 \```
-``````
+````
 
 The above example contains two slahes to make sure GitHub renders the markdown (in markdown) properly.
 
@@ -943,12 +943,12 @@ interface TextNode <: Text {
 
 ## Benchmark
 
-On a MacBook Air, it parser about 3 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that’s more than the [entire works of Shakespeare](http://vintagezen.com/zen/2013/4/1/plain-text), in two seconds.
+On a MacBook Air, it parser more than 3 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that’s more than the [entire works of Shakespeare](http://www.gutenberg.org/ebooks/100), in under two seconds.
 
-```
-           benchmarks * 56 fixtures (total: 47Kb markdown)
-   64 op/s » mdast.parse
-  179 op/s » mdast.stringify
+```text
+           benchmarks * 76 fixtures (total: 50Kb markdown)
+   63 op/s » mdast.parse
+  145 op/s » mdast.stringify
 ```
 
 ## License
