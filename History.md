@@ -1,4 +1,32 @@
 
+n.n.n / 2014-12-30
+==================
+
+  * Update benchmark results in `Readme.md`
+  * Update stringification options in `Readme.md` to reflect changes in 3f5d136
+  * Rename `horizontal-rule` stringification options to `rule`
+  * Rename `setext-headings` stringification option to `setext`
+  * Remove `prefer` before several stirngification options
+  * Remove multiple new lines from CLI by using stdout instead of console
+  * Remove multiple new lines after the stringified AST
+  * Fix bug in CLI with exit code when provided with invalid file path
+  * Add mention of same file input output to `cli.js`
+  * Update code example in `Readme.md` to reflect changes in a1a5a09
+  * Fix bug in longest-repetition at end of input
+  * Merge branch 'feature/add-cli'
+  * Add CLI useage to `Readme.md`
+  * Fix typo in CLIs options
+  * Fix typo in package description
+  * Add test for missing input to `test/cli.sh`
+  * Remove commented tests in `test/cli.sh`
+  * Fix comment in CLIs help
+  * Add `test-cli` npm script target to `package.json`
+  * Add `test/cli.sh`
+  * Add `lint-cli` npm script target to `package.json`
+  * Add CLI
+  * Add `cli.js`
+  * Add `cli`, `bin` to package keywords
+
 0.1.3 / 2014-12-28
 ==================
 
