@@ -85,7 +85,7 @@ function getOptions() {
         '# Options',
         '',
         'Both camel- and dash-cased options are allowed.  Some options start',
-        'with prepend, this can be ignored in the CLI.',
+        'with `prefer`, this can be ignored in the CLI.',
         '',
         '## [Parse](https://github.com/wooorm/mdast#mdastparsevalue-options)',
         '',
