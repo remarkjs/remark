@@ -119,9 +119,9 @@ Parameters:
     - `options.referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
     - `options.fences` (`boolean`, default: `false`). See [Fences](#fences);
     - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
-    - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
-    - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
-    - `options.horizontalRuleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules);
+    - `options.rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
+    - `options.ruleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
+    - `options.ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules);
     - `options.strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](#emphasis-markers);
     - `options.emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](#emphasis-markers).
 
@@ -553,9 +553,9 @@ var ast = mdast.parse(
 );
 
 mdast.stringify(ast, {
-    'horizontalRule': '*',
-    'horizontalRuleRepetition': 80 / 2,
-    'horizontalRuleSpaces': true
+    'rule': '*',
+    'ruleRepetition': 80 / 2,
+    'ruleSpaces': true
 });
 ```
 

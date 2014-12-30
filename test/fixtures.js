@@ -25,9 +25,9 @@ optionsMap = {
     'setext': 'setext',
     'output': 'output',
     'bullet': 'bullet',
-    'horizontal-rule': 'horizontalRule',
-    'horizontal-rule-spaces': 'horizontalRuleSpaces',
-    'horizontal-rule-repetition': 'horizontalRuleRepetition',
+    'rule': 'rule',
+    'rule-spaces': 'ruleSpaces',
+    'rule-repetition': 'ruleRepetition',
     'emphasis': 'emphasis',
     'strong': 'strong',
     'reference-links': 'referenceLinks',
@@ -79,7 +79,7 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
 
                 option = optionsMap[option];
 
-                if (option === 'horizontalRuleRepetition') {
+                if (option === 'ruleRepetition') {
                     value = Number(value);
                 }
 
