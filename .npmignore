@@ -1,5 +1,6 @@
 .*
 *.log
+*.sh
 *.svg
 bower_components/
 build/
