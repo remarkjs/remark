@@ -91,10 +91,8 @@ mdast.stringify(ast);
 Yields:
 
 ```md
-Some *emphasis*,  **strongness**, and `code`\.
+Some _emphasis_,  **strongness**, and `code`.
 ```
-
-Yeah, the escaped period is nasty, but it works! :smile:
 
 ### [mdast](#mdast).parse(value, options?)
 
