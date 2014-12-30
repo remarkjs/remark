@@ -27,6 +27,11 @@ it "Should accept stdin"
     cat History.md | ./cli.js > /dev/null 2>&1 || code=$?
     assert $code 0
 
+it "Should fail without input"
+    code=0
+    ./cli.js > /dev/null 2>&1 || code=$?
+    assert $code 1
+
 it "Should fail on an invalid file"
     code=0
     ./cli.js some-other-file.md > /dev/null 2>&1 || code=$?
