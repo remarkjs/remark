@@ -114,7 +114,7 @@ Parameters:
 
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
-    - `options.setextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
+    - `options.setext` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
     - `options.referenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
     - `options.referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
     - `options.fences` (`boolean`, default: `false`). See [Fences](#fences);
