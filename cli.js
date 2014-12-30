@@ -74,7 +74,11 @@ function fail() {
     process.exit(1);
 }
 
-
+/**
+ * Log available options.
+ *
+ * @return {string}
+ */
 function getOptions() {
     return [
         '',
@@ -115,6 +119,12 @@ function getOptions() {
     ].join('\n  ') + '\n';
 }
 
+/**
+ * Transform a dash-cased string to camel-cased.
+ *
+ * @param {string} value
+ * @return {string}
+ */
 function camelCase(value) {
     return value.toLowerCase().replace(/-([a-z])/gi, function ($0, $1) {
         return $1.toUpperCase();
@@ -131,7 +141,12 @@ var index,
     options,
     files;
 
-function parse(value) {
+/**
+ * Run the program.
+ *
+ * @param {string} value
+ */
+function program(value) {
     var ast;
 
     if (!value.length) {
@@ -249,13 +264,13 @@ if (
                 throw exception;
             }
 
-            parse(content.toString());
+            program(content.toString());
         });
     } else {
         process.stdin.resume();
 
         process.stdin.setEncoding('utf8');
 
-        process.stdin.on('data', parse);
+        process.stdin.on('data', program);
     }
 }
