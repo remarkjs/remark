@@ -131,6 +131,40 @@ All options (including the options object itself) can be `null` or `undefined` t
 
 Returns: A `string`.
 
+## CLI
+
+Install:
+
+```bash
+$ npm install --global mdast
+```
+
+Use:
+
+```
+Usage: mdast [options] file
+
+Speedy Markdown parser/stringifier for multipurpose analysis
+
+Options:
+
+  -h, --help            output usage information
+  -v, --version         output version number
+  -a, --ast             output AST information
+      --options         output available settings
+  -o, --option <option> specify settings
+
+Usage:
+
+# Pass `Readme.md` through mdast
+$ mdast Readme.md > Readme.md
+
+# Pass stdin through mdast, with options
+$ cat Readme.md | mdast -o "setex-headings, bullet: *" > Readme.md
+```
+
+## Options
+
 ### Github Flavoured Markdown
 
 Defaults to `true`.

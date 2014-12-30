@@ -1,7 +1,7 @@
 {
   "name": "mdast",
   "main": "index.js",
-  "description": "Speedy Markdown parser/stringified for multipurpose analysis",
+  "description": "Speedy Markdown parser/stringifier for multipurpose analysis",
   "license": "MIT",
   "keywords": [
     "markdown",
@@ -12,7 +12,9 @@
     "json",
     "ast",
     "parse",
-    "stringify"
+    "stringify",
+    "bin",
+    "cli"
   ],
   "dependencies": {
     "he": "^0.5.0",
@@ -30,14 +32,16 @@
     ".*",
     "*.log",
     "*.md",
+    "*.sh",
     "*.svg",
     "build/",
     "components/",
     "coverage/",
     "node_modules/",
     "test/",
-    "benchmark.js",
     "component.json",
-    "package.json"
+    "package.json",
+    "benchmark.js",
+    "cli.js"
   ]
 }

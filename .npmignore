@@ -1,5 +1,6 @@
 .*
 *.log
+*.sh
 *.svg
 bower_components/
 build/
@@ -10,4 +11,5 @@ test/
 bower.json
 component.json
 benchmark.js
+cli.js
 History.md

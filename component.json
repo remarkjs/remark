@@ -1,7 +1,7 @@
 {
   "name": "mdast",
   "version": "0.1.3",
-  "description": "Speedy Markdown parser/stringified for multipurpose analysis",
+  "description": "Speedy Markdown parser/stringifier for multipurpose analysis",
   "license": "MIT",
   "keywords": [
     "markdown",
@@ -12,7 +12,9 @@
     "json",
     "ast",
     "parse",
-    "stringify"
+    "stringify",
+    "bin",
+    "cli"
   ],
   "dependencies": {
     "mathiasbynens/he": "^0.5.0",
