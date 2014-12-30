@@ -57,12 +57,15 @@ function help() {
         '',
         'Usage:',
         '',
+        '# Note that bash does not allow reading/writing to the ' +
+            'same through pipes',
+        '',
         '# Pass `Readme.md` through mdast',
-        '$ ' + command + ' Readme.md > Readme.md',
+        '$ ' + command + ' Readme.md > Readme-new.md',
         '',
         '# Pass stdin through mdast, with options',
         '$ cat Readme.md | ' + command + ' -o ' +
-            '"setex-headings, bullet: *" > Readme.md'
+            '"setex-headings, bullet: *" > Readme-new.md'
     ].join('\n  ') + '\n';
 }
 
