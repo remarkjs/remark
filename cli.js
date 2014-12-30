@@ -158,9 +158,9 @@ function program(value) {
         ast = mdast.parse(value, options);
 
         if (expectAST) {
-            console.log(ast);
+            process.stdout.write(JSON.stringify(ast, null, 2));
         } else {
-            console.log(mdast.stringify(ast, options));
+            process.stdout.write(mdast.stringify(ast, options));
         }
     }
 }
