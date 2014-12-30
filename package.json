@@ -1,7 +1,7 @@
 {
   "name": "mdast",
   "version": "0.1.3",
-  "description": "Speedy Markdown parser/stringified for multipurpose analysis",
+  "description": "Speedy Markdown parser/stringifier for multipurpose analysis",
   "license": "MIT",
   "keywords": [
     "markdown",
