@@ -123,44 +123,44 @@ describe('mdast.stringify(ast, options)', function () {
         }
     );
 
-    it('should throw when `options.preferSetextHeadings` is not a boolean',
+    it('should throw when `options.setextHeadings` is not a boolean',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
-                    'preferSetextHeadings': 0
+                    'setextHeadings': 0
                 });
-            }, /options\.preferSetextHeadings/);
+            }, /options\.setextHeadings/);
         }
     );
 
-    it('should throw when `options.preferReferenceLinks` is not a boolean',
+    it('should throw when `options.referenceLinks` is not a boolean',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
-                    'preferReferenceLinks': Infinity
+                    'referenceLinks': Infinity
                 });
-            }, /options\.preferReferenceLinks/);
+            }, /options\.referenceLinks/);
         }
     );
 
-    it('should throw when `options.preferReferenceFootnotes` is not a ' +
+    it('should throw when `options.referenceFootnotes` is not a ' +
         'boolean',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
-                    'preferReferenceFootnotes': -1
+                    'referenceFootnotes': -1
                 });
-            }, /options\.preferReferenceFootnotes/);
+            }, /options\.referenceFootnotes/);
         }
     );
 
-    it('should throw when `options.preferFences` is not a boolean',
+    it('should throw when `options.fences` is not a boolean',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
-                    'preferFences': NaN
+                    'fences': NaN
                 });
-            }, /options\.preferFences/);
+            }, /options\.fences/);
         }
     );
 });

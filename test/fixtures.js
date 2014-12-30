@@ -22,7 +22,7 @@ optionsMap = {
     'footnotes': 'footnotes',
     'breaks': 'breaks',
     'pedantic': 'pedantic',
-    'setex': 'preferSetextHeadings',
+    'setex': 'setextHeadings',
     'output': 'output',
     'bullet': 'bullet',
     'horizontal-rule': 'horizontalRule',
@@ -30,9 +30,9 @@ optionsMap = {
     'horizontal-rule-repetition': 'horizontalRuleRepetition',
     'emphasis': 'emphasis',
     'strong': 'strong',
-    'prefer-reference-links': 'preferReferenceLinks',
-    'prefer-reference-footnotes': 'preferReferenceFootnotes',
-    'prefer-fences': 'preferFences'
+    'reference-links': 'referenceLinks',
+    'reference-footnotes': 'referenceFootnotes',
+    'fences': 'fences'
 };
 
 /*

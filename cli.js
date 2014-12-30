@@ -87,8 +87,7 @@ function getOptions() {
         '',
         '# Options',
         '',
-        'Both camel- and dash-cased options are allowed.  Some options start',
-        'with `prefer`, this can be ignored in the CLI.',
+        'Both camel- and dash-cased options are allowed.',
         '',
         '## [Parse](https://github.com/wooorm/mdast#mdastparsevalue-options)',
         '',
@@ -213,21 +212,9 @@ if (
                     ];
                 })
                 .map(function (values) {
-                    var key,
-                        value;
+                    var value;
 
-                    key = values[0];
                     value = values[1];
-
-                    if (
-                        key === 'setexHeadings' ||
-                        key === 'referenceLinks' ||
-                        key === 'referenceFootnotes' ||
-                        key === 'fences'
-                    ) {
-                        key = 'prefer' + key.charAt(0).toUpperCase() +
-                            key.slice(1);
-                    }
 
                     if (value === 'true') {
                         value = true;
@@ -239,7 +226,9 @@ if (
                         value = Number(value);
                     }
 
-                    return [key, value];
+                    values[1] = value;
+
+                    return values;
                 })
                 .forEach(function (values) {
                     options[values[0]] = values[1];

@@ -114,10 +114,10 @@ Parameters:
 
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
-    - `options.preferSetextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
-    - `options.preferReferenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
-    - `options.preferReferenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
-    - `options.preferFences` (`boolean`, default: `false`). See [Fences](#fences);
+    - `options.setextHeadings` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
+    - `options.referenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
+    - `options.referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
+    - `options.fences` (`boolean`, default: `false`). See [Fences](#fences);
     - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
     - `options.horizontalRule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
     - `options.horizontalRuleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
@@ -493,7 +493,7 @@ var ast = mdast.parse(
 );
 
 mdast.stringify(ast, {
-    'preferSetextHeadings': true
+    'setextHeadings': true
 });
 ```
 
@@ -606,7 +606,7 @@ var ast = mdast.parse(
 );
 
 mdast.stringify(ast, {
-    'preferReferenceLinks': true
+    'referenceLinks': true
 });
 ```
 
@@ -622,7 +622,7 @@ Lorem ipsum dolor sit [amet][1].
 
 Instead of exposing reference-style footnotes, it’s possible to stringify inline footnotes (when possible).
 
-By default, footnotes are stringified after the document. By setting `preferReferenceFootnotes: false` footnotes containing a single paragraph can be stringified inline.
+By default, footnotes are stringified after the document. By setting `referenceFootnotes: false` footnotes containing a single paragraph can be stringified inline.
 
 ```js
 var ast = mdast.parse(
@@ -633,7 +633,7 @@ var ast = mdast.parse(
 });
 
 mdast.stringify(ast, {
-    'preferReferenceFootnotes': false
+    'referenceFootnotes': false
 });
 ```
 
@@ -655,7 +655,7 @@ var ast = mdast.parse(
 );
 
 mdast.stringify(ast, {
-    'preferFences': true
+    'fences': true
 });
 ```
 
