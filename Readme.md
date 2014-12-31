@@ -154,11 +154,13 @@ Options:
 
 Usage:
 
+# Note that bash does not allow reading/writing to the same through pipes
+
 # Pass `Readme.md` through mdast
-$ mdast Readme.md > Readme.md
+$ mdast Readme.md > Readme-new.md
 
 # Pass stdin through mdast, with options
-$ cat Readme.md | mdast -o "setex-headings, bullet: *" > Readme.md
+$ cat Readme.md | mdast -o "setext, bullet: *" > Readme-new.md
 ```
 
 ## Options
