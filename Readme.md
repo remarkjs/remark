@@ -25,8 +25,6 @@ $ bower install mdast
 
 See [Nodes](doc/Nodes.md) for information about returned objects.
 
-### mdast
-
 ```js
 var mdast = require('mdast');
 
@@ -94,36 +92,40 @@ Yields:
 Some _emphasis_,  **strongness**, and `code`.
 ```
 
-### [mdast](#mdast).parse(value, options?)
+## API
+
+### [mdast](#mdast).parse(value, [options](doc/Options.md#parse)?)
 
 Parameters:
 
 - `value` (`string`) — Markdown document;
 - `options` (`Object`, `null`, `undefined`) — Optional options:
-    - `options.gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](#github-flavoured-markdown);
-    - `options.tables` (`boolean`, default: `true`). See [Tables](#tables);
-    - `options.pedantic` (`boolean`, default: `false`). See [Pedantic](#pedantic);
-    - `options.breaks` (`boolean`, default: `false`). See [Breaks](#breaks);
-    - `options.footnotes` (`boolean`, default: `false`). See [Footnotes](#footnotes).
+    - `gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
+    - `tables` (`boolean`, default: `true`). See [Tables](doc/Options.md#tables);
+    - `footnotes` (`boolean`, default: `false`). See [Footnotes](doc/Options.md#footnotes).
+    - `pedantic` (`boolean`, default: `false`). See [Pedantic](doc/Options.md#pedantic);
+    - `breaks` (`boolean`, default: `false`). See [Breaks](doc/Options.md#breaks);
+
+All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
 Returns: An `Object`. See [Nodes](doc/Nodes.md) for the AST specification.
 
-### [mdast](#mdast).stringify(ast, options?)
+### [mdast](#mdast).stringify([ast](doc/Nodes.md#node), [options](doc/Options.md#stringify)?)
 
 Parameters:
 
 - `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
-    - `options.setext` (`boolean`, default: `false`). See [Setext Headings](#setext-headings);
-    - `options.referenceLinks` (`boolean`, default: `false`). See [Reference Links](#reference-links);
-    - `options.referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](#inline-footnotes);
-    - `options.fences` (`boolean`, default: `false`). See [Fences](#fences);
-    - `options.bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](#list-item-bullets);
-    - `options.rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](#horizontal-rules);
-    - `options.ruleRepetition` (`number`, default: 3). See [Horizontal Rules](#horizontal-rules);
-    - `options.ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](#horizontal-rules);
-    - `options.strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](#emphasis-markers);
-    - `options.emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](#emphasis-markers).
+    - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
+    - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
+    - `referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](doc/Options.md#inline-footnotes);
+    - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
+    - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
+    - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    - `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    - `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    - `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
+    - `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
