@@ -1,0 +1,6 @@
+{
+  "title": "Setext Headings",
+  "stringify": {
+    "setext": true
+  }
+}

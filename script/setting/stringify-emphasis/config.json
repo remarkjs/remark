@@ -1,0 +1,7 @@
+{
+  "title": "Emphasis Markers",
+  "stringify": {
+    "emphasis": "_",
+    "strong": "*"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "title": "Pedantic",
+  "parse": {
+    "pedantic": true
+  }
+}

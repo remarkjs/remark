@@ -48,12 +48,16 @@
     "test-travis": "npm run test-cli && npm run test-coveralls",
     "coverage": "istanbul cover _mocha -- -- test/index.js",
     "lint-api": "eslint index.js lib/parse.js lib/stringify.js lib/utilities.js",
-    "lint-cli": "eslint --rule no-process-exit:false cli.js",
-    "lint-test": "eslint --env mocha test/index.js test/fixtures.js",
     "lint-benchmark": "eslint --global suite,set,bench benchmark.js",
-    "lint-style": "jscs --reporter inline index.js benchmark.js cli.js lib/parse.js lib/stringify.js lib/utilities.js test/index.js test/fixtures.js",
-    "lint": "npm run lint-api && npm run lint-benchmark && npm run lint-cli && npm run lint-test && npm run lint-style",
+    "lint-cli": "eslint --rule no-process-exit:false cli.js",
+    "lint-script": "eslint script/build-options.js",
+    "lint-test": "eslint --env mocha test/index.js test/fixtures.js",
+    "lint-style": "jscs --reporter inline index.js benchmark.js cli.js script/build-options.js lib/parse.js lib/stringify.js lib/utilities.js test/index.js test/fixtures.js",
+    "lint": "npm run lint-api && npm run lint-benchmark && npm run lint-cli && npm run lint-script && npm run lint-test && npm run lint-style",
     "make": "npm run lint && npm run coverage",
-    "benchmark": "matcha benchmark.js"
+    "benchmark": "matcha benchmark.js",
+    "build-options": "node script/build-options.js",
+    "build": "npm run build-options",
+    "prepublish": "npm run build"
   }
 }
