@@ -6,8 +6,10 @@ bower_components/
 build/
 components/
 coverage/
+doc/
 node_modules/
 test/
+script/
 bower.json
 component.json
 benchmark.js
