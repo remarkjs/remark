@@ -1,4 +1,19 @@
 
+n.n.n / 2015-01-01
+==================
+
+  * Remove `cli.js` form `.npmignore`
+  * Remove options description from `Readme.md`
+  * Refactor API in `Readme.md`
+  * Add build script to generate `Options.md`
+  * Add `script/` and `doc/` to bower ignore, `.npmignore`
+  * Add `doc/Options.md`
+  * Add missing new-line character in `Readme.md`
+  * Update CLI usage in `Readme.md`
+  * Remove nodes containing information from `Readme.md`
+  * Add `doc/Nodes.md` containing refactored AST information
+  * Fix overflowing `logo.svg`
+
 0.1.4 / 2014-12-30
 ==================
 
