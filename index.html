@@ -1,1 +1,176 @@
-My Page
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>mdast</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="https://github.com/wooorm/mdast">
+          mdast
+        </a>
+        <a href="https://travis-ci.org/wooorm/mdast">
+          <img alt="Build Status" src="https://img.shields.io/travis/wooorm/mdast.svg?style=flat" />
+        </a>
+        <a href="https://coveralls.io/r/wooorm/mdast">
+          <img alt="Coverage" src="https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat">
+        </a>
+        <a href="http://opensource.org/licenses/MIT">
+          <img alt="License"  src="http://img.shields.io/npm/l/mdast.svg?style=flat">
+        </a>
+        <a href="https://www.npmjs.org/package/mdast">
+          <img alt="Version"  src="http://img.shields.io/npm/v/mdast.svg?style=flat">
+        </a>
+      </h1>
+    </header>
+    <section>
+      <fieldset>
+        <label for="gfm">
+          Github Flavoured Markdown?
+          <input name="gfm" type="checkbox" checked />
+        </label>
+        <label for="tables">
+          Tables?
+          <input name="tables" type="checkbox" checked />
+        </label>
+        <label for="footnotes">
+          Footnotes?
+          <input name="footnotes" type="checkbox" />
+        </label>
+        <label for="pedantic">
+          Pedantic?
+          <input name="pedantic" type="checkbox" />
+        </label>
+        <label for="breaks">
+          Breaks?
+          <input name="breaks" type="checkbox" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <label for="setext">
+          Setext Headings?
+          <input name="setext" type="checkbox" />
+        </label>
+        <label for="referenceLinks">
+          Reference Links?
+          <input name="referenceLinks" type="checkbox" />
+        </label>
+        <label for="referenceFootnotes">
+          Reference Footnotes?
+          <input name="referenceFootnotes" type="checkbox" checked />
+        </label>
+        <label for="fences">
+          Fences?
+          <input name="fences" type="checkbox" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <label for="bullet">
+          Bullet?
+          <select name="bullet">
+            <option value="-" selected>-</option>
+            <option value="*">*</option>
+            <option value="+">+</option>
+          </select>
+        </label>
+        <label for="rule">
+          Horizontal Rule?
+          <select name="rule">
+            <option value="-">-</option>
+            <option value="*" selected>*</option>
+            <option value="_">_</option>
+          </select>
+        </label>
+        <label for="ruleRepetition">
+          Horizontal Rule Repetition?
+          <input name="ruleRepetition" type="number" min="3" value="3" />
+        </label>
+        <label for="ruleSpaces">
+          Horizontal Rule Spaces?
+          <input name="ruleSpaces" type="checkbox" checked />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <label for="strong">
+          strong?
+          <select name="strong">
+            <option value="*" selected>*</option>
+            <option value="_">_</option>
+          </select>
+        </label>
+        <label for="emphasis">
+          emphasis?
+          <select name="emphasis">
+            <option value="*">*</option>
+            <option value="_" selected>_</option>
+          </select>
+        </label>
+      </fieldset>
+    </section>
+    <textarea autofocus class="input"># Hello
+
+World!
+
+Emphasis
+---
+
+__Strong emphasis__, more **strong emphasis**.
+_Slight emphasis_, more *slight emphasis*. In a pedantic_file_name.
+~~Removed text~~.
+
+## List
+
+- 1
+    * 2
+        + 3
+
+1. 1
+9999. 2
+123. 3
+
+## Links
+
+Here’s a [link][1]. And [another](http://wooorm.com "My homepage").
+
+[1]: http://example.com "An example"
+
+Code
+---
+
+Inline `code`, indented:
+
+    alert(1);
+
+...or fenced:
+
+```markdown
+# Hai!
+```
+
+## Tables
+
+| Hello |
+|:-:|
+| World!!!!!! |
+
+## Footnotes
+
+Here’s an [^inline footnote, referencing another[^2]].
+
+[^2]: This one’s also a footnote.
+
+Horizontal Rules:
+
+---
+
+* * * * * * * * * * * *
+</textarea>
+    <textarea class="output" readonly></textarea>
+    <script src="build.js"></script>
+  </body>
+</html>

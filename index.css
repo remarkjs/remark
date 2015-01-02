@@ -1,0 +1,90 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+}
+
+h1 a {
+    color: inherit;
+}
+
+header {
+    width: 100%;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 1.25rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+header a {
+    text-decoration: none;
+}
+
+section {
+    width: 100%;
+    overflow: hidden;
+}
+
+fieldset {
+    border-width: 0;
+    float: left;
+}
+
+label {
+    display: block;
+    height: 1.6em;
+}
+
+textarea {
+    box-sizing: border-box;
+
+    width: 50%;
+
+    float: left;
+    height: 40em;
+
+    border-width: 0;
+
+    font-size: 0.75rem;
+    font-family: "Courier New", "Courier", monospace;
+
+    padding: 1em;
+}
+
+.output {
+    right: 0;
+}
+
+.input {
+    left: 0;
+}
+
+[readonly] {
+    outline-width: 0;
+}
+
+.parse-latin-output__tree {
+    width: 100%;
+    margin: 0;
+    display: block;
+    overflow-y: scroll;
+    /*height: 100vh;*/
+    height: 100%;
+
+    font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
+    font-size: 0.75rem;
+    /* The X heigth of Garamond is 42.2%, add that under the line. */
+    line-height: 1.422;
+
+    border-width: 0;
+}
+
+.parse-latin-output__tree {
+    background-color: #042029;
+    color: #819090;
+}
