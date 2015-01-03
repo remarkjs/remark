@@ -163,6 +163,17 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.fences/);
         }
     );
+
+    it('should throw when `options.fence` is not a ' +
+        'valid fence marker',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'fence': '-'
+                });
+            }, /options\.fence/);
+        }
+    );
 });
 
 var validateToken,

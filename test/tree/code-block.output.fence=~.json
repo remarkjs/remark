@@ -1,0 +1,20 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tildes:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": "javascript",
+      "value": "alert('Hello World!');"
+    }
+  ],
+  "footnotes": null
+}
