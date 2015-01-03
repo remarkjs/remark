@@ -41,6 +41,20 @@ describe('mdast.stringify(ast, options)', function () {
         assert(typeof mdast.stringify === 'function');
     });
 
+    it('should throw when `ast` is not an object', function () {
+        assert.throws(function () {
+            mdast.stringify(false);
+        }, /false/);
+    });
+
+    it('should throw when `ast` is not a valid node', function () {
+        assert.throws(function () {
+            mdast.stringify({
+                'type': 'unicorn'
+            });
+        }, /unicorn/);
+    });
+
     it('should throw when `options` is not an object', function () {
         assert.throws(function () {
             mdast.stringify({}, false);
