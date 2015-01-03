@@ -138,7 +138,6 @@ function renderSection(section) {
 
     root.children.push({
         'type': 'code',
-        'lang': 'markdown',
         'value': section.fixture.trimRight()
     });
 
@@ -194,7 +193,6 @@ function renderSection(section) {
     } else {
         root.children.push({
             'type': 'code',
-            'lang': 'markdown',
             'value': section.output.trimRight()
         });
     }
