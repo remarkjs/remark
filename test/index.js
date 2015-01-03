@@ -165,7 +165,7 @@ describe('mdast.stringify(ast, options)', function () {
     );
 
     it('should throw when `options.fence` is not a ' +
-        'valid fence marker'
+        'valid fence marker',
         function () {
             assert.throws(function () {
                 mdast.stringify({}, {
