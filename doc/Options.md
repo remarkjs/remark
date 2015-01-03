@@ -14,10 +14,8 @@ Setting `breaks: true` \(default: `false`\) explicitly exposes new line characte
 
 The following document:
 
-```markdown
-A
-paragraph.
-```
+    A
+    paragraph.
 
 And the below JavaScript:
 
@@ -64,15 +62,13 @@ It’s possible to reference other footnotes inside footnotes.
 
 The following document:
 
-```markdown
-Something something[^or something?].
+    Something something[^or something?].
 
-And something else[^1].
+    And something else[^1].
 
-[^1]: This reference style footnote can contains paragraphs.
+    [^1]: This reference style footnote can contains paragraphs.
 
-   - and lists
-```
+       - and lists
 
 And the below JavaScript:
 
@@ -182,9 +178,7 @@ Setting `gfm: true` \(default: `true`\) enables:
 
 The following document:
 
-```markdown
-hello ~~hi~~ world
-```
+    hello ~~hi~~ world
 
 And the below JavaScript:
 
@@ -233,9 +227,7 @@ Setting `pedantic: true` \(default: `false`\) enables emphasis and strongness in
 
 The following document:
 
-```markdown
-Check out some_file_name.txt
-```
+    Check out some_file_name.txt
 
 And the below JavaScript:
 
@@ -284,12 +276,10 @@ Setting `tables: true` \(default: `true`\) enables fenced and loose tables, as i
 
 The following document:
 
-```markdown
-Header 1 | Header 2
-:------- | -------:
-Cell 1   | Cell 2
-Cell 3   | Cell
-```
+    Header 1 | Header 2
+    :------- | -------:
+    Cell 1   | Cell 2
+    Cell 3   | Cell
 
 And the below JavaScript:
 
@@ -396,13 +386,11 @@ Setting `bullet: string` \(`"-"`, `"*"`, or `"+"`, default: `"-"`\) will stringi
 
 The following document:
 
-```markdown
-- First level
+    - First level
 
-  - Second level
+      - Second level
 
-    - Third level
-```
+        - Third level
 
 And the below JavaScript:
 
@@ -416,13 +404,11 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-* First level
+    * First level
 
-  * Second level
+      * Second level
 
-    * Third level
-```
+        * Third level
 
 ### Emphasis Markers
 
@@ -433,11 +419,9 @@ Two options are provided to customise how slight\- and strong emphasis are strin
 
 The following document:
 
-```markdown
-*emphasis*
+    *emphasis*
 
-__strong__
-```
+    __strong__
 
 And the below JavaScript:
 
@@ -452,11 +436,37 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-_emphasis_
+    _emphasis_
 
-**strong**
+    **strong**
+
+### Fence
+
+It's possible to customise how GFM code fences are stringified:
+
+- `fence: string` \(`"~"` or ``"`"``, default: ``"`"``\) will wrap code in the provided character;
+
+The following document:
+
+    ```javascript
+    alert('Hello World!');
+    ```
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "fence": "~"
+});
 ```
+
+Yields:
+
+    ~~~javascript
+    alert('Hello World!');
+    ~~~
 
 ### Fences
 
@@ -464,11 +474,9 @@ Setting `fences: true` \(default: `false`\) will stringify code blocks without p
 
 The following document:
 
-```markdown
-A code block:
+    A code block:
 
-    alert('Hello World!');
-```
+        alert('Hello World!');
 
 And the below JavaScript:
 
@@ -482,13 +490,11 @@ mdast.stringify(ast, {
 
 Yields:
 
-````markdown
-A code block:
+    A code block:
 
-```
-alert('Hello World!');
-```
-````
+    ```
+    alert('Hello World!');
+    ```
 
 ### Inline Footnotes
 
@@ -496,11 +502,9 @@ Setting `referenceFootnotes: false` \(default: `true`\) will stringify footnotes
 
 The following document:
 
-```markdown
-Some text[^1].
+    Some text[^1].
 
-[^1]: And a footnote.
-```
+    [^1]: And a footnote.
 
 And the below JavaScript:
 
@@ -516,9 +520,7 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-Some text[^And a footnote.].
-```
+    Some text[^And a footnote.].
 
 ### Reference Links
 
@@ -526,9 +528,7 @@ Setting `referenceLinks: true` \(default: `false`\) will stringify links using l
 
 The following document:
 
-```markdown
-Lorem ipsum dolor sit [amet](http://amet.com "Amet").
-```
+    Lorem ipsum dolor sit [amet](http://amet.com "Amet").
 
 And the below JavaScript:
 
@@ -542,11 +542,9 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-Lorem ipsum dolor sit [amet][1].
+    Lorem ipsum dolor sit [amet][1].
 
-[1]: http://amet.com "Amet"
-```
+    [1]: http://amet.com "Amet"
 
 ### Horizontal Rules
 
@@ -558,11 +556,9 @@ Three options are provided to customise how horizontal rules will be stringified
 
 The following document:
 
-```markdown
-A rule:
+    A rule:
 
----
-```
+    ---
 
 And the below JavaScript:
 
@@ -578,11 +574,9 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-A rule:
+    A rule:
 
-* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-```
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ### Setext Headings
 
@@ -591,13 +585,11 @@ Respectively, primary headings are stringified with a row of equals\-signs \(`=`
 
 The following document:
 
-```markdown
-# First level
+    # First level
 
-## Second level
+    ## Second level
 
-### Third level
-```
+    ### Third level
 
 And the below JavaScript:
 
@@ -611,12 +603,10 @@ mdast.stringify(ast, {
 
 Yields:
 
-```markdown
-First level
-===========
+    First level
+    ===========
 
-Second level
-------------
+    Second level
+    ------------
 
-### Third level
-```
+    ### Third level
