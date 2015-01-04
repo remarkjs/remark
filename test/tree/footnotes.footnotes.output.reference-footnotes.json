@@ -10,7 +10,7 @@
         },
         {
           "type": "footnote",
-          "id": "footnote-1"
+          "id": "1"
         },
         {
           "type": "text",
@@ -27,7 +27,7 @@
         },
         {
           "type": "footnote",
-          "id": "footnote-2"
+          "id": "2"
         },
         {
           "type": "text",
@@ -37,7 +37,7 @@
     }
   ],
   "footnotes": {
-    "footnote-1": [
+    "1": [
       {
         "type": "paragraph",
         "children": [
@@ -60,7 +60,7 @@
           },
           {
             "type": "footnote",
-            "id": "footnote-3"
+            "id": "3"
           },
           {
             "type": "text",
@@ -90,7 +90,7 @@
         ]
       }
     ],
-    "footnote-2": [
+    "2": [
       {
         "type": "paragraph",
         "children": [
@@ -114,7 +114,7 @@
         ]
       }
     ],
-    "footnote-3": [
+    "3": [
       {
         "type": "paragraph",
         "children": [

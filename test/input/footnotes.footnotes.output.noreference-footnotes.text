@@ -1,7 +1,7 @@
-Lorem ipsum dolor sit amet[^footnote-1].
+Lorem ipsum dolor sit amet[^1].
 
 Nulla finibus[^Nam dictum sapien nec sem ultrices fermentum. Nulla **facilisi**. In et feugiat massa.] neque et diam rhoncus convallis.
 
-[^footnote-1]: Consectetur **adipiscing** elit. Praesent dictum purus ullamcorper ligula semper pellentesque[^Nunc dapibus ipsum ut mi _ultrices_, non euismod velit pretium.].
+[^1]: Consectetur **adipiscing** elit. Praesent dictum purus ullamcorper ligula semper pellentesque[^Nunc dapibus ipsum ut mi _ultrices_, non euismod velit pretium.].
 
     - Containing a list.

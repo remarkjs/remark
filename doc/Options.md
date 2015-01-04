@@ -93,7 +93,7 @@ Yields:
         },
         {
           "type": "footnote",
-          "id": "footnote-1"
+          "id": "2"
         },
         {
           "type": "text",
@@ -152,7 +152,7 @@ Yields:
         ]
       }
     ],
-    "footnote-1": [
+    "2": [
       {
         "type": "paragraph",
         "children": [
