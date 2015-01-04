@@ -31,8 +31,13 @@
               "type": "blockquote",
               "children": [
                 {
-                  "type": "text",
-                  "value": "world"
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "world"
+                    }
+                  ]
                 }
               ]
             }
