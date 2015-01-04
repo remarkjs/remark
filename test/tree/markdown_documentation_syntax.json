@@ -3035,6 +3035,5 @@
       "lang": null,
       "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n    +        plus sign\n    -        minus sign (hyphen)\n.   dot\n!   exclamation mark"
     }
-  ],
-  "footnotes": null
+  ]
 }
