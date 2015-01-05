@@ -21,6 +21,11 @@ $ component install wooorm/mdast
 $ bower install mdast
 ```
 
+[Duo](http://duojs.org/#getting-started):
+```javascript
+var mdast = require('wooorm/mdast');
+```
+
 ## Usage
 
 See [Nodes](doc/Nodes.md) for information about returned objects.
