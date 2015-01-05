@@ -6,17 +6,17 @@
 
 ## Installation
 
-npm:
+[npm](https://docs.npmjs.com/cli/install):
 ```bash
 $ npm install mdast
 ```
 
-Component.js:
+[Component.js](https://github.com/componentjs/component):
 ```bash
 $ component install wooorm/mdast
 ```
 
-Bower:
+[Bower](http://bower.io/#install-packages):
 ```bash
 $ bower install mdast
 ```
