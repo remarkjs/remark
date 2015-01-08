@@ -27,6 +27,5 @@
       "type": "html",
       "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
     }
-  ],
-  "footnotes": null
+  ]
 }

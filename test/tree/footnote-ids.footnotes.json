@@ -10,7 +10,7 @@
         },
         {
           "type": "footnote",
-          "id": "footnote-2"
+          "id": "2"
         },
         {
           "type": "text",
@@ -18,7 +18,7 @@
         },
         {
           "type": "footnote",
-          "id": "footnote-1"
+          "id": "1"
         },
         {
           "type": "text",
@@ -28,7 +28,7 @@
     }
   ],
   "footnotes": {
-    "footnote-1": [
+    "1": [
       {
         "type": "paragraph",
         "children": [
@@ -38,7 +38,7 @@
           },
           {
             "type": "inlineCode",
-            "value": "footnote-1"
+            "value": "1"
           },
           {
             "type": "text",
@@ -47,7 +47,7 @@
         ]
       }
     ],
-    "footnote-2": [
+    "2": [
       {
         "type": "paragraph",
         "children": [

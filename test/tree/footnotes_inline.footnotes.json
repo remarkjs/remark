@@ -10,13 +10,13 @@
         },
         {
           "type": "footnote",
-          "id": "footnote-1"
+          "id": "1"
         }
       ]
     }
   ],
   "footnotes": {
-    "footnote-1": [
+    "1": [
       {
         "type": "paragraph",
         "children": [

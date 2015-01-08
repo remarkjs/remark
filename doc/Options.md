@@ -47,8 +47,7 @@ Yields:
         }
       ]
     }
-  ],
-  "footnotes": null
+  ]
 }
 ```
 
@@ -93,7 +92,7 @@ Yields:
         },
         {
           "type": "footnote",
-          "id": "footnote-1"
+          "id": "2"
         },
         {
           "type": "text",
@@ -152,7 +151,7 @@ Yields:
         ]
       }
     ],
-    "footnote-1": [
+    "2": [
       {
         "type": "paragraph",
         "children": [
@@ -172,7 +171,6 @@ Yields:
 Setting `gfm: true` \(default: `true`\) enables:
 
 - Parsing of fenced code blocks;
-- Better paragraph parsing;
 - Automatic URL detection;
 - Deletions \(strikethrough\).
 
@@ -216,14 +214,17 @@ Yields:
         }
       ]
     }
-  ],
-  "footnotes": null
+  ]
 }
 ```
 
 ### Pedantic
 
-Setting `pedantic: true` \(default: `false`\) enables emphasis and strongness inside words. It’s mostly not what you want.
+Setting `pedantic: true` \(default: `false`\) enables:
+
+- Emphasis and strongness inside words;
+- Allows different ordered\-list bullets in the same list;
+- Removes less spaces in list\-items \(a maximum of four instead of the whole indent\).
 
 The following document:
 
@@ -265,8 +266,7 @@ Yields:
         }
       ]
     }
-  ],
-  "footnotes": null
+  ]
 }
 ```
 
@@ -373,8 +373,7 @@ Yields:
         }
       ]
     }
-  ],
-  "footnotes": null
+  ]
 }
 ```
 

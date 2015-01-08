@@ -34,11 +34,89 @@ describe('mdast.parse(value, options)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.parse === 'function');
     });
+
+    it('should throw when `value` is not a string', function () {
+        assert.throws(function () {
+            mdast.parse(false);
+        }, /false/);
+    });
+
+    it('should throw when `options` is not an object', function () {
+        assert.throws(function () {
+            mdast.parse('', false);
+        }, /options/);
+    });
+
+    it('should throw when `options.gfm` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'gfm': Infinity
+            });
+        }, /options.gfm/);
+    });
+
+    it('should throw when `options.tables` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'tables': Math
+            });
+        }, /options.tables/);
+    });
+
+    it('should throw when `options.tables` is true and ' +
+        '`options.gfm` is false',
+        function () {
+            assert.throws(function () {
+                mdast.parse('', {
+                    'gfm': false,
+                    'tables': true
+                });
+            }, /options.tables/);
+        }
+    );
+
+    it('should throw when `options.footnotes` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'footnotes': 1
+            });
+        }, /options.footnotes/);
+    });
+
+    it('should throw when `options.breaks` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'breaks': 'unicorn'
+            });
+        }, /options.breaks/);
+    });
+
+    it('should throw when `options.pedantic` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'pedantic': {}
+            });
+        }, /options.pedantic/);
+    });
 });
 
 describe('mdast.stringify(ast, options)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.stringify === 'function');
+    });
+
+    it('should throw when `ast` is not an object', function () {
+        assert.throws(function () {
+            mdast.stringify(false);
+        }, /false/);
+    });
+
+    it('should throw when `ast` is not a valid node', function () {
+        assert.throws(function () {
+            mdast.stringify({
+                'type': 'unicorn'
+            });
+        }, /unicorn/);
     });
 
     it('should throw when `options` is not an object', function () {
