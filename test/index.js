@@ -120,7 +120,7 @@ describe('mdast.parse(value, options, CustomParser)', function () {
     });
 });
 
-describe('mdast.stringify(ast, options)', function () {
+describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.stringify === 'function');
     });
@@ -272,6 +272,26 @@ describe('mdast.stringify(ast, options)', function () {
             }, /options\.fence/);
         }
     );
+
+    it('should accept a `CustomCompiler` as a third argument', function () {
+        var isInvoked;
+
+        function CustomCompiler() {
+            return mdast.stringify.Compiler.apply(this, arguments);
+        }
+
+        function visit() {
+            isInvoked = true;
+
+            return '';
+        }
+
+        CustomCompiler.prototype.visit = visit;
+
+        mdast.stringify({}, null, CustomCompiler);
+
+        assert(isInvoked === true);
+    });
 });
 
 var validateToken,
