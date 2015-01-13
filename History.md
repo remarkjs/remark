@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-13
+0.1.6 / 2015-01-13
 ==================
 
   * Add missing jsdoc comments to `test/index.js`
