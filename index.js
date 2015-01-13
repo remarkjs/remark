@@ -65,7 +65,10 @@ function onsettingchange(event) {
 
     onsettingchange[type]($target, $target.name);
 
-    console.log('change: ', $target.name, options[$target.name]);
+    if ($target.name === 'tables' && options[$target.name] && !options.gfm) {
+        document.querySelector('[name="gfm"]').checked = true;
+        options.gfm = true;
+    }
 
     onchange();
 }
