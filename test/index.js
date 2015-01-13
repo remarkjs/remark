@@ -102,10 +102,18 @@ describe('mdast.parse(value, options, CustomParser)', function () {
     it('should accept a `CustomParser` as a third argument', function () {
         var isInvoked;
 
+        /**
+         * Construct a parser.
+         *
+         * @constructor {CustomParser}
+         */
         function CustomParser() {
             return mdast.parse.Parser.apply(this, arguments);
         }
 
+        /**
+         * Mock `parse`.
+         */
         function parse() {
             isInvoked = true;
 
@@ -276,10 +284,18 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should accept a `CustomCompiler` as a third argument', function () {
         var isInvoked;
 
+        /**
+         * Construct a compiler.
+         *
+         * @constructor {CustomCompiler}
+         */
         function CustomCompiler() {
             return mdast.stringify.Compiler.apply(this, arguments);
         }
 
+        /**
+         * Mock `visit`.
+         */
         function visit() {
             isInvoked = true;
 
