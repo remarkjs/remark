@@ -30,7 +30,7 @@ describe('mdast', function () {
     });
 });
 
-describe('mdast.parse(value, options)', function () {
+describe('mdast.parse(value, options, CustomParser)', function () {
     it('should be of type `function`', function () {
         assert(typeof mdast.parse === 'function');
     });
@@ -97,6 +97,26 @@ describe('mdast.parse(value, options)', function () {
                 'pedantic': {}
             });
         }, /options.pedantic/);
+    });
+
+    it('should accept a `CustomParser` as a third argument', function () {
+        var isInvoked;
+
+        function CustomParser() {
+            return mdast.parse.Parser.apply(this, arguments);
+        }
+
+        function parse() {
+            isInvoked = true;
+
+            return {};
+        }
+
+        CustomParser.prototype.parse = parse;
+
+        mdast.parse('', null, CustomParser);
+
+        assert(isInvoked === true);
     });
 });
 
