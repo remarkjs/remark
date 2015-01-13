@@ -1,4 +1,48 @@
 
+n.n.n / 2015-01-13
+==================
+
+  * Add missing jsdoc comments to `test/index.js`
+  * Add custom compiler to `mdast.stringify()`
+  * Add custom parser to `mdast.parse()`
+  * Add test for custom compiler to `mdast.stringify()`
+  * Add test for custom parser to `mdast.parse()`
+  * Add exposure of `Compiler` on `mdast.stringify`
+  * Add exposure of `Parser` on `mdast.parse`
+  * Merge branch 'feature/add-line-and-column-position'
+  * Add duo to install methods
+  * Add links to install methods to `Readme.md`
+  * Add standardised state methods
+  * Remove description of `gfm` parse option being better at paragraphs
+  * Add better description to `pedantic` parse option
+  * Refactor `lib/parse.js`
+  * Refactor `lib/parse.js` to merge `BlockLexer`, `InlineLexer`, `Parser`
+  * Refactor to prepare `Parser` to tokenise with less context
+  * Refactor to prepare `BlockLexer` to tokenise with less context
+  * Refactor to construct `InlineLexer` when constructing `Parser`
+  * Add shared lexer info to new `shared` object in `lib/parse.js`
+  * Remove `footnote` property on `root` when `footnotes: false`
+  * Rename `Lexer` to `BlockLexer` in `lib/parse.js`
+  * Remove `Parser.parse` method in `lib/parse.js`
+  * Remove `top` parameter for block-level tokenizers
+  * Add `trimLeft` and `trimRight` to `lib/utilities`
+  * Refactor `InlineLexer` in `lib/parse.js`
+  * Refactor Lexer in `lib/parse.js`
+  * Remove `footnote-` prefix from generated footnote IDs
+  * Merge branch 'master' into feature/add-line-and-column-position
+  * Merge branch 'feature/stringification/preferred-code-fence-style'
+  * Remove `markdown` language tag from code-fences to fix GitHub
+  * Add example for `options.fence`
+  * Add support for preferred code fence markers
+  * Fix missing comma
+  * Add fixture for code fence markers
+  * Add test for incorrect code fence marker
+  * Add better handling of incorrect parse options
+  * Add copy to stringification settings in
+  * Move `raise` method to `lib/utilities.js`
+  * Refactor lots of regular expressions to be simpler
+  * Add error when stringifying unknown nodes
+
 0.1.5 / 2015-01-01
 ==================
 
