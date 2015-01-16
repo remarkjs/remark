@@ -409,6 +409,36 @@ Yields:
 
         * Third level
 
+### Closed ATX Headings
+
+Setting `closeAtx: true` \(default: `false`\) will stringify ATX headings with additional hash\-marks after the heading.
+
+The following document:
+
+    # First level
+
+    ## Second level
+
+    ### Third level
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "closeAtx": true
+});
+```
+
+Yields:
+
+    # First level #
+
+    ## Second level ##
+
+    ### Third level ###
+
 ### Emphasis Markers
 
 Two options are provided to customise how slight\- and strong emphasis are stringified:
