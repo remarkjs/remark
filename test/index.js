@@ -281,6 +281,14 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         }
     );
 
+    it('should throw when `options.closeAtx` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.stringify({}, {
+                'closeAtx': NaN
+            });
+        }, /options\.closeAtx/);
+    });
+
     it('should accept a `CustomCompiler` as a third argument', function () {
         var isInvoked;
 

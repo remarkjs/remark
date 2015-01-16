@@ -101,6 +101,7 @@ function getOptions() {
             'mdaststringifyast-options)',
         '',
         '-  `setext` (boolean, default: false)',
+        '-  `closeAtx` (boolean, default: false)',
         '-  `reference-links` (boolean, default: false)',
         '-  `reference-footnotes` (boolean, default: true)',
         '-  `fences` (boolean, default: false)',

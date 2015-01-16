@@ -33,7 +33,8 @@ optionsMap = {
     'reference-links': 'referenceLinks',
     'reference-footnotes': 'referenceFootnotes',
     'fences': 'fences',
-    'fence': 'fence'
+    'fence': 'fence',
+    'close-atx': 'closeAtx'
 };
 
 /*
