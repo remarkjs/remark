@@ -1,0 +1,61 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Normal with language tag:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": "js",
+      "value": ""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "With white space:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": "bash",
+      "value": ""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "With very long fences:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": ""
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "With nothing:"
+        }
+      ]
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": ""
+    }
+  ]
+}
