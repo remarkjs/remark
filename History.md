@@ -1,4 +1,35 @@
 
+n.n.n / 2015-01-20
+==================
+
+  * Update copyright notice in `LICENSE` to include 2015
+  * Refactor license in `Readme.md`
+  * Add link to whole license in `Readme.md`
+  * Refactor fences code blocks in `Readme.md`
+  * Update npm script targets in `package.json`
+  * Update eslint
+  * Fix incorrect links in documentation
+  * Update `doc/Options.md` with footnote definitions
+  * Merge branch 'feature/footnote-definition-node'
+  * Update `lib/stringify.js` to compile footnote definitions
+  * Update `lib/parse.js` to expose footnote definitions
+  * Update `test/index.js` to validate footnote definition
+  * Update fixtures for footnote definition
+  * Add docs for footnote definition to `doc/Nodes.md`
+  * Merge branch 'feature/empty-fenced-code-blocks'
+  * Add stringification as fenced code blocks when missing value and language
+  * Add support for missing `value` in `renderCodeBlock`
+  * Fix expression for empty fenced code blocks
+  * Add fixtures for empty fences code blocks
+  * Add `options.closeAtx` to `Readme.md`
+  * Merge branch 'feature/stringification/escape-less-dashes'
+  * Remove extraneous escapes on invalid list bullets
+  * Merge branch 'feature/stringification/prefer-closed-atx'
+  * Add docs for `options.closeAtx`
+  * Add support for `closeAtx`
+  * Add tests for incorrect `closeAtx` options
+  * Add fixtures for closed ATX styles
+
 0.1.6 / 2015-01-13
 ==================
 
