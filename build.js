@@ -98,8 +98,8 @@ var mdast = require('wooorm/mdast@0.1.7');
 var $input = document.getElementsByTagName('textarea')[0];
 var $output = document.getElementsByTagName('textarea')[1];
 var $options = [].concat(
-    document.getElementsByTagName('input'),
-    document.getElementsByTagName('select')
+    [].slice.call(document.getElementsByTagName('input')),
+    [].slice.call(document.getElementsByTagName('select'))
 )
 
 /*
@@ -142,6 +142,7 @@ function onselectchange($target, name) {
 
 function onsettingchange(event) {
     var $target = event.target;
+
     var type = $target.hasAttribute('type') ? $target.type : event.target.nodeName.toLowerCase();
 
     if (!(type in onsettingchange)) {
@@ -153,6 +154,11 @@ function onsettingchange(event) {
     if ($target.name === 'tables' && options[$target.name] && !options.gfm) {
         document.querySelector('[name="gfm"]').checked = true;
         options.gfm = true;
+    }
+
+    if ($target.name === 'gfm' && !options[$target.name] && options.tables) {
+        document.querySelector('[name="tables"]').checked = false;
+        options.tables = false;
     }
 
     onchange();
@@ -181,6 +187,12 @@ window.addEventListener('change', onanychange);
  */
 
 onchange();
+
+$options.forEach(function ($node) {
+    onsettingchange({
+        'target': $node
+    });
+});
 
 }, {"wooorm/mdast@0.1.7":2}],
 2: [function(require, module, exports) {
