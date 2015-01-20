@@ -7,21 +7,25 @@
 ## Installation
 
 [npm](https://docs.npmjs.com/cli/install):
+
 ```bash
 $ npm install mdast
 ```
 
 [Component.js](https://github.com/componentjs/component):
+
 ```bash
 $ component install wooorm/mdast
 ```
 
 [Bower](http://bower.io/#install-packages):
+
 ```bash
 $ bower install mdast
 ```
 
 [Duo](http://duojs.org/#getting-started):
+
 ```javascript
 var mdast = require('wooorm/mdast');
 ```
@@ -30,7 +34,7 @@ var mdast = require('wooorm/mdast');
 
 See [Nodes](doc/Nodes.md) for information about returned objects.
 
-```js
+```javascript
 var mdast = require('mdast');
 
 var ast = mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
@@ -87,13 +91,13 @@ Yields:
 
 And passing that document into `mdast.stringify`:
 
-```js
+```javascript
 mdast.stringify(ast);
 ```
 
 Yields:
 
-```md
+```markdown
 Some _emphasis_,  **strongness**, and `code`.
 ```
 
