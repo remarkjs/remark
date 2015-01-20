@@ -4,7 +4,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.1.6');
+var mdast = require('wooorm/mdast@0.1.7');
 
 /*
  * DOM elements.

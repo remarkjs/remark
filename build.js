@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.1.6');
+var mdast = require('wooorm/mdast@0.1.7');
 
 /*
  * DOM elements.
@@ -182,7 +182,7 @@ window.addEventListener('change', onanychange);
 
 onchange();
 
-}, {"wooorm/mdast@0.1.6":2}],
+}, {"wooorm/mdast@0.1.7":2}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -532,7 +532,7 @@ gfmTable = /^( *\|(.+)\n)( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/;
 var gfmCodeFences,
     gfmParagraph;
 
-gfmCodeFences = /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]+?)\s*\1 *(?:\n+|$)/;
+gfmCodeFences = /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]*?)\s*\1 *(?:\n+|$)/;
 
 gfmParagraph = new RegExp(
     block.paragraph.source.replace('(?!', '(?!' +
@@ -895,7 +895,7 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
         $2.toLowerCase(), $3.replace(EXPRESSION_INITIAL_TAB, '')
     ));
 
-    self.footnotes[token.id] = token.children;
+    self.footnotes[token.id] = token;
 }
 
 tokenizeFootnoteDefinition.onlyAtTop = true;
@@ -1030,7 +1030,7 @@ function tokenizeText(eat, $0) {
 /**
  * Create a code-block token.
  *
- * @param {string} value
+ * @param {string?} value
  * @param {string?} language
  * @return {Object}
  */
@@ -1038,7 +1038,8 @@ function renderCodeBlock(value, language) {
     return {
         'type': 'code',
         'lang': language || null,
-        'value': removeIndent(value).replace(EXPRESSION_FINAL_NEW_LINES, '')
+        'value': removeIndent(value || '')
+            .replace(EXPRESSION_FINAL_NEW_LINES, '')
     };
 }
 
@@ -1125,7 +1126,7 @@ function renderFootnoteDefinition(id, value) {
     exitBlockquote = self.enterBlockquote();
 
     token = {
-        'type': null,
+        'type': 'footnoteDefinition',
         'id': id,
         'children': self.tokenizeBlock(value)
     };
@@ -1425,7 +1426,7 @@ function tokenizeReferenceLink(eat, $0, $1, $2) {
                 String(self.footnoteCounter), text.substr(1)
             );
 
-            self.footnotes[token.id] = token.children;
+            self.footnotes[token.id] = token;
 
             eat($0)(self.renderFootnote(token.id));
         } else {
@@ -1590,7 +1591,7 @@ Parser.prototype.parse = function (value) {
     var self,
         footnotes,
         footnotesAsArray,
-        footnoteId,
+        id,
         index,
         token;
 
@@ -1607,9 +1608,9 @@ Parser.prototype.parse = function (value) {
         index = -1;
 
         while (footnotesAsArray[++index]) {
-            footnoteId = footnotesAsArray[index];
+            id = footnotesAsArray[index];
 
-            footnotes[footnoteId] = self.tokenizeAll(footnotes[footnoteId]);
+            footnotes[id].children = self.tokenizeAll(footnotes[id].children);
         }
 
         token.footnotes = footnotes;
@@ -2647,10 +2648,12 @@ trimLeft = utilities.trimLeft;
 
 var EXPRESSION_ESCAPE,
     EXPRESSION_DIGIT,
+    EXPRESSION_WHITES_PACE,
     EXPRESSION_TRAILING_NEW_LINES;
 
 EXPRESSION_ESCAPE = /[\\`*{}\[\]()#+\-._>]/g;
 EXPRESSION_DIGIT = /\d/;
+EXPRESSION_WHITES_PACE = /\s/;
 EXPRESSION_TRAILING_NEW_LINES = /\n+$/g;
 
 /*
@@ -2879,7 +2882,8 @@ function Compiler(options) {
         fences,
         fence,
         emphasis,
-        strong;
+        strong,
+        closeAtx;
 
     self = this;
 
@@ -2906,6 +2910,7 @@ function Compiler(options) {
     fence = options.fence;
     emphasis = options.emphasis;
     strong = options.strong;
+    closeAtx = options.closeAtx;
 
     if (bullet === null || bullet === undefined) {
         options.bullet = DASH;
@@ -2941,6 +2946,12 @@ function Compiler(options) {
         options.setext = false;
     } else if (typeof setext !== 'boolean') {
         raise(setext, 'options.setext');
+    }
+
+    if (closeAtx === null || closeAtx === undefined) {
+        options.closeAtx = false;
+    } else if (typeof closeAtx !== 'boolean') {
+        raise(closeAtx, 'options.closeAtx');
     }
 
     if (referenceLinks === null || referenceLinks === undefined) {
@@ -3173,10 +3184,13 @@ compilerPrototype.root = function (token, parent, level) {
  */
 compilerPrototype.heading = function (token, parent, level) {
     var setext,
+        closeAtx,
         depth,
-        content;
+        content,
+        prefix;
 
     setext = this.options.setext;
+    closeAtx = this.options.closeAtx;
 
     depth = token.depth;
 
@@ -3187,7 +3201,14 @@ compilerPrototype.heading = function (token, parent, level) {
             repeat(content.length, depth === 1 ? EQUALS : DASH);
     }
 
-    return repeat(token.depth, HASH) + SPACE + content;
+    prefix = repeat(token.depth, HASH);
+    content = prefix + SPACE + content;
+
+    if (closeAtx) {
+        content += SPACE + prefix;
+    }
+
+    return content;
 };
 
 /**
@@ -3199,8 +3220,17 @@ compilerPrototype.heading = function (token, parent, level) {
 compilerPrototype.text = function (token) {
     return token.value.replace(EXPRESSION_ESCAPE, function ($0, index) {
         if (
-            $0 === DOT &&
-            !EXPRESSION_DIGIT.test(token.value.charAt(index - 1))
+            (
+                $0 === DOT &&
+                !EXPRESSION_DIGIT.test(token.value.charAt(index - 1))
+            ) ||
+            (
+                (
+                    $0 === DASH ||
+                    $0 === PLUS
+                ) &&
+                !EXPRESSION_WHITES_PACE.test(token.value.charAt(index - 1))
+            )
         ) {
             return $0;
         }
@@ -3380,7 +3410,7 @@ compilerPrototype.code = function (token) {
      * Probably pedantic.
      */
 
-    if (!token.lang && !this.options.fences) {
+    if (!token.lang && !this.options.fences && value) {
         return pad(value, 1);
     }
 
@@ -3521,16 +3551,27 @@ compilerPrototype.footnote = function (token) {
 
     if (
         this.options.referenceFootnotes ||
-        footnote.length !== 1 ||
-        footnote[0].type !== 'paragraph'
+        footnote.children.length !== 1 ||
+        footnote.children[0].type !== 'paragraph'
     ) {
         return SQUARE_BRACKET_OPEN + CARET + token.id + SQUARE_BRACKET_CLOSE;
     }
 
     this.footnotes[token.id] = false;
 
-    return SQUARE_BRACKET_OPEN + CARET + this.visit(footnote[0], null) +
+    return SQUARE_BRACKET_OPEN + CARET + this.visit(footnote, null) +
         SQUARE_BRACKET_CLOSE;
+};
+
+/**
+ * Stringify a footnote definition.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.footnoteDefinition = function (token) {
+    return this.visitAll(token, token.children)
+        .join(BREAK + repeat(INDENT, SPACE));
 };
 
 /**
@@ -3616,8 +3657,7 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
         if (footnotes[key]) {
             footnotes[key] = SQUARE_BRACKET_OPEN + CARET + key +
                 SQUARE_BRACKET_CLOSE + COLON + SPACE +
-                self.visitAll(null, footnotes[key])
-                .join(BREAK + repeat(INDENT, SPACE));
+                self.visit(footnotes[key], null);
         }
     }
 
