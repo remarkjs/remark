@@ -119,49 +119,57 @@ Yields:
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "This reference style footnote can contains paragraphs."
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "ordered": false,
-        "children": [
-          {
-            "type": "listItem",
-            "loose": false,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "and lists"
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "2": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "or something?"
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This reference style footnote can contains paragraphs."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "children": [
+            {
+              "type": "listItem",
+              "loose": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "and lists"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "2": {
+      "type": "footnoteDefinition",
+      "id": "2",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "or something?"
+            }
+          ]
+        }
+      ]
+    }
   }
 }
 ```
