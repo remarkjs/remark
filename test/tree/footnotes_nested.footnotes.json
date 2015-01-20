@@ -20,58 +20,66 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "\"A footnote\""
-          },
-          {
-            "type": "footnote",
-            "id": "2"
-          },
-          {
-            "type": "text",
-            "value": "."
-          }
-        ]
-      }
-    ],
-    "2": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "...containing itself"
-          },
-          {
-            "type": "footnote",
-            "id": "2"
-          },
-          {
-            "type": "text",
-            "value": ", a link"
-          },
-          {
-            "type": "link",
-            "title": null,
-            "href": "http://example.com",
-            "children": [
-              {
-                "type": "text",
-                "value": "^3"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": ", and an invalid footnote[^4]."
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "\"A footnote\""
+            },
+            {
+              "type": "footnote",
+              "id": "2"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        }
+      ]
+    },
+    "2": {
+      "type": "footnoteDefinition",
+      "id": "2",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "...containing itself"
+            },
+            {
+              "type": "footnote",
+              "id": "2"
+            },
+            {
+              "type": "text",
+              "value": ", a link"
+            },
+            {
+              "type": "link",
+              "title": null,
+              "href": "http://example.com",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "^3"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ", and an invalid footnote[^4]."
+            }
+          ]
+        }
+      ]
+    }
   }
 }

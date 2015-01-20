@@ -28,35 +28,43 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Old behavior would, for \"generated\", generate a footnote with an ID set to "
-          },
-          {
-            "type": "inlineCode",
-            "value": "1"
-          },
-          {
-            "type": "text",
-            "value": ", thus overwriting this footnote."
-          }
-        ]
-      }
-    ],
-    "2": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "the generated"
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Old behavior would, for \"generated\", generate a footnote with an ID set to "
+            },
+            {
+              "type": "inlineCode",
+              "value": "1"
+            },
+            {
+              "type": "text",
+              "value": ", thus overwriting this footnote."
+            }
+          ]
+        }
+      ]
+    },
+    "2": {
+      "type": "footnoteDefinition",
+      "id": "2",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "the generated"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

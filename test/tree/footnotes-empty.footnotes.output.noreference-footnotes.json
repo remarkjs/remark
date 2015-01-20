@@ -20,16 +20,20 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "this should be inline"
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "this should be inline"
+            }
+          ]
+        }
+      ]
+    }
   }
 }

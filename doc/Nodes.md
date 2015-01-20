@@ -38,12 +38,12 @@ interface Text <: Node {
 
 ## Root
 
-[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing the content of [**Footnote**](#footnote)s by their keys (if [`footnotes: true`](https://github.com/wooorm/mdast#footnotes), that is).
+[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast#footnotes), that is).
 
 ```idl
 interface Root <: Parent {
     type: "root";
-    footnotes: { [nodes] } | null;
+    footnotes: { FootnoteDefinition } | null;
 }
 ```
 
@@ -259,11 +259,22 @@ interface Image <: Node {
 
 ## Footnote
 
-[**Footnote**](#footnote) ([**Node**](#node)) represents the inline location where a marker, to some other content related to the document but outside its flow, should appear.
+[**Footnote**](#footnote) ([**Node**](#node)) represents the inline location where a marker, to some other content related to the document but outside its flow (see [**FootnoteDefinition**](#footnotedefinition)), should appear.
 
 ```idl
 interface Footnote <: Node {
     type: "footnote";
+    id: string
+}
+```
+
+## FootnoteDefinition
+
+[**FootnoteDefinition**](#footnotedefinition) ([**Parent**](#parent)) represents the definition of a footnote, referenced somewhere in the document.
+
+```idl
+interface FootnoteDefinition <: Parent {
+    type: "footnoteDefinition";
     id: string
 }
 ```

@@ -52,64 +52,72 @@
     }
   ],
   "footnotes": {
-    "somesamplefootnote": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Here is the text of the footnote itself."
-          }
-        ]
-      }
-    ],
-    "documentdetails": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Depending on the "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "final"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": " form of your document, of course. See the documentation and experiment."
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "This footnote has a second "
-          },
-          {
-            "type": "link",
-            "title": null,
-            "href": "http://example.com",
-            "children": [
-              {
-                "type": "text",
-                "value": "paragraph"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": "."
-          }
-        ]
-      }
-    ]
+    "somesamplefootnote": {
+      "type": "footnoteDefinition",
+      "id": "somesamplefootnote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Here is the text of the footnote itself."
+            }
+          ]
+        }
+      ]
+    },
+    "documentdetails": {
+      "type": "footnoteDefinition",
+      "id": "documentdetails",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Depending on the "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "final"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " form of your document, of course. See the documentation and experiment."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This footnote has a second "
+            },
+            {
+              "type": "link",
+              "title": null,
+              "href": "http://example.com",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "paragraph"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        }
+      ]
+    }
   }
 }

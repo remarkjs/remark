@@ -356,7 +356,7 @@ validateToken = function (context) {
 
         if (context.footnotes) {
             for (key in context.footnotes) {
-                validateTokens(context.footnotes[key]);
+                validateToken(context.footnotes[key]);
             }
         }
 
@@ -439,6 +439,14 @@ validateToken = function (context) {
     if (type === 'text') {
         assert(keys.length === 2);
         assert('value' in context);
+
+        return;
+    }
+
+    if (type === 'footnoteDefinition') {
+        assert(keys.length === 3);
+        assert('children' in context);
+        assert('id' in context);
 
         return;
     }
