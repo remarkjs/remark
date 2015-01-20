@@ -191,4 +191,4 @@ On a MacBook Air, it parser more than 3 megabytes of markdown per second, depend
 
 Copyright (c) 2011-2014, Christopher Jeffrey. (MIT License)
 
-MIT © [Titus Wormer](http://wooorm.com)
+[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
