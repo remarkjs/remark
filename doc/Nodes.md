@@ -38,7 +38,7 @@ interface Text <: Node {
 
 ## Root
 
-[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast#footnotes), that is).
+[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast/blob/master/doc/Options.md#footnotes), that is).
 
 ```idl
 interface Root <: Parent {

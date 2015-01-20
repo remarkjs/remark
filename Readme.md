@@ -99,7 +99,7 @@ Some _emphasis_,  **strongness**, and `code`.
 
 ## API
 
-### [mdast](#mdast).parse(value, [options](doc/Options.md#parse)?)
+### [mdast](#api).parse(value, [options](doc/Options.md#parse)?)
 
 Parameters:
 
@@ -115,7 +115,7 @@ All options (including the options object itself) can be `null` or `undefined` t
 
 Returns: An `Object`. See [Nodes](doc/Nodes.md) for the AST specification.
 
-### [mdast](#mdast).stringify([ast](doc/Nodes.md#node), [options](doc/Options.md#stringify)?)
+### [mdast](#api).stringify([ast](doc/Nodes.md#node), [options](doc/Options.md#stringify)?)
 
 Parameters:
 
