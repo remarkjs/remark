@@ -187,8 +187,8 @@ On a MacBook Air, it parser more than 3 megabytes of markdown per second, depend
 
 ## License
 
+[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
+
 > This project was initially a fork of [marked](https://github.com/chjj/marked).
 
 Copyright (c) 2011-2014, Christopher Jeffrey. (MIT License)
-
-[MIT](LICENSE) © [Titus Wormer](http://wooorm.com)
