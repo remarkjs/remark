@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-20
+0.1.7 / 2015-01-20
 ==================
 
   * Update copyright notice in `LICENSE` to include 2015
