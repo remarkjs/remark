@@ -37,106 +37,118 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Consectetur "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "adipiscing"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": " elit. Praesent dictum purus ullamcorper ligula semper pellentesque"
-          },
-          {
-            "type": "footnote",
-            "id": "3"
-          },
-          {
-            "type": "text",
-            "value": "."
-          }
-        ]
-      },
-      {
-        "type": "list",
-        "ordered": false,
-        "children": [
-          {
-            "type": "listItem",
-            "loose": false,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "Containing a list."
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ],
-    "2": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Nam dictum sapien nec sem ultrices fermentum. Nulla "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "facilisi"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": ". In et feugiat massa."
-          }
-        ]
-      }
-    ],
-    "3": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Nunc dapibus ipsum ut mi "
-          },
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "ultrices"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": ", non euismod velit pretium."
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Consectetur "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "adipiscing"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " elit. Praesent dictum purus ullamcorper ligula semper pellentesque"
+            },
+            {
+              "type": "footnote",
+              "id": "3"
+            },
+            {
+              "type": "text",
+              "value": "."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "children": [
+            {
+              "type": "listItem",
+              "loose": false,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Containing a list."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "2": {
+      "type": "footnoteDefinition",
+      "id": "2",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Nam dictum sapien nec sem ultrices fermentum. Nulla "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "facilisi"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ". In et feugiat massa."
+            }
+          ]
+        }
+      ]
+    },
+    "3": {
+      "type": "footnoteDefinition",
+      "id": "3",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Nunc dapibus ipsum ut mi "
+            },
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "ultrices"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": ", non euismod velit pretium."
+            }
+          ]
+        }
+      ]
+    }
   }
 }

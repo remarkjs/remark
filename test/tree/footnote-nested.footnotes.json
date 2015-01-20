@@ -20,40 +20,48 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "Including "
-          },
-          {
-            "type": "footnote",
-            "id": "2"
-          }
-        ]
-      }
-    ],
-    "2": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "another "
-          },
-          {
-            "type": "strong",
-            "children": [
-              {
-                "type": "text",
-                "value": "footnote"
-              }
-            ]
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Including "
+            },
+            {
+              "type": "footnote",
+              "id": "2"
+            }
+          ]
+        }
+      ]
+    },
+    "2": {
+      "type": "footnoteDefinition",
+      "id": "2",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "another "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "footnote"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
   }
 }

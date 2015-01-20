@@ -16,29 +16,33 @@
     }
   ],
   "footnotes": {
-    "1": [
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "This is the "
-          },
-          {
-            "type": "emphasis",
-            "children": [
-              {
-                "type": "text",
-                "value": "actual"
-              }
-            ]
-          },
-          {
-            "type": "text",
-            "value": " footnote."
-          }
-        ]
-      }
-    ]
+    "1": {
+      "type": "footnoteDefinition",
+      "id": "1",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "This is the "
+            },
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "actual"
+                }
+              ]
+            },
+            {
+              "type": "text",
+              "value": " footnote."
+            }
+          ]
+        }
+      ]
+    }
   }
 }
