@@ -24,7 +24,7 @@ stringify = require('./lib/stringify.js');
  * @constructor {MDAST}
  */
 function MDAST() {
-    this.parser = new Ware();
+    this.ware = new Ware();
 }
 
 /**
@@ -37,7 +37,7 @@ function runParse(_, options) {
 
     node = parse.apply(parse, arguments);
 
-    this.parser.run(node, options);
+    this.ware.run(node, options);
 
     return node;
 }
@@ -56,7 +56,7 @@ function use(plugin) {
         self = new MDAST();
     }
 
-    self.parser.use(plugin);
+    self.ware.use(plugin);
 
     return self;
 }
