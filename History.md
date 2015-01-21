@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-21
+0.1.8 / 2015-01-21
 ==================
 
   * Add missing `lib/utilities.js` to `component.json`
