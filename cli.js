@@ -198,8 +198,14 @@ function program(value) {
 
             if (exists(local) || exists(local + '.js')) {
                 fn = require(local);
-            } else {
+            } else if (exists(npm)) {
                 fn = require(npm);
+            } else {
+                process.stderr.write(
+                    'Invalid unfound plugin `' + plugin + '`.\n'
+                );
+
+                process.exit(1);
             }
 
             parser = parser.use(fn);
