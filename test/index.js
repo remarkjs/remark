@@ -4,13 +4,15 @@ var mdast,
     assert,
     fixtures,
     chalk,
-    diff;
+    diff,
+    plugin;
 
 mdast = require('..');
 assert = require('assert');
 fixtures = require('./fixtures.js');
 chalk = require('chalk');
 diff = require('diff');
+plugin = require('./plugin.js');
 
 /*
  * Settings.
@@ -20,18 +22,23 @@ var INDENT;
 
 INDENT = 2;
 
+/**
+ * No-operation.
+ */
+function noop() {}
+
 /*
  * Tests.
  */
 
 describe('mdast', function () {
-    it('should be of type `object`', function () {
+    it('should be an `object`', function () {
         assert(typeof mdast === 'object');
     });
 });
 
 describe('mdast.parse(value, options, CustomParser)', function () {
-    it('should be of type `function`', function () {
+    it('should be a `function`', function () {
         assert(typeof mdast.parse === 'function');
     });
 
@@ -129,7 +136,7 @@ describe('mdast.parse(value, options, CustomParser)', function () {
 });
 
 describe('mdast.stringify(ast, options, CustomCompiler)', function () {
-    it('should be of type `function`', function () {
+    it('should be a `function`', function () {
         assert(typeof mdast.stringify === 'function');
     });
 
@@ -315,6 +322,88 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         mdast.stringify({}, null, CustomCompiler);
 
         assert(isInvoked === true);
+    });
+});
+
+describe('mdast.use(function(ast, options?))', function () {
+    it('should be a `function`', function () {
+        assert(typeof mdast.use === 'function');
+    });
+
+    it('should accept a function', function () {
+        mdast.use(noop);
+    });
+
+    it('should return an instance of mdast', function () {
+        var parser;
+
+        parser = mdast.use(noop);
+
+        assert(mdast.use(noop) instanceof parser.constructor);
+    });
+
+    it('should attach a plugin', function () {
+        var parser;
+
+        parser = mdast.use(noop);
+
+        assert(parser.ware.fns.length === 1);
+    });
+
+    it('should multiple plugins', function () {
+        var parser;
+
+        parser = mdast.use(noop).use(noop);
+
+        assert(parser.ware.fns.length === 2);
+    });
+
+    it('should invoke a plugin when `parse()` is invoked', function () {
+        var isInvoked,
+            settings;
+
+        settings = {
+            'hello': 'world'
+        };
+
+        /**
+         * Thrower.
+         */
+        function assertion(ast, options) {
+            assert(ast.type === 'root');
+            assert(options === settings);
+
+            isInvoked = true;
+        }
+
+        mdast.use(assertion).parse('# Hello world', settings);
+
+        assert(isInvoked === true);
+    });
+
+    it('should work on an example plugin', function () {
+        var parser,
+            source;
+
+        parser = mdast.use(plugin);
+
+        source = parser.stringify(parser.parse('# mdast'));
+
+        assert(
+            source === '# mdast [' +
+            '![Version](http://img.shields.io/npm/v/mdast.svg)' +
+            '](https://www.npmjs.com/package/mdast)\n'
+        );
+
+        source = parser.stringify(parser.parse('# mdast', {
+            'flat': true
+        }));
+
+        assert(
+            source === '# mdast [' +
+            '![Version](http://img.shields.io/npm/v/mdast.svg?style=flat)' +
+            '](https://www.npmjs.com/package/mdast)\n'
+        );
     });
 });
 
