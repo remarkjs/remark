@@ -7,11 +7,31 @@
 
 var mdast,
     fs,
+    path,
     pack;
 
 mdast = require('./');
 fs = require('fs');
+path = require('path');
 pack = require('./package.json');
+
+/*
+ * Cached methods.
+ */
+
+var resolve,
+    exists;
+
+resolve = path.resolve;
+exists = fs.existsSync;
+
+/*
+ * Current working directory.
+ */
+
+var cwd;
+
+cwd = process.cwd();
 
 /*
  * Detect if a value is expected to be piped in.
@@ -39,6 +59,8 @@ command = Object.keys(pack.bin)[0];
 
 /**
  * Help.
+ *
+ * @return {string}
  */
 function help() {
     return [
@@ -54,6 +76,7 @@ function help() {
         '  -a, --ast             output AST information',
         '      --options         output available settings',
         '  -o, --option <option> specify settings',
+        '  -u, --use    <plugin> specify plugins',
         '',
         'Usage:',
         '',
@@ -64,8 +87,12 @@ function help() {
         '$ ' + command + ' Readme.md > Readme-new.md',
         '',
         '# Pass stdin through mdast, with options',
-        '$ cat Readme.md | ' + command + ' -o ' +
-            '"setext, bullet: *" > Readme-new.md'
+        '$ cat Readme.md | ' + command + ' -option ' +
+            '"setext, bullet: *" > Readme-new.md',
+        '',
+        '# Use an npm module',
+        '$ npm install some-plugin',
+        '$ ' + command + ' --use some-plugin History.md > History-new.md'
     ].join('\n  ') + '\n';
 }
 
@@ -73,7 +100,7 @@ function help() {
  * Fail w/ help message.
  */
 function fail() {
-    process.stderr.write(help());
+    process.stderr.write(help() + '\n');
     process.exit(1);
 }
 
@@ -140,9 +167,13 @@ function camelCase(value) {
 
 var index,
     expectOption,
+    expectPlugin,
     expectAST,
+    plugins,
     options,
     files;
+
+plugins = [];
 
 /**
  * Run the program.
@@ -150,12 +181,31 @@ var index,
  * @param {string} value
  */
 function program(value) {
-    var ast;
+    var ast,
+        parser,
+        local,
+        npm,
+        fn;
 
     if (!value.length) {
         fail();
     } else {
-        ast = mdast.parse(value, options);
+        parser = mdast;
+
+        plugins.forEach(function (plugin) {
+            local = resolve(cwd, plugin);
+            npm = resolve(cwd, 'node_modules', plugin);
+
+            if (exists(local) || exists(local + '.js')) {
+                fn = require(local);
+            } else {
+                fn = require(npm);
+            }
+
+            parser = parser.use(fn);
+        });
+
+        ast = parser.parse(value, options);
 
         if (expectAST) {
             process.stdout.write(JSON.stringify(ast, null, 2));
@@ -197,9 +247,15 @@ if (
     argv.forEach(function (argument) {
         if (argument === '--option' || argument === '-o') {
             expectOption = true;
-        } else if (!expectOption) {
-            files.push(argument);
-        } else {
+        } else if (argument === '--use' || argument === '-u') {
+            expectPlugin = true;
+        } else if (expectPlugin) {
+            argument.split(',').forEach(function (plugin) {
+                plugins.push(plugin);
+            });
+
+            expectPlugin = false;
+        } else if (expectOption) {
             argument
                 .split(',')
                 .map(function (value) {
@@ -236,6 +292,8 @@ if (
                 });
 
             expectOption = false;
+        } else {
+            files.push(argument);
         }
     });
 
