@@ -1,4 +1,20 @@
 
+n.n.n / 2015-01-21
+==================
+
+  * Add missing `lib/utilities.js` to `component.json`
+  * Merge branch 'feature/add-plugin-support'
+  * Add assertions for plugins to `test/cli.sh`
+  * Add failure on invalid plugin to cli
+  * Add assertions for plugins to `test/index.js`
+  * Rename `ware` internally from `parser` to `ware`
+  * Add cli plugin usage to `Readme.md`
+  * Add plugin support to cli
+  * Fix plugin implementation
+  * Add example plugin to `test/plugin.js`
+  * Add initial draft of plugin implementation
+  * Add ware as a dependency
+
 0.1.7 / 2015-01-20
 ==================
 
