@@ -57,6 +57,36 @@ it "Should accept \`-a\`"
     ./cli.js -a Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
+it "Should accept \`-u <plugin>\`"
+    code=0
+    ./cli.js -u ./test/plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--use <plugin>\`"
+    code=0
+    ./cli.js --use ./test/plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on \`-u <invalid-plugin>\`"
+    code=0
+    ./cli.js -u ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--use <invalid-plugin>\`"
+    code=0
+    ./cli.js --use ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`-u\`"
+    code=0
+    ./cli.js -u Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`--use\`"
+    code=0
+    ./cli.js --use Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
 it "Should accept \`--options\`"
     code=0
     ./cli.js --options > /dev/null 2>&1 || code=$?
