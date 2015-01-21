@@ -25,6 +25,7 @@
   "scripts": [
     "index.js",
     "lib/parse.js",
-    "lib/stringify.js"
+    "lib/stringify.js",
+    "lib/utilities.js"
   ]
 }
