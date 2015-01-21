@@ -198,7 +198,7 @@ function program(value) {
 
             if (exists(local) || exists(local + '.js')) {
                 fn = require(local);
-            } else if (exists(npm)) {
+            } else {
                 fn = require(npm);
             }
 
