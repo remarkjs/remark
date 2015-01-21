@@ -24,7 +24,6 @@ stringify = require('./lib/stringify.js');
  * @constructor {MDAST}
  */
 function MDAST() {
-    this.compiler = new Ware();
     this.parser = new Ware();
 }
 
@@ -36,22 +35,11 @@ function MDAST() {
 function runParse(_, options) {
     var node;
 
-    node = parse.apply(this, arguments);
+    node = parse.apply(parse, arguments);
 
-    return self.parser.run.apply(node, options);
-}
+    this.parser.run(node, options);
 
-/**
- * Stringify a value and apply plugins.
- *
- * @return {Root}
- */
-function runStringify(_, options) {
-    var value;
-
-    value = stringify.apply(this, arguments);
-
-    return self.compiler.run(value, options);
+    return node;
 }
 
 /**
@@ -60,9 +48,7 @@ function runStringify(_, options) {
  * @return {MDAST}
  */
 function use(plugin) {
-    var self,
-        parser,
-        compiler;
+    var self;
 
     self = this;
 
@@ -70,16 +56,7 @@ function use(plugin) {
         self = new MDAST();
     }
 
-    if (typeof plugin !== 'function') {
-        parser = plugin;
-        compiler = plugin;
-    } else {
-        parser = plugin.parse;
-        compiler = plugin.stringify;
-    }
-
-    self.compiler.use(compiler);
-    self.parser.use(parser);
+    self.parser.use(plugin);
 
     return self;
 }
@@ -89,7 +66,7 @@ function use(plugin) {
  */
 
 MDAST.prototype.parse = runParse;
-MDAST.prototype.stringify = runStringify;
+MDAST.prototype.stringify = stringify;
 MDAST.prototype.use = use;
 
 /*
