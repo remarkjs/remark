@@ -163,6 +163,7 @@ Options:
   -a, --ast             output AST information
       --options         output available settings
   -o, --option <option> specify settings
+  -u, --use    <plugin> specify plugins
 
 Usage:
 
@@ -172,7 +173,11 @@ Usage:
 $ mdast Readme.md > Readme-new.md
 
 # Pass stdin through mdast, with options
-$ cat Readme.md | mdast -o "setext, bullet: *" > Readme-new.md
+$ cat Readme.md | mdast -option "setext, bullet: *" > Readme-new.md
+
+# Use an npm module
+$ npm install some-plugin
+$ mdast --use some-plugin History.md > History-new.md
 ```
 
 ## Benchmark
