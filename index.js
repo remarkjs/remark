@@ -5,6 +5,8 @@
  */
 
 var mdast = require('wooorm/mdast@0.1.8');
+var debounce = require('component/debounce@1.0.0');
+
 
 /*
  * DOM elements.
@@ -15,7 +17,7 @@ var $output = document.getElementsByTagName('textarea')[1];
 var $options = [].concat(
     [].slice.call(document.getElementsByTagName('input')),
     [].slice.call(document.getElementsByTagName('select'))
-)
+);
 
 /*
  * Options.
@@ -94,7 +96,7 @@ function onanychange(event) {
  * Listen.
  */
 
-$input.addEventListener('input', onchange);
+$input.addEventListener('input', debounce(onchange, 100, false));
 window.addEventListener('change', onanychange);
 
 /*

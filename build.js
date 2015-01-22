@@ -90,6 +90,8 @@
  */
 
 var mdast = require('wooorm/mdast@0.1.8');
+var debounce = require('component/debounce@1.0.0');
+
 
 /*
  * DOM elements.
@@ -100,7 +102,7 @@ var $output = document.getElementsByTagName('textarea')[1];
 var $options = [].concat(
     [].slice.call(document.getElementsByTagName('input')),
     [].slice.call(document.getElementsByTagName('select'))
-)
+);
 
 /*
  * Options.
@@ -179,7 +181,7 @@ function onanychange(event) {
  * Listen.
  */
 
-$input.addEventListener('input', onchange);
+$input.addEventListener('input', debounce(onchange, 100, false));
 window.addEventListener('change', onanychange);
 
 /*
@@ -194,7 +196,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.1.8":2}],
+}, {"wooorm/mdast@0.1.8":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -277,8 +279,8 @@ module.exports = {
     'use': use
 };
 
-}, {"ware":3,"./lib/parse.js":4,"./lib/stringify.js":5}],
-3: [function(require, module, exports) {
+}, {"ware":4,"./lib/parse.js":5,"./lib/stringify.js":6}],
+4: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -361,8 +363,8 @@ Ware.prototype.run = function () {
   return this;
 };
 
-}, {"wrap-fn":6}],
-6: [function(require, module, exports) {
+}, {"wrap-fn":7}],
+7: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -489,8 +491,8 @@ function once(fn) {
   };
 }
 
-}, {"co":7}],
-7: [function(require, module, exports) {
+}, {"co":8}],
+8: [function(require, module, exports) {
 
 /**
  * slice() reference.
@@ -787,7 +789,7 @@ function error(err) {
 }
 
 }, {}],
-4: [function(require, module, exports) {
+5: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -2758,8 +2760,8 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-}, {"he":8,"./utilities.js":9}],
-8: [function(require, module, exports) {
+}, {"he":9,"./utilities.js":10}],
+9: [function(require, module, exports) {
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
 
@@ -3091,7 +3093,7 @@ module.exports = parse;
 }(this));
 
 }, {}],
-9: [function(require, module, exports) {
+10: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -3214,7 +3216,7 @@ exports.trimRight = trimRight;
 exports.clean = clean;
 
 }, {}],
-5: [function(require, module, exports) {
+6: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -4329,8 +4331,8 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-}, {"markdown-table":10,"./utilities.js":9}],
-10: [function(require, module, exports) {
+}, {"markdown-table":11,"./utilities.js":10}],
+11: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -4653,5 +4655,69 @@ function markdownTable(table, options) {
  */
 
 module.exports = markdownTable;
+
+}, {}],
+3: [function(require, module, exports) {
+
+/**
+ * Module dependencies.
+ */
+
+var now = require('date-now');
+
+/**
+ * Returns a function, that, as long as it continues to be invoked, will not
+ * be triggered. The function will be called after it stops being called for
+ * N milliseconds. If `immediate` is passed, trigger the function on the
+ * leading edge, instead of the trailing.
+ *
+ * @source underscore.js
+ * @see http://unscriptable.com/2009/03/20/debouncing-javascript-methods/
+ * @param {Function} function to wrap
+ * @param {Number} timeout in ms (`100`)
+ * @param {Boolean} whether to execute at the beginning (`false`)
+ * @api public
+ */
+
+module.exports = function debounce(func, wait, immediate){
+  var timeout, args, context, timestamp, result;
+  if (null == wait) wait = 100;
+
+  function later() {
+    var last = now() - timestamp;
+
+    if (last < wait && last > 0) {
+      timeout = setTimeout(later, wait - last);
+    } else {
+      timeout = null;
+      if (!immediate) {
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      }
+    }
+  };
+
+  return function debounced() {
+    context = this;
+    args = arguments;
+    timestamp = now();
+    var callNow = immediate && !timeout;
+    if (!timeout) timeout = setTimeout(later, wait);
+    if (callNow) {
+      result = func.apply(context, args);
+      context = args = null;
+    }
+
+    return result;
+  };
+};
+
+}, {"date-now":12}],
+12: [function(require, module, exports) {
+module.exports = Date.now || now
+
+function now() {
+    return new Date().getTime()
+}
 
 }, {}]}, {}, {"1":""})
