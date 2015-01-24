@@ -33,6 +33,7 @@
     "mdast": "cli.js"
   },
   "devDependencies": {
+    "browserify": "^8.0.0",
     "chalk": "^0.5.0",
     "diff": "^1.0.0",
     "eslint": "^0.12.0",
