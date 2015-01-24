@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-24
+0.1.9 / 2015-01-24
 ==================
 
   * Add UMD as an installation method in `Readme.md`
