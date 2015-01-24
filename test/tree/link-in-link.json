@@ -1,0 +1,54 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://shields.io",
+          "children": [
+            {
+              "type": "text",
+              "value": "mailto:test@example.com"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": "mdast",
+          "href": "https://travis-ci.org/wooorm/mdast",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://travis-ci.org/wooorm/mdast"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": "An example",
+          "href": "http://example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "[](http://example.com \"An example\")"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
