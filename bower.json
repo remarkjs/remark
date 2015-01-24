@@ -34,12 +34,14 @@
     "components/",
     "coverage/",
     "doc/",
+    "lib/",
     "node_modules/",
     "script/",
     "test/",
     "component.json",
     "package.json",
     "benchmark.js",
-    "cli.js"
+    "cli.js",
+    "index.js"
   ]
 }
