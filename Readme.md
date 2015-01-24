@@ -30,7 +30,7 @@ $ bower install mdast
 var mdast = require('wooorm/mdast');
 ```
 
-UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [minified](mdast.min.js):
+UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [minified](mdast.min.js)):
 
 ```html
 <script src="path/to/mdast.js"></script>
