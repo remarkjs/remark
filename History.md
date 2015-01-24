@@ -1,4 +1,19 @@
 
+n.n.n / 2015-01-24
+==================
+
+  * Add UMD as an installation method in `Readme.md`
+  * Add `index.js`, `lib/` to bower ignore
+  * Remove bower dependencies due to UMD build
+  * Add `mdast.js` to bowers `main` instead of `index.js`
+  * Add `mdast.js`, `mdast.min.js`
+  * Add `mdast.js`, `mdast.min.js` to `.npmignore`
+  * Add `postbuild-bundle` npm script target to compress module
+  * Add `bundle` npm script target to browserify module
+  * Add esmangle as a dev-dependency
+  * Add browserify as a dev-dependency
+  * Fix bug in node@0.10 re require error exit code
+
 0.1.8 / 2015-01-21
 ==================
 
