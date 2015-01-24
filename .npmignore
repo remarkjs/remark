@@ -13,4 +13,6 @@ script/
 bower.json
 component.json
 benchmark.js
+mdast.js
+mdast.min.js
 History.md
