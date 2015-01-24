@@ -1,4 +1,14 @@
 
+n.n.n / 2015-01-24
+==================
+
+  * Update build
+  * Merge branch 'bug/fix-linked-image'
+  * Add fixtures for links, images in links
+  * Add check to inline tokenizer if a match is eaten
+  * Add link check to nested image/links
+  * Fix typo in `Readme.md`
+
 0.1.9 / 2015-01-24
 ==================
 
