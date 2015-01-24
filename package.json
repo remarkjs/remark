@@ -61,7 +61,8 @@
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
     "build-options": "node script/build-options.js",
-    "build": "npm run build-options",
+    "build-bundle": "browserify index.js -s mdast > mdast.js",
+    "build": "npm run build-options && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }
