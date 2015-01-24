@@ -30,6 +30,16 @@ $ bower install mdast
 var mdast = require('wooorm/mdast');
 ```
 
+UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [minified](mdast.min.js):
+
+```html
+<script src="path/to/mdast.js"></script>
+<script>
+    var ast = mdast.parse('*hello* __world__');
+    mdast.stringify(ast); // _hello_ **world**
+</script>
+```
+
 ## Usage
 
 See [Nodes](doc/Nodes.md) for information about returned objects.
