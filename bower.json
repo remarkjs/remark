@@ -1,6 +1,6 @@
 {
   "name": "mdast",
-  "main": "index.js",
+  "main": "mdast.js",
   "description": "Speedy Markdown parser/stringifier for multipurpose analysis",
   "license": "MIT",
   "keywords": [
