@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.1.8');
+var mdast = require('wooorm/mdast@0.1.10');
 var debounce = require('component/debounce@1.0.0');
 
 
@@ -196,7 +196,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.1.8":2,"component/debounce@1.0.0":3}],
+}, {"wooorm/mdast@0.1.10":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -1676,7 +1676,6 @@ function renderListItem(token) {
      */
 
     token = token.replace(EXPRESSION_BULLET, function ($0) {
-        // eat($0)
         space = $0.length;
 
         return '';
@@ -1956,7 +1955,6 @@ function tokenizeTag(eat, $0) {
 /**
  * Tokenise a link.
  *
- * @property {boolean} notInLink
  * @param {function(string)} eat
  * @param {string} $0 - Whole link.
  * @param {string} $1 - Content.
@@ -1964,10 +1962,14 @@ function tokenizeTag(eat, $0) {
  * @param {string?} $3 - Title.
  */
 function tokenizeLink(eat, $0, $1, $2, $3) {
-    eat($0)(this.renderLink($0.charAt(0) !== EXCLAMATION_MARK, $2, $1, $3));
-}
+    var isLink;
 
-tokenizeLink.notInLink = true;
+    isLink = $0.charAt(0) !== EXCLAMATION_MARK;
+
+    if (!isLink || !this.inLink) {
+        eat($0)(this.renderLink(isLink, $2, $1, $3));
+    }
+}
 
 /**
  * Tokenise a reference link, invalid link, or inline
@@ -2546,7 +2548,8 @@ Parser.prototype.tokenizeInline = function (value) {
         method,
         name,
         match,
-        matched;
+        matched,
+        valueLength;
 
     self = this;
 
@@ -2618,11 +2621,15 @@ Parser.prototype.tokenizeInline = function (value) {
                 inlineRules[name].exec(value);
 
             if (match) {
+                valueLength = value.length;
+
                 method.apply(self, [eat].concat(match));
 
-                matched = true;
+                matched = valueLength !== value.length;
 
-                break;
+                if (matched) {
+                    break;
+                }
             }
         }
 
