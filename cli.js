@@ -81,7 +81,7 @@ function help() {
         '',
         'Usage:',
         '',
-        '# Note that bash does not allow reading and writing to the ',
+        '# Note that bash does not allow reading and writing to the',
         '# same file through pipes',
         '',
         '# Pass `Readme.md` through mdast',

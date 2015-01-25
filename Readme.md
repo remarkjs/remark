@@ -183,18 +183,20 @@ Options:
   -v, --version         output version number
   -a, --ast             output AST information
       --options         output available settings
-  -o, --option <option> specify settings
+  -o, --output <path>   specify output location
+  -O, --option <option> specify settings
   -u, --use    <plugin> specify plugins
 
 Usage:
 
-# Note that bash does not allow reading/writing to the same through pipes
+# Note that bash does not allow reading and writing to the
+# same file through pipes
 
 # Pass `Readme.md` through mdast
-$ mdast Readme.md > Readme-new.md
+$ mdast Readme.md -o Readme.md
 
-# Pass stdin through mdast, with options
-$ cat Readme.md | mdast -option "setext, bullet: *" > Readme-new.md
+# Pass stdin through mdast, with options, to stdout
+$ cat Readme.md | mdast --option "setext, bullet: *" > Readme-new.md
 
 # Use an npm module
 $ npm install some-plugin
