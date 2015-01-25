@@ -525,7 +525,7 @@ validateToken = function (context) {
         return;
     }
 
-    if (type === 'text') {
+    if (type === 'text' || type === 'escape') {
         assert(keys.length === 2);
         assert('value' in context);
 
