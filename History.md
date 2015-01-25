@@ -1,4 +1,19 @@
 
+n.n.n / 2015-01-25
+==================
+
+  * Remove `backpedal` from `tokenizeBlock` in `lib/parse.js`
+  * Merge branch 'feature/simplify-escapes'
+  * Add support for `escape` node
+  * Fix fixtures for new escape node
+  * Add new `escape` node to `doc/Nodes.md`
+  * Add test support for new `escape` node
+  * Add docs for `--output`, `-o` CLI flags to `Readme.md`
+  * Add `--output`, `-o` CLI flags
+  * Add tests for `--output` CLI flag
+  * Add docs for `mdast.use()` to `Readme.md`
+  * Add `build.js` to `.gitignore`, `.npmignore`, `bower.json` ignore
+
 0.1.10 / 2015-01-24
 ==================
 
