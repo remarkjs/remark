@@ -57,6 +57,39 @@ it "Should accept \`-a\`"
     ./cli.js -a Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
+
+it "Should accept \`-o <path>\`"
+    code=0
+    ./cli.js -o out.md Readme.md > /dev/null 2>&1 || code=$?
+    rm out.md
+    assert $code 0
+
+it "Should accept \`--output <path>\`"
+    code=0
+    ./cli.js --output out.md Readme.md > /dev/null 2>&1 || code=$?
+    rm out.md
+    assert $code 0
+
+it "Should fail on \`-o <invalid-path>\`"
+    code=0
+    ./cli.js -o invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--output <invalid-path>\`"
+    code=0
+    ./cli.js --output invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`-o\`"
+    code=0
+    ./cli.js Readme.md -o > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`--output\`"
+    code=0
+    ./cli.js Readme.md --output > /dev/null 2>&1 || code=$?
+    assert $code 1
+
 it "Should accept \`-u <plugin>\`"
     code=0
     ./cli.js -u ./test/plugin.js Readme.md > /dev/null 2>&1 || code=$?
@@ -79,12 +112,12 @@ it "Should fail on \`--use <invalid-plugin>\`"
 
 it "Should fail on missing value for \`-u\`"
     code=0
-    ./cli.js -u Readme.md > /dev/null 2>&1 || code=$?
+    ./cli.js Readme.md -u > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--use\`"
     code=0
-    ./cli.js --use Readme.md > /dev/null 2>&1 || code=$?
+    ./cli.js Readme.md --use > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should accept \`--options\`"
