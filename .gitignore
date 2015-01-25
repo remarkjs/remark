@@ -5,3 +5,4 @@ build/
 components/
 node_modules/
 coverage/
+build.js
