@@ -288,3 +288,13 @@ interface TextNode <: Text {
     type: "text";
 }
 ```
+
+## Escape
+
+[**Escape**](#escape) ([**Text**](#text)) represents an escaped symbol. Useful when writing things that might otherwise be interpreted as markdown formatting.
+
+```idl
+interface Escape <: Text {
+    type: "escape";
+}
+```
