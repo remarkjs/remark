@@ -817,14 +817,12 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
     self = this;
 
-    add = eat($0);
+    add = eat('');
 
     token = add({
         'type': 'table',
         'align': []
     });
-
-    eat.backpedal($0);
 
     /*
      * Add the table header to table's children.
@@ -1651,7 +1649,8 @@ Parser.prototype.tokenizeBlock = function (value) {
         method,
         name,
         match,
-        matched;
+        matched,
+        valueLength;
 
     self = this;
 
@@ -1714,21 +1713,6 @@ Parser.prototype.tokenizeBlock = function (value) {
         return add;
     }
 
-    /**
-     * Add `subvalue` back to `value`.
-     *
-     * @param {string} subvalue
-     */
-    function backpedal(subvalue) {
-        value = subvalue + value;
-    }
-
-    /*
-     * Expose `backpedal` on `eat`.
-     */
-
-    eat.backpedal = backpedal;
-
     /*
      * Iterate over `value`, and iterate over all
      * block-expressions.  When one matches, invoke
@@ -1753,11 +1737,16 @@ Parser.prototype.tokenizeBlock = function (value) {
                 blockRules[name].exec(value);
 
             if (match) {
+                valueLength = value.length;
+
                 method.apply(self, [eat].concat(match));
 
-                matched = true;
+                matched = valueLength !== value.length;
 
-                break;
+                /* istanbul ignore else */
+                if (matched) {
+                    break;
+                }
             }
         }
 
