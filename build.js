@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.1.10');
+var mdast = require('wooorm/mdast@0.1.11');
 var debounce = require('component/debounce@1.0.0');
 
 
@@ -196,7 +196,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.1.10":2,"component/debounce@1.0.0":3}],
+}, {"wooorm/mdast@0.1.11":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -1526,14 +1526,12 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
     self = this;
 
-    add = eat($0);
+    add = eat('');
 
     token = add({
         'type': 'table',
         'align': []
     });
-
-    eat.backpedal($0);
 
     /*
      * Add the table header to table's children.
@@ -1886,7 +1884,7 @@ function renderInline(type, value) {
  * @param {string} $1 - Escaped character.
  */
 function tokenizeEscape(eat, $0, $1) {
-    eat($0)(this.renderRaw('text', $1));
+    eat($0)(this.renderRaw('escape', $1));
 }
 
 /**
@@ -2360,7 +2358,8 @@ Parser.prototype.tokenizeBlock = function (value) {
         method,
         name,
         match,
-        matched;
+        matched,
+        valueLength;
 
     self = this;
 
@@ -2423,21 +2422,6 @@ Parser.prototype.tokenizeBlock = function (value) {
         return add;
     }
 
-    /**
-     * Add `subvalue` back to `value`.
-     *
-     * @param {string} subvalue
-     */
-    function backpedal(subvalue) {
-        value = subvalue + value;
-    }
-
-    /*
-     * Expose `backpedal` on `eat`.
-     */
-
-    eat.backpedal = backpedal;
-
     /*
      * Iterate over `value`, and iterate over all
      * block-expressions.  When one matches, invoke
@@ -2462,11 +2446,16 @@ Parser.prototype.tokenizeBlock = function (value) {
                 blockRules[name].exec(value);
 
             if (match) {
+                valueLength = value.length;
+
                 method.apply(self, [eat].concat(match));
 
-                matched = true;
+                matched = valueLength !== value.length;
 
-                break;
+                /* istanbul ignore else */
+                if (matched) {
+                    break;
+                }
             }
         }
 
@@ -3252,14 +3241,8 @@ trimLeft = utilities.trimLeft;
  * Expressions.
  */
 
-var EXPRESSION_ESCAPE,
-    EXPRESSION_DIGIT,
-    EXPRESSION_WHITES_PACE,
-    EXPRESSION_TRAILING_NEW_LINES;
+var EXPRESSION_TRAILING_NEW_LINES;
 
-EXPRESSION_ESCAPE = /[\\`*{}\[\]()#+\-._>]/g;
-EXPRESSION_DIGIT = /\d/;
-EXPRESSION_WHITES_PACE = /\s/;
 EXPRESSION_TRAILING_NEW_LINES = /\n+$/g;
 
 /*
@@ -3824,25 +3807,17 @@ compilerPrototype.heading = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.text = function (token) {
-    return token.value.replace(EXPRESSION_ESCAPE, function ($0, index) {
-        if (
-            (
-                $0 === DOT &&
-                !EXPRESSION_DIGIT.test(token.value.charAt(index - 1))
-            ) ||
-            (
-                (
-                    $0 === DASH ||
-                    $0 === PLUS
-                ) &&
-                !EXPRESSION_WHITES_PACE.test(token.value.charAt(index - 1))
-            )
-        ) {
-            return $0;
-        }
+    return token.value;
+};
 
-        return '\\' + $0;
-    });
+/**
+ * Stringify escaped text.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.escape = function (token) {
+    return '\\' + token.value;
 };
 
 /**
