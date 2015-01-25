@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-25
+0.1.11 / 2015-01-25
 ==================
 
   * Remove `backpedal` from `tokenizeBlock` in `lib/parse.js`
