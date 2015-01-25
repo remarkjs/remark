@@ -406,7 +406,23 @@
       "children": [
         {
           "type": "text",
-          "value": "Backslashing should suppress [this] and [this]."
+          "value": "Backslashing should suppress "
+        },
+        {
+          "type": "escape",
+          "value": "["
+        },
+        {
+          "type": "text",
+          "value": "this] and [this"
+        },
+        {
+          "type": "escape",
+          "value": "]"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ]
     },

@@ -616,7 +616,23 @@
       "children": [
         {
           "type": "text",
-          "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like *emphasis*. Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
+          "value": "To this end, Markdown's syntax is comprised entirely of punctuation\ncharacters, which punctuation characters have been carefully chosen so\nas to look like what they mean. E.g., asterisks around a word actually\nlook like "
+        },
+        {
+          "type": "escape",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": "emphasis"
+        },
+        {
+          "type": "escape",
+          "value": "*"
+        },
+        {
+          "type": "text",
+          "value": ". Markdown lists look like, well, lists. Even\nblockquotes look like quoted passages of text, assuming you've ever\nused email."
         }
       ]
     },

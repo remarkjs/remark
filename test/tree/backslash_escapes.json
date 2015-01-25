@@ -15,7 +15,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Backslash: \\"
+          "value": "Backslash: "
+        },
+        {
+          "type": "escape",
+          "value": "\\"
         }
       ]
     },
@@ -24,7 +28,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Backtick: `"
+          "value": "Backtick: "
+        },
+        {
+          "type": "escape",
+          "value": "`"
         }
       ]
     },
@@ -33,7 +41,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Asterisk: *"
+          "value": "Asterisk: "
+        },
+        {
+          "type": "escape",
+          "value": "*"
         }
       ]
     },
@@ -42,7 +54,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Underscore: _"
+          "value": "Underscore: "
+        },
+        {
+          "type": "escape",
+          "value": "_"
         }
       ]
     },
@@ -51,7 +67,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Left brace: {"
+          "value": "Left brace: "
+        },
+        {
+          "type": "escape",
+          "value": "{"
         }
       ]
     },
@@ -60,7 +80,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Right brace: }"
+          "value": "Right brace: "
+        },
+        {
+          "type": "escape",
+          "value": "}"
         }
       ]
     },
@@ -69,7 +93,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Left bracket: ["
+          "value": "Left bracket: "
+        },
+        {
+          "type": "escape",
+          "value": "["
         }
       ]
     },
@@ -78,7 +106,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Right bracket: ]"
+          "value": "Right bracket: "
+        },
+        {
+          "type": "escape",
+          "value": "]"
         }
       ]
     },
@@ -87,7 +119,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Left paren: ("
+          "value": "Left paren: "
+        },
+        {
+          "type": "escape",
+          "value": "("
         }
       ]
     },
@@ -96,7 +132,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Right paren: )"
+          "value": "Right paren: "
+        },
+        {
+          "type": "escape",
+          "value": ")"
         }
       ]
     },
@@ -105,7 +145,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Greater-than: >"
+          "value": "Greater-than: "
+        },
+        {
+          "type": "escape",
+          "value": ">"
         }
       ]
     },
@@ -114,7 +158,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Hash: #"
+          "value": "Hash: "
+        },
+        {
+          "type": "escape",
+          "value": "#"
         }
       ]
     },
@@ -123,7 +171,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Period: ."
+          "value": "Period: "
+        },
+        {
+          "type": "escape",
+          "value": "."
         }
       ]
     },
@@ -132,7 +184,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Bang: !"
+          "value": "Bang: "
+        },
+        {
+          "type": "escape",
+          "value": "!"
         }
       ]
     },
@@ -141,7 +197,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Plus: +"
+          "value": "Plus: "
+        },
+        {
+          "type": "escape",
+          "value": "+"
         }
       ]
     },
@@ -150,7 +210,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Minus: -"
+          "value": "Minus: "
+        },
+        {
+          "type": "escape",
+          "value": "-"
         }
       ]
     },
@@ -398,8 +462,16 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "escape",
+          "value": "*"
+        },
+        {
           "type": "text",
-          "value": "*asterisks*"
+          "value": "asterisks"
+        },
+        {
+          "type": "escape",
+          "value": "*"
         }
       ]
     },
@@ -407,8 +479,16 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "escape",
+          "value": "_"
+        },
+        {
           "type": "text",
-          "value": "_underscores_"
+          "value": "underscores"
+        },
+        {
+          "type": "escape",
+          "value": "_"
         }
       ]
     },
@@ -416,8 +496,16 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "escape",
+          "value": "`"
+        },
+        {
           "type": "text",
-          "value": "`backticks`"
+          "value": "backticks"
+        },
+        {
+          "type": "escape",
+          "value": "`"
         }
       ]
     },

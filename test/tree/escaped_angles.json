@@ -5,7 +5,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
+          "type": "escape",
           "value": ">"
         }
       ]
