@@ -10,7 +10,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 
 ### Breaks
 
-Setting `breaks: true` \(default: `false`\) explicitly exposes new line characters in the AST.
+Setting `breaks: true` (default: `false`) explicitly exposes new line characters in the AST.
 
 The following document:
 
@@ -53,9 +53,9 @@ Yields:
 
 ### Footnotes
 
-Setting `footnotes: true` \(default: `false`\) enables inline- and reference-style footnotes.
+Setting `footnotes: true` (default: `false`) enables inline- and reference-style footnotes.
 
-Footnotes are wrapped in square brackets, and preceded by a caret \(`^`\).
+Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
 It’s possible to reference other footnotes inside footnotes.
 
@@ -176,11 +176,11 @@ Yields:
 
 ### GitHub Flavoured Markdown
 
-Setting `gfm: true` \(default: `true`\) enables:
+Setting `gfm: true` (default: `true`) enables:
 
 - Parsing of fenced code blocks;
 - Automatic URL detection;
-- Deletions \(strikethrough\).
+- Deletions (strikethrough).
 
 The following document:
 
@@ -228,11 +228,11 @@ Yields:
 
 ### Pedantic
 
-Setting `pedantic: true` \(default: `false`\) enables:
+Setting `pedantic: true` (default: `false`) enables:
 
 - Emphasis and strongness inside words;
 - Allows different ordered-list bullets in the same list;
-- Removes less spaces in list-items \(a maximum of four instead of the whole indent\).
+- Removes less spaces in list-items (a maximum of four instead of the whole indent).
 
 The following document:
 
@@ -280,7 +280,7 @@ Yields:
 
 ### Tables
 
-Setting `tables: true` \(default: `true`\) enables fenced and loose tables, as in, tables with or without leading/closing pipes.
+Setting `tables: true` (default: `true`) enables fenced and loose tables, as in, tables with or without leading/closing pipes.
 
 The following document:
 
@@ -389,7 +389,7 @@ Yields:
 
 ### List Item Bullets
 
-Setting `bullet: string` \(`"-"`, `"*"`, or `"+"`, default: `"-"`\) will stringify list-items in unordered lists using the provided character as its bullet.
+Setting `bullet: string` (`"-"`, `"*"`, or `"+"`, default: `"-"`) will stringify list-items in unordered lists using the provided character as its bullet.
 
 The following document:
 
@@ -419,7 +419,7 @@ Yields:
 
 ### Closed ATX Headings
 
-Setting `closeAtx: true` \(default: `false`\) will stringify ATX headings with additional hash-marks after the heading.
+Setting `closeAtx: true` (default: `false`) will stringify ATX headings with additional hash-marks after the heading.
 
 The following document:
 
@@ -451,8 +451,8 @@ Yields:
 
 Two options are provided to customise how slight- and strong emphasis are stringified:
 
-- `emphasis: string` \(`"_"` or `"*"`, default: `"_"`\) will wrap slight emphasis in the provided character;
-- `strong: string` \(`"_"` or `"*"`, default: `"*"`\) will wrap strong emphasis with the provided character \(twice\).
+- `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
+- `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
 
 The following document:
 
@@ -481,7 +481,7 @@ Yields:
 
 It's possible to customise how GFM code fences are stringified:
 
-- `fence: string` \(`"~"` or ``"`"``, default: ``"`"``\) will wrap code in the provided character;
+- `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code in the provided character;
 
 The following document:
 
@@ -507,7 +507,7 @@ Yields:
 
 ### Fences
 
-Setting `fences: true` \(default: `false`\) will stringify code blocks without programming-language flags using heredoc-style fences.
+Setting `fences: true` (default: `false`) will stringify code blocks without programming-language flags using heredoc-style fences.
 
 The following document:
 
@@ -535,7 +535,7 @@ Yields:
 
 ### Inline Footnotes
 
-Setting `referenceFootnotes: false` \(default: `true`\) will stringify footnotes with inline content inline.
+Setting `referenceFootnotes: false` (default: `true`) will stringify footnotes with inline content inline.
 
 The following document:
 
@@ -561,7 +561,7 @@ Yields:
 
 ### Reference Links
 
-Setting `referenceLinks: true` \(default: `false`\) will stringify links using link references and link definitions.
+Setting `referenceLinks: true` (default: `false`) will stringify links using link references and link definitions.
 
 The following document:
 
@@ -587,9 +587,9 @@ Yields:
 
 Three options are provided to customise how horizontal rules will be stringified:
 
-- `rule: string` \(`"-"`, `"*"`, or `"_"`, default: `"*"`\) will stringify horizontal rules using the provided character as its bullets;
-- `ruleSpaces: true` \(default: `false`\) will stringify horizontal rules using spaces;
-- `ruleRepetition: number` \(default: `3`\) will stringify horizontal rules with the provided amount of repetitions.
+- `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
+- `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
+- `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
 
 The following document:
 
@@ -617,8 +617,8 @@ Yields:
 
 ### Setext Headings
 
-Setting `setext: true` \(default: `false`\) will stringify primary and secondary headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style using underlines.
-Respectively, primary headings are stringified with a row of equals-signs \(`=`\), and secondary headings with a row of dashes \(`-`\).
+Setting `setext: true` (default: `false`) will stringify primary and secondary headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style using underlines.
+Respectively, primary headings are stringified with a row of equals-signs (`=`), and secondary headings with a row of dashes (`-`).
 
 The following document:
 

@@ -1177,7 +1177,7 @@ function renderInline(type, value) {
  * @param {string} $1 - Escaped character.
  */
 function tokenizeEscape(eat, $0, $1) {
-    eat($0)(this.renderRaw('text', $1));
+    eat($0)(this.renderRaw('escape', $1));
 }
 
 /**
@@ -2087,14 +2087,8 @@ trimLeft = utilities.trimLeft;
  * Expressions.
  */
 
-var EXPRESSION_ESCAPE,
-    EXPRESSION_DIGIT,
-    EXPRESSION_WHITES_PACE,
-    EXPRESSION_TRAILING_NEW_LINES;
+var EXPRESSION_TRAILING_NEW_LINES;
 
-EXPRESSION_ESCAPE = /[\\`*{}\[\]()#+\-._>]/g;
-EXPRESSION_DIGIT = /\d/;
-EXPRESSION_WHITES_PACE = /\s/;
 EXPRESSION_TRAILING_NEW_LINES = /\n+$/g;
 
 /*
@@ -2659,25 +2653,17 @@ compilerPrototype.heading = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.text = function (token) {
-    return token.value.replace(EXPRESSION_ESCAPE, function ($0, index) {
-        if (
-            (
-                $0 === DOT &&
-                !EXPRESSION_DIGIT.test(token.value.charAt(index - 1))
-            ) ||
-            (
-                (
-                    $0 === DASH ||
-                    $0 === PLUS
-                ) &&
-                !EXPRESSION_WHITES_PACE.test(token.value.charAt(index - 1))
-            )
-        ) {
-            return $0;
-        }
+    return token.value;
+};
 
-        return '\\' + $0;
-    });
+/**
+ * Stringify escaped text.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.escape = function (token) {
+    return '\\' + token.value;
 };
 
 /**
