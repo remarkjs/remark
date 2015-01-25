@@ -133,7 +133,7 @@ Returns: An `Object`. See [Nodes](doc/Nodes.md) for the AST specification.
 
 Parameters:
 
-- `ast` (`Object`) — An AST as returned by [mdast.parse](#mdastparsevalue-options);
+- `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
     - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
     - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
@@ -150,6 +150,17 @@ Parameters:
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
 Returns: A `string`.
+
+### [mdast](#api).use([plugin](#function-pluginast))
+
+Creates a version of **mdast** which uses the given `plugin` to modify the AST after [`mdast.parse()`](#mdastparsevalue-options) is invoked.
+
+The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins.
+This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of **mdast** does not change for other dependants.
+
+#### function plugin\([ast](doc/Nodes.md#node)\)
+
+A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [ast](doc/Nodes.md#node) to add or remove nodes.
 
 ## CLI
 
