@@ -75,19 +75,20 @@ function help() {
         '  -v, --version         output version number',
         '  -a, --ast             output AST information',
         '      --options         output available settings',
-        '  -o, --option <option> specify settings',
+        '  -o, --output <path>   specify output location',
+        '  -O, --option <option> specify settings',
         '  -u, --use    <plugin> specify plugins',
         '',
         'Usage:',
         '',
-        '# Note that bash does not allow reading/writing to the ' +
-            'same through pipes',
+        '# Note that bash does not allow reading and writing to the ',
+        '# same file through pipes',
         '',
         '# Pass `Readme.md` through mdast',
-        '$ ' + command + ' Readme.md > Readme-new.md',
+        '$ ' + command + ' Readme.md -o Readme.md',
         '',
-        '# Pass stdin through mdast, with options',
-        '$ cat Readme.md | ' + command + ' -option ' +
+        '# Pass stdin through mdast, with options, to stdout',
+        '$ cat Readme.md | ' + command + ' --option ' +
             '"setext, bullet: *" > Readme-new.md',
         '',
         '# Use an npm module',
@@ -97,10 +98,17 @@ function help() {
 }
 
 /**
- * Fail w/ help message.
+ * Fail w/ `exception`.
+ *
+ * @param {null|string|Error} exception
  */
-function fail() {
-    process.stderr.write(help() + '\n');
+function fail(exception) {
+    if (!exception) {
+        exception = help();
+    }
+
+    process.stderr.write((exception.stack || exception) + '\n');
+
     process.exit(1);
 }
 
@@ -168,9 +176,11 @@ function camelCase(value) {
 var index,
     expectOption,
     expectPlugin,
+    expectOutput,
     expectAST,
     plugins,
     options,
+    output,
     files;
 
 plugins = [];
@@ -181,11 +191,10 @@ plugins = [];
  * @param {string} value
  */
 function program(value) {
-    var ast,
+    var doc,
         parser,
         local,
-        npm,
-        fn;
+    fn;
 
     if (!value.length) {
         fail();
@@ -194,29 +203,36 @@ function program(value) {
 
         plugins.forEach(function (plugin) {
             local = resolve(cwd, plugin);
-            npm = resolve(cwd, 'node_modules', plugin);
 
             if (exists(local) || exists(local + '.js')) {
                 fn = require(local);
-            } else if (exists(npm)) {
-                fn = require(npm);
             } else {
-                process.stderr.write(
-                    'Invalid unfound plugin `' + plugin + '`.\n'
-                );
-
-                process.exit(1);
+                try {
+                    fn = require(resolve(cwd, 'node_modules', plugin));
+                } catch (exception) {
+                    fail(exception);
+                }
             }
 
             parser = parser.use(fn);
         });
 
-        ast = parser.parse(value, options);
+        doc = parser.parse(value, options);
 
         if (expectAST) {
-            process.stdout.write(JSON.stringify(ast, null, 2));
+            doc = JSON.stringify(doc, null, 2);
         } else {
-            process.stdout.write(mdast.stringify(ast, options));
+            doc = mdast.stringify(doc, options);
+        }
+
+        if (output) {
+            fs.writeFile(output, doc, function (exception) {
+                if (exception) {
+                    fail(exception);
+                }
+            });
+        } else {
+            process.stdout.write(doc);
         }
     }
 }
@@ -251,16 +267,22 @@ if (
     options = {};
 
     argv.forEach(function (argument) {
-        if (argument === '--option' || argument === '-o') {
+        if (argument === '--option' || argument === '-O') {
             expectOption = true;
         } else if (argument === '--use' || argument === '-u') {
             expectPlugin = true;
+        } else if (argument === '--output' || argument === '-o') {
+            expectOutput = true;
         } else if (expectPlugin) {
             argument.split(',').forEach(function (plugin) {
                 plugins.push(plugin);
             });
 
             expectPlugin = false;
+        } else if (expectOutput) {
+            output = argument;
+
+            expectOutput = false;
         } else if (expectOption) {
             argument
                 .split(',')
@@ -303,7 +325,7 @@ if (
         }
     });
 
-    if (expectOption) {
+    if (expectOption || expectPlugin || expectOutput) {
         fail();
     } else if (!expextPipeIn && !files.length) {
         fail();
@@ -311,15 +333,13 @@ if (
         (expextPipeIn && files.length) ||
         (!expextPipeIn && files.length !== 1)
     ) {
-        process.stderr.write('mdast currently expects one file.\n');
-        process.exit(1);
+        fail('mdast currently expects one file.');
     }
 
     if (files[0]) {
         fs.readFile(files[0], function (exception, content) {
             if (exception) {
-                process.stderr.write(exception.message + '\n');
-                process.exit(1);
+                fail(exception);
             }
 
             program(content.toString());
