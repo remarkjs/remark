@@ -325,7 +325,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 });
 
-describe('mdast.use(function(ast, options?))', function () {
+describe('mdast.use(function(plugin))', function () {
     it('should be a `function`', function () {
         assert(typeof mdast.use === 'function');
     });
@@ -379,6 +379,18 @@ describe('mdast.use(function(ast, options?))', function () {
         mdast.use(assertion).parse('# Hello world', settings);
 
         assert(isInvoked === true);
+    });
+
+    it('should fail if an exception occurs in `plugin`', function () {
+        var exception;
+
+        exception = new Error('test');
+
+        assert.throws(function () {
+            mdast.use(function () {
+                throw exception;
+            }).parse('');
+        }, /test/);
     });
 
     it('should work on an example plugin', function () {
