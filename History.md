@@ -1,5 +1,5 @@
 
-n.n.n / 2015-01-26
+0.1.12 / 2015-01-26
 ==================
 
   * Add test for throwing on errors in plug-ins
