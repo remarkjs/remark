@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.1.11');
+var mdast = require('wooorm/mdast@0.1.12');
 var debounce = require('component/debounce@1.0.0');
 
 
@@ -196,7 +196,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.1.11":2,"component/debounce@1.0.0":3}],
+}, {"wooorm/mdast@0.1.12":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -219,6 +219,22 @@ parse = require('./lib/parse.js');
 stringify = require('./lib/stringify.js');
 
 /**
+ * Throws if passed an exception.
+ *
+ * Here until the following PR is merged into
+ * segmentio/ware:
+ *
+ *   https://github.com/segmentio/ware/pull/21
+ *
+ * @param {Error?} exception
+ */
+function fail(exception) {
+    if (exception) {
+        throw exception;
+    }
+}
+
+/**
  * Construct an MDAST instance.
  *
  * @constructor {MDAST}
@@ -237,7 +253,7 @@ function runParse(_, options) {
 
     node = parse.apply(parse, arguments);
 
-    this.ware.run(node, options);
+    this.ware.run(node, options, fail);
 
     return node;
 }
