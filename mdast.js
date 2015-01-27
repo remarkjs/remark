@@ -20,6 +20,22 @@ parse = require('./lib/parse.js');
 stringify = require('./lib/stringify.js');
 
 /**
+ * Throws if passed an exception.
+ *
+ * Here until the following PR is merged into
+ * segmentio/ware:
+ *
+ *   https://github.com/segmentio/ware/pull/21
+ *
+ * @param {Error?} exception
+ */
+function fail(exception) {
+    if (exception) {
+        throw exception;
+    }
+}
+
+/**
  * Construct an MDAST instance.
  *
  * @constructor {MDAST}
@@ -38,7 +54,7 @@ function runParse(_, options) {
 
     node = parse.apply(parse, arguments);
 
-    this.ware.run(node, options);
+    this.ware.run(node, options, fail);
 
     return node;
 }
