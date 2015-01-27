@@ -119,11 +119,11 @@ Parameters:
 
 - `value` (`string`) — Markdown document;
 - `options` (`Object`, `null`, `undefined`) — Optional options:
-    - `gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
-    - `tables` (`boolean`, default: `true`). See [Tables](doc/Options.md#tables);
-    - `footnotes` (`boolean`, default: `false`). See [Footnotes](doc/Options.md#footnotes).
-    - `pedantic` (`boolean`, default: `false`). See [Pedantic](doc/Options.md#pedantic);
-    - `breaks` (`boolean`, default: `false`). See [Breaks](doc/Options.md#breaks);
+  - `gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
+  - `tables` (`boolean`, default: `true`). See [Tables](doc/Options.md#tables);
+  - `footnotes` (`boolean`, default: `false`). See [Footnotes](doc/Options.md#footnotes).
+  - `pedantic` (`boolean`, default: `false`). See [Pedantic](doc/Options.md#pedantic);
+  - `breaks` (`boolean`, default: `false`). See [Breaks](doc/Options.md#breaks);
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
@@ -135,17 +135,17 @@ Parameters:
 
 - `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
 - `options` (`Object`) — Optional options:
-    - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
-    - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
-    - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
-    - `referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](doc/Options.md#inline-footnotes);
-    - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
-    - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
-    - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    - `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    - `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    - `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
-    - `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
+  - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
+  - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
+  - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
+  - `referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](doc/Options.md#inline-footnotes);
+  - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
+  - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
+  - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+  - `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+  - `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+  - `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
+  - `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
@@ -208,9 +208,9 @@ $ mdast --use some-plugin History.md > History-new.md
 On a MacBook Air, it parser more than 3 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that’s more than the [entire works of Shakespeare](http://www.gutenberg.org/ebooks/100), in under two seconds.
 
 ```text
-           benchmarks * 76 fixtures (total: 50Kb markdown)
-   63 op/s » mdast.parse
-  145 op/s » mdast.stringify
+         benchmarks * 76 fixtures (total: 50Kb markdown)
+ 63 op/s » mdast.parse
+145 op/s » mdast.stringify
 ```
 
 ## License
