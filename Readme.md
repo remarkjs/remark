@@ -46,7 +46,11 @@ See [Nodes](doc/Nodes.md) for information about returned objects.
 
 ```javascript
 var mdast = require('mdast');
+```
 
+Parse markdown with `mdast.parse`:
+
+```javascript
 var ast = mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
 ```
 
@@ -54,8 +58,8 @@ Yields:
 
 ```json
 {
-  "type" : "root",
-  "children" : [
+  "type": "root",
+  "children": [
     {
       "type": "paragraph",
       "children": [
@@ -65,10 +69,12 @@ Yields:
         },
         {
           "type": "emphasis",
-          "children": [{
-            "type": "text",
-            "value": "emphasis"
-          }]
+          "children": [
+            {
+              "type": "text",
+              "value": "emphasis"
+            }
+          ]
         },
         {
           "type": "text",
@@ -76,10 +82,12 @@ Yields:
         },
         {
           "type": "strong",
-          "children": [{
-            "type": "text",
-            "value": "strongness"
-          }]
+          "children": [
+            {
+              "type": "text",
+              "value": "strongness"
+            }
+          ]
         },
         {
           "type": "text",
@@ -102,7 +110,7 @@ Yields:
 And passing that document into `mdast.stringify`:
 
 ```javascript
-mdast.stringify(ast);
+var doc = mdast.stringify(ast);
 ```
 
 Yields:

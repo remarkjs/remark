@@ -62,10 +62,11 @@
     "lint": "npm run lint-api && npm run lint-benchmark && npm run lint-cli && npm run lint-script && npm run lint-test && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
+    "build-usage": "mdast --use mdast-usage Readme.md -o Readme.md",
     "build-options": "node script/build-options.js",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-options && npm run build-bundle",
+    "build": "npm run build-usage && npm run build-options && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }
