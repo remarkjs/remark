@@ -1,3 +1,19 @@
+n.n.n / 2015-02-02
+==================
+
+* Fix `mdast.js`
+* Merge branch 'feature/add-line-and-column-position'
+* Add `position` objects to nodes
+* Add `trimRightLines` function to `lib/utilities.js`
+* Add `build-usage` task to render `example.js` to `Readme.md`
+* Add `example.js` to lint tasks
+* Add `example.js`
+* Remove `requireMultipleVarDecl` rule from `.jscs.json`
+* Add `mdast`, `mdast-usage` as dev-dependencies
+* Fix markdown formatting in `History.md` by using `mdast`
+* Fix markdown formatting in `Readme.md` by using `mdast`
+* Fix build
+
 0.1.12 / 2015-01-26
 ===================
 
