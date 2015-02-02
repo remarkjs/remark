@@ -12,11 +12,41 @@
           "children": [
             {
               "type": "text",
-              "value": "mailto:test@example.com"
+              "value": "mailto:test@example.com",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4
+                },
+                "end": {
+                  "line": 1,
+                  "column": 27
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 47
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 47
+        }
+      }
     },
     {
       "type": "paragraph",
@@ -28,11 +58,41 @@
           "children": [
             {
               "type": "text",
-              "value": "https://travis-ci.org/wooorm/mdast"
+              "value": "https://travis-ci.org/wooorm/mdast",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2
+                },
+                "end": {
+                  "line": 3,
+                  "column": 36
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 81
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 81
+        }
+      }
     },
     {
       "type": "paragraph",
@@ -44,11 +104,51 @@
           "children": [
             {
               "type": "text",
-              "value": "[](http://example.com \"An example\")"
+              "value": "[](http://example.com \"An example\")",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 2
+                },
+                "end": {
+                  "line": 5,
+                  "column": 37
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 71
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 71
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 71
+    }
+  }
 }

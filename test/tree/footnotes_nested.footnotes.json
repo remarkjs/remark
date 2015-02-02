@@ -6,17 +6,57 @@
       "children": [
         {
           "type": "text",
-          "value": "A paragraph containing a footnote"
+          "value": "A paragraph containing a footnote",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 34
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "1"
+          "id": "1",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 34
+            },
+            "end": {
+              "line": 1,
+              "column": 38
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 38
+            },
+            "end": {
+              "line": 1,
+              "column": 39
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 39
+        }
+      }
     }
   ],
   "footnotes": {
@@ -29,19 +69,69 @@
           "children": [
             {
               "type": "text",
-              "value": "\"A footnote\""
+              "value": "\"A footnote\"",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 7
+                },
+                "end": {
+                  "line": 3,
+                  "column": 19
+                }
+              }
             },
             {
               "type": "footnote",
-              "id": "2"
+              "id": "2",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 19
+                },
+                "end": {
+                  "line": 3,
+                  "column": 23
+                }
+              }
             },
             {
               "type": "text",
-              "value": "."
+              "value": ".",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 23
+                },
+                "end": {
+                  "line": 3,
+                  "column": 24
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 24
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 24
+        }
+      }
     },
     "2": {
       "type": "footnoteDefinition",
@@ -52,15 +142,45 @@
           "children": [
             {
               "type": "text",
-              "value": "...containing itself"
+              "value": "...containing itself",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 27
+                }
+              }
             },
             {
               "type": "footnote",
-              "id": "2"
+              "id": "2",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 27
+                },
+                "end": {
+                  "line": 5,
+                  "column": 31
+                }
+              }
             },
             {
               "type": "text",
-              "value": ", a link"
+              "value": ", a link",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 31
+                },
+                "end": {
+                  "line": 5,
+                  "column": 39
+                }
+              }
             },
             {
               "type": "link",
@@ -69,17 +189,77 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "^3"
+                  "value": "^3",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 40
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 42
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 39
+                },
+                "end": {
+                  "line": 5,
+                  "column": 43
+                }
+              }
             },
             {
               "type": "text",
-              "value": ", and an invalid footnote[^4]."
+              "value": ", and an invalid footnote[^4].",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 43
+                },
+                "end": {
+                  "line": 5,
+                  "column": 73
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 73
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 73
+        }
+      }
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 39
     }
   }
 }

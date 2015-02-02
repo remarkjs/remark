@@ -13,6 +13,29 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 ```idl
 interface Node {
     type: string;
+    position: Location;
+}
+```
+
+## Location
+
+Every [**Node**](#node) has a reference to its original location.
+
+```idl
+interface Location {
+    start: Position;
+    position: Position;
+}
+```
+
+## Position
+
+A position contains a column and a line. Both start at `1`.
+
+```idl
+interface Position {
+    line: uint32 >= 1;
+    column: uint32 >= 1;
 }
 ```
 

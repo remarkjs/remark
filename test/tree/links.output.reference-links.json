@@ -6,7 +6,17 @@
       "children": [
         {
           "type": "text",
-          "value": "Lorem ipsum dolor sit "
+          "value": "Lorem ipsum dolor sit ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 23
+            }
+          }
         },
         {
           "type": "link",
@@ -15,22 +25,72 @@
           "children": [
             {
               "type": "text",
-              "value": "amet"
+              "value": "amet",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 24
+                },
+                "end": {
+                  "line": 1,
+                  "column": 28
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 23
+            },
+            "end": {
+              "line": 1,
+              "column": 32
+            }
+          }
         },
         {
           "type": "text",
-          "value": ", consectetur adipiscing elit. Praesent dictum purus ullamcorper ligula semper pellentesque."
+          "value": ", consectetur adipiscing elit. Praesent dictum purus ullamcorper ligula semper pellentesque.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 32
+            },
+            "end": {
+              "line": 1,
+              "column": 124
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 124
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Nulla "
+          "value": "Nulla ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 7
+            }
+          }
         },
         {
           "type": "link",
@@ -39,13 +99,43 @@
           "children": [
             {
               "type": "text",
-              "value": "finibus"
+              "value": "finibus",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 8
+                },
+                "end": {
+                  "line": 3,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 19
+            }
+          }
         },
         {
           "type": "text",
-          "value": " neque et diam rhoncus convallis. Nam dictum sapien nec sem ultrices fermentum. Nulla "
+          "value": " neque et diam rhoncus convallis. Nam dictum sapien nec sem ultrices fermentum. Nulla ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 19
+            },
+            "end": {
+              "line": 3,
+              "column": 105
+            }
+          }
         },
         {
           "type": "link",
@@ -54,22 +144,72 @@
           "children": [
             {
               "type": "text",
-              "value": "facilisi"
+              "value": "facilisi",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 106
+                },
+                "end": {
+                  "line": 3,
+                  "column": 114
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 105
+            },
+            "end": {
+              "line": 3,
+              "column": 118
+            }
+          }
         },
         {
           "type": "text",
-          "value": ". In et feugiat massa."
+          "value": ". In et feugiat massa.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 118
+            },
+            "end": {
+              "line": 3,
+              "column": 140
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 140
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Donec sed sodales metus, ut aliquet quam. Suspendisse nec ipsum risus. Interdum et malesuada fames ac ante ipsum primis in "
+          "value": "Donec sed sodales metus, ut aliquet quam. Suspendisse nec ipsum risus. Interdum et malesuada fames ac ante ipsum primis in ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 124
+            }
+          }
         },
         {
           "type": "link",
@@ -78,15 +218,65 @@
           "children": [
             {
               "type": "text",
-              "value": "faucibus"
+              "value": "faucibus",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 125
+                },
+                "end": {
+                  "line": 5,
+                  "column": 133
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 124
+            },
+            "end": {
+              "line": 5,
+              "column": 137
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 137
+            },
+            "end": {
+              "line": 5,
+              "column": 138
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 138
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 138
+    }
+  }
 }

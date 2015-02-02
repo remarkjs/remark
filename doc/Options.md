@@ -36,18 +36,68 @@ Yields:
       "children": [
         {
           "type": "text",
-          "value": "A"
+          "value": "A",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 2
+            }
+          }
         },
         {
-          "type": "break"
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 2
+            },
+            "end": {
+              "line": 2,
+              "column": 1
+            }
+          }
         },
         {
           "type": "text",
-          "value": "paragraph."
+          "value": "paragraph.",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 11
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 11
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 2,
+      "column": 11
+    }
+  }
 }
 ```
 
@@ -88,34 +138,114 @@ Yields:
       "children": [
         {
           "type": "text",
-          "value": "Something something"
+          "value": "Something something",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "2"
+          "id": "2",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 20
+            },
+            "end": {
+              "line": 1,
+              "column": 36
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 36
+            },
+            "end": {
+              "line": 1,
+              "column": 37
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 37
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "And something else"
+          "value": "And something else",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 19
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "1"
+          "id": "1",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 19
+            },
+            "end": {
+              "line": 3,
+              "column": 23
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 23
+            },
+            "end": {
+              "line": 3,
+              "column": 24
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 24
+        }
+      }
     }
   ],
   "footnotes": {
@@ -128,9 +258,29 @@ Yields:
           "children": [
             {
               "type": "text",
-              "value": "This reference style footnote can contains paragraphs."
+              "value": "This reference style footnote can contains paragraphs.",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 7
+                },
+                "end": {
+                  "line": 5,
+                  "column": 61
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 61
+            }
+          }
         },
         {
           "type": "list",
@@ -145,15 +295,65 @@ Yields:
                   "children": [
                     {
                       "type": "text",
-                      "value": "and lists"
+                      "value": "and lists",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 6
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 15
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 15
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 1
+                },
+                "end": {
+                  "line": 7,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 15
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 15
+        }
+      }
     },
     "2": {
       "type": "footnoteDefinition",
@@ -164,11 +364,41 @@ Yields:
           "children": [
             {
               "type": "text",
-              "value": "or something?"
+              "value": "or something?",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 22
+                },
+                "end": {
+                  "line": 1,
+                  "column": 35
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 22
+            },
+            "end": {
+              "line": 1,
+              "column": 35
+            }
+          }
         }
       ]
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 3,
+      "column": 24
     }
   }
 }
@@ -205,24 +435,84 @@ Yields:
       "children": [
         {
           "type": "text",
-          "value": "hello "
+          "value": "hello ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
         },
         {
           "type": "delete",
           "children": [
             {
               "type": "text",
-              "value": "hi"
+              "value": "hi",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 9
+                },
+                "end": {
+                  "line": 1,
+                  "column": 11
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 13
+            }
+          }
         },
         {
           "type": "text",
-          "value": " world"
+          "value": " world",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 13
+            },
+            "end": {
+              "line": 1,
+              "column": 19
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 19
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 19
+    }
+  }
 }
 ```
 
@@ -257,24 +547,84 @@ Yields:
       "children": [
         {
           "type": "text",
-          "value": "Check out some"
+          "value": "Check out some",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 15
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "file"
+              "value": "file",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 16
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 15
+            },
+            "end": {
+              "line": 1,
+              "column": 21
+            }
+          }
         },
         {
           "type": "text",
-          "value": "name.txt"
+          "value": "name.txt",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 21
+            },
+            "end": {
+              "line": 1,
+              "column": 29
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 29
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 29
+    }
+  }
 }
 ```
 
@@ -318,20 +668,70 @@ Yields:
               "children": [
                 {
                   "type": "text",
-                  "value": "Header 1"
+                  "value": "Header 1",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 9
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 9
+                }
+              }
             },
             {
               "type": "tableCell",
               "children": [
                 {
                   "type": "text",
-                  "value": "Header 2"
+                  "value": "Header 2",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 20
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 12
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          }
         },
         {
           "type": "tableRow",
@@ -341,20 +741,70 @@ Yields:
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell 1"
+                  "value": "Cell 1",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 1
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7
+                }
+              }
             },
             {
               "type": "tableCell",
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell 2"
+                  "value": "Cell 2",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 18
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 12
+                },
+                "end": {
+                  "line": 3,
+                  "column": 18
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 18
+            }
+          }
         },
         {
           "type": "tableRow",
@@ -364,24 +814,94 @@ Yields:
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell 3"
+                  "value": "Cell 3",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 1
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 7
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 1
+                },
+                "end": {
+                  "line": 4,
+                  "column": 7
+                }
+              }
             },
             {
               "type": "tableCell",
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell "
+                  "value": "Cell ",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 12
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 17
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 12
+                },
+                "end": {
+                  "line": 4,
+                  "column": 17
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 4,
+              "column": 17
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 17
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 4,
+      "column": 17
+    }
+  }
 }
 ```
 

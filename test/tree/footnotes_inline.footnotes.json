@@ -6,13 +6,43 @@
       "children": [
         {
           "type": "text",
-          "value": "This is an example of an inline footnote."
+          "value": "This is an example of an inline footnote.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 42
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "1"
+          "id": "1",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 42
+            },
+            "end": {
+              "line": 1,
+              "column": 75
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 75
+        }
+      }
     }
   ],
   "footnotes": {
@@ -25,24 +55,84 @@
           "children": [
             {
               "type": "text",
-              "value": "This is the "
+              "value": "This is the ",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 44
+                },
+                "end": {
+                  "line": 1,
+                  "column": 56
+                }
+              }
             },
             {
               "type": "emphasis",
               "children": [
                 {
                   "type": "text",
-                  "value": "actual"
+                  "value": "actual",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 57
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 63
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 56
+                },
+                "end": {
+                  "line": 1,
+                  "column": 64
+                }
+              }
             },
             {
               "type": "text",
-              "value": " footnote."
+              "value": " footnote.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 64
+                },
+                "end": {
+                  "line": 1,
+                  "column": 74
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 44
+            },
+            "end": {
+              "line": 1,
+              "column": 74
+            }
+          }
         }
       ]
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 75
     }
   }
 }

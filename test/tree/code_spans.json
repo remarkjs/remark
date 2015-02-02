@@ -6,55 +6,195 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "<test a=\""
+          "value": "<test a=\"",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          }
         },
         {
           "type": "text",
-          "value": " content of attribute "
+          "value": " content of attribute ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 34
+            }
+          }
         },
         {
           "type": "inlineCode",
-          "value": "\">"
+          "value": "\">",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 34
+            },
+            "end": {
+              "line": 1,
+              "column": 38
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 38
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Fix for backticks within HTML tag: "
+          "value": "Fix for backticks within HTML tag: ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 36
+            }
+          }
         },
         {
           "type": "html",
-          "value": "<span attr='`ticks`'>"
+          "value": "<span attr='`ticks`'>",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 36
+            },
+            "end": {
+              "line": 3,
+              "column": 57
+            }
+          }
         },
         {
           "type": "text",
-          "value": "like this"
+          "value": "like this",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 57
+            },
+            "end": {
+              "line": 3,
+              "column": 66
+            }
+          }
         },
         {
           "type": "html",
-          "value": "</span>"
+          "value": "</span>",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 66
+            },
+            "end": {
+              "line": 3,
+              "column": 73
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 73
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Here's how you put "
+          "value": "Here's how you put ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 20
+            }
+          }
         },
         {
           "type": "inlineCode",
-          "value": "`backticks`"
+          "value": "`backticks`",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 20
+            },
+            "end": {
+              "line": 5,
+              "column": 37
+            }
+          }
         },
         {
           "type": "text",
-          "value": " in a code span."
+          "value": " in a code span.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 37
+            },
+            "end": {
+              "line": 5,
+              "column": 53
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 53
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 53
+    }
+  }
 }

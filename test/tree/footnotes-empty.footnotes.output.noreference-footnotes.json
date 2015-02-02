@@ -6,17 +6,57 @@
       "children": [
         {
           "type": "text",
-          "value": "Lorem ipsum dolor sit amet"
+          "value": "Lorem ipsum dolor sit amet",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 27
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "1"
+          "id": "1",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 27
+            },
+            "end": {
+              "line": 1,
+              "column": 51
+            }
+          }
         },
         {
           "type": "text",
-          "value": ". There should be a single new line after this:"
+          "value": ". There should be a single new line after this:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 51
+            },
+            "end": {
+              "line": 1,
+              "column": 98
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 98
+        }
+      }
     }
   ],
   "footnotes": {
@@ -29,11 +69,41 @@
           "children": [
             {
               "type": "text",
-              "value": "this should be inline"
+              "value": "this should be inline",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 29
+                },
+                "end": {
+                  "line": 1,
+                  "column": 50
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 29
+            },
+            "end": {
+              "line": 1,
+              "column": 50
+            }
+          }
         }
       ]
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 98
     }
   }
 }

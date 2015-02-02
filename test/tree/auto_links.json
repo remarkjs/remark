@@ -6,7 +6,17 @@
       "children": [
         {
           "type": "text",
-          "value": "Link: "
+          "value": "Link: ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
         },
         {
           "type": "link",
@@ -15,22 +25,72 @@
           "children": [
             {
               "type": "text",
-              "value": "http://example.com/"
+              "value": "http://example.com/",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 8
+                },
+                "end": {
+                  "line": 1,
+                  "column": 27
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 28
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 28
+            },
+            "end": {
+              "line": 1,
+              "column": 29
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 29
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Link to an email: "
+          "value": "Link to an email: ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 19
+            }
+          }
         },
         {
           "type": "link",
@@ -39,22 +99,72 @@
           "children": [
             {
               "type": "text",
-              "value": "somename@example.com"
+              "value": "somename@example.com",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 20
+                },
+                "end": {
+                  "line": 3,
+                  "column": 40
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 19
+            },
+            "end": {
+              "line": 3,
+              "column": 41
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 41
+            },
+            "end": {
+              "line": 3,
+              "column": 42
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 42
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Link to an email: "
+          "value": "Link to an email: ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 19
+            }
+          }
         },
         {
           "type": "link",
@@ -63,22 +173,72 @@
           "children": [
             {
               "type": "text",
-              "value": "somename@example.com"
+              "value": "somename@example.com",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 27
+                },
+                "end": {
+                  "line": 5,
+                  "column": 47
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 19
+            },
+            "end": {
+              "line": 5,
+              "column": 48
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 48
+            },
+            "end": {
+              "line": 5,
+              "column": 49
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 49
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "With an ampersand: "
+          "value": "With an ampersand: ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 20
+            }
+          }
         },
         {
           "type": "link",
@@ -87,11 +247,41 @@
           "children": [
             {
               "type": "text",
-              "value": "http://example.com/?foo=1&bar=2"
+              "value": "http://example.com/?foo=1&bar=2",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 21
+                },
+                "end": {
+                  "line": 7,
+                  "column": 52
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 20
+            },
+            "end": {
+              "line": 7,
+              "column": 53
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 53
+        }
+      }
     },
     {
       "type": "list",
@@ -106,11 +296,41 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "In a list?"
+                  "value": "In a list?",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 13
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 3
+                },
+                "end": {
+                  "line": 9,
+                  "column": 13
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 13
+            }
+          }
         },
         {
           "type": "listItem",
@@ -126,13 +346,53 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "http://example.com/"
+                      "value": "http://example.com/",
+                      "position": {
+                        "start": {
+                          "line": 10,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 10,
+                          "column": 23
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 10,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 24
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 10,
+                  "column": 3
+                },
+                "end": {
+                  "line": 10,
+                  "column": 24
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 10,
+              "column": 24
+            }
+          }
         },
         {
           "type": "listItem",
@@ -143,13 +403,53 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "It should."
+                  "value": "It should.",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 13
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 3
+                },
+                "end": {
+                  "line": 11,
+                  "column": 13
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 13
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 13
+        }
+      }
     },
     {
       "type": "blockquote",
@@ -159,7 +459,17 @@
           "children": [
             {
               "type": "text",
-              "value": "Blockquoted: "
+              "value": "Blockquoted: ",
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 3
+                },
+                "end": {
+                  "line": 13,
+                  "column": 16
+                }
+              }
             },
             {
               "type": "link",
@@ -168,31 +478,121 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "http://example.com/"
+                  "value": "http://example.com/",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 17
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 36
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 16
+                },
+                "end": {
+                  "line": 13,
+                  "column": 37
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 3
+            },
+            "end": {
+              "line": 13,
+              "column": 37
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 37
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Auto-links should not occur here: "
+          "value": "Auto-links should not occur here: ",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 35
+            }
+          }
         },
         {
           "type": "inlineCode",
-          "value": "<http://example.com/>"
+          "value": "<http://example.com/>",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 35
+            },
+            "end": {
+              "line": 15,
+              "column": 58
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 58
+        }
+      }
     },
     {
       "type": "code",
       "lang": null,
-      "value": "or here: <http://example.com/>"
+      "value": "or here: <http://example.com/>",
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 35
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 17,
+      "column": 35
+    }
+  }
 }

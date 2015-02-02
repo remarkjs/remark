@@ -65,45 +65,155 @@ Yields:
       "children": [
         {
           "type": "text",
-          "value": "Some "
+          "value": "Some ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 6
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "emphasis"
+              "value": "emphasis",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 7
+                },
+                "end": {
+                  "line": 1,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 6
+            },
+            "end": {
+              "line": 1,
+              "column": 16
+            }
+          }
         },
         {
           "type": "text",
-          "value": ",  "
+          "value": ",  ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 16
+            },
+            "end": {
+              "line": 1,
+              "column": 19
+            }
+          }
         },
         {
           "type": "strong",
           "children": [
             {
               "type": "text",
-              "value": "strongness"
+              "value": "strongness",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 21
+                },
+                "end": {
+                  "line": 1,
+                  "column": 31
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 19
+            },
+            "end": {
+              "line": 1,
+              "column": 33
+            }
+          }
         },
         {
           "type": "text",
-          "value": ", and "
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 33
+            },
+            "end": {
+              "line": 1,
+              "column": 39
+            }
+          }
         },
         {
           "type": "inlineCode",
-          "value": "code"
+          "value": "code",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 39
+            },
+            "end": {
+              "line": 1,
+              "column": 45
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 45
+            },
+            "end": {
+              "line": 1,
+              "column": 46
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 46
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 46
+    }
+  }
 }
 ```
 

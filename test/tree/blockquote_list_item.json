@@ -6,9 +6,29 @@
       "children": [
         {
           "type": "text",
-          "value": "This fails in markdown.pl and upskirt:"
+          "value": "This fails in markdown.pl and upskirt:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 39
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 39
+        }
+      }
     },
     {
       "type": "list",
@@ -23,9 +43,29 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "hello"
+                  "value": "hello",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 8
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 3
+                },
+                "end": {
+                  "line": 3,
+                  "column": 8
+                }
+              }
             },
             {
               "type": "blockquote",
@@ -35,15 +75,75 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "world"
+                      "value": "world",
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 10
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 10
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 3
+                },
+                "end": {
+                  "line": 4,
+                  "column": 10
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 4,
+              "column": 10
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 10
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 4,
+      "column": 10
+    }
+  }
 }

@@ -180,7 +180,6 @@ and `&` in your example code needs to be escaped.)
 
 <h2 id="block">Block Elements</h2>
 
-
 <h3 id="p">Paragraphs and Line Breaks</h3>
 
 A paragraph is simply one or more consecutive lines of text, separated

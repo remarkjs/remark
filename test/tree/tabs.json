@@ -14,11 +14,41 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "this is a list item\nindented with tabs"
+                  "value": "this is a list item\nindented with tabs",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 23
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6
+                },
+                "end": {
+                  "line": 2,
+                  "column": 23
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 1
+            }
+          }
         },
         {
           "type": "listItem",
@@ -29,55 +59,195 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "this is a list item\nindented with spaces"
+                  "value": "this is a list item\nindented with spaces",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 25
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 5
+                },
+                "end": {
+                  "line": 5,
+                  "column": 25
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 25
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 25
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Code:"
+          "value": "Code:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 6
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 6
+        }
+      }
     },
     {
       "type": "code",
       "lang": null,
-      "value": "this code block is indented by one tab"
+      "value": "this code block is indented by one tab",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 43
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "And:"
+          "value": "And:",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 5
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 5
+        }
+      }
     },
     {
       "type": "code",
       "lang": null,
-      "value": "this code block is indented by two tabs"
+      "value": "this code block is indented by two tabs",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 48
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "And:"
+          "value": "And:",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 5
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 5
+        }
+      }
     },
     {
       "type": "code",
       "lang": null,
-      "value": "+        this is an example list item\n        indented with tabs\n\n+   this is an example list item\n    indented with spaces"
+      "value": "+    this is an example list item\n    indented with tabs\n\n+   this is an example list item\n    indented with spaces",
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 29
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 21,
+      "column": 29
+    }
+  }
 }

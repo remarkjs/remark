@@ -6,140 +6,470 @@
       "children": [
         {
           "type": "text",
-          "value": "perform"
+          "value": "perform",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "complicated"
+              "value": "complicated",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 9
+                },
+                "end": {
+                  "line": 1,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 21
+            }
+          }
         },
         {
           "type": "text",
-          "value": "task"
+          "value": "task",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 21
+            },
+            "end": {
+              "line": 1,
+              "column": 25
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 25
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "do"
+          "value": "do",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 3
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "this"
+              "value": "this",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 4
+                },
+                "end": {
+                  "line": 3,
+                  "column": 8
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 3
+            },
+            "end": {
+              "line": 3,
+              "column": 9
+            }
+          }
         },
         {
           "type": "text",
-          "value": "and"
+          "value": "and",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 9
+            },
+            "end": {
+              "line": 3,
+              "column": 12
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "do"
+              "value": "do",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 13
+                },
+                "end": {
+                  "line": 3,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 12
+            },
+            "end": {
+              "line": 3,
+              "column": 16
+            }
+          }
         },
         {
           "type": "text",
-          "value": "that"
+          "value": "that",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 16
+            },
+            "end": {
+              "line": 3,
+              "column": 20
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "and"
+              "value": "and",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 21
+                },
+                "end": {
+                  "line": 3,
+                  "column": 24
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 20
+            },
+            "end": {
+              "line": 3,
+              "column": 25
+            }
+          }
         },
         {
           "type": "text",
-          "value": "another_thing"
+          "value": "another_thing",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 25
+            },
+            "end": {
+              "line": 3,
+              "column": 38
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 38
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "perform"
+          "value": "perform",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 8
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "complicated"
+              "value": "complicated",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 9
+                },
+                "end": {
+                  "line": 5,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8
+            },
+            "end": {
+              "line": 5,
+              "column": 21
+            }
+          }
         },
         {
           "type": "text",
-          "value": "task"
+          "value": "task",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 21
+            },
+            "end": {
+              "line": 5,
+              "column": 25
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 25
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "do"
+          "value": "do",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 3
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "this"
+              "value": "this",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 4
+                },
+                "end": {
+                  "line": 7,
+                  "column": 8
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 3
+            },
+            "end": {
+              "line": 7,
+              "column": 9
+            }
+          }
         },
         {
           "type": "text",
-          "value": "and"
+          "value": "and",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 9
+            },
+            "end": {
+              "line": 7,
+              "column": 12
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "do"
+              "value": "do",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 13
+                },
+                "end": {
+                  "line": 7,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 12
+            },
+            "end": {
+              "line": 7,
+              "column": 16
+            }
+          }
         },
         {
           "type": "text",
-          "value": "that"
+          "value": "that",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 16
+            },
+            "end": {
+              "line": 7,
+              "column": 20
+            }
+          }
         },
         {
           "type": "emphasis",
           "children": [
             {
               "type": "text",
-              "value": "and"
+              "value": "and",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 21
+                },
+                "end": {
+                  "line": 7,
+                  "column": 24
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 20
+            },
+            "end": {
+              "line": 7,
+              "column": 25
+            }
+          }
         },
         {
           "type": "text",
-          "value": "another*thing"
+          "value": "another*thing",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 25
+            },
+            "end": {
+              "line": 7,
+              "column": 38
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 38
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 7,
+      "column": 38
+    }
+  }
 }

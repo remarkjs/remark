@@ -6,23 +6,93 @@
       "children": [
         {
           "type": "text",
-          "value": "Look at the"
+          "value": "Look at the",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 12
+            }
+          }
         },
         {
-          "type": "break"
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 12
+            },
+            "end": {
+              "line": 2,
+              "column": 1
+            }
+          }
         },
         {
           "type": "text",
-          "value": "pretty line"
+          "value": "pretty line",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 12
+            }
+          }
         },
         {
-          "type": "break"
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 12
+            },
+            "end": {
+              "line": 3,
+              "column": 1
+            }
+          }
         },
         {
           "type": "text",
-          "value": "breaks."
+          "value": "breaks.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 8
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 8
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 3,
+      "column": 8
+    }
+  }
 }

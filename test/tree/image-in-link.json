@@ -14,11 +14,41 @@
               "type": "image",
               "title": null,
               "src": "https://img.shields.io/badge/unicorn-approved-ff69b4.svg",
-              "alt": "Unicorn approved"
+              "alt": "Unicorn approved",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4
+                },
+                "end": {
+                  "line": 1,
+                  "column": 81
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 101
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 101
+        }
+      }
     },
     {
       "type": "paragraph",
@@ -32,11 +62,41 @@
               "type": "image",
               "title": null,
               "src": "https://img.shields.io/travis/wooorm/mdast.svg?style=flat",
-              "alt": "Build Status"
+              "alt": "Build Status",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2
+                },
+                "end": {
+                  "line": 3,
+                  "column": 76
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 113
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 113
+        }
+      }
     },
     {
       "type": "paragraph",
@@ -50,11 +110,51 @@
               "type": "image",
               "title": null,
               "src": "https://img.shields.io/badge/style-flat--squared-green.svg?style=flat-square",
-              "alt": "Be Square"
+              "alt": "Be Square",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 2
+                },
+                "end": {
+                  "line": 5,
+                  "column": 92
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 126
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 126
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 126
+    }
+  }
 }
