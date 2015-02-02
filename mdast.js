@@ -2775,11 +2775,7 @@ compilerPrototype.root = function (token, parent, level) {
     while (++index < length) {
         child = tokens[index];
 
-        /*
-         * `html` tokens include their ending new lines.
-         */
-
-        if (prevType/* && prevType !== 'html'*/) {
+        if (prevType) {
             /*
              * Duplicate tokens, such as a list
              * directly following another list,
