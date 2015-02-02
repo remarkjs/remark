@@ -6,52 +6,162 @@
       "children": [
         {
           "type": "text",
-          "value": "AT&T has an ampersand in their name."
+          "value": "AT&T has an ampersand in their name.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 37
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 37
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "AT&T is another way to write it."
+          "value": "AT&T is another way to write it.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 37
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 37
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "This & that."
+          "value": "This & that.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 13
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 13
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "4 < 5."
+          "value": "4 < 5.",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 7
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 7
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "6 > 5."
+          "value": "6 > 5.",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 7
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 7
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Here's a "
+          "value": "Here's a ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 10
+            }
+          }
         },
         {
           "type": "link",
@@ -60,22 +170,72 @@
           "children": [
             {
               "type": "text",
-              "value": "link"
+              "value": "link",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 11
+                },
+                "end": {
+                  "line": 11,
+                  "column": 15
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 10
+            },
+            "end": {
+              "line": 11,
+              "column": 20
+            }
+          }
         },
         {
           "type": "text",
-          "value": " with an ampersand in the URL."
+          "value": " with an ampersand in the URL.",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 20
+            },
+            "end": {
+              "line": 11,
+              "column": 50
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 50
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Here's a link with an amersand in the link text: "
+          "value": "Here's a link with an amersand in the link text: ",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 50
+            }
+          }
         },
         {
           "type": "link",
@@ -84,22 +244,72 @@
           "children": [
             {
               "type": "text",
-              "value": "AT&T"
+              "value": "AT&T",
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 51
+                },
+                "end": {
+                  "line": 13,
+                  "column": 55
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 50
+            },
+            "end": {
+              "line": 13,
+              "column": 60
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 60
+            },
+            "end": {
+              "line": 13,
+              "column": 61
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 61
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Here's an inline "
+          "value": "Here's an inline ",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 18
+            }
+          }
         },
         {
           "type": "link",
@@ -108,22 +318,72 @@
           "children": [
             {
               "type": "text",
-              "value": "link"
+              "value": "link",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 19
+                },
+                "end": {
+                  "line": 15,
+                  "column": 23
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 18
+            },
+            "end": {
+              "line": 15,
+              "column": 45
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 45
+            },
+            "end": {
+              "line": 15,
+              "column": 46
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 46
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Here's an inline "
+          "value": "Here's an inline ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 18
+            }
+          }
         },
         {
           "type": "link",
@@ -132,15 +392,65 @@
           "children": [
             {
               "type": "text",
-              "value": "link"
+              "value": "link",
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 19
+                },
+                "end": {
+                  "line": 17,
+                  "column": 23
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 18
+            },
+            "end": {
+              "line": 17,
+              "column": 47
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 47
+            },
+            "end": {
+              "line": 17,
+              "column": 48
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 48
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 17,
+      "column": 48
+    }
+  }
 }

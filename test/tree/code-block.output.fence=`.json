@@ -6,14 +6,54 @@
       "children": [
         {
           "type": "text",
-          "value": "Ticks:"
+          "value": "Ticks:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 7
+        }
+      }
     },
     {
       "type": "code",
       "lang": "javascript",
-      "value": "alert('Hello World!');"
+      "value": "alert('Hello World!');",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 4
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 4
+    }
+  }
 }

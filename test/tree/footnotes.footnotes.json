@@ -6,24 +6,74 @@
       "children": [
         {
           "type": "text",
-          "value": "Here is some text containing a footnote"
+          "value": "Here is some text containing a footnote",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 40
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "somesamplefootnote"
+          "id": "somesamplefootnote",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 40
+            },
+            "end": {
+              "line": 1,
+              "column": 61
+            }
+          }
         },
         {
           "type": "text",
-          "value": ". You can then continue your thought..."
+          "value": ". You can then continue your thought...",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 61
+            },
+            "end": {
+              "line": 1,
+              "column": 100
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 100
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "Even go to a new "
+          "value": "Even go to a new ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 18
+            }
+          }
         },
         {
           "type": "link",
@@ -32,23 +82,83 @@
           "children": [
             {
               "type": "text",
-              "value": "paragraph"
+              "value": "paragraph",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 19
+                },
+                "end": {
+                  "line": 5,
+                  "column": 28
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 18
+            },
+            "end": {
+              "line": 5,
+              "column": 29
+            }
+          }
         },
         {
           "type": "text",
-          "value": " and the footnotes will go to the bottom of the document"
+          "value": " and the footnotes will go to the bottom of the document",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 29
+            },
+            "end": {
+              "line": 5,
+              "column": 85
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "documentdetails"
+          "id": "documentdetails",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 85
+            },
+            "end": {
+              "line": 5,
+              "column": 103
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 103
+            },
+            "end": {
+              "line": 5,
+              "column": 104
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 104
+        }
+      }
     }
   ],
   "footnotes": {
@@ -61,11 +171,41 @@
           "children": [
             {
               "type": "text",
-              "value": "Here is the text of the footnote itself."
+              "value": "Here is the text of the footnote itself.",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 24
+                },
+                "end": {
+                  "line": 3,
+                  "column": 64
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 24
+            },
+            "end": {
+              "line": 3,
+              "column": 64
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 64
+        }
+      }
     },
     "documentdetails": {
       "type": "footnoteDefinition",
@@ -76,29 +216,89 @@
           "children": [
             {
               "type": "text",
-              "value": "Depending on the "
+              "value": "Depending on the ",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 21
+                },
+                "end": {
+                  "line": 7,
+                  "column": 38
+                }
+              }
             },
             {
               "type": "strong",
               "children": [
                 {
                   "type": "text",
-                  "value": "final"
+                  "value": "final",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 40
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 45
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 38
+                },
+                "end": {
+                  "line": 7,
+                  "column": 47
+                }
+              }
             },
             {
               "type": "text",
-              "value": " form of your document, of course. See the documentation and experiment."
+              "value": " form of your document, of course. See the documentation and experiment.",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 47
+                },
+                "end": {
+                  "line": 7,
+                  "column": 119
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 21
+            },
+            "end": {
+              "line": 7,
+              "column": 119
+            }
+          }
         },
         {
           "type": "paragraph",
           "children": [
             {
               "type": "text",
-              "value": "This footnote has a second "
+              "value": "This footnote has a second ",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 5
+                },
+                "end": {
+                  "line": 9,
+                  "column": 32
+                }
+              }
             },
             {
               "type": "link",
@@ -107,17 +307,77 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "paragraph"
+                  "value": "paragraph",
+                  "position": {
+                    "start": {
+                      "line": 9,
+                      "column": 33
+                    },
+                    "end": {
+                      "line": 9,
+                      "column": 42
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 32
+                },
+                "end": {
+                  "line": 9,
+                  "column": 43
+                }
+              }
             },
             {
               "type": "text",
-              "value": "."
+              "value": ".",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 43
+                },
+                "end": {
+                  "line": 9,
+                  "column": 44
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 5
+            },
+            "end": {
+              "line": 9,
+              "column": 44
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 48
+        }
+      }
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 104
     }
   }
 }

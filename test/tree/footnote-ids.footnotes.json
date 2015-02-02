@@ -6,25 +6,85 @@
       "children": [
         {
           "type": "text",
-          "value": "This example checks that "
+          "value": "This example checks that ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 26
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "2"
+          "id": "2",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 26
+            },
+            "end": {
+              "line": 1,
+              "column": 42
+            }
+          }
         },
         {
           "type": "text",
-          "value": " IDs do not overwrite the user's IDs"
+          "value": " IDs do not overwrite the user's IDs",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 42
+            },
+            "end": {
+              "line": 1,
+              "column": 78
+            }
+          }
         },
         {
           "type": "footnote",
-          "id": "1"
+          "id": "1",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 78
+            },
+            "end": {
+              "line": 1,
+              "column": 82
+            }
+          }
         },
         {
           "type": "text",
-          "value": "."
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 82
+            },
+            "end": {
+              "line": 1,
+              "column": 83
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 83
+        }
+      }
     }
   ],
   "footnotes": {
@@ -37,19 +97,69 @@
           "children": [
             {
               "type": "text",
-              "value": "Old behavior would, for \"generated\", generate a footnote with an ID set to "
+              "value": "Old behavior would, for \"generated\", generate a footnote with an ID set to ",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 7
+                },
+                "end": {
+                  "line": 3,
+                  "column": 82
+                }
+              }
             },
             {
               "type": "inlineCode",
-              "value": "1"
+              "value": "1",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 82
+                },
+                "end": {
+                  "line": 3,
+                  "column": 85
+                }
+              }
             },
             {
               "type": "text",
-              "value": ", thus overwriting this footnote."
+              "value": ", thus overwriting this footnote.",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 85
+                },
+                "end": {
+                  "line": 3,
+                  "column": 118
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 3,
+              "column": 118
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 118
+        }
+      }
     },
     "2": {
       "type": "footnoteDefinition",
@@ -60,11 +170,41 @@
           "children": [
             {
               "type": "text",
-              "value": "the generated"
+              "value": "the generated",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 28
+                },
+                "end": {
+                  "line": 1,
+                  "column": 41
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 28
+            },
+            "end": {
+              "line": 1,
+              "column": 41
+            }
+          }
         }
       ]
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 1,
+      "column": 83
     }
   }
 }

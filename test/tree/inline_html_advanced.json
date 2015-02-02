@@ -6,26 +6,96 @@
       "children": [
         {
           "type": "text",
-          "value": "Simple block on one line:"
+          "value": "Simple block on one line:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 26
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 26
+        }
+      }
     },
     {
       "type": "html",
-      "value": "<div>foo</div>\n\n"
+      "value": "<div>foo</div>",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 15
+        }
+      }
     },
     {
       "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "And nested without indentation:"
+          "value": "And nested without indentation:",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 32
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 32
+        }
+      }
     },
     {
       "type": "html",
-      "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>\n"
+      "value": "<div>\n<div>\n<div>\nfoo\n</div>\n<div style=\">\"/>\n</div>\n<div>bar</div>\n</div>",
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 7
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 15,
+      "column": 7
+    }
+  }
 }

@@ -7,9 +7,29 @@
       "children": [
         {
           "type": "text",
-          "value": "List bullets"
+          "value": "List bullets",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 15
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 15
+        }
+      }
     },
     {
       "type": "list",
@@ -24,9 +44,29 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "One:"
+                  "value": "One:",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 3
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7
+                }
+              }
             },
             {
               "type": "list",
@@ -41,11 +81,41 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "Nested one;"
+                          "value": "Nested one;",
+                          "position": {
+                            "start": {
+                              "line": 4,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 16
+                            }
+                          }
                         }
-                      ]
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 16
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 16
+                    }
+                  }
                 },
                 {
                   "type": "listItem",
@@ -56,9 +126,29 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "Nested two:"
+                          "value": "Nested two:",
+                          "position": {
+                            "start": {
+                              "line": 5,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 5,
+                              "column": 16
+                            }
+                          }
                         }
-                      ]
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 16
+                        }
+                      }
                     },
                     {
                       "type": "list",
@@ -73,19 +163,89 @@
                               "children": [
                                 {
                                   "type": "text",
-                                  "value": "Nested three."
+                                  "value": "Nested three.",
+                                  "position": {
+                                    "start": {
+                                      "line": 6,
+                                      "column": 7
+                                    },
+                                    "end": {
+                                      "line": 6,
+                                      "column": 20
+                                    }
+                                  }
                                 }
-                              ]
+                              ],
+                              "position": {
+                                "start": {
+                                  "line": 6,
+                                  "column": 7
+                                },
+                                "end": {
+                                  "line": 6,
+                                  "column": 20
+                                }
+                              }
                             }
-                          ]
+                          ],
+                          "position": {
+                            "start": {
+                              "line": 6,
+                              "column": 5
+                            },
+                            "end": {
+                              "line": 6,
+                              "column": 20
+                            }
+                          }
                         }
-                      ]
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 6,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 6,
+                          "column": 20
+                        }
+                      }
                     }
-                  ]
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 20
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 3
+                },
+                "end": {
+                  "line": 6,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 6,
+              "column": 20
+            }
+          }
         },
         {
           "type": "listItem",
@@ -96,11 +256,41 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Two;"
+                  "value": "Two;",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 7
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 3
+                },
+                "end": {
+                  "line": 7,
+                  "column": 7
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 7
+            }
+          }
         },
         {
           "type": "listItem",
@@ -111,13 +301,63 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Three."
+                  "value": "Three.",
+                  "position": {
+                    "start": {
+                      "line": 8,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 8,
+                      "column": 9
+                    }
+                  }
                 }
-              ]
+              ],
+              "position": {
+                "start": {
+                  "line": 8,
+                  "column": 3
+                },
+                "end": {
+                  "line": 8,
+                  "column": 9
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 1
+            },
+            "end": {
+              "line": 8,
+              "column": 9
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 9
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 8,
+      "column": 9
+    }
+  }
 }

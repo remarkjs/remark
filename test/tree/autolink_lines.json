@@ -6,7 +6,17 @@
       "children": [
         {
           "type": "text",
-          "value": "hello world\n"
+          "value": "hello world\n",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 1
+            }
+          }
         },
         {
           "type": "link",
@@ -15,11 +25,51 @@
           "children": [
             {
               "type": "text",
-              "value": "http://example.com"
+              "value": "http://example.com",
+              "position": {
+                "start": {
+                  "line": 2,
+                  "column": 2
+                },
+                "end": {
+                  "line": 2,
+                  "column": 20
+                }
+              }
             }
-          ]
+          ],
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 21
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 21
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 2,
+      "column": 21
+    }
+  }
 }

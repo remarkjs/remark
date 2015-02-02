@@ -6,14 +6,54 @@
       "children": [
         {
           "type": "text",
-          "value": "A code block NOT using fences:"
+          "value": "A code block NOT using fences:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 31
+            }
+          }
         }
-      ]
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 31
+        }
+      }
     },
     {
       "type": "code",
       "lang": null,
-      "value": "alert('Hello World!');"
+      "value": "alert('Hello World!');",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 27
+        }
+      }
     }
-  ]
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 3,
+      "column": 27
+    }
+  }
 }

@@ -437,7 +437,7 @@ validateTokens = function (children) {
  * @param {Object} context
  */
 validateToken = function (context) {
-    var keys = Object.keys(context),
+    var keys = Object.keys(context).length,
         type = context.type,
         key;
 
@@ -446,6 +446,25 @@ validateToken = function (context) {
     if ('children' in context) {
         assert(Array.isArray(context.children));
         validateTokens(context.children);
+    }
+
+    /*
+     * Validate position.
+     */
+
+    if (type !== 'footnoteDefinition' || 'position' in context) {
+        assert('position' in context);
+
+        assert('start' in context.position);
+        assert('end' in context.position);
+
+        assert('line' in context.position.start);
+        assert('column' in context.position.start);
+
+        assert('line' in context.position.end);
+        assert('column' in context.position.end);
+
+        keys--;
     }
 
     if ('value' in context) {
@@ -474,14 +493,14 @@ validateToken = function (context) {
         type === 'emphasis' ||
         type === 'delete'
     ) {
-        assert(keys.length === 2);
+        assert(keys === 2);
         assert('children' in context);
 
         return;
     }
 
     if (type === 'listItem') {
-        assert(keys.length === 3);
+        assert(keys === 3);
         assert('children' in context);
         assert('loose' in context);
 
@@ -489,14 +508,14 @@ validateToken = function (context) {
     }
 
     if (type === 'footnote') {
-        assert(keys.length === 2);
+        assert(keys === 2);
         assert('id' in context);
 
         return;
     }
 
     if (type === 'heading') {
-        assert(keys.length === 3);
+        assert(keys === 3);
         assert(context.depth > 0);
         assert(context.depth <= 6);
         assert('children' in context);
@@ -505,14 +524,14 @@ validateToken = function (context) {
     }
 
     if (type === 'inlineCode') {
-        assert(keys.length === 2);
+        assert(keys === 2);
         assert('value' in context);
 
         return;
     }
 
     if (type === 'code') {
-        assert(keys.length === 3);
+        assert(keys === 3);
         assert('value' in context);
 
         assert(
@@ -524,7 +543,7 @@ validateToken = function (context) {
     }
 
     if (type === 'horizontalRule' || type === 'break') {
-        assert(keys.length === 1);
+        assert(keys === 1);
 
         return;
     }
@@ -532,20 +551,20 @@ validateToken = function (context) {
     if (type === 'list') {
         assert('children' in context);
         assert(typeof context.ordered === 'boolean');
-        assert(keys.length === 3);
+        assert(keys === 3);
 
         return;
     }
 
     if (type === 'text' || type === 'escape') {
-        assert(keys.length === 2);
+        assert(keys === 2);
         assert('value' in context);
 
         return;
     }
 
     if (type === 'footnoteDefinition') {
-        assert(keys.length === 3);
+        assert(keys === 3);
         assert('children' in context);
         assert('id' in context);
 
@@ -559,7 +578,7 @@ validateToken = function (context) {
             typeof context.title === 'string'
         );
         assert(typeof context.href === 'string');
-        assert(keys.length === 4);
+        assert(keys === 4);
 
         return;
     }
@@ -574,13 +593,13 @@ validateToken = function (context) {
             typeof context.alt === 'string'
         );
         assert(typeof context.src === 'string');
-        assert(keys.length === 4);
+        assert(keys === 4);
 
         return;
     }
 
     if (type === 'table') {
-        assert(keys.length === 3);
+        assert(keys === 3);
         assert('children' in context);
 
         assert(Array.isArray(context.align));
@@ -601,13 +620,54 @@ validateToken = function (context) {
      * should be added before this block, or the type:html tests should
      * be wrapped in an if statement. */
     assert(type === 'html');
-    assert(keys.length === 2);
+    assert(keys === 2);
     assert('value' in context);
 };
+
+/**
+ * Clone, and optionally clean from `position`, a node.
+ *
+ * @param {Object} node
+ * @param {boolean} clean
+ * @return {Object}
+ */
+function clone(node, clean) {
+    var result;
+
+    result = Array.isArray(node) ? [] : {};
+
+    Object.keys(node).forEach(function (key) {
+        var value;
+
+        value = node[key];
+
+        if (clean) {
+            if (key === 'position') {
+                return;
+            }
+        }
+
+        if (value !== null && typeof value === 'object') {
+            result[key] = clone(value, clean);
+        } else {
+            result[key] = value;
+        }
+    });
+
+    return result;
+}
+
+/*
+ * Methods.
+ */
 
 var stringify;
 
 stringify = JSON.stringify;
+
+/*
+ * Fixtures.
+ */
 
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
@@ -621,12 +681,12 @@ describe('fixtures', function () {
             validateToken(node);
 
             try {
-                assert(stringify(node) === stringify(baseline));
+                assert.deepEqual(clone(node), clone(baseline));
             } catch (error) {
                 /* istanbul ignore next */
                 logDifference(
-                    stringify(baseline, null, INDENT),
-                    stringify(node, null, INDENT)
+                    stringify(clone(baseline), null, INDENT),
+                    stringify(clone(node), null, INDENT)
                 );
 
                 /* istanbul ignore next */
@@ -641,12 +701,14 @@ describe('fixtures', function () {
             generatedNode = mdast.parse(markdown, fixture.options);
 
             try {
-                assert(stringify(node) === stringify(generatedNode));
+                assert.deepEqual(
+                    clone(node, true), clone(generatedNode, true)
+                );
             } catch (error) {
                 /* istanbul ignore next */
                 logDifference(
-                    stringify(node, null, INDENT),
-                    stringify(generatedNode, null, INDENT)
+                    stringify(clone(node, true), null, INDENT),
+                    stringify(clone(generatedNode, true), null, INDENT)
                 );
 
                 /* istanbul ignore next */
