@@ -328,7 +328,11 @@ if (
     if (expectOption || expectPlugin || expectOutput) {
         fail();
     } else if (!expextPipeIn && !files.length) {
-        fail();
+        if (output) {
+            files.push(output);
+        } else {
+            fail();
+        }
     } else if (
         (expextPipeIn && files.length) ||
         (!expextPipeIn && files.length !== 1)
