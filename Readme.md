@@ -257,6 +257,7 @@ Parameters:
   - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
   - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
   - `referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](doc/Options.md#inline-footnotes);
+  - `fence: string` (`"~"` or ``"`"``, default: `~`). See [Fence](doc/Options.md#fence);
   - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
   - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
   - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
