@@ -1,0 +1,6 @@
+{
+  "title": "Loose Tables",
+  "stringify": {
+    "looseTable": true
+  }
+}

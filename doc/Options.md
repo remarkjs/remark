@@ -1053,6 +1053,34 @@ Yields:
     alert('Hello World!');
     ```
 
+### Loose Tables
+
+Setting `looseTable: true` (default: `false`) will stringify GFM tables with neither starting nor ending pipes.
+
+The following document:
+
+    | Hello | World  |
+    | :---- | -----: |
+    | How   |    are |
+    | you   | today? |
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "looseTable": true
+});
+```
+
+Yields:
+
+    Hello |  World
+    ----- | -----:
+    How   |    are
+    you   | today?
+
 ### Inline Footnotes
 
 Setting `referenceFootnotes: false` (default: `true`) will stringify footnotes with inline content inline.
