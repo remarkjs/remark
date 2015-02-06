@@ -34,7 +34,8 @@ optionsMap = {
     'reference-footnotes': 'referenceFootnotes',
     'fences': 'fences',
     'fence': 'fence',
-    'close-atx': 'closeAtx'
+    'close-atx': 'closeAtx',
+    'loose-table': 'looseTable'
 };
 
 /*

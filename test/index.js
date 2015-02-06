@@ -296,6 +296,16 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         }, /options\.closeAtx/);
     });
 
+    it('should throw when `options.looseTable` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify({}, {
+                    'looseTable': 'Hello!'
+                });
+            }, /options\.looseTable/);
+        }
+    );
+
     it('should accept a `CustomCompiler` as a third argument', function () {
         var isInvoked;
 

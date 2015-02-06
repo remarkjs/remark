@@ -2512,7 +2512,8 @@ function Compiler(options) {
         fence,
         emphasis,
         strong,
-        closeAtx;
+        closeAtx,
+        looseTable;
 
     self = this;
 
@@ -2540,6 +2541,7 @@ function Compiler(options) {
     emphasis = options.emphasis;
     strong = options.strong;
     closeAtx = options.closeAtx;
+    looseTable = options.looseTable;
 
     if (bullet === null || bullet === undefined) {
         options.bullet = DASH;
@@ -2581,6 +2583,12 @@ function Compiler(options) {
         options.closeAtx = false;
     } else if (typeof closeAtx !== 'boolean') {
         raise(closeAtx, 'options.closeAtx');
+    }
+
+    if (looseTable === null || looseTable === undefined) {
+        options.looseTable = false;
+    } else if (typeof looseTable !== 'boolean') {
+        raise(looseTable, 'options.looseTable');
     }
 
     if (referenceLinks === null || referenceLinks === undefined) {
@@ -3207,9 +3215,12 @@ compilerPrototype.table = function (token, parent, level) {
     var self,
         index,
         rows,
-        result;
+        result,
+        loose;
 
     self = this;
+
+    loose = self.options.looseTable;
 
     rows = token.children;
 
@@ -3230,7 +3241,9 @@ compilerPrototype.table = function (token, parent, level) {
      */
 
     return table(result, {
-        'align': token.align.concat()
+        'align': token.align.concat(),
+        'start': loose ? '' : '| ',
+        'end': loose ? '' : ' |'
     });
 };
 
