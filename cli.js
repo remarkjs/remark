@@ -138,6 +138,7 @@ function getOptions() {
         '-  `setext` (boolean, default: false)',
         '-  `closeAtx` (boolean, default: false)',
         '-  `looseTable` (boolean, default: false)',
+        '-  `spaced-table` (boolean, default: true)',
         '-  `reference-links` (boolean, default: false)',
         '-  `reference-footnotes` (boolean, default: true)',
         '-  `fences` (boolean, default: false)',
