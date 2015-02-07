@@ -35,7 +35,8 @@ optionsMap = {
     'fences': 'fences',
     'fence': 'fence',
     'close-atx': 'closeAtx',
-    'loose-table': 'looseTable'
+    'loose-table': 'looseTable',
+    'spaced-table': 'spacedTable'
 };
 
 /*

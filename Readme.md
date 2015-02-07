@@ -256,6 +256,7 @@ Parameters:
   - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
   - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
   - `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
+  - `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
   - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
   - `referenceFootnotes` (`boolean`, default: `true`). See [Inline Footnotes](doc/Options.md#inline-footnotes);
   - `fence: string` (`"~"` or ``"`"``, default: `~`). See [Fence](doc/Options.md#fence);

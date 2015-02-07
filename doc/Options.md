@@ -1195,3 +1195,31 @@ Yields:
     ------------
 
     ### Third level
+
+### Spaced Tables
+
+Setting `spacedTable: false` (default: `true`) will stringify GFM tables without spaced after starting pipes, before ending pipes, and surrounding delimiting pipes.
+
+The following document:
+
+    | Hello | World  |
+    | :---- | -----: |
+    | How   |    are |
+    | you   | today? |
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "spacedTable": false
+});
+```
+
+Yields:
+
+    |Hello| World|
+    |-----|-----:|
+    |How  |   are|
+    |you  |today?|

@@ -2312,6 +2312,7 @@ var ANGLE_BRACKET,
     LINE,
     PARENTHESIS_OPEN,
     PARENTHESIS_CLOSE,
+    PIPE,
     PLUS,
     QUOTE_DOUBLE,
     SPACE,
@@ -2334,6 +2335,7 @@ HASH = '#';
 LINE = '\n';
 PARENTHESIS_OPEN = '(';
 PARENTHESIS_CLOSE = ')';
+PIPE = '|';
 PLUS = '+';
 QUOTE_DOUBLE = '"';
 SPACE = ' ';
@@ -2513,7 +2515,8 @@ function Compiler(options) {
         emphasis,
         strong,
         closeAtx,
-        looseTable;
+        looseTable,
+        spacedTable;
 
     self = this;
 
@@ -2542,6 +2545,7 @@ function Compiler(options) {
     strong = options.strong;
     closeAtx = options.closeAtx;
     looseTable = options.looseTable;
+    spacedTable = options.spacedTable;
 
     if (bullet === null || bullet === undefined) {
         options.bullet = DASH;
@@ -2589,6 +2593,12 @@ function Compiler(options) {
         options.looseTable = false;
     } else if (typeof looseTable !== 'boolean') {
         raise(looseTable, 'options.looseTable');
+    }
+
+    if (spacedTable === null || spacedTable === undefined) {
+        options.spacedTable = true;
+    } else if (typeof spacedTable !== 'boolean') {
+        raise(spacedTable, 'options.spacedTable');
     }
 
     if (referenceLinks === null || referenceLinks === undefined) {
@@ -3047,7 +3057,7 @@ compilerPrototype.code = function (token) {
 
     fence = repeat(Math.max(fence, MINIMUM_CODE_FENCE_LENGTH), marker);
 
-    return fence + (token.lang || '') + LINE + value + LINE + fence;
+    return fence + (token.lang || EMPTY) + LINE + value + LINE + fence;
 };
 
 /**
@@ -3216,11 +3226,14 @@ compilerPrototype.table = function (token, parent, level) {
         index,
         rows,
         result,
-        loose;
+        loose,
+        spaced,
+        start;
 
     self = this;
 
     loose = self.options.looseTable;
+    spaced = self.options.spacedTable;
 
     rows = token.children;
 
@@ -3234,6 +3247,8 @@ compilerPrototype.table = function (token, parent, level) {
         );
     }
 
+    start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
+
     /*
      * There was a bug in markdown-table@0.3.0, fixed
      * in markdown-table@0.3.1, which modified the `align`
@@ -3242,8 +3257,9 @@ compilerPrototype.table = function (token, parent, level) {
 
     return table(result, {
         'align': token.align.concat(),
-        'start': loose ? '' : '| ',
-        'end': loose ? '' : ' |'
+        'start': start,
+        'end': start.split(EMPTY).reverse().join(EMPTY),
+        'delimiter': spaced ? SPACE + PIPE + SPACE : PIPE
     });
 };
 
