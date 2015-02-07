@@ -1,0 +1,2574 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown: Basics",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<ul id=\"ProjectSubmenu\">\n    <li><a href=\"/projects/markdown/\" title=\"Markdown Project Page\">Main</a></li>\n    <li><a class=\"selected\" title=\"Markdown Basics\">Basics</a></li>\n    <li><a href=\"/projects/markdown/syntax\" title=\"Markdown Syntax Documentation\">Syntax</a></li>\n    <li><a href=\"/projects/markdown/license\" title=\"Pricing and License Information\">License</a></li>\n    <li><a href=\"/projects/markdown/dingus\" title=\"Online Markdown Web Form\">Dingus</a></li>\n</ul>",
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 10,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Getting the Gist of Markdown's Formatting Syntax",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 49
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 14,
+          "column": 49
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This page offers a brief overview of what it's like to use Markdown.\nThe ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": "Markdown Syntax",
+          "href": "/projects/markdown/syntax",
+          "children": [
+            {
+              "type": "text",
+              "value": "syntax page",
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 6
+                },
+                "end": {
+                  "line": 17,
+                  "column": 17
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 5
+            },
+            "end": {
+              "line": 17,
+              "column": 22
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " provides complete, detailed documentation for\nevery feature, but Markdown should be very easy to pick up simply by\nlooking at a few examples of it in action. The examples on this page\nare written in a before/after style, showing example syntax and the\nHTML output produced by Markdown.",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 22
+            },
+            "end": {
+              "line": 21,
+              "column": 34
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "It's also helpful to simply try Markdown out; the ",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "line": 23,
+              "column": 51
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": "Markdown Dingus",
+          "href": "/projects/markdown/dingus",
+          "children": [
+            {
+              "type": "text",
+              "value": "Dingus",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 52
+                },
+                "end": {
+                  "line": 23,
+                  "column": 58
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 51
+            },
+            "end": {
+              "line": 23,
+              "column": 63
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " is a\nweb application that allows you type your own Markdown-formatted text\nand translate it to XHTML.",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 63
+            },
+            "end": {
+              "line": 25,
+              "column": 27
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "line": 25,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note:",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 3
+                },
+                "end": {
+                  "line": 27,
+                  "column": 8
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 1
+            },
+            "end": {
+              "line": 27,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " This document is itself written using Markdown; you\ncan ",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 10
+            },
+            "end": {
+              "line": 28,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "/projects/markdown/basics.text",
+          "children": [
+            {
+              "type": "text",
+              "value": "see the source for it by adding '.text' to the URL",
+              "position": {
+                "start": {
+                  "line": 28,
+                  "column": 6
+                },
+                "end": {
+                  "line": 28,
+                  "column": 56
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 28,
+              "column": 5
+            },
+            "end": {
+              "line": 28,
+              "column": 63
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 28,
+              "column": 63
+            },
+            "end": {
+              "line": 28,
+              "column": 64
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 28,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Paragraphs, Headers, Blockquotes",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 4
+            },
+            "end": {
+              "line": 35,
+              "column": 36
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1
+        },
+        "end": {
+          "line": 35,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph is simply one or more consecutive lines of text, separated\nby one or more blank lines. (A blank line is any line that looks like a\nblank line -- a line containing nothing spaces or tabs is considered\nblank.) Normal paragraphs should not be intended with spaces or tabs.",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1
+            },
+            "end": {
+              "line": 40,
+              "column": 70
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1
+        },
+        "end": {
+          "line": 40,
+          "column": 70
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown offers two styles of headers: ",
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 1
+            },
+            "end": {
+              "line": 42,
+              "column": 40
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "Setext",
+              "position": {
+                "start": {
+                  "line": 42,
+                  "column": 41
+                },
+                "end": {
+                  "line": 42,
+                  "column": 47
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 40
+            },
+            "end": {
+              "line": 42,
+              "column": 48
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and ",
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 48
+            },
+            "end": {
+              "line": 42,
+              "column": 53
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "atx",
+              "position": {
+                "start": {
+                  "line": 42,
+                  "column": 54
+                },
+                "end": {
+                  "line": 42,
+                  "column": 57
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 53
+            },
+            "end": {
+              "line": 42,
+              "column": 58
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".\nSetext-style headers for ",
+          "position": {
+            "start": {
+              "line": 42,
+              "column": 58
+            },
+            "end": {
+              "line": 43,
+              "column": 26
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<h1>",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 26
+            },
+            "end": {
+              "line": 43,
+              "column": 32
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and ",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 32
+            },
+            "end": {
+              "line": 43,
+              "column": 37
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<h2>",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 37
+            },
+            "end": {
+              "line": 43,
+              "column": 43
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " are created by\n\"underlining\" with equal signs (",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 43
+            },
+            "end": {
+              "line": 44,
+              "column": 33
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "=",
+          "position": {
+            "start": {
+              "line": 44,
+              "column": 33
+            },
+            "end": {
+              "line": 44,
+              "column": 36
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") and hyphens (",
+          "position": {
+            "start": {
+              "line": 44,
+              "column": 36
+            },
+            "end": {
+              "line": 44,
+              "column": 51
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "-",
+          "position": {
+            "start": {
+              "line": 44,
+              "column": 51
+            },
+            "end": {
+              "line": 44,
+              "column": 54
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "), respectively.\nTo create an atx-style header, you put 1-6 hash marks (",
+          "position": {
+            "start": {
+              "line": 44,
+              "column": 54
+            },
+            "end": {
+              "line": 45,
+              "column": 56
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "#",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 56
+            },
+            "end": {
+              "line": 45,
+              "column": 59
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") at the\nbeginning of the line -- the number of hashes equals the resulting\nHTML header level.",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 59
+            },
+            "end": {
+              "line": 47,
+              "column": 19
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 42,
+          "column": 1
+        },
+        "end": {
+          "line": 47,
+          "column": 19
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Blockquotes are indicated using email-style '",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 1
+            },
+            "end": {
+              "line": 49,
+              "column": 46
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": ">",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 46
+            },
+            "end": {
+              "line": 49,
+              "column": 49
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "' angle brackets.",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 49
+            },
+            "end": {
+              "line": 49,
+              "column": 66
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 49,
+          "column": 1
+        },
+        "end": {
+          "line": 49,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 1
+            },
+            "end": {
+              "line": 51,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1
+        },
+        "end": {
+          "line": 51,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "A First Level Header\n====================\n\nA Second Level Header\n---------------------\n\nNow is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.\n\nThe quick brown fox jumped over the lazy\ndog's back.\n\n### Header 3\n\n> This is a blockquote.\n> \n> This is the second paragraph in the blockquote.\n>\n> ## This is an H2 in a blockquote",
+      "position": {
+        "start": {
+          "line": 53,
+          "column": 1
+        },
+        "end": {
+          "line": 72,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 75,
+              "column": 1
+            },
+            "end": {
+              "line": 75,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 75,
+          "column": 1
+        },
+        "end": {
+          "line": 75,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n\n    <p>This is the second paragraph in the blockquote.</p>\n\n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>",
+      "position": {
+        "start": {
+          "line": 77,
+          "column": 1
+        },
+        "end": {
+          "line": 96,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Phrase Emphasis",
+          "position": {
+            "start": {
+              "line": 100,
+              "column": 5
+            },
+            "end": {
+              "line": 100,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 100,
+          "column": 1
+        },
+        "end": {
+          "line": 100,
+          "column": 24
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown uses asterisks and underscores to indicate spans of emphasis.",
+          "position": {
+            "start": {
+              "line": 102,
+              "column": 1
+            },
+            "end": {
+              "line": 102,
+              "column": 71
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 102,
+          "column": 1
+        },
+        "end": {
+          "line": 102,
+          "column": 71
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 1
+            },
+            "end": {
+              "line": 104,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 104,
+          "column": 1
+        },
+        "end": {
+          "line": 104,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "Some of these words *are emphasized*.\nSome of these words _are emphasized also_.\n\nUse two asterisks for **strong emphasis**.\nOr, if you prefer, __use two underscores instead__.",
+      "position": {
+        "start": {
+          "line": 106,
+          "column": 1
+        },
+        "end": {
+          "line": 110,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 112,
+              "column": 1
+            },
+            "end": {
+              "line": 112,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 112,
+          "column": 1
+        },
+        "end": {
+          "line": 112,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>Some of these words <em>are emphasized</em>.\nSome of these words <em>are emphasized also</em>.</p>\n\n<p>Use two asterisks for <strong>strong emphasis</strong>.\nOr, if you prefer, <strong>use two underscores instead</strong>.</p>",
+      "position": {
+        "start": {
+          "line": 114,
+          "column": 1
+        },
+        "end": {
+          "line": 118,
+          "column": 73
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Lists",
+          "position": {
+            "start": {
+              "line": 122,
+              "column": 4
+            },
+            "end": {
+              "line": 122,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 122,
+          "column": 1
+        },
+        "end": {
+          "line": 122,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Unordered (bulleted) lists use asterisks, pluses, and hyphens (",
+          "position": {
+            "start": {
+              "line": 124,
+              "column": 1
+            },
+            "end": {
+              "line": 124,
+              "column": 64
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "*",
+          "position": {
+            "start": {
+              "line": 124,
+              "column": 64
+            },
+            "end": {
+              "line": 124,
+              "column": 67
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\n",
+          "position": {
+            "start": {
+              "line": 124,
+              "column": 67
+            },
+            "end": {
+              "line": 125,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "+",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 1
+            },
+            "end": {
+              "line": 125,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 4
+            },
+            "end": {
+              "line": 125,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "-",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 10
+            },
+            "end": {
+              "line": 125,
+              "column": 13
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") as list markers. These three markers are\ninterchangable; this:",
+          "position": {
+            "start": {
+              "line": 125,
+              "column": 13
+            },
+            "end": {
+              "line": 126,
+              "column": 22
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 124,
+          "column": 1
+        },
+        "end": {
+          "line": 126,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "*   Candy.\n*   Gum.\n*   Booze.",
+      "position": {
+        "start": {
+          "line": 128,
+          "column": 1
+        },
+        "end": {
+          "line": 130,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "this:",
+          "position": {
+            "start": {
+              "line": 132,
+              "column": 1
+            },
+            "end": {
+              "line": 132,
+              "column": 6
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 132,
+          "column": 1
+        },
+        "end": {
+          "line": 132,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "+   Candy.\n+   Gum.\n+   Booze.",
+      "position": {
+        "start": {
+          "line": 134,
+          "column": 1
+        },
+        "end": {
+          "line": 136,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and this:",
+          "position": {
+            "start": {
+              "line": 138,
+              "column": 1
+            },
+            "end": {
+              "line": 138,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 138,
+          "column": 1
+        },
+        "end": {
+          "line": 138,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "-   Candy.\n-   Gum.\n-   Booze.",
+      "position": {
+        "start": {
+          "line": 140,
+          "column": 1
+        },
+        "end": {
+          "line": 142,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "all produce the same output:",
+          "position": {
+            "start": {
+              "line": 144,
+              "column": 1
+            },
+            "end": {
+              "line": 144,
+              "column": 29
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 144,
+          "column": 1
+        },
+        "end": {
+          "line": 144,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<ul>\n<li>Candy.</li>\n<li>Gum.</li>\n<li>Booze.</li>\n</ul>",
+      "position": {
+        "start": {
+          "line": 146,
+          "column": 1
+        },
+        "end": {
+          "line": 150,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Ordered (numbered) lists use regular numbers, followed by periods, as\nlist markers:",
+          "position": {
+            "start": {
+              "line": 152,
+              "column": 1
+            },
+            "end": {
+              "line": 153,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 152,
+          "column": 1
+        },
+        "end": {
+          "line": 153,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "1.  Red\n2.  Green\n3.  Blue",
+      "position": {
+        "start": {
+          "line": 155,
+          "column": 1
+        },
+        "end": {
+          "line": 157,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 159,
+              "column": 1
+            },
+            "end": {
+              "line": 159,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 159,
+          "column": 1
+        },
+        "end": {
+          "line": 159,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<ol>\n<li>Red</li>\n<li>Green</li>\n<li>Blue</li>\n</ol>",
+      "position": {
+        "start": {
+          "line": 161,
+          "column": 1
+        },
+        "end": {
+          "line": 165,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "If you put blank lines between items, you'll get ",
+          "position": {
+            "start": {
+              "line": 167,
+              "column": 1
+            },
+            "end": {
+              "line": 167,
+              "column": 50
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<p>",
+          "position": {
+            "start": {
+              "line": 167,
+              "column": 50
+            },
+            "end": {
+              "line": 167,
+              "column": 55
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " tags for the\nlist item text. You can create multi-paragraph list items by indenting\nthe paragraphs by 4 spaces or 1 tab:",
+          "position": {
+            "start": {
+              "line": 167,
+              "column": 55
+            },
+            "end": {
+              "line": 169,
+              "column": 37
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 167,
+          "column": 1
+        },
+        "end": {
+          "line": 169,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "*   A list item.\n\n    With multiple paragraphs.\n\n*   Another item in the list.",
+      "position": {
+        "start": {
+          "line": 171,
+          "column": 1
+        },
+        "end": {
+          "line": 175,
+          "column": 34
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 177,
+              "column": 1
+            },
+            "end": {
+              "line": 177,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 177,
+          "column": 1
+        },
+        "end": {
+          "line": 177,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<ul>\n<li><p>A list item.</p>\n<p>With multiple paragraphs.</p></li>\n<li><p>Another item in the list.</p></li>\n</ul>",
+      "position": {
+        "start": {
+          "line": 179,
+          "column": 1
+        },
+        "end": {
+          "line": 183,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Links",
+          "position": {
+            "start": {
+              "line": 187,
+              "column": 5
+            },
+            "end": {
+              "line": 187,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 187,
+          "column": 1
+        },
+        "end": {
+          "line": 187,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown supports two styles for creating links: ",
+          "position": {
+            "start": {
+              "line": 189,
+              "column": 1
+            },
+            "end": {
+              "line": 189,
+              "column": 50
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "inline",
+              "position": {
+                "start": {
+                  "line": 189,
+                  "column": 51
+                },
+                "end": {
+                  "line": 189,
+                  "column": 57
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 189,
+              "column": 50
+            },
+            "end": {
+              "line": 189,
+              "column": 58
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and\n",
+          "position": {
+            "start": {
+              "line": 189,
+              "column": 58
+            },
+            "end": {
+              "line": 190,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "reference",
+              "position": {
+                "start": {
+                  "line": 190,
+                  "column": 2
+                },
+                "end": {
+                  "line": 190,
+                  "column": 11
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 190,
+              "column": 1
+            },
+            "end": {
+              "line": 190,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ". With both styles, you use square brackets to delimit the\ntext you want to turn into a link.",
+          "position": {
+            "start": {
+              "line": 190,
+              "column": 12
+            },
+            "end": {
+              "line": 191,
+              "column": 35
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 189,
+          "column": 1
+        },
+        "end": {
+          "line": 191,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inline-style links use parentheses immediately after the link text.\nFor example:",
+          "position": {
+            "start": {
+              "line": 193,
+              "column": 1
+            },
+            "end": {
+              "line": 194,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 193,
+          "column": 1
+        },
+        "end": {
+          "line": 194,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "This is an [example link](http://example.com/).",
+      "position": {
+        "start": {
+          "line": 196,
+          "column": 1
+        },
+        "end": {
+          "line": 196,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 198,
+              "column": 1
+            },
+            "end": {
+              "line": 198,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 198,
+          "column": 1
+        },
+        "end": {
+          "line": 198,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>This is an <a href=\"http://example.com/\">\nexample link</a>.</p>",
+      "position": {
+        "start": {
+          "line": 200,
+          "column": 1
+        },
+        "end": {
+          "line": 201,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Optionally, you may include a title attribute in the parentheses:",
+          "position": {
+            "start": {
+              "line": 203,
+              "column": 1
+            },
+            "end": {
+              "line": 203,
+              "column": 66
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 203,
+          "column": 1
+        },
+        "end": {
+          "line": 203,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "This is an [example link](http://example.com/ \"With a Title\").",
+      "position": {
+        "start": {
+          "line": 205,
+          "column": 1
+        },
+        "end": {
+          "line": 205,
+          "column": 67
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 207,
+              "column": 1
+            },
+            "end": {
+              "line": 207,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 207,
+          "column": 1
+        },
+        "end": {
+          "line": 207,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>This is an <a href=\"http://example.com/\" title=\"With a Title\">\nexample link</a>.</p>",
+      "position": {
+        "start": {
+          "line": 209,
+          "column": 1
+        },
+        "end": {
+          "line": 210,
+          "column": 26
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style links allow you to refer to your links by names, which\nyou define elsewhere in your document:",
+          "position": {
+            "start": {
+              "line": 212,
+              "column": 1
+            },
+            "end": {
+              "line": 213,
+              "column": 39
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 212,
+          "column": 1
+        },
+        "end": {
+          "line": 213,
+          "column": 39
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "I get 10 times more traffic from [Google][1] than from\n[Yahoo][2] or [MSN][3].\n\n[1]: http://google.com/        \"Google\"\n[2]: http://search.yahoo.com/  \"Yahoo Search\"\n[3]: http://search.msn.com/    \"MSN Search\"",
+      "position": {
+        "start": {
+          "line": 215,
+          "column": 1
+        },
+        "end": {
+          "line": 220,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 222,
+              "column": 1
+            },
+            "end": {
+              "line": 222,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 222,
+          "column": 1
+        },
+        "end": {
+          "line": 222,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>I get 10 times more traffic from <a href=\"http://google.com/\"\ntitle=\"Google\">Google</a> than from <a href=\"http://search.yahoo.com/\"\ntitle=\"Yahoo Search\">Yahoo</a> or <a href=\"http://search.msn.com/\"\ntitle=\"MSN Search\">MSN</a>.</p>",
+      "position": {
+        "start": {
+          "line": 224,
+          "column": 1
+        },
+        "end": {
+          "line": 227,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The title attribute is optional. Link names may contain letters,\nnumbers and spaces, but are ",
+          "position": {
+            "start": {
+              "line": 229,
+              "column": 1
+            },
+            "end": {
+              "line": 230,
+              "column": 29
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "not",
+              "position": {
+                "start": {
+                  "line": 230,
+                  "column": 30
+                },
+                "end": {
+                  "line": 230,
+                  "column": 33
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 230,
+              "column": 29
+            },
+            "end": {
+              "line": 230,
+              "column": 34
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " case sensitive:",
+          "position": {
+            "start": {
+              "line": 230,
+              "column": 34
+            },
+            "end": {
+              "line": 230,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 229,
+          "column": 1
+        },
+        "end": {
+          "line": 230,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "I start my morning with a cup of coffee and\n[The New York Times][NY Times].\n\n[ny times]: http://www.nytimes.com/",
+      "position": {
+        "start": {
+          "line": 232,
+          "column": 1
+        },
+        "end": {
+          "line": 235,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 237,
+              "column": 1
+            },
+            "end": {
+              "line": 237,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 237,
+          "column": 1
+        },
+        "end": {
+          "line": 237,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>I start my morning with a cup of coffee and\n<a href=\"http://www.nytimes.com/\">The New York Times</a>.</p>",
+      "position": {
+        "start": {
+          "line": 239,
+          "column": 1
+        },
+        "end": {
+          "line": 240,
+          "column": 66
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Images",
+          "position": {
+            "start": {
+              "line": 243,
+              "column": 5
+            },
+            "end": {
+              "line": 243,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 243,
+          "column": 1
+        },
+        "end": {
+          "line": 243,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image syntax is very much like link syntax.",
+          "position": {
+            "start": {
+              "line": 245,
+              "column": 1
+            },
+            "end": {
+              "line": 245,
+              "column": 44
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 245,
+          "column": 1
+        },
+        "end": {
+          "line": 245,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Inline (titles are optional):",
+          "position": {
+            "start": {
+              "line": 247,
+              "column": 1
+            },
+            "end": {
+              "line": 247,
+              "column": 30
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 247,
+          "column": 1
+        },
+        "end": {
+          "line": 247,
+          "column": 30
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "![alt text](/path/to/img.jpg \"Title\")",
+      "position": {
+        "start": {
+          "line": 249,
+          "column": 1
+        },
+        "end": {
+          "line": 249,
+          "column": 42
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Reference-style:",
+          "position": {
+            "start": {
+              "line": 251,
+              "column": 1
+            },
+            "end": {
+              "line": 251,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 251,
+          "column": 1
+        },
+        "end": {
+          "line": 251,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "![alt text][id]\n\n[id]: /path/to/img.jpg \"Title\"",
+      "position": {
+        "start": {
+          "line": 253,
+          "column": 1
+        },
+        "end": {
+          "line": 255,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Both of the above examples produce the same output:",
+          "position": {
+            "start": {
+              "line": 257,
+              "column": 1
+            },
+            "end": {
+              "line": 257,
+              "column": 52
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 257,
+          "column": 1
+        },
+        "end": {
+          "line": 257,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<img src=\"/path/to/img.jpg\" alt=\"alt text\" title=\"Title\" />",
+      "position": {
+        "start": {
+          "line": 259,
+          "column": 1
+        },
+        "end": {
+          "line": 259,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 3,
+      "children": [
+        {
+          "type": "text",
+          "value": "Code",
+          "position": {
+            "start": {
+              "line": 263,
+              "column": 5
+            },
+            "end": {
+              "line": 263,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 263,
+          "column": 1
+        },
+        "end": {
+          "line": 263,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In a regular paragraph, you can create code span by wrapping text in\nbacktick quotes. Any ampersands (",
+          "position": {
+            "start": {
+              "line": 265,
+              "column": 1
+            },
+            "end": {
+              "line": 266,
+              "column": 34
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 266,
+              "column": 34
+            },
+            "end": {
+              "line": 266,
+              "column": 37
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") and angle brackets (",
+          "position": {
+            "start": {
+              "line": 266,
+              "column": 37
+            },
+            "end": {
+              "line": 266,
+              "column": 59
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<",
+          "position": {
+            "start": {
+              "line": 266,
+              "column": 59
+            },
+            "end": {
+              "line": 266,
+              "column": 62
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " or\n",
+          "position": {
+            "start": {
+              "line": 266,
+              "column": 62
+            },
+            "end": {
+              "line": 267,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": ">",
+          "position": {
+            "start": {
+              "line": 267,
+              "column": 1
+            },
+            "end": {
+              "line": 267,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ") will automatically be translated into HTML entities. This makes\nit easy to use Markdown to write about HTML example code:",
+          "position": {
+            "start": {
+              "line": 267,
+              "column": 4
+            },
+            "end": {
+              "line": 268,
+              "column": 58
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 265,
+          "column": 1
+        },
+        "end": {
+          "line": 268,
+          "column": 58
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "I strongly recommend against using any `<blink>` tags.\n\nI wish SmartyPants used named entities like `&mdash;`\ninstead of decimal-encoded entites like `&#8212;`.",
+      "position": {
+        "start": {
+          "line": 270,
+          "column": 1
+        },
+        "end": {
+          "line": 273,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 275,
+              "column": 1
+            },
+            "end": {
+              "line": 275,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 275,
+          "column": 1
+        },
+        "end": {
+          "line": 275,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>I strongly recommend against using any\n<code>&lt;blink&gt;</code> tags.</p>\n\n<p>I wish SmartyPants used named entities like\n<code>&amp;mdash;</code> instead of decimal-encoded\nentites like <code>&amp;#8212;</code>.</p>",
+      "position": {
+        "start": {
+          "line": 277,
+          "column": 1
+        },
+        "end": {
+          "line": 282,
+          "column": 47
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "To specify an entire block of pre-formatted code, indent every line of\nthe block by 4 spaces or 1 tab. Just like with code spans, ",
+          "position": {
+            "start": {
+              "line": 285,
+              "column": 1
+            },
+            "end": {
+              "line": 286,
+              "column": 60
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 286,
+              "column": 60
+            },
+            "end": {
+              "line": 286,
+              "column": 63
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 286,
+              "column": 63
+            },
+            "end": {
+              "line": 286,
+              "column": 65
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "<",
+          "position": {
+            "start": {
+              "line": 286,
+              "column": 65
+            },
+            "end": {
+              "line": 286,
+              "column": 68
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\nand ",
+          "position": {
+            "start": {
+              "line": 286,
+              "column": 68
+            },
+            "end": {
+              "line": 287,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": ">",
+          "position": {
+            "start": {
+              "line": 287,
+              "column": 5
+            },
+            "end": {
+              "line": 287,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " characters will be escaped automatically.",
+          "position": {
+            "start": {
+              "line": 287,
+              "column": 8
+            },
+            "end": {
+              "line": 287,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 285,
+          "column": 1
+        },
+        "end": {
+          "line": 287,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown:",
+          "position": {
+            "start": {
+              "line": 289,
+              "column": 1
+            },
+            "end": {
+              "line": 289,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 289,
+          "column": 1
+        },
+        "end": {
+          "line": 289,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:\n\n    <blockquote>\n        <p>For example.</p>\n    </blockquote>",
+      "position": {
+        "start": {
+          "line": 291,
+          "column": 1
+        },
+        "end": {
+          "line": 296,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Output:",
+          "position": {
+            "start": {
+              "line": 298,
+              "column": 1
+            },
+            "end": {
+              "line": 298,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 298,
+          "column": 1
+        },
+        "end": {
+          "line": 298,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "<p>If you want your page to validate under XHTML 1.0 Strict,\nyou've got to put paragraph tags in your blockquotes:</p>\n\n<pre><code>&lt;blockquote&gt;\n    &lt;p&gt;For example.&lt;/p&gt;\n&lt;/blockquote&gt;\n</code></pre>",
+      "position": {
+        "start": {
+          "line": 300,
+          "column": 1
+        },
+        "end": {
+          "line": 306,
+          "column": 18
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 306,
+      "column": 18
+    }
+  }
+}
