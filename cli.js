@@ -20,10 +20,11 @@ var Command = commander.Command;
 var exists = fs.existsSync || path.existsSync;
 var resolve = path.resolve;
 var join = path.join;
-var read = fs.readFileSync;
-var write = fs.writeFileSync;
+var read = fs.readFile;
+var write = fs.writeFile;
 var stdout = process.stdout;
 var stdin = process.stdin;
+var stderr = process.stderr;
 
 /*
  * Constants.
@@ -39,6 +40,19 @@ var expextPipeIn = !stdin.isTTY;
 var seperator = path.sep;
 
 var command = Object.keys(pack.bin)[0];
+
+/**
+ * Fail with `message` to stderr and exit with `1`.
+ *
+ * Throwing an error in node@0.10 might cause an exit
+ * code of `8` for file operations.
+ *
+ * @param {Error|string} message
+ */
+function fail(message) {
+    stderr.write(message + '\n');
+    process.exit(1);
+}
 
 /**
  * Find root of node modules.
@@ -85,7 +99,13 @@ function find(pathlike) {
 
     debug('Using plugin `%s` at `%s`', pathlike, plugin);
 
-    return require(plugin);
+    try {
+        plugin = require(plugin);
+    } catch (exception) {
+        fail(exception);
+    }
+
+    return plugin;
 }
 
 /**
@@ -244,7 +264,11 @@ program.use.forEach(function (pathlike) {
 function run(value) {
     debug('Using options `%j`', program.setting);
 
-    var doc = parser.parse(value, program.setting);
+    try {
+        var doc = parser.parse(value, program.setting);
+    } catch (exception) {
+        fail(exception);
+    }
 
     if (program.ast) {
         doc = JSON.stringify(doc, null, 2);
@@ -255,7 +279,11 @@ function run(value) {
     if (program.output) {
         debug('Writing document to `%s`', program.output);
 
-        write(program.output, doc);
+        write(program.output, doc, function (exception) {
+            if (exception) {
+                fail(exception);
+            }
+        });
     } else {
         debug('Writing document to standard out');
 
@@ -281,13 +309,19 @@ if (program.settings) {
         (expextPipeIn && files.length) ||
         (!expextPipeIn && files.length !== 1)
     ) {
-        throw new Error('mdast currently expects one file.');
+        fail('mdast currently expects one file.');
     }
 
     if (files[0]) {
         debug('Reading from `%s` using encoding `%s`', files[0], ENCODING);
 
-        run(read(files[0], ENCODING));
+        read(files[0], ENCODING, function (exception, value) {
+            if (exception) {
+                fail(exception);
+            }
+
+            run(value);
+        });
     } else {
         stdin.resume();
         stdin.setEncoding(ENCODING);
