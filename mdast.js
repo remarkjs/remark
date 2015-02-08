@@ -117,13 +117,15 @@ var copy,
     raise,
     trimRight,
     trimRightLines,
-    clean;
+    clean,
+    validate;
 
 copy = utilities.copy;
 raise = utilities.raise;
 trimRight = utilities.trimRight;
 trimRightLines = utilities.trimRightLines;
 clean = utilities.clean;
+validate = utilities.validate;
 
 /*
  * Constants.
@@ -2207,13 +2209,6 @@ Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
  * @return {Object}
  */
 function parse(value, options, CustomParser) {
-    var gfm,
-        tables,
-        footnotes,
-        breaks,
-        pedantic,
-        yaml;
-
     if (typeof value !== 'string') {
         raise(value, 'value');
     }
@@ -2226,56 +2221,18 @@ function parse(value, options, CustomParser) {
         options = copy({}, options);
     }
 
-    gfm = options.gfm;
-    tables = options.tables;
-    footnotes = options.footnotes;
-    breaks = options.breaks;
-    pedantic = options.pedantic;
-    yaml = options.yaml;
+    validate.bool(options, 'gfm', true);
+    validate.bool(options, 'tables', options.gfm);
+    validate.bool(options, 'yaml', true);
+    validate.bool(options, 'footnotes', false);
+    validate.bool(options, 'breaks', false);
+    validate.bool(options, 'pedantic', false);
 
-    if (gfm === null || gfm === undefined) {
-        options.gfm = true;
-
-        gfm = options.gfm;
-    } else if (typeof gfm !== 'boolean') {
-        raise(gfm, 'options.gfm');
-    }
-
-    options.gfm = gfm;
-
-    if (tables === null || tables === undefined) {
-        options.tables = gfm;
-    } else if (typeof tables !== 'boolean') {
-        raise(tables, 'options.tables');
-    } else if (!gfm && tables) {
+    if (!options.gfm && options.tables) {
         throw new Error(
-            'Invalid value `' + tables + '` with ' +
-            '`gfm: ' + gfm + '` for `options.tables`'
+            'Invalid value `' + options.tables + '` with ' +
+            '`gfm: ' + options.gfm + '` for `options.tables`'
         );
-    }
-
-    if (footnotes === null || footnotes === undefined) {
-        options.footnotes = false;
-    } else if (typeof footnotes !== 'boolean') {
-        raise(footnotes, 'options.footnotes');
-    }
-
-    if (breaks === null || breaks === undefined) {
-        options.breaks = false;
-    } else if (typeof breaks !== 'boolean') {
-        raise(breaks, 'options.breaks');
-    }
-
-    if (pedantic === null || pedantic === undefined) {
-        options.pedantic = false;
-    } else if (typeof pedantic !== 'boolean') {
-        raise(pedantic, 'options.pedantic');
-    }
-
-    if (yaml === null || yaml === undefined) {
-        options.yaml = true;
-    } else if (typeof yaml !== 'boolean') {
-        raise(yaml, 'options.yaml');
     }
 
     return new (CustomParser || Parser)(options).parse(value);
@@ -2312,11 +2269,13 @@ utilities = require('./utilities.js');
 
 var copy,
     raise,
-    trimLeft;
+    trimLeft,
+    validate;
 
 copy = utilities.copy;
 raise = utilities.raise;
 trimLeft = utilities.trimLeft;
+validate = utilities.validate;
 
 /*
  * Expressions.
@@ -2546,20 +2505,7 @@ function pad(value, level) {
  */
 function Compiler(options) {
     var self,
-        bullet,
-        rule,
-        ruleSpaces,
-        ruleRepetition,
-        setext,
-        referenceLinks,
-        referenceFootnotes,
-        fences,
-        fence,
-        emphasis,
-        strong,
-        closeAtx,
-        looseTable,
-        spacedTable;
+        ruleRepetition;
 
     self = this;
 
@@ -2575,106 +2521,24 @@ function Compiler(options) {
         options = copy({}, options);
     }
 
-    bullet = options.bullet;
-    rule = options.rule;
-    ruleSpaces = options.ruleSpaces;
+    validate.map(options, 'bullet', LIST_BULLETS, DASH);
+    validate.map(options, 'rule', HORIZONTAL_RULE_BULLETS, ASTERISK);
+    validate.map(options, 'emphasis', EMPHASIS_MARKERS, UNDERSCORE);
+    validate.map(options, 'strong', EMPHASIS_MARKERS, ASTERISK);
+    validate.map(options, 'fence', FENCE_MARKERS, TICK);
+    validate.bool(options, 'ruleSpaces', true);
+    validate.bool(options, 'setext', false);
+    validate.bool(options, 'closeAtx', false);
+    validate.bool(options, 'looseTable', false);
+    validate.bool(options, 'spacedTable', true);
+    validate.bool(options, 'referenceLinks', false);
+    validate.bool(options, 'referenceFootnotes', true);
+    validate.bool(options, 'fences', false);
+    validate.num(options, 'ruleRepetition', 3);
+
     ruleRepetition = options.ruleRepetition;
-    setext = options.setext;
-    referenceLinks = options.referenceLinks;
-    referenceFootnotes = options.referenceFootnotes;
-    fences = options.fences;
-    fence = options.fence;
-    emphasis = options.emphasis;
-    strong = options.strong;
-    closeAtx = options.closeAtx;
-    looseTable = options.looseTable;
-    spacedTable = options.spacedTable;
 
-    if (bullet === null || bullet === undefined) {
-        options.bullet = DASH;
-    } else if (!(bullet in LIST_BULLETS)) {
-        raise(bullet, 'options.bullet');
-    }
-
-    if (rule === null || rule === undefined) {
-        options.rule = ASTERISK;
-    } else if (!(rule in HORIZONTAL_RULE_BULLETS)) {
-        raise(rule, 'options.rule');
-    }
-
-    if (ruleSpaces === null || ruleSpaces === undefined) {
-        options.ruleSpaces = true;
-    } else if (typeof ruleSpaces !== 'boolean') {
-        raise(ruleSpaces, 'options.ruleSpaces');
-    }
-
-    if (emphasis === null || emphasis === undefined) {
-        options.emphasis = UNDERSCORE;
-    } else if (!(emphasis in EMPHASIS_MARKERS)) {
-        raise(emphasis, 'options.emphasis');
-    }
-
-    if (strong === null || strong === undefined) {
-        options.strong = ASTERISK;
-    } else if (!(strong in EMPHASIS_MARKERS)) {
-        raise(strong, 'options.strong');
-    }
-
-    if (setext === null || setext === undefined) {
-        options.setext = false;
-    } else if (typeof setext !== 'boolean') {
-        raise(setext, 'options.setext');
-    }
-
-    if (closeAtx === null || closeAtx === undefined) {
-        options.closeAtx = false;
-    } else if (typeof closeAtx !== 'boolean') {
-        raise(closeAtx, 'options.closeAtx');
-    }
-
-    if (looseTable === null || looseTable === undefined) {
-        options.looseTable = false;
-    } else if (typeof looseTable !== 'boolean') {
-        raise(looseTable, 'options.looseTable');
-    }
-
-    if (spacedTable === null || spacedTable === undefined) {
-        options.spacedTable = true;
-    } else if (typeof spacedTable !== 'boolean') {
-        raise(spacedTable, 'options.spacedTable');
-    }
-
-    if (referenceLinks === null || referenceLinks === undefined) {
-        options.referenceLinks = false;
-    } else if (typeof referenceLinks !== 'boolean') {
-        raise(referenceLinks, 'options.referenceLinks');
-    }
-
-    if (referenceFootnotes === null || referenceFootnotes === undefined) {
-        options.referenceFootnotes = true;
-    } else if (typeof referenceFootnotes !== 'boolean') {
-        raise(referenceFootnotes, 'options.referenceFootnotes');
-    }
-
-    if (fences === null || fences === undefined) {
-        options.fences = false;
-    } else if (typeof fences !== 'boolean') {
-        raise(fences, 'options.fences');
-    }
-
-    if (fence === null || fence === undefined) {
-        options.fence = TICK;
-    } else if (!(fence in FENCE_MARKERS)) {
-        raise(fence, 'options.fence');
-    }
-
-    if (ruleRepetition === null || ruleRepetition === undefined) {
-        options.ruleRepetition = 3;
-    } else if (
-        typeof ruleRepetition !== 'number' ||
-        ruleRepetition < 3 ||
-        ruleRepetition !== ruleRepetition
-    ) {
+    if (ruleRepetition < 3 || ruleRepetition !== ruleRepetition) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
@@ -3507,6 +3371,82 @@ function raise(value, name) {
 }
 
 /**
+ * Validate a value to be boolean. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * a boolean.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {boolean} def
+ */
+function validateBoolean(obj, name, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (typeof value !== 'boolean') {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
+ * Validate a value to be boolean. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * a boolean.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {number} def
+ */
+function validateNumber(obj, name, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (typeof value !== 'number') {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
+ * Validate a value to be in `map`. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * not in `map`.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {Object} map
+ * @param {boolean} def
+ */
+function validateMap(obj, name, map, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (!(value in map)) {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
  * Remove final white space from `value`.
  *
  * @param {string} value
@@ -3561,6 +3501,16 @@ exports.copy = copy;
  */
 
 exports.raise = raise;
+
+/*
+ * Expose `validate`.
+ */
+
+exports.validate = {
+    'bool': validateBoolean,
+    'map': validateMap,
+    'num': validateNumber
+};
 
 /*
  * Expose `trim` methods.
