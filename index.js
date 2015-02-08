@@ -7,7 +7,6 @@
 var mdast = require('wooorm/mdast@0.3.0');
 var debounce = require('component/debounce@1.0.0');
 
-
 /*
  * DOM elements.
  */
@@ -34,6 +33,8 @@ function onchange() {
 
     $output.textContent = mdast.stringify(ast, options);
 }
+
+var debouncedChange = debounce(onchange, 200, true);
 
 function ontextchange($target, name) {
     options[name] = $target.value;
@@ -78,7 +79,7 @@ function onsettingchange(event) {
         options.tables = false;
     }
 
-    onchange();
+    debouncedChange();
 }
 
 onsettingchange.select = onselectchange;
@@ -96,7 +97,7 @@ function onanychange(event) {
  * Listen.
  */
 
-$input.addEventListener('input', debounce(onchange, 100, false));
+$input.addEventListener('input', debouncedChange);
 window.addEventListener('change', onanychange);
 
 /*
