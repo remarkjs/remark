@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.2.0');
+var mdast = require('wooorm/mdast@0.3.0');
 var debounce = require('component/debounce@1.0.0');
 
 
@@ -196,7 +196,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.2.0":2,"component/debounce@1.0.0":3}],
+}, {"wooorm/mdast@0.3.0":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -826,13 +826,15 @@ var copy,
     raise,
     trimRight,
     trimRightLines,
-    clean;
+    clean,
+    validate;
 
 copy = utilities.copy;
 raise = utilities.raise;
 trimRight = utilities.trimRight;
 trimRightLines = utilities.trimRightLines;
 clean = utilities.clean;
+validate = utilities.validate;
 
 /*
  * Constants.
@@ -1163,6 +1165,14 @@ gfmParagraph = new RegExp(
 var footnoteDefinition;
 
 footnoteDefinition = /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/;
+
+/*
+ * YAML front matter.
+ */
+
+var yamlFrontMatter;
+
+yamlFrontMatter = /^-{3}\n([\s\S]+?\n)?-{3}/;
 
 /*
  * Inline-Level Grammar.
@@ -1514,6 +1524,20 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
 
 tokenizeLinkDefinition.onlyAtTop = true;
 tokenizeLinkDefinition.notInBlockquote = true;
+
+/**
+ * Tokenise YAML front matter.
+ *
+ * @property {boolean} onlyAtStart
+ * @param {function(string)} eat
+ * @param {string} $0 - Whole front matter.
+ * @param {string} $1 - Content.
+ */
+function tokenizeYAMLFrontMatter(eat, $0, $1) {
+    eat($0)(this.renderRaw('yaml', $1 ? trimRightLines($1) : ''));
+}
+
+tokenizeYAMLFrontMatter.onlyAtStart = true;
 
 /**
  * Tokenise a footnote definition.
@@ -2305,6 +2329,7 @@ function Parser(options) {
 
     self.inLink = false;
     self.atTop = true;
+    self.atStart = true;
     self.inBlockquote = false;
 
     if (options.breaks) {
@@ -2338,6 +2363,10 @@ function Parser(options) {
     if (options.pedantic) {
         inlineRules.strong = pedanticStrong;
         inlineRules.emphasis = pedanticEmphasis;
+    }
+
+    if (options.yaml) {
+        blockRules.yamlFrontMatter = yamlFrontMatter;
     }
 
     if (options.footnotes) {
@@ -2474,6 +2503,7 @@ Parser.prototype.tokenizeOne = function (token) {
  */
 
 Parser.prototype.blockTokenizers = {
+    'yamlFrontMatter': tokenizeYAMLFrontMatter,
     'newline': tokenizeNewline,
     'code': tokenizeCode,
     'fences': tokenizeFences,
@@ -2496,6 +2526,7 @@ Parser.prototype.blockTokenizers = {
  */
 
 Parser.prototype.blockMethods = [
+    'yamlFrontMatter',
     'newline',
     'code',
     'fences',
@@ -2681,6 +2712,10 @@ function tokenizeFactory(type) {
                 children.push(token);
             }
 
+            if (self.atStart && tokens.length) {
+                self.exitStart();
+            }
+
             return token;
         }
 
@@ -2737,6 +2772,7 @@ function tokenizeFactory(type) {
                 method = tokenizers[name];
 
                 match = rules[name] &&
+                    (!method.onlyAtStart || self.atStart) &&
                     (!method.onlyAtTop || self.atTop) &&
                     (!method.notInBlockquote || !self.inBlockquote) &&
                     (!method.notInLink || !self.inLink) &&
@@ -2870,6 +2906,7 @@ function stateToggler(property, state) {
 
 Parser.prototype.enterLink = stateToggler('inLink', false);
 Parser.prototype.exitTop = stateToggler('atTop', true);
+Parser.prototype.exitStart = stateToggler('atStart', true);
 Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 
 /**
@@ -2881,12 +2918,6 @@ Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
  * @return {Object}
  */
 function parse(value, options, CustomParser) {
-    var gfm,
-        tables,
-        footnotes,
-        breaks,
-        pedantic;
-
     if (typeof value !== 'string') {
         raise(value, 'value');
     }
@@ -2899,49 +2930,18 @@ function parse(value, options, CustomParser) {
         options = copy({}, options);
     }
 
-    gfm = options.gfm;
-    tables = options.tables;
-    footnotes = options.footnotes;
-    breaks = options.breaks;
-    pedantic = options.pedantic;
+    validate.bool(options, 'gfm', true);
+    validate.bool(options, 'tables', options.gfm);
+    validate.bool(options, 'yaml', true);
+    validate.bool(options, 'footnotes', false);
+    validate.bool(options, 'breaks', false);
+    validate.bool(options, 'pedantic', false);
 
-    if (gfm === null || gfm === undefined) {
-        options.gfm = true;
-
-        gfm = options.gfm;
-    } else if (typeof gfm !== 'boolean') {
-        raise(gfm, 'options.gfm');
-    }
-
-    options.gfm = gfm;
-
-    if (tables === null || tables === undefined) {
-        options.tables = gfm;
-    } else if (typeof tables !== 'boolean') {
-        raise(tables, 'options.tables');
-    } else if (!gfm && tables) {
+    if (!options.gfm && options.tables) {
         throw new Error(
-            'Invalid value `' + tables + '` with ' +
-            '`gfm: ' + gfm + '` for `options.tables`'
+            'Invalid value `' + options.tables + '` with ' +
+            '`gfm: ' + options.gfm + '` for `options.tables`'
         );
-    }
-
-    if (footnotes === null || footnotes === undefined) {
-        options.footnotes = false;
-    } else if (typeof footnotes !== 'boolean') {
-        raise(footnotes, 'options.footnotes');
-    }
-
-    if (breaks === null || breaks === undefined) {
-        options.breaks = false;
-    } else if (typeof breaks !== 'boolean') {
-        raise(breaks, 'options.breaks');
-    }
-
-    if (pedantic === null || pedantic === undefined) {
-        options.pedantic = false;
-    } else if (typeof pedantic !== 'boolean') {
-        raise(pedantic, 'options.pedantic');
     }
 
     return new (CustomParser || Parser)(options).parse(value);
@@ -3358,6 +3358,82 @@ function raise(value, name) {
 }
 
 /**
+ * Validate a value to be boolean. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * a boolean.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {boolean} def
+ */
+function validateBoolean(obj, name, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (typeof value !== 'boolean') {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
+ * Validate a value to be boolean. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * a boolean.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {number} def
+ */
+function validateNumber(obj, name, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (typeof value !== 'number') {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
+ * Validate a value to be in `map`. Defaults to `def`.
+ * Raises an exception with `options.$name` when not
+ * not in `map`.
+ *
+ * @param {Object} obj
+ * @param {string} name
+ * @param {Object} map
+ * @param {boolean} def
+ */
+function validateMap(obj, name, map, def) {
+    var value;
+
+    value = obj[name];
+
+    if (value === null || value === undefined) {
+        value = def;
+    }
+
+    if (!(value in map)) {
+        raise(value, 'options.' + name);
+    }
+
+    obj[name] = value;
+}
+
+/**
  * Remove final white space from `value`.
  *
  * @param {string} value
@@ -3414,6 +3490,16 @@ exports.copy = copy;
 exports.raise = raise;
 
 /*
+ * Expose `validate`.
+ */
+
+exports.validate = {
+    'bool': validateBoolean,
+    'map': validateMap,
+    'num': validateNumber
+};
+
+/*
  * Expose `trim` methods.
  */
 
@@ -3447,11 +3533,13 @@ utilities = require('./utilities.js');
 
 var copy,
     raise,
-    trimLeft;
+    trimLeft,
+    validate;
 
 copy = utilities.copy;
 raise = utilities.raise;
 trimLeft = utilities.trimLeft;
+validate = utilities.validate;
 
 /*
  * Expressions.
@@ -3490,6 +3578,7 @@ var ANGLE_BRACKET,
     LINE,
     PARENTHESIS_OPEN,
     PARENTHESIS_CLOSE,
+    PIPE,
     PLUS,
     QUOTE_DOUBLE,
     SPACE,
@@ -3512,6 +3601,7 @@ HASH = '#';
 LINE = '\n';
 PARENTHESIS_OPEN = '(';
 PARENTHESIS_CLOSE = ')';
+PIPE = '|';
 PLUS = '+';
 QUOTE_DOUBLE = '"';
 SPACE = ' ';
@@ -3679,18 +3769,7 @@ function pad(value, level) {
  */
 function Compiler(options) {
     var self,
-        bullet,
-        rule,
-        ruleSpaces,
-        ruleRepetition,
-        setext,
-        referenceLinks,
-        referenceFootnotes,
-        fences,
-        fence,
-        emphasis,
-        strong,
-        closeAtx;
+        ruleRepetition;
 
     self = this;
 
@@ -3706,92 +3785,24 @@ function Compiler(options) {
         options = copy({}, options);
     }
 
-    bullet = options.bullet;
-    rule = options.rule;
-    ruleSpaces = options.ruleSpaces;
+    validate.map(options, 'bullet', LIST_BULLETS, DASH);
+    validate.map(options, 'rule', HORIZONTAL_RULE_BULLETS, ASTERISK);
+    validate.map(options, 'emphasis', EMPHASIS_MARKERS, UNDERSCORE);
+    validate.map(options, 'strong', EMPHASIS_MARKERS, ASTERISK);
+    validate.map(options, 'fence', FENCE_MARKERS, TICK);
+    validate.bool(options, 'ruleSpaces', true);
+    validate.bool(options, 'setext', false);
+    validate.bool(options, 'closeAtx', false);
+    validate.bool(options, 'looseTable', false);
+    validate.bool(options, 'spacedTable', true);
+    validate.bool(options, 'referenceLinks', false);
+    validate.bool(options, 'referenceFootnotes', true);
+    validate.bool(options, 'fences', false);
+    validate.num(options, 'ruleRepetition', 3);
+
     ruleRepetition = options.ruleRepetition;
-    setext = options.setext;
-    referenceLinks = options.referenceLinks;
-    referenceFootnotes = options.referenceFootnotes;
-    fences = options.fences;
-    fence = options.fence;
-    emphasis = options.emphasis;
-    strong = options.strong;
-    closeAtx = options.closeAtx;
 
-    if (bullet === null || bullet === undefined) {
-        options.bullet = DASH;
-    } else if (!(bullet in LIST_BULLETS)) {
-        raise(bullet, 'options.bullet');
-    }
-
-    if (rule === null || rule === undefined) {
-        options.rule = ASTERISK;
-    } else if (!(rule in HORIZONTAL_RULE_BULLETS)) {
-        raise(rule, 'options.rule');
-    }
-
-    if (ruleSpaces === null || ruleSpaces === undefined) {
-        options.ruleSpaces = true;
-    } else if (typeof ruleSpaces !== 'boolean') {
-        raise(ruleSpaces, 'options.ruleSpaces');
-    }
-
-    if (emphasis === null || emphasis === undefined) {
-        options.emphasis = UNDERSCORE;
-    } else if (!(emphasis in EMPHASIS_MARKERS)) {
-        raise(emphasis, 'options.emphasis');
-    }
-
-    if (strong === null || strong === undefined) {
-        options.strong = ASTERISK;
-    } else if (!(strong in EMPHASIS_MARKERS)) {
-        raise(strong, 'options.strong');
-    }
-
-    if (setext === null || setext === undefined) {
-        options.setext = false;
-    } else if (typeof setext !== 'boolean') {
-        raise(setext, 'options.setext');
-    }
-
-    if (closeAtx === null || closeAtx === undefined) {
-        options.closeAtx = false;
-    } else if (typeof closeAtx !== 'boolean') {
-        raise(closeAtx, 'options.closeAtx');
-    }
-
-    if (referenceLinks === null || referenceLinks === undefined) {
-        options.referenceLinks = false;
-    } else if (typeof referenceLinks !== 'boolean') {
-        raise(referenceLinks, 'options.referenceLinks');
-    }
-
-    if (referenceFootnotes === null || referenceFootnotes === undefined) {
-        options.referenceFootnotes = true;
-    } else if (typeof referenceFootnotes !== 'boolean') {
-        raise(referenceFootnotes, 'options.referenceFootnotes');
-    }
-
-    if (fences === null || fences === undefined) {
-        options.fences = false;
-    } else if (typeof fences !== 'boolean') {
-        raise(fences, 'options.fences');
-    }
-
-    if (fence === null || fence === undefined) {
-        options.fence = TICK;
-    } else if (!(fence in FENCE_MARKERS)) {
-        raise(fence, 'options.fence');
-    }
-
-    if (ruleRepetition === null || ruleRepetition === undefined) {
-        options.ruleRepetition = 3;
-    } else if (
-        typeof ruleRepetition !== 'number' ||
-        ruleRepetition < 3 ||
-        ruleRepetition !== ruleRepetition
-    ) {
+    if (ruleRepetition < 3 || ruleRepetition !== ruleRepetition) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
@@ -4192,6 +4203,22 @@ compilerPrototype.inlineCode = function (token) {
 };
 
 /**
+ * Stringify YAML front matter.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.yaml = function (token) {
+    var delimiter,
+        value;
+
+    delimiter = repeat(3, DASH);
+    value = token.value ? LINE + token.value : EMPTY;
+
+    return delimiter + value + LINE + delimiter;
+};
+
+/**
  * Stringify a code block.
  *
  * @param {Object} token
@@ -4217,7 +4244,7 @@ compilerPrototype.code = function (token) {
 
     fence = repeat(Math.max(fence, MINIMUM_CODE_FENCE_LENGTH), marker);
 
-    return fence + (token.lang || '') + LINE + value + LINE + fence;
+    return fence + (token.lang || EMPTY) + LINE + value + LINE + fence;
 };
 
 /**
@@ -4385,9 +4412,15 @@ compilerPrototype.table = function (token, parent, level) {
     var self,
         index,
         rows,
-        result;
+        result,
+        loose,
+        spaced,
+        start;
 
     self = this;
+
+    loose = self.options.looseTable;
+    spaced = self.options.spacedTable;
 
     rows = token.children;
 
@@ -4401,6 +4434,8 @@ compilerPrototype.table = function (token, parent, level) {
         );
     }
 
+    start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
+
     /*
      * There was a bug in markdown-table@0.3.0, fixed
      * in markdown-table@0.3.1, which modified the `align`
@@ -4408,7 +4443,10 @@ compilerPrototype.table = function (token, parent, level) {
      */
 
     return table(result, {
-        'align': token.align.concat()
+        'align': token.align.concat(),
+        'start': start,
+        'end': start.split(EMPTY).reverse().join(EMPTY),
+        'delimiter': spaced ? SPACE + PIPE + SPACE : PIPE
     });
 };
 
