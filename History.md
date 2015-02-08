@@ -1,3 +1,29 @@
+
+0.3.0 / 2015-02-08
+==================
+
+  * Add man docs for mdast(1)
+  * Refactor cli to use commander
+  * Refactor to simplify options validation
+  * Add support for YAML front matter
+  * Update mdast, eslint as dev-dependencies
+  * Replace file name underscores with dashes in `test/`
+  * Fix option casing in `cli.js`
+  * Merge branch 'feature/stringification/prefer-spaced-tables'
+  * Add docs for `options.spacedTable`
+  * Add support for `spacedTable`
+  * Add tests for incorrect `spacedTable` option
+  * Add fixtures for spaced table style
+  * Merge branch 'feature/stringification/prefer-loose-tables'
+  * Add docs for `options.looseTable`
+  * Add support for `looseTable`
+  * Add tests for incorrect `looseTable` option
+  * Add fixtures for loose table style
+  * Add auto inferring of input file if an output file is provided
+  * Add `fence` parse option to `Readme.md`
+  * Add `example.js` to `.npmignore`, `bower.json` ignore
+
+
 0.2.0 / 2015-02-02
 ==================
 
