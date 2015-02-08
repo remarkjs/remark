@@ -36,6 +36,7 @@
     "doc/",
     "lib/",
     "node_modules/",
+    "man/",
     "script/",
     "test/",
     "component.json",

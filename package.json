@@ -34,6 +34,9 @@
   "bin": {
     "mdast": "cli.js"
   },
+  "directories": {
+    "man": "./man"
+  },
   "devDependencies": {
     "browserify": "^8.0.0",
     "chalk": "^0.5.0",
@@ -43,6 +46,7 @@
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
     "jscs-jsdoc": "^0.4.0",
+    "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
     "mdast": "^0.2.0",
     "mdast-usage": "^0.1.0",
@@ -64,11 +68,12 @@
     "lint": "npm run lint-api && npm run lint-benchmark && npm run lint-cli && npm run lint-script && npm run lint-test && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
+    "build-man": "marked-man doc/mdast.1.md > man/mdast.1",
     "build-usage": "mdast --use mdast-usage Readme.md -o Readme.md",
     "build-options": "node script/build-options.js",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-usage && npm run build-options && npm run build-bundle",
+    "build": "npm run build-usage && npm run build-options && npm run build-man && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }

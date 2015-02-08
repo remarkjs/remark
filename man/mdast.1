@@ -1,0 +1,41 @@
+.TH "MDAST" "1" "February 2015" "" ""
+.SH "NAME"
+\fBmdast\fR \- Markdown parser and stringifier
+.SH SYNOPSIS
+.P
+  \fBmdast\fR [\fB\-a\fR, \fB\-\-ast\fR] [\fB\-o\fR, \fB\-\-output\fR \fIpath\fR] [\fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR] [\fB\-u\fR, \fB\-\-use\fR \fIplugins\fR] file
+  \fBmdast\fR \-\-settings
+.SH DESCRIPTION
+.P
+\fBmdast\fR is speedy Markdown parser (and stringifier) for multipurpose analysis in JavaScript\.  Node\.js and browser\.  Lots of tests\.  100% coverage\.
+.P
+Logs verbose debugging information when \fB$DEBUG\fR is set to \fB"mdast"\fR\|\.
+.P
+Options are as follows:
+.RS 0
+.IP \(bu 2
+\fB\-h\fR, \fB\-\-help\fR: Output usage information;
+.IP \(bu 2
+\fB\-V\fR, \fB\-\-version\fR: Output version number;
+.IP \(bu 2
+\fB\-o\fR, \fB\-\-output\fR \fIpath\fR: Specify output location;
+.IP \(bu 2
+\fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR: Specify settings;
+.IP \(bu 2
+\fB\-u\fR, \fB\-\-use\fR \fIplugins\fR: Use transform plugin(s);
+.IP \(bu 2
+\fB\-a\fR, \fB\-\-ast\fR: Output AST information;
+.IP \(bu 2
+\fB\-\-settings\fR: Output available settings\.
+
+.RE
+.SH DIAGNOSTICS
+.P
+\fBmdast\fR exits 0 on success, and 1 otherwise\.
+.SH BUGS
+.P
+<https://github\.com/wooorm/mdast/issues>
+.SH AUTHOR
+.P
+Written by Titus Wormer <tituswormer@gmail\.com>
+
