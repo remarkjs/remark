@@ -905,6 +905,90 @@ Yields:
 }
 ```
 
+### YAML
+
+Setting `yaml: true` (default: `true`) enables raw YAML front matter to be detected.
+
+The following document:
+
+    ---
+    title: YAML is Cool
+    ---
+
+    # YAML is Cool
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document, {
+  "yaml": true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "yaml",
+      "value": "title: YAML is Cool",
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "YAML is Cool",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 3
+            },
+            "end": {
+              "line": 5,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 15
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 15
+    }
+  }
+}
+```
+
 ## Stringify
 
 ### List Item Bullets

@@ -18,6 +18,7 @@ var optionsMap;
 
 optionsMap = {
     'gfm': 'gfm',
+    'yaml': 'yaml',
     'tables': 'tables',
     'footnotes': 'footnotes',
     'breaks': 'breaks',

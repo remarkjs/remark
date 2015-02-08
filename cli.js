@@ -128,6 +128,7 @@ function getOptions() {
         '',
         '-  `gfm` (boolean, default: true)',
         '-  `tables` (boolean, default: true)',
+        '-  `yaml` (boolean, default: true)',
         '-  `pedantic` (boolean, default: false)',
         '-  `breaks` (boolean, default: false)',
         '-  `footnotes` (boolean, default: false)',

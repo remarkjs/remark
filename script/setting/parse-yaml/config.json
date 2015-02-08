@@ -1,0 +1,6 @@
+{
+  "title": "YAML",
+  "parse": {
+    "yaml": true
+  }
+}

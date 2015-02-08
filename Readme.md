@@ -239,6 +239,7 @@ Parameters:
 - `options` (`Object`, `null`, `undefined`) — Optional options:
   - `gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
   - `tables` (`boolean`, default: `true`). See [Tables](doc/Options.md#tables);
+  - `yaml` (`boolean`, default: `true`). See [YAML](doc/Options.md#yaml);
   - `footnotes` (`boolean`, default: `false`). See [Footnotes](doc/Options.md#footnotes).
   - `pedantic` (`boolean`, default: `false`). See [Pedantic](doc/Options.md#pedantic);
   - `breaks` (`boolean`, default: `false`). See [Breaks](doc/Options.md#breaks);

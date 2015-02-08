@@ -122,6 +122,16 @@ interface InlineCode <: Text {
 }
 ```
 
+## YAML
+
+[**YAML**](#yaml) ([**Text**](#text)) can occur at the start of a document, and contains embedded YAML data.
+
+```idl
+interface YAML <: Text {
+    type: "yaml";
+}
+```
+
 ## HTML
 
 [**HTML**](#html) ([**Text**](#text)) contains embedded HTML.

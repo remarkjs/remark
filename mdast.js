@@ -456,6 +456,14 @@ var footnoteDefinition;
 footnoteDefinition = /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/;
 
 /*
+ * YAML front matter.
+ */
+
+var yamlFrontMatter;
+
+yamlFrontMatter = /^-{3}\n([\s\S]+?\n)?-{3}/;
+
+/*
  * Inline-Level Grammar.
  */
 
@@ -805,6 +813,20 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
 
 tokenizeLinkDefinition.onlyAtTop = true;
 tokenizeLinkDefinition.notInBlockquote = true;
+
+/**
+ * Tokenise YAML front matter.
+ *
+ * @property {boolean} onlyAtStart
+ * @param {function(string)} eat
+ * @param {string} $0 - Whole front matter.
+ * @param {string} $1 - Content.
+ */
+function tokenizeYAMLFrontMatter(eat, $0, $1) {
+    eat($0)(this.renderRaw('yaml', $1 ? trimRightLines($1) : ''));
+}
+
+tokenizeYAMLFrontMatter.onlyAtStart = true;
 
 /**
  * Tokenise a footnote definition.
@@ -1596,6 +1618,7 @@ function Parser(options) {
 
     self.inLink = false;
     self.atTop = true;
+    self.atStart = true;
     self.inBlockquote = false;
 
     if (options.breaks) {
@@ -1629,6 +1652,10 @@ function Parser(options) {
     if (options.pedantic) {
         inlineRules.strong = pedanticStrong;
         inlineRules.emphasis = pedanticEmphasis;
+    }
+
+    if (options.yaml) {
+        blockRules.yamlFrontMatter = yamlFrontMatter;
     }
 
     if (options.footnotes) {
@@ -1765,6 +1792,7 @@ Parser.prototype.tokenizeOne = function (token) {
  */
 
 Parser.prototype.blockTokenizers = {
+    'yamlFrontMatter': tokenizeYAMLFrontMatter,
     'newline': tokenizeNewline,
     'code': tokenizeCode,
     'fences': tokenizeFences,
@@ -1787,6 +1815,7 @@ Parser.prototype.blockTokenizers = {
  */
 
 Parser.prototype.blockMethods = [
+    'yamlFrontMatter',
     'newline',
     'code',
     'fences',
@@ -1972,6 +2001,10 @@ function tokenizeFactory(type) {
                 children.push(token);
             }
 
+            if (self.atStart && tokens.length) {
+                self.exitStart();
+            }
+
             return token;
         }
 
@@ -2028,6 +2061,7 @@ function tokenizeFactory(type) {
                 method = tokenizers[name];
 
                 match = rules[name] &&
+                    (!method.onlyAtStart || self.atStart) &&
                     (!method.onlyAtTop || self.atTop) &&
                     (!method.notInBlockquote || !self.inBlockquote) &&
                     (!method.notInLink || !self.inLink) &&
@@ -2161,6 +2195,7 @@ function stateToggler(property, state) {
 
 Parser.prototype.enterLink = stateToggler('inLink', false);
 Parser.prototype.exitTop = stateToggler('atTop', true);
+Parser.prototype.exitStart = stateToggler('atStart', true);
 Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 
 /**
@@ -2176,7 +2211,8 @@ function parse(value, options, CustomParser) {
         tables,
         footnotes,
         breaks,
-        pedantic;
+        pedantic,
+        yaml;
 
     if (typeof value !== 'string') {
         raise(value, 'value');
@@ -2195,6 +2231,7 @@ function parse(value, options, CustomParser) {
     footnotes = options.footnotes;
     breaks = options.breaks;
     pedantic = options.pedantic;
+    yaml = options.yaml;
 
     if (gfm === null || gfm === undefined) {
         options.gfm = true;
@@ -2233,6 +2270,12 @@ function parse(value, options, CustomParser) {
         options.pedantic = false;
     } else if (typeof pedantic !== 'boolean') {
         raise(pedantic, 'options.pedantic');
+    }
+
+    if (yaml === null || yaml === undefined) {
+        options.yaml = true;
+    } else if (typeof yaml !== 'boolean') {
+        raise(yaml, 'options.yaml');
     }
 
     return new (CustomParser || Parser)(options).parse(value);
@@ -3029,6 +3072,22 @@ compilerPrototype.inlineCode = function (token) {
     }
 
     return start + token.value + end;
+};
+
+/**
+ * Stringify YAML front matter.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.yaml = function (token) {
+    var delimiter,
+        value;
+
+    delimiter = repeat(3, DASH);
+    value = token.value ? LINE + token.value : EMPTY;
+
+    return delimiter + value + LINE + delimiter;
 };
 
 /**

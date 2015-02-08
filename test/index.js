@@ -106,6 +106,14 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         }, /options.pedantic/);
     });
 
+    it('should throw when `options.yaml` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'yaml': [true]
+            });
+        }, /options.yaml/);
+    });
+
     it('should accept a `CustomParser` as a third argument', function () {
         var isInvoked;
 
@@ -543,7 +551,12 @@ validateToken = function (context) {
         return;
     }
 
-    if (type === 'inlineCode') {
+    if (
+        type === 'text' ||
+        type === 'escape' ||
+        type === 'inlineCode' ||
+        type === 'yaml'
+    ) {
         assert(keys === 2);
         assert('value' in context);
 
@@ -572,13 +585,6 @@ validateToken = function (context) {
         assert('children' in context);
         assert(typeof context.ordered === 'boolean');
         assert(keys === 3);
-
-        return;
-    }
-
-    if (type === 'text' || type === 'escape') {
-        assert(keys === 2);
-        assert('value' in context);
 
         return;
     }
