@@ -5,159 +5,87 @@
  * Dependencies.
  */
 
-var mdast,
-    fs,
-    path,
-    pack;
-
-mdast = require('./');
-fs = require('fs');
-path = require('path');
-pack = require('./package.json');
+var path = require('path');
+var fs = require('fs');
+var commander = require('commander');
+var debug = require('debug')('mdast');
+var mdast = require('./');
+var pack = require('./package.json');
 
 /*
- * Cached methods.
+ * Shortcuts.
  */
 
-var resolve,
-    exists;
-
-resolve = path.resolve;
-exists = fs.existsSync;
+var Command = commander.Command;
+var exists = fs.existsSync || path.existsSync;
+var resolve = path.resolve;
+var join = path.join;
+var read = fs.readFileSync;
+var write = fs.writeFileSync;
+var stdout = process.stdout;
+var stdin = process.stdin;
 
 /*
- * Current working directory.
+ * Constants.
  */
 
-var cwd;
+var SPLITTER = / *[,;] */g;
+var DELIMITER = / *: */g;
 
-cwd = process.cwd();
+var ENCODING = 'utf-8';
 
-/*
- * Detect if a value is expected to be piped in.
- */
+var cwd = process.cwd();
+var expextPipeIn = !stdin.isTTY;
+var seperator = path.sep;
 
-var expextPipeIn;
-
-expextPipeIn = !process.stdin.isTTY;
-
-/*
- * Arguments.
- */
-
-var argv;
-
-argv = process.argv.slice(2);
-
-/*
- * Command.
- */
-
-var command;
-
-command = Object.keys(pack.bin)[0];
+var command = Object.keys(pack.bin)[0];
 
 /**
- * Help.
+ * Find root of node modules.
  *
  * @return {string}
  */
-function help() {
-    return [
-        '',
-        'Usage: ' + command + ' [options] file',
-        '',
-        pack.description,
-        '',
-        'Options:',
-        '',
-        '  -h, --help            output usage information',
-        '  -v, --version         output version number',
-        '  -a, --ast             output AST information',
-        '      --options         output available settings',
-        '  -o, --output <path>   specify output location',
-        '  -O, --option <option> specify settings',
-        '  -u, --use    <plugin> specify plugins',
-        '',
-        'Usage:',
-        '',
-        '# Note that bash does not allow reading and writing to the',
-        '# same file through pipes',
-        '',
-        '# Pass `Readme.md` through mdast',
-        '$ ' + command + ' Readme.md -o Readme.md',
-        '',
-        '# Pass stdin through mdast, with options, to stdout',
-        '$ cat Readme.md | ' + command + ' --option ' +
-            '"setext, bullet: *" > Readme-new.md',
-        '',
-        '# Use an npm module',
-        '$ npm install some-plugin',
-        '$ ' + command + ' --use some-plugin History.md > History-new.md'
-    ].join('\n  ') + '\n';
-}
+function findRoot() {
+    var parts = cwd.split(seperator);
+    var location = cwd;
 
-/**
- * Fail w/ `exception`.
- *
- * @param {null|string|Error} exception
- */
-function fail(exception) {
-    if (!exception) {
-        exception = help();
+    while (!exists(join(location, 'package.json')) && parts.length > 1) {
+        parts.pop();
+        location = parts.join(seperator);
     }
 
-    process.stderr.write((exception.stack || exception) + '\n');
-
-    process.exit(1);
+    return parts.length ? location : cwd;
 }
 
-/**
- * Log available options.
- *
- * @return {string}
+/*
+ * Root.
  */
-function getOptions() {
-    return [
-        '',
-        '# Options',
-        '',
-        'Both camel- and dash-cased options are allowed.',
-        '',
-        '## [Parse](https://github.com/wooorm/mdast#mdastparsevalue-options)',
-        '',
-        '-  `gfm` (boolean, default: true)',
-        '-  `tables` (boolean, default: true)',
-        '-  `yaml` (boolean, default: true)',
-        '-  `pedantic` (boolean, default: false)',
-        '-  `breaks` (boolean, default: false)',
-        '-  `footnotes` (boolean, default: false)',
-        '',
-        '## [Stringify](https://github.com/wooorm/mdast#' +
-            'mdaststringifyast-options)',
-        '',
-        '-  `setext` (boolean, default: false)',
-        '-  `close-atx` (boolean, default: false)',
-        '-  `loose-table` (boolean, default: false)',
-        '-  `spaced-table` (boolean, default: true)',
-        '-  `reference-links` (boolean, default: false)',
-        '-  `reference-footnotes` (boolean, default: true)',
-        '-  `fences` (boolean, default: false)',
-        '-  `bullet` ("-", "*", or "+", default: "-")',
-        '-  `rule` ("-", "*", or "_", default: "*")',
-        '-  `rule-repetition` (number, default: 3)',
-        '-  `rule-spaces` (boolean, default: false)',
-        '-  `strong` ("_", or "*", default: "*")',
-        '-  `emphasis` ("_", or "*", default: "_")',
-        '',
-        'Settings are specified as follows:',
-        '',
-        '```',
-        '$ ' + command + ' --option "some-option:some-value"',
-        '# Multiple options:',
-        '$ ' + command + ' --option "emphasis:*,strong:_"',
-        '```'
-    ].join('\n  ') + '\n';
+
+var root = findRoot();
+
+/**
+ * Find a plugin.
+ *
+ * @param {string} pathlike
+ * @return {Object}
+ */
+function find(pathlike) {
+    var local = resolve(root, pathlike);
+    var npm = resolve(root, 'node_modules', pathlike);
+    var current = resolve(cwd, 'node_modules', pathlike);
+    var plugin;
+
+    if (exists(local) || exists(local + '.js')) {
+        plugin = local;
+    } else if (exists(npm)) {
+        plugin = npm;
+    } else if (exists(current)) {
+        plugin = current;
+    }
+
+    debug('Using plugin `%s` at `%s`', pathlike, plugin);
+
+    return require(plugin);
 }
 
 /**
@@ -172,190 +100,197 @@ function camelCase(value) {
     });
 }
 
+/**
+ * Parse settings into an object.
+ *
+ * @param {string} flags
+ * @param {Object} cache
+ * @return {Object}
+ */
+function settings(flags, cache) {
+    flags.split(SPLITTER).forEach(function (flag) {
+        var value;
+
+        flag = flag.split(DELIMITER);
+
+        value = flag[1];
+
+        if (value === 'true' || value === undefined) {
+            value = true;
+        } else if (value === 'false') {
+            value = false;
+        } else if (Number(value) === Number(value)) {
+            value = Number(value);
+        }
+
+        cache[camelCase(flag[0])] = value;
+    });
+
+    return cache;
+}
+
+/**
+ * Parse plugins into a list.
+ *
+ * @param {string} ware
+ * @param {Array.<string>} cache
+ * @return {Array.<string>}
+ */
+function plugins(ware, cache) {
+    return cache.concat(ware.split(SPLITTER));
+}
+
+/**
+ * Command.
+ */
+
+var program = new Command(pack.name)
+    .version(pack.version)
+    .description(pack.description)
+    .usage('[options] file')
+    .option('-o, --output <path>', 'specify output location', null)
+    .option('-s, --setting <settings>', 'specify settings', settings, {})
+    .option('-u, --use <plugins>', 'use transform plugin(s)', plugins, [])
+    .option('-a, --ast', 'output AST information', false)
+    .option('--settings', 'output available settings', false);
+
+/**
+ * Help.
+ */
+
+program.on('--help', function () {
+    console.log('  # Note that bash does not allow reading and writing');
+    console.log('  # to the same file through pipes');
+    console.log();
+    console.log('  Usage:');
+    console.log();
+    console.log('  # Pass `Readme.md` through mdast');
+    console.log('  $ ' + command + ' Readme.md -o Readme.md');
+    console.log();
+    console.log('  # Pass stdin through mdast, with settings, to stdout');
+    console.log('  $ cat Readme.md | ' + command + ' --setting ' +
+        '"setext, bullet: *" > Readme-new.md');
+    console.log();
+    console.log('  # use a plugin');
+    console.log('  $ npm install mdast-toc');
+    console.log('  $ ' + command + ' --use mdast-toc -o Readme.md');
+    console.log();
+});
+
+program.on('--settings', function () {
+    console.log();
+    console.log('  # Settings');
+    console.log();
+    console.log('  Both camel- and dash-cased settings are allowed.');
+    console.log();
+    console.log('  ## [Parse](https://github.com/wooorm/mdast#' +
+        'mdastparsevalue-options)');
+    console.log();
+    console.log('  -  `gfm` (boolean, default: true)');
+    console.log('  -  `tables` (boolean, default: true)');
+    console.log('  -  `yaml` (boolean, default: true)');
+    console.log('  -  `pedantic` (boolean, default: false)');
+    console.log('  -  `breaks` (boolean, default: false)');
+    console.log('  -  `footnotes` (boolean, default: false)');
+    console.log();
+    console.log('  ## [Stringify](https://github.com/wooorm/mdast#' +
+        'mdaststringifyast-options)');
+    console.log();
+    console.log('  -  `setext` (boolean, default: false)');
+    console.log('  -  `close-atx` (boolean, default: false)');
+    console.log('  -  `loose-table` (boolean, default: false)');
+    console.log('  -  `spaced-table` (boolean, default: true)');
+    console.log('  -  `reference-links` (boolean, default: false)');
+    console.log('  -  `reference-footnotes` (boolean, default: true)');
+    console.log('  -  `fences` (boolean, default: false)');
+    console.log('  -  `bullet` ("-", "*", or "+", default: "-")');
+    console.log('  -  `rule` ("-", "*", or "_", default: "*")');
+    console.log('  -  `rule-repetition` (number, default: 3)');
+    console.log('  -  `rule-spaces` (boolean, default: false)');
+    console.log('  -  `strong` ("_", or "*", default: "*")');
+    console.log('  -  `emphasis` ("_", or "*", default: "_")');
+    console.log();
+    console.log('  Settings are specified as follows:');
+    console.log();
+    console.log('    $ ' + command + ' --setting "name:value"');
+    console.log();
+    console.log('  Multiple settings:');
+    console.log();
+    console.log('    $ ' + command + ' --setting "emphasis:*,strong:_"');
+    console.log();
+});
+
+program.parse(process.argv);
+
 /*
  * Program.
  */
 
-var index,
-    expectOption,
-    expectPlugin,
-    expectOutput,
-    expectAST,
-    plugins,
-    options,
-    output,
-    files;
+debug('Using root: `%s`', root);
 
-plugins = [];
+var parser = mdast;
+
+program.use.forEach(function (pathlike) {
+    parser = parser.use(find(pathlike));
+});
 
 /**
- * Run the program.
+ * Parse `value` with `parser`. When `ast` is set,
+ * pretty prints JSON, otherwise stringifies with
+ * `parser`. Either write to `output` or to stdout.
  *
  * @param {string} value
  */
-function program(value) {
-    var doc,
-        parser,
-        local,
-    fn;
+function run(value) {
+    debug('Using options `%j`', program.setting);
 
-    if (!value.length) {
-        fail();
+    var doc = parser.parse(value, program.setting);
+
+    if (program.ast) {
+        doc = JSON.stringify(doc, null, 2);
     } else {
-        parser = mdast;
+        doc = parser.stringify(doc, program.setting);
+    }
 
-        plugins.forEach(function (plugin) {
-            local = resolve(cwd, plugin);
+    if (program.output) {
+        debug('Writing document to `%s`', program.output);
 
-            if (exists(local) || exists(local + '.js')) {
-                fn = require(local);
-            } else {
-                try {
-                    fn = require(resolve(cwd, 'node_modules', plugin));
-                } catch (exception) {
-                    fail(exception);
-                }
-            }
+        write(program.output, doc);
+    } else {
+        debug('Writing document to standard out');
 
-            parser = parser.use(fn);
-        });
-
-        doc = parser.parse(value, options);
-
-        if (expectAST) {
-            doc = JSON.stringify(doc, null, 2);
-        } else {
-            doc = mdast.stringify(doc, options);
-        }
-
-        if (output) {
-            fs.writeFile(output, doc, function (exception) {
-                if (exception) {
-                    fail(exception);
-                }
-            });
-        } else {
-            process.stdout.write(doc);
-        }
+        stdout.write(doc);
     }
 }
 
-if (
-    argv.indexOf('--help') !== -1 ||
-    argv.indexOf('-h') !== -1
-) {
-    console.log(help());
-} else if (
-    argv.indexOf('--version') !== -1 ||
-    argv.indexOf('-v') !== -1
-) {
-    console.log(pack.version);
-} else if (
-    argv.indexOf('--options') !== -1
-) {
-    console.log(getOptions());
+var files = program.args;
+
+if (program.settings) {
+    program.emit('--settings');
 } else {
-    index = argv.indexOf('--ast');
+    if (!expextPipeIn && !files.length) {
+        if (program.output) {
+            debug('Using output `%s` as input', program.output);
 
-    if (index === -1) {
-        index = argv.indexOf('-a');
-    }
-
-    if (index !== -1) {
-        expectAST = true;
-        argv.splice(index, 1);
-    }
-
-    files = [];
-    options = {};
-
-    argv.forEach(function (argument) {
-        if (argument === '--option' || argument === '-O') {
-            expectOption = true;
-        } else if (argument === '--use' || argument === '-u') {
-            expectPlugin = true;
-        } else if (argument === '--output' || argument === '-o') {
-            expectOutput = true;
-        } else if (expectPlugin) {
-            argument.split(',').forEach(function (plugin) {
-                plugins.push(plugin);
-            });
-
-            expectPlugin = false;
-        } else if (expectOutput) {
-            output = argument;
-
-            expectOutput = false;
-        } else if (expectOption) {
-            argument
-                .split(',')
-                .map(function (value) {
-                    var values;
-
-                    values = value.split(':');
-
-                    return [
-                        camelCase(values.shift().trim()),
-                        values.join(':').trim()
-                    ];
-                })
-                .map(function (values) {
-                    var value;
-
-                    value = values[1];
-
-                    if (value === 'true') {
-                        value = true;
-                    } else if (value === 'false') {
-                        value = false;
-                    } else if (value === '') {
-                        value = true;
-                    } else if (Number(value) === Number(value)) {
-                        value = Number(value);
-                    }
-
-                    values[1] = value;
-
-                    return values;
-                })
-                .forEach(function (values) {
-                    options[values[0]] = values[1];
-                });
-
-            expectOption = false;
+            files.push(program.output);
         } else {
-            files.push(argument);
-        }
-    });
-
-    if (expectOption || expectPlugin || expectOutput) {
-        fail();
-    } else if (!expextPipeIn && !files.length) {
-        if (output) {
-            files.push(output);
-        } else {
-            fail();
+            program.outputHelp();
+            process.exit(1);
         }
     } else if (
         (expextPipeIn && files.length) ||
         (!expextPipeIn && files.length !== 1)
     ) {
-        fail('mdast currently expects one file.');
+        throw new Error('mdast currently expects one file.');
     }
 
     if (files[0]) {
-        fs.readFile(files[0], function (exception, content) {
-            if (exception) {
-                fail(exception);
-            }
+        debug('Reading from `%s` using encoding `%s`', files[0], ENCODING);
 
-            program(content.toString());
-        });
+        run(read(files[0], ENCODING));
     } else {
-        process.stdin.resume();
-
-        process.stdin.setEncoding('utf8');
-
-        process.stdin.on('data', program);
+        stdin.resume();
+        stdin.setEncoding(ENCODING);
+        stdin.on('data', run);
     }
 }

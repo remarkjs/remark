@@ -120,9 +120,39 @@ it "Should fail on missing value for \`--use\`"
     ./cli.js Readme.md --use > /dev/null 2>&1 || code=$?
     assert $code 1
 
-it "Should accept \`--options\`"
+it "Should accept \`-s <settings>\`"
     code=0
-    ./cli.js --options > /dev/null 2>&1 || code=$?
+    ./cli.js -s yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--setting <settings>\`"
+    code=0
+    ./cli.js --setting yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on \`-s <invalid-settings>\`"
+    code=0
+    ./cli.js -s yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--setting <invalid-settings>\`"
+    code=0
+    ./cli.js --setting yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`-s\`"
+    code=0
+    ./cli.js Readme.md -s > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`--setting\`"
+    code=0
+    ./cli.js Readme.md --setting > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should accept \`--settings\`"
+    code=0
+    ./cli.js --settings > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--help\`"
@@ -140,11 +170,19 @@ it "Should accept \`--version\`"
     ./cli.js --version > /dev/null 2>&1 || code=$?
     assert $code 0
 
-it "Should accept \`-v\`"
+it "Should accept \`-V\`"
     code=0
-    ./cli.js -v > /dev/null 2>&1 || code=$?
+    ./cli.js -V > /dev/null 2>&1 || code=$?
     assert $code 0
 
-printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n";
+it "Should fail on unknown short options"
+    code=0
+    ./cli.js -v > /dev/null 2>&1 || code=$?
+    assert $code 1
 
-exit 0
+it "Should fail on unknown long options"
+    code=0
+    ./cli.js --verbose > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n";
