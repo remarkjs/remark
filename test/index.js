@@ -720,27 +720,29 @@ describe('fixtures', function () {
             }
         });
 
-        it('should stringify `' + fixture.name + '` correctly', function () {
-            var generatedNode;
+        if (!fixture.options || fixture.options.output !== false) {
+            it('should stringify `' + fixture.name + '`', function () {
+                var generatedNode;
 
-            markdown = mdast.stringify(node, fixture.options);
-            generatedNode = mdast.parse(markdown, fixture.options);
+                markdown = mdast.stringify(node, fixture.options);
+                generatedNode = mdast.parse(markdown, fixture.options);
 
-            try {
-                assert.deepEqual(
-                    clone(node, true), clone(generatedNode, true)
-                );
-            } catch (error) {
-                /* istanbul ignore next */
-                logDifference(
-                    stringify(clone(node, true), null, INDENT),
-                    stringify(clone(generatedNode, true), null, INDENT)
-                );
+                try {
+                    assert.deepEqual(
+                        clone(node, true), clone(generatedNode, true)
+                    );
+                } catch (error) {
+                    /* istanbul ignore next */
+                    logDifference(
+                        stringify(clone(node, true), null, INDENT),
+                        stringify(clone(generatedNode, true), null, INDENT)
+                    );
 
-                /* istanbul ignore next */
-                throw error;
-            }
-        });
+                    /* istanbul ignore next */
+                    throw error;
+                }
+            });
+        }
 
         if (fixture.output) {
             it('should stringify `' + fixture.name + '` to its input',
