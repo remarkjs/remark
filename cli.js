@@ -262,10 +262,11 @@ program.use.forEach(function (pathlike) {
  * @param {string} value
  */
 function run(value) {
+    var doc;
     debug('Using options `%j`', program.setting);
 
     try {
-        var doc = parser.parse(value, program.setting);
+        doc = parser.parse(value, program.setting);
     } catch (exception) {
         fail(exception);
     }

@@ -4,19 +4,14 @@
  * Dependencies.
  */
 
-var fs,
-    mdast;
-
-fs = require('fs');
-mdast = require('../');
+var fs = require('fs');
+var mdast = require('..');
 
 /*
  * Location for options.
  */
 
-var BASE;
-
-BASE = 'script/setting';
+var BASE = 'script/setting';
 
 /*
  * Get sections.
@@ -59,9 +54,7 @@ sections = sections.map(function (section) {
  */
 
 sections = sections.map(function (section) {
-    var options;
-
-    options = JSON.parse(section.options);
+    var options = JSON.parse(section.options);
 
     section.title = options.title;
     section.ast = mdast.parse(section.fixture, options.parse);
@@ -76,11 +69,8 @@ sections = sections.map(function (section) {
  * Detect if the option is for `parse` or `stringify`.
  */
 
-var parse,
-    stringify;
-
-parse = [];
-stringify = [];
+var parse = [];
+var stringify = [];
 
 sections.forEach(function (section) {
     (section.parseOnly ? parse : stringify).push(section);

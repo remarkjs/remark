@@ -4,11 +4,16 @@
  * Dependencies.
  */
 
-var fs,
-    path;
+var fs = require('fs');
+var path = require('path');
 
-fs = require('fs');
-path = require('path');
+/*
+ * Methods.
+ */
+
+var read = fs.readFileSync;
+var stat = fs.statSync;
+var join = path.join;
 
 /*
  * Options.
@@ -46,28 +51,22 @@ optionsMap = {
 
 var fixtures;
 
-fixtures = fs.readdirSync(path.join(__dirname, 'input'))
+fixtures = fs.readdirSync(join(__dirname, 'input'))
     .filter(function (filepath) {
         return filepath.indexOf('.') !== 0;
     }).map(function (filepath) {
-        var options,
-            filename,
-            input,
-            tree,
-            output,
-            flag,
-            option,
-            value,
-            index,
-            size;
-
-        filename = filepath.split('.');
-        filename.pop();
+        var options = {};
+        var filename = filepath.split('.').slice(0, -1);
+        var name = filename.join('.');
+        var input = read(join(__dirname, 'input', filepath), 'utf-8');
+        var tree = read(join(__dirname, 'tree', name + '.json'), 'utf-8');
+        var size = stat(join(__dirname, 'input', filepath)).size;
+        var index = 0;
+        var flag;
+        var option;
+        var value;
 
         if (filename.length > 1) {
-            index = 0;
-            options = {};
-
             while (filename[++index]) {
                 flag = filename[index];
 
@@ -92,27 +91,13 @@ fixtures = fs.readdirSync(path.join(__dirname, 'input'))
             }
         }
 
-        filename = filename.join('.');
-
-        input = fs.readFileSync(
-            path.join(__dirname, 'input', filepath), 'utf-8'
-        );
-
-        tree = fs.readFileSync(
-            path.join(__dirname, 'tree', filename + '.json'), 'utf-8'
-        );
-
-        output = Boolean(options && options.output);
-
-        size = fs.statSync(path.join(__dirname, 'input', filepath)).size;
-
         return {
             'input': input,
             'tree': tree,
-            'output': output,
+            'output': Boolean(options && options.output),
             'options': options,
             'size': size,
-            'name': filename
+            'name': name
         };
     }
 );

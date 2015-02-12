@@ -4,19 +4,14 @@
  * Dependencies..
  */
 
-var Ware;
-
-Ware = require('ware');
+var Ware = require('ware');
 
 /*
  * Components.
  */
 
-var parse,
-    stringify;
-
-parse = require('./lib/parse.js');
-stringify = require('./lib/stringify.js');
+var parse = require('./lib/parse.js');
+var stringify = require('./lib/stringify.js');
 
 /**
  * Throws if passed an exception.
@@ -49,9 +44,7 @@ function MDAST() {
  * @return {Root}
  */
 function runParse(_, options) {
-    var node;
-
-    node = parse.apply(parse, arguments);
+    var node = parse.apply(parse, arguments);
 
     this.ware.run(node, options, fail);
 
@@ -64,9 +57,7 @@ function runParse(_, options) {
  * @return {MDAST}
  */
 function use(plugin) {
-    var self;
-
-    self = this;
+    var self = this;
 
     if (!(self instanceof MDAST)) {
         self = new MDAST();

@@ -4,25 +4,21 @@
  * Dependencies.
  */
 
-var mdast,
-    fixtures;
+var mdast = require('./');
+var fixtures = require('./test/fixtures.js');
 
-mdast = require('./');
-fixtures = require('./test/fixtures.js');
-
-/*
- * Calculate the fixture size in MB.
+/**
+ * Sum fixture objects.
+ *
+ * @param {number} a
+ * @param {Object} b
+ * @return {number}
  */
+function sum(a, b) {
+    return a + b.size;
+}
 
-var fixtureSize;
-
-fixtureSize = 0;
-
-fixtures.forEach(function (fixture) {
-    fixtureSize += fixture.size;
-});
-
-fixtureSize = Math.round(fixtureSize / 1024);
+var fixtureSize = fixtures.reduce(sum, 0) / 1024;
 
 /*
  * Benchmarks.
