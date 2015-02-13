@@ -62,18 +62,19 @@
     "lint-api": "eslint --env browser index.js lib/parse.js lib/stringify.js lib/utilities.js",
     "lint-benchmark": "eslint --global suite,set,bench benchmark.js",
     "lint-cli": "eslint --rule no-process-exit:false cli.js",
-    "lint-script": "eslint script/build-options.js example.js",
+    "lint-script": "eslint example.js script/build-options.js script/build-expressions.js",
     "lint-test": "eslint --env mocha test/index.js test/fixtures.js test/plugin.js",
     "lint-style": "jscs --reporter inline index.js benchmark.js cli.js example.js script/build-options.js lib/parse.js lib/stringify.js lib/utilities.js test/index.js test/fixtures.js test/plugin.js",
     "lint": "npm run lint-api && npm run lint-benchmark && npm run lint-cli && npm run lint-script && npm run lint-test && npm run lint-style",
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
     "build-man": "marked-man doc/mdast.1.md > man/mdast.1",
+    "build-expressions": "node script/build-expressions.js",
     "build-usage": "mdast --use mdast-usage Readme.md -o Readme.md",
     "build-options": "node script/build-options.js",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-usage && npm run build-options && npm run build-man && npm run build-bundle",
+    "build": "npm run build-expressions && npm run build-usage && npm run build-options && npm run build-man && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }
