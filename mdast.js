@@ -45,9 +45,15 @@ function MDAST() {
  * @return {Root}
  */
 function runParse(_, options) {
-    var node = parse.apply(parse, arguments);
+    var node;
 
-    this.ware.run(node, options, fail);
+    if (!options) {
+        options = {};
+    }
+
+    node = parse.apply(this, arguments);
+
+    this.ware.run(node, options, this, fail);
 
     return node;
 }

@@ -272,16 +272,17 @@ All options (including the options object itself) can be `null` or `undefined` t
 
 Returns: A `string`.
 
-### [mdast](#api).use([plugin](#function-pluginast))
+### [mdast](#api).use([plugin](#function-pluginast-options-mdast))
 
 Creates a version of **mdast** which uses the given `plugin` to modify the AST after [`mdast.parse()`](#mdastparsevalue-options) is invoked.
 
 The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins.
+
 This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of **mdast** does not change for other dependants.
 
-#### function plugin\([ast](doc/Nodes.md#node)\)
+#### function plugin\([ast](doc/Nodes.md#node), options, [mdast](#api)\)
 
-A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [ast](doc/Nodes.md#node) to add or remove nodes.
+A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes, or change the **mdast** instance.
 
 ## CLI
 
