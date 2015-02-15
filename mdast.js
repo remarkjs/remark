@@ -1509,6 +1509,7 @@ function tokenizeFactory(type) {
         var match;
         var matched;
         var valueLength;
+        var err;
 
         /*
          * Trim white space only lines.
@@ -1696,7 +1697,6 @@ function tokenizeFactory(type) {
 
                     matched = valueLength !== value.length;
 
-                    /* istanbul ignore else */
                     if (matched) {
                         break;
                     }
@@ -1705,9 +1705,12 @@ function tokenizeFactory(type) {
 
             /* istanbul ignore if */
             if (!matched) {
-                throw new Error(
-                    'Infinite loop on byte: ' + value.charCodeAt(0)
-                );
+                err = new Error(line + ':' + column + ': Infinite loop');
+                err.reason = 'Infinite loop';
+                err.line = line;
+                err.column = column;
+
+                throw err;
             }
         }
 
@@ -2760,7 +2763,6 @@ function copy(target, context) {
     var key;
 
     for (key in context) {
-        /* istanbul ignore else */
         if (has.call(context, key)) {
             target[key] = context[key];
         }

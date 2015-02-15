@@ -27,6 +27,18 @@ INDENT = 2;
  */
 function noop() {}
 
+/**
+ * Construct an empty node.
+ *
+ * @return {Object}
+ */
+function empty() {
+    return {
+        'type': 'root',
+        'children': []
+    };
+}
+
 /*
  * Tests.
  */
@@ -114,6 +126,19 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         }, /options.yaml/);
     });
 
+    it('should not accept inherited properties', function () {
+        /**
+         * Fixture for inherited options.
+         */
+        function CustomOptions() {}
+
+        CustomOptions.prototype.gfm = 'Invalid and inherited.';
+
+        assert.doesNotThrow(function () {
+            mdast.parse('', new CustomOptions());
+        });
+    });
+
     it('should accept a `CustomParser` as a third argument', function () {
         var isInvoked;
 
@@ -164,14 +189,14 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
 
     it('should throw when `options` is not an object', function () {
         assert.throws(function () {
-            mdast.stringify({}, false);
+            mdast.stringify(empty(), false);
         }, /options/);
     });
 
     it('should throw when `options.bullet` is not a valid list bullet',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'bullet': true
                 });
             }, /options\.bullet/);
@@ -182,7 +207,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         'horizontal rule bullet',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'rule': true
                 });
             }, /options\.rule/);
@@ -192,7 +217,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.ruleSpaces` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'ruleSpaces': 1
                 });
             }, /options\.ruleSpaces/);
@@ -203,19 +228,19 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         'valid repetition count',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'ruleRepetition': 1
                 });
             }, /options\.ruleRepetition/);
 
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'ruleRepetition': NaN
                 });
             }, /options\.ruleRepetition/);
 
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'ruleRepetition': true
                 });
             }, /options\.ruleRepetition/);
@@ -226,7 +251,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         'valid emphasis marker',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'emphasis': '-'
                 });
             }, /options\.emphasis/);
@@ -237,7 +262,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         'valid emphasis marker',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'strong': '-'
                 });
             }, /options\.strong/);
@@ -247,7 +272,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.setext` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'setext': 0
                 });
             }, /options\.setext/);
@@ -257,7 +282,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.referenceLinks` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'referenceLinks': Infinity
                 });
             }, /options\.referenceLinks/);
@@ -267,7 +292,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.fences` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'fences': NaN
                 });
             }, /options\.fences/);
@@ -278,7 +303,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         'valid fence marker',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'fence': '-'
                 });
             }, /options\.fence/);
@@ -287,7 +312,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
 
     it('should throw when `options.closeAtx` is not a boolean', function () {
         assert.throws(function () {
-            mdast.stringify({}, {
+            mdast.stringify(empty(), {
                 'closeAtx': NaN
             });
         }, /options\.closeAtx/);
@@ -296,7 +321,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.looseTable` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'looseTable': 'Hello!'
                 });
             }, /options\.looseTable/);
@@ -306,12 +331,29 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     it('should throw when `options.spacedTable` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify({}, {
+                mdast.stringify(empty(), {
                     'spacedTable': 'World'
                 });
             }, /options\.spacedTable/);
         }
     );
+
+    it('should not accept inherited properties', function () {
+        /**
+         * Fixture for inherited options.
+         */
+        function CustomOptions() {}
+
+        /*
+         * An inherited invalid `fence` option.
+         */
+
+        CustomOptions.prototype.fence = '-';
+
+        assert.doesNotThrow(function () {
+            mdast.stringify(empty(), new CustomOptions());
+        });
+    });
 
     it('should accept a `CustomCompiler` as a third argument', function () {
         var isInvoked;
@@ -336,7 +378,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
 
         CustomCompiler.prototype.visit = visit;
 
-        mdast.stringify({}, null, CustomCompiler);
+        mdast.stringify(empty(), null, CustomCompiler);
 
         assert(isInvoked === true);
     });
