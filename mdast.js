@@ -2099,7 +2099,6 @@ function Compiler(options) {
     validate.bool(options, 'looseTable', false);
     validate.bool(options, 'spacedTable', true);
     validate.bool(options, 'referenceLinks', false);
-    validate.bool(options, 'referenceFootnotes', true);
     validate.bool(options, 'fences', false);
     validate.num(options, 'ruleRepetition', 3);
 
@@ -2593,27 +2592,7 @@ compilerPrototype.image = function (token) {
  * @return {string}
  */
 compilerPrototype.footnote = function (token) {
-    var self = this;
-    var footnote = self.footnotes[token.id];
-
-    /*
-     * Check if the user s inline footnotes.
-     * But, only expose footnotes inline when the
-     * footnote contains just one paragraph.
-     */
-
-    if (
-        self.options.referenceFootnotes ||
-        footnote.children.length !== 1 ||
-        footnote.children[0].type !== 'paragraph'
-    ) {
-        return SQUARE_BRACKET_OPEN + CARET + token.id + SQUARE_BRACKET_CLOSE;
-    }
-
-    self.footnotes[token.id] = false;
-
-    return SQUARE_BRACKET_OPEN + CARET + self.visit(footnote, null) +
-        SQUARE_BRACKET_CLOSE;
+    return SQUARE_BRACKET_OPEN + CARET + token.id + SQUARE_BRACKET_CLOSE;
 };
 
 /**
@@ -2689,42 +2668,20 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
     var results = [];
     var key;
 
-    /*
-     * First stringify the footnotes definitions,
-     * because new footnote references could be found.
-     */
+    if (!length) {
+        return EMPTY;
+    }
 
     while (++index < length) {
         key = keys[index];
 
-        if (footnotes[key]) {
-            footnotes[key] = SQUARE_BRACKET_OPEN + CARET + key +
-                SQUARE_BRACKET_CLOSE + COLON + SPACE +
-                self.visit(footnotes[key], null);
-        }
+        results.push(
+            SQUARE_BRACKET_OPEN + CARET + key + SQUARE_BRACKET_CLOSE +
+            COLON + SPACE + self.visit(footnotes[key], null)
+        );
     }
 
-    /*
-     * Then, all footnotes that are stringified
-     * inline, are set to `false`. The reset, we
-     * add to the buffer below.
-     */
-
-    index = -1;
-
-    while (++index < length) {
-        key = keys[index];
-
-        if (footnotes[key] !== false) {
-            results.push(footnotes[key]);
-        }
-    }
-
-    if (results.length) {
-        return LINE + results.join(LINE) + LINE;
-    }
-
-    return EMPTY;
+    return LINE + results.join(LINE) + LINE;
 };
 
 /**

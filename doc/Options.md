@@ -1165,32 +1165,6 @@ Yields:
     How   |    are
     you   | today?
 
-### Inline Footnotes
-
-Setting `referenceFootnotes: false` (default: `true`) will stringify footnotes with inline content inline.
-
-The following document:
-
-    Some text[^1].
-
-    [^1]: And a footnote.
-
-And the below JavaScript:
-
-```javascript
-var ast = mdast.parse(document, {
-  "footnotes": true
-});
-
-mdast.stringify(ast, {
-  "referenceFootnotes": false
-});
-```
-
-Yields:
-
-    Some text[^And a footnote.].
-
 ### Reference Links
 
 Setting `referenceLinks: true` (default: `false`) will stringify links using link references and link definitions.

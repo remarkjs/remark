@@ -37,7 +37,6 @@ optionsMap = {
     'emphasis': 'emphasis',
     'strong': 'strong',
     'reference-links': 'referenceLinks',
-    'reference-footnotes': 'referenceFootnotes',
     'fences': 'fences',
     'fence': 'fence',
     'close-atx': 'closeAtx',

@@ -264,17 +264,6 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         }
     );
 
-    it('should throw when `options.referenceFootnotes` is not a ' +
-        'boolean',
-        function () {
-            assert.throws(function () {
-                mdast.stringify({}, {
-                    'referenceFootnotes': -1
-                });
-            }, /options\.referenceFootnotes/);
-        }
-    );
-
     it('should throw when `options.fences` is not a boolean',
         function () {
             assert.throws(function () {

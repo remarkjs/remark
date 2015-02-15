@@ -1,9 +1,0 @@
-{
-  "title": "Inline Footnotes",
-  "parse": {
-    "footnotes": true
-  },
-  "stringify": {
-    "referenceFootnotes": false
-  }
-}

@@ -221,7 +221,6 @@ program.on('--settings', function () {
     console.log('  -  `loose-table` (boolean, default: false)');
     console.log('  -  `spaced-table` (boolean, default: true)');
     console.log('  -  `reference-links` (boolean, default: false)');
-    console.log('  -  `reference-footnotes` (boolean, default: true)');
     console.log('  -  `fences` (boolean, default: false)');
     console.log('  -  `bullet` ("-", "*", or "+", default: "-")');
     console.log('  -  `rule` ("-", "*", or "_", default: "*")');
