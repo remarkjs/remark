@@ -183,6 +183,34 @@ var MAILTO_PROTOCOL = 'mailto:';
 var NEW_LINE = '\n';
 var SLASH = '\\';
 var SPACE = ' ';
+var EMPTY = '';
+var BLOCK = 'block';
+var INLINE = 'inline';
+var HORIZONTAL_RULE = 'horizontalRule';
+var HTML = 'html';
+var YAML = 'yaml';
+var TABLE = 'table';
+var TABLE_CELL = 'tableCell';
+var TABLE_HEADER = 'tableHeader';
+var TABLE_ROW = 'tableRow';
+var PARAGRAPH = 'paragraph';
+var TEXT = 'text';
+var CODE = 'code';
+var LIST = 'list';
+var LIST_ITEM = 'listItem';
+var FOOTNOTE_DEFINITION = 'footnoteDefinition';
+var HEADING = 'heading';
+var BLOCKQUOTE = 'blockquote';
+var LINK = 'link';
+var IMAGE = 'image';
+var FOOTNOTE = 'footnote';
+var ESCAPE = 'escape';
+var STRONG = 'strong';
+var EMPHASIS = 'emphasis';
+var DELETE = 'delete';
+var INLINE_CODE = 'inlineCode';
+var BREAK = 'break';
+var ROOT = 'root';
 
 /*
  * Expressions.
@@ -242,7 +270,7 @@ function removeIndent(value) {
         index = values.length;
 
         while (index--) {
-            values[index] = values[index].replace(expression, '');
+            values[index] = values[index].replace(expression, EMPTY);
         }
     }
 
@@ -290,7 +318,7 @@ var MERGEABLE_NODES = {};
  * @return {Object} `prev`.
  */
 MERGEABLE_NODES.html = function (prev, token) {
-    prev.value += '\n\n' + token.value;
+    prev.value += NEW_LINE + NEW_LINE + token.value;
 
     return prev;
 };
@@ -303,7 +331,7 @@ MERGEABLE_NODES.html = function (prev, token) {
  * @return {Object} `prev`.
  */
 MERGEABLE_NODES.text = function (prev, token, type) {
-    prev.value += (type === 'block' ? '\n' : '') + token.value;
+    prev.value += (type === BLOCK ? NEW_LINE : EMPTY) + token.value;
 
     return prev;
 };
@@ -393,7 +421,7 @@ function tokenizeLineHeading(eat, $0, $1, $2) {
  * @param {string} $0 - Whole rule.
  */
 function tokenizeHorizontalRule(eat, $0) {
-    eat($0)(this.renderVoid('horizontalRule'));
+    eat($0)(this.renderVoid(HORIZONTAL_RULE));
 }
 
 /**
@@ -456,7 +484,7 @@ function tokenizeList(eat, $0, $1, $2) {
 
     index = -1;
 
-    add = eat('');
+    add = eat(EMPTY);
 
     enterTop = self.exitTop();
     exitBlockquote = self.enterBlockquote();
@@ -488,7 +516,7 @@ function tokenizeList(eat, $0, $1, $2) {
 function tokenizeHtml(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderRaw('html', $0));
+    eat($0)(this.renderRaw(HTML, $0));
 }
 
 /**
@@ -520,7 +548,7 @@ tokenizeLinkDefinition.notInBlockquote = true;
  * @param {string} $1 - Content.
  */
 function tokenizeYAMLFrontMatter(eat, $0, $1) {
-    eat($0)(this.renderRaw('yaml', $1 ? trimRightLines($1) : ''));
+    eat($0)(this.renderRaw(YAML, $1 ? trimRightLines($1) : EMPTY));
 }
 
 tokenizeYAMLFrontMatter.onlyAtStart = true;
@@ -547,7 +575,7 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
         offset[line] = (offset[line] || 0) + value.length;
         line++;
 
-        return '';
+        return EMPTY;
     });
 
     now.column += $1.length;
@@ -581,8 +609,8 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var length;
     var queue;
 
-    table = eat('')({
-        'type': 'table',
+    table = eat(EMPTY)({
+        'type': TABLE,
         'align': [],
         'children': []
     });
@@ -596,7 +624,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     function eatFence(value) {
         eat(value);
 
-        return '';
+        return EMPTY;
     }
 
     /**
@@ -635,7 +663,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
                     if (pos + content.length + 1 === input.length) {
                         content += pipe;
-                        pipe = '';
+                        pipe = EMPTY;
 
                         break;
                     } else {
@@ -648,14 +676,14 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
             if (queue) {
                 content = queue + content;
-                queue = '';
+                queue = EMPTY;
             }
 
-            eat(content)(row, self.renderBlock('tableCell', content));
+            eat(content)(row, self.renderBlock(TABLE_CELL, content));
 
             eat(pipe);
 
-            return '';
+            return EMPTY;
         };
     }
 
@@ -666,7 +694,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      * @param {string} value
      */
     function renderRow(type, value) {
-        var row = eat('')(table, self.renderBlock(type, []));
+        var row = eat(EMPTY)(table, self.renderBlock(type, []));
 
         value
             .replace(EXPRESSION_TABLE_INITIAL, eatFence)
@@ -679,7 +707,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      * Add the table's header.
      */
 
-    renderRow('tableHeader', $1);
+    renderRow(TABLE_HEADER, $1);
 
     eat(NEW_LINE);
 
@@ -690,7 +718,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     eat($3);
 
     $4 = $4
-        .replace(EXPRESSION_TABLE_FENCE, '')
+        .replace(EXPRESSION_TABLE_FENCE, EMPTY)
         .split(EXPRESSION_TABLE_BORDER);
 
     table.align = getAlignment($4);
@@ -705,7 +733,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     length = $5.length;
 
     while (++index < length) {
-        renderRow('tableRow', $5[index]);
+        renderRow(TABLE_ROW, $5[index]);
 
         if (index !== length - 1) {
             eat(NEW_LINE);
@@ -727,7 +755,7 @@ tokenizeTable.onlyAtTop = true;
 function tokenizeParagraph(eat, $0) {
     $0 = trimRight($0);
 
-    eat($0)(this.renderBlock('paragraph', $0));
+    eat($0)(this.renderBlock(PARAGRAPH, $0));
 }
 
 tokenizeParagraph.onlyAtTop = true;
@@ -739,7 +767,7 @@ tokenizeParagraph.onlyAtTop = true;
  * @param {string} $0
  */
 function tokenizeText(eat, $0) {
-    eat($0)(this.renderRaw('text', $0));
+    eat($0)(this.renderRaw(TEXT, $0));
 }
 
 /**
@@ -751,9 +779,9 @@ function tokenizeText(eat, $0) {
  */
 function renderCodeBlock(value, language) {
     return {
-        'type': 'code',
+        'type': CODE,
         'lang': language || null,
-        'value': trimRightLines(removeIndent(value || ''))
+        'value': trimRightLines(removeIndent(value || EMPTY))
     };
 }
 
@@ -766,7 +794,7 @@ function renderCodeBlock(value, language) {
  */
 function renderList(children, ordered) {
     return {
-        'type': 'list',
+        'type': LIST,
         'ordered': ordered,
         'children': children
     };
@@ -801,7 +829,7 @@ function renderListItem(token, position) {
 
         space = Math.ceil(space / 2) * 2;
 
-        return '';
+        return EMPTY;
     });
 
     /*
@@ -818,7 +846,7 @@ function renderListItem(token, position) {
         offset[line] = (offset[line] || 0) + $0.length;
         line++;
 
-        return '';
+        return EMPTY;
     });
 
     /*
@@ -829,7 +857,7 @@ function renderListItem(token, position) {
         token.charAt(token.length - 1) === NEW_LINE;
 
     return {
-        'type': 'listItem',
+        'type': LIST_ITEM,
         'loose': loose,
         'children': this.tokenizeBlock(token, position)
     };
@@ -848,7 +876,7 @@ function renderFootnoteDefinition(id, value, position) {
     var token;
 
     token = {
-        'type': 'footnoteDefinition',
+        'type': FOOTNOTE_DEFINITION,
         'id': id,
         'children': self.tokenizeBlock(value, position)
     };
@@ -869,7 +897,7 @@ function renderFootnoteDefinition(id, value, position) {
  */
 function renderHeading(value, depth) {
     return {
-        'type': 'heading',
+        'type': HEADING,
         'depth': depth,
         'children': value
     };
@@ -892,11 +920,11 @@ function renderBlockquote(value, position) {
         offset[line] = (offset[line] || 0) + $0.length;
         line++;
 
-        return '';
+        return EMPTY;
     });
 
     token = {
-        'type': 'blockquote',
+        'type': BLOCKQUOTE,
         'children': this.tokenizeBlock(value, position)
     };
 
@@ -959,7 +987,7 @@ function renderLink(isLink, href, text, title, position) {
     var token;
 
     token = {
-        'type': isLink ? 'link' : 'image',
+        'type': isLink ? LINK : IMAGE,
         'title': title || null
     };
 
@@ -984,7 +1012,7 @@ function renderLink(isLink, href, text, title, position) {
  */
 function renderFootnote(id) {
     return {
-        'type': 'footnote',
+        'type': FOOTNOTE,
         'id': id
     };
 }
@@ -1011,7 +1039,7 @@ function renderInline(type, value, location) {
  * @param {string} $1 - Escaped character.
  */
 function tokenizeEscape(eat, $0, $1) {
-    eat($0)(this.renderRaw('escape', $1));
+    eat($0)(this.renderRaw(ESCAPE, $1));
 }
 
 /**
@@ -1076,7 +1104,7 @@ function tokenizeTag(eat, $0) {
         self.inLink = false;
     }
 
-    eat($0)(self.renderRaw('html', $0));
+    eat($0)(self.renderRaw(HTML, $0));
 }
 
 /**
@@ -1166,7 +1194,7 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
 
             eat($0)(self.renderFootnote(token.id));
         } else {
-            eat($0.charAt(0))(self.renderRaw('text', $0.charAt(0)));
+            eat($0.charAt(0))(self.renderRaw(TEXT, $0.charAt(0)));
         }
     } else {
         now = eat.now($1);
@@ -1194,7 +1222,7 @@ function tokenizeStrong(eat, $0, $1, $2) {
 
     now.column += 2;
 
-    eat($0)(this.renderInline('strong', $2 || $1, now));
+    eat($0)(this.renderInline(STRONG, $2 || $1, now));
 }
 
 /**
@@ -1210,7 +1238,7 @@ function tokenizeEmphasis(eat, $0, $1, $2) {
 
     now.column += 1;
 
-    eat($0)(this.renderInline('emphasis', $2 || $1, now));
+    eat($0)(this.renderInline(EMPHASIS, $2 || $1, now));
 }
 
 /**
@@ -1225,7 +1253,7 @@ function tokenizeDeletion(eat, $0, $1) {
 
     now.column += 2;
 
-    eat($0)(this.renderInline('delete', $1, now));
+    eat($0)(this.renderInline(DELETE, $1, now));
 }
 
 /**
@@ -1237,7 +1265,7 @@ function tokenizeDeletion(eat, $0, $1) {
  * @param {string} $2 - Content.
  */
 function tokenizeInlineCode(eat, $0, $1, $2) {
-    eat($0)(this.renderRaw('inlineCode', trimRight($2)));
+    eat($0)(this.renderRaw(INLINE_CODE, trimRight($2)));
 }
 
 /**
@@ -1247,7 +1275,7 @@ function tokenizeInlineCode(eat, $0, $1, $2) {
  * @param {string} $0
  */
 function tokenizeBreak(eat, $0) {
-    eat($0)(this.renderVoid('break'));
+    eat($0)(this.renderVoid(BREAK));
 }
 
 /**
@@ -1257,7 +1285,7 @@ function tokenizeBreak(eat, $0) {
  * @param {string} $0
  */
 function tokenizeInlineText(eat, $0) {
-    eat($0)(this.renderRaw('text', $0));
+    eat($0)(this.renderRaw(TEXT, $0));
 }
 
 /**
@@ -1345,7 +1373,7 @@ Parser.prototype.parse = function (value) {
 
     self.offset = {};
 
-    token = self.renderBlock('root', self.tokenizeAll(
+    token = self.renderBlock(ROOT, self.tokenizeAll(
         self.tokenizeBlock(clean(value))
     ));
 
@@ -1410,23 +1438,23 @@ Parser.prototype.tokenizeOne = function (token) {
     var type = token.type;
     var position = token.position;
 
-    if (type === 'text') {
-        token = self.renderBlock('paragraph', token.value);
+    if (type === TEXT) {
+        token = self.renderBlock(PARAGRAPH, token.value);
         token.position = position;
         token = self.tokenizeOne(token);
     } else if (
-        type === 'heading' ||
-        type === 'paragraph' ||
-        type === 'tableCell'
+        type === HEADING ||
+        type === PARAGRAPH ||
+        type === TABLE_CELL
     ) {
         token.children = self.tokenizeInline(token.children, position.start);
     } else if (
-        type === 'blockquote' ||
-        type === 'list' ||
-        type === 'listItem' ||
-        type === 'table' ||
-        type === 'tableHeader' ||
-        type === 'tableRow'
+        type === BLOCKQUOTE ||
+        type === LIST ||
+        type === LIST_ITEM ||
+        type === TABLE ||
+        type === TABLE_HEADER ||
+        type === TABLE_ROW
     ) {
         token.children = self.tokenizeAll(token.children);
     }
@@ -1515,7 +1543,7 @@ function tokenizeFactory(type) {
          * Trim white space only lines.
          */
 
-        value = (value || '').replace(EXPRESSION_SPACES_ONLY_LINE, '');
+        value = (value || EMPTY).replace(EXPRESSION_SPACES_ONLY_LINE, EMPTY);
 
         if (!value) {
             return tokens;
@@ -1528,7 +1556,7 @@ function tokenizeFactory(type) {
          */
         function updatePosition(subvalue) {
             var lines = subvalue.match(/\n/g);
-            var lastIndex = subvalue.lastIndexOf('\n');
+            var lastIndex = subvalue.lastIndexOf(NEW_LINE);
 
             if (lines) {
                 line += lines.length;
@@ -1612,7 +1640,7 @@ function tokenizeFactory(type) {
 
             prev = children[children.length - 1];
 
-            if (type === 'inline' && token.type === 'text') {
+            if (type === INLINE && token.type === TEXT) {
                 token.value = he.decode(token.value);
             }
 
@@ -1663,7 +1691,7 @@ function tokenizeFactory(type) {
          * Sync initial offset.
          */
 
-        updatePosition('');
+        updatePosition(EMPTY);
 
         /*
          * Iterate over `value`, and iterate over all
@@ -1725,7 +1753,7 @@ function tokenizeFactory(type) {
  * @return {Array.<Object>}
  */
 
-Parser.prototype.tokenizeBlock = tokenizeFactory('block');
+Parser.prototype.tokenizeBlock = tokenizeFactory(BLOCK);
 
 /*
  * Expose helpers
@@ -1784,7 +1812,7 @@ Parser.prototype.inlineMethods = [
  * @return {Array.<Object>}
  */
 
-Parser.prototype.tokenizeInline = tokenizeFactory('inline');
+Parser.prototype.tokenizeInline = tokenizeFactory(INLINE);
 
 /**
  * Construct a state toggler.
