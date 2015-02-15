@@ -1889,12 +1889,6 @@ var trimLeft = utilities.trimLeft;
 var validate = utilities.validate;
 
 /*
- * Expressions.
- */
-
-var EXPRESSION_TRAILING_NEW_LINES = /\n+$/g;
-
-/*
  * Constants.
  */
 
@@ -2716,7 +2710,7 @@ function stringify(ast, options, CustomCompiler) {
         value += compiler.visitFootnoteDefinitions(footnotes);
     }
 
-    return value.replace(EXPRESSION_TRAILING_NEW_LINES, LINE);
+    return value;
 }
 
 /*
