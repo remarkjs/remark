@@ -1,4 +1,10 @@
 
+0.4.1 / 2015-02-15
+==================
+
+  * Update mdast dependency
+  * Add mdast as third argument to plug-ins
+
 0.4.0 / 2015-02-15
 ==================
 
