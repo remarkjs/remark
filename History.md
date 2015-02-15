@@ -1,4 +1,16 @@
 
+0.4.0 / 2015-02-15
+==================
+
+  * Refactor module to use more constants instead of literal strings
+  * Remove ensured new line at end of file
+  * Refactor istanbul ignore, error message
+  * Remove support for `referenceFootnotes: false`
+  * Add `lib/expressions.js` with precompiled expressions
+  * Refactor module
+  * Add support for escaped pipes in table cells
+  * Fix bug in node@0.10 re invalid error exit code
+
 0.3.0 / 2015-02-08
 ==================
 
@@ -22,7 +34,6 @@
   * Add auto inferring of input file if an output file is provided
   * Add `fence` parse option to `Readme.md`
   * Add `example.js` to `.npmignore`, `bower.json` ignore
-
 
 0.2.0 / 2015-02-02
 ==================
