@@ -99,17 +99,17 @@ module.exports={
   "rules": {
     "newline":/^\n+/,
     "bullet":/(?:[*+-]|\d+\.)/,
-    "code":/^( {4}[^\n]+\n*)+/,
+    "code":/^((?: {4}|\t)[^\n]+\n*)+/,
     "horizontalRule":/^( *[-*_]){3,} *(?=\n|$)/,
     "heading":/^ *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)/,
     "lineHeading":/^([^\n]+)\n *(=|-){2,} *(?=\n|$)/,
     "linkDefinition":/^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/,
     "blockText":/^[^\n]+/,
-    "item":/^( *)((?:[*+-]|\d+\.)) [^\n]*(?:\n(?!\1(?:[*+-]|\d+\.) )[^\n]*)*/gm,
-    "list":/^( *)((?:[*+-]|\d+\.))((?: [\s\S]+?)(?:\n+(?=\1?(?:[-*_] *){3,}(?=\n|$))|\n+(?= *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?! )(?!\1(?:[*+-]|\d+\.) )|\s*$))/,
-    "blockquote":/^( *>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+/,
-    "html":/^ *(?:<!--[\s\S]*?--> *(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1> *(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?> *(?:\n{2,}|\s*$))/,
-    "paragraph":/^(?:(?:[^\n]+\n?(?!( *[-*_]){3,} *(?=\n|$)| *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|( *>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b| *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
+    "item":/^([ \t]*)((?:[*+-]|\d+\.))[ \t][^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
+    "list":/^([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\1?(?:[-*_][ \t]*){3,}(?=\n|$))|\n+(?= *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|\s*$))/,
+    "blockquote":/^([ \t]*>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+/,
+    "html":/^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/,
+    "paragraph":/^(?:(?:[^\n]+\n?(?!( *[-*_]){3,} *(?=\n|$)| *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|([ \t]*>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b| *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
     "escape":/^\\([\\`*{}\[\]()#+\-.!_>])/,
     "autoLink":/^<([^ >]+(@|:\/)[^ >]+)>/,
     "tag":/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
@@ -129,8 +129,8 @@ module.exports={
     "looseTable":/^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/
   },
   "gfm": {
-    "fences":/^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]*?)\s*\1 *(?=\n|$)/,
-    "paragraph":/^(?:(?:[^\n]+\n?(?! *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]*?)\s*\2 *(?=\n|$)|( *)((?:[*+-]|\d+\.))((?: [\s\S]+?)(?:\n+(?=\3?(?:[-*_] *){3,}(?=\n|$))|\n+(?= *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?! )(?!\1(?:[*+-]|\d+\.) )|\s*$))|( *[-*_]){3,} *(?=\n|$)| *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|( *>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b| *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
+    "fences":/^[ \\t]*(`{3,}|~{3,})[ \\t]*(\S+)?[ \\t]*\n([\s\S]*?)\s*\1[ \\t]*(?=\n|$)/,
+    "paragraph":/^(?:(?:[^\n]+\n?(?![ \\t]*(`{3,}|~{3,})[ \\t]*(\S+)?[ \\t]*\n([\s\S]*?)\s*\2[ \\t]*(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\3?(?:[-*_][ \t]*){3,}(?=\n|$))|\n+(?= *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|\s*$))|( *[-*_]){3,} *(?=\n|$)| *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|([ \t]*>[^\n]+(\n(?! *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b| *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
     "escape":/^\\([\\`*{}\[\]()#+\-.!_>~|])/,
     "url":/^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
     "deletion":/^~~(?=\S)([\s\S]*?\S)~~/,
@@ -170,6 +170,7 @@ var expressions = require('./expressions.js');
  * Cached methods.
  */
 
+var repeat = utilities.repeat;
 var copy = utilities.copy;
 var raise = utilities.raise;
 var trimRight = utilities.trimRight;
@@ -189,6 +190,7 @@ var MAILTO_PROTOCOL = 'mailto:';
 var NEW_LINE = '\n';
 var SLASH = '\\';
 var SPACE = ' ';
+var TAB = '\t';
 var EMPTY = '';
 var BLOCK = 'block';
 var INLINE = 'inline';
@@ -219,25 +221,74 @@ var BREAK = 'break';
 var ROOT = 'root';
 
 /*
+ * Tab size.
+ */
+
+var TAB_SIZE = 4;
+
+/*
  * Expressions.
  */
 
-var EXPRESSION_INITIAL_SPACES = /^ +/;
-var EXPRESSION_RIGHT_ALIGNMENT = /^ *-+: *$/;
-var EXPRESSION_CENTER_ALIGNMENT = /^ *:-+: *$/;
-var EXPRESSION_SPACES_ONLY_LINE = /^ +$/gm;
-var EXPRESSION_TABLE_FENCE = /^ *|\| *$/g;
-var EXPRESSION_TABLE_INITIAL = /^ *\| */g;
-var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)( *\| *\n?|\n?$)/g;
-var EXPRESSION_TABLE_BORDER = / *\| */;
-var EXPRESSION_BLOCK_QUOTE = /^ *> ?/gm;
-var EXPRESSION_BULLET = /^ *([*+-]|\d+\.) +/;
-var EXPRESSION_INITIAL_INDENT = /^ {1,4}/gm;
-var EXPRESSION_INITIAL_TAB = /^( {4})?/gm;
+var EXPRESSION_RIGHT_ALIGNMENT = /^[ \t]*-+:[ \t]*$/;
+var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
+var EXPRESSION_SPACES_ONLY_LINE = /^[ \t]+$/gm;
+var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
+var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
+var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)([ \t]*\|[ \t]*\n?|\n?$)/g;
+var EXPRESSION_TABLE_BORDER = /[ \t]*\|[ \t]*/;
+var EXPRESSION_BLOCK_QUOTE = /^[ \t]*>[ \t]?/gm;
+var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+\.)([ \t]+)([^\n]*)/;
+var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+\.)([ \t]+)/;
+var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
+var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
 var EXPRESSION_HTML_LINK_OPEN = /^<a /i;
 var EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
 var EXPRESSION_WHITE_SPACES = /\s+/g;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
+
+/*
+ * A map of characters, and their column length,
+ * which can be used as indentation
+ */
+
+var INDENTATION_CHARACTERS = {};
+
+INDENTATION_CHARACTERS[SPACE] = SPACE.length;
+INDENTATION_CHARACTERS[TAB] = TAB_SIZE;
+
+/**
+ * Gets column-size of the indentation.
+ *
+ * @param {string} value
+ * @return {Object}
+ */
+function getIndent(value) {
+    var index = 0;
+    var indent = 0;
+    var character = value.charAt(index);
+    var stops = {};
+    var size;
+
+    while (character in INDENTATION_CHARACTERS) {
+        size = INDENTATION_CHARACTERS[character];
+
+        indent += size;
+
+        if (size > 1) {
+            indent = Math.floor(indent / size) * size;
+        }
+
+        stops[indent] = index;
+
+        character = value.charAt(++index);
+    }
+
+    return {
+        'indent': indent,
+        'stops': stops
+    };
+}
 
 /**
  * Remove the minimum indent from `value`.
@@ -245,38 +296,55 @@ var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
  * @param {string} value
  * @return {string}
  */
-function removeIndent(value) {
+function removeIndentation(value) {
     var values = value.split(NEW_LINE);
-    var index = values.length;
+    var position = values.length;
     var minIndent = Infinity;
-    var indent;
-    var expression;
+    var matrix = [];
+    var index;
+    var indentation;
+    var stops;
+    var padding;
 
-    while (index--) {
-        if (values[index].length === 0) {
+    while (position--) {
+        if (values[position].length === 0) {
             continue;
         }
 
-        indent = values[index].match(EXPRESSION_INITIAL_SPACES);
+        indentation = getIndent(values[position]);
+        matrix[position] = indentation.stops;
 
-        if (indent) {
-            indent = indent[0].length;
-
-            if (indent > 0 && indent < minIndent) {
-                minIndent = indent;
+        if (indentation.indent) {
+            if (indentation.indent > 0 && indentation.indent < minIndent) {
+                minIndent = indentation.indent;
             }
         } else {
             minIndent = Infinity;
+
             break;
         }
     }
 
     if (minIndent !== Infinity) {
-        expression = new RegExp('^ {1,' + minIndent + '}');
-        index = values.length;
+        position = values.length;
 
-        while (index--) {
-            values[index] = values[index].replace(expression, EMPTY);
+        while (position--) {
+            stops = matrix[position];
+            index = minIndent;
+
+            if (!stops) {
+                continue;
+            }
+
+            while (index && !(index in stops)) {
+                index--;
+            }
+
+            padding = minIndent && index !== minIndent ? TAB : EMPTY;
+
+            values[position] = padding + values[position].slice(
+                index in stops ? stops[index] + 1 : 0
+            );
         }
     }
 
@@ -374,7 +442,7 @@ function tokenizeNewline(eat, $0) {
 function tokenizeCode(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderCodeBlock($0));
+    eat($0)(this.renderCodeBlock(removeIndentation($0)));
 }
 
 /**
@@ -787,7 +855,7 @@ function renderCodeBlock(value, language) {
     return {
         'type': CODE,
         'lang': language || null,
-        'value': trimRightLines(removeIndent(value || EMPTY))
+        'value': trimRightLines(removeIndentation(value || EMPTY))
     };
 }
 
@@ -807,64 +875,131 @@ function renderList(children, ordered) {
 }
 
 /**
- * Create a list-item token.
+ * Create a list-item using lacks behaviour.
  *
  * @param {string} token
+ * @param {Object} position
  * @return {Object}
  */
-function renderListItem(token, position) {
-    var space = 0;
-    var offset = this.offset;
+function renderPedanticListItem(token, position) {
+    var self = this;
+    var offset = self.offset;
     var line = position.line;
-    var expression;
-    var loose;
+
+    /**
+     * A simple replacer which removed all matches,
+     * and adds their length to `offset`.
+     *
+     * @param {string} $0
+     * @return {string}
+     */
+    function replacer($0) {
+        offset[line] = (offset[line] || 0) + $0.length;
+        line++;
+
+        return EMPTY;
+    }
 
     /*
      * Remove the list token's bullet.
      */
 
-    token = token.replace(EXPRESSION_BULLET, function ($0) {
-        space = $0.length;
-
-        offset[line] = (offset[line] || 0) + space;
-
-        /*
-         * Make sure that the first nine numbered list items
-         * can indent with an extra space:
-         */
-
-        space = Math.ceil(space / 2) * 2;
-
-        return EMPTY;
-    });
+    token = token.replace(EXPRESSION_PEDANTIC_BULLET, replacer);
 
     /*
-     * Exdent whatever the list token contains.  Hacky.
+     * The initial line is also matched by the below, so
+     * we reset the `line`.
      */
 
-    if (this.options.pedantic) {
-        expression = EXPRESSION_INITIAL_INDENT;
-    } else {
-        expression = new RegExp('^( {0,' + space + '})', 'gm');
+    line = position.line;
+
+    return token.replace(EXPRESSION_INITIAL_INDENT, replacer);
+}
+
+/**
+ * Create a list-item using sane behaviour.
+ *
+ * @param {string} token
+ * @param {Object} position
+ * @return {Object}
+ */
+function renderNormalListItem(token, position) {
+    var self = this;
+    var offset = self.offset;
+    var line = position.line;
+    var bullet;
+    var rest;
+    var lines;
+    var trimmedLines;
+    var index;
+    var length;
+
+    /*
+     * Remove the list token's bullet.
+     */
+
+    token = token.replace(EXPRESSION_BULLET, function ($0, $1, $2, $3, $4) {
+        bullet = $1 + $2 + $3;
+        rest = $4;
+
+       /*
+        * Make sure that the first nine numbered list items
+        * can indent with an extra space:
+        */
+
+        if (Number($2) < 10) {
+            $2 = SPACE + $2;
+        }
+
+        return $1 + repeat($2.length, SPACE) + $3 + rest;
+    });
+
+    lines = token.split(NEW_LINE);
+    trimmedLines = removeIndentation(token).split(NEW_LINE);
+
+    /*
+     * We replaced the initial bullet with something
+     * else above, which was used to trick
+     * `removeIndentation` into removing some more
+     * characters when possible. However, that could
+     * result in the initial line to be stripped more
+     * than it should be.
+     */
+
+    trimmedLines[0] = rest;
+
+    offset[line] = (offset[line] || 0) + bullet.length;
+    line++;
+
+    index = 0;
+    length = lines.length;
+
+    while (++index < length) {
+        offset[line] = (offset[line] || 0) +
+            lines[index].length - trimmedLines[index].length;
+        line++;
     }
 
-    token = token.replace(expression, function ($0) {
-        offset[line] = (offset[line] || 0) + $0.length;
-        line++;
+    return trimmedLines.join(NEW_LINE);
+}
 
-        return EMPTY;
-    });
+var LIST_ITEM_MAP = {};
 
-    /*
-     * Determine whether token is loose or not.
-     */
+LIST_ITEM_MAP.true = renderPedanticListItem;
+LIST_ITEM_MAP.false = renderNormalListItem;
 
-    loose = EXPRESSION_LOOSE_LIST_ITEM.test(token) ||
-        token.charAt(token.length - 1) === NEW_LINE;
+/**
+ * Create a list-item token.
+ *
+ * @return {Object}
+ */
+function renderListItem(token, position) {
+    token = LIST_ITEM_MAP[this.options.pedantic].apply(this, arguments);
 
     return {
         'type': LIST_ITEM,
-        'loose': loose,
+        'loose': EXPRESSION_LOOSE_LIST_ITEM.test(token) ||
+            token.charAt(token.length - 1) === NEW_LINE,
         'children': this.tokenizeBlock(token, position)
     };
 }
@@ -1917,6 +2052,7 @@ var utilities = require('./utilities.js');
  * Cached methods.
  */
 
+var repeat = utilities.repeat;
 var copy = utilities.copy;
 var raise = utilities.raise;
 var trimLeft = utilities.trimLeft;
@@ -2027,17 +2163,6 @@ function getKeys(object) {
     }
 
     return results;
-}
-
-/**
- * Repeat `character` `times` times.
- *
- * @param {number} times
- * @param {string} character
- * @return {string}
- */
-function repeat(times, character) {
-    return new Array(times + 1).join(character);
 }
 
 /**
@@ -2776,7 +2901,7 @@ var WHITE_SPACE_FINAL = /\s+$/;
 var NEW_LINE_FINAL = /\n+$/;
 var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
-var EXPRESSION_TAB = /\t/g;
+// var EXPRESSION_TAB = /\t/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
 var EXPRESSION_NO_BREAK_SPACE = /\u00a0/g;
 
@@ -2922,10 +3047,27 @@ function trimLeft(value) {
 function clean(value) {
     return String(value)
         .replace(EXPRESSION_LINE_BREAKS, '\n')
-        .replace(EXPRESSION_TAB, '    ')
+        // .replace(EXPRESSION_TAB, '    ')
         .replace(EXPRESSION_NO_BREAK_SPACE, ' ')
         .replace(EXPRESSION_SYMBOL_FOR_NEW_LINE, '\n');
 }
+
+/**
+ * Repeat `character` `times` times.
+ *
+ * @param {number} times
+ * @param {string} character
+ * @return {string}
+ */
+function repeat(times, character) {
+    return new Array(times + 1).join(character);
+}
+
+/*
+ * Expose `repeat`.
+ */
+
+exports.repeat = repeat;
 
 /*
  * Expose `copy`.

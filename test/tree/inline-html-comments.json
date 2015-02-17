@@ -32,7 +32,7 @@
     },
     {
       "type": "html",
-      "value": "<!-- This is a simple comment -->\n\n<!--\n    This is another comment.\n-->",
+      "value": "<!-- This is a simple comment -->\n\n<!--\n\tThis is another comment.\n-->",
       "position": {
         "start": {
           "line": 3,

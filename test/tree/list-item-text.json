@@ -79,7 +79,7 @@
                   "position": {
                     "start": {
                       "line": 3,
-                      "column": 5
+                      "column": 3
                     },
                     "end": {
                       "line": 3,
@@ -91,7 +91,7 @@
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 5
+                  "column": 3
                 },
                 "end": {
                   "line": 3,

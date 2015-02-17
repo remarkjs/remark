@@ -225,7 +225,7 @@
             },
             "end": {
               "line": 7,
-              "column": 52
+              "column": 49
             }
           }
         },
@@ -235,11 +235,11 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 52
+              "column": 49
             },
             "end": {
               "line": 7,
-              "column": 53
+              "column": 50
             }
           }
         }
@@ -251,7 +251,7 @@
         },
         "end": {
           "line": 7,
-          "column": 53
+          "column": 50
         }
       }
     },

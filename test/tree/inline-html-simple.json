@@ -32,7 +32,7 @@
     },
     {
       "type": "html",
-      "value": "<div>\n    foo\n</div>",
+      "value": "<div>\n\tfoo\n</div>",
       "position": {
         "start": {
           "line": 3,
@@ -76,7 +76,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "<div>\n    foo\n</div>",
+      "value": "<div>\n\tfoo\n</div>",
       "position": {
         "start": {
           "line": 9,
@@ -84,7 +84,7 @@
         },
         "end": {
           "line": 11,
-          "column": 11
+          "column": 8
         }
       }
     },
@@ -128,7 +128,7 @@
         },
         "end": {
           "line": 15,
-          "column": 19
+          "column": 16
         }
       }
     },
@@ -163,7 +163,7 @@
     },
     {
       "type": "html",
-      "value": "<div>\n    <div>\n        <div>\n            foo\n        </div>\n    </div>\n</div>",
+      "value": "<div>\n\t<div>\n\t\t<div>\n\t\t\tfoo\n\t\t</div>\n\t</div>\n</div>",
       "position": {
         "start": {
           "line": 19,
@@ -301,7 +301,7 @@
         },
         "end": {
           "line": 40,
-          "column": 21
+          "column": 18
         }
       }
     },
@@ -388,7 +388,7 @@
         },
         "end": {
           "line": 48,
-          "column": 9
+          "column": 6
         }
       }
     },

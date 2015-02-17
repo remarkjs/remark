@@ -4444,7 +4444,7 @@
         },
         "end": {
           "line": 289,
-          "column": 63
+          "column": 60
         }
       }
     },
@@ -6172,7 +6172,7 @@
         },
         "end": {
           "line": 538,
-          "column": 10
+          "column": 7
         }
       }
     },
@@ -7124,7 +7124,7 @@
         },
         "end": {
           "line": 613,
-          "column": 19
+          "column": 16
         }
       }
     },
@@ -7240,7 +7240,7 @@
         },
         "end": {
           "line": 622,
-          "column": 15
+          "column": 12
         }
       }
     },
@@ -7284,7 +7284,7 @@
         },
         "end": {
           "line": 626,
-          "column": 33
+          "column": 30
         }
       }
     },
@@ -7328,7 +7328,7 @@
         },
         "end": {
           "line": 631,
-          "column": 52
+          "column": 49
         }
       }
     },
@@ -7372,7 +7372,7 @@
         },
         "end": {
           "line": 635,
-          "column": 50
+          "column": 47
         }
       }
     },
@@ -8425,7 +8425,7 @@
         },
         "end": {
           "line": 759,
-          "column": 60
+          "column": 57
         }
       }
     },
@@ -8469,7 +8469,7 @@
         },
         "end": {
           "line": 765,
-          "column": 74
+          "column": 71
         }
       }
     },
@@ -9639,7 +9639,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n+    plus sign\n-    minus sign (hyphen)\n.   dot\n!   exclamation mark",
+      "value": "\\   backslash\n`   backtick\n*   asterisk\n_   underscore\n{}  curly braces\n[]  square brackets\n()  parentheses\n#   hash mark\n+\tplus sign\n-\tminus sign (hyphen)\n.   dot\n!   exclamation mark",
       "position": {
         "start": {
           "line": 875,

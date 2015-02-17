@@ -12,7 +12,7 @@
         },
         "end": {
           "line": 1,
-          "column": 33
+          "column": 30
         }
       }
     },
@@ -100,7 +100,7 @@
         },
         "end": {
           "line": 10,
-          "column": 34
+          "column": 31
         }
       }
     },
@@ -144,7 +144,7 @@
         },
         "end": {
           "line": 14,
-          "column": 32
+          "column": 29
         }
       }
     }
@@ -156,7 +156,7 @@
     },
     "end": {
       "line": 14,
-      "column": 32
+      "column": 29
     }
   }
 }

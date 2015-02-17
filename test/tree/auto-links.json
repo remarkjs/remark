@@ -580,7 +580,7 @@
         },
         "end": {
           "line": 17,
-          "column": 35
+          "column": 32
         }
       }
     }
@@ -592,7 +592,7 @@
     },
     "end": {
       "line": 17,
-      "column": 35
+      "column": 32
     }
   }
 }

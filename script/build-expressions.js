@@ -50,7 +50,7 @@ rules.newline = /^\n+/;
 
 rules.bullet = /(?:[*+-]|\d+\.)/;
 
-rules.code = /^( {4}[^\n]+\n*)+/;
+rules.code = /^((?: {4}|\t)[^\n]+\n*)+/;
 
 rules.horizontalRule = /^( *[-*_]){3,} *(?=\n|$)/;
 
@@ -64,26 +64,26 @@ rules.linkDefinition =
 rules.blockText = /^[^\n]+/;
 
 rules.item = new RegExp(
-    '^( *)(' +
+    '^([ \\t]*)(' +
         cleanExpression(rules.bullet) +
-    ') [^\\n]*(?:\\n(?!\\1' +
+    ')[ \\t][^\\n]*(?:\\n(?!\\1' +
         cleanExpression(rules.bullet) +
-    ' )[^\\n]*)*',
+    '[ \\t])[^\\n]*)*',
 'gm');
 
 rules.list = new RegExp(
     '^' +
-    '( *)' +
+    '([ \\t]*)' +
     '(' + cleanExpression(rules.bullet) + ')' +
     '(' +
-        '(?: [\\s\\S]+?)' +
+        '(?:[ \\t][\\s\\S]+?)' +
         '(?:' +
 
             /*
              * Modified Horizontal rule:
              */
 
-            '\\n+(?=\\1?(?:[-*_] *){3,}(?=\\n|$))' +
+            '\\n+(?=\\1?(?:[-*_][ \\t]*){3,}(?=\\n|$))' +
             '|' +
 
             /*
@@ -93,9 +93,9 @@ rules.list = new RegExp(
             '\\n+(?=' + cleanExpression(rules.linkDefinition) + ')' +
             '|' +
 
-            '\\n{2,}(?! )(?!\\1' +
+            '\\n{2,}(?![ \\t])(?!\\1' +
                 cleanExpression(rules.bullet) +
-            ' )' +
+            '[ \\t])' +
             '|' +
 
             '\\s*$' +
@@ -104,7 +104,7 @@ rules.list = new RegExp(
 );
 
 rules.blockquote = new RegExp(
-    '^( *>[^\\n]+(\\n(?!' +
+    '^([ \\t]*>[^\\n]+(\\n(?!' +
 
     cleanExpression(rules.linkDefinition) +
 
@@ -127,21 +127,21 @@ inlineTags = (
 );
 
 rules.html = new RegExp(
-    '^ *(?:' +
+    '^[ \\t]*(?:' +
 
         /*
          * HTML comment.
          */
 
         cleanExpression('<!--[\\s\\S]*?-->') +
-        ' *(?:\\n|\\s*$)|' +
+        '[ \\t]*(?:\\n|\\s*$)|' +
 
         /*
          * Closed tag.
          */
 
         cleanExpression('<(' + inlineTags + ')[\\s\\S]+?<\\/\\1>') +
-        ' *(?:\\n{2,}|\\s*$)|' +
+        '[ \\t]*(?:\\n{2,}|\\s*$)|' +
 
         /*
          * Closing tag.
@@ -150,7 +150,7 @@ rules.html = new RegExp(
         cleanExpression(
             '<' + inlineTags + '(?:"[^"]*"|\'[^\']*\'|[^\'">])*?>'
         ) +
-        ' *' +
+        '[ \\t]*' +
         '(?:\\n{2,}|\\s*$)' +
     ')'
 );
@@ -197,7 +197,7 @@ var gfm = {};
 expressions.gfm = gfm;
 
 gfm.fences =
-    /^ *(`{3,}|~{3,}) *(\S+)? *\n([\s\S]*?)\s*\1 *(?=\n|$)/;
+    /^[ \\t]*(`{3,}|~{3,})[ \\t]*(\S+)?[ \\t]*\n([\s\S]*?)\s*\1[ \\t]*(?=\n|$)/;
 
 gfm.paragraph = new RegExp(
     rules.paragraph.source.replace('(?!', '(?!' +

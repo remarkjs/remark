@@ -18,11 +18,11 @@
                   "position": {
                     "start": {
                       "line": 1,
-                      "column": 6
+                      "column": 3
                     },
                     "end": {
                       "line": 2,
-                      "column": 23
+                      "column": 20
                     }
                   }
                 }
@@ -30,11 +30,11 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 6
+                  "column": 3
                 },
                 "end": {
                   "line": 2,
-                  "column": 23
+                  "column": 20
                 }
               }
             }
@@ -147,7 +147,7 @@
         },
         "end": {
           "line": 9,
-          "column": 43
+          "column": 40
         }
       }
     },
@@ -191,7 +191,7 @@
         },
         "end": {
           "line": 13,
-          "column": 48
+          "column": 42
         }
       }
     },
@@ -227,7 +227,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "+    this is an example list item\n    indented with tabs\n\n+   this is an example list item\n    indented with spaces",
+      "value": "+\tthis is an example list item\n\tindented with tabs\n\n+   this is an example list item\n    indented with spaces",
       "position": {
         "start": {
           "line": 17,
@@ -235,7 +235,7 @@
         },
         "end": {
           "line": 21,
-          "column": 29
+          "column": 26
         }
       }
     }
@@ -247,7 +247,7 @@
     },
     "end": {
       "line": 21,
-      "column": 29
+      "column": 26
     }
   }
 }
