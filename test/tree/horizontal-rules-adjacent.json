@@ -1,0 +1,242 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 2,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The three asterisks are not a Setext header.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 45
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 45
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph.\n",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 8,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "*",
+              "position": {
+                "start": {
+                  "line": 8,
+                  "column": 2
+                },
+                "end": {
+                  "line": 8,
+                  "column": 3
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 1
+            },
+            "end": {
+              "line": 8,
+              "column": 4
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is another paragraph.\n",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "emphasis",
+          "children": [
+            {
+              "type": "text",
+              "value": "_",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 2
+                },
+                "end": {
+                  "line": 11,
+                  "column": 3
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 4
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "But this is a secondary heading.",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 33
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 14,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 16,
+          "column": 1
+        },
+        "end": {
+          "line": 16,
+          "column": 4
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 16,
+      "column": 4
+    }
+  }
+}
