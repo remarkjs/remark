@@ -34,7 +34,7 @@ function onchange() {
     $output.textContent = mdast.stringify(ast, options);
 }
 
-var debouncedChange = debounce(onchange, 200, true);
+var debouncedChange = debounce(onchange, 50);
 
 function ontextchange($target, name) {
     options[name] = $target.value;
