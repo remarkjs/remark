@@ -54,7 +54,7 @@ rules.code = /^((?: {4}|\t)[^\n]+\n*)+/;
 
 rules.horizontalRule = /^ *([-*_])( *\1){2,} *(?=\n|$)/;
 
-rules.heading = /^ *((#{1,6}) *)([^\n]+?) *#* *(?=\n|$)/;
+rules.heading = /^ *((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)/;
 
 rules.lineHeading = /^([^\n]+)\n *(=|-){2,} *(?=\n|$)/;
 
