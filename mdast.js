@@ -114,8 +114,8 @@ module.exports={
     "autoLink":/^<([^ >]+(@|:\/)[^ >]+)>/,
     "tag":/^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
     "invalidLink":/^(!?\[)((?:\[[^\]]*\]|[^\[\]])*)\]/,
-    "strong":/^__([\s\S]+?)__(?!_)|^\*\*([\s\S]+?)\*\*(?!\*)/,
-    "emphasis":/^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,
+    "strong":/^(_)_([\s\S]+?)__(?!_)|^(\*)\*([\s\S]+?)\*\*(?!\*)/,
+    "emphasis":/^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/,
     "inlineCode":/^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
     "break":/^ {2,}\n(?!\s*$)/,
     "text":/^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
@@ -143,8 +143,8 @@ module.exports={
     "yamlFrontMatter":/^-{3}\n([\s\S]+?\n)?-{3}/
   },
   "pedantic": {
-    "strong":/^__(?=\S)([\s\S]*?\S)__(?!_)|^\*\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
-    "emphasis":/^_(?=\S)([\s\S]*?\S)_(?!_)|^\*(?=\S)([\s\S]*?\S)\*(?!\*)/
+    "strong":/^(_)_(?=\S)([\s\S]*?\S)__(?!_)|^(\*)\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+    "emphasis":/^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/
   },
   "breaks": {
     "break":/^ *\n(?!\s*$)/,
@@ -173,6 +173,7 @@ var expressions = require('./expressions.js');
 var repeat = utilities.repeat;
 var copy = utilities.copy;
 var raise = utilities.raise;
+var trim = utilities.trim;
 var trimRight = utilities.trimRight;
 var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
@@ -521,7 +522,7 @@ function tokenizeBlockquote(eat, $0) {
 function tokenizeList(eat, $0, $1, $2) {
     var self = this;
     var firstBullet = $2;
-    var matches = trimRight($0).match(self.rules.item);
+    var matches = trimRightLines($0).match(self.rules.item);
     var length = matches.length;
     var index = -1;
     var now;
@@ -571,11 +572,12 @@ function tokenizeList(eat, $0, $1, $2) {
 
         item = eat(item)(list, self.renderListItem(item, now));
 
-        eat(NEW_LINE);
+        if (index !== length - 1) {
+            eat(NEW_LINE);
+        }
     }
 
-    list.position.end.line = item.position.end.line;
-    list.position.end.column = item.position.end.column;
+    list.position.end = eat.now();
 
     enterTop();
     exitBlockquote();
@@ -977,6 +979,7 @@ function renderNormalListItem(token, position) {
     while (++index < length) {
         offset[line] = (offset[line] || 0) +
             lines[index].length - trimmedLines[index].length;
+
         line++;
     }
 
@@ -1359,15 +1362,22 @@ tokenizeReferenceLink.notInLink = true;
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole emphasis.
- * @param {string?} $1 - Content.
+ * @param {string?} $1 - Marker.
  * @param {string?} $2 - Content.
+ * @param {string?} $3 - Marker.
+ * @param {string?} $4 - Content.
  */
-function tokenizeStrong(eat, $0, $1, $2) {
+function tokenizeStrong(eat, $0, $1, $2, $3, $4) {
     var now = eat.now();
+    var value = $2 || $4;
+
+    if (trim(value) === EMPTY) {
+        return;
+    }
 
     now.column += 2;
 
-    eat($0)(this.renderInline(STRONG, $2 || $1, now));
+    eat($0)(this.renderInline(STRONG, value, now));
 }
 
 /**
@@ -1375,15 +1385,27 @@ function tokenizeStrong(eat, $0, $1, $2) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole emphasis.
- * @param {string?} $1 - Content.
+ * @param {string?} $1 - Marker.
  * @param {string?} $2 - Content.
+ * @param {string?} $3 - Marker.
+ * @param {string?} $4 - Content.
  */
-function tokenizeEmphasis(eat, $0, $1, $2) {
+function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
     var now = eat.now();
+    var marker = $1 || $3;
+    var value = $2 || $4;
+
+    if (
+        trim(value) === EMPTY ||
+        value.charAt(0) === marker ||
+        value.charAt(value.length - 1) === marker
+    ) {
+        return;
+    }
 
     now.column += 1;
 
-    eat($0)(this.renderInline(EMPHASIS, $2 || $1, now));
+    eat($0)(this.renderInline(EMPHASIS, value, now));
 }
 
 /**
@@ -3042,6 +3064,16 @@ function trimLeft(value) {
 }
 
 /**
+ * Remove initial and final white space from `value`.
+ *
+ * @param {string} value
+ * @return {string}
+ */
+function trim(value) {
+    return trimLeft(trimRight(value));
+}
+
+/**
  * Clean a string in preperation of parsing.
  *
  * @param {string} value
@@ -3097,6 +3129,7 @@ exports.validate = {
  * Expose `trim` methods.
  */
 
+exports.trim = trim;
 exports.trimLeft = trimLeft;
 exports.trimRight = trimRight;
 exports.trimRightLines = trimRightLines;
