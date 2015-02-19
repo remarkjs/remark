@@ -1,4 +1,12 @@
 
+0.5.1 / 2015-02-19
+==================
+
+  * Remove ATX headers when not followed by white space
+  * Fix miscellaneous emphasis issues
+  * Fix empty list-item from throwing
+  * Fix miscellaneous horizontal rule issues
+
 0.5.0 / 2015-02-17
 ==================
 
