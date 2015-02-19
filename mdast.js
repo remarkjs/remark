@@ -3094,7 +3094,19 @@ function clean(value) {
  * @return {string}
  */
 function repeat(times, character) {
-    return new Array(times + 1).join(character);
+    var result = '';
+
+    while (times > 0) {
+        if (times % 2 == 1) {
+            result += character;
+        }
+
+        character += character;
+
+        times >>= 1;
+    }
+
+    return result;
 }
 
 /*
