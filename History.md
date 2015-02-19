@@ -1,4 +1,9 @@
 
+0.5.2 / 2015-02-19
+==================
+
+  * Refactor to improve performance on repeated character
+
 0.5.1 / 2015-02-19
 ==================
 
