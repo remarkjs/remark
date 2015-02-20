@@ -261,7 +261,7 @@ Parameters:
   - `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
   - `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
   - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
-  - `fence: string` (`"~"` or ``"`"``, default: `~`). See [Fence](doc/Options.md#fence);
+  - `fence: string` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
   - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
   - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
   - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
