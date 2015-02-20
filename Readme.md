@@ -2,7 +2,9 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
 
-**mdast** is speedy Markdown parser (and stringifier) for multipurpose analysis (a syntax tree) in JavaScript. Node.JS and the browser. Lots of tests. 100% coverage.
+**mdast** is speedy Markdown parser and stringifier for multipurpose analysis in JavaScript. Node and the browser. Lots of tests. 100% coverage.
+
+It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://github.com/chjj/marked) [Markdown](https://github.com/jonschlinkert/remarkable) [to](https://github.com/jgm/commonmark.js) [HTML](https://github.com/markdown-it/markdown-it) compiler. **mdast** can generate Markdown too, which enables plug-ins (and you) to [change your Readme.md](https://github.com/wooorm/mdast-usage), or [lint the JavaScript in your Markdown](https://github.com/wooorm/eslint-md).
 
 ## Installation
 
