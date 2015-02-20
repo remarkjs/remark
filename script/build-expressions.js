@@ -197,7 +197,7 @@ var gfm = {};
 expressions.gfm = gfm;
 
 gfm.fences =
-    /^[ \\t]*(`{3,}|~{3,})[ \\t]*(\S+)?[ \\t]*\n([\s\S]*?)\s*\1[ \\t]*(?=\n|$)/;
+    /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/;
 
 gfm.paragraph = new RegExp(
     rules.paragraph.source.replace('(?!', '(?!' +
