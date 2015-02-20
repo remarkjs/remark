@@ -1,4 +1,15 @@
 
+0.5.3 / 2015-02-20
+==================
+
+* Add `AUTHORS` (bd40fcf)
+* Fix default value for `fence` in `Readme.md` (1545df1)
+* Add more verbose project description (30b7490)
+* Remove double space in example (fce6485)
+* Refactor `History.md` (b3b86ee)
+* Fix bug with tabs following code block fences (dfc3432)
+* Update mdast dependency (e6d9d9d)
+
 0.5.2 / 2015-02-19
 ==================
 
