@@ -51,7 +51,7 @@ var mdast = require('mdast');
 Parse markdown with `mdast.parse`:
 
 ```javascript
-var ast = mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
+var ast = mdast.parse('Some *emphasis*, **strongness**, and `code`.');
 ```
 
 Yields:
@@ -108,7 +108,7 @@ Yields:
         },
         {
           "type": "text",
-          "value": ",  ",
+          "value": ", ",
           "position": {
             "start": {
               "line": 1,
@@ -116,7 +116,7 @@ Yields:
             },
             "end": {
               "line": 1,
-              "column": 19
+              "column": 18
             }
           }
         },
@@ -129,11 +129,11 @@ Yields:
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 21
+                  "column": 20
                 },
                 "end": {
                   "line": 1,
-                  "column": 31
+                  "column": 30
                 }
               }
             }
@@ -141,11 +141,11 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 19
+              "column": 18
             },
             "end": {
               "line": 1,
-              "column": 33
+              "column": 32
             }
           }
         },
@@ -155,11 +155,11 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 33
+              "column": 32
             },
             "end": {
               "line": 1,
-              "column": 39
+              "column": 38
             }
           }
         },
@@ -169,11 +169,11 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 39
+              "column": 38
             },
             "end": {
               "line": 1,
-              "column": 45
+              "column": 44
             }
           }
         },
@@ -183,11 +183,11 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 45
+              "column": 44
             },
             "end": {
               "line": 1,
-              "column": 46
+              "column": 45
             }
           }
         }
@@ -199,7 +199,7 @@ Yields:
         },
         "end": {
           "line": 1,
-          "column": 46
+          "column": 45
         }
       }
     }
@@ -211,7 +211,7 @@ Yields:
     },
     "end": {
       "line": 1,
-      "column": 46
+      "column": 45
     }
   }
 }
@@ -226,7 +226,7 @@ var doc = mdast.stringify(ast);
 Yields:
 
 ```markdown
-Some _emphasis_,  **strongness**, and `code`.
+Some _emphasis_, **strongness**, and `code`.
 ```
 
 ## API

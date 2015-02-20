@@ -2,7 +2,7 @@
 var mdast = require('./index.js');
 
 // Parse markdown with `mdast.parse`:
-var ast = mdast.parse('Some *emphasis*,  **strongness**, and `code`.');
+var ast = mdast.parse('Some *emphasis*, **strongness**, and `code`.');
 
 // Yields:
 console.log('json', JSON.stringify(ast, 0, 2));
