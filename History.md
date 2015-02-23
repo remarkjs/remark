@@ -1,4 +1,12 @@
 
+0.6.0 / 2015-02-23
+==================
+
+* Refactor code style in `lib/expressions.js` (1d84c60)
+* Add CommonMark paragraph parsing (2dda62f)
+* Add iojs, node 0.12 to travis (465d2fc)
+* Update browserify (965592d)
+
 0.5.3 / 2015-02-20
 ==================
 
