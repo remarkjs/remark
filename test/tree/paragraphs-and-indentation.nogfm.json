@@ -1,0 +1,407 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Without lines.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph\n    and this is further text",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 4,
+              "column": 29
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph\n   and this is further text",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 28
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph with some asterisks",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 40
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "***",
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 10,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph followed by a horizontal rule",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1
+            },
+            "end": {
+              "line": 12,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 12,
+          "column": 1
+        },
+        "end": {
+          "line": 12,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "With lines.",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 3
+            },
+            "end": {
+              "line": 15,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "and this is code",
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1
+        },
+        "end": {
+          "line": 19,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1
+            },
+            "end": {
+              "line": 21,
+              "column": 20
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "   and this is a new paragraph",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "line": 23,
+              "column": 31
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "line": 23,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph with some asterisks in a code block",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1
+            },
+            "end": {
+              "line": 25,
+              "column": 56
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1
+        },
+        "end": {
+          "line": 25,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "***",
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 27,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph followed by a horizontal rule",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1
+            },
+            "end": {
+              "line": 29,
+              "column": 50
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1
+        },
+        "end": {
+          "line": 29,
+          "column": 50
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1
+        },
+        "end": {
+          "line": 31,
+          "column": 7
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 31,
+      "column": 7
+    }
+  }
+}

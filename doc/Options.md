@@ -101,6 +101,74 @@ Yields:
 }
 ```
 
+### CommonMark
+
+Setting `commonmark: true` (default: `true`) enables:
+
+- Stricter paragraph rendering, which causes indentation following a paragraph, which normally would be seen as code, to be part of the preceding paragraph.
+
+The following document:
+
+    This is a paragraph
+        and this is also part of the preceding paragraph.
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document, {
+  "commonmark": true
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph\n    and this is also part of the preceding paragraph.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 54
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 54
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 2,
+      "column": 54
+    }
+  }
+}
+```
+
 ### Footnotes
 
 Setting `footnotes: true` (default: `false`) enables inline- and reference-style footnotes.

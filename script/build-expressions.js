@@ -52,14 +52,14 @@ rules.bullet = /(?:[*+-]|\d+\.)/;
 
 rules.code = /^((?: {4}|\t)[^\n]+\n*)+/;
 
-rules.horizontalRule = /^ *([-*_])( *\1){2,} *(?=\n|$)/;
+rules.horizontalRule = /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/;
 
-rules.heading = /^ *((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)/;
+rules.heading = /^[ \t]*((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)/;
 
 rules.lineHeading = /^([^\n]+)\n *(=|-){2,} *(?=\n|$)/;
 
 rules.linkDefinition =
-    /^ *\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/;
+    /^[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/;
 
 rules.blockText = /^[^\n]+/;
 
@@ -200,10 +200,10 @@ gfm.fences =
     /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/;
 
 gfm.paragraph = new RegExp(
-    rules.paragraph.source.replace('(?!', '(?!' +
-        cleanExpression(gfm.fences).replace('\\1', '\\2') +
+    rules.paragraph.source.replace('(?=\\n|$)|', '(?=\\n|$)|' +
+        cleanExpression(gfm.fences).replace(/\\1/g, '\\3') +
         '|' +
-        cleanExpression(rules.list).replace('\\1', '\\3') +
+        cleanExpression(rules.list).replace(/\\1/g, '\\6') +
         '|'
     )
 );
@@ -299,6 +299,32 @@ pedantic.strong =
 
 pedantic.emphasis =
     /^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/;
+
+/*
+ * CommonMark and CommonMark + GFM.
+ */
+
+var commonmark = {};
+var commonmarkGFM = {};
+
+/**
+ * Replace zero or more spaces or tabs with
+ * between 0 and 3 spaces.
+ *
+ * @param {RegExp} expression
+ * @return {RegExp}
+ */
+function commonmarkIndentation(expression) {
+    return new RegExp(expression.source.replace(/\[ \\t\]\*/g, function () {
+        return '\\ {0,3}';
+    }));
+}
+
+commonmark.paragraph = commonmarkIndentation(rules.paragraph);
+commonmarkGFM.paragraph = commonmarkIndentation(gfm.paragraph);
+
+expressions.commonmark = commonmark;
+expressions.commonmarkGFM = commonmarkGFM;
 
 /*
  * GFM + Line Breaks Inline Grammar

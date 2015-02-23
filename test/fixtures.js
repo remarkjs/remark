@@ -25,6 +25,7 @@ optionsMap = {
     'gfm': 'gfm',
     'yaml': 'yaml',
     'tables': 'tables',
+    'commonmark': 'commonmark',
     'footnotes': 'footnotes',
     'breaks': 'breaks',
     'pedantic': 'pedantic',

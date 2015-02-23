@@ -210,6 +210,7 @@ program.on('--settings', function () {
     console.log('  -  `tables` (boolean, default: true)');
     console.log('  -  `yaml` (boolean, default: true)');
     console.log('  -  `pedantic` (boolean, default: false)');
+    console.log('  -  `commonmark` (boolean, default: false)');
     console.log('  -  `breaks` (boolean, default: false)');
     console.log('  -  `footnotes` (boolean, default: false)');
     console.log();

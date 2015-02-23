@@ -74,15 +74,15 @@
       "children": [
         {
           "type": "text",
-          "value": "This is a paragraph.\n***",
+          "value": "This is a paragraph.",
           "position": {
             "start": {
               "line": 7,
               "column": 1
             },
             "end": {
-              "line": 8,
-              "column": 4
+              "line": 7,
+              "column": 21
             }
           }
         }
@@ -90,6 +90,19 @@
       "position": {
         "start": {
           "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 8,
           "column": 1
         },
         "end": {
@@ -103,15 +116,15 @@
       "children": [
         {
           "type": "text",
-          "value": "This is another paragraph.\n___",
+          "value": "This is another paragraph.",
           "position": {
             "start": {
               "line": 10,
               "column": 1
             },
             "end": {
-              "line": 11,
-              "column": 4
+              "line": 10,
+              "column": 27
             }
           }
         }
@@ -119,6 +132,19 @@
       "position": {
         "start": {
           "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 10,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "horizontalRule",
+      "position": {
+        "start": {
+          "line": 11,
           "column": 1
         },
         "end": {
