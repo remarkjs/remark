@@ -73,7 +73,8 @@ rules.heading =
 commonmark.heading =
     /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/;
 
-rules.lineHeading = /^([^\n]+)\n *(=|-){2,} *(?=\n|$)/;
+rules.lineHeading =
+    /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/;
 
 rules.linkDefinition =
     /^[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/;
@@ -100,7 +101,7 @@ rules.list = new RegExp(
              * Modified Horizontal rule:
              */
 
-            '\\n+(?=\\1?(?:[-*_][ \\t]*){3,}(?=\\n|$))' +
+            '\\n+(?=\\1?(?:[-*_][ \\t]*){3,}(?:\\n|$))' +
             '|' +
 
             /*
@@ -126,6 +127,14 @@ rules.blockquote = new RegExp(
     cleanExpression(rules.linkDefinition) +
 
     ')[^\\n]+)*)+'
+);
+
+
+commonmark.blockquote = new RegExp(
+    rules.blockquote.source.replace('(?!', '(?!' +
+        cleanExpression(rules.horizontalRule).replace(/\\1/g, '\\3') +
+        '|'
+    )
 );
 
 var inlineTags = '(?!' +
@@ -304,14 +313,17 @@ pedantic.emphasis =
  * @param {RegExp} expression
  * @return {RegExp}
  */
-function commonmarkIndentation(expression) {
-    return new RegExp(expression.source.replace(/\[ \\t\]\*/g, function () {
-        return '\\ {0,3}';
-    }));
+function commonmarkParagraph(expression) {
+    return new RegExp(expression.source
+        .replace(cleanExpression(rules.lineHeading) + '|', '')
+        .replace(/\[ \\t\]\*/g, function () {
+            return '\\ {0,3}';
+        })
+    );
 }
 
-commonmark.paragraph = commonmarkIndentation(rules.paragraph);
-commonmarkGFM.paragraph = commonmarkIndentation(gfm.paragraph);
+commonmark.paragraph = commonmarkParagraph(rules.paragraph);
+commonmarkGFM.paragraph = commonmarkParagraph(gfm.paragraph);
 
 /*
  * GFM + Line Breaks Inline Grammar
