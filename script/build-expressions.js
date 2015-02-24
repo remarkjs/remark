@@ -33,14 +33,27 @@ function cleanExpression(expression) {
  */
 
 var expressions = {};
-
-/*
- * Block rules;
- */
-
 var rules = {};
+var tables = {};
+var gfm = {};
+var footnotes = {};
+var yaml = {};
+var pedantic = {};
+var commonmark = {};
+var commonmarkGFM = {};
+var breaks = {};
+var breaksGFM = {};
 
 expressions.rules = rules;
+expressions.tables = tables;
+expressions.gfm = gfm;
+expressions.footnotes = footnotes;
+expressions.yaml = yaml;
+expressions.pedantic = pedantic;
+expressions.commonmark = commonmark;
+expressions.commonmarkGFM = commonmarkGFM;
+expressions.breaks = breaks;
+expressions.breaksGFM = breaksGFM;
 
 /*
  * Block helpers.
@@ -54,7 +67,11 @@ rules.code = /^((?: {4}|\t)[^\n]+\n*)+/;
 
 rules.horizontalRule = /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/;
 
-rules.heading = /^[ \t]*((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)/;
+rules.heading =
+    /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/;
+
+commonmark.heading =
+    /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/;
 
 rules.lineHeading = /^([^\n]+)\n *(=|-){2,} *(?=\n|$)/;
 
@@ -111,10 +128,7 @@ rules.blockquote = new RegExp(
     ')[^\\n]+)*)+'
 );
 
-var inlineTags;
-
-inlineTags = (
-    '(?!' +
+var inlineTags = '(?!' +
         '(?:' +
             'a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|' +
             'var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|' +
@@ -123,8 +137,7 @@ inlineTags = (
     ')' +
     '\\w+(?!:' +
         '\\/|[^\\w\\s@]*@' +
-    ')\\b'
-);
+    ')\\b';
 
 rules.html = new RegExp(
     '^[ \\t]*(?:' +
@@ -178,10 +191,6 @@ rules.paragraph = new RegExp(
  * GFM + Tables Block Grammar
  */
 
-var tables = {};
-
-expressions.tables = tables;
-
 tables.table =
     /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/;
 
@@ -191,10 +200,6 @@ tables.looseTable =
 /*
  * GFM Block Grammar.
  */
-
-var gfm = {};
-
-expressions.gfm = gfm;
 
 gfm.fences =
     /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/;
@@ -212,20 +217,12 @@ gfm.paragraph = new RegExp(
  * Footnote block grammar
  */
 
-var footnotes = {};
-
-expressions.footnotes = footnotes;
-
 footnotes.footnoteDefinition =
     /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/;
 
 /*
  * YAML front matter.
  */
-
-var yaml = {};
-
-expressions.yaml = yaml;
 
 yaml.yamlFrontMatter = /^-{3}\n([\s\S]+?\n)?-{3}/;
 
@@ -290,10 +287,6 @@ gfm.text = new RegExp(
  * Pedantic Inline Grammar.
  */
 
-var pedantic = {};
-
-expressions.pedantic = pedantic;
-
 pedantic.strong =
     /^(_)_(?=\S)([\s\S]*?\S)__(?!_)|^(\*)\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/;
 
@@ -303,9 +296,6 @@ pedantic.emphasis =
 /*
  * CommonMark and CommonMark + GFM.
  */
-
-var commonmark = {};
-var commonmarkGFM = {};
 
 /**
  * Replace zero or more spaces or tabs with
@@ -323,18 +313,9 @@ function commonmarkIndentation(expression) {
 commonmark.paragraph = commonmarkIndentation(rules.paragraph);
 commonmarkGFM.paragraph = commonmarkIndentation(gfm.paragraph);
 
-expressions.commonmark = commonmark;
-expressions.commonmarkGFM = commonmarkGFM;
-
 /*
  * GFM + Line Breaks Inline Grammar
  */
-
-var breaks = {};
-var breaksGFM = {};
-
-expressions.breaks = breaks;
-expressions.breaksGFM = breaksGFM;
 
 breaks.break = new RegExp(rules.break.source.replace('{2,}', '*'));
 breaks.text = new RegExp(rules.text.source.replace('{2,}', '*'));
