@@ -211,13 +211,13 @@ tables.looseTable =
  */
 
 gfm.fences =
-    /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/;
+    /^( *)(([`~])\3{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/;
 
 gfm.paragraph = new RegExp(
     rules.paragraph.source.replace('(?=\\n|$)|', '(?=\\n|$)|' +
-        cleanExpression(gfm.fences).replace(/\\1/g, '\\3') +
+        cleanExpression(gfm.fences).replace(/\\2/g, '\\4').replace(/\\3/g, '\\5') +
         '|' +
-        cleanExpression(rules.list).replace(/\\1/g, '\\6') +
+        cleanExpression(rules.list).replace(/\\1/g, '\\8') +
         '|'
     )
 );

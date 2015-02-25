@@ -129,8 +129,8 @@ module.exports = {
     'looseTable': /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/
   },
   'gfm': {
-    'fences': /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\3[ \t]*(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\6?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\6(?:[*+-]|\d+\.)[ \t])|\s*$))|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
+    'fences': /^( *)(([`~])\3{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
+    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*[ \t]*(?=\n|$)|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\8?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|\s*$))|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
     'escape': /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
     'url': /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
     'deletion': /^~~(?=\S)([\s\S]*?\S)~~/,
@@ -152,7 +152,7 @@ module.exports = {
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
   },
   'commonmarkGFM': {
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|\ {0,3}(`{3,}|~{3,})\ {0,3}(\S+)?\ {0,3}\n([\s\S]*?)\s*\3\ {0,3}(?=\n|$)|(\ {0,3})((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\6?(?:[-*_]\ {0,3}){3,}(?:\n|$))|\n+(?=\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\6(?:[*+-]|\d+\.)[ \t])|\s*$))|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
+    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\s`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|\n+(?=\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|\s*$))|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
   },
   'breaks': {
     'break': /^ *\n(?!\s*$)/,
@@ -302,9 +302,11 @@ function getIndent(value) {
  * Remove the minimum indent from `value`.
  *
  * @param {string} value
+ * @param {number?} maximum - The maximum indentation
+ *   to remove.
  * @return {string}
  */
-function removeIndentation(value) {
+function removeIndentation(value, maximum) {
     var values = value.split(NEW_LINE);
     var position = values.length;
     var minIndent = Infinity;
@@ -313,6 +315,11 @@ function removeIndentation(value) {
     var indentation;
     var stops;
     var padding;
+
+    if (maximum > 0) {
+        values.unshift(repeat(maximum, SPACE) + EXCLAMATION_MARK);
+        position++;
+    }
 
     while (position--) {
         indentation = getIndent(values[position]);
@@ -332,6 +339,11 @@ function removeIndentation(value) {
 
             break;
         }
+    }
+
+    if (maximum > 0) {
+        values.shift();
+        position--;
     }
 
     if (minIndent !== Infinity) {
@@ -358,6 +370,38 @@ function removeIndentation(value) {
             values[position] = padding + values[position].slice(
                 index in stops ? stops[index] + 1 : 0
             );
+        }
+    }
+
+    return values.join(NEW_LINE);
+}
+
+/**
+ * Ensure that `value` is at least indented with
+ * `indent` spaces.
+ *
+ * @param {string} value
+ * @param {number} indent - The maximum amount of
+ *   spacing to insert.
+ * @return {string}
+ */
+function ensureIndentation(value, indent) {
+    var values = value.split(NEW_LINE);
+    var length = values.length;
+    var index = -1;
+    var line;
+    var position;
+
+    while (++index < length) {
+        line = values[index];
+
+        position = -1;
+
+        while (++position < indent) {
+            if (line.charAt(position) !== SPACE) {
+                values[index] = repeat(indent - position, SPACE) + line;
+                break;
+            }
         }
     }
 
@@ -463,12 +507,30 @@ function tokenizeCode(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole code.
- * @param {string} $1 - Fence.
- * @param {string} $2 - Programming language flag.
- * @param {string} $3 - Content.
+ * @param {string} $1 - Initial spacing.
+ * @param {string} $2 - Initial fence.
+ * @param {string} $3 - Fence marker.
+ * @param {string} $4 - Programming language flag.
+ * @param {string} $5 - Content.
  */
-function tokenizeFences(eat, $0, $1, $2, $3) {
-    eat($0)(this.renderCodeBlock($3, $2));
+function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
+    $0 = trimRightLines($0);
+
+    /*
+     * If the initial fence was preceded by spaces,
+     * exdent that amount of white space from the code
+     * block.  Because it’s possible that the code block
+     * is exdented, we first have to ensure at least
+     * those spaces are available.  Additionally, to work
+     * around `removeIndentation` from removing to much
+     * white space, we add a simple line
+     */
+
+    if ($1) {
+        $5 = removeIndentation(ensureIndentation($5, $1.length), $1.length);
+    }
+
+    eat($0)(this.renderCodeBlock($5, $4));
 }
 
 /**
@@ -873,7 +935,7 @@ function renderCodeBlock(value, language) {
     return {
         'type': CODE,
         'lang': language || null,
-        'value': trimRightLines(removeIndentation(value || EMPTY))
+        'value': trimRightLines(value || EMPTY)
     };
 }
 
