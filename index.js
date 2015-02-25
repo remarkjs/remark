@@ -4,7 +4,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.6.0');
+var mdast = require('wooorm/mdast@0.7.0');
 var debounce = require('component/debounce@1.0.0');
 
 /*

@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.6.0');
+var mdast = require('wooorm/mdast@0.7.0');
 var debounce = require('component/debounce@1.0.0');
 
 /*
@@ -197,7 +197,7 @@ $options.forEach(function ($node) {
     });
 });
 
-}, {"wooorm/mdast@0.6.0":2,"component/debounce@1.0.0":3}],
+}, {"wooorm/mdast@0.7.0":2,"component/debounce@1.0.0":3}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -881,7 +881,6 @@ var TAB_SIZE = 4;
 
 var EXPRESSION_RIGHT_ALIGNMENT = /^[ \t]*-+:[ \t]*$/;
 var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
-var EXPRESSION_SPACES_ONLY_LINE = /^[ \t]+$/gm;
 var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
 var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
 var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)([ \t]*\|[ \t]*\n?|\n?$)/g;
@@ -943,9 +942,11 @@ function getIndent(value) {
  * Remove the minimum indent from `value`.
  *
  * @param {string} value
+ * @param {number?} maximum - The maximum indentation
+ *   to remove.
  * @return {string}
  */
-function removeIndentation(value) {
+function removeIndentation(value, maximum) {
     var values = value.split(NEW_LINE);
     var position = values.length;
     var minIndent = Infinity;
@@ -955,13 +956,19 @@ function removeIndentation(value) {
     var stops;
     var padding;
 
+    if (maximum > 0) {
+        values.unshift(repeat(maximum, SPACE) + EXCLAMATION_MARK);
+        position++;
+    }
+
     while (position--) {
-        if (values[position].length === 0) {
+        indentation = getIndent(values[position]);
+
+        matrix[position] = indentation.stops;
+
+        if (trim(values[position]).length === 0) {
             continue;
         }
-
-        indentation = getIndent(values[position]);
-        matrix[position] = indentation.stops;
 
         if (indentation.indent) {
             if (indentation.indent > 0 && indentation.indent < minIndent) {
@@ -974,6 +981,11 @@ function removeIndentation(value) {
         }
     }
 
+    if (maximum > 0) {
+        values.shift();
+        position--;
+    }
+
     if (minIndent !== Infinity) {
         position = values.length;
 
@@ -981,19 +993,55 @@ function removeIndentation(value) {
             stops = matrix[position];
             index = minIndent;
 
-            if (!stops) {
-                continue;
-            }
-
             while (index && !(index in stops)) {
                 index--;
             }
 
-            padding = minIndent && index !== minIndent ? TAB : EMPTY;
+            if (
+                trim(values[position]).length !== 0 &&
+                minIndent &&
+                index !== minIndent
+            ) {
+                padding = TAB;
+            } else {
+                padding = EMPTY;
+            }
 
             values[position] = padding + values[position].slice(
                 index in stops ? stops[index] + 1 : 0
             );
+        }
+    }
+
+    return values.join(NEW_LINE);
+}
+
+/**
+ * Ensure that `value` is at least indented with
+ * `indent` spaces.
+ *
+ * @param {string} value
+ * @param {number} indent - The maximum amount of
+ *   spacing to insert.
+ * @return {string}
+ */
+function ensureIndentation(value, indent) {
+    var values = value.split(NEW_LINE);
+    var length = values.length;
+    var index = -1;
+    var line;
+    var position;
+
+    while (++index < length) {
+        line = values[index];
+
+        position = -1;
+
+        while (++position < indent) {
+            if (line.charAt(position) !== SPACE) {
+                values[index] = repeat(indent - position, SPACE) + line;
+                break;
+            }
         }
     }
 
@@ -1099,12 +1147,30 @@ function tokenizeCode(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole code.
- * @param {string} $1 - Fence.
- * @param {string} $2 - Programming language flag.
- * @param {string} $3 - Content.
+ * @param {string} $1 - Initial spacing.
+ * @param {string} $2 - Initial fence.
+ * @param {string} $3 - Fence marker.
+ * @param {string} $4 - Programming language flag.
+ * @param {string} $5 - Content.
  */
-function tokenizeFences(eat, $0, $1, $2, $3) {
-    eat($0)(this.renderCodeBlock($3, $2));
+function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
+    $0 = trimRightLines($0);
+
+    /*
+     * If the initial fence was preceded by spaces,
+     * exdent that amount of white space from the code
+     * block.  Because it’s possible that the code block
+     * is exdented, we first have to ensure at least
+     * those spaces are available.  Additionally, to work
+     * around `removeIndentation` from removing to much
+     * white space, we add a simple line
+     */
+
+    if ($1) {
+        $5 = removeIndentation(ensureIndentation($5, $1.length), $1.length);
+    }
+
+    eat($0)(this.renderCodeBlock($5, $4));
 }
 
 /**
@@ -1112,17 +1178,19 @@ function tokenizeFences(eat, $0, $1, $2, $3) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole heading.
- * @param {string} $1 - Initial hashes and spacing.
+ * @param {string} $1 - Initial spacing.
  * @param {string} $2 - Hashes.
- * @param {string} $3 - Content.
+ * @param {string} $3 - Internal spacing.
+ * @param {string} $4 - Content.
  */
-function tokenizeHeading(eat, $0, $1, $2, $3) {
+function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
     var offset = this.offset;
     var line = eat.now().line;
+    var prefix = $1 + $2 + $3;
 
-    offset[line] = (offset[line] || 0) + $1.length;
+    offset[line] = (offset[line] || 0) + prefix.length;
 
-    eat($0)(this.renderHeading($3, $2.length));
+    eat($0)(this.renderHeading($4, $2.length));
 }
 
 /**
@@ -1130,11 +1198,13 @@ function tokenizeHeading(eat, $0, $1, $2, $3) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole heading.
- * @param {string} $1 - Content.
- * @param {string} $2 - Underline.
+ * @param {string} $1 - Initial spacing.
+ * @param {string} $2 - Content.
+ * @param {string} $3 - Underline marker.
  */
-function tokenizeLineHeading(eat, $0, $1, $2) {
-    eat($0)(this.renderHeading($1, $2 === EQUALS ? 1 : 2));
+function tokenizeLineHeading(eat, $0, $1, $2, $3) {
+    eat($1);
+    eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2));
 }
 
 /**
@@ -1505,7 +1575,7 @@ function renderCodeBlock(value, language) {
     return {
         'type': CODE,
         'lang': language || null,
-        'value': trimRightLines(removeIndentation(value || EMPTY))
+        'value': trimRightLines(value || EMPTY)
     };
 }
 
@@ -2317,11 +2387,11 @@ Parser.prototype.blockMethods = [
     'newline',
     'code',
     'fences',
+    'blockquote',
     'heading',
     'horizontalRule',
-    'lineHeading',
-    'blockquote',
     'list',
+    'lineHeading',
     'html',
     'linkDefinition',
     'footnoteDefinition',
@@ -2365,8 +2435,6 @@ function tokenizeFactory(type) {
         /*
          * Trim white space only lines.
          */
-
-        value = (value || EMPTY).replace(EXPRESSION_SPACES_ONLY_LINE, EMPTY);
 
         if (!value) {
             return tokens;
@@ -3300,19 +3368,19 @@ exports.clean = clean;
 /* This file is generated by `script/build-expressions.js` */
 module.exports = {
   'rules': {
-    'newline': /^\n+/,
+    'newline': /^\n([ \t]*\n)*/,
     'bullet': /(?:[*+-]|\d+\.)/,
-    'code': /^((?: {4}|\t)[^\n]+\n*)+/,
+    'code': /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/,
     'horizontalRule': /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
-    'heading': /^[ \t]*((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)/,
-    'lineHeading': /^([^\n]+)\n *(=|-){2,} *(?=\n|$)/,
+    'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
+    'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
     'linkDefinition': /^[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/,
     'blockText': /^[^\n]+/,
     'item': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
-    'list': /^([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\1?(?:[-*_][ \t]*){3,}(?=\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|\s*$))/,
+    'list': /^([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\1?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|\s*$))/,
     'blockquote': /^([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+/,
     'html': /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|[ \t]*((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
+    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
     'escape': /^\\([\\`*{}\[\]()#+\-.!_>])/,
     'autoLink': /^<([^ >]+(@|:\/)[^ >]+)>/,
     'tag': /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
@@ -3332,8 +3400,8 @@ module.exports = {
     'looseTable': /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/
   },
   'gfm': {
-    'fences': /^[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\1[ \t]*(?=\n|$)/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|[ \t]*(`{3,}|~{3,})[ \t]*(\S+)?[ \t]*\n([\s\S]*?)\s*\3[ \t]*(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\6?(?:[-*_][ \t]*){3,}(?=\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\6(?:[*+-]|\d+\.)[ \t])|\s*$))|[ \t]*((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
+    'fences': /^( *)(([`~])\3{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
+    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*[ \t]*(?=\n|$)|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\8?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|\s*$))|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|([ \t]*>[^\n]+(\n(?![ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/,
     'escape': /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
     'url': /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
     'deletion': /^~~(?=\S)([\s\S]*?\S)~~/,
@@ -3350,10 +3418,12 @@ module.exports = {
     'emphasis': /^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/
   },
   'commonmark': {
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|\ {0,3}((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
+    'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
+    'blockquote': /^([ \t]*>[^\n]+(\n(?![ \t]*([-*_])( *\3){2,} *(?=\n|$)|[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+/,
+    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
   },
   'commonmarkGFM': {
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|\ {0,3}(`{3,}|~{3,})\ {0,3}(\S+)?\ {0,3}\n([\s\S]*?)\s*\3\ {0,3}(?=\n|$)|(\ {0,3})((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\6?(?:[-*_]\ {0,3}){3,}(?=\n|$))|\n+(?=\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\6(?:[*+-]|\d+\.)[ \t])|\s*$))|\ {0,3}((#{1,6})[ \t]+)([^\n]+?) *#* *(?=\n|$)|([^\n]+)\n *(=|-){2,} *(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
+    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\s`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|\n+(?=\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|\s*$))|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(\ {0,3}>[^\n]+(\n(?!\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$))[^\n]+)*)+|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b|\ {0,3}\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)))+)/
   },
   'breaks': {
     'break': /^ *\n(?!\s*$)/,
