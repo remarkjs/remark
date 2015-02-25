@@ -59,11 +59,11 @@ expressions.breaksGFM = breaksGFM;
  * Block helpers.
  */
 
-rules.newline = /^\n+/;
+rules.newline = /^\n([ \t]*\n)*/;
 
 rules.bullet = /(?:[*+-]|\d+\.)/;
 
-rules.code = /^((?: {4}|\t)[^\n]+\n*)+/;
+rules.code = /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/;
 
 rules.horizontalRule = /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/;
 

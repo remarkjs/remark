@@ -773,7 +773,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n\n    <p>This is the second paragraph in the blockquote.</p>\n\n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>",
+      "value": "<h1>A First Level Header</h1>\n\n<h2>A Second Level Header</h2>\n\n<p>Now is the time for all good men to come to\nthe aid of their country. This is just a\nregular paragraph.</p>\n\n<p>The quick brown fox jumped over the lazy\ndog's back.</p>\n\n<h3>Header 3</h3>\n\n<blockquote>\n    <p>This is a blockquote.</p>\n    \n    <p>This is the second paragraph in the blockquote.</p>\n    \n    <h2>This is an H2 in a blockquote</h2>\n</blockquote>",
       "position": {
         "start": {
           "line": 77,
@@ -927,8 +927,8 @@
           "column": 1
         },
         "end": {
-          "line": 118,
-          "column": 73
+          "line": 119,
+          "column": 4
         }
       }
     },
@@ -1421,8 +1421,8 @@
           "column": 1
         },
         "end": {
-          "line": 183,
-          "column": 10
+          "line": 184,
+          "column": 5
         }
       }
     },
