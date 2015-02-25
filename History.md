@@ -1,4 +1,12 @@
 
+0.7.0 / 2015-02-25
+==================
+
+* Fix fenced code block support (66a763a)
+* Add support for blank lines (ad61b1e)
+* Fix Setext heading support (27c4a3b)
+* Fix ATX heading support (0568582)
+
 0.6.0 / 2015-02-23
 ==================
 
