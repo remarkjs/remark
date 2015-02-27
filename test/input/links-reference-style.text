@@ -8,7 +8,7 @@ Foo [bar]
 [1]: /url/  "Title"
 
 
-With [embedded [brackets]] [b].
+With [embedded \[brackets\]] [b].
 
 
 Indented [once][].

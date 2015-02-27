@@ -77,7 +77,7 @@ rules.lineHeading =
     /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/;
 
 rules.linkDefinition =
-    /^[ \t]*\[([^\]]+)\]: *<?([^\s>]+)>?(?: +["(]([^\n]+)[")])? *(?=\n|$)/;
+    /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$)/;
 
 rules.blockText = /^[^\n]+/;
 
@@ -187,11 +187,11 @@ rules.paragraph = new RegExp(
             '|' +
             cleanExpression(rules.lineHeading) +
             '|' +
+            cleanExpression(rules.linkDefinition) +
+            '|' +
             cleanExpression(rules.blockquote) +
             '|' +
             cleanExpression('<' + inlineTags) +
-            '|' +
-            cleanExpression(rules.linkDefinition) +
         ')' +
     ')+)'
 );
@@ -270,11 +270,8 @@ rules.link = new RegExp(
     '\\)'
 );
 
-rules.referenceLink = new RegExp(
-    '^(!?\\[)(' +
-        cleanExpression(rules.inside) +
-    ')\\]\\s*\\[([^\\]]*)\\]'
-);
+rules.referenceLink =
+    /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/;
 
 /*
  * GFM inline Grammar.
@@ -316,6 +313,7 @@ pedantic.emphasis =
 function commonmarkParagraph(expression) {
     return new RegExp(expression.source
         .replace(cleanExpression(rules.lineHeading) + '|', '')
+        .replace(cleanExpression(rules.linkDefinition) + '|', '')
         .replace(/\[ \\t\]\*/g, function () {
             return '\\ {0,3}';
         })
