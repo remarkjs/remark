@@ -122,19 +122,31 @@ rules.list = new RegExp(
 );
 
 rules.blockquote = new RegExp(
-    '^([ \\t]*>[^\\n]+(\\n(?!' +
-
-    cleanExpression(rules.linkDefinition) +
-
-    ')[^\\n]+)*)+'
-);
-
-
-commonmark.blockquote = new RegExp(
-    rules.blockquote.source.replace('(?!', '(?!' +
-        cleanExpression(rules.horizontalRule).replace(/\\1/g, '\\3') +
-        '|'
-    )
+    '^(?=[ \\t]*>)(?:' +
+        '(?:' +
+            '(?:' +
+                '[ \\t]*>[^\\n]*\\n' +
+            ')*' +
+            '(?:' +
+                '[ \\t]*>[^\\n]+(?=\\n|$)' +
+            ')' +
+            '|' +
+            '(?!' +
+                '[ \\t]*>' +
+            ')' +
+            '(?!' +
+                cleanExpression(rules.linkDefinition) +
+            ')' +
+            '[^\\n]+' +
+        ')' +
+        '(?:\\n|$)' +
+    ')*' +
+    '(?:' +
+        '[ \\t]*>[ \\t]*' +
+        '(?:' +
+            '\\n[ \\t]*>[ \\t]*' +
+        ')*' +
+    ')?'
 );
 
 var inlineTags = '(?!' +
@@ -322,6 +334,17 @@ function commonmarkParagraph(expression) {
 
 commonmark.paragraph = commonmarkParagraph(rules.paragraph);
 commonmarkGFM.paragraph = commonmarkParagraph(gfm.paragraph);
+
+commonmark.blockquote = new RegExp(
+    rules.blockquote.source.replace(')(?!', ')(?!' +
+        cleanExpression(rules.horizontalRule) + '|' +
+        cleanExpression(rules.list).replace(/\\1/g, '\\3') + '|' +
+        cleanExpression(gfm.fences)
+            .replace(/\\2/g, '\\10')
+            .replace(/\\3/g, '\\11') + '|' +
+        cleanExpression(rules.code) + '|'
+    )
+);
 
 /*
  * GFM + Line Breaks Inline Grammar

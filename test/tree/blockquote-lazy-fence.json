@@ -1,0 +1,295 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "code",
+          "lang": null,
+          "value": "aNormalCodeBlockInABlockqoute();",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 3,
+              "column": 6
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "code",
+          "lang": null,
+          "value": "thisIsAlsoSomeCodeInABlockquote();",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 3
+            },
+            "end": {
+              "line": 9,
+              "column": 4
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph.",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "code",
+          "lang": null,
+          "value": "aNonTerminatedCodeBlockInABlockquote();",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 3
+            },
+            "end": {
+              "line": 15,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "aNewCodeBlockFollowingTheBlockQuote();",
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 1
+                },
+                "end": {
+                  "line": 16,
+                  "column": 39
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1
+            },
+            "end": {
+              "line": 16,
+              "column": 39
+            }
+          }
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "value": "",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 4
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "A paragraph.",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1
+            },
+            "end": {
+              "line": 19,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1
+        },
+        "end": {
+          "line": 19,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Something in a blockquote.",
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 3
+                },
+                "end": {
+                  "line": 21,
+                  "column": 29
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 3
+            },
+            "end": {
+              "line": 21,
+              "column": 29
+            }
+          }
+        },
+        {
+          "type": "code",
+          "lang": null,
+          "value": "aNewCodeBlock();",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1
+            },
+            "end": {
+              "line": 24,
+              "column": 4
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1
+        },
+        "end": {
+          "line": 24,
+          "column": 4
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 24,
+      "column": 4
+    }
+  }
+}

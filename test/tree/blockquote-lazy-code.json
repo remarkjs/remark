@@ -1,0 +1,45 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "code",
+          "lang": null,
+          "value": "foo\nbar",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 2,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 8
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 2,
+      "column": 8
+    }
+  }
+}

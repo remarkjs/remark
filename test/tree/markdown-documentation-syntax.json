@@ -7337,15 +7337,15 @@
       "children": [
         {
           "type": "text",
-          "value": "And then define the link:",
+          "value": "And then define the link:\n\t",
           "position": {
             "start": {
               "line": 633,
               "column": 1
             },
             "end": {
-              "line": 633,
-              "column": 26
+              "line": 634,
+              "column": 2
             }
           }
         }
@@ -7356,8 +7356,8 @@
           "column": 1
         },
         "end": {
-          "line": 633,
-          "column": 26
+          "line": 634,
+          "column": 2
         }
       }
     },
