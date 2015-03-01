@@ -116,7 +116,7 @@ module.exports = {
     'invalidLink': /^(!?\[)((?:\[[^\]]*\]|[^\[\]])*)\]/,
     'strong': /^(_)_([\s\S]+?)__(?!_)|^(\*)\*([\s\S]+?)\*\*(?!\*)/,
     'emphasis': /^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/,
-    'inlineCode': /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/,
+    'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
     'break': /^ {2,}\n(?!\s*$)/,
     'text': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
     'inside': /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
@@ -149,7 +149,8 @@ module.exports = {
   'commonmark': {
     'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\3?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|\s*$))|( *)(([`~])\11{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\10\11*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/
+    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\3?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|\s*$))|( *)(([`~])\11{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\10\11*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
+    'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',/:;<=?@^~|])/
   },
   'commonmarkGFM': {
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\s`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|\n+(?=\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?\ {0,3}(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|\s*$))|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/
@@ -182,7 +183,6 @@ var repeat = utilities.repeat;
 var copy = utilities.copy;
 var raise = utilities.raise;
 var trim = utilities.trim;
-var trimRight = utilities.trimRight;
 var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
@@ -231,6 +231,56 @@ var DELETE = 'delete';
 var INLINE_CODE = 'inlineCode';
 var BREAK = 'break';
 var ROOT = 'root';
+
+/**
+ * Wrapper arround he’s `decode` function.
+ *
+ * @param {string} value
+ * @return {string}
+ */
+function decode(value) {
+    return he.decode(value);
+}
+
+/**
+ * Factory to de-escape a value, based on an expression
+ * at `key` in `scope`.
+ *
+ * @param {Object} scope
+ * @param {string} key
+ * @return {function(string): string}
+ */
+function descapeFactory(scope, key) {
+    var globalExpression;
+    var expression;
+
+    /**
+     * Private method to get a global expression
+     * from the expression at `key` in `scope`.
+     *
+     * @return {RegExp}
+     */
+    function generate() {
+        if (scope[key] !== globalExpression) {
+            globalExpression = scope[key];
+            expression = new RegExp(
+                scope[key].source.replace(CARET, EMPTY), 'g'
+            );
+        }
+
+        return expression;
+    }
+
+    /**
+     * De-escape a string.
+     *
+     * @param {string} value
+     * @return {string}
+     */
+    return function (value) {
+        return value.replace(generate(), '$1');
+    };
+}
 
 /*
  * Tab size.
@@ -528,9 +578,7 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
      * exdent that amount of white space from the code
      * block.  Because it’s possible that the code block
      * is exdented, we first have to ensure at least
-     * those spaces are available.  Additionally, to work
-     * around `removeIndentation` from removing to much
-     * white space, we add a simple line
+     * those spaces are available.
      */
 
     if ($1) {
@@ -703,7 +751,7 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
         }
 
         this.links[identifier] = add({}, this.renderLink(
-            true, $2, null, $3
+            true, this.descape($2), null, $3
         ));
     }
 }
@@ -958,7 +1006,7 @@ function tokenizeText(eat, $0) {
 function renderCodeBlock(value, language) {
     return {
         'type': CODE,
-        'lang': language || null,
+        'lang': language ? decode(this.descape(language)) : null,
         'value': trimRightLines(value || EMPTY)
     };
 }
@@ -1233,20 +1281,28 @@ function renderRaw(type, value) {
  * @return {Object}
  */
 function renderLink(isLink, href, text, title, position) {
-    var exitLink = this.enterLink();
+    var self = this;
+    var exitLink = self.enterLink();
     var token;
 
     token = {
         'type': isLink ? LINK : IMAGE,
-        'title': title || null
+        'title': title ? decode(self.descape(title)) : null
     };
+
+    /*
+     * The `href` should not always be descaped, functions
+     * that invoke `renderLink` should handle that.
+     */
+
+    href = decode(href);
 
     if (isLink) {
         token.href = href;
-        token.children = this.tokenizeInline(text, position);
+        token.children = self.tokenizeInline(text, position);
     } else {
         token.src = href;
-        token.alt = text || null;
+        token.alt = text ? decode(self.descape(text)) : null;
     }
 
     exitLink();
@@ -1302,10 +1358,12 @@ function tokenizeEscape(eat, $0, $1) {
  * @param {string?} $2 - Protocol or at.
  */
 function tokenizeAutoLink(eat, $0, $1, $2) {
+    var self = this;
     var href = $1;
     var text = $1;
     var now = eat.now();
     var offset = 1;
+    var tokenize;
 
     if ($2 === AT_SIGN) {
         if (text.substr(0, MAILTO_PROTOCOL.length) !== MAILTO_PROTOCOL) {
@@ -1318,7 +1376,16 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
 
     now.column += offset;
 
-    eat($0)(this.renderLink(true, href, text, null, now));
+    /*
+     * Temporarily remove support for escapes in autlinks.
+     */
+
+    tokenize = self.inlineTokenizers.escape;
+    self.inlineTokenizers.escape = null;
+
+    eat($0)(self.renderLink(true, href, text, null, now));
+
+    self.inlineTokenizers.escape = tokenize;
 }
 
 tokenizeAutoLink.notInLink = true;
@@ -1375,7 +1442,7 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4) {
 
         now.column += $1.length;
 
-        eat($0)(this.renderLink(isLink, $3, $2, $4, now));
+        eat($0)(this.renderLink(isLink, this.descape($3), $2, $4, now));
     }
 }
 
@@ -1452,7 +1519,8 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
         now.column += $1.length;
 
         eat($0)(self.renderLink(
-            $0.charAt(0) !== EXCLAMATION_MARK, url.href, $2, url.title, now
+            $0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href),
+            $2, url.title, now
         ));
     }
 }
@@ -1530,11 +1598,11 @@ function tokenizeDeletion(eat, $0, $1) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole code.
- * @param {string} $1 - Delimiter.
+ * @param {string} $1 - Initial markers.
  * @param {string} $2 - Content.
  */
 function tokenizeInlineCode(eat, $0, $1, $2) {
-    eat($0)(this.renderRaw(INLINE_CODE, trimRight($2)));
+    eat($0)(this.renderRaw(INLINE_CODE, trim($2 || '')));
 }
 
 /**
@@ -1625,6 +1693,8 @@ function Parser(options) {
     if (options.footnotes) {
         copy(rules, expressions.footnotes);
     }
+
+    self.descape = descapeFactory(rules, 'escape');
 }
 
 /**
@@ -1916,7 +1986,7 @@ function tokenizeFactory(type) {
             prev = children[children.length - 1];
 
             if (type === INLINE && token.type === TEXT) {
-                token.value = he.decode(token.value);
+                token.value = decode(token.value);
             }
 
             if (
@@ -1991,6 +2061,7 @@ function tokenizeFactory(type) {
                 method = tokenizers[name];
 
                 match = rules[name] &&
+                    method &&
                     (!method.onlyAtStart || self.atStart) &&
                     (!method.onlyAtTop || self.atTop) &&
                     (!method.notInBlockquote || !self.inBlockquote) &&
@@ -2315,7 +2386,7 @@ function getLongestRepetition(value, character) {
     var highestCount = 0;
     var index = -1;
     var length = value.length;
-    var currentCount;
+    var currentCount = 0;
     var currentCharacter;
 
     while (++index < length) {
@@ -3040,7 +3111,6 @@ var NEW_LINE_FINAL = /\n+$/;
 var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
-var EXPRESSION_NO_BREAK_SPACE = /\u00a0/g;
 
 /**
  * Shallow copy `context` into `target`.
@@ -3194,7 +3264,6 @@ function trim(value) {
 function clean(value) {
     return String(value)
         .replace(EXPRESSION_LINE_BREAKS, '\n')
-        .replace(EXPRESSION_NO_BREAK_SPACE, ' ')
         .replace(EXPRESSION_SYMBOL_FOR_NEW_LINE, '\n');
 }
 

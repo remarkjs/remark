@@ -185,6 +185,363 @@
           "column": 53
         }
       }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Additionally, empty code spans are also supported: ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 52
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 52
+            },
+            "end": {
+              "line": 7,
+              "column": 54
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 54
+            },
+            "end": {
+              "line": 7,
+              "column": 55
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 55
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here’s an example, ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 20
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "foo ` bar",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 20
+            },
+            "end": {
+              "line": 9,
+              "column": 36
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 36
+            },
+            "end": {
+              "line": 9,
+              "column": 37
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And here, ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 11
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "``",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 11
+            },
+            "end": {
+              "line": 11,
+              "column": 17
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 17
+            },
+            "end": {
+              "line": 11,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "// this is also inline code",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "So is this ",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "foo   bar\n  baz",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 12
+            },
+            "end": {
+              "line": 18,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 7
+            },
+            "end": {
+              "line": 18,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 18,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And this ",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 1
+            },
+            "end": {
+              "line": 20,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "foo `` bar",
+          "position": {
+            "start": {
+              "line": 20,
+              "column": 10
+            },
+            "end": {
+              "line": 20,
+              "column": 22
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1
+        },
+        "end": {
+          "line": 20,
+          "column": 22
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And ",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1
+            },
+            "end": {
+              "line": 22,
+              "column": 5
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "this\\",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 5
+            },
+            "end": {
+              "line": 22,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "but this is text`.",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 12
+            },
+            "end": {
+              "line": 22,
+              "column": 30
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1
+        },
+        "end": {
+          "line": 22,
+          "column": 30
+        }
+      }
     }
   ],
   "position": {
@@ -193,8 +550,8 @@
       "column": 1
     },
     "end": {
-      "line": 5,
-      "column": 53
+      "line": 22,
+      "column": 30
     }
   }
 }

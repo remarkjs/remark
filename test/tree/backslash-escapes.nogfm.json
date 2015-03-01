@@ -767,25 +767,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Pipe: ",
+          "value": "Pipe: \\|",
           "position": {
             "start": {
               "line": 37,
               "column": 1
-            },
-            "end": {
-              "line": 37,
-              "column": 7
-            }
-          }
-        },
-        {
-          "type": "escape",
-          "value": "|",
-          "position": {
-            "start": {
-              "line": 37,
-              "column": 7
             },
             "end": {
               "line": 37,
@@ -810,25 +796,11 @@
       "children": [
         {
           "type": "text",
-          "value": "Tilde: ",
+          "value": "Tilde: \\~",
           "position": {
             "start": {
               "line": 39,
               "column": 1
-            },
-            "end": {
-              "line": 39,
-              "column": 8
-            }
-          }
-        },
-        {
-          "type": "escape",
-          "value": "~",
-          "position": {
-            "start": {
-              "line": 39,
-              "column": 8
             },
             "end": {
               "line": 39,

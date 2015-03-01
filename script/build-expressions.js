@@ -264,7 +264,7 @@ rules.strong = /^(_)_([\s\S]+?)__(?!_)|^(\*)\*([\s\S]+?)\*\*(?!\*)/;
 rules.emphasis =
     /^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/;
 
-rules.inlineCode = /^(`+)\s*([\s\S]*?[^`])\s*\1(?!`)/;
+rules.inlineCode = /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/;
 
 rules.break = /^ {2,}\n(?!\s*$)/;
 
@@ -289,9 +289,7 @@ rules.referenceLink =
  * GFM inline Grammar.
  */
 
-gfm.escape = new RegExp(
-    rules.escape.source.replace('])', '~|])')
-);
+gfm.escape = new RegExp(rules.escape.source.replace('])', '~|])'));
 
 gfm.url = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
 
@@ -316,9 +314,6 @@ pedantic.emphasis =
  */
 
 /**
- * Replace zero or more spaces or tabs with
- * between 0 and 3 spaces.
- *
  * @param {RegExp} expression
  * @return {RegExp}
  */
@@ -345,6 +340,18 @@ commonmark.blockquote = new RegExp(
         cleanExpression(rules.code) + '|'
     )
 );
+
+/*
+ * The commonmark also matches all GFM escapes,
+ * so we do not need to overwrite it.
+ */
+
+commonmark.escape = new RegExp(
+    rules.escape.source
+        .replace('])', '"$%&\',/:;<=?@^~|])')
+        .replace('([', '(\\n|[')
+);
+
 
 /*
  * GFM + Line Breaks Inline Grammar
