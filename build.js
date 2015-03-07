@@ -110,7 +110,8 @@ var read = new Quill(document.getElementById('read'), {
     'readOnly': true
 });
 
-var keys = write.modules.keyboard.hotkeys;
+var keyboard = write.modules.keyboard;
+var keys = keyboard.hotkeys;
 
 /*
  * Quil does not remove bold, italic, underline
@@ -120,6 +121,29 @@ var keys = write.modules.keyboard.hotkeys;
 delete keys[66];
 delete keys[73];
 delete keys[85];
+
+function addHotKey(key, before, after) {
+    if (!after) {
+        after = before;
+    }
+
+    keyboard.addHotkey({
+      'key': key,
+      'metaKey': true
+    }, function (range) {
+        var start = range.start;
+        var end = range.end;
+
+        write.insertText(start, before);
+        write.insertText(end + before.length, after);
+        write.setSelection(start + before.length, end + before.length);
+
+        return false;
+    });
+}
+
+addHotKey('B', '**');
+addHotKey('I', '_');
 
 /*
  * Options.
@@ -278,6 +302,19 @@ write.setText([
     '* * * * * * * * * * * *',
     ''
 ].join('\n'));
+
+/*
+ * Focus editor.
+ */
+
+write.focus();
+
+/*
+ * Focus editor.
+ */
+
+write.focus();
+
 }, {"wooorm/mdast@0.9.0":2,"component/debounce@1.0.0":3,"quilljs/quill":4}],
 2: [function(require, module, exports) {
 'use strict';
