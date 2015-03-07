@@ -40,7 +40,7 @@ label {
     height: 1.6em;
 }
 
-textarea {
+#read, #write {
     box-sizing: border-box;
     display: block;
 
@@ -57,35 +57,14 @@ textarea {
     padding: 1em;
 }
 
-.output {
+#read {
     right: 0;
 }
 
-.input {
+#write {
     left: 0;
 }
 
-[readonly] {
+#read {
     outline-width: 0;
-}
-
-.parse-latin-output__tree {
-    width: 100%;
-    margin: 0;
-    display: block;
-    overflow-y: scroll;
-    /*height: 100vh;*/
-    height: 100%;
-
-    font-family: 'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace;
-    font-size: 0.75rem;
-    /* The X heigth of Garamond is 42.2%, add that under the line. */
-    line-height: 1.422;
-
-    border-width: 0;
-}
-
-.parse-latin-output__tree {
-    background-color: #042029;
-    color: #819090;
 }

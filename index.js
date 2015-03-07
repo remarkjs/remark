@@ -6,17 +6,35 @@
 
 var mdast = require('wooorm/mdast@0.9.0');
 var debounce = require('component/debounce@1.0.0');
+var Quill = require('quilljs/quill');
 
 /*
  * DOM elements.
  */
 
-var $input = document.getElementsByTagName('textarea')[0];
-var $output = document.getElementsByTagName('textarea')[1];
 var $options = [].concat(
     [].slice.call(document.getElementsByTagName('input')),
     [].slice.call(document.getElementsByTagName('select'))
 );
+
+var write = new Quill(document.getElementById('write'), {
+    'formats': []
+});
+
+var read = new Quill(document.getElementById('read'), {
+    'readOnly': true
+});
+
+var keys = write.modules.keyboard.hotkeys;
+
+/*
+ * Quil does not remove bold, italic, underline
+ * when settings formats to `0`
+ */
+
+delete keys[66];
+delete keys[73];
+delete keys[85];
 
 /*
  * Options.
@@ -29,12 +47,12 @@ var options = {};
  */
 
 function onchange() {
-    var ast = mdast.parse($input.value, options);
+    var ast = mdast.parse(write.getText(), options);
 
-    $output.textContent = mdast.stringify(ast, options);
+    read.setText(mdast.stringify(ast, options));
 }
 
-var debouncedChange = debounce(onchange, 50);
+var debouncedChange = debounce(onchange, 10);
 
 function ontextchange($target, name) {
     options[name] = $target.value;
@@ -97,17 +115,81 @@ function onanychange(event) {
  * Listen.
  */
 
-$input.addEventListener('input', debouncedChange);
 window.addEventListener('change', onanychange);
 
 /*
  * Initial answer.
  */
 
-onchange();
+write.on('text-change', debouncedChange);
 
 $options.forEach(function ($node) {
     onsettingchange({
         'target': $node
     });
 });
+
+write.setText([
+    '---',
+    'YAML-front-matter: is awesome',
+    '---',
+    '',
+    '# Hello',
+    '',
+    'World!',
+    '',
+    'Emphasis',
+    '---',
+    '',
+    '__Strong emphasis__, more **strong emphasis**.',
+    '_Slight emphasis_, more *slight emphasis*. In a pedantic_file_name.',
+    '~~Removed text~~.',
+    '',
+    '## List',
+    '',
+    '- 1',
+    '    * 2',
+    '        + 3',
+    '',
+    '1. 1',
+    '9999. 2',
+    '123. 3',
+    '',
+    '## Links',
+    '',
+    'Here’s a [link][1]. And [another](http://wooorm.com "My homepage").',
+    '',
+    '[1]: http://example.com "An example"',
+    '',
+    'Code',
+    '---',
+    '',
+    'Inline `code`, indented:',
+    '',
+    '    alert(1);',
+    '',
+    '...or fenced:',
+    '',
+    '```markdown',
+    '# Hai!',
+    '```',
+    '',
+    '## Tables',
+    '',
+    '| Hello |',
+    '|:-:|',
+    '| World!!!!!! |',
+    '',
+    '## Footnotes',
+    '',
+    'Here’s an [^inline footnote, referencing another[^2]].',
+    '',
+    '[^2]: This one’s also a footnote.',
+    '',
+    'Horizontal Rules:',
+    '',
+    '---',
+    '',
+    '* * * * * * * * * * * *',
+    ''
+].join('\n'));
