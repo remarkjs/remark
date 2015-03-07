@@ -41,7 +41,7 @@
     "browserify": "^9.0.0",
     "chalk": "^1.0.0",
     "diff": "^1.0.0",
-    "eslint": "^0.14.0",
+    "eslint": "^0.15.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
