@@ -119,8 +119,8 @@ module.exports = {
     'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
     'break': /^ {2,}\n(?!\s*$)/,
     'text': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
-    'link': /^(!?\[)((?:\\(?:\\{2})*[\[\]]|\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:<?([\s\S]*?)>?|(?!<)((?:\([^\)]*\)|\\(?:\\{2})*[\(\)]|\S*)??))(?:\s+(?:\'((?:\\(?:\\{2})*\'|\\[\s\S]|[^\'])*?)\'|"((?:\\(?:\\{2})*"|\\[\s\S]|[^"])*?)"|\(((?:\\(?:\\{2})*\)|\\[\s\S]|[^\)])*?)\)))?\s*\)/,
-    'referenceLink': /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/
+    'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
+    'referenceLink': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\]])*)\]/
   },
   'tables': {
     'table': /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/,
@@ -146,7 +146,8 @@ module.exports = {
   },
   'commonmark': {
     'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
-    'link': /^(!?\[)((?:\\(?:\\{2})*[\[\]]|\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:<([^\n]*?)>|(?!<)((?:\([^\)]*\)|\\(?:\\{2})*[\(\)]|\S*)??))(?:\s+(?:\'((?:\\(?:\\{2})*\'|\\[\s\S]|[^\'])*?)\'|"((?:\\(?:\\{2})*"|\\[\s\S]|[^"])*?)"|\(((?:\\(?:\\{2})*\)|\\[\s\S]|[^\)])*?)\)))?\s*\)/,
+    'link': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
+    'referenceLink': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\3?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|\s*$))|( *)(([`~])\11{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\10\11*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
     'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',/:;<=?@^~|])/
@@ -185,6 +186,7 @@ var trim = utilities.trim;
 var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
+var normalize = utilities.normalizeReference;
 var has = Object.prototype.hasOwnProperty;
 
 /*
@@ -304,7 +306,6 @@ var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
 var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
 var EXPRESSION_HTML_LINK_OPEN = /^<a /i;
 var EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
-var EXPRESSION_WHITE_SPACES = /\s+/g;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
 
 /*
@@ -741,7 +742,7 @@ function tokenizeHtml(eat, $0) {
  * @param {string} $3 - Title.
  */
 function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
-    var identifier = $1.toLowerCase();
+    var identifier = normalize($1);
     var add = eat($0);
 
     if (!has.call(this.links, identifier)) {
@@ -1435,7 +1436,7 @@ function tokenizeTag(eat, $0) {
  * @param {string} $2 - Text.
  * @param {string?} $3 - URL wrapped in angle braces.
  * @param {string?} $4 - Literal URL.
- * @param {string?} $5 - Title wrapped in single quotes.
+ * @param {string?} $5 - Title wrapped in single or double quotes.
  * @param {string?} $6 - Title wrapped in double quotes.
  * @param {string?} $7 - Title wrapped in parentheses.
  */
@@ -1467,15 +1468,16 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
  */
 function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
     var self = this;
-    var text = ($3 || $2).replace(EXPRESSION_WHITE_SPACES, SPACE);
-    var url = self.links[text.toLowerCase()];
+    var text = $3 || $2;
+    var identifier = normalize(text);
+    var url = self.links[identifier];
     var token;
     var now;
 
     if (
         self.options.footnotes &&
-        text.charAt(0) === CARET &&
-        self.footnotes[text.substr(1)]
+        identifier.charAt(0) === CARET &&
+        self.footnotes[identifier.substr(1)]
     ) {
         /*
          * All block-level footnote-definitions
@@ -1484,11 +1486,11 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
          * most certainly a footnote.
          */
 
-        eat($0)(self.renderFootnote(text.substr(1)));
+        eat($0)(self.renderFootnote(identifier.substr(1)));
     } else if (!url || !url.href) {
         if (
             self.options.footnotes &&
-            text.charAt(0) === CARET &&
+            identifier.charAt(0) === CARET &&
             text.indexOf(SPACE) > -1
         ) {
             /*
@@ -2077,11 +2079,9 @@ function tokenizeFactory(type) {
                     rules[name].exec(value);
 
                 if (match) {
-                    // var v = value;
                     valueLength = value.length;
 
                     method.apply(self, [eat].concat(match));
-                    // console.log('method: ', method.name, [v.slice(0, valueLength - value.length)]);
 
                     matched = valueLength !== value.length;
 
@@ -2276,6 +2276,7 @@ var copy = utilities.copy;
 var raise = utilities.raise;
 var trimLeft = utilities.trimLeft;
 var validate = utilities.validate;
+var count = utilities.countCharacter;
 
 /*
  * Constants.
@@ -2285,11 +2286,14 @@ var HALF = 2;
 var INDENT = 4;
 var MINIMUM_CODE_FENCE_LENGTH = 3;
 
+var EXPRESSIONS_WHITE_SPACE = /\s/;
+
 /*
  * Characters.
  */
 
-var ANGLE_BRACKET = '>';
+var ANGLE_BRACKET_CLOSE = '>';
+var ANGLE_BRACKET_OPEN = '<';
 var ASTERISK = '*';
 var CARET = '^';
 var COLON = ':';
@@ -2305,6 +2309,7 @@ var PARENTHESIS_CLOSE = ')';
 var PIPE = '|';
 var PLUS = '+';
 var QUOTE_DOUBLE = '"';
+var QUOTE_SINGLE = '\'';
 var SPACE = ' ';
 var SQUARE_BRACKET_OPEN = '[';
 var SQUARE_BRACKET_CLOSE = ']';
@@ -2366,6 +2371,41 @@ var ORDERED_MAP = {};
 
 ORDERED_MAP.true = 'visitOrderedItems';
 ORDERED_MAP.false = 'visitUnorderedItems';
+
+/**
+ * Checks if `url` needs to be enclosed by angle brackets.
+ *
+ * @param {string} uri
+ * @return {boolean}
+ */
+function needsAngleBraceEnclosure(uri) {
+    return !uri.length ||
+        EXPRESSIONS_WHITE_SPACE.test(uri) ||
+        count(uri, PARENTHESIS_OPEN) !== count(uri, PARENTHESIS_CLOSE);
+}
+
+/**
+ * There is currently no way to support nested delimiters
+ * across Markdown.pl, CommonMark, and GitHub (RedCarpet).
+ * The following supports Markdown.pl, and GitHub.
+ * CommonMark is not supported when mixing double- and
+ * single quotes inside a title.
+ *
+ * @see https://github.com/vmg/redcarpet/issues/473
+ * @see https://github.com/jgm/CommonMark/issues/308
+ *
+ * @param {string} title
+ * @return {string}
+ */
+function encloseTitle(title) {
+    var delimiter = QUOTE_DOUBLE;
+
+    if (title.indexOf(QUOTE_DOUBLE) !== -1) {
+        delimiter = QUOTE_SINGLE;
+    }
+
+    return delimiter + title + delimiter;
+}
 
 /**
  * Helper to get the keys in an object.
@@ -2715,8 +2755,8 @@ compilerPrototype.paragraph = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.blockquote = function (token, parent, level) {
-    return ANGLE_BRACKET + SPACE + this.visitAll(token, level)
-        .join(BREAK).split(LINE).join(LINE + ANGLE_BRACKET + SPACE);
+    return ANGLE_BRACKET_CLOSE + SPACE + this.visitAll(token, level)
+        .join(BREAK).split(LINE).join(LINE + ANGLE_BRACKET_CLOSE + SPACE);
 };
 
 /**
@@ -2732,11 +2772,15 @@ compilerPrototype.link = function (token, parent, level) {
     var link = token.href;
     var value;
 
+    if (!self.options.referenceLinks && needsAngleBraceEnclosure(link)) {
+        link = ANGLE_BRACKET_OPEN + link + ANGLE_BRACKET_CLOSE;
+    }
+
     value = SQUARE_BRACKET_OPEN +
         self.visitAll(token, level).join(EMPTY) + SQUARE_BRACKET_CLOSE;
 
     if (token.title) {
-        link += SPACE + QUOTE_DOUBLE + token.title + QUOTE_DOUBLE;
+        link += SPACE + encloseTitle(token.title);
     }
 
     if (self.options.referenceLinks) {
@@ -2944,15 +2988,20 @@ compilerPrototype.delete = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.image = function (token) {
+    var source = token.src;
     var value;
+
+    if (needsAngleBraceEnclosure(source)) {
+        source = ANGLE_BRACKET_OPEN + source + ANGLE_BRACKET_CLOSE;
+    }
 
     value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + (token.alt || EMPTY) +
         SQUARE_BRACKET_CLOSE;
 
-    value += PARENTHESIS_OPEN + token.src;
+    value += PARENTHESIS_OPEN + source;
 
     if (token.title) {
-        value += SPACE + QUOTE_DOUBLE + token.title + QUOTE_DOUBLE;
+        value += SPACE + encloseTitle(token.title);
     }
 
     value += PARENTHESIS_CLOSE;
@@ -3121,6 +3170,7 @@ var NEW_LINE_FINAL = /\n+$/;
 var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
+var WHITE_SPACE_COLLAPSABLE = /[ \t\n]+/g;
 
 /**
  * Shallow copy `context` into `target`.
@@ -3266,6 +3316,16 @@ function trim(value) {
 }
 
 /**
+ * Collapse white space.
+ *
+ * @param {string} value
+ * @return {string}
+ */
+function collapse(value) {
+    return String(value).replace(WHITE_SPACE_COLLAPSABLE, ' ');
+}
+
+/**
  * Clean a string in preperation of parsing.
  *
  * @param {string} value
@@ -3300,23 +3360,38 @@ function repeat(times, character) {
     return result;
 }
 
-/*
- * Expose `repeat`.
+/**
+ * Normalize an reference identifier.  Collapses
+ * multiple white space characters into a single space,
+ * and removes casing.
+ *
+ * @param {string} value
+ * @return {string}
  */
+function normalizeReference(value) {
+    return collapse(value).toLowerCase();
+}
 
-exports.repeat = repeat;
-
-/*
- * Expose `copy`.
+/**
+ * Count how many characters `character` occur in `value`.
+ *
+ * @param {string} value
+ * @param {string} character
+ * @return {number}
  */
+function countCharacter(value, character) {
+    var index = -1;
+    var length = value.length;
+    var count = 0;
 
-exports.copy = copy;
+    while (++index < length) {
+        if (value.charAt(index) === character) {
+            count++;
+        }
+    }
 
-/*
- * Expose `raise`.
- */
-
-exports.raise = raise;
+    return count;
+}
 
 /*
  * Expose `validate`.
@@ -3329,19 +3404,20 @@ exports.validate = {
 };
 
 /*
- * Expose `trim` methods.
+ * Expose string methods.
  */
 
 exports.trim = trim;
 exports.trimLeft = trimLeft;
 exports.trimRight = trimRight;
 exports.trimRightLines = trimRightLines;
-
-/*
- * Expose `clean`.
- */
-
+exports.collapse = collapse;
+exports.normalizeReference = normalizeReference;
 exports.clean = clean;
+exports.raise = raise;
+exports.copy = copy;
+exports.repeat = repeat;
+exports.countCharacter = countCharacter;
 
 },{}],6:[function(require,module,exports){
 (function (global){
