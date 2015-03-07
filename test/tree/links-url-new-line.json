@@ -1,0 +1,225 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "href": "./wo\nrld.html",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 10
+            },
+            "end": {
+              "line": 2,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "href": "./wo\nrld.html",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 2
+                },
+                "end": {
+                  "line": 4,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 11
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 11
+            },
+            "end": {
+              "line": 5,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "src": "./wo\nrld.png",
+          "alt": "Hello",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 8,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 9
+            },
+            "end": {
+              "line": 8,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "src": "./wo\nrld.png",
+          "alt": "Hello",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 10
+            },
+            "end": {
+              "line": 11,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 11
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 11,
+      "column": 11
+    }
+  }
+}

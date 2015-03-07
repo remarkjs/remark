@@ -108,7 +108,7 @@ module.exports = {
     'item': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
     'list': /^([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\1?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|\s*$))/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'html': /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/,
+    'html': /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/i,
     'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
     'escape': /^\\([\\`*{}\[\]()#+\-.!_>])/,
     'autoLink': /^<([^ >]+(@|:\/)[^ >]+)>/,
@@ -119,9 +119,7 @@ module.exports = {
     'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
     'break': /^ {2,}\n(?!\s*$)/,
     'text': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
-    'inside': /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/,
-    'href': /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/,
-    'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
+    'link': /^(!?\[)((?:\\(?:\\{2})*[\[\]]|\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:<?([\s\S]*?)>?|(?!<)((?:\([^\)]*\)|\\(?:\\{2})*[\(\)]|\S*)??))(?:\s+(?:\'((?:\\(?:\\{2})*\'|\\[\s\S]|[^\'])*?)\'|"((?:\\(?:\\{2})*"|\\[\s\S]|[^"])*?)"|\(((?:\\(?:\\{2})*\)|\\[\s\S]|[^\)])*?)\)))?\s*\)/,
     'referenceLink': /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/
   },
   'tables': {
@@ -148,6 +146,7 @@ module.exports = {
   },
   'commonmark': {
     'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
+    'link': /^(!?\[)((?:\\(?:\\{2})*[\[\]]|\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:<([^\n]*?)>|(?!<)((?:\([^\)]*\)|\\(?:\\{2})*[\(\)]|\S*)??))(?:\s+(?:\'((?:\\(?:\\{2})*\'|\\[\s\S]|[^\'])*?)\'|"((?:\\(?:\\{2})*"|\\[\s\S]|[^"])*?)"|\(((?:\\(?:\\{2})*\)|\\[\s\S]|[^\)])*?)\)))?\s*\)/,
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))((?:[ \t][\s\S]+?)(?:\n+(?=\3?(?:[-*_][ \t]*){3,}(?:\n|$))|\n+(?=[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|\s*$))|( *)(([`~])\11{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\10\11*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]([^\n]+)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
     'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',/:;<=?@^~|])/
@@ -1366,7 +1365,10 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
     var tokenize;
 
     if ($2 === AT_SIGN) {
-        if (text.substr(0, MAILTO_PROTOCOL.length) !== MAILTO_PROTOCOL) {
+        if (
+            text.substr(0, MAILTO_PROTOCOL.length).toLowerCase() !==
+            MAILTO_PROTOCOL
+        ) {
             href = MAILTO_PROTOCOL + text;
         } else {
             text = text.substr(MAILTO_PROTOCOL.length);
@@ -1429,12 +1431,18 @@ function tokenizeTag(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole link.
- * @param {string} $1 - Content.
- * @param {string} $2 - URL.
- * @param {string?} $3 - Title.
+ * @param {string} $1 - Prefix.
+ * @param {string} $2 - Text.
+ * @param {string?} $3 - URL wrapped in angle braces.
+ * @param {string?} $4 - Literal URL.
+ * @param {string?} $5 - Title wrapped in single quotes.
+ * @param {string?} $6 - Title wrapped in double quotes.
+ * @param {string?} $7 - Title wrapped in parentheses.
  */
-function tokenizeLink(eat, $0, $1, $2, $3, $4) {
+function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
     var isLink = $0.charAt(0) !== EXCLAMATION_MARK;
+    var href = $4 || $3 || '';
+    var title = $7 || $6 || $5;
     var now;
 
     if (!isLink || !this.inLink) {
@@ -1442,7 +1450,7 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4) {
 
         now.column += $1.length;
 
-        eat($0)(this.renderLink(isLink, this.descape($3), $2, $4, now));
+        eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now));
     }
 }
 
@@ -2069,9 +2077,11 @@ function tokenizeFactory(type) {
                     rules[name].exec(value);
 
                 if (match) {
+                    // var v = value;
                     valueLength = value.length;
 
                     method.apply(self, [eat].concat(match));
+                    // console.log('method: ', method.name, [v.slice(0, valueLength - value.length)]);
 
                     matched = valueLength !== value.length;
 

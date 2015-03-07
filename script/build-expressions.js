@@ -28,6 +28,45 @@ function cleanExpression(expression) {
     return (expression.source || expression).replace(EXPRESSION, '$1');
 }
 
+/**
+ * Create something that matches until `end` is found,
+ * which does allow an escaped `end`, but not `end` itself.
+ *
+ * @param {string} end
+ * @return {string}
+ */
+function groupContent(end, negate) {
+    return '(?:' +
+
+        /*
+         * Match an escape.
+         */
+
+        '\\\\[\\s\\S]' +
+
+        '|' +
+
+        /*
+         * Match anything other than `end`.
+         */
+
+        '[^' + (negate || end) + ']' +
+    ')*';
+}
+
+/**
+ * Create a group: something that matches from `start`
+ * until end, which does allow an escaped `end`, but
+ * not `end` itself.
+ *
+ * @param {string} start
+ * @param {string?} end - Defaults to end.
+ * @return {string}
+ */
+function group(start, end, negate) {
+    return start + '(' + groupContent(end || start, negate) + '?)' + (end || start);
+}
+
 /*
  * Exports.
  */
@@ -167,26 +206,25 @@ rules.html = new RegExp(
          * HTML comment.
          */
 
-        cleanExpression('<!--[\\s\\S]*?-->') +
-        '[ \\t]*(?:\\n|\\s*$)|' +
+        cleanExpression('<!--[\\s\\S]*?-->') + '[ \\t]*(?:\\n|\\s*$)' +
+
+        '|' +
 
         /*
          * Closed tag.
          */
 
-        cleanExpression('<(' + inlineTags + ')[\\s\\S]+?<\\/\\1>') +
-        '[ \\t]*(?:\\n{2,}|\\s*$)|' +
+        cleanExpression('<(' + inlineTags + ')[\\s\\S]+?<\\/\\1>') + '[ \\t]*(?:\\n{2,}|\\s*$)' +
+
+        '|' +
 
         /*
          * Closing tag.
          */
 
-        cleanExpression(
-            '<' + inlineTags + '(?:"[^"]*"|\'[^\']*\'|[^\'">])*?>'
-        ) +
-        '[ \\t]*' +
-        '(?:\\n{2,}|\\s*$)' +
-    ')'
+        cleanExpression('<' + inlineTags + '(?:"[^"]*"|\'[^\']*\'|[^\'">])*?>') + '[ \\t]*(?:\\n{2,}|\\s*$)' +
+    ')',
+    'i'
 );
 
 rules.paragraph = new RegExp(
@@ -270,20 +308,157 @@ rules.break = /^ {2,}\n(?!\s*$)/;
 
 rules.text = /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/;
 
-rules.inside = /(?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*/;
+/*
+ * Supports up to three nested, matching square braces.
+ */
 
-rules.href = /\s*<?([\s\S]*?)>?(?:\s+['"]([\s\S]*?)['"])?\s*/;
+var commonmarkInside =
+    '(?:' +
+        '(?:' +
+            '\\[(?:' +
+                '\\[(?:' +
+                    '\\\\[\\s\\S]' +
+                    '|' +
+                    '[^\\[\\]]' +
+                ')*?\\]' +
+                '|' +
+                '\\\\[\\s\\S]' +
+                '|' +
+                '[^\\[\\]]' +
+            ')*?\\]' +
+        ')' +
+        '|' +
+        '\\\\[\\s\\S]' +
+        '|' +
+        '[^\\[\\]]' +
+    ')*?';
 
-rules.link = new RegExp(
-    '^(!?\\[)(' +
-        cleanExpression(rules.inside) +
-    ')\\]\\(' +
-        cleanExpression(rules.href) +
-    '\\)'
+
+var inside =
+    '(?:' +
+        '\\[[^\\]]*\\]' +
+        '|' +
+        '[^\\[\\]]' +
+        '|' +
+        '\\]' +
+        '(?=' +
+            '[^\\[]*\\]' +
+        ')' +
+    ')*';
+
+var commonmarkTitle =
+    '(?:\\s+(?:' +
+        group('\\\'') + '|' +
+        group('"') + '|' +
+        group('\\(', '\\)') +
+    '))?';
+
+var title = '(?:' +
+        '\\s+[\'"]' +
+        '(' +
+            '[\\s\\S]*?' +
+        ')' +
+        '[\'"]' +
+    ')?';
+
+/*
+ * Supports up to one nested, matching pair of parens.
+ */
+
+var commonmarkHREF =
+    '(?:' +
+        '(?!<)(' +
+            '(?:' +
+                '\\(' + groupContent('\\)', '\\(\\)\\s') + '?\\)' +
+                '|' +
+                '\\\\[\\s\\S]' +
+                '|' +
+                '[^\\(\\)\\s]' +
+            ')*?' +
+        ')' +
+        '|' +
+        '<(' +
+            '[^\\n]*?' +
+        ')>' +
+    ')';
+
+var href = '(?:' +
+        '(?!<)' +
+        '(' +
+            '(?:' +
+                '\\(' +
+                '(?:' +
+                    '\\\\[\\s\\S]' +
+                    '|' +
+                    '[^\\)]' +
+                ')*?\\)' +
+                '|' +
+                '\\\\[\\s\\S]' +
+                '|' +
+                '[\\s\\S]' +
+            ')*?' +
+        ')' +
+        '|' +
+        '<(' +
+            '[\\s\\S]*?' +
+        ')>' +
+    ')';
+
+commonmark.link = new RegExp(
+    '^(' +
+        '!?\\[' +
+    ')' +
+    '(' +
+        commonmarkInside +
+    ')' +
+    '\\]\\(\\s*' +
+    commonmarkHREF +
+    commonmarkTitle +
+    '\\s*\\)'
 );
 
-rules.referenceLink =
-    /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/;
+rules.link = new RegExp(
+    '^(' +
+        '!?\\[' +
+    ')' +
+    '(' +
+        inside +
+    ')' +
+    '\\]\\(\\s*' +
+    href +
+    title +
+    '\\s*\\)'
+);
+
+rules.referenceLink = new RegExp(
+    '^(' +
+        '!?\\[' +
+    ')' +
+    '(' +
+        inside +
+    ')' +
+    '\\]\\s*\\[' +
+    '(' +
+        groupContent('\\]') +
+    ')' +
+    '\\]'
+);
+
+commonmark.referenceLink = new RegExp(
+    '^(' +
+        '!?\\[' +
+    ')' +
+    '(' +
+        commonmarkInside +
+    ')' +
+    '\\]\\s*\\[' +
+    '(' +
+        groupContent('\\]', '\\[\\]') +
+    ')' +
+    '\\]'
+);
+
+    // /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/;
 
 /*
  * GFM inline Grammar.

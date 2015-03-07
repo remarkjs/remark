@@ -1,0 +1,131 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "[Hello](./wo\nrld.html).",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "[Hello](<./wo\nrld.html>).",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "![Hello](./wo\nrld.png).",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 8,
+              "column": 10
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 10
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "![Hello](<./wo\nrld.png>).",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 11
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 11,
+      "column": 11
+    }
+  }
+}
