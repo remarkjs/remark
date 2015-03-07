@@ -1,4 +1,15 @@
 
+0.9.0 / 2015-03-07
+==================
+
+* Update mdast dependency (6b1bd06)
+* Update eslint (bd30d2e)
+* Update chalk (aea84ed)
+* Update browser build (7a8485e)
+* Fix link parsing/stringification support (05d25f0)
+* Refactor escape, entity, inline code support (e15f43c)
+* Fix blockquote, paragraph support (089ca44)
+
 0.8.0 / 2015-02-27
 ==================
 
