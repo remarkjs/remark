@@ -330,12 +330,16 @@ $ mdast --use mdast-toc -o Readme.md
 
 ## Benchmark
 
-On a MacBook Air, it parser more than 3 megabytes of markdown per second, depending on how much markup v.s. plain text the document contains, and which language the document is in, that’s more than the [entire works of Shakespeare](http://www.gutenberg.org/ebooks/100), in under two seconds.
+On a MacBook Air, it parses ± 322Kb of markdown (in 214 documents) per second.
 
 ```text
-         benchmarks * 76 fixtures (total: 50Kb markdown)
- 63 op/s » mdast.parse
-145 op/s » mdast.stringify
+          214 fixtures (total: 80.62Kb)
+   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, and `tables: true`
+  69 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, and `tables: true`
+   4 op/s » mdast.parse w/ `gfm: false`, `yaml: false`, and `tables: false`
+  70 op/s » mdast.stringify w/ `gfm: false`, `yaml: false`, and `tables: false`
+   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, `tables: true`, and `commonmark: true`
+  72 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, `tables: true`, and `commonmark: true`
 ```
 
 ## License
