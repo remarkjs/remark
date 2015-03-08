@@ -52,7 +52,7 @@
     "mocha": "^2.0.0"
   },
   "scripts": {
-    "test-api": "_mocha --check-leaks test/index.js",
+    "test-api": "mocha --check-leaks test/index.js",
     "test-cli": "bash test/cli.sh",
     "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
     "test-coverage": "istanbul cover _mocha -- -- test/index.js",
