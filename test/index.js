@@ -1,26 +1,17 @@
 'use strict';
 
-var mdast,
-    assert,
-    fixtures,
-    chalk,
-    diff,
-    plugin;
-
-mdast = require('..');
-assert = require('assert');
-fixtures = require('./fixtures.js');
-chalk = require('chalk');
-diff = require('diff');
-plugin = require('./plugin.js');
+var mdast = require('..');
+var assert = require('assert');
+var fixtures = require('./fixtures.js');
+var chalk = require('chalk');
+var diff = require('diff');
+var plugin = require('./plugin.js');
 
 /*
  * Settings.
  */
 
-var INDENT;
-
-INDENT = 2;
+var INDENT = 2;
 
 /**
  * No-operation.
@@ -394,32 +385,26 @@ describe('mdast.use(function(plugin))', function () {
     });
 
     it('should return an instance of mdast', function () {
-        var parser;
-
-        parser = mdast.use(noop);
+        var parser = mdast.use(noop);
 
         assert(mdast.use(noop) instanceof parser.constructor);
     });
 
     it('should attach a plugin', function () {
-        var parser;
-
-        parser = mdast.use(noop);
+        var parser = mdast.use(noop);
 
         assert(parser.ware.fns.length === 1);
     });
 
     it('should multiple plugins', function () {
-        var parser;
-
-        parser = mdast.use(noop).use(noop);
+        var parser = mdast.use(noop).use(noop);
 
         assert(parser.ware.fns.length === 2);
     });
 
     it('should invoke a plugin when `parse()` is invoked', function () {
-        var isInvoked,
-            settings;
+        var isInvoked;
+        var settings;
 
         settings = {
             'hello': 'world'
@@ -441,9 +426,7 @@ describe('mdast.use(function(plugin))', function () {
     });
 
     it('should fail if an exception occurs in `plugin`', function () {
-        var exception;
-
-        exception = new Error('test');
+        var exception = new Error('test');
 
         assert.throws(function () {
             mdast.use(function () {
@@ -453,12 +436,8 @@ describe('mdast.use(function(plugin))', function () {
     });
 
     it('should work on an example plugin', function () {
-        var parser,
-            source;
-
-        parser = mdast.use(plugin);
-
-        source = parser.stringify(parser.parse('# mdast'));
+        var parser = mdast.use(plugin);
+        var source = parser.stringify(parser.parse('# mdast'));
 
         assert(
             source === '# mdast [' +
@@ -478,8 +457,8 @@ describe('mdast.use(function(plugin))', function () {
     });
 });
 
-var validateToken,
-    validateTokens;
+var validateToken;
+var validateTokens;
 
 /**
  * Validate `children`.
@@ -496,9 +475,9 @@ validateTokens = function (children) {
  * @param {Object} context
  */
 validateToken = function (context) {
-    var keys = Object.keys(context).length,
-        type = context.type,
-        key;
+    var keys = Object.keys(context).length;
+    var type = context.type;
+    var key;
 
     assert('type' in context);
 
@@ -689,14 +668,10 @@ validateToken = function (context) {
  * @return {Object}
  */
 function clone(node, clean) {
-    var result;
-
-    result = Array.isArray(node) ? [] : {};
+    var result = Array.isArray(node) ? [] : {};
 
     Object.keys(node).forEach(function (key) {
-        var value;
-
-        value = node[key];
+        var value = node[key];
 
         if (clean) {
             if (key === 'position') {
@@ -718,9 +693,7 @@ function clone(node, clean) {
  * Methods.
  */
 
-var stringify;
-
-stringify = JSON.stringify;
+var stringify = JSON.stringify;
 
 /*
  * Fixtures.
@@ -728,9 +701,9 @@ stringify = JSON.stringify;
 
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
-        var baseline = JSON.parse(fixture.tree),
-            node,
-            markdown;
+        var baseline = JSON.parse(fixture.tree);
+        var node;
+        var markdown;
 
         it('should parse `' + fixture.name + '` correctly', function () {
             node = mdast.parse(fixture.input, fixture.options);
@@ -753,20 +726,18 @@ describe('fixtures', function () {
 
         if (!fixture.options || fixture.options.output !== false) {
             it('should stringify `' + fixture.name + '`', function () {
-                var generatedNode;
+                var result;
 
                 markdown = mdast.stringify(node, fixture.options);
-                generatedNode = mdast.parse(markdown, fixture.options);
+                result = mdast.parse(markdown, fixture.options);
 
                 try {
-                    assert.deepEqual(
-                        clone(node, true), clone(generatedNode, true)
-                    );
+                    assert.deepEqual(clone(node, true), clone(result, true));
                 } catch (error) {
                     /* istanbul ignore next */
                     logDifference(
                         stringify(clone(node, true), null, INDENT),
-                        stringify(clone(generatedNode, true), null, INDENT)
+                        stringify(clone(result, true), null, INDENT)
                     );
 
                     /* istanbul ignore next */
