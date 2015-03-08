@@ -32,7 +32,7 @@ $ bower install mdast
 var mdast = require('wooorm/mdast');
 ```
 
-UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [minified](mdast.min.js)):
+UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [compressed](mdast.min.js)):
 
 ```html
 <script src="path/to/mdast.js"></script>
@@ -235,28 +235,44 @@ Some _emphasis_, **strongness**, and `code`.
 
 ### [mdast](#api).parse(value, [options](doc/Options.md#parse)?)
 
-Parameters:
+Parse a markdown document into an abstract syntax tree.
+
+**Signatures**
+
+- `ast = mdast.parse(value)`;
+- `ast = mdast.parse(value, options)`.
+
+**Parameters**
 
 - `value` (`string`) — Markdown document;
-- `options` (`Object`, `null`, `undefined`) — Optional options:
-  - `gfm` (`boolean`, default: `true`). See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
-  - `tables` (`boolean`, default: `true`). See [Tables](doc/Options.md#tables);
-  - `yaml` (`boolean`, default: `true`). See [YAML](doc/Options.md#yaml);
-  - `commonmark` (`boolean`, default: `false`). See [CommonMark](doc/Options.md#commonmark);
-  - `footnotes` (`boolean`, default: `false`). See [Footnotes](doc/Options.md#footnotes).
-  - `pedantic` (`boolean`, default: `false`). See [Pedantic](doc/Options.md#pedantic);
-  - `breaks` (`boolean`, default: `false`). See [Breaks](doc/Options.md#breaks);
+- `options` (`Object`) — Settings:
+  - `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
+  - `tables` (`boolean`, default: `true`) — See [Tables](doc/Options.md#tables);
+  - `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
+  - `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
+  - `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
+  - `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
+  - `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
-Returns: An `Object`. See [Nodes](doc/Nodes.md) for the AST specification.
+**Returns**
+
+`Object`: see [Nodes](doc/Nodes.md) for the AST specification.
 
 ### [mdast](#api).stringify([ast](doc/Nodes.md#node), [options](doc/Options.md#stringify)?)
 
-Parameters:
+Stringify an abstract syntax tree into a markdown document.
+
+**Signatures**
+
+- `value = mdast.stringify(ast)`;
+- `value = mdast.stringify(ast, options)`.
+
+**Parameters**
 
 - `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-- `options` (`Object`) — Optional options:
+- `options` (`Object`) — Settings:
   - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
   - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
   - `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
@@ -273,19 +289,48 @@ Parameters:
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
-Returns: A `string`.
+**Returns**
+
+`string`: a document formatted in markdown.
 
 ### [mdast](#api).use([plugin](#function-pluginast-options-mdast))
 
-Creates a version of **mdast** which uses the given `plugin` to modify the AST after [`mdast.parse()`](#mdastparsevalue-options) is invoked.
+Change the way [`mdast`](#api) works by using a [`plugin`](#function-pluginast-options-mdast).
 
-The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins.
+**Signatures**
 
-This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of **mdast** does not change for other dependants.
+- `mdast = mdast.use(plugin)`;
+- `mdast = mdast.use(plugins)`.
 
-#### function plugin([ast](doc/Nodes.md#node), options, [mdast](#api))
+**Parameters**
+
+- `plugin` (`Function`) — See [`plugin`](#function-pluginast-options-mdast);
+- `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s.
+
+**Returns**
+
+`Object`: an instance of MDAST: The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins.
+
+This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
+
+#### function plugin([ast](doc/Nodes.md#node), [options](doc/Options.md#parse), [mdast](#api))
 
 A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes, or change the **mdast** instance.
+
+**Signatures**
+
+- `plugin(ast, options, mdast)`;
+- `error = plugin(ast, options, mdast)`.
+
+**Parameters**
+
+- `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
+- `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options);
+- `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) was invoked.
+
+**Returns**
+
+`undefined` or `Error`, which in the later case will be thrown.
 
 ## CLI
 
