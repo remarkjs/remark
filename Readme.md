@@ -2,9 +2,9 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
 
-**mdast** is speedy Markdown parser and stringifier for multipurpose analysis in JavaScript. Node and the browser. Lots of tests. 100% coverage.
+**mdast** is a markdown parser and stringifier for multipurpose analysis in JavaScript. Node and the browser. Lots of tests. 100% coverage.
 
-It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://github.com/chjj/marked) [Markdown](https://github.com/jonschlinkert/remarkable) [to](https://github.com/jgm/commonmark.js) [HTML](https://github.com/markdown-it/markdown-it) compiler. **mdast** can generate Markdown too, which enables plug-ins (and you) to [change your Readme.md](https://github.com/wooorm/mdast-usage), or [lint the JavaScript in your Markdown](https://github.com/wooorm/eslint-md).
+It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://github.com/chjj/marked) [markdown](https://github.com/jonschlinkert/remarkable) [to](https://github.com/jgm/commonmark.js) [HTML](https://github.com/markdown-it/markdown-it) compiler. **mdast** can generate markdown too, which enables plug-ins (and you) to [change your Readme.md](https://github.com/wooorm/mdast-usage), or [lint the JavaScript in your markdown](https://github.com/wooorm/eslint-md).
 
 ## Installation
 
@@ -283,7 +283,7 @@ The returned object functions just like **mdast** (it also has `use`, `parse`, a
 
 This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of **mdast** does not change for other dependants.
 
-#### function plugin\([ast](doc/Nodes.md#node), options, [mdast](#api)\)
+#### function plugin([ast](doc/Nodes.md#node), options, [mdast](#api))
 
 A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes, or change the **mdast** instance.
 
