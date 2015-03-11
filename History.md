@@ -1,4 +1,19 @@
 
+0.10.0 / 2015-03-11
+===================
+
+* Add `test-api-extensive` target ([5c87d0d](https://github.com/wooorm/mdast/commit/5c87d0d))
+* Fix list-item stringification ([57741a7](https://github.com/wooorm/mdast/commit/57741a7))
+* Add `lib/defaults.js` ([47c1dd2](https://github.com/wooorm/mdast/commit/47c1dd2))
+* Add `camelcase` as a dependency for CLI ([2c0cdab](https://github.com/wooorm/mdast/commit/2c0cdab))
+* Update docs with signatures, more info, and style ([cbc41db](https://github.com/wooorm/mdast/commit/cbc41db))
+* Refactor `test/index.js` ([29da868](https://github.com/wooorm/mdast/commit/29da868))
+* Fix `test-api` script ([7f455d7](https://github.com/wooorm/mdast/commit/7f455d7))
+* Update eslint ([4ab1b29](https://github.com/wooorm/mdast/commit/4ab1b29))
+* Remove mdast dependency ([4de3846](https://github.com/wooorm/mdast/commit/4de3846))
+* Refactor wording in `Readme.md` ([6e9f218](https://github.com/wooorm/mdast/commit/6e9f218))
+* Update benchmark and benchmark results ([850c534](https://github.com/wooorm/mdast/commit/850c534))
+
 0.9.0 / 2015-03-07
 ==================
 
