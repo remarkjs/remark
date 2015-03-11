@@ -239,20 +239,20 @@ Parse a markdown document into an abstract syntax tree.
 
 **Signatures**
 
-- `ast = mdast.parse(value)`;
-- `ast = mdast.parse(value, options)`.
+-   `ast = mdast.parse(value)`;
+-   `ast = mdast.parse(value, options)`.
 
 **Parameters**
 
-- `value` (`string`) — Markdown document;
-- `options` (`Object`) — Settings:
-  - `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
-  - `tables` (`boolean`, default: `true`) — See [Tables](doc/Options.md#tables);
-  - `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
-  - `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
-  - `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
-  - `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
-  - `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks).
+-   `value` (`string`) — Markdown document;
+-   `options` (`Object`) — Settings:
+    -   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
+    -   `tables` (`boolean`, default: `true`) — See [Tables](doc/Options.md#tables);
+    -   `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
+    -   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
+    -   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
+    -   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
+    -   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
@@ -266,26 +266,26 @@ Stringify an abstract syntax tree into a markdown document.
 
 **Signatures**
 
-- `value = mdast.stringify(ast)`;
-- `value = mdast.stringify(ast, options)`.
+-   `value = mdast.stringify(ast)`;
+-   `value = mdast.stringify(ast, options)`.
 
 **Parameters**
 
-- `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-- `options` (`Object`) — Settings:
-  - `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
-  - `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
-  - `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
-  - `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
-  - `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
-  - `fence: string` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
-  - `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
-  - `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
-  - `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-  - `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-  - `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-  - `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
-  - `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
+-   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
+-   `options` (`Object`) — Settings:
+    -   `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
+    -   `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
+    -   `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
+    -   `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
+    -   `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
+    -   `fence: string` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
+    -   `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
+    -   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
+    -   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    -   `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    -   `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    -   `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
+    -   `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
@@ -299,13 +299,13 @@ Change the way [`mdast`](#api) works by using a [`plugin`](#function-pluginast-o
 
 **Signatures**
 
-- `mdast = mdast.use(plugin)`;
-- `mdast = mdast.use(plugins)`.
+-   `mdast = mdast.use(plugin)`;
+-   `mdast = mdast.use(plugins)`.
 
 **Parameters**
 
-- `plugin` (`Function`) — See [`plugin`](#function-pluginast-options-mdast);
-- `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s.
+-   `plugin` (`Function`) — See [`plugin`](#function-pluginast-options-mdast);
+-   `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s.
 
 **Returns**
 
@@ -319,14 +319,14 @@ A plugin is a simple function which is invoked each time a document is [`mdast.p
 
 **Signatures**
 
-- `plugin(ast, options, mdast)`;
-- `error = plugin(ast, options, mdast)`.
+-   `plugin(ast, options, mdast)`;
+-   `error = plugin(ast, options, mdast)`.
 
 **Parameters**
 
-- `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-- `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options);
-- `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) was invoked.
+-   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
+-   `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options);
+-   `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) was invoked.
 
 **Returns**
 

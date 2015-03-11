@@ -105,13 +105,13 @@ Yields:
 
 Setting `commonmark: true` (default: `true`) enables:
 
-- Paragraph parsing which causes indentation following a paragraph, which normally would be seen as code, to be part of the preceding paragraph;
-- ATX-heading parsing (`# Hash headings`) which requires spacing after initial hashes, and before closing hashes;
-- Setext-heading parsing (`Underline headings\n---`) which does not allow these headings when directly following a paragraph;
-- Empty lines to split blockquotes;
-- Stricter blockquote parsing when you’re lazy: a list, code block,
-  fenced code block, or horizontal rule when not preceded by
-  a closing angle bracket (`>`) is **not** part of the blockquote.
+-   Paragraph parsing which causes indentation following a paragraph, which normally would be seen as code, to be part of the preceding paragraph;
+-   ATX-heading parsing (`# Hash headings`) which requires spacing after initial hashes, and before closing hashes;
+-   Setext-heading parsing (`Underline headings\n---`) which does not allow these headings when directly following a paragraph;
+-   Empty lines to split blockquotes;
+-   Stricter blockquote parsing when you’re lazy: a list, code block,
+    fenced code block, or horizontal rule when not preceded by
+    a closing angle bracket (`>`) is **not** part of the blockquote.
 
 The following document:
 
@@ -482,9 +482,9 @@ Yields:
 
 Setting `gfm: true` (default: `true`) enables:
 
-- Parsing of fenced code blocks;
-- Automatic URL detection;
-- Deletions (strikethrough).
+-   Parsing of fenced code blocks;
+-   Automatic URL detection;
+-   Deletions (strikethrough).
 
 The following document:
 
@@ -594,9 +594,9 @@ Yields:
 
 Setting `pedantic: true` (default: `false`) enables:
 
-- Emphasis and strongness inside words;
-- Allows different ordered-list bullets in the same list;
-- Removes less spaces in list-items (a maximum of four instead of the whole indent).
+-   Emphasis and strongness inside words;
+-   Allows different ordered-list bullets in the same list;
+-   Removes less spaces in list-items (a maximum of four instead of the whole indent).
 
 The following document:
 
@@ -1089,11 +1089,11 @@ mdast.stringify(ast, {
 
 Yields:
 
-    * First level
+    *   First level
 
-      * Second level
+        *   Second level
 
-        * Third level
+            *   Third level
 
 ### Closed ATX Headings
 
@@ -1129,8 +1129,8 @@ Yields:
 
 Two options are provided to customise how slight- and strong emphasis are stringified:
 
-- `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
-- `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
+-   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
+-   `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
 
 The following document:
 
@@ -1159,7 +1159,7 @@ Yields:
 
 It's possible to customise how GFM code fences are stringified:
 
-- `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code in the provided character;
+-   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code in the provided character;
 
 The following document:
 
@@ -1267,9 +1267,9 @@ Yields:
 
 Three options are provided to customise how horizontal rules will be stringified:
 
-- `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
-- `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
-- `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
+-   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
+-   `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
+-   `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
 
 The following document:
 
