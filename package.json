@@ -41,6 +41,7 @@
   "devDependencies": {
     "browserify": "^9.0.0",
     "chalk": "^1.0.0",
+    "clone": "^1.0.1",
     "diff": "^1.0.0",
     "eslint": "^0.16.0",
     "esmangle": "^1.0.0",
@@ -54,6 +55,7 @@
   },
   "scripts": {
     "test-api": "mocha --check-leaks test/index.js",
+    "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
     "test-cli": "bash test/cli.sh",
     "test-coveralls": "istanbul cover _mocha --report lcovonly -- --check-leaks test/index.js",
     "test-coverage": "istanbul cover _mocha -- -- test/index.js",

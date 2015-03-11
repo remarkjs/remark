@@ -1,0 +1,101 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This example checks that [^the generated] IDs do not overwrite the user's IDs[^1].",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 83
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 83
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "[^1]: Old behavior would, for \"generated\", generate a footnote with an ID set to ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 82
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "1",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 82
+            },
+            "end": {
+              "line": 3,
+              "column": 85
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", thus overwriting this footnote.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 85
+            },
+            "end": {
+              "line": 3,
+              "column": 118
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 118
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 3,
+      "column": 118
+    }
+  }
+}

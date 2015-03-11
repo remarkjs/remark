@@ -679,6 +679,10 @@ function clone(node, clean) {
             }
         }
 
+        if (key === 'footnotes' && Object.keys(value).length === 0) {
+            return;
+        }
+
         if (value !== null && typeof value === 'object') {
             result[key] = clone(value, clean);
         } else {
@@ -695,72 +699,84 @@ function clone(node, clean) {
 
 var stringify = JSON.stringify;
 
+/**
+ * Diff node.
+ *
+ * @param {Object} node
+ * @param {Object} baseline
+ * @param {boolean} clean
+ */
+function compare(node, baseline, clean) {
+    validateToken(node);
+
+    try {
+        assert.deepEqual(clone(node, clean), clone(baseline, clean));
+    } catch (error) {
+        /* istanbul ignore next */
+        logDifference(
+            stringify(clone(baseline, clean), null, INDENT),
+            stringify(clone(node, clean), null, INDENT)
+        );
+
+        /* istanbul ignore next */
+        throw error;
+    }
+}
+
+/**
+ * Diff text.
+ *
+ * @param {string} value
+ * @param {string} baseline
+ */
+function compareText(value, baseline) {
+    try {
+        assert(value === baseline);
+    } catch (error) {
+        /* istanbul ignore next */
+        logDifference(baseline, value);
+
+        /* istanbul ignore next */
+        throw error;
+    }
+}
+
 /*
  * Fixtures.
  */
 
 describe('fixtures', function () {
     fixtures.forEach(function (fixture) {
-        var baseline = JSON.parse(fixture.tree);
-        var node;
-        var markdown;
+        describe(fixture.name, function () {
+            var input = fixture.input;
+            var possibilities = fixture.possibilities;
+            var mapping = fixture.mapping;
+            var trees = fixture.trees;
+            var output = fixture.output;
 
-        it('should parse `' + fixture.name + '` correctly', function () {
-            node = mdast.parse(fixture.input, fixture.options);
+            Object.keys(possibilities).forEach(function (key) {
+                var name = key || 'default';
+                var parse = possibilities[key];
+                var node = mdast.parse(input, parse);
+                var markdown = mdast.stringify(node, fixture.stringify);
 
-            validateToken(node);
+                it('should parse `' + name + '` correctly', function () {
+                    compare(node, trees[mapping[key]], false);
+                });
 
-            try {
-                assert.deepEqual(clone(node), clone(baseline));
-            } catch (error) {
-                /* istanbul ignore next */
-                logDifference(
-                    stringify(clone(baseline), null, INDENT),
-                    stringify(clone(node), null, INDENT)
-                );
+                if (output !== false) {
+                    it('should stringify `' + name + '`', function () {
+                        compare(node, mdast.parse(markdown, parse), true);
+                    });
+                }
 
-                /* istanbul ignore next */
-                throw error;
-            }
-        });
-
-        if (!fixture.options || fixture.options.output !== false) {
-            it('should stringify `' + fixture.name + '`', function () {
-                var result;
-
-                markdown = mdast.stringify(node, fixture.options);
-                result = mdast.parse(markdown, fixture.options);
-
-                try {
-                    assert.deepEqual(clone(node, true), clone(result, true));
-                } catch (error) {
-                    /* istanbul ignore next */
-                    logDifference(
-                        stringify(clone(node, true), null, INDENT),
-                        stringify(clone(result, true), null, INDENT)
-                    );
-
-                    /* istanbul ignore next */
-                    throw error;
+                if (output === true) {
+                    it('should stringify `' + name + '` exact', function () {
+                        compareText(fixture.input, markdown);
+                    });
                 }
             });
-        }
-
-        if (fixture.output) {
-            it('should stringify `' + fixture.name + '` to its input',
-                function () {
-                    try {
-                        assert(fixture.input === markdown);
-                    } catch (error) {
-                        /* istanbul ignore next */
-                        logDifference(fixture.input, markdown);
-
-                        /* istanbul ignore next */
-                        throw error;
-                    }
-                }
-            );
-        }
+        });
     });
 });
 
@@ -773,17 +789,39 @@ describe('fixtures', function () {
  * @param {string} alternative
  */
 function logDifference(value, alternative) {
-    var difference;
-
-    difference = diff.diffLines(value, alternative);
+    var difference = diff.diffLines(value, alternative);
 
     if (difference && difference.length) {
-        difference.forEach(function (change) {
+        difference.forEach(function (change, index) {
             var colour;
+            var changes;
+            var start;
+            var end;
 
             colour = change.added ? 'green' : change.removed ? 'red' : 'dim';
 
-            process.stdout.write(chalk[colour](change.value));
+            changes = change.value;
+
+            if (colour === 'dim') {
+                changes = changes.split('\n');
+
+                if (changes.length > 6) {
+                    start = changes.slice(0, 3);
+                    end = changes.slice(-3);
+
+                    if (index === 0) {
+                        start = [];
+                    } else if (index === difference.length - 1) {
+                        end = [];
+                    }
+
+                    changes = start.concat('...', end);
+                }
+
+                changes = changes.join('\n');
+            }
+
+            process.stdout.write(chalk[colour](changes));
         });
     }
 }
