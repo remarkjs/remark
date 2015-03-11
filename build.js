@@ -89,7 +89,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.9.0');
+var mdast = require('wooorm/mdast@0.10.0');
 var debounce = require('component/debounce@1.0.0');
 var Quill = require('quilljs/quill');
 
@@ -315,7 +315,7 @@ write.focus();
 
 write.focus();
 
-}, {"wooorm/mdast@0.9.0":2,"component/debounce@1.0.0":3,"quilljs/quill":4}],
+}, {"wooorm/mdast@0.10.0":2,"component/debounce@1.0.0":3,"quilljs/quill":4}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -931,6 +931,7 @@ function error(err) {
 var he = require('he');
 var utilities = require('./utilities.js');
 var expressions = require('./expressions.js');
+var defaults = require('./defaults.js').parse;
 
 /*
  * Cached methods.
@@ -1853,10 +1854,11 @@ function renderNormalListItem(token, position) {
 
        /*
         * Make sure that the first nine numbered list items
-        * can indent with an extra space:
+        * can indent with an extra space.  That is, when
+        * the bullet did not receive an extra final space.
         */
 
-        if (Number($2) < 10) {
+        if (Number($2) < 10 && bullet.length % 2 === 1) {
             $2 = SPACE + $2;
         }
 
@@ -2985,12 +2987,13 @@ function parse(value, options, CustomParser) {
         options = copy({}, options);
     }
 
-    validate.bool(options, 'gfm', true);
+    validate.bool(options, 'gfm', defaults.gfm);
     validate.bool(options, 'tables', options.gfm);
-    validate.bool(options, 'yaml', true);
-    validate.bool(options, 'footnotes', false);
-    validate.bool(options, 'breaks', false);
-    validate.bool(options, 'pedantic', false);
+    validate.bool(options, 'yaml', defaults.yaml);
+    validate.bool(options, 'commonmark', defaults.commonmark);
+    validate.bool(options, 'footnotes', defaults.footnotes);
+    validate.bool(options, 'breaks', defaults.breaks);
+    validate.bool(options, 'pedantic', defaults.pedantic);
 
     if (!options.gfm && options.tables) {
         throw new Error(
@@ -3014,7 +3017,7 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-}, {"he":10,"./utilities.js":11,"./expressions.js":12}],
+}, {"he":10,"./utilities.js":11,"./expressions.js":12,"./defaults.js":13}],
 10: [function(require, module, exports) {
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -3687,6 +3690,38 @@ module.exports = {
 };
 
 }, {}],
+13: [function(require, module, exports) {
+'use strict';
+
+var parse = {
+    'gfm': true,
+    'yaml': true,
+    'commonmark': false,
+    'footnotes': false,
+    'pedantic': false,
+    'breaks': false
+};
+
+var stringify = {
+    'setext': false,
+    'closeAtx': false,
+    'looseTable': false,
+    'spacedTable': true,
+    'referenceLinks': false,
+    'fences': false,
+    'fence': '`',
+    'bullet': '-',
+    'rule': '*',
+    'ruleSpaces': true,
+    'ruleRepetition': 3,
+    'strong': '*',
+    'emphasis': '_'
+};
+
+exports.parse = parse;
+exports.stringify = stringify;
+
+}, {}],
 7: [function(require, module, exports) {
 'use strict';
 
@@ -3696,6 +3731,7 @@ module.exports = {
 
 var table = require('markdown-table');
 var utilities = require('./utilities.js');
+var defaults = require('./defaults.js').stringify;
 
 /*
  * Cached methods.
@@ -3715,6 +3751,7 @@ var count = utilities.countCharacter;
 var HALF = 2;
 var INDENT = 4;
 var MINIMUM_CODE_FENCE_LENGTH = 3;
+var MINIMUM_RULE_LENGTH = 3;
 
 var EXPRESSIONS_WHITE_SPACE = /\s/;
 
@@ -3933,23 +3970,26 @@ function Compiler(options) {
         options = copy({}, options);
     }
 
-    validate.map(options, 'bullet', LIST_BULLETS, DASH);
-    validate.map(options, 'rule', HORIZONTAL_RULE_BULLETS, ASTERISK);
-    validate.map(options, 'emphasis', EMPHASIS_MARKERS, UNDERSCORE);
-    validate.map(options, 'strong', EMPHASIS_MARKERS, ASTERISK);
-    validate.map(options, 'fence', FENCE_MARKERS, TICK);
-    validate.bool(options, 'ruleSpaces', true);
-    validate.bool(options, 'setext', false);
-    validate.bool(options, 'closeAtx', false);
-    validate.bool(options, 'looseTable', false);
-    validate.bool(options, 'spacedTable', true);
-    validate.bool(options, 'referenceLinks', false);
-    validate.bool(options, 'fences', false);
-    validate.num(options, 'ruleRepetition', 3);
+    validate.map(options, 'bullet', LIST_BULLETS, defaults.bullet);
+    validate.map(options, 'rule', HORIZONTAL_RULE_BULLETS, defaults.rule);
+    validate.map(options, 'emphasis', EMPHASIS_MARKERS, defaults.emphasis);
+    validate.map(options, 'strong', EMPHASIS_MARKERS, defaults.strong);
+    validate.map(options, 'fence', FENCE_MARKERS, defaults.fence);
+    validate.bool(options, 'ruleSpaces', defaults.ruleSpaces);
+    validate.bool(options, 'setext', defaults.setext);
+    validate.bool(options, 'closeAtx', defaults.closeAtx);
+    validate.bool(options, 'looseTable', defaults.looseTable);
+    validate.bool(options, 'spacedTable', defaults.spacedTable);
+    validate.bool(options, 'referenceLinks', defaults.referenceLinks);
+    validate.bool(options, 'fences', defaults.fences);
+    validate.num(options, 'ruleRepetition', defaults.ruleRepetition);
 
     ruleRepetition = options.ruleRepetition;
 
-    if (ruleRepetition < 3 || ruleRepetition !== ruleRepetition) {
+    if (
+        ruleRepetition < MINIMUM_RULE_LENGTH ||
+        ruleRepetition !== ruleRepetition
+    ) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
@@ -4023,14 +4063,17 @@ compilerPrototype.visitOrderedItems = function (token, level) {
     var length = tokens.length;
     var bullet;
     var indent;
+    var spacing;
 
     level = level + 1;
 
     while (++index < length) {
         bullet = (index + 1) + DOT + SPACE;
-        indent = Math.ceil(bullet.length / HALF) * HALF;
 
-        values[index] = bullet +
+        indent = Math.ceil(bullet.length / INDENT) * INDENT;
+        spacing = repeat(indent - bullet.length, SPACE);
+
+        values[index] = bullet + spacing +
             self.listItem(tokens[index], token, level, indent);
     }
 
@@ -4051,16 +4094,21 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
     var index = -1;
     var length = tokens.length;
     var bullet;
-    var indent;
+    var spacing;
 
     level = level + 1;
 
-    bullet = this.options.bullet + SPACE;
-    indent = Math.ceil(bullet.length / HALF) * HALF;
+    /*
+     * Unordered bullets are always one character, so
+     * the following can be hard coded.
+     */
+
+    bullet = self.options.bullet + SPACE;
+    spacing = repeat(HALF, SPACE);
 
     while (++index < length) {
-        values[index] = bullet +
-            self.listItem(tokens[index], token, level, indent);
+        values[index] = bullet + spacing +
+            self.listItem(tokens[index], token, level, INDENT);
     }
 
     return values.join(LINE);
@@ -4123,10 +4171,11 @@ compilerPrototype.root = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.heading = function (token, parent, level) {
-    var setext = this.options.setext;
-    var closeAtx = this.options.closeAtx;
+    var self = this;
+    var setext = self.options.setext;
+    var closeAtx = self.options.closeAtx;
     var depth = token.depth;
-    var content = this.visitAll(token, level).join(EMPTY);
+    var content = self.visitAll(token, level).join(EMPTY);
     var prefix;
 
     if (setext && (depth === 1 || depth === 2)) {
@@ -4582,8 +4631,8 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-}, {"markdown-table":13,"./utilities.js":11}],
-13: [function(require, module, exports) {
+}, {"markdown-table":14,"./utilities.js":11,"./defaults.js":13}],
+14: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -4963,8 +5012,8 @@ module.exports = function debounce(func, wait, immediate){
   };
 };
 
-}, {"date-now":14}],
-14: [function(require, module, exports) {
+}, {"date-now":15}],
+15: [function(require, module, exports) {
 module.exports = Date.now || now
 
 function now() {
@@ -4975,8 +5024,8 @@ function now() {
 4: [function(require, module, exports) {
 module.exports = require('./dist/quill');
 
-}, {"./dist/quill":15}],
-15: [function(require, module, exports) {
+}, {"./dist/quill":16}],
+16: [function(require, module, exports) {
 /*! Quill Editor v0.19.8
  *  https://quilljs.com/
  *  Copyright (c) 2014, Jason Chen
