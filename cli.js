@@ -8,6 +8,7 @@
 var path = require('path');
 var fs = require('fs');
 var commander = require('commander');
+var camelcase = require('camelcase');
 var debug = require('debug')('mdast');
 var mdast = require('./');
 var pack = require('./package.json');
@@ -109,18 +110,6 @@ function find(pathlike) {
 }
 
 /**
- * Transform a dash-cased string to camel-cased.
- *
- * @param {string} value
- * @return {string}
- */
-function camelCase(value) {
-    return value.toLowerCase().replace(/-([a-z])/gi, function ($0, $1) {
-        return $1.toUpperCase();
-    });
-}
-
-/**
  * Parse settings into an object.
  *
  * @param {string} flags
@@ -143,7 +132,7 @@ function settings(flags, cache) {
             value = Number(value);
         }
 
-        cache[camelCase(flag[0])] = value;
+        cache[camelcase(flag[0])] = value;
     });
 
     return cache;
