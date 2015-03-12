@@ -339,6 +339,7 @@ var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
 var EXPRESSION_HTML_LINK_OPEN = /^<a /i;
 var EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
+var EXPRESSION_TASK_ITEM = /^\[([\ \t]|x|X)\][\ \t]/;
 
 /*
  * A map of characters, and their column length,
@@ -1184,14 +1185,40 @@ LIST_ITEM_MAP.false = renderNormalListItem;
  * @return {Object}
  */
 function renderListItem(token, position) {
-    token = LIST_ITEM_MAP[this.options.pedantic].apply(this, arguments);
+    var self = this;
+    var offsets = self.offset;
+    var checked = null;
+    var node;
+    var task;
+    var offset;
 
-    return {
+    token = LIST_ITEM_MAP[self.options.pedantic].apply(self, arguments);
+
+    if (self.options.gfm) {
+        task = token.match(EXPRESSION_TASK_ITEM);
+
+        if (task) {
+            checked = task[1].toLowerCase() === 'x';
+
+            offset = task[0].length;
+            offsets[position.line] += offset;
+            token = token.slice(offset);
+        }
+    }
+
+    node = {
         'type': LIST_ITEM,
         'loose': EXPRESSION_LOOSE_LIST_ITEM.test(token) ||
-            token.charAt(token.length - 1) === NEW_LINE,
-        'children': this.tokenizeBlock(token, position)
+            token.charAt(token.length - 1) === NEW_LINE
     };
+
+    if (self.options.gfm) {
+        node.checked = checked;
+    }
+
+    node.children = self.tokenizeBlock(token, position);
+
+    return node;
 }
 
 /**
@@ -2698,20 +2725,20 @@ compilerPrototype.root = function (token, parent, level) {
     var index = -1;
     var length = tokens.length;
     var child;
-    var prevType;
+    var prev;
 
     while (++index < length) {
         child = tokens[index];
 
-        if (prevType) {
+        if (prev) {
             /*
              * Duplicate tokens, such as a list
              * directly following another list,
              * often need multiple new lines.
              */
 
-            if (child.type === prevType && prevType === 'list') {
-                values.push(GAP);
+            if (child.type === prev.type && prev.type === 'list') {
+                values.push(prev.ordered === child.ordered ? GAP : LINE);
             } else {
                 values.push(BREAK);
             }
@@ -2719,7 +2746,7 @@ compilerPrototype.root = function (token, parent, level) {
 
         values.push(self.visit(child, token, level));
 
-        prevType = child.type;
+        prev = child;
     }
 
     values = values.join(EMPTY);
@@ -2858,6 +2885,14 @@ compilerPrototype.list = function (token, parent, level) {
     return this[ORDERED_MAP[token.ordered]](token, level);
 };
 
+var CHECKBOX_MAP = {};
+
+CHECKBOX_MAP.null = '';
+CHECKBOX_MAP.undefined = '';
+CHECKBOX_MAP.true = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
+CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
+    SPACE;
+
 /**
  * Stringify a list item.
  *
@@ -2879,7 +2914,8 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
         values[index] = self.visit(tokens[index], token, level);
     }
 
-    value = values.join(token.loose ? BREAK : LINE);
+    value = CHECKBOX_MAP[token.checked] +
+        values.join(token.loose ? BREAK : LINE);
 
     if (token.loose) {
         value += LINE;

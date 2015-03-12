@@ -159,10 +159,13 @@ interface List <: Parent {
 
 Loose **ListItem**s often contain block-level elements.
 
+When in `gfm: true` mode, a checked property exists on **ListItem**s, either set to `true` (when checked), `false` (when unchecked), or `null` (when not containing a checkbox). See [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists) on GitHub for information.
+
 ```idl
 interface ListItem <: Parent {
     type: "listItem";
     loose: true | false;
+    checked: true | false | null | undefined;
 }
 ```
 

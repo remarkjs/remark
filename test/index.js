@@ -538,9 +538,17 @@ validateToken = function (context) {
     }
 
     if (type === 'listItem') {
-        assert(keys === 3);
+        assert(keys === 3 || keys === 4);
         assert('children' in context);
         assert('loose' in context);
+
+        if (keys === 4) {
+            assert(
+                context.checked === true ||
+                context.checked === false ||
+                context.checked === null
+            );
+        }
 
         return;
     }
@@ -680,6 +688,10 @@ function clone(node, clean) {
         }
 
         if (key === 'footnotes' && Object.keys(value).length === 0) {
+            return;
+        }
+
+        if (key === 'checked' && value === null) {
             return;
         }
 
