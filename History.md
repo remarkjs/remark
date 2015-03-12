@@ -1,4 +1,9 @@
 
+0.11.0 / 2015-03-12
+==================
+
+* Add support for GFMs task lists ([ec9c2cb](https://github.com/wooorm/mdast/commit/ec9c2db), closes [#16](https://github.com/wooorm/mdast/pull/16))
+
 0.10.0 / 2015-03-11
 ===================
 
