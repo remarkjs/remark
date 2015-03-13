@@ -6,6 +6,19 @@
 
 It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://github.com/chjj/marked) [markdown](https://github.com/jonschlinkert/remarkable) [to](https://github.com/jgm/commonmark.js) [HTML](https://github.com/markdown-it/markdown-it) compiler. **mdast** can generate markdown too, which enables plug-ins (and you) to [change your Readme.md](https://github.com/wooorm/mdast-usage), or [lint the JavaScript in your markdown](https://github.com/wooorm/eslint-md).
 
+## Table of Contents
+
+-   [Installation](#installation)
+-   [Usage](#usage)
+-   [API](#api)
+    -   [mdast.parse(value, options?)](#mdastparsevalue-options)
+    -   [mdast.stringify(ast, options?)](#mdaststringifyast-options)
+    -   [mdast.use(plugin)](#mdastuseplugin)
+        -   [function plugin(ast, options, mdast)](#function-pluginast-options-mdast)
+-   [CLI](#cli)
+-   [Benchmark](#benchmark)
+-   [License](#license)
+
 ## Installation
 
 [npm](https://docs.npmjs.com/cli/install):
