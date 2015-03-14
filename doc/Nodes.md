@@ -333,7 +333,7 @@ interface Image <: Node {
 ```idl
 interface Footnote <: Node {
     type: "footnote";
-    id: string
+    id: string;
 }
 ```
 
@@ -344,7 +344,7 @@ interface Footnote <: Node {
 ```idl
 interface FootnoteDefinition <: Parent {
     type: "footnoteDefinition";
-    id: string
+    id: string;
 }
 ```
 
