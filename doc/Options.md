@@ -31,7 +31,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 
 ### Breaks
 
-Setting `breaks: true` (default: `false`) explicitly exposes new line characters in the AST.
+Setting `breaks: true` (default: `false`) exposes new line characters inside [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#paragraph)s as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#break)s.
 
 The following document:
 
