@@ -6,6 +6,7 @@
 
 var fs = require('fs');
 var mdast = require('..');
+var toc = require('mdast-toc');
 
 /*
  * Location for options.
@@ -94,6 +95,8 @@ root = mdast.parse(
     '\n' +
     'Information on **mdast** itself is available in the project’s ' +
         '[Readme.md](https://github.com/wooorm/mdast#readme).\n' +
+    '\n' +
+    '## Table of Contents\n' +
     '\n'
 );
 
@@ -225,6 +228,12 @@ root.children.push({
  */
 
 stringify.forEach(renderSection);
+
+/*
+ * Add toc.
+ */
+
+toc(root);
 
 /*
  * Write.

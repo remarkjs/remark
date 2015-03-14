@@ -6,6 +6,39 @@ This page contains the definition of the exposed objects and what they represent
 
 Information on **mdast** itself is available in the project’s [Readme.md](https://github.com/wooorm/mdast#readme).
 
+## Table of Contents
+
+-   [Node](#node)
+-   [Location](#location)
+-   [Position](#position)
+-   [Parent](#parent)
+-   [Text](#text)
+-   [Root](#root)
+-   [Paragraph](#paragraph)
+-   [Blockquote](#blockquote)
+-   [Heading](#heading)
+-   [Code](#code)
+-   [InlineCode](#inlinecode)
+-   [YAML](#yaml)
+-   [HTML](#html)
+-   [List](#list)
+-   [ListItem](#listitem)
+-   [Table](#table)
+-   [TableHeader](#tableheader)
+-   [TableRow](#tablerow)
+-   [TableCell](#tablecell)
+-   [HorizontalRule](#horizontalrule)
+-   [Break](#break)
+-   [Emphasis](#emphasis)
+-   [Strong](#strong)
+-   [Delete](#delete)
+-   [Link](#link)
+-   [Image](#image)
+-   [Footnote](#footnote)
+-   [FootnoteDefinition](#footnotedefinition)
+-   [TextNode](#textnode)
+-   [Escape](#escape)
+
 ## Node
 
 [`mdast.parse()`](https://github.com/wooorm/mdast#mdastparsevalue-options) returns [**Node**](#node) objects—plain vanilla objects. Every **mdast** node implements the **Node** interface.

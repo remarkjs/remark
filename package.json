@@ -75,9 +75,10 @@
     "build-expressions": "node script/build-expressions.js",
     "build-readme": "mdast --use mdast-toc --use mdast-usage Readme.md -o Readme.md",
     "build-options": "node script/build-options.js",
+    "build-nodes": "mdast --use mdast-toc doc/Nodes.md -o doc/Nodes.md",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-expressions && npm run build-readme && npm run build-options && npm run build-man && npm run build-bundle",
+    "build": "npm run build-expressions && npm run build-readme && npm run build-nodes && npm run build-options && npm run build-man && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }

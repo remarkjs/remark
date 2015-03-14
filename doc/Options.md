@@ -6,6 +6,27 @@ This page contains information and usage examples regarding available options fo
 
 Information on **mdast** itself is available in the project’s [Readme.md](https://github.com/wooorm/mdast#readme).
 
+## Table of Contents
+
+-   [Parse](#parse)
+    -   [Breaks](#breaks)
+    -   [CommonMark](#commonmark)
+    -   [Footnotes](#footnotes)
+    -   [GitHub Flavoured Markdown](#github-flavoured-markdown)
+    -   [Pedantic](#pedantic)
+    -   [YAML](#yaml)
+-   [Stringify](#stringify)
+    -   [List Item Bullets](#list-item-bullets)
+    -   [Closed ATX Headings](#closed-atx-headings)
+    -   [Emphasis Markers](#emphasis-markers)
+    -   [Fence](#fence)
+    -   [Fences](#fences)
+    -   [Loose Tables](#loose-tables)
+    -   [Reference Links](#reference-links)
+    -   [Horizontal Rules](#horizontal-rules)
+    -   [Setext Headings](#setext-headings)
+    -   [Spaced Tables](#spaced-tables)
+
 ## Parse
 
 ### Breaks
