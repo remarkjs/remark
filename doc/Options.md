@@ -618,10 +618,10 @@ Yields:
 
 ### Pedantic
 
-Setting `pedantic: true` (default: `false`) enables:
+Setting `pedantic: true` (default: `false`):
 
--   Emphasis and strongness inside words;
--   Allows different ordered-list bullets in the same list;
+-   Adds support for emphasis and strongness, with underscores (`_`), inside words;
+-   Adds support for different list bullets (`*`, `-`, `+`) for the same list;
 -   Removes less spaces in list-items (a maximum of four instead of the whole indent).
 
 The following document:
@@ -730,7 +730,7 @@ Yields:
 
 ### YAML
 
-Setting `yaml: true` (default: `true`) enables raw YAML front matter to be detected.
+Setting `yaml: true` (default: `true`) enables raw YAML front matter to be detected (thus ignoring markdown-like syntax).
 
 The following document:
 
@@ -816,7 +816,7 @@ Yields:
 
 ### List Item Bullets
 
-Setting `bullet: string` (`"-"`, `"*"`, or `"+"`, default: `"-"`) will stringify list-items in unordered lists using the provided character as its bullet.
+Setting `bullet: string` (`"-"`, `"*"`, or `"+"`, default: `"-"`) will stringify list items in unordered lists using the provided character as bullets.
 
 The following document:
 
@@ -908,7 +908,9 @@ Yields:
 
 It's possible to customise how GFM code fences are stringified:
 
--   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code in the provided character;
+-   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code blocks in the provided character.
+
+To render all code blocks with fences (the default behavior is to only use non-standard fences when a language-flag is present), use [`fences: true`](#fences).
 
 The following document:
 
@@ -935,6 +937,8 @@ Yields:
 ### Fences
 
 Setting `fences: true` (default: `false`) will stringify code blocks without programming-language flags using heredoc-style fences.
+
+To use differen fence markers, use [`fences: string`](#fence).
 
 The following document:
 
@@ -1046,7 +1050,8 @@ Yields:
 
 ### Setext Headings
 
-Setting `setext: true` (default: `false`) will stringify primary and secondary headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style using underlines.
+Setting `setext: true` (default: `false`) will stringify primary and secondary headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style headings (underlines).
+
 Respectively, primary headings are stringified with a row of equals-signs (`=`), and secondary headings with a row of dashes (`-`).
 
 The following document:
@@ -1079,7 +1084,7 @@ Yields:
 
 ### Spaced Tables
 
-Setting `spacedTable: false` (default: `true`) will stringify GFM tables without spaced after starting pipes, before ending pipes, and surrounding delimiting pipes.
+Setting `spacedTable: false` (default: `true`) will stringify GFM tables without spaces after starting pipes, before ending pipes, and surrounding delimiting pipes.
 
 The following document:
 

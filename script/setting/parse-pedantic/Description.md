@@ -1,5 +1,5 @@
-Setting `pedantic: true` (default: `false`) enables:
+Setting `pedantic: true` (default: `false`):
 
-- Emphasis and strongness inside words;
-- Allows different ordered-list bullets in the same list;
+- Adds support for emphasis and strongness, with underscores (`_`), inside words;
+- Adds support for different list bullets (`*`, `-`, `+`) for the same list;
 - Removes less spaces in list-items (a maximum of four instead of the whole indent).
