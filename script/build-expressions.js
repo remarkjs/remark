@@ -73,7 +73,6 @@ function group(start, end, negate) {
 
 var expressions = {};
 var rules = {};
-var tables = {};
 var gfm = {};
 var footnotes = {};
 var yaml = {};
@@ -84,7 +83,6 @@ var breaks = {};
 var breaksGFM = {};
 
 expressions.rules = rules;
-expressions.tables = tables;
 expressions.gfm = gfm;
 expressions.footnotes = footnotes;
 expressions.yaml = yaml;
@@ -247,16 +245,6 @@ rules.paragraph = new RegExp(
 );
 
 /*
- * GFM + Tables Block Grammar
- */
-
-tables.table =
-    /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/;
-
-tables.looseTable =
-    /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/;
-
-/*
  * GFM Block Grammar.
  */
 
@@ -271,6 +259,12 @@ gfm.paragraph = new RegExp(
         '|'
     )
 );
+
+gfm.table =
+    /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/;
+
+gfm.looseTable =
+    /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/;
 
 /*
  * Footnote block grammar

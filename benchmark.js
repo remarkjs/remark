@@ -68,20 +68,17 @@ function benchWithOptions(options) {
 suite(count + ' fixtures (total: ' + size + 'Kb)', function () {
     benchWithOptions({
         'gfm': true,
-        'yaml': true,
-        'tables': true
+        'yaml': true
     });
 
     benchWithOptions({
         'gfm': false,
-        'yaml': false,
-        'tables': false
+        'yaml': false
     });
 
     benchWithOptions({
         'gfm': true,
         'yaml': true,
-        'tables': true,
         'commonmark': true
     });
 });

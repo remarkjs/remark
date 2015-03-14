@@ -65,26 +65,6 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         }, /options.gfm/);
     });
 
-    it('should throw when `options.tables` is not a boolean', function () {
-        assert.throws(function () {
-            mdast.parse('', {
-                'tables': Math
-            });
-        }, /options.tables/);
-    });
-
-    it('should throw when `options.tables` is true and ' +
-        '`options.gfm` is false',
-        function () {
-            assert.throws(function () {
-                mdast.parse('', {
-                    'gfm': false,
-                    'tables': true
-                });
-            }, /options.tables/);
-        }
-    );
-
     it('should throw when `options.footnotes` is not a boolean', function () {
         assert.throws(function () {
             mdast.parse('', {

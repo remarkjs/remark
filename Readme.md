@@ -260,7 +260,6 @@ Parse a markdown document into an abstract syntax tree.
 -   `value` (`string`) — Markdown document;
 -   `options` (`Object`) — Settings:
     -   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
-    -   `tables` (`boolean`, default: `true`) — See [Tables](doc/Options.md#tables);
     -   `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
     -   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
     -   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
@@ -392,12 +391,12 @@ On a MacBook Air, it parses ± 322Kb of markdown (in 214 documents) per second.
 
 ```text
           214 fixtures (total: 80.62Kb)
-   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, and `tables: true`
-  69 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, and `tables: true`
-   4 op/s » mdast.parse w/ `gfm: false`, `yaml: false`, and `tables: false`
-  70 op/s » mdast.stringify w/ `gfm: false`, `yaml: false`, and `tables: false`
-   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, `tables: true`, and `commonmark: true`
-  72 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, `tables: true`, and `commonmark: true`
+   4 op/s » mdast.parse w/ `gfm: true`, and `yaml: true`
+  69 op/s » mdast.stringify w/ `gfm: true`, and `yaml: true`
+   4 op/s » mdast.parse w/ `gfm: false`, and `yaml: false`
+  70 op/s » mdast.stringify w/ `gfm: false`, and `yaml: false`
+   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, and `commonmark: true`
+  72 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, and `commonmark: true`
 ```
 
 ## License

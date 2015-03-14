@@ -196,7 +196,6 @@ program.on('--settings', function () {
         'mdastparsevalue-options)');
     console.log();
     console.log('  -  `gfm` (boolean, default: true)');
-    console.log('  -  `tables` (boolean, default: true)');
     console.log('  -  `yaml` (boolean, default: true)');
     console.log('  -  `pedantic` (boolean, default: false)');
     console.log('  -  `commonmark` (boolean, default: false)');
