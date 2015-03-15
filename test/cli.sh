@@ -92,12 +92,12 @@ it "Should fail on missing value for \`--output\`"
 
 it "Should accept \`-u <plugin>\`"
     code=0
-    ./cli.js -u ./test/plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    ./cli.js -u ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--use <plugin>\`"
     code=0
-    ./cli.js --use ./test/plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    ./cli.js --use ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-u <invalid-plugin>\`"
