@@ -13,3 +13,4 @@ deploy:
     secure: bJsbyt/Q8hoYvScgDtd5Wf5T8+qku7o50MEN6F55HTqGiHEEheihNEcmlz4g6NSiddeytYzIDg3inkVO6y1zJT6xLQXH1skW8Vt82iYyIs3RxekGH+ZRAhEESLMoQdAOl6Hjk7YD8VIYzLPk0nWgUyuFg0+nD01vGsodc6tTZoc=
   on:
     repo: wooorm/mdast
+sudo: false
