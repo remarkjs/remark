@@ -13,8 +13,10 @@ It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://g
 -   [API](#api)
     -   [mdast.parse(value, options?)](#mdastparsevalue-options)
     -   [mdast.stringify(ast, options?)](#mdaststringifyast-options)
+    -   [mdast.run(ast, options?)](#mdastrunast-options)
     -   [mdast.use(plugin)](#mdastuseplugin)
         -   [function plugin(ast, options, mdast)](#function-pluginast-options-mdast)
+        -   [function attach(mdast)](#function-attachmdast)
 -   [CLI](#cli)
 -   [Benchmark](#benchmark)
 -   [License](#license)
@@ -290,7 +292,7 @@ Stringify an abstract syntax tree into a markdown document.
     -   `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
     -   `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
     -   `referenceLinks` (`boolean`, default: `false`). See [Reference Links](doc/Options.md#reference-links);
-    -   `fence: string` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
+    -   `fence` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
     -   `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
     -   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
     -   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
@@ -304,6 +306,24 @@ All options (including the options object itself) can be `null` or `undefined` t
 **Returns**
 
 `string`: a document formatted in markdown.
+
+### [mdast](#api).run([ast](doc/Nodes.md#node), options?)
+
+Modify an abstract syntax tree by applying `use`d [`plugin`](#function-pluginast-options-mdast)s to it.
+
+**Signatures**
+
+-   `ast = mdast.run(ast)`;
+-   `ast = mdast.run(ast, options)`.
+
+**Parameters**
+
+-   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
+-   `options` (`Object`) — Settings, passed to plugins.
+
+**Returns**
+
+`Object`: the given [AST](doc/Nodes.md).
 
 ### [mdast](#api).use([plugin](#function-pluginast-options-mdast))
 
@@ -327,7 +347,7 @@ This provides the ability to chain `use` calls to use multiple plugins, but ensu
 
 #### function plugin([ast](doc/Nodes.md#node), [options](doc/Options.md#parse), [mdast](#api))
 
-A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes, or change the **mdast** instance.
+A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes. [`attach`](#function-attachmdast) should change the **mdast** instance.
 
 **Signatures**
 
@@ -337,12 +357,25 @@ A plugin is a simple function which is invoked each time a document is [`mdast.p
 **Parameters**
 
 -   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
--   `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options);
--   `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) was invoked.
+-   `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options) or [`mdast.run()`](#mdastrunast-options);
+-   `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) or [`mdast.run()`](#mdastrunast-options) was invoked.
 
 **Returns**
 
 `undefined` or `Error`, which in the later case will be thrown.
+
+#### function attach([mdast](#api))
+
+To modify the parser (for an example, see [`test/mentions.js`](test/mentions.js)), specify an `attach` method on `plugin`.
+`attach` is invoked when the plugin is first [`use`](#mdastuseplugin)d.
+
+**Signatures**
+
+-   `attach(mdast)`.
+
+**Parameters**
+
+-   `mdast` (`Object`) — Context on which the plugin was [`use`](#mdastuseplugin)d.
 
 ## CLI
 

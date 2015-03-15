@@ -300,7 +300,7 @@ rules.inlineCode = /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/;
 
 rules.break = /^ {2,}\n(?!\s*$)/;
 
-rules.text = /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/;
+rules.inlineText = /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/;
 
 /*
  * Supports up to three nested, matching square braces.
@@ -452,8 +452,6 @@ commonmark.referenceLink = new RegExp(
     '\\]'
 );
 
-    // /^(!?\[)((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]\s*\[([^\]]*)\]/;
-
 /*
  * GFM inline Grammar.
  */
@@ -464,8 +462,8 @@ gfm.url = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
 
 gfm.deletion = /^~~(?=\S)([\s\S]*?\S)~~/;
 
-gfm.text = new RegExp(
-    rules.text.source.replace(']|', '~]|').replace('|', '|https?:\\/\\/|')
+gfm.inlineText = new RegExp(
+    rules.inlineText.source.replace(']|', '~]|https?:\\/\\/|')
 );
 
 /*
@@ -527,10 +525,10 @@ commonmark.escape = new RegExp(
  */
 
 breaks.break = new RegExp(rules.break.source.replace('{2,}', '*'));
-breaks.text = new RegExp(rules.text.source.replace('{2,}', '*'));
+breaks.inlineText = new RegExp(rules.inlineText.source.replace('{2,}', '*'));
 
-breaksGFM.text = new RegExp(
-    gfm.text.source.replace('{2,}', '*')
+breaksGFM.inlineText = new RegExp(
+    gfm.inlineText.source.replace('{2,}', '*')
 );
 
 /*

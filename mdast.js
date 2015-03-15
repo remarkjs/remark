@@ -13,6 +13,12 @@ var Ware = require('ware');
 
 var parse = require('./lib/parse.js');
 var stringify = require('./lib/stringify.js');
+var clone = require('./lib/utilities.js').clone;
+
+var Parser = parse.Parser;
+var parseProto = Parser.prototype;
+var Compiler = stringify.Compiler;
+var compileProto = Compiler.prototype;
 
 /**
  * Throws if passed an exception.
@@ -31,29 +37,113 @@ function fail(exception) {
 }
 
 /**
+ * Create a `parse` function which uses an
+ * extensible `Parser`.
+ *
+ * @return {Function}
+ */
+function constructParser() {
+    var customProto;
+    var expressions;
+    var key;
+
+    /**
+     * Extensible prototype.
+     */
+    function CustomProto() {}
+
+    CustomProto.prototype = parseProto;
+
+    customProto = new CustomProto();
+
+    /**
+     * Extensible constructor.
+     */
+    function CustomParser() {
+        Parser.apply(this, arguments);
+    }
+
+    CustomParser.prototype = customProto;
+
+    /*
+     * Construct new objects for things that plugin's
+     * might modify.
+     */
+
+    customProto.blockTokenizers = clone(parseProto.blockTokenizers);
+    customProto.blockMethods = clone(parseProto.blockMethods);
+    customProto.inlineTokenizers = clone(parseProto.inlineTokenizers);
+    customProto.inlineMethods = clone(parseProto.inlineMethods);
+
+    expressions = parseProto.expressions;
+    customProto.expressions = {};
+
+    for (key in expressions) {
+        customProto.expressions[key] = clone(expressions[key]);
+    }
+
+    return CustomParser;
+}
+
+/**
+ * Create a `stringify` function which uses an
+ * extensible `Compiler`.
+ *
+ * @return {Function}
+ */
+function constructCompiler() {
+    var customProto;
+
+    /**
+     * Extensible prototype.
+     */
+    function CustomProto() {}
+
+    CustomProto.prototype = compileProto;
+
+    customProto = new CustomProto();
+
+    /**
+     * Extensible constructor.
+     */
+    function CustomCompiler() {
+        Compiler.apply(this, arguments);
+    }
+
+    CustomCompiler.prototype = customProto;
+
+    return CustomCompiler;
+}
+
+/**
  * Construct an MDAST instance.
  *
  * @constructor {MDAST}
  */
 function MDAST() {
     this.ware = new Ware();
+
+    this.Parser = constructParser();
+    this.Compiler = constructCompiler();
 }
 
 /**
- * Parse a value and apply plugins.
+ * Apply plugins to `node`.
  *
- * @return {Root}
+ * @param {Node} node
+ * @param {Object?} options
+ * @return {Node} - `node`.
  */
-function runParse(_, options) {
-    var node;
+function run(node, options) {
+    var self = this;
 
-    if (!options) {
-        options = {};
+    /*
+     * Only run when this is an instance of MDAST.
+     */
+
+    if (self.ware) {
+        self.ware.run(node, options || {}, self, fail);
     }
-
-    node = parse.apply(this, arguments);
-
-    this.ware.run(node, options, this, fail);
 
     return node;
 }
@@ -61,6 +151,7 @@ function runParse(_, options) {
 /**
  * Construct an MDAST instance and use a plugin.
  *
+ * @param {Function} plugin
  * @return {MDAST}
  */
 function use(plugin) {
@@ -72,7 +163,20 @@ function use(plugin) {
 
     self.ware.use(plugin);
 
+    if (plugin && 'attach' in plugin) {
+        plugin.attach(self);
+    }
+
     return self;
+}
+
+/**
+ * Parse a value and apply plugins.
+ *
+ * @return {Root}
+ */
+function runParse(_, options) {
+    return this.run(parse.apply(this, arguments), options);
 }
 
 /*
@@ -82,6 +186,7 @@ function use(plugin) {
 MDAST.prototype.parse = runParse;
 MDAST.prototype.stringify = stringify;
 MDAST.prototype.use = use;
+MDAST.prototype.run = run;
 
 /*
  * Expose `mdast`.
@@ -90,10 +195,11 @@ MDAST.prototype.use = use;
 module.exports = {
     'parse': parse,
     'stringify': stringify,
-    'use': use
+    'use': use,
+    'run': run
 };
 
-},{"./lib/parse.js":4,"./lib/stringify.js":5,"ware":9}],2:[function(require,module,exports){
+},{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":9}],2:[function(require,module,exports){
 'use strict';
 
 var parse = {
@@ -149,7 +255,7 @@ module.exports = {
     'emphasis': /^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/,
     'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
     'break': /^ {2,}\n(?!\s*$)/,
-    'text': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
+    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
     'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
     'referenceLink': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\]])*)\]/
   },
@@ -161,7 +267,7 @@ module.exports = {
     'escape': /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
     'url': /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
     'deletion': /^~~(?=\S)([\s\S]*?\S)~~/,
-    'text': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| {2,}\n|$)/
+    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| {2,}\n|$)/
   },
   'footnotes': {
     'footnoteDefinition': /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/
@@ -186,10 +292,10 @@ module.exports = {
   },
   'breaks': {
     'break': /^ *\n(?!\s*$)/,
-    'text': /^[\s\S]+?(?=[\\<!\[_*`]| *\n|$)/
+    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| *\n|$)/
   },
   'breaksGFM': {
-    'text': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| *\n|$)/
+    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| *\n|$)/
   }
 };
 
@@ -202,7 +308,7 @@ module.exports = {
 
 var he = require('he');
 var utilities = require('./utilities.js');
-var expressions = require('./expressions.js');
+var defaultExpressions = require('./expressions.js');
 var defaults = require('./defaults.js').parse;
 
 /*
@@ -1701,6 +1807,7 @@ function tokenizeInlineText(eat, $0) {
  */
 function Parser(options) {
     var self = this;
+    var expressions = self.expressions;
     var rules = copy({}, expressions.rules);
 
     /*
@@ -1756,6 +1863,12 @@ function Parser(options) {
 
     self.descape = descapeFactory(rules, 'escape');
 }
+
+/*
+ * Expose `expressions`.
+ */
+
+Parser.prototype.expressions = defaultExpressions;
 
 /**
  * Parse `value` into an AST.
@@ -2196,7 +2309,7 @@ Parser.prototype.inlineTokenizers = {
     'deletion': tokenizeDeletion,
     'inlineCode': tokenizeInlineCode,
     'break': tokenizeBreak,
-    'text': tokenizeInlineText
+    'inlineText': tokenizeInlineText
 };
 
 Parser.prototype.inlineMethods = [
@@ -2212,7 +2325,7 @@ Parser.prototype.inlineMethods = [
     'deletion',
     'inlineCode',
     'break',
-    'text'
+    'inlineText'
 ];
 
 /**
@@ -2266,6 +2379,10 @@ Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
  * @return {Object}
  */
 function parse(value, options, CustomParser) {
+    if (!CustomParser) {
+        CustomParser = this.Parser || Parser;
+    }
+
     if (typeof value !== 'string') {
         raise(value, 'value');
     }
@@ -2285,7 +2402,7 @@ function parse(value, options, CustomParser) {
     validate.bool(options, 'breaks', defaults.breaks);
     validate.bool(options, 'pedantic', defaults.pedantic);
 
-    return new (CustomParser || Parser)(options).parse(value);
+    return new CustomParser(options).parse(value);
 }
 
 /*
@@ -3183,9 +3300,15 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
  * @return {string}
  */
 function stringify(ast, options, CustomCompiler) {
-    var compiler = new (CustomCompiler || Compiler)(options);
+    var compiler;
     var footnotes;
     var value;
+
+    if (!CustomCompiler) {
+        CustomCompiler = this.Compiler || Compiler;
+    }
+
+    compiler = new CustomCompiler(options);
 
     if (ast && ast.footnotes) {
         footnotes = copy({}, ast.footnotes);
@@ -3255,6 +3378,20 @@ function copy(target, context) {
     }
 
     return target;
+}
+
+/**
+ * Shallow clone `context`.
+ *
+ * @return {Object|Array} context
+ * @return {Object|Array}
+ */
+function clone(context) {
+    if ('concat' in context) {
+        return context.concat();
+    }
+
+    return copy({}, context);
 }
 
 /**
@@ -3482,6 +3619,7 @@ exports.normalizeReference = normalizeReference;
 exports.clean = clean;
 exports.raise = raise;
 exports.copy = copy;
+exports.clone = clone;
 exports.repeat = repeat;
 exports.countCharacter = countCharacter;
 

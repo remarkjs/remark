@@ -85,11 +85,8 @@ function toString(node) {
  * @return {Array.<Node>}
  */
 function createBadge(name, options) {
-    var href,
-        src;
-
-    href = 'https://www.npmjs.com/package/' + name;
-    src = 'http://img.shields.io/npm/v/' + name + '.svg';
+    var href = 'https://www.npmjs.com/package/' + name;
+    var src = 'http://img.shields.io/npm/v/' + name + '.svg';
 
     if (options && options.flat) {
         src += '?style=flat';

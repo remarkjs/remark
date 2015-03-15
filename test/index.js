@@ -5,7 +5,8 @@ var assert = require('assert');
 var fixtures = require('./fixtures.js');
 var chalk = require('chalk');
 var diff = require('diff');
-var plugin = require('./plugin.js');
+var badges = require('./badges.js');
+var mentions = require('./mentions.js');
 
 /*
  * Settings.
@@ -112,15 +113,17 @@ describe('mdast.parse(value, options, CustomParser)', function () {
 
     it('should accept a `CustomParser` as a third argument', function () {
         var isInvoked;
+        var Parser = mdast.parse.Parser;
+        var proto;
 
         /**
-         * Construct a parser.
-         *
-         * @constructor {CustomParser}
+         * Extensible prototype.
          */
-        function CustomParser() {
-            return mdast.parse.Parser.apply(this, arguments);
-        }
+        function Proto() {}
+
+        Proto.prototype = Parser.prototype;
+
+        proto = new Proto();
 
         /**
          * Mock `parse`.
@@ -130,6 +133,17 @@ describe('mdast.parse(value, options, CustomParser)', function () {
 
             return {};
         }
+
+        /**
+         * Construct a parser.
+         *
+         * @constructor {CustomParser}
+         */
+        function CustomParser() {
+            return Parser.apply(this, arguments);
+        }
+
+        CustomParser.prototype = proto;
 
         CustomParser.prototype.parse = parse;
 
@@ -355,7 +369,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 });
 
-describe('mdast.use(function(plugin))', function () {
+describe('mdast.use(plugin)', function () {
     it('should be a `function`', function () {
         assert(typeof mdast.use === 'function');
     });
@@ -415,8 +429,31 @@ describe('mdast.use(function(plugin))', function () {
         }, /test/);
     });
 
+    it('should invoke a plugin’s `attach` method', function () {
+        var exception = new Error('test');
+
+        /**
+         * Plugin.
+         */
+        function test() {}
+
+        /**
+         * Thrower.
+         */
+        function attach() {
+            throw exception;
+        }
+
+        test.attach = attach;
+
+        assert.throws(function () {
+            mdast.use(test);
+        }, /test/);
+    });
+
     it('should work on an example plugin', function () {
-        var parser = mdast.use(plugin);
+        var parser = mdast.use(badges);
+
         var source = parser.stringify(parser.parse('# mdast'));
 
         assert(
@@ -435,6 +472,96 @@ describe('mdast.use(function(plugin))', function () {
             '](https://www.npmjs.com/package/mdast)\n'
         );
     });
+});
+
+describe('mdast.run(ast, options)', function () {
+    it('should be a `function`', function () {
+        assert(typeof mdast.run === 'function');
+    });
+
+    it('should accept an ast', function () {
+        mdast.run(empty());
+    });
+
+    it('should accept options', function () {
+        mdast.run(empty(), {});
+    });
+
+    it('should return the given ast', function () {
+        var node = empty();
+
+        assert(node === mdast.run(node, {}));
+    });
+
+    it('should invoke a plugin', function () {
+        var node = empty();
+        var isInvoked;
+        var settings;
+
+        settings = {
+            'hello': 'world'
+        };
+
+        /**
+         * Assertion.
+         */
+        function assertion(ast, options) {
+            assert(ast === node);
+            assert(options === settings);
+
+            isInvoked = true;
+        }
+
+        mdast.use(assertion).run(node, settings);
+
+        assert(isInvoked === true);
+    });
+
+    it('should work without plugins', function () {
+        mdast.run(empty());
+    });
+
+    it('should work on an example plugin', function () {
+        var parser = mdast.use(badges);
+        var nodeA = mdast.parse('# mdast');
+        var nodeB = mdast.parse('# mdast');
+
+        var source = parser.stringify(parser.run(nodeA));
+
+        assert(
+            source === '# mdast [' +
+            '![Version](http://img.shields.io/npm/v/mdast.svg)' +
+            '](https://www.npmjs.com/package/mdast)\n'
+        );
+
+        source = parser.stringify(parser.run(nodeB, {
+            'flat': true
+        }));
+
+        assert(
+            source === '# mdast [' +
+            '![Version](http://img.shields.io/npm/v/mdast.svg?style=flat)' +
+            '](https://www.npmjs.com/package/mdast)\n'
+        );
+    });
+});
+
+describe('function plugin(ast, options, context) {}', function () {
+    it('should be able to modify `Parser` without affecting ' +
+        'other instances of mdast',
+        function () {
+            var doc = 'Hello w/ a @mention!\n';
+            var output1 = mdast.stringify(mdast.use(mentions).parse(doc));
+            var output2 = mdast.stringify(mdast.parse(doc));
+
+            assert(
+                output1 === 'Hello w/ a ' +
+                '[@mention](https://github.com/blog/821)!\n'
+            );
+
+            assert(output2 === doc);
+        }
+    );
 });
 
 var validateToken;
