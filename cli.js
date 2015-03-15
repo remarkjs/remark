@@ -51,7 +51,7 @@ var command = Object.keys(pack.bin)[0];
  * @param {Error|string} message
  */
 function fail(message) {
-    stderr.write(message + '\n');
+    stderr.write((message.stack || message) + '\n');
     process.exit(1);
 }
 
