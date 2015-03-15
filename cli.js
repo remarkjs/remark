@@ -32,7 +32,7 @@ var stderr = process.stderr;
  */
 
 var SPLITTER = / *[,;] */g;
-var DELIMITER = / *: */g;
+var DELIMITER = / *: */;
 
 var ENCODING = 'utf-8';
 
@@ -122,7 +122,7 @@ function settings(flags, cache) {
 
         flag = flag.split(DELIMITER);
 
-        value = flag[1];
+        value = flag.slice(1).join(':');
 
         if (value === 'true' || value === undefined) {
             value = true;
