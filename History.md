@@ -1,4 +1,20 @@
 
+0.12.0 / 2015-03-16
+===================
+
+* Add support for multiple key-value delimiters in settings ([9ff5faa](https://github.com/wooorm/mdast/commit/9ff5faa))
+* Add stack-trace to CLI errors ([9c52063](https://github.com/wooorm/mdast/commit/9c52063))
+* Update travis to use faster containers ([762ad4d](https://github.com/wooorm/mdast/commit/762ad4d))
+* Fix CLI test for file move ([60d1a2c](https://github.com/wooorm/mdast/commit/60d1a2c))
+* Update plug-in support ([e5cb258](https://github.com/wooorm/mdast/commit/e5cb258))
+* Refactor `doc/Options.md` ([24e713f](https://github.com/wooorm/mdast/commit/24e713f))
+* Update docs for `commonmark: true` mode ([9f3a2e6](https://github.com/wooorm/mdast/commit/9f3a2e6))
+* Update docs for `breaks: true` mode ([caf6256](https://github.com/wooorm/mdast/commit/caf6256))
+* Fix missing semi-colons in `doc/Nodes.md` ([55befb8](https://github.com/wooorm/mdast/commit/55befb8))
+* Add table of contents to `doc/Nodes.md`, `doc/Options.md` ([00aef4b](https://github.com/wooorm/mdast/commit/00aef4b))
+* Remove seperate support for `tables: true` mode ([052d00c](https://github.com/wooorm/mdast/commit/052d00c))
+* Add table of contents to `Readme.md` ([f42aa29](https://github.com/wooorm/mdast/commit/f42aa29))
+
 0.11.0 / 2015-03-12
 ==================
 
