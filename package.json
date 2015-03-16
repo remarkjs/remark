@@ -28,9 +28,9 @@
     "type": "git",
     "url": "https://github.com/wooorm/mdast.git"
   },
-  "author": "Christopher Jeffrey",
+  "author": "Titus Wormer <tituswormer@gmail.com>",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com>"
+    "Christopher Jeffrey"
   ],
   "bin": {
     "mdast": "cli.js"

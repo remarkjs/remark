@@ -21,8 +21,8 @@
     "url": "https://github.com/wooorm/mdast.git"
   },
   "authors": [
-    "Christopher Jeffrey <chjjeffrey@gmail.com>",
-    "Titus Wormer <tituswormer@gmail.com>"
+    "Titus Wormer <tituswormer@gmail.com>",
+    "Christopher Jeffrey <chjjeffrey@gmail.com>"
   ],
   "ignore": [
     ".*",
