@@ -2,11 +2,45 @@
   "type": "root",
   "children": [
     {
-      "type": "paragraph",
+      "type": "list",
+      "ordered": true,
+      "start": 1,
       "children": [
         {
-          "type": "text",
-          "value": "In Markdown 1.0.0 and earlier. Version",
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "foo",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
@@ -14,45 +48,29 @@
             },
             "end": {
               "line": 1,
-              "column": 39
+              "column": 7
             }
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1
         },
-        "end": {
-          "line": 1,
-          "column": 39
-        }
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 8,
-      "children": [
         {
           "type": "listItem",
           "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "This line turns into a list item.\nBecause a hard-wrapped line in the\nmiddle of a paragraph looked like a\nlist item.",
+                  "value": "bar",
                   "position": {
                     "start": {
                       "line": 2,
                       "column": 4
                     },
                     "end": {
-                      "line": 5,
-                      "column": 11
+                      "line": 2,
+                      "column": 7
                     }
                   }
                 }
@@ -63,8 +81,8 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 5,
-                  "column": 11
+                  "line": 2,
+                  "column": 7
                 }
               }
             }
@@ -75,110 +93,83 @@
               "column": 1
             },
             "end": {
-              "line": 5,
-              "column": 11
+              "line": 2,
+              "column": 7
             }
           }
         }
       ],
       "position": {
         "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
           "line": 2,
-          "column": 1
-        },
-        "end": {
-          "line": 5,
-          "column": 11
-        }
-      }
-    },
-    {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "text",
-          "value": "Here's one with a bullet.",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 1
-            },
-            "end": {
-              "line": 7,
-              "column": 26
-            }
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 7,
-          "column": 1
-        },
-        "end": {
-          "line": 7,
-          "column": 26
+          "column": 7
         }
       }
     },
     {
       "type": "list",
-      "ordered": false,
+      "ordered": true,
+      "start": 3,
       "children": [
         {
           "type": "listItem",
           "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "criminey.",
+                  "value": "baz",
                   "position": {
                     "start": {
-                      "line": 8,
-                      "column": 3
+                      "line": 3,
+                      "column": 4
                     },
                     "end": {
-                      "line": 8,
-                      "column": 12
+                      "line": 3,
+                      "column": 7
                     }
                   }
                 }
               ],
               "position": {
                 "start": {
-                  "line": 8,
-                  "column": 3
+                  "line": 3,
+                  "column": 4
                 },
                 "end": {
-                  "line": 8,
-                  "column": 12
+                  "line": 3,
+                  "column": 7
                 }
               }
             }
           ],
           "position": {
             "start": {
-              "line": 8,
+              "line": 3,
               "column": 1
             },
             "end": {
-              "line": 8,
-              "column": 12
+              "line": 3,
+              "column": 7
             }
           }
         }
       ],
       "position": {
         "start": {
-          "line": 8,
+          "line": 3,
           "column": 1
         },
         "end": {
-          "line": 8,
-          "column": 12
+          "line": 3,
+          "column": 7
         }
       }
     }
@@ -189,8 +180,8 @@
       "column": 1
     },
     "end": {
-      "line": 8,
-      "column": 12
+      "line": 3,
+      "column": 7
     }
   }
 }

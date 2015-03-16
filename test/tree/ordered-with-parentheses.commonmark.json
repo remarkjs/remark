@@ -1,0 +1,965 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 2,
+      "children": [
+        {
+          "type": "text",
+          "value": "Ordered",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 4
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Tight:",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 7
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "First",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 4
+                },
+                "end": {
+                  "line": 5,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Second",
+                  "position": {
+                    "start": {
+                      "line": 6,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 6,
+                      "column": 10
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 4
+                },
+                "end": {
+                  "line": 6,
+                  "column": 10
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1
+            },
+            "end": {
+              "line": 6,
+              "column": 10
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Third",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 4
+                },
+                "end": {
+                  "line": 7,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and:",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 5
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 9,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "One",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 4
+                },
+                "end": {
+                  "line": 11,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Two",
+                  "position": {
+                    "start": {
+                      "line": 12,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 12,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 12,
+                  "column": 4
+                },
+                "end": {
+                  "line": 12,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1
+            },
+            "end": {
+              "line": 12,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Three",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 4
+                },
+                "end": {
+                  "line": 13,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Loose using tabs:",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "First",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 4
+                },
+                "end": {
+                  "line": 17,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 18,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Second",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 10
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 4
+                },
+                "end": {
+                  "line": 19,
+                  "column": 10
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1
+            },
+            "end": {
+              "line": 20,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Third",
+                  "position": {
+                    "start": {
+                      "line": 21,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 21,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 4
+                },
+                "end": {
+                  "line": 21,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1
+            },
+            "end": {
+              "line": 21,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and using spaces:",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "line": 23,
+              "column": 18
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "line": 23,
+          "column": 18
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "One",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 25,
+                  "column": 4
+                },
+                "end": {
+                  "line": 25,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1
+            },
+            "end": {
+              "line": 26,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Two",
+                  "position": {
+                    "start": {
+                      "line": 27,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 4
+                },
+                "end": {
+                  "line": 27,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 1
+            },
+            "end": {
+              "line": 28,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Three",
+                  "position": {
+                    "start": {
+                      "line": 29,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 29,
+                      "column": 9
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 29,
+                  "column": 4
+                },
+                "end": {
+                  "line": 29,
+                  "column": 9
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1
+            },
+            "end": {
+              "line": 29,
+              "column": 9
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1
+        },
+        "end": {
+          "line": 29,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Multiple paragraphs:",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 1
+            },
+            "end": {
+              "line": 31,
+              "column": 21
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1
+        },
+        "end": {
+          "line": 31,
+          "column": 21
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 1, graf one.\nItem 2. graf two. The quick brown fox jumped over the lazy dog's\nback.",
+                  "position": {
+                    "start": {
+                      "line": 33,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 33,
+                  "column": 4
+                },
+                "end": {
+                  "line": 36,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1
+            },
+            "end": {
+              "line": 37,
+              "column": 2
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 2.",
+                  "position": {
+                    "start": {
+                      "line": 38,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 38,
+                      "column": 11
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 38,
+                  "column": 4
+                },
+                "end": {
+                  "line": 38,
+                  "column": 11
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 38,
+              "column": 1
+            },
+            "end": {
+              "line": 39,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 3.",
+                  "position": {
+                    "start": {
+                      "line": 40,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 11
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 40,
+                  "column": 4
+                },
+                "end": {
+                  "line": 40,
+                  "column": 11
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 40,
+              "column": 1
+            },
+            "end": {
+              "line": 40,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1
+        },
+        "end": {
+          "line": 40,
+          "column": 11
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 40,
+      "column": 11
+    }
+  }
+}

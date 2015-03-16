@@ -37,7 +37,8 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -90,8 +91,8 @@
               "column": 1
             },
             "end": {
-              "line": 5,
-              "column": 1
+              "line": 4,
+              "column": 12
             }
           }
         }
@@ -102,8 +103,8 @@
           "column": 1
         },
         "end": {
-          "line": 5,
-          "column": 1
+          "line": 4,
+          "column": 12
         }
       }
     },
@@ -113,7 +114,8 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -166,8 +168,8 @@
               "column": 1
             },
             "end": {
-              "line": 8,
-              "column": 1
+              "line": 7,
+              "column": 12
             }
           }
         }
@@ -178,8 +180,8 @@
           "column": 1
         },
         "end": {
-          "line": 8,
-          "column": 1
+          "line": 7,
+          "column": 12
         }
       }
     },
@@ -189,7 +191,8 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -242,8 +245,8 @@
               "column": 1
             },
             "end": {
-              "line": 11,
-              "column": 1
+              "line": 10,
+              "column": 12
             }
           }
         }
@@ -254,8 +257,8 @@
           "column": 1
         },
         "end": {
-          "line": 11,
-          "column": 1
+          "line": 10,
+          "column": 12
         }
       }
     },
@@ -266,6 +269,7 @@
         {
           "type": "listItem",
           "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",

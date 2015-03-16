@@ -709,7 +709,14 @@ validateToken = function (context) {
     if (type === 'list') {
         assert('children' in context);
         assert(typeof context.ordered === 'boolean');
-        assert(keys === 3);
+        assert(keys === 4);
+
+        if (context.ordered) {
+            assert(typeof context.start === 'number');
+            assert(context.start === context.start);
+        } else {
+            assert(context.start === null);
+        }
 
         return;
     }
@@ -799,6 +806,10 @@ function clone(node, clean) {
         }
 
         if (key === 'checked' && value === null) {
+            return;
+        }
+
+        if (key === 'start' && (value === null || value === 1)) {
             return;
         }
 

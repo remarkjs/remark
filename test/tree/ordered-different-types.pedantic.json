@@ -1,0 +1,124 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "foo",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "bar\n3) baz",
+                  "position": {
+                    "start": {
+                      "line": 2,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 2,
+                  "column": 4
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 7
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 7
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 3,
+      "column": 7
+    }
+  }
+}

@@ -82,7 +82,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -120,8 +120,8 @@
               "column": 1
             },
             "end": {
-              "line": 6,
-              "column": 1
+              "line": 5,
+              "column": 6
             }
           }
         }
@@ -132,8 +132,8 @@
           "column": 1
         },
         "end": {
-          "line": 6,
-          "column": 1
+          "line": 5,
+          "column": 6
         }
       }
     },
@@ -324,7 +324,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -362,8 +362,8 @@
               "column": 1
             },
             "end": {
-              "line": 15,
-              "column": 1
+              "line": 14,
+              "column": 7
             }
           }
         }
@@ -374,8 +374,8 @@
           "column": 1
         },
         "end": {
-          "line": 15,
-          "column": 1
+          "line": 14,
+          "column": 7
         }
       }
     },
@@ -566,7 +566,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -604,8 +604,8 @@
               "column": 1
             },
             "end": {
-              "line": 24,
-              "column": 1
+              "line": 23,
+              "column": 7
             }
           }
         }
@@ -616,8 +616,8 @@
           "column": 1
         },
         "end": {
-          "line": 24,
-          "column": 1
+          "line": 23,
+          "column": 7
         }
       }
     },
@@ -808,7 +808,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -846,8 +846,8 @@
               "column": 1
             },
             "end": {
-              "line": 33,
-              "column": 1
+              "line": 32,
+              "column": 12
             }
           }
         }
@@ -858,8 +858,8 @@
           "column": 1
         },
         "end": {
-          "line": 33,
-          "column": 1
+          "line": 32,
+          "column": 12
         }
       }
     },
@@ -1050,7 +1050,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -1088,8 +1088,8 @@
               "column": 1
             },
             "end": {
-              "line": 42,
-              "column": 1
+              "line": 41,
+              "column": 13
             }
           }
         }
@@ -1100,8 +1100,8 @@
           "column": 1
         },
         "end": {
-          "line": 42,
-          "column": 1
+          "line": 41,
+          "column": 13
         }
       }
     },
@@ -1292,7 +1292,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -1330,8 +1330,8 @@
               "column": 1
             },
             "end": {
-              "line": 51,
-              "column": 1
+              "line": 50,
+              "column": 13
             }
           }
         }
@@ -1342,8 +1342,8 @@
           "column": 1
         },
         "end": {
-          "line": 51,
-          "column": 1
+          "line": 50,
+          "column": 13
         }
       }
     },
@@ -1534,7 +1534,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -1572,8 +1572,8 @@
               "column": 1
             },
             "end": {
-              "line": 60,
-              "column": 1
+              "line": 59,
+              "column": 17
             }
           }
         }
@@ -1584,8 +1584,8 @@
           "column": 1
         },
         "end": {
-          "line": 60,
-          "column": 1
+          "line": 59,
+          "column": 17
         }
       }
     },
@@ -1776,7 +1776,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -1814,8 +1814,8 @@
               "column": 1
             },
             "end": {
-              "line": 69,
-              "column": 1
+              "line": 68,
+              "column": 14
             }
           }
         }
@@ -1826,8 +1826,8 @@
           "column": 1
         },
         "end": {
-          "line": 69,
-          "column": 1
+          "line": 68,
+          "column": 14
         }
       }
     },
@@ -1973,7 +1973,7 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -2011,8 +2011,8 @@
               "column": 1
             },
             "end": {
-              "line": 77,
-              "column": 1
+              "line": 76,
+              "column": 18
             }
           }
         }
@@ -2023,8 +2023,8 @@
           "column": 1
         },
         "end": {
-          "line": 77,
-          "column": 1
+          "line": 76,
+          "column": 18
         }
       }
     },
@@ -2034,7 +2034,7 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -2072,8 +2072,8 @@
               "column": 1
             },
             "end": {
-              "line": 79,
-              "column": 1
+              "line": 78,
+              "column": 18
             }
           }
         }
@@ -2084,8 +2084,8 @@
           "column": 1
         },
         "end": {
-          "line": 79,
-          "column": 1
+          "line": 78,
+          "column": 18
         }
       }
     },
@@ -2140,7 +2140,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -2178,8 +2178,8 @@
               "column": 1
             },
             "end": {
-              "line": 82,
-              "column": 1
+              "line": 81,
+              "column": 17
             }
           }
         }
@@ -2190,14 +2190,15 @@
           "column": 1
         },
         "end": {
-          "line": 82,
-          "column": 1
+          "line": 81,
+          "column": 17
         }
       }
     },
     {
       "type": "list",
       "ordered": true,
+      "start": 2,
       "children": [
         {
           "type": "listItem",
@@ -2292,7 +2293,7 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -2330,8 +2331,8 @@
               "column": 1
             },
             "end": {
-              "line": 90,
-              "column": 1
+              "line": 89,
+              "column": 9
             }
           }
         }
@@ -2342,8 +2343,8 @@
           "column": 1
         },
         "end": {
-          "line": 90,
-          "column": 1
+          "line": 89,
+          "column": 9
         }
       }
     },
@@ -2444,7 +2445,7 @@
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "children": [
             {
               "type": "paragraph",
@@ -2482,8 +2483,8 @@
               "column": 1
             },
             "end": {
-              "line": 98,
-              "column": 1
+              "line": 97,
+              "column": 14
             }
           }
         }
@@ -2494,8 +2495,8 @@
           "column": 1
         },
         "end": {
-          "line": 98,
-          "column": 1
+          "line": 97,
+          "column": 14
         }
       }
     },

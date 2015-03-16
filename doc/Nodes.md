@@ -179,9 +179,12 @@ interface HTML <: Text {
 
 [**List**](#list) ([**Parent**](#parent)) contains multiple [**ListItem**](#listitem)s.
 
+The `start` property is populated with the starting number of the list, when `ordered: true`, or `null` otherwise.
+
 ```idl
 interface List <: Parent {
     type: "list";
+    start: uint32 | null;
     ordered: true | false;
 }
 ```

@@ -130,33 +130,39 @@ rules.list = new RegExp(
     '^' +
     '([ \\t]*)' +
     '(' + cleanExpression(rules.bullet) + ')' +
-    '(' +
-        '(?:[ \\t][\\s\\S]+?)' +
-        '(?:' +
+    '[ \\t][\\s\\S]+?' +
+    '(?:' +
 
-            /*
-             * Modified Horizontal rule:
-             */
+        /*
+         * Modified Horizontal rule:
+         */
 
-            '\\n+(?=\\1?(?:[-*_][ \\t]*){3,}(?:\\n|$))' +
-            '|' +
+        '(?=\\n+\\1?(?:[-*_][ \\t]*){3,}(?:\\n|$))' +
+        '|' +
 
-            /*
-             * Modified Link Definition:
-             */
+        /*
+         * Modified Link Definition:
+         */
 
-            '\\n+(?=' + cleanExpression(rules.linkDefinition) + ')' +
-            '|' +
+        '(?=\\n+' + cleanExpression(rules.linkDefinition) + ')' +
+        '|' +
 
-            '\\n{2,}(?![ \\t])(?!\\1' +
-                cleanExpression(rules.bullet) +
-            '[ \\t])' +
-            '|' +
+        '\\n{2,}(?![ \\t])(?!\\1' +
+            cleanExpression(rules.bullet) +
+        '[ \\t])' +
+        '|' +
 
-            '\\s*$' +
-        ')' +
+        '$' +
     ')'
 );
+
+function replaceBullet(expression) {
+    return expression.source.replace(/\\d\+\\\./g, '\\d+[\\.\\)]');
+}
+
+commonmark.list = new RegExp(replaceBullet(rules.list));
+commonmark.item = new RegExp(replaceBullet(rules.item), 'gm');
+commonmark.bullet = new RegExp(replaceBullet(rules.bullet));
 
 rules.blockquote = new RegExp(
     '^(?=[ \\t]*>)(?:' +
@@ -249,7 +255,7 @@ rules.paragraph = new RegExp(
  */
 
 gfm.fences =
-    /^( *)(([`~])\3{2,})[ \t]*([^\s`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/;
+    /^( *)(([`~])\3{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/;
 
 gfm.paragraph = new RegExp(
     rules.paragraph.source.replace('(?=\\n|$)|', '(?=\\n|$)|' +
@@ -502,8 +508,8 @@ commonmark.blockquote = new RegExp(
         cleanExpression(rules.horizontalRule) + '|' +
         cleanExpression(rules.list).replace(/\\1/g, '\\3') + '|' +
         cleanExpression(gfm.fences)
-            .replace(/\\2/g, '\\10')
-            .replace(/\\3/g, '\\11') + '|' +
+            .replace(/\\2/g, '\\9')
+            .replace(/\\3/g, '\\10') + '|' +
         cleanExpression(rules.code) + '|'
     )
 );
