@@ -50,6 +50,7 @@
     "jscs-jsdoc": "^0.4.0",
     "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
+    "mdast-github": "^0.1.0",
     "mdast-toc": "^0.1.1",
     "mdast-usage": "^0.1.0",
     "mocha": "^2.0.0"
@@ -73,12 +74,13 @@
     "benchmark": "matcha benchmark.js",
     "build-man": "marked-man doc/mdast.1.md > man/mdast.1",
     "build-expressions": "node script/build-expressions.js",
-    "build-readme": "mdast --use mdast-toc --use mdast-usage Readme.md -o Readme.md",
+    "build-readme": "mdast --use mdast-toc --use mdast-usage --use mdast-github Readme.md -o Readme.md",
+    "build-history": "mdast --setting setext:true,bullet:* --use mdast-github History.md -o History.md",
     "build-options": "node script/build-options.js",
     "build-nodes": "mdast --use mdast-toc doc/Nodes.md -o doc/Nodes.md",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-expressions && npm run build-readme && npm run build-nodes && npm run build-options && npm run build-man && npm run build-bundle",
+    "build": "npm run build-expressions && npm run build-readme && npm run build-history && npm run build-nodes && npm run build-options && npm run build-man && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }
