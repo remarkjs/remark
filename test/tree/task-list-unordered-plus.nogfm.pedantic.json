@@ -4,6 +4,7 @@
     {
       "type": "list",
       "ordered": false,
+      "start": null,
       "children": [
         {
           "type": "listItem",
@@ -131,6 +132,7 @@
             {
               "type": "list",
               "ordered": false,
+              "start": null,
               "children": [
                 {
                   "type": "listItem",

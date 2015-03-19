@@ -34,6 +34,7 @@
     {
       "type": "list",
       "ordered": true,
+      "start": 1,
       "children": [
         {
           "type": "listItem",
@@ -74,6 +75,7 @@
                 {
                   "type": "list",
                   "ordered": false,
+                  "start": null,
                   "children": [
                     {
                       "type": "listItem",
@@ -111,6 +113,7 @@
                         {
                           "type": "list",
                           "ordered": false,
+                          "start": null,
                           "children": [
                             {
                               "type": "listItem",
@@ -148,6 +151,7 @@
                                 {
                                   "type": "list",
                                   "ordered": false,
+                                  "start": null,
                                   "children": [
                                     {
                                       "type": "listItem",
@@ -463,6 +467,7 @@
             {
               "type": "list",
               "ordered": true,
+              "start": 1,
               "children": [
                 {
                   "type": "listItem",

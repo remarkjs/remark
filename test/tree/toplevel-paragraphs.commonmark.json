@@ -309,10 +309,12 @@
     {
       "type": "list",
       "ordered": false,
+      "start": null,
       "children": [
         {
           "type": "listItem",
           "loose": false,
+          "checked": null,
           "children": [
             {
               "type": "paragraph",
