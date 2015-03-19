@@ -126,7 +126,7 @@ function settings(flags, cache) {
 
         value = flag.slice(1).join(':');
 
-        if (value === 'true' || value === undefined) {
+        if (value === 'true' || value === '') {
             value = true;
         } else if (value === 'false') {
             value = false;
