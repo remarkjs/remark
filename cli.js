@@ -96,6 +96,8 @@ function find(pathlike) {
         plugin = npm;
     } else if (exists(current)) {
         plugin = current;
+    } else {
+        plugin = pathlike;
     }
 
     debug('Using plugin `%s` at `%s`', pathlike, plugin);
