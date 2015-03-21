@@ -253,11 +253,15 @@ function run(value, filename) {
     var options;
     var doc;
 
-    configuration = new Configuration({
-        'file': program.config,
-        'settings': program.setting,
-        'plugins': program.use
-    });
+    try {
+        configuration = new Configuration({
+            'file': program.config,
+            'settings': program.setting,
+            'plugins': program.use
+        });
+    } catch (exception) {
+        fail(exception);
+    }
 
     options = configuration.getConfiguration(filename);
 
