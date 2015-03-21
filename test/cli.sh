@@ -29,37 +29,43 @@ function assert {
 }
 
 #
+# Command.
+#
+
+COMMAND="bin/mdast"
+
+#
 # File and stdin.
 #
 
 it "Should accept a file"
     code=0
-    ./cli.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept stdin"
     code=0
-    cat History.md | ./cli.js > /dev/null 2>&1 || code=$?
+    cat History.md | $COMMAND > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail without input"
     code=0
-    ./cli.js > /dev/null 2>&1 || code=$?
+    $COMMAND > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on an invalid file"
     code=0
-    ./cli.js some-other-file.md > /dev/null 2>&1 || code=$?
+    $COMMAND some-other-file.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on multiple files"
     code=0
-    ./cli.js History.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND History.md Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on stdin and files"
     code=0
-    cat History.md | ./cli.js Readme.md > /dev/null 2>&1 || code=$?
+    cat History.md | $COMMAND Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -68,12 +74,12 @@ it "Should fail on stdin and files"
 
 it "Should accept \`--ast\`"
     code=0
-    ./cli.js --ast Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --ast Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`-a\`"
     code=0
-    ./cli.js -a Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -a Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -82,34 +88,34 @@ it "Should accept \`-a\`"
 
 it "Should accept \`-o <path>\`"
     code=0
-    ./cli.js -o out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -o out.md Readme.md > /dev/null 2>&1 || code=$?
     rm out.md
     assert $code 0
 
 it "Should accept \`--output <path>\`"
     code=0
-    ./cli.js --output out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --output out.md Readme.md > /dev/null 2>&1 || code=$?
     rm out.md
     assert $code 0
 
 it "Should fail on \`-o <invalid-path>\`"
     code=0
-    ./cli.js -o invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -o invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--output <invalid-path>\`"
     code=0
-    ./cli.js --output invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --output invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`-o\`"
     code=0
-    ./cli.js Readme.md -o > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md -o > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--output\`"
     code=0
-    ./cli.js Readme.md --output > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md --output > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -118,32 +124,32 @@ it "Should fail on missing value for \`--output\`"
 
 it "Should accept \`-u <plugin>\`"
     code=0
-    ./cli.js -u ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -u ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--use <plugin>\`"
     code=0
-    ./cli.js --use ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --use ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-u <invalid-plugin>\`"
     code=0
-    ./cli.js -u ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -u ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--use <invalid-plugin>\`"
     code=0
-    ./cli.js --use ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --use ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`-u\`"
     code=0
-    ./cli.js Readme.md -u > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md -u > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--use\`"
     code=0
-    ./cli.js Readme.md --use > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md --use > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -152,32 +158,32 @@ it "Should fail on missing value for \`--use\`"
 
 it "Should accept \`-c <path>\`"
     code=0
-    ./cli.js -c ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -c ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--config <path>\`"
     code=0
-    ./cli.js --config ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --config ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-c <invalid-path>\`"
     code=0
-    ./cli.js -c "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -c "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--config <invalid-path>\`"
     code=0
-    ./cli.js --config "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --config "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on a missing value for \`-c\`"
     code=0
-    ./cli.js Readme.md -c > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md -c > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on a missing value for \`--config\`"
     code=0
-    ./cli.js Readme.md --config > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md --config > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -186,32 +192,32 @@ it "Should fail on a missing value for \`--config\`"
 
 it "Should accept \`-s <settings>\`"
     code=0
-    ./cli.js -s yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -s yaml:false Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--setting <settings>\`"
     code=0
-    ./cli.js --setting yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --setting yaml:false Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-s <invalid-settings>\`"
     code=0
-    ./cli.js -s yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -s yaml:1 Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--setting <invalid-settings>\`"
     code=0
-    ./cli.js --setting yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --setting yaml:1 Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`-s\`"
     code=0
-    ./cli.js Readme.md -s > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md -s > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--setting\`"
     code=0
-    ./cli.js Readme.md --setting > /dev/null 2>&1 || code=$?
+    $COMMAND Readme.md --setting > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -220,7 +226,7 @@ it "Should fail on missing value for \`--setting\`"
 
 it "Should accept \`--settings\`"
     code=0
-    ./cli.js --settings > /dev/null 2>&1 || code=$?
+    $COMMAND --settings > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -229,12 +235,12 @@ it "Should accept \`--settings\`"
 
 it "Should accept \`--help\`"
     code=0
-    ./cli.js --help > /dev/null 2>&1 || code=$?
+    $COMMAND --help > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`-h\`"
     code=0
-    ./cli.js -h > /dev/null 2>&1 || code=$?
+    $COMMAND -h > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -243,12 +249,12 @@ it "Should accept \`-h\`"
 
 it "Should accept \`--version\`"
     code=0
-    ./cli.js --version > /dev/null 2>&1 || code=$?
+    $COMMAND --version > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`-V\`"
     code=0
-    ./cli.js -V > /dev/null 2>&1 || code=$?
+    $COMMAND -V > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -257,7 +263,7 @@ it "Should accept \`-V\`"
 
 it "Should stop parsing arguments after \`--\`"
     code=0
-    ./cli.js History.md -- Some-unknown-file.md > /dev/null 2>&1 || code=$?
+    $COMMAND History.md -- Some-unknown-file.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -266,12 +272,12 @@ it "Should stop parsing arguments after \`--\`"
 
 it "Should fail on unknown short options"
     code=0
-    ./cli.js -v > /dev/null 2>&1 || code=$?
+    $COMMAND -v > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on unknown long options"
     code=0
-    ./cli.js --verbose > /dev/null 2>&1 || code=$?
+    $COMMAND --verbose > /dev/null 2>&1 || code=$?
     assert $code 1
 
 printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n";

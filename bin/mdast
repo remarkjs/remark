@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+'use strict';
+
+/*
+ * Dependencies.
+ */
+
+var cli = require('../lib/cli');
+
+/*
+ * Methods.
+ */
+
+var stderr = process.stderr;
+var argv = process.argv;
+
+/*
+ * Constants.
+ */
+
+var exitStatus = 0;
+
+/*
+ * Set-up.
+ */
+
+var position = argv.indexOf('--');
+
+if (position !== -1) {
+    argv = argv.slice(0, position);
+}
+
+/*
+ * Run.
+ */
+
+cli(argv, function (exception) {
+    if (exception) {
+        if (isNaN(exception)) {
+            stderr.write((exception.stack || exception) + '\n');
+        }
+
+        exitStatus = 1;
+    }
+});
+
+/*
+ * Exit.
+ */
+
+process.on('exit', function () {
+    process.exit(exitStatus);
+});
