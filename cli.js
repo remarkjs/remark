@@ -38,10 +38,16 @@ var DELIMITER = / *: */;
 var ENCODING = 'utf-8';
 
 var cwd = process.cwd();
+var argv = process.argv;
 var expextPipeIn = !stdin.isTTY;
 var seperator = path.sep;
 
 var command = Object.keys(pack.bin)[0];
+var position = argv.indexOf('--');
+
+if (position !== -1) {
+    argv = argv.slice(0, position);
+}
 
 /**
  * Fail with `message` to stderr and exit with `1`.
@@ -232,7 +238,7 @@ program.on('--settings', function () {
     console.log();
 });
 
-program.parse(process.argv);
+program.parse(argv);
 
 /*
  * Program.

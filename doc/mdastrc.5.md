@@ -5,7 +5,7 @@
 **mdast** gets its configuration from the command line and **mdastrc** files.
 
 For a list of available configuration options, see **mdast**(1) or
-[<https://github.com/wooorm/mdast/blob/master/doc/Options.md](<https://github.com/wooorm/mdast/blob/master/doc/Options.md)>.
+<<https://github.com/wooorm/mdast/blob/master/doc/Options.md>>.
 
 ## FILES
 

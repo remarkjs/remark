@@ -23,6 +23,8 @@ Options are as follows:
 *   `-a`, `--ast`: Output AST information;
 *   `--settings`: Output available settings.
 
+A -- argument tells the cli parser to stop reading flags.
+
 ## DIAGNOSTICS
 
 `mdast` exits 0 on success, and 1 otherwise.

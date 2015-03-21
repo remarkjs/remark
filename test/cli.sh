@@ -252,6 +252,15 @@ it "Should accept \`-V\`"
     assert $code 0
 
 #
+# `--`
+#
+
+it "Should stop parsing arguments after \`--\`"
+    code=0
+    ./cli.js History.md -- Some-unknown-file.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+#
 # Unknown flags.
 #
 
