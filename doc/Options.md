@@ -8,24 +8,24 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 
 ## Table of Contents
 
--   [Parse](#parse)
-    -   [Breaks](#breaks)
-    -   [CommonMark](#commonmark)
-    -   [Footnotes](#footnotes)
-    -   [GitHub Flavoured Markdown](#github-flavoured-markdown)
-    -   [Pedantic](#pedantic)
-    -   [YAML](#yaml)
--   [Stringify](#stringify)
-    -   [List Item Bullets](#list-item-bullets)
-    -   [Closed ATX Headings](#closed-atx-headings)
-    -   [Emphasis Markers](#emphasis-markers)
-    -   [Fence](#fence)
-    -   [Fences](#fences)
-    -   [Loose Tables](#loose-tables)
-    -   [Reference Links](#reference-links)
-    -   [Horizontal Rules](#horizontal-rules)
-    -   [Setext Headings](#setext-headings)
-    -   [Spaced Tables](#spaced-tables)
+*   [Parse](#parse)
+    *   [Breaks](#breaks)
+    *   [CommonMark](#commonmark)
+    *   [Footnotes](#footnotes)
+    *   [GitHub Flavoured Markdown](#github-flavoured-markdown)
+    *   [Pedantic](#pedantic)
+    *   [YAML](#yaml)
+*   [Stringify](#stringify)
+    *   [List Item Bullets](#list-item-bullets)
+    *   [Closed ATX Headings](#closed-atx-headings)
+    *   [Emphasis Markers](#emphasis-markers)
+    *   [Fence](#fence)
+    *   [Fences](#fences)
+    *   [Loose Tables](#loose-tables)
+    *   [Reference Links](#reference-links)
+    *   [Horizontal Rules](#horizontal-rules)
+    *   [Setext Headings](#setext-headings)
+    *   [Spaced Tables](#spaced-tables)
 
 ## Parse
 
@@ -126,17 +126,17 @@ Yields:
 
 Setting `commonmark: true` (default: `false`):
 
--   Adds support for empty lines to split [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#blockquote)s;
--   Adds support for parentheses (`(` and `)`) as delimiters for [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) titles;
--   Adds support for parsing any escaped [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes) character as [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#escape)s;
--   Adds support for parsing ordered list-items with a closing parenthesis (`)`);
--   Adds support for link reference definitions (and footnote reference definitions, when in `footnotes: true` mode) in blockquotes;
--   Removes support for [**Code**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#code) directly following a [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#paragraph);
--   Removes support for ATX-headings (`# Hash headings`) without spacing after initial hashes or and before closing hashes;
--   Removes support for Setext-headings (`Underline headings\n---`) when directly following a paragraph;
--   Removes support for new lines in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) titles;
--   Removes support for white space in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) URLs when not enclosed in angle brackets (`<` and `>`);
--   Removes support for lazy [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#blockquote) continuation—lines not preceded by a closing angle bracket (`>`)—for [**List**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#list)s, [**Code**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#code), and [**HorizontalRule**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#horizontalrule)s.
+*   Adds support for empty lines to split [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#blockquote)s;
+*   Adds support for parentheses (`(` and `)`) as delimiters for [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) titles;
+*   Adds support for parsing any escaped [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes) character as [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#escape)s;
+*   Adds support for parsing ordered list-items with a closing parenthesis (`)`);
+*   Adds support for link reference definitions (and footnote reference definitions, when in `footnotes: true` mode) in blockquotes;
+*   Removes support for [**Code**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#code) directly following a [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#paragraph);
+*   Removes support for ATX-headings (`# Hash headings`) without spacing after initial hashes or and before closing hashes;
+*   Removes support for Setext-headings (`Underline headings\n---`) when directly following a paragraph;
+*   Removes support for new lines in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) titles;
+*   Removes support for white space in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) URLs when not enclosed in angle brackets (`<` and `>`);
+*   Removes support for lazy [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#blockquote) continuation—lines not preceded by a closing angle bracket (`>`)—for [**List**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#list)s, [**Code**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#code), and [**HorizontalRule**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#horizontalrule)s.
 
 The following document:
 
@@ -509,11 +509,11 @@ Yields:
 
 Setting `gfm: true` (default: `true`) enables:
 
--   [Fenced](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks) code blocks;
--   [Autolinking](https://help.github.com/articles/github-flavored-markdown/#url-autolinking) of URLs;
--   [Deletions](https://help.github.com/articles/github-flavored-markdown/#strikethrough) (strikethrough);
--   [Task](https://help.github.com/articles/writing-on-github/#task-lists) lists;
--   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables).
+*   [Fenced](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks) code blocks;
+*   [Autolinking](https://help.github.com/articles/github-flavored-markdown/#url-autolinking) of URLs;
+*   [Deletions](https://help.github.com/articles/github-flavored-markdown/#strikethrough) (strikethrough);
+*   [Task](https://help.github.com/articles/writing-on-github/#task-lists) lists;
+*   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables).
 
 The following document:
 
@@ -623,9 +623,9 @@ Yields:
 
 Setting `pedantic: true` (default: `false`):
 
--   Adds support for emphasis and strongness, with underscores (`_`), inside words;
--   Adds support for different list bullets (`*`, `-`, `+`) for the same list (when in `commonmark: true` mode, the same goes for both ordered list delimiters: `.` and `)`);
--   Removes less spaces in list-items (a maximum of four instead of the whole indent).
+*   Adds support for emphasis and strongness, with underscores (`_`), inside words;
+*   Adds support for different list bullets (`*`, `-`, `+`) for the same list (when in `commonmark: true` mode, the same goes for both ordered list delimiters: `.` and `)`);
+*   Removes less spaces in list-items (a maximum of four instead of the whole indent).
 
 The following document:
 
@@ -881,8 +881,8 @@ Yields:
 
 Two options are provided to customise how slight- and strong emphasis are stringified:
 
--   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
--   `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
+*   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
+*   `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
 
 The following document:
 
@@ -911,7 +911,7 @@ Yields:
 
 It's possible to customise how GFM code fences are stringified:
 
--   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code blocks in the provided character.
+*   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code blocks in the provided character.
 
 To render all code blocks with fences (the default behavior is to only use non-standard fences when a language-flag is present), use [`fences: true`](#fences).
 
@@ -1023,9 +1023,9 @@ Yields:
 
 Three options are provided to customise how horizontal rules will be stringified:
 
--   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
--   `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
--   `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
+*   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
+*   `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
+*   `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
 
 The following document:
 

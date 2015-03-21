@@ -26,6 +26,8 @@ sections = fs.readdirSync(BASE).filter(function (filepath) {
     return BASE + '/' + filepath;
 });
 
+var settings = JSON.parse(fs.readFileSync('.mdastrc')).settings;
+
 /*
  * Get information for each section.
  */
@@ -239,4 +241,4 @@ toc(root);
  * Write.
  */
 
-fs.writeFileSync('doc/Options.md', mdast.stringify(root));
+fs.writeFileSync('doc/Options.md', mdast.stringify(root, settings));

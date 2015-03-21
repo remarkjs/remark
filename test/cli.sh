@@ -3,10 +3,21 @@
 
 typeset -i tests=0
 
+#
+# Describe.
+#
+
 function it {
     let tests+=1;
     description="$1";
 }
+
+#
+# Assert.
+#
+# @param actual
+# @param expected
+#
 
 function assert {
     if [[ "$1" == "$2" ]]; then
@@ -16,6 +27,10 @@ function assert {
         exit 1
     fi
 }
+
+#
+# File and stdin.
+#
 
 it "Should accept a file"
     code=0
@@ -47,6 +62,10 @@ it "Should fail on stdin and files"
     cat History.md | ./cli.js Readme.md > /dev/null 2>&1 || code=$?
     assert $code 1
 
+#
+# `--ast`.
+#
+
 it "Should accept \`--ast\`"
     code=0
     ./cli.js --ast Readme.md > /dev/null 2>&1 || code=$?
@@ -57,6 +76,9 @@ it "Should accept \`-a\`"
     ./cli.js -a Readme.md > /dev/null 2>&1 || code=$?
     assert $code 0
 
+#
+# `--output`.
+#
 
 it "Should accept \`-o <path>\`"
     code=0
@@ -90,6 +112,10 @@ it "Should fail on missing value for \`--output\`"
     ./cli.js Readme.md --output > /dev/null 2>&1 || code=$?
     assert $code 1
 
+#
+# `--use`.
+#
+
 it "Should accept \`-u <plugin>\`"
     code=0
     ./cli.js -u ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
@@ -119,6 +145,44 @@ it "Should fail on missing value for \`--use\`"
     code=0
     ./cli.js Readme.md --use > /dev/null 2>&1 || code=$?
     assert $code 1
+
+#
+# `--config`.
+#
+
+it "Should accept \`-c <path>\`"
+    code=0
+    ./cli.js -c ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--config <path>\`"
+    code=0
+    ./cli.js --config ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on \`-c <invalid-path>\`"
+    code=0
+    ./cli.js -c "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--config <invalid-path>\`"
+    code=0
+    ./cli.js --config "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on a missing value for \`-c\`"
+    code=0
+    ./cli.js Readme.md -c > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on a missing value for \`--config\`"
+    code=0
+    ./cli.js Readme.md --config > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+#
+# `--setting`.
+#
 
 it "Should accept \`-s <settings>\`"
     code=0
@@ -150,10 +214,18 @@ it "Should fail on missing value for \`--setting\`"
     ./cli.js Readme.md --setting > /dev/null 2>&1 || code=$?
     assert $code 1
 
+#
+# `--settings`.
+#
+
 it "Should accept \`--settings\`"
     code=0
     ./cli.js --settings > /dev/null 2>&1 || code=$?
     assert $code 0
+
+#
+# `--help`.
+#
 
 it "Should accept \`--help\`"
     code=0
@@ -165,6 +237,10 @@ it "Should accept \`-h\`"
     ./cli.js -h > /dev/null 2>&1 || code=$?
     assert $code 0
 
+#
+# `--version`.
+#
+
 it "Should accept \`--version\`"
     code=0
     ./cli.js --version > /dev/null 2>&1 || code=$?
@@ -174,6 +250,10 @@ it "Should accept \`-V\`"
     code=0
     ./cli.js -V > /dev/null 2>&1 || code=$?
     assert $code 0
+
+#
+# Unknown flags.
+#
 
 it "Should fail on unknown short options"
     code=0

@@ -11,6 +11,7 @@ var commander = require('commander');
 var camelcase = require('camelcase');
 var debug = require('debug')('mdast');
 var mdast = require('./');
+var Configuration = require('./lib/configuration');
 var pack = require('./package.json');
 
 /*
@@ -118,7 +119,7 @@ function find(pathlike) {
  * @param {Object} cache
  * @return {Object}
  */
-function settings(flags, cache) {
+function parseSetting(flags, cache) {
     flags.split(SPLITTER).forEach(function (flag) {
         var value;
 
@@ -147,7 +148,7 @@ function settings(flags, cache) {
  * @param {Array.<string>} cache
  * @return {Array.<string>}
  */
-function plugins(ware, cache) {
+function parsePlugin(ware, cache) {
     return cache.concat(ware.split(SPLITTER));
 }
 
@@ -160,8 +161,9 @@ var program = new Command(pack.name)
     .description(pack.description)
     .usage('[options] file')
     .option('-o, --output <path>', 'specify output location', null)
-    .option('-s, --setting <settings>', 'specify settings', settings, {})
-    .option('-u, --use <plugins>', 'use transform plugin(s)', plugins, [])
+    .option('-c, --config <path>', 'specify configuration location', null)
+    .option('-s, --setting <settings>', 'specify settings', parseSetting, {})
+    .option('-u, --use <plugins>', 'use transform plugin(s)', parsePlugin, [])
     .option('-a, --ast', 'output AST information', false)
     .option('--settings', 'output available settings', false);
 
@@ -238,12 +240,6 @@ program.parse(process.argv);
 
 debug('Using root: `%s`', root);
 
-var parser = mdast;
-
-program.use.forEach(function (pathlike) {
-    parser = parser.use(find(pathlike));
-});
-
 /**
  * Parse `value` with `parser`. When `ast` is set,
  * pretty prints JSON, otherwise stringifies with
@@ -251,12 +247,28 @@ program.use.forEach(function (pathlike) {
  *
  * @param {string} value
  */
-function run(value) {
+function run(value, filename) {
+    var configuration;
+    var parser = mdast;
+    var options;
     var doc;
-    debug('Using options `%j`', program.setting);
+
+    configuration = new Configuration({
+        'file': program.config,
+        'settings': program.setting,
+        'plugins': program.use
+    });
+
+    options = configuration.getConfiguration(filename);
+
+    debug('Using settings `%j`', options.settings);
+
+    parser = parser.use(options.plugins.map(find));
+
+    debug('Using plug-ins `%j`', options.plugins);
 
     try {
-        doc = parser.parse(value, program.setting);
+        doc = parser.parse(value, options.settings);
     } catch (exception) {
         fail(exception);
     }
@@ -264,7 +276,7 @@ function run(value) {
     if (program.ast) {
         doc = JSON.stringify(doc, null, 2);
     } else {
-        doc = parser.stringify(doc, program.setting);
+        doc = parser.stringify(doc, options.settings);
     }
 
     if (program.output) {
@@ -303,6 +315,10 @@ if (program.settings) {
         fail('mdast currently expects one file.');
     }
 
+    files = files.map(function (filename) {
+        return path.resolve(filename);
+    });
+
     if (files[0]) {
         debug('Reading from `%s` using encoding `%s`', files[0], ENCODING);
 
@@ -311,7 +327,7 @@ if (program.settings) {
                 fail(exception);
             }
 
-            run(value);
+            run(value, files[0]);
         });
     } else {
         stdin.resume();
