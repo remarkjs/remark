@@ -129,6 +129,8 @@ Setting `commonmark: true` (default: `false`):
 -   Adds support for empty lines to split [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#blockquote)s;
 -   Adds support for parentheses (`(` and `)`) as delimiters for [**Link**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#image) titles;
 -   Adds support for parsing any escaped [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes) character as [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#escape)s;
+-   Adds support for parsing ordered list-items with a closing parenthesis (`)`);
+-   Adds support for link reference definitions (and footnote reference definitions, when in `footnotes: true` mode) in blockquotes;
 -   Removes support for [**Code**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#code) directly following a [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#paragraph);
 -   Removes support for ATX-headings (`# Hash headings`) without spacing after initial hashes or and before closing hashes;
 -   Removes support for Setext-headings (`Underline headings\n---`) when directly following a paragraph;
@@ -622,7 +624,7 @@ Yields:
 Setting `pedantic: true` (default: `false`):
 
 -   Adds support for emphasis and strongness, with underscores (`_`), inside words;
--   Adds support for different list bullets (`*`, `-`, `+`) for the same list;
+-   Adds support for different list bullets (`*`, `-`, `+`) for the same list (when in `commonmark: true` mode, the same goes for both ordered list delimiters: `.` and `)`);
 -   Removes less spaces in list-items (a maximum of four instead of the whole indent).
 
 The following document:
