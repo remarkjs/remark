@@ -2387,6 +2387,10 @@ Parser.prototype.renderFootnoteDefinition = renderFootnoteDefinition;
 Parser.prototype.renderHeading = renderHeading;
 Parser.prototype.renderFootnote = renderFootnote;
 
+/*
+ * Expose tokenizers for inline-level nodes.
+ */
+
 Parser.prototype.inlineTokenizers = {
     'escape': tokenizeEscape,
     'autoLink': tokenizeAutoLink,
@@ -2402,6 +2406,10 @@ Parser.prototype.inlineTokenizers = {
     'break': tokenizeBreak,
     'inlineText': tokenizeInlineText
 };
+
+/*
+ * Expose order in which to parse inline-level nodes.
+ */
 
 Parser.prototype.inlineMethods = [
     'escape',
@@ -2427,6 +2435,10 @@ Parser.prototype.inlineMethods = [
  */
 
 Parser.prototype.tokenizeInline = tokenizeFactory(INLINE);
+
+/*
+ * Enter and exit helpers.
+ */
 
 Parser.prototype.enterLink = stateToggler('inLink', false);
 Parser.prototype.exitTop = stateToggler('atTop', true);
@@ -2511,6 +2523,10 @@ var INDENT = 4;
 var MINIMUM_CODE_FENCE_LENGTH = 3;
 var MINIMUM_RULE_LENGTH = 3;
 
+/*
+ * Expressions.
+ */
+
 var EXPRESSIONS_WHITE_SPACE = /\s/;
 
 /*
@@ -2551,7 +2567,7 @@ var GAP = BREAK + LINE;
 var DOUBLE_TILDE = TILDE + TILDE;
 
 /*
- * Define allowed list-bullet characters.
+ * Allowed list-bullet characters.
  */
 
 var LIST_BULLETS = {};
@@ -2561,7 +2577,7 @@ LIST_BULLETS[DASH] = true;
 LIST_BULLETS[PLUS] = true;
 
 /*
- * Define allowed horizontal-rule bullet characters.
+ * Allowed horizontal-rule bullet characters.
  */
 
 var HORIZONTAL_RULE_BULLETS = {};
@@ -2571,7 +2587,7 @@ HORIZONTAL_RULE_BULLETS[DASH] = true;
 HORIZONTAL_RULE_BULLETS[UNDERSCORE] = true;
 
 /*
- * Define allowed emphasis characters.
+ * Allowed emphasis characters.
  */
 
 var EMPHASIS_MARKERS = {};
@@ -2580,7 +2596,7 @@ EMPHASIS_MARKERS[UNDERSCORE] = true;
 EMPHASIS_MARKERS[ASTERISK] = true;
 
 /*
- * Define allowed emphasis characters.
+ * Allowed fence markers.
  */
 
 var FENCE_MARKERS = {};
@@ -2589,13 +2605,25 @@ FENCE_MARKERS[TICK] = true;
 FENCE_MARKERS[TILDE] = true;
 
 /*
- * Define which method to use based on `list.ordered`.
+ * Which method to use based on `list.ordered`.
  */
 
 var ORDERED_MAP = {};
 
 ORDERED_MAP.true = 'visitOrderedItems';
 ORDERED_MAP.false = 'visitUnorderedItems';
+
+/*
+ * Which checkbox to use.
+ */
+
+var CHECKBOX_MAP = {};
+
+CHECKBOX_MAP.null = '';
+CHECKBOX_MAP.undefined = '';
+CHECKBOX_MAP.true = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
+CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
+    SPACE;
 
 /**
  * Checks if `url` needs to be enclosed by angle brackets.
@@ -2625,7 +2653,7 @@ function needsAngleBraceEnclosure(uri) {
 function encloseTitle(title) {
     var delimiter = QUOTE_DOUBLE;
 
-    if (title.indexOf(QUOTE_DOUBLE) !== -1) {
+    if (title.indexOf(delimiter) !== -1) {
         delimiter = QUOTE_SINGLE;
     }
 
@@ -2792,7 +2820,7 @@ compilerPrototype.visit = function (token, parent, level) {
  * @param {number} level
  * @return {Array.<string>}
  */
-compilerPrototype.visitAll = function (parent, level) {
+compilerPrototype.all = function (parent, level) {
     var self = this;
     var tokens = parent.children;
     var values = [];
@@ -2934,7 +2962,7 @@ compilerPrototype.heading = function (token, parent, level) {
     var setext = self.options.setext;
     var closeAtx = self.options.closeAtx;
     var depth = token.depth;
-    var content = self.visitAll(token, level).join(EMPTY);
+    var content = self.all(token, level).join(EMPTY);
     var prefix;
 
     if (setext && (depth === 1 || depth === 2)) {
@@ -2981,7 +3009,7 @@ compilerPrototype.escape = function (token) {
  * @return {string}
  */
 compilerPrototype.paragraph = function (token, parent, level) {
-    return this.visitAll(token, level).join(EMPTY);
+    return this.all(token, level).join(EMPTY);
 };
 
 /**
@@ -2993,8 +3021,10 @@ compilerPrototype.paragraph = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.blockquote = function (token, parent, level) {
-    return ANGLE_BRACKET_CLOSE + SPACE + this.visitAll(token, level)
-        .join(BREAK).split(LINE).join(LINE + ANGLE_BRACKET_CLOSE + SPACE);
+    var indent = ANGLE_BRACKET_CLOSE + SPACE;
+
+    return indent + this.all(token, level).join(BREAK)
+        .split(LINE).join(LINE + indent);
 };
 
 /**
@@ -3014,12 +3044,12 @@ compilerPrototype.link = function (token, parent, level) {
         link = ANGLE_BRACKET_OPEN + link + ANGLE_BRACKET_CLOSE;
     }
 
-    value = SQUARE_BRACKET_OPEN +
-        self.visitAll(token, level).join(EMPTY) + SQUARE_BRACKET_CLOSE;
-
     if (token.title) {
         link += SPACE + encloseTitle(token.title);
     }
+
+    value = self.all(token, level).join(EMPTY);
+    value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
 
     if (self.options.referenceLinks) {
         value += SQUARE_BRACKET_OPEN + (++self.linkCounter) +
@@ -3047,14 +3077,6 @@ compilerPrototype.link = function (token, parent, level) {
 compilerPrototype.list = function (token, parent, level) {
     return this[ORDERED_MAP[token.ordered]](token, level);
 };
-
-var CHECKBOX_MAP = {};
-
-CHECKBOX_MAP.null = '';
-CHECKBOX_MAP.undefined = '';
-CHECKBOX_MAP.true = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
-CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
-    SPACE;
 
 /**
  * Stringify a list item.
@@ -3189,7 +3211,7 @@ compilerPrototype.strong = function (token, parent, level) {
 
     marker = marker + marker;
 
-    return marker + this.visitAll(token, level).join(EMPTY) + marker;
+    return marker + this.all(token, level).join(EMPTY) + marker;
 };
 
 /**
@@ -3203,7 +3225,7 @@ compilerPrototype.strong = function (token, parent, level) {
 compilerPrototype.emphasis = function (token, parent, level) {
     var marker = this.options.emphasis;
 
-    return marker + this.visitAll(token, level).join(EMPTY) + marker;
+    return marker + this.all(token, level).join(EMPTY) + marker;
 };
 
 /**
@@ -3224,8 +3246,7 @@ compilerPrototype.break = function () {
  * @return {string}
  */
 compilerPrototype.delete = function (token, parent, level) {
-    return DOUBLE_TILDE +
-        this.visitAll(token, level).join(EMPTY) + DOUBLE_TILDE;
+    return DOUBLE_TILDE + this.all(token, level).join(EMPTY) + DOUBLE_TILDE;
 };
 
 /**
@@ -3273,7 +3294,7 @@ compilerPrototype.footnote = function (token) {
  * @return {string}
  */
 compilerPrototype.footnoteDefinition = function (token) {
-    return this.visitAll(token).join(BREAK + repeat(INDENT, SPACE));
+    return this.all(token).join(BREAK + repeat(INDENT, SPACE));
 };
 
 /**
@@ -3294,7 +3315,7 @@ compilerPrototype.table = function (token, parent, level) {
     var start;
 
     while (index--) {
-        result[index] = self.visitAll(rows[index], level);
+        result[index] = self.all(rows[index], level);
     }
 
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
@@ -3322,7 +3343,7 @@ compilerPrototype.table = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.tableCell = function (token, parent, level) {
-    return this.visitAll(token, level).join(EMPTY);
+    return this.all(token, level).join(EMPTY);
 };
 
 /**
@@ -3409,7 +3430,7 @@ module.exports = stringify;
 'use strict';
 
 /*
- * Cached methods.
+ * Methods.
  */
 
 var has = Object.prototype.hasOwnProperty;
@@ -3671,7 +3692,7 @@ exports.validate = {
 };
 
 /*
- * Expose string methods.
+ * Expose.
  */
 
 exports.trim = trim;
