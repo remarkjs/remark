@@ -401,6 +401,7 @@ Options:
   -i, --ignore-path <path>  specify ignore location
   -s, --setting <settings>  specify settings
   -u, --use <plugins>       use transform plugin(s)
+  -e, --ext <extensions>    specify extensions
   -a, --ast                 output AST information
   --no-rc                   Disable configuration from .mdastrc
   --no-ignore               Disable ignore from .mdastignore

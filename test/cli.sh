@@ -262,7 +262,6 @@ it "Should fail on a missing value for \`--config-path\`"
     $COMMAND $markdown --config-path > /dev/null 2>&1 || code=$?
     assert $code 1
 
-
 #
 # `--ignore-path`.
 #
@@ -329,6 +328,30 @@ it "Should fail on missing value for \`-s\`"
 it "Should fail on missing value for \`--setting\`"
     code=0
     $COMMAND $markdown --setting > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+#
+# `--ext`.
+#
+
+it "Should accept \`-e <extensions>\`"
+    code=0
+    $COMMAND -e .ngdoc $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--ext <extensions>\`"
+    code=0
+    $COMMAND --ext .ngdoc $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on missing value for \`-e\`"
+    code=0
+    $COMMAND $markdown -e > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing value for \`--ext\`"
+    code=0
+    $COMMAND $markdown --ext > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #

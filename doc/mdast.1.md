@@ -2,9 +2,9 @@
 
 ## SYNOPSIS
 
-`mdast` [`-a`, `--ast`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`--no-rc`] [`--no-ignore`] file
+`mdast` [`-a`, `--ast`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
 
-`mdast` --settings
+`mdast` _--settings_
 
 ## DESCRIPTION
 
@@ -21,6 +21,7 @@ Options are as follows:
 *   `-i`, `--ignore-path` _path_: Specify ignore location;
 *   `-s`, `--setting` _settings_: Specify settings;
 *   `-u`, `--use` _plugins_: Use transform plugin(s);
+*   `-e`, `--ext` _extensions_: Specify file extensions to look for;
 *   `-a`, `--ast`: Output AST information;
 *   `--no-rc`: Disable configuration from _.mdastrc_;
 *   `--no-ignore`: Disable ignoring from _.mdastignore_;
