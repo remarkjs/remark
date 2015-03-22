@@ -111,16 +111,6 @@ function onsettingchange(event) {
 
     onsettingchange[type]($target, $target.name);
 
-    if ($target.name === 'tables' && options[$target.name] && !options.gfm) {
-        document.querySelector('[name="gfm"]').checked = true;
-        options.gfm = true;
-    }
-
-    if ($target.name === 'gfm' && !options[$target.name] && options.tables) {
-        document.querySelector('[name="tables"]').checked = false;
-        options.tables = false;
-    }
-
     debouncedChange();
 }
 
