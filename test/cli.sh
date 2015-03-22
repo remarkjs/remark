@@ -230,6 +230,15 @@ it "Should accept \`--settings\`"
     assert $code 0
 
 #
+# `--no-mdastrc`.
+#
+
+it "Should accept \`--no-rc\`"
+    code=0
+    $COMMAND --no-rc Readme.md > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+#
 # `--help`.
 #
 

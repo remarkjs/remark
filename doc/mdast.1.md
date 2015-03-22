@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` [`-a`, `--ast`] [`-o`, `--output` _path_] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config` _path_] file
+`mdast` [`--no-rc`] [`-a`, `--ast`] [`-o`, `--output` _path_] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config` _path_] file
 
 `mdast` --settings
 
@@ -21,9 +21,10 @@ Options are as follows:
 *   `-s`, `--setting` _settings_: Specify settings;
 *   `-u`, `--use` _plugins_: Use transform plugin(s);
 *   `-a`, `--ast`: Output AST information;
+*   `--no-rc`: Disable configuration from .mdastrc.
 *   `--settings`: Output available settings.
 
-A -- argument tells the cli parser to stop reading flags.
+A `--` argument tells the cli parser to stop reading flags.
 
 ## DIAGNOSTICS
 
