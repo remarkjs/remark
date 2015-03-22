@@ -396,11 +396,14 @@ Options:
 
   -h, --help                output usage information
   -V, --version             output the version number
-  -o, --output <path>       specify output location
-  -c, --config <path>       specify configuration location
+  -o, --output [path]       specify output location
+  -c, --config-path <path>  specify configuration location
+  -i, --ignore-path <path>  specify ignore location
   -s, --setting <settings>  specify settings
   -u, --use <plugins>       use transform plugin(s)
   -a, --ast                 output AST information
+  --no-rc                   Disable configuration from .mdastrc
+  --no-ignore               Disable ignore from .mdastignore
   --settings                output available settings
 
 # Note that bash does not allow reading and writing
@@ -409,14 +412,17 @@ Options:
 Usage:
 
 # Pass `Readme.md` through mdast
-$ mdast Readme.md -o Readme.md
+$ mdast Readme.md -o Readme-new.md
 
 # Pass stdin through mdast, with settings, to stdout
 $ cat Readme.md | mdast --setting "setext, bullet: *" > Readme-new.md
 
-# use a plugin
+# Use a plugin
 $ npm install mdast-toc
-$ mdast --use mdast-toc -o Readme.md
+$ mdast --use mdast-toc Readme.md -o
+
+# Rewrite markdown in a directory
+$ mdast . -o
 ```
 
 ## Benchmark

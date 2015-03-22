@@ -36,12 +36,10 @@ if (position !== -1) {
 
 cli(argv, function (exception) {
     if (exception) {
-        if (isNaN(exception)) {
-            stderr.write((exception.stack || exception) + '\n');
-        }
-
-        exitStatus = 1;
+        stderr.write((exception.stack || exception) + '\n');
     }
+
+    exitStatus = 1;
 });
 
 /*

@@ -35,17 +35,41 @@ function assert {
 COMMAND="bin/mdast"
 
 #
+# Fixtures
+#
+
+directory="test/cli"
+
+markdown="test/cli/markdown.md"
+markdownAlt="test/cli/markdown-alt.md"
+plugin="test/badges.js"
+rc="test/cli/rc.json"
+ignore="test/cli/ignore.ini"
+
+missing="test/cli/missing/markdown.md"
+missingPlugin="test/cli/missin/plugin.js"
+missingRC="test/cli/missing/rc.json"
+missingIgnore="test/cli/missing/ignore.ini"
+
+invalidRc="test/cli/invalid/rc.json"
+
+ignoredDirectory="test/cli/ignored"
+ignoredFile="test/cli/ignored-alt/markdown.md"
+
+tmp="test/cli/tmp.md"
+
+#
 # File and stdin.
 #
 
 it "Should accept a file"
     code=0
-    $COMMAND Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept stdin"
     code=0
-    cat History.md | $COMMAND > /dev/null 2>&1 || code=$?
+    cat $markdown | $COMMAND > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail without input"
@@ -55,17 +79,17 @@ it "Should fail without input"
 
 it "Should fail on an invalid file"
     code=0
-    $COMMAND some-other-file.md > /dev/null 2>&1 || code=$?
+    $COMMAND $missing > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on multiple files"
     code=0
-    $COMMAND History.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on stdin and files"
     code=0
-    cat History.md | $COMMAND Readme.md > /dev/null 2>&1 || code=$?
+    cat $markdown | $COMMAND $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -74,12 +98,12 @@ it "Should fail on stdin and files"
 
 it "Should accept \`--ast\`"
     code=0
-    $COMMAND --ast Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --ast $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`-a\`"
     code=0
-    $COMMAND -a Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -a $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -88,34 +112,76 @@ it "Should accept \`-a\`"
 
 it "Should accept \`-o <path>\`"
     code=0
-    $COMMAND -o out.md Readme.md > /dev/null 2>&1 || code=$?
-    rm out.md
+    $COMMAND -o $tmp $markdown > /dev/null 2>&1 || code=$?
+    rm $tmp
     assert $code 0
 
 it "Should accept \`--output <path>\`"
     code=0
-    $COMMAND --output out.md Readme.md > /dev/null 2>&1 || code=$?
-    rm out.md
+    $COMMAND --output $tmp $markdown > /dev/null 2>&1 || code=$?
+    rm $tmp
     assert $code 0
 
 it "Should fail on \`-o <invalid-path>\`"
     code=0
-    $COMMAND -o invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -o $missing $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--output <invalid-path>\`"
     code=0
-    $COMMAND --output invalid/out.md Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --output $missing $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
-it "Should fail on missing value for \`-o\`"
+it "Should NOT fail on missing value for \`-o\`"
     code=0
-    $COMMAND Readme.md -o > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown -o > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should NOT fail on missing value for \`--output\`"
+    code=0
+    $COMMAND $markdown --output > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on \`-o <path>\` and multiple files"
+    code=0
+    $COMMAND $markdown $markdownAlt -o $tmp > /dev/null 2>&1 || code=$?
     assert $code 1
 
-it "Should fail on missing value for \`--output\`"
+it "Should fail on \`--output <path>\` and multiple files"
     code=0
-    $COMMAND Readme.md --output > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown $markdownAlt --output $tmp > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing \`-o\` and multiple files"
+    code=0
+    $COMMAND $markdown $markdownAlt > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on missing \`--output\` and multiple files"
+    code=0
+    $COMMAND $markdown $markdownAlt > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+#
+# Multiple files and directories.
+#
+
+it "Should accept a directory"
+    code=0
+    $COMMAND $directory -o > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+    $COMMAND $directory --output > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail when given an ignored directory"
+    code=0
+    $COMMAND $ignoredDirectory --ignore-path $ignore > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail when given an ignored file"
+    code=0
+    $COMMAND $ignoredFile --ignore-path $ignore > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -124,66 +190,111 @@ it "Should fail on missing value for \`--output\`"
 
 it "Should accept \`-u <plugin>\`"
     code=0
-    $COMMAND -u ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -u $plugin $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--use <plugin>\`"
     code=0
-    $COMMAND --use ./test/badges.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --use $plugin $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-u <invalid-plugin>\`"
     code=0
-    $COMMAND -u ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -u $missingPlugin $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--use <invalid-plugin>\`"
     code=0
-    $COMMAND --use ./invalid-plugin.js Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --use $missingPlugin $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`-u\`"
     code=0
-    $COMMAND Readme.md -u > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown -u > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--use\`"
     code=0
-    $COMMAND Readme.md --use > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown --use > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
-# `--config`.
+# `--config-path`.
 #
 
 it "Should accept \`-c <path>\`"
     code=0
-    $COMMAND -c ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -c $rc $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
-it "Should accept \`--config <path>\`"
+it "Should accept \`--config-path <path>\`"
     code=0
-    $COMMAND --config ".mdastrc" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --config-path $rc $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-c <invalid-path>\`"
     code=0
-    $COMMAND -c "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -c $missingRC $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
-it "Should fail on \`--config <invalid-path>\`"
+it "Should fail on \`--config-path <invalid-path>\`"
     code=0
-    $COMMAND --config "somefile.json" Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --config-path $missingRC $markdown > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`-c <invalid-file>\`"
+    code=0
+    $COMMAND -c $invalidRc $markdown > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--config-path <invalid-file>\`"
+    code=0
+    $COMMAND --config-path $invalidRc $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on a missing value for \`-c\`"
     code=0
-    $COMMAND Readme.md -c > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown -c > /dev/null 2>&1 || code=$?
     assert $code 1
 
-it "Should fail on a missing value for \`--config\`"
+it "Should fail on a missing value for \`--config-path\`"
     code=0
-    $COMMAND Readme.md --config > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown --config-path > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+
+#
+# `--ignore-path`.
+#
+
+it "Should accept \`-i <path>\`"
+    code=0
+    $COMMAND -i $ignore $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--ignore-path <path>\`"
+    code=0
+    $COMMAND --ignore-path $ignore $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should fail on \`-i <invalid-path>\`"
+    code=0
+    $COMMAND -i $missingIgnore $markdown > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on \`--ignore-path <invalid-path>\`"
+    code=0
+    $COMMAND --ignore-path $missingIgnore $markdown > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on a missing value for \`-i\`"
+    code=0
+    $COMMAND $markdown -i > /dev/null 2>&1 || code=$?
+    assert $code 1
+
+it "Should fail on a missing value for \`--ignore-path\`"
+    code=0
+    $COMMAND $markdown --ignore-path > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -192,32 +303,32 @@ it "Should fail on a missing value for \`--config\`"
 
 it "Should accept \`-s <settings>\`"
     code=0
-    $COMMAND -s yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -s yaml:false $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should accept \`--setting <settings>\`"
     code=0
-    $COMMAND --setting yaml:false Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --setting yaml:false $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-s <invalid-settings>\`"
     code=0
-    $COMMAND -s yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND -s yaml:1 $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on \`--setting <invalid-settings>\`"
     code=0
-    $COMMAND --setting yaml:1 Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --setting yaml:1 $markdown > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`-s\`"
     code=0
-    $COMMAND Readme.md -s > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown -s > /dev/null 2>&1 || code=$?
     assert $code 1
 
 it "Should fail on missing value for \`--setting\`"
     code=0
-    $COMMAND Readme.md --setting > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown --setting > /dev/null 2>&1 || code=$?
     assert $code 1
 
 #
@@ -230,12 +341,21 @@ it "Should accept \`--settings\`"
     assert $code 0
 
 #
-# `--no-mdastrc`.
+# `--no-rc`.
 #
 
 it "Should accept \`--no-rc\`"
     code=0
-    $COMMAND --no-rc Readme.md > /dev/null 2>&1 || code=$?
+    $COMMAND --no-rc $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+#
+# `--no-ignore`.
+#
+
+it "Should accept \`--no-ignore\`"
+    code=0
+    $COMMAND --no-ignore $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #
@@ -272,7 +392,7 @@ it "Should accept \`-V\`"
 
 it "Should stop parsing arguments after \`--\`"
     code=0
-    $COMMAND History.md -- Some-unknown-file.md > /dev/null 2>&1 || code=$?
+    $COMMAND $markdown -- $missing > /dev/null 2>&1 || code=$?
     assert $code 0
 
 #

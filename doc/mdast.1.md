@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` [`--no-rc`] [`-a`, `--ast`] [`-o`, `--output` _path_] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config` _path_] file
+`mdast` [`-a`, `--ast`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`--no-rc`] [`--no-ignore`] file
 
 `mdast` --settings
 
@@ -16,12 +16,14 @@ Options are as follows:
 
 *   `-h`, `--help`: Output usage information;
 *   `-V`, `--version`: Output version number;
-*   `-o`, `--output` _path_: Specify output location;
-*   `-c`, `--config` _path_: Specify configuration location;
+*   `-o`, `--output` _path_: Specify output location.  When _path_ is omitted, input files are overwritten;
+*   `-c`, `--config-path` _path_: Specify configuration location;
+*   `-i`, `--ignore-path` _path_: Specify ignore location;
 *   `-s`, `--setting` _settings_: Specify settings;
 *   `-u`, `--use` _plugins_: Use transform plugin(s);
 *   `-a`, `--ast`: Output AST information;
-*   `--no-rc`: Disable configuration from .mdastrc.
+*   `--no-rc`: Disable configuration from _.mdastrc_;
+*   `--no-ignore`: Disable ignoring from _.mdastignore_;
 *   `--settings`: Output available settings.
 
 A `--` argument tells the cli parser to stop reading flags.
@@ -32,12 +34,12 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+[https://github.com/wooorm/mdast/issues](https://github.com/wooorm/mdast/issues)
 
 ## SEE ALSO
 
-mdastrc(5)
+**mdastrc**(5), **mdastignore**(5).
 
 ## AUTHOR
 
-Written by Titus Wormer <<tituswormer@gmail.com>>
+Written by Titus Wormer [tituswormer@gmail.com](tituswormer@gmail.com)

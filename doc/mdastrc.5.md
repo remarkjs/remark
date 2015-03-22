@@ -1,11 +1,14 @@
 # mdastrc(5) -- mdast config files
 
+## SYNOPSIS
+
+.mdastrc, package.json
+
 ## DESCRIPTION
 
 **mdast** gets its configuration from the command line and **mdastrc** files.
 
-For a list of available configuration options, see **mdast**(1) or
-<<https://github.com/wooorm/mdast/blob/master/doc/Options.md>>.
+For a list of available configuration options, see **mdast**(1) or [https://github.com/wooorm/mdast/blob/master/doc/Options.md](https://github.com/wooorm/mdast/blob/master/doc/Options.md).
 
 ## FILES
 
@@ -87,12 +90,12 @@ When stringifying `Readme.md`, **mdast(1)** would use
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+[https://github.com/wooorm/mdast/issues](https://github.com/wooorm/mdast/issues)
 
 ## SEE ALSO
 
-mdast(1)
+**mdast**(1), **mdastignore**(5).
 
 ## AUTHOR
 
-Written by Titus Wormer <<tituswormer@gmail.com>>
+Written by Titus Wormer [tituswormer@gmail.com](tituswormer@gmail.com)

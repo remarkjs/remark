@@ -18,12 +18,14 @@
   ],
   "dependencies": {
     "camelcase": "^1.0.0",
+    "chalk": "^1.0.0",
     "commander": "^2.0.0",
     "concat-stream": "^1.0.0",
     "debug": "^2.0.0",
     "he": "^0.5.0",
     "markdown-table": "^0.3.0",
-    "user-home": "^1.1.1",
+    "minimatch": "^2.0.0",
+    "user-home": "^1.0.0",
     "ware": "^1.2.0"
   },
   "repository": {
@@ -42,7 +44,6 @@
   },
   "devDependencies": {
     "browserify": "^9.0.0",
-    "chalk": "^1.0.0",
     "clone": "^1.0.1",
     "diff": "^1.0.0",
     "eslint": "^0.16.0",
@@ -75,15 +76,14 @@
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
     "regenerate": "node script/regenerate-fixtures.js",
-    "build-man": "marked-man doc/mdast.1.md > man/mdast.1 && marked-man doc/mdastrc.5.md > man/mdastrc.5",
+    "build-man": "marked-man doc/mdast.1.md > man/mdast.1 && marked-man doc/mdastrc.5.md > man/mdastrc.5 && marked-man doc/mdastignore.5.md > man/mdastignore.5",
     "build-expressions": "node script/build-expressions.js",
-    "build-readme": "bin/mdast Readme.md -o Readme.md",
-    "build-history": "bin/mdast -s setext History.md -o History.md",
-    "build-nodes": "bin/mdast doc/Nodes.md -o doc/Nodes.md",
+    "build-md": "bin/mdast . -o",
+    "build-history": "bin/mdast History.md --no-ignore --setting setext -o",
     "build-options": "node script/build-options.js",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-expressions && npm run build-readme && npm run build-history && npm run build-nodes && npm run build-options && npm run build-man && npm run build-bundle",
+    "build": "npm run build-expressions && npm run build-md && npm run build-history && npm run build-options && npm run build-man && npm run build-bundle",
     "prepublish": "npm run build"
   }
 }
