@@ -1,3 +1,23 @@
+0.13.0 / 2015-03-22
+===================
+
+*   Add multi-file and directory to CLI ([675c761](https://github.com/wooorm/mdast/commit/675c761))
+*   Refactor lib ([ed4a4c0](https://github.com/wooorm/mdast/commit/ed4a4c0))
+*   Add support for `--no-rc` to CLI ([69a89e4](https://github.com/wooorm/mdast/commit/69a89e4))
+*   Refactor CLI ([7ef836e](https://github.com/wooorm/mdast/commit/7ef836e))
+*   Add support for `--` argument to CLI ([d7e7c05](https://github.com/wooorm/mdast/commit/d7e7c05))
+*   Fix bug in node@0.10 re invalid error exit code ([8640af1](https://github.com/wooorm/mdast/commit/8640af1))
+*   Fix `prepublish` by using local CLI ([21b768b](https://github.com/wooorm/mdast/commit/21b768b))
+*   Add support for configuration files to CLI ([3cfca6a](https://github.com/wooorm/mdast/commit/3cfca6a))
+*   Update build ([ed6654f](https://github.com/wooorm/mdast/commit/ed6654f))
+*   Fix support for boolean attributes in CLI ([d1c86e0](https://github.com/wooorm/mdast/commit/d1c86e0))
+*   Add support for global plugins ([ae922e7](https://github.com/wooorm/mdast/commit/ae922e7))
+*   Add sceipt to regenerate fixtures ([5b7ae76](https://github.com/wooorm/mdast/commit/5b7ae76))
+*   Fix miscellaneous link definition bugs ([e84a054](https://github.com/wooorm/mdast/commit/e84a054))
+*   Refactor list support ([b4d2b47](https://github.com/wooorm/mdast/commit/b4d2b47))
+*   Update core contributor ([7859f1a](https://github.com/wooorm/mdast/commit/7859f1a))
+*   Add mdast-github as a dev-dependency ([20cb450](https://github.com/wooorm/mdast/commit/20cb450))
+
 0.12.0 / 2015-03-16
 ===================
 
