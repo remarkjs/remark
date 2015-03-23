@@ -3,7 +3,7 @@
 \fBmdast\fR \- Markdown parser and stringifier
 .SH SYNOPSIS
 .P
-\fBmdast\fR [\fB\-a\fR, \fB\-\-ast\fR] [\fB\-o\fR, \fB\-\-output\fR [\fIpath\fR]] [\fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR] [\fB\-u\fR, \fB\-\-use\fR \fIplugins\fR] [\fB\-c\fR, \fB\-\-config\-path\fR \fIpath\fR] [\fB\-i\fR, \fB\-\-ignore\-path\fR \fIpath\fR] [\fB\-e\fR, \fB\-\-ext\fR [\fIextensions\fR]] [\fB\-\-no\-rc\fR] [\fB\-\-no\-ignore\fR] \fIfile|dir\fR \fI\|\.\.\.\fR
+\fBmdast\fR [\fB\-a\fR, \fB\-\-ast\fR] [\fB\-q\fR, \fB\-\-quiet\fR] [\fB\-o\fR, \fB\-\-output\fR [\fIpath\fR]] [\fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR] [\fB\-u\fR, \fB\-\-use\fR \fIplugins\fR] [\fB\-c\fR, \fB\-\-config\-path\fR \fIpath\fR] [\fB\-i\fR, \fB\-\-ignore\-path\fR \fIpath\fR] [\fB\-e\fR, \fB\-\-ext\fR [\fIextensions\fR]] [\fB\-\-no\-rc\fR] [\fB\-\-no\-ignore\fR] \fIfile|dir\fR \fI\|\.\.\.\fR
 .P
 \fBmdast\fR \fI\-\-settings\fR
 .SH DESCRIPTION
@@ -32,6 +32,8 @@ Options are as follows:
 \fB\-e\fR, \fB\-\-ext\fR \fIextensions\fR: Specify file extensions to look for;
 .IP \(bu 2
 \fB\-a\fR, \fB\-\-ast\fR: Output AST information;
+.IP \(bu 2
+\fB\-q\fR, \fB\-\-quiet\fR: Output less messages;
 .IP \(bu 2
 \fB\-\-no\-rc\fR: Disable configuration from \fI\|\.mdastrc\fR;
 .IP \(bu 2

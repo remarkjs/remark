@@ -403,6 +403,7 @@ Options:
   -u, --use <plugins>       use transform plugin(s)
   -e, --ext <extensions>    specify extensions
   -a, --ast                 output AST information
+  -q, --quiet               output less messages
   --no-rc                   Disable configuration from .mdastrc
   --no-ignore               Disable ignore from .mdastignore
   --settings                output available settings

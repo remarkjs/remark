@@ -107,6 +107,20 @@ it "Should accept \`-a\`"
     assert $code 0
 
 #
+# `--quiet`.
+#
+
+it "Should accept \`--quiet\`"
+    result=`$COMMAND --quiet $markdown $markdownAlt --output`
+    assert 0 $?
+    assert $result ""
+
+it "Should accept \`-q\`"
+    result=`$COMMAND -q $markdown $markdownAlt --output`
+    assert 0 $?
+    assert $result ""
+
+#
 # `--output`.
 #
 
