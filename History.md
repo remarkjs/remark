@@ -1,3 +1,11 @@
+0.14.0-rc.1 / 2015-03-24
+========================
+
+*   Refactor plugin mechanism ([7dc23a6](https://github.com/wooorm/mdast/commit/7dc23a6))
+*   Remove plugins from `.mdastrc` for the time being ([204e32a](https://github.com/wooorm/mdast/commit/204e32a))
+*   Add support for `--quiet` flag in CLI ([64f9ed1](https://github.com/wooorm/mdast/commit/64f9ed1))
+*   Add support for `--ext` flag in CLI ([fa0c1d7](https://github.com/wooorm/mdast/commit/fa0c1d7))
+
 0.13.0 / 2015-03-22
 ===================
 
