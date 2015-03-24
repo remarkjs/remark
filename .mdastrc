@@ -1,9 +1,5 @@
 {
-  "plugins": [
-    "mdast-toc",
-    "mdast-usage",
-    "mdast-github"
-  ],
+  "plugins": [],
   "settings": {
     "bullet": "*"
   }
