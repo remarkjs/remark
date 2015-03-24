@@ -1,19 +1,19 @@
 'use strict';
 
 /*
- * Dependencies..
+ * Dependencies.
  */
 
 var Ware = require('ware');
-
-/*
- * Components.
- */
-
 var parse = require('./lib/parse.js');
 var stringify = require('./lib/stringify.js');
-var clone = require('./lib/utilities.js').clone;
+var utilities = require('./lib/utilities.js');
 
+/*
+ * Methods.
+ */
+
+var clone = utilities.clone;
 var Parser = parse.Parser;
 var parseProto = Parser.prototype;
 var Compiler = stringify.Compiler;
@@ -121,56 +121,85 @@ function constructCompiler() {
  */
 function MDAST() {
     this.ware = new Ware();
+    this.attachers = [];
 
     this.Parser = constructParser();
     this.Compiler = constructCompiler();
 }
 
 /**
- * Apply plugins to `node`.
+ * Apply transformers to `node`.
  *
- * @param {Node} node
+ * @param {Node} ast
  * @param {Object?} options
- * @return {Node} - `node`.
+ * @return {Node} - `ast`.
  */
-function run(node, options) {
+function run(ast, options) {
     var self = this;
+
+    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
+        utilities.raise(ast, 'ast');
+    }
 
     /*
      * Only run when this is an instance of MDAST.
      */
 
     if (self.ware) {
-        self.ware.run(node, options || {}, self, fail);
+        self.ware.run(ast, options || {}, self, fail);
     }
 
-    return node;
+    return ast;
 }
 
 /**
- * Construct an MDAST instance and use a plugin.
+ * Attach a plugin.
  *
- * @param {Function} plugin
+ * @param {Function|Array.<Function>} attach
  * @return {MDAST}
  */
-function use(plugin) {
+function use(attach, options) {
     var self = this;
+    var index;
+    var transformer;
 
     if (!(self instanceof MDAST)) {
         self = new MDAST();
     }
 
-    self.ware.use(plugin);
+    /*
+     * Multiple attachers.
+     */
 
-    if (plugin && 'attach' in plugin) {
-        plugin.attach(self);
+    if ('length' in attach && typeof attach !== 'function') {
+        index = attach.length;
+
+        while (attach[--index]) {
+            self.use(attach[index]);
+        }
+
+        return self;
+    }
+
+    /*
+     * Single plugin.
+     */
+
+    if (self.attachers.indexOf(attach) === -1) {
+        transformer = attach(self, options);
+
+        self.attachers.push(attach);
+
+        if (transformer) {
+            self.ware.use(transformer);
+        }
     }
 
     return self;
 }
 
 /**
- * Parse a value and apply plugins.
+ * Parse a value and apply transformers.
  *
  * @return {Root}
  */

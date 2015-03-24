@@ -130,8 +130,17 @@ function plugin(node, options) {
     }
 }
 
+/**
+ * Attach.
+ *
+ * @return {Function}
+ */
+function attach() {
+    return plugin;
+}
+
 /*
- * Expose `plugin`.
+ * Expose `attach`.
  */
 
-module.exports = plugin;
+module.exports = attach;

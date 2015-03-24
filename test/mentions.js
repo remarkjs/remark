@@ -36,6 +36,7 @@ mention.notInLink = true;
  * Attach expressions to mdast.
  *
  * @param {MDAST} mdast
+ * @return {Function}
  */
 function attach(mdast) {
     var parserProto = mdast.Parser.prototype;
@@ -52,12 +53,12 @@ function attach(mdast) {
     parserProto.inlineTokenizers.mention = mention;
     parserProto.expressions.rules.mention = EXPRESSION_MENTION;
     parserProto.inlineMethods.unshift('mention');
+
+    return plugin;
 }
 
-plugin.attach = attach;
-
 /*
- * Expose `plugin`.
+ * Expose `attach`.
  */
 
-module.exports = plugin;
+module.exports = attach;

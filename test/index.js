@@ -20,6 +20,15 @@ var INDENT = 2;
 function noop() {}
 
 /**
+ * No-operation plugin.
+ *
+ * @return {Function} - `noop`.
+ */
+function plugin() {
+    return noop;
+}
+
+/**
  * Construct an empty node.
  *
  * @return {Object}
@@ -369,13 +378,17 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 });
 
-describe('mdast.use(plugin)', function () {
+describe('mdast.use(plugin, options)', function () {
     it('should be a `function`', function () {
         assert(typeof mdast.use === 'function');
     });
 
-    it('should accept a function', function () {
+    it('should accept an attacher', function () {
         mdast.use(noop);
+    });
+
+    it('should accept multiple attachers', function () {
+        mdast.use([function () {}, function () {}]);
     });
 
     it('should return an instance of mdast', function () {
@@ -384,93 +397,94 @@ describe('mdast.use(plugin)', function () {
         assert(mdast.use(noop) instanceof parser.constructor);
     });
 
-    it('should attach a plugin', function () {
+    it('should attach an attacher', function () {
         var parser = mdast.use(noop);
+
+        assert(parser.attachers.length === 1);
+    });
+
+    it('should attach a transformer', function () {
+        var parser = mdast.use(plugin);
 
         assert(parser.ware.fns.length === 1);
     });
 
-    it('should multiple plugins', function () {
-        var parser = mdast.use(noop).use(noop);
+    it('should attach multiple attachers', function () {
+        var parser = mdast.use(function () {}).use(function () {});
+
+        assert(parser.attachers.length === 2);
+    });
+
+    it('should not attach the same attacher multiple times', function () {
+        var parser = mdast.use(plugin).use(plugin);
+
+        assert(parser.attachers.length === 1);
+    });
+
+    it('should attach multiple transformers', function () {
+        var parser;
+
+        /**
+         * Transformer.
+         */
+        parser = mdast.use(function () {
+            return function () {};
+        }).use(function () {
+            return function () {};
+        });
 
         assert(parser.ware.fns.length === 2);
     });
 
-    it('should invoke a plugin when `parse()` is invoked', function () {
-        var isInvoked;
-        var settings;
-
-        settings = {
-            'hello': 'world'
-        };
+    it('should attach the same transformer multiple times', function () {
+        var parser;
 
         /**
-         * Thrower.
+         * Transformer.
          */
-        function assertion(ast, options) {
-            assert(ast.type === 'root');
-            assert(options === settings);
+        function transformer() {}
+
+        parser = mdast.use(function () {
+            return transformer;
+        }).use(function () {
+            return transformer;
+        });
+
+        assert(parser.ware.fns.length === 2);
+    });
+
+    it('should invoke an attacher when `use()` is invoked', function () {
+        var options = {};
+        var isInvoked;
+
+        /**
+         * Attacher.
+         */
+        function assertion(parser, settings) {
+            assert('use' in parser);
+            assert(settings === options);
 
             isInvoked = true;
         }
 
-        mdast.use(assertion).parse('# Hello world', settings);
+        mdast.use(assertion, options);
 
         assert(isInvoked === true);
     });
 
-    it('should fail if an exception occurs in `plugin`', function () {
+    it('should fail if an exception occurs in an attacher', function () {
         var exception = new Error('test');
-
-        assert.throws(function () {
-            mdast.use(function () {
-                throw exception;
-            }).parse('');
-        }, /test/);
-    });
-
-    it('should invoke a plugin’s `attach` method', function () {
-        var exception = new Error('test');
-
-        /**
-         * Plugin.
-         */
-        function test() {}
 
         /**
          * Thrower.
          */
-        function attach() {
+        function thrower() {
             throw exception;
         }
 
-        test.attach = attach;
-
         assert.throws(function () {
-            mdast.use(test);
+            mdast.use(thrower);
         }, /test/);
-    });
-
-    it('should work on an example plugin', function () {
-        var parser = mdast.use(badges);
-
-        var source = parser.stringify(parser.parse('# mdast'));
-
-        assert(
-            source === '# mdast [' +
-            '![Version](http://img.shields.io/npm/v/mdast.svg)' +
-            '](https://www.npmjs.com/package/mdast)\n'
-        );
-
-        source = parser.stringify(parser.parse('# mdast', {
-            'flat': true
-        }));
-
-        assert(
-            source === '# mdast [' +
-            '![Version](http://img.shields.io/npm/v/mdast.svg?style=flat)' +
-            '](https://www.npmjs.com/package/mdast)\n'
-        );
     });
 });
 
@@ -483,6 +497,12 @@ describe('mdast.run(ast, options)', function () {
         mdast.run(empty());
     });
 
+    it('should throw when `ast` is not an AST', function () {
+        assert.throws(function () {
+            mdast.run(false);
+        }, /false/);
+    });
+
     it('should accept options', function () {
         mdast.run(empty(), {});
     });
@@ -492,76 +512,133 @@ describe('mdast.run(ast, options)', function () {
 
         assert(node === mdast.run(node, {}));
     });
+});
 
-    it('should invoke a plugin', function () {
-        var node = empty();
+describe('function attacher(mdast, options)', function () {
+    /*
+     * Lot’s of other tests are in
+     * `mdast.use(plugin, options)`.
+     */
+
+    it('should be able to modify `Parser` without affecting other instances',
+        function () {
+            var doc = 'Hello w/ a @mention!\n';
+
+            assert(
+                mdast.stringify(mdast.use(mentions).parse(doc)) ===
+                'Hello w/ a [@mention](https://github.com/blog/821)!\n'
+            );
+
+            assert(mdast.stringify(mdast.parse(doc)) === doc);
+        }
+    );
+});
+
+describe('function transformer(ast, options, mdast)', function () {
+    it('should be invoked when `parse()` is invoked', function () {
+        var options = {};
         var isInvoked;
-        var settings;
-
-        settings = {
-            'hello': 'world'
-        };
 
         /**
-         * Assertion.
+         * Plugin.
          */
-        function assertion(ast, options) {
-            assert(ast === node);
-            assert(options === settings);
+        function assertion(ast, settings) {
+            assert(ast.type === 'root');
+            assert(settings === options);
 
             isInvoked = true;
         }
 
-        mdast.use(assertion).run(node, settings);
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return assertion;
+        }
+
+        mdast.use(attacher).parse('# Hello world', options);
 
         assert(isInvoked === true);
     });
 
-    it('should work without plugins', function () {
-        mdast.run(empty());
+    it('should be invoked when `parse()` is invoked', function () {
+        var result = mdast.parse('# Hello world');
+        var options = {};
+        var isInvoked;
+
+        /**
+         * Plugin.
+         */
+        function assertion(ast, settings) {
+            assert(ast === result);
+            assert(settings === options);
+
+            isInvoked = true;
+        }
+
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return assertion;
+        }
+
+        mdast.use(attacher).run(result, options);
+
+        assert(isInvoked === true);
+    });
+
+    it('should fail mdast if an exception occurs', function () {
+        var exception = new Error('test');
+        var fixture = '# Hello world';
+        var ast = mdast.parse(fixture);
+        var parser;
+
+        /**
+         * Thrower.
+         */
+        function thrower() {
+            throw exception;
+        }
+
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return thrower;
+        }
+
+        parser = mdast.use(attacher);
+
+        assert.throws(function () {
+            parser.parse(fixture);
+        }, /test/);
+
+        assert.throws(function () {
+            parser.run(ast);
+        }, /test/);
     });
 
     it('should work on an example plugin', function () {
         var parser = mdast.use(badges);
-        var nodeA = mdast.parse('# mdast');
-        var nodeB = mdast.parse('# mdast');
-
-        var source = parser.stringify(parser.run(nodeA));
+        var source = parser.stringify(parser.parse('# mdast'));
 
         assert(
-            source === '# mdast [' +
-            '![Version](http://img.shields.io/npm/v/mdast.svg)' +
+            source ===
+            '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg)' +
             '](https://www.npmjs.com/package/mdast)\n'
         );
 
-        source = parser.stringify(parser.run(nodeB, {
+        source = parser.stringify(parser.parse('# mdast', {
             'flat': true
         }));
 
         assert(
-            source === '# mdast [' +
-            '![Version](http://img.shields.io/npm/v/mdast.svg?style=flat)' +
-            '](https://www.npmjs.com/package/mdast)\n'
+            source ===
+            '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg' +
+            '?style=flat)](https://www.npmjs.com/package/mdast)\n'
         );
     });
-});
-
-describe('function plugin(ast, options, context) {}', function () {
-    it('should be able to modify `Parser` without affecting ' +
-        'other instances of mdast',
-        function () {
-            var doc = 'Hello w/ a @mention!\n';
-            var output1 = mdast.stringify(mdast.use(mentions).parse(doc));
-            var output2 = mdast.stringify(mdast.parse(doc));
-
-            assert(
-                output1 === 'Hello w/ a ' +
-                '[@mention](https://github.com/blog/821)!\n'
-            );
-
-            assert(output2 === doc);
-        }
-    );
 });
 
 var validateToken;
