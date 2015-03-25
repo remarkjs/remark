@@ -14,9 +14,7 @@ It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://g
     *   [mdast.parse(value, options?)](#mdastparsevalue-options)
     *   [mdast.stringify(ast, options?)](#mdaststringifyast-options)
     *   [mdast.run(ast, options?)](#mdastrunast-options)
-    *   [mdast.use(plugin)](#mdastuseplugin)
-        *   [function plugin(ast, options, mdast)](#function-pluginast-options-mdast)
-        *   [function attach(mdast)](#function-attachmdast)
+    *   [mdast.use(plugin, options?)](#mdastuseplugin-options)
 *   [CLI](#cli)
 *   [Benchmark](#benchmark)
 *   [License](#license)
@@ -325,57 +323,24 @@ Modify an abstract syntax tree by applying `use`d [`plugin`](#function-pluginast
 
 `Object`: the given [AST](doc/Nodes.md).
 
-### [mdast](#api).use([plugin](#function-pluginast-options-mdast))
+### [mdast](#api).use([plugin](#doc/Plugins#plugin), options?)
 
 Change the way [`mdast`](#api) works by using a [`plugin`](#function-pluginast-options-mdast).
 
 **Signatures**
 
-*   `mdast = mdast.use(plugin)`;
+*   `mdast = mdast.use(plugin, options?)`;
 *   `mdast = mdast.use(plugins)`.
 
 **Parameters**
 
 *   `plugin` (`Function`) — See [`plugin`](#function-pluginast-options-mdast);
-*   `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s.
+*   `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s;
+*   `options` (`Object?`) — Passed to the plugin. Specified by its documentation.
 
 **Returns**
 
-`Object`: an instance of MDAST: The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins.
-
-This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
-
-#### function plugin([ast](doc/Nodes.md#node), [options](doc/Options.md#parse), [mdast](#api))
-
-A plugin is a simple function which is invoked each time a document is [`mdast.parse()`](#mdastparsevalue-options)d. A plugin should change the [AST](doc/Nodes.md#node) to add or remove nodes. [`attach`](#function-attachmdast) should change the **mdast** instance.
-
-**Signatures**
-
-*   `plugin(ast, options, mdast)`;
-*   `error = plugin(ast, options, mdast)`.
-
-**Parameters**
-
-*   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-*   `options` (`Object`) — Options passed to [`mdast.parse()`](#mdastparsevalue-options) or [`mdast.run()`](#mdastrunast-options);
-*   `mdast` (`Object`) — Context on which [`mdast.parse()`](#mdastparsevalue-options) or [`mdast.run()`](#mdastrunast-options) was invoked.
-
-**Returns**
-
-`undefined` or `Error`, which in the later case will be thrown.
-
-#### function attach([mdast](#api))
-
-To modify the parser (for an example, see [`test/mentions.js`](test/mentions.js)), specify an `attach` method on `plugin`.
-`attach` is invoked when the plugin is first [`use`](#mdastuseplugin)d.
-
-**Signatures**
-
-*   `attach(mdast)`.
-
-**Parameters**
-
-*   `mdast` (`Object`) — Context on which the plugin was [`use`](#mdastuseplugin)d.
+`Object`: an instance of MDAST: The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins. This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
 
 ## CLI
 
