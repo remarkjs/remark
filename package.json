@@ -53,9 +53,9 @@
     "jscs-jsdoc": "^0.4.0",
     "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
-    "mdast-github": "^0.1.0",
-    "mdast-toc": "^0.1.1",
-    "mdast-usage": "^0.1.0",
+    "mdast-github": "^0.2.0",
+    "mdast-toc": "^0.2.0",
+    "mdast-usage": "^0.2.0",
     "mocha": "^2.0.0"
   },
   "scripts": {
