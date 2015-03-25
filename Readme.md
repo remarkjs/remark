@@ -307,7 +307,7 @@ All options (including the options object itself) can be `null` or `undefined` t
 
 ### [mdast](#api).run([ast](doc/Nodes.md#node), options?)
 
-Modify an abstract syntax tree by applying `use`d [`plugin`](#function-pluginast-options-mdast)s to it.
+Modify an abstract syntax tree by applying `use`d [`plugin`](doc/Plugins.md)s to it.
 
 **Signatures**
 
@@ -323,9 +323,9 @@ Modify an abstract syntax tree by applying `use`d [`plugin`](#function-pluginast
 
 `Object`: the given [AST](doc/Nodes.md).
 
-### [mdast](#api).use([plugin](#doc/Plugins#plugin), options?)
+### [mdast](#api).use([plugin](doc/Plugins#plugin), options?)
 
-Change the way [`mdast`](#api) works by using a [`plugin`](#function-pluginast-options-mdast).
+Change the way [`mdast`](#api) works by using a [`plugin`](doc/Plugins.md).
 
 **Signatures**
 
@@ -334,8 +334,8 @@ Change the way [`mdast`](#api) works by using a [`plugin`](#function-pluginast-o
 
 **Parameters**
 
-*   `plugin` (`Function`) — See [`plugin`](#function-pluginast-options-mdast);
-*   `plugins` (`Array.<Function>`) — A list of [`plugin`](#function-pluginast-options-mdast)s;
+*   `plugin` (`Function`) — A [**Plugin**](doc/Plugins.md);
+*   `plugins` (`Array.<Function>`) — A list of [**Plugins**](doc/Plugins.md);
 *   `options` (`Object?`) — Passed to the plugin. Specified by its documentation.
 
 **Returns**
