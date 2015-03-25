@@ -323,7 +323,7 @@ Modify an abstract syntax tree by applying `use`d [`plugin`](doc/Plugins.md)s to
 
 `Object`: the given [AST](doc/Nodes.md).
 
-### [mdast](#api).use([plugin](doc/Plugins#plugin), options?)
+### [mdast](#api).use([plugin](doc/Plugins.md#plugin), options?)
 
 Change the way [`mdast`](#api) works by using a [`plugin`](doc/Plugins.md).
 
