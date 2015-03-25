@@ -1,3 +1,19 @@
+0.14.0 / 2015-03-26
+===================
+
+*   Update `.travis.yml` ([85072a1](https://github.com/wooorm/mdast/commit/85072a1))
+*   Fix more links in docs ([d83d44c](https://github.com/wooorm/mdast/commit/d83d44c))
+*   Fix absolute links in `doc/Plugins.md` ([17803b8](https://github.com/wooorm/mdast/commit/17803b8))
+*   Fix links in `Readme.md`, `doc/Plugins.md` ([a2c483f](https://github.com/wooorm/mdast/commit/a2c483f))
+*   Move plugin documention to `doc/Plugins.md` ([aaec197](https://github.com/wooorm/mdast/commit/aaec197))
+*   Fix `script/build-options.js` for plugin mechanism changes ([22c5caa](https://github.com/wooorm/mdast/commit/22c5caa))
+*   Add, or better, re-add, plug-ins after update ([56a293d](https://github.com/wooorm/mdast/commit/56a293d))
+*   Update generated lib for [ed4a4c0](https://github.com/wooorm/mdast/commit/ed4a4c0) ([36c4c70](https://github.com/wooorm/mdast/commit/36c4c70))
+*   Update eslint ([eaa6900](https://github.com/wooorm/mdast/commit/eaa6900))
+*   0.14.0-rc.1 ([e329eea](https://github.com/wooorm/mdast/commit/e329eea))
+*   Refactor plugin mechanism ([7dc23a6](https://github.com/wooorm/mdast/commit/7dc23a6))
+*   Remove plugins from `.mdastrc` for the time being ([204e32a](https://github.com/wooorm/mdast/commit/204e32a))
+
 0.14.0-rc.1 / 2015-03-24
 ========================
 
