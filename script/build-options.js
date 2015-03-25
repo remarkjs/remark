@@ -235,7 +235,7 @@ stringify.forEach(renderSection);
  * Add toc.
  */
 
-toc(root);
+toc()(root);
 
 /*
  * Write.
