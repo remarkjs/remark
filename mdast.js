@@ -341,13 +341,14 @@ module.exports = {
 var he = require('he');
 var utilities = require('./utilities.js');
 var defaultExpressions = require('./expressions.js');
-var defaults = require('./defaults.js').parse;
+var defaultOptions = require('./defaults.js').parse;
 
 /*
  * Cached methods.
  */
 
 var repeat = utilities.repeat;
+var clone = utilities.clone;
 var copy = utilities.copy;
 var raise = utilities.raise;
 var trim = utilities.trim;
@@ -1923,10 +1924,7 @@ function tokenizeInlineText(eat, $0) {
  */
 function Parser(options) {
     var self = this;
-    var expressions = self.expressions;
-    var rules = copy({}, expressions.rules);
-
-    self.options = options;
+    var rules = copy({}, self.expressions.rules);
 
     /*
      * Create space for definition/reference type nodes.
@@ -1936,16 +1934,48 @@ function Parser(options) {
     self.footnotes = {};
     self.footnotesAsArray = [];
 
-    self.options = options;
-
-    self.rules = rules;
-
     self.footnoteCounter = 1;
 
     self.inLink = false;
     self.atTop = true;
     self.atStart = true;
     self.inBlockquote = false;
+
+    self.rules = rules;
+    self.descape = descapeFactory(rules, 'escape');
+
+    self.setOptions(options);
+}
+
+/**
+ * Set options.
+ *
+ * @this {Parser}
+ * @param {Object?} options
+ * @return {Parser} - `self`.
+ */
+Parser.prototype.setOptions = function (options) {
+    var self = this;
+    var expressions = self.expressions;
+    var rules = self.rules;
+    var defaults = self.defaults;
+
+    if (options === null || options === undefined) {
+        options = {};
+    } else if (typeof options !== 'object') {
+        raise(options, 'options');
+    } else {
+        options = copy(clone(defaults), options);
+    }
+
+    validate.bool(options, 'gfm', defaults.gfm);
+    validate.bool(options, 'yaml', defaults.yaml);
+    validate.bool(options, 'commonmark', defaults.commonmark);
+    validate.bool(options, 'footnotes', defaults.footnotes);
+    validate.bool(options, 'breaks', defaults.breaks);
+    validate.bool(options, 'pedantic', defaults.pedantic);
+
+    self.options = options;
 
     if (options.breaks) {
         copy(rules, expressions.breaks);
@@ -1963,6 +1993,8 @@ function Parser(options) {
         copy(rules, expressions.commonmark);
 
         self.enterBlockquote = noopToggler();
+    } else {
+        self.enterBlockquote = stateToggler('inBlockquote', false);
     }
 
     if (options.gfm && options.commonmark) {
@@ -1981,8 +2013,14 @@ function Parser(options) {
         copy(rules, expressions.footnotes);
     }
 
-    self.descape = descapeFactory(rules, 'escape');
-}
+    return self;
+};
+
+/*
+ * Expose `defaults`.
+ */
+
+Parser.prototype.defaults = defaultOptions;
 
 /*
  * Expose `expressions`.
@@ -2005,6 +2043,10 @@ Parser.prototype.parse = function (value) {
     var token;
     var start;
     var last;
+
+    if (typeof value !== 'string') {
+        raise(value, 'value');
+    }
 
     /*
      * Add an `offset` matrix, used to keep track of
@@ -2487,25 +2529,6 @@ function parse(value, options, CustomParser) {
         CustomParser = this.Parser || Parser;
     }
 
-    if (typeof value !== 'string') {
-        raise(value, 'value');
-    }
-
-    if (options === null || options === undefined) {
-        options = {};
-    } else if (typeof options !== 'object') {
-        raise(options, 'options');
-    } else {
-        options = copy({}, options);
-    }
-
-    validate.bool(options, 'gfm', defaults.gfm);
-    validate.bool(options, 'yaml', defaults.yaml);
-    validate.bool(options, 'commonmark', defaults.commonmark);
-    validate.bool(options, 'footnotes', defaults.footnotes);
-    validate.bool(options, 'breaks', defaults.breaks);
-    validate.bool(options, 'pedantic', defaults.pedantic);
-
     return new CustomParser(options).parse(value);
 }
 
@@ -2530,7 +2553,7 @@ module.exports = parse;
 
 var table = require('markdown-table');
 var utilities = require('./utilities.js');
-var defaults = require('./defaults.js').stringify;
+var defaultOptions = require('./defaults.js').stringify;
 
 /*
  * Cached methods.
@@ -2538,6 +2561,7 @@ var defaults = require('./defaults.js').stringify;
 
 var repeat = utilities.repeat;
 var copy = utilities.copy;
+var clone = utilities.clone;
 var raise = utilities.raise;
 var trimLeft = utilities.trimLeft;
 var validate = utilities.validate;
@@ -2771,18 +2795,44 @@ function pad(value, level) {
  */
 function Compiler(options) {
     var self = this;
-    var ruleRepetition;
 
     self.footnoteCounter = 0;
     self.linkCounter = 0;
     self.links = [];
+
+    self.setOptions(options);
+}
+
+/*
+ * Cache prototype.
+ */
+
+var compilerPrototype = Compiler.prototype;
+
+/*
+ * Expose defaults.
+ */
+
+compilerPrototype.defaults = defaultOptions;
+
+/**
+ * Set options.
+ *
+ * @this {Compiler}
+ * @param {Object?} options
+ * @return {Compiler} - `self`.
+ */
+compilerPrototype.setOptions = function (options) {
+    var self = this;
+    var defaults = self.defaults;
+    var ruleRepetition;
 
     if (options === null || options === undefined) {
         options = {};
     } else if (typeof options !== 'object') {
         raise(options, 'options');
     } else {
-        options = copy({}, options);
+        options = copy(clone(defaults), options);
     }
 
     validate.map(options, 'bullet', LIST_BULLETS, defaults.bullet);
@@ -2809,13 +2859,9 @@ function Compiler(options) {
     }
 
     self.options = options;
-}
 
-/*
- * Cache prototype.
- */
-
-var compilerPrototype = Compiler.prototype;
+    return self;
+};
 
 /**
  * Visit a token.

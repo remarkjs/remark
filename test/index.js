@@ -160,6 +160,43 @@ describe('mdast.parse(value, options, CustomParser)', function () {
 
         assert(isInvoked === true);
     });
+
+    it('should be able to set options', function () {
+        var parser = mdast.use(noop);
+        var html = parser.Parser.prototype.blockTokenizers.html;
+        var result;
+
+        /**
+         * Set option when an HMTL comment occurs:
+         * `<!-- $key -->`, turns on `$key`.
+         *
+         * @param {function(string)} eat
+         * @param {string} $0
+         */
+        function replacement(eat, $0) {
+            var token = /<!--\s*(.*?)\s*-->/g.exec($0);
+            var options = {};
+
+            if (token) {
+                options[token[1]] = true;
+
+                this.setOptions(options);
+            }
+
+            return html.apply(this, arguments);
+        }
+
+        parser.Parser.prototype.blockTokenizers.html = replacement;
+
+        result = parser.parse([
+            '<!-- commonmark -->',
+            '',
+            '1)   Hello World',
+            ''
+        ].join('\n'));
+
+        assert(result.children[1].type === 'list');
+    });
 });
 
 describe('mdast.stringify(ast, options, CustomCompiler)', function () {
@@ -350,6 +387,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 
     it('should accept a `CustomCompiler` as a third argument', function () {
+        var Compiler = mdast.stringify.Compiler;
         var isInvoked;
 
         /**
@@ -358,7 +396,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
          * @constructor {CustomCompiler}
          */
         function CustomCompiler() {
-            return mdast.stringify.Compiler.apply(this, arguments);
+            return Compiler.apply(this, arguments);
         }
 
         /**
@@ -371,10 +409,56 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         }
 
         CustomCompiler.prototype.visit = visit;
+        CustomCompiler.prototype.setOptions = Compiler.prototype.setOptions;
+        CustomCompiler.prototype.defaults = Compiler.prototype.defaults;
 
         mdast.stringify(empty(), null, CustomCompiler);
 
         assert(isInvoked === true);
+    });
+
+    it('should be able to set options', function () {
+        var parser = mdast.use(noop);
+        var html = parser.Compiler.prototype.html;
+        var ast;
+
+        ast = parser.parse([
+            '<!-- setext -->',
+            '',
+            '# Hello World',
+            ''
+        ].join('\n'));
+
+        /**
+         * Set option when an HMTL comment occurs:
+         * `<!-- $key -->`, turns on `$key`.
+         *
+         * @param {Object} token
+         * @return {string}
+         */
+        function replacement(token) {
+            var value = token.value;
+            var result = /<!--\s*(.*?)\s*-->/g.exec(value);
+            var options = {};
+
+            if (result) {
+                options[result[1]] = true;
+
+                this.setOptions(options);
+            }
+
+            return html.apply(this, arguments);
+        }
+
+        parser.Compiler.prototype.html = replacement;
+
+        assert(parser.stringify(ast) === [
+            '<!-- setext -->',
+            '',
+            'Hello World',
+            '===========',
+            ''
+        ].join('\n'));
     });
 });
 
