@@ -1,3 +1,8 @@
+0.15.0 / 2015-03-27
+===================
+
+*   Add support for setting `parse`, `stringify` options during runtime ([999f3f4](https://github.com/wooorm/mdast/commit/999f3f4))
+
 0.14.0 / 2015-03-26
 ===================
 
