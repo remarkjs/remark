@@ -1,3 +1,8 @@
+0.15.1 / 2015-03-27
+===================
+
+*   Fix runtime `setOptions` ([481e096](https://github.com/wooorm/mdast/commit/481e096))
+
 0.15.0 / 2015-03-27
 ===================
 
