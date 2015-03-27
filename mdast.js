@@ -1944,6 +1944,8 @@ function Parser(options) {
     self.rules = rules;
     self.descape = descapeFactory(rules, 'escape');
 
+    self.options = clone(self.options);
+
     self.setOptions(options);
 }
 
@@ -1958,14 +1960,14 @@ Parser.prototype.setOptions = function (options) {
     var self = this;
     var expressions = self.expressions;
     var rules = self.rules;
-    var defaults = self.defaults;
+    var defaults = self.options;
 
     if (options === null || options === undefined) {
         options = {};
     } else if (typeof options !== 'object') {
         raise(options, 'options');
     } else {
-        options = copy(clone(defaults), options);
+        options = clone(options);
     }
 
     validate.bool(options, 'gfm', defaults.gfm);
@@ -2020,7 +2022,7 @@ Parser.prototype.setOptions = function (options) {
  * Expose `defaults`.
  */
 
-Parser.prototype.defaults = defaultOptions;
+Parser.prototype.options = defaultOptions;
 
 /*
  * Expose `expressions`.
@@ -2800,6 +2802,8 @@ function Compiler(options) {
     self.linkCounter = 0;
     self.links = [];
 
+    self.options = clone(self.options);
+
     self.setOptions(options);
 }
 
@@ -2813,7 +2817,7 @@ var compilerPrototype = Compiler.prototype;
  * Expose defaults.
  */
 
-compilerPrototype.defaults = defaultOptions;
+compilerPrototype.options = defaultOptions;
 
 /**
  * Set options.
@@ -2824,7 +2828,7 @@ compilerPrototype.defaults = defaultOptions;
  */
 compilerPrototype.setOptions = function (options) {
     var self = this;
-    var defaults = self.defaults;
+    var defaults = self.options;
     var ruleRepetition;
 
     if (options === null || options === undefined) {
@@ -2832,7 +2836,7 @@ compilerPrototype.setOptions = function (options) {
     } else if (typeof options !== 'object') {
         raise(options, 'options');
     } else {
-        options = copy(clone(defaults), options);
+        options = clone(options);
     }
 
     validate.map(options, 'bullet', LIST_BULLETS, defaults.bullet);

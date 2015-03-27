@@ -410,6 +410,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
 
         CustomCompiler.prototype.visit = visit;
         CustomCompiler.prototype.setOptions = Compiler.prototype.setOptions;
+        CustomCompiler.prototype.options = Compiler.prototype.options;
         CustomCompiler.prototype.defaults = Compiler.prototype.defaults;
 
         mdast.stringify(empty(), null, CustomCompiler);
