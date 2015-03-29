@@ -2,7 +2,8 @@
   "plugins": [
     "mdast-github",
     "mdast-usage",
-    "mdast-toc"
+    "mdast-toc",
+    "mdast-yaml-config"
   ],
   "settings": {
     "bullet": "*"
