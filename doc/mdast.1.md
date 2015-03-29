@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
+`mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-color`] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
 
 ## DESCRIPTION
 
@@ -22,8 +22,9 @@ Options are as follows:
 *   `-e`, `--ext` _extensions_: Specify file extensions to look for;
 *   `-a`, `--ast`: Output AST information;
 *   `-q`, `--quiet`: Output less messages;
+*   `--no-color`: disable color in output;
 *   `--no-rc`: Disable configuration from _.mdastrc_;
-*   `--no-ignore`: Disable ignoring from _.mdastignore_;
+*   `--no-ignore`: Disable ignoring from _.mdastignore_.
 
 A `--` argument tells the cli parser to stop reading flags.
 

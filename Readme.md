@@ -369,6 +369,7 @@ Options:
   -e, --ext <extensions>    specify extensions
   -a, --ast                 output AST information
   -q, --quiet               output less messages
+  --no-color                disable color in output
   --no-rc                   disable configuration from .mdastrc
   --no-ignore               disable ignore from .mdastignore
 
