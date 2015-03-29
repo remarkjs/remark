@@ -35,7 +35,7 @@ Unless provided directly to **mdast**(1), hidden directories (such as _.git_) ar
 
 ## BUGS
 
-[https://github.com/wooorm/mdast/issues](https://github.com/wooorm/mdast/issues)
+<<https://github.com/wooorm/mdast/issues>>
 
 ## SEE ALSO
 
@@ -43,4 +43,4 @@ Unless provided directly to **mdast**(1), hidden directories (such as _.git_) ar
 
 ## AUTHOR
 
-Written by Titus Wormer [tituswormer@gmail.com](tituswormer@gmail.com)
+Written by Titus Wormer <mailto:<mailto:tituswormer@gmail.com>>
