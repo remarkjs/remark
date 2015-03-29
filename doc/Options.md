@@ -22,7 +22,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
     *   [Fence](#fence)
     *   [Fences](#fences)
     *   [Loose Tables](#loose-tables)
-    *   [Reference Links](#reference-links)
+    *   [Reference Links and Images](#reference-links-and-images)
     *   [Horizontal Rules](#horizontal-rules)
     *   [Setext Headings](#setext-headings)
     *   [Spaced Tables](#spaced-tables)
@@ -995,13 +995,14 @@ Yields:
     How   |    are
     you   | today?
 
-### Reference Links
+### Reference Links and Images
 
 Setting `referenceLinks: true` (default: `false`) will stringify links using link references and link definitions.
+Setting `referenceImages: true` (default: `false`) will do the same for images.
 
 The following document:
 
-    Lorem ipsum dolor sit [amet](http://amet.com "Amet").
+    Lorem ipsum dolor sit [amet](http://amet.com "Amet"), consectetur ![adipiscing](adipiscing.png "Adipiscing") elit.
 
 And the below JavaScript:
 
@@ -1009,15 +1010,17 @@ And the below JavaScript:
 var ast = mdast.parse(document);
 
 mdast.stringify(ast, {
-  "referenceLinks": true
+  "referenceLinks": true,
+  "referenceImages": true
 });
 ```
 
 Yields:
 
-    Lorem ipsum dolor sit [amet][1].
+    Lorem ipsum dolor sit [amet][1], consectetur ![adipiscing][2] elit.
 
     [1]: http://amet.com "Amet"
+    [2]: adipiscing.png "Adipiscing"
 
 ### Horizontal Rules
 

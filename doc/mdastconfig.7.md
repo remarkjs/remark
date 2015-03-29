@@ -63,6 +63,7 @@ See <<https://github.com/wooorm/mdast#mdaststringifyast-options>> for a descript
 *   `looseTable` (boolean, default: false);
 *   `spacedTable` (boolean, default: true);
 *   `referenceLinks` (boolean, default: false);
+*   `referenceImages` (boolean, default: false);
 *   `fences` (boolean, default: false);
 *   `bullet` ("-", "*", or "+", default: "-");
 *   `rule` ("-", "\*", or "_", default: "*");
