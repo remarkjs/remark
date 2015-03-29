@@ -372,6 +372,7 @@ var SLASH = '\\';
 var SPACE = ' ';
 var TAB = '\t';
 var EMPTY = '';
+var COLON = ':';
 var LT = '<';
 var GT = '>';
 var BLOCK = 'block';
@@ -2221,7 +2222,6 @@ function tokenizeFactory(type) {
         var match;
         var matched;
         var valueLength;
-        var err;
 
         /*
          * Trim white space only lines.
@@ -2269,6 +2269,26 @@ function tokenizeFactory(type) {
                 'line': line,
                 'column': column
             };
+        }
+
+        /**
+         * Create an exception.
+         *
+         * @param {string} reason
+         * @return {Error}
+         */
+        function exception(reason) {
+            var file = self.options.file || '<text>';
+            var err = new Error(
+                file + COLON + line + COLON + column + COLON + SPACE + reason
+            );
+
+            err.filename = file;
+            err.reason = reason;
+            err.line = line;
+            err.column = column;
+
+            return err;
         }
 
         /**
@@ -2374,6 +2394,12 @@ function tokenizeFactory(type) {
         eat.now = now;
 
         /*
+         * Expose `exception` on `eat`.
+         */
+
+        eat.exception = exception;
+
+        /*
          * Sync initial offset.
          */
 
@@ -2420,12 +2446,7 @@ function tokenizeFactory(type) {
 
             /* istanbul ignore if */
             if (!matched) {
-                err = new Error(line + ':' + column + ': Infinite loop');
-                err.reason = 'Infinite loop';
-                err.line = line;
-                err.column = column;
-
-                throw err;
+                throw eat.exception('Infinite loop');
             }
         }
 

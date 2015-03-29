@@ -107,6 +107,35 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         }, /options.yaml/);
     });
 
+    it('should throw parse errors', function () {
+        var parser = mdast.use(noop);
+        var message = 'Found it!';
+        var hasThrown;
+
+        /**
+         * Tokenizer.
+         */
+        function emphasis(eat) {
+            throw eat.exception(message);
+        }
+
+        parser.Parser.prototype.inlineTokenizers.emphasis = emphasis;
+
+        try {
+            parser.parse('Hello *World*!');
+        } catch (exception) {
+            hasThrown = true;
+
+            assert(exception.filename === '<text>');
+            assert(exception.line === 1);
+            assert(exception.column === 7);
+            assert(exception.reason === message);
+            assert(exception.message === '<text>:1:7: ' + message);
+        }
+
+        assert(hasThrown === true);
+    });
+
     it('should not accept inherited properties', function () {
         /**
          * Fixture for inherited options.
