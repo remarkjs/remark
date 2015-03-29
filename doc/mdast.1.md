@@ -4,8 +4,6 @@
 
 `mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
 
-`mdast` _--settings_
-
 ## DESCRIPTION
 
 **mdast** is speedy Markdown parser (and stringifier) for multipurpose analysis in JavaScript.  Node.js and browser.  Lots of tests.  100% coverage.
@@ -26,7 +24,6 @@ Options are as follows:
 *   `-q`, `--quiet`: Output less messages;
 *   `--no-rc`: Disable configuration from _.mdastrc_;
 *   `--no-ignore`: Disable ignoring from _.mdastignore_;
-*   `--settings`: Output available settings.
 
 A `--` argument tells the cli parser to stop reading flags.
 
@@ -40,7 +37,7 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## SEE ALSO
 
-**mdastrc**(5), **mdastignore**(5).
+**mdastrc**(5), **mdastignore**(5), **mdastconfig**(7).
 
 ## AUTHOR
 

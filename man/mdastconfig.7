@@ -1,0 +1,106 @@
+.TH "MDASTCONFIG" "7" "March 2015" "" ""
+.SH "NAME"
+\fBmdastconfig\fR \- mdast configuration
+.SH SYNOPSIS
+.P
+\fBmdast\fR(1), \fBmdast\fR(3), \fBmdastrc\fR(5)
+.SH DESCRIPTION
+.P
+\fBmdast\fR is configured from multiple sources:
+.RS 0
+.IP \(bu 2
+\fBmdast\fR(3) accepts configuration as a parameter to its \fBparse()\fR, \fBrun()\fR, and \fBstringify()\fR methods;
+.IP \(bu 2
+\fBmdast\fR(1) accepts configuration as command line flags through \fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR;
+.IP \(bu 2
+\fBmdast\fR(1) additionally accepts configuration through a \fBsettings\fR key in \fBmdastrc\fR(5) configuration files;
+.IP \(bu 2
+Plug\-ins can configure mdast, for example, \fBmdast\-yaml\-config\fR allows per\-file configuration to be set through YAML front\-matter\.
+
+.RE
+.P
+For a list of available configuration options, see the SETTINGS section below or  \fIhttps://github\.com/wooorm/mdast/blob/master/doc/Options\.md\fR\|\.
+.SS SETTINGS FOR \fBPARSE()\fR, \fBRUN()\fR, AND \fBSTRINGIFY()\fR
+.P
+To configure the programatic interface of \fBmdast\fR, pass an object as a second parameter to \fBparse()\fR, \fBrun()\fR, and \fBstringify()\fR\|\.
+.SS COMMAND LINE SETTINGS
+.P
+To configure the shell interface of \fBmdast\fR, pass a string to the \fB\-\-setting\fR (or \fB\-s\fR) flag\.
+.P
+Command Line Settings take the form of a comma (\fB,\fR) and semi\-colon (\fB;\fR) delimited list of attributes, where each attribute consists of a key and an optional value: if both, then separated by a colon (\fB:\fR)\.
+.P
+The below are all valid examples:
+.P
+.RS 2
+.nf
+$ mdast \-\-setting "foo" \-\-setting "baz:qux"
+$ mdast \-\-setting "foo,baz:qux"
+$ mdast \-\-setting "foo;baz:qux"
+.fi
+.RE
+.P
+An attribute without value will be treated as a value of \fBtrue\fR\|\.
+.P
+Command Line Settings can be specified both in camel\- and dash\-case: \fBfoo\-bar\fR and \fBfooBar\fR are treated equally\.
+.SS CONFIGURATION FILES
+.P
+Specify directory specific settings with \fB\|\.mdastrc\fR and \fBpackage\.json\fR files\.  See \fBmdastrc\fR(5) for more information\.
+.SH SETTINGS
+.SS PARSE
+.P
+See  \fIhttps://github\.com/wooorm/mdast#mdastparsevalue\-options\fR for a description of these settings\.
+.RS 0
+.IP \(bu 2
+\fBgfm\fR (boolean, default: true);
+.IP \(bu 2
+\fByaml\fR (boolean, default: true);
+.IP \(bu 2
+\fBpedantic\fR (boolean, default: false);
+.IP \(bu 2
+\fBcommonmark\fR (boolean, default: false);
+.IP \(bu 2
+\fBbreaks\fR (boolean, default: false);
+.IP \(bu 2
+\fBfootnotes\fR (boolean, default: false)\.
+
+.RE
+.SS STRINGIFY
+.P
+See  \fIhttps://github\.com/wooorm/mdast#mdaststringifyast\-options\fR for a description of these settings\.
+.RS 0
+.IP \(bu 2
+\fBsetext\fR (boolean, default: false);
+.IP \(bu 2
+\fBcloseAtx\fR (boolean, default: false);
+.IP \(bu 2
+\fBlooseTable\fR (boolean, default: false);
+.IP \(bu 2
+\fBspacedTable\fR (boolean, default: true);
+.IP \(bu 2
+\fBreferenceLinks\fR (boolean, default: false);
+.IP \(bu 2
+\fBfences\fR (boolean, default: false);
+.IP \(bu 2
+\fBbullet\fR ("\-", "*", or "+", default: "\-");
+.IP \(bu 2
+\fBrule\fR ("\-", "*", or "_", default: "*");
+.IP \(bu 2
+\fBruleRepetition\fR (number, default: 3);
+.IP \(bu 2
+\fBruleSpaces\fR (boolean, default: false);
+.IP \(bu 2
+\fBstrong\fR ("_", or "*", default: "*");
+.IP \(bu 2
+\fBemphasis\fR ("_", or "*", default: "_")\.
+
+.RE
+.SH BUGS
+.P
+ \fIhttps://github\.com/wooorm/mdast/issues\fR
+.SH SEE ALSO
+.P
+\fBmdast\fR(1), \fBmdastrc\fR(5), \fBmdastignore\fR(5)\.
+.SH AUTHOR
+.P
+Written by Titus Wormer  \fItituswormer@gmail\.com\fR
+

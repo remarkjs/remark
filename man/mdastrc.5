@@ -3,7 +3,7 @@
 \fBmdastrc\fR \- mdast config files
 .SH SYNOPSIS
 .P
-\|\.mdastrc, package\.json
+\fB\|\.mdastrc\fR, \fBpackage\.json\fR
 .SH DESCRIPTION
 .P
 \fBmdast\fR gets its configuration from the command line and \fBmdastrc\fR files\.
@@ -13,9 +13,7 @@ For a list of available configuration options, see \fBmdast\fR(1) or  \fIhttps:/
 .P
 All \fBmdastrc\fR(5) configuration files are in JSON\.
 .P
-Automatically detected files named \fBpackage\.json\fR use the
-\fBmdastConfig\fR field, whereas other files are used as a
-whole\.
+Automatically detected files named \fBpackage\.json\fR use the \fBmdastConfig\fR field, whereas other files are used as a whole\.
 .SH CASCADE
 .P
 Precedence is as follows:
@@ -25,19 +23,13 @@ Plug\-ins and settings passed to \fBmdast\fR(1);
 .IP \(bu 2
 File passed to \fBmdast\fR(1);
 .IP \(bu 2
-Files named \fB\|\.mdastrc\fR and \fBmdastConfig\fR fields in
-\fBpackage\.json\fR in the directory of the processed file,
-and in ancestral directories;
+Files named \fB\|\.mdastrc\fR and \fBmdastConfig\fR fields in \fBpackage\.json\fR in the directory of the processed file, and in ancestral directories;
 .IP \(bu 2
-If no \fB\|\.mdastrc\fR and \fBpackage\.json\fR were detected in
-the directory of the file or its ancestral directories,
-a per\-user config file (\fB~/\.mdastrc\fR) is used;
+If no \fB\|\.mdastrc\fR and \fBpackage\.json\fR were detected in the directory of the file or its ancestral directories, a per\-user config file (\fB~/\.mdastrc\fR) is used;
 
 .RE
 .P
-If both \fB\|\.mdastrc\fR and \fBpackage\.json\fR exist in a directory,
-the file named \fB\|\.mdastrc\fR takes precedence in the cascade
-over \fBpackage\.json\fR\|\.
+If both \fB\|\.mdastrc\fR and \fBpackage\.json\fR exist in a directory, the file named \fB\|\.mdastrc\fR takes precedence in the cascade over \fBpackage\.json\fR\|\.
 .P
 For example, for the following project:
 .P
@@ -92,19 +84,15 @@ And \fB\|\.mdastrc\fR contains:
 .fi
 .RE
 .P
-Then, when stringifying \fBdocs/Doc\.md\fR, \fBmdast(1)\fR would use
-\fBbullet: "+"\fR because \fBdoc/\.mdastrc\fR takes precedence over
-\fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
+Then, when stringifying \fBdocs/Doc\.md\fR, \fBmdast(1)\fR would use \fBbullet: "+"\fR because \fBdoc/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
 .P
-When stringifying \fBReadme\.md\fR, \fBmdast(1)\fR would use
-\fBbullet: "\-"\fR, because \fB\|\.mdastrc\fR takes precedence over
-\fBpackage\.json\fR\|\.
+When stringifying \fBReadme\.md\fR, \fBmdast(1)\fR would use \fBbullet: "\-"\fR, because \fB\|\.mdastrc\fR takes precedence over \fBpackage\.json\fR\|\.
 .SH BUGS
 .P
  \fIhttps://github\.com/wooorm/mdast/issues\fR
 .SH SEE ALSO
 .P
-\fBmdast\fR(1), \fBmdastignore\fR(5)\.
+\fBmdast\fR(1), \fBmdastignore\fR(5), \fBmdastconfig\fR(7)\.
 .SH AUTHOR
 .P
 Written by Titus Wormer  \fItituswormer@gmail\.com\fR

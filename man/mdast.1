@@ -4,8 +4,6 @@
 .SH SYNOPSIS
 .P
 \fBmdast\fR [\fB\-a\fR, \fB\-\-ast\fR] [\fB\-q\fR, \fB\-\-quiet\fR] [\fB\-o\fR, \fB\-\-output\fR [\fIpath\fR]] [\fB\-s\fR, \fB\-\-setting\fR \fIsettings\fR] [\fB\-u\fR, \fB\-\-use\fR \fIplugins\fR] [\fB\-c\fR, \fB\-\-config\-path\fR \fIpath\fR] [\fB\-i\fR, \fB\-\-ignore\-path\fR \fIpath\fR] [\fB\-e\fR, \fB\-\-ext\fR [\fIextensions\fR]] [\fB\-\-no\-rc\fR] [\fB\-\-no\-ignore\fR] \fIfile|dir\fR \fI\|\.\.\.\fR
-.P
-\fBmdast\fR \fI\-\-settings\fR
 .SH DESCRIPTION
 .P
 \fBmdast\fR is speedy Markdown parser (and stringifier) for multipurpose analysis in JavaScript\.  Node\.js and browser\.  Lots of tests\.  100% coverage\.
@@ -38,8 +36,6 @@ Options are as follows:
 \fB\-\-no\-rc\fR: Disable configuration from \fI\|\.mdastrc\fR;
 .IP \(bu 2
 \fB\-\-no\-ignore\fR: Disable ignoring from \fI\|\.mdastignore\fR;
-.IP \(bu 2
-\fB\-\-settings\fR: Output available settings\.
 
 .RE
 .P
@@ -52,7 +48,7 @@ A \fB\-\-\fR argument tells the cli parser to stop reading flags\.
  \fIhttps://github\.com/wooorm/mdast/issues\fR
 .SH SEE ALSO
 .P
-\fBmdastrc\fR(5), \fBmdastignore\fR(5)\.
+\fBmdastrc\fR(5), \fBmdastignore\fR(5), \fBmdastconfig\fR(7)\.
 .SH AUTHOR
 .P
 Written by Titus Wormer  \fItituswormer@gmail\.com\fR

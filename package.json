@@ -76,7 +76,7 @@
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
     "regenerate": "node script/regenerate-fixtures.js",
-    "build-man": "marked-man doc/mdast.1.md > man/mdast.1 && marked-man doc/mdastrc.5.md > man/mdastrc.5 && marked-man doc/mdastignore.5.md > man/mdastignore.5",
+    "build-man": "marked-man doc/mdast.1.md > man/mdast.1 && marked-man doc/mdastrc.5.md > man/mdastrc.5 && marked-man doc/mdastignore.5.md > man/mdastignore.5 && marked-man doc/mdastconfig.7.md > man/mdastconfig.7",
     "build-expressions": "node script/build-expressions.js",
     "build-md": "bin/mdast . --output --quiet",
     "build-history": "bin/mdast History.md --no-ignore --setting setext --output",

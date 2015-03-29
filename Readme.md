@@ -353,7 +353,7 @@ $ npm install --global mdast
 Use:
 
 ```text
-Usage: mdast [options] file
+Usage: mdast [options] file|dir ...
 
 Speedy Markdown parser/stringifier for multipurpose analysis
 
@@ -369,12 +369,8 @@ Options:
   -e, --ext <extensions>    specify extensions
   -a, --ast                 output AST information
   -q, --quiet               output less messages
-  --no-rc                   Disable configuration from .mdastrc
-  --no-ignore               Disable ignore from .mdastignore
-  --settings                output available settings
-
-# Note that bash does not allow reading and writing
-# to the same file through pipes
+  --no-rc                   disable configuration from .mdastrc
+  --no-ignore               disable ignore from .mdastignore
 
 Usage:
 
@@ -390,6 +386,10 @@ $ mdast --use mdast-toc Readme.md -o
 
 # Rewrite markdown in a directory
 $ mdast . -o
+
+See also:
+
+man 1 mdast, man 5 mdastrc, man 5 mdastignore, man 7 mdastconfig
 ```
 
 ## Benchmark

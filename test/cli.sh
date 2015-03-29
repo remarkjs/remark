@@ -369,15 +369,6 @@ it "Should fail on missing value for \`--ext\`"
     assert $code 1
 
 #
-# `--settings`.
-#
-
-it "Should accept \`--settings\`"
-    code=0
-    $COMMAND --settings > /dev/null 2>&1 || code=$?
-    assert $code 0
-
-#
 # `--no-rc`.
 #
 
