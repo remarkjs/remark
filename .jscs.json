@@ -50,7 +50,6 @@
     "beforeOpeningCurlyBrace": true
   },
   "requireBlocksOnNewline": true,
-  "disallowPaddingNewlinesInBlocks": true,
   "disallowEmptyBlocks": true,
   "disallowSpacesInsideObjectBrackets": true,
   "disallowSpacesInsideArrayBrackets": true,
@@ -120,7 +119,6 @@
     "with"
   ],
   "disallowMultipleLineStrings": true,
-  "disallowMultipleLineBreaks": true,
   "validateLineBreaks": "LF",
   "validateQuoteMarks": "'",
   "disallowMixedSpacesAndTabs": true,

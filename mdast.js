@@ -448,9 +448,11 @@ function descapeFactory(scope, key) {
      * @param {string} value
      * @return {string}
      */
-    return function (value) {
+    function descape(value) {
         return value.replace(generate(), '$1');
-    };
+    }
+
+    return descape;
 }
 
 /*
@@ -672,7 +674,7 @@ function stateToggler(property, state) {
      *
      * @return {Function} - Callback to cancel the state.
      */
-    return function () {
+    function toggler() {
         var self = this;
         var current = self[property];
 
@@ -684,7 +686,9 @@ function stateToggler(property, state) {
         return function () {
             self[property] = current;
         };
-    };
+    }
+
+    return toggler;
 }
 
 /**
@@ -694,14 +698,18 @@ function stateToggler(property, state) {
  */
 function noopToggler() {
     /**
+     * No-operation.
+     */
+    function noop() {}
+
+    /**
      * @return {Function}
      */
-    return function () {
-        /**
-         * No-op.
-         */
-        return function () {};
-    };
+    function toggler() {
+        return noop;
+    }
+
+    return toggler;
 }
 
 /*
@@ -1110,7 +1118,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
          * @param {string} pipe
          * @return {string} - Empty.
          */
-        return function (value, content, pipe, pos, input) {
+        function eatCell(value, content, pipe, pos, input) {
             var lastIndex = content.length;
 
             /*
@@ -1152,7 +1160,9 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
             eat(pipe);
 
             return EMPTY;
-        };
+        }
+
+        return eatCell;
     }
 
     /**
@@ -2206,7 +2216,7 @@ function tokenizeFactory(type) {
      * @param {string} value
      * @return {Array.<Object>}
      */
-    return function (value, location) {
+    function tokenize(value, location) {
         var self = this;
         var offset = self.offset;
         var tokens = [];
@@ -2309,13 +2319,21 @@ function tokenizeFactory(type) {
         function position() {
           var start = now();
 
-          return function (node) {
+          /**
+           * Add the position to a node.
+           *
+           * @param {Node} node
+           * @return {Node} - `node`.
+           */
+          function update(node) {
               start = node.position ? node.position.start : start;
 
               node.position = new Position(start);
 
               return node;
-          };
+          }
+
+          return update;
         }
 
         /**
@@ -2382,9 +2400,17 @@ function tokenizeFactory(type) {
 
             updatePosition(subvalue);
 
-            return function () {
+            /**
+             * Add the given arguments, and return the
+             * node.
+             *
+             * @return {Node}
+             */
+            function apply() {
                 return pos(add.apply(null, arguments));
-            };
+            }
+
+            return apply;
         }
 
         /*
@@ -2451,7 +2477,9 @@ function tokenizeFactory(type) {
         }
 
         return tokens;
-    };
+    }
+
+    return tokenize;
 }
 
 /**
