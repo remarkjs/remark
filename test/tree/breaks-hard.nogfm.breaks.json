@@ -1,0 +1,519 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "breaks: true",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 4
+            },
+            "end": {
+              "line": 1,
+              "column": 18
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " mode, the following newline characters are exposed as ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 18
+            },
+            "end": {
+              "line": 1,
+              "column": 73
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "break",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 73
+            },
+            "end": {
+              "line": 1,
+              "column": 80
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " nodes:",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 80
+            },
+            "end": {
+              "line": 1,
+              "column": 87
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 87
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Look at the",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 12
+            },
+            "end": {
+              "line": 4,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "pretty line",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 4,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 12
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "breaks.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "breaks: false",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 4
+            },
+            "end": {
+              "line": 7,
+              "column": 19
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " mode, double spaces before a newline character are needed to expose ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 19
+            },
+            "end": {
+              "line": 7,
+              "column": 88
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "break",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 88
+            },
+            "end": {
+              "line": 7,
+              "column": 95
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " nodes:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 95
+            },
+            "end": {
+              "line": 7,
+              "column": 102
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 102
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Look at the",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 1
+            },
+            "end": {
+              "line": 9,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 12
+            },
+            "end": {
+              "line": 10,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "pretty line",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 10,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 12
+            },
+            "end": {
+              "line": 11,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "breaks.",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "In ",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 4
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "commonmark: true",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 4
+            },
+            "end": {
+              "line": 13,
+              "column": 22
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " mode, an escaped newline character is exposed as a ",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 22
+            },
+            "end": {
+              "line": 13,
+              "column": 74
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "break",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 74
+            },
+            "end": {
+              "line": 13,
+              "column": 81
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " node:",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 81
+            },
+            "end": {
+              "line": 13,
+              "column": 87
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 87
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Look at the\\",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 13
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 13
+            },
+            "end": {
+              "line": 16,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "pretty line\\",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 1
+            },
+            "end": {
+              "line": 16,
+              "column": 13
+            }
+          }
+        },
+        {
+          "type": "break",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 13
+            },
+            "end": {
+              "line": 17,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "breaks.",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 8
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 8
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 17,
+      "column": 8
+    }
+  }
+}
