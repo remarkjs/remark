@@ -48,7 +48,7 @@ var mdast = require('wooorm/mdast');
 UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [compressed](mdast.min.js)):
 
 ```html
-<script src="path/to/mdast.js"></script>
+<script src="path/to/mdast.js" charset="utf-8"></script>
 <script>
     var ast = mdast.parse('*hello* __world__');
     mdast.stringify(ast); // _hello_ **world**

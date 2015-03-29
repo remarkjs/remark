@@ -1,7 +1,8 @@
 'use strict';
 
-var mdast = require('..');
 var assert = require('assert');
+var he = require('he');
+var mdast = require('..');
 var fixtures = require('./fixtures.js');
 var chalk = require('chalk');
 var diff = require('diff');
@@ -134,6 +135,34 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         }
 
         assert(hasThrown === true);
+    });
+
+    it('should throw `he` errors', function () {
+        var reason = 'Parse error: named character reference was ' +
+            'not terminated by a semicolon';
+        var hasThrown;
+
+        he.decode.options.strict = true;
+
+        try {
+            mdast.parse('Hello&amp.');
+        } catch (exception) {
+            hasThrown = true;
+
+            console.log(exception);
+            console.dir(exception);
+            console.log(JSON.stringify(exception, 0, 2));
+
+            assert(exception.filename === '<text>');
+            assert(exception.line === 1);
+            assert(exception.column === 11);
+            assert(exception.reason === reason);
+            assert(exception.message === '<text>:1:11: ' + reason);
+        }
+
+        assert(hasThrown === true);
+
+        he.decode.options.strict = false;
     });
 
     it('should not accept inherited properties', function () {
@@ -630,7 +659,7 @@ describe('mdast.run(ast, options)', function () {
 
 describe('function attacher(mdast, options)', function () {
     /*
-     * Lot’s of other tests are in
+     * Lot's of other tests are in
      * `mdast.use(plugin, options)`.
      */
 

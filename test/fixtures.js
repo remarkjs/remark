@@ -149,7 +149,7 @@ sources.forEach(function (source) {
     /*
      * Breaks are such a tiny feature, but almost
      * certainly result in duplicate fixtures,
-     * that I’ve ignored it for the virtual
+     * that I've ignored it for the virtual
      * options.
      */
 

@@ -345,7 +345,7 @@ var defaultExpressions = require('./expressions.js');
 var defaultOptions = require('./defaults.js').parse;
 
 /*
- * Cached methods.
+ * Methods.
  */
 
 var repeat = utilities.repeat;
@@ -360,7 +360,7 @@ var normalize = utilities.normalizeReference;
 var has = Object.prototype.hasOwnProperty;
 
 /*
- * Constants.
+ * Characters.
  */
 
 var AT_SIGN = '@';
@@ -376,6 +376,11 @@ var EMPTY = '';
 var COLON = ':';
 var LT = '<';
 var GT = '>';
+
+/*
+ * Types.
+ */
+
 var BLOCK = 'block';
 var INLINE = 'inline';
 var HORIZONTAL_RULE = 'horizontalRule';
@@ -405,13 +410,17 @@ var BREAK = 'break';
 var ROOT = 'root';
 
 /**
- * Wrapper arround he’s `decode` function.
+ * Wrapper arround he's `decode` function.
  *
  * @param {string} value
  * @return {string}
  */
-function decode(value) {
-    return he.decode(value);
+function decode(value, eat) {
+    try {
+        return he.decode(value);
+    } catch (exception) {
+        throw eat.exception(exception.message);
+    }
 }
 
 /**
@@ -693,7 +702,7 @@ function stateToggler(property, state) {
 }
 
 /**
- * Construct a state toggler which doesn’t toggle.
+ * Construct a state toggler which doesn't toggle.
  *
  * @return {Function} - Toggler.
  */
@@ -807,7 +816,7 @@ function tokenizeNewline(eat, $0) {
 function tokenizeCode(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderCodeBlock(removeIndentation($0)));
+    eat($0)(this.renderCodeBlock(removeIndentation($0), null, eat));
 }
 
 /**
@@ -827,7 +836,7 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
     /*
      * If the initial fence was preceded by spaces,
      * exdent that amount of white space from the code
-     * block.  Because it’s possible that the code block
+     * block.  Because it's possible that the code block
      * is exdented, we first have to ensure at least
      * those spaces are available.
      */
@@ -836,7 +845,7 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
         $5 = removeIndentation(ensureIndentation($5, $1.length), $1.length);
     }
 
-    eat($0)(this.renderCodeBlock($5, $4));
+    eat($0)(this.renderCodeBlock($5, $4, eat));
 }
 
 /**
@@ -1008,7 +1017,7 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
         }
 
         self.links[identifier] = add({}, self.renderLink(
-            true, self.descape($2), null, $3
+            true, self.descape($2), null, $3, eat.now(), eat
         ));
     }
 }
@@ -1260,12 +1269,19 @@ function tokenizeText(eat, $0) {
  *
  * @param {string?} value
  * @param {string?} language
+ * @param {Function} eat
  * @return {Object}
  */
-function renderCodeBlock(value, language) {
+function renderCodeBlock(value, language, eat) {
+    var flag = null;
+
+    if (language) {
+        flag = decode(this.descape(language), eat);
+    }
+
     return {
         'type': CODE,
-        'lang': language ? decode(this.descape(language)) : null,
+        'lang': flag,
         'value': trimRightLines(value || EMPTY)
     };
 }
@@ -1573,14 +1589,14 @@ function renderRaw(type, value) {
  * @param {string?} title
  * @return {Object}
  */
-function renderLink(isLink, href, text, title, position) {
+function renderLink(isLink, href, text, title, position, eat) {
     var self = this;
     var exitLink = self.enterLink();
     var token;
 
     token = {
         'type': isLink ? LINK : IMAGE,
-        'title': title ? decode(self.descape(title)) : null
+        'title': title ? decode(self.descape(title), eat) : null
     };
 
     /*
@@ -1588,14 +1604,14 @@ function renderLink(isLink, href, text, title, position) {
      * that invoke `renderLink` should handle that.
      */
 
-    href = decode(href);
+    href = decode(href, eat);
 
     if (isLink) {
         token.href = href;
         token.children = self.tokenizeInline(text, position);
     } else {
         token.src = href;
-        token.alt = text ? decode(self.descape(text)) : null;
+        token.alt = text ? decode(self.descape(text), eat) : null;
     }
 
     exitLink();
@@ -1679,7 +1695,7 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
     tokenize = self.inlineTokenizers.escape;
     self.inlineTokenizers.escape = null;
 
-    eat($0)(self.renderLink(true, href, text, null, now));
+    eat($0)(self.renderLink(true, href, text, null, now, eat));
 
     self.inlineTokenizers.escape = tokenize;
 }
@@ -1697,7 +1713,7 @@ tokenizeAutoLink.notInLink = true;
 function tokenizeURL(eat, $0, $1) {
     var now = eat.now();
 
-    eat($0)(this.renderLink(true, $1, $1, null, now));
+    eat($0)(this.renderLink(true, $1, $1, null, now, eat));
 }
 
 tokenizeURL.notInLink = true;
@@ -1744,7 +1760,9 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
 
         now.column += $1.length;
 
-        eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now));
+        eat($0)(this.renderLink(
+            isLink, this.descape(href), $2, title, now, eat
+        ));
     }
 }
 
@@ -1823,7 +1841,7 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
 
         eat($0)(self.renderLink(
             $0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href),
-            $2, url.title, now
+            $2, url.title, now, eat
         ));
     }
 }
@@ -2226,6 +2244,8 @@ function tokenizeFactory(type) {
         var tokenizers = self[type + 'Tokenizers'];
         var line = location ? location.line : 1;
         var column = location ? location.column : 1;
+        var add;
+        var eat;
         var index;
         var length;
         var method;
@@ -2344,7 +2364,7 @@ function tokenizeFactory(type) {
          * @param {Object?} token
          * @return {Object} The added or merged token.
          */
-        function add(parent, token) {
+        add = function (parent, token) {
             var prev;
             var children;
 
@@ -2362,7 +2382,7 @@ function tokenizeFactory(type) {
             prev = children[children.length - 1];
 
             if (type === INLINE && token.type === TEXT) {
-                token.value = decode(token.value);
+                token.value = decode(token.value, eat);
             }
 
             if (
@@ -2384,7 +2404,7 @@ function tokenizeFactory(type) {
             }
 
             return token;
-        }
+        };
 
         /**
          * Remove `subvalue` from `value`.
@@ -2394,7 +2414,7 @@ function tokenizeFactory(type) {
          * @param {string} subvalue
          * @return {Function} See add.
          */
-        function eat(subvalue) {
+        eat = function (subvalue) {
             var pos = position();
 
             value = value.substring(subvalue.length);
@@ -2412,7 +2432,7 @@ function tokenizeFactory(type) {
             }
 
             return apply;
-        }
+        };
 
         /*
          * Expose `now` on `eat`.
@@ -2608,7 +2628,7 @@ var utilities = require('./utilities.js');
 var defaultOptions = require('./defaults.js').stringify;
 
 /*
- * Cached methods.
+ * Methods.
  */
 
 var repeat = utilities.repeat;
