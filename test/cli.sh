@@ -42,6 +42,7 @@ directory="test/cli"
 
 markdown="test/cli/markdown.md"
 markdownAlt="test/cli/markdown-alt.md"
+npmPlugin="toc"
 plugin="test/badges.js"
 rc="test/cli/rc.json"
 ignore="test/cli/ignore.ini"
@@ -210,6 +211,26 @@ it "Should accept \`-u <plugin>\`"
 it "Should accept \`--use <plugin>\`"
     code=0
     $COMMAND --use $plugin $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`-u <unprefixed-npm-plugin>\`"
+    code=0
+    $COMMAND -u $npmPlugin $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`-u <prefixed-npm-plugin>\`"
+    code=0
+    $COMMAND -u "mdast-$npmPlugin" $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--use <unprefixed-npm-plugin>\`"
+    code=0
+    $COMMAND --use $npmPlugin $markdown > /dev/null 2>&1 || code=$?
+    assert $code 0
+
+it "Should accept \`--use <prefixed-npm-plugin>\`"
+    code=0
+    $COMMAND --use "mdast-$npmPlugin" $markdown > /dev/null 2>&1 || code=$?
     assert $code 0
 
 it "Should fail on \`-u <invalid-plugin>\`"
