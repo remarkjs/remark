@@ -166,6 +166,7 @@ function replaceBullet(expression) {
 commonmark.list = new RegExp(replaceBullet(rules.list));
 commonmark.item = new RegExp(replaceBullet(rules.item), 'gm');
 commonmark.bullet = new RegExp(replaceBullet(rules.bullet));
+commonmark.indent = new RegExp(replaceBullet(rules.indent));
 
 rules.blockquote = new RegExp(
     '^(?=[ \\t]*>)(?:' +
