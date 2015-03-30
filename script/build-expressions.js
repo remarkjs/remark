@@ -98,8 +98,6 @@ expressions.breaksGFM = breaksGFM;
 
 rules.newline = /^\n([ \t]*\n)*/;
 
-rules.bullet = /(?:[*+-]|\d+\.)/;
-
 rules.code = /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/;
 
 rules.horizontalRule = /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/;
@@ -118,10 +116,15 @@ rules.linkDefinition =
 
 rules.blockText = /^[^\n]+/;
 
+rules.bullet = /(?:[*+-]|\d+\.)/;
+
+rules.indent = new RegExp(
+    '^([ \\t]*)(' + cleanExpression(rules.bullet) + ')( {1,4}(?! )| |\\t)'
+);
+
 rules.item = new RegExp(
-    '^([ \\t]*)(' +
-        cleanExpression(rules.bullet) +
-    ')[ \\t][^\\n]*(?:\\n(?!\\1' +
+    cleanExpression(rules.indent) +
+    '[^\\n]*(?:\\n(?!\\1' +
         cleanExpression(rules.bullet) +
     '[ \\t])[^\\n]*)*',
 'gm');

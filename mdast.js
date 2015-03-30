@@ -265,14 +265,15 @@ exports.stringify = stringify;
 module.exports = {
   'rules': {
     'newline': /^\n([ \t]*\n)*/,
-    'bullet': /(?:[*+-]|\d+\.)/,
     'code': /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/,
     'horizontalRule': /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
     'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
     'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
     'linkDefinition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
     'blockText': /^[^\n]+/,
-    'item': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
+    'bullet': /(?:[*+-]|\d+\.)/,
+    'indent': /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
+    'item': /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
     'list': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|$)/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
     'html': /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/i,
@@ -312,7 +313,7 @@ module.exports = {
   'commonmark': {
     'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
     'list': /^([ \t]*)((?:[*+-]|\d+[\.\)]))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+[\.\)])[ \t])|$)/,
-    'item': /^([ \t]*)((?:[*+-]|\d+[\.\)]))[ \t][^\n]*(?:\n(?!\1(?:[*+-]|\d+[\.\)])[ \t])[^\n]*)*/gm,
+    'item': /([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+[\.\)])[ \t])[^\n]*)*/gm,
     'bullet': /(?:[*+-]|\d+[\.\)])/,
     'link': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
     'referenceLink': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
@@ -482,7 +483,7 @@ var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
 var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)([ \t]*\|[ \t]*\n?|\n?$)/g;
 var EXPRESSION_TABLE_BORDER = /[ \t]*\|[ \t]*/;
 var EXPRESSION_BLOCK_QUOTE = /^[ \t]*>[ \t]?/gm;
-var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)([^\n]*)/;
+var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t)([^\n]*)/;
 var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
 var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
 var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
@@ -577,11 +578,6 @@ function removeIndentation(value, maximum) {
         }
     }
 
-    if (maximum > 0) {
-        values.shift();
-        position--;
-    }
-
     if (minIndent !== Infinity) {
         position = values.length;
 
@@ -607,6 +603,10 @@ function removeIndentation(value, maximum) {
                 index in stops ? stops[index] + 1 : 0
             );
         }
+    }
+
+    if (maximum > 0) {
+        values.shift();
     }
 
     return values.join(NEW_LINE);
@@ -927,6 +927,10 @@ function tokenizeList(eat, $0, $1, $2) {
     var enterTop;
     var exitBlockquote;
     var list;
+    var indent;
+    var size;
+    var position;
+    var end;
 
     /*
      * Determine if all list-items belong to the
@@ -950,6 +954,34 @@ function tokenizeList(eat, $0, $1, $2) {
                 length = matches.length;
 
                 break;
+            }
+        }
+    }
+
+    if (self.options.commonmark) {
+        index = -1;
+
+        while (++index < length) {
+            item = matches[index];
+            indent = self.rules.indent.exec(item);
+            indent = indent[1] + repeat(indent[2].length, SPACE) + indent[3];
+            size = getIndent(indent).indent;
+            position = indent.length;
+            end = item.length;
+
+            while (++position < end) {
+                if (
+                    item.charAt(position) === NEW_LINE &&
+                    item.charAt(position - 1) === NEW_LINE &&
+                    getIndent(item.slice(position + 1)).indent < size
+                ) {
+                    matches[index] = item.slice(0, position - 1);
+
+                    matches = matches.slice(0, index + 1);
+                    length = matches.length;
+
+                    break;
+                }
             }
         }
     }
@@ -1367,6 +1399,7 @@ function renderNormalListItem(token, position) {
     var trimmedLines;
     var index;
     var length;
+    var max;
 
     /*
      * Remove the list token's bullet.
@@ -1386,11 +1419,16 @@ function renderNormalListItem(token, position) {
             $2 = SPACE + $2;
         }
 
-        return $1 + repeat($2.length, SPACE) + $3 + rest;
+        max = $1 + repeat($2.length, SPACE) + $3;
+
+        return max + rest;
     });
 
     lines = token.split(NEW_LINE);
-    trimmedLines = removeIndentation(token).split(NEW_LINE);
+
+    trimmedLines = removeIndentation(
+        token, getIndent(max).indent
+    ).split(NEW_LINE);
 
     /*
      * We replaced the initial bullet with something
@@ -2635,7 +2673,6 @@ var repeat = utilities.repeat;
 var copy = utilities.copy;
 var clone = utilities.clone;
 var raise = utilities.raise;
-var trimLeft = utilities.trimLeft;
 var validate = utilities.validate;
 var count = utilities.countCharacter;
 
@@ -3084,10 +3121,20 @@ compilerPrototype.root = function (token, parent, level) {
              * Duplicate tokens, such as a list
              * directly following another list,
              * often need multiple new lines.
+             *
+             * Additionally, code blocks following a list
+             * might easily be mistaken for a paragraph
+             * in the list itself.
              */
 
             if (child.type === prev.type && prev.type === 'list') {
                 values.push(prev.ordered === child.ordered ? GAP : LINE);
+            } else if (
+                prev.type === 'list' &&
+                child.type === 'code' &&
+                !child.lang
+            ) {
+                values.push(GAP);
             } else {
                 values.push(BREAK);
             }
@@ -3227,7 +3274,7 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
 
     value = pad(value, padding / INDENT);
 
-    return trimLeft(value);
+    return value.slice(padding);
 };
 
 /**

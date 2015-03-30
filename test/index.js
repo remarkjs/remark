@@ -149,10 +149,6 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         } catch (exception) {
             hasThrown = true;
 
-            console.log(exception);
-            console.dir(exception);
-            console.log(JSON.stringify(exception, 0, 2));
-
             assert(exception.filename === '<text>');
             assert(exception.line === 1);
             assert(exception.column === 11);
