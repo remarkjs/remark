@@ -48,7 +48,7 @@
         },
         {
           "type": "footnote",
-          "id": "__proto__",
+          "id": "__proto__%",
           "position": {
             "start": {
               "line": 1,
@@ -262,9 +262,9 @@
         }
       }
     },
-    "__proto__": {
+    "__proto__%": {
       "type": "footnoteDefinition",
-      "id": "__proto__",
+      "id": "__proto__%",
       "children": [
         {
           "type": "paragraph",

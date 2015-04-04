@@ -330,7 +330,7 @@ module.exports = {
     'referenceLink': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\3?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|$)|( *)(([`~])\10{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\9\10*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',/:;<=?@^~|])/
+    'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',\/:;<=?@^~|])/
   },
   'commonmarkGFM': {
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\n`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|(?=\n+\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/
@@ -369,6 +369,7 @@ var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
 var normalize = utilities.normalizeReference;
+var escapeKey = utilities.escapeKey;
 var objectCreate = utilities.create;
 var has = Object.prototype.hasOwnProperty;
 
@@ -1052,7 +1053,7 @@ function tokenizeHtml(eat, $0) {
  */
 function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
     var self = this;
-    var identifier = normalize($1);
+    var identifier = escapeKey(normalize($1));
     var add = eat($0);
 
     if (!has.call(self.links, identifier)) {
@@ -1099,6 +1100,7 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var now = eat.now();
     var line = now.line;
     var offset = self.offset;
+    var identifier = escapeKey(normalize($2));
     var token;
 
     $3 = $3.replace(EXPRESSION_INITIAL_TAB, function (value) {
@@ -1110,11 +1112,9 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
 
     now.column += $1.length;
 
-    token = eat($0)({},
-        self.renderFootnoteDefinition($2.toLowerCase(), $3, now
-    ));
+    token = eat($0)({}, self.renderFootnoteDefinition(identifier, $3, now));
 
-    self.footnotes[token.id] = token;
+    self.footnotes[identifier] = token;
 }
 
 tokenizeFootnoteDefinition.onlyAtTop = true;
@@ -1830,16 +1830,19 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
 function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
     var self = this;
     var text = $3 || $2;
-    var identifier = normalize(text);
+    var identifier = escapeKey(normalize(text));
+    var isFootnote = self.options.footnotes && identifier.charAt(0) === CARET;
     var url = self.links[identifier];
     var token;
     var now;
 
-    if (
-        self.options.footnotes &&
-        identifier.charAt(0) === CARET &&
-        self.footnotes[identifier.substr(1)]
-    ) {
+    if (isFootnote) {
+        identifier = identifier.substr(1);
+    }
+
+    identifier = escapeKey(identifier);
+
+    if (isFootnote && has.call(self.footnotes, identifier)) {
         /*
          * All block-level footnote-definitions
          * are already found.  If we find the
@@ -1847,13 +1850,9 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
          * most certainly a footnote.
          */
 
-        eat($0)(self.renderFootnote(identifier.substr(1)));
+        eat($0)(self.renderFootnote(identifier));
     } else if (!url || !url.href) {
-        if (
-            self.options.footnotes &&
-            identifier.charAt(0) === CARET &&
-            text.indexOf(SPACE) > -1
-        ) {
+        if (isFootnote && text.indexOf(SPACE) > -1) {
             /*
              * All user-defined footnote IDs are
              * already found.  Thus, we can safely
@@ -2689,6 +2688,7 @@ var validate = utilities.validate;
 var count = utilities.countCharacter;
 var objectCreate = utilities.create;
 var getKeys = utilities.keys;
+var unescapeKey = utilities.unescapeKey;
 
 /*
  * Constants.
@@ -3504,7 +3504,8 @@ compilerPrototype.reference = function () {
  * @return {string}
  */
 compilerPrototype.footnote = function (token) {
-    return SQUARE_BRACKET_OPEN + CARET + token.id + SQUARE_BRACKET_CLOSE;
+    return SQUARE_BRACKET_OPEN + CARET + unescapeKey(token.id) +
+        SQUARE_BRACKET_CLOSE;
 };
 
 /**
@@ -3588,8 +3589,9 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
         key = keys[index];
 
         results.push(
-            SQUARE_BRACKET_OPEN + CARET + key + SQUARE_BRACKET_CLOSE +
-            COLON + SPACE + self.visit(footnotes[key], null)
+            SQUARE_BRACKET_OPEN + CARET + unescapeKey(key) +
+            SQUARE_BRACKET_CLOSE + COLON + SPACE +
+            self.visit(footnotes[key], null)
         );
     }
 
@@ -3922,6 +3924,44 @@ function objectNull() {
     return Object.create(null);
 }
 
+var PROTO = '__proto__';
+var ESCAPED_PROTO = PROTO + '%';
+
+/**
+ * Factory to construct an escaper or descaper.
+ *
+ * @param {string} value
+ * @param {string} alt
+ * @return {function(string): string}
+ */
+function scapeFactory(value, alt) {
+    var length = value.length;
+
+    return function (key) {
+        return key.indexOf(value) === 0 ? alt + key.slice(length) : key;
+    };
+}
+
+/*
+ * Escape a key for use in an map.
+ *
+ * @see http://www.2ality.com/2012/10/proto.html
+ *
+ * @param {string}
+ * @return {string}
+ */
+var escapeKey = scapeFactory(PROTO, ESCAPED_PROTO);
+
+/*
+ * Unescape a key from use in an map.
+ *
+ * @see http://www.2ality.com/2012/10/proto.html
+ *
+ * @param {string}
+ * @return {string}
+ */
+var unescapeKey = scapeFactory(ESCAPED_PROTO, PROTO);
+
 /*
  * Expose `validate`.
  */
@@ -3948,6 +3988,8 @@ exports.copy = copy;
 exports.clone = clone;
 exports.countCharacter = countCharacter;
 exports.keys = keys;
+exports.escapeKey = escapeKey;
+exports.unescapeKey = unescapeKey;
 
 /* istanbul ignore else */
 if ('create' in Object) {

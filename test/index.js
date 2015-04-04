@@ -794,7 +794,6 @@ validateTokens = function (children) {
 validateToken = function (context) {
     var keys = Object.keys(context).length;
     var type = context.type;
-    var key;
 
     assert('type' in context);
 
@@ -830,9 +829,9 @@ validateToken = function (context) {
         assert('children' in context);
 
         if (context.footnotes) {
-            for (key in context.footnotes) {
-                validateToken(context.footnotes[key]);
-            }
+            Object.keys(context.footnotes).forEach(function (id) {
+                validateToken(context.footnotes[id]);
+            });
         }
 
         return;
