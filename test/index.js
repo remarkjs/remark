@@ -45,12 +45,6 @@ function empty() {
  * Tests.
  */
 
-describe('mdast', function () {
-    it('should be an `object`', function () {
-        assert(typeof mdast === 'object');
-    });
-});
-
 describe('mdast.parse(value, options, CustomParser)', function () {
     it('should be a `function`', function () {
         assert(typeof mdast.parse === 'function');
@@ -109,7 +103,7 @@ describe('mdast.parse(value, options, CustomParser)', function () {
     });
 
     it('should throw parse errors', function () {
-        var parser = mdast.use(noop);
+        var processor = mdast();
         var message = 'Found it!';
         var hasThrown;
 
@@ -120,10 +114,10 @@ describe('mdast.parse(value, options, CustomParser)', function () {
             throw eat.exception(message);
         }
 
-        parser.Parser.prototype.inlineTokenizers.emphasis = emphasis;
+        processor.Parser.prototype.inlineTokenizers.emphasis = emphasis;
 
         try {
-            parser.parse('Hello *World*!');
+            processor.parse('Hello *World*!');
         } catch (exception) {
             hasThrown = true;
 
@@ -216,8 +210,8 @@ describe('mdast.parse(value, options, CustomParser)', function () {
     });
 
     it('should be able to set options', function () {
-        var parser = mdast.use(noop);
-        var html = parser.Parser.prototype.blockTokenizers.html;
+        var processor = mdast();
+        var html = processor.Parser.prototype.blockTokenizers.html;
         var result;
 
         /**
@@ -240,9 +234,9 @@ describe('mdast.parse(value, options, CustomParser)', function () {
             return html.apply(this, arguments);
         }
 
-        parser.Parser.prototype.blockTokenizers.html = replacement;
+        processor.Parser.prototype.blockTokenizers.html = replacement;
 
-        result = parser.parse([
+        result = processor.parse([
             '<!-- commonmark -->',
             '',
             '1)   Hello World',
@@ -473,11 +467,11 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 
     it('should be able to set options', function () {
-        var parser = mdast.use(noop);
-        var html = parser.Compiler.prototype.html;
+        var processor = mdast();
+        var html = processor.Compiler.prototype.html;
         var ast;
 
-        ast = parser.parse([
+        ast = processor.parse([
             '<!-- setext -->',
             '',
             '# Hello World',
@@ -505,9 +499,9 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
             return html.apply(this, arguments);
         }
 
-        parser.Compiler.prototype.html = replacement;
+        processor.Compiler.prototype.html = replacement;
 
-        assert(parser.stringify(ast) === [
+        assert(processor.stringify(ast) === [
             '<!-- setext -->',
             '',
             'Hello World',
@@ -531,65 +525,65 @@ describe('mdast.use(plugin, options)', function () {
     });
 
     it('should return an instance of mdast', function () {
-        var parser = mdast.use(noop);
+        var processor = mdast.use(noop);
 
-        assert(mdast.use(noop) instanceof parser.constructor);
+        assert(mdast.use(noop) instanceof processor.constructor);
     });
 
     it('should attach an attacher', function () {
-        var parser = mdast.use(noop);
+        var processor = mdast.use(noop);
 
-        assert(parser.attachers.length === 1);
+        assert(processor.attachers.length === 1);
     });
 
     it('should attach a transformer', function () {
-        var parser = mdast.use(plugin);
+        var processor = mdast.use(plugin);
 
-        assert(parser.ware.fns.length === 1);
+        assert(processor.ware.fns.length === 1);
     });
 
     it('should attach multiple attachers', function () {
-        var parser = mdast.use(function () {}).use(function () {});
+        var processor = mdast.use(function () {}).use(function () {});
 
-        assert(parser.attachers.length === 2);
+        assert(processor.attachers.length === 2);
     });
 
     it('should not attach the same attacher multiple times', function () {
-        var parser = mdast.use(plugin).use(plugin);
+        var processor = mdast.use(plugin).use(plugin);
 
-        assert(parser.attachers.length === 1);
+        assert(processor.attachers.length === 1);
     });
 
     it('should attach multiple transformers', function () {
-        var parser;
+        var processor;
 
         /**
          * Transformer.
          */
-        parser = mdast.use(function () {
+        processor = mdast.use(function () {
             return function () {};
         }).use(function () {
             return function () {};
         });
 
-        assert(parser.ware.fns.length === 2);
+        assert(processor.ware.fns.length === 2);
     });
 
     it('should attach the same transformer multiple times', function () {
-        var parser;
+        var processor;
 
         /**
          * Transformer.
          */
         function transformer() {}
 
-        parser = mdast.use(function () {
+        processor = mdast.use(function () {
             return transformer;
         }).use(function () {
             return transformer;
         });
 
-        assert(parser.ware.fns.length === 2);
+        assert(processor.ware.fns.length === 2);
     });
 
     it('should invoke an attacher when `use()` is invoked', function () {
@@ -599,8 +593,8 @@ describe('mdast.use(plugin, options)', function () {
         /**
          * Attacher.
          */
-        function assertion(parser, settings) {
-            assert('use' in parser);
+        function assertion(processor, settings) {
+            assert('use' in processor);
             assert(settings === options);
 
             isInvoked = true;
@@ -731,7 +725,7 @@ describe('function transformer(ast, options, mdast)', function () {
         var exception = new Error('test');
         var fixture = '# Hello world';
         var ast = mdast.parse(fixture);
-        var parser;
+        var processor;
 
         /**
          * Thrower.
@@ -747,20 +741,20 @@ describe('function transformer(ast, options, mdast)', function () {
             return thrower;
         }
 
-        parser = mdast.use(attacher);
+        processor = mdast.use(attacher);
 
         assert.throws(function () {
-            parser.parse(fixture);
+            processor.parse(fixture);
         }, /test/);
 
         assert.throws(function () {
-            parser.run(ast);
+            processor.run(ast);
         }, /test/);
     });
 
     it('should work on an example plugin', function () {
-        var parser = mdast.use(badges);
-        var source = parser.stringify(parser.parse('# mdast'));
+        var processor = mdast.use(badges);
+        var source = processor.stringify(processor.parse('# mdast'));
 
         assert(
             source ===
@@ -768,7 +762,7 @@ describe('function transformer(ast, options, mdast)', function () {
             '](https://www.npmjs.com/package/mdast)\n'
         );
 
-        source = parser.stringify(parser.parse('# mdast', {
+        source = processor.stringify(processor.parse('# mdast', {
             'flat': true
         }));
 

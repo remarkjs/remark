@@ -121,11 +121,17 @@ function constructCompiler() {
  * @constructor {MDAST}
  */
 function MDAST() {
-    this.ware = new Ware();
-    this.attachers = [];
+    var self = this;
 
-    this.Parser = constructParser();
-    this.Compiler = constructCompiler();
+    if (!(self instanceof MDAST)) {
+        return new MDAST();
+    }
+
+    self.ware = new Ware();
+    self.attachers = [];
+
+    self.Parser = constructParser();
+    self.Compiler = constructCompiler();
 }
 
 /**
@@ -218,15 +224,19 @@ MDAST.prototype.use = use;
 MDAST.prototype.run = run;
 
 /*
+ * Expose methods on exports.
+ */
+
+MDAST.parse = parse;
+MDAST.stringify = stringify;
+MDAST.use = use;
+MDAST.run = run;
+
+/*
  * Expose `mdast`.
  */
 
-module.exports = {
-    'parse': parse,
-    'stringify': stringify,
-    'use': use,
-    'run': run
-};
+module.exports = MDAST;
 
 },{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":10}],2:[function(require,module,exports){
 'use strict';
