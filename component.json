@@ -19,7 +19,8 @@
   "dependencies": {
     "mathiasbynens/he": "^0.5.0",
     "wooorm/markdown-table": "^0.3.0",
-    "segmentio/ware": "^1.2.0"
+    "segmentio/ware": "^1.2.0",
+    "jonschlinkert/repeat-string": "^1.5.2"
   },
   "repository": "wooorm/mdast",
   "scripts": [

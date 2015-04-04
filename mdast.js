@@ -228,7 +228,7 @@ module.exports = {
     'run': run
 };
 
-},{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":9}],2:[function(require,module,exports){
+},{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":10}],2:[function(require,module,exports){
 'use strict';
 
 var parse = {
@@ -342,6 +342,7 @@ module.exports = {
  */
 
 var he = require('he');
+var repeat = require('repeat-string');
 var utilities = require('./utilities.js');
 var defaultExpressions = require('./expressions.js');
 var defaultOptions = require('./defaults.js').parse;
@@ -350,7 +351,6 @@ var defaultOptions = require('./defaults.js').parse;
  * Methods.
  */
 
-var repeat = utilities.repeat;
 var clone = utilities.clone;
 var copy = utilities.copy;
 var raise = utilities.raise;
@@ -556,7 +556,7 @@ function removeIndentation(value, maximum) {
     var padding;
 
     if (maximum > 0) {
-        values.unshift(repeat(maximum, SPACE) + EXCLAMATION_MARK);
+        values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
         position++;
     }
 
@@ -637,7 +637,7 @@ function ensureIndentation(value, indent) {
 
         while (++position < indent) {
             if (line.charAt(position) !== SPACE) {
-                values[index] = repeat(indent - position, SPACE) + line;
+                values[index] = repeat(SPACE, indent - position) + line;
                 break;
             }
         }
@@ -966,7 +966,7 @@ function tokenizeList(eat, $0, $1, $2) {
         while (++index < length) {
             item = matches[index];
             indent = self.rules.indent.exec(item);
-            indent = indent[1] + repeat(indent[2].length, SPACE) + indent[3];
+            indent = indent[1] + repeat(SPACE, indent[2].length) + indent[3];
             size = getIndent(indent).indent;
             position = indent.length;
             end = item.length;
@@ -1421,7 +1421,7 @@ function renderNormalListItem(token, position) {
             $2 = SPACE + $2;
         }
 
-        max = $1 + repeat($2.length, SPACE) + $3;
+        max = $1 + repeat(SPACE, $2.length) + $3;
 
         return max + rest;
     });
@@ -2656,7 +2656,7 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"he":7}],5:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"he":7,"repeat-string":9}],5:[function(require,module,exports){
 'use strict';
 
 /*
@@ -2664,6 +2664,7 @@ module.exports = parse;
  */
 
 var table = require('markdown-table');
+var repeat = require('repeat-string');
 var utilities = require('./utilities.js');
 var defaultOptions = require('./defaults.js').stringify;
 
@@ -2671,7 +2672,6 @@ var defaultOptions = require('./defaults.js').stringify;
  * Methods.
  */
 
-var repeat = utilities.repeat;
 var copy = utilities.copy;
 var clone = utilities.clone;
 var raise = utilities.raise;
@@ -2679,7 +2679,6 @@ var validate = utilities.validate;
 var count = utilities.countCharacter;
 var objectCreate = utilities.create;
 var getKeys = utilities.keys;
-var has = Object.prototype.hasOwnProperty;
 
 /*
  * Constants.
@@ -2688,6 +2687,7 @@ var has = Object.prototype.hasOwnProperty;
 var HALF = 2;
 var INDENT = 4;
 var MINIMUM_CODE_FENCE_LENGTH = 3;
+var YAML_FENCE_LENGTH = 3;
 var MINIMUM_RULE_LENGTH = 3;
 var MAILTO = 'mailto:';
 
@@ -2881,7 +2881,7 @@ function pad(value, level) {
     value = value.split(LINE);
 
     index = value.length;
-    padding = repeat(level * INDENT, SPACE);
+    padding = repeat(SPACE, level * INDENT);
 
     while (index--) {
         if (value[index].length !== 0) {
@@ -3041,7 +3041,7 @@ compilerPrototype.visitOrderedItems = function (token, level) {
         bullet = (start + index) + DOT + SPACE;
 
         indent = Math.ceil(bullet.length / INDENT) * INDENT;
-        spacing = repeat(indent - bullet.length, SPACE);
+        spacing = repeat(SPACE, indent - bullet.length);
 
         values[index] = bullet + spacing +
             self.listItem(tokens[index], token, level, indent);
@@ -3074,7 +3074,7 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
      */
 
     bullet = self.options.bullet + SPACE;
-    spacing = repeat(HALF, SPACE);
+    spacing = repeat(SPACE, HALF);
 
     while (++index < length) {
         values[index] = bullet + spacing +
@@ -3160,10 +3160,10 @@ compilerPrototype.heading = function (token, parent, level) {
 
     if (setext && (depth === 1 || depth === 2)) {
         return content + LINE +
-            repeat(content.length, depth === 1 ? EQUALS : DASH);
+            repeat(depth === 1 ? EQUALS : DASH, content.length);
     }
 
-    prefix = repeat(token.depth, HASH);
+    prefix = repeat(HASH, token.depth);
     content = prefix + SPACE + content;
 
     if (closeAtx) {
@@ -3273,7 +3273,7 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
  */
 compilerPrototype.inlineCode = function (token) {
     var value = token.value;
-    var ticks = repeat(getLongestRepetition(value, TICK) + 1, TICK);
+    var ticks = repeat(TICK, getLongestRepetition(value, TICK) + 1);
     var start = ticks;
     var end = ticks;
 
@@ -3295,7 +3295,7 @@ compilerPrototype.inlineCode = function (token) {
  * @return {string}
  */
 compilerPrototype.yaml = function (token) {
-    var delimiter = repeat(3, DASH);
+    var delimiter = repeat(DASH, YAML_FENCE_LENGTH);
     var value = token.value ? LINE + token.value : EMPTY;
 
     return delimiter + value + LINE + delimiter;
@@ -3322,7 +3322,7 @@ compilerPrototype.code = function (token) {
 
     fence = getLongestRepetition(value, marker) + 1;
 
-    fence = repeat(Math.max(fence, MINIMUM_CODE_FENCE_LENGTH), marker);
+    fence = repeat(marker, Math.max(fence, MINIMUM_CODE_FENCE_LENGTH));
 
     return fence + (token.lang || EMPTY) + LINE + value + LINE + fence;
 };
@@ -3343,7 +3343,7 @@ compilerPrototype.html = function (token) {
  */
 compilerPrototype.horizontalRule = function () {
     var options = this.options;
-    var rule = repeat(options.ruleRepetition, options.rule);
+    var rule = repeat(options.rule, options.ruleRepetition);
 
     if (options.ruleSpaces) {
         rule = rule.split(EMPTY).join(SPACE);
@@ -3504,7 +3504,7 @@ compilerPrototype.footnote = function (token) {
  * @return {string}
  */
 compilerPrototype.footnoteDefinition = function (token) {
-    return this.all(token).join(BREAK + repeat(INDENT, SPACE));
+    return this.all(token).join(BREAK + repeat(SPACE, INDENT));
 };
 
 /**
@@ -3636,7 +3636,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":2,"./utilities.js":6,"markdown-table":8}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":6,"markdown-table":8,"repeat-string":9}],6:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3836,29 +3836,6 @@ function clean(value) {
 }
 
 /**
- * Repeat `character` `times` times.
- *
- * @param {number} times
- * @param {string} character
- * @return {string}
- */
-function repeat(times, character) {
-    var result = '';
-
-    while (times > 0) {
-        if (times % 2 === 1) {
-            result += character;
-        }
-
-        character += character;
-
-        times >>= 1;
-    }
-
-    return result;
-}
-
-/**
  * Normalize an reference identifier.  Collapses
  * multiple white space characters into a single space,
  * and removes casing.
@@ -3959,7 +3936,6 @@ exports.clean = clean;
 exports.raise = raise;
 exports.copy = copy;
 exports.clone = clone;
-exports.repeat = repeat;
 exports.countCharacter = countCharacter;
 exports.keys = keys;
 
@@ -4628,6 +4604,74 @@ function markdownTable(table, options) {
 module.exports = markdownTable;
 
 },{}],9:[function(require,module,exports){
+/*!
+ * repeat-string <https://github.com/jonschlinkert/repeat-string>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+'use strict';
+
+/**
+ * Expose `repeat`
+ */
+
+module.exports = repeat;
+
+/**
+ * Repeat the given `string` the specified `number`
+ * of times.
+ *
+ * **Example:**
+ *
+ * ```js
+ * var repeat = require('repeat-string');
+ * repeat('A', 5);
+ * //=> AAAAA
+ * ```
+ *
+ * @param {String} `string` The string to repeat
+ * @param {Number} `number` The number of times to repeat the string
+ * @return {String} Repeated string
+ * @api public
+ */
+
+function repeat(str, num) {
+  if (typeof str !== 'string') {
+    throw new TypeError('repeat-string expects a string.');
+  }
+
+  if (num === 1) return str;
+  if (num === 2) return str + str;
+
+  var max = str.length * num;
+  if (cache !== str || typeof cache === 'undefined') {
+    cache = str;
+    res = '';
+  }
+
+  while (max > res.length && num > 0) {
+    if (num & 1) {
+      res += str;
+    }
+
+    num >>= 1;
+    if (!num) break;
+    str += str;
+  }
+
+  return res.substr(0, max);
+}
+
+/**
+ * Results cache
+ */
+
+var res = '';
+var cache;
+
+},{}],10:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -4710,7 +4754,7 @@ Ware.prototype.run = function () {
   return this;
 };
 
-},{"wrap-fn":10}],10:[function(require,module,exports){
+},{"wrap-fn":11}],11:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -4837,7 +4881,7 @@ function once(fn) {
   };
 }
 
-},{"co":11}],11:[function(require,module,exports){
+},{"co":12}],12:[function(require,module,exports){
 
 /**
  * slice() reference.
