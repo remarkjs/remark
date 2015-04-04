@@ -359,6 +359,7 @@ var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
 var normalize = utilities.normalizeReference;
+var objectCreate = utilities.create;
 var has = Object.prototype.hasOwnProperty;
 
 /*
@@ -498,7 +499,7 @@ var EXPRESSION_TASK_ITEM = /^\[([\ \t]|x|X)\][\ \t]/;
  * which can be used as indentation
  */
 
-var INDENTATION_CHARACTERS = {};
+var INDENTATION_CHARACTERS = objectCreate();
 
 INDENTATION_CHARACTERS[SPACE] = SPACE.length;
 INDENTATION_CHARACTERS[TAB] = TAB_SIZE;
@@ -727,7 +728,7 @@ function noopToggler() {
  * Define nodes of a type which can be merged.
  */
 
-var MERGEABLE_NODES = {};
+var MERGEABLE_NODES = objectCreate();
 
 /**
  * Merge two HTML nodes: `token` into `prev`.
@@ -1462,7 +1463,7 @@ function renderNormalListItem(token, position) {
  * A map of two functions which can create list items.
  */
 
-var LIST_ITEM_MAP = {};
+var LIST_ITEM_MAP = objectCreate();
 
 LIST_ITEM_MAP.true = renderPedanticListItem;
 LIST_ITEM_MAP.false = renderNormalListItem;
@@ -1999,8 +2000,8 @@ function Parser(options) {
      * Create space for definition/reference type nodes.
      */
 
-    self.links = {};
-    self.footnotes = {};
+    self.links = objectCreate();
+    self.footnotes = objectCreate();
     self.footnotesAsArray = [];
 
     self.footnoteCounter = 1;
@@ -2676,6 +2677,9 @@ var clone = utilities.clone;
 var raise = utilities.raise;
 var validate = utilities.validate;
 var count = utilities.countCharacter;
+var objectCreate = utilities.create;
+var getKeys = utilities.keys;
+var has = Object.prototype.hasOwnProperty;
 
 /*
  * Constants.
@@ -2734,7 +2738,7 @@ var DOUBLE_TILDE = TILDE + TILDE;
  * Allowed list-bullet characters.
  */
 
-var LIST_BULLETS = {};
+var LIST_BULLETS = objectCreate();
 
 LIST_BULLETS[ASTERISK] = true;
 LIST_BULLETS[DASH] = true;
@@ -2744,7 +2748,7 @@ LIST_BULLETS[PLUS] = true;
  * Allowed horizontal-rule bullet characters.
  */
 
-var HORIZONTAL_RULE_BULLETS = {};
+var HORIZONTAL_RULE_BULLETS = objectCreate();
 
 HORIZONTAL_RULE_BULLETS[ASTERISK] = true;
 HORIZONTAL_RULE_BULLETS[DASH] = true;
@@ -2754,7 +2758,7 @@ HORIZONTAL_RULE_BULLETS[UNDERSCORE] = true;
  * Allowed emphasis characters.
  */
 
-var EMPHASIS_MARKERS = {};
+var EMPHASIS_MARKERS = objectCreate();
 
 EMPHASIS_MARKERS[UNDERSCORE] = true;
 EMPHASIS_MARKERS[ASTERISK] = true;
@@ -2763,7 +2767,7 @@ EMPHASIS_MARKERS[ASTERISK] = true;
  * Allowed fence markers.
  */
 
-var FENCE_MARKERS = {};
+var FENCE_MARKERS = objectCreate();
 
 FENCE_MARKERS[TICK] = true;
 FENCE_MARKERS[TILDE] = true;
@@ -2772,7 +2776,7 @@ FENCE_MARKERS[TILDE] = true;
  * Which method to use based on `list.ordered`.
  */
 
-var ORDERED_MAP = {};
+var ORDERED_MAP = objectCreate();
 
 ORDERED_MAP.true = 'visitOrderedItems';
 ORDERED_MAP.false = 'visitUnorderedItems';
@@ -2781,7 +2785,7 @@ ORDERED_MAP.false = 'visitUnorderedItems';
  * Which checkbox to use.
  */
 
-var CHECKBOX_MAP = {};
+var CHECKBOX_MAP = objectCreate();
 
 CHECKBOX_MAP.null = '';
 CHECKBOX_MAP.undefined = '';
@@ -2829,23 +2833,6 @@ function encloseTitle(title) {
     }
 
     return delimiter + title + delimiter;
-}
-
-/**
- * Helper to get the keys in an object.
- *
- * @param {Object} object
- * @return {Array.<string>}
- */
-function getKeys(object) {
-    var results = [];
-    var key;
-
-    for (key in object) {
-        results.push(key);
-    }
-
-    return results;
 }
 
 /**
@@ -2999,7 +2986,7 @@ compilerPrototype.visit = function (token, parent, level) {
 
     level += 1;
 
-    if (!(token.type in this)) {
+    if (typeof this[token.type] !== 'function') {
         throw new Error(
             'Missing compiler for node of type `' +
             token.type + '`: ' + token
@@ -3619,7 +3606,7 @@ function stringify(ast, options, CustomCompiler) {
     compiler = new CustomCompiler(options);
 
     if (ast && ast.footnotes) {
-        footnotes = copy({}, ast.footnotes);
+        footnotes = copy(objectCreate(), ast.footnotes);
 
         compiler.footnotes = footnotes;
     }
@@ -3904,6 +3891,50 @@ function countCharacter(value, character) {
     return count;
 }
 
+/**
+ * Helper to get the keys in an object.
+ *
+ * @param {Object} object
+ * @return {Array.<string>}
+ */
+function keys(object) {
+    var results = [];
+    var key;
+
+    for (key in object) {
+        /* istanbul ignore else */
+        if (has.call(object, key)) {
+            results.push(key);
+        }
+    }
+
+    return results;
+}
+
+/**
+ * Create an empty object.
+ *
+ * @return {Object}
+ */
+function objectObject() {
+    return {};
+}
+
+/*
+ * Break coverage.
+ */
+
+objectObject();
+
+/**
+ * Create an object without prototype.
+ *
+ * @return {Object}
+ */
+function objectNull() {
+    return Object.create(null);
+}
+
 /*
  * Expose `validate`.
  */
@@ -3930,6 +3961,14 @@ exports.copy = copy;
 exports.clone = clone;
 exports.repeat = repeat;
 exports.countCharacter = countCharacter;
+exports.keys = keys;
+
+/* istanbul ignore else */
+if ('create' in Object) {
+    exports.create = objectNull;
+} else {
+    exports.create = objectObject;
+}
 
 },{}],7:[function(require,module,exports){
 (function (global){
