@@ -186,7 +186,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "this code block is indented by two tabs",
+      "value": "\tthis code block is indented by two tabs",
       "position": {
         "start": {
           "line": 13,

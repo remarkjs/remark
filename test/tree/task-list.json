@@ -1704,7 +1704,7 @@
             {
               "type": "code",
               "lang": null,
-              "value": "Hello;",
+              "value": "    Hello;",
               "position": {
                 "start": {
                   "line": 76,
@@ -1802,7 +1802,7 @@
             {
               "type": "code",
               "lang": null,
-              "value": "Hello;",
+              "value": "\tHello;",
               "position": {
                 "start": {
                   "line": 80,

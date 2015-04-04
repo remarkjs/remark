@@ -5988,7 +5988,7 @@
     {
       "type": "code",
       "lang": null,
-      "value": "<div class=\"footer\">\n    &copy; 2004 Foo Corporation\n</div>",
+      "value": "    <div class=\"footer\">\n        &copy; 2004 Foo Corporation\n    </div>",
       "position": {
         "start": {
           "line": 504,
