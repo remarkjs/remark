@@ -1,0 +1,280 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "International Radiotelephony Spelling Alphabet",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 49
+            }
+          }
+        },
+        {
+          "type": "footnote",
+          "id": "wiki",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 49
+            },
+            "end": {
+              "line": 1,
+              "column": 56
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 56
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Here's the NATO phonetic alphabet",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 34
+            }
+          }
+        },
+        {
+          "type": "footnote",
+          "id": "wiki",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 34
+            },
+            "end": {
+              "line": 3,
+              "column": 41
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ": Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliet, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, and Zulu.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 41
+            },
+            "end": {
+              "line": 3,
+              "column": 236
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 236
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And here's some more text.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 27
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 27
+        }
+      }
+    }
+  ],
+  "footnotes": {
+    "wiki": {
+      "type": "footnoteDefinition",
+      "id": "wiki",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Read more about it on wikipedia: ",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 10
+                },
+                "end": {
+                  "line": 7,
+                  "column": 43
+                }
+              }
+            },
+            {
+              "type": "link",
+              "title": null,
+              "href": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "http://en.wikipedia.org/wiki/NATO",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 44
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 77
+                    }
+                  }
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "phonetic",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 78
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 86
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 77
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 87
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "alphabet",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 87
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 95
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 43
+                },
+                "end": {
+                  "line": 7,
+                  "column": 96
+                }
+              }
+            },
+            {
+              "type": "text",
+              "value": ".",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 96
+                },
+                "end": {
+                  "line": 7,
+                  "column": 97
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 10
+            },
+            "end": {
+              "line": 7,
+              "column": 97
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 97
+        }
+      }
+    }
+  },
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 27
+    }
+  }
+}

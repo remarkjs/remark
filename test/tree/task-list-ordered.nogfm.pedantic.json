@@ -105,73 +105,11 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "[x] Earth:",
+                  "value": "[x] Earth:\n1. [x] Moon.",
                   "position": {
                     "start": {
                       "line": 3,
                       "column": 4
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 14
-                    }
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 4
-                },
-                "end": {
-                  "line": 3,
-                  "column": 14
-                }
-              }
-            },
-            {
-              "type": "list",
-              "ordered": true,
-              "start": 1,
-              "children": [
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "[x] Moon.",
-                          "position": {
-                            "start": {
-                              "line": 4,
-                              "column": 8
-                            },
-                            "end": {
-                              "line": 4,
-                              "column": 17
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 4,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 4,
-                          "column": 17
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 4,
-                      "column": 5
                     },
                     "end": {
                       "line": 4,
@@ -182,8 +120,8 @@
               ],
               "position": {
                 "start": {
-                  "line": 4,
-                  "column": 5
+                  "line": 3,
+                  "column": 4
                 },
                 "end": {
                   "line": 4,

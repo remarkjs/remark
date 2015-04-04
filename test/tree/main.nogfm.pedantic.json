@@ -156,7 +156,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -202,172 +201,16 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "List Item 2",
+                  "value": "List Item 2\n* New List Item 1\nHi, this is a list item.\n* New List Item 2\nAnother item\n    Code goes here.\n    Lots of it...\n* New List Item 3\nThe last item",
                   "position": {
                     "start": {
                       "line": 16,
-                      "column": 3
-                    },
-                    "end": {
-                      "line": 16,
-                      "column": 14
-                    }
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 16,
-                  "column": 3
-                },
-                "end": {
-                  "line": 16,
-                  "column": 14
-                }
-              }
-            },
-            {
-              "type": "list",
-              "ordered": false,
-              "start": null,
-              "children": [
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "New List Item 1\nHi, this is a list item.",
-                          "position": {
-                            "start": {
-                              "line": 17,
-                              "column": 5
-                            },
-                            "end": {
-                              "line": 18,
-                              "column": 29
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 17,
-                          "column": 5
-                        },
-                        "end": {
-                          "line": 18,
-                          "column": 29
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 17,
-                      "column": 3
-                    },
-                    "end": {
-                      "line": 18,
-                      "column": 29
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "New List Item 2\nAnother item\n    Code goes here.\n    Lots of it...",
-                          "position": {
-                            "start": {
-                              "line": 19,
-                              "column": 5
-                            },
-                            "end": {
-                              "line": 22,
-                              "column": 22
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 19,
-                          "column": 5
-                        },
-                        "end": {
-                          "line": 22,
-                          "column": 22
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 19,
-                      "column": 3
-                    },
-                    "end": {
-                      "line": 22,
-                      "column": 22
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "New List Item 3\nThe last item",
-                          "position": {
-                            "start": {
-                              "line": 23,
-                              "column": 5
-                            },
-                            "end": {
-                              "line": 24,
-                              "column": 18
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 23,
-                          "column": 5
-                        },
-                        "end": {
-                          "line": 24,
-                          "column": 18
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 23,
                       "column": 3
                     },
                     "end": {
@@ -379,7 +222,7 @@
               ],
               "position": {
                 "start": {
-                  "line": 17,
+                  "line": 16,
                   "column": 3
                 },
                 "end": {
@@ -403,7 +246,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -449,7 +291,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -544,7 +385,6 @@
             {
               "type": "listItem",
               "loose": false,
-              "checked": null,
               "children": [
                 {
                   "type": "paragraph",
@@ -590,126 +430,16 @@
             {
               "type": "listItem",
               "loose": false,
-              "checked": null,
               "children": [
                 {
                   "type": "paragraph",
                   "children": [
                     {
                       "type": "text",
-                      "value": "bq Item 2",
+                      "value": "bq Item 2\n* New bq Item 1\n* New bq Item 2\nText here",
                       "position": {
                         "start": {
                           "line": 35,
-                          "column": 5
-                        },
-                        "end": {
-                          "line": 35,
-                          "column": 14
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 35,
-                      "column": 5
-                    },
-                    "end": {
-                      "line": 35,
-                      "column": 14
-                    }
-                  }
-                },
-                {
-                  "type": "list",
-                  "ordered": false,
-                  "start": null,
-                  "children": [
-                    {
-                      "type": "listItem",
-                      "loose": false,
-                      "checked": null,
-                      "children": [
-                        {
-                          "type": "paragraph",
-                          "children": [
-                            {
-                              "type": "text",
-                              "value": "New bq Item 1",
-                              "position": {
-                                "start": {
-                                  "line": 36,
-                                  "column": 7
-                                },
-                                "end": {
-                                  "line": 36,
-                                  "column": 20
-                                }
-                              }
-                            }
-                          ],
-                          "position": {
-                            "start": {
-                              "line": 36,
-                              "column": 7
-                            },
-                            "end": {
-                              "line": 36,
-                              "column": 20
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 36,
-                          "column": 5
-                        },
-                        "end": {
-                          "line": 36,
-                          "column": 20
-                        }
-                      }
-                    },
-                    {
-                      "type": "listItem",
-                      "loose": false,
-                      "checked": null,
-                      "children": [
-                        {
-                          "type": "paragraph",
-                          "children": [
-                            {
-                              "type": "text",
-                              "value": "New bq Item 2\nText here",
-                              "position": {
-                                "start": {
-                                  "line": 37,
-                                  "column": 7
-                                },
-                                "end": {
-                                  "line": 38,
-                                  "column": 14
-                                }
-                              }
-                            }
-                          ],
-                          "position": {
-                            "start": {
-                              "line": 37,
-                              "column": 7
-                            },
-                            "end": {
-                              "line": 38,
-                              "column": 14
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 37,
                           "column": 5
                         },
                         "end": {
@@ -721,7 +451,7 @@
                   ],
                   "position": {
                     "start": {
-                      "line": 36,
+                      "line": 35,
                       "column": 5
                     },
                     "end": {

@@ -68,7 +68,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -114,7 +113,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -160,7 +158,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -252,7 +249,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -298,7 +294,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -344,7 +339,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -449,7 +443,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -495,7 +488,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -541,7 +533,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -633,7 +624,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -679,7 +669,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -725,7 +714,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -830,7 +818,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -876,7 +863,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -922,7 +908,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1014,7 +999,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1060,7 +1044,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1106,7 +1089,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1228,7 +1210,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1274,7 +1255,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1320,7 +1300,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1412,7 +1391,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1458,7 +1436,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1504,7 +1481,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1596,7 +1572,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1642,7 +1617,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1688,7 +1662,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1780,7 +1753,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1826,7 +1798,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1872,7 +1843,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -1964,7 +1934,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2039,7 +2008,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2085,7 +2053,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2178,144 +2145,17 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "Tab",
+                  "value": "Tab\n*\tTab\n\t*\tTab",
                   "position": {
                     "start": {
                       "line": 100,
                       "column": 3
-                    },
-                    "end": {
-                      "line": 100,
-                      "column": 6
-                    }
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 100,
-                  "column": 3
-                },
-                "end": {
-                  "line": 100,
-                  "column": 6
-                }
-              }
-            },
-            {
-              "type": "list",
-              "ordered": false,
-              "start": null,
-              "children": [
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Tab",
-                          "position": {
-                            "start": {
-                              "line": 101,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 101,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 101,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 101,
-                          "column": 7
-                        }
-                      }
-                    },
-                    {
-                      "type": "list",
-                      "ordered": false,
-                      "start": null,
-                      "children": [
-                        {
-                          "type": "listItem",
-                          "loose": false,
-                          "checked": null,
-                          "children": [
-                            {
-                              "type": "paragraph",
-                              "children": [
-                                {
-                                  "type": "text",
-                                  "value": "Tab",
-                                  "position": {
-                                    "start": {
-                                      "line": 102,
-                                      "column": 5
-                                    },
-                                    "end": {
-                                      "line": 102,
-                                      "column": 8
-                                    }
-                                  }
-                                }
-                              ],
-                              "position": {
-                                "start": {
-                                  "line": 102,
-                                  "column": 5
-                                },
-                                "end": {
-                                  "line": 102,
-                                  "column": 8
-                                }
-                              }
-                            }
-                          ],
-                          "position": {
-                            "start": {
-                              "line": 102,
-                              "column": 3
-                            },
-                            "end": {
-                              "line": 102,
-                              "column": 8
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 102,
-                          "column": 3
-                        },
-                        "end": {
-                          "line": 102,
-                          "column": 8
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 101,
-                      "column": 2
                     },
                     "end": {
                       "line": 102,
@@ -2326,8 +2166,8 @@
               ],
               "position": {
                 "start": {
-                  "line": 101,
-                  "column": 2
+                  "line": 100,
+                  "column": 3
                 },
                 "end": {
                   "line": 102,
@@ -2396,7 +2236,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2442,22 +2281,21 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "Second:",
+                  "value": "Second:\n* Fee\n* Fie\n* Foe",
                   "position": {
                     "start": {
                       "line": 107,
                       "column": 4
                     },
                     "end": {
-                      "line": 107,
-                      "column": 11
+                      "line": 110,
+                      "column": 7
                     }
                   }
                 }
@@ -2466,161 +2304,6 @@
                 "start": {
                   "line": 107,
                   "column": 4
-                },
-                "end": {
-                  "line": 107,
-                  "column": 11
-                }
-              }
-            },
-            {
-              "type": "list",
-              "ordered": false,
-              "start": null,
-              "children": [
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Fee",
-                          "position": {
-                            "start": {
-                              "line": 108,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 108,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 108,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 108,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 108,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 108,
-                      "column": 7
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Fie",
-                          "position": {
-                            "start": {
-                              "line": 109,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 109,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 109,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 109,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 109,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 109,
-                      "column": 7
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Foe",
-                          "position": {
-                            "start": {
-                              "line": 110,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 110,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 110,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 110,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 110,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 110,
-                      "column": 7
-                    }
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 108,
-                  "column": 2
                 },
                 "end": {
                   "line": 110,
@@ -2643,7 +2326,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2735,7 +2417,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -2781,22 +2462,21 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
               "children": [
                 {
                   "type": "text",
-                  "value": "Second:",
+                  "value": "Second:\n* Fee\n* Fie\n* Foe",
                   "position": {
                     "start": {
                       "line": 117,
                       "column": 4
                     },
                     "end": {
-                      "line": 117,
-                      "column": 11
+                      "line": 120,
+                      "column": 7
                     }
                   }
                 }
@@ -2805,161 +2485,6 @@
                 "start": {
                   "line": 117,
                   "column": 4
-                },
-                "end": {
-                  "line": 117,
-                  "column": 11
-                }
-              }
-            },
-            {
-              "type": "list",
-              "ordered": false,
-              "start": null,
-              "children": [
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Fee",
-                          "position": {
-                            "start": {
-                              "line": 118,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 118,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 118,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 118,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 118,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 118,
-                      "column": 7
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Fie",
-                          "position": {
-                            "start": {
-                              "line": 119,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 119,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 119,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 119,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 119,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 119,
-                      "column": 7
-                    }
-                  }
-                },
-                {
-                  "type": "listItem",
-                  "loose": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Foe",
-                          "position": {
-                            "start": {
-                              "line": 120,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 120,
-                              "column": 7
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 120,
-                          "column": 4
-                        },
-                        "end": {
-                          "line": 120,
-                          "column": 7
-                        }
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 120,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 120,
-                      "column": 7
-                    }
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 118,
-                  "column": 2
                 },
                 "end": {
                   "line": 120,
@@ -2982,7 +2507,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -3074,7 +2598,6 @@
         {
           "type": "listItem",
           "loose": true,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -3113,7 +2636,6 @@
                 {
                   "type": "listItem",
                   "loose": false,
-                  "checked": null,
                   "children": [
                     {
                       "type": "paragraph",

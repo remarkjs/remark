@@ -90,7 +90,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 13,
@@ -98,69 +98,26 @@
                     },
                     "end": {
                       "line": 14,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#philosophy",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Philosophy",
                       "position": {
                         "start": {
                           "line": 14,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 14,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#philosophy",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Philosophy",
-                          "position": {
-                            "start": {
-                              "line": 14,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 14,
-                              "column": 20
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 14,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 14,
-                          "column": 34
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 14,
-                          "column": 34
-                        },
-                        "end": {
-                          "line": 15,
-                          "column": 5
+                          "column": 20
                         }
                       }
                     }
@@ -168,21 +125,21 @@
                   "position": {
                     "start": {
                       "line": 14,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 15,
-                      "column": 6
+                      "line": 14,
+                      "column": 34
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 15,
-                      "column": 6
+                      "line": 14,
+                      "column": 34
                     },
                     "end": {
                       "line": 15,
@@ -330,7 +287,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 17,
@@ -338,69 +295,26 @@
                     },
                     "end": {
                       "line": 18,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#p",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Paragraphs and Line Breaks",
                       "position": {
                         "start": {
                           "line": 18,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 18,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#p",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Paragraphs and Line Breaks",
-                          "position": {
-                            "start": {
-                              "line": 18,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 18,
-                              "column": 36
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 18,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 18,
-                          "column": 41
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 18,
-                          "column": 41
-                        },
-                        "end": {
-                          "line": 19,
-                          "column": 5
+                          "column": 36
                         }
                       }
                     }
@@ -408,21 +322,21 @@
                   "position": {
                     "start": {
                       "line": 18,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 19,
-                      "column": 6
+                      "line": 18,
+                      "column": 41
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 19,
-                      "column": 6
+                      "line": 18,
+                      "column": 41
                     },
                     "end": {
                       "line": 19,
@@ -463,7 +377,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 19,
@@ -471,69 +385,26 @@
                     },
                     "end": {
                       "line": 20,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#blockquote",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Blockquotes",
                       "position": {
                         "start": {
                           "line": 20,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 20,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#blockquote",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Blockquotes",
-                          "position": {
-                            "start": {
-                              "line": 20,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 20,
-                              "column": 21
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 20,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 20,
-                          "column": 35
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 20,
-                          "column": 35
-                        },
-                        "end": {
-                          "line": 21,
-                          "column": 5
+                          "column": 21
                         }
                       }
                     }
@@ -541,21 +412,21 @@
                   "position": {
                     "start": {
                       "line": 20,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 21,
-                      "column": 6
+                      "line": 20,
+                      "column": 35
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 21,
-                      "column": 6
+                      "line": 20,
+                      "column": 35
                     },
                     "end": {
                       "line": 21,
@@ -596,7 +467,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 21,
@@ -604,69 +475,26 @@
                     },
                     "end": {
                       "line": 22,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#precode",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Code Blocks",
                       "position": {
                         "start": {
                           "line": 22,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 22,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#precode",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Code Blocks",
-                          "position": {
-                            "start": {
-                              "line": 22,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 22,
-                              "column": 21
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 22,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 22,
-                          "column": 32
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 22,
-                          "column": 32
-                        },
-                        "end": {
-                          "line": 23,
-                          "column": 5
+                          "column": 21
                         }
                       }
                     }
@@ -674,21 +502,21 @@
                   "position": {
                     "start": {
                       "line": 22,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 23,
-                      "column": 6
+                      "line": 22,
+                      "column": 32
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 23,
-                      "column": 6
+                      "line": 22,
+                      "column": 32
                     },
                     "end": {
                       "line": 23,
@@ -791,7 +619,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 24,
@@ -799,69 +627,26 @@
                     },
                     "end": {
                       "line": 25,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#link",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Links",
                       "position": {
                         "start": {
                           "line": 25,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 25,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#link",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Links",
-                          "position": {
-                            "start": {
-                              "line": 25,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 25,
-                              "column": 15
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 25,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 25,
-                          "column": 23
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 25,
-                          "column": 23
-                        },
-                        "end": {
-                          "line": 26,
-                          "column": 5
+                          "column": 15
                         }
                       }
                     }
@@ -869,21 +654,21 @@
                   "position": {
                     "start": {
                       "line": 25,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 26,
-                      "column": 6
+                      "line": 25,
+                      "column": 23
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 26,
-                      "column": 6
+                      "line": 25,
+                      "column": 23
                     },
                     "end": {
                       "line": 26,
@@ -924,7 +709,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 26,
@@ -932,69 +717,26 @@
                     },
                     "end": {
                       "line": 27,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#code",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Code",
                       "position": {
                         "start": {
                           "line": 27,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 27,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#code",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Code",
-                          "position": {
-                            "start": {
-                              "line": 27,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 27,
-                              "column": 14
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 27,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 27,
-                          "column": 22
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 27,
-                          "column": 22
-                        },
-                        "end": {
-                          "line": 28,
-                          "column": 5
+                          "column": 14
                         }
                       }
                     }
@@ -1002,21 +744,21 @@
                   "position": {
                     "start": {
                       "line": 27,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 28,
-                      "column": 6
+                      "line": 27,
+                      "column": 22
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 28,
-                      "column": 6
+                      "line": 27,
+                      "column": 22
                     },
                     "end": {
                       "line": 28,
@@ -1119,7 +861,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "\n",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
                       "line": 29,
@@ -1127,69 +869,26 @@
                     },
                     "end": {
                       "line": 30,
-                      "column": 5
+                      "column": 9
                     }
                   }
                 },
                 {
-                  "type": "emphasis",
+                  "type": "link",
+                  "title": null,
+                  "href": "#backslash",
                   "children": [
                     {
                       "type": "text",
-                      "value": "   ",
+                      "value": "Backslash Escapes",
                       "position": {
                         "start": {
                           "line": 30,
-                          "column": 6
+                          "column": 10
                         },
                         "end": {
                           "line": 30,
-                          "column": 9
-                        }
-                      }
-                    },
-                    {
-                      "type": "link",
-                      "title": null,
-                      "href": "#backslash",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "Backslash Escapes",
-                          "position": {
-                            "start": {
-                              "line": 30,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 30,
-                              "column": 27
-                            }
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 30,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 30,
-                          "column": 40
-                        }
-                      }
-                    },
-                    {
-                      "type": "text",
-                      "value": "\n",
-                      "position": {
-                        "start": {
-                          "line": 30,
-                          "column": 40
-                        },
-                        "end": {
-                          "line": 31,
-                          "column": 5
+                          "column": 27
                         }
                       }
                     }
@@ -1197,21 +896,21 @@
                   "position": {
                     "start": {
                       "line": 30,
-                      "column": 5
+                      "column": 9
                     },
                     "end": {
-                      "line": 31,
-                      "column": 6
+                      "line": 30,
+                      "column": 40
                     }
                   }
                 },
                 {
                   "type": "text",
-                  "value": "   ",
+                  "value": "\n*   ",
                   "position": {
                     "start": {
-                      "line": 31,
-                      "column": 6
+                      "line": 30,
+                      "column": 40
                     },
                     "end": {
                       "line": 31,

@@ -15,15 +15,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 1a\nWorld 1a.",
+                  "value": "Hello 1a",
                   "position": {
                     "start": {
                       "line": 1,
                       "column": 3
                     },
                     "end": {
-                      "line": 2,
-                      "column": 10
+                      "line": 1,
+                      "column": 11
                     }
                   }
                 }
@@ -32,6 +32,35 @@
                 "start": {
                   "line": 1,
                   "column": 3
+                },
+                "end": {
+                  "line": 1,
+                  "column": 11
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 1a.",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 11
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2
                 },
                 "end": {
                   "line": 3,
@@ -60,15 +89,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 1b\nWorld 1b.",
+                  "value": "Hello 1b",
                   "position": {
                     "start": {
                       "line": 5,
                       "column": 3
                     },
                     "end": {
-                      "line": 6,
-                      "column": 10
+                      "line": 5,
+                      "column": 11
                     }
                   }
                 }
@@ -76,6 +105,35 @@
               "position": {
                 "start": {
                   "line": 5,
+                  "column": 3
+                },
+                "end": {
+                  "line": 5,
+                  "column": 11
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 1b.",
+                  "position": {
+                    "start": {
+                      "line": 7,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 7,
+                      "column": 12
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 7,
                   "column": 3
                 },
                 "end": {
@@ -105,15 +163,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 2a\nWorld 2a.",
+                  "value": "Hello 2a",
                   "position": {
                     "start": {
                       "line": 9,
                       "column": 4
                     },
                     "end": {
-                      "line": 10,
-                      "column": 10
+                      "line": 9,
+                      "column": 12
                     }
                   }
                 }
@@ -122,6 +180,35 @@
                 "start": {
                   "line": 9,
                   "column": 4
+                },
+                "end": {
+                  "line": 9,
+                  "column": 12
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 2a.",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 12
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 3
                 },
                 "end": {
                   "line": 11,
@@ -150,15 +237,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 2b\nWorld 2b.",
+                  "value": "Hello 2b",
                   "position": {
                     "start": {
                       "line": 13,
                       "column": 4
                     },
                     "end": {
-                      "line": 14,
-                      "column": 10
+                      "line": 13,
+                      "column": 12
                     }
                   }
                 }
@@ -166,6 +253,35 @@
               "position": {
                 "start": {
                   "line": 13,
+                  "column": 4
+                },
+                "end": {
+                  "line": 13,
+                  "column": 12
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 2b.",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 15,
+                      "column": 13
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 15,
                   "column": 4
                 },
                 "end": {
@@ -195,15 +311,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 3a\nWorld 3a.",
+                  "value": "Hello 3a",
                   "position": {
                     "start": {
                       "line": 17,
                       "column": 5
                     },
                     "end": {
-                      "line": 18,
-                      "column": 10
+                      "line": 17,
+                      "column": 13
                     }
                   }
                 }
@@ -212,6 +328,35 @@
                 "start": {
                   "line": 17,
                   "column": 5
+                },
+                "end": {
+                  "line": 17,
+                  "column": 13
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 3a.",
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 4
+                    },
+                    "end": {
+                      "line": 19,
+                      "column": 13
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 4
                 },
                 "end": {
                   "line": 19,
@@ -240,15 +385,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 3b\nWorld 3b.",
+                  "value": "Hello 3b",
                   "position": {
                     "start": {
                       "line": 21,
                       "column": 5
                     },
                     "end": {
-                      "line": 22,
-                      "column": 10
+                      "line": 21,
+                      "column": 13
                     }
                   }
                 }
@@ -256,6 +401,35 @@
               "position": {
                 "start": {
                   "line": 21,
+                  "column": 5
+                },
+                "end": {
+                  "line": 21,
+                  "column": 13
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 3b.",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 14
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 23,
                   "column": 5
                 },
                 "end": {
@@ -285,15 +459,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 4a\nWorld 4a.",
+                  "value": "Hello 4a",
                   "position": {
                     "start": {
                       "line": 25,
                       "column": 6
                     },
                     "end": {
-                      "line": 26,
-                      "column": 10
+                      "line": 25,
+                      "column": 14
                     }
                   }
                 }
@@ -302,6 +476,35 @@
                 "start": {
                   "line": 25,
                   "column": 6
+                },
+                "end": {
+                  "line": 25,
+                  "column": 14
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 4a.",
+                  "position": {
+                    "start": {
+                      "line": 27,
+                      "column": 5
+                    },
+                    "end": {
+                      "line": 27,
+                      "column": 14
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 5
                 },
                 "end": {
                   "line": 27,
@@ -330,15 +533,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Hello 4b\nWorld 4b.",
+                  "value": "Hello 4b",
                   "position": {
                     "start": {
                       "line": 29,
                       "column": 6
                     },
                     "end": {
-                      "line": 30,
-                      "column": 10
+                      "line": 29,
+                      "column": 14
                     }
                   }
                 }
@@ -346,6 +549,35 @@
               "position": {
                 "start": {
                   "line": 29,
+                  "column": 6
+                },
+                "end": {
+                  "line": 29,
+                  "column": 14
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "World 4b.",
+                  "position": {
+                    "start": {
+                      "line": 31,
+                      "column": 6
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 15
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 31,
                   "column": 6
                 },
                 "end": {

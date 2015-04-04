@@ -811,15 +811,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Item 1, graf one.\nItem 2. graf two. The quick brown fox jumped over the lazy dog's\nback.",
+                  "value": "Item 1, graf one.",
                   "position": {
                     "start": {
                       "line": 33,
                       "column": 4
                     },
                     "end": {
-                      "line": 35,
-                      "column": 7
+                      "line": 33,
+                      "column": 21
                     }
                   }
                 }
@@ -828,6 +828,35 @@
                 "start": {
                   "line": 33,
                   "column": 4
+                },
+                "end": {
+                  "line": 33,
+                  "column": 21
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Item 2. graf two. The quick brown fox jumped over the lazy dog's\nback.",
+                  "position": {
+                    "start": {
+                      "line": 35,
+                      "column": 2
+                    },
+                    "end": {
+                      "line": 36,
+                      "column": 7
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 35,
+                  "column": 2
                 },
                 "end": {
                   "line": 36,

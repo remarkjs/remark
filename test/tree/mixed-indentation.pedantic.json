@@ -46,14 +46,14 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long",
+                  "value": "Very long\n\tparagraph",
                   "position": {
                     "start": {
                       "line": 3,
                       "column": 3
                     },
                     "end": {
-                      "line": 3,
+                      "line": 4,
                       "column": 12
                     }
                   }
@@ -63,21 +63,6 @@
                 "start": {
                   "line": 3,
                   "column": 3
-                },
-                "end": {
-                  "line": 3,
-                  "column": 12
-                }
-              }
-            },
-            {
-              "type": "code",
-              "lang": null,
-              "value": "paragraph",
-              "position": {
-                "start": {
-                  "line": 4,
-                  "column": 2
                 },
                 "end": {
                   "line": 4,
@@ -107,15 +92,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long",
+                  "value": "Very long\n\tparagraph",
                   "position": {
                     "start": {
                       "line": 6,
                       "column": 4
                     },
                     "end": {
-                      "line": 6,
-                      "column": 13
+                      "line": 7,
+                      "column": 12
                     }
                   }
                 }
@@ -124,21 +109,6 @@
                 "start": {
                   "line": 6,
                   "column": 4
-                },
-                "end": {
-                  "line": 6,
-                  "column": 13
-                }
-              }
-            },
-            {
-              "type": "code",
-              "lang": null,
-              "value": "paragraph",
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 2
                 },
                 "end": {
                   "line": 7,
@@ -168,14 +138,14 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long",
+                  "value": "Very long\n\tparagraph",
                   "position": {
                     "start": {
                       "line": 9,
                       "column": 3
                     },
                     "end": {
-                      "line": 9,
+                      "line": 10,
                       "column": 12
                     }
                   }
@@ -185,21 +155,6 @@
                 "start": {
                   "line": 9,
                   "column": 3
-                },
-                "end": {
-                  "line": 9,
-                  "column": 12
-                }
-              }
-            },
-            {
-              "type": "code",
-              "lang": null,
-              "value": "paragraph",
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 2
                 },
                 "end": {
                   "line": 10,
@@ -229,15 +184,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long",
+                  "value": "Very long\n\tparagraph",
                   "position": {
                     "start": {
                       "line": 12,
                       "column": 4
                     },
                     "end": {
-                      "line": 12,
-                      "column": 13
+                      "line": 13,
+                      "column": 12
                     }
                   }
                 }
@@ -246,21 +201,6 @@
                 "start": {
                   "line": 12,
                   "column": 4
-                },
-                "end": {
-                  "line": 12,
-                  "column": 13
-                }
-              }
-            },
-            {
-              "type": "code",
-              "lang": null,
-              "value": "paragraph",
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 2
                 },
                 "end": {
                   "line": 13,

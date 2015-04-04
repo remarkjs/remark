@@ -16,15 +16,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "hello\nworld\nhow\nare",
+                  "value": "hello\nworld",
                   "position": {
                     "start": {
                       "line": 1,
                       "column": 3
                     },
                     "end": {
-                      "line": 4,
-                      "column": 6
+                      "line": 2,
+                      "column": 8
                     }
                   }
                 }
@@ -32,6 +32,35 @@
               "position": {
                 "start": {
                   "line": 1,
+                  "column": 3
+                },
+                "end": {
+                  "line": 2,
+                  "column": 8
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how\nare",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 6
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
                   "column": 3
                 },
                 "end": {
@@ -774,15 +803,15 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "world\nhow",
+                  "value": "world",
                   "position": {
                     "start": {
                       "line": 39,
                       "column": 3
                     },
                     "end": {
-                      "line": 40,
-                      "column": 4
+                      "line": 39,
+                      "column": 8
                     }
                   }
                 }
@@ -790,6 +819,35 @@
               "position": {
                 "start": {
                   "line": 39,
+                  "column": 3
+                },
+                "end": {
+                  "line": 39,
+                  "column": 8
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "how",
+                  "position": {
+                    "start": {
+                      "line": 41,
+                      "column": 3
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 6
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 41,
                   "column": 3
                 },
                 "end": {
