@@ -3667,6 +3667,7 @@ var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
 var WHITE_SPACE_COLLAPSABLE = /[ \t\n]+/g;
+var EXPRESSION_BOM = /^\ufeff/;
 
 /**
  * Shallow copy `context` into `target`.
@@ -3843,6 +3844,7 @@ function collapse(value) {
  */
 function clean(value) {
     return String(value)
+        .replace(EXPRESSION_BOM, '')
         .replace(EXPRESSION_LINE_BREAKS, '\n')
         .replace(EXPRESSION_SYMBOL_FOR_NEW_LINE, '\n');
 }
