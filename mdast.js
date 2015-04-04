@@ -829,7 +829,7 @@ function tokenizeNewline(eat, $0) {
 function tokenizeCode(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderCodeBlock(removeIndentation($0), null, eat));
+    eat($0)(this.renderCodeBlock(removeIndentation($0, TAB_SIZE), null, eat));
 }
 
 /**
@@ -1295,8 +1295,6 @@ function tokenizeParagraph(eat, $0) {
 
     eat($0)(this.renderBlock(PARAGRAPH, $0));
 }
-
-tokenizeParagraph.onlyAtTop = true;
 
 /**
  * Tokenise a text token.
