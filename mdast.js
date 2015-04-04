@@ -280,7 +280,6 @@ module.exports = {
     'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
     'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
     'linkDefinition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
-    'blockText': /^[^\n]+/,
     'bullet': /(?:[*+-]|\d+\.)/,
     'indent': /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
     'item': /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
@@ -558,7 +557,7 @@ function getIndent(value) {
  */
 function removeIndentation(value, maximum) {
     var values = value.split(NEW_LINE);
-    var position = values.length;
+    var position = values.length + 1;
     var minIndent = Infinity;
     var matrix = [];
     var index;
@@ -566,10 +565,7 @@ function removeIndentation(value, maximum) {
     var stops;
     var padding;
 
-    if (maximum > 0) {
-        values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
-        position++;
-    }
+    values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
 
     while (position--) {
         indentation = getIndent(values[position]);
@@ -618,9 +614,7 @@ function removeIndentation(value, maximum) {
         }
     }
 
-    if (maximum > 0) {
-        values.shift();
-    }
+    values.shift();
 
     return values.join(NEW_LINE);
 }
@@ -761,8 +755,8 @@ MERGEABLE_NODES.html = function (prev, token) {
  * @param {Object} token
  * @return {Object} `prev`.
  */
-MERGEABLE_NODES.text = function (prev, token, type) {
-    prev.value += (type === BLOCK ? NEW_LINE : EMPTY) + token.value;
+MERGEABLE_NODES.text = function (prev, token) {
+    prev.value += token.value;
 
     return prev;
 };
@@ -1984,16 +1978,6 @@ function tokenizeBreak(eat, $0) {
 }
 
 /**
- * Tokenise inline text.
- *
- * @param {function(string)} eat
- * @param {string} $0
- */
-function tokenizeInlineText(eat, $0) {
-    eat($0)(this.renderRaw(TEXT, $0));
-}
-
-/**
  * Construct a new parser.
  *
  * @param {Object?} options
@@ -2199,11 +2183,7 @@ Parser.prototype.tokenizeOne = function (token) {
     var type = token.type;
     var position = token.position;
 
-    if (type === TEXT) {
-        token = self.renderBlock(PARAGRAPH, token.value);
-        token.position = position;
-        token = self.tokenizeOne(token);
-    } else if (
+    if (
         type === HEADING ||
         type === PARAGRAPH ||
         type === TABLE_CELL
@@ -2242,8 +2222,7 @@ Parser.prototype.blockTokenizers = {
     'footnoteDefinition': tokenizeFootnoteDefinition,
     'looseTable': tokenizeTable,
     'table': tokenizeTable,
-    'paragraph': tokenizeParagraph,
-    'blockText': tokenizeText
+    'paragraph': tokenizeParagraph
 };
 
 /*
@@ -2437,9 +2416,7 @@ function tokenizeFactory(type) {
                 token.type === prev.type &&
                 token.type in MERGEABLE_NODES
             ) {
-                token = MERGEABLE_NODES[token.type].call(
-                    self, prev, token, type
-                );
+                token = MERGEABLE_NODES[token.type].call(self, prev, token);
             }
 
             if (token !== prev) {
@@ -2594,7 +2571,7 @@ Parser.prototype.inlineTokenizers = {
     'deletion': tokenizeDeletion,
     'inlineCode': tokenizeInlineCode,
     'break': tokenizeBreak,
-    'inlineText': tokenizeInlineText
+    'inlineText': tokenizeText
 };
 
 /*

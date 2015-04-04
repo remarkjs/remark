@@ -114,8 +114,6 @@ rules.lineHeading =
 rules.linkDefinition =
     /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/;
 
-rules.blockText = /^[^\n]+/;
-
 rules.bullet = /(?:[*+-]|\d+\.)/;
 
 rules.indent = new RegExp(
