@@ -3,6 +3,31 @@ mdast:
   setext: true
 ---
 
+0.16.0 / 2015-04-04
+===================
+
+*   Fix extra indented code blocks ([5ed732e](https://github.com/wooorm/mdast/commit/5ed732e))
+*   Fix support for multiple paragraphs in list-items ([79d29b5](https://github.com/wooorm/mdast/commit/79d29b5))
+*   Add fixture for multiple footnotes to the same definition ([0a6ceb3](https://github.com/wooorm/mdast/commit/0a6ceb3), closes [#8](https://github.com/wooorm/mdast/issues/8))
+*   Add support for a BOM ([9e0770d](https://github.com/wooorm/mdast/commit/9e0770d))
+*   Fix `__proto__` support ([c3ac455](https://github.com/wooorm/mdast/commit/c3ac455)) ([0e2f447](https://github.com/wooorm/mdast/commit/0e2f447))
+*   Refactor exports to expose a function ([c3ac455](https://github.com/wooorm/mdast/commit/c3ac455))
+*   Add repeat-string as a dependency ([360e4ea](https://github.com/wooorm/mdast/commit/360e4ea))
+*   Add support for `__proto__` as footnote, link identifier ([b8c9504](https://github.com/wooorm/mdast/commit/b8c9504))
+*   Fix previous commit ([632fe86](https://github.com/wooorm/mdast/commit/632fe86)) ([f36a011](https://github.com/wooorm/mdast/commit/f36a011))
+*   Fix list-items ([632fe86](https://github.com/wooorm/mdast/commit/632fe86))
+*   Add error position for `he` dependency errors ([a71cb47](https://github.com/wooorm/mdast/commit/a71cb47))
+*   Add `referenceImages` stringification setting ([e07e6d3](https://github.com/wooorm/mdast/commit/e07e6d3))
+*   Refactor for changes in eslint, jscs ([407d81c](https://github.com/wooorm/mdast/commit/407d81c))
+*   Add support for tokenizer errors ([ec48ea4](https://github.com/wooorm/mdast/commit/ec48ea4))
+*   Add support for stringification of auto-links ([09e4a81](https://github.com/wooorm/mdast/commit/09e4a81))
+*   Fix hard-break support ([2196cef](https://github.com/wooorm/mdast/commit/2196cef))
+*   Refactor CLI test ([311dd36](https://github.com/wooorm/mdast/commit/311dd36))
+*   Add support for unprefixed npm plugins to `--use` ([a2a031b](https://github.com/wooorm/mdast/commit/a2a031b))
+*   Add mdast-yaml-config as a dev-dependency ([f1415d6](https://github.com/wooorm/mdast/commit/f1415d6))
+*   Add `--no-color` argument to CLI ([263bc96](https://github.com/wooorm/mdast/commit/263bc96))
+*   Add mdastconfig(7) man page ([78b311a](https://github.com/wooorm/mdast/commit/78b311a))
+
 0.15.1 / 2015-03-27
 ===================
 
