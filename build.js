@@ -108,7 +108,7 @@ var Delta = Quill.require('delta');
  * Constants.
  */
 
-var defaultText = '\nHere’s a tiny demo for **mdast**.\n\nIts focus is to _showcase_ how the options above work.\n\nCheers!\n\n---\n\nP.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)\nfor your convenience, and some syntax highlighting to show things are\nworking!\n\nP.P.S. You can also permalink the current document using `⌘+s` or `Ctrl+s`.';
+var defaultText = 'Here’s a tiny demo for **mdast**.\n\nIts focus is to _showcase_ how the options above work.\n\nCheers!\n\n---\n\nP.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)\nfor your convenience, and some syntax highlighting to show things are\nworking!\n\nP.P.S. You can also permalink the current document using `⌘+s` or `Ctrl+s`.';
 
 /*
  * DOM elements.

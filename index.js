@@ -20,8 +20,7 @@ const Delta = Quill.require('delta');
  * Constants.
  */
 
-const defaultText = `
-Here’s a tiny demo for **mdast**.
+const defaultText = `Here’s a tiny demo for **mdast**.
 
 Its focus is to _showcase_ how the options above work.
 

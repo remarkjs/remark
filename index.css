@@ -14,15 +14,9 @@ header {
     width: 100%;
 }
 
-header h1 {
-    font-size: 2rem;
-    margin: 1.25rem;
-    font-weight: bold;
-    line-height: 1;
-}
-
-header a {
-    text-decoration: none;
+.logo {
+    margin: 0 auto;
+    display: block;
 }
 
 section {
@@ -38,6 +32,10 @@ fieldset {
 label {
     display: block;
     height: 1.6em;
+}
+
+input[type="number"] {
+    width: 3em;
 }
 
 #write {
@@ -69,6 +67,5 @@ label {
     color: #333;
     font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
     font-size: 12px;
-    line-height: 1.6;
     word-wrap: break-word;
 }

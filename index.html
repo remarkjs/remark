@@ -7,116 +7,100 @@
   </head>
   <body>
     <header>
-      <h1>
-        <a href="https://github.com/wooorm/mdast">
-          mdast
-        </a>
-        <a href="https://travis-ci.org/wooorm/mdast">
-          <img alt="Build Status" src="https://img.shields.io/travis/wooorm/mdast.svg?style=flat" />
-        </a>
-        <a href="https://coveralls.io/r/wooorm/mdast">
-          <img alt="Coverage" src="https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat">
-        </a>
-        <a href="http://opensource.org/licenses/MIT">
-          <img alt="License"  src="http://img.shields.io/npm/l/mdast.svg?style=flat">
-        </a>
-        <a href="https://www.npmjs.org/package/mdast">
-          <img alt="Version"  src="http://img.shields.io/npm/v/mdast.svg?style=flat">
-        </a>
-      </h1>
+      <a href="https://github.com/wooorm/mdast"><img class="logo" src="https://cdn.rawgit.com/wooorm/mdast/master/logo.svg" alt="mdast" /></a>
     </header>
     <section>
       <fieldset>
-        <label for="gfm">
-          Github Flavoured Markdown?
+        <label>
           <input name="gfm" type="checkbox" checked />
+          Github Flavoured Markdown?
         </label>
-        <label for="gfm">
-          YAML front matter?
+        <label>
           <input name="yaml" type="checkbox" checked />
+          YAML front matter?
         </label>
-        <label for="commonmark">
-          CommonMark?
+        <label>
           <input name="commonmark" type="checkbox" />
+          CommonMark?
         </label>
-        <label for="footnotes">
-          Footnotes?
+        <label>
           <input name="footnotes" type="checkbox" />
+          Footnotes?
         </label>
-        <label for="pedantic">
-          Pedantic?
+        <label>
           <input name="pedantic" type="checkbox" />
+          Pedantic?
         </label>
-        <label for="breaks">
-          Breaks?
+        <label>
           <input name="breaks" type="checkbox" />
+          Breaks?
         </label>
       </fieldset>
 
       <fieldset>
-        <label for="setext">
-          Setext Headings?
+        <label>
           <input name="setext" type="checkbox" />
+          Setext Headings?
         </label>
-        <label for="closeAtx">
-          Closed ATX?
+        <label>
           <input name="closeAtx" type="checkbox" />
+          Closed ATX?
         </label>
-        <label for="referenceLinks">
-          Reference Links?
+        <label>
           <input name="referenceLinks" type="checkbox" />
+          Reference Links?
         </label>
-        <label for="referenceImages">
-          Reference Images?
+        <label>
           <input name="referenceImages" type="checkbox" />
+          Reference Images?
         </label>
-        <label for="fences">
-          Fences?
+        <label>
           <input name="fences" type="checkbox" />
+          Fences?
         </label>
       </fieldset>
 
       <fieldset>
-        <label for="bullet">
-          Bullet?
+        <label>
           <select name="bullet">
             <option value="-" selected>-</option>
             <option value="*">*</option>
             <option value="+">+</option>
           </select>
+          Bullet?
         </label>
-        <label for="rule">
-          Horizontal Rule?
+        <label>
+          <select name="strong">
+            <option value="*" selected>*</option>
+            <option value="_">_</option>
+          </select>
+          strong?
+        </label>
+        <label>
+          <select name="emphasis">
+            <option value="*">*</option>
+            <option value="_" selected>_</option>
+          </select>
+          emphasis?
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <label>
           <select name="rule">
             <option value="-">-</option>
             <option value="*" selected>*</option>
             <option value="_">_</option>
           </select>
+          Horizontal Rule?
         </label>
-        <label for="ruleRepetition">
-          Horizontal Rule Repetition?
+        <label>
           <input name="ruleRepetition" type="number" min="3" value="3" />
+          Horizontal Rule Repetition?
         </label>
-        <label for="ruleSpaces">
-          Horizontal Rule Spaces?
+        <label>
           <input name="ruleSpaces" type="checkbox" checked />
-        </label>
-      </fieldset>
-
-      <fieldset>
-        <label for="strong">
-          strong?
-          <select name="strong">
-            <option value="*" selected>*</option>
-            <option value="_">_</option>
-          </select>
-        </label>
-        <label for="emphasis">
-          emphasis?
-          <select name="emphasis">
-            <option value="*">*</option>
-            <option value="_" selected>_</option>
-          </select>
+          Horizontal Rule Spaces?
         </label>
       </fieldset>
     </section>
