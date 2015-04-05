@@ -95,6 +95,7 @@
 var mdast = require('wooorm/mdast@0.16.0');
 var debounce = require('component/debounce@1.0.0');
 var keycode = require('timoxley/keycode');
+var query = require('component/querystring');
 var Quill = require('quilljs/quill');
 
 /*
@@ -102,6 +103,12 @@ var Quill = require('quilljs/quill');
  */
 
 var Delta = Quill.require('delta');
+
+/*
+ * Constants.
+ */
+
+var defaultText = '\nHere’s a tiny demo for **mdast**.\n\nIts focus is to _showcase_ how the options above work.\n\nCheers!\n\n---\n\nP.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)\nfor your convenience, and some syntax highlighting to show things are\nworking!\n\nP.P.S. You can also permalink the current document using `⌘+s` or `Ctrl+s`.';
 
 /*
  * DOM elements.
@@ -147,22 +154,35 @@ delete hotkeys[85];
  * Add a callback for key.
  *
  * @param {number} key
- * @param {boolean} hot
  * @param {function(Range)} callback
  */
-function addKey(key, hot, before, after) {
+function addKey(key, callback) {
     keyboard.addHotkey({
         key: keycode(key),
-        metaKey: Boolean(hot)
+        metaKey: true
     }, function (range) {
+        console.log('addKey: ', range);
+        callback(range);
+
+        return false;
+    });
+}
+
+/**
+ * Add a format callback for key.
+ *
+ * @param {number} key
+ * @param {string} before
+ * @param {string?} [after]
+ */
+function addFormatKey(key, before, after) {
+    addKey(key, function (range) {
         var start = range.start;
         var end = range.end;
 
         write.insertText(start, before);
         write.insertText(end + before.length, after || before);
         write.setSelection(start + before.length, end + before.length);
-
-        return false;
     });
 }
 
@@ -170,10 +190,12 @@ function addKey(key, hot, before, after) {
  * Listen.
  */
 
-addKey('b', true, '**');
-addKey('i', true, '_');
-addKey('u', true, '~~');
-addKey('/', true, '<!--', '-->');
+addFormatKey('b', '**');
+addFormatKey('i', '_');
+addFormatKey('u', '~~');
+addFormatKey('/', '<!--', '-->');
+
+addKey('s', setPermalink);
 
 /**
  * Visit.
@@ -318,6 +340,32 @@ function onchange() {
     highlight(read, doc);
 }
 
+/**
+ * Get permalink.
+ */
+function getPermalink() {
+    var variables = query.parse(window.location.search);
+
+    for (var key in variables) {
+        if (key === 'text') {
+            return variables[key];
+        }
+    }
+
+    return null;
+}
+
+/**
+ * Get permalink.
+ */
+function setPermalink() {
+    var variables = query.parse(window.location.search);
+
+    variables.text = write.getText() || '';
+
+    window.location.search = '?' + query.stringify(variables);
+}
+
 /*
  * Debounce. This is only for the formatting.
  */
@@ -378,14 +426,14 @@ $options.forEach(function ($node) {
     return onsettingchange({ target: $node });
 });
 
-write.setText(['Here’s a tiny demo for **mdast**.', '', 'Its focus is to _showcase_ how the options above work.', '', 'Cheers!', '', '---', '', 'P.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)', 'for your convenience, and some syntax highlighting to show things are', 'working!', ''].join('\n'));
+write.setText(getPermalink() || defaultText);
 
 /*
  * Focus editor.
  */
 
 write.focus();
-}, {"wooorm/mdast@0.16.0":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"quilljs/quill":5}],
+}, {"wooorm/mdast@0.16.0":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"component/querystring":5,"quilljs/quill":6}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -626,8 +674,8 @@ MDAST.run = run;
 
 module.exports = MDAST;
 
-}, {"ware":6,"./lib/parse.js":7,"./lib/stringify.js":8,"./lib/utilities.js":9}],
-6: [function(require, module, exports) {
+}, {"ware":7,"./lib/parse.js":8,"./lib/stringify.js":9,"./lib/utilities.js":10}],
+7: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -710,8 +758,8 @@ Ware.prototype.run = function () {
   return this;
 };
 
-}, {"wrap-fn":10}],
-10: [function(require, module, exports) {
+}, {"wrap-fn":11}],
+11: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -838,8 +886,8 @@ function once(fn) {
   };
 }
 
-}, {"co":11}],
-11: [function(require, module, exports) {
+}, {"co":12}],
+12: [function(require, module, exports) {
 
 /**
  * slice() reference.
@@ -1136,7 +1184,7 @@ function error(err) {
 }
 
 }, {}],
-7: [function(require, module, exports) {
+8: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -3455,8 +3503,8 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-}, {"he":12,"repeat-string":13,"./utilities.js":9,"./expressions.js":14,"./defaults.js":15}],
-12: [function(require, module, exports) {
+}, {"he":13,"repeat-string":14,"./utilities.js":10,"./expressions.js":15,"./defaults.js":16}],
+13: [function(require, module, exports) {
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
 
@@ -3788,7 +3836,7 @@ module.exports = parse;
 }(this));
 
 }, {}],
-13: [function(require, module, exports) {
+14: [function(require, module, exports) {
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -3857,7 +3905,7 @@ var res = '';
 var cache;
 
 }, {}],
-9: [function(require, module, exports) {
+10: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -4210,7 +4258,7 @@ if ('create' in Object) {
 }
 
 }, {}],
-14: [function(require, module, exports) {
+15: [function(require, module, exports) {
 /* This file is generated by `script/build-expressions.js` */
 module.exports = {
   'rules': {
@@ -4285,7 +4333,7 @@ module.exports = {
 };
 
 }, {}],
-15: [function(require, module, exports) {
+16: [function(require, module, exports) {
 'use strict';
 
 var parse = {
@@ -4318,7 +4366,7 @@ exports.parse = parse;
 exports.stringify = stringify;
 
 }, {}],
-8: [function(require, module, exports) {
+9: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5301,8 +5349,8 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-}, {"markdown-table":16,"repeat-string":13,"./utilities.js":9,"./defaults.js":15}],
-16: [function(require, module, exports) {
+}, {"markdown-table":17,"repeat-string":14,"./utilities.js":10,"./defaults.js":16}],
+17: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5682,8 +5730,8 @@ module.exports = function debounce(func, wait, immediate){
   };
 };
 
-}, {"date-now":17}],
-17: [function(require, module, exports) {
+}, {"date-now":18}],
+18: [function(require, module, exports) {
 module.exports = Date.now || now
 
 function now() {
@@ -5841,10 +5889,149 @@ for (var alias in aliases) {
 
 }, {}],
 5: [function(require, module, exports) {
+
+/**
+ * Module dependencies.
+ */
+
+'use strict';
+
+var encode = encodeURIComponent;
+var decode = decodeURIComponent;
+var trim = require('trim');
+var type = require('type');
+
+var pattern = /(\w+)\[(\d+)\]/;
+
+/**
+ * Parse the given query `str`.
+ *
+ * @param {String} str
+ * @return {Object}
+ * @api public
+ */
+
+exports.parse = function (str) {
+  if ('string' != typeof str) return {};
+
+  str = trim(str);
+  if ('' == str) return {};
+  if ('?' == str.charAt(0)) str = str.slice(1);
+
+  var obj = {};
+  var pairs = str.split('&');
+  for (var i = 0; i < pairs.length; i++) {
+    var parts = pairs[i].split('=');
+    var key = decode(parts[0]);
+    var m;
+
+    if (m = pattern.exec(key)) {
+      obj[m[1]] = obj[m[1]] || [];
+      obj[m[1]][m[2]] = decode(parts[1]);
+      continue;
+    }
+
+    obj[parts[0]] = null == parts[1] ? '' : decode(parts[1]);
+  }
+
+  return obj;
+};
+
+/**
+ * Stringify the given `obj`.
+ *
+ * @param {Object} obj
+ * @return {String}
+ * @api public
+ */
+
+exports.stringify = function (obj) {
+  if (!obj) return '';
+  var pairs = [];
+
+  for (var key in obj) {
+    var value = obj[key];
+
+    if ('array' == type(value)) {
+      for (var i = 0; i < value.length; ++i) {
+        pairs.push(encode(key + '[' + i + ']') + '=' + encode(value[i]));
+      }
+      continue;
+    }
+
+    pairs.push(encode(key) + '=' + encode(obj[key]));
+  }
+
+  return pairs.join('&');
+};
+}, {"trim":19,"type":20}],
+19: [function(require, module, exports) {
+'use strict';
+
+exports = module.exports = trim;
+
+function trim(str) {
+  if (str.trim) {
+    return str.trim();
+  }return str.replace(/^\s*|\s*$/g, '');
+}
+
+exports.left = function (str) {
+  if (str.trimLeft) return str.trimLeft();
+  return str.replace(/^\s*/, '');
+};
+
+exports.right = function (str) {
+  if (str.trimRight) return str.trimRight();
+  return str.replace(/\s*$/, '');
+};
+}, {}],
+20: [function(require, module, exports) {
+/**
+ * toString ref.
+ */
+
+'use strict';
+
+var toString = Object.prototype.toString;
+
+/**
+ * Return the type of `val`.
+ *
+ * @param {Mixed} val
+ * @return {String}
+ * @api public
+ */
+
+module.exports = function (val) {
+  switch (toString.call(val)) {
+    case '[object Date]':
+      return 'date';
+    case '[object RegExp]':
+      return 'regexp';
+    case '[object Arguments]':
+      return 'arguments';
+    case '[object Array]':
+      return 'array';
+    case '[object Error]':
+      return 'error';
+  }
+
+  if (val === null) return 'null';
+  if (val === undefined) return 'undefined';
+  if (val !== val) return 'nan';
+  if (val && val.nodeType === 1) return 'element';
+
+  val = val.valueOf ? val.valueOf() : Object.prototype.valueOf.apply(val);
+
+  return typeof val;
+};
+}, {}],
+6: [function(require, module, exports) {
 module.exports = require('./dist/quill');
 
-}, {"./dist/quill":18}],
-18: [function(require, module, exports) {
+}, {"./dist/quill":21}],
+21: [function(require, module, exports) {
 /*! Quill Editor v0.19.10
  *  https://quilljs.com/
  *  Copyright (c) 2014, Jason Chen

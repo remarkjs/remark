@@ -7,6 +7,7 @@
 const mdast = require('wooorm/mdast@0.16.0');
 const debounce = require('component/debounce@1.0.0');
 const keycode = require('timoxley/keycode');
+const query = require('component/querystring');
 const Quill = require('quilljs/quill');
 
 /*
@@ -14,6 +15,25 @@ const Quill = require('quilljs/quill');
  */
 
 const Delta = Quill.require('delta');
+
+/*
+ * Constants.
+ */
+
+const defaultText = `
+Here’s a tiny demo for **mdast**.
+
+Its focus is to _showcase_ how the options above work.
+
+Cheers!
+
+---
+
+P.S. I’ve added some nice keyboard sortcuts (\`b\`, \`i\`, \`u\`, and \`/\`)
+for your convenience, and some syntax highlighting to show things are
+working!
+
+P.P.S. You can also permalink the current document using \`⌘+s\` or \`Ctrl+s\`.`;
 
 /*
  * DOM elements.
@@ -62,22 +82,35 @@ delete hotkeys[85];
  * Add a callback for key.
  *
  * @param {number} key
- * @param {boolean} hot
  * @param {function(Range)} callback
  */
-function addKey(key, hot, before, after) {
+function addKey(key, callback) {
     keyboard.addHotkey({
       'key': keycode(key),
-      'metaKey': Boolean(hot)
+      'metaKey': true
     }, function (range) {
+        console.log('addKey: ', range);
+        callback(range);
+
+        return false;
+    });
+}
+
+/**
+ * Add a format callback for key.
+ *
+ * @param {number} key
+ * @param {string} before
+ * @param {string?} [after]
+ */
+function addFormatKey(key, before, after) {
+    addKey(key, function (range) {
         const start = range.start;
         const end = range.end;
 
         write.insertText(start, before);
         write.insertText(end + before.length, after || before);
         write.setSelection(start + before.length, end + before.length);
-
-        return false;
     });
 }
 
@@ -85,10 +118,12 @@ function addKey(key, hot, before, after) {
  * Listen.
  */
 
-addKey('b', true, '**');
-addKey('i', true, '_');
-addKey('u', true, '~~');
-addKey('/', true, '<!--', '-->');
+addFormatKey('b', '**');
+addFormatKey('i', '_');
+addFormatKey('u', '~~');
+addFormatKey('/', '<!--', '-->');
+
+addKey('s', setPermalink);
 
 /**
  * Visit.
@@ -231,6 +266,30 @@ function onchange() {
     highlight(read, doc);
 }
 
+/**
+ * Get permalink.
+ */
+function getPermalink() {
+    const variables = query.parse(window.location.search);
+
+    for (let key in variables) {
+        if (key === 'text') return variables[key];
+    }
+
+    return null;
+}
+
+/**
+ * Get permalink.
+ */
+function setPermalink() {
+    const variables = query.parse(window.location.search);
+
+    variables.text = write.getText() || '';
+
+    window.location.search = '?' + query.stringify(variables);
+}
+
 /*
  * Debounce. This is only for the formatting.
  */
@@ -289,20 +348,7 @@ write.on('text-change', debouncedChange);
 
 $options.forEach(($node) => onsettingchange({ 'target': $node }));
 
-write.setText([
-    'Here’s a tiny demo for **mdast**.',
-    '',
-    'Its focus is to _showcase_ how the options above work.',
-    '',
-    'Cheers!',
-    '',
-    '---',
-    '',
-    'P.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)',
-    'for your convenience, and some syntax highlighting to show things are',
-    'working!',
-    ''
-].join('\n'));
+write.setText(getPermalink() || defaultText);
 
 /*
  * Focus editor.
