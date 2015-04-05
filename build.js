@@ -94,59 +94,32 @@
 
 var mdast = require('wooorm/mdast@0.16.0');
 var debounce = require('component/debounce@1.0.0');
+var keycode = require('timoxley/keycode');
 var Quill = require('quilljs/quill');
+
+/*
+ * Methods.
+ */
+
+var Delta = Quill.require('delta');
 
 /*
  * DOM elements.
  */
 
-var $options = [].concat(
-    [].slice.call(document.getElementsByTagName('input')),
-    [].slice.call(document.getElementsByTagName('select'))
-);
+var $options = [].concat([].slice.call(document.getElementsByTagName('input')), [].slice.call(document.getElementsByTagName('select')));
+
+/*
+ * Editors.
+ */
 
 var write = new Quill(document.getElementById('write'), {
-    'formats': []
+    formats: []
 });
 
 var read = new Quill(document.getElementById('read'), {
-    'readOnly': true
+    readOnly: true
 });
-
-var keyboard = write.modules.keyboard;
-var keys = keyboard.hotkeys;
-
-/*
- * Quil does not remove bold, italic, underline
- * when settings formats to `0`
- */
-
-delete keys[66];
-delete keys[73];
-delete keys[85];
-
-function addHotKey(key, before, after) {
-    if (!after) {
-        after = before;
-    }
-
-    keyboard.addHotkey({
-      'key': key,
-      'metaKey': true
-    }, function (range) {
-        var start = range.start;
-        var end = range.end;
-
-        write.insertText(start, before);
-        write.insertText(end + before.length, after);
-        write.setSelection(start + before.length, end + before.length);
-
-        return false;
-    });
-}
-
-addHotKey('B', '**');
-addHotKey('I', '_');
 
 /*
  * Options.
@@ -155,16 +128,205 @@ addHotKey('I', '_');
 var options = {};
 
 /*
- * Handlers.
+ * Shortcuts.
  */
 
-function onchange() {
-    var ast = mdast.parse(write.getText(), options);
+var keyboard = write.modules.keyboard;
+var hotkeys = keyboard.hotkeys;
 
-    read.setText(mdast.stringify(ast, options));
+/*
+ * Quill does not remove bold, italic, underline
+ * when settings formats to `0`
+ */
+
+delete hotkeys[66];
+delete hotkeys[73];
+delete hotkeys[85];
+
+/**
+ * Add a callback for key.
+ *
+ * @param {number} key
+ * @param {boolean} hot
+ * @param {function(Range)} callback
+ */
+function addKey(key, hot, before, after) {
+    keyboard.addHotkey({
+        key: keycode(key),
+        metaKey: Boolean(hot)
+    }, function (range) {
+        var start = range.start;
+        var end = range.end;
+
+        write.insertText(start, before);
+        write.insertText(end + before.length, after || before);
+        write.setSelection(start + before.length, end + before.length);
+
+        return false;
+    });
 }
 
-var debouncedChange = debounce(onchange, 10);
+/*
+ * Listen.
+ */
+
+addKey('b', true, '**');
+addKey('i', true, '_');
+addKey('u', true, '~~');
+addKey('/', true, '<!--', '-->');
+
+/**
+ * Visit.
+ *
+ * @param {Node} tree
+ * @param {string} [type]
+ * @param {function(node)} callback
+ */
+function visit(tree, type, callback) {
+    if (!callback) {
+        callback = type;
+        type = null;
+    }
+
+    function one(node) {
+        if (!type || node.type === type) {
+            callback(node);
+        }
+
+        if (node.children) {
+            node.children.forEach(one);
+        }
+    }
+
+    one(tree);
+}
+
+/**
+ * Create a formatter.
+ *
+ * @param {Quill} quill
+ * @param {Node} ast
+ * @return {Function}
+ */
+function formatFactory(quill, ast) {
+    var editor = quill.editor;
+
+    /**
+     * Format nodes of type `type`.
+     *
+     * @param {string?} type
+     * @param {Object} formats
+     */
+    return function (type, formats) {
+        visit(ast, type, function (node) {
+            var start = node.position.start.offset;
+            var end = node.position.end.offset;
+            var delta = new Delta().retain(start).retain(end - start, formats);
+            var index = 0;
+
+            delta.ops.forEach(function (op) {
+                if (op.attributes) {
+                    Object.keys(op.attributes).forEach(function (name) {
+                        editor._formatAt(index, op.retain, name, op.attributes[name]);
+                    });
+                }
+
+                index += op.retain;
+            });
+        });
+    };
+}
+
+/**
+ * Calculate offsets for `lines`.
+ *
+ * @param {Array.<string>} lines
+ * @return {Array.<number>}
+ */
+function toOffsets(lines) {
+    var total = 0;
+
+    return lines.map(function (value) {
+        return total += value.length + 1;
+    });
+}
+
+/**
+ * Add an offset based on `columns` to `position`.
+ *
+ * @param {Object} position
+ * @return {Array.<number>} offsets
+ */
+function addRange(position, offsets) {
+    position.offset = (offsets[position.line - 2] || 0) + position.column - 1;
+}
+
+/**
+ * Add ranges for `doc` to `ast`.
+ *
+ * @param {string} doc
+ * @return {Node} ast
+ */
+function addRanges(doc, ast) {
+    var offsets = toOffsets(doc.split('\n'));
+
+    visit(ast, function (node) {
+        addRange(node.position.start, offsets);
+        addRange(node.position.end, offsets);
+    });
+}
+
+/**
+ * Highlight `doc`, with `editor`.
+ *
+ * @return {Quill} quill
+ * @param {string} doc
+ */
+function highlight(quill, doc) {
+    var tree = mdast.parse(doc, options);
+    var format = formatFactory(quill, tree);
+
+    addRanges(doc, tree);
+
+    format('strong', { bold: true });
+    format('emphasis', { italic: true });
+    format('delete', { strike: true });
+
+    format('link', { color: '#4183c4' });
+    format('image', { color: '#4183c4' });
+    format('footnote', { color: '#4183c4' });
+
+    format('escape', { color: '#cb4b16' });
+
+    format('inlineCode', { font: 'monospace', background: '#f7f7f7' });
+    format('code', { font: 'monospace', background: '#f7f7f7' });
+    format('yaml', { font: 'monospace', background: '#f7f7f7' });
+    format('html', { font: 'monospace', background: '#f7f7f7' });
+
+    format('heading', { size: '18px' });
+}
+
+/**
+ * Change.
+ */
+function onchange() {
+    var ast = mdast.parse(write.getText(), options);
+    var doc = mdast.stringify(ast, options);
+
+    read.setText(doc);
+
+    highlight(read, doc);
+}
+
+/*
+ * Debounce. This is only for the formatting.
+ */
+
+var debouncedChange = debounce(onchange, 100);
+
+/*
+ * Setting changes.
+ */
 
 function ontextchange($target, name) {
     options[name] = $target.value;
@@ -181,23 +343,16 @@ function oncheckboxchange($target, name) {
 function onselectchange($target, name) {
     var $option = $target.selectedOptions[0];
 
-    if (!$option) {
-        return;
-    }
-
-    options[name] = $option.value;
+    if ($option) options[name] = $option.value;
 }
 
 function onsettingchange(event) {
     var $target = event.target;
-
     var type = $target.hasAttribute('type') ? $target.type : event.target.nodeName.toLowerCase();
 
-    if (!(type in onsettingchange)) {
-        type = 'text';
-    }
-
-    onsettingchange[type]($target, $target.name);
+    if (!$target.hasAttribute('name')) {
+        return;
+    }onsettingchange[type in onsettingchange ? type : 'text']($target, $target.name);
 
     debouncedChange();
 }
@@ -207,17 +362,11 @@ onsettingchange.checkbox = oncheckboxchange;
 onsettingchange.text = ontextchange;
 onsettingchange.number = onnumberchange;
 
-function onanychange(event) {
-    if (event.target.hasAttribute('name')) {
-        onsettingchange(event);
-    }
-}
-
 /*
  * Listen.
  */
 
-window.addEventListener('change', onanychange);
+window.addEventListener('change', onsettingchange);
 
 /*
  * Initial answer.
@@ -226,89 +375,17 @@ window.addEventListener('change', onanychange);
 write.on('text-change', debouncedChange);
 
 $options.forEach(function ($node) {
-    onsettingchange({
-        'target': $node
-    });
+    return onsettingchange({ target: $node });
 });
 
-write.setText([
-    '---',
-    'YAML-front-matter: is awesome',
-    '---',
-    '',
-    '# Hello',
-    '',
-    'World!',
-    '',
-    'Emphasis',
-    '---',
-    '',
-    '__Strong emphasis__, more **strong emphasis**.',
-    '_Slight emphasis_, more *slight emphasis*. In a pedantic_file_name.',
-    '~~Removed text~~.',
-    '',
-    '## List',
-    '',
-    '- 1',
-    '    * 2',
-    '        + 3',
-    '',
-    '1. 1',
-    '9999. 2',
-    '123. 3',
-    '',
-    '## Links',
-    '',
-    'Here’s a [link][1]. And [another](http://wooorm.com "My homepage").',
-    '',
-    '[1]: http://example.com "An example"',
-    '',
-    'Code',
-    '---',
-    '',
-    'Inline `code`, indented:',
-    '',
-    '    alert(1);',
-    '',
-    '...or fenced:',
-    '',
-    '```markdown',
-    '# Hai!',
-    '```',
-    '',
-    '## Tables',
-    '',
-    '| Hello |',
-    '|:-:|',
-    '| World!!!!!! |',
-    '',
-    '## Footnotes',
-    '',
-    'Here’s an [^inline footnote, referencing another[^2]].',
-    '',
-    '[^2]: This one’s also a footnote.',
-    '',
-    'Horizontal Rules:',
-    '',
-    '---',
-    '',
-    '* * * * * * * * * * * *',
-    ''
-].join('\n'));
+write.setText(['Here’s a tiny demo for **mdast**.', '', 'Its focus is to _showcase_ how the options above work.', '', 'Cheers!', '', '---', '', 'P.S. I’ve added some nice keyboard sortcuts (`b`, `i`, `u`, and `/`)', 'for your convenience, and some syntax highlighting to show things are', 'working!', ''].join('\n'));
 
 /*
  * Focus editor.
  */
 
 write.focus();
-
-/*
- * Focus editor.
- */
-
-write.focus();
-
-}, {"wooorm/mdast@0.16.0":2,"component/debounce@1.0.0":3,"quilljs/quill":4}],
+}, {"wooorm/mdast@0.16.0":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"quilljs/quill":5}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -549,8 +626,8 @@ MDAST.run = run;
 
 module.exports = MDAST;
 
-}, {"ware":5,"./lib/parse.js":6,"./lib/stringify.js":7,"./lib/utilities.js":8}],
-5: [function(require, module, exports) {
+}, {"ware":6,"./lib/parse.js":7,"./lib/stringify.js":8,"./lib/utilities.js":9}],
+6: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -633,8 +710,8 @@ Ware.prototype.run = function () {
   return this;
 };
 
-}, {"wrap-fn":9}],
-9: [function(require, module, exports) {
+}, {"wrap-fn":10}],
+10: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -761,8 +838,8 @@ function once(fn) {
   };
 }
 
-}, {"co":10}],
-10: [function(require, module, exports) {
+}, {"co":11}],
+11: [function(require, module, exports) {
 
 /**
  * slice() reference.
@@ -1059,7 +1136,7 @@ function error(err) {
 }
 
 }, {}],
-6: [function(require, module, exports) {
+7: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -3378,8 +3455,8 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-}, {"he":11,"repeat-string":12,"./utilities.js":8,"./expressions.js":13,"./defaults.js":14}],
-11: [function(require, module, exports) {
+}, {"he":12,"repeat-string":13,"./utilities.js":9,"./expressions.js":14,"./defaults.js":15}],
+12: [function(require, module, exports) {
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
 
@@ -3711,7 +3788,7 @@ module.exports = parse;
 }(this));
 
 }, {}],
-12: [function(require, module, exports) {
+13: [function(require, module, exports) {
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -3780,7 +3857,7 @@ var res = '';
 var cache;
 
 }, {}],
-8: [function(require, module, exports) {
+9: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -4133,7 +4210,7 @@ if ('create' in Object) {
 }
 
 }, {}],
-13: [function(require, module, exports) {
+14: [function(require, module, exports) {
 /* This file is generated by `script/build-expressions.js` */
 module.exports = {
   'rules': {
@@ -4208,7 +4285,7 @@ module.exports = {
 };
 
 }, {}],
-14: [function(require, module, exports) {
+15: [function(require, module, exports) {
 'use strict';
 
 var parse = {
@@ -4241,7 +4318,7 @@ exports.parse = parse;
 exports.stringify = stringify;
 
 }, {}],
-7: [function(require, module, exports) {
+8: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5224,8 +5301,8 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-}, {"markdown-table":15,"repeat-string":12,"./utilities.js":8,"./defaults.js":14}],
-15: [function(require, module, exports) {
+}, {"markdown-table":16,"repeat-string":13,"./utilities.js":9,"./defaults.js":15}],
+16: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5605,8 +5682,8 @@ module.exports = function debounce(func, wait, immediate){
   };
 };
 
-}, {"date-now":16}],
-16: [function(require, module, exports) {
+}, {"date-now":17}],
+17: [function(require, module, exports) {
 module.exports = Date.now || now
 
 function now() {
@@ -5615,10 +5692,159 @@ function now() {
 
 }, {}],
 4: [function(require, module, exports) {
+// Source: http://jsfiddle.net/vWx8V/
+// http://stackoverflow.com/questions/5603195/full-list-of-javascript-keycodes
+
+
+
+/**
+ * Conenience method returns corresponding value for given keyName or keyCode.
+ *
+ * @param {Mixed} keyCode {Number} or keyName {String}
+ * @return {Mixed}
+ * @api public
+ */
+
+exports = module.exports = function(searchInput) {
+  // Keyboard Events
+  if (searchInput && 'object' === typeof searchInput) {
+    var hasKeyCode = searchInput.which || searchInput.keyCode || searchInput.charCode
+    if (hasKeyCode) searchInput = hasKeyCode
+  }
+
+  // Numbers
+  if ('number' === typeof searchInput) return names[searchInput]
+
+  // Everything else (cast to string)
+  var search = String(searchInput)
+
+  // check codes
+  var foundNamedKey = codes[search.toLowerCase()]
+  if (foundNamedKey) return foundNamedKey
+
+  // check aliases
+  var foundNamedKey = aliases[search.toLowerCase()]
+  if (foundNamedKey) return foundNamedKey
+
+  // weird character?
+  if (search.length === 1) return search.charCodeAt(0)
+
+  return undefined
+}
+
+/**
+ * Get by name
+ *
+ *   exports.code['enter'] // => 13
+ */
+
+var codes = exports.code = exports.codes = {
+  'backspace': 8,
+  'tab': 9,
+  'enter': 13,
+  'shift': 16,
+  'ctrl': 17,
+  'alt': 18,
+  'pause/break': 19,
+  'caps lock': 20,
+  'esc': 27,
+  'space': 32,
+  'page up': 33,
+  'page down': 34,
+  'end': 35,
+  'home': 36,
+  'left': 37,
+  'up': 38,
+  'right': 39,
+  'down': 40,
+  'insert': 45,
+  'delete': 46,
+  'command': 91,
+  'right click': 93,
+  'numpad *': 106,
+  'numpad +': 107,
+  'numpad -': 109,
+  'numpad .': 110,
+  'numpad /': 111,
+  'num lock': 144,
+  'scroll lock': 145,
+  'my computer': 182,
+  'my calculator': 183,
+  ';': 186,
+  '=': 187,
+  ',': 188,
+  '-': 189,
+  '.': 190,
+  '/': 191,
+  '`': 192,
+  '[': 219,
+  '\\': 220,
+  ']': 221,
+  "'": 222,
+}
+
+// Helper aliases
+
+var aliases = exports.aliases = {
+  'windows': 91,
+  '⇧': 16,
+  '⌥': 18,
+  '⌃': 17,
+  '⌘': 91,
+  'ctl': 17,
+  'control': 17,
+  'option': 18,
+  'pause': 19,
+  'break': 19,
+  'caps': 20,
+  'escape': 27,
+  'spc': 32,
+  'pgup': 33,
+  'pgdn': 33,
+  'ins': 45,
+  'del': 46,
+  'cmd': 91
+}
+
+
+/*!
+ * Programatically add the following
+ */
+
+// lower case chars
+for (i = 97; i < 123; i++) codes[String.fromCharCode(i)] = i - 32
+
+// numbers
+for (var i = 48; i < 58; i++) codes[i - 48] = i
+
+// function keys
+for (i = 1; i < 13; i++) codes['f'+i] = i + 111
+
+// numpad keys
+for (i = 0; i < 10; i++) codes['numpad '+i] = i + 96
+
+/**
+ * Get by code
+ *
+ *   exports.name[13] // => 'Enter'
+ */
+
+var names = exports.names = exports.title = {} // title for backward compat
+
+// Create reverse mapping
+for (i in codes) names[codes[i]] = i
+
+// Add aliases
+for (var alias in aliases) {
+  codes[alias] = aliases[alias]
+}
+
+}, {}],
+5: [function(require, module, exports) {
 module.exports = require('./dist/quill');
 
-}, {"./dist/quill":17}],
-17: [function(require, module, exports) {
+}, {"./dist/quill":18}],
+18: [function(require, module, exports) {
 /*! Quill Editor v0.19.10
  *  https://quilljs.com/
  *  Copyright (c) 2014, Jason Chen

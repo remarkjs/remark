@@ -40,6 +40,12 @@ label {
     height: 1.6em;
 }
 
+#write {
+    left: 0;
+    font-size: 0.75rem;
+    font-family: "Courier New", "Courier", monospace;
+}
+
 #read, #write {
     box-sizing: border-box;
     display: block;
@@ -51,20 +57,18 @@ label {
 
     border-width: 0;
 
-    font-size: 0.75rem;
-    font-family: "Courier New", "Courier", monospace;
-
     padding: 1em;
 }
 
 #read {
     right: 0;
-}
-
-#write {
-    left: 0;
-}
-
-#read {
     outline-width: 0;
+
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    color: #333;
+    font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+    font-size: 12px;
+    line-height: 1.6;
+    word-wrap: break-word;
 }
