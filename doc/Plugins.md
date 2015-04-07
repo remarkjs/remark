@@ -29,7 +29,7 @@ To modify the parser (for an example, see [`test/mentions.js`](https://github.co
 
 **Parameters**
 
-*   `mdast` (`Object`) — Context on which the plugin was [`use`](https://github.com/wooorm/mdast/blob/master#mdastuseplugin-options)d;
+*   `mdast` (`Object`) — Context on which the plugin was [`use`](https://github.com/wooorm/mdast#mdastuseplugin-options)d;
 *   `options` (`Object?`) — Plugin specific options.
 
 **Returns**
