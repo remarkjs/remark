@@ -41,7 +41,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 
 ## Node
 
-[`mdast.parse()`](https://github.com/wooorm/mdast/doc/mdast.3.md#mdastparsefile-options) returns [**Node**](#node) objects—plain vanilla objects. Every **mdast** node implements the **Node** interface.
+[`mdast.parse()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options) returns [**Node**](#node) objects—plain vanilla objects. Every **mdast** node implements the **Node** interface.
 
 ```idl
 interface Node {
@@ -94,7 +94,7 @@ interface Text <: Node {
 
 ## Root
 
-[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast/doc/Options.md#footnotes), that is).
+[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast/blob/master/doc/Options.md#footnotes), that is).
 
 ```idl
 interface Root <: Parent {
