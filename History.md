@@ -3,6 +3,12 @@ mdast:
   setext: true
 ---
 
+0.17.0 / 2015-04-07
+===================
+
+*   Refactor interface ([f75b2a3](https://github.com/wooorm/mdast/commit/f75b2a3))
+*   Remove dead code since [79d29b5](https://github.com/wooorm/mdast/commit/79d29b5) ([e94eae5](https://github.com/wooorm/mdast/commit/e94eae5))
+
 0.16.0 / 2015-04-04
 ===================
 
