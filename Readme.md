@@ -97,8 +97,8 @@ This section only covers the interface you’ll use most often. See [mdast(3) do
 *   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options) — Parses markdown into an abstract syntax tree;
 *   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done) — Applies plugins to the syntax tree;
 *   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-options) — Compiles the syntax tree into a string;
-*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done) — More detailed than [below](mdastprocessvalue-options-done);
-*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options) — More detailed than [below](mdastuseplugin-options);
+*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done) — More detailed than [below](#mdastprocessvalue-options-done);
+*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options) — More detailed than [below](#mdastuseplugin-options);
 *   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file) — Callback passed to `run()` and `process()`.
 *   [File()](doc/mdast.3.md#file) — Wrapper arround (virtual) files.
 

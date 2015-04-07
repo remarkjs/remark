@@ -2,7 +2,7 @@
 
 # Plugins
 
-This page contains information on how **mdast** plugins work. It focusses on how to create plugins, rather than on how to implement them. To implement plugins, see [`mdast.use(plugin, options?)`](../Readme.md#mdastuseplugin-options).
+This page contains information on how **mdast** plugins work. It focusses on how to create plugins, rather than on how to implement them. To implement plugins, see [`mdast.use(plugin, options?)`](../../#mdastuseplugin-options).
 
 ## Table of Contents
 
@@ -19,9 +19,9 @@ An **mdast** plugin does one or two things:
 
 Both have their own function. The first is called an [“attacher”](#function-attachermdast-options). The second is named a [“transformer”](#function-transformerast-file-next). An “attacher” may return a “transformer”.
 
-### function attacher([mdast](../Readme.md#api), options?)
+### function attacher([mdast](../../#api), options?)
 
-To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.js)), create an attacher. An attacher is the thing passed to [`use`](../Readme.md#mdastuseplugin-options). It can receive plugin specific options, but that’s entirely up to the developer. An **attacher** is invoked when the plugin is first [`use`](../Readme.md#mdastuseplugin-options)d, and can return a transformer which will be called on subsequent [`mdast.parse()`](mdast.3.md#mdastparsefile-options)s or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
+To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.js)), create an attacher. An attacher is the thing passed to [`use`](../../#mdastuseplugin-options). It can receive plugin specific options, but that’s entirely up to the developer. An **attacher** is invoked when the plugin is first [`use`](../../#mdastuseplugin-options)d, and can return a transformer which will be called on subsequent [`mdast.process()`](../../#mdastprocessvalue-options-done)s or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
 
 **Signatures**
 
@@ -29,7 +29,7 @@ To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.
 
 **Parameters**
 
-*   `mdast` (`Object`) — Context on which the plugin was [`use`](../Readme.md#mdastuseplugin-options)d;
+*   `mdast` (`Object`) — Context on which the plugin was [`use`](../../#mdastuseplugin-options)d;
 *   `options` (`Object?`) — Plugin specific options.
 
 **Returns**
@@ -38,7 +38,7 @@ To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.
 
 ### function transformer([ast](../doc/Nodes.md#node), [file](mdast.3.md#file), next?)
 
-To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.parse()`](mdast.3.md#mdastparsefile-options)d or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should change the [AST](../doc/Nodes.md#node) or [mdast.3.md#file] to add or remove nodes.
+To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.process()`](../../#mdastprocessvalue-options-done)d or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should change the [AST](../doc/Nodes.md#node) or [file](mdast.3.md#file) to add or remove nodes.
 
 **Signatures**
 

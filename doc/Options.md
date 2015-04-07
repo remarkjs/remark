@@ -2,7 +2,7 @@
 
 # Options
 
-This page contains information and usage examples regarding available options for [`mdast.parse()`](https://github.com/wooorm/mdast/doc/mdast.3.md#mdastparsefile-options) and [`mdast.stringify()`](https://github.com/wooorm/mdast/doc/mdast.3.md#mdaststringifyast-options).
+This page contains information and usage examples regarding available options for [`mdast.parse()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options) and [`mdast.stringify()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdaststringifyast-options).
 
 Information on **mdast** itself is available in the project’s [Readme.md](https://github.com/wooorm/mdast#readme).
 
@@ -941,7 +941,7 @@ Yields:
 
 Setting `fences: true` (default: `false`) will stringify code blocks without programming-language flags using heredoc-style fences.
 
-To use differen fence markers, use [`fences: string`](#fence).
+To use differen fence markers, use [`fence: string`](#fence).
 
 The following document:
 
