@@ -6,8 +6,9 @@
  */
 
 var Ware = require('ware');
-var parse = require('./lib/parse.js');
-var stringify = require('./lib/stringify.js');
+var parser = require('./lib/parse.js');
+var stringifier = require('./lib/stringify.js');
+var File = require('./lib/file.js');
 var utilities = require('./lib/utilities.js');
 
 /*
@@ -15,9 +16,9 @@ var utilities = require('./lib/utilities.js');
  */
 
 var clone = utilities.clone;
-var Parser = parse.Parser;
+var Parser = parser.Parser;
 var parseProto = Parser.prototype;
-var Compiler = stringify.Compiler;
+var Compiler = stringifier.Compiler;
 var compileProto = Compiler.prototype;
 
 /**
@@ -37,8 +38,7 @@ function fail(exception) {
 }
 
 /**
- * Create a `parse` function which uses an
- * extensible `Parser`.
+ * Create a custom, cloned, Parser.
  *
  * @return {Function}
  */
@@ -86,8 +86,7 @@ function constructParser() {
 }
 
 /**
- * Create a `stringify` function which uses an
- * extensible `Compiler`.
+ * Create a custom, cloned, Compiler.
  *
  * @return {Function}
  */
@@ -135,34 +134,10 @@ function MDAST() {
 }
 
 /**
- * Apply transformers to `node`.
- *
- * @param {Node} ast
- * @param {Object?} options
- * @return {Node} - `ast`.
- */
-function run(ast, options) {
-    var self = this;
-
-    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
-        utilities.raise(ast, 'ast');
-    }
-
-    /*
-     * Only run when this is an instance of MDAST.
-     */
-
-    if (self.ware) {
-        self.ware.run(ast, options || {}, self, fail);
-    }
-
-    return ast;
-}
-
-/**
  * Attach a plugin.
  *
  * @param {Function|Array.<Function>} attach
+ * @param {Object?} options
  * @return {MDAST}
  */
 function use(attach, options) {
@@ -206,31 +181,116 @@ function use(attach, options) {
 }
 
 /**
- * Parse a value and apply transformers.
+ * Apply transformers to `node`.
  *
- * @return {Root}
+ * @param {Node} ast
+ * @param {File?} [file]
+ * @param {Function?} [done]
+ * @return {Node} - `ast`.
  */
-function runParse(_, options) {
-    return this.run(parse.apply(this, arguments), options);
+function run(ast, file, done) {
+    var self = this;
+
+    if (typeof file === 'function') {
+        done = file;
+        file = null;
+    }
+
+    file = new File(file);
+
+    done = typeof done === 'function' ? done : fail;
+
+    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
+        utilities.raise(ast, 'ast');
+    }
+
+    /*
+     * Only run when this is an instance of MDAST.
+     */
+
+    if (self.ware) {
+        self.ware.run(ast, file, done);
+    } else {
+        done(null, ast, file);
+    }
+
+    return ast;
+}
+
+/**
+ * Wrapper to pass a file to `parser`.
+ */
+function parse(value, options) {
+    return parser.call(this, new File(value), options);
 }
 
 /*
- * Prototype.
+ * No special treatment is needed for `stringify()`.
  */
 
-MDAST.prototype.parse = runParse;
-MDAST.prototype.stringify = stringify;
-MDAST.prototype.use = use;
-MDAST.prototype.run = run;
+/**
+ * Parse a value and apply transformers.
+ *
+ * @param {string|File} value
+ * @param {Object?} [options]
+ * @param {Function?} [done]
+ * @return {string?}
+ */
+function process(value, options, done) {
+    var file = new File(value);
+    var self = this instanceof MDAST ? this : new MDAST();
+    var result = null;
+    var ast;
+
+    if (typeof options === 'function') {
+        done = options;
+        options = null;
+    }
+
+    /**
+     * Invoked when `run` completes. Hoists `result` into
+     * the upper scope to return something for sync
+     * operations.
+     */
+    function callback(exception) {
+        if (exception) {
+            (done || fail)(exception);
+        } else {
+            result = self.stringify(ast, options);
+
+            if (done) {
+                done(null, result, file);
+            }
+        }
+    }
+
+    ast = self.parse(file, options);
+    self.run(ast, file, callback);
+
+    return result;
+}
 
 /*
- * Expose methods on exports.
+ * Methods.
  */
 
-MDAST.parse = parse;
-MDAST.stringify = stringify;
+var proto = MDAST.prototype;
+
+proto.use = use;
+proto.parse = parse;
+proto.run = run;
+proto.stringify = stringifier;
+proto.process = process;
+
+/*
+ * Functions.
+ */
+
 MDAST.use = use;
+MDAST.parse = parse;
 MDAST.run = run;
+MDAST.stringify = stringifier;
+MDAST.process = process;
 
 /*
  * Expose `mdast`.
@@ -238,7 +298,7 @@ MDAST.run = run;
 
 module.exports = MDAST;
 
-},{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":10}],2:[function(require,module,exports){
+},{"./lib/file.js":4,"./lib/parse.js":5,"./lib/stringify.js":6,"./lib/utilities.js":7,"ware":11}],2:[function(require,module,exports){
 'use strict';
 
 var parse = {
@@ -346,6 +406,131 @@ module.exports = {
 },{}],4:[function(require,module,exports){
 'use strict';
 
+/**
+ * Construct a new file.
+ *
+ * @constructor
+ * @class {File}
+ * @param {Object|File|string} [options]
+ */
+function File(options) {
+    if (!(this instanceof File)) {
+        return new File(options);
+    }
+
+    if (options instanceof File) {
+        return options;
+    }
+
+    if (!options) {
+        options = {};
+    } else if (typeof options === 'string') {
+        options = {
+            'contents': options
+        };
+    }
+
+    this.directory = options.directory || '';
+    this.filename = options.filename || null;
+    this.contents = options.contents || '';
+
+    this.extension = options.extension === undefined ?
+        'md' : options.extension;
+}
+
+/**
+ * Stringify a position.
+ *
+ * @param {Object?} [position]
+ * @return {string}
+ */
+function stringify(position) {
+    if (!position) {
+        position = {};
+    }
+
+    return (position.line || 1) + ':' + (position.column || 1);
+}
+
+/**
+ * Create an exception with `reason` at `position`.
+ *
+ * @this {File}
+ * @param {string} reason
+ * @param {Node|Location|Position} [position]
+ * @return {Error}
+ */
+function exception(reason, position) {
+    var file = this.getFile();
+    var location;
+    var err;
+
+    /*
+     * Node / location / position.
+     */
+
+    if (position && position.position) {
+        position = position.position;
+    }
+
+    if (position && position.start) {
+        location = stringify(position.start) + '-' + stringify(position.end);
+        position = position.start;
+    } else {
+        location = stringify(position)
+    }
+
+    err = new Error((file ? file + ':' : '') + location + ': ' + reason);
+
+    err.file = file;
+    err.reason = reason;
+    err.line = position ? position.line : null;
+    err.column = position ? position.column : null;
+
+    return err;
+}
+
+/**
+ * Create the location of `file`.
+ *
+ * @this {File}
+ * @return {string?}
+ */
+function getFile() {
+    if (this.filename) {
+        return this.filename + (this.extension ? '.' + this.extension : '');
+    }
+
+    return null;
+}
+
+/**
+ * Create a string representation of `file`.
+ *
+ * @this {File}
+ * @return {string}
+ */
+function toString() {
+    return this.contents;
+}
+
+/*
+ * Methods.
+ */
+
+File.prototype.exception = exception;
+File.prototype.toString = toString;
+File.prototype.getFile = getFile;
+
+/*
+ * Expose.
+ */
+
+module.exports = File;
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
 /*
  * Dependencies.
  */
@@ -386,7 +571,6 @@ var SLASH = '\\';
 var SPACE = ' ';
 var TAB = '\t';
 var EMPTY = '';
-var COLON = ':';
 var LT = '<';
 var GT = '>';
 
@@ -2094,11 +2278,12 @@ Parser.prototype.expressions = defaultExpressions;
 /**
  * Parse `value` into an AST.
  *
- * @param {string} value
+ * @param {Object} file
  * @return {Object}
  */
-Parser.prototype.parse = function (value) {
+Parser.prototype.parse = function (file) {
     var self = this;
+    var value = String(file);
     var footnotes;
     var footnotesAsArray;
     var id;
@@ -2107,9 +2292,7 @@ Parser.prototype.parse = function (value) {
     var start;
     var last;
 
-    if (typeof value !== 'string') {
-        raise(value, 'value');
-    }
+    self.file = file;
 
     /*
      * Add an `offset` matrix, used to keep track of
@@ -2335,17 +2518,7 @@ function tokenizeFactory(type) {
          * @return {Error}
          */
         function exception(reason) {
-            var file = self.options.file || '<text>';
-            var err = new Error(
-                file + COLON + line + COLON + column + COLON + SPACE + reason
-            );
-
-            err.filename = file;
-            err.reason = reason;
-            err.line = line;
-            err.column = column;
-
-            return err;
+            return self.file.exception(reason, now());
         }
 
         /**
@@ -2615,17 +2788,14 @@ Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 /**
  * Transform a markdown document into an AST.
  *
- * @param {string} value
+ * @param {Object} file
  * @param {Object?} options
- * @param {Function?} CustomParser
  * @return {Object}
  */
-function parse(value, options, CustomParser) {
-    if (!CustomParser) {
-        CustomParser = this.Parser || Parser;
-    }
+function parse(file, options) {
+    var CustomParser = this.Parser || Parser;
 
-    return new CustomParser(options).parse(value);
+    return new CustomParser(options).parse(file);
 }
 
 /*
@@ -2640,7 +2810,7 @@ parse.Parser = Parser;
 
 module.exports = parse;
 
-},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"he":7,"repeat-string":9}],5:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":7,"he":8,"repeat-string":10}],6:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3578,17 +3748,13 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
  *
  * @param {Object} ast
  * @param {Object?} options
- * @param {Function?} CustomCompiler
  * @return {string}
  */
-function stringify(ast, options, CustomCompiler) {
+function stringify(ast, options) {
+    var CustomCompiler = this.Compiler || Compiler;
     var compiler;
     var footnotes;
     var value;
-
-    if (!CustomCompiler) {
-        CustomCompiler = this.Compiler || Compiler;
-    }
 
     compiler = new CustomCompiler(options);
 
@@ -3623,7 +3789,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":2,"./utilities.js":6,"markdown-table":8,"repeat-string":9}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":7,"markdown-table":9,"repeat-string":10}],7:[function(require,module,exports){
 'use strict';
 
 /*
@@ -3975,7 +4141,7 @@ if ('create' in Object) {
     exports.create = objectObject;
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -4308,7 +4474,7 @@ if ('create' in Object) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 /*
@@ -4632,7 +4798,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -4700,7 +4866,7 @@ function repeat(str, num) {
 var res = '';
 var cache;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -4783,7 +4949,7 @@ Ware.prototype.run = function () {
   return this;
 };
 
-},{"wrap-fn":11}],11:[function(require,module,exports){
+},{"wrap-fn":12}],12:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -4910,7 +5076,7 @@ function once(fn) {
   };
 }
 
-},{"co":12}],12:[function(require,module,exports){
+},{"co":13}],13:[function(require,module,exports){
 
 /**
  * slice() reference.

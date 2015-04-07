@@ -2,18 +2,16 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
 
-**mdast** is a markdown parser and stringifier for multipurpose analysis in JavaScript. Node and the browser. Lots of tests. 100% coverage.
+**mdast** is a markdown processor powered by plugins. Lots of tests. Node, io.js, and the browser. 100% coverage.
 
-It’s not [just](https://github.com/evilstreak/markdown-js) [another](https://github.com/chjj/marked) [markdown](https://github.com/jonschlinkert/remarkable) [to](https://github.com/jgm/commonmark.js) [HTML](https://github.com/markdown-it/markdown-it) compiler. **mdast** can generate markdown too, which enables plug-ins (and you) to [change your Readme.md](https://github.com/wooorm/mdast-usage), or [lint the JavaScript in your markdown](https://github.com/wooorm/eslint-md).
+**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by plugins to do all kinds of things: [change a Readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
 
 ## Table of Contents
 
 *   [Installation](#installation)
 *   [Usage](#usage)
 *   [API](#api)
-    *   [mdast.parse(value, options?)](#mdastparsevalue-options)
-    *   [mdast.stringify(ast, options?)](#mdaststringifyast-options)
-    *   [mdast.run(ast, options?)](#mdastrunast-options)
+    *   [mdast.process(value, options?, done?)](#mdastprocessvalue-options-done)
     *   [mdast.use(plugin, options?)](#mdastuseplugin-options)
 *   [CLI](#cli)
 *   [Benchmark](#benchmark)
@@ -57,203 +55,60 @@ UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [compressed](mdast.min.
 
 ## Usage
 
-See [Nodes](doc/Nodes.md) for information about returned objects.
-
 ```javascript
 var mdast = require('mdast');
+var yamlConfig = require('mdast-yaml-config');
 ```
 
-Parse markdown with `mdast.parse`:
+Use a plugin. mdast-yaml-config allows settings in YAML frontmatter.
 
 ```javascript
-var ast = mdast.parse('Some *emphasis*, **strongness**, and `code`.');
+var processor = mdast().use(yamlConfig);
 ```
 
-Yields:
-
-```json
-{
-  "type": "root",
-  "children": [
-    {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "text",
-          "value": "Some ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1
-            },
-            "end": {
-              "line": 1,
-              "column": 6
-            }
-          }
-        },
-        {
-          "type": "emphasis",
-          "children": [
-            {
-              "type": "text",
-              "value": "emphasis",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 7
-                },
-                "end": {
-                  "line": 1,
-                  "column": 15
-                }
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 6
-            },
-            "end": {
-              "line": 1,
-              "column": 16
-            }
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 16
-            },
-            "end": {
-              "line": 1,
-              "column": 18
-            }
-          }
-        },
-        {
-          "type": "strong",
-          "children": [
-            {
-              "type": "text",
-              "value": "strongness",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 20
-                },
-                "end": {
-                  "line": 1,
-                  "column": 30
-                }
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 18
-            },
-            "end": {
-              "line": 1,
-              "column": 32
-            }
-          }
-        },
-        {
-          "type": "text",
-          "value": ", and ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 32
-            },
-            "end": {
-              "line": 1,
-              "column": 38
-            }
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "code",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 38
-            },
-            "end": {
-              "line": 1,
-              "column": 44
-            }
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 44
-            },
-            "end": {
-              "line": 1,
-              "column": 45
-            }
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1
-        },
-        "end": {
-          "line": 1,
-          "column": 45
-        }
-      }
-    }
-  ],
-  "position": {
-    "start": {
-      "line": 1,
-      "column": 1
-    },
-    "end": {
-      "line": 1,
-      "column": 45
-    }
-  }
-}
-```
-
-And passing that document into `mdast.stringify`:
+Parse, modify, and stringify the document:
 
 ```javascript
-var doc = mdast.stringify(ast);
+var doc = processor.process(
+    '---\n' +
+    'mdast:\n' +
+    '  commonmark: true\n' +
+    '---\n' +
+    '\n' +
+    '2) Some *emphasis*, **strongness**, and `code`.\n'
+);
 ```
 
 Yields:
 
 ```markdown
-Some _emphasis_, **strongness**, and `code`.
+---
+mdast:
+  commonmark: true
+---
+
+2.  Some _emphasis_, **strongness**, and `code`.
 ```
 
 ## API
 
-### [mdast](#api).parse(value, [options](doc/Options.md#parse)?)
+This section only covers the interface you’ll use most often. See [mdast(3) documentation](doc/mdast.3.md) for a more complete description:
 
-Parse a markdown document into an abstract syntax tree.
+*   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options) — Parses markdown into an abstract syntax tree;
+*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done) — Applies plugins to the syntax tree;
+*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-options) — Compiles the syntax tree into a string;
+*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done) — More detailed than [below](mdastprocessvalue-options-done);
+*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options) — More detailed than [below](mdastuseplugin-options);
+*   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file) — Callback passed to `run()` and `process()`.
+*   [File()](doc/mdast.3.md#file) — Wrapper arround (virtual) files.
+
+### [mdast](#api).process(value, [options](doc/Options.md)?, done?)
+
+Parse a markdown document, apply plugins to it, and compile it into something else.
 
 **Signatures**
 
-*   `ast = mdast.parse(value)`;
-*   `ast = mdast.parse(value, options)`.
+*   `doc = mdast.process(value, options?, done?)`.
 
 **Parameters**
 
@@ -264,65 +119,29 @@ Parse a markdown document into an abstract syntax tree.
     *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
     *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
     *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
-    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks).
+    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks);
+    *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/Options.md#setext-headings);
+    *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
+    *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/Options.md#loose-tables);
+    *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/Options.md#spaced-tables);
+    *   `referenceLinks` (`boolean`, default: `false`) — See [Reference Links and Images](doc/Options.md#reference-links-and-images);
+    *   `referenceImages` (`boolean`, default: `false`) — See [Reference Links and Images](doc/Options.md#reference-links-and-images);
+    *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/Options.md#fence);
+    *   `fences` (`boolean`, default: `false`) — See [Fences](doc/Options.md#fences);
+    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/Options.md#list-item-bullets);
+    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
+    *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers);
+    *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers).
+*   `done` (`function(Error?, string?)`) — Callback invoked when the output is generated with either an error, or a result. Only strictly needed when async plugins are used.
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
 
 **Returns**
 
-`Object`: see [Nodes](doc/Nodes.md) for the AST specification.
-
-### [mdast](#api).stringify([ast](doc/Nodes.md#node), [options](doc/Options.md#stringify)?)
-
-Stringify an abstract syntax tree into a markdown document.
-
-**Signatures**
-
-*   `value = mdast.stringify(ast)`;
-*   `value = mdast.stringify(ast, options)`.
-
-**Parameters**
-
-*   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-*   `options` (`Object`) — Settings:
-    *   `setext` (`boolean`, default: `false`). See [Setext Headings](doc/Options.md#setext-headings);
-    *   `closeAtx` (`boolean`, default: `false`). See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
-    *   `looseTable` (`boolean`, default: `false`). See [Loose Tables](doc/Options.md#loose-tables);
-    *   `spacedTable` (`boolean`, default: `true`). See [Spaced Tables](doc/Options.md#spaced-tables);
-    *   `referenceLinks` (`boolean`, default: `false`). See [Reference Links and Images](doc/Options.md#reference-links-and-images);
-    *   `referenceImages` (`boolean`, default: `false`). See [Reference Links and Images](doc/Options.md#reference-links-and-images);
-    *   `fence` (`"~"` or ``"`"``, default: ``"`"``). See [Fence](doc/Options.md#fence);
-    *   `fences` (`boolean`, default: `false`). See [Fences](doc/Options.md#fences);
-    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`). See [List Item Bullets](doc/Options.md#list-item-bullets);
-    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `ruleRepetition` (`number`, default: 3). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `ruleSpaces` (`boolean`, default `true`). See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `strong` (`"_"`, or `"*"`, default `"*"`). See [Emphasis Markers](doc/Options.md#emphasis-markers);
-    *   `emphasis` (`"_"`, or `"*"`, default `"_"`). See [Emphasis Markers](doc/Options.md#emphasis-markers).
-
-All options (including the options object itself) can be `null` or `undefined` to default to their default values.
-
-**Returns**
-
-`string`: a document formatted in markdown.
-
-### [mdast](#api).run([ast](doc/Nodes.md#node), options?)
-
-Modify an abstract syntax tree by applying `use`d [`plugin`](doc/Plugins.md)s to it.
-
-**Signatures**
-
-*   `ast = mdast.run(ast)`;
-*   `ast = mdast.run(ast, options)`.
-
-**Parameters**
-
-*   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](#mdastparsevalue-options);
-*   `options` (`Object`) — Settings, passed to plugins.
-
-**Returns**
-
-`Object`: the given [AST](doc/Nodes.md).
+`string` or `null`: A document. Formatted in markdown by default, or in whatever a plugin generates.
+The result is `null` if a plugin is asynchroneous, in which case the callback `done` should’ve been passed (don’t worry: plugin creators make sure you know its async).
 
 ### [mdast](#api).use([plugin](doc/Plugins.md#plugin), options?)
 
@@ -330,18 +149,18 @@ Change the way [`mdast`](#api) works by using a [`plugin`](doc/Plugins.md).
 
 **Signatures**
 
-*   `mdast = mdast.use(plugin, options?)`;
-*   `mdast = mdast.use(plugins)`.
+*   `processor = mdast.use(plugin, options?)`;
+*   `processor = mdast.use(plugins)`.
 
 **Parameters**
 
 *   `plugin` (`Function`) — A [**Plugin**](doc/Plugins.md);
-*   `plugins` (`Array.<Function>`) — A list of [**Plugins**](doc/Plugins.md);
+*   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/Plugins.md)s;
 *   `options` (`Object?`) — Passed to the plugin. Specified by its documentation.
 
 **Returns**
 
-`Object`: an instance of MDAST: The returned object functions just like **mdast** (it also has `use`, `parse`, and `stringify` methods), but caches the `use`d plugins. This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
+`Object`: an instance of MDAST: The returned object functions just like **mdast** (it has the same methods), but caches the `use`d plugins. This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
 
 ## CLI
 
@@ -356,7 +175,7 @@ Use:
 ```text
 Usage: mdast [options] file|dir ...
 
-Speedy Markdown parser/stringifier for multipurpose analysis
+Markdown processor powered by plugins
 
 Options:
 

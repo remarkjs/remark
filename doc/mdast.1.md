@@ -1,4 +1,4 @@
-# mdast(1) -- Markdown parser and stringifier
+# mdast(1) -- Markdown processor
 
 ## SYNOPSIS
 
@@ -38,7 +38,7 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## SEE ALSO
 
-**mdastrc**(5), **mdastignore**(5), **mdastconfig**(7).
+**mdastrc**(5), **mdastignore**(5), **mdastconfig**(7), **mdast**(3).
 
 ## AUTHOR
 

@@ -8,7 +8,7 @@ This page contains information on how **mdast** plugins work. It focusses on how
 
 *   [Plugin](#plugin)
     *   [function attacher(mdast, options?)](#function-attachermdast-options)
-    *   [function transformer(ast, options, mdast)](#function-transformerast-options-mdast)
+    *   [function transformer(ast, file, next?)](#function-transformerast-file-next)
 
 ## Plugin
 
@@ -17,11 +17,11 @@ An **mdast** plugin does one or two things:
 *   It modifies the instance: the parser and/or the stringifier;
 *   It transforms the AST.
 
-Both have their own function. The first is called an [“attacher”](#function-attachermdast-options). The second is named a [“transformer”](#function-transformerast-options-mdast). An “attacher” may return a “transformer”.
+Both have their own function. The first is called an [“attacher”](#function-attachermdast-options). The second is named a [“transformer”](#function-transformerast-file-next). An “attacher” may return a “transformer”.
 
 ### function attacher([mdast](../Readme.md#api), options?)
 
-To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.js)), create an attacher. An attacher is the thing passed to [`use`](../Readme.md#mdastuseplugin-options). It can receive plugin specific options, but that’s entirely up to the developer. An **attacher** is invoked when the plugin is first [`use`](../Readme.md#mdastuseplugin-options)d, and can return a transformer which will be called on subsequent [`mdast.parse()`](../Readme.md#mdastparsevalue-options)s or [`mdast.run()`](../Readme.md#mdastrunast-options)s.
+To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.js)), create an attacher. An attacher is the thing passed to [`use`](../Readme.md#mdastuseplugin-options). It can receive plugin specific options, but that’s entirely up to the developer. An **attacher** is invoked when the plugin is first [`use`](../Readme.md#mdastuseplugin-options)d, and can return a transformer which will be called on subsequent [`mdast.parse()`](mdast.3.md#mdastparsefile-options)s or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
 
 **Signatures**
 
@@ -34,22 +34,23 @@ To modify the parser (for an example, see [`test/mentions.js`](../test/mentions.
 
 **Returns**
 
-[`transformer`](#function-transformerast-options-mdast) (optional).
+[`transformer`](#function-transformerast-file-next) (optional).
 
-### function transformer([ast](../doc/Nodes.md#node), [options](../doc/Options.md#parse), [mdast](../Readme.md#api))
+### function transformer([ast](../doc/Nodes.md#node), [file](mdast.3.md#file), next?)
 
-To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.parse()`](../Readme.md#mdastparsevalue-options)d or [`mdast.run()`](../Readme.md#mdastrunast-options). A plugin should change the [AST](../doc/Nodes.md#node) to add or remove nodes.
+To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.parse()`](mdast.3.md#mdastparsefile-options)d or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should change the [AST](../doc/Nodes.md#node) or [mdast.3.md#file] to add or remove nodes.
 
 **Signatures**
 
-*   `Error? = plugin(ast, options, mdast)`.
+*   `err? = plugin(ast, file)`.
+*   `err? = plugin(ast, file, next)`.
 
 **Parameters**
 
-*   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](../Readme.md#mdastparsevalue-options);
-*   `options` (`Object`) — Options passed to [`mdast.parse()`](../Readme.md#mdastparsevalue-options) or [`mdast.run()`](../Readme.md#mdastrunast-options);
-*   `mdast` (`Object`) — Context on which [`mdast.parse()`](../Readme.md#mdastparsevalue-options) or [`mdast.run()`](../Readme.md#mdastrunast-options) was invoked.
+*   `ast` (`Object`) — An AST as returned by [`mdast.parse()`](mdast.3.md#mdastparsefile-options);
+*   `file` (`File`) — [File](mdast.3.md#file) object.
+*   `next` (`function(err?)`, optional) — If the signature includes both `ast` and `next`, `transformer` **may** finish asynchronous, and **must** invoke `next(Error?)` on completion.
 
 **Returns**
 
-`Error` which will be thrown (optional).
+`err` (`Error`, optional) — Exception which will be thrown.

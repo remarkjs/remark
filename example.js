@@ -1,14 +1,18 @@
-// See [Nodes](doc/Nodes.md) for information about returned objects.
 var mdast = require('./index.js');
+var yamlConfig = require('mdast-yaml-config');
 
-// Parse markdown with `mdast.parse`:
-var ast = mdast.parse('Some *emphasis*, **strongness**, and `code`.');
+// Use a plugin. mdast-yaml-config allows settings in YAML frontmatter.
+var processor = mdast().use(yamlConfig);
 
-// Yields:
-console.log('json', JSON.stringify(ast, 0, 2));
-
-// And passing that document into `mdast.stringify`:
-var doc = mdast.stringify(ast);
+// Parse, modify, and stringify the document:
+var doc = processor.process(
+    '---\n' +
+    'mdast:\n' +
+    '  commonmark: true\n' +
+    '---\n' +
+    '\n' +
+    '2) Some *emphasis*, **strongness**, and `code`.\n'
+);
 
 // Yields:
 console.log('markdown', doc);

@@ -1,7 +1,7 @@
 {
   "name": "mdast",
   "main": "mdast.js",
-  "description": "Speedy Markdown parser/stringifier for multipurpose analysis",
+  "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
     "markdown",

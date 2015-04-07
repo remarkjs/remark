@@ -92,8 +92,9 @@ root = mdast.parse(
     '\n' +
     'This page contains information and usage examples regarding ' +
         'available options for [`mdast.parse()`](https://github.com/' +
-        'wooorm/mdast#mdastparsevalue-options) and [`mdast.stringify()`]' +
-        '(https://github.com/wooorm/mdast#mdaststringifyast-options).\n' +
+        'wooorm/mdast/doc/mdast.3.md#mdastparsefile-options) and ' +
+        '[`mdast.stringify()`](https://github.com/wooorm/mdast/doc/' +
+        'mdast.3.md#mdaststringifyast-options).\n' +
     '\n' +
     'Information on **mdast** itself is available in the project’s ' +
         '[Readme.md](https://github.com/wooorm/mdast#readme).\n' +

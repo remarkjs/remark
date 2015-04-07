@@ -42,7 +42,11 @@ function attach(mdast) {
     var parserProto = mdast.Parser.prototype;
     var expressions = parserProto.expressions;
 
-    ['rules', 'gfm', 'breaks', 'breaksGFM'].forEach(function (key) {
+    Object.keys(expressions).forEach(function (key) {
+        if (!('inlineText' in expressions[key])) {
+            return;
+        }
+
         expressions[key].inlineText = new RegExp(
             expressions[key].inlineText.source.replace(
                 '(?=', '(?:\\s(?=@)|(?='

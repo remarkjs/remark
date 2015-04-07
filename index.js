@@ -5,8 +5,9 @@
  */
 
 var Ware = require('ware');
-var parse = require('./lib/parse.js');
-var stringify = require('./lib/stringify.js');
+var parser = require('./lib/parse.js');
+var stringifier = require('./lib/stringify.js');
+var File = require('./lib/file.js');
 var utilities = require('./lib/utilities.js');
 
 /*
@@ -14,9 +15,9 @@ var utilities = require('./lib/utilities.js');
  */
 
 var clone = utilities.clone;
-var Parser = parse.Parser;
+var Parser = parser.Parser;
 var parseProto = Parser.prototype;
-var Compiler = stringify.Compiler;
+var Compiler = stringifier.Compiler;
 var compileProto = Compiler.prototype;
 
 /**
@@ -36,8 +37,7 @@ function fail(exception) {
 }
 
 /**
- * Create a `parse` function which uses an
- * extensible `Parser`.
+ * Create a custom, cloned, Parser.
  *
  * @return {Function}
  */
@@ -85,8 +85,7 @@ function constructParser() {
 }
 
 /**
- * Create a `stringify` function which uses an
- * extensible `Compiler`.
+ * Create a custom, cloned, Compiler.
  *
  * @return {Function}
  */
@@ -134,34 +133,10 @@ function MDAST() {
 }
 
 /**
- * Apply transformers to `node`.
- *
- * @param {Node} ast
- * @param {Object?} options
- * @return {Node} - `ast`.
- */
-function run(ast, options) {
-    var self = this;
-
-    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
-        utilities.raise(ast, 'ast');
-    }
-
-    /*
-     * Only run when this is an instance of MDAST.
-     */
-
-    if (self.ware) {
-        self.ware.run(ast, options || {}, self, fail);
-    }
-
-    return ast;
-}
-
-/**
  * Attach a plugin.
  *
  * @param {Function|Array.<Function>} attach
+ * @param {Object?} options
  * @return {MDAST}
  */
 function use(attach, options) {
@@ -205,31 +180,116 @@ function use(attach, options) {
 }
 
 /**
- * Parse a value and apply transformers.
+ * Apply transformers to `node`.
  *
- * @return {Root}
+ * @param {Node} ast
+ * @param {File?} [file]
+ * @param {Function?} [done]
+ * @return {Node} - `ast`.
  */
-function runParse(_, options) {
-    return this.run(parse.apply(this, arguments), options);
+function run(ast, file, done) {
+    var self = this;
+
+    if (typeof file === 'function') {
+        done = file;
+        file = null;
+    }
+
+    file = new File(file);
+
+    done = typeof done === 'function' ? done : fail;
+
+    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
+        utilities.raise(ast, 'ast');
+    }
+
+    /*
+     * Only run when this is an instance of MDAST.
+     */
+
+    if (self.ware) {
+        self.ware.run(ast, file, done);
+    } else {
+        done(null, ast, file);
+    }
+
+    return ast;
+}
+
+/**
+ * Wrapper to pass a file to `parser`.
+ */
+function parse(value, options) {
+    return parser.call(this, new File(value), options);
 }
 
 /*
- * Prototype.
+ * No special treatment is needed for `stringify()`.
  */
 
-MDAST.prototype.parse = runParse;
-MDAST.prototype.stringify = stringify;
-MDAST.prototype.use = use;
-MDAST.prototype.run = run;
+/**
+ * Parse a value and apply transformers.
+ *
+ * @param {string|File} value
+ * @param {Object?} [options]
+ * @param {Function?} [done]
+ * @return {string?}
+ */
+function process(value, options, done) {
+    var file = new File(value);
+    var self = this instanceof MDAST ? this : new MDAST();
+    var result = null;
+    var ast;
+
+    if (typeof options === 'function') {
+        done = options;
+        options = null;
+    }
+
+    /**
+     * Invoked when `run` completes. Hoists `result` into
+     * the upper scope to return something for sync
+     * operations.
+     */
+    function callback(exception) {
+        if (exception) {
+            (done || fail)(exception);
+        } else {
+            result = self.stringify(ast, options);
+
+            if (done) {
+                done(null, result, file);
+            }
+        }
+    }
+
+    ast = self.parse(file, options);
+    self.run(ast, file, callback);
+
+    return result;
+}
 
 /*
- * Expose methods on exports.
+ * Methods.
  */
 
-MDAST.parse = parse;
-MDAST.stringify = stringify;
+var proto = MDAST.prototype;
+
+proto.use = use;
+proto.parse = parse;
+proto.run = run;
+proto.stringify = stringifier;
+proto.process = process;
+
+/*
+ * Functions.
+ */
+
 MDAST.use = use;
+MDAST.parse = parse;
 MDAST.run = run;
+MDAST.stringify = stringifier;
+MDAST.process = process;
 
 /*
  * Expose `mdast`.

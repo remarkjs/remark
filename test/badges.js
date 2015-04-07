@@ -114,29 +114,28 @@ function createBadge(name, options) {
 }
 
 /**
- * Adds an npm version badge to the main heading,
- * when available.
- *
- * @param {Node} node
- * @param {Object?} options
- */
-function plugin(node, options) {
-    var head = search(node);
-
-    if (head) {
-        head.children = head.children.concat(
-            createBadge(toString(head), options)
-        );
-    }
-}
-
-/**
  * Attach.
  *
+ * @param {MDAST} mdast
+ * @param {Object} options
  * @return {Function}
  */
-function attach() {
-    return plugin;
+function attach(mdast, options) {
+    /**
+     * Adds an npm version badge to the main heading,
+     * when available.
+     *
+     * @param {Node} node
+     */
+    return function (node) {
+        var head = search(node);
+
+        if (head) {
+            head.children = head.children.concat(
+                createBadge(toString(head), options)
+            );
+        }
+    };
 }
 
 /*

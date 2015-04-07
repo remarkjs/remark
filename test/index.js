@@ -3,6 +3,7 @@
 var assert = require('assert');
 var he = require('he');
 var mdast = require('..');
+var File = require('../lib/file.js');
 var fixtures = require('./fixtures.js');
 var chalk = require('chalk');
 var diff = require('diff');
@@ -30,6 +31,24 @@ function plugin() {
 }
 
 /**
+ * Delayed no-operation transformer.
+ */
+function asyncTransformer(ast, file, next) {
+    setTimeout(function () {
+        next();
+    }, 4);
+}
+
+/**
+ * Delayed no-operation plugin.
+ *
+ * @return {Function} - `asyncTransformer`.
+ */
+function asyncAttacher() {
+    return asyncTransformer;
+}
+
+/**
  * Construct an empty node.
  *
  * @return {Object}
@@ -45,15 +64,9 @@ function empty() {
  * Tests.
  */
 
-describe('mdast.parse(value, options, CustomParser)', function () {
-    it('should be a `function`', function () {
-        assert(typeof mdast.parse === 'function');
-    });
-
-    it('should throw when `value` is not a string', function () {
-        assert.throws(function () {
-            mdast.parse(false);
-        }, /false/);
+describe('mdast.parse(file, options?)', function () {
+    it('should accept a `string`', function () {
+        assert(mdast.parse('Alfred').children.length === 1);
     });
 
     it('should throw when `options` is not an object', function () {
@@ -121,11 +134,11 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         } catch (exception) {
             hasThrown = true;
 
-            assert(exception.filename === '<text>');
+            assert(exception.file === null);
             assert(exception.line === 1);
             assert(exception.column === 7);
             assert(exception.reason === message);
-            assert(exception.message === '<text>:1:7: ' + message);
+            assert(exception.message === '1:7: ' + message);
         }
 
         assert(hasThrown === true);
@@ -143,11 +156,11 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         } catch (exception) {
             hasThrown = true;
 
-            assert(exception.filename === '<text>');
+            assert(exception.file === null);
             assert(exception.line === 1);
             assert(exception.column === 11);
             assert(exception.reason === reason);
-            assert(exception.message === '<text>:1:11: ' + reason);
+            assert(exception.message === '1:11: ' + reason);
         }
 
         assert(hasThrown === true);
@@ -166,47 +179,6 @@ describe('mdast.parse(value, options, CustomParser)', function () {
         assert.doesNotThrow(function () {
             mdast.parse('', new CustomOptions());
         });
-    });
-
-    it('should accept a `CustomParser` as a third argument', function () {
-        var isInvoked;
-        var Parser = mdast.parse.Parser;
-        var proto;
-
-        /**
-         * Extensible prototype.
-         */
-        function Proto() {}
-
-        Proto.prototype = Parser.prototype;
-
-        proto = new Proto();
-
-        /**
-         * Mock `parse`.
-         */
-        function parse() {
-            isInvoked = true;
-
-            return {};
-        }
-
-        /**
-         * Construct a parser.
-         *
-         * @constructor {CustomParser}
-         */
-        function CustomParser() {
-            return Parser.apply(this, arguments);
-        }
-
-        CustomParser.prototype = proto;
-
-        CustomParser.prototype.parse = parse;
-
-        mdast.parse('', null, CustomParser);
-
-        assert(isInvoked === true);
     });
 
     it('should be able to set options', function () {
@@ -247,11 +219,7 @@ describe('mdast.parse(value, options, CustomParser)', function () {
     });
 });
 
-describe('mdast.stringify(ast, options, CustomCompiler)', function () {
-    it('should be a `function`', function () {
-        assert(typeof mdast.stringify === 'function');
-    });
-
+describe('mdast.stringify(ast, options?)', function () {
     it('should throw when `ast` is not an object', function () {
         assert.throws(function () {
             mdast.stringify(false);
@@ -434,38 +402,6 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
         });
     });
 
-    it('should accept a `CustomCompiler` as a third argument', function () {
-        var Compiler = mdast.stringify.Compiler;
-        var isInvoked;
-
-        /**
-         * Construct a compiler.
-         *
-         * @constructor {CustomCompiler}
-         */
-        function CustomCompiler() {
-            return Compiler.apply(this, arguments);
-        }
-
-        /**
-         * Mock `visit`.
-         */
-        function visit() {
-            isInvoked = true;
-
-            return '';
-        }
-
-        CustomCompiler.prototype.visit = visit;
-        CustomCompiler.prototype.setOptions = Compiler.prototype.setOptions;
-        CustomCompiler.prototype.options = Compiler.prototype.options;
-        CustomCompiler.prototype.defaults = Compiler.prototype.defaults;
-
-        mdast.stringify(empty(), null, CustomCompiler);
-
-        assert(isInvoked === true);
-    });
-
     it('should be able to set options', function () {
         var processor = mdast();
         var html = processor.Compiler.prototype.html;
@@ -511,11 +447,7 @@ describe('mdast.stringify(ast, options, CustomCompiler)', function () {
     });
 });
 
-describe('mdast.use(plugin, options)', function () {
-    it('should be a `function`', function () {
-        assert(typeof mdast.use === 'function');
-    });
-
+describe('mdast.use(plugin, options?)', function () {
     it('should accept an attacher', function () {
         mdast.use(noop);
     });
@@ -621,11 +553,7 @@ describe('mdast.use(plugin, options)', function () {
     });
 });
 
-describe('mdast.run(ast, options)', function () {
-    it('should be a `function`', function () {
-        assert(typeof mdast.run === 'function');
-    });
-
+describe('mdast.run(ast, file?, done?)', function () {
     it('should accept an ast', function () {
         mdast.run(empty());
     });
@@ -636,14 +564,110 @@ describe('mdast.run(ast, options)', function () {
         }, /false/);
     });
 
-    it('should accept options', function () {
-        mdast.run(empty(), {});
+    it('should accept a `file`', function () {
+        mdast.run(empty(), new File());
     });
 
     it('should return the given ast', function () {
         var node = empty();
 
-        assert(node === mdast.run(node, {}));
+        assert(node === mdast.run(node));
+    });
+
+    it('should accept a `done` callback, without file', function (done) {
+        mdast.run(empty(), function (err) {
+            done(err);
+        });
+    });
+
+    it('should accept a `done` callback', function (done) {
+        mdast.run(empty(), {
+            'filename': 'Untitled',
+            'extension': 'md',
+            'contents': ''
+        }, function (err) {
+            done(err);
+        });
+    });
+});
+
+describe('mdast.process(value, options, done)', function () {
+    it('should parse and stringify a file', function () {
+        assert(mdast.process('*foo*') === '_foo_\n');
+    });
+
+    it('should accept parse options', function () {
+        assert(mdast.process('1)  foo', {
+            'commonmark': true
+        }) === '1.  foo\n');
+    });
+
+    it('should accept stringify options', function () {
+        assert(mdast.process('# foo', {
+            'closeAtx': true
+        }) === '# foo #\n');
+    });
+
+    it('should run plugins', function () {
+        assert(
+            mdast.use(mentions).process('@mention') ===
+            '[@mention](https://github.com/blog/821)\n'
+        );
+    });
+
+    it('should run async plugins', function (done) {
+        mdast.use(asyncAttacher).process('Foo', function (err) {
+            done(err);
+        });
+    });
+
+    it('should pass an async error', function (done) {
+        var exception = new Error('test');
+
+        /**
+         * Transformer.
+         */
+        function transformer(ast, file, next) {
+            setTimeout(function () {
+                next(exception);
+            }, 4);
+        }
+
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return transformer;
+        }
+
+        mdast.use(attacher).process('Foo', function (err) {
+            assert(err === exception);
+            done();
+        });
+    });
+
+    it('should throw an error', function () {
+        var exception = new Error('test');
+
+        /**
+         * Transformer.
+         */
+        function transformer() {
+            throw exception;
+        }
+
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return transformer;
+        }
+
+        try {
+            mdast.use(attacher).process('Foo');
+        } catch (err) {
+            assert(err === exception);
+        }
     });
 });
 
@@ -658,53 +682,26 @@ describe('function attacher(mdast, options)', function () {
             var doc = 'Hello w/ a @mention!\n';
 
             assert(
-                mdast.stringify(mdast.use(mentions).parse(doc)) ===
+                mdast.use(mentions).process(doc) ===
                 'Hello w/ a [@mention](https://github.com/blog/821)!\n'
             );
 
-            assert(mdast.stringify(mdast.parse(doc)) === doc);
+            assert(mdast.process(doc) === doc);
         }
     );
 });
 
-describe('function transformer(ast, options, mdast)', function () {
-    it('should be invoked when `parse()` is invoked', function () {
-        var options = {};
-        var isInvoked;
-
-        /**
-         * Plugin.
-         */
-        function assertion(ast, settings) {
-            assert(ast.type === 'root');
-            assert(settings === options);
-
-            isInvoked = true;
-        }
-
-        /**
-         * Attacher.
-         */
-        function attacher() {
-            return assertion;
-        }
-
-        mdast.use(attacher).parse('# Hello world', options);
-
-        assert(isInvoked === true);
-    });
-
-    it('should be invoked when `parse()` is invoked', function () {
+describe('function transformer(ast, file, next?)', function () {
+    it('should be invoked when `run()` is invoked', function () {
         var result = mdast.parse('# Hello world');
-        var options = {};
         var isInvoked;
 
         /**
          * Plugin.
          */
-        function assertion(ast, settings) {
+        function assertion(ast, file) {
             assert(ast === result);
-            assert(settings === options);
+            assert(file instanceof File);
 
             isInvoked = true;
         }
@@ -716,7 +713,7 @@ describe('function transformer(ast, options, mdast)', function () {
             return assertion;
         }
 
-        mdast.use(attacher).run(result, options);
+        mdast.use(attacher).run(result);
 
         assert(isInvoked === true);
     });
@@ -725,7 +722,6 @@ describe('function transformer(ast, options, mdast)', function () {
         var exception = new Error('test');
         var fixture = '# Hello world';
         var ast = mdast.parse(fixture);
-        var processor;
 
         /**
          * Thrower.
@@ -741,20 +737,37 @@ describe('function transformer(ast, options, mdast)', function () {
             return thrower;
         }
 
-        processor = mdast.use(attacher);
-
         assert.throws(function () {
-            processor.parse(fixture);
+            mdast.use(attacher).run(ast);
         }, /test/);
+    });
+
+    it('should fail mdast if an exception is returned', function () {
+        var exception = new Error('test');
+        var fixture = '# Hello world';
+        var ast = mdast.parse(fixture);
+
+        /**
+         * Returner.
+         */
+        function thrower() {
+            return exception;
+        }
+
+        /**
+         * Attacher.
+         */
+        function attacher() {
+            return thrower;
+        }
 
         assert.throws(function () {
-            processor.run(ast);
+            mdast.use(attacher).run(ast);
         }, /test/);
     });
 
     it('should work on an example plugin', function () {
-        var processor = mdast.use(badges);
-        var source = processor.stringify(processor.parse('# mdast'));
+        var source = mdast.use(badges).process('# mdast');
 
         assert(
             source ===
@@ -762,15 +775,171 @@ describe('function transformer(ast, options, mdast)', function () {
             '](https://www.npmjs.com/package/mdast)\n'
         );
 
-        source = processor.stringify(processor.parse('# mdast', {
+        source = mdast.use(badges, {
             'flat': true
-        }));
+        }).process('# mdast');
 
         assert(
             source ===
             '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg' +
             '?style=flat)](https://www.npmjs.com/package/mdast)\n'
         );
+    });
+});
+
+describe('File(options?)', function () {
+    it('should create a new `File`', function () {
+        assert(new File() instanceof File);
+    });
+
+    it('should work without `new`', function () {
+        /* eslint-disable new-cap */
+        assert(File() instanceof File);
+        /* eslint-enable new-cap */
+    });
+
+    it('should accept missing options', function () {
+        var file = new File();
+
+        assert(file.filename === null);
+        assert(file.extension === 'md');
+        assert(file.contents === '');
+    });
+
+    it('should accept a `string`', function () {
+        var file = new File('Test');
+
+        assert(file.filename === null);
+        assert(file.extension === 'md');
+        assert(file.contents === 'Test');
+    });
+
+    it('should accept an `Object`', function () {
+        var file = new File({
+            'filename': 'Untitled',
+            'extension': 'markdown',
+            'contents': 'Test'
+        });
+
+        assert(file.filename === 'Untitled');
+        assert(file.extension === 'markdown');
+        assert(file.contents === 'Test');
+    });
+
+    it('should accept a `File`', function () {
+        var file = new File(new File({
+            'filename': 'Untitled',
+            'extension': 'markdown',
+            'contents': 'Test'
+        }));
+
+        assert(file.filename === 'Untitled');
+        assert(file.extension === 'markdown');
+        assert(file.contents === 'Test');
+    });
+
+    describe('#getFile()', function () {
+        it('should return `null` without a filename', function () {
+            assert(new File().getFile() === null);
+        });
+
+        it('should return the filename without extension', function () {
+            assert(new File({
+                'filename': 'Untitled',
+                'extension': null
+            }).getFile() === 'Untitled');
+        });
+
+        it('should return the filename with extension', function () {
+            assert(new File({
+                'filename': 'Untitled',
+                'extension': 'markdown'
+            }).getFile() === 'Untitled.markdown');
+        });
+    });
+
+    describe('#exception(reason, position?)', function () {
+        it('should return an Error', function () {
+            assert(new File().exception() instanceof Error);
+        });
+
+        it('should add properties', function () {
+            var err = new File({
+                'filename': 'Untitled'
+            }).exception('test');
+
+            assert(err.file === 'Untitled.md');
+            assert(err.reason === 'test');
+            assert(err.line === null);
+            assert(err.column === null);
+        });
+
+        it('should add properties on an unfilled file', function () {
+            var err = new File().exception('test');
+
+            assert(err.file === null);
+            assert(err.reason === 'test');
+            assert(err.line === null);
+            assert(err.column === null);
+        });
+
+        it('should create a pretty message', function () {
+            assert(new File().exception('test').message === '1:1: test');
+        });
+
+        it('should create a pretty message', function () {
+            assert(new File({
+                'filename': 'Untitled'
+            }).exception('test').message === 'Untitled.md:1:1: test');
+        });
+
+        it('should accept a node', function () {
+            var node = empty();
+
+            node.position = {
+                'start': {
+                    'line': 2,
+                    'column': 1
+                },
+                'end': {
+                    'line': 2,
+                    'column': 5
+                }
+            };
+
+            assert(
+                new File().exception('test', node).message === '2:1-2:5: test'
+            );
+        });
+
+        it('should accept a location', function () {
+            var location = {
+                'start': {
+                    'line': 2,
+                    'column': 1
+                },
+                'end': {
+                    'line': 2,
+                    'column': 5
+                }
+            };
+
+            assert(
+                new File().exception('test', location).message ===
+                '2:1-2:5: test'
+            );
+        });
+
+        it('should accept a position', function () {
+            var position = {
+                'line': 2,
+                'column': 5
+            };
+
+            assert(
+                new File().exception('test', position).message === '2:5: test'
+            );
+        });
     });
 });
 
@@ -1096,21 +1265,25 @@ describe('fixtures', function () {
             Object.keys(possibilities).forEach(function (key) {
                 var name = key || 'default';
                 var parse = possibilities[key];
-                var node = mdast.parse(input, parse);
-                var markdown = mdast.stringify(node, fixture.stringify);
+                var node;
+                var markdown;
 
                 it('should parse `' + name + '` correctly', function () {
+                    node = mdast.parse(input, parse);
+
                     compare(node, trees[mapping[key]], false);
                 });
 
                 if (output !== false) {
                     it('should stringify `' + name + '`', function () {
+                        markdown = mdast.stringify(node, fixture.stringify);
                         compare(node, mdast.parse(markdown, parse), true);
                     });
                 }
 
                 if (output === true) {
                     it('should stringify `' + name + '` exact', function () {
+                        markdown = mdast.stringify(node, fixture.stringify);
                         compareText(fixture.input, markdown);
                     });
                 }

@@ -45,7 +45,7 @@ Specify directory specific settings with `.mdastrc` and `package.json` files.  S
 
 ### PARSE
 
-See <<https://github.com/wooorm/mdast#mdastparsevalue-options>> for a description of these settings.
+See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse>> for a description of these settings.
 
 *   `gfm` (boolean, default: true);
 *   `yaml` (boolean, default: true);
@@ -56,7 +56,7 @@ See <<https://github.com/wooorm/mdast#mdastparsevalue-options>> for a descriptio
 
 ### STRINGIFY
 
-See <<https://github.com/wooorm/mdast#mdaststringifyast-options>> for a description of these settings.
+See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify>> for a description of these settings.
 
 *   `setext` (boolean, default: false);
 *   `closeAtx` (boolean, default: false);
@@ -78,7 +78,7 @@ See <<https://github.com/wooorm/mdast#mdaststringifyast-options>> for a descript
 
 ## SEE ALSO
 
-**mdast**(1), **mdastrc**(5), **mdastignore**(5).
+**mdast**(1), **mdast**(3), **mdastrc**(5), **mdastignore**(5).
 
 ## AUTHOR
 
