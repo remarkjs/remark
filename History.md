@@ -3,6 +3,11 @@ mdast:
   setext: true
 ---
 
+0.17.1 / 2015-04-08
+===================
+
+*   Remove left-alignment for neutral columns in tables (Closes GH-19, d5d6657)
+
 0.17.0 / 2015-04-07
 ===================
 
