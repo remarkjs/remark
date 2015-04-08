@@ -4,8 +4,8 @@
     {
       "type": "table",
       "align": [
-        "left",
-        "left"
+        null,
+        null
       ],
       "children": [
         {
@@ -274,7 +274,7 @@
         "center",
         "right",
         "left",
-        "left"
+        null
       ],
       "children": [
         {
@@ -700,8 +700,8 @@
     {
       "type": "table",
       "align": [
-        "left",
-        "left"
+        null,
+        null
       ],
       "children": [
         {
@@ -941,7 +941,7 @@
         "left",
         "center",
         "right",
-        "left"
+        null
       ],
       "children": [
         {

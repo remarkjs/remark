@@ -220,7 +220,7 @@ interface Table <: Parent {
 
 ```idl
 enum alignType {
-    "left" | "right" | "center";
+    "left" | "right" | "center" | null;
 }
 ```
 

@@ -991,7 +991,7 @@ mdast.stringify(ast, {
 Yields:
 
     Hello |  World
-    ----- | -----:
+    :---- | -----:
     How   |    are
     you   | today?
 
@@ -1112,6 +1112,6 @@ mdast.stringify(ast, {
 Yields:
 
     |Hello| World|
-    |-----|-----:|
+    |:----|-----:|
     |How  |   are|
     |you  |today?|
