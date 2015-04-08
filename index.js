@@ -4,7 +4,7 @@
  * Dependencies.
  */
 
-const mdast = require('wooorm/mdast@0.16.0');
+const mdast = require('wooorm/mdast@0.17.1');
 const debounce = require('component/debounce@1.0.0');
 const keycode = require('timoxley/keycode');
 const query = require('component/querystring');

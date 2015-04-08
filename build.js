@@ -92,7 +92,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.16.0');
+var mdast = require('wooorm/mdast@0.17.1');
 var debounce = require('component/debounce@1.0.0');
 var keycode = require('timoxley/keycode');
 var query = require('component/querystring');
@@ -433,7 +433,7 @@ write.setText(getPermalink() || defaultText);
  */
 
 write.focus();
-}, {"wooorm/mdast@0.16.0":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"component/querystring":5,"quilljs/quill":6}],
+}, {"wooorm/mdast@0.17.1":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"component/querystring":5,"quilljs/quill":6}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -442,8 +442,9 @@ write.focus();
  */
 
 var Ware = require('ware');
-var parse = require('./lib/parse.js');
-var stringify = require('./lib/stringify.js');
+var parser = require('./lib/parse.js');
+var stringifier = require('./lib/stringify.js');
+var File = require('./lib/file.js');
 var utilities = require('./lib/utilities.js');
 
 /*
@@ -451,9 +452,9 @@ var utilities = require('./lib/utilities.js');
  */
 
 var clone = utilities.clone;
-var Parser = parse.Parser;
+var Parser = parser.Parser;
 var parseProto = Parser.prototype;
-var Compiler = stringify.Compiler;
+var Compiler = stringifier.Compiler;
 var compileProto = Compiler.prototype;
 
 /**
@@ -473,8 +474,7 @@ function fail(exception) {
 }
 
 /**
- * Create a `parse` function which uses an
- * extensible `Parser`.
+ * Create a custom, cloned, Parser.
  *
  * @return {Function}
  */
@@ -522,8 +522,7 @@ function constructParser() {
 }
 
 /**
- * Create a `stringify` function which uses an
- * extensible `Compiler`.
+ * Create a custom, cloned, Compiler.
  *
  * @return {Function}
  */
@@ -571,34 +570,10 @@ function MDAST() {
 }
 
 /**
- * Apply transformers to `node`.
- *
- * @param {Node} ast
- * @param {Object?} options
- * @return {Node} - `ast`.
- */
-function run(ast, options) {
-    var self = this;
-
-    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
-        utilities.raise(ast, 'ast');
-    }
-
-    /*
-     * Only run when this is an instance of MDAST.
-     */
-
-    if (self.ware) {
-        self.ware.run(ast, options || {}, self, fail);
-    }
-
-    return ast;
-}
-
-/**
  * Attach a plugin.
  *
  * @param {Function|Array.<Function>} attach
+ * @param {Object?} options
  * @return {MDAST}
  */
 function use(attach, options) {
@@ -642,39 +617,123 @@ function use(attach, options) {
 }
 
 /**
- * Parse a value and apply transformers.
+ * Apply transformers to `node`.
  *
- * @return {Root}
+ * @param {Node} ast
+ * @param {File?} [file]
+ * @param {Function?} [done]
+ * @return {Node} - `ast`.
  */
-function runParse(_, options) {
-    return this.run(parse.apply(this, arguments), options);
+function run(ast, file, done) {
+    var self = this;
+
+    if (typeof file === 'function') {
+        done = file;
+        file = null;
+    }
+
+    file = new File(file);
+
+    done = typeof done === 'function' ? done : fail;
+
+    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
+        utilities.raise(ast, 'ast');
+    }
+
+    /*
+     * Only run when this is an instance of MDAST.
+     */
+
+    if (self.ware) {
+        self.ware.run(ast, file, done);
+    } else {
+        done(null, ast, file);
+    }
+
+    return ast;
+}
+
+/**
+ * Wrapper to pass a file to `parser`.
+ */
+function parse(value, options) {
+    return parser.call(this, new File(value), options);
 }
 
 /*
- * Prototype.
+ * No special treatment is needed for `stringify()`.
  */
 
-MDAST.prototype.parse = runParse;
-MDAST.prototype.stringify = stringify;
-MDAST.prototype.use = use;
-MDAST.prototype.run = run;
+/**
+ * Parse a value and apply transformers.
+ *
+ * @param {string|File} value
+ * @param {Object?} [options]
+ * @param {Function?} [done]
+ * @return {string?}
+ */
+function process(value, options, done) {
+    var file = new File(value);
+    var self = this instanceof MDAST ? this : new MDAST();
+    var result = null;
+    var ast;
+
+    if (typeof options === 'function') {
+        done = options;
+        options = null;
+    }
+
+    /**
+     * Invoked when `run` completes. Hoists `result` into
+     * the upper scope to return something for sync
+     * operations.
+     */
+    function callback(exception) {
+        if (exception) {
+            (done || fail)(exception);
+        } else {
+            result = self.stringify(ast, options);
+
+            if (done) {
+                done(null, result, file);
+            }
+        }
+    }
+
+    ast = self.parse(file, options);
+    self.run(ast, file, callback);
+
+    return result;
+}
 
 /*
- * Expose methods on exports.
+ * Methods.
  */
 
-MDAST.parse = parse;
-MDAST.stringify = stringify;
+var proto = MDAST.prototype;
+
+proto.use = use;
+proto.parse = parse;
+proto.run = run;
+proto.stringify = stringifier;
+proto.process = process;
+
+/*
+ * Functions.
+ */
+
 MDAST.use = use;
+MDAST.parse = parse;
 MDAST.run = run;
+MDAST.stringify = stringifier;
+MDAST.process = process;
 
 /*
  * Expose `mdast`.
  */
 
 module.exports = MDAST;
-
-}, {"ware":7,"./lib/parse.js":8,"./lib/stringify.js":9,"./lib/utilities.js":10}],
+}, {"ware":7,"./lib/parse.js":8,"./lib/stringify.js":9,"./lib/file.js":10,"./lib/utilities.js":11}],
 7: [function(require, module, exports) {
 /**
  * Module Dependencies
@@ -758,8 +817,8 @@ Ware.prototype.run = function () {
   return this;
 };
 
-}, {"wrap-fn":11}],
-11: [function(require, module, exports) {
+}, {"wrap-fn":12}],
+12: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -886,8 +945,8 @@ function once(fn) {
   };
 }
 
-}, {"co":12}],
-12: [function(require, module, exports) {
+}, {"co":13}],
+13: [function(require, module, exports) {
 
 /**
  * slice() reference.
@@ -1227,7 +1286,6 @@ var SLASH = '\\';
 var SPACE = ' ';
 var TAB = '\t';
 var EMPTY = '';
-var COLON = ':';
 var LT = '<';
 var GT = '>';
 
@@ -1298,9 +1356,7 @@ function descapeFactory(scope, key) {
     function generate() {
         if (scope[key] !== globalExpression) {
             globalExpression = scope[key];
-            expression = new RegExp(
-                scope[key].source.replace(CARET, EMPTY), 'g'
-            );
+            expression = new RegExp(scope[key].source.replace(CARET, EMPTY), 'g');
         }
 
         return expression;
@@ -1331,6 +1387,7 @@ var TAB_SIZE = 4;
 
 var EXPRESSION_RIGHT_ALIGNMENT = /^[ \t]*-+:[ \t]*$/;
 var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
+var EXPRESSION_LEFT_ALIGNMENT = /^[ \t]*:-+[ \t]*$/;
 var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
 var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
 var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)([ \t]*\|[ \t]*\n?|\n?$)/g;
@@ -1383,8 +1440,8 @@ function getIndent(value) {
     }
 
     return {
-        'indent': indent,
-        'stops': stops
+        indent: indent,
+        stops: stops
     };
 }
 
@@ -1398,7 +1455,7 @@ function getIndent(value) {
  */
 function removeIndentation(value, maximum) {
     var values = value.split(NEW_LINE);
-    var position = values.length;
+    var position = values.length + 1;
     var minIndent = Infinity;
     var matrix = [];
     var index;
@@ -1406,10 +1463,7 @@ function removeIndentation(value, maximum) {
     var stops;
     var padding;
 
-    if (maximum > 0) {
-        values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
-        position++;
-    }
+    values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
 
     while (position--) {
         indentation = getIndent(values[position]);
@@ -1442,25 +1496,17 @@ function removeIndentation(value, maximum) {
                 index--;
             }
 
-            if (
-                trim(values[position]).length !== 0 &&
-                minIndent &&
-                index !== minIndent
-            ) {
+            if (trim(values[position]).length !== 0 && minIndent && index !== minIndent) {
                 padding = TAB;
             } else {
                 padding = EMPTY;
             }
 
-            values[position] = padding + values[position].slice(
-                index in stops ? stops[index] + 1 : 0
-            );
+            values[position] = padding + values[position].slice(index in stops ? stops[index] + 1 : 0);
         }
     }
 
-    if (maximum > 0) {
-        values.shift();
-    }
+    values.shift();
 
     return values.join(NEW_LINE);
 }
@@ -1516,8 +1562,10 @@ function getAlignment(rows) {
             results[index] = 'right';
         } else if (EXPRESSION_CENTER_ALIGNMENT.test(alignment)) {
             results[index] = 'center';
-        } else {
+        } else if (EXPRESSION_LEFT_ALIGNMENT.test(alignment)) {
             results[index] = 'left';
+        } else {
+            results[index] = null;
         }
     }
 
@@ -1601,8 +1649,8 @@ MERGEABLE_NODES.html = function (prev, token) {
  * @param {Object} token
  * @return {Object} `prev`.
  */
-MERGEABLE_NODES.text = function (prev, token, type) {
-    prev.value += (type === BLOCK ? NEW_LINE : EMPTY) + token.value;
+MERGEABLE_NODES.text = function (prev, token) {
+    prev.value += token.value;
 
     return prev;
 };
@@ -1632,11 +1680,7 @@ MERGEABLE_NODES.blockquote = function (prev, token) {
  * @return {Object} `prev`.
  */
 MERGEABLE_NODES.list = function (prev, token) {
-    if (
-        !this.currentBullet ||
-        this.currentBullet !== this.previousBullet ||
-        this.currentBullet.length !== 1
-    ) {
+    if (!this.currentBullet || this.currentBullet !== this.previousBullet || this.currentBullet.length !== 1) {
         return token;
     }
 
@@ -1794,14 +1838,7 @@ function tokenizeList(eat, $0, $1, $2) {
         while (++index < length) {
             bullet = self.rules.bullet.exec(matches[index])[0];
 
-            if (
-                firstBullet !== bullet &&
-                (
-                    firstBullet.length === 1 && bullet.length === 1 ||
-                    bullet.charAt(bullet.length - 1) !==
-                    firstBullet.charAt(firstBullet.length - 1)
-                )
-            ) {
+            if (firstBullet !== bullet && (firstBullet.length === 1 && bullet.length === 1 || bullet.charAt(bullet.length - 1) !== firstBullet.charAt(firstBullet.length - 1))) {
                 matches = matches.slice(0, index);
                 matches[index - 1] = trimRightLines(matches[index - 1]);
                 length = matches.length;
@@ -1823,11 +1860,7 @@ function tokenizeList(eat, $0, $1, $2) {
             end = item.length;
 
             while (++position < end) {
-                if (
-                    item.charAt(position) === NEW_LINE &&
-                    item.charAt(position - 1) === NEW_LINE &&
-                    getIndent(item.slice(position + 1)).indent < size
-                ) {
+                if (item.charAt(position) === NEW_LINE && item.charAt(position - 1) === NEW_LINE && getIndent(item.slice(position + 1)).indent < size) {
                     matches[index] = item.slice(0, position - 1);
 
                     matches = matches.slice(0, index + 1);
@@ -1901,9 +1934,7 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
             $2 = $2.slice(1, -1);
         }
 
-        self.links[identifier] = add({}, self.renderLink(
-            true, self.descape($2), null, $3, eat.now(), eat
-        ));
+        self.links[identifier] = add({}, self.renderLink(true, self.descape($2), null, $3, eat.now(), eat));
     }
 }
 
@@ -1980,9 +2011,9 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var queue;
 
     table = eat(EMPTY)({
-        'type': TABLE,
-        'align': [],
-        'children': []
+        type: TABLE,
+        align: [],
+        children: []
     });
 
     /**
@@ -2068,9 +2099,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     function renderRow(type, value) {
         var row = eat(EMPTY)(table, self.renderBlock(type, []));
 
-        value
-            .replace(EXPRESSION_TABLE_INITIAL, eatFence)
-            .replace(EXPRESSION_TABLE_CONTENT, eatCellFactory(row));
+        value.replace(EXPRESSION_TABLE_INITIAL, eatFence).replace(EXPRESSION_TABLE_CONTENT, eatCellFactory(row));
 
         row.position.end = eat.now();
     }
@@ -2089,9 +2118,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
     eat($3);
 
-    $4 = $4
-        .replace(EXPRESSION_TABLE_FENCE, EMPTY)
-        .split(EXPRESSION_TABLE_BORDER);
+    $4 = $4.replace(EXPRESSION_TABLE_FENCE, EMPTY).split(EXPRESSION_TABLE_BORDER);
 
     table.align = getAlignment($4);
 
@@ -2162,9 +2189,9 @@ function renderCodeBlock(value, language, eat) {
     }
 
     return {
-        'type': CODE,
-        'lang': flag,
-        'value': trimRightLines(value || EMPTY)
+        type: CODE,
+        lang: flag,
+        value: trimRightLines(value || EMPTY)
     };
 }
 
@@ -2183,10 +2210,10 @@ function renderList(children, bullet) {
     }
 
     return {
-        'type': LIST,
-        'ordered': bullet.length > 1,
-        'start': start,
-        'children': children
+        type: LIST,
+        ordered: bullet.length > 1,
+        start: start,
+        children: children
     };
 }
 
@@ -2259,11 +2286,11 @@ function renderNormalListItem(token, position) {
         bullet = $1 + $2 + $3;
         rest = $4;
 
-       /*
-        * Make sure that the first nine numbered list items
-        * can indent with an extra space.  That is, when
-        * the bullet did not receive an extra final space.
-        */
+        /*
+         * Make sure that the first nine numbered list items
+         * can indent with an extra space.  That is, when
+         * the bullet did not receive an extra final space.
+         */
 
         if (Number($2) < 10 && bullet.length % 2 === 1) {
             $2 = SPACE + $2;
@@ -2276,9 +2303,7 @@ function renderNormalListItem(token, position) {
 
     lines = token.split(NEW_LINE);
 
-    trimmedLines = removeIndentation(
-        token, getIndent(max).indent
-    ).split(NEW_LINE);
+    trimmedLines = removeIndentation(token, getIndent(max).indent).split(NEW_LINE);
 
     /*
      * We replaced the initial bullet with something
@@ -2298,8 +2323,7 @@ function renderNormalListItem(token, position) {
     length = lines.length;
 
     while (++index < length) {
-        offset[line] = (offset[line] || 0) +
-            lines[index].length - trimmedLines[index].length;
+        offset[line] = (offset[line] || 0) + lines[index].length - trimmedLines[index].length;
 
         line++;
     }
@@ -2313,8 +2337,8 @@ function renderNormalListItem(token, position) {
 
 var LIST_ITEM_MAP = objectCreate();
 
-LIST_ITEM_MAP.true = renderPedanticListItem;
-LIST_ITEM_MAP.false = renderNormalListItem;
+LIST_ITEM_MAP['true'] = renderPedanticListItem;
+LIST_ITEM_MAP['false'] = renderNormalListItem;
 
 /**
  * Create a list-item token.
@@ -2344,9 +2368,8 @@ function renderListItem(token, position) {
     }
 
     node = {
-        'type': LIST_ITEM,
-        'loose': EXPRESSION_LOOSE_LIST_ITEM.test(token) ||
-            token.charAt(token.length - 1) === NEW_LINE
+        type: LIST_ITEM,
+        loose: EXPRESSION_LOOSE_LIST_ITEM.test(token) || token.charAt(token.length - 1) === NEW_LINE
     };
 
     if (self.options.gfm) {
@@ -2371,9 +2394,9 @@ function renderFootnoteDefinition(id, value, position) {
     var token;
 
     token = {
-        'type': FOOTNOTE_DEFINITION,
-        'id': id,
-        'children': self.tokenizeBlock(value, position)
+        type: FOOTNOTE_DEFINITION,
+        id: id,
+        children: self.tokenizeBlock(value, position)
     };
 
     exitBlockquote();
@@ -2392,9 +2415,9 @@ function renderFootnoteDefinition(id, value, position) {
  */
 function renderHeading(value, depth) {
     return {
-        'type': HEADING,
-        'depth': depth,
-        'children': value
+        type: HEADING,
+        depth: depth,
+        children: value
     };
 }
 
@@ -2419,8 +2442,8 @@ function renderBlockquote(value, position) {
     });
 
     token = {
-        'type': BLOCKQUOTE,
-        'children': this.tokenizeBlock(value, position)
+        type: BLOCKQUOTE,
+        children: this.tokenizeBlock(value, position)
     };
 
     exitBlockquote();
@@ -2436,7 +2459,7 @@ function renderBlockquote(value, position) {
  */
 function renderVoid(type) {
     return {
-        'type': type
+        type: type
     };
 }
 
@@ -2449,8 +2472,8 @@ function renderVoid(type) {
  */
 function renderBlock(type, children) {
     return {
-        'type': type,
-        'children': children
+        type: type,
+        children: children
     };
 }
 
@@ -2463,8 +2486,8 @@ function renderBlock(type, children) {
  */
 function renderRaw(type, value) {
     return {
-        'type': type,
-        'value': value
+        type: type,
+        value: value
     };
 }
 
@@ -2483,8 +2506,8 @@ function renderLink(isLink, href, text, title, position, eat) {
     var token;
 
     token = {
-        'type': isLink ? LINK : IMAGE,
-        'title': title ? decode(self.descape(title), eat) : null
+        type: isLink ? LINK : IMAGE,
+        title: title ? decode(self.descape(title), eat) : null
     };
 
     /*
@@ -2515,8 +2538,8 @@ function renderLink(isLink, href, text, title, position, eat) {
  */
 function renderFootnote(id) {
     return {
-        'type': FOOTNOTE,
-        'id': id
+        type: FOOTNOTE,
+        id: id
     };
 }
 
@@ -2529,8 +2552,8 @@ function renderFootnote(id) {
  */
 function renderInline(type, value, location) {
     return {
-        'type': type,
-        'children': this.tokenizeInline(value, location)
+        type: type,
+        children: this.tokenizeInline(value, location)
     };
 }
 
@@ -2563,10 +2586,7 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
     var tokenize;
 
     if ($2 === AT_SIGN) {
-        if (
-            text.substr(0, MAILTO_PROTOCOL.length).toLowerCase() !==
-            MAILTO_PROTOCOL
-        ) {
+        if (text.substr(0, MAILTO_PROTOCOL.length).toLowerCase() !== MAILTO_PROTOCOL) {
             href = MAILTO_PROTOCOL + text;
         } else {
             text = text.substr(MAILTO_PROTOCOL.length);
@@ -2648,9 +2668,7 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
 
         now.column += $1.length;
 
-        eat($0)(this.renderLink(
-            isLink, this.descape(href), $2, title, now, eat
-        ));
+        eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now, eat));
     }
 }
 
@@ -2711,9 +2729,7 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
 
             now.column += $1.length + 1;
 
-            token = self.renderFootnoteDefinition(
-                String(self.footnoteCounter), text.substr(1), now
-            );
+            token = self.renderFootnoteDefinition(String(self.footnoteCounter), text.substr(1), now);
 
             self.footnotes[token.id] = token;
 
@@ -2726,10 +2742,7 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
 
         now.column += $1.length;
 
-        eat($0)(self.renderLink(
-            $0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href),
-            $2, url.title, now, eat
-        ));
+        eat($0)(self.renderLink($0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href), $2, url.title, now, eat));
     }
 }
 
@@ -2773,11 +2786,7 @@ function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
     var marker = $1 || $3;
     var value = $2 || $4;
 
-    if (
-        trim(value) === EMPTY ||
-        value.charAt(0) === marker ||
-        value.charAt(value.length - 1) === marker
-    ) {
+    if (trim(value) === EMPTY || value.charAt(0) === marker || value.charAt(value.length - 1) === marker) {
         return;
     }
 
@@ -2821,16 +2830,6 @@ function tokenizeInlineCode(eat, $0, $1, $2) {
  */
 function tokenizeBreak(eat, $0) {
     eat($0)(this.renderVoid(BREAK));
-}
-
-/**
- * Tokenise inline text.
- *
- * @param {function(string)} eat
- * @param {string} $0
- */
-function tokenizeInlineText(eat, $0) {
-    eat($0)(this.renderRaw(TEXT, $0));
 }
 
 /**
@@ -2950,11 +2949,12 @@ Parser.prototype.expressions = defaultExpressions;
 /**
  * Parse `value` into an AST.
  *
- * @param {string} value
+ * @param {Object} file
  * @return {Object}
  */
-Parser.prototype.parse = function (value) {
+Parser.prototype.parse = function (file) {
     var self = this;
+    var value = String(file);
     var footnotes;
     var footnotesAsArray;
     var id;
@@ -2963,9 +2963,7 @@ Parser.prototype.parse = function (value) {
     var start;
     var last;
 
-    if (typeof value !== 'string') {
-        raise(value, 'value');
-    }
+    self.file = file;
 
     /*
      * Add an `offset` matrix, used to keep track of
@@ -2974,9 +2972,7 @@ Parser.prototype.parse = function (value) {
 
     self.offset = {};
 
-    token = self.renderBlock(ROOT, self.tokenizeAll(
-        self.tokenizeBlock(clean(value))
-    ));
+    token = self.renderBlock(ROOT, self.tokenizeAll(self.tokenizeBlock(clean(value))));
 
     if (self.options.footnotes) {
         footnotes = self.footnotes;
@@ -2998,8 +2994,8 @@ Parser.prototype.parse = function (value) {
     token.position = {};
 
     start = {
-        'line': 1,
-        'column': 1
+        line: 1,
+        column: 1
     };
 
     token.position.start = start;
@@ -3039,24 +3035,9 @@ Parser.prototype.tokenizeOne = function (token) {
     var type = token.type;
     var position = token.position;
 
-    if (type === TEXT) {
-        token = self.renderBlock(PARAGRAPH, token.value);
-        token.position = position;
-        token = self.tokenizeOne(token);
-    } else if (
-        type === HEADING ||
-        type === PARAGRAPH ||
-        type === TABLE_CELL
-    ) {
+    if (type === HEADING || type === PARAGRAPH || type === TABLE_CELL) {
         token.children = self.tokenizeInline(token.children, position.start);
-    } else if (
-        type === BLOCKQUOTE ||
-        type === LIST ||
-        type === LIST_ITEM ||
-        type === TABLE ||
-        type === TABLE_HEADER ||
-        type === TABLE_ROW
-    ) {
+    } else if (type === BLOCKQUOTE || type === LIST || type === LIST_ITEM || type === TABLE || type === TABLE_HEADER || type === TABLE_ROW) {
         token.children = self.tokenizeAll(token.children);
     }
 
@@ -3068,46 +3049,28 @@ Parser.prototype.tokenizeOne = function (token) {
  */
 
 Parser.prototype.blockTokenizers = {
-    'yamlFrontMatter': tokenizeYAMLFrontMatter,
-    'newline': tokenizeNewline,
-    'code': tokenizeCode,
-    'fences': tokenizeFences,
-    'heading': tokenizeHeading,
-    'lineHeading': tokenizeLineHeading,
-    'horizontalRule': tokenizeHorizontalRule,
-    'blockquote': tokenizeBlockquote,
-    'list': tokenizeList,
-    'html': tokenizeHtml,
-    'linkDefinition': tokenizeLinkDefinition,
-    'footnoteDefinition': tokenizeFootnoteDefinition,
-    'looseTable': tokenizeTable,
-    'table': tokenizeTable,
-    'paragraph': tokenizeParagraph,
-    'blockText': tokenizeText
+    yamlFrontMatter: tokenizeYAMLFrontMatter,
+    newline: tokenizeNewline,
+    code: tokenizeCode,
+    fences: tokenizeFences,
+    heading: tokenizeHeading,
+    lineHeading: tokenizeLineHeading,
+    horizontalRule: tokenizeHorizontalRule,
+    blockquote: tokenizeBlockquote,
+    list: tokenizeList,
+    html: tokenizeHtml,
+    linkDefinition: tokenizeLinkDefinition,
+    footnoteDefinition: tokenizeFootnoteDefinition,
+    looseTable: tokenizeTable,
+    table: tokenizeTable,
+    paragraph: tokenizeParagraph
 };
 
 /*
  * Expose order in which to parse block-level nodes.
  */
 
-Parser.prototype.blockMethods = [
-    'yamlFrontMatter',
-    'newline',
-    'code',
-    'fences',
-    'blockquote',
-    'heading',
-    'horizontalRule',
-    'list',
-    'lineHeading',
-    'html',
-    'linkDefinition',
-    'footnoteDefinition',
-    'looseTable',
-    'table',
-    'paragraph',
-    'blockText'
-];
+Parser.prototype.blockMethods = ['yamlFrontMatter', 'newline', 'code', 'fences', 'blockquote', 'heading', 'horizontalRule', 'list', 'lineHeading', 'html', 'linkDefinition', 'footnoteDefinition', 'looseTable', 'table', 'paragraph', 'blockText'];
 
 /**
  * Construct a tokenizer.
@@ -3184,8 +3147,8 @@ function tokenizeFactory(type) {
          */
         function now() {
             return {
-                'line': line,
-                'column': column
+                line: line,
+                column: column
             };
         }
 
@@ -3196,17 +3159,7 @@ function tokenizeFactory(type) {
          * @return {Error}
          */
         function exception(reason) {
-            var file = self.options.file || '<text>';
-            var err = new Error(
-                file + COLON + line + COLON + column + COLON + SPACE + reason
-            );
-
-            err.filename = file;
-            err.reason = reason;
-            err.line = line;
-            err.column = column;
-
-            return err;
+            return self.file.exception(reason, now());
         }
 
         /**
@@ -3225,23 +3178,23 @@ function tokenizeFactory(type) {
          * @returns {function(Node): Node}
          */
         function position() {
-          var start = now();
+            var start = now();
 
-          /**
-           * Add the position to a node.
-           *
-           * @param {Node} node
-           * @return {Node} - `node`.
-           */
-          function update(node) {
-              start = node.position ? node.position.start : start;
+            /**
+             * Add the position to a node.
+             *
+             * @param {Node} node
+             * @return {Node} - `node`.
+             */
+            function update(node) {
+                start = node.position ? node.position.start : start;
 
-              node.position = new Position(start);
+                node.position = new Position(start);
 
-              return node;
-          }
+                return node;
+            }
 
-          return update;
+            return update;
         }
 
         /**
@@ -3272,14 +3225,8 @@ function tokenizeFactory(type) {
                 token.value = decode(token.value, eat);
             }
 
-            if (
-                prev &&
-                token.type === prev.type &&
-                token.type in MERGEABLE_NODES
-            ) {
-                token = MERGEABLE_NODES[token.type].call(
-                    self, prev, token, type
-                );
+            if (prev && token.type === prev.type && token.type in MERGEABLE_NODES) {
+                token = MERGEABLE_NODES[token.type].call(self, prev, token);
             }
 
             if (token !== prev) {
@@ -3357,13 +3304,7 @@ function tokenizeFactory(type) {
 
                 method = tokenizers[name];
 
-                match = rules[name] &&
-                    method &&
-                    (!method.onlyAtStart || self.atStart) &&
-                    (!method.onlyAtTop || self.atTop) &&
-                    (!method.notInBlockquote || !self.inBlockquote) &&
-                    (!method.notInLink || !self.inLink) &&
-                    rules[name].exec(value);
+                match = rules[name] && method && (!method.onlyAtStart || self.atStart) && (!method.onlyAtTop || self.atTop) && (!method.notInBlockquote || !self.inBlockquote) && (!method.notInLink || !self.inLink) && rules[name].exec(value);
 
                 if (match) {
                     valueLength = value.length;
@@ -3422,40 +3363,26 @@ Parser.prototype.renderFootnote = renderFootnote;
  */
 
 Parser.prototype.inlineTokenizers = {
-    'escape': tokenizeEscape,
-    'autoLink': tokenizeAutoLink,
-    'url': tokenizeURL,
-    'tag': tokenizeTag,
-    'link': tokenizeLink,
-    'referenceLink': tokenizeReferenceLink,
-    'invalidLink': tokenizeReferenceLink,
-    'strong': tokenizeStrong,
-    'emphasis': tokenizeEmphasis,
-    'deletion': tokenizeDeletion,
-    'inlineCode': tokenizeInlineCode,
+    escape: tokenizeEscape,
+    autoLink: tokenizeAutoLink,
+    url: tokenizeURL,
+    tag: tokenizeTag,
+    link: tokenizeLink,
+    referenceLink: tokenizeReferenceLink,
+    invalidLink: tokenizeReferenceLink,
+    strong: tokenizeStrong,
+    emphasis: tokenizeEmphasis,
+    deletion: tokenizeDeletion,
+    inlineCode: tokenizeInlineCode,
     'break': tokenizeBreak,
-    'inlineText': tokenizeInlineText
+    inlineText: tokenizeText
 };
 
 /*
  * Expose order in which to parse inline-level nodes.
  */
 
-Parser.prototype.inlineMethods = [
-    'escape',
-    'autoLink',
-    'url',
-    'tag',
-    'link',
-    'referenceLink',
-    'invalidLink',
-    'strong',
-    'emphasis',
-    'deletion',
-    'inlineCode',
-    'break',
-    'inlineText'
-];
+Parser.prototype.inlineMethods = ['escape', 'autoLink', 'url', 'tag', 'link', 'referenceLink', 'invalidLink', 'strong', 'emphasis', 'deletion', 'inlineCode', 'break', 'inlineText'];
 
 /**
  * Tokenise an inline value.
@@ -3478,17 +3405,14 @@ Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 /**
  * Transform a markdown document into an AST.
  *
- * @param {string} value
+ * @param {Object} file
  * @param {Object?} options
- * @param {Function?} CustomParser
  * @return {Object}
  */
-function parse(value, options, CustomParser) {
-    if (!CustomParser) {
-        CustomParser = this.Parser || Parser;
-    }
+function parse(file, options) {
+    var CustomParser = this.Parser || Parser;
 
-    return new CustomParser(options).parse(value);
+    return new CustomParser(options).parse(file);
 }
 
 /*
@@ -3502,9 +3426,8 @@ parse.Parser = Parser;
  */
 
 module.exports = parse;
-
-}, {"he":13,"repeat-string":14,"./utilities.js":10,"./expressions.js":15,"./defaults.js":16}],
-13: [function(require, module, exports) {
+}, {"he":14,"repeat-string":15,"./utilities.js":11,"./expressions.js":16,"./defaults.js":17}],
+14: [function(require, module, exports) {
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
 
@@ -3836,7 +3759,7 @@ module.exports = parse;
 }(this));
 
 }, {}],
-14: [function(require, module, exports) {
+15: [function(require, module, exports) {
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -3905,7 +3828,7 @@ var res = '';
 var cache;
 
 }, {}],
-10: [function(require, module, exports) {
+11: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -3967,10 +3890,7 @@ function clone(context) {
  * @param {string} name
  */
 function raise(value, name) {
-    throw new Error(
-        'Invalid value `' + value + '` ' +
-        'for `' + name + '`'
-    );
+    throw new Error('Invalid value `' + value + '` ' + 'for `' + name + '`');
 }
 
 /**
@@ -4100,10 +4020,7 @@ function collapse(value) {
  * @return {string}
  */
 function clean(value) {
-    return String(value)
-        .replace(EXPRESSION_BOM, '')
-        .replace(EXPRESSION_LINE_BREAKS, '\n')
-        .replace(EXPRESSION_SYMBOL_FOR_NEW_LINE, '\n');
+    return String(value).replace(EXPRESSION_BOM, '').replace(EXPRESSION_LINE_BREAKS, '\n').replace(EXPRESSION_SYMBOL_FOR_NEW_LINE, '\n');
 }
 
 /**
@@ -4226,9 +4143,9 @@ var unescapeKey = scapeFactory(ESCAPED_PROTO, PROTO);
  */
 
 exports.validate = {
-    'bool': validateBoolean,
-    'map': validateMap,
-    'num': validateNumber
+    bool: validateBoolean,
+    map: validateMap,
+    num: validateNumber
 };
 
 /*
@@ -4256,115 +4173,113 @@ if ('create' in Object) {
 } else {
     exports.create = objectObject;
 }
-
-}, {}],
-15: [function(require, module, exports) {
-/* This file is generated by `script/build-expressions.js` */
-module.exports = {
-  'rules': {
-    'newline': /^\n([ \t]*\n)*/,
-    'code': /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/,
-    'horizontalRule': /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
-    'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
-    'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
-    'linkDefinition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
-    'blockText': /^[^\n]+/,
-    'bullet': /(?:[*+-]|\d+\.)/,
-    'indent': /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
-    'item': /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
-    'list': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|$)/,
-    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'html': /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/i,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'escape': /^\\([\\`*{}\[\]()#+\-.!_>])/,
-    'autoLink': /^<([^ >]+(@|:\/)[^ >]+)>/,
-    'tag': /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
-    'strong': /^(_)_([\s\S]+?)__(?!_)|^(\*)\*([\s\S]+?)\*\*(?!\*)/,
-    'emphasis': /^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/,
-    'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
-    'break': /^ {2,}\n(?!\s*$)/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
-    'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
-    'invalidLink': /^(!?\[)((?:\\[\s\S]|[\s\S])+?)\]/,
-    'referenceLink': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\]])*)\]/
-  },
-  'gfm': {
-    'fences': /^( *)(([`~])\3{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*[ \t]*(?=\n|$)|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'table': /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/,
-    'looseTable': /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/,
-    'escape': /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
-    'url': /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
-    'deletion': /^~~(?=\S)([\s\S]*?\S)~~/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| {2,}\n|$)/
-  },
-  'footnotes': {
-    'footnoteDefinition': /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/
-  },
-  'yaml': {
-    'yamlFrontMatter': /^-{3}\n([\s\S]+?\n)?-{3}/
-  },
-  'pedantic': {
-    'strong': /^(_)_(?=\S)([\s\S]*?\S)__(?!_)|^(\*)\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
-    'emphasis': /^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/
-  },
-  'commonmark': {
-    'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
-    'list': /^([ \t]*)((?:[*+-]|\d+[\.\)]))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+[\.\)])[ \t])|$)/,
-    'item': /([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+[\.\)])[ \t])[^\n]*)*/gm,
-    'bullet': /(?:[*+-]|\d+[\.\)])/,
-    'indent': /^([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)/,
-    'link': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
-    'referenceLink': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\3?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|$)|( *)(([`~])\10{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\9\10*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',\/:;<=?@^~|])/
-  },
-  'commonmarkGFM': {
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\n`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|(?=\n+\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/
-  },
-  'breaks': {
-    'break': /^ *\n(?!\s*$)/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| *\n|$)/
-  },
-  'breaksGFM': {
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| *\n|$)/
-  }
-};
-
 }, {}],
 16: [function(require, module, exports) {
+/* This file is generated by `script/build-expressions.js` */
+'use strict';
+
+module.exports = {
+  rules: {
+    newline: /^\n([ \t]*\n)*/,
+    code: /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/,
+    horizontalRule: /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
+    heading: /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
+    lineHeading: /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
+    linkDefinition: /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
+    bullet: /(?:[*+-]|\d+\.)/,
+    indent: /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
+    item: /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
+    list: /^([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|$)/,
+    blockquote: /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
+    html: /^[ \t]*(?:<!--[\s\S]*?-->[ \t]*(?:\n|\s*$)|<((?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b)[\s\S]+?<\/\1>[ \t]*(?:\n{2,}|\s*$)|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b(?:"[^"]*"|'[^']*'|[^'">])*?>[ \t]*(?:\n{2,}|\s*$))/i,
+    paragraph: /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
+    escape: /^\\([\\`*{}\[\]()#+\-.!_>])/,
+    autoLink: /^<([^ >]+(@|:\/)[^ >]+)>/,
+    tag: /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/,
+    strong: /^(_)_([\s\S]+?)__(?!_)|^(\*)\*([\s\S]+?)\*\*(?!\*)/,
+    emphasis: /^\b(_)((?:__|[\s\S])+?)_\b|^(\*)((?:\*\*|[\s\S])+?)\*(?!\*)/,
+    inlineCode: /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
+    'break': /^ {2,}\n(?!\s*$)/,
+    inlineText: /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
+    link: /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
+    invalidLink: /^(!?\[)((?:\\[\s\S]|[\s\S])+?)\]/,
+    referenceLink: /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\]])*)\]/
+  },
+  gfm: {
+    fences: /^( *)(([`~])\3{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
+    paragraph: /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*[ \t]*(?=\n|$)|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
+    table: /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/,
+    looseTable: /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/,
+    escape: /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
+    url: /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/,
+    deletion: /^~~(?=\S)([\s\S]*?\S)~~/,
+    inlineText: /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| {2,}\n|$)/
+  },
+  footnotes: {
+    footnoteDefinition: /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/
+  },
+  yaml: {
+    yamlFrontMatter: /^-{3}\n([\s\S]+?\n)?-{3}/
+  },
+  pedantic: {
+    strong: /^(_)_(?=\S)([\s\S]*?\S)__(?!_)|^(\*)\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
+    emphasis: /^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/
+  },
+  commonmark: {
+    heading: /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
+    list: /^([ \t]*)((?:[*+-]|\d+[\.\)]))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+[\.\)])[ \t])|$)/,
+    item: /([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+[\.\)])[ \t])[^\n]*)*/gm,
+    bullet: /(?:[*+-]|\d+[\.\)])/,
+    indent: /^([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)/,
+    link: /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
+    referenceLink: /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
+    paragraph: /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
+    blockquote: /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\3?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|$)|( *)(([`~])\10{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\9\10*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
+    escape: /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',\/:;<=?@^~|])/
+  },
+  commonmarkGFM: {
+    paragraph: /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\n`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|(?=\n+\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)\w+(?!:\/|[^\w\s@]*@)\b))+)/
+  },
+  breaks: {
+    'break': /^ *\n(?!\s*$)/,
+    inlineText: /^[\s\S]+?(?=[\\<!\[_*`]| *\n|$)/
+  },
+  breaksGFM: {
+    inlineText: /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| *\n|$)/
+  }
+};
+}, {}],
+17: [function(require, module, exports) {
 'use strict';
 
 var parse = {
-    'gfm': true,
-    'yaml': true,
-    'commonmark': false,
-    'footnotes': false,
-    'pedantic': false,
-    'breaks': false
+    gfm: true,
+    yaml: true,
+    commonmark: false,
+    footnotes: false,
+    pedantic: false,
+    breaks: false
 };
 
 var stringify = {
-    'setext': false,
-    'closeAtx': false,
-    'looseTable': false,
-    'spacedTable': true,
-    'referenceLinks': false,
-    'referenceImages': false,
-    'fences': false,
-    'fence': '`',
-    'bullet': '-',
-    'rule': '*',
-    'ruleSpaces': true,
-    'ruleRepetition': 3,
-    'strong': '*',
-    'emphasis': '_'
+    setext: false,
+    closeAtx: false,
+    looseTable: false,
+    spacedTable: true,
+    referenceLinks: false,
+    referenceImages: false,
+    fences: false,
+    fence: '`',
+    bullet: '-',
+    rule: '*',
+    ruleSpaces: true,
+    ruleRepetition: 3,
+    strong: '*',
+    emphasis: '_'
 };
 
 exports.parse = parse;
 exports.stringify = stringify;
-
 }, {}],
 9: [function(require, module, exports) {
 'use strict';
@@ -4489,8 +4404,8 @@ FENCE_MARKERS[TILDE] = true;
 
 var ORDERED_MAP = objectCreate();
 
-ORDERED_MAP.true = 'visitOrderedItems';
-ORDERED_MAP.false = 'visitUnorderedItems';
+ORDERED_MAP['true'] = 'visitOrderedItems';
+ORDERED_MAP['false'] = 'visitUnorderedItems';
 
 /*
  * Which checkbox to use.
@@ -4498,11 +4413,10 @@ ORDERED_MAP.false = 'visitUnorderedItems';
 
 var CHECKBOX_MAP = objectCreate();
 
-CHECKBOX_MAP.null = '';
+CHECKBOX_MAP['null'] = '';
 CHECKBOX_MAP.undefined = '';
-CHECKBOX_MAP.true = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
-CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
-    SPACE;
+CHECKBOX_MAP['true'] = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
+CHECKBOX_MAP['false'] = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE + SPACE;
 
 /**
  * Checks if `url` needs to be enclosed by angle brackets.
@@ -4511,12 +4425,7 @@ CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
  * @return {boolean}
  */
 function encloseURI(uri, always) {
-    if (
-        always ||
-        !uri.length ||
-        EXPRESSIONS_WHITE_SPACE.test(uri) ||
-        count(uri, PARENTHESIS_OPEN) !== count(uri, PARENTHESIS_CLOSE)
-    ) {
+    if (always || !uri.length || EXPRESSIONS_WHITE_SPACE.test(uri) || count(uri, PARENTHESIS_OPEN) !== count(uri, PARENTHESIS_CLOSE)) {
         return ANGLE_BRACKET_OPEN + uri + ANGLE_BRACKET_CLOSE;
     }
 
@@ -4670,10 +4579,7 @@ compilerPrototype.setOptions = function (options) {
 
     ruleRepetition = options.ruleRepetition;
 
-    if (
-        ruleRepetition < MINIMUM_RULE_LENGTH ||
-        ruleRepetition !== ruleRepetition
-    ) {
+    if (ruleRepetition < MINIMUM_RULE_LENGTH || ruleRepetition !== ruleRepetition) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
@@ -4698,10 +4604,7 @@ compilerPrototype.visit = function (token, parent, level) {
     level += 1;
 
     if (typeof this[token.type] !== 'function') {
-        throw new Error(
-            'Missing compiler for node of type `' +
-            token.type + '`: ' + token
-        );
+        throw new Error('Missing compiler for node of type `' + token.type + '`: ' + token);
     }
 
     return this[token.type](token, parent, level);
@@ -4749,13 +4652,12 @@ compilerPrototype.visitOrderedItems = function (token, level) {
     level = level + 1;
 
     while (++index < length) {
-        bullet = (start + index) + DOT + SPACE;
+        bullet = start + index + DOT + SPACE;
 
         indent = Math.ceil(bullet.length / INDENT) * INDENT;
         spacing = repeat(SPACE, indent - bullet.length);
 
-        values[index] = bullet + spacing +
-            self.listItem(tokens[index], token, level, indent);
+        values[index] = bullet + spacing + self.listItem(tokens[index], token, level, indent);
     }
 
     return values.join(LINE);
@@ -4788,8 +4690,7 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
     spacing = repeat(SPACE, HALF);
 
     while (++index < length) {
-        values[index] = bullet + spacing +
-            self.listItem(tokens[index], token, level, INDENT);
+        values[index] = bullet + spacing + self.listItem(tokens[index], token, level, INDENT);
     }
 
     return values.join(LINE);
@@ -4828,11 +4729,7 @@ compilerPrototype.root = function (token, parent, level) {
 
             if (child.type === prev.type && prev.type === 'list') {
                 values.push(prev.ordered === child.ordered ? GAP : LINE);
-            } else if (
-                prev.type === 'list' &&
-                child.type === 'code' &&
-                !child.lang
-            ) {
+            } else if (prev.type === 'list' && child.type === 'code' && !child.lang) {
                 values.push(GAP);
             } else {
                 values.push(BREAK);
@@ -4870,8 +4767,7 @@ compilerPrototype.heading = function (token, parent, level) {
     var prefix;
 
     if (setext && (depth === 1 || depth === 2)) {
-        return content + LINE +
-            repeat(depth === 1 ? EQUALS : DASH, content.length);
+        return content + LINE + repeat(depth === 1 ? EQUALS : DASH, content.length);
     }
 
     prefix = repeat(HASH, token.depth);
@@ -4927,8 +4823,7 @@ compilerPrototype.paragraph = function (token, parent, level) {
 compilerPrototype.blockquote = function (token, parent, level) {
     var indent = ANGLE_BRACKET_CLOSE + SPACE;
 
-    return indent + this.all(token, level).join(BREAK)
-        .split(LINE).join(LINE + indent);
+    return indent + this.all(token, level).join(BREAK).split(LINE).join(LINE + indent);
 };
 
 /**
@@ -4964,8 +4859,7 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
         values[index] = self.visit(tokens[index], token, level);
     }
 
-    value = CHECKBOX_MAP[token.checked] +
-        values.join(token.loose ? BREAK : LINE);
+    value = CHECKBOX_MAP[token.checked] + values.join(token.loose ? BREAK : LINE);
 
     if (token.loose) {
         value += LINE;
@@ -5098,7 +4992,7 @@ compilerPrototype.emphasis = function (token, parent, level) {
  *
  * @return {string}
  */
-compilerPrototype.break = function () {
+compilerPrototype['break'] = function () {
     return SPACE + SPACE + LINE;
 };
 
@@ -5110,7 +5004,7 @@ compilerPrototype.break = function () {
  * @param {number} level
  * @return {string}
  */
-compilerPrototype.delete = function (token, parent, level) {
+compilerPrototype['delete'] = function (token, parent, level) {
     return DOUBLE_TILDE + this.all(token, level).join(EMPTY) + DOUBLE_TILDE;
 };
 
@@ -5175,8 +5069,7 @@ compilerPrototype.image = function (token) {
         url += SPACE + encloseTitle(token.title);
     }
 
-    value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + (token.alt || EMPTY) +
-        SQUARE_BRACKET_CLOSE;
+    value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + (token.alt || EMPTY) + SQUARE_BRACKET_CLOSE;
 
     if (references) {
         reference = self.reference();
@@ -5195,7 +5088,7 @@ compilerPrototype.image = function (token) {
  * Create a unique reference.
  */
 compilerPrototype.reference = function () {
-    return SQUARE_BRACKET_OPEN + (++this.linkCounter) + SQUARE_BRACKET_CLOSE;
+    return SQUARE_BRACKET_OPEN + ++this.linkCounter + SQUARE_BRACKET_CLOSE;
 };
 
 /**
@@ -5205,8 +5098,7 @@ compilerPrototype.reference = function () {
  * @return {string}
  */
 compilerPrototype.footnote = function (token) {
-    return SQUARE_BRACKET_OPEN + CARET + unescapeKey(token.id) +
-        SQUARE_BRACKET_CLOSE;
+    return SQUARE_BRACKET_OPEN + CARET + unescapeKey(token.id) + SQUARE_BRACKET_CLOSE;
 };
 
 /**
@@ -5242,17 +5134,11 @@ compilerPrototype.table = function (token, parent, level) {
 
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
 
-    /*
-     * There was a bug in markdown-table@0.3.0, fixed
-     * in markdown-table@0.3.1, which modified the `align`
-     * array, changing the AST.
-     */
-
     return table(result, {
-        'align': token.align.concat(),
-        'start': start,
-        'end': start.split(EMPTY).reverse().join(EMPTY),
-        'delimiter': spaced ? SPACE + PIPE + SPACE : PIPE
+        align: token.align,
+        start: start,
+        end: start.split(EMPTY).reverse().join(EMPTY),
+        delimiter: spaced ? SPACE + PIPE + SPACE : PIPE
     });
 };
 
@@ -5289,11 +5175,7 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
     while (++index < length) {
         key = keys[index];
 
-        results.push(
-            SQUARE_BRACKET_OPEN + CARET + unescapeKey(key) +
-            SQUARE_BRACKET_CLOSE + COLON + SPACE +
-            self.visit(footnotes[key], null)
-        );
+        results.push(SQUARE_BRACKET_OPEN + CARET + unescapeKey(key) + SQUARE_BRACKET_CLOSE + COLON + SPACE + self.visit(footnotes[key], null));
     }
 
     return LINE + results.join(LINE) + LINE;
@@ -5304,17 +5186,13 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
  *
  * @param {Object} ast
  * @param {Object?} options
- * @param {Function?} CustomCompiler
  * @return {string}
  */
-function stringify(ast, options, CustomCompiler) {
+function stringify(ast, options) {
+    var CustomCompiler = this.Compiler || Compiler;
     var compiler;
     var footnotes;
     var value;
-
-    if (!CustomCompiler) {
-        CustomCompiler = this.Compiler || Compiler;
-    }
 
     compiler = new CustomCompiler(options);
 
@@ -5348,54 +5226,38 @@ stringify.Compiler = Compiler;
  */
 
 module.exports = stringify;
-
-}, {"markdown-table":17,"repeat-string":14,"./utilities.js":10,"./defaults.js":16}],
-17: [function(require, module, exports) {
+}, {"markdown-table":18,"repeat-string":15,"./utilities.js":11,"./defaults.js":17}],
+18: [function(require, module, exports) {
 'use strict';
 
 /*
  * Useful expressions.
  */
 
-var EXPRESSION_DOT,
-    EXPRESSION_LAST_DOT;
-
-EXPRESSION_DOT = /\./;
-
-EXPRESSION_LAST_DOT = /\.[^.]*$/;
+var EXPRESSION_DOT = /\./;
+var EXPRESSION_LAST_DOT = /\.[^.]*$/;
 
 /*
  * Allowed alignment values.
  */
 
-var LEFT,
-    RIGHT,
-    CENTER,
-    DOT,
-    ALLIGNMENT;
+var LEFT = 'l';
+var RIGHT = 'r';
+var CENTER = 'c';
+var DOT = '.';
+var NULL = '';
 
-LEFT = 'l';
-RIGHT = 'r';
-CENTER = 'c';
-DOT = '.';
-
-ALLIGNMENT = [LEFT, RIGHT, CENTER, DOT];
+var ALLIGNMENT = [LEFT, RIGHT, CENTER, DOT, NULL];
 
 /*
  * Characters.
  */
 
-var COLON,
-    DASH,
-    PIPE,
-    SPACE,
-    NEW_LINE;
-
-COLON = ':';
-DASH = '-';
-PIPE = '|';
-SPACE = ' ';
-NEW_LINE = '\n';
+var COLON = ':';
+var DASH = '-';
+var PIPE = '|';
+var SPACE = ' ';
+var NEW_LINE = '\n';
 
 /**
  * Get the length of `value`.
@@ -5403,7 +5265,7 @@ NEW_LINE = '\n';
  * @param {string} value
  * @return {number}
  */
-function calculateStringLengthNoop(value) {
+function lengthNoop(value) {
     return String(value).length;
 }
 
@@ -5425,9 +5287,7 @@ function pad(length, character) {
  * @return {number}
  */
 function dotindex(value) {
-    var match;
-
-    match = EXPRESSION_LAST_DOT.exec(value);
+    var match = EXPRESSION_LAST_DOT.exec(value);
 
     return match ? match.index + 1 : value.length;
 }
@@ -5446,63 +5306,42 @@ function dotindex(value) {
  * @return {string} Pretty table
  */
 function markdownTable(table, options) {
-    var delimiter,
-        start,
-        end,
-        alignment,
-        align,
-        rule,
-        calculateStringLength,
-        sizes,
-        rows,
-        rowIndex,
-        rowLength,
-        row,
-        cells,
-        cellCount,
-        index,
-        position,
-        size,
-        value,
-        spacing,
-        before,
-        after;
+    var settings = options || {};
+    var delimiter = settings.delimiter;
+    var start = settings.start;
+    var end = settings.end;
+    var alignment = settings.align;
+    var calculateStringLength = settings.stringLength || lengthNoop;
+    var cellCount = 0;
+    var rowIndex = -1;
+    var rowLength = table.length;
+    var sizes = [];
+    var align;
+    var rule;
+    var rows;
+    var row;
+    var cells;
+    var index;
+    var position;
+    var size;
+    var value;
+    var spacing;
+    var before;
+    var after;
 
-    if (!options) {
-        options = {};
-    }
-
-    delimiter = options.delimiter;
+    alignment = alignment ? alignment.concat() : [];
 
     if (delimiter === null || delimiter === undefined) {
         delimiter = SPACE + PIPE + SPACE;
     }
 
-    start = options.start;
-
     if (start === null || start === undefined) {
         start = PIPE + SPACE;
     }
 
-    end = options.end;
-
     if (end === null || end === undefined) {
         end = SPACE + PIPE;
     }
-
-    if (options.align) {
-        alignment = options.align.concat();
-    } else {
-        alignment = [];
-    }
-
-    calculateStringLength = options.stringLength || calculateStringLengthNoop;
-
-    rowIndex = -1;
-    rowLength = table.length;
-    cellCount = 0;
-
-    sizes = [];
 
     while (++rowIndex < rowLength) {
         row = table[rowIndex];
@@ -5544,7 +5383,7 @@ function markdownTable(table, options) {
         }
 
         if (ALLIGNMENT.indexOf(align) === -1) {
-            align = LEFT;
+            align = NULL;
         }
 
         alignment[index] = align;
@@ -5573,9 +5412,7 @@ function markdownTable(table, options) {
             } else {
                 position = dotindex(value);
 
-                size = sizes[index] +
-                    (EXPRESSION_DOT.test(value) ? 0 : 1) -
-                    (calculateStringLength(value) - position);
+                size = sizes[index] + (EXPRESSION_DOT.test(value) ? 0 : 1) - (calculateStringLength(value) - position);
 
                 cells[index] = value + pad(size - 1);
             }
@@ -5644,7 +5481,7 @@ function markdownTable(table, options) {
         rows[rowIndex] = cells.join(delimiter);
     }
 
-    if (options.rule !== false) {
+    if (settings.rule !== false) {
         index = -1;
         rule = [];
 
@@ -5655,9 +5492,9 @@ function markdownTable(table, options) {
              * When `align` is left, don't add colons.
              */
 
-            value = align !== LEFT && align !== RIGHT ? COLON : DASH;
+            value = align === RIGHT || align === NULL ? DASH : COLON;
             value += pad(sizes[index] - 2, DASH);
-            value += align !== LEFT ? COLON : DASH;
+            value += align !== LEFT && align !== NULL ? COLON : DASH;
 
             rule[index] = value;
         }
@@ -5673,7 +5510,130 @@ function markdownTable(table, options) {
  */
 
 module.exports = markdownTable;
+}, {}],
+10: [function(require, module, exports) {
+'use strict';
 
+/**
+ * Construct a new file.
+ *
+ * @constructor
+ * @class {File}
+ * @param {Object|File|string} [options]
+ */
+function File(options) {
+    if (!(this instanceof File)) {
+        return new File(options);
+    }
+
+    if (options instanceof File) {
+        return options;
+    }
+
+    if (!options) {
+        options = {};
+    } else if (typeof options === 'string') {
+        options = {
+            contents: options
+        };
+    }
+
+    this.directory = options.directory || '';
+    this.filename = options.filename || null;
+    this.contents = options.contents || '';
+
+    this.extension = options.extension === undefined ? 'md' : options.extension;
+}
+
+/**
+ * Stringify a position.
+ *
+ * @param {Object?} [position]
+ * @return {string}
+ */
+function stringify(position) {
+    if (!position) {
+        position = {};
+    }
+
+    return (position.line || 1) + ':' + (position.column || 1);
+}
+
+/**
+ * Create an exception with `reason` at `position`.
+ *
+ * @this {File}
+ * @param {string} reason
+ * @param {Node|Location|Position} [position]
+ * @return {Error}
+ */
+function exception(reason, position) {
+    var file = this.getFile();
+    var location;
+    var err;
+
+    /*
+     * Node / location / position.
+     */
+
+    if (position && position.position) {
+        position = position.position;
+    }
+
+    if (position && position.start) {
+        location = stringify(position.start) + '-' + stringify(position.end);
+        position = position.start;
+    } else {
+        location = stringify(position);
+    }
+
+    err = new Error((file ? file + ':' : '') + location + ': ' + reason);
+
+    err.file = file;
+    err.reason = reason;
+    err.line = position ? position.line : null;
+    err.column = position ? position.column : null;
+
+    return err;
+}
+
+/**
+ * Create the location of `file`.
+ *
+ * @this {File}
+ * @return {string?}
+ */
+function getFile() {
+    if (this.filename) {
+        return this.filename + (this.extension ? '.' + this.extension : '');
+    }
+
+    return null;
+}
+
+/**
+ * Create a string representation of `file`.
+ *
+ * @this {File}
+ * @return {string}
+ */
+function toString() {
+    return this.contents;
+}
+
+/*
+ * Methods.
+ */
+
+File.prototype.exception = exception;
+File.prototype.toString = toString;
+File.prototype.getFile = getFile;
+
+/*
+ * Expose.
+ */
+
+module.exports = File;
 }, {}],
 3: [function(require, module, exports) {
 
@@ -5730,8 +5690,8 @@ module.exports = function debounce(func, wait, immediate){
   };
 };
 
-}, {"date-now":18}],
-18: [function(require, module, exports) {
+}, {"date-now":19}],
+19: [function(require, module, exports) {
 module.exports = Date.now || now
 
 function now() {
@@ -5964,8 +5924,8 @@ exports.stringify = function (obj) {
 
   return pairs.join('&');
 };
-}, {"trim":19,"type":20}],
-19: [function(require, module, exports) {
+}, {"trim":20,"type":21}],
+20: [function(require, module, exports) {
 'use strict';
 
 exports = module.exports = trim;
@@ -5986,7 +5946,7 @@ exports.right = function (str) {
   return str.replace(/\s*$/, '');
 };
 }, {}],
-20: [function(require, module, exports) {
+21: [function(require, module, exports) {
 /**
  * toString ref.
  */
@@ -6030,8 +5990,8 @@ module.exports = function (val) {
 6: [function(require, module, exports) {
 module.exports = require('./dist/quill');
 
-}, {"./dist/quill":21}],
-21: [function(require, module, exports) {
+}, {"./dist/quill":22}],
+22: [function(require, module, exports) {
 /*! Quill Editor v0.19.10
  *  https://quilljs.com/
  *  Copyright (c) 2014, Jason Chen
