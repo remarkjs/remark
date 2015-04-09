@@ -1025,7 +1025,7 @@ validateToken = function (context) {
     if (type === 'listItem') {
         assert(keys === 3 || keys === 4);
         assert('children' in context);
-        assert('loose' in context);
+        assert(typeof context.loose === 'boolean');
 
         if (keys === 4) {
             assert(
@@ -1087,7 +1087,8 @@ validateToken = function (context) {
     if (type === 'list') {
         assert('children' in context);
         assert(typeof context.ordered === 'boolean');
-        assert(keys === 4);
+        assert(typeof context.loose === 'boolean');
+        assert(keys === 5);
 
         if (context.ordered) {
             assert(typeof context.start === 'number');

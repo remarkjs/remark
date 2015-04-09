@@ -64,6 +64,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": false,
       "children": [
         {
           "type": "listItem",
@@ -248,6 +249,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": false,
       "children": [
         {
           "type": "listItem",
@@ -432,6 +434,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": true,
       "children": [
         {
           "type": "listItem",
@@ -616,6 +619,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": true,
       "children": [
         {
           "type": "listItem",
@@ -800,6 +804,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": true,
       "children": [
         {
           "type": "listItem",

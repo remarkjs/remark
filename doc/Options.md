@@ -385,6 +385,7 @@ Yields:
           "type": "list",
           "ordered": false,
           "start": null,
+          "loose": false,
           "children": [
             {
               "type": "listItem",

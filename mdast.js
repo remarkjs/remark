@@ -1114,6 +1114,7 @@ function tokenizeList(eat, $0, $1, $2) {
     var matches = trimRightLines($0).match(self.rules.item);
     var length = matches.length;
     var index = 0;
+    var isLoose = false;
     var now;
     var bullet;
     var add;
@@ -1198,10 +1199,16 @@ function tokenizeList(eat, $0, $1, $2) {
 
         item = eat(item)(list, self.renderListItem(item, now));
 
+        if (item.loose) {
+            isLoose = true;
+        }
+
         if (index !== length - 1) {
             eat(NEW_LINE);
         }
     }
+
+    list.loose = isLoose;
 
     list.position.end = eat.now();
 
@@ -1523,10 +1530,15 @@ function renderList(children, bullet) {
         start = null;
     }
 
+    /*
+     * `loose` should be added later.
+     */
+
     return {
         'type': LIST,
         'ordered': bullet.length > 1,
         'start': start,
+        'loose': null,
         'children': children
     };
 }
@@ -3689,14 +3701,8 @@ compilerPrototype.table = function (token, parent, level) {
 
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
 
-    /*
-     * There was a bug in markdown-table@0.3.0, fixed
-     * in markdown-table@0.3.1, which modified the `align`
-     * array, changing the AST.
-     */
-
     return table(result, {
-        'align': token.align.concat(),
+        'align': token.align,
         'start': start,
         'end': start.split(EMPTY).reverse().join(EMPTY),
         'delimiter': spaced ? SPACE + PIPE + SPACE : PIPE

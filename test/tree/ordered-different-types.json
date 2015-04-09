@@ -5,6 +5,7 @@
       "type": "list",
       "ordered": true,
       "start": 1,
+      "loose": false,
       "children": [
         {
           "type": "listItem",

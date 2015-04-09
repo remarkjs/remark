@@ -181,9 +181,12 @@ interface HTML <: Text {
 
 The `start` property is populated with the starting number of the list, when `ordered: true`, or `null` otherwise.
 
+When all list items have `loose: false`, the list’s `loose` property is also `false`. Otherwise, `loose: true`.
+
 ```idl
 interface List <: Parent {
     type: "list";
+    loose: true | false;
     start: uint32 | null;
     ordered: true | false;
 }
@@ -193,7 +196,7 @@ interface List <: Parent {
 
 [**ListItem**](#listitem) ([**Parent**](#parent)) is contained by a [**List**](#list).
 
-Loose **ListItem**s often contain block-level elements.
+Loose **ListItem**s often contain multiple block-level elements.
 
 When in `gfm: true` mode, a checked property exists on **ListItem**s, either set to `true` (when checked), `false` (when unchecked), or `null` (when not containing a checkbox). See [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists) on GitHub for information.
 
