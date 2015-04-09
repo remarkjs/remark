@@ -14,6 +14,52 @@ For a list of available configuration options, see \fBmdast\fR(1) or <https://gi
 All \fBmdastrc\fR(5) configuration files are in JSON\.
 .P
 Automatically detected files named \fBpackage\.json\fR use the \fBmdastConfig\fR field, whereas other files are used as a whole\.
+.SH FIELDS
+.SS settings
+.P
+.RS 2
+.nf
+{
+  "settings": {
+    "commonmark": true,
+    "bullet": "*"
+  }
+}
+.fi
+.RE
+.P
+Settings contains an object mapping a setting to a value\.
+See \fBman 7 mdastconfig\fR for available settings\.
+.SS plugins
+.P
+List:
+.P
+.RS 2
+.nf
+{
+  "plugins": [
+    "toc"
+  ]
+}
+.fi
+.RE
+.P
+Options
+.P
+.RS 2
+.nf
+{
+  "plugins": {
+    "github": {
+      "repository": "foo/bar"
+    }
+  }
+}
+.fi
+.RE
+.P
+The \fBplugins\fR field contains either an array of plugins, or an object mapping plugins to their options\.
+When a plugin is prefixed with \fBmdast\-\fR (which is recommended), the prefix can be omitted in the plugin list or map\.
 .SH CASCADE
 .P
 Precedence is as follows:
@@ -21,7 +67,7 @@ Precedence is as follows:
 .IP \(bu 2
 Plug\-ins and settings passed to \fBmdast\fR(1);
 .IP \(bu 2
-File passed to \fBmdast\fR(1);
+Files passed to \fBmdast\fR(1);
 .IP \(bu 2
 Files named \fB\|\.mdastrc\fR and \fBmdastConfig\fR fields in \fBpackage\.json\fR in the directory of the processed file, and in ancestral directories;
 .IP \(bu 2
@@ -46,7 +92,7 @@ project
 .fi
 .RE
 .P
-Where \fBdoc/\.mdastrc\fR looks as follows:
+Where \fBdocs/\.mdastrc\fR looks as follows:
 .P
 .RS 2
 .nf
@@ -84,7 +130,7 @@ And \fB\|\.mdastrc\fR contains:
 .fi
 .RE
 .P
-Then, when stringifying \fBdocs/Doc\.md\fR, \fBmdast\fR(1) would use \fBbullet: "+"\fR because \fBdoc/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
+Then, when stringifying \fBdocs/Doc\.md\fR, \fBmdast\fR(1) would use \fBbullet: "+"\fR because \fBdocs/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
 .P
 When stringifying \fBReadme\.md\fR, \fBmdast\fR(1) would use \fBbullet: "\-"\fR, because \fB\|\.mdastrc\fR takes precedence over \fBpackage\.json\fR\|\.
 .SH BUGS

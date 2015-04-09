@@ -15,9 +15,9 @@
 
 For a list of available configuration options, see the SETTINGS section below or <<https://github.com/wooorm/mdast/blob/master/doc/Options.md>>.
 
-### SETTINGS FOR `PARSE()`, `RUN()`, AND `STRINGIFY()`
+### SETTINGS FOR `PROCESS`, `PARSE()`, AND `STRINGIFY()`
 
-To configure the programatic interface of **mdast**, pass an object as a second parameter to `parse()`, `run()`, and `stringify()`.
+To configure the programatic interface of **mdast**, pass an object as a second parameter to `process()`, `parse()`, and `stringify()`.
 
 ### COMMAND LINE SETTINGS
 
