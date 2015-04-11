@@ -192,6 +192,10 @@ it "Should accept \`--use <plugin>\`"
     $COMMAND --use $plugin $markdown > /dev/null 2>&1
     assert $? 0
 
+it "Should accept \`--use <plugin=options>\`"
+    $COMMAND --use "$plugin=foo:true, bar:1,baz: qux" $markdown > /dev/null 2>&1
+    assert $? 0
+
 it "Should accept \`-u <unprefixed-npm-plugin>\`"
     $COMMAND -u $npmPlugin $markdown > /dev/null 2>&1
     assert $? 0

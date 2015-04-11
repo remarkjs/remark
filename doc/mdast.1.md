@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugins_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-color`] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
+`mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugin_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-color`] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
 
 ## DESCRIPTION
 
@@ -18,7 +18,7 @@ Options are as follows:
 *   `-c`, `--config-path` _path_: Specify configuration location;
 *   `-i`, `--ignore-path` _path_: Specify ignore location;
 *   `-s`, `--setting` _settings_: Specify settings;
-*   `-u`, `--use` _plugins_: Use transform plugin(s);
+*   `-u`, `--use` _plugin_: Use a transform plugin, optionally with options;
 *   `-e`, `--ext` _extensions_: Specify file extensions to look for;
 *   `-a`, `--ast`: Output AST information;
 *   `-q`, `--quiet`: Output less messages;
