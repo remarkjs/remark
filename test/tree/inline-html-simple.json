@@ -423,10 +423,122 @@
     },
     {
       "type": "html",
-      "value": "<hr>\n\n<hr>\n\n<hr>\n\n<hr>   \n\n<hr>  \n\n<hr> \n\n<hr class=\"foo\" id=\"bar\" />\n\n<hr class=\"foo\" id=\"bar\"/>\n\n<hr class=\"foo\" id=\"bar\" >",
+      "value": "<hr>",
       "position": {
         "start": {
           "line": 52,
+          "column": 1
+        },
+        "end": {
+          "line": 52,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr>",
+      "position": {
+        "start": {
+          "line": 54,
+          "column": 1
+        },
+        "end": {
+          "line": 54,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr>",
+      "position": {
+        "start": {
+          "line": 56,
+          "column": 1
+        },
+        "end": {
+          "line": 56,
+          "column": 5
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr>   ",
+      "position": {
+        "start": {
+          "line": 58,
+          "column": 1
+        },
+        "end": {
+          "line": 58,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr>  ",
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1
+        },
+        "end": {
+          "line": 60,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr> ",
+      "position": {
+        "start": {
+          "line": 62,
+          "column": 1
+        },
+        "end": {
+          "line": 62,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\" />",
+      "position": {
+        "start": {
+          "line": 64,
+          "column": 1
+        },
+        "end": {
+          "line": 64,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\"/>",
+      "position": {
+        "start": {
+          "line": 66,
+          "column": 1
+        },
+        "end": {
+          "line": 66,
+          "column": 27
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<hr class=\"foo\" id=\"bar\" >",
+      "position": {
+        "start": {
+          "line": 68,
           "column": 1
         },
         "end": {

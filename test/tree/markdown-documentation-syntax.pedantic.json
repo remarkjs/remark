@@ -1450,10 +1450,24 @@
     },
     {
       "type": "html",
-      "value": "<h2 id=\"overview\">Overview</h2>\n\n<h3 id=\"philosophy\">Philosophy</h3>",
+      "value": "<h2 id=\"overview\">Overview</h2>",
       "position": {
         "start": {
           "line": 41,
+          "column": 1
+        },
+        "end": {
+          "line": 41,
+          "column": 32
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"philosophy\">Philosophy</h3>",
+      "position": {
+        "start": {
+          "line": 43,
           "column": 1
         },
         "end": {
@@ -3452,10 +3466,24 @@
     },
     {
       "type": "html",
-      "value": "<h2 id=\"block\">Block Elements</h2>\n\n<h3 id=\"p\">Paragraphs and Line Breaks</h3>",
+      "value": "<h2 id=\"block\">Block Elements</h2>",
       "position": {
         "start": {
           "line": 181,
+          "column": 1
+        },
+        "end": {
+          "line": 181,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"p\">Paragraphs and Line Breaks</h3>",
+      "position": {
+        "start": {
+          "line": 183,
           "column": 1
         },
         "end": {
@@ -6220,10 +6248,24 @@
     },
     {
       "type": "html",
-      "value": "<h2 id=\"span\">Span Elements</h2>\n\n<h3 id=\"link\">Links</h3>",
+      "value": "<h2 id=\"span\">Span Elements</h2>",
       "position": {
         "start": {
           "line": 543,
+          "column": 1
+        },
+        "end": {
+          "line": 543,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"link\">Links</h3>",
+      "position": {
+        "start": {
+          "line": 545,
           "column": 1
         },
         "end": {
@@ -9316,10 +9358,24 @@
     },
     {
       "type": "html",
-      "value": "<h2 id=\"misc\">Miscellaneous</h2>\n\n<h3 id=\"autolink\">Automatic Links</h3>",
+      "value": "<h2 id=\"misc\">Miscellaneous</h2>",
       "position": {
         "start": {
           "line": 828,
+          "column": 1
+        },
+        "end": {
+          "line": 828,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "html",
+      "value": "<h3 id=\"autolink\">Automatic Links</h3>",
+      "position": {
+        "start": {
+          "line": 830,
           "column": 1
         },
         "end": {
