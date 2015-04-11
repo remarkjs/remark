@@ -3812,7 +3812,7 @@ var has = Object.prototype.hasOwnProperty;
  */
 
 var WHITE_SPACE_FINAL = /\s+$/;
-var NEW_LINE_FINAL = /\n+$/;
+var NEW_LINES_FINAL = /\n+$/;
 var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
@@ -3953,7 +3953,7 @@ function trimRight(value) {
  * @return {string}
  */
 function trimRightLines(value) {
-    return String(value).replace(NEW_LINE_FINAL, '');
+    return String(value).replace(NEW_LINES_FINAL, '');
 }
 
 /**
