@@ -92,7 +92,7 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@0.17.1');
+var mdast = require('wooorm/mdast@0.18.0');
 var debounce = require('component/debounce@1.0.0');
 var keycode = require('timoxley/keycode');
 var query = require('component/querystring');
@@ -433,7 +433,7 @@ write.setText(getPermalink() || defaultText);
  */
 
 write.focus();
-}, {"wooorm/mdast@0.17.1":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"component/querystring":5,"quilljs/quill":6}],
+}, {"wooorm/mdast@0.18.0":2,"component/debounce@1.0.0":3,"timoxley/keycode":4,"component/querystring":5,"quilljs/quill":6}],
 2: [function(require, module, exports) {
 'use strict';
 
@@ -1630,19 +1630,6 @@ function noopToggler() {
 var MERGEABLE_NODES = objectCreate();
 
 /**
- * Merge two HTML nodes: `token` into `prev`.
- *
- * @param {Object} prev
- * @param {Object} token
- * @return {Object} `prev`.
- */
-MERGEABLE_NODES.html = function (prev, token) {
-    prev.value += NEW_LINE + NEW_LINE + token.value;
-
-    return prev;
-};
-
-/**
  * Merge two text nodes: `token` into `prev`.
  *
  * @param {Object} prev
@@ -1709,11 +1696,12 @@ function tokenizeNewline(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole code.
+ * @return {Node}
  */
 function tokenizeCode(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderCodeBlock(removeIndentation($0, TAB_SIZE), null, eat));
+    return eat($0)(this.renderCodeBlock(removeIndentation($0, TAB_SIZE), null, eat));
 }
 
 /**
@@ -1726,6 +1714,7 @@ function tokenizeCode(eat, $0) {
  * @param {string} $3 - Fence marker.
  * @param {string} $4 - Programming language flag.
  * @param {string} $5 - Content.
+ * @return {Node}
  */
 function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
     $0 = trimRightLines($0);
@@ -1742,7 +1731,7 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
         $5 = removeIndentation(ensureIndentation($5, $1.length), $1.length);
     }
 
-    eat($0)(this.renderCodeBlock($5, $4, eat));
+    return eat($0)(this.renderCodeBlock($5, $4, eat));
 }
 
 /**
@@ -1754,6 +1743,7 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
  * @param {string} $2 - Hashes.
  * @param {string} $3 - Internal spacing.
  * @param {string} $4 - Content.
+ * @return {Node}
  */
 function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
     var offset = this.offset;
@@ -1762,7 +1752,7 @@ function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
 
     offset[line] = (offset[line] || 0) + prefix.length;
 
-    eat($0)(this.renderHeading($4, $2.length));
+    return eat($0)(this.renderHeading($4, $2.length));
 }
 
 /**
@@ -1773,10 +1763,12 @@ function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
  * @param {string} $1 - Initial spacing.
  * @param {string} $2 - Content.
  * @param {string} $3 - Underline marker.
+ * @return {Node}
  */
 function tokenizeLineHeading(eat, $0, $1, $2, $3) {
     eat($1);
-    eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2));
+
+    return eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2));
 }
 
 /**
@@ -1784,9 +1776,10 @@ function tokenizeLineHeading(eat, $0, $1, $2, $3) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole rule.
+ * @return {Node}
  */
 function tokenizeHorizontalRule(eat, $0) {
-    eat($0)(this.renderVoid(HORIZONTAL_RULE));
+    return eat($0)(this.renderVoid(HORIZONTAL_RULE));
 }
 
 /**
@@ -1794,13 +1787,14 @@ function tokenizeHorizontalRule(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole blockquote.
+ * @return {Node}
  */
 function tokenizeBlockquote(eat, $0) {
     var now = eat.now();
 
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderBlockquote($0, now));
+    return eat($0)(this.renderBlockquote($0, now));
 }
 
 /**
@@ -1810,6 +1804,7 @@ function tokenizeBlockquote(eat, $0) {
  * @param {string} $0 - Whole list.
  * @param {string} $1 - Indent.
  * @param {string} $2 - Bullet.
+ * @return {Node}
  */
 function tokenizeList(eat, $0, $1, $2) {
     var self = this;
@@ -1817,13 +1812,14 @@ function tokenizeList(eat, $0, $1, $2) {
     var matches = trimRightLines($0).match(self.rules.item);
     var length = matches.length;
     var index = 0;
+    var isLoose = false;
     var now;
     var bullet;
     var add;
     var item;
     var enterTop;
     var exitBlockquote;
-    var list;
+    var node;
     var indent;
     var size;
     var position;
@@ -1882,23 +1878,31 @@ function tokenizeList(eat, $0, $1, $2) {
     enterTop = self.exitTop();
     exitBlockquote = self.enterBlockquote();
 
-    list = add(self.renderList([], firstBullet));
+    node = add(self.renderList([], firstBullet));
 
     while (++index < length) {
         item = matches[index];
         now = eat.now();
 
-        item = eat(item)(list, self.renderListItem(item, now));
+        item = eat(item)(node, self.renderListItem(item, now));
+
+        if (item.loose) {
+            isLoose = true;
+        }
 
         if (index !== length - 1) {
             eat(NEW_LINE);
         }
     }
 
-    list.position.end = eat.now();
+    node.loose = isLoose;
+
+    node.position.end = eat.now();
 
     enterTop();
     exitBlockquote();
+
+    return node;
 }
 
 /**
@@ -1906,11 +1910,12 @@ function tokenizeList(eat, $0, $1, $2) {
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole HTML.
+ * @return {Node}
  */
 function tokenizeHtml(eat, $0) {
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderRaw(HTML, $0));
+    return eat($0)(this.renderRaw(HTML, $0));
 }
 
 /**
@@ -1923,19 +1928,29 @@ function tokenizeHtml(eat, $0) {
  * @param {string} $1 - Key.
  * @param {string} $2 - URL.
  * @param {string} $3 - Title.
+ * @return {Node?}
  */
 function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
     var self = this;
     var identifier = escapeKey(normalize($1));
     var add = eat($0);
+    var node;
 
     if (!has.call(self.links, identifier)) {
         if ($2.charAt(0) === LT && $2.charAt($2.length - 1) === GT) {
             $2 = $2.slice(1, -1);
         }
 
-        self.links[identifier] = add({}, self.renderLink(true, self.descape($2), null, $3, eat.now(), eat));
+        $2 = self.descape($2);
+
+        node = self.renderLink(true, $2, null, $3, eat.now(), eat);
+
+        self.links[identifier] = add({}, node);
+
+        return node;
     }
+
+    return null;
 }
 
 tokenizeLinkDefinition.onlyAtTop = true;
@@ -1948,9 +1963,10 @@ tokenizeLinkDefinition.notInBlockquote = true;
  * @param {function(string)} eat
  * @param {string} $0 - Whole front matter.
  * @param {string} $1 - Content.
+ * @return {Node}
  */
 function tokenizeYAMLFrontMatter(eat, $0, $1) {
-    eat($0)(this.renderRaw(YAML, $1 ? trimRightLines($1) : EMPTY));
+    return eat($0)(this.renderRaw(YAML, $1 ? trimRightLines($1) : EMPTY));
 }
 
 tokenizeYAMLFrontMatter.onlyAtStart = true;
@@ -1965,6 +1981,7 @@ tokenizeYAMLFrontMatter.onlyAtStart = true;
  * @param {string} $1 - Whole key.
  * @param {string} $2 - Key.
  * @param {string} $3 - Whole value.
+ * @return {Node}
  */
 function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var self = this;
@@ -1972,7 +1989,7 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var line = now.line;
     var offset = self.offset;
     var identifier = escapeKey(normalize($2));
-    var token;
+    var node;
 
     $3 = $3.replace(EXPRESSION_INITIAL_TAB, function (value) {
         offset[line] = (offset[line] || 0) + value.length;
@@ -1983,9 +2000,11 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
 
     now.column += $1.length;
 
-    token = eat($0)({}, self.renderFootnoteDefinition(identifier, $3, now));
+    node = eat($0)({}, self.renderFootnoteDefinition(identifier, $3, now));
 
-    self.footnotes[identifier] = token;
+    self.footnotes[identifier] = node;
+
+    return node;
 }
 
 tokenizeFootnoteDefinition.onlyAtTop = true;
@@ -2002,15 +2021,16 @@ tokenizeFootnoteDefinition.notInBlockquote = true;
  * @param {string} $3 - Whole alignment.
  * @param {string} $4 - Trimmed alignment.
  * @param {string} $5 - Rows.
+ * @return {Node}
  */
 function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var self = this;
-    var table;
+    var node;
     var index;
     var length;
     var queue;
 
-    table = eat(EMPTY)({
+    node = eat(EMPTY)({
         type: TABLE,
         align: [],
         children: []
@@ -2097,7 +2117,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      * @param {string} value
      */
     function renderRow(type, value) {
-        var row = eat(EMPTY)(table, self.renderBlock(type, []));
+        var row = eat(EMPTY)(node, self.renderBlock(type, []));
 
         value.replace(EXPRESSION_TABLE_INITIAL, eatFence).replace(EXPRESSION_TABLE_CONTENT, eatCellFactory(row));
 
@@ -2120,7 +2140,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 
     $4 = $4.replace(EXPRESSION_TABLE_FENCE, EMPTY).split(EXPRESSION_TABLE_BORDER);
 
-    table.align = getAlignment($4);
+    node.align = getAlignment($4);
 
     /*
      * Add the table rows to table's children.
@@ -2139,7 +2159,9 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
         }
     }
 
-    table.position.end = eat.now();
+    node.position.end = eat.now();
+
+    return node;
 }
 
 tokenizeTable.onlyAtTop = true;
@@ -2150,17 +2172,18 @@ tokenizeTable.onlyAtTop = true;
  * @property {boolean} onlyAtTop
  * @param {function(string)} eat
  * @param {string} $0
+ * @return {Node?}
  */
 function tokenizeParagraph(eat, $0) {
     if (trim($0) === EMPTY) {
         eat($0);
 
-        return;
+        return null;
     }
 
     $0 = trimRightLines($0);
 
-    eat($0)(this.renderBlock(PARAGRAPH, $0));
+    return eat($0)(this.renderBlock(PARAGRAPH, $0));
 }
 
 /**
@@ -2168,9 +2191,10 @@ function tokenizeParagraph(eat, $0) {
  *
  * @param {function(string)} eat
  * @param {string} $0
+ * @return {Node}
  */
 function tokenizeText(eat, $0) {
-    eat($0)(this.renderRaw(TEXT, $0));
+    return eat($0)(this.renderRaw(TEXT, $0));
 }
 
 /**
@@ -2209,10 +2233,15 @@ function renderList(children, bullet) {
         start = null;
     }
 
+    /*
+     * `loose` should be added later.
+     */
+
     return {
         type: LIST,
         ordered: bullet.length > 1,
         start: start,
+        loose: null,
         children: children
     };
 }
@@ -2563,9 +2592,10 @@ function renderInline(type, value, location) {
  * @param {function(string)} eat
  * @param {string} $0 - Whole escape.
  * @param {string} $1 - Escaped character.
+ * @return {Node}
  */
 function tokenizeEscape(eat, $0, $1) {
-    eat($0)(this.renderRaw(ESCAPE, $1));
+    return eat($0)(this.renderRaw(ESCAPE, $1));
 }
 
 /**
@@ -2576,6 +2606,7 @@ function tokenizeEscape(eat, $0, $1) {
  * @param {string} $0 - Whole link.
  * @param {string} $1 - URL.
  * @param {string?} $2 - Protocol or at.
+ * @return {Node}
  */
 function tokenizeAutoLink(eat, $0, $1, $2) {
     var self = this;
@@ -2584,6 +2615,7 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
     var now = eat.now();
     var offset = 1;
     var tokenize;
+    var node;
 
     if ($2 === AT_SIGN) {
         if (text.substr(0, MAILTO_PROTOCOL.length).toLowerCase() !== MAILTO_PROTOCOL) {
@@ -2603,9 +2635,11 @@ function tokenizeAutoLink(eat, $0, $1, $2) {
     tokenize = self.inlineTokenizers.escape;
     self.inlineTokenizers.escape = null;
 
-    eat($0)(self.renderLink(true, href, text, null, now, eat));
+    node = eat($0)(self.renderLink(true, href, text, null, now, eat));
 
     self.inlineTokenizers.escape = tokenize;
+
+    return node;
 }
 
 tokenizeAutoLink.notInLink = true;
@@ -2617,11 +2651,12 @@ tokenizeAutoLink.notInLink = true;
  * @param {function(string)} eat
  * @param {string} $0 - Whole link.
  * @param {string} $1 - URL.
+ * @return {Node}
  */
 function tokenizeURL(eat, $0, $1) {
     var now = eat.now();
 
-    eat($0)(this.renderLink(true, $1, $1, null, now, eat));
+    return eat($0)(this.renderLink(true, $1, $1, null, now, eat));
 }
 
 tokenizeURL.notInLink = true;
@@ -2631,6 +2666,7 @@ tokenizeURL.notInLink = true;
  *
  * @param {function(string)} eat
  * @param {string} $0 - Content.
+ * @return {Node}
  */
 function tokenizeTag(eat, $0) {
     var self = this;
@@ -2641,7 +2677,7 @@ function tokenizeTag(eat, $0) {
         self.inLink = false;
     }
 
-    eat($0)(self.renderRaw(HTML, $0));
+    return eat($0)(self.renderRaw(HTML, $0));
 }
 
 /**
@@ -2656,6 +2692,7 @@ function tokenizeTag(eat, $0) {
  * @param {string?} $5 - Title wrapped in single or double quotes.
  * @param {string?} $6 - Title wrapped in double quotes.
  * @param {string?} $7 - Title wrapped in parentheses.
+ * @return {Node?}
  */
 function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
     var isLink = $0.charAt(0) !== EXCLAMATION_MARK;
@@ -2668,8 +2705,10 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
 
         now.column += $1.length;
 
-        eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now, eat));
+        return eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now, eat));
     }
+
+    return null;
 }
 
 /**
@@ -2682,6 +2721,7 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
  * @param {string} $1 - Prefix.
  * @param {string} $2 - URL.
  * @param {string} $3 - Content.
+ * @return {Node}
  */
 function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
     var self = this;
@@ -2706,8 +2746,10 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
          * most certainly a footnote.
          */
 
-        eat($0)(self.renderFootnote(identifier));
-    } else if (!url || !url.href) {
+        return eat($0)(self.renderFootnote(identifier));
+    }
+
+    if (!url || !url.href) {
         if (isFootnote && text.indexOf(SPACE) > -1) {
             /*
              * All user-defined footnote IDs are
@@ -2733,17 +2775,17 @@ function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
 
             self.footnotes[token.id] = token;
 
-            eat($0)(self.renderFootnote(token.id));
-        } else {
-            eat($0.charAt(0))(self.renderRaw(TEXT, $0.charAt(0)));
+            return eat($0)(self.renderFootnote(token.id));
         }
-    } else {
-        now = eat.now($1);
 
-        now.column += $1.length;
-
-        eat($0)(self.renderLink($0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href), $2, url.title, now, eat));
+        return eat($0.charAt(0))(self.renderRaw(TEXT, $0.charAt(0)));
     }
+
+    now = eat.now($1);
+
+    now.column += $1.length;
+
+    return eat($0)(self.renderLink($0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href), $2, url.title, now, eat));
 }
 
 tokenizeReferenceLink.notInLink = true;
@@ -2757,18 +2799,19 @@ tokenizeReferenceLink.notInLink = true;
  * @param {string?} $2 - Content.
  * @param {string?} $3 - Marker.
  * @param {string?} $4 - Content.
+ * @return {Node?}
  */
 function tokenizeStrong(eat, $0, $1, $2, $3, $4) {
     var now = eat.now();
     var value = $2 || $4;
 
     if (trim(value) === EMPTY) {
-        return;
+        return null;
     }
 
     now.column += 2;
 
-    eat($0)(this.renderInline(STRONG, value, now));
+    return eat($0)(this.renderInline(STRONG, value, now));
 }
 
 /**
@@ -2780,6 +2823,7 @@ function tokenizeStrong(eat, $0, $1, $2, $3, $4) {
  * @param {string?} $2 - Content.
  * @param {string?} $3 - Marker.
  * @param {string?} $4 - Content.
+ * @return {Node?}
  */
 function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
     var now = eat.now();
@@ -2787,12 +2831,12 @@ function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
     var value = $2 || $4;
 
     if (trim(value) === EMPTY || value.charAt(0) === marker || value.charAt(value.length - 1) === marker) {
-        return;
+        return null;
     }
 
     now.column += 1;
 
-    eat($0)(this.renderInline(EMPHASIS, value, now));
+    return eat($0)(this.renderInline(EMPHASIS, value, now));
 }
 
 /**
@@ -2801,13 +2845,14 @@ function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
  * @param {function(string)} eat
  * @param {string} $0 - Whole deletion.
  * @param {string} $1 - Content.
+ * @return {Node}
  */
 function tokenizeDeletion(eat, $0, $1) {
     var now = eat.now();
 
     now.column += 2;
 
-    eat($0)(this.renderInline(DELETE, $1, now));
+    return eat($0)(this.renderInline(DELETE, $1, now));
 }
 
 /**
@@ -2817,9 +2862,10 @@ function tokenizeDeletion(eat, $0, $1) {
  * @param {string} $0 - Whole code.
  * @param {string} $1 - Initial markers.
  * @param {string} $2 - Content.
+ * @return {Node}
  */
 function tokenizeInlineCode(eat, $0, $1, $2) {
-    eat($0)(this.renderRaw(INLINE_CODE, trim($2 || '')));
+    return eat($0)(this.renderRaw(INLINE_CODE, trim($2 || '')));
 }
 
 /**
@@ -2827,9 +2873,10 @@ function tokenizeInlineCode(eat, $0, $1, $2) {
  *
  * @param {function(string)} eat
  * @param {string} $0
+ * @return {Node}
  */
 function tokenizeBreak(eat, $0) {
-    eat($0)(this.renderVoid(BREAK));
+    return eat($0)(this.renderVoid(BREAK));
 }
 
 /**
@@ -3842,7 +3889,7 @@ var has = Object.prototype.hasOwnProperty;
  */
 
 var WHITE_SPACE_FINAL = /\s+$/;
-var NEW_LINE_FINAL = /\n+$/;
+var NEW_LINES_FINAL = /\n+$/;
 var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
@@ -3980,7 +4027,7 @@ function trimRight(value) {
  * @return {string}
  */
 function trimRightLines(value) {
-    return String(value).replace(NEW_LINE_FINAL, '');
+    return String(value).replace(NEW_LINES_FINAL, '');
 }
 
 /**
