@@ -3,6 +3,18 @@ mdast:
   setext: true
 ---
 
+0.18.0 / 2015-04-12
+===================
+
+*   Add list of plugins to `doc/Plugins.md` ([175b242](https://github.com/wooorm/mdast/commit/175b242))
+*   Refactor tokenizers to return tokenized node ([cce3ec9](https://github.com/wooorm/mdast/commit/cce3ec9))
+*   Remove mergin of HTML nodes into a single token ([6d529d9](https://github.com/wooorm/mdast/commit/6d529d9))
+*   Add support for plugin options to mdast(1) ([361f7dd](https://github.com/wooorm/mdast/commit/361f7dd))
+*   Fix variable name ([1590bff](https://github.com/wooorm/mdast/commit/1590bff))
+*   Update mdast-toc ([8e51ace](https://github.com/wooorm/mdast/commit/8e51ace))
+*   Add `loose` property on lists ([e071484](https://github.com/wooorm/mdast/commit/e071484))
+*   Add support for plug-in options to `mdasrc` files ([cc178f0](https://github.com/wooorm/mdast/commit/cc178f0))
+
 0.17.1 / 2015-04-08
 ===================
 
