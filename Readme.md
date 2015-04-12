@@ -4,7 +4,7 @@
 
 **mdast** is a markdown processor powered by plugins. Lots of tests. Node, io.js, and the browser. 100% coverage.
 
-**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by plugins to do all kinds of things: [change a Readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
+**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by [plugins](doc/Plugins.md) to do all kinds of things: [change a Readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
 
 ## Table of Contents
 
