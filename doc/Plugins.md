@@ -17,12 +17,15 @@
 
 ## List of plugins
 
+*   [wooorm/mdast-comment-config](https://github.com/wooorm/mdast-comment-config) — Set settings with comments during runtime;
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github) — Auto-link references like in GitHub issues, PRs, and comments;
-*   [wooorm/mdast-range](https://github.com/wooorm/mdast-range) — Add range information to mdast;
+*   [wooorm/mdast-heading](https://github.com/wooorm/mdast-heading) — Markdown heading as ranges;
+*   [wooorm/mdast-range](https://github.com/wooorm/mdast-range) — Add range information;
 *   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc) — Generate a Table of Contents (TOC) for Markdown files;
 *   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage) — Add a usage example to your Readme;
-*   [wooorm/mdast-yaml](https://github.com/wooorm/mdast-yaml) — Parse and stringify YAML code blocks in mdast;
-*   [wooorm/mdast-yaml-config](https://github.com/wooorm/mdast-yaml-config) — Set mdast options with YAML during runtime.
+*   [wooorm/mdast-yaml](https://github.com/wooorm/mdast-yaml) — Parse and stringify YAML code blocks;
+*   [wooorm/mdast-yaml-config](https://github.com/wooorm/mdast-yaml-config) — Set settings with YAML during runtime;
+*   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone) — HTML comments as ranges or markers.
 
 ## Using Plugins
 
