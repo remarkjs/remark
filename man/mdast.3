@@ -347,6 +347,28 @@ This object has the following properties:
 \fBcolumn\fR (\fBnumber\fR) \-\- Starting column of exception\.
 
 .RE
+.SS File#warn(reason, position?)
+.P
+Creates an exception by passing its arguments to \fBFile#exception()\fR, sets \fBfatal: false\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns the exception\.
+.P
+\fBSee\fR
+.RS 0
+.IP \(bu 2
+\fBFile#exception(reason, position?)\fR
+
+.RE
+.SS File#fail(reason, position?)
+.P
+Creates an exception by passing its arguments to \fBFile#exception()\fR, sets \fBfatal: true\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns the exception\.
+.P
+If \fBfile\fRs has a falsey \fBquiet\fR property, \fBFile#fail()\fR throws the exception\.
+.P
+\fBSee\fR
+.RS 0
+.IP \(bu 2
+\fBFile#exception(reason, position?)\fR
+
+.RE
 .SS File#filePath()
 .P
 Get the filename, with extension and directory, if applicable\.
