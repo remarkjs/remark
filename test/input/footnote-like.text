@@ -1,0 +1,4 @@
+This looks like a footnote, but is in fact, a [link][^link].
+This one isn't even [defined][^foo].
+
+[^link]: <~/foo/bar.baz>

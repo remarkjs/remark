@@ -1,0 +1,89 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This looks like a footnote, but is in fact, a ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 47
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "~/foo/bar.baz",
+          "children": [
+            {
+              "type": "text",
+              "value": "link",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 48
+                },
+                "end": {
+                  "line": 1,
+                  "column": 52
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 47
+            },
+            "end": {
+              "line": 1,
+              "column": 60
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".\nThis one isn't even [defined][^foo].",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 60
+            },
+            "end": {
+              "line": 2,
+              "column": 37
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 2,
+          "column": 37
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 2,
+      "column": 37
+    }
+  }
+}

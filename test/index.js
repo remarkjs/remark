@@ -267,6 +267,39 @@ describe('mdast.parse(file, options?)', function () {
             '5:1-5:32: Duplicate footnotes `duplicate`'
         );
     });
+
+    it('should warn when finding missing link definitions', function () {
+        var file = new File('Here is a [missing][link definition].');
+        var warning;
+
+        mdast.parse(file);
+
+        warning = file.messages[0];
+
+        assert(warning);
+
+        assert(
+            warning.toString() === '1:11: Possibly missing link definition'
+        );
+    });
+
+    it('should warn when finding missing link definitions', function () {
+        var file = new File('Here is a missing [footnote][^definition].');
+        var warning;
+
+        mdast.parse(file, {
+            'footnotes': true
+        });
+
+        warning = file.messages[0];
+
+        assert(warning);
+
+        assert(
+            warning.toString() ===
+            '1:19: Possibly missing footnote definition'
+        );
+    });
 });
 
 describe('mdast.stringify(ast, file, options?)', function () {
