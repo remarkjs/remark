@@ -49,8 +49,7 @@ Parse a markdown document into an abstract syntax tree.
 
 **Signatures**
 
-*   `ast = mdast.parse(value, options?)`;
-*   `ast = mdast.parse(file, options?)`.
+*   `ast = mdast.parse(file|value, options?)`.
 
 **Parameters**
 
@@ -68,8 +67,8 @@ Modify an abstract syntax tree by applying plugins to it.
 
 **Signatures**
 
-*   `ast = mdast.run(ast, value?, done?)`;
-*   `ast = mdast.run(ast, file?, done?)`.
+*   `ast = mdast.run(ast, file|value?, done?)`;
+*   `ast = mdast.run(ast, done?)`.
 
 **Parameters**
 
@@ -105,8 +104,7 @@ Parse, modify, and compile a markdown document it into something else.
 
 **Signatures**
 
-*   `doc = mdast.process(value, options?, done?)`;
-*   `doc = mdast.process(file, options?, done?)`.
+*   `doc = mdast.process(file|value, options?, done?)`.
 
 **Parameters**
 
@@ -144,9 +142,7 @@ File objects make it easy to change the directory, name, or extension of a file:
 
 **Signatures**
 
-*   `file = File(options?)`;
-*   `file = File(value?)`;
-*   `file = File(file)`.
+*   `file = File(file|value|options?)`.
 
 **Parameters**
 
@@ -162,6 +158,33 @@ File objects make it easy to change the directory, name, or extension of a file:
 
 `File` -- Instance.
 
+**Notes**
+
+`File` exposes an interface compatible with Eslint's formatters.  For example, to expose warnings using Eslint's `compact` formatter, execute the following:
+
+```javascript
+var compact = require('eslint/lib/formatters/compact');
+var File = require('mdast/lib/file');
+
+var file = new File({
+    'directory': '~',
+    'filename': 'Hello',
+    'extension': 'markdown'
+});
+
+file.warn('Woops, something happened!');
+
+console.log(compact([file]));
+```
+
+Which would yield the following:
+
+```text
+~/Hello.markdown: line 0, col 0, Warning - Woops, something happened!
+
+1 problem
+```
+
 ### File#toString()
 
 Getter for internal `contents` property.
@@ -174,18 +197,48 @@ Getter for internal `contents` property.
 
 `string` -- Contents.
 
+### File#messages
+
+A list of warnings and errors associated with the file.
+
+**Signature**
+
+*   `Array.<Message>`.
+
+Where `Message` has the following properties:
+
+*   `fatal` (`boolean?`) -- `true` when an exception occurred making the file no longer processable;
+*   `message` (`string`) -- Error reason;
+*   `line` (`number`) -- Starting line of exception;
+*   `column` (`number`) -- Starting column of exception.
+
+**Notes**
+
+`File#exception()` returns `Error` objects that comply with this schema.  Its results can be added to `messages`.
+
+### File#hasFailed()
+
+Check if a fatal exception occurred making the file no longer processable.
+
+**Signatures**
+
+*   `hasFailed = file.hasFailed()`.
+
+**Returns**
+
+`boolean` -- `true` if at least one of `file`s `message`s has a `fatal` property set to `true`.
+
 ### File#exception(reason, position?)
 
 Create an error.
 
 **Signatures**
 
-*   `err = file.exception(reason, node?)`;
-*   `err = file.exception(reason, location?)`;
-*   `err = file.exception(reason, position?)`.
+*   `err = file.exception(err|reason, node|location|position?)`.
 
 **Parameters**
 
+*   `err` (`Error`) -- Original error, whose stack is copied and message is used;
 *   `reason` (`string`) -- Failure reason;
 *   `node` (`Node`) -- Syntax tree object;
 *   `location` (`Object`) -- Syntax tree location (found at `node.position`);
@@ -197,22 +250,41 @@ Create an error.
 
 This object has the following properties:
 
-*   `file` (`string?`) -- Filename (including extension), if applicable;
-*   `reason` (`string`) -- Same as what was passed in;
+*   `file` (`string?`) -- Filename (including directory and extension), if applicable;
+*   `reason` (`string`) -- Failure reason;
 *   `line` (`number`) -- Starting line of exception;
 *   `column` (`number`) -- Starting column of exception.
 
-### File#getFile()
+### File#warn(reason, position?)
 
-Get the filename, with extension, if applicable.
+Creates an exception by passing its arguments to `File#exception()`, sets `fatal: false` on it, and adds it to `file`s `messages`.  Then, it returns the exception.
+
+**See**
+
+*   `File#exception(reason, position?)`
+
+
+### File#fail(reason, position?)
+
+Creates an exception by passing its arguments to `File#exception()`, sets `fatal: true` on it, and adds it to `file`s `messages`.  Then, it returns the exception.
+
+If `file`s has a falsey `quiet` property, `File#fail()` throws the exception.
+
+**See**
+
+*   `File#exception(reason, position?)`
+
+### File#filePath()
+
+Get the filename, with extension and directory, if applicable.
 
 **Signatures**
 
-*   `filename? = file.getFile()`.
+*   `filename? = file.filePath()`.
 
 **Returns**
 
-`string?` -- If the `file` has a `filename`, it will be concatenated with the (dotted) extension (if applicable).  Otherwise, null is returned.
+`string` -- If the `file` has a `filename`, it will be prefixed with the directory (slashed), if applicable, and suffixed with the (dotted) extension (if applicable).  Otherwise, an empty string is returned.
 
 ## BUGS
 

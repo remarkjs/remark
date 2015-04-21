@@ -223,9 +223,17 @@ function parse(value, options) {
     return parser.call(this, new File(value), options);
 }
 
-/*
- * No special treatment is needed for `stringify()`.
+/**
+ * Wrapper to pass a file to `stringifier`.
  */
+function stringify(ast, file, options) {
+    if (options === null || options === undefined) {
+        options = file;
+        file = null;
+    }
+
+    return stringifier.call(this, ast, new File(file), options);
+}
 
 /**
  * Parse a value and apply transformers.
@@ -255,7 +263,7 @@ function process(value, options, done) {
         if (exception) {
             (done || fail)(exception);
         } else {
-            result = self.stringify(ast, options);
+            result = self.stringify(ast, file, options);
 
             if (done) {
                 done(null, result, file);
@@ -278,7 +286,7 @@ var proto = MDAST.prototype;
 proto.use = use;
 proto.parse = parse;
 proto.run = run;
-proto.stringify = stringifier;
+proto.stringify = stringify;
 proto.process = process;
 
 /*
@@ -288,7 +296,7 @@ proto.process = process;
 MDAST.use = use;
 MDAST.parse = parse;
 MDAST.run = run;
-MDAST.stringify = stringifier;
+MDAST.stringify = stringify;
 MDAST.process = process;
 
 /*

@@ -59,9 +59,7 @@ Parse a markdown document into an abstract syntax tree\.
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBast = mdast\.parse(value, options?)\fR;
-.IP \(bu 2
-\fBast = mdast\.parse(file, options?)\fR\|\.
+\fBast = mdast\.parse(file|value, options?)\fR\|\.
 
 .RE
 .P
@@ -86,9 +84,9 @@ Modify an abstract syntax tree by applying plugins to it\.
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBast = mdast\.run(ast, value?, done?)\fR;
+\fBast = mdast\.run(ast, file|value?, done?)\fR;
 .IP \(bu 2
-\fBast = mdast\.run(ast, file?, done?)\fR\|\.
+\fBast = mdast\.run(ast, done?)\fR\|\.
 
 .RE
 .P
@@ -138,9 +136,7 @@ Parse, modify, and compile a markdown document it into something else\.
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBdoc = mdast\.process(value, options?, done?)\fR;
-.IP \(bu 2
-\fBdoc = mdast\.process(file, options?, done?)\fR\|\.
+\fBdoc = mdast\.process(file|value, options?, done?)\fR\|\.
 
 .RE
 .P
@@ -194,11 +190,7 @@ File objects make it easy to change the directory, name, or extension of a file:
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBfile = File(options?)\fR;
-.IP \(bu 2
-\fBfile = File(value?)\fR;
-.IP \(bu 2
-\fBfile = File(file)\fR\|\.
+\fBfile = File(file|value|options?)\fR\|\.
 
 .RE
 .P
@@ -227,6 +219,37 @@ File objects make it easy to change the directory, name, or extension of a file:
 \fBReturns\fR
 .P
 \fBFile\fR \-\- Instance\.
+.P
+\fBNotes\fR
+.P
+\fBFile\fR exposes an interface compatible with Eslint's formatters\.  For example, to expose warnings using Eslint's \fBcompact\fR formatter, execute the following:
+.P
+.RS 2
+.nf
+var compact = require('eslint/lib/formatters/compact');
+var File = require('mdast/lib/file');
+
+var file = new File({
+    'directory': '~',
+    'filename': 'Hello',
+    'extension': 'markdown'
+});
+
+file\.warn('Woops, something happened!');
+
+console\.log(compact([file]));
+.fi
+.RE
+.P
+Which would yield the following:
+.P
+.RS 2
+.nf
+~/Hello\.markdown: line 0, col 0, Warning \- Woops, something happened!
+
+1 problem
+.fi
+.RE
 .SS File#toString()
 .P
 Getter for internal \fBcontents\fR property\.
@@ -241,6 +264,47 @@ Getter for internal \fBcontents\fR property\.
 \fBReturns\fR
 .P
 \fBstring\fR \-\- Contents\.
+.SS File#messages
+.P
+A list of warnings and errors associated with the file\.
+.P
+\fBSignature\fR
+.RS 0
+.IP \(bu 2
+\fBArray\.<Message>\fR\|\.
+
+.RE
+.P
+Where \fBMessage\fR has the following properties:
+.RS 0
+.IP \(bu 2
+\fBfatal\fR (\fBboolean?\fR) \-\- \fBtrue\fR when an exception occurred making the file no longer processable;
+.IP \(bu 2
+\fBmessage\fR (\fBstring\fR) \-\- Error reason;
+.IP \(bu 2
+\fBline\fR (\fBnumber\fR) \-\- Starting line of exception;
+.IP \(bu 2
+\fBcolumn\fR (\fBnumber\fR) \-\- Starting column of exception\.
+
+.RE
+.P
+\fBNotes\fR
+.P
+\fBFile#exception()\fR returns \fBError\fR objects that comply with this schema\.  Its results can be added to \fBmessages\fR\|\.
+.SS File#hasFailed()
+.P
+Check if a fatal exception occurred making the file no longer processable\.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 2
+\fBhasFailed = file\.hasFailed()\fR\|\.
+
+.RE
+.P
+\fBReturns\fR
+.P
+\fBboolean\fR \-\- \fBtrue\fR if at least one of \fBfile\fRs \fBmessage\fRs has a \fBfatal\fR property set to \fBtrue\fR\|\.
 .SS File#exception(reason, position?)
 .P
 Create an error\.
@@ -248,16 +312,14 @@ Create an error\.
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBerr = file\.exception(reason, node?)\fR;
-.IP \(bu 2
-\fBerr = file\.exception(reason, location?)\fR;
-.IP \(bu 2
-\fBerr = file\.exception(reason, position?)\fR\|\.
+\fBerr = file\.exception(err|reason, node|location|position?)\fR\|\.
 
 .RE
 .P
 \fBParameters\fR
 .RS 0
+.IP \(bu 2
+\fBerr\fR (\fBError\fR) \-\- Original error, whose stack is copied and message is used;
 .IP \(bu 2
 \fBreason\fR (\fBstring\fR) \-\- Failure reason;
 .IP \(bu 2
@@ -276,29 +338,29 @@ Create an error\.
 This object has the following properties:
 .RS 0
 .IP \(bu 2
-\fBfile\fR (\fBstring?\fR) \-\- Filename (including extension), if applicable;
+\fBfile\fR (\fBstring?\fR) \-\- Filename (including directory and extension), if applicable;
 .IP \(bu 2
-\fBreason\fR (\fBstring\fR) \-\- Same as what was passed in;
+\fBreason\fR (\fBstring\fR) \-\- Failure reason;
 .IP \(bu 2
 \fBline\fR (\fBnumber\fR) \-\- Starting line of exception;
 .IP \(bu 2
 \fBcolumn\fR (\fBnumber\fR) \-\- Starting column of exception\.
 
 .RE
-.SS File#getFile()
+.SS File#filePath()
 .P
-Get the filename, with extension, if applicable\.
+Get the filename, with extension and directory, if applicable\.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 2
-\fBfilename? = file\.getFile()\fR\|\.
+\fBfilename? = file\.filePath()\fR\|\.
 
 .RE
 .P
 \fBReturns\fR
 .P
-\fBstring?\fR \-\- If the \fBfile\fR has a \fBfilename\fR, it will be concatenated with the (dotted) extension (if applicable)\.  Otherwise, null is returned\.
+\fBstring\fR \-\- If the \fBfile\fR has a \fBfilename\fR, it will be prefixed with the directory (slashed), if applicable, and suffixed with the (dotted) extension (if applicable)\.  Otherwise, an empty string is returned\.
 .SH BUGS
 .P
 <https://github\.com/wooorm/mdast/issues>

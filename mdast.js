@@ -224,9 +224,17 @@ function parse(value, options) {
     return parser.call(this, new File(value), options);
 }
 
-/*
- * No special treatment is needed for `stringify()`.
+/**
+ * Wrapper to pass a file to `stringifier`.
  */
+function stringify(ast, file, options) {
+    if (options === null || options === undefined) {
+        options = file;
+        file = null;
+    }
+
+    return stringifier.call(this, ast, new File(file), options);
+}
 
 /**
  * Parse a value and apply transformers.
@@ -256,7 +264,7 @@ function process(value, options, done) {
         if (exception) {
             (done || fail)(exception);
         } else {
-            result = self.stringify(ast, options);
+            result = self.stringify(ast, file, options);
 
             if (done) {
                 done(null, result, file);
@@ -279,7 +287,7 @@ var proto = MDAST.prototype;
 proto.use = use;
 proto.parse = parse;
 proto.run = run;
-proto.stringify = stringifier;
+proto.stringify = stringify;
 proto.process = process;
 
 /*
@@ -289,7 +297,7 @@ proto.process = process;
 MDAST.use = use;
 MDAST.parse = parse;
 MDAST.run = run;
-MDAST.stringify = stringifier;
+MDAST.stringify = stringify;
 MDAST.process = process;
 
 /*
@@ -407,6 +415,37 @@ module.exports = {
 'use strict';
 
 /**
+ * Eslint's formatter API expects `filePath` to be a
+ * string.  This hacky way supports invocation as well as
+ * implicit coercion.
+ *
+ * @param {File} file
+ * @return {Function}
+ */
+function filePathFactory(file) {
+    /**
+     * Get the location of `file`.
+     *
+     * Returns empty string when without `filename`.
+     *
+     * @return {string}
+     */
+    function filePath() {
+        if (file.filename) {
+            return (file.directory ? file.directory + '/' : '') +
+                file.filename +
+                (file.extension ? '.' + file.extension : '');
+        }
+
+        return '';
+    }
+
+    filePath.toString = filePath;
+
+    return filePath;
+}
+
+/**
  * Construct a new file.
  *
  * @constructor
@@ -414,7 +453,9 @@ module.exports = {
  * @param {Object|File|string} [options]
  */
 function File(options) {
-    if (!(this instanceof File)) {
+    var self = this;
+
+    if (!(self instanceof File)) {
         return new File(options);
     }
 
@@ -430,12 +471,21 @@ function File(options) {
         };
     }
 
-    this.directory = options.directory || '';
-    this.filename = options.filename || null;
-    this.contents = options.contents || '';
+    self.filename = options.filename || null;
+    self.contents = options.contents || '';
 
-    this.extension = options.extension === undefined ?
+    self.directory = options.directory === undefined ? '' : options.directory;
+
+    self.extension = options.extension === undefined ?
         'md' : options.extension;
+
+    self.messages = [];
+
+    /*
+     * Make sure eslint’s formatters stringify `filePath` properly.
+     */
+
+    self.filePath = filePathFactory(self);
 }
 
 /**
@@ -453,15 +503,56 @@ function stringify(position) {
 }
 
 /**
- * Create an exception with `reason` at `position`.
+ * Warn.
  *
  * @this {File}
  * @param {string} reason
  * @param {Node|Location|Position} [position]
  * @return {Error}
  */
+function warn(reason, position) {
+    var err = this.exception(reason, position);
+
+    err.fatal = false;
+
+    this.messages.push(err);
+
+    return err;
+}
+
+/**
+ * Fail.
+ *
+ * @this {File}
+ * @param {string} reason
+ * @param {Node|Location|Position} [position]
+ * @return {Error}
+ * @throws {Error} - When not `quiet: true`.
+ */
+function fail(reason, position) {
+    var err = this.exception(reason, position);
+
+    err.fatal = true;
+
+    this.messages.push(err);
+
+    if (!this.quiet) {
+        throw err;
+    }
+
+    return err;
+}
+
+/**
+ * Create an exception with `reason` at `position`.
+ *
+ * @this {File}
+ * @param {string|Error} reason
+ * @param {Node|Location|Position} [position]
+ * @return {Error}
+ */
 function exception(reason, position) {
-    var file = this.getFile();
+    var file = this.filePath();
     var location;
     var err;
 
@@ -477,31 +568,42 @@ function exception(reason, position) {
         location = stringify(position.start) + '-' + stringify(position.end);
         position = position.start;
     } else {
-        location = stringify(position)
+        location = stringify(position);
     }
 
-    err = new Error((file ? file + ':' : '') + location + ': ' + reason);
+    err = new Error(reason.message || reason);
 
+    err.name = (file ? file + ':' : '') + location;
     err.file = file;
     err.reason = reason;
     err.line = position ? position.line : null;
     err.column = position ? position.column : null;
 
+    if (reason.stack) {
+        err.stack = reason.stack;
+    }
+
     return err;
 }
 
 /**
- * Create the location of `file`.
+ * Check if `file` has a fatal message.
  *
  * @this {File}
- * @return {string?}
+ * @return {boolean}
  */
-function getFile() {
-    if (this.filename) {
-        return this.filename + (this.extension ? '.' + this.extension : '');
+function hasFailed() {
+    var messages = this.messages;
+    var index = -1;
+    var length = messages.length;
+
+    while (++index < length) {
+        if (messages[index].fatal) {
+            return true;
+        }
     }
 
-    return null;
+    return false;
 }
 
 /**
@@ -520,7 +622,9 @@ function toString() {
 
 File.prototype.exception = exception;
 File.prototype.toString = toString;
-File.prototype.getFile = getFile;
+File.prototype.warn = warn;
+File.prototype.fail = fail;
+File.prototype.hasFailed = hasFailed;
 
 /*
  * Expose.
@@ -616,7 +720,7 @@ function decode(value, eat) {
     try {
         return he.decode(value);
     } catch (exception) {
-        throw eat.exception(exception.message);
+        eat.file.fail(exception.message, eat.now());
     }
 }
 
@@ -2255,59 +2359,37 @@ Parser.prototype.setOptions = function (options) {
     var self = this;
     var expressions = self.expressions;
     var rules = self.rules;
-    var defaults = self.options;
+    var current = self.options;
+    var key;
 
     if (options === null || options === undefined) {
         options = {};
-    } else if (typeof options !== 'object') {
-        raise(options, 'options');
-    } else {
+    } else if (typeof options === 'object') {
         options = clone(options);
+    } else {
+        raise(options, 'options');
     }
-
-    validate.bool(options, 'gfm', defaults.gfm);
-    validate.bool(options, 'yaml', defaults.yaml);
-    validate.bool(options, 'commonmark', defaults.commonmark);
-    validate.bool(options, 'footnotes', defaults.footnotes);
-    validate.bool(options, 'breaks', defaults.breaks);
-    validate.bool(options, 'pedantic', defaults.pedantic);
 
     self.options = options;
 
-    if (options.breaks) {
-        copy(rules, expressions.breaks);
-    }
+    for (key in defaultOptions) {
+        validate.boolean(options, key, current[key]);
 
-    if (options.gfm) {
-        copy(rules, expressions.gfm);
+        if (options[key]) {
+            copy(rules, expressions[key]);
+        }
     }
 
     if (options.gfm && options.breaks) {
         copy(rules, expressions.breaksGFM);
     }
 
-    if (options.commonmark) {
-        copy(rules, expressions.commonmark);
-
-        self.enterBlockquote = noopToggler();
-    } else {
-        self.enterBlockquote = stateToggler('inBlockquote', false);
-    }
-
     if (options.gfm && options.commonmark) {
         copy(rules, expressions.commonmarkGFM);
     }
 
-    if (options.pedantic) {
-        copy(rules, expressions.pedantic);
-    }
-
-    if (options.yaml) {
-        copy(rules, expressions.yaml);
-    }
-
-    if (options.footnotes) {
-        copy(rules, expressions.footnotes);
+    if (options.commonmark) {
+        self.enterBlockquote = noopToggler();
     }
 
     return self;
@@ -2562,16 +2644,6 @@ function tokenizeFactory(type) {
         }
 
         /**
-         * Create an exception.
-         *
-         * @param {string} reason
-         * @return {Error}
-         */
-        function exception(reason) {
-            return self.file.exception(reason, now());
-        }
-
-        /**
          * Store position information for a node.
          *
          * @param {Object} start
@@ -2691,7 +2763,7 @@ function tokenizeFactory(type) {
          * Expose `exception` on `eat`.
          */
 
-        eat.exception = exception;
+        eat.file = self.file;
 
         /*
          * Sync initial offset.
@@ -2740,7 +2812,7 @@ function tokenizeFactory(type) {
 
             /* istanbul ignore if */
             if (!matched) {
-                throw eat.exception('Infinite loop');
+                self.file.fail('Infinite loop', eat.now());
             }
         }
 
@@ -3100,15 +3172,18 @@ function pad(value, level) {
 /**
  * Construct a new compiler.
  *
+ * @param {File} file
  * @param {Object?} options
  * @constructor Compiler
  */
-function Compiler(options) {
+function Compiler(file, options) {
     var self = this;
 
     self.footnoteCounter = 0;
     self.linkCounter = 0;
     self.links = [];
+
+    self.file = file;
 
     self.options = clone(self.options);
 
@@ -3127,6 +3202,18 @@ var compilerPrototype = Compiler.prototype;
 
 compilerPrototype.options = defaultOptions;
 
+/*
+ * Map of applicable enum's.
+ */
+
+var maps = {
+    'bullet': LIST_BULLETS,
+    'rule': HORIZONTAL_RULE_BULLETS,
+    'emphasis': EMPHASIS_MARKERS,
+    'strong': EMPHASIS_MARKERS,
+    'fence': FENCE_MARKERS
+};
+
 /**
  * Set options.
  *
@@ -3136,38 +3223,27 @@ compilerPrototype.options = defaultOptions;
  */
 compilerPrototype.setOptions = function (options) {
     var self = this;
-    var defaults = self.options;
+    var current = self.options;
     var ruleRepetition;
+    var key;
 
     if (options === null || options === undefined) {
         options = {};
-    } else if (typeof options !== 'object') {
-        raise(options, 'options');
-    } else {
+    } else if (typeof options === 'object') {
         options = clone(options);
+    } else {
+        raise(options, 'options');
     }
 
-    validate.map(options, 'bullet', LIST_BULLETS, defaults.bullet);
-    validate.map(options, 'rule', HORIZONTAL_RULE_BULLETS, defaults.rule);
-    validate.map(options, 'emphasis', EMPHASIS_MARKERS, defaults.emphasis);
-    validate.map(options, 'strong', EMPHASIS_MARKERS, defaults.strong);
-    validate.map(options, 'fence', FENCE_MARKERS, defaults.fence);
-    validate.bool(options, 'ruleSpaces', defaults.ruleSpaces);
-    validate.bool(options, 'setext', defaults.setext);
-    validate.bool(options, 'closeAtx', defaults.closeAtx);
-    validate.bool(options, 'looseTable', defaults.looseTable);
-    validate.bool(options, 'spacedTable', defaults.spacedTable);
-    validate.bool(options, 'referenceLinks', defaults.referenceLinks);
-    validate.bool(options, 'referenceImages', defaults.referenceImages);
-    validate.bool(options, 'fences', defaults.fences);
-    validate.num(options, 'ruleRepetition', defaults.ruleRepetition);
+    for (key in defaultOptions) {
+        validate[typeof current[key]](
+            options, key, current[key], maps[key]
+        );
+    }
 
     ruleRepetition = options.ruleRepetition;
 
-    if (
-        ruleRepetition < MINIMUM_RULE_LENGTH ||
-        ruleRepetition !== ruleRepetition
-    ) {
+    if (ruleRepetition && ruleRepetition < MINIMUM_RULE_LENGTH) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
@@ -3185,20 +3261,23 @@ compilerPrototype.setOptions = function (options) {
  * @return {string}
  */
 compilerPrototype.visit = function (token, parent, level) {
+    var self = this;
+
     if (!level) {
         level = 0;
     }
 
     level += 1;
 
-    if (typeof this[token.type] !== 'function') {
-        throw new Error(
+    if (typeof self[token.type] !== 'function') {
+        self.file.fail(
             'Missing compiler for node of type `' +
-            token.type + '`: ' + token
+            token.type + '`: ' + token,
+            token
         );
     }
 
-    return this[token.type](token, parent, level);
+    return self[token.type](token, parent, level);
 };
 
 /**
@@ -3791,16 +3870,17 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
  * Stringify an ast.
  *
  * @param {Object} ast
+ * @param {File} file
  * @param {Object?} options
  * @return {string}
  */
-function stringify(ast, options) {
+function stringify(ast, file, options) {
     var CustomCompiler = this.Compiler || Compiler;
     var compiler;
     var footnotes;
     var value;
 
-    compiler = new CustomCompiler(options);
+    compiler = new CustomCompiler(file, options);
 
     if (ast && ast.footnotes) {
         footnotes = copy(objectCreate(), ast.footnotes);
@@ -3897,7 +3977,7 @@ function clone(context) {
 function raise(value, name) {
     throw new Error(
         'Invalid value `' + value + '` ' +
-        'for `' + name + '`'
+        'for setting `' + name + '`'
     );
 }
 
@@ -3940,7 +4020,7 @@ function validateNumber(obj, name, def) {
         value = def;
     }
 
-    if (typeof value !== 'number') {
+    if (typeof value !== 'number' || value !== value) {
         raise(value, 'options.' + name);
     }
 
@@ -3954,10 +4034,10 @@ function validateNumber(obj, name, def) {
  *
  * @param {Object} obj
  * @param {string} name
- * @param {Object} map
  * @param {boolean} def
+ * @param {Object} map
  */
-function validateMap(obj, name, map, def) {
+function validateString(obj, name, def, map) {
     var value = obj[name];
 
     if (value === null || value === undefined) {
@@ -4154,9 +4234,9 @@ var unescapeKey = scapeFactory(ESCAPED_PROTO, PROTO);
  */
 
 exports.validate = {
-    'bool': validateBoolean,
-    'map': validateMap,
-    'num': validateNumber
+    'boolean': validateBoolean,
+    'string': validateString,
+    'number': validateNumber
 };
 
 /*

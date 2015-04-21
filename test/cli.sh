@@ -8,8 +8,8 @@ typeset -i tests=0
 #
 
 function it {
-    let tests+=1;
-    description="$1";
+    let tests+=1
+    description="$1"
 }
 
 #
@@ -21,9 +21,9 @@ function it {
 
 function assert {
     if [[ "$1" == "$2" ]]; then
-        printf "\033[32m.\033[0m";
+        printf "\033[32m.\033[0m"
     else
-        printf "\033[31m\nFAIL: $description\033[0m: '$1' != '$2'\n";
+        printf "\033[31m\nFAIL: $description\033[0m: '$1' != '$2'\n"
         exit 1
     fi
 }
@@ -175,6 +175,7 @@ it "Should accept a directory"
 it "Should fail when given an ignored directory"
     $COMMAND $ignoredDirectory --ignore-path $ignore > /dev/null 2>&1
     assert $? 1
+
 
 it "Should fail when given an ignored file"
     $COMMAND $ignoredFile --ignore-path $ignore > /dev/null 2>&1
@@ -400,4 +401,4 @@ it "Should fail on unknown long options"
     $COMMAND --verbose > /dev/null 2>&1
     assert $? 1
 
-printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n";
+printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n"

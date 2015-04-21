@@ -1,4 +1,9 @@
 {
+  "excludeFiles": [
+    "lib/expressions.js",
+    "lib/cli/formatter.js",
+    "script/build-expressions.js"
+  ],
   "plugins": [
     "jscs-jsdoc"
   ],

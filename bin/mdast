@@ -20,6 +20,19 @@ var argv = process.argv;
 
 var exitStatus = 0;
 
+/**
+ * Run.
+ *
+ * @param {Error?} exception
+ */
+function done(exception) {
+    if (exception) {
+        stderr.write((exception.stack || exception) + '\n');
+    }
+
+    exitStatus = 1;
+}
+
 /*
  * Set-up.
  */
@@ -31,21 +44,21 @@ if (position !== -1) {
 }
 
 /*
- * Run.
+ * Process.
  */
 
-cli(argv, function (exception) {
-    if (exception) {
-        stderr.write((exception.stack || exception) + '\n');
-    }
-
-    exitStatus = 1;
-});
+try {
+    cli(argv, done);
+} catch (err) {
+    done(err);
+}
 
 /*
  * Exit.
  */
 
 process.on('exit', function () {
+    /* eslint-disable no-process-exit */
     process.exit(exitStatus);
+    /* eslint-enable no-process-exit */
 });
