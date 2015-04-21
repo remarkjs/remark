@@ -3,6 +3,16 @@ mdast:
   setext: true
 ---
 
+0.19.0 / 2015-04-21
+===================
+
+*   Rebuild markdown, man pages ([8832c33](https://github.com/wooorm/mdast/commit/8832c33))
+*   Fix bug where mdast(1) would not process files ([8d6a073](https://github.com/wooorm/mdast/commit/8d6a073))
+*   Add support for hiding current directory to `lib/file` ([448552c](https://github.com/wooorm/mdast/commit/448552c))
+*   Add pretty error reporting to CLI, API ([fd4dd55](https://github.com/wooorm/mdast/commit/fd4dd55))
+*   Add `man 3 mdast` to `mdast --help` ([10a3d7f](https://github.com/wooorm/mdast/commit/10a3d7f))
+*   Update `doc/Plugins.md` with enw plugins ([22717c1](https://github.com/wooorm/mdast/commit/22717c1))
+
 0.18.0 / 2015-04-12
 ===================
 
