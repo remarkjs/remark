@@ -1,0 +1,163 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "The NATO phonetic alphabet[^wiki].",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 35
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 35
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "[^wiki]: Read more about it on wikipedia: ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 43
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 44
+                },
+                "end": {
+                  "line": 3,
+                  "column": 95
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 43
+            },
+            "end": {
+              "line": 3,
+              "column": 96
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".\n[^wiki]: Not to be confused with: ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 96
+            },
+            "end": {
+              "line": 4,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 36
+                },
+                "end": {
+                  "line": 4,
+                  "column": 96
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 35
+            },
+            "end": {
+              "line": 4,
+              "column": 97
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 97
+            },
+            "end": {
+              "line": 4,
+              "column": 98
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 98
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 4,
+      "column": 98
+    }
+  }
+}

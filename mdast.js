@@ -1362,19 +1362,21 @@ function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
     var add = eat($0);
     var node;
 
+    if ($2.charAt(0) === LT && $2.charAt($2.length - 1) === GT) {
+        $2 = $2.slice(1, -1);
+    }
+
+    $2 = self.descape($2);
+
+    node = add({}, self.renderLink(true, $2, null, $3, eat.now(), eat));
+
     if (!has.call(self.links, identifier)) {
-        if ($2.charAt(0) === LT && $2.charAt($2.length - 1) === GT) {
-            $2 = $2.slice(1, -1);
-        }
-
-        $2 = self.descape($2);
-
-        node = self.renderLink(true, $2, null, $3, eat.now(), eat);
-
-        self.links[identifier] = add({}, node);
+        self.links[identifier] = node;
 
         return node;
     }
+
+    self.file.warn('Duplicate link identifier `' + identifier + '`', node);
 
     return null;
 }
@@ -1407,7 +1409,7 @@ tokenizeYAMLFrontMatter.onlyAtStart = true;
  * @param {string} $1 - Whole key.
  * @param {string} $2 - Key.
  * @param {string} $3 - Whole value.
- * @return {Node}
+ * @return {Node?}
  */
 function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var self = this;
@@ -1428,9 +1430,15 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
 
     node = eat($0)({}, self.renderFootnoteDefinition(identifier, $3, now));
 
-    self.footnotes[identifier] = node;
+    if (!has.call(self.footnotes, identifier)) {
+        self.footnotes[identifier] = node;
 
-    return node;
+        return node;
+    }
+
+    self.file.warn('Duplicate footnotes `' + identifier + '`', node);
+
+    return null;
 }
 
 tokenizeFootnoteDefinition.onlyAtTop = true;
@@ -2511,9 +2519,12 @@ Parser.prototype.tokenizeOne = function (token) {
     var position = token.position;
 
     if (
-        type === HEADING ||
-        type === PARAGRAPH ||
-        type === TABLE_CELL
+        (
+            type === HEADING ||
+            type === PARAGRAPH ||
+            type === TABLE_CELL
+        ) &&
+        typeof token.children === 'string'
     ) {
         token.children = self.tokenizeInline(token.children, position.start);
     } else if (

@@ -217,6 +217,56 @@ describe('mdast.parse(file, options?)', function () {
 
         assert(result.children[1].type === 'list');
     });
+
+    it('should warn when finding duplicate reference links', function () {
+        var warning;
+        var file = new File([
+            'Here are two duplicate link definitions:',
+            '',
+            '[duplicate]: <first>',
+            '',
+            '[duplicate]: <second>',
+            '',
+            'And here one is [used][duplicate].'
+        ].join('\n'));
+
+        mdast.parse(file);
+
+        warning = file.messages[0];
+
+        assert(warning);
+
+        assert(
+            warning.toString() ===
+            '5:1-5:22: Duplicate link identifier `duplicate`'
+        );
+    });
+
+    it('should warn when finding duplicate footnotes', function () {
+        var warning;
+        var file = new File([
+            'Here are two duplicate link definitions:',
+            '',
+            '[^duplicate]: A footnote',
+            '',
+            '[^duplicate]: A second footnote',
+            '',
+            'And here one is used[^duplicate].'
+        ].join('\n'));
+
+        mdast.parse(file, {
+            'footnotes': true
+        });
+
+        warning = file.messages[0];
+
+        assert(warning);
+
+        assert(
+            warning.toString() ===
+            '5:1-5:32: Duplicate footnotes `duplicate`'
+        );
+    });
 });
 
 describe('mdast.stringify(ast, file, options?)', function () {
