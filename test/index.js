@@ -839,7 +839,7 @@ describe('File(options?)', function () {
     });
 
     describe('#filePath()', function () {
-        it('should return `null` without a filename', function () {
+        it('should return `""` without a filename', function () {
             assert(new File().filePath() === '');
         });
 
@@ -863,6 +863,42 @@ describe('File(options?)', function () {
                 'filename': 'baz',
                 'extension': 'qux'
             }).filePath() === 'foo/bar/baz.qux');
+        });
+
+        it('should not return an extra directory slash', function () {
+            assert(new File({
+                'directory': '~/',
+                'filename': 'baz',
+                'extension': 'qux'
+            }).filePath() === '~/baz.qux');
+        });
+
+        it('should not return the current directory', function () {
+            assert(new File({
+                'directory': '.',
+                'filename': 'baz',
+                'extension': 'qux'
+            }).filePath() === 'baz.qux');
+
+            assert(new File({
+                'directory': './',
+                'filename': 'baz',
+                'extension': 'qux'
+            }).filePath() === 'baz.qux');
+        });
+
+        it('should return the parent directory', function () {
+            assert(new File({
+                'directory': '..',
+                'filename': 'baz',
+                'extension': 'qux'
+            }).filePath() === '../baz.qux');
+
+            assert(new File({
+                'directory': '../',
+                'filename': 'baz',
+                'extension': 'qux'
+            }).filePath() === '../baz.qux');
         });
     });
 

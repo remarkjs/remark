@@ -431,8 +431,20 @@ function filePathFactory(file) {
      * @return {string}
      */
     function filePath() {
+        var directory;
+
         if (file.filename) {
-            return (file.directory ? file.directory + '/' : '') +
+            directory = file.directory;
+
+            if (directory.charAt(directory.length - 1) === '/') {
+                directory = directory.slice(0, -1);
+            }
+
+            if (directory === '.') {
+                directory = '';
+            }
+
+            return (directory ? directory + '/' : '') +
                 file.filename +
                 (file.extension ? '.' + file.extension : '');
         }
