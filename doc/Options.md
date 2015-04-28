@@ -115,8 +115,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 2,
-      "column": 11
+      "line": 3,
+      "column": 1
     }
   }
 }
@@ -193,8 +193,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 2,
-      "column": 54
+      "line": 3,
+      "column": 1
     }
   }
 }
@@ -499,8 +499,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 3,
-      "column": 24
+      "line": 8,
+      "column": 1
     }
   }
 }
@@ -613,8 +613,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 1,
-      "column": 19
+      "line": 2,
+      "column": 1
     }
   }
 }
@@ -725,8 +725,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 1,
-      "column": 29
+      "line": 2,
+      "column": 1
     }
   }
 }
@@ -809,8 +809,8 @@ Yields:
       "column": 1
     },
     "end": {
-      "line": 5,
-      "column": 15
+      "line": 6,
+      "column": 1
     }
   }
 }
