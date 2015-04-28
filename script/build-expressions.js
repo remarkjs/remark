@@ -201,8 +201,9 @@ var inlineTags = '(?!' +
             'span|br|wbr|ins|del|img' +
         ')\\b' +
     ')' +
-    '\\w+(?!:' +
-        '\\/|[^\\w\\s@]*@' +
+    '(?!mailto:)' +
+    '\\w+(?!' +
+        ':\\/|[^\\w\\s@]*@' +
     ')\\b';
 
 rules.html = new RegExp(
