@@ -20,7 +20,7 @@
         },
         {
           "type": "footnote",
-          "id": "wiki",
+          "id": "WIKI",
           "position": {
             "start": {
               "line": 1,
@@ -60,9 +60,9 @@
     }
   ],
   "footnotes": {
-    "wiki": {
+    "WIKI": {
       "type": "footnoteDefinition",
-      "id": "wiki",
+      "id": "WIKI",
       "children": [
         {
           "type": "paragraph",

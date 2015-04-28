@@ -20,7 +20,7 @@
         },
         {
           "type": "footnote",
-          "id": "somesamplefootnote",
+          "id": "SOMESAMPLEFOOTNOTE",
           "position": {
             "start": {
               "line": 1,
@@ -122,7 +122,7 @@
         },
         {
           "type": "footnote",
-          "id": "documentdetails",
+          "id": "DOCUMENTDETAILS",
           "position": {
             "start": {
               "line": 5,
@@ -162,9 +162,9 @@
     }
   ],
   "footnotes": {
-    "somesamplefootnote": {
+    "SOMESAMPLEFOOTNOTE": {
       "type": "footnoteDefinition",
-      "id": "somesamplefootnote",
+      "id": "SOMESAMPLEFOOTNOTE",
       "children": [
         {
           "type": "paragraph",
@@ -207,9 +207,9 @@
         }
       }
     },
-    "documentdetails": {
+    "DOCUMENTDETAILS": {
       "type": "footnoteDefinition",
-      "id": "documentdetails",
+      "id": "DOCUMENTDETAILS",
       "children": [
         {
           "type": "paragraph",
