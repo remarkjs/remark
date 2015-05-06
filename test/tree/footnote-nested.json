@@ -6,11 +6,56 @@
       "children": [
         {
           "type": "text",
-          "value": "A footnote[^1].",
+          "value": "A footnote",
           "position": {
             "start": {
               "line": 1,
               "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^1",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^1",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 12
+                },
+                "end": {
+                  "line": 1,
+                  "column": 14
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 11
+            },
+            "end": {
+              "line": 1,
+              "column": 15
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 15
             },
             "end": {
               "line": 1,
@@ -34,33 +79,21 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[^1]: Including [^another ",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 1
-            },
-            "end": {
-              "line": 3,
-              "column": 27
-            }
-          }
-        },
-        {
-          "type": "strong",
+          "type": "linkReference",
+          "identifier": "^1",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
-              "value": "footnote",
+              "value": "^1",
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 29
+                  "column": 2
                 },
                 "end": {
                   "line": 3,
-                  "column": 37
+                  "column": 4
                 }
               }
             }
@@ -68,21 +101,81 @@
           "position": {
             "start": {
               "line": 3,
-              "column": 27
+              "column": 1
             },
             "end": {
               "line": 3,
-              "column": 39
+              "column": 5
             }
           }
         },
         {
           "type": "text",
-          "value": "]",
+          "value": ": Including ",
           "position": {
             "start": {
               "line": 3,
-              "column": 39
+              "column": 5
+            },
+            "end": {
+              "line": 3,
+              "column": 17
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^another **footnote**",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^another ",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 18
+                },
+                "end": {
+                  "line": 3,
+                  "column": 27
+                }
+              }
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "footnote",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 29
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 37
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 27
+                },
+                "end": {
+                  "line": 3,
+                  "column": 39
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 17
             },
             "end": {
               "line": 3,

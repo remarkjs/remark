@@ -5,8 +5,25 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[the ",
+          "type": "linkReference",
+          "identifier": "the `",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "the `",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
@@ -14,31 +31,17 @@
             },
             "end": {
               "line": 1,
-              "column": 6
-            }
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "]",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 6
-            },
-            "end": {
-              "line": 1,
-              "column": 9
+              "column": 8
             }
           }
         },
         {
           "type": "text",
-          "value": " character](/url)",
+          "value": "` character](/url)",
           "position": {
             "start": {
               "line": 1,
-              "column": 9
+              "column": 8
             },
             "end": {
               "line": 1,

@@ -19,8 +19,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "SOMESAMPLEFOOTNOTE",
+          "type": "footnoteReference",
+          "identifier": "somesamplefootnote",
           "position": {
             "start": {
               "line": 1,
@@ -59,112 +59,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "text",
-          "value": "Even go to a new ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 1
-            },
-            "end": {
-              "line": 5,
-              "column": 18
-            }
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "href": "http://example.com",
-          "children": [
-            {
-              "type": "text",
-              "value": "paragraph",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 19
-                },
-                "end": {
-                  "line": 5,
-                  "column": 28
-                }
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 18
-            },
-            "end": {
-              "line": 5,
-              "column": 29
-            }
-          }
-        },
-        {
-          "type": "text",
-          "value": " and the footnotes will go to the bottom of the document",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 29
-            },
-            "end": {
-              "line": 5,
-              "column": 85
-            }
-          }
-        },
-        {
-          "type": "footnote",
-          "id": "DOCUMENTDETAILS",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 85
-            },
-            "end": {
-              "line": 5,
-              "column": 103
-            }
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 103
-            },
-            "end": {
-              "line": 5,
-              "column": 104
-            }
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 5,
-          "column": 1
-        },
-        "end": {
-          "line": 5,
-          "column": 104
-        }
-      }
-    }
-  ],
-  "footnotes": {
-    "SOMESAMPLEFOOTNOTE": {
       "type": "footnoteDefinition",
-      "id": "SOMESAMPLEFOOTNOTE",
+      "identifier": "somesamplefootnote",
       "children": [
         {
           "type": "paragraph",
@@ -207,9 +103,111 @@
         }
       }
     },
-    "DOCUMENTDETAILS": {
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Even go to a new ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 18
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "paragraph",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "paragraph",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 19
+                },
+                "end": {
+                  "line": 5,
+                  "column": 28
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 18
+            },
+            "end": {
+              "line": 5,
+              "column": 29
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": " and the footnotes will go to the bottom of the document",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 29
+            },
+            "end": {
+              "line": 5,
+              "column": 85
+            }
+          }
+        },
+        {
+          "type": "footnoteReference",
+          "identifier": "documentdetails",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 85
+            },
+            "end": {
+              "line": 5,
+              "column": 103
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 103
+            },
+            "end": {
+              "line": 5,
+              "column": 104
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 104
+        }
+      }
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "DOCUMENTDETAILS",
+      "identifier": "documentdetails",
       "children": [
         {
           "type": "paragraph",
@@ -301,9 +299,9 @@
               }
             },
             {
-              "type": "link",
-              "title": null,
-              "href": "http://example.com",
+              "type": "linkReference",
+              "identifier": "paragraph",
+              "referenceType": "shortcut",
               "children": [
                 {
                   "type": "text",
@@ -368,8 +366,24 @@
           "column": 48
         }
       }
+    },
+    {
+      "type": "definition",
+      "identifier": "paragraph",
+      "title": null,
+      "link": "http://example.com",
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 32
+        }
+      }
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,

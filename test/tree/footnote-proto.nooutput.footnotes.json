@@ -19,8 +19,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "TOSTRING",
+          "type": "footnoteReference",
+          "identifier": "tostring",
           "position": {
             "start": {
               "line": 1,
@@ -47,8 +47,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "__PROTO__",
+          "type": "footnoteReference",
+          "identifier": "__proto__",
           "position": {
             "start": {
               "line": 1,
@@ -75,8 +75,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "CONSTRUCTOR",
+          "type": "footnoteReference",
+          "identifier": "constructor",
           "position": {
             "start": {
               "line": 1,
@@ -113,12 +113,10 @@
           "column": 59
         }
       }
-    }
-  ],
-  "footnotes": {
-    "TOSTRING": {
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "TOSTRING",
+      "identifier": "tostring",
       "children": [
         {
           "type": "paragraph",
@@ -189,9 +187,9 @@
         }
       }
     },
-    "CONSTRUCTOR": {
+    {
       "type": "footnoteDefinition",
-      "id": "CONSTRUCTOR",
+      "identifier": "constructor",
       "children": [
         {
           "type": "paragraph",
@@ -262,9 +260,9 @@
         }
       }
     },
-    "__PROTO__": {
+    {
       "type": "footnoteDefinition",
-      "id": "__PROTO__",
+      "identifier": "__proto__",
       "children": [
         {
           "type": "paragraph",
@@ -335,7 +333,7 @@
         }
       }
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,

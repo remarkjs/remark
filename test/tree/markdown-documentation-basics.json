@@ -93,9 +93,9 @@
           }
         },
         {
-          "type": "link",
-          "title": "Markdown Syntax",
-          "href": "/projects/markdown/syntax",
+          "type": "linkReference",
+          "identifier": "s",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -167,9 +167,9 @@
           }
         },
         {
-          "type": "link",
-          "title": "Markdown Dingus",
-          "href": "/projects/markdown/dingus",
+          "type": "linkReference",
+          "identifier": "d",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -270,9 +270,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/projects/markdown/basics.text",
+          "type": "linkReference",
+          "identifier": "src",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -323,6 +323,54 @@
         "end": {
           "line": 28,
           "column": 64
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "s",
+      "title": "Markdown Syntax",
+      "link": "/projects/markdown/syntax",
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1
+        },
+        "end": {
+          "line": 30,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "d",
+      "title": "Markdown Dingus",
+      "link": "/projects/markdown/dingus",
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1
+        },
+        "end": {
+          "line": 31,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "src",
+      "title": null,
+      "link": "/projects/markdown/basics.text",
+      "position": {
+        "start": {
+          "line": 32,
+          "column": 1
+        },
+        "end": {
+          "line": 32,
+          "column": 40
         }
       }
     },

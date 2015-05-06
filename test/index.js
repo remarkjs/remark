@@ -219,89 +219,6 @@ describe('mdast.parse(file, options?)', function () {
 
         assert(result.children[1].type === 'list');
     });
-
-    it('should warn when finding duplicate reference links', function () {
-        var warning;
-        var file = new File([
-            'Here are two duplicate link definitions:',
-            '',
-            '[duplicate]: <first>',
-            '',
-            '[duplicate]: <second>',
-            '',
-            'And here one is [used][duplicate].'
-        ].join('\n'));
-
-        mdast.parse(file);
-
-        warning = file.messages[0];
-
-        assert(warning);
-
-        assert(
-            warning.toString() ===
-            '5:1-5:22: Duplicate link identifier `duplicate`'
-        );
-    });
-
-    it('should warn when finding duplicate footnotes', function () {
-        var warning;
-        var file = new File([
-            'Here are two duplicate link definitions:',
-            '',
-            '[^duplicate]: A footnote',
-            '',
-            '[^duplicate]: A second footnote',
-            '',
-            'And here one is used[^duplicate].'
-        ].join('\n'));
-
-        mdast.parse(file, {
-            'footnotes': true
-        });
-
-        warning = file.messages[0];
-
-        assert(warning);
-
-        assert(
-            warning.toString() ===
-            '5:1-5:32: Duplicate footnotes `duplicate`'
-        );
-    });
-
-    it('should warn when finding missing link definitions', function () {
-        var file = new File('Here is a [missing][link definition].');
-        var warning;
-
-        mdast.parse(file);
-
-        warning = file.messages[0];
-
-        assert(warning);
-
-        assert(
-            warning.toString() === '1:11: Possibly missing link definition'
-        );
-    });
-
-    it('should warn when finding missing link definitions', function () {
-        var file = new File('Here is a missing [footnote][^definition].');
-        var warning;
-
-        mdast.parse(file, {
-            'footnotes': true
-        });
-
-        warning = file.messages[0];
-
-        assert(warning);
-
-        assert(
-            warning.toString() ===
-            '1:19: Possibly missing footnote definition'
-        );
-    });
 });
 
 describe('mdast.stringify(ast, file, options?)', function () {
@@ -408,16 +325,6 @@ describe('mdast.stringify(ast, file, options?)', function () {
                     'setext': 0
                 });
             }, /options\.setext/);
-        }
-    );
-
-    it('should throw when `options.referenceLinks` is not a boolean',
-        function () {
-            assert.throws(function () {
-                mdast.stringify(empty(), {
-                    'referenceLinks': Infinity
-                });
-            }, /options\.referenceLinks/);
         }
     );
 
@@ -1264,7 +1171,7 @@ validateToken = function (context) {
 
     if (type === 'footnote') {
         assert(keys === 2);
-        assert('id' in context);
+        assert('children' in context);
 
         return;
     }
@@ -1327,7 +1234,22 @@ validateToken = function (context) {
     if (type === 'footnoteDefinition') {
         assert(keys === 3);
         assert('children' in context);
-        assert('id' in context);
+        assert(typeof context.identifier === 'string');
+
+        return;
+    }
+
+    if (type === 'definition') {
+        assert(typeof context.identifier === 'string');
+
+        assert(
+            context.title === null ||
+            typeof context.title === 'string'
+        );
+
+        assert(typeof context.link === 'string');
+
+        assert(keys === 4);
 
         return;
     }
@@ -1355,6 +1277,47 @@ validateToken = function (context) {
         );
         assert(typeof context.src === 'string');
         assert(keys === 4);
+
+        return;
+    }
+
+    if (type === 'linkReference') {
+        assert('children' in context);
+        assert(typeof context.identifier === 'string');
+
+        assert(
+            context.referenceType === 'shortcut' ||
+            context.referenceType === 'collapsed' ||
+            context.referenceType === 'full'
+        );
+
+        assert(keys === 4);
+
+        return;
+    }
+
+    if (type === 'imageReference') {
+        assert(typeof context.identifier === 'string');
+
+        assert(
+            context.alt === null ||
+            typeof context.alt === 'string'
+        );
+
+        assert(
+            context.referenceType === 'shortcut' ||
+            context.referenceType === 'collapsed' ||
+            context.referenceType === 'full'
+        );
+
+        assert(keys === 4);
+
+        return;
+    }
+
+    if (type === 'footnoteReference') {
+        assert(typeof context.identifier === 'string');
+        assert(keys === 2);
 
         return;
     }

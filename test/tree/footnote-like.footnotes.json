@@ -19,9 +19,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "~/foo/bar.baz",
+          "type": "linkReference",
+          "identifier": "^link",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -51,11 +51,56 @@
         },
         {
           "type": "text",
-          "value": ".\nThis one isn't even [defined][^foo].",
+          "value": ".\nThis one isn't even ",
           "position": {
             "start": {
               "line": 1,
               "column": 60
+            },
+            "end": {
+              "line": 2,
+              "column": 21
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^foo",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "defined",
+              "position": {
+                "start": {
+                  "line": 2,
+                  "column": 22
+                },
+                "end": {
+                  "line": 2,
+                  "column": 29
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 21
+            },
+            "end": {
+              "line": 2,
+              "column": 36
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 36
             },
             "end": {
               "line": 2,
@@ -74,9 +119,24 @@
           "column": 37
         }
       }
+    },
+    {
+      "type": "definition",
+      "identifier": "^link",
+      "title": null,
+      "link": "~/foo/bar.baz",
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 25
+        }
+      }
     }
   ],
-  "footnotes": {},
   "position": {
     "start": {
       "line": 1,

@@ -323,8 +323,6 @@ var stringify = {
     'closeAtx': false,
     'looseTable': false,
     'spacedTable': true,
-    'referenceLinks': false,
-    'referenceImages': false,
     'fences': false,
     'fence': '`',
     'bullet': '-',
@@ -347,7 +345,7 @@ module.exports = {
     'horizontalRule': /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
     'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
     'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
-    'linkDefinition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
+    'definition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
     'bullet': /(?:[*+-]|\d+\.)/,
     'indent': /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
     'item': /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
@@ -364,8 +362,8 @@ module.exports = {
     'break': /^ {2,}\n(?!\s*$)/,
     'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
     'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
-    'invalidLink': /^(!?\[)((?:\\[\s\S]|[\s\S])+?)\]/,
-    'referenceLink': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\]])*)\]/
+    'shortcutReference': /^(!?\[)((?:\\[\s\S]|[^\[\]])+?)\]/,
+    'reference': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/
   },
   'gfm': {
     'fences': /^( *)(([`~])\3{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
@@ -394,7 +392,7 @@ module.exports = {
     'bullet': /(?:[*+-]|\d+[\.\)])/,
     'indent': /^([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)/,
     'link': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
-    'referenceLink': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
+    'reference': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
     'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(\ {0,3})([^\n]*?)\ {0,3}#*\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)(?!mailto:)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
     'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\3?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|$)|( *)(([`~])\10{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\9\10*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
     'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',\/:;<=?@^~|])/
@@ -668,10 +666,8 @@ var trim = utilities.trim;
 var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
-var normalize = utilities.normalizeReference;
-var escapeKey = utilities.escapeKey;
+var normalize = utilities.normalizeIdentifier;
 var objectCreate = utilities.create;
-var has = Object.prototype.hasOwnProperty;
 
 /*
  * Characters.
@@ -683,12 +679,12 @@ var EQUALS = '=';
 var EXCLAMATION_MARK = '!';
 var MAILTO_PROTOCOL = 'mailto:';
 var NEW_LINE = '\n';
-var SLASH = '\\';
 var SPACE = ' ';
 var TAB = '\t';
 var EMPTY = '';
 var LT = '<';
 var GT = '>';
+var BRACKET_OPEN = '[';
 
 /*
  * Types.
@@ -793,7 +789,8 @@ var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
 var EXPRESSION_LEFT_ALIGNMENT = /^[ \t]*:-+[ \t]*$/;
 var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
 var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
-var EXPRESSION_TABLE_CONTENT = /([\s\S]+?)([ \t]*\|[ \t]*\n?|\n?$)/g;
+var EXPRESSION_TABLE_CONTENT =
+    /((?:\\[\s\S]|[^\|])+?)([ \t]?\|[ \t]?\n?|\n?$)/g;
 var EXPRESSION_TABLE_BORDER = /[ \t]*\|[ \t]*/;
 var EXPRESSION_BLOCK_QUOTE = /^[ \t]*>[ \t]?/gm;
 var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t)([^\n]*)/;
@@ -1162,12 +1159,13 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
  */
 function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
     var offset = this.offset;
-    var line = eat.now().line;
+    var now = eat.now();
+    var line = now.line;
     var prefix = $1 + $2 + $3;
 
     offset[line] = (offset[line] || 0) + prefix.length;
 
-    return eat($0)(this.renderHeading($4, $2.length));
+    return eat($0)(this.renderHeading($4, $2.length, now));
 }
 
 /**
@@ -1181,9 +1179,13 @@ function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
  * @return {Node}
  */
 function tokenizeLineHeading(eat, $0, $1, $2, $3) {
+    var now;
+
     eat($1);
 
-    return eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2));
+    now = eat.now();
+
+    return eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2, now));
 }
 
 /**
@@ -1345,7 +1347,7 @@ function tokenizeHtml(eat, $0) {
 }
 
 /**
- * Tokenise a link definition.
+ * Tokenise a definition.
  *
  * @property {boolean} onlyAtTop
  * @property {boolean} notInBlockquote
@@ -1354,35 +1356,29 @@ function tokenizeHtml(eat, $0) {
  * @param {string} $1 - Key.
  * @param {string} $2 - URL.
  * @param {string} $3 - Title.
- * @return {Node?}
+ * @return {Node}
  */
-function tokenizeLinkDefinition(eat, $0, $1, $2, $3) {
-    var self = this;
-    var identifier = escapeKey(normalize($1));
-    var add = eat($0);
-    var node;
+function tokenizeDefinition(eat, $0, $1, $2, $3) {
+    var link = $2;
 
-    if ($2.charAt(0) === LT && $2.charAt($2.length - 1) === GT) {
-        $2 = $2.slice(1, -1);
+    /*
+     * Remove angle-brackets from `link`.
+     */
+
+    if (link.charAt(0) === LT && link.charAt(link.length - 1) === GT) {
+        link = link.slice(1, -1);
     }
 
-    $2 = self.descape($2);
-
-    node = add({}, self.renderLink(true, $2, null, $3, eat.now(), eat));
-
-    if (!has.call(self.links, identifier)) {
-        self.links[identifier] = node;
-
-        return node;
-    }
-
-    self.file.warn('Duplicate link identifier `' + identifier + '`', node);
-
-    return null;
+    return eat($0)({
+        'type': 'definition',
+        'identifier': normalize($1),
+        'title': $3 || null,
+        'link': this.descape(link)
+    });
 }
 
-tokenizeLinkDefinition.onlyAtTop = true;
-tokenizeLinkDefinition.notInBlockquote = true;
+tokenizeDefinition.onlyAtTop = true;
+tokenizeDefinition.notInBlockquote = true;
 
 /**
  * Tokenise YAML front matter.
@@ -1409,15 +1405,13 @@ tokenizeYAMLFrontMatter.onlyAtStart = true;
  * @param {string} $1 - Whole key.
  * @param {string} $2 - Key.
  * @param {string} $3 - Whole value.
- * @return {Node?}
+ * @return {Node}
  */
 function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var self = this;
     var now = eat.now();
     var line = now.line;
     var offset = self.offset;
-    var identifier = escapeKey(normalize($2));
-    var node;
 
     $3 = $3.replace(EXPRESSION_INITIAL_TAB, function (value) {
         offset[line] = (offset[line] || 0) + value.length;
@@ -1428,17 +1422,7 @@ function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
 
     now.column += $1.length;
 
-    node = eat($0)({}, self.renderFootnoteDefinition(identifier, $3, now));
-
-    if (!has.call(self.footnotes, identifier)) {
-        self.footnotes[identifier] = node;
-
-        return node;
-    }
-
-    self.file.warn('Duplicate footnotes `' + identifier + '`', node);
-
-    return null;
+    return eat($0)(self.renderFootnoteDefinition(normalize($2), $3, now));
 }
 
 tokenizeFootnoteDefinition.onlyAtTop = true;
@@ -1459,10 +1443,10 @@ tokenizeFootnoteDefinition.notInBlockquote = true;
  */
 function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var self = this;
+    var now;
     var node;
     var index;
     var length;
-    var queue;
 
     node = eat(EMPTY)({
         'type': TABLE,
@@ -1497,44 +1481,12 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
          * @param {string} pipe
          * @return {string} - Empty.
          */
-        function eatCell(value, content, pipe, pos, input) {
-            var lastIndex = content.length;
+        function eatCell(value, content, pipe) {
+            now = eat.now();
 
-            /*
-             * Support escaped pipes in table cells.
-             */
-
-            while (lastIndex--) {
-                if (content.charAt(lastIndex) !== SLASH) {
-                    break;
-                }
-
-                if (content.charAt(--lastIndex) !== SLASH) {
-                    /*
-                     * Escaped pipe, add it to normal
-                     * content, or, queue it for the
-                     * next cell.
-                     */
-
-                    if (pos + content.length + 1 === input.length) {
-                        content += pipe;
-                        pipe = EMPTY;
-
-                        break;
-                    } else {
-                        queue = content + pipe;
-
-                        return content + pipe;
-                    }
-                }
-            }
-
-            if (queue) {
-                content = queue + content;
-                queue = EMPTY;
-            }
-
-            eat(content)(row, self.renderBlock(TABLE_CELL, content));
+            eat(content)(row, self.renderBlock(
+                TABLE_CELL, self.tokenizeInline(content.trim(), now)
+            ));
 
             eat(pipe);
 
@@ -1613,6 +1565,8 @@ tokenizeTable.onlyAtTop = true;
  * @return {Node?}
  */
 function tokenizeParagraph(eat, $0) {
+    var now = eat.now();
+
     if (trim($0) === EMPTY) {
         eat($0);
 
@@ -1621,7 +1575,7 @@ function tokenizeParagraph(eat, $0) {
 
     $0 = trimRightLines($0);
 
-    return eat($0)(this.renderBlock(PARAGRAPH, $0));
+    return eat($0)(this.renderBlock(PARAGRAPH, this.tokenizeInline($0, now)));
 }
 
 /**
@@ -1855,24 +1809,22 @@ function renderListItem(token, position) {
 /**
  * Create a footnote-definition token.
  *
- * @param {string} id
+ * @param {string} identifier
  * @param {string} value
  * @return {Object}
  */
-function renderFootnoteDefinition(id, value, position) {
+function renderFootnoteDefinition(identifier, value, position) {
     var self = this;
     var exitBlockquote = self.enterBlockquote();
     var token;
 
     token = {
         'type': FOOTNOTE_DEFINITION,
-        'id': id,
+        'identifier': identifier,
         'children': self.tokenizeBlock(value, position)
     };
 
     exitBlockquote();
-
-    self.footnotesAsArray.push(id);
 
     return token;
 }
@@ -1882,13 +1834,14 @@ function renderFootnoteDefinition(id, value, position) {
  *
  * @param {string} value
  * @param {number} depth
+ * @param {Object} now
  * @return {Object}
  */
-function renderHeading(value, depth) {
+function renderHeading(value, depth, now) {
     return {
         'type': HEADING,
         'depth': depth,
-        'children': value
+        'children': this.tokenizeInline(value, now)
     };
 }
 
@@ -1965,7 +1918,7 @@ function renderRaw(type, value) {
 /**
  * Create a link token.
  *
- * @param {boolean} isLink - Whether page or image reference.
+ * @param {boolean} isLink - Whether page or image.
  * @param {string} href
  * @param {string} text
  * @param {string?} title
@@ -1980,11 +1933,6 @@ function renderLink(isLink, href, text, title, position, eat) {
         'type': isLink ? LINK : IMAGE,
         'title': title ? decode(self.descape(title), eat) : null
     };
-
-    /*
-     * The `href` should not always be descaped, functions
-     * that invoke `renderLink` should handle that.
-     */
 
     href = decode(href, eat);
 
@@ -2004,13 +1952,14 @@ function renderLink(isLink, href, text, title, position, eat) {
 /**
  * Create a footnote token.
  *
- * @param {string} id
+ * @param {string} value
+ * @param {Object} position
  * @return {Object}
  */
-function renderFootnote(id) {
+function renderFootnote(value, position) {
     return {
         'type': FOOTNOTE,
-        'id': id
+        'children': this.tokenizeInline(value, position)
     };
 }
 
@@ -2159,92 +2108,75 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
 }
 
 /**
- * Tokenise a reference link, invalid link, or inline
- * footnote, or reference footnote.
+ * Tokenise a reference link, image, or footnote;
+ * shortcut reference link, or footnote.
  *
  * @property {boolean} notInLink
  * @param {function(string)} eat
  * @param {string} $0 - Whole link.
  * @param {string} $1 - Prefix.
- * @param {string} $2 - URL.
+ * @param {string} $2 - identifier.
  * @param {string} $3 - Content.
  * @return {Node}
  */
-function tokenizeReferenceLink(eat, $0, $1, $2, $3) {
+function tokenizeReference(eat, $0, $1, $2, $3) {
     var self = this;
-    var text = $3 || $2;
-    var identifier = escapeKey(normalize(text));
+    var text = $2;
+    var identifier = $3 || $2;
+    var type = $1 === BRACKET_OPEN ? 'link' : 'image';
     var isFootnote = self.options.footnotes && identifier.charAt(0) === CARET;
-    var url = self.links[identifier];
     var now = eat.now();
-    var token;
+    var referenceType;
+    var node;
+    var exitLink;
+
+    if ($3 === undefined) {
+        referenceType = 'shortcut';
+    } else if ($3 === '') {
+        referenceType = 'collapsed';
+    } else {
+        referenceType = 'full';
+    }
+
+    if (referenceType !== 'shortcut') {
+        isFootnote = false;
+    }
 
     if (isFootnote) {
         identifier = identifier.substr(1);
     }
 
-    identifier = escapeKey(identifier);
-
-    if (isFootnote && has.call(self.footnotes, identifier)) {
-        /*
-         * All block-level footnote-definitions
-         * are already found.  If we find the
-         * provided ID in the footnotes hash, its
-         * most certainly a footnote.
-         */
-
-        return eat($0)(self.renderFootnote(identifier));
-    }
-
-    if (!url || !url.href) {
-        if (isFootnote && text.indexOf(SPACE) > -1) {
-            /*
-             * All user-defined footnote IDs are
-             * already found.  Thus, we can safely
-             * choose any not-yet-used number as
-             * footnote IDs, without being afraid
-             * these IDs will be defined later.
-             */
-
-            while (self.footnoteCounter in self.footnotes) {
-                self.footnoteCounter++;
-            }
-
-            /*
-             * Add initial bracket plus caret.
-             */
-
-            now.column += $1.length + 1;
-
-            token = self.renderFootnoteDefinition(
-                String(self.footnoteCounter), text.substr(1), now
-            );
-
-            self.footnotes[token.id] = token;
-
-            return eat($0)(self.renderFootnote(token.id));
+    if (isFootnote) {
+        if (identifier.indexOf(SPACE) !== -1) {
+            return eat($0)(self.renderFootnote(identifier, eat.now()));
+        } else {
+            type = 'footnote';
         }
-
-        if ($3) {
-            if (isFootnote && self.options.footnotes) {
-                self.file.warn('Possibly missing footnote definition', now);
-            } else {
-                self.file.warn('Possibly missing link definition', now);
-            }
-        }
-
-        return eat($0.charAt(0))(self.renderRaw(TEXT, $0.charAt(0)));
     }
 
     now.column += $1.length;
 
-    return eat($0)(self.renderLink(
-        $0.charAt(0) !== EXCLAMATION_MARK, self.descape(url.href),
-        $2, url.title, now, eat
-    ));
+    node = {
+        'type': type + 'Reference',
+        'identifier': normalize(identifier)
+    };
+
+    if (type === 'link' || type === 'image') {
+        node.referenceType = referenceType;
+    }
+
+    if (type === 'link') {
+        exitLink = self.enterLink();
+        node.children = self.tokenizeInline(text, now);
+        exitLink();
+    } else if (type === 'image') {
+        node.alt = decode(self.descape(text), eat);
+    }
+
+    return eat($0)(node);
 }
 
-tokenizeReferenceLink.notInLink = true;
+tokenizeReference.notInLink = true;
 
 /**
  * Tokenise strong emphasis.
@@ -2349,16 +2281,6 @@ function Parser(options) {
     var self = this;
     var rules = copy({}, self.expressions.rules);
 
-    /*
-     * Create space for definition/reference type nodes.
-     */
-
-    self.links = objectCreate();
-    self.footnotes = objectCreate();
-    self.footnotesAsArray = [];
-
-    self.footnoteCounter = 1;
-
     self.inLink = false;
     self.atTop = true;
     self.atStart = true;
@@ -2439,11 +2361,7 @@ Parser.prototype.expressions = defaultExpressions;
  */
 Parser.prototype.parse = function (file) {
     var self = this;
-    var value = String(file);
-    var footnotes;
-    var footnotesAsArray;
-    var id;
-    var index;
+    var value = clean(String(file));
     var token;
 
     self.file = file;
@@ -2455,24 +2373,7 @@ Parser.prototype.parse = function (file) {
 
     self.offset = {};
 
-    token = self.renderBlock(ROOT, self.tokenizeAll(
-        self.tokenizeBlock(clean(value))
-    ));
-
-    if (self.options.footnotes) {
-        footnotes = self.footnotes;
-        footnotesAsArray = self.footnotesAsArray;
-
-        index = -1;
-
-        while (footnotesAsArray[++index]) {
-            id = footnotesAsArray[index];
-
-            footnotes[id].children = self.tokenizeAll(footnotes[id].children);
-        }
-
-        token.footnotes = footnotes;
-    }
+    token = self.renderBlock(ROOT, self.tokenizeBlock(value));
 
     token.position = {
         'start': {
@@ -2482,59 +2383,6 @@ Parser.prototype.parse = function (file) {
     };
 
     token.position.end = self.eof || token.position.start;
-
-    return token;
-};
-
-/**
- * Lex loop.
- *
- * @param {Array.<Object>} tokens
- * @return {Array.<Object>}
- */
-Parser.prototype.tokenizeAll = function (tokens) {
-    var self = this;
-    var out = [];
-    var index = -1;
-    var length = tokens.length;
-
-    while (++index < length) {
-        out[index] = self.tokenizeOne(tokens[index]);
-    }
-
-    return out;
-};
-
-/**
- * Tokenise a token.
- *
- * @param {Object} token
- * @return {Object}
- */
-Parser.prototype.tokenizeOne = function (token) {
-    var self = this;
-    var type = token.type;
-    var position = token.position;
-
-    if (
-        (
-            type === HEADING ||
-            type === PARAGRAPH ||
-            type === TABLE_CELL
-        ) &&
-        typeof token.children === 'string'
-    ) {
-        token.children = self.tokenizeInline(token.children, position.start);
-    } else if (
-        type === BLOCKQUOTE ||
-        type === LIST ||
-        type === LIST_ITEM ||
-        type === TABLE ||
-        type === TABLE_HEADER ||
-        type === TABLE_ROW
-    ) {
-        token.children = self.tokenizeAll(token.children);
-    }
 
     return token;
 };
@@ -2554,7 +2402,7 @@ Parser.prototype.blockTokenizers = {
     'blockquote': tokenizeBlockquote,
     'list': tokenizeList,
     'html': tokenizeHtml,
-    'linkDefinition': tokenizeLinkDefinition,
+    'definition': tokenizeDefinition,
     'footnoteDefinition': tokenizeFootnoteDefinition,
     'looseTable': tokenizeTable,
     'table': tokenizeTable,
@@ -2576,7 +2424,7 @@ Parser.prototype.blockMethods = [
     'list',
     'lineHeading',
     'html',
-    'linkDefinition',
+    'definition',
     'footnoteDefinition',
     'looseTable',
     'table',
@@ -2600,7 +2448,6 @@ function tokenizeFactory(type) {
     function tokenize(value, location) {
         var self = this;
         var offset = self.offset;
-        var eof = self.eof;
         var tokens = [];
         var rules = self.rules;
         var methods = self[type + 'Methods'];
@@ -2715,10 +2562,6 @@ function tokenizeFactory(type) {
                 children = tokens;
                 token = parent;
             } else {
-                if (!parent.children) {
-                    parent.children = [];
-                }
-
                 children = parent.children;
             }
 
@@ -2838,14 +2681,7 @@ function tokenizeFactory(type) {
             }
         }
 
-        if (
-            !eof ||
-            line > eof.line ||
-            line === eof.line &&
-            column > eof.column
-        ) {
-            self.eof = now();
-        }
+        self.eof = now();
 
         return tokens;
     }
@@ -2890,8 +2726,8 @@ Parser.prototype.inlineTokenizers = {
     'url': tokenizeURL,
     'tag': tokenizeTag,
     'link': tokenizeLink,
-    'referenceLink': tokenizeReferenceLink,
-    'invalidLink': tokenizeReferenceLink,
+    'reference': tokenizeReference,
+    'shortcutReference': tokenizeReference,
     'strong': tokenizeStrong,
     'emphasis': tokenizeEmphasis,
     'deletion': tokenizeDeletion,
@@ -2910,8 +2746,8 @@ Parser.prototype.inlineMethods = [
     'url',
     'tag',
     'link',
-    'referenceLink',
-    'invalidLink',
+    'reference',
+    'shortcutReference',
     'strong',
     'emphasis',
     'deletion',
@@ -2979,14 +2815,11 @@ var defaultOptions = require('./defaults.js').stringify;
  * Methods.
  */
 
-var copy = utilities.copy;
 var clone = utilities.clone;
 var raise = utilities.raise;
 var validate = utilities.validate;
 var count = utilities.countCharacter;
 var objectCreate = utilities.create;
-var getKeys = utilities.keys;
-var unescapeKey = utilities.unescapeKey;
 
 /*
  * Constants.
@@ -3210,10 +3043,6 @@ function pad(value, level) {
 function Compiler(file, options) {
     var self = this;
 
-    self.footnoteCounter = 0;
-    self.linkCounter = 0;
-    self.links = [];
-
     self.file = file;
 
     self.options = clone(self.options);
@@ -3349,6 +3178,7 @@ compilerPrototype.visitOrderedItems = function (token, level) {
     var bullet;
     var indent;
     var spacing;
+    var value;
 
     level = level + 1;
 
@@ -3358,8 +3188,14 @@ compilerPrototype.visitOrderedItems = function (token, level) {
         indent = Math.ceil(bullet.length / INDENT) * INDENT;
         spacing = repeat(SPACE, indent - bullet.length);
 
-        values[index] = bullet + spacing +
+        value = bullet + spacing +
             self.listItem(tokens[index], token, level, indent);
+
+        if (tokens[index].loose && index !== length - 1) {
+            value += LINE;
+        }
+
+        values[index] = value;
     }
 
     return values.join(LINE);
@@ -3380,6 +3216,7 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
     var length = tokens.length;
     var bullet;
     var spacing;
+    var value;
 
     level = level + 1;
 
@@ -3392,8 +3229,14 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
     spacing = repeat(SPACE, HALF);
 
     while (++index < length) {
-        values[index] = bullet + spacing +
+        value = bullet + spacing +
             self.listItem(tokens[index], token, level, INDENT);
+
+        if (tokens[index].loose && index !== length - 1) {
+            value += LINE;
+        }
+
+        values[index] = value;
     }
 
     return values.join(LINE);
@@ -3450,11 +3293,11 @@ compilerPrototype.root = function (token, parent, level) {
 
     values = values.join(EMPTY);
 
-    if (values.charAt(values.length - 1) !== LINE) {
-        values += LINE;
-    }
+    /*
+     * Ensure the result is a valid POSIX file.
+     */
 
-    return values;
+    return values + LINE;
 };
 
 /**
@@ -3570,10 +3413,6 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
 
     value = CHECKBOX_MAP[token.checked] +
         values.join(token.loose ? BREAK : LINE);
-
-    if (token.loose) {
-        value += LINE;
-    }
 
     value = pad(value, padding / INDENT);
 
@@ -3728,16 +3567,12 @@ compilerPrototype.link = function (token, parent, level) {
     var self = this;
     var url = token.href;
     var value = self.all(token, level).join(EMPTY);
-    var references = self.options.referenceLinks;
-    var reference;
 
     if (token.title === null && (url === value || url === MAILTO + value)) {
         return encloseURI(url, true);
     }
 
-    if (!references) {
-        url = encloseURI(url);
-    }
+    url = encloseURI(url);
 
     if (token.title) {
         url += SPACE + encloseTitle(token.title);
@@ -3745,17 +3580,82 @@ compilerPrototype.link = function (token, parent, level) {
 
     value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
 
-    if (references) {
-        reference = self.reference();
+    value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
 
-        value += reference;
+    return value;
+};
 
-        self.links.push(reference + COLON + SPACE + url);
-    } else {
-        value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
+/**
+ * Stringify a link label.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+function label(token) {
+    var value = '';
+    var type = token.referenceType;
+
+    if (type === 'full') {
+        value = token.identifier;
+    }
+
+    if (type !== 'shortcut') {
+        value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
     }
 
     return value;
+}
+
+/**
+ * Stringify a link reference.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.linkReference = function (token, parent, level) {
+    return SQUARE_BRACKET_OPEN +
+        this.all(token, level).join(EMPTY) + SQUARE_BRACKET_CLOSE +
+        label(token);
+};
+
+/**
+ * Stringify an image reference.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.imageReference = function (token) {
+    return EXCLAMATION_MARK +
+        SQUARE_BRACKET_OPEN + token.alt + SQUARE_BRACKET_CLOSE +
+        label(token);
+};
+
+/**
+ * Stringify a footnote reference.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.footnoteReference = function (token) {
+    return SQUARE_BRACKET_OPEN + CARET + token.identifier +
+        SQUARE_BRACKET_CLOSE;
+};
+
+/**
+ * Stringify an link- or image definition.
+ *
+ * @param {Object} token
+ * @return {string}
+ */
+compilerPrototype.definition = function (token) {
+    var value = SQUARE_BRACKET_OPEN + token.identifier + SQUARE_BRACKET_CLOSE;
+    var url = encloseURI(token.link);
+
+    if (token.title) {
+        url += SPACE + encloseTitle(token.title);
+    }
+
+    return value + COLON + SPACE + url;
 };
 
 /**
@@ -3765,15 +3665,8 @@ compilerPrototype.link = function (token, parent, level) {
  * @return {string}
  */
 compilerPrototype.image = function (token) {
-    var self = this;
-    var url = token.src;
-    var references = self.options.referenceImages;
-    var reference;
+    var url = encloseURI(token.src);
     var value;
-
-    if (!references) {
-        url = encloseURI(url);
-    }
 
     if (token.title) {
         url += SPACE + encloseTitle(token.title);
@@ -3782,24 +3675,9 @@ compilerPrototype.image = function (token) {
     value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + (token.alt || EMPTY) +
         SQUARE_BRACKET_CLOSE;
 
-    if (references) {
-        reference = self.reference();
-
-        value += reference;
-
-        self.links.push(reference + COLON + SPACE + url);
-    } else {
-        value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
-    }
+    value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
 
     return value;
-};
-
-/**
- * Create a unique reference.
- */
-compilerPrototype.reference = function () {
-    return SQUARE_BRACKET_OPEN + (++this.linkCounter) + SQUARE_BRACKET_CLOSE;
 };
 
 /**
@@ -3808,8 +3686,8 @@ compilerPrototype.reference = function () {
  * @param {Object} token
  * @return {string}
  */
-compilerPrototype.footnote = function (token) {
-    return SQUARE_BRACKET_OPEN + CARET + unescapeKey(token.id) +
+compilerPrototype.footnote = function (token, parent, level) {
+    return SQUARE_BRACKET_OPEN + CARET + this.all(token, level).join(EMPTY) +
         SQUARE_BRACKET_CLOSE;
 };
 
@@ -3820,7 +3698,11 @@ compilerPrototype.footnote = function (token) {
  * @return {string}
  */
 compilerPrototype.footnoteDefinition = function (token) {
-    return this.all(token).join(BREAK + repeat(SPACE, INDENT));
+    var id = token.identifier.toLowerCase();
+
+    return SQUARE_BRACKET_OPEN + CARET + id +
+        SQUARE_BRACKET_CLOSE + COLON + SPACE +
+        this.all(token).join(BREAK + repeat(SPACE, INDENT));
 };
 
 /**
@@ -3867,37 +3749,6 @@ compilerPrototype.tableCell = function (token, parent, level) {
 };
 
 /**
- * Visit the footnote definition block.
- *
- * @param {Object} footnotes
- * @return {string}
- */
-compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
-    var self = this;
-    var keys = getKeys(footnotes);
-    var index = -1;
-    var length = keys.length;
-    var results = [];
-    var key;
-
-    if (!length) {
-        return EMPTY;
-    }
-
-    while (++index < length) {
-        key = keys[index];
-
-        results.push(
-            SQUARE_BRACKET_OPEN + CARET + unescapeKey(key) +
-            SQUARE_BRACKET_CLOSE + COLON + SPACE +
-            self.visit(footnotes[key], null)
-        );
-    }
-
-    return LINE + results.join(LINE) + LINE;
-};
-
-/**
  * Stringify an ast.
  *
  * @param {Object} ast
@@ -3907,29 +3758,8 @@ compilerPrototype.visitFootnoteDefinitions = function (footnotes) {
  */
 function stringify(ast, file, options) {
     var CustomCompiler = this.Compiler || Compiler;
-    var compiler;
-    var footnotes;
-    var value;
 
-    compiler = new CustomCompiler(file, options);
-
-    if (ast && ast.footnotes) {
-        footnotes = copy(objectCreate(), ast.footnotes);
-
-        compiler.footnotes = footnotes;
-    }
-
-    value = compiler.visit(ast);
-
-    if (compiler.links.length) {
-        value += LINE + compiler.links.join(LINE) + LINE;
-    }
-
-    if (footnotes) {
-        value += compiler.visitFootnoteDefinitions(footnotes);
-    }
-
-    return value;
+    return new CustomCompiler(file, options).visit(ast);
 }
 
 /*
@@ -4146,14 +3976,13 @@ function clean(value) {
 }
 
 /**
- * Normalize an reference identifier.  Collapses
- * multiple white space characters into a single space,
- * and removes casing.
+ * Normalize an identifier.  Collapses multiple white space
+ * characters into a single space, and removes casing.
  *
  * @param {string} value
  * @return {string}
  */
-function normalizeReference(value) {
+function normalizeIdentifier(value) {
     return collapse(value).toLowerCase();
 }
 
@@ -4176,26 +4005,6 @@ function countCharacter(value, character) {
     }
 
     return count;
-}
-
-/**
- * Helper to get the keys in an object.
- *
- * @param {Object} object
- * @return {Array.<string>}
- */
-function keys(object) {
-    var results = [];
-    var key;
-
-    for (key in object) {
-        /* istanbul ignore else */
-        if (has.call(object, key)) {
-            results.push(key);
-        }
-    }
-
-    return results;
 }
 
 /**
@@ -4222,44 +4031,6 @@ function objectNull() {
     return Object.create(null);
 }
 
-var PROTO = '__proto__';
-var ESCAPED_PROTO = PROTO + '%';
-
-/**
- * Factory to construct an escaper or descaper.
- *
- * @param {string} value
- * @param {string} alt
- * @return {function(string): string}
- */
-function scapeFactory(value, alt) {
-    var length = value.length;
-
-    return function (key) {
-        return key.indexOf(value) === 0 ? alt + key.slice(length) : key;
-    };
-}
-
-/*
- * Escape a key for use in an map.
- *
- * @see http://www.2ality.com/2012/10/proto.html
- *
- * @param {string}
- * @return {string}
- */
-var escapeKey = scapeFactory(PROTO, ESCAPED_PROTO);
-
-/*
- * Unescape a key from use in an map.
- *
- * @see http://www.2ality.com/2012/10/proto.html
- *
- * @param {string}
- * @return {string}
- */
-var unescapeKey = scapeFactory(ESCAPED_PROTO, PROTO);
-
 /*
  * Expose `validate`.
  */
@@ -4279,15 +4050,12 @@ exports.trimLeft = trimLeft;
 exports.trimRight = trimRight;
 exports.trimRightLines = trimRightLines;
 exports.collapse = collapse;
-exports.normalizeReference = normalizeReference;
+exports.normalizeIdentifier = normalizeIdentifier;
 exports.clean = clean;
 exports.raise = raise;
 exports.copy = copy;
 exports.clone = clone;
 exports.countCharacter = countCharacter;
-exports.keys = keys;
-exports.escapeKey = escapeKey;
-exports.unescapeKey = unescapeKey;
 
 /* istanbul ignore else */
 if ('create' in Object) {
@@ -4998,6 +4766,16 @@ var wrap = require('wrap-fn');
 module.exports = Ware;
 
 /**
+ * Throw an error.
+ *
+ * @param {Error} error
+ */
+
+function fail (err) {
+  throw err;
+}
+
+/**
  * Initialize a new `Ware` manager, with optional `fns`.
  *
  * @param {Function or Array or Ware} fn (optional)
@@ -5050,7 +4828,7 @@ Ware.prototype.run = function () {
 
   // next step
   function next (err) {
-    if (err) return done(err);
+    if (err) return (done || fail)(err);
     var fn = fns[i++];
     var arr = slice.call(args);
 

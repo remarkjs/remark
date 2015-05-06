@@ -19,9 +19,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://primary.com",
+          "type": "linkReference",
+          "identifier": "tostring",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -64,9 +64,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://secondary.com",
+          "type": "linkReference",
+          "identifier": "constructor",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -109,9 +109,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://tertiary.com",
+          "type": "linkReference",
+          "identifier": "__proto__",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -162,6 +162,54 @@
         "end": {
           "line": 1,
           "column": 81
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "tostring",
+      "title": null,
+      "link": "http://primary.com",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 31
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "__proto__",
+      "title": null,
+      "link": "http://tertiary.com",
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 33
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "constructor",
+      "title": null,
+      "link": "http://secondary.com",
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 36
         }
       }
     }

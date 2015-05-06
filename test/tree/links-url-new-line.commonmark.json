@@ -5,12 +5,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./wo\nrld.html).",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
               "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./wo\nrld.html).",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 8
             },
             "end": {
               "line": 2,
@@ -34,12 +65,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](<./wo\nrld.html>).",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 2
+                },
+                "end": {
+                  "line": 4,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 4,
               "column": 1
+            },
+            "end": {
+              "line": 4,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<./wo\nrld.html>).",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 8
             },
             "end": {
               "line": 5,
@@ -63,12 +125,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./wo\nrld.png).",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 7,
               "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./wo\nrld.png).",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 9
             },
             "end": {
               "line": 8,
@@ -92,12 +170,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](<./wo\nrld.png>).",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 10,
               "column": 1
+            },
+            "end": {
+              "line": 10,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<./wo\nrld.png>).",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 9
             },
             "end": {
               "line": 11,

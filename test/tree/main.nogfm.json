@@ -2,6 +2,22 @@
   "type": "root",
   "children": [
     {
+      "type": "definition",
+      "identifier": "test",
+      "title": "Google",
+      "link": "http://google.com/",
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 36
+        }
+      }
+    },
+    {
       "type": "heading",
       "depth": 1,
       "children": [
@@ -49,9 +65,9 @@
           }
         },
         {
-          "type": "link",
-          "title": "Google",
-          "href": "http://google.com/",
+          "type": "linkReference",
+          "identifier": "test",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",

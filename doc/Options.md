@@ -22,7 +22,6 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
     *   [Fence](#fence)
     *   [Fences](#fences)
     *   [Loose Tables](#loose-tables)
-    *   [Reference Links and Images](#reference-links-and-images)
     *   [Horizontal Rules](#horizontal-rules)
     *   [Setext Headings](#setext-headings)
     *   [Spaced Tables](#spaced-tables)
@@ -251,7 +250,22 @@ Yields:
         },
         {
           "type": "footnote",
-          "id": "2",
+          "children": [
+            {
+              "type": "text",
+              "value": "or something?",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 36
+                },
+                "end": {
+                  "line": 1,
+                  "column": 49
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
@@ -307,8 +321,8 @@ Yields:
           }
         },
         {
-          "type": "footnote",
-          "id": "1",
+          "type": "footnoteReference",
+          "identifier": "1",
           "position": {
             "start": {
               "line": 3,
@@ -345,12 +359,10 @@ Yields:
           "column": 24
         }
       }
-    }
-  ],
-  "footnotes": {
-    "1": {
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "1",
+      "identifier": "1",
       "children": [
         {
           "type": "paragraph",
@@ -456,43 +468,8 @@ Yields:
           "column": 15
         }
       }
-    },
-    "2": {
-      "type": "footnoteDefinition",
-      "id": "2",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "or something?",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 22
-                },
-                "end": {
-                  "line": 1,
-                  "column": 35
-                }
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 22
-            },
-            "end": {
-              "line": 1,
-              "column": 35
-            }
-          }
-        }
-      ]
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,
@@ -995,33 +972,6 @@ Yields:
     :---- | -----:
     How   |    are
     you   | today?
-
-### Reference Links and Images
-
-Setting `referenceLinks: true` (default: `false`) will stringify links using link references and link definitions.
-Setting `referenceImages: true` (default: `false`) will do the same for images.
-
-The following document:
-
-    Lorem ipsum dolor sit [amet](http://amet.com "Amet"), consectetur ![adipiscing](adipiscing.png "Adipiscing") elit.
-
-And the below JavaScript:
-
-```javascript
-var ast = mdast.parse(document);
-
-mdast.stringify(ast, {
-  "referenceLinks": true,
-  "referenceImages": true
-});
-```
-
-Yields:
-
-    Lorem ipsum dolor sit [amet][1], consectetur ![adipiscing][2] elit.
-
-    [1]: http://amet.com "Amet"
-    [2]: adipiscing.png "Adipiscing"
 
 ### Horizontal Rules
 

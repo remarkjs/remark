@@ -19,9 +19,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/simple",
+          "type": "linkReference",
+          "identifier": "simple case",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -76,6 +76,22 @@
       }
     },
     {
+      "type": "definition",
+      "identifier": "simple case",
+      "title": null,
+      "link": "/simple",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 23
+        }
+      }
+    },
+    {
       "type": "paragraph",
       "children": [
         {
@@ -93,9 +109,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/foo",
+          "type": "linkReference",
+          "identifier": "line break",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -167,9 +183,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/foo",
+          "type": "linkReference",
+          "identifier": "line break",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -224,12 +240,28 @@
       }
     },
     {
+      "type": "definition",
+      "identifier": "line break",
+      "title": null,
+      "link": "/foo",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 13,
+          "column": 19
+        }
+      }
+    },
+    {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "/that",
+          "type": "linkReference",
+          "identifier": "that",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -272,9 +304,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/other",
+          "type": "linkReference",
+          "identifier": "other",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -311,6 +343,54 @@
         "end": {
           "line": 16,
           "column": 30
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "this",
+      "title": null,
+      "link": "/this",
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1
+        },
+        "end": {
+          "line": 18,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "that",
+      "title": null,
+      "link": "/that",
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1
+        },
+        "end": {
+          "line": 19,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "other",
+      "title": null,
+      "link": "/other",
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1
+        },
+        "end": {
+          "line": 20,
+          "column": 16
         }
       }
     }

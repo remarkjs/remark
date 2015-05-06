@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` [`-a`, `--ast`] [`-q`, `--quiet`] [`-o`, `--output` [_path_]] [`-s`, `--setting` _settings_] [`-u`, `--use` _plugin_] [`-c`, `--config-path` _path_] [`-i`, `--ignore-path` _path_] [`-e`, `--ext` [_extensions_]] [`--no-color`] [`--no-rc`] [`--no-ignore`] _file|dir_ _..._
+`mdast` \[`-a`, `--ast`\] \[`-q`, `--quiet`\] \[`-o`, `--output` \[_path_\]\] \[`-s`, `--setting` _settings_\] \[`-u`, `--use` _plugin_\] \[`-c`, `--config-path` _path_\] \[`-i`, `--ignore-path` _path_\] \[`-e`, `--ext` \[_extensions_\]\] \[`--no-color`\] \[`--no-rc`\] \[`--no-ignore`\] _file|dir_ _..._
 
 ## DESCRIPTION
 

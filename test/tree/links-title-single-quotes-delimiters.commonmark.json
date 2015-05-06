@@ -5,12 +5,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./world.html 'Hello 'World' Hello!').",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
               "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html 'Hello 'World' Hello!').",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 8
             },
             "end": {
               "line": 1,
@@ -34,12 +65,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](<./world.html> 'Hello 'World' Hello!').",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 3,
               "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<./world.html> 'Hello 'World' Hello!').",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 8
             },
             "end": {
               "line": 3,
@@ -63,12 +125,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./world.html 'Hello 'World' Hello!').",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 5,
               "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html 'Hello 'World' Hello!').",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 9
             },
             "end": {
               "line": 5,
@@ -92,12 +170,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](<./world.html> 'Hello 'World' Hello!').",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 7,
               "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<./world.html> 'Hello 'World' Hello!').",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 9
             },
             "end": {
               "line": 7,

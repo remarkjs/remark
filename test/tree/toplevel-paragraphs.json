@@ -532,9 +532,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/are/you",
+          "type": "linkReference",
+          "identifier": "how",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -571,6 +571,22 @@
         "end": {
           "line": 32,
           "column": 19
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "how",
+      "title": null,
+      "link": "/are/you",
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1
+        },
+        "end": {
+          "line": 33,
+          "column": 16
         }
       }
     },

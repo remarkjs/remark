@@ -62,8 +62,6 @@ See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify>> for
 *   `closeAtx` (boolean, default: false);
 *   `looseTable` (boolean, default: false);
 *   `spacedTable` (boolean, default: true);
-*   `referenceLinks` (boolean, default: false);
-*   `referenceImages` (boolean, default: false);
 *   `fences` (boolean, default: false);
 *   `bullet` ("-", "*", or "+", default: "-");
 *   `rule` ("-", "\*", or "_", default: "*");

@@ -5,9 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "./url with spaces",
+          "type": "linkReference",
+          "identifier": "foo",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -44,6 +44,22 @@
         "end": {
           "line": 1,
           "column": 6
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "foo",
+      "title": null,
+      "link": "./url with spaces",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 27
         }
       }
     }

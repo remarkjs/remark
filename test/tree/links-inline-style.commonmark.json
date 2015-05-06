@@ -319,12 +319,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[URL and title]( /url/has space ).",
+          "type": "linkReference",
+          "identifier": "url and title",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 2
+                },
+                "end": {
+                  "line": 11,
+                  "column": 15
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 11,
               "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 16
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "( /url/has space ).",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 16
             },
             "end": {
               "line": 11,
@@ -348,12 +379,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[URL and title]( /url/has space/ \"url has space and title\").",
+          "type": "linkReference",
+          "identifier": "url and title",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "URL and title",
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 2
+                },
+                "end": {
+                  "line": 13,
+                  "column": 15
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 13,
               "column": 1
+            },
+            "end": {
+              "line": 13,
+              "column": 16
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "( /url/has space/ \"url has space and title\").",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 16
             },
             "end": {
               "line": 13,

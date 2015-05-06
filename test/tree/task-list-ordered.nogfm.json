@@ -15,12 +15,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ] Mercury;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 1,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Mercury;",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 7
                     },
                     "end": {
                       "line": 1,
@@ -105,12 +136,88 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x] Earth:\n1. [x] Moon.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 3,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 3,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 3,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Earth:\n1. ",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 7
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 8
+                    }
+                  }
+                },
+                {
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 9
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 10
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 8
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 11
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Moon.",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 11
                     },
                     "end": {
                       "line": 4,
@@ -150,12 +257,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ] Mars;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 5,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Mars;",
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 7
                     },
                     "end": {
                       "line": 5,

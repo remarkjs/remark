@@ -19,8 +19,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "1",
+          "type": "footnoteReference",
+          "identifier": "1",
           "position": {
             "start": {
               "line": 1,
@@ -76,8 +76,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "2",
+          "type": "footnoteReference",
+          "identifier": "2",
           "position": {
             "start": {
               "line": 3,
@@ -114,12 +114,10 @@
           "column": 51
         }
       }
-    }
-  ],
-  "footnotes": {
-    "1": {
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "1",
+      "identifier": "1",
       "children": [
         {
           "type": "paragraph",
@@ -182,8 +180,8 @@
               }
             },
             {
-              "type": "footnote",
-              "id": "3",
+              "type": "footnoteReference",
+              "identifier": "3",
               "position": {
                 "start": {
                   "line": 5,
@@ -297,9 +295,9 @@
         }
       }
     },
-    "2": {
+    {
       "type": "footnoteDefinition",
-      "id": "2",
+      "identifier": "2",
       "children": [
         {
           "type": "paragraph",
@@ -309,11 +307,11 @@
               "value": "Nam dictum sapien nec sem ultrices fermentum. Nulla ",
               "position": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 7
                 },
                 "end": {
-                  "line": 8,
+                  "line": 9,
                   "column": 59
                 }
               }
@@ -326,11 +324,11 @@
                   "value": "facilisi",
                   "position": {
                     "start": {
-                      "line": 8,
+                      "line": 9,
                       "column": 61
                     },
                     "end": {
-                      "line": 8,
+                      "line": 9,
                       "column": 69
                     }
                   }
@@ -338,11 +336,11 @@
               ],
               "position": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 59
                 },
                 "end": {
-                  "line": 8,
+                  "line": 9,
                   "column": 71
                 }
               }
@@ -352,11 +350,11 @@
               "value": ". In et feugiat massa.",
               "position": {
                 "start": {
-                  "line": 8,
+                  "line": 9,
                   "column": 71
                 },
                 "end": {
-                  "line": 8,
+                  "line": 9,
                   "column": 93
                 }
               }
@@ -364,11 +362,11 @@
           ],
           "position": {
             "start": {
-              "line": 8,
+              "line": 9,
               "column": 7
             },
             "end": {
-              "line": 8,
+              "line": 9,
               "column": 93
             }
           }
@@ -376,18 +374,18 @@
       ],
       "position": {
         "start": {
-          "line": 8,
+          "line": 9,
           "column": 1
         },
         "end": {
-          "line": 8,
+          "line": 9,
           "column": 93
         }
       }
     },
-    "3": {
+    {
       "type": "footnoteDefinition",
-      "id": "3",
+      "identifier": "3",
       "children": [
         {
           "type": "paragraph",
@@ -397,11 +395,11 @@
               "value": "Nunc dapibus ipsum ut mi ",
               "position": {
                 "start": {
-                  "line": 9,
+                  "line": 11,
                   "column": 7
                 },
                 "end": {
-                  "line": 9,
+                  "line": 11,
                   "column": 32
                 }
               }
@@ -414,11 +412,11 @@
                   "value": "ultrices",
                   "position": {
                     "start": {
-                      "line": 9,
+                      "line": 11,
                       "column": 33
                     },
                     "end": {
-                      "line": 9,
+                      "line": 11,
                       "column": 41
                     }
                   }
@@ -426,11 +424,11 @@
               ],
               "position": {
                 "start": {
-                  "line": 9,
+                  "line": 11,
                   "column": 32
                 },
                 "end": {
-                  "line": 9,
+                  "line": 11,
                   "column": 42
                 }
               }
@@ -440,11 +438,11 @@
               "value": ", non euismod velit pretium.",
               "position": {
                 "start": {
-                  "line": 9,
+                  "line": 11,
                   "column": 42
                 },
                 "end": {
-                  "line": 9,
+                  "line": 11,
                   "column": 70
                 }
               }
@@ -452,11 +450,11 @@
           ],
           "position": {
             "start": {
-              "line": 9,
+              "line": 11,
               "column": 7
             },
             "end": {
-              "line": 9,
+              "line": 11,
               "column": 70
             }
           }
@@ -464,23 +462,23 @@
       ],
       "position": {
         "start": {
-          "line": 9,
+          "line": 11,
           "column": 1
         },
         "end": {
-          "line": 9,
+          "line": 11,
           "column": 70
         }
       }
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,
       "column": 1
     },
     "end": {
-      "line": 10,
+      "line": 12,
       "column": 1
     }
   }

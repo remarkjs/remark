@@ -111,7 +111,7 @@ commonmark.heading =
 rules.lineHeading =
     /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/;
 
-rules.linkDefinition =
+rules.definition =
     /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/;
 
 rules.bullet = /(?:[*+-]|\d+\.)/;
@@ -145,7 +145,7 @@ rules.list = new RegExp(
          * Modified Link Definition:
          */
 
-        '(?=\\n+' + cleanExpression(rules.linkDefinition) + ')' +
+        '(?=\\n+' + cleanExpression(rules.definition) + ')' +
         '|' +
 
         '\\n{2,}(?![ \\t])(?!\\1' +
@@ -180,7 +180,7 @@ rules.blockquote = new RegExp(
                 '[ \\t]*>' +
             ')' +
             '(?!' +
-                cleanExpression(rules.linkDefinition) +
+                cleanExpression(rules.definition) +
             ')' +
             '[^\\n]+' +
         ')' +
@@ -244,7 +244,7 @@ rules.paragraph = new RegExp(
             '|' +
             cleanExpression(rules.lineHeading) +
             '|' +
-            cleanExpression(rules.linkDefinition) +
+            cleanExpression(rules.definition) +
             '|' +
             cleanExpression(rules.blockquote) +
             '|' +
@@ -431,7 +431,7 @@ rules.link = new RegExp(
     '\\s*\\)'
 );
 
-rules.invalidLink = new RegExp(
+rules.shortcutReference = new RegExp(
     '^(' +
         '!?\\[' +
     ')' +
@@ -439,13 +439,13 @@ rules.invalidLink = new RegExp(
         '(?:' +
             '\\\\[\\s\\S]' +
             '|' +
-            '[\\s\\S]' +
+            '[^\\[\\]]' +
         ')+?' +
     ')' +
     '\\]'
 );
 
-rules.referenceLink = new RegExp(
+rules.reference = new RegExp(
     '^(' +
         '!?\\[' +
     ')' +
@@ -455,12 +455,12 @@ rules.referenceLink = new RegExp(
     '\\]' +
     '\\s*\\[' +
     '(' +
-        groupContent('\\]') +
+        groupContent('\\]', '\\[\\]') +
     ')' +
     '\\]'
 );
 
-commonmark.referenceLink = new RegExp(
+commonmark.reference = new RegExp(
     '^(' +
         '!?\\[' +
     ')' +
@@ -510,7 +510,7 @@ pedantic.emphasis =
 function commonmarkParagraph(expression) {
     return new RegExp(expression.source
         .replace(cleanExpression(rules.lineHeading) + '|', '')
-        .replace(cleanExpression(rules.linkDefinition) + '|', '')
+        .replace(cleanExpression(rules.definition) + '|', '')
         .replace(/\[ \\t\]\*/g, function () {
             return '\\ {0,3}';
         })

@@ -392,12 +392,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./world.html \"and \"matching delimiters\"\")",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 2
+                },
+                "end": {
+                  "line": 19,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 19,
               "column": 1
+            },
+            "end": {
+              "line": 19,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html \"and \"matching delimiters\"\")",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 8
             },
             "end": {
               "line": 19,
@@ -421,12 +452,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./world.html \"and \"mismatched delimiters\")",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 21,
+                  "column": 2
+                },
+                "end": {
+                  "line": 21,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 21,
               "column": 1
+            },
+            "end": {
+              "line": 21,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html \"and \"mismatched delimiters\")",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 8
             },
             "end": {
               "line": 21,
@@ -664,12 +726,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./world.html 'and 'matching delimiters'')",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 33,
+                  "column": 2
+                },
+                "end": {
+                  "line": 33,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 33,
               "column": 1
+            },
+            "end": {
+              "line": 33,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html 'and 'matching delimiters'')",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 8
             },
             "end": {
               "line": 33,
@@ -693,12 +786,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[Hello](./world.html 'and 'mismatched delimiters')",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Hello",
+              "position": {
+                "start": {
+                  "line": 35,
+                  "column": 2
+                },
+                "end": {
+                  "line": 35,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 35,
               "column": 1
+            },
+            "end": {
+              "line": 35,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html 'and 'mismatched delimiters')",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 8
             },
             "end": {
               "line": 35,
@@ -1271,12 +1395,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./world.png \"and \"matching delimiters\"\")",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 63,
               "column": 1
+            },
+            "end": {
+              "line": 63,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png \"and \"matching delimiters\"\")",
+          "position": {
+            "start": {
+              "line": 63,
+              "column": 9
             },
             "end": {
               "line": 63,
@@ -1300,12 +1440,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./world.png \"and \"mismatched delimiters\")",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 65,
               "column": 1
+            },
+            "end": {
+              "line": 65,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png \"and \"mismatched delimiters\")",
+          "position": {
+            "start": {
+              "line": 65,
+              "column": 9
             },
             "end": {
               "line": 65,
@@ -1483,12 +1639,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./world.png 'and 'matching delimiters'')",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 77,
               "column": 1
+            },
+            "end": {
+              "line": 77,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png 'and 'matching delimiters'')",
+          "position": {
+            "start": {
+              "line": 77,
+              "column": 9
             },
             "end": {
               "line": 77,
@@ -1512,12 +1684,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![Hello](./world.png 'and 'mismatched delimiters')",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
+          "alt": "Hello",
           "position": {
             "start": {
               "line": 79,
               "column": 1
+            },
+            "end": {
+              "line": 79,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png 'and 'mismatched delimiters')",
+          "position": {
+            "start": {
+              "line": 79,
+              "column": 9
             },
             "end": {
               "line": 79,

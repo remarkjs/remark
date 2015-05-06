@@ -20,8 +20,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "WIKI",
+          "type": "footnoteReference",
+          "identifier": "wiki",
           "position": {
             "start": {
               "line": 1,
@@ -63,8 +63,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "WIKI",
+          "type": "footnoteReference",
+          "identifier": "wiki",
           "position": {
             "start": {
               "line": 3,
@@ -130,12 +130,10 @@
           "column": 27
         }
       }
-    }
-  ],
-  "footnotes": {
-    "WIKI": {
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "WIKI",
+      "identifier": "wiki",
       "children": [
         {
           "type": "paragraph",
@@ -266,7 +264,7 @@
         }
       }
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,

@@ -5,9 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "there",
-          "href": "/url",
+          "type": "linkReference",
+          "identifier": "hi",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -44,6 +44,22 @@
         "end": {
           "line": 1,
           "column": 5
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "hi",
+      "title": "there",
+      "link": "/url",
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 19
         }
       }
     }

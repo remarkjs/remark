@@ -125,12 +125,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[World](<> (World!)).",
+          "type": "linkReference",
+          "identifier": "world",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "World",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 2
+                },
+                "end": {
+                  "line": 5,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 5,
               "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<> (World!)).",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8
             },
             "end": {
               "line": 5,
@@ -244,12 +275,28 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "![World](<> (World!)).",
+          "type": "imageReference",
+          "identifier": "world",
+          "referenceType": "shortcut",
+          "alt": "World",
           "position": {
             "start": {
               "line": 11,
               "column": 1
+            },
+            "end": {
+              "line": 11,
+              "column": 9
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "(<> (World!)).",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 9
             },
             "end": {
               "line": 11,

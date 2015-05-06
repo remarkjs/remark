@@ -424,11 +424,101 @@
       "children": [
         {
           "type": "text",
-          "value": "hello [world][how]\n[how]: /are/you",
+          "value": "hello ",
           "position": {
             "start": {
               "line": 32,
               "column": 1
+            },
+            "end": {
+              "line": 32,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "how",
+          "referenceType": "full",
+          "children": [
+            {
+              "type": "text",
+              "value": "world",
+              "position": {
+                "start": {
+                  "line": 32,
+                  "column": 8
+                },
+                "end": {
+                  "line": 32,
+                  "column": 13
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 32,
+              "column": 7
+            },
+            "end": {
+              "line": 32,
+              "column": 19
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "\n",
+          "position": {
+            "start": {
+              "line": 32,
+              "column": 19
+            },
+            "end": {
+              "line": 33,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "how",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "how",
+              "position": {
+                "start": {
+                  "line": 33,
+                  "column": 2
+                },
+                "end": {
+                  "line": 33,
+                  "column": 5
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1
+            },
+            "end": {
+              "line": 33,
+              "column": 6
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ": /are/you",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 6
             },
             "end": {
               "line": 33,

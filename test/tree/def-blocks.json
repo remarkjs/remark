@@ -37,9 +37,9 @@
           "type": "paragraph",
           "children": [
             {
-              "type": "link",
-              "title": null,
-              "href": "foo",
+              "type": "linkReference",
+              "identifier": "1",
+              "referenceType": "shortcut",
               "children": [
                 {
                   "type": "text",
@@ -163,6 +163,22 @@
       }
     },
     {
+      "type": "definition",
+      "identifier": "2",
+      "title": null,
+      "link": "hello",
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 11
+        }
+      }
+    },
+    {
       "type": "list",
       "ordered": false,
       "start": null,
@@ -223,12 +239,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[3]: hello",
+                  "type": "linkReference",
+                  "identifier": "3",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "3",
+                      "position": {
+                        "start": {
+                          "line": 11,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 11,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 11,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 11,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": ": hello",
+                  "position": {
+                    "start": {
+                      "line": 11,
+                      "column": 6
                     },
                     "end": {
                       "line": 11,
@@ -337,6 +384,22 @@
       }
     },
     {
+      "type": "definition",
+      "identifier": "4",
+      "title": null,
+      "link": "hello",
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 11
+        }
+      }
+    },
+    {
       "type": "blockquote",
       "children": [
         {
@@ -367,7 +430,38 @@
               "column": 6
             }
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1
         },
+        "end": {
+          "line": 19,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "1",
+      "title": null,
+      "link": "foo",
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1
+        },
+        "end": {
+          "line": 20,
+          "column": 9
+        }
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
         {
           "type": "paragraph",
           "children": [
@@ -400,7 +494,7 @@
       ],
       "position": {
         "start": {
-          "line": 18,
+          "line": 21,
           "column": 1
         },
         "end": {

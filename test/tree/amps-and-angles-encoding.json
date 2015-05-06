@@ -164,9 +164,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://example.com/?foo=1&bar=2",
+          "type": "linkReference",
+          "identifier": "1",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -238,9 +238,9 @@
           }
         },
         {
-          "type": "link",
-          "title": "AT&T",
-          "href": "http://att.com/",
+          "type": "linkReference",
+          "identifier": "2",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -439,6 +439,38 @@
         "end": {
           "line": 17,
           "column": 48
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "1",
+      "title": null,
+      "link": "http://example.com/?foo=1&bar=2",
+      "position": {
+        "start": {
+          "line": 20,
+          "column": 1
+        },
+        "end": {
+          "line": 20,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "2",
+      "title": "AT&T",
+      "link": "http://att.com/",
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 29
         }
       }
     }

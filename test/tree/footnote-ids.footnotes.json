@@ -20,7 +20,22 @@
         },
         {
           "type": "footnote",
-          "id": "2",
+          "children": [
+            {
+              "type": "text",
+              "value": "the generated",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 42
+                },
+                "end": {
+                  "line": 1,
+                  "column": 55
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 1,
@@ -47,8 +62,8 @@
           }
         },
         {
-          "type": "footnote",
-          "id": "1",
+          "type": "footnoteReference",
+          "identifier": "1",
           "position": {
             "start": {
               "line": 1,
@@ -85,12 +100,10 @@
           "column": 83
         }
       }
-    }
-  ],
-  "footnotes": {
-    "1": {
+    },
+    {
       "type": "footnoteDefinition",
-      "id": "1",
+      "identifier": "1",
       "children": [
         {
           "type": "paragraph",
@@ -160,43 +173,8 @@
           "column": 118
         }
       }
-    },
-    "2": {
-      "type": "footnoteDefinition",
-      "id": "2",
-      "children": [
-        {
-          "type": "paragraph",
-          "children": [
-            {
-              "type": "text",
-              "value": "the generated",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 28
-                },
-                "end": {
-                  "line": 1,
-                  "column": 41
-                }
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 28
-            },
-            "end": {
-              "line": 1,
-              "column": 41
-            }
-          }
-        }
-      ]
     }
-  },
+  ],
   "position": {
     "start": {
       "line": 1,

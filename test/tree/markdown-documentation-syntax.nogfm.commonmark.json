@@ -1334,9 +1334,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "/projects/markdown/syntax.text",
+          "type": "linkReference",
+          "identifier": "src",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1387,6 +1387,22 @@
         "end": {
           "line": 35,
           "column": 63
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "src",
+      "title": null,
+      "link": "/projects/markdown/syntax.text",
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1
+        },
+        "end": {
+          "line": 37,
+          "column": 40
         }
       }
     },
@@ -1478,9 +1494,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://docutils.sourceforge.net/mirror/setext.html",
+          "type": "linkReference",
+          "identifier": "1",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1523,9 +1539,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://www.aaronsw.com/2002/atx/",
+          "type": "linkReference",
+          "identifier": "2",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1568,9 +1584,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://textism.com/tools/textile/",
+          "type": "linkReference",
+          "identifier": "3",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1613,9 +1629,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://docutils.sourceforge.net/rst.html",
+          "type": "linkReference",
+          "identifier": "4",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1658,9 +1674,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://www.triptico.com/software/grutatxt.html",
+          "type": "linkReference",
+          "identifier": "5",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1703,9 +1719,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://ettext.taint.org/doc/",
+          "type": "linkReference",
+          "identifier": "6",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1756,6 +1772,102 @@
         "end": {
           "line": 53,
           "column": 69
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "1",
+      "title": null,
+      "link": "http://docutils.sourceforge.net/mirror/setext.html",
+      "position": {
+        "start": {
+          "line": 55,
+          "column": 1
+        },
+        "end": {
+          "line": 55,
+          "column": 58
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "2",
+      "title": null,
+      "link": "http://www.aaronsw.com/2002/atx/",
+      "position": {
+        "start": {
+          "line": 56,
+          "column": 1
+        },
+        "end": {
+          "line": 56,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "3",
+      "title": null,
+      "link": "http://textism.com/tools/textile/",
+      "position": {
+        "start": {
+          "line": 57,
+          "column": 1
+        },
+        "end": {
+          "line": 57,
+          "column": 41
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "4",
+      "title": null,
+      "link": "http://docutils.sourceforge.net/rst.html",
+      "position": {
+        "start": {
+          "line": 58,
+          "column": 1
+        },
+        "end": {
+          "line": 58,
+          "column": 48
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "5",
+      "title": null,
+      "link": "http://www.triptico.com/software/grutatxt.html",
+      "position": {
+        "start": {
+          "line": 59,
+          "column": 1
+        },
+        "end": {
+          "line": 59,
+          "column": 54
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "6",
+      "title": null,
+      "link": "http://ettext.taint.org/doc/",
+      "position": {
+        "start": {
+          "line": 60,
+          "column": 1
+        },
+        "end": {
+          "line": 60,
+          "column": 36
         }
       }
     },
@@ -3707,9 +3819,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "#blockquote",
+          "type": "linkReference",
+          "identifier": "bq",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -3752,9 +3864,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "#list",
+          "type": "linkReference",
+          "identifier": "l",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -3809,6 +3921,38 @@
       }
     },
     {
+      "type": "definition",
+      "identifier": "bq",
+      "title": null,
+      "link": "#blockquote",
+      "position": {
+        "start": {
+          "line": 204,
+          "column": 1
+        },
+        "end": {
+          "line": 204,
+          "column": 20
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "l",
+      "title": null,
+      "link": "#list",
+      "position": {
+        "start": {
+          "line": 205,
+          "column": 1
+        },
+        "end": {
+          "line": 205,
+          "column": 14
+        }
+      }
+    },
+    {
       "type": "html",
       "value": "<h3 id=\"header\">Headers</h3>",
       "position": {
@@ -3840,9 +3984,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://docutils.sourceforge.net/mirror/setext.html",
+          "type": "linkReference",
+          "identifier": "1",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -3885,9 +4029,9 @@
           }
         },
         {
-          "type": "link",
-          "title": null,
-          "href": "http://www.aaronsw.com/2002/atx/",
+          "type": "linkReference",
+          "identifier": "2",
+          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -6349,11 +6493,56 @@
       "children": [
         {
           "type": "text",
-          "value": "In both styles, the link text is delimited by [square brackets].",
+          "value": "In both styles, the link text is delimited by ",
           "position": {
             "start": {
               "line": 549,
               "column": 1
+            },
+            "end": {
+              "line": 549,
+              "column": 47
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "square brackets",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "square brackets",
+              "position": {
+                "start": {
+                  "line": 549,
+                  "column": 48
+                },
+                "end": {
+                  "line": 549,
+                  "column": 63
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 549,
+              "column": 47
+            },
+            "end": {
+              "line": 549,
+              "column": 64
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 549,
+              "column": 64
             },
             "end": {
               "line": 549,
@@ -7365,11 +7554,56 @@
       "children": [
         {
           "type": "text",
-          "value": "And then define the link:\n\t\n\t[Daring Fireball]: http://daringfireball.net/",
+          "value": "And then define the link:\n\t\n\t",
           "position": {
             "start": {
               "line": 633,
               "column": 1
+            },
+            "end": {
+              "line": 635,
+              "column": 2
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "daring fireball",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "Daring Fireball",
+              "position": {
+                "start": {
+                  "line": 635,
+                  "column": 3
+                },
+                "end": {
+                  "line": 635,
+                  "column": 18
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 635,
+              "column": 2
+            },
+            "end": {
+              "line": 635,
+              "column": 19
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ": http://daringfireball.net/",
+          "position": {
+            "start": {
+              "line": 635,
+              "column": 19
             },
             "end": {
               "line": 635,

@@ -7,11 +7,42 @@
       "children": [
         {
           "type": "text",
-          "value": "International Radiotelephony Spelling Alphabet[^wiki]",
+          "value": "International Radiotelephony Spelling Alphabet",
           "position": {
             "start": {
               "line": 1,
               "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 49
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^wiki",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^wiki",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 50
+                },
+                "end": {
+                  "line": 1,
+                  "column": 55
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 49
             },
             "end": {
               "line": 1,
@@ -36,11 +67,56 @@
       "children": [
         {
           "type": "text",
-          "value": "Here's the NATO phonetic alphabet[^wiki]: Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliet, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, and Zulu.",
+          "value": "Here's the NATO phonetic alphabet",
           "position": {
             "start": {
               "line": 3,
               "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 34
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^wiki",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^wiki",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 35
+                },
+                "end": {
+                  "line": 3,
+                  "column": 40
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 34
+            },
+            "end": {
+              "line": 3,
+              "column": 41
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ": Alfa, Bravo, Charlie, Delta, Echo, Foxtrot, Golf, Hotel, India, Juliet, Kilo, Lima, Mike, November, Oscar, Papa, Quebec, Romeo, Sierra, Tango, Uniform, Victor, Whiskey, X-ray, Yankee, and Zulu.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 41
             },
             "end": {
               "line": 3,
@@ -93,12 +169,43 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[^wiki]: Read more about it on wikipedia: ",
+          "type": "linkReference",
+          "identifier": "^wiki",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^wiki",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 2
+                },
+                "end": {
+                  "line": 7,
+                  "column": 7
+                }
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 7,
               "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 8
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ": Read more about it on wikipedia: ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 8
             },
             "end": {
               "line": 7,

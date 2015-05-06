@@ -45,8 +45,25 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 4,
@@ -90,8 +107,25 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 5,
@@ -135,8 +169,25 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 7,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 7,
@@ -180,8 +231,25 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 8,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 8,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 8,
@@ -273,12 +341,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ] ",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 13,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 13,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 13,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 13,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ",
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 6
                     },
                     "end": {
                       "line": 13,
@@ -318,12 +417,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t] ",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 14,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 14,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ",
+                  "position": {
+                    "start": {
+                      "line": 14,
+                      "column": 6
                     },
                     "end": {
                       "line": 14,
@@ -363,12 +493,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x] ",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 16,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 16,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 16,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 7
                     },
                     "end": {
                       "line": 16,
@@ -408,12 +569,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X] ",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 17,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 17,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 17,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 17,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " ",
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 7
                     },
                     "end": {
                       "line": 17,
@@ -501,12 +693,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]\t",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 22,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 22,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t",
+                  "position": {
+                    "start": {
+                      "line": 22,
+                      "column": 6
                     },
                     "end": {
                       "line": 22,
@@ -546,12 +769,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]\t",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 23,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 23,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 23,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 23,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t",
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 6
                     },
                     "end": {
                       "line": 23,
@@ -591,12 +845,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]\t",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 25,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 25,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 25,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 25,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t",
+                  "position": {
+                    "start": {
+                      "line": 25,
+                      "column": 7
                     },
                     "end": {
                       "line": 25,
@@ -636,12 +921,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]\t",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 26,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 26,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 26,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 26,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t",
+                  "position": {
+                    "start": {
+                      "line": 26,
+                      "column": 7
                     },
                     "end": {
                       "line": 26,
@@ -729,12 +1045,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 31,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 31,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 31,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 31,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "Hello;",
+                  "position": {
+                    "start": {
+                      "line": 31,
+                      "column": 6
                     },
                     "end": {
                       "line": 31,
@@ -774,12 +1121,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]World;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 32,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 32,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 32,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 32,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "World;",
+                  "position": {
+                    "start": {
+                      "line": 32,
+                      "column": 6
                     },
                     "end": {
                       "line": 32,
@@ -819,12 +1197,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]Foo.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 34,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 34,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 34,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 34,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "Foo.",
+                  "position": {
+                    "start": {
+                      "line": 34,
+                      "column": 7
                     },
                     "end": {
                       "line": 34,
@@ -864,12 +1273,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]Bar",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 35,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 35,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 35,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 35,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "Bar",
+                  "position": {
+                    "start": {
+                      "line": 35,
+                      "column": 7
                     },
                     "end": {
                       "line": 35,
@@ -957,12 +1397,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ] Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 40,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 40,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 40,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 40,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Hello;",
+                  "position": {
+                    "start": {
+                      "line": 40,
+                      "column": 6
                     },
                     "end": {
                       "line": 40,
@@ -1002,12 +1473,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t] World;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 41,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 41,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 41,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 41,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " World;",
+                  "position": {
+                    "start": {
+                      "line": 41,
+                      "column": 6
                     },
                     "end": {
                       "line": 41,
@@ -1047,12 +1549,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x] Foo.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 43,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 43,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 43,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 43,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Foo.",
+                  "position": {
+                    "start": {
+                      "line": 43,
+                      "column": 7
                     },
                     "end": {
                       "line": 43,
@@ -1092,12 +1625,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X] World :D",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 44,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 44,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 44,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 44,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " World :D",
+                  "position": {
+                    "start": {
+                      "line": 44,
+                      "column": 7
                     },
                     "end": {
                       "line": 44,
@@ -1185,12 +1749,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]\tHello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 49,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 49,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 49,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 49,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\tHello;",
+                  "position": {
+                    "start": {
+                      "line": 49,
+                      "column": 6
                     },
                     "end": {
                       "line": 49,
@@ -1230,12 +1825,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]\tWorld;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 50,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 50,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 50,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 50,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\tWorld;",
+                  "position": {
+                    "start": {
+                      "line": 50,
+                      "column": 6
                     },
                     "end": {
                       "line": 50,
@@ -1275,12 +1901,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]\tFoo.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 52,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 52,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 52,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 52,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\tFoo.",
+                  "position": {
+                    "start": {
+                      "line": 52,
+                      "column": 7
                     },
                     "end": {
                       "line": 52,
@@ -1320,12 +1977,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]\tHello.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 53,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 53,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 53,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\tHello.",
+                  "position": {
+                    "start": {
+                      "line": 53,
+                      "column": 7
                     },
                     "end": {
                       "line": 53,
@@ -1413,12 +2101,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]     Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 58,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 58,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 58,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 58,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "     Hello;",
+                  "position": {
+                    "start": {
+                      "line": 58,
+                      "column": 6
                     },
                     "end": {
                       "line": 58,
@@ -1458,12 +2177,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]     World;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 59,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 59,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 59,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 59,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "     World;",
+                  "position": {
+                    "start": {
+                      "line": 59,
+                      "column": 6
                     },
                     "end": {
                       "line": 59,
@@ -1503,12 +2253,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]    Foo.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 61,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 61,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 61,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 61,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "    Foo.",
+                  "position": {
+                    "start": {
+                      "line": 61,
+                      "column": 7
                     },
                     "end": {
                       "line": 61,
@@ -1548,12 +2329,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]    Bar.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 62,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 62,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 62,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 62,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "    Bar.",
+                  "position": {
+                    "start": {
+                      "line": 62,
+                      "column": 7
                     },
                     "end": {
                       "line": 62,
@@ -1641,12 +2453,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]\t\tHello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 67,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 67,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 67,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 67,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t\tHello;",
+                  "position": {
+                    "start": {
+                      "line": 67,
+                      "column": 6
                     },
                     "end": {
                       "line": 67,
@@ -1686,12 +2529,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]\t\tWorld;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 68,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 68,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 68,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 68,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t\tWorld;",
+                  "position": {
+                    "start": {
+                      "line": 68,
+                      "column": 6
                     },
                     "end": {
                       "line": 68,
@@ -1731,12 +2605,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]\t\tFoo.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 70,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 70,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 70,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 70,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t\tFoo.",
+                  "position": {
+                    "start": {
+                      "line": 70,
+                      "column": 7
                     },
                     "end": {
                       "line": 70,
@@ -1776,12 +2681,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]\t\tBar.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 71,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 71,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 71,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 71,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t\tBar.",
+                  "position": {
+                    "start": {
+                      "line": 71,
+                      "column": 7
                     },
                     "end": {
                       "line": 71,
@@ -1869,12 +2805,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ] \t    Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 76,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 76,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 76,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 76,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " \t    Hello;",
+                  "position": {
+                    "start": {
+                      "line": 76,
+                      "column": 6
                     },
                     "end": {
                       "line": 76,
@@ -1914,12 +2881,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[x]\t    World;",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "x",
+                      "position": {
+                        "start": {
+                          "line": 78,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 78,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 78,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 78,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t    World;",
+                  "position": {
+                    "start": {
+                      "line": 78,
+                      "column": 7
                     },
                     "end": {
                       "line": 78,
@@ -1959,12 +2957,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t]     \tHello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t",
+                      "position": {
+                        "start": {
+                          "line": 80,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 80,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 80,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 80,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "     \tHello;",
+                  "position": {
+                    "start": {
+                      "line": 80,
+                      "column": 6
                     },
                     "end": {
                       "line": 80,
@@ -2004,12 +3033,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ ]\t   \tWorld.",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " ",
+                      "position": {
+                        "start": {
+                          "line": 81,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 81,
+                          "column": 5
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 81,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 81,
+                      "column": 6
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t   \tWorld.",
+                  "position": {
+                    "start": {
+                      "line": 81,
+                      "column": 6
                     },
                     "end": {
                       "line": 81,
@@ -2049,12 +3109,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[X]\t \tBar.",
+                  "type": "linkReference",
+                  "identifier": "x",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "X",
+                      "position": {
+                        "start": {
+                          "line": 83,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 83,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 83,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 83,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\t \tBar.",
+                  "position": {
+                    "start": {
+                      "line": 83,
+                      "column": 7
                     },
                     "end": {
                       "line": 83,
@@ -2142,12 +3233,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\n] Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n",
+                      "position": {
+                        "start": {
+                          "line": 88,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 89,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 88,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 89,
+                      "column": 2
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Hello;",
+                  "position": {
+                    "start": {
+                      "line": 89,
+                      "column": 2
                     },
                     "end": {
                       "line": 89,
@@ -2187,12 +3309,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\n] Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\n",
+                      "position": {
+                        "start": {
+                          "line": 91,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 92,
+                          "column": 1
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 91,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 92,
+                      "column": 2
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Hello;",
+                  "position": {
+                    "start": {
+                      "line": 92,
+                      "column": 2
                     },
                     "end": {
                       "line": 92,
@@ -2280,12 +3433,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[  ] Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "  ",
+                      "position": {
+                        "start": {
+                          "line": 97,
+                          "column": 4
+                        },
+                        "end": {
+                          "line": 97,
+                          "column": 6
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 97,
                       "column": 3
+                    },
+                    "end": {
+                      "line": 97,
+                      "column": 7
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Hello;",
+                  "position": {
+                    "start": {
+                      "line": 97,
+                      "column": 7
                     },
                     "end": {
                       "line": 97,
@@ -2325,12 +3509,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ \n] World;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " \n",
+                      "position": {
+                        "start": {
+                          "line": 99,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 100,
+                          "column": 2
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 99,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 100,
+                      "column": 3
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " World;",
+                  "position": {
+                    "start": {
+                      "line": 100,
+                      "column": 3
                     },
                     "end": {
                       "line": 100,
@@ -2370,12 +3585,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[\t\t] Hello;",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "\t\t",
+                      "position": {
+                        "start": {
+                          "line": 101,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 101,
+                          "column": 7
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 101,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 101,
+                      "column": 8
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " Hello;",
+                  "position": {
+                    "start": {
+                      "line": 101,
+                      "column": 8
                     },
                     "end": {
                       "line": 101,
@@ -2415,12 +3661,43 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "text",
-                  "value": "[ \t ] World.",
+                  "type": "linkReference",
+                  "identifier": " ",
+                  "referenceType": "shortcut",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": " \t ",
+                      "position": {
+                        "start": {
+                          "line": 102,
+                          "column": 5
+                        },
+                        "end": {
+                          "line": 102,
+                          "column": 8
+                        }
+                      }
+                    }
+                  ],
                   "position": {
                     "start": {
                       "line": 102,
                       "column": 4
+                    },
+                    "end": {
+                      "line": 102,
+                      "column": 9
+                    }
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": " World.",
+                  "position": {
+                    "start": {
+                      "line": 102,
+                      "column": 9
                     },
                     "end": {
                       "line": 102,

@@ -35,13 +35,17 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
 *   [Link](#link)
 *   [Image](#image)
 *   [Footnote](#footnote)
+*   [LinkReference](#linkreference)
+*   [ImageReference](#imagereference)
+*   [FootnoteReference](#footnotereference)
+*   [Definition](#definition)
 *   [FootnoteDefinition](#footnotedefinition)
 *   [TextNode](#textnode)
 *   [Escape](#escape)
 
 ## Node
 
-[`mdast.parse()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options) returns [**Node**](#node) objects—plain vanilla objects. Every **mdast** node implements the **Node** interface.
+[`mdast.parse()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options) returns [**Node**](#node) objects—plain vanilla objects. Every **mdast** node inherits the **Node** interface.
 
 ```idl
 interface Node {
@@ -74,7 +78,7 @@ interface Position {
 
 ## Parent
 
-Most nodes implement the [**Parent**](#parent) ([**Node**](#node)) interface: block/inline nodes which accept other nodes as children.
+Most nodes inherit the [**Parent**](#parent) ([**Node**](#node)) interface: block/inline nodes which accept other nodes as children.
 
 ```idl
 interface Parent <: Node {
@@ -84,7 +88,7 @@ interface Parent <: Node {
 
 ## Text
 
-Most others implement [**Text**](#text) ([**Node**](#node)): nodes which accept a value.
+Most others inherit [**Text**](#text) ([**Node**](#node)): nodes which accept a value.
 
 ```idl
 interface Text <: Node {
@@ -94,12 +98,11 @@ interface Text <: Node {
 
 ## Root
 
-[**Root**](#root) ([**Parent**](#parent)) houses all nodes. In addition, it holds a `footnote` property, housing [**FootnoteDefinition**](#footnotedefinition)s by their IDs (if [`footnotes: true`](https://github.com/wooorm/mdast/blob/master/doc/Options.md#footnotes), that is).
+[**Root**](#root) ([**Parent**](#parent)) houses all nodes.
 
 ```idl
 interface Root <: Parent {
     type: "root";
-    footnotes: { FootnoteDefinition } | null;
 }
 ```
 
@@ -177,9 +180,9 @@ interface HTML <: Text {
 
 ## List
 
-[**List**](#list) ([**Parent**](#parent)) contains multiple [**ListItem**](#listitem)s.
+[**List**](#list) ([**Parent**](#parent)) contains [**ListItem**](#listitem)s.
 
-The `start` property is populated with the starting number of the list, when `ordered: true`, or `null` otherwise.
+The `start` property contains with the starting number of the list, when `ordered: true`, or `null` otherwise.
 
 When all list items have `loose: false`, the list’s `loose` property is also `false`. Otherwise, `loose: true`.
 
@@ -194,9 +197,9 @@ interface List <: Parent {
 
 ## ListItem
 
-[**ListItem**](#listitem) ([**Parent**](#parent)) is contained by a [**List**](#list).
+[**ListItem**](#listitem) ([**Parent**](#parent)) is a child of a [**List**](#list).
 
-Loose **ListItem**s often contain multiple block-level elements.
+Loose **ListItem**s often contain more than one block-level elements.
 
 When in `gfm: true` mode, a checked property exists on **ListItem**s, either set to `true` (when checked), `false` (when unchecked), or `null` (when not containing a checkbox). See [Task Lists](https://help.github.com/articles/writing-on-github/#task-lists) on GitHub for information.
 
@@ -212,7 +215,7 @@ interface ListItem <: Parent {
 
 [**Table**](#table) ([**Parent**](#parent)) represents tabular data, with alignment. Its children are either [**TableHeader**](#tableheader) (the first child), or [**TableRow**](#tablerow) (all other children).
 
-The alignment of columns is represented in `table.align`.
+`table.align` represents the alignment of columns.
 
 ```idl
 interface Table <: Parent {
@@ -334,29 +337,75 @@ interface Image <: Node {
 
 ## Footnote
 
-[**Footnote**](#footnote) ([**Node**](#node)) represents the inline location where a marker, to some other content related to the document but outside its flow (see [**FootnoteDefinition**](#footnotedefinition)), should appear.
+[**Footnote**](#footnote) ([**Parent**](#parent)) represents an inline marker, whose content relates to the document but is outside its flow.
 
 ```idl
-interface Footnote <: Node {
+interface Footnote <: Parent {
     type: "footnote";
-    id: string;
+}
+```
+
+## LinkReference
+
+[**Link**](#link) ([**Parent**](#parent)) represents a humble hyperlink, its `href` and `title` defined somewhere else in the document by a [**Definition**](#definition).
+
+```idl
+interface LinkReference <: Parent {
+    type: "linkReference";
+    identifier: string;
+}
+```
+
+## ImageReference
+
+[**Link**](#link) ([**Node**](#node)) represents a figurative figure, its `src` and `title`  defined somewhere else in the document by a [**Definition**](#definition).
+
+```idl
+interface ImageReference <: Node {
+    type: "imageReference";
+    alt: string | null;
+    identifier: string;
+}
+```
+
+## FootnoteReference
+
+[**FootnoteReference**](#footnotereference) ([**Node**](#node)) is like  [**Footnote**](#footnote), but its content is already outside the documents flow: placed in a  [**FootnoteDefinition**](#footnotedefinition).
+
+```idl
+interface FootnoteReference <: Node {
+    type: "footnoteReference";
+    identifier: string;
+}
+```
+
+## Definition
+
+[**Definition**](#definition) ([**Node**](#node)) represents the definition (i.e., location and title) of a [**LinkReference**](#linkreference) or an [**ImageReference**](#imagereference).
+
+```idl
+interface Definition <: Node {
+    type: "definition";
+    identifier: string;
+    title: string | null;
+    link: string;
 }
 ```
 
 ## FootnoteDefinition
 
-[**FootnoteDefinition**](#footnotedefinition) ([**Parent**](#parent)) represents the definition of a footnote, referenced somewhere in the document.
+[**FootnoteDefinition**](#footnotedefinition) ([**Parent**](#parent)) represents the definition (i.e., content) of a  [**FootnoteReference**](#footnotereference).
 
 ```idl
 interface FootnoteDefinition <: Parent {
     type: "footnoteDefinition";
-    id: string;
+    identifier: string;
 }
 ```
 
 ## TextNode
 
-[**TextNode**](#textnode) ([**Text**](#text)) represents everything that’s just text. Note that its `type` property is set to `text`, but is not to be confused with [**Text**](#text).
+[**TextNode**](#textnode) ([**Text**](#text)) represents everything that’s just text. Note that its `type` property is `text`, but it’s different from [**Text**](#text).
 
 ```idl
 interface TextNode <: Text {
@@ -366,7 +415,7 @@ interface TextNode <: Text {
 
 ## Escape
 
-[**Escape**](#escape) ([**Text**](#text)) represents an escaped symbol. Useful when writing things that might otherwise be interpreted as markdown formatting.
+[**Escape**](#escape) ([**Text**](#text)) represents an escaped symbol. Useful when writing things otherwise seen as markdown syntax.
 
 ```idl
 interface Escape <: Text {

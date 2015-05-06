@@ -124,8 +124,6 @@ Parse a markdown document, apply plugins to it, and compile it into something el
     *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
     *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/Options.md#loose-tables);
     *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/Options.md#spaced-tables);
-    *   `referenceLinks` (`boolean`, default: `false`) — See [Reference Links and Images](doc/Options.md#reference-links-and-images);
-    *   `referenceImages` (`boolean`, default: `false`) — See [Reference Links and Images](doc/Options.md#reference-links-and-images);
     *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/Options.md#fence);
     *   `fences` (`boolean`, default: `false`) — See [Fences](doc/Options.md#fences);
     *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/Options.md#list-item-bullets);

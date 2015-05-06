@@ -130,11 +130,54 @@
           "children": [
             {
               "type": "text",
-              "value": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
+              "value": "http://en.wikipedia.org/wiki/NATO",
               "position": {
                 "start": {
                   "line": 3,
                   "column": 44
+                },
+                "end": {
+                  "line": 3,
+                  "column": 77
+                }
+              }
+            },
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "phonetic",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 78
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 86
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 77
+                },
+                "end": {
+                  "line": 3,
+                  "column": 87
+                }
+              }
+            },
+            {
+              "type": "text",
+              "value": "alphabet",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 87
                 },
                 "end": {
                   "line": 3,
@@ -220,11 +263,54 @@
           "children": [
             {
               "type": "text",
-              "value": "http://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+              "value": "http://en.wikipedia.org/wiki/International",
               "position": {
                 "start": {
                   "line": 4,
                   "column": 36
+                },
+                "end": {
+                  "line": 4,
+                  "column": 78
+                }
+              }
+            },
+            {
+              "type": "emphasis",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "Phonetic",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 79
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 87
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 78
+                },
+                "end": {
+                  "line": 4,
+                  "column": 88
+                }
+              }
+            },
+            {
+              "type": "text",
+              "value": "Alphabet",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 88
                 },
                 "end": {
                   "line": 4,

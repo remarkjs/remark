@@ -109,7 +109,7 @@
                 },
                 "end": {
                   "line": 3,
-                  "column": 7
+                  "column": 9
                 }
               }
             },
@@ -118,7 +118,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell 2  ",
+                  "value": "Cell 2",
                   "position": {
                     "start": {
                       "line": 3,
@@ -126,7 +126,7 @@
                     },
                     "end": {
                       "line": 3,
-                      "column": 20
+                      "column": 18
                     }
                   }
                 }
@@ -182,7 +182,7 @@
                 },
                 "end": {
                   "line": 4,
-                  "column": 7
+                  "column": 9
                 }
               }
             },
@@ -191,7 +191,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Cell 4  ",
+                  "value": "Cell 4",
                   "position": {
                     "start": {
                       "line": 4,
@@ -199,7 +199,7 @@
                     },
                     "end": {
                       "line": 4,
-                      "column": 20
+                      "column": 18
                     }
                   }
                 }
