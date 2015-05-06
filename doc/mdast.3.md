@@ -147,8 +147,11 @@ File objects make it easy to change the directory, name, or extension of a file:
 **Parameters**
 
 *   `value` (`string`) -- Contents of the file;
+
 *   `file` (`File`) -- Existing representation, immediately returned;
+
 *   `options` (`Object`): Parts:
+
     *   `directory` (`string`, default: `''`) -- Parent directory;
     *   `filename` (`string?`, default: `null`) -- Name, without extension;
     *   `extension` (`string`, default: `'md'`) -- Extension, without dot;

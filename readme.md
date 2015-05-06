@@ -113,7 +113,9 @@ Parse a markdown document, apply plugins to it, and compile it into something el
 **Parameters**
 
 *   `value` (`string`) — Markdown document;
+
 *   `options` (`Object`) — Settings:
+
     *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
     *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
     *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
@@ -132,6 +134,7 @@ Parse a markdown document, apply plugins to it, and compile it into something el
     *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
     *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers);
     *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers).
+
 *   `done` (`function(Error?, string?)`) — Callback invoked when the output is generated with either an error, or a result. Only strictly needed when async plugins are used.
 
 All options (including the options object itself) can be `null` or `undefined` to default to their default values.
