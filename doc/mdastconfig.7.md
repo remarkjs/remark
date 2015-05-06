@@ -13,7 +13,7 @@
 *   **mdast**(1) additionally accepts configuration through a `settings` key in **mdastrc**(5) configuration files;
 *   Plug-ins can configure mdast, for example, **mdast-yaml-config** allows per-file configuration to be set through YAML front-matter.
 
-For a list of available configuration options, see the SETTINGS section below or <<https://github.com/wooorm/mdast/blob/master/doc/Options.md>>.
+For a list of available configuration options, see the SETTINGS section below or <https://github.com/wooorm/mdast/blob/master/doc/Options.md>.
 
 ### SETTINGS FOR `PROCESS`, `PARSE()`, AND `STRINGIFY()`
 
@@ -45,7 +45,7 @@ Specify directory specific settings with `.mdastrc` and `package.json` files.  S
 
 ### PARSE
 
-See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse>> for a description of these settings.
+See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse> for a description of these settings.
 
 *   `gfm` (boolean, default: true);
 *   `yaml` (boolean, default: true);
@@ -56,7 +56,7 @@ See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse>> for a d
 
 ### STRINGIFY
 
-See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify>> for a description of these settings.
+See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify> for a description of these settings.
 
 *   `setext` (boolean, default: false);
 *   `closeAtx` (boolean, default: false);
@@ -72,7 +72,7 @@ See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify>> for
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+<https://github.com/wooorm/mdast/issues>
 
 ## SEE ALSO
 
@@ -80,4 +80,4 @@ See <<https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify>> for
 
 ## AUTHOR
 
-Written by Titus Wormer <mailto:<mailto:tituswormer@gmail.com>>
+Written by Titus Wormer <mailto:tituswormer@gmail.com>

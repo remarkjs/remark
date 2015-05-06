@@ -8,7 +8,7 @@
 
 **mdast** gets its configuration from the command line and **mdastrc** files.
 
-For a list of available configuration options, see **mdast**(1) or <<https://github.com/wooorm/mdast/blob/master/doc/Options.md>>.
+For a list of available configuration options, see **mdast**(1) or <https://github.com/wooorm/mdast/blob/master/doc/Options.md>.
 
 ## FILES
 
@@ -121,7 +121,7 @@ When stringifying `Readme.md`, **mdast**(1) would use `bullet: "-"`, because `.m
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+<https://github.com/wooorm/mdast/issues>
 
 ## SEE ALSO
 
@@ -129,4 +129,4 @@ When stringifying `Readme.md`, **mdast**(1) would use `bullet: "-"`, because `.m
 
 ## AUTHOR
 
-Written by Titus Wormer <mailto:<mailto:tituswormer@gmail.com>>
+Written by Titus Wormer <mailto:tituswormer@gmail.com>

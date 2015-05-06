@@ -26,7 +26,7 @@ This is the application programming interface documentation for **mdast**.  To f
 
 ### mdast.use(plugin, options?)
 
-Change the way **mdast** functions by using a plugin.  Plugins are documented at <<https://github.com/wooorm/mdast/blob/master/doc/Plugins.md>>.
+Change the way **mdast** functions by using a plugin.  Plugins are documented at <https://github.com/wooorm/mdast/blob/master/doc/Plugins.md>.
 
 **Signatures**
 
@@ -59,7 +59,7 @@ Parse a markdown document into an abstract syntax tree.
 
 **Returns**
 
-`Object` -- Node.  Nodes are documented at <<https://github.com/wooorm/mdast/blob/master/doc/Nodes.md>>.
+`Object` -- Node.  Nodes are documented at <https://github.com/wooorm/mdast/blob/master/doc/Nodes.md>.
 
 ### mdast.run(ast, file, done?)
 
@@ -287,7 +287,7 @@ Get the filename, with extension and directory, if applicable.
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+<https://github.com/wooorm/mdast/issues>
 
 ## SEE ALSO
 
@@ -295,4 +295,4 @@ Get the filename, with extension and directory, if applicable.
 
 ## AUTHOR
 
-Written by Titus Wormer <mailto:<mailto:tituswormer@gmail.com>>
+Written by Titus Wormer <mailto:tituswormer@gmail.com>

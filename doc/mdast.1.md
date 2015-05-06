@@ -34,7 +34,7 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## BUGS
 
-<<https://github.com/wooorm/mdast/issues>>
+<https://github.com/wooorm/mdast/issues>
 
 ## SEE ALSO
 
@@ -42,4 +42,4 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## AUTHOR
 
-Written by Titus Wormer <mailto:<mailto:tituswormer@gmail.com>>
+Written by Titus Wormer <mailto:tituswormer@gmail.com>
