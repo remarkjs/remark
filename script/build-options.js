@@ -34,7 +34,7 @@ var settings = JSON.parse(fs.readFileSync('.mdastrc')).settings;
 
 sections = sections.map(function (filepath) {
     return {
-        'description': fs.readFileSync(filepath + '/Description.md', 'utf8'),
+        'description': fs.readFileSync(filepath + '/description.md', 'utf8'),
         'path': filepath,
         'options': fs.readFileSync(filepath + '/config.json', 'utf8'),
         'fixture': fs.readFileSync(filepath + '/fixture.text', 'utf8'),
