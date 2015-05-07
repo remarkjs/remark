@@ -45,14 +45,14 @@
     "man": "./man"
   },
   "devDependencies": {
-    "browserify": "^9.0.0",
+    "browserify": "^10.0.0",
     "clone": "^1.0.1",
     "diff": "^1.0.0",
-    "eslint": "^0.18.0",
+    "eslint": "^0.20.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
-    "jscs-jsdoc": "^0.4.0",
+    "jscs-jsdoc": "^1.0.0",
     "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
     "mdast-github": "^0.2.0",
