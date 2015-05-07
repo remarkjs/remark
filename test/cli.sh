@@ -79,9 +79,9 @@ it "Should fail on an invalid file"
     $COMMAND $missing > /dev/null 2>&1
     assert $? 1
 
-it "Should fail on multiple files"
+it "Should not fail on multiple files"
     $COMMAND $markdown $markdown > /dev/null 2>&1
-    assert $? 1
+    assert $? 0
 
 it "Should fail on stdin and files"
     cat $markdown | $COMMAND $markdown > /dev/null 2>&1
@@ -153,13 +153,13 @@ it "Should fail on \`--output <path>\` and multiple files"
     $COMMAND $markdown $markdownAlt --output $tmp > /dev/null 2>&1
     assert $? 1
 
-it "Should fail on missing \`-o\` and multiple files"
+it "Should NOT fail on missing \`-o\` and multiple files"
     $COMMAND $markdown $markdownAlt > /dev/null 2>&1
-    assert $? 1
+    assert $? 0
 
-it "Should fail on missing \`--output\` and multiple files"
+it "Should NOT fail on missing \`--output\` and multiple files"
     $COMMAND $markdown $markdownAlt > /dev/null 2>&1
-    assert $? 1
+    assert $? 0
 
 #
 # Multiple files and directories.

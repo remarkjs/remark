@@ -14,7 +14,7 @@ Options are as follows:
 
 *   `-h`, `--help`: Output usage information;
 *   `-V`, `--version`: Output version number;
-*   `-o`, `--output` _path_: Specify output location.  When _path_ is omitted, input files are overwritten;
+*   `-o`, `--output` _path_: Specify output.  When _path_ is omitted, input files are overwritten;
 *   `-c`, `--config-path` _path_: Specify configuration location;
 *   `-i`, `--ignore-path` _path_: Specify ignore location;
 *   `-s`, `--setting` _settings_: Specify settings;
