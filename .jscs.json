@@ -1,8 +1,15 @@
 {
   "excludeFiles": [
-    "lib/expressions.js",
+    "build/",
+    "components/",
+    "coverage/",
+    "node_modules/",
     "lib/cli/formatter.js",
-    "script/build-expressions.js"
+    "lib/expressions.js",
+    "script/build-expressions.js",
+    "build.js",
+    "mdast.js",
+    "mdast.min.js"
   ],
   "plugins": [
     "jscs-jsdoc"
