@@ -414,6 +414,7 @@ var ROOT = 'root';
  * Wrapper arround he's `decode` function.
  *
  * @param {string} value
+ * @param {function(string)} eat
  * @return {string}
  */
 function decode(value, eat) {
@@ -1251,7 +1252,6 @@ tokenizeTable.onlyAtTop = true;
 /**
  * Tokenise a paragraph token.
  *
- * @property {boolean} onlyAtTop
  * @param {function(string)} eat
  * @param {string} $0
  * @return {Node?}
@@ -1459,6 +1459,8 @@ LIST_ITEM_MAP.false = renderNormalListItem;
 /**
  * Create a list-item token.
  *
+ * @param {Object} token
+ * @return {Object} position
  * @return {Object}
  */
 function renderListItem(token, position) {
@@ -1503,6 +1505,7 @@ function renderListItem(token, position) {
  *
  * @param {string} identifier
  * @param {string} value
+ * @param {Object} position
  * @return {Object}
  */
 function renderFootnoteDefinition(identifier, value, position) {
@@ -1541,6 +1544,7 @@ function renderHeading(value, depth, now) {
  * Create a blockquote token.
  *
  * @param {string} value
+ * @param {Object} position
  * @return {Object}
  */
 function renderBlockquote(value, position) {
@@ -1614,6 +1618,8 @@ function renderRaw(type, value) {
  * @param {string} href
  * @param {string} text
  * @param {string?} title
+ * @param {Object} position
+ * @param {function(string)} eat
  * @return {Object}
  */
 function renderLink(isLink, href, text, title, position, eat) {
@@ -1660,12 +1666,13 @@ function renderFootnote(value, position) {
  *
  * @param {string} type
  * @param {string} value
+ * @param {Object} position
  * @return {Object}
  */
-function renderInline(type, value, location) {
+function renderInline(type, value, position) {
     return {
         'type': type,
-        'children': this.tokenizeInline(value, location)
+        'children': this.tokenizeInline(value, position)
     };
 }
 
@@ -2630,6 +2637,7 @@ CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
  * Checks if `url` needs to be enclosed by angle brackets.
  *
  * @param {string} uri
+ * @param {boolean?} [always] - Enforce enclosing.
  * @return {boolean}
  */
 function encloseURI(uri, always) {
@@ -3176,6 +3184,7 @@ compilerPrototype.code = function (token) {
 /**
  * Stringify HTML.
  *
+ * @param {Object} token
  * @return {string}
  */
 compilerPrototype.html = function (token) {
@@ -3253,6 +3262,8 @@ compilerPrototype.delete = function (token, parent, level) {
  * Stringify a link.
  *
  * @param {Object} token
+ * @param {Object} parent
+ * @param {number} level
  * @return {string}
  */
 compilerPrototype.link = function (token, parent, level) {
@@ -3302,6 +3313,8 @@ function label(token) {
  * Stringify a link reference.
  *
  * @param {Object} token
+ * @param {Object} parent
+ * @param {number} level
  * @return {string}
  */
 compilerPrototype.linkReference = function (token, parent, level) {
@@ -3376,6 +3389,8 @@ compilerPrototype.image = function (token) {
  * Stringify a footnote.
  *
  * @param {Object} token
+ * @param {Object} parent
+ * @param {number} level
  * @return {string}
  */
 compilerPrototype.footnote = function (token, parent, level) {
