@@ -44,6 +44,12 @@
   "directories": {
     "man": "./man"
   },
+  "files": [
+    "index.js",
+    "lib",
+    "man",
+    "bin"
+  ],
   "devDependencies": {
     "browserify": "^10.0.0",
     "clone": "^1.0.1",
