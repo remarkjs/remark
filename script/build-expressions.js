@@ -481,7 +481,7 @@ commonmark.reference = new RegExp(
 
 gfm.escape = new RegExp(rules.escape.source.replace('])', '~|])'));
 
-gfm.url = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
+gfm.url = /^https?:\/\/[^\s<]+[^<.,:;"')\]\s]/;
 
 gfm.deletion = /^~~(?=\S)([\s\S]*?\S)~~/;
 

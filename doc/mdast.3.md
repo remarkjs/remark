@@ -163,7 +163,7 @@ File objects make it easy to change the directory, name, or extension of a file:
 
 **Notes**
 
-`File` exposes an interface compatible with Eslint's formatters.  For example, to expose warnings using Eslint's `compact` formatter, execute the following:
+`File` exposes an interface compatible with ESLint's formatters.  For example, to expose warnings using ESLint's `compact` formatter, execute the following:
 
 ```javascript
 var compact = require('eslint/lib/formatters/compact');
