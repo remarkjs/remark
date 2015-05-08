@@ -3302,17 +3302,10 @@ compilerPrototype.setOptions = function (options) {
  *
  * @param {Object} token - Node.
  * @param {Object?} [parent] - `token`s parent node.
- * @param {number?} [level=0] - `token`s nesting.
  * @return {string} - Compiled `token`.
  */
-compilerPrototype.visit = function (token, parent, level) {
+compilerPrototype.visit = function (token, parent) {
     var self = this;
-
-    if (!level) {
-        level = 0;
-    }
-
-    level += 1;
 
     if (typeof self[token.type] !== 'function') {
         self.file.fail(
@@ -3322,7 +3315,7 @@ compilerPrototype.visit = function (token, parent, level) {
         );
     }
 
-    return self[token.type](token, parent, level);
+    return self[token.type](token, parent);
 };
 
 /**
@@ -3345,10 +3338,9 @@ compilerPrototype.visit = function (token, parent, level) {
  *   // ['Foo', 'Bar']
  *
  * @param {Object} parent - Parent node of children.
- * @param {number} level - `parent`s nesting.
  * @return {Array.<string>} - List of compiled children.
  */
-compilerPrototype.all = function (parent, level) {
+compilerPrototype.all = function (parent) {
     var self = this;
     var tokens = parent.children;
     var values = [];
@@ -3356,7 +3348,7 @@ compilerPrototype.all = function (parent, level) {
     var length = tokens.length;
 
     while (++index < length) {
-        values[index] = self.visit(tokens[index], parent, level);
+        values[index] = self.visit(tokens[index], parent);
     }
 
     return values;
@@ -3390,10 +3382,9 @@ compilerPrototype.all = function (parent, level) {
  *
  * @param {Object} token - `list` node with
  *   `ordered: true`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown list.
  */
-compilerPrototype.visitOrderedItems = function (token, level) {
+compilerPrototype.visitOrderedItems = function (token) {
     var self = this;
     var values = [];
     var tokens = token.children;
@@ -3405,8 +3396,6 @@ compilerPrototype.visitOrderedItems = function (token, level) {
     var spacing;
     var value;
 
-    level = level + 1;
-
     while (++index < length) {
         bullet = (start + index) + DOT + SPACE;
 
@@ -3414,7 +3403,7 @@ compilerPrototype.visitOrderedItems = function (token, level) {
         spacing = repeat(SPACE, indent - bullet.length);
 
         value = bullet + spacing +
-            self.listItem(tokens[index], token, level, indent);
+            self.listItem(tokens[index], token, indent);
 
         if (tokens[index].loose && index !== length - 1) {
             value += LINE;
@@ -3452,10 +3441,9 @@ compilerPrototype.visitOrderedItems = function (token, level) {
  *
  * @param {Object} token - `list` node with
  *   `ordered: false`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown list.
  */
-compilerPrototype.visitUnorderedItems = function (token, level) {
+compilerPrototype.visitUnorderedItems = function (token) {
     var self = this;
     var values = [];
     var tokens = token.children;
@@ -3464,8 +3452,6 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
     var bullet;
     var spacing;
     var value;
-
-    level = level + 1;
 
     /*
      * Unordered bullets are always one character, so
@@ -3477,7 +3463,7 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
 
     while (++index < length) {
         value = bullet + spacing +
-            self.listItem(tokens[index], token, level, INDENT);
+            self.listItem(tokens[index], token, INDENT);
 
         if (tokens[index].loose && index !== length - 1) {
             value += LINE;
@@ -3514,12 +3500,9 @@ compilerPrototype.visitUnorderedItems = function (token, level) {
  *   // 'bar'
  *
  * @param {Object} token - `root` node.
- * @param {Object} parent - Parent of `token` (weird,
- *   right?).
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown document.
  */
-compilerPrototype.root = function (token, parent, level) {
+compilerPrototype.root = function (token) {
     var self = this;
     var values = [];
     var tokens = token.children;
@@ -3555,7 +3538,7 @@ compilerPrototype.root = function (token, parent, level) {
             }
         }
 
-        values.push(self.visit(child, token, level));
+        values.push(self.visit(child, token));
 
         prev = child;
     }
@@ -3604,16 +3587,14 @@ compilerPrototype.root = function (token, parent, level) {
  *   // '## **bar**'
  *
  * @param {Object} token - `heading` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown heading.
  */
-compilerPrototype.heading = function (token, parent, level) {
+compilerPrototype.heading = function (token) {
     var self = this;
     var setext = self.options.setext;
     var closeAtx = self.options.closeAtx;
     var depth = token.depth;
-    var content = self.all(token, level).join(EMPTY);
+    var content = self.all(token).join(EMPTY);
     var prefix;
 
     if (setext && depth < 3) {
@@ -3688,12 +3669,10 @@ compilerPrototype.escape = function (token) {
  *   // '**bar**'
  *
  * @param {Object} token - `paragraph` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown paragraph.
  */
-compilerPrototype.paragraph = function (token, parent, level) {
-    return this.all(token, level).join(EMPTY);
+compilerPrototype.paragraph = function (token) {
+    return this.all(token).join(EMPTY);
 };
 
 /**
@@ -3718,14 +3697,12 @@ compilerPrototype.paragraph = function (token, parent, level) {
  *   // '> **bar**'
  *
  * @param {Object} token - `blockquote` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown block quote.
  */
-compilerPrototype.blockquote = function (token, parent, level) {
+compilerPrototype.blockquote = function (token) {
     var indent = ANGLE_BRACKET_CLOSE + SPACE;
 
-    return indent + this.all(token, level).join(BREAK)
+    return indent + this.all(token).join(BREAK)
         .split(LINE).join(LINE + indent);
 };
 
@@ -3750,12 +3727,10 @@ compilerPrototype.blockquote = function (token, parent, level) {
  *   // '-   bar'
  *
  * @param {Object} token - `list` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown list.
  */
-compilerPrototype.list = function (token, parent, level) {
-    return this[ORDERED_MAP[token.ordered]](token, level);
+compilerPrototype.list = function (token) {
+    return this[ORDERED_MAP[token.ordered]](token);
 };
 
 /**
@@ -3786,12 +3761,11 @@ compilerPrototype.list = function (token, parent, level) {
  *
  * @param {Object} token - `listItem` node.
  * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @param {number} padding - Indentation to use on
  *   subsequent lines.
  * @return {string} - Markdown list item (without bullet).
  */
-compilerPrototype.listItem = function (token, parent, level, padding) {
+compilerPrototype.listItem = function (token, parent, padding) {
     var self = this;
     var tokens = token.children;
     var values = [];
@@ -3800,7 +3774,7 @@ compilerPrototype.listItem = function (token, parent, level, padding) {
     var value;
 
     while (++index < length) {
-        values[index] = self.visit(tokens[index], token, level);
+        values[index] = self.visit(tokens[index], token);
     }
 
     value = CHECKBOX_MAP[token.checked] +
@@ -4017,16 +3991,14 @@ compilerPrototype.horizontalRule = function () {
  *   // '**Foo**'
  *
  * @param {Object} token - `strong` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown strong-emphasised text.
  */
-compilerPrototype.strong = function (token, parent, level) {
+compilerPrototype.strong = function (token) {
     var marker = this.options.strong;
 
     marker = marker + marker;
 
-    return marker + this.all(token, level).join(EMPTY) + marker;
+    return marker + this.all(token).join(EMPTY) + marker;
 };
 
 /**
@@ -4051,14 +4023,12 @@ compilerPrototype.strong = function (token, parent, level) {
  *   // '_Foo_'
  *
  * @param {Object} token - `emphasis` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown emphasised text.
  */
-compilerPrototype.emphasis = function (token, parent, level) {
+compilerPrototype.emphasis = function (token) {
     var marker = this.options.emphasis;
 
-    return marker + this.all(token, level).join(EMPTY) + marker;
+    return marker + this.all(token).join(EMPTY) + marker;
 };
 
 /**
@@ -4094,12 +4064,10 @@ compilerPrototype.break = function () {
  *   // ''~~Foo~~'
  *
  * @param {Object} token - `delete` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown strike-through.
  */
-compilerPrototype.delete = function (token, parent, level) {
-    return DOUBLE_TILDE + this.all(token, level).join(EMPTY) + DOUBLE_TILDE;
+compilerPrototype.delete = function (token) {
+    return DOUBLE_TILDE + this.all(token).join(EMPTY) + DOUBLE_TILDE;
 };
 
 /**
@@ -4130,14 +4098,12 @@ compilerPrototype.delete = function (token, parent, level) {
  *   // '[Foo](http://example.com "Example Domain")'
  *
  * @param {Object} token - `link` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown link.
  */
-compilerPrototype.link = function (token, parent, level) {
+compilerPrototype.link = function (token) {
     var self = this;
     var url = token.href;
-    var value = self.all(token, level).join(EMPTY);
+    var value = self.all(token).join(EMPTY);
 
     if (token.title === null && (url === value || url === MAILTO + value)) {
         return encloseURI(url, true);
@@ -4226,13 +4192,11 @@ function label(token) {
  *   // '[Foo][]'
  *
  * @param {Object} token - `linkReference` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown link reference.
  */
-compilerPrototype.linkReference = function (token, parent, level) {
+compilerPrototype.linkReference = function (token) {
     return SQUARE_BRACKET_OPEN +
-        this.all(token, level).join(EMPTY) + SQUARE_BRACKET_CLOSE +
+        this.all(token).join(EMPTY) + SQUARE_BRACKET_CLOSE +
         label(token);
 };
 
@@ -4368,12 +4332,10 @@ compilerPrototype.image = function (token) {
  *   // '[^Foo]'
  *
  * @param {Object} token - `footnote` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown footnote.
  */
-compilerPrototype.footnote = function (token, parent, level) {
-    return SQUARE_BRACKET_OPEN + CARET + this.all(token, level).join(EMPTY) +
+compilerPrototype.footnote = function (token) {
+    return SQUARE_BRACKET_OPEN + CARET + this.all(token).join(EMPTY) +
         SQUARE_BRACKET_CLOSE;
 };
 
@@ -4478,11 +4440,9 @@ compilerPrototype.footnoteDefinition = function (token) {
  *   // '| Foo | Bar |\n| :-: | --- |\n| Baz | Qux |'
  *
  * @param {Object} token - `table` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown table.
  */
-compilerPrototype.table = function (token, parent, level) {
+compilerPrototype.table = function (token) {
     var self = this;
     var loose = self.options.looseTable;
     var spaced = self.options.spacedTable;
@@ -4492,7 +4452,7 @@ compilerPrototype.table = function (token, parent, level) {
     var start;
 
     while (index--) {
-        result[index] = self.all(rows[index], level);
+        result[index] = self.all(rows[index]);
     }
 
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
@@ -4521,12 +4481,10 @@ compilerPrototype.table = function (token, parent, level) {
  *   // 'Qux'
  *
  * @param {Object} token - `tableCell` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} level - `token`s nesting.
  * @return {string} - Markdown table cell.
  */
-compilerPrototype.tableCell = function (token, parent, level) {
-    return this.all(token, level).join(EMPTY);
+compilerPrototype.tableCell = function (token) {
+    return this.all(token).join(EMPTY);
 };
 
 /**
