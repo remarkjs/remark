@@ -1225,7 +1225,7 @@ function tokenizeList(eat, $0, $1, $2) {
         item = matches[index];
         now = eat.now();
 
-        item = eat(item)(node, self.renderListItem(item, now));
+        item = eat(item)(self.renderListItem(item, now), node);
 
         if (item.loose) {
             isLoose = true;
@@ -1430,9 +1430,9 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
         function eatCell(value, content, pipe) {
             now = eat.now();
 
-            eat(content)(row, self.renderBlock(
+            eat(content)(self.renderBlock(
                 TABLE_CELL, self.tokenizeInline(content.trim(), now)
-            ));
+            ), row);
 
             eat(pipe);
 
@@ -1451,7 +1451,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      *   final fences.
      */
     function renderRow(type, value) {
-        var row = eat(EMPTY)(node, self.renderBlock(type, []));
+        var row = eat(EMPTY)(self.renderBlock(type, []), node);
 
         value
             .replace(EXPRESSION_TABLE_INITIAL, eatFence)
@@ -2647,25 +2647,24 @@ function tokenizeFactory(type) {
         }
 
         /**
-         * Add `token` to `parent`s children, or `parent`
-         * to `tokens`.  Performs merges where possible.
+         * Add `token` to `parent`s children or to `tokens`.
+         * Performs merges where possible.
          *
          * @example
          *   add({});
          *
-         *   add({children: []}, {});
+         *   add({}, {children: []});
          *
-         * @param {Object} parent - Parent to insert into.
-         * @param {Object?} [token] - Node to add.
+         * @param {Object} token - Node to add.
+         * @param {Object} [parent] - Parent to insert into.
          * @return {Object} - Added or merged into token.
          */
-        add = function (parent, token) {
+        add = function (token, parent) {
             var prev;
             var children;
 
-            if (!token) {
+            if (!parent) {
                 children = tokens;
-                token = parent;
             } else {
                 children = parent.children;
             }
@@ -4663,9 +4662,9 @@ function raise(value, name) {
  *
  * @throws {Error} - When a setting is neither omitted nor
  *   a boolean.
- * @param {Object} context
- * @param {string} name
- * @param {boolean} def
+ * @param {Object} context - Settings.
+ * @param {string} name - Setting name.
+ * @param {boolean} def - Default value.
  */
 function validateBoolean(context, name, def) {
     var value = context[name];
@@ -4693,8 +4692,9 @@ function validateBoolean(context, name, def) {
  *
  * @throws {Error} - When a setting is neither omitted nor
  *   a number.
- * @param {string} name
- * @param {number} def
+ * @param {Object} context - Settings.
+ * @param {string} name - Setting name.
+ * @param {number} def - Default value.
  */
 function validateNumber(context, name, def) {
     var value = context[name];
@@ -4723,10 +4723,10 @@ function validateNumber(context, name, def) {
  *
  * @throws {Error} - When a setting is neither omitted nor
  *   in `map`.
- * @param {Object} context
- * @param {string} name
- * @param {boolean} def
- * @param {Object} map
+ * @param {Object} context - Settings.
+ * @param {string} name - Setting name.
+ * @param {string} def - Default value.
+ * @param {Object} map - Enum.
  */
 function validateString(context, name, def, map) {
     var value = context[name];
