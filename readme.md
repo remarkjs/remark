@@ -4,7 +4,7 @@
 
 **mdast** is a markdown processor powered by plugins. Lots of tests. Node, io.js, and the browser. 100% coverage.
 
-**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by [plugins](doc/Plugins.md) to do all kinds of things: [change a Readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
+**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by [plugins](doc/plugins.md) to do all kinds of things: [change a readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
 
 ## Table of Contents
 
@@ -100,9 +100,9 @@ This section only covers the interface you’ll use most often. See [mdast(3) do
 *   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done) — More detailed than [below](#mdastprocessvalue-options-done);
 *   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options) — More detailed than [below](#mdastuseplugin-options);
 *   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file) — Callback passed to `run()` and `process()`.
-*   [File()](doc/mdast.3.md#file) — Wrapper arround (virtual) files.
+*   [File()](doc/mdast.3.md#file) — Wrapper around (virtual) files.
 
-### [mdast](#api).process(value, [options](doc/Options.md)?, done?)
+### [mdast](#api).process(value, [options](doc/options.md)?, done?)
 
 Parse a markdown document, apply plugins to it, and compile it into something else.
 
@@ -116,26 +116,26 @@ Parse a markdown document, apply plugins to it, and compile it into something el
 
 *   `options` (`Object`) — Settings:
 
-    *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/Options.md#github-flavoured-markdown);
-    *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/Options.md#yaml);
-    *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/Options.md#commonmark);
-    *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
-    *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
-    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks);
-    *   `entities` (`boolean`, default: `false`) — See [Encoding Entities](doc/Options.md#encoding-entities);
-    *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/Options.md#setext-headings);
-    *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
-    *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/Options.md#loose-tables);
-    *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/Options.md#spaced-tables);
-    *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/Options.md#fence);
-    *   `fences` (`boolean`, default: `false`) — See [Fences](doc/Options.md#fences);
-    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/Options.md#list-item-bullets);
-    *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/Options.md#list-marker-increasement);
-    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
-    *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers);
-    *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/Options.md#emphasis-markers).
+    *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/options.md#github-flavoured-markdown);
+    *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/options.md#yaml);
+    *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/options.md#commonmark);
+    *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/options.md#footnotes);
+    *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/options.md#pedantic);
+    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/options.md#breaks);
+    *   `entities` (`boolean`, default: `false`) — See [Encoding Entities](doc/options.md#encoding-entities);
+    *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/options.md#setext-headings);
+    *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/options.md#closed-atx-headings);
+    *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/options.md#loose-tables);
+    *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/options.md#spaced-tables);
+    *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/options.md#fence);
+    *   `fences` (`boolean`, default: `false`) — See [Fences](doc/options.md#fences);
+    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/options.md#list-item-bullets);
+    *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/options.md#list-marker-increasement);
+    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
+    *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
+    *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
+    *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/options.md#emphasis-markers);
+    *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/options.md#emphasis-markers).
 
 *   `done` (`function(Error?, string?)`) — Callback invoked when the output is generated with either an error, or a result. Only strictly needed when async plugins are used.
 
@@ -146,9 +146,9 @@ All options (including the options object itself) can be `null` or `undefined` t
 `string` or `null`: A document. Formatted in markdown by default, or in whatever a plugin generates.
 The result is `null` if a plugin is asynchroneous, in which case the callback `done` should’ve been passed (don’t worry: plugin creators make sure you know its async).
 
-### [mdast](#api).use([plugin](doc/Plugins.md#plugin), options?)
+### [mdast](#api).use([plugin](doc/plugins.md#plugin), options?)
 
-Change the way [`mdast`](#api) works by using a [`plugin`](doc/Plugins.md).
+Change the way [`mdast`](#api) works by using a [`plugin`](doc/plugins.md).
 
 **Signatures**
 
@@ -157,8 +157,8 @@ Change the way [`mdast`](#api) works by using a [`plugin`](doc/Plugins.md).
 
 **Parameters**
 
-*   `plugin` (`Function`) — A [**Plugin**](doc/Plugins.md);
-*   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/Plugins.md)s;
+*   `plugin` (`Function`) — A [**Plugin**](doc/plugins.md);
+*   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/plugins.md)s;
 *   `options` (`Object?`) — Passed to the plugin. Specified by its documentation.
 
 **Returns**
@@ -198,15 +198,15 @@ Options:
 
 Usage:
 
-# Pass `Readme.md` through mdast
-$ mdast Readme.md -o Readme-new.md
+# Pass `readme.md` through mdast
+$ mdast readme.md -o readme-new.md
 
 # Pass stdin through mdast, with settings, to stdout
-$ cat Readme.md | mdast --setting "setext, bullet: *" > Readme-new.md
+$ cat readme.md | mdast --setting "setext, bullet: *" > readme-new.md
 
 # Use a plugin
 $ npm install mdast-toc
-$ mdast --use mdast-toc Readme.md -o
+$ mdast --use mdast-toc readme.md -o
 
 # Rewrite markdown in a directory
 $ mdast . -o

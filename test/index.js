@@ -971,10 +971,10 @@ describe('File(options?)', function () {
 
         it('should add properties', function () {
             var err = new File({
-                'filename': 'Untitled'
+                'filename': 'untitled'
             }).exception('test');
 
-            assert(err.file === 'Untitled.md');
+            assert(err.file === 'untitled.md');
             assert(err.reason === 'test');
             assert(err.line === null);
             assert(err.column === null);
@@ -1000,7 +1000,7 @@ describe('File(options?)', function () {
         it('should include the filename in `toString()`', function () {
             assert(new File({
                 'filename': 'Untitled'
-            }).exception('test').toString() === 'Untitled.md:1:1: test');
+            }).exception('test').toString() === 'untitled.md:1:1: test');
         });
 
         it('should accept an error', function () {

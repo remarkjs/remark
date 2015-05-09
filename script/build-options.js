@@ -97,7 +97,7 @@ root = mdast.parse(
         'master/doc/mdast.3.md#mdaststringifyast-options).\n' +
     '\n' +
     'Information on **mdast** itself is available in the project’s ' +
-        '[Readme.md](https://github.com/wooorm/mdast#readme).\n' +
+        '[readme.md](https://github.com/wooorm/mdast#readme).\n' +
     '\n' +
     '## Table of Contents\n' +
     '\n'
@@ -242,4 +242,4 @@ toc()(root);
  * Write.
  */
 
-fs.writeFileSync('doc/Options.md', mdast.stringify(root, settings));
+fs.writeFileSync('doc/options.md', mdast.stringify(root, settings));

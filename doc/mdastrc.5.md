@@ -8,7 +8,7 @@
 
 **mdast** gets its configuration from the command line and **mdastrc** files.
 
-For a list of available configuration options, see **mdast**(1) or <https://github.com/wooorm/mdast/blob/master/doc/Options.md>.
+For a list of available configuration options, see **mdast**(1) or <https://github.com/wooorm/mdast/blob/master/doc/options.md>.
 
 ## FILES
 
@@ -44,7 +44,7 @@ List:
 }
 ```
 
-Options
+Options:
 
 ```json
 {
@@ -76,11 +76,11 @@ For example, for the following project:
 project
 |-- docs
 |   |-- .mdastrc
-|   |-- Doc.md
+|   |-- doc.md
 |
 |-- .mdastrc
 |-- package.json
-|-- Readme.md
+|-- readme.md
 ```
 
 Where `docs/.mdastrc` looks as follows:
@@ -115,9 +115,9 @@ And `.mdastrc` contains:
 }
 ```
 
-Then, when stringifying `docs/Doc.md`, **mdast**(1) would use `bullet: "+"` because `docs/.mdastrc` takes precedence over `.mdastrc` and `package.json`.
+Then, when stringifying `docs/doc.md`, **mdast**(1) would use `bullet: "+"` because `docs/.mdastrc` takes precedence over `.mdastrc` and `package.json`.
 
-When stringifying `Readme.md`, **mdast**(1) would use `bullet: "-"`, because `.mdastrc` takes precedence over `package.json`.
+When stringifying `readme.md`, **mdast**(1) would use `bullet: "-"`, because `.mdastrc` takes precedence over `package.json`.
 
 ## BUGS
 

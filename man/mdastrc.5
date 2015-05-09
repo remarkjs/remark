@@ -8,7 +8,7 @@
 .P
 \fBmdast\fR gets its configuration from the command line and \fBmdastrc\fR files\.
 .P
-For a list of available configuration options, see \fBmdast\fR(1) or https://github\.com/wooorm/mdast/blob/master/doc/Options\.md\|\.
+For a list of available configuration options, see \fBmdast\fR(1) or https://github\.com/wooorm/mdast/blob/master/doc/options\.md\|\.
 .SH FILES
 .P
 All \fBmdastrc\fR(5) configuration files are in JSON\.
@@ -44,7 +44,7 @@ List:
 .fi
 .RE
 .P
-Options
+Options:
 .P
 .RS 2
 .nf
@@ -84,11 +84,11 @@ For example, for the following project:
 project
 |\-\- docs
 |   |\-\- \.mdastrc
-|   |\-\- Doc\.md
+|   |\-\- doc\.md
 |
 |\-\- \.mdastrc
 |\-\- package\.json
-|\-\- Readme\.md
+|\-\- readme\.md
 .fi
 .RE
 .P
@@ -130,9 +130,9 @@ And \fB\|\.mdastrc\fR contains:
 .fi
 .RE
 .P
-Then, when stringifying \fBdocs/Doc\.md\fR, \fBmdast\fR(1) would use \fBbullet: "+"\fR because \fBdocs/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
+Then, when stringifying \fBdocs/doc\.md\fR, \fBmdast\fR(1) would use \fBbullet: "+"\fR because \fBdocs/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
 .P
-When stringifying \fBReadme\.md\fR, \fBmdast\fR(1) would use \fBbullet: "\-"\fR, because \fB\|\.mdastrc\fR takes precedence over \fBpackage\.json\fR\|\.
+When stringifying \fBreadme\.md\fR, \fBmdast\fR(1) would use \fBbullet: "\-"\fR, because \fB\|\.mdastrc\fR takes precedence over \fBpackage\.json\fR\|\.
 .SH BUGS
 .P
 https://github\.com/wooorm/mdast/issues

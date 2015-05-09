@@ -4,7 +4,7 @@
 
 This page contains the definition of the exposed objects and what they represent.
 
-Information on **mdast** itself is available in the project’s [Readme.md](https://github.com/wooorm/mdast#readme).
+Information on **mdast** itself is available in the project’s [readme.md](https://github.com/wooorm/mdast#readme).
 
 ## Table of Contents
 

@@ -22,7 +22,7 @@
 *   [wooorm/mdast-heading](https://github.com/wooorm/mdast-heading) — Markdown heading as ranges;
 *   [wooorm/mdast-range](https://github.com/wooorm/mdast-range) — Add range information;
 *   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc) — Generate a Table of Contents (TOC) for Markdown files;
-*   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage) — Add a usage example to your Readme;
+*   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage) — Add a usage example to your readme;
 *   [wooorm/mdast-yaml](https://github.com/wooorm/mdast-yaml) — Parse and stringify YAML code blocks;
 *   [wooorm/mdast-yaml-config](https://github.com/wooorm/mdast-yaml-config) — Set settings with YAML during runtime;
 *   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone) — HTML comments as ranges or markers.
@@ -107,9 +107,9 @@ To modify the parser (for an example, see [`test/mentions.js`](https://github.co
 
 [`transformer`](#function-transformerast-file-next) (optional).
 
-#### function transformer([ast](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#node), [file](mdast.3.md#file), next?)
+#### function transformer([ast](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node), [file](mdast.3.md#file), next?)
 
-To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.process()`](https://github.com/wooorm/mdast#mdastprocessvalue-options-done)d or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should change the [AST](https://github.com/wooorm/mdast/blob/master/doc/Nodes.md#node) or [file](mdast.3.md#file) to add or remove nodes.
+To transform an AST, create a transformer. A transformer is a simple function which is invoked each time a document is [`mdast.process()`](https://github.com/wooorm/mdast#mdastprocessvalue-options-done)d or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should change the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node) or [file](mdast.3.md#file) to add or remove nodes.
 
 **Signatures**
 

@@ -26,7 +26,7 @@ This is the application programming interface documentation for **mdast**.  To f
 
 ### mdast.use(plugin, options?)
 
-Change the way **mdast** functions by using a plugin.  Plugins are documented at <https://github.com/wooorm/mdast/blob/master/doc/Plugins.md>.
+Change the way **mdast** functions by using a plugin.  Plugins are documented at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
 
 **Signatures**
 
@@ -59,7 +59,7 @@ Parse a markdown document into an abstract syntax tree.
 
 **Returns**
 
-`Object` -- Node.  Nodes are documented at <https://github.com/wooorm/mdast/blob/master/doc/Nodes.md>.
+`Object` -- Node.  Nodes are documented at <https://github.com/wooorm/mdast/blob/master/doc/nodes.md>.
 
 ### mdast.run(ast, file, done?)
 
