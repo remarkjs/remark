@@ -9,6 +9,10 @@
 
 'use strict';
 
+/*
+ * Note that `stringify.entities` is a string.
+ */
+
 module.exports = {
     'parse': {
         'gfm': true,
@@ -19,6 +23,7 @@ module.exports = {
         'breaks': false
     },
     'stringify': {
+        'entities': 'false',
         'setext': false,
         'closeAtx': false,
         'looseTable': false,
@@ -338,6 +343,7 @@ function fail(reason, position) {
  */
 function exception(reason, position) {
     var file = this.filePath();
+    var message = reason.message || reason;
     var location;
     var err;
 
@@ -356,11 +362,11 @@ function exception(reason, position) {
         location = stringify(position);
     }
 
-    err = new Error(reason.message || reason);
+    err = new Error(message);
 
     err.name = (file ? file + ':' : '') + location;
     err.file = file;
-    err.reason = reason;
+    err.reason = message;
     err.line = position ? position.line : null;
     err.column = position ? position.column : null;
 
@@ -534,7 +540,7 @@ function decode(value, eat) {
     try {
         return he.decode(value);
     } catch (exception) {
-        eat.file.fail(exception.message, eat.now());
+        eat.file.fail(exception, eat.now());
     }
 }
 
@@ -2951,6 +2957,7 @@ module.exports = parse;
  * Dependencies.
  */
 
+var he = require('he');
 var table = require('markdown-table');
 var repeat = require('repeat-string');
 var utilities = require('./utilities.js');
@@ -3029,6 +3036,16 @@ var GAP = BREAK + LINE;
 var DOUBLE_TILDE = TILDE + TILDE;
 
 /*
+ * Allowed entity options.
+ */
+
+var ENTITY_OPTIONS = objectCreate();
+
+ENTITY_OPTIONS.true = true;
+ENTITY_OPTIONS.false = true;
+ENTITY_OPTIONS.numbers = true;
+
+/*
  * Allowed list-bullet characters.
  */
 
@@ -3081,11 +3098,103 @@ ORDERED_MAP.false = 'visitUnorderedItems';
 
 var CHECKBOX_MAP = objectCreate();
 
-CHECKBOX_MAP.null = '';
-CHECKBOX_MAP.undefined = '';
+CHECKBOX_MAP.null = EMPTY;
+CHECKBOX_MAP.undefined = EMPTY;
 CHECKBOX_MAP.true = SQUARE_BRACKET_OPEN + 'x' + SQUARE_BRACKET_CLOSE + SPACE;
 CHECKBOX_MAP.false = SQUARE_BRACKET_OPEN + SPACE + SQUARE_BRACKET_CLOSE +
     SPACE;
+
+/**
+ * Encode noop.
+ * Simply returns the given value.
+ *
+ * @example
+ *   var encode = encodeNoop();
+ *   encode('AT&T') // 'AT&T'
+ *
+ * @param {string} value - Content.
+ * @return {string} - Content, without any modifications.
+ */
+function encodeNoop(value) {
+    return value;
+}
+
+/**
+ * Factory to encode HTML entities.
+ * Creates a no-operation function when `type` is
+ * `'false'`, a function which encodes using named
+ * references when `type` is `'true'`, and a function
+ * which encodes using numbered references when `type` is
+ * `'numbers'`.
+ *
+ * By default this should not throw errors, but he does
+ * throw an error when in `strict` mode:
+ *
+ *     he.encode.options.strict = true;
+ *     encodeFactory('true')('\x01') // throws
+ *
+ * These are thrown on the currently compiled `File`.
+ *
+ * @example
+ *   var file = new File();
+ *
+ *   var encode = encodeFactory('false', file);
+ *   encode('AT&T') // 'AT&T'
+ *
+ *   encode = encodeFactory('true', file);
+ *   encode('AT&T') // 'AT&amp;T'
+ *
+ *   encode = encodeFactory('numbers', file);
+ *   encode('AT&T') // 'ATT&#x26;T'
+ *
+ * @param {string} type - Either `'true'`, `'false'`, or
+ *   `numbers`.
+ * @param {File} file - Currently compiled virtual file.
+ * @return {function(string): string} - Function which
+ *   takes a value and returns its encoded version.
+ */
+function encodeFactory(type, file) {
+    var options = {};
+
+    if (type === 'false') {
+        return encodeNoop;
+    }
+
+    if (type === 'true') {
+        options.useNamedReferences = true;
+    }
+
+    /**
+     * Encode HTML entities using `he` using bound options.
+     *
+     * @see https://github.com/mathiasbynens/he#strict
+     *
+     * @example
+     *   // When `type` is `'true'`.
+     *   encode('AT&T'); // 'AT&amp;T'
+     *
+     *   // When `type` is `'numbers'`.
+     *   encode('AT&T'); // 'ATT&#x26;T'
+     *
+     * @param {string} value - Content.
+     * @param {Object} node - Node which is compiled.
+     * @return {string} - Encoded content.
+     * @throws {Error} - When `file.quiet` is not `true`.
+     *   However, by default `he` does not throw on
+     *   parse errors, but when
+     *   `he.encode.options.strict: true`, they occur on
+     *   invalid HTML.
+     */
+    function encode(value, node) {
+        try {
+            return he.encode(value, options);
+        } catch (exception) {
+            file.fail(exception, node.position);
+        }
+    }
+
+    return encode;
+}
 
 /**
  * Checks if `url` needs to be enclosed by angle brackets.
@@ -3249,6 +3358,7 @@ compilerPrototype.options = defaultOptions;
  */
 
 var maps = {
+    'entities': ENTITY_OPTIONS,
     'bullet': LIST_BULLETS,
     'rule': HORIZONTAL_RULE_BULLETS,
     'emphasis': EMPHASIS_MARKERS,
@@ -3294,6 +3404,8 @@ compilerPrototype.setOptions = function (options) {
     if (ruleRepetition && ruleRepetition < MINIMUM_RULE_LENGTH) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
+
+    self.encode = encodeFactory(String(options.entities), self.file);
 
     self.options = options;
 
@@ -3640,6 +3752,15 @@ compilerPrototype.heading = function (token) {
 /**
  * Stringify text.
  *
+ * Supports named entities in `settings.encode: true` mode:
+ *
+ *     AT&amp;T
+ *
+ * Supports numbered entities in `settings.encode: numbers`
+ * mode:
+ *
+ *     AT&#x26;T
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -3653,7 +3774,7 @@ compilerPrototype.heading = function (token) {
  * @return {string} - Raw markdown text.
  */
 compilerPrototype.text = function (token) {
-    return token.value;
+    return this.encode(token.value, token);
 };
 
 /**
@@ -3904,6 +4025,9 @@ compilerPrototype.yaml = function (token) {
  *     ```
  *     ````
  *
+ * Supports named entities in the language flag with
+ * `settings.encode` mode.
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -3920,13 +4044,14 @@ compilerPrototype.yaml = function (token) {
 compilerPrototype.code = function (token) {
     var value = token.value;
     var marker = this.options.fence;
+    var language = this.encode(token.lang || EMPTY, token);
     var fence;
 
     /*
      * Probably pedantic.
      */
 
-    if (!token.lang && !this.options.fences && value) {
+    if (!language && !this.options.fences && value) {
         return pad(value, 1);
     }
 
@@ -3934,7 +4059,7 @@ compilerPrototype.code = function (token) {
 
     fence = repeat(marker, Math.max(fence, MINIMUM_CODE_FENCE_LENGTH));
 
-    return fence + (token.lang || EMPTY) + LINE + value + LINE + fence;
+    return fence + language + LINE + value + LINE + fence;
 };
 
 /**
@@ -4086,7 +4211,7 @@ compilerPrototype.break = function () {
  *       value: 'Foo'
  *     }]
  *   });
- *   // ''~~Foo~~'
+ *   // '~~Foo~~'
  *
  * @param {Object} token - `delete` node.
  * @return {string} - Markdown strike-through.
@@ -4109,6 +4234,9 @@ compilerPrototype.delete = function (token) {
  *
  *    [foo](<foo at bar dot com> 'An "example" e-mail')
  *
+ * Supports named entities in the `href` and `title` when
+ * in `settings.encode` mode.
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -4128,7 +4256,7 @@ compilerPrototype.delete = function (token) {
  */
 compilerPrototype.link = function (token) {
     var self = this;
-    var url = token.href;
+    var url = self.encode(token.href, token);
     var value = self.all(token).join(EMPTY);
 
     if (
@@ -4142,7 +4270,7 @@ compilerPrototype.link = function (token) {
     url = encloseURI(url);
 
     if (token.title) {
-        url += SPACE + encloseTitle(token.title);
+        url += SPACE + encloseTitle(self.encode(token.title, token));
     }
 
     value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
@@ -4188,7 +4316,7 @@ compilerPrototype.link = function (token) {
  * @return {string} - Markdown label reference.
  */
 function label(token) {
-    var value = '';
+    var value = EMPTY;
     var type = token.referenceType;
 
     if (type === 'full') {
@@ -4235,6 +4363,9 @@ compilerPrototype.linkReference = function (token) {
  *
  * See `label()` on how reference labels are created.
  *
+ * Supports named entities in the `alt` when
+ * in `settings.encode` mode.
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -4250,8 +4381,10 @@ compilerPrototype.linkReference = function (token) {
  * @return {string} - Markdown image reference.
  */
 compilerPrototype.imageReference = function (token) {
+    var alt = this.encode(token.alt, token);
+
     return EXCLAMATION_MARK +
-        SQUARE_BRACKET_OPEN + token.alt + SQUARE_BRACKET_CLOSE +
+        SQUARE_BRACKET_OPEN + alt + SQUARE_BRACKET_CLOSE +
         label(token);
 };
 
@@ -4316,6 +4449,9 @@ compilerPrototype.definition = function (token) {
  *
  *    ![foo](</fav icon.png> 'My "favourite" icon')
  *
+ * Supports named entities in `src`, `alt`, and `title`
+ * when in `settings.encode` mode.
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -4331,14 +4467,16 @@ compilerPrototype.definition = function (token) {
  * @return {string} - Markdown image.
  */
 compilerPrototype.image = function (token) {
-    var url = encloseURI(token.src);
+    var encode = this.encode;
+    var url = encloseURI(encode(token.src, token));
     var value;
 
     if (token.title) {
-        url += SPACE + encloseTitle(token.title);
+        url += SPACE + encloseTitle(encode(token.title, token));
     }
 
-    value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + (token.alt || EMPTY) +
+    value = EXCLAMATION_MARK +
+        SQUARE_BRACKET_OPEN + encode(token.alt || EMPTY, token) +
         SQUARE_BRACKET_CLOSE;
 
     value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
@@ -4554,7 +4692,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":1,"./utilities.js":6,"markdown-table":8,"repeat-string":9}],6:[function(require,module,exports){
+},{"./defaults.js":1,"./utilities.js":6,"he":7,"markdown-table":8,"repeat-string":9}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.

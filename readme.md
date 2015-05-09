@@ -122,6 +122,7 @@ Parse a markdown document, apply plugins to it, and compile it into something el
     *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/Options.md#footnotes);
     *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/Options.md#pedantic);
     *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/Options.md#breaks);
+    *   `entities` (`boolean`, default: `false`) — See [Encoding Entities](doc/Options.md#encoding-entities);
     *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/Options.md#setext-headings);
     *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/Options.md#closed-atx-headings);
     *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/Options.md#loose-tables);

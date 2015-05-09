@@ -19,6 +19,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
     *   [List Item Bullets](#list-item-bullets)
     *   [Closed ATX Headings](#closed-atx-headings)
     *   [Emphasis Markers](#emphasis-markers)
+    *   [Encoding Entities](#encoding-entities)
     *   [Fence](#fence)
     *   [Fences](#fences)
     *   [Loose Tables](#loose-tables)
@@ -885,6 +886,32 @@ Yields:
     _emphasis_
 
     **strong**
+
+### Encoding Entities
+
+Setting `entities: true` (default: `false`) will [encode](https://github.com/mathiasbynens/he#heencodetext-options) any symbols that aren’t printable ASCII symbols and `&`, `<`, `>`, `"`, `'`, and `` ` ``.
+
+When `true`, named entities are generated (`&` > `&amp;`); when `"numbers"`, numbered entities are generated (`&` > `&#x26;`).
+
+Although markdown does not need to encode HTML entities, they can be useful to ensure an ASCII document.
+
+The following document:
+
+    AT&T, [AT&T](http://at&t.com "AT&T"), ![AT&T](http://at&t.com/fav.ico "AT&T")
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "entities": true
+});
+```
+
+Yields:
+
+    AT&amp;T, [AT&amp;T](http://at&amp;t.com "AT&amp;T"), ![AT&amp;T](http://at&amp;t.com/fav.ico "AT&amp;T")
 
 ### Fence
 

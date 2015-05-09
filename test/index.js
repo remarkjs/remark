@@ -447,6 +447,44 @@ describe('mdast.stringify(ast, file, options?)', function () {
             ''
         ].join('\n'));
     });
+
+    it('should throw `he` errors', function () {
+        var reason = 'Parse error: forbidden code point';
+        var hasThrown;
+
+        he.encode.options.strict = true;
+
+        try {
+            mdast.stringify({
+                'type': 'text',
+                'value': '\x01',
+                'position': {
+                    'start': {
+                        'line': 2,
+                        'column': 3
+                    },
+                    'end': {
+                        'line': 2,
+                        'column': 4
+                    }
+                }
+            }, new File(), {
+                'entities': true
+            });
+        } catch (exception) {
+            hasThrown = true;
+
+            assert(exception.file === '');
+            assert(exception.line === 2);
+            assert(exception.column === 3);
+            assert(exception.reason === reason);
+            assert(exception.toString() === '2:3-2:4: ' + reason);
+        }
+
+        assert(hasThrown === true);
+
+        he.decode.options.strict = false;
+    });
 });
 
 describe('mdast.use(plugin, options?)', function () {

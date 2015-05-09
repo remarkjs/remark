@@ -1,0 +1,1419 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "heading",
+      "depth": 1,
+      "children": [
+        {
+          "type": "text",
+          "value": "Entities",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 11
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 1,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Plain text:",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 12
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 12
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "AT&T with entity, AT&T with numeric entity, AT&T without entity.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 77
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 77
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Fenced code language flags:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1
+            },
+            "end": {
+              "line": 7,
+              "column": 28
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1
+        },
+        "end": {
+          "line": 7,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "AT&T",
+      "value": "Something in the AT&amp;T language",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1
+        },
+        "end": {
+          "line": 11,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "code",
+      "lang": "AT&T",
+      "value": "Something in the AT&#x26;T language",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1
+        },
+        "end": {
+          "line": 15,
+          "column": 4
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Automatic links:",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1
+            },
+            "end": {
+              "line": 17,
+              "column": 17
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1
+        },
+        "end": {
+          "line": 17,
+          "column": 17
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at&t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 2
+                },
+                "end": {
+                  "line": 19,
+                  "column": 21
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1
+            },
+            "end": {
+              "line": 19,
+              "column": 22
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 22
+            },
+            "end": {
+              "line": 19,
+              "column": 24
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at&t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 25
+                },
+                "end": {
+                  "line": 19,
+                  "column": 44
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 24
+            },
+            "end": {
+              "line": 19,
+              "column": 45
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 45
+            },
+            "end": {
+              "line": 19,
+              "column": 51
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "http://at&t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 52
+                },
+                "end": {
+                  "line": 19,
+                  "column": 71
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 51
+            },
+            "end": {
+              "line": 19,
+              "column": 72
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 72
+            },
+            "end": {
+              "line": 19,
+              "column": 73
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1
+        },
+        "end": {
+          "line": 19,
+          "column": 73
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link ",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1
+            },
+            "end": {
+              "line": 21,
+              "column": 6
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "href",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 6
+            },
+            "end": {
+              "line": 21,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 12
+            },
+            "end": {
+              "line": 21,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "With entity",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 2
+                },
+                "end": {
+                  "line": 23,
+                  "column": 13
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 1
+            },
+            "end": {
+              "line": 23,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 35
+            },
+            "end": {
+              "line": 23,
+              "column": 37
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "numeric entity",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 38
+                },
+                "end": {
+                  "line": 23,
+                  "column": 52
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 37
+            },
+            "end": {
+              "line": 23,
+              "column": 74
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 74
+            },
+            "end": {
+              "line": 23,
+              "column": 76
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://at&t.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "without entity",
+              "position": {
+                "start": {
+                  "line": 23,
+                  "column": 77
+                },
+                "end": {
+                  "line": 23,
+                  "column": 91
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 76
+            },
+            "end": {
+              "line": 23,
+              "column": 113
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 23,
+              "column": 113
+            },
+            "end": {
+              "line": 23,
+              "column": 114
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 23,
+          "column": 1
+        },
+        "end": {
+          "line": 23,
+          "column": 114
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link ",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 1
+            },
+            "end": {
+              "line": 25,
+              "column": 6
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "title",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 6
+            },
+            "end": {
+              "line": 25,
+              "column": 13
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 25,
+              "column": 13
+            },
+            "end": {
+              "line": 25,
+              "column": 14
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 25,
+          "column": 1
+        },
+        "end": {
+          "line": 25,
+          "column": 14
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": "AT&T",
+          "href": "http://att.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "With entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 2
+                },
+                "end": {
+                  "line": 27,
+                  "column": 13
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 1
+            },
+            "end": {
+              "line": 27,
+              "column": 41
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 41
+            },
+            "end": {
+              "line": 27,
+              "column": 43
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": "AT&T",
+          "href": "http://att.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "numeric entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 44
+                },
+                "end": {
+                  "line": 27,
+                  "column": 58
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 43
+            },
+            "end": {
+              "line": 27,
+              "column": 86
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 86
+            },
+            "end": {
+              "line": 27,
+              "column": 88
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": "AT&T",
+          "href": "http://example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "without entity",
+              "position": {
+                "start": {
+                  "line": 27,
+                  "column": 89
+                },
+                "end": {
+                  "line": 27,
+                  "column": 103
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 88
+            },
+            "end": {
+              "line": 27,
+              "column": 135
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 27,
+              "column": 135
+            },
+            "end": {
+              "line": 27,
+              "column": 136
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 27,
+          "column": 136
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 1
+            },
+            "end": {
+              "line": 29,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "src",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 7
+            },
+            "end": {
+              "line": 29,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 29,
+              "column": 12
+            },
+            "end": {
+              "line": 29,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 29,
+          "column": 1
+        },
+        "end": {
+          "line": 29,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://at&t.com/fav.ico",
+          "alt": "With entity",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 1
+            },
+            "end": {
+              "line": 31,
+              "column": 44
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 44
+            },
+            "end": {
+              "line": 31,
+              "column": 46
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://at&t.com/fav.ico",
+          "alt": "numeric entity",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 46
+            },
+            "end": {
+              "line": 31,
+              "column": 92
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 92
+            },
+            "end": {
+              "line": 31,
+              "column": 94
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://at&t.com/fav.ico",
+          "alt": "without entity",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 94
+            },
+            "end": {
+              "line": 31,
+              "column": 140
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 31,
+              "column": 140
+            },
+            "end": {
+              "line": 31,
+              "column": 141
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 31,
+          "column": 1
+        },
+        "end": {
+          "line": 31,
+          "column": 141
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1
+            },
+            "end": {
+              "line": 33,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "alt",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 7
+            },
+            "end": {
+              "line": 33,
+              "column": 12
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 12
+            },
+            "end": {
+              "line": 33,
+              "column": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1
+        },
+        "end": {
+          "line": 33,
+          "column": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://att.com/fav.ico",
+          "alt": "AT&T with entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 1
+            },
+            "end": {
+              "line": 35,
+              "column": 48
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 48
+            },
+            "end": {
+              "line": 35,
+              "column": 50
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://att.com/fav.ico",
+          "alt": "AT&T with numeric entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 50
+            },
+            "end": {
+              "line": 35,
+              "column": 105
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 105
+            },
+            "end": {
+              "line": 35,
+              "column": 107
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": null,
+          "src": "http://att.com/fav.ico",
+          "alt": "AT&T without entity",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 107
+            },
+            "end": {
+              "line": 35,
+              "column": 157
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 157
+            },
+            "end": {
+              "line": 35,
+              "column": 158
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 35,
+          "column": 1
+        },
+        "end": {
+          "line": 35,
+          "column": 158
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image ",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 1
+            },
+            "end": {
+              "line": 37,
+              "column": 7
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "title",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 7
+            },
+            "end": {
+              "line": 37,
+              "column": 14
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 37,
+              "column": 14
+            },
+            "end": {
+              "line": 37,
+              "column": 15
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 37,
+          "column": 1
+        },
+        "end": {
+          "line": 37,
+          "column": 15
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": "AT&T",
+          "src": "http://att.com/fav.ico",
+          "alt": "With entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 1
+            },
+            "end": {
+              "line": 39,
+              "column": 50
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 50
+            },
+            "end": {
+              "line": 39,
+              "column": 52
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": "AT&T",
+          "src": "http://att.com/fav.ico",
+          "alt": "numeric entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 52
+            },
+            "end": {
+              "line": 39,
+              "column": 104
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 104
+            },
+            "end": {
+              "line": 39,
+              "column": 106
+            }
+          }
+        },
+        {
+          "type": "image",
+          "title": "AT&T",
+          "src": "http://att.com/fav.ico",
+          "alt": "without entity",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 106
+            },
+            "end": {
+              "line": 39,
+              "column": 158
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 39,
+              "column": 158
+            },
+            "end": {
+              "line": 39,
+              "column": 159
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 39,
+          "column": 1
+        },
+        "end": {
+          "line": 39,
+          "column": 159
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Image Reference ",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 1
+            },
+            "end": {
+              "line": 41,
+              "column": 17
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "alt",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 17
+            },
+            "end": {
+              "line": 41,
+              "column": 22
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ":",
+          "position": {
+            "start": {
+              "line": 41,
+              "column": 22
+            },
+            "end": {
+              "line": 41,
+              "column": 23
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 41,
+          "column": 1
+        },
+        "end": {
+          "line": 41,
+          "column": 23
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "imageReference",
+          "identifier": "favicon",
+          "referenceType": "full",
+          "alt": "AT&T with entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 1
+            },
+            "end": {
+              "line": 43,
+              "column": 33
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 33
+            },
+            "end": {
+              "line": 43,
+              "column": 35
+            }
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "favicon",
+          "referenceType": "full",
+          "alt": "AT&T with numeric entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 35
+            },
+            "end": {
+              "line": 43,
+              "column": 75
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 75
+            },
+            "end": {
+              "line": 43,
+              "column": 77
+            }
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "favicon",
+          "referenceType": "full",
+          "alt": "AT&T without entity",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 77
+            },
+            "end": {
+              "line": 43,
+              "column": 112
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 43,
+              "column": 112
+            },
+            "end": {
+              "line": 43,
+              "column": 113
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 43,
+          "column": 1
+        },
+        "end": {
+          "line": 43,
+          "column": 113
+        }
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "favicon",
+      "title": "ATT favicon",
+      "link": "http://att.com/fav.ico",
+      "position": {
+        "start": {
+          "line": 45,
+          "column": 1
+        },
+        "end": {
+          "line": 45,
+          "column": 48
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 46,
+      "column": 1
+    }
+  }
+}

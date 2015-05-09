@@ -58,6 +58,7 @@ See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse> for a des
 
 See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify> for a description of these settings.
 
+*   `entities` (`false`, `true`, or `"numbers"`, default: `false`);
 *   `setext` (boolean, default: `false`);
 *   `closeAtx` (boolean, default: `false`);
 *   `looseTable` (boolean, default: `false`);
