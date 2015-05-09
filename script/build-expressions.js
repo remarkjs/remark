@@ -102,10 +102,10 @@ rules.code = /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/;
 
 rules.horizontalRule = /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/;
 
-rules.heading =
+pedantic.heading =
     /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/;
 
-commonmark.heading =
+rules.heading =
     /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/;
 
 rules.lineHeading =

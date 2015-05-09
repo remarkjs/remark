@@ -2,16 +2,15 @@
   "type": "root",
   "children": [
     {
-      "type": "heading",
-      "depth": 1,
+      "type": "paragraph",
       "children": [
         {
           "type": "text",
-          "value": "This is not a heading, per CommonMark: ",
+          "value": "#This is not a heading, per CommonMark: ",
           "position": {
             "start": {
               "line": 1,
-              "column": 2
+              "column": 1
             },
             "end": {
               "line": 1,
@@ -61,6 +60,35 @@
           "column": 86
         }
       }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Kramdown (GitHub) neither supports unspaced ATX-headings.",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 58
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 58
+        }
+      }
     }
   ],
   "position": {
@@ -69,7 +97,7 @@
       "column": 1
     },
     "end": {
-      "line": 2,
+      "line": 4,
       "column": 1
     }
   }
