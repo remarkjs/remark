@@ -60,6 +60,66 @@
           "column": 21
         }
       }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "hello world\n",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "mailto:somename@example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "somename@example.com",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 9
+                },
+                "end": {
+                  "line": 5,
+                  "column": 29
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 30
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
+          "column": 30
+        }
+      }
     }
   ],
   "position": {
@@ -68,7 +128,7 @@
       "column": 1
     },
     "end": {
-      "line": 3,
+      "line": 6,
       "column": 1
     }
   }

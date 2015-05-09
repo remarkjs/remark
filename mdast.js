@@ -2977,6 +2977,14 @@ var MAILTO = 'mailto:';
 var EXPRESSIONS_WHITE_SPACE = /\s/;
 
 /*
+ * Expression for a protocol.
+ *
+ * @see http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax
+ */
+
+var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
+
+/*
  * Characters.
  */
 
@@ -4073,8 +4081,9 @@ compilerPrototype.delete = function (token) {
 /**
  * Stringify a link.
  *
- * When no title exists and the compiled `children` equal
- * the `href`, an auto link is created:
+ * When no title exists, the compiled `children` equal
+ * `href`, and `href` starts with a protocol, an auto
+ * link is created:
  *
  *     <http://example.com>
  *
@@ -4105,7 +4114,11 @@ compilerPrototype.link = function (token) {
     var url = token.href;
     var value = self.all(token).join(EMPTY);
 
-    if (token.title === null && (url === value || url === MAILTO + value)) {
+    if (
+        token.title === null &&
+        PROTOCOL.test(url) &&
+        (url === value || url === MAILTO + value)
+    ) {
         return encloseURI(url, true);
     }
 

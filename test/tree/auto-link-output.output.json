@@ -148,6 +148,80 @@
           "column": 49
         }
       }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Link without protocol, which should not render as an auto-link\nbecause they are easily mistaken for HTML: ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 6,
+              "column": 44
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "google.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "google.com",
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 45
+                },
+                "end": {
+                  "line": 6,
+                  "column": 55
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 44
+            },
+            "end": {
+              "line": 6,
+              "column": 68
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 68
+            },
+            "end": {
+              "line": 6,
+              "column": 69
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 6,
+          "column": 69
+        }
+      }
     }
   ],
   "position": {
@@ -156,7 +230,7 @@
       "column": 1
     },
     "end": {
-      "line": 4,
+      "line": 7,
       "column": 1
     }
   }
