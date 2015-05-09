@@ -1,0 +1,6 @@
+{
+  "title": "List Marker Increase",
+  "stringify": {
+    "incrementListMarker": false
+  }
+}

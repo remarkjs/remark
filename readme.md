@@ -129,6 +129,7 @@ Parse a markdown document, apply plugins to it, and compile it into something el
     *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/Options.md#fence);
     *   `fences` (`boolean`, default: `false`) — See [Fences](doc/Options.md#fences);
     *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/Options.md#list-item-bullets);
+    *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/Options.md#list-marker-increasement);
     *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
     *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);
     *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/Options.md#horizontal-rules);

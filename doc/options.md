@@ -22,6 +22,7 @@ Information on **mdast** itself is available in the project’s [Readme.md](http
     *   [Fence](#fence)
     *   [Fences](#fences)
     *   [Loose Tables](#loose-tables)
+    *   [List Marker Increase](#list-marker-increase)
     *   [Horizontal Rules](#horizontal-rules)
     *   [Setext Headings](#setext-headings)
     *   [Spaced Tables](#spaced-tables)
@@ -972,6 +973,42 @@ Yields:
     :---- | -----:
     How   |    are
     you   | today?
+
+### List Marker Increase
+
+Setting `incrementListMarker: false` (default: `true`) will stringify ordered list items based on the first item’s marker and will not increment further list items.
+
+The following document:
+
+    1.  Alpha;
+    2.  Bravo;
+    3.  Charley.
+
+
+    3.  Delta;
+    4.  Echo;
+    5.  Foxtrott.
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "incrementListMarker": false
+});
+```
+
+Yields:
+
+    1.  Alpha;
+    1.  Bravo;
+    1.  Charley.
+
+
+    3.  Delta;
+    3.  Echo;
+    3.  Foxtrott.
 
 ### Horizontal Rules
 

@@ -58,17 +58,19 @@ See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#parse> for a des
 
 See <https://github.com/wooorm/mdast/blob/master/doc/Options.md#stringify> for a description of these settings.
 
-*   `setext` (boolean, default: false);
-*   `closeAtx` (boolean, default: false);
-*   `looseTable` (boolean, default: false);
-*   `spacedTable` (boolean, default: true);
-*   `fences` (boolean, default: false);
-*   `bullet` ("-", "*", or "+", default: "-");
-*   `rule` ("-", "\*", or "_", default: "*");
-*   `ruleRepetition` (number, default: 3);
-*   `ruleSpaces` (boolean, default: false);
-*   `strong` ("_", or "\*", default: "*");
-*   `emphasis` ("\_", or "*", default: "_").
+*   `setext` (boolean, default: `false`);
+*   `closeAtx` (boolean, default: `false`);
+*   `looseTable` (boolean, default: `false`);
+*   `spacedTable` (boolean, default: `true`);
+*   `incrementListMarker` (boolean, default: `true`);
+*   `fences` (boolean, default: `false`);
+*   `fence` (`"~"` or ``"`"``, default: ``"`"``);
+*   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`);
+*   `rule` (`"-"`, `"\*"`, or `"_"`, default: `"*"`);
+*   `ruleRepetition` (number, default: `3`);
+*   `ruleSpaces` (boolean, default: `false`);
+*   `strong` (`"_"` or `"\*"`, default: `"*"`);
+*   `emphasis` (`"\_"` or `"*"`, default: `"_"`).
 
 ## BUGS
 

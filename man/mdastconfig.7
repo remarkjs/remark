@@ -69,27 +69,31 @@ See https://github\.com/wooorm/mdast/blob/master/doc/Options\.md#parse for a des
 See https://github\.com/wooorm/mdast/blob/master/doc/Options\.md#stringify for a description of these settings\.
 .RS 0
 .IP \(bu 2
-\fBsetext\fR (boolean, default: false);
+\fBsetext\fR (boolean, default: \fBfalse\fR);
 .IP \(bu 2
-\fBcloseAtx\fR (boolean, default: false);
+\fBcloseAtx\fR (boolean, default: \fBfalse\fR);
 .IP \(bu 2
-\fBlooseTable\fR (boolean, default: false);
+\fBlooseTable\fR (boolean, default: \fBfalse\fR);
 .IP \(bu 2
-\fBspacedTable\fR (boolean, default: true);
+\fBspacedTable\fR (boolean, default: \fBtrue\fR);
 .IP \(bu 2
-\fBfences\fR (boolean, default: false);
+\fBincrementListMarker\fR (boolean, default: \fBtrue\fR);
 .IP \(bu 2
-\fBbullet\fR ("\-", "*", or "+", default: "\-");
+\fBfences\fR (boolean, default: \fBfalse\fR);
 .IP \(bu 2
-\fBrule\fR ("\-", "*", or "_", default: "*");
+\fBfence\fR (\fB"~"\fR or \fB"`"\fR, default: \fB"`"\fR);
 .IP \(bu 2
-\fBruleRepetition\fR (number, default: 3);
+\fBbullet\fR (\fB"\-"\fR, \fB"*"\fR, or \fB"+"\fR, default: \fB"\-"\fR);
 .IP \(bu 2
-\fBruleSpaces\fR (boolean, default: false);
+\fBrule\fR (\fB"\-"\fR, \fB"\\*"\fR, or \fB"_"\fR, default: \fB"*"\fR);
 .IP \(bu 2
-\fBstrong\fR ("_", or "*", default: "*");
+\fBruleRepetition\fR (number, default: \fB3\fR);
 .IP \(bu 2
-\fBemphasis\fR ("_", or "*", default: "_")\.
+\fBruleSpaces\fR (boolean, default: \fBfalse\fR);
+.IP \(bu 2
+\fBstrong\fR (\fB"_"\fR or \fB"\\*"\fR, default: \fB"*"\fR);
+.IP \(bu 2
+\fBemphasis\fR (\fB"\\_"\fR or \fB"*"\fR, default: \fB"_"\fR)\.
 
 .RE
 .SH BUGS

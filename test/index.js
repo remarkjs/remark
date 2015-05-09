@@ -328,6 +328,16 @@ describe('mdast.stringify(ast, file, options?)', function () {
         }
     );
 
+    it('should throw when `options.incrementListMarker` is not a boolean',
+        function () {
+            assert.throws(function () {
+                mdast.stringify(empty(), {
+                    'incrementListMarker': -1
+                });
+            }, /options\.incrementListMarker/);
+        }
+    );
+
     it('should throw when `options.fences` is not a boolean',
         function () {
             assert.throws(function () {

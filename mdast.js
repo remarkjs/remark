@@ -23,6 +23,7 @@ module.exports = {
         'closeAtx': false,
         'looseTable': false,
         'spacedTable': true,
+        'incrementListMarker': true,
         'fences': false,
         'fence': '`',
         'bullet': '-',
@@ -2708,6 +2709,14 @@ function tokenizeFactory(type) {
         eat = function (subvalue) {
             var pos = position();
 
+            /* istanbul ignore if */
+            if (value.substring(0, subvalue.length) !== subvalue) {
+                eat.file.fail(
+                    'Incorrectly eaten value: please report this ' +
+                    'warning on http://git.io/vUYWz', now()
+                );
+            }
+
             value = value.substring(subvalue.length);
 
             updatePosition(subvalue);
@@ -3365,7 +3374,16 @@ compilerPrototype.all = function (parent) {
  *
  * Starts the list with
  * `token.start` and increments each following list item
- * bullet by one.
+ * bullet by one:
+ *
+ *     2. foo
+ *     3. bar
+ *
+ * In `incrementListMarker: false` mode, does not increment
+ * each marker ans stays on `token.start`:
+ *
+ *     1. foo
+ *     1. bar
  *
  * Adds an extra line after an item if it has
  * `loose: true`.
@@ -3392,6 +3410,7 @@ compilerPrototype.all = function (parent) {
  */
 compilerPrototype.visitOrderedItems = function (token) {
     var self = this;
+    var increment = self.options.incrementListMarker;
     var values = [];
     var tokens = token.children;
     var index = -1;
@@ -3403,7 +3422,7 @@ compilerPrototype.visitOrderedItems = function (token) {
     var value;
 
     while (++index < length) {
-        bullet = (start + index) + DOT + SPACE;
+        bullet = (increment ? start + index : start) + DOT + SPACE;
 
         indent = Math.ceil(bullet.length / INDENT) * INDENT;
         spacing = repeat(SPACE, indent - bullet.length);
