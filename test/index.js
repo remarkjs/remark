@@ -999,7 +999,7 @@ describe('File(options?)', function () {
 
         it('should include the filename in `toString()`', function () {
             assert(new File({
-                'filename': 'Untitled'
+                'filename': 'untitled'
             }).exception('test').toString() === 'untitled.md:1:1: test');
         });
 
