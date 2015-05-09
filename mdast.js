@@ -1560,11 +1560,11 @@ function tokenizeText(eat, $0) {
  * @return {Object} - `code` node.
  */
 function renderCodeBlock(value, language, eat) {
-    var node = this.renderRaw(CODE, trimRightLines(value || EMPTY));
-
-    node.lang = language ? decode(this.descape(language), eat) : null;
-
-    return node;
+    return {
+        'type': CODE,
+        'lang': language ? decode(this.descape(language), eat) : null,
+        'value': trimRightLines(value || EMPTY)
+    };
 }
 
 /**
@@ -1762,14 +1762,17 @@ function renderListItem(value, position) {
         }
     }
 
-    node = self.renderBlock(LIST_ITEM, value, position);
-
-    node.loose = EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
-        value.charAt(value.length - 1) === NEW_LINE;
+    node = {
+        'type': LIST_ITEM,
+        'loose': EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
+            value.charAt(value.length - 1) === NEW_LINE
+    };
 
     if (self.options.gfm) {
         node.checked = checked;
     }
+
+    node.children = self.tokenizeBlock(value, position);
 
     return node;
 }
@@ -1788,13 +1791,17 @@ function renderListItem(value, position) {
 function renderFootnoteDefinition(identifier, value, position) {
     var self = this;
     var exitBlockquote = self.enterBlockquote();
-    var node = self.renderBlock(FOOTNOTE_DEFINITION, value, position);
+    var token;
 
-    node.identifier = identifier;
+    token = {
+        'type': FOOTNOTE_DEFINITION,
+        'identifier': identifier,
+        'children': self.tokenizeBlock(value, position)
+    };
 
     exitBlockquote();
 
-    return node;
+    return token;
 }
 
 /**
@@ -1809,11 +1816,11 @@ function renderFootnoteDefinition(identifier, value, position) {
  * @return {Object} - `heading` node
  */
 function renderHeading(value, depth, position) {
-    var node = this.renderInline(HEADING, value, position);
-
-    node.depth = depth;
-
-    return node;
+    return {
+        'type': HEADING,
+        'depth': depth,
+        'children': this.tokenizeInline(value, position)
+    };
 }
 
 /**
@@ -1831,7 +1838,7 @@ function renderBlockquote(value, position) {
     var line = position.line;
     var offset = self.offset;
     var exitBlockquote = self.enterBlockquote();
-    var node;
+    var token;
 
     value = value.replace(EXPRESSION_BLOCK_QUOTE, function ($0) {
         offset[line] = (offset[line] || 0) + $0.length;
@@ -1840,11 +1847,14 @@ function renderBlockquote(value, position) {
         return EMPTY;
     });
 
-    node = self.renderBlock(BLOCKQUOTE, value, position);
+    token = {
+        'type': BLOCKQUOTE,
+        'children': this.tokenizeBlock(value, position)
+    };
 
     exitBlockquote();
 
-    return node;
+    return token;
 }
 
 /**

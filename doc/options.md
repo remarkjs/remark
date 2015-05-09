@@ -364,6 +364,7 @@ Yields:
     },
     {
       "type": "footnoteDefinition",
+      "identifier": "1",
       "children": [
         {
           "type": "paragraph",
@@ -402,6 +403,8 @@ Yields:
           "children": [
             {
               "type": "listItem",
+              "loose": false,
+              "checked": null,
               "children": [
                 {
                   "type": "paragraph",
@@ -433,8 +436,6 @@ Yields:
                   }
                 }
               ],
-              "loose": false,
-              "checked": null,
               "position": {
                 "start": {
                   "line": 7,
@@ -459,7 +460,6 @@ Yields:
           }
         }
       ],
-      "identifier": "1",
       "position": {
         "start": {
           "line": 5,
@@ -753,6 +753,7 @@ Yields:
     },
     {
       "type": "heading",
+      "depth": 1,
       "children": [
         {
           "type": "text",
@@ -769,7 +770,6 @@ Yields:
           }
         }
       ],
-      "depth": 1,
       "position": {
         "start": {
           "line": 5,
