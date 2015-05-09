@@ -1435,8 +1435,8 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
         function eatCell(value, content, pipe) {
             now = eat.now();
 
-            eat(content)(self.renderBlock(
-                TABLE_CELL, self.tokenizeInline(content.trim(), now)
+            eat(content)(self.renderInline(
+                TABLE_CELL, content.trim(), now
             ), row);
 
             eat(pipe);
@@ -1456,7 +1456,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      *   final fences.
      */
     function renderRow(type, value) {
-        var row = eat(EMPTY)(self.renderBlock(type, []), node);
+        var row = eat(EMPTY)(self.renderParent(type, []), node);
 
         value
             .replace(EXPRESSION_TABLE_INITIAL, eatFence)
@@ -1531,7 +1531,7 @@ function tokenizeParagraph(eat, $0) {
 
     $0 = trimRightLines($0);
 
-    return eat($0)(this.renderBlock(PARAGRAPH, this.tokenizeInline($0, now)));
+    return eat($0)(this.renderInline(PARAGRAPH, $0, now));
 }
 
 /**
@@ -1560,17 +1560,11 @@ function tokenizeText(eat, $0) {
  * @return {Object} - `code` node.
  */
 function renderCodeBlock(value, language, eat) {
-    var flag = null;
+    var node = this.renderRaw(CODE, trimRightLines(value || EMPTY));
 
-    if (language) {
-        flag = decode(this.descape(language), eat);
-    }
+    node.lang = language ? decode(this.descape(language), eat) : null;
 
-    return {
-        'type': CODE,
-        'lang': flag,
-        'value': trimRightLines(value || EMPTY)
-    };
+    return node;
 }
 
 /**
@@ -1768,17 +1762,14 @@ function renderListItem(value, position) {
         }
     }
 
-    node = {
-        'type': LIST_ITEM,
-        'loose': EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
-            value.charAt(value.length - 1) === NEW_LINE
-    };
+    node = self.renderBlock(LIST_ITEM, value, position);
+
+    node.loose = EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
+        value.charAt(value.length - 1) === NEW_LINE;
 
     if (self.options.gfm) {
         node.checked = checked;
     }
-
-    node.children = self.tokenizeBlock(value, position);
 
     return node;
 }
@@ -1797,17 +1788,13 @@ function renderListItem(value, position) {
 function renderFootnoteDefinition(identifier, value, position) {
     var self = this;
     var exitBlockquote = self.enterBlockquote();
-    var token;
+    var node = self.renderBlock(FOOTNOTE_DEFINITION, value, position);
 
-    token = {
-        'type': FOOTNOTE_DEFINITION,
-        'identifier': identifier,
-        'children': self.tokenizeBlock(value, position)
-    };
+    node.identifier = identifier;
 
     exitBlockquote();
 
-    return token;
+    return node;
 }
 
 /**
@@ -1822,11 +1809,11 @@ function renderFootnoteDefinition(identifier, value, position) {
  * @return {Object} - `heading` node
  */
 function renderHeading(value, depth, position) {
-    return {
-        'type': HEADING,
-        'depth': depth,
-        'children': this.tokenizeInline(value, position)
-    };
+    var node = this.renderInline(HEADING, value, position);
+
+    node.depth = depth;
+
+    return node;
 }
 
 /**
@@ -1844,7 +1831,7 @@ function renderBlockquote(value, position) {
     var line = position.line;
     var offset = self.offset;
     var exitBlockquote = self.enterBlockquote();
-    var token;
+    var node;
 
     value = value.replace(EXPRESSION_BLOCK_QUOTE, function ($0) {
         offset[line] = (offset[line] || 0) + $0.length;
@@ -1853,14 +1840,11 @@ function renderBlockquote(value, position) {
         return EMPTY;
     });
 
-    token = {
-        'type': BLOCKQUOTE,
-        'children': this.tokenizeBlock(value, position)
-    };
+    node = self.renderBlock(BLOCKQUOTE, value, position);
 
     exitBlockquote();
 
-    return token;
+    return node;
 }
 
 /**
@@ -1882,13 +1866,13 @@ function renderVoid(type) {
  * Create a parent.
  *
  * @example
- *   renderBlock('paragraph', '_foo_');
+ *   renderParent('paragraph', '_foo_');
  *
  * @param {string} type - Node type.
  * @param {Array.<Object>} children - Child nodes.
  * @return {Object} - Node of type `type`.
  */
-function renderBlock(type, children) {
+function renderParent(type, children) {
     return {
         'type': type,
         'children': children
@@ -1979,10 +1963,22 @@ function renderFootnote(value, position) {
  * @return {Object} - Node of type `type`.
  */
 function renderInline(type, value, position) {
-    return {
-        'type': type,
-        'children': this.tokenizeInline(value, position)
-    };
+    return this.renderParent(type, this.tokenizeInline(value, position));
+}
+
+/**
+ * Add a token with block content.
+ *
+ * @example
+ *   renderBlock('blockquote', 'Foo.', now());
+ *
+ * @param {string} type - Node type.
+ * @param {string} value - Contents.
+ * @param {Object} position - Location of node.
+ * @return {Object} - Node of type `type`.
+ */
+function renderBlock(type, value, position) {
+    return this.renderParent(type, this.tokenizeBlock(value, position));
 }
 
 /**
@@ -2438,7 +2434,7 @@ Parser.prototype.parse = function (file) {
 
     self.offset = {};
 
-    token = self.renderBlock(ROOT, self.tokenizeBlock(value));
+    token = self.renderBlock(ROOT, value);
 
     token.position = {
         'start': {
@@ -2453,49 +2449,32 @@ Parser.prototype.parse = function (file) {
 };
 
 /*
- * Expose tokenizers for block-level nodes.
+ * Enter and exit helpers.
  */
 
-Parser.prototype.blockTokenizers = {
-    'yamlFrontMatter': tokenizeYAMLFrontMatter,
-    'newline': tokenizeNewline,
-    'code': tokenizeCode,
-    'fences': tokenizeFences,
-    'heading': tokenizeHeading,
-    'lineHeading': tokenizeLineHeading,
-    'horizontalRule': tokenizeHorizontalRule,
-    'blockquote': tokenizeBlockquote,
-    'list': tokenizeList,
-    'html': tokenizeHtml,
-    'definition': tokenizeDefinition,
-    'footnoteDefinition': tokenizeFootnoteDefinition,
-    'looseTable': tokenizeTable,
-    'table': tokenizeTable,
-    'paragraph': tokenizeParagraph
-};
+Parser.prototype.enterLink = stateToggler('inLink', false);
+Parser.prototype.exitTop = stateToggler('atTop', true);
+Parser.prototype.exitStart = stateToggler('atStart', true);
+Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 
 /*
- * Expose order in which to parse block-level nodes.
+ * Expose helpers
  */
 
-Parser.prototype.blockMethods = [
-    'yamlFrontMatter',
-    'newline',
-    'code',
-    'fences',
-    'blockquote',
-    'heading',
-    'horizontalRule',
-    'list',
-    'lineHeading',
-    'html',
-    'definition',
-    'footnoteDefinition',
-    'looseTable',
-    'table',
-    'paragraph',
-    'blockText'
-];
+Parser.prototype.renderRaw = renderRaw;
+Parser.prototype.renderVoid = renderVoid;
+Parser.prototype.renderParent = renderParent;
+Parser.prototype.renderInline = renderInline;
+Parser.prototype.renderBlock = renderBlock;
+
+Parser.prototype.renderLink = renderLink;
+Parser.prototype.renderCodeBlock = renderCodeBlock;
+Parser.prototype.renderBlockquote = renderBlockquote;
+Parser.prototype.renderList = renderList;
+Parser.prototype.renderListItem = renderListItem;
+Parser.prototype.renderFootnoteDefinition = renderFootnoteDefinition;
+Parser.prototype.renderHeading = renderHeading;
+Parser.prototype.renderFootnote = renderFootnote;
 
 /**
  * Construct a tokenizer.  This creates both
@@ -2818,6 +2797,51 @@ function tokenizeFactory(type) {
     return tokenize;
 }
 
+/*
+ * Expose tokenizers for block-level nodes.
+ */
+
+Parser.prototype.blockTokenizers = {
+    'yamlFrontMatter': tokenizeYAMLFrontMatter,
+    'newline': tokenizeNewline,
+    'code': tokenizeCode,
+    'fences': tokenizeFences,
+    'heading': tokenizeHeading,
+    'lineHeading': tokenizeLineHeading,
+    'horizontalRule': tokenizeHorizontalRule,
+    'blockquote': tokenizeBlockquote,
+    'list': tokenizeList,
+    'html': tokenizeHtml,
+    'definition': tokenizeDefinition,
+    'footnoteDefinition': tokenizeFootnoteDefinition,
+    'looseTable': tokenizeTable,
+    'table': tokenizeTable,
+    'paragraph': tokenizeParagraph
+};
+
+/*
+ * Expose order in which to parse block-level nodes.
+ */
+
+Parser.prototype.blockMethods = [
+    'yamlFrontMatter',
+    'newline',
+    'code',
+    'fences',
+    'blockquote',
+    'heading',
+    'horizontalRule',
+    'list',
+    'lineHeading',
+    'html',
+    'definition',
+    'footnoteDefinition',
+    'looseTable',
+    'table',
+    'paragraph',
+    'blockText'
+];
+
 /**
  * Block tokenizer.
  *
@@ -2830,24 +2854,6 @@ function tokenizeFactory(type) {
  */
 
 Parser.prototype.tokenizeBlock = tokenizeFactory(BLOCK);
-
-/*
- * Expose helpers
- */
-
-Parser.prototype.renderRaw = renderRaw;
-Parser.prototype.renderVoid = renderVoid;
-Parser.prototype.renderBlock = renderBlock;
-Parser.prototype.renderInline = renderInline;
-
-Parser.prototype.renderLink = renderLink;
-Parser.prototype.renderCodeBlock = renderCodeBlock;
-Parser.prototype.renderBlockquote = renderBlockquote;
-Parser.prototype.renderList = renderList;
-Parser.prototype.renderListItem = renderListItem;
-Parser.prototype.renderFootnoteDefinition = renderFootnoteDefinition;
-Parser.prototype.renderHeading = renderHeading;
-Parser.prototype.renderFootnote = renderFootnote;
 
 /*
  * Expose tokenizers for inline-level nodes.
@@ -2901,15 +2907,6 @@ Parser.prototype.inlineMethods = [
  */
 
 Parser.prototype.tokenizeInline = tokenizeFactory(INLINE);
-
-/*
- * Enter and exit helpers.
- */
-
-Parser.prototype.enterLink = stateToggler('inLink', false);
-Parser.prototype.exitTop = stateToggler('atTop', true);
-Parser.prototype.exitStart = stateToggler('atStart', true);
-Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
 
 /**
  * Transform a markdown document into an AST.
