@@ -1069,7 +1069,7 @@ function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
     var offset = this.offset;
     var now = eat.now();
     var line = now.line;
-    var prefix = $1 + $2 + $3;
+    var prefix = $1 + $2 + ($3 || '');
 
     offset[line] = (offset[line] || 0) + prefix.length;
 
