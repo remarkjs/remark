@@ -3,6 +3,43 @@ mdast:
   setext: true
 ---
 
+0.20.0 / 2015-05-09
+===================
+
+*   Rebuild ([d1c45c3](https://github.com/wooorm/mdast/commit/d1c45c3))
+*   Refactor `lib/parse` to normalize order ([f2fa3ac](https://github.com/wooorm/mdast/commit/f2fa3ac))
+*   Add support for adjacent lists in blockquotes ([f89663c](https://github.com/wooorm/mdast/commit/f89663c))
+*   Fix broken test ([523e1ad](https://github.com/wooorm/mdast/commit/523e1ad))
+*   Fix incorrect links introduced in [609b938](https://github.com/wooorm/mdast/commit/609b938) ([6a8d725](https://github.com/wooorm/mdast/commit/6a8d725))
+*   Add support for encoding unsafe HTML characters to entities ([ce28ed4](https://github.com/wooorm/mdast/commit/ce28ed4))
+*   Add `incrementListMarker` setting to control not incrementing ordered items ([659e49c](https://github.com/wooorm/mdast/commit/659e49c))
+*   Add warning when too much content is eaten by parser ([61732d5](https://github.com/wooorm/mdast/commit/61732d5))
+*   Fix bug where setext-headings ate too much markdown ([da03727](https://github.com/wooorm/mdast/commit/da03727))
+*   Remove support for atx-headings without initial spaces ([daa344c](https://github.com/wooorm/mdast/commit/daa344c))
+*   Fix stringification of autolinks without protocol. ([2fb6938](https://github.com/wooorm/mdast/commit/2fb6938))
+*   Remove unused `level` parameter to compilers ([5df6578](https://github.com/wooorm/mdast/commit/5df6578))
+*   Refactor parameter ordering in private `add` function ([99db50b](https://github.com/wooorm/mdast/commit/99db50b))
+*   Add improved docs to API ([c925a23](https://github.com/wooorm/mdast/commit/c925a23))
+*   Add improved docs to CLI ([2b754cb](https://github.com/wooorm/mdast/commit/2b754cb))
+*   Fix build fail on case-sensitive file systems ([609b938](https://github.com/wooorm/mdast/commit/609b938))
+*   Add missing jsdoc comments ([8745960](https://github.com/wooorm/mdast/commit/8745960))
+*   Refactor npm files ([4ca95ac](https://github.com/wooorm/mdast/commit/4ca95ac))
+*   Refactor npm scripts ([00e9ddd](https://github.com/wooorm/mdast/commit/00e9ddd))
+*   Update browserify, eslint, jscs ([9d5c1d8](https://github.com/wooorm/mdast/commit/9d5c1d8))
+*   Add `.editorconfig` ([e239d68](https://github.com/wooorm/mdast/commit/e239d68))
+*   Remove required `--output` in multi-file CLI mode ([f2f0b21](https://github.com/wooorm/mdast/commit/f2f0b21))
+*   Rename sentence-cased docs files with lower-case names ([b03df38](https://github.com/wooorm/mdast/commit/b03df38))
+*   Refactor loose list items in docs ([6402291](https://github.com/wooorm/mdast/commit/6402291))
+*   Fix links in `doc/` and `man/` ([e0414bc](https://github.com/wooorm/mdast/commit/e0414bc))
+*   Rename sentence-cased markdown files with lower-case names ([4bf2205](https://github.com/wooorm/mdast/commit/4bf2205))
+*   Add support for link definitions without reference ([2295073](https://github.com/wooorm/mdast/commit/2295073))
+*   Refactor to simplify identifier escaping ([8e6861a](https://github.com/wooorm/mdast/commit/8e6861a))
+*   Fix incorrectly reported `root.position.end` ([76d8576](https://github.com/wooorm/mdast/commit/76d8576))
+*   Add support for e-mail auto-links at the beginning of a paragraph ([2b390f0](https://github.com/wooorm/mdast/commit/2b390f0))
+*   Add stack trace to uncaught CLI errors ([d329bfb](https://github.com/wooorm/mdast/commit/d329bfb))
+*   Add warning for references without definitions ([67a39c2](https://github.com/wooorm/mdast/commit/67a39c2))
+*   Add warnings for duplicate link references, footnotes ([2904f9c](https://github.com/wooorm/mdast/commit/2904f9c))
+
 0.19.0 / 2015-04-21
 ===================
 
