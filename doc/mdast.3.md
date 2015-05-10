@@ -270,7 +270,7 @@ Creates an exception by passing its arguments to `File#exception()`, sets `fatal
 
 Creates an exception by passing its arguments to `File#exception()`, sets `fatal: true` on it, and adds it to `file`s `messages`.  Then, it returns the exception.
 
-If `file`s has a falsey `quiet` property, `File#fail()` throws the exception.
+If `file` has a falsey `quiet` property, `File#fail()` throws the exception.
 
 **See**
 

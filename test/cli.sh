@@ -114,6 +114,20 @@ it "Should accept \`-q\`"
     assert $result ""
 
 #
+# `--silent`.
+#
+
+it "Should accept \`--silent\`"
+    result=`$COMMAND --silent $markdown $markdownAlt --output`
+    assert 0 $?
+    assert $result ""
+
+it "Should accept \`-S\`"
+    result=`$COMMAND -S $markdown $markdownAlt --output`
+    assert 0 $?
+    assert $result ""
+
+#
 # `--output`.
 #
 

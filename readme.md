@@ -191,7 +191,8 @@ Options:
   -u, --use <plugins>       use transform plugin(s)
   -e, --ext <extensions>    specify extensions
   -a, --ast                 output AST information
-  -q, --quiet               output less messages
+  -q, --quiet               output only warnings and errors
+  -S, --silent              output only errors
   --no-color                disable color in output
   --no-rc                   disable configuration from .mdastrc
   --no-ignore               disable ignore from .mdastignore

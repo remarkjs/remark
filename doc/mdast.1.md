@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` \[`-a`, `--ast`\] \[`-q`, `--quiet`\] \[`-o`, `--output` \[_path_\]\] \[`-s`, `--setting` _settings_\] \[`-u`, `--use` _plugin_\] \[`-c`, `--config-path` _path_\] \[`-i`, `--ignore-path` _path_\] \[`-e`, `--ext` \[_extensions_\]\] \[`--no-color`\] \[`--no-rc`\] \[`--no-ignore`\] _file|dir_ _..._
+`mdast` \[`-a`, `--ast`\] \[`-q`, `--quiet`\] \[`-S`, `--silent`\] \[`-o`, `--output` \[_path_\]\] \[`-s`, `--setting` _settings_\] \[`-u`, `--use` _plugin_\] \[`-c`, `--config-path` _path_\] \[`-i`, `--ignore-path` _path_\] \[`-e`, `--ext` \[_extensions_\]\] \[`--no-color`\] \[`--no-rc`\] \[`--no-ignore`\] _file|dir_ _..._
 
 ## DESCRIPTION
 
@@ -21,7 +21,8 @@ Options are as follows:
 *   `-u`, `--use` _plugin_: Use a transform plugin, optionally with options;
 *   `-e`, `--ext` _extensions_: Specify file extensions to look for;
 *   `-a`, `--ast`: Output AST information;
-*   `-q`, `--quiet`: Output less messages;
+*   `-q`, `--quiet`: Output only warnings and errors;
+*   `-S`, `--silent`: Output only errors;
 *   `--no-color`: disable color in output;
 *   `--no-rc`: Disable configuration from _.mdastrc_;
 *   `--no-ignore`: Disable ignoring from _.mdastignore_.
