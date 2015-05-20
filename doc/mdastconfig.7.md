@@ -28,9 +28,9 @@ Command Line Settings take the form of a comma (`,`) and semi-colon (`;`) delimi
 The below are all valid examples:
 
 ```bash
-$ mdast --setting "foo" --setting "baz:qux"
-$ mdast --setting "foo,baz:qux"
-$ mdast --setting "foo;baz:qux"
+mdast --setting "foo" --setting "baz:qux"
+mdast --setting "foo,baz:qux"
+mdast --setting "foo;baz:qux"
 ```
 
 An attribute without value will be treated as a value of `true`.

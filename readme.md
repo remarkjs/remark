@@ -22,19 +22,19 @@
 [npm](https://docs.npmjs.com/cli/install):
 
 ```bash
-$ npm install mdast
+npm install mdast
 ```
 
 [Component.js](https://github.com/componentjs/component):
 
 ```bash
-$ component install wooorm/mdast
+component install wooorm/mdast
 ```
 
 [Bower](http://bower.io/#install-packages):
 
 ```bash
-$ bower install mdast
+bower install mdast
 ```
 
 [Duo](http://duojs.org/#getting-started):
@@ -170,7 +170,7 @@ Change the way [`mdast`](#api) works by using a [`plugin`](doc/plugins.md).
 Install:
 
 ```bash
-$ npm install --global mdast
+npm install --global mdast
 ```
 
 Use:
