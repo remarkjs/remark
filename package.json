@@ -54,7 +54,7 @@
     "browserify": "^10.0.0",
     "clone": "^1.0.1",
     "diff": "^1.0.0",
-    "eslint": "^0.20.0",
+    "eslint": "^0.21.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
