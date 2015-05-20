@@ -3,6 +3,15 @@ mdast:
   setext: true
 ---
 
+0.20.1 / 2015-05-20
+===================
+
+*   Update eslint ([8174af6](https://github.com/wooorm/mdast/commit/8174af6))
+*   Update `.editorconfig` with json, svg, mdastrc, eslintrc ([f3bc2a9](https://github.com/wooorm/mdast/commit/f3bc2a9))
+*   Remove dollar signs from bash code in markdown ([3a3ceb5](https://github.com/wooorm/mdast/commit/3a3ceb5))
+*   Add silent mode to supress non-fatal messages on CLI ([b1859d6](https://github.com/wooorm/mdast/commit/b1859d6))
+*   Fix bug in empty ATX (closed) headings ([a80f8e9](https://github.com/wooorm/mdast/commit/a80f8e9))
+
 0.20.0 / 2015-05-09
 ===================
 
