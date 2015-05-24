@@ -26,7 +26,8 @@
                     "end": {
                       "line": 1,
                       "column": 9
-                    }
+                    },
+                    "indent": []
                   }
                 }
               ],
@@ -38,7 +39,8 @@
                 "end": {
                   "line": 1,
                   "column": 9
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -50,7 +52,8 @@
             "end": {
               "line": 1,
               "column": 9
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -72,7 +75,8 @@
                     "end": {
                       "line": 2,
                       "column": 9
-                    }
+                    },
+                    "indent": []
                   }
                 }
               ],
@@ -84,7 +88,8 @@
                 "end": {
                   "line": 2,
                   "column": 9
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -96,7 +101,8 @@
             "end": {
               "line": 2,
               "column": 9
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -118,7 +124,8 @@
                     "end": {
                       "line": 3,
                       "column": 9
-                    }
+                    },
+                    "indent": []
                   }
                 }
               ],
@@ -130,7 +137,8 @@
                 "end": {
                   "line": 3,
                   "column": 9
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -142,7 +150,8 @@
             "end": {
               "line": 3,
               "column": 9
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -152,9 +161,14 @@
           "column": 1
         },
         "end": {
-          "line": 3,
-          "column": 9
-        }
+          "line": 4,
+          "column": 1
+        },
+        "indent": [
+          1,
+          1,
+          1
+        ]
       }
     }
   ],

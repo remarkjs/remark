@@ -13,7 +13,8 @@
         "end": {
           "line": 1,
           "column": 4
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -28,7 +29,8 @@
         "end": {
           "line": 3,
           "column": 3
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -43,7 +45,8 @@
         "end": {
           "line": 5,
           "column": 8
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -58,7 +61,8 @@
         "end": {
           "line": 7,
           "column": 5
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -73,7 +77,8 @@
         "end": {
           "line": 9,
           "column": 12
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -88,7 +93,8 @@
         "end": {
           "line": 11,
           "column": 7
-        }
+        },
+        "indent": []
       }
     }
   ],

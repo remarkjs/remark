@@ -57,11 +57,15 @@ interface Node {
 ## Location
 
 Every [**Node**](#node) has a reference to its original location.
+Start determines the line and column at which the original location
+starts, end respectively, and indent the column at which further
+lines start.
 
 ```idl
 interface Location {
     start: Position;
     end: Position;
+    indent: [uint32 >= 1]
 }
 ```
 

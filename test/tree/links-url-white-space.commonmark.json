@@ -20,7 +20,8 @@
                 "end": {
                   "line": 1,
                   "column": 7
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -32,7 +33,8 @@
             "end": {
               "line": 1,
               "column": 8
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -46,7 +48,8 @@
             "end": {
               "line": 1,
               "column": 24
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -58,7 +61,8 @@
         "end": {
           "line": 1,
           "column": 24
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -80,7 +84,8 @@
                 "end": {
                   "line": 3,
                   "column": 7
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -92,7 +97,8 @@
             "end": {
               "line": 3,
               "column": 25
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -106,7 +112,8 @@
             "end": {
               "line": 3,
               "column": 26
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -118,7 +125,8 @@
         "end": {
           "line": 3,
           "column": 26
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -137,7 +145,8 @@
             "end": {
               "line": 5,
               "column": 9
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -151,7 +160,8 @@
             "end": {
               "line": 5,
               "column": 24
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -163,7 +173,8 @@
         "end": {
           "line": 5,
           "column": 24
-        }
+        },
+        "indent": []
       }
     },
     {
@@ -182,7 +193,8 @@
             "end": {
               "line": 7,
               "column": 25
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -196,7 +208,8 @@
             "end": {
               "line": 7,
               "column": 26
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -208,7 +221,8 @@
         "end": {
           "line": 7,
           "column": 26
-        }
+        },
+        "indent": []
       }
     }
   ],

@@ -15,7 +15,10 @@
             "end": {
               "line": 4,
               "column": 3
-            }
+            },
+            "indent": [
+              1
+            ]
           }
         }
       ],
@@ -27,7 +30,10 @@
         "end": {
           "line": 4,
           "column": 3
-        }
+        },
+        "indent": [
+          1
+        ]
       }
     },
     {
@@ -45,7 +51,8 @@
             "end": {
               "line": 6,
               "column": 6
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -57,7 +64,8 @@
         "end": {
           "line": 6,
           "column": 6
-        }
+        },
+        "indent": []
       }
     }
   ],

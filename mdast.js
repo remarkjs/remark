@@ -1066,12 +1066,9 @@ function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
  * @return {Node} - `heading` node.
  */
 function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
-    var offset = this.offset;
     var now = eat.now();
-    var line = now.line;
-    var prefix = $1 + $2 + ($3 || '');
 
-    offset[line] = (offset[line] || 0) + prefix.length;
+    now.column += ($1 + $2 + ($3 || '')).length;
 
     return eat($0)(this.renderHeading($4, $2.length, now));
 }
@@ -1123,10 +1120,17 @@ function tokenizeHorizontalRule(eat, $0) {
  */
 function tokenizeBlockquote(eat, $0) {
     var now = eat.now();
+    var indent = this.indent(now.line);
+    var value = trimRightLines($0);
+    var add = eat(value);
 
-    $0 = trimRightLines($0);
+    value = value.replace(EXPRESSION_BLOCK_QUOTE, function (prefix) {
+        indent(prefix.length);
 
-    return eat($0)(this.renderBlockquote($0, now));
+        return '';
+    });
+
+    return add(this.renderBlockquote(value, now));
 }
 
 /**
@@ -1150,7 +1154,6 @@ function tokenizeList(eat, $0, $1, $2) {
     var isLoose = false;
     var now;
     var bullet;
-    var add;
     var item;
     var enterTop;
     var exitBlockquote;
@@ -1219,12 +1222,10 @@ function tokenizeList(eat, $0, $1, $2) {
 
     index = -1;
 
-    add = eat(EMPTY);
+    node = eat($0).reset(self.renderList([], firstBullet));
 
     enterTop = self.exitTop();
     exitBlockquote = self.enterBlockquote();
-
-    node = add(self.renderList([], firstBullet));
 
     while (++index < length) {
         item = matches[index];
@@ -1242,8 +1243,6 @@ function tokenizeList(eat, $0, $1, $2) {
     }
 
     node.loose = isLoose;
-
-    node.position.end = eat.now();
 
     enterTop();
     exitBlockquote();
@@ -1350,12 +1349,10 @@ tokenizeYAMLFrontMatter.onlyAtStart = true;
 function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
     var self = this;
     var now = eat.now();
-    var line = now.line;
-    var offset = self.offset;
+    var indent = self.indent(now.line);
 
     $3 = $3.replace(EXPRESSION_INITIAL_TAB, function (value) {
-        offset[line] = (offset[line] || 0) + value.length;
-        line++;
+        indent(value.length);
 
         return EMPTY;
     });
@@ -1397,7 +1394,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var index;
     var length;
 
-    node = eat(EMPTY)({
+    node = eat($0).reset({
         'type': TABLE,
         'align': [],
         'children': []
@@ -1456,13 +1453,11 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      *   final fences.
      */
     function renderRow(type, value) {
-        var row = eat(EMPTY)(self.renderParent(type, []), node);
+        var row = eat(value).reset(self.renderParent(type, []), node);
 
         value
             .replace(EXPRESSION_TABLE_INITIAL, eatFence)
             .replace(EXPRESSION_TABLE_CONTENT, eatCellFactory(row));
-
-        row.position.end = eat.now();
     }
 
     /*
@@ -1501,8 +1496,6 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
             eat(NEW_LINE);
         }
     }
-
-    node.position.end = eat.now();
 
     return node;
 }
@@ -1610,8 +1603,7 @@ function renderList(children, bullet) {
  */
 function renderPedanticListItem(value, position) {
     var self = this;
-    var offset = self.offset;
-    var line = position.line;
+    var indent = self.indent(position.line);
 
     /**
      * A simple replacer which removed all matches,
@@ -1621,8 +1613,7 @@ function renderPedanticListItem(value, position) {
      * @return {string}
      */
     function replacer($0) {
-        offset[line] = (offset[line] || 0) + $0.length;
-        line++;
+        indent($0.length);
 
         return EMPTY;
     }
@@ -1634,11 +1625,11 @@ function renderPedanticListItem(value, position) {
     value = value.replace(EXPRESSION_PEDANTIC_BULLET, replacer);
 
     /*
-     * The initial line is also matched by the below, so
+     * The initial line was also matched by the below, so
      * we reset the `line`.
      */
 
-    line = position.line;
+    indent = self.indent(position.line);
 
     return value.replace(EXPRESSION_INITIAL_INDENT, replacer);
 }
@@ -1655,8 +1646,7 @@ function renderPedanticListItem(value, position) {
  */
 function renderNormalListItem(value, position) {
     var self = this;
-    var offset = self.offset;
-    var line = position.line;
+    var indent = self.indent(position.line);
     var bullet;
     var rest;
     var lines;
@@ -1705,17 +1695,13 @@ function renderNormalListItem(value, position) {
 
     trimmedLines[0] = rest;
 
-    offset[line] = (offset[line] || 0) + bullet.length;
-    line++;
+    indent(bullet.length);
 
     index = 0;
     length = lines.length;
 
     while (++index < length) {
-        offset[line] = (offset[line] || 0) +
-            lines[index].length - trimmedLines[index].length;
-
-        line++;
+        indent(lines[index].length - trimmedLines[index].length);
     }
 
     return trimmedLines.join(NEW_LINE);
@@ -1742,11 +1728,10 @@ LIST_ITEM_MAP.false = renderNormalListItem;
  */
 function renderListItem(value, position) {
     var self = this;
-    var offsets = self.offset;
     var checked = null;
     var node;
     var task;
-    var offset;
+    var indent;
 
     value = LIST_ITEM_MAP[self.options.pedantic].apply(self, arguments);
 
@@ -1754,11 +1739,11 @@ function renderListItem(value, position) {
         task = value.match(EXPRESSION_TASK_ITEM);
 
         if (task) {
+            indent = task[0].length;
             checked = task[1].toLowerCase() === 'x';
 
-            offset = task[0].length;
-            offsets[position.line] += offset;
-            value = value.slice(offset);
+            self.indent(position.line)(indent);
+            value = value.slice(indent);
         }
     }
 
@@ -1812,7 +1797,7 @@ function renderFootnoteDefinition(identifier, value, position) {
  *
  * @param {string} value - Content.
  * @param {number} depth - Heading depth.
- * @param {Object} position - Location of inline content.
+ * @param {Object} position - Heading content location.
  * @return {Object} - `heading` node
  */
 function renderHeading(value, depth, position) {
@@ -1827,29 +1812,18 @@ function renderHeading(value, depth, position) {
  * Create a blockquote token.
  *
  * @example
- *   renderBlockquote('_foo_', now());
+ *   renderBlockquote('_foo_', eat);
  *
  * @param {string} value - Content.
- * @param {Object} position - Location of blockquote.
+ * @param {Object} now - Position.
  * @return {Object} - `blockquote` node.
  */
-function renderBlockquote(value, position) {
+function renderBlockquote(value, now) {
     var self = this;
-    var line = position.line;
-    var offset = self.offset;
     var exitBlockquote = self.enterBlockquote();
-    var token;
-
-    value = value.replace(EXPRESSION_BLOCK_QUOTE, function ($0) {
-        offset[line] = (offset[line] || 0) + $0.length;
-        line++;
-
-        return EMPTY;
-    });
-
-    token = {
+    var token = {
         'type': BLOCKQUOTE,
-        'children': this.tokenizeBlock(value, position)
+        'children': this.tokenizeBlock(value, now)
     };
 
     exitBlockquote();
@@ -2420,6 +2394,37 @@ Parser.prototype.options = defaultOptions;
 Parser.prototype.expressions = defaultExpressions;
 
 /**
+ * Factory to track indentation for each line corresponding
+ * to the given `start` and the number of invocations.
+ *
+ * @param {number} start - Starting line.
+ * @return {function(offset)} - Indenter.
+ */
+Parser.prototype.indent = function (start) {
+    var self = this;
+    var line = start;
+
+    /**
+     * Intender which increments the global offset,
+     * starting at the bound line, and further incrementing
+     * each line for each invocation.
+     *
+     * @example
+     *   indenter(2)
+     *
+     * @param {number} offset - Number to increment the
+     *   offset.
+     */
+    function indenter(offset) {
+        self.offset[line] = (self.offset[line] || 0) + offset;
+
+        line++;
+    }
+
+    return indenter;
+};
+
+/**
  * Parse `value` into an AST.
  *
  * @example
@@ -2547,11 +2552,15 @@ function tokenizeFactory(type) {
          * @param {string} subvalue
          */
         function updatePosition(subvalue) {
-            var lines = subvalue.match(/\n/g);
-            var lastIndex = subvalue.lastIndexOf(NEW_LINE);
+            var character = -1;
+            var subvalueLength = subvalue.length;
+            var lastIndex = -1;
 
-            if (lines) {
-                line += lines.length;
+            while (++character < subvalueLength) {
+                if (subvalue.charAt(character) === NEW_LINE) {
+                    lastIndex = character;
+                    line++;
+                }
             }
 
             if (lastIndex === -1) {
@@ -2561,12 +2570,44 @@ function tokenizeFactory(type) {
             }
 
             if (line in offset) {
-                if (lines) {
+                if (lastIndex !== -1) {
                     column += offset[line];
                 } else if (column <= offset[line]) {
                     column = offset[line] + 1;
                 }
             }
+        }
+
+        /**
+         * Get offset. Called before the fisrt character is
+         * eaten to retrieve the range's offsets.
+         *
+         * @return {Function} - `done`, to be called when
+         *   the last character is eaten.
+         */
+        function getOffset() {
+            var indentation = [];
+            var pos = line + 1;
+
+            /**
+             * Done. Called when the last character is
+             * eaten to retrieve the range's offsets.
+             *
+             * @return {Array.<number>} - Offset.
+             */
+            function done() {
+                var last = line + 1;
+
+                while (pos < last) {
+                    indentation.push((offset[pos] || 0) + 1);
+
+                    pos++;
+                }
+
+                return indentation;
+            }
+
+            return done;
         }
 
         /**
@@ -2629,10 +2670,11 @@ function tokenizeFactory(type) {
              *   on.
              * @return {Node} - `node`.
              */
-            function update(node) {
+            function update(node, indent) {
                 start = node.position ? node.position.start : start;
 
                 node.position = new Position(start);
+                node.position.indent = indent;
 
                 return node;
             }
@@ -2702,7 +2744,9 @@ function tokenizeFactory(type) {
          *   also adds `position` to node.
          */
         eat = function (subvalue) {
+            var indent = getOffset();
             var pos = position();
+            var current = now();
 
             /* istanbul ignore if */
             if (value.substring(0, subvalue.length) !== subvalue) {
@@ -2716,6 +2760,8 @@ function tokenizeFactory(type) {
 
             updatePosition(subvalue);
 
+            indent = indent();
+
             /**
              * Add the given arguments, add `position` to
              * the returned node, and return the node.
@@ -2723,8 +2769,33 @@ function tokenizeFactory(type) {
              * @return {Node}
              */
             function apply() {
-                return pos(add.apply(null, arguments));
+                return pos(add.apply(null, arguments), indent);
             }
+
+            /**
+             * Functions just like apply, but resets the
+             * content:  the line and column are reversed,
+             * and the eaten value is re-added.
+             *
+             * This is useful for nodes with a single
+             * type of content, such as lists and tables.
+             *
+             * See `apply` above for what parameters are
+             * expected.
+             *
+             * @return {Node}
+             */
+            function reset() {
+                var node = apply.apply(null, arguments);
+
+                line = current.line;
+                column = current.column;
+                value = subvalue + value;
+
+                return node;
+            }
+
+            apply.reset = reset;
 
             return apply;
         };

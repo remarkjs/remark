@@ -18,7 +18,8 @@
                 "end": {
                   "line": 1,
                   "column": 6
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -30,7 +31,8 @@
             "end": {
               "line": 1,
               "column": 6
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -50,7 +52,8 @@
                     "end": {
                       "line": 3,
                       "column": 8
-                    }
+                    },
+                    "indent": []
                   }
                 }
               ],
@@ -62,7 +65,8 @@
                 "end": {
                   "line": 3,
                   "column": 8
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -74,7 +78,8 @@
             "end": {
               "line": 3,
               "column": 8
-            }
+            },
+            "indent": []
           }
         },
         {
@@ -91,7 +96,8 @@
                 "end": {
                   "line": 5,
                   "column": 6
-                }
+                },
+                "indent": []
               }
             }
           ],
@@ -103,7 +109,8 @@
             "end": {
               "line": 5,
               "column": 6
-            }
+            },
+            "indent": []
           }
         }
       ],
@@ -115,7 +122,13 @@
         "end": {
           "line": 5,
           "column": 6
-        }
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1
+        ]
       }
     }
   ],
