@@ -470,6 +470,7 @@ var clean = utilities.clean;
 var validate = utilities.validate;
 var normalize = utilities.normalizeIdentifier;
 var objectCreate = utilities.create;
+var arrayPush = [].push;
 
 /*
  * Characters.
@@ -2700,42 +2701,38 @@ function tokenizeFactory(type) {
             var prev;
             var children;
 
-            if (isMultiple) {
-                if (!parent) {
-                    tokens = tokens.concat(token);
-                } else {
-                    parent.children = parent.children.concat(token);
-                }
-
-                token = token[token.length - 1];
+            if (!parent) {
+                children = tokens;
             } else {
-                if (!parent) {
-                    children = tokens;
-                } else {
-                    children = parent.children;
-                }
+                children = parent.children;
+            }
 
+            if (isMultiple) {
+                arrayPush.apply(children, token);
+            } else {
                 if (type === INLINE && token.type === TEXT) {
                     token.value = decode(token.value, eat);
                 }
 
                 prev = children[children.length - 1];
-            }
 
-            if (
-                prev &&
-                token.type === prev.type &&
-                token.type in MERGEABLE_NODES
-            ) {
-                token = MERGEABLE_NODES[token.type].call(self, prev, token);
-            }
+                if (
+                    prev &&
+                    token.type === prev.type &&
+                    token.type in MERGEABLE_NODES
+                ) {
+                    token = MERGEABLE_NODES[token.type].call(
+                        self, prev, token
+                    );
+                }
 
-            if (!isMultiple && token !== prev) {
-                children.push(token);
-            }
+                if (!isMultiple && token !== prev) {
+                    children.push(token);
+                }
 
-            if (self.atStart && tokens.length) {
-                self.exitStart();
+                if (self.atStart && tokens.length) {
+                    self.exitStart();
+                }
             }
 
             return token;
