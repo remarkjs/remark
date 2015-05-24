@@ -2696,19 +2696,30 @@ function tokenizeFactory(type) {
          * @return {Object} - Added or merged into token.
          */
         add = function (token, parent) {
+            var isMultiple = 'length' in token;
             var prev;
             var children;
 
-            if (!parent) {
-                children = tokens;
+            if (isMultiple) {
+                if (!parent) {
+                    tokens = tokens.concat(token);
+                } else {
+                    parent.children = parent.children.concat(token);
+                }
+
+                token = token[token.length - 1];
             } else {
-                children = parent.children;
-            }
+                if (!parent) {
+                    children = tokens;
+                } else {
+                    children = parent.children;
+                }
 
-            prev = children[children.length - 1];
+                if (type === INLINE && token.type === TEXT) {
+                    token.value = decode(token.value, eat);
+                }
 
-            if (type === INLINE && token.type === TEXT) {
-                token.value = decode(token.value, eat);
+                prev = children[children.length - 1];
             }
 
             if (
@@ -2719,7 +2730,7 @@ function tokenizeFactory(type) {
                 token = MERGEABLE_NODES[token.type].call(self, prev, token);
             }
 
-            if (token !== prev) {
+            if (!isMultiple && token !== prev) {
                 children.push(token);
             }
 
@@ -3013,6 +3024,13 @@ function parse(file, options) {
  */
 
 parse.Parser = Parser;
+
+/*
+ * Expose `tokenizeFactory` so dependencies could create
+ * their own tokenizers.
+ */
+
+Parser.prototype.tokenizeFactory = tokenizeFactory;
 
 /*
  * Expose `parse` on `module.exports`.
