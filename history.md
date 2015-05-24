@@ -3,6 +3,13 @@ mdast:
   setext: true
 ---
 
+0.21.0 / 2015-05-24
+===================
+
+*   Add support for tokenizing into multiple tokens ([a1b7125](https://github.com/wooorm/mdast/commit/a1b7125))
+*   Add `indent` to `node.position` ([709777b](https://github.com/wooorm/mdast/commit/709777b))
+*   Fix missing parentheses ([84316a8](https://github.com/wooorm/mdast/commit/84316a8))
+
 0.20.1 / 2015-05-20
 ===================
 
