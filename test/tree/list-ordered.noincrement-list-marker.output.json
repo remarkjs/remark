@@ -161,11 +161,10 @@
           "column": 1
         },
         "end": {
-          "line": 4,
-          "column": 1
+          "line": 3,
+          "column": 9
         },
         "indent": [
-          1,
           1,
           1
         ]

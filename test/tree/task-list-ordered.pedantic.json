@@ -329,11 +329,10 @@
           "column": 1
         },
         "end": {
-          "line": 7,
-          "column": 1
+          "line": 6,
+          "column": 41
         },
         "indent": [
-          1,
           1,
           1,
           1,

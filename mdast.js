@@ -1113,7 +1113,7 @@ function tokenizeHorizontalRule(eat, $0) {
  * Tokenise a blockquote.
  *
  * @example
- *   tokenizeList(eat, '> Foo');
+ *   tokenizeBlockquote(eat, '> Foo');
  *
  * @param {function(string)} eat
  * @param {string} $0 - Whole blockquote.
@@ -1149,7 +1149,8 @@ function tokenizeBlockquote(eat, $0) {
 function tokenizeList(eat, $0, $1, $2) {
     var self = this;
     var firstBullet = $2;
-    var matches = trimRightLines($0).match(self.rules.item);
+    var value = trimRightLines($0);
+    var matches = value.match(self.rules.item);
     var length = matches.length;
     var index = 0;
     var isLoose = false;
@@ -1183,6 +1184,7 @@ function tokenizeList(eat, $0, $1, $2) {
             ) {
                 matches = matches.slice(0, index);
                 matches[index - 1] = trimRightLines(matches[index - 1]);
+
                 length = matches.length;
 
                 break;
@@ -1223,7 +1225,9 @@ function tokenizeList(eat, $0, $1, $2) {
 
     index = -1;
 
-    node = eat($0).reset(self.renderList([], firstBullet));
+    node = eat(matches.join(NEW_LINE)).reset(
+        self.renderList([], firstBullet)
+    );
 
     enterTop = self.exitTop();
     exitBlockquote = self.enterBlockquote();
@@ -1394,6 +1398,8 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var node;
     var index;
     var length;
+
+    $0 = trimRightLines($0);
 
     node = eat($0).reset({
         'type': TABLE,

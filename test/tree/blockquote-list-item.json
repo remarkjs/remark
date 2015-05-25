@@ -143,11 +143,10 @@
           "column": 1
         },
         "end": {
-          "line": 5,
-          "column": 1
+          "line": 4,
+          "column": 10
         },
         "indent": [
-          1,
           1
         ]
       }

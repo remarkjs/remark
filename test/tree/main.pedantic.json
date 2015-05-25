@@ -460,8 +460,8 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 25,
-                  "column": 1
+                  "line": 24,
+                  "column": 18
                 },
                 "indent": [
                   5,
@@ -470,8 +470,7 @@
                   5,
                   5,
                   3,
-                  5,
-                  1
+                  5
                 ]
               }
             }
@@ -616,12 +615,10 @@
           "column": 1
         },
         "end": {
-          "line": 32,
-          "column": 1
+          "line": 30,
+          "column": 21
         },
         "indent": [
-          1,
-          1,
           1,
           1,
           1,

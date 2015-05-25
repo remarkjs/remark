@@ -336,12 +336,10 @@
           "column": 1
         },
         "end": {
-          "line": 13,
-          "column": 1
+          "line": 11,
+          "column": 13
         },
         "indent": [
-          1,
-          1,
           1
         ]
       }

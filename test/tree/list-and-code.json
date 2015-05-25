@@ -63,13 +63,10 @@
           "column": 1
         },
         "end": {
-          "line": 3,
-          "column": 1
+          "line": 1,
+          "column": 24
         },
-        "indent": [
-          1,
-          1
-        ]
+        "indent": []
       }
     },
     {

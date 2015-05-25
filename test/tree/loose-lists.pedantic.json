@@ -156,14 +156,10 @@
           "column": 1
         },
         "end": {
-          "line": 10,
-          "column": 1
+          "line": 6,
+          "column": 6
         },
         "indent": [
-          1,
-          1,
-          1,
-          1,
           1,
           1,
           1,
@@ -313,12 +309,10 @@
                   "column": 3
                 },
                 "end": {
-                  "line": 16,
-                  "column": 5
+                  "line": 14,
+                  "column": 8
                 },
                 "indent": [
-                  5,
-                  1,
                   5
                 ]
               }
@@ -503,13 +497,10 @@
           "column": 1
         },
         "end": {
-          "line": 23,
-          "column": 1
+          "line": 20,
+          "column": 5
         },
         "indent": [
-          1,
-          1,
-          1,
           1,
           1,
           1,
@@ -683,13 +674,10 @@
           "column": 1
         },
         "end": {
-          "line": 30,
-          "column": 1
+          "line": 27,
+          "column": 5
         },
         "indent": [
-          1,
-          1,
-          1,
           1,
           1,
           1
@@ -858,13 +846,10 @@
           "column": 1
         },
         "end": {
-          "line": 37,
-          "column": 1
+          "line": 34,
+          "column": 5
         },
         "indent": [
-          1,
-          1,
-          1,
           1,
           1,
           1
@@ -1065,13 +1050,10 @@
           "column": 1
         },
         "end": {
-          "line": 45,
-          "column": 1
+          "line": 42,
+          "column": 5
         },
         "indent": [
-          1,
-          1,
-          1,
           1,
           1,
           1,
@@ -1245,13 +1227,10 @@
           "column": 1
         },
         "end": {
-          "line": 52,
-          "column": 1
+          "line": 49,
+          "column": 6
         },
         "indent": [
-          1,
-          1,
-          1,
           1,
           1,
           1
@@ -1426,11 +1405,10 @@
           "column": 1
         },
         "end": {
-          "line": 58,
-          "column": 1
+          "line": 57,
+          "column": 6
         },
         "indent": [
-          1,
           1,
           1,
           1,
