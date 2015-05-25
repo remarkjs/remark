@@ -2,19 +2,30 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
 
-**mdast** is a markdown processor powered by plugins. Lots of tests. Node, io.js, and the browser. 100% coverage.
+**mdast** is a markdown processor powered by plugins. Lots of tests. Node,
+io.js, and the browser. 100% coverage.
 
-**mdast** is not just another markdown to HTML compiler. It can generate, and reformat, markdown too. It’s powered by [plugins](doc/plugins.md) to do all kinds of things: [change a readme.md](https://github.com/wooorm/mdast-usage), [lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or [add a table of contents](https://github.com/wooorm/mdast-toc).
+**mdast** is not just another markdown to HTML compiler. It can generate,
+and reformat, markdown too. It’s powered by [plugins](doc/plugins.md) to do
+all kinds of things: [change a readme.md](https://github.com/wooorm/mdast-usage),
+[lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or
+[add a table of contents](https://github.com/wooorm/mdast-toc).
 
 ## Table of Contents
 
 *   [Installation](#installation)
+
 *   [Usage](#usage)
+
 *   [API](#api)
+
     *   [mdast.process(value, options?, done?)](#mdastprocessvalue-options-done)
     *   [mdast.use(plugin, options?)](#mdastuseplugin-options)
+
 *   [CLI](#cli)
+
 *   [Benchmark](#benchmark)
+
 *   [License](#license)
 
 ## Installation
@@ -43,7 +54,8 @@ bower install mdast
 var mdast = require('wooorm/mdast');
 ```
 
-UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and [compressed](mdast.min.js)):
+UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and
+[compressed](mdast.min.js)):
 
 ```html
 <script src="path/to/mdast.js" charset="utf-8"></script>
@@ -92,19 +104,34 @@ mdast:
 
 ## API
 
-This section only covers the interface you’ll use most often. See [mdast(3) documentation](doc/mdast.3.md) for a more complete description:
+This section only covers the interface you’ll use most often. See
+[mdast(3) documentation](doc/mdast.3.md) for a more complete description:
 
-*   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options) — Parses markdown into an abstract syntax tree;
-*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done) — Applies plugins to the syntax tree;
-*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-options) — Compiles the syntax tree into a string;
-*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done) — More detailed than [below](#mdastprocessvalue-options-done);
-*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options) — More detailed than [below](#mdastuseplugin-options);
-*   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file) — Callback passed to `run()` and `process()`.
-*   [File()](doc/mdast.3.md#file) — Wrapper around (virtual) files.
+*   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options)
+    — Parses markdown into an abstract syntax tree;
+
+*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done)
+    — Applies plugins to the syntax tree;
+
+*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-options)
+    — Compiles the syntax tree into a string;
+
+*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done)
+    — More detailed than [below](#mdastprocessvalue-options-done);
+
+*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options)
+    — More detailed than [below](#mdastuseplugin-options);
+
+*   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file)
+    — Callback passed to `run()` and `process()`.
+
+*   [File()](doc/mdast.3.md#file)
+    — Wrapper around (virtual) files.
 
 ### [mdast](#api).process(value, [options](doc/options.md)?, done?)
 
-Parse a markdown document, apply plugins to it, and compile it into something else.
+Parse a markdown document, apply plugins to it, and compile it into
+something else.
 
 **Signatures**
 
@@ -137,14 +164,20 @@ Parse a markdown document, apply plugins to it, and compile it into something el
     *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/options.md#emphasis-markers);
     *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/options.md#emphasis-markers).
 
-*   `done` (`function(Error?, string?)`) — Callback invoked when the output is generated with either an error, or a result. Only strictly needed when async plugins are used.
+*   `done` (`function(Error?, string?)`) — Callback invoked when the output
+    is generated with either an error, or a result. Only strictly needed when
+    async plugins are used.
 
-All options (including the options object itself) can be `null` or `undefined` to default to their default values.
+All options (including the options object itself) can be `null` or `undefined`
+to default to their default values.
 
 **Returns**
 
-`string` or `null`: A document. Formatted in markdown by default, or in whatever a plugin generates.
-The result is `null` if a plugin is asynchroneous, in which case the callback `done` should’ve been passed (don’t worry: plugin creators make sure you know its async).
+`string` or `null`: A document. Formatted in markdown by default, or in
+whatever a plugin generates.
+The result is `null` if a plugin is asynchroneous, in which case the callback
+`done` should’ve been passed (don’t worry: plugin creators make sure you know
+    its async).
 
 ### [mdast](#api).use([plugin](doc/plugins.md#plugin), options?)
 
@@ -158,12 +191,19 @@ Change the way [`mdast`](#api) works by using a [`plugin`](doc/plugins.md).
 **Parameters**
 
 *   `plugin` (`Function`) — A [**Plugin**](doc/plugins.md);
+
 *   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/plugins.md)s;
-*   `options` (`Object?`) — Passed to the plugin. Specified by its documentation.
+
+*   `options` (`Object?`) — Passed to the plugin. Specified by its
+    documentation.
 
 **Returns**
 
-`Object`: an instance of MDAST: The returned object functions just like **mdast** (it has the same methods), but caches the `use`d plugins. This provides the ability to chain `use` calls to use multiple plugins, but ensures the functioning of the **mdast** module does not change for other dependants.
+`Object`: an instance of MDAST: The returned object functions just like
+**mdast** (it has the same methods), but caches the `use`d plugins. This
+provides the ability to chain `use` calls to use multiple plugins, but
+ensures the functioning of the **mdast** module does not change for other
+dependents.
 
 ## CLI
 

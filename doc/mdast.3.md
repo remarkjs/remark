@@ -22,11 +22,13 @@ var doc = processor.process(
 
 ## DESCRIPTION
 
-This is the application programming interface documentation for **mdast**.  To find documentation for the command line interface, see `man 1 mdast`.
+This is the application programming interface documentation for **mdast**.
+To find documentation for the command line interface, see `man 1 mdast`.
 
 ### mdast.use(plugin, options?)
 
-Change the way **mdast** functions by using a plugin.  Plugins are documented at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
+Change the way **mdast** functions by using a plugin.  Plugins are documented
+at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
 
 **Signatures**
 
@@ -41,7 +43,9 @@ Change the way **mdast** functions by using a plugin.  Plugins are documented at
 
 **Returns**
 
-`Object` -- An instance of **mdast**.  The instance functions just like the **mdast** library itself (it has the same methods), but caches the `use`d plugins.
+`Object` -- An instance of **mdast**.  The instance functions just like the
+**mdast** library itself (it has the same methods), but caches the `use`d
+plugins.
 
 ### mdast.parse(file, options?)
 
@@ -59,7 +63,8 @@ Parse a markdown document into an abstract syntax tree.
 
 **Returns**
 
-`Object` -- Node.  Nodes are documented at <https://github.com/wooorm/mdast/blob/master/doc/nodes.md>.
+`Object` -- Node.  Nodes are documented at
+<https://github.com/wooorm/mdast/blob/master/doc/nodes.md>.
 
 ### mdast.run(ast, file, done?)
 
@@ -96,7 +101,8 @@ Compile an abstract syntax tree into a document.
 
 **Returns**
 
-`string` -- Document.  Formatted in markdown by default, or in whatever a plugin generates.
+`string` -- Document.  Formatted in markdown by default, or in whatever a
+plugin generates.
 
 ### mdast.process(file, options?, done?)
 
@@ -115,7 +121,8 @@ Parse, modify, and compile a markdown document it into something else.
 
 **Returns**
 
-`string` -- Document.  Formatted in markdown by default, or in whatever a plugin generates.
+`string` -- Document.  Formatted in markdown by default, or in whatever a
+plugin generates.
 
 ### function done(err?, doc?, file?)
 
@@ -134,11 +141,16 @@ Invoked when processing is complete.
 
 **Returns**
 
-`string` -- Document.  Formatted in markdown by default, or in whatever a plugin generates.
+`string` -- Document.  Formatted in markdown by default, or in whatever a
+plugin generates.
 
 ### File()
 
-File objects make it easy to change the directory, name, or extension of a file: let's say multiple markdown files are converted to HTML.  Instead of overwriting the markdown sources, file objects make it easy to output files with a different (`"html"`) extension.  In addition, files expose the raw source to plugins.
+File objects make it easy to change the directory, name, or extension of a
+file: let's say multiple markdown files are converted to HTML.  Instead of
+overwriting the markdown sources, file objects make it easy to output files
+with a different (`"html"`) extension.  In addition, files expose the raw
+source to plugins.
 
 **Signatures**
 
@@ -163,7 +175,8 @@ File objects make it easy to change the directory, name, or extension of a file:
 
 **Notes**
 
-`File` exposes an interface compatible with ESLint's formatters.  For example, to expose warnings using ESLint's `compact` formatter, execute the following:
+`File` exposes an interface compatible with ESLint's formatters.  For example,
+to expose warnings using ESLint's `compact` formatter, execute the following:
 
 ```javascript
 var compact = require('eslint/lib/formatters/compact');
@@ -210,14 +223,19 @@ A list of warnings and errors associated with the file.
 
 Where `Message` has the following properties:
 
-*   `fatal` (`boolean?`) -- `true` when an exception occurred making the file no longer processable;
+*   `fatal` (`boolean?`) -- `true` when an exception occurred making
+    the file no longer processable;
+
 *   `message` (`string`) -- Error reason;
+
 *   `line` (`number`) -- Starting line of exception;
+
 *   `column` (`number`) -- Starting column of exception.
 
 **Notes**
 
-`File#exception()` returns `Error` objects that comply with this schema.  Its results can be added to `messages`.
+`File#exception()` returns `Error` objects that comply with this schema.
+Its results can be added to `messages`.
 
 ### File#hasFailed()
 
@@ -229,7 +247,8 @@ Check if a fatal exception occurred making the file no longer processable.
 
 **Returns**
 
-`boolean` -- `true` if at least one of `file`s `message`s has a `fatal` property set to `true`.
+`boolean` -- `true` if at least one of `file`s `message`s has a `fatal`
+property set to `true`.
 
 ### File#exception(reason, position?)
 
@@ -241,11 +260,17 @@ Create an error.
 
 **Parameters**
 
-*   `err` (`Error`) -- Original error, whose stack is copied and message is used;
+*   `err` (`Error`) -- Original error, whose stack is copied and message
+    is used;
+
 *   `reason` (`string`) -- Failure reason;
+
 *   `node` (`Node`) -- Syntax tree object;
+
 *   `location` (`Object`) -- Syntax tree location (found at `node.position`);
-*   `position` (`Object`) -- Syntax tree position (found at `node.position.start`).
+
+*   `position` (`Object`) -- Syntax tree position (found at
+    `node.position.start`).
 
 **Returns**
 
@@ -253,14 +278,20 @@ Create an error.
 
 This object has the following properties:
 
-*   `file` (`string?`) -- Filename (including directory and extension), if applicable;
+*   `file` (`string?`) -- Filename (including directory and extension), if
+    applicable;
+
 *   `reason` (`string`) -- Failure reason;
+
 *   `line` (`number`) -- Starting line of exception;
+
 *   `column` (`number`) -- Starting column of exception.
 
 ### File#warn(reason, position?)
 
-Creates an exception by passing its arguments to `File#exception()`, sets `fatal: false` on it, and adds it to `file`s `messages`.  Then, it returns the exception.
+Creates an exception by passing its arguments to `File#exception()`, sets
+`fatal: false` on it, and adds it to `file`s `messages`.  Then, it returns
+the exception.
 
 **See**
 
@@ -268,7 +299,9 @@ Creates an exception by passing its arguments to `File#exception()`, sets `fatal
 
 ### File#fail(reason, position?)
 
-Creates an exception by passing its arguments to `File#exception()`, sets `fatal: true` on it, and adds it to `file`s `messages`.  Then, it returns the exception.
+Creates an exception by passing its arguments to `File#exception()`, sets
+`fatal: true` on it, and adds it to `file`s `messages`.  Then, it returns
+the exception.
 
 If `file` has a falsey `quiet` property, `File#fail()` throws the exception.
 
@@ -286,7 +319,9 @@ Get the filename, with extension and directory, if applicable.
 
 **Returns**
 
-`string` -- If the `file` has a `filename`, it will be prefixed with the directory (slashed), if applicable, and suffixed with the (dotted) extension (if applicable).  Otherwise, an empty string is returned.
+`string` -- If the `file` has a `filename`, it will be prefixed with the
+directory (slashed), if applicable, and suffixed with the (dotted) extension
+(if applicable).  Otherwise, an empty string is returned.
 
 ## BUGS
 

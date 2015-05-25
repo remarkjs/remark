@@ -24,10 +24,12 @@ var doc = processor\.process(
 .RE
 .SH DESCRIPTION
 .P
-This is the application programming interface documentation for \fBmdast\fR\|\.  To find documentation for the command line interface, see \fBman 1 mdast\fR\|\.
+This is the application programming interface documentation for \fBmdast\fR\|\.
+To find documentation for the command line interface, see \fBman 1 mdast\fR\|\.
 .SS mdast\.use(plugin, options?)
 .P
-Change the way \fBmdast\fR functions by using a plugin\.  Plugins are documented at https://github\.com/wooorm/mdast/blob/master/doc/plugins\.md\|\.
+Change the way \fBmdast\fR functions by using a plugin\.  Plugins are documented
+at https://github\.com/wooorm/mdast/blob/master/doc/plugins\.md\|\.
 .P
 \fBSignatures\fR
 .RS 0
@@ -51,7 +53,9 @@ Change the way \fBmdast\fR functions by using a plugin\.  Plugins are documented
 .P
 \fBReturns\fR
 .P
-\fBObject\fR \-\- An instance of \fBmdast\fR\|\.  The instance functions just like the \fBmdast\fR library itself (it has the same methods), but caches the \fBuse\fRd plugins\.
+\fBObject\fR \-\- An instance of \fBmdast\fR\|\.  The instance functions just like the
+\fBmdast\fR library itself (it has the same methods), but caches the \fBuse\fRd
+plugins\.
 .SS mdast\.parse(file, options?)
 .P
 Parse a markdown document into an abstract syntax tree\.
@@ -76,7 +80,8 @@ Parse a markdown document into an abstract syntax tree\.
 .P
 \fBReturns\fR
 .P
-\fBObject\fR \-\- Node\.  Nodes are documented at https://github\.com/wooorm/mdast/blob/master/doc/nodes\.md\|\.
+\fBObject\fR \-\- Node\.  Nodes are documented at
+https://github\.com/wooorm/mdast/blob/master/doc/nodes\.md\|\.
 .SS mdast\.run(ast, file, done?)
 .P
 Modify an abstract syntax tree by applying plugins to it\.
@@ -128,7 +133,8 @@ Compile an abstract syntax tree into a document\.
 .P
 \fBReturns\fR
 .P
-\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a plugin generates\.
+\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a
+plugin generates\.
 .SS mdast\.process(file, options?, done?)
 .P
 Parse, modify, and compile a markdown document it into something else\.
@@ -155,7 +161,8 @@ Parse, modify, and compile a markdown document it into something else\.
 .P
 \fBReturns\fR
 .P
-\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a plugin generates\.
+\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a
+plugin generates\.
 .SS function done(err?, doc?, file?)
 .P
 Invoked when processing is complete\.
@@ -182,10 +189,15 @@ Invoked when processing is complete\.
 .P
 \fBReturns\fR
 .P
-\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a plugin generates\.
+\fBstring\fR \-\- Document\.  Formatted in markdown by default, or in whatever a
+plugin generates\.
 .SS File()
 .P
-File objects make it easy to change the directory, name, or extension of a file: let's say multiple markdown files are converted to HTML\.  Instead of overwriting the markdown sources, file objects make it easy to output files with a different (\fB"html"\fR) extension\.  In addition, files expose the raw source to plugins\.
+File objects make it easy to change the directory, name, or extension of a
+file: let's say multiple markdown files are converted to HTML\.  Instead of
+overwriting the markdown sources, file objects make it easy to output files
+with a different (\fB"html"\fR) extension\.  In addition, files expose the raw
+source to plugins\.
 .P
 \fBSignatures\fR
 .RS 0
@@ -222,7 +234,8 @@ File objects make it easy to change the directory, name, or extension of a file:
 .P
 \fBNotes\fR
 .P
-\fBFile\fR exposes an interface compatible with ESLint's formatters\.  For example, to expose warnings using ESLint's \fBcompact\fR formatter, execute the following:
+\fBFile\fR exposes an interface compatible with ESLint's formatters\.  For example,
+to expose warnings using ESLint's \fBcompact\fR formatter, execute the following:
 .P
 .RS 2
 .nf
@@ -278,7 +291,8 @@ A list of warnings and errors associated with the file\.
 Where \fBMessage\fR has the following properties:
 .RS 0
 .IP \(bu 2
-\fBfatal\fR (\fBboolean?\fR) \-\- \fBtrue\fR when an exception occurred making the file no longer processable;
+\fBfatal\fR (\fBboolean?\fR) \-\- \fBtrue\fR when an exception occurred making
+the file no longer processable;
 .IP \(bu 2
 \fBmessage\fR (\fBstring\fR) \-\- Error reason;
 .IP \(bu 2
@@ -290,7 +304,8 @@ Where \fBMessage\fR has the following properties:
 .P
 \fBNotes\fR
 .P
-\fBFile#exception()\fR returns \fBError\fR objects that comply with this schema\.  Its results can be added to \fBmessages\fR\|\.
+\fBFile#exception()\fR returns \fBError\fR objects that comply with this schema\.
+Its results can be added to \fBmessages\fR\|\.
 .SS File#hasFailed()
 .P
 Check if a fatal exception occurred making the file no longer processable\.
@@ -304,7 +319,8 @@ Check if a fatal exception occurred making the file no longer processable\.
 .P
 \fBReturns\fR
 .P
-\fBboolean\fR \-\- \fBtrue\fR if at least one of \fBfile\fRs \fBmessage\fRs has a \fBfatal\fR property set to \fBtrue\fR\|\.
+\fBboolean\fR \-\- \fBtrue\fR if at least one of \fBfile\fRs \fBmessage\fRs has a \fBfatal\fR
+property set to \fBtrue\fR\|\.
 .SS File#exception(reason, position?)
 .P
 Create an error\.
@@ -319,7 +335,8 @@ Create an error\.
 \fBParameters\fR
 .RS 0
 .IP \(bu 2
-\fBerr\fR (\fBError\fR) \-\- Original error, whose stack is copied and message is used;
+\fBerr\fR (\fBError\fR) \-\- Original error, whose stack is copied and message
+is used;
 .IP \(bu 2
 \fBreason\fR (\fBstring\fR) \-\- Failure reason;
 .IP \(bu 2
@@ -327,7 +344,8 @@ Create an error\.
 .IP \(bu 2
 \fBlocation\fR (\fBObject\fR) \-\- Syntax tree location (found at \fBnode\.position\fR);
 .IP \(bu 2
-\fBposition\fR (\fBObject\fR) \-\- Syntax tree position (found at \fBnode\.position\.start\fR)\.
+\fBposition\fR (\fBObject\fR) \-\- Syntax tree position (found at
+\fBnode\.position\.start\fR)\.
 
 .RE
 .P
@@ -338,7 +356,8 @@ Create an error\.
 This object has the following properties:
 .RS 0
 .IP \(bu 2
-\fBfile\fR (\fBstring?\fR) \-\- Filename (including directory and extension), if applicable;
+\fBfile\fR (\fBstring?\fR) \-\- Filename (including directory and extension), if
+applicable;
 .IP \(bu 2
 \fBreason\fR (\fBstring\fR) \-\- Failure reason;
 .IP \(bu 2
@@ -349,7 +368,9 @@ This object has the following properties:
 .RE
 .SS File#warn(reason, position?)
 .P
-Creates an exception by passing its arguments to \fBFile#exception()\fR, sets \fBfatal: false\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns the exception\.
+Creates an exception by passing its arguments to \fBFile#exception()\fR, sets
+\fBfatal: false\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns
+the exception\.
 .P
 \fBSee\fR
 .RS 0
@@ -359,7 +380,9 @@ Creates an exception by passing its arguments to \fBFile#exception()\fR, sets \f
 .RE
 .SS File#fail(reason, position?)
 .P
-Creates an exception by passing its arguments to \fBFile#exception()\fR, sets \fBfatal: true\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns the exception\.
+Creates an exception by passing its arguments to \fBFile#exception()\fR, sets
+\fBfatal: true\fR on it, and adds it to \fBfile\fRs \fBmessages\fR\|\.  Then, it returns
+the exception\.
 .P
 If \fBfile\fR has a falsey \fBquiet\fR property, \fBFile#fail()\fR throws the exception\.
 .P
@@ -382,7 +405,9 @@ Get the filename, with extension and directory, if applicable\.
 .P
 \fBReturns\fR
 .P
-\fBstring\fR \-\- If the \fBfile\fR has a \fBfilename\fR, it will be prefixed with the directory (slashed), if applicable, and suffixed with the (dotted) extension (if applicable)\.  Otherwise, an empty string is returned\.
+\fBstring\fR \-\- If the \fBfile\fR has a \fBfilename\fR, it will be prefixed with the
+directory (slashed), if applicable, and suffixed with the (dotted) extension
+(if applicable)\.  Otherwise, an empty string is returned\.
 .SH BUGS
 .P
 https://github\.com/wooorm/mdast/issues

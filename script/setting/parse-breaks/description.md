@@ -1,1 +1,3 @@
-Setting `breaks: true` (default: `false`) exposes new line characters inside [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph)s as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.
+Setting `breaks: true` (default: `false`) exposes new line characters inside
+[**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph)s
+as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.

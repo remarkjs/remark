@@ -33,7 +33,7 @@ mdast:
 *   Fix broken test ([523e1ad](https://github.com/wooorm/mdast/commit/523e1ad))
 *   Fix incorrect links introduced in [609b938](https://github.com/wooorm/mdast/commit/609b938) ([6a8d725](https://github.com/wooorm/mdast/commit/6a8d725))
 *   Add support for encoding unsafe HTML characters to entities ([ce28ed4](https://github.com/wooorm/mdast/commit/ce28ed4))
-*   Add `incrementListMarker` setting to control not incrementing ordered items ([659e49c](https://github.com/wooorm/mdast/commit/659e49c))
+*   Add `incrementListMarker` setting to control not increas ordered items ([659e49c](https://github.com/wooorm/mdast/commit/659e49c))
 *   Add warning when too much content is eaten by parser ([61732d5](https://github.com/wooorm/mdast/commit/61732d5))
 *   Fix bug where setext-headings ate too much markdown ([da03727](https://github.com/wooorm/mdast/commit/da03727))
 *   Remove support for atx-headings without initial spaces ([daa344c](https://github.com/wooorm/mdast/commit/daa344c))

@@ -9,13 +9,16 @@ Information on **mdast** itself is available in the project’s [readme.md](http
 ## Table of Contents
 
 *   [Parse](#parse)
+
     *   [Breaks](#breaks)
     *   [CommonMark](#commonmark)
     *   [Footnotes](#footnotes)
     *   [GitHub Flavoured Markdown](#github-flavoured-markdown)
     *   [Pedantic](#pedantic)
     *   [YAML](#yaml)
+
 *   [Stringify](#stringify)
+
     *   [List Item Bullets](#list-item-bullets)
     *   [Closed ATX Headings](#closed-atx-headings)
     *   [Emphasis Markers](#emphasis-markers)
@@ -32,7 +35,9 @@ Information on **mdast** itself is available in the project’s [readme.md](http
 
 ### Breaks
 
-Setting `breaks: true` (default: `false`) exposes new line characters inside [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph)s as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.
+Setting `breaks: true` (default: `false`) exposes new line characters inside
+[**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph)s
+as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.
 
 The following document:
 
@@ -135,17 +140,45 @@ Yields:
 
 Setting `commonmark: true` (default: `false`):
 
-*   Adds support for empty lines to split [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote)s;
-*   Adds support for parentheses (`(` and `)`) as delimiters for [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image) titles;
-*   Adds support for parsing any escaped [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes) character as [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#escape)s;
-*   Adds support for parsing ordered list-items with a closing parenthesis (`)`);
-*   Adds support for link reference definitions (and footnote reference definitions, when in `footnotes: true` mode) in blockquotes;
-*   Removes support for [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code) directly following a [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph);
-*   Removes support for ATX-headings (`# Hash headings`) without spacing after initial hashes or and before closing hashes;
-*   Removes support for Setext-headings (`Underline headings\n---`) when directly following a paragraph;
+*   Adds support for empty lines to split
+    [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote)s;
+
+*   Adds support for parentheses (`(` and `)`) as delimiters for
+    [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link)
+    and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image)
+    titles;
+
+*   Adds support for parsing any escaped
+    [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes)
+    character as
+    [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#escape)s;
+
+*   Adds support for parsing ordered list-items with a closing
+    parenthesis (`)`);
+
+*   Adds support for link reference definitions (and footnote reference
+    definitions, when in `footnotes: true` mode) in blockquotes;
+
+*   Removes support for
+    [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code)
+    directly following a
+    [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph);
+
+*   Removes support for ATX-headings (`# Hash headings`) without spacing
+    after initial hashes or and before closing hashes;
+
+*   Removes support for Setext-headings (`Underline headings\n---`) when
+    directly following a paragraph;
+
 *   Removes support for new lines in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image) titles;
+
 *   Removes support for white space in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image) URLs when not enclosed in angle brackets (`<` and `>`);
-*   Removes support for lazy [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote) continuation—lines not preceded by a closing angle bracket (`>`)—for [**List**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#list)s, [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code), and [**HorizontalRule**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#horizontalrule)s.
+
+*   Removes support for lazy [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote)
+    continuation—lines not preceded by a closing angle bracket (`>`)—for
+    [**List**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#list)s,
+    [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code),
+    and [**HorizontalRule**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#horizontalrule)s.
 
 The following document:
 
@@ -217,7 +250,8 @@ Yields:
 
 ### Footnotes
 
-Setting `footnotes: true` (default: `false`) enables inline- and reference-style footnotes.
+Setting `footnotes: true` (default: `false`) enables inline- and
+reference-style footnotes.
 
 Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
@@ -522,10 +556,18 @@ Yields:
 
 Setting `gfm: true` (default: `true`) enables:
 
-*   [Fenced](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks) code blocks;
-*   [Autolinking](https://help.github.com/articles/github-flavored-markdown/#url-autolinking) of URLs;
-*   [Deletions](https://help.github.com/articles/github-flavored-markdown/#strikethrough) (strikethrough);
-*   [Task](https://help.github.com/articles/writing-on-github/#task-lists) lists;
+*   [Fenced](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks)
+    code blocks;
+
+*   [Autolinking](https://help.github.com/articles/github-flavored-markdown/#url-autolinking)
+    of URLs;
+
+*   [Deletions](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
+    (strikethrough);
+
+*   [Task](https://help.github.com/articles/writing-on-github/#task-lists)
+    lists;
+
 *   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables).
 
 The following document:
@@ -641,9 +683,15 @@ Yields:
 
 Setting `pedantic: true` (default: `false`):
 
-*   Adds support for emphasis and strongness, with underscores (`_`), inside words;
-*   Adds support for different list bullets (`*`, `-`, `+`) for the same list (when in `commonmark: true` mode, the same goes for both ordered list delimiters: `.` and `)`);
-*   Removes less spaces in list-items (a maximum of four instead of the whole indent).
+*   Adds support for emphasis and strongness, with underscores (`_`), inside
+    words;
+
+*   Adds support for different list bullets (`*`, `-`, `+`) for the same list
+    (when in `commonmark: true` mode, the same goes for both ordered list
+    delimiters: `.` and `)`);
+
+*   Removes less spaces in list-items (a maximum of four instead of the whole
+    indent).
 
 The following document:
 
@@ -756,7 +804,8 @@ Yields:
 
 ### YAML
 
-Setting `yaml: true` (default: `true`) enables raw YAML front matter to be detected (thus ignoring markdown-like syntax).
+Setting `yaml: true` (default: `true`) enables raw YAML front matter to be
+detected (thus ignoring markdown-like syntax).
 
 The following document:
 
@@ -848,7 +897,9 @@ Yields:
 
 ### List Item Bullets
 
-Setting `bullet: string` (`"-"`, `"*"`, or `"+"`, default: `"-"`) will stringify list items in unordered lists using the provided character as bullets.
+Setting `bullet: string` (`"-"`, `"*"`, or `"+"`, default: `"-"`) will
+stringify list items in unordered lists using the provided character as
+bullets.
 
 The following document:
 
@@ -878,7 +929,8 @@ Yields:
 
 ### Closed ATX Headings
 
-Setting `closeAtx: true` (default: `false`) will stringify ATX headings with additional hash-marks after the heading.
+Setting `closeAtx: true` (default: `false`) will stringify ATX headings
+with additional hash-marks after the heading.
 
 The following document:
 
@@ -908,10 +960,14 @@ Yields:
 
 ### Emphasis Markers
 
-Two options are provided to customise how slight- and strong emphasis are stringified:
+Two options are provided to customise how slight- and strong emphasis
+are stringified:
 
-*   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight emphasis in the provided character;
-*   `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong emphasis with the provided character (twice).
+*   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight
+    emphasis in the provided character;
+
+*   `strong: string` (`"_"` or `"*"`, default: `"*"`) will wrap strong
+    emphasis with the provided character (twice).
 
 The following document:
 
@@ -938,11 +994,15 @@ Yields:
 
 ### Encoding Entities
 
-Setting `entities: true` (default: `false`) will [encode](https://github.com/mathiasbynens/he#heencodetext-options) any symbols that aren’t printable ASCII symbols and `&`, `<`, `>`, `"`, `'`, and `` ` ``.
+Setting `entities: true` (default: `false`) will
+[encode](https://github.com/mathiasbynens/he#heencodetext-options) any symbols
+that aren’t printable ASCII symbols and `&`, `<`, `>`, `"`, `'`, and `` ` ``.
 
-When `true`, named entities are generated (`&` > `&amp;`); when `"numbers"`, numbered entities are generated (`&` > `&#x26;`).
+When `true`, named entities are generated (`&` > `&amp;`); when `"numbers"`,
+numbered entities are generated (`&` > `&#x26;`).
 
-Although markdown does not need to encode HTML entities, they can be useful to ensure an ASCII document.
+Although markdown does not need to encode HTML entities, they can be useful to
+ensure an ASCII document.
 
 The following document:
 
@@ -966,9 +1026,12 @@ Yields:
 
 It's possible to customise how GFM code fences are stringified:
 
-*   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code blocks in the provided character.
+*   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code
+    blocks in the provided character.
 
-To render all code blocks with fences (the default behavior is to only use non-standard fences when a language-flag is present), use [`fences: true`](#fences).
+To render all code blocks with fences (the default behavior is to only use
+non-standard fences when a language-flag is present), use
+[`fences: true`](#fences).
 
 The following document:
 
@@ -994,7 +1057,8 @@ Yields:
 
 ### Fences
 
-Setting `fences: true` (default: `false`) will stringify code blocks without programming-language flags using heredoc-style fences.
+Setting `fences: true` (default: `false`) will stringify code blocks without
+programming-language flags using heredoc-style fences.
 
 To use differen fence markers, use [`fence: string`](#fence).
 
@@ -1024,7 +1088,8 @@ Yields:
 
 ### Loose Tables
 
-Setting `looseTable: true` (default: `false`) will stringify GFM tables with neither starting nor ending pipes.
+Setting `looseTable: true` (default: `false`) will stringify GFM tables
+with neither starting nor ending pipes.
 
 The following document:
 
@@ -1052,7 +1117,9 @@ Yields:
 
 ### List Marker Increase
 
-Setting `incrementListMarker: false` (default: `true`) will stringify ordered list items based on the first item’s marker and will not increment further list items.
+Setting `incrementListMarker: false` (default: `true`) will stringify ordered
+list items based on the first item’s marker and will not increment further
+list items.
 
 The following document:
 
@@ -1088,11 +1155,17 @@ Yields:
 
 ### Horizontal Rules
 
-Three options are provided to customise how horizontal rules will be stringified:
+Three options are provided to customise how horizontal rules will be
+stringified:
 
-*   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify horizontal rules using the provided character as its bullets;
-*   `ruleSpaces: true` (default: `false`) will stringify horizontal rules using spaces;
-*   `ruleRepetition: number` (default: `3`) will stringify horizontal rules with the provided amount of repetitions.
+*   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify
+    horizontal rules using the provided character as its bullets;
+
+*   `ruleSpaces: true` (default: `false`) will stringify horizontal rules
+    using spaces;
+
+*   `ruleRepetition: number` (default: `3`) will stringify horizontal rules
+    with the provided amount of repetitions.
 
 The following document:
 
@@ -1120,9 +1193,12 @@ Yields:
 
 ### Setext Headings
 
-Setting `setext: true` (default: `false`) will stringify primary and secondary headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style headings (underlines).
+Setting `setext: true` (default: `false`) will stringify primary and secondary
+headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style
+headings (underlines).
 
-Respectively, primary headings are stringified with a row of equals-signs (`=`), and secondary headings with a row of dashes (`-`).
+Respectively, primary headings are stringified with a row of equals-signs
+(`=`), and secondary headings with a row of dashes (`-`).
 
 The following document:
 
@@ -1154,7 +1230,9 @@ Yields:
 
 ### Spaced Tables
 
-Setting `spacedTable: false` (default: `true`) will stringify GFM tables without spaces after starting pipes, before ending pipes, and surrounding delimiting pipes.
+Setting `spacedTable: false` (default: `true`) will stringify GFM tables
+without spaces after starting pipes, before ending pipes, and surrounding
+delimiting pipes.
 
 The following document:
 
