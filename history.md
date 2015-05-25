@@ -3,6 +3,11 @@ mdast:
   setext: true
 ---
 
+0.21.1 / 2015-05-25
+===================
+
+*   Fix positional information on lists ([024fca2](https://github.com/wooorm/mdast/commit/024fca2))
+
 0.21.0 / 2015-05-24
 ===================
 
