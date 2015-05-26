@@ -68,7 +68,6 @@ mention.notInLink = true;
 function inlineText(eat, $0) {
     var self = this;
     var now = eat.now();
-    console.log('text: ', [$0]);
 
     return eat($0)(self.augmentGitHub($0, now));
 }
