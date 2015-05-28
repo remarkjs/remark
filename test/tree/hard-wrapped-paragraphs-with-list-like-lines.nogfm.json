@@ -57,7 +57,9 @@
               "line": 8,
               "column": 12
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],

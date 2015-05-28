@@ -76,7 +76,10 @@
           "line": 3,
           "column": 51
         },
-        "indent": []
+        "indent": [
+          1,
+          1
+        ]
       }
     }
   ],

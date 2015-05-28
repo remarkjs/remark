@@ -359,7 +359,9 @@
               "line": 24,
               "column": 14
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],

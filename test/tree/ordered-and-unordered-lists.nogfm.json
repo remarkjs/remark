@@ -2653,7 +2653,9 @@
                       "line": 110,
                       "column": 7
                     },
-                    "indent": []
+                    "indent": [
+                      2
+                    ]
                   }
                 }
               ],
@@ -2915,7 +2917,9 @@
                       "line": 120,
                       "column": 7
                     },
-                    "indent": []
+                    "indent": [
+                      2
+                    ]
                   }
                 }
               ],

@@ -188,7 +188,9 @@
                       "line": 4,
                       "column": 7
                     },
-                    "indent": []
+                    "indent": [
+                      5
+                    ]
                   }
                 },
                 {

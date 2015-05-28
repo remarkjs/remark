@@ -647,7 +647,10 @@
                               "line": 35,
                               "column": 10
                             },
-                            "indent": []
+                            "indent": [
+                              9,
+                              9
+                            ]
                           }
                         },
                         {
@@ -898,7 +901,9 @@
                               "line": 45,
                               "column": 10
                             },
-                            "indent": []
+                            "indent": [
+                              9
+                            ]
                           }
                         },
                         {

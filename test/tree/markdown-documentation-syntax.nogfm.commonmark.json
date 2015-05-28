@@ -263,7 +263,9 @@
                       "line": 16,
                       "column": 9
                     },
-                    "indent": []
+                    "indent": [
+                      5
+                    ]
                   }
                 },
                 {
