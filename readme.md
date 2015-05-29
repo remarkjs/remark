@@ -60,8 +60,7 @@ UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and
 ```html
 <script src="path/to/mdast.js" charset="utf-8"></script>
 <script>
-    var ast = mdast.parse('*hello* __world__');
-    mdast.stringify(ast); // _hello_ **world**
+    mdast.process('*hello* __world__'); // _hello_ **world**
 </script>
 ```
 
