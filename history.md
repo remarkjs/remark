@@ -3,6 +3,19 @@ mdast:
   setext: true
 ---
 
+0.21.2 / 2015-06-03
+===================
+
+*   Update eslint ([5a3e9bb](https://github.com/wooorm/mdast/commit/5a3e9bb))
+*   Update man/ pages ([0c689f7](https://github.com/wooorm/mdast/commit/0c689f7))
+*   Add `<stdin>` label to CLI warnings when piping ([aba731f](https://github.com/wooorm/mdast/commit/aba731f))
+*   Fix typos ([688f63a](https://github.com/wooorm/mdast/commit/688f63a))
+*   Fix UMD-installation example in `readme.md` ([6caaecd](https://github.com/wooorm/mdast/commit/6caaecd))
+*   Fix `indent` for merged nodes ([1eee40f](https://github.com/wooorm/mdast/commit/1eee40f))
+*   Remove extraneous `console.log` from tests ([f8e3aa1](https://github.com/wooorm/mdast/commit/f8e3aa1))
+*   Update mdast-github, mdast-toc ([2a4a075](https://github.com/wooorm/mdast/commit/2a4a075))
+*   Refactor markdown list-item, line-length style ([7075aac](https://github.com/wooorm/mdast/commit/7075aac))
+
 0.21.1 / 2015-05-25
 ===================
 
