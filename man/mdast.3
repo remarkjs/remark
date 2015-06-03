@@ -1,4 +1,4 @@
-.TH "MDAST" "3" "May 2015" "" ""
+.TH "MDAST" "3" "June 2015" "" ""
 .SH "NAME"
 \fBmdast\fR \- Markdown processor
 .SH SYNOPSIS
@@ -304,8 +304,9 @@ the file no longer processable;
 .P
 \fBNotes\fR
 .P
-\fBFile#exception()\fR returns \fBError\fR objects that comply with this schema\.
-Its results can be added to \fBmessages\fR\|\.
+\fBFile#exception()\fR, and in turn \fBFile#warn()\fR and \fBFile#fail()\fR,
+return \fBError\fR objects that comply with this schema\.  Its results
+can be added to \fBmessages\fR\|\.
 .SS File#hasFailed()
 .P
 Check if a fatal exception occurred making the file no longer processable\.
