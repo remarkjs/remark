@@ -234,8 +234,9 @@ Where `Message` has the following properties:
 
 **Notes**
 
-`File#exception()` returns `Error` objects that comply with this schema.
-Its results can be added to `messages`.
+`File#exception()`, and in turn `File#warn()` and `File#fail()`,
+return `Error` objects that comply with this schema.  Its results
+can be added to `messages`.
 
 ### File#hasFailed()
 

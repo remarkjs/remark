@@ -174,7 +174,7 @@ to default to their default values.
 
 `string` or `null`: A document. Formatted in markdown by default, or in
 whatever a plugin generates.
-The result is `null` if a plugin is asynchroneous, in which case the callback
+The result is `null` if a plugin is asynchronous, in which case the callback
 `done` should’ve been passed (don’t worry: plugin creators make sure you know
     its async).
 
