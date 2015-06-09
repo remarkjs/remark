@@ -33,22 +33,24 @@ second parameter to `process()`, `parse()`, and `stringify()`.
 To configure the shell interface of **mdast**, pass a string to the
 `--setting` (or `-s`) flag.
 
-Command Line Settings take the form of a comma (`,`) and semi-colon (`;`)
-delimited list of attributes, where each attribute consists of a key and an
-optional value: if both, then separated by a colon (`:`).
+Command line settings are just JSON, with two exceptions:
 
-The below are all valid examples:
+*   Keys do not need to be escaped, thus, both `"foo": "bar"` and
+    `foo: "bar"` are considered equal;
+
+*   The surrounding braces must not be used: `"foo": 1`, is first
+    wrapped as `{"foo": 1}`, and then passed to `JSON.parse`.
+
+Valid examples are:
 
 ```bash
-mdast --setting "foo" --setting "baz:qux"
-mdast --setting "foo,baz:qux"
-mdast --setting "foo;baz:qux"
+mdast --setting "foo:true" --setting "\"bar\": \"baz\""
+mdast --setting "foo:1,bar:-2"
+mdast --setting "foo:Infinity,bar:[\"baz\", 1]"
 ```
 
-An attribute without value will be treated as a value of `true`.
-
 Command Line Settings can be specified both in camel- and dash-case:
-`foo-bar` and `fooBar` are treated equally.
+`foo-bar: true` and `fooBar: true` are treated equally.
 
 ### CONFIGURATION FILES
 

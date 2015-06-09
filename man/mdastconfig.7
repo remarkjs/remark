@@ -34,24 +34,29 @@ second parameter to \fBprocess()\fR, \fBparse()\fR, and \fBstringify()\fR\|\.
 To configure the shell interface of \fBmdast\fR, pass a string to the
 \fB\-\-setting\fR (or \fB\-s\fR) flag\.
 .P
-Command Line Settings take the form of a comma (\fB,\fR) and semi\-colon (\fB;\fR)
-delimited list of attributes, where each attribute consists of a key and an
-optional value: if both, then separated by a colon (\fB:\fR)\.
+Command line settings are just JSON, with two exceptions:
+.RS 0
+.IP \(bu 2
+Keys do not need to be escaped, thus, both \fB"foo": "bar"\fR and
+\fBfoo: "bar"\fR are considered equal;
+.IP \(bu 2
+The surrounding braces must not be used: \fB"foo": 1\fR, is first
+wrapped as \fB{"foo": 1}\fR, and then passed to \fBJSON\.parse\fR\|\.
+
+.RE
 .P
-The below are all valid examples:
+Valid examples are:
 .P
 .RS 2
 .nf
-mdast \-\-setting "foo" \-\-setting "baz:qux"
-mdast \-\-setting "foo,baz:qux"
-mdast \-\-setting "foo;baz:qux"
+mdast \-\-setting "foo:true" \-\-setting "\\"bar\\": \\"baz\\""
+mdast \-\-setting "foo:1,bar:\-2"
+mdast \-\-setting "foo:Infinity,bar:[\\"baz\\", 1]"
 .fi
 .RE
 .P
-An attribute without value will be treated as a value of \fBtrue\fR\|\.
-.P
 Command Line Settings can be specified both in camel\- and dash\-case:
-\fBfoo\-bar\fR and \fBfooBar\fR are treated equally\.
+\fBfoo\-bar: true\fR and \fBfooBar: true\fR are treated equally\.
 .SS CONFIGURATION FILES
 .P
 Specify directory specific settings with \fB\|\.mdastrc\fR and \fBpackage\.json\fR

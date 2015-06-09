@@ -242,18 +242,18 @@ Usage:
 $ mdast readme.md -o readme-new.md
 
 # Pass stdin through mdast, with settings, to stdout
-$ cat readme.md | mdast --setting "setext, bullet: *" > readme-new.md
+$ cat readme.md | mdast -s "setext: true, bullet: "*"" > readme-new.md
 
-# Use a plugin
+# Use a plugin (with options)
 $ npm install mdast-toc
-$ mdast --use mdast-toc readme.md -o
+$ mdast --use toc=heading:"contents" readme.md -o
 
 # Rewrite markdown in a directory
 $ mdast . -o
 
 See also:
 
-man 1 mdast, man 5 mdastrc, man 5 mdastignore, man 7 mdastconfig
+man 1 mdast, man 3 mdast, man 5 mdastrc, man 5 mdastignore, man 7 mdastconfig
 ```
 
 ## Benchmark

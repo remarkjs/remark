@@ -208,7 +208,7 @@ it "Should accept \`--use <plugin>\`"
     assert $? 0
 
 it "Should accept \`--use <plugin=options>\`"
-    $COMMAND --use "$plugin=foo:true, bar:1,baz: qux" $markdown > /dev/null 2>&1
+    $COMMAND --use "$plugin=foo:true, bar:1,baz: \"qux\"" $markdown > /dev/null 2>&1
     assert $? 0
 
 it "Should accept \`-u <unprefixed-npm-plugin>\`"
