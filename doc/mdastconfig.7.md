@@ -45,8 +45,8 @@ Valid examples are:
 
 ```bash
 mdast --setting "foo:true" --setting "\"bar\": \"baz\""
-mdast --setting "foo:1,bar:-2"
-mdast --setting "foo:Infinity,bar:[\"baz\", 1]"
+mdast --setting "foo-bar:-2"
+mdast --setting "foo: false, bar-baz: [\"qux\", 1]"
 ```
 
 Command Line Settings can be specified both in camel- and dash-case:
