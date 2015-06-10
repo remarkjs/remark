@@ -232,6 +232,7 @@ Options:
   -a, --ast                 output AST information
   -q, --quiet               output only warnings and errors
   -S, --silent              output only errors
+  --file-path <path>        specify file path to process as
   --no-color                disable color in output
   --no-rc                   disable configuration from .mdastrc
   --no-ignore               disable ignore from .mdastignore

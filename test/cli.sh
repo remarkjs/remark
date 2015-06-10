@@ -336,6 +336,22 @@ it "Should fail on missing value for \`--setting\`"
     assert $? 1
 
 #
+# `--file-path`.
+#
+
+it "Should accept \`--file-path <path>\`"
+    cat $markdown | $COMMAND --file-path $markdown > /dev/null 2>&1
+    assert $? 0
+
+it "Should fail on missing value for \`--file-path\`"
+    cat $markdown | $COMMAND --file-path > /dev/null 2>&1
+    assert $? 1
+
+it "Should fail \`--file-path <path>\` with files"
+    $COMMAND $markdown --file-path $markdown > /dev/null 2>&1
+    assert $? 1
+
+#
 # `--ext`.
 #
 

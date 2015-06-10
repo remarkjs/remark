@@ -21,27 +21,29 @@ Options are as follows:
 *   `-o`, `--output` _path_: Specify output.  When _path_ is omitted, input
     files are overwritten;
 
-*   `-c`, `--config-path` _path_: Specify configuration location;
+*   `-c`, `--config-path` _path_: specify configuration location;
 
-*   `-i`, `--ignore-path` _path_: Specify ignore location;
+*   `-i`, `--ignore-path` _path_: specify ignore location;
 
-*   `-s`, `--setting` _settings_: Specify settings;
+*   `-s`, `--setting` _settings_: specify settings;
 
-*   `-u`, `--use` _plugin_: Use a transform plugin, optionally with options;
+*   `-u`, `--use` _plugin_: use a transform plugin, optionally with options;
 
-*   `-e`, `--ext` _extensions_: Specify file extensions to look for;
+*   `-e`, `--ext` _extensions_: specify file extensions to look for;
 
-*   `-a`, `--ast`: Output AST information;
+*   `-a`, `--ast`: output AST information;
 
-*   `-q`, `--quiet`: Output only warnings and errors;
+*   `-q`, `--quiet`: output only warnings and errors;
 
-*   `-S`, `--silent`: Output only errors;
+*   `-S`, `--silent`: output only errors;
+
+*   `--file-path <path>`: specify file path to process as
 
 *   `--no-color`: disable color in output;
 
-*   `--no-rc`: Disable configuration from _.mdastrc_;
+*   `--no-rc`: disable configuration from _.mdastrc_;
 
-*   `--no-ignore`: Disable ignoring from _.mdastignore_.
+*   `--no-ignore`: disable ignoring from _.mdastignore_.
 
 A `--` argument tells the cli parser to stop reading flags.
 
