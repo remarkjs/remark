@@ -62,6 +62,7 @@
     "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
     "mdast-github": "^0.3.0",
+    "mdast-lint": "^0.1.0",
     "mdast-toc": "^0.4.0",
     "mdast-usage": "^0.2.0",
     "mdast-yaml-config": "^0.1.0",

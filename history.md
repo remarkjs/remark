@@ -3,6 +3,10 @@ mdast:
   setext: true
 ---
 
+<!--lint disable no-multiple-toplevel-headings-->
+
+<!--lint disable maximum-line-length-->
+
 0.21.2 / 2015-06-03
 ===================
 
