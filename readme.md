@@ -7,8 +7,8 @@ io.js, and the browser. 100% coverage.
 
 **mdast** is not just another markdown to HTML compiler. It can generate,
 and reformat, markdown too. It’s powered by [plugins](doc/plugins.md) to do
-all kinds of things: [change a readme.md](https://github.com/wooorm/mdast-usage),
-[lint JavaScript in your markdown](https://github.com/wooorm/eslint-md), or
+all kinds of things: [validate your markdown](https://github.com/wooorm/mdast-lint),
+[add links for GitHub references](https://github.com/wooorm/mdast-github), or
 [add a table of contents](https://github.com/wooorm/mdast-toc).
 
 ## Table of Contents
