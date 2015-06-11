@@ -1,4 +1,312 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.mdast = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+'use strict';
+
+/*
+ * Dependencies.
+ */
+
+var Ware = require('ware');
+var parser = require('./lib/parse.js');
+var stringifier = require('./lib/stringify.js');
+var File = require('./lib/file.js');
+var utilities = require('./lib/utilities.js');
+
+/*
+ * Methods.
+ */
+
+var clone = utilities.clone;
+var Parser = parser.Parser;
+var parseProto = Parser.prototype;
+var Compiler = stringifier.Compiler;
+var compileProto = Compiler.prototype;
+
+/**
+ * Throws if passed an exception.
+ *
+ * Here until the following PR is merged into
+ * segmentio/ware:
+ *
+ *   https://github.com/segmentio/ware/pull/21
+ *
+ * @param {Error?} exception
+ */
+function fail(exception) {
+    if (exception) {
+        throw exception;
+    }
+}
+
+/**
+ * Create a custom, cloned, Parser.
+ *
+ * @return {Function}
+ */
+function constructParser() {
+    var customProto;
+    var expressions;
+    var key;
+
+    /**
+     * Extensible prototype.
+     */
+    function CustomProto() {}
+
+    CustomProto.prototype = parseProto;
+
+    customProto = new CustomProto();
+
+    /**
+     * Extensible constructor.
+     */
+    function CustomParser() {
+        Parser.apply(this, arguments);
+    }
+
+    CustomParser.prototype = customProto;
+
+    /*
+     * Construct new objects for things that plugin's
+     * might modify.
+     */
+
+    customProto.blockTokenizers = clone(parseProto.blockTokenizers);
+    customProto.blockMethods = clone(parseProto.blockMethods);
+    customProto.inlineTokenizers = clone(parseProto.inlineTokenizers);
+    customProto.inlineMethods = clone(parseProto.inlineMethods);
+
+    expressions = parseProto.expressions;
+    customProto.expressions = {};
+
+    for (key in expressions) {
+        customProto.expressions[key] = clone(expressions[key]);
+    }
+
+    return CustomParser;
+}
+
+/**
+ * Create a custom, cloned, Compiler.
+ *
+ * @return {Function}
+ */
+function constructCompiler() {
+    var customProto;
+
+    /**
+     * Extensible prototype.
+     */
+    function CustomProto() {}
+
+    CustomProto.prototype = compileProto;
+
+    customProto = new CustomProto();
+
+    /**
+     * Extensible constructor.
+     */
+    function CustomCompiler() {
+        Compiler.apply(this, arguments);
+    }
+
+    CustomCompiler.prototype = customProto;
+
+    return CustomCompiler;
+}
+
+/**
+ * Construct an MDAST instance.
+ *
+ * @constructor {MDAST}
+ */
+function MDAST() {
+    var self = this;
+
+    if (!(self instanceof MDAST)) {
+        return new MDAST();
+    }
+
+    self.ware = new Ware();
+    self.attachers = [];
+
+    self.Parser = constructParser();
+    self.Compiler = constructCompiler();
+}
+
+/**
+ * Attach a plugin.
+ *
+ * @param {Function|Array.<Function>} attach
+ * @param {Object?} options
+ * @return {MDAST}
+ */
+function use(attach, options) {
+    var self = this;
+    var index;
+    var transformer;
+
+    if (!(self instanceof MDAST)) {
+        self = new MDAST();
+    }
+
+    /*
+     * Multiple attachers.
+     */
+
+    if ('length' in attach && typeof attach !== 'function') {
+        index = attach.length;
+
+        while (attach[--index]) {
+            self.use(attach[index]);
+        }
+
+        return self;
+    }
+
+    /*
+     * Single plugin.
+     */
+
+    if (self.attachers.indexOf(attach) === -1) {
+        transformer = attach(self, options);
+
+        self.attachers.push(attach);
+
+        if (transformer) {
+            self.ware.use(transformer);
+        }
+    }
+
+    return self;
+}
+
+/**
+ * Apply transformers to `node`.
+ *
+ * @param {Node} ast
+ * @param {File?} [file]
+ * @param {Function?} [done]
+ * @return {Node} - `ast`.
+ */
+function run(ast, file, done) {
+    var self = this;
+
+    if (typeof file === 'function') {
+        done = file;
+        file = null;
+    }
+
+    file = new File(file);
+
+    done = typeof done === 'function' ? done : fail;
+
+    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
+        utilities.raise(ast, 'ast');
+    }
+
+    /*
+     * Only run when this is an instance of MDAST.
+     */
+
+    if (self.ware) {
+        self.ware.run(ast, file, done);
+    } else {
+        done(null, ast, file);
+    }
+
+    return ast;
+}
+
+/**
+ * Wrapper to pass a file to `parser`.
+ */
+function parse(value, options) {
+    return parser.call(this, new File(value), options);
+}
+
+/**
+ * Wrapper to pass a file to `stringifier`.
+ */
+function stringify(ast, file, options) {
+    if (options === null || options === undefined) {
+        options = file;
+        file = null;
+    }
+
+    return stringifier.call(this, ast, new File(file), options);
+}
+
+/**
+ * Parse a value and apply transformers.
+ *
+ * @param {string|File} value
+ * @param {Object?} [options]
+ * @param {Function?} [done]
+ * @return {string?}
+ */
+function process(value, options, done) {
+    var file = new File(value);
+    var self = this instanceof MDAST ? this : new MDAST();
+    var result = null;
+    var ast;
+
+    if (typeof options === 'function') {
+        done = options;
+        options = null;
+    }
+
+    /**
+     * Invoked when `run` completes. Hoists `result` into
+     * the upper scope to return something for sync
+     * operations.
+     */
+    function callback(exception) {
+        if (exception) {
+            (done || fail)(exception);
+        } else {
+            result = self.stringify(ast, file, options);
+
+            if (done) {
+                done(null, result, file);
+            }
+        }
+    }
+
+    ast = self.parse(file, options);
+    self.run(ast, file, callback);
+
+    return result;
+}
+
+/*
+ * Methods.
+ */
+
+var proto = MDAST.prototype;
+
+proto.use = use;
+proto.parse = parse;
+proto.run = run;
+proto.stringify = stringify;
+proto.process = process;
+
+/*
+ * Functions.
+ */
+
+MDAST.use = use;
+MDAST.parse = parse;
+MDAST.run = run;
+MDAST.stringify = stringify;
+MDAST.process = process;
+
+/*
+ * Expose `mdast`.
+ */
+
+module.exports = MDAST;
+
+},{"./lib/file.js":4,"./lib/parse.js":5,"./lib/stringify.js":6,"./lib/utilities.js":7,"ware":11}],2:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -40,7 +348,7 @@ module.exports = {
     }
 };
 
-},{}],2:[function(require,module,exports){
+},{}],3:[function(require,module,exports){
 /* This file is generated by `script/build-expressions.js` */
 module.exports = {
   'rules': {
@@ -113,7 +421,7 @@ module.exports = {
   }
 };
 
-},{}],3:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -436,7 +744,7 @@ File.prototype.hasFailed = hasFailed;
 
 module.exports = File;
 
-},{}],4:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -3072,7 +3380,7 @@ Parser.prototype.tokenizeFactory = tokenizeFactory;
 
 module.exports = parse;
 
-},{"./defaults.js":1,"./expressions.js":2,"./utilities.js":6,"he":7,"repeat-string":9}],5:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":7,"he":8,"repeat-string":10}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -4841,7 +5149,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":1,"./utilities.js":6,"he":7,"markdown-table":8,"repeat-string":9}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":7,"he":8,"markdown-table":9,"repeat-string":10}],7:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5202,7 +5510,7 @@ if ('create' in Object) {
     exports.create = objectObject;
 }
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -5535,7 +5843,7 @@ if ('create' in Object) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],8:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 /*
@@ -5821,7 +6129,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -5889,7 +6197,7 @@ function repeat(str, num) {
 var res = '';
 var cache;
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -5982,7 +6290,7 @@ Ware.prototype.run = function () {
   return this;
 };
 
-},{"wrap-fn":11}],11:[function(require,module,exports){
+},{"wrap-fn":12}],12:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -6109,7 +6417,7 @@ function once(fn) {
   };
 }
 
-},{"co":12}],12:[function(require,module,exports){
+},{"co":13}],13:[function(require,module,exports){
 
 /**
  * slice() reference.
@@ -6405,313 +6713,5 @@ function error(err) {
   });
 }
 
-},{}],13:[function(require,module,exports){
-'use strict';
-
-/*
- * Dependencies.
- */
-
-var Ware = require('ware');
-var parser = require('./lib/parse.js');
-var stringifier = require('./lib/stringify.js');
-var File = require('./lib/file.js');
-var utilities = require('./lib/utilities.js');
-
-/*
- * Methods.
- */
-
-var clone = utilities.clone;
-var Parser = parser.Parser;
-var parseProto = Parser.prototype;
-var Compiler = stringifier.Compiler;
-var compileProto = Compiler.prototype;
-
-/**
- * Throws if passed an exception.
- *
- * Here until the following PR is merged into
- * segmentio/ware:
- *
- *   https://github.com/segmentio/ware/pull/21
- *
- * @param {Error?} exception
- */
-function fail(exception) {
-    if (exception) {
-        throw exception;
-    }
-}
-
-/**
- * Create a custom, cloned, Parser.
- *
- * @return {Function}
- */
-function constructParser() {
-    var customProto;
-    var expressions;
-    var key;
-
-    /**
-     * Extensible prototype.
-     */
-    function CustomProto() {}
-
-    CustomProto.prototype = parseProto;
-
-    customProto = new CustomProto();
-
-    /**
-     * Extensible constructor.
-     */
-    function CustomParser() {
-        Parser.apply(this, arguments);
-    }
-
-    CustomParser.prototype = customProto;
-
-    /*
-     * Construct new objects for things that plugin's
-     * might modify.
-     */
-
-    customProto.blockTokenizers = clone(parseProto.blockTokenizers);
-    customProto.blockMethods = clone(parseProto.blockMethods);
-    customProto.inlineTokenizers = clone(parseProto.inlineTokenizers);
-    customProto.inlineMethods = clone(parseProto.inlineMethods);
-
-    expressions = parseProto.expressions;
-    customProto.expressions = {};
-
-    for (key in expressions) {
-        customProto.expressions[key] = clone(expressions[key]);
-    }
-
-    return CustomParser;
-}
-
-/**
- * Create a custom, cloned, Compiler.
- *
- * @return {Function}
- */
-function constructCompiler() {
-    var customProto;
-
-    /**
-     * Extensible prototype.
-     */
-    function CustomProto() {}
-
-    CustomProto.prototype = compileProto;
-
-    customProto = new CustomProto();
-
-    /**
-     * Extensible constructor.
-     */
-    function CustomCompiler() {
-        Compiler.apply(this, arguments);
-    }
-
-    CustomCompiler.prototype = customProto;
-
-    return CustomCompiler;
-}
-
-/**
- * Construct an MDAST instance.
- *
- * @constructor {MDAST}
- */
-function MDAST() {
-    var self = this;
-
-    if (!(self instanceof MDAST)) {
-        return new MDAST();
-    }
-
-    self.ware = new Ware();
-    self.attachers = [];
-
-    self.Parser = constructParser();
-    self.Compiler = constructCompiler();
-}
-
-/**
- * Attach a plugin.
- *
- * @param {Function|Array.<Function>} attach
- * @param {Object?} options
- * @return {MDAST}
- */
-function use(attach, options) {
-    var self = this;
-    var index;
-    var transformer;
-
-    if (!(self instanceof MDAST)) {
-        self = new MDAST();
-    }
-
-    /*
-     * Multiple attachers.
-     */
-
-    if ('length' in attach && typeof attach !== 'function') {
-        index = attach.length;
-
-        while (attach[--index]) {
-            self.use(attach[index]);
-        }
-
-        return self;
-    }
-
-    /*
-     * Single plugin.
-     */
-
-    if (self.attachers.indexOf(attach) === -1) {
-        transformer = attach(self, options);
-
-        self.attachers.push(attach);
-
-        if (transformer) {
-            self.ware.use(transformer);
-        }
-    }
-
-    return self;
-}
-
-/**
- * Apply transformers to `node`.
- *
- * @param {Node} ast
- * @param {File?} [file]
- * @param {Function?} [done]
- * @return {Node} - `ast`.
- */
-function run(ast, file, done) {
-    var self = this;
-
-    if (typeof file === 'function') {
-        done = file;
-        file = null;
-    }
-
-    file = new File(file);
-
-    done = typeof done === 'function' ? done : fail;
-
-    if (typeof ast !== 'object' && typeof ast.type !== 'string') {
-        utilities.raise(ast, 'ast');
-    }
-
-    /*
-     * Only run when this is an instance of MDAST.
-     */
-
-    if (self.ware) {
-        self.ware.run(ast, file, done);
-    } else {
-        done(null, ast, file);
-    }
-
-    return ast;
-}
-
-/**
- * Wrapper to pass a file to `parser`.
- */
-function parse(value, options) {
-    return parser.call(this, new File(value), options);
-}
-
-/**
- * Wrapper to pass a file to `stringifier`.
- */
-function stringify(ast, file, options) {
-    if (options === null || options === undefined) {
-        options = file;
-        file = null;
-    }
-
-    return stringifier.call(this, ast, new File(file), options);
-}
-
-/**
- * Parse a value and apply transformers.
- *
- * @param {string|File} value
- * @param {Object?} [options]
- * @param {Function?} [done]
- * @return {string?}
- */
-function process(value, options, done) {
-    var file = new File(value);
-    var self = this instanceof MDAST ? this : new MDAST();
-    var result = null;
-    var ast;
-
-    if (typeof options === 'function') {
-        done = options;
-        options = null;
-    }
-
-    /**
-     * Invoked when `run` completes. Hoists `result` into
-     * the upper scope to return something for sync
-     * operations.
-     */
-    function callback(exception) {
-        if (exception) {
-            (done || fail)(exception);
-        } else {
-            result = self.stringify(ast, file, options);
-
-            if (done) {
-                done(null, result, file);
-            }
-        }
-    }
-
-    ast = self.parse(file, options);
-    self.run(ast, file, callback);
-
-    return result;
-}
-
-/*
- * Methods.
- */
-
-var proto = MDAST.prototype;
-
-proto.use = use;
-proto.parse = parse;
-proto.run = run;
-proto.stringify = stringify;
-proto.process = process;
-
-/*
- * Functions.
- */
-
-MDAST.use = use;
-MDAST.parse = parse;
-MDAST.run = run;
-MDAST.stringify = stringify;
-MDAST.process = process;
-
-/*
- * Expose `mdast`.
- */
-
-module.exports = MDAST;
-
-},{"./lib/file.js":3,"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"ware":10}]},{},[13])(13)
+},{}]},{},[1])(1)
 });
