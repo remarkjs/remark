@@ -11,6 +11,11 @@ all kinds of things: [validate your markdown](https://github.com/wooorm/mdast-li
 [add links for GitHub references](https://github.com/wooorm/mdast-github), or
 [add a table of contents](https://github.com/wooorm/mdast-toc).
 
+The project contains both an extensive [JavaScript API](doc/mdast.3.md) for
+parsing, modifying, and stringifying markdown, and a friendly [Command Line
+Interface](doc/mdast.1.md) making it easy to validate, prepare, and compile
+markdown in a build step.
+
 ## Table of Contents
 
 *   [Installation](#installation)
