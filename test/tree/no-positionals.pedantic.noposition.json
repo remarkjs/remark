@@ -1,0 +1,122 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This document tests for the working of "
+        },
+        {
+          "type": "inlineCode",
+          "value": "position: false"
+        },
+        {
+          "type": "text",
+          "value": " as a parse\noption."
+        }
+      ]
+    },
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "  Block-quotes"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "start": null,
+          "loose": false,
+          "children": [
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "With list items."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "start": 1,
+          "loose": false,
+          "children": [
+            {
+              "type": "listItem",
+              "loose": false,
+              "checked": null,
+              "children": [
+                {
+                  "type": "paragraph",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "And another list."
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Some "
+        },
+        {
+          "type": "link",
+          "title": null,
+          "href": "http://example.com",
+          "children": [
+            {
+              "type": "text",
+              "value": "deeply "
+            },
+            {
+              "type": "strong",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "nested "
+                },
+                {
+                  "type": "emphasis",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "elements"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

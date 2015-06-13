@@ -77,6 +77,14 @@ describe('mdast.parse(file, options?)', function () {
         }, /options/);
     });
 
+    it('should throw when `options.position` is not a boolean', function () {
+        assert.throws(function () {
+            mdast.parse('', {
+                'position': 0
+            });
+        }, /options.position/);
+    });
+
     it('should throw when `options.gfm` is not a boolean', function () {
         assert.throws(function () {
             mdast.parse('', {
@@ -1154,9 +1162,7 @@ validateToken = function (context) {
      * Validate position.
      */
 
-    if (type !== 'footnoteDefinition' || 'position' in context) {
-        assert('position' in context);
-
+    if ('position' in context) {
         assert('start' in context.position);
         assert('end' in context.position);
 
@@ -1409,21 +1415,22 @@ function clone(node, clean) {
     Object.keys(node).forEach(function (key) {
         var value = node[key];
 
-        if (clean) {
-            if (key === 'position') {
-                return;
-            }
-        }
+        /*
+         * Remove `position` when needed.
+         */
 
-        if (key === 'footnotes' && Object.keys(value).length === 0) {
+        if (clean && key === 'position') {
             return;
         }
+
+        /*
+         * Ignore `checked` attributes se to `null`,
+         * which only exist in `gfm` on list-items
+         * without a checkbox.  This ensures less
+         * needed fixtures.
+         */
 
         if (key === 'checked' && value === null) {
-            return;
-        }
-
-        if (key === 'start' && (value === null || value === 1)) {
             return;
         }
 
@@ -1450,11 +1457,15 @@ var stringify = JSON.stringify;
  * @param {Object} baseline
  * @param {boolean} clean
  */
-function compare(node, baseline, clean) {
+function compare(node, baseline, clean, cleanBaseline) {
     validateToken(node);
 
+    if (clean && !cleanBaseline) {
+        cleanBaseline = true;
+    }
+
     try {
-        assert.deepEqual(clone(node, clean), clone(baseline, clean));
+        assert.deepEqual(clone(node, clean), clone(baseline, cleanBaseline));
     } catch (error) {
         /* istanbul ignore next */
         logDifference(
@@ -1503,11 +1514,19 @@ describe('fixtures', function () {
                 var parse = possibilities[key];
                 var node;
                 var markdown;
+                var initialClean = !parse.position;
 
                 it('should parse `' + name + '` correctly', function () {
                     node = mdast.parse(input, parse);
 
-                    compare(node, trees[mapping[key]], false);
+                    /*
+                     * The first assertion should not clean positional
+                     * information, except when `position: false`: in that
+                     * case the baseline should be stripped of positional
+                     * information.
+                     */
+
+                    compare(node, trees[mapping[key]], false, initialClean);
                 });
 
                 if (output !== false) {

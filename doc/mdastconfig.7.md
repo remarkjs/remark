@@ -64,6 +64,7 @@ files.  See **mdastrc**(5) for more information.
 See <https://github.com/wooorm/mdast/blob/master/doc/options.md#parse>
 for a description of these settings.
 
+*   `position` (boolean, default: true);
 *   `gfm` (boolean, default: true);
 *   `yaml` (boolean, default: true);
 *   `pedantic` (boolean, default: false);

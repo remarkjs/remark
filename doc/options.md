@@ -15,6 +15,7 @@ Information on **mdast** itself is available in the project’s [readme.md](http
     *   [Footnotes](#footnotes)
     *   [GitHub Flavoured Markdown](#github-flavoured-markdown)
     *   [Pedantic](#pedantic)
+    *   [Position](#position)
     *   [YAML](#yaml)
 
 *   [Stringify](#stringify)
@@ -799,6 +800,58 @@ Yields:
       "column": 1
     }
   }
+}
+```
+
+### Position
+
+Setting `gfm: false` (default: `true`) disables positional information on
+nodes: where each node was originally located in the markdown document.
+
+> **Careful! Disabling this will stop some plug-ins from working and
+> will no longer show line/column information in warnings!**
+
+The following document:
+
+    Hello **world**!
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document, {
+  "position": false
+});
+```
+
+Yields:
+
+```json
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello "
+        },
+        {
+          "type": "strong",
+          "children": [
+            {
+              "type": "text",
+              "value": "world"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": "!"
+        }
+      ]
+    }
+  ]
 }
 ```
 

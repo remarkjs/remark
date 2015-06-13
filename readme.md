@@ -167,6 +167,7 @@ something else.
     *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
     *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/options.md#emphasis-markers);
     *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/options.md#emphasis-markers).
+    *   `position` (`boolean`, default: `true`) — See [Position](doc/options.md#position);
 
 *   `done` (`function(Error?, string?)`) — Callback invoked when the output
     is generated with either an error, or a result. Only strictly needed when
