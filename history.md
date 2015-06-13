@@ -7,6 +7,19 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.22.0 / 2015-06-13
+===================
+
+*   Add `position` as a parse setting to ignore positional information ([a4d5855](https://github.com/wooorm/mdast/commit/a4d5855))
+*   Add paragraph on the two parts of mdast to `readme.md` ([8360147](https://github.com/wooorm/mdast/commit/8360147))
+*   Refactor to refer more representational plug-ins in `readme` ([b93f573](https://github.com/wooorm/mdast/commit/b93f573))
+*   Add `mdast-lint` to plugins ([75d59d1](https://github.com/wooorm/mdast/commit/75d59d1))
+*   Rebuild with new browserify ([6b396c3](https://github.com/wooorm/mdast/commit/6b396c3))
+*   Add `--file-path <path>` option for STDIN to CLI ([a53dffb](https://github.com/wooorm/mdast/commit/a53dffb))
+*   Fix incorrect example in docs ([f7135a8](https://github.com/wooorm/mdast/commit/f7135a8))
+*   Add support for advanced CLI settings ([542ea5a](https://github.com/wooorm/mdast/commit/542ea5a))
+*   Fix support for arrays as options on CLI ([e220520](https://github.com/wooorm/mdast/commit/e220520))
+
 0.21.2 / 2015-06-03
 ===================
 
