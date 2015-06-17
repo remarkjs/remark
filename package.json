@@ -27,7 +27,7 @@
     "minimatch": "^2.0.0",
     "repeat-string": "^1.5.0",
     "text-table": "^0.2.0",
-    "user-home": "^1.0.0",
+    "user-home": "^2.0.0",
     "ware": "^1.2.0"
   },
   "repository": {
@@ -54,7 +54,7 @@
     "browserify": "^10.0.0",
     "clone": "^1.0.1",
     "diff": "^1.0.0",
-    "eslint": "^0.22.0",
+    "eslint": "^0.23.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
     "jscs": "^1.0.0",
@@ -62,10 +62,10 @@
     "marked-man": "^0.1.0",
     "matcha": "^0.6.0",
     "mdast-github": "^0.3.0",
-    "mdast-lint": "^0.1.0",
+    "mdast-lint": "^0.2.0",
     "mdast-toc": "^0.4.0",
-    "mdast-usage": "^0.2.0",
-    "mdast-yaml-config": "^0.1.0",
+    "mdast-usage": "^0.3.0",
+    "mdast-yaml-config": "^0.2.0",
     "mocha": "^2.0.0"
   },
   "scripts": {
