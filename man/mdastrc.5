@@ -1,47 +1,45 @@
-.TH "MDASTRC" "5" "June 2015" "" ""
+.TH "MDASTRC" "5" "June 2015" "0.22.0" "mdast"
 .SH "NAME"
-\fBmdastrc\fR \- mdast config files
-.SH SYNOPSIS
+\fBmdastrc\fR - mdast config files
+.SH "SYNOPSIS"
 .P
-\fB\|\.mdastrc\fR, \fBpackage\.json\fR
-.SH DESCRIPTION
+\fB.mdastrc\fR, \fBpackage.json\fR
+.SH "DESCRIPTION"
 .P
-\fBmdast\fR gets its configuration from the command line and \fBmdastrc\fR files\.
+\fBmdast\fR gets its configuration from the command line and \fBmdastrc\fR files.
 .P
-For a list of available configuration options, see \fBmdast\fR(1) or https://github\.com/wooorm/mdast/blob/master/doc/options\.md\|\.
-.SH FILES
+For a list of available configuration options, see \fBmdast\fR(1) or \fIhttps://github.com/wooorm/mdast/blob/master/doc/options.md\fR.
+.SH "FILES"
 .P
-All \fBmdastrc\fR(5) configuration files are in JSON\.
+All \fBmdastrc\fR(5) configuration files are in JSON.
 .P
-Automatically detected files named \fBpackage\.json\fR use the \fBmdastConfig\fR
-field, whereas other files are used as a whole\.
-.SH FIELDS
-.SS settings
+Automatically detected files named \fBpackage.json\fR use the \fBmdastConfig\fR field, whereas other files are used as a whole.
+.SH "FIELDS"
+.SS "settings"
 .P
 .RS 2
 .nf
-{
-  "settings": {
-    "commonmark": true,
-    "bullet": "*"
-  }
-}
+\[lC]
+  \[dq]settings\[dq]: \[lC]
+    \[dq]commonmark\[dq]: true,
+    \[dq]bullet\[dq]: \[dq]*\[dq]
+  \[rC]
+\[rC]
 .fi
 .RE
 .P
-Settings contains an object mapping a setting to a value\.
-See \fBman 7 mdastconfig\fR for available settings\.
-.SS plugins
+Settings contains an object mapping a setting to a value. See \fBman 7 mdastconfig\fR for available settings.
+.SS "plugins"
 .P
 List:
 .P
 .RS 2
 .nf
-{
-  "plugins": [
-    "toc"
-  ]
-}
+\[lC]
+  \[dq]plugins\[dq]: \[lB]
+    \[dq]toc\[dq]
+  \[rB]
+\[rC]
 .fi
 .RE
 .P
@@ -49,107 +47,98 @@ Options:
 .P
 .RS 2
 .nf
-{
-  "plugins": {
-    "github": {
-      "repository": "foo/bar"
-    }
-  }
-}
+\[lC]
+  \[dq]plugins\[dq]: \[lC]
+    \[dq]github\[dq]: \[lC]
+      \[dq]repository\[dq]: \[dq]foo\[sl]bar\[dq]
+    \[rC]
+  \[rC]
+\[rC]
 .fi
 .RE
 .P
-The \fBplugins\fR field contains either an array of plugins, or an object mapping
-plugins to their options\.
+The \fBplugins\fR field contains either an array of plugins, or an object mapping plugins to their options.
 .P
-When a plugin is prefixed with \fBmdast\-\fR (which is recommended), the prefix
-can be omitted in the plugin list or map\.
-.SH CASCADE
+When a plugin is prefixed with \fBmdast-\fR (which is recommended), the prefix can be omitted in the plugin list or map.
+.SH "CASCADE"
 .P
 Precedence is as follows:
 .RS 0
-.IP \(bu 2
-Plug\-ins and settings passed to \fBmdast\fR(1);
-.IP \(bu 2
+.IP \(bu 4
+Plug-ins and settings passed to \fBmdast\fR(1);
+.IP \(bu 4
 Files passed to \fBmdast\fR(1);
-.IP \(bu 2
-Files named \fB\|\.mdastrc\fR and \fBmdastConfig\fR fields in \fBpackage\.json\fR in the
-directory of the processed file, and in ancestral directories;
-.IP \(bu 2
-If no \fB\|\.mdastrc\fR and \fBpackage\.json\fR were detected in the directory of
-the file or its ancestral directories, a per\-user config file (\fB~/\.mdastrc\fR)
-is used;
+.IP \(bu 4
+Files named \fB.mdastrc\fR and \fBmdastConfig\fR fields in \fBpackage.json\fR in the directory of the processed file, and in ancestral directories;
+.IP \(bu 4
+If no \fB.mdastrc\fR and \fBpackage.json\fR were detected in the directory of the file or its ancestral directories, a per-user config file (\fB\[ti]\[sl].mdastrc\fR) is used;
+.RE 0
 
-.RE
 .P
-If both \fB\|\.mdastrc\fR and \fBpackage\.json\fR exist in a directory, the file named
-\fB\|\.mdastrc\fR takes precedence in the cascade over \fBpackage\.json\fR\|\.
+If both \fB.mdastrc\fR and \fBpackage.json\fR exist in a directory, the file named \fB.mdastrc\fR takes precedence in the cascade over \fBpackage.json\fR.
 .P
 For example, for the following project:
 .P
 .RS 2
 .nf
 project
-|\-\- docs
-|   |\-\- \.mdastrc
-|   |\-\- doc\.md
-|
-|\-\- \.mdastrc
-|\-\- package\.json
-|\-\- readme\.md
+\[ba]-- docs
+\[ba]   \[ba]-- .mdastrc
+\[ba]   \[ba]-- doc.md
+\[ba]
+\[ba]-- .mdastrc
+\[ba]-- package.json
+\[ba]-- readme.md
 .fi
 .RE
 .P
-Where \fBdocs/\.mdastrc\fR looks as follows:
+Where \fBdocs\[sl].mdastrc\fR looks as follows:
 .P
 .RS 2
 .nf
-{
-    "settings": {
-        "bullet": "+"
-    }
-}
+\[lC]
+    \[dq]settings\[dq]: \[lC]
+        \[dq]bullet\[dq]: \[dq]\[pl]\[dq]
+    \[rC]
+\[rC]
 .fi
 .RE
 .P
-And \fBpackage\.json\fR contains:
+And \fBpackage.json\fR contains:
 .P
 .RS 2
 .nf
-{
-    "mdastConfig": {
-        "settings": {
-            "bullet": "*"
-        }
-    }
-}
+\[lC]
+    \[dq]mdastConfig\[dq]: \[lC]
+        \[dq]settings\[dq]: \[lC]
+            \[dq]bullet\[dq]: \[dq]*\[dq]
+        \[rC]
+    \[rC]
+\[rC]
 .fi
 .RE
 .P
-And \fB\|\.mdastrc\fR contains:
+And \fB.mdastrc\fR contains:
 .P
 .RS 2
 .nf
-{
-    "settings": {
-        "bullet": "\-"
-    }
-}
+\[lC]
+    \[dq]settings\[dq]: \[lC]
+        \[dq]bullet\[dq]: \[dq]-\[dq]
+    \[rC]
+\[rC]
 .fi
 .RE
 .P
-Then, when stringifying \fBdocs/doc\.md\fR, \fBmdast\fR(1) would use \fBbullet: "+"\fR
-because \fBdocs/\.mdastrc\fR takes precedence over \fB\|\.mdastrc\fR and \fBpackage\.json\fR\|\.
+Then, when stringifying \fBdocs\[sl]doc.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]\[pl]\[dq]\fR because \fBdocs\[sl].mdastrc\fR takes precedence over \fB.mdastrc\fR and \fBpackage.json\fR.
 .P
-When stringifying \fBreadme\.md\fR, \fBmdast\fR(1) would use \fBbullet: "\-"\fR, because
-\fB\|\.mdastrc\fR takes precedence over \fBpackage\.json\fR\|\.
-.SH BUGS
+When stringifying \fBreadme.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.mdastrc\fR takes precedence over \fBpackage.json\fR.
+.SH "BUGS"
 .P
-https://github\.com/wooorm/mdast/issues
-.SH SEE ALSO
+\fIhttps://github.com/wooorm/mdast/issues\fR
+.SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdastignore\fR(5), \fBmdastconfig\fR(7)\.
-.SH AUTHOR
+\fBmdast\fR(1), \fBmdastignore\fR(5), \fBmdastconfig\fR(7).
+.SH "AUTHOR"
 .P
-Written by Titus Wormer tituswormer@gmail\.com
-
+Written by Titus Wormer \fItituswormer@gmail.com\fR

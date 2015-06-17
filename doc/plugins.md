@@ -35,6 +35,9 @@
 *   [wooorm/mdast-lint](https://github.com/wooorm/mdast-lint)
     — Markdown code style linter;
 
+*   [wooorm/mdast-man](https://github.com/wooorm/mdast-man)
+    — Compile Markdown to Man pages (roff);
+
 *   [wooorm/mdast-range](https://github.com/wooorm/mdast-range)
     — Add range information;
 

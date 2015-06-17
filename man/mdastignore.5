@@ -1,64 +1,50 @@
-.TH "MDASTIGNORE" "5" "June 2015" "" ""
+.TH "MDASTIGNORE" "5" "June 2015" "0.22.0" "mdast"
 .SH "NAME"
-\fBmdastignore\fR \- mdast ignore files
-.SH SYNOPSIS
+\fBmdastignore\fR - mdast ignore files
+.SH "SYNOPSIS"
 .P
-\fB\|\.mdastignore\fR
-.SH DESCRIPTION
+\fB.mdastignore\fR
+.SH "DESCRIPTION"
 .P
-When \fBmdast\fR(1) searches for applicable files, you can tell it to ignore
-certain globs by placing an \fI\|\.mdastignore\fR file in the current working
-directory or its ancestral directories\.
+When \fBmdast\fR(1) searches for applicable files, you can tell it to ignore certain globs by placing an \fI.mdastignore\fR file in the current working directory or its ancestral directories.
 .P
-Unlike \fBmdastrc\fR(5) configuration files, \fBmdastignore\fR(5) files do not
-cascade: when one is found (or given), the program stops looking for further
-files\.
-.SH FILES
+Unlike \fBmdastrc\fR(5) configuration files, \fBmdastignore\fR(5) files do not cascade: when one is found (or given), the program stops looking for further files.
+.SH "FILES"
 .P
-Each line in a \fBmdastignore\fR(5) file provides a pattern which describes to
-\fBmdast\fR whether or not to process a given path\.
+Each line in a \fBmdastignore\fR(5) file provides a pattern which describes to \fBmdast\fR whether or not to process a given path.
 .RS 0
-.IP \(bu 2
+.IP \(bu 4
 Lines are trimmed of initial and final white space;
-.IP \(bu 2
+.IP \(bu 4
 Empty lines are ignored;
-.IP \(bu 2
-Lines which start with an octothorp (\fB#\fR) are ignored;
-.IP \(bu 2
-Lines which start with a interrogation\-mark (\fB!\fR) negate, thus re\-adding
-a previously ignored file path;
+.IP \(bu 4
+Lines which start with an octothorp (\fB\[sh]\fR) are ignored;
+.IP \(bu 4
+Lines which start with a interrogation-mark (\fB!\fR) negate, thus re-adding a previously ignored file path;
+.RE 0
 
-.RE
 .P
-For documentation regarding the glob engine itself, such as wild\-cards
-(\fB*\fR, \fB?\fR), brace expressions (\fB{one,two}\fR), see \fBminimist\fR(1)\.
+For documentation regarding the glob engine itself, such as wild-cards (\fB*\fR, \fB?\fR), brace expressions (\fB\[lC]one,two\[rC]\fR), see \fBminimist\fR(1).
 .P
-You can pass a \fBgitignore\fR(5) file to \fBmdast\fR(1), because it has the same
-format as \fBmdastignore\fR(5):
+You can pass a \fBgitignore\fR(5) file to \fBmdast\fR(1), because it has the same format as \fBmdastignore\fR(5):
 .P
 .RS 2
 .nf
-mdast \-\-ignore\-path \.gitignore
+mdast --ignore-path .gitignore
 .fi
 .RE
 .P
-\fBmdast\fR(1) searches for files with  \fI\|\.md\fR, \fI\|\.mkd\fR, \fI\|\.mkdn\fR, \fI\|\.mkdown\fR,
-\fI\|\.markdown\fR, or \fI\|\.ron\fR as extension\.  Other files can be explicitly provided
-to \fBmdast\fR(1), or an \fBextension\fR can be given to \fBmdast\fR(1) using the
-\fB\-\-extension, \-e\fR flag\.
+\fBmdast\fR(1) searches for files with \fI.md\fR, \fI.mkd\fR, \fI.mkdn\fR, \fI.mkdown\fR, \fI.markdown\fR, or \fI.ron\fR as extension. Other files can be explicitly provided to \fBmdast\fR(1), or an \fBextension\fR can be given to \fBmdast\fR(1) using the \fB--extension, -e\fR flag.
 .P
-In addition to patterns in \fBmdastignore\fR(5) files, \fInode_modules/**\fR are
-always excluded\.
+In addition to patterns in \fBmdastignore\fR(5) files, \fInode\[ul]modules\[sl]**\fR are always excluded.
 .P
-Unless provided directly to \fBmdast\fR(1), hidden directories (such as \fI\|\.git\fR)
-are excluded\.
-.SH BUGS
+Unless provided directly to \fBmdast\fR(1), hidden directories (such as \fI.git\fR) are excluded.
+.SH "BUGS"
 .P
-https://github\.com/wooorm/mdast/issues
-.SH SEE ALSO
+\fIhttps://github.com/wooorm/mdast/issues\fR
+.SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdastrc\fR(5), \fBmdastconfig\fR(7)\.
-.SH AUTHOR
+\fBmdast\fR(1), \fBmdastrc\fR(5), \fBmdastconfig\fR(7).
+.SH "AUTHOR"
 .P
-Written by Titus Wormer tituswormer@gmail\.com
-
+Written by Titus Wormer \fItituswormer@gmail.com\fR
