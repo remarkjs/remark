@@ -254,6 +254,10 @@ function process(value, options, done) {
         options = null;
     }
 
+    if (!options) {
+        options = {};
+    }
+
     /**
      * Invoked when `run` completes. Hoists `result` into
      * the upper scope to return something for sync
