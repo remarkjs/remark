@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.22.1 / 2015-06-18
+===================
+
+*   Add mdast-man as a dev-dependency ([7fb9d7f](https://github.com/wooorm/mdast/commit/7fb9d7f))
+*   Fix failing eslint rule ([8949016](https://github.com/wooorm/mdast/commit/8949016))
+*   Update user-home, eslint, mdast plug-ins ([adde30a](https://github.com/wooorm/mdast/commit/adde30a))
+*   Fix bug in process without options and with done ([4aa68e0](https://github.com/wooorm/mdast/commit/4aa68e0))
+
 0.22.0 / 2015-06-13
 ===================
 
