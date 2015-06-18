@@ -17,7 +17,7 @@ Options are as follows:
 .IP \(bu 4
 \fB-V\fR, \fB--version\fR: Output version number;
 .IP \(bu 4
-\fB-o\fR, \fB--output\fR \fIpath\fR: Specify output. When \fIpath\fR is omitted, input files are overwritten;
+\fB-o\fR, \fB--output\fR \fIpath\fR: Specify output. When \fIpath\fR is omitted, input files are overwritten. When \fIpath\fR is a directory, files are written to that directory. When the parent directory of \fIpath\fR exists, and multiple files are given, an error is thrown, if one file is given it is written to \fIpath\fR.
 .IP \(bu 4
 \fB-c\fR, \fB--config-path\fR \fIpath\fR: specify configuration location;
 .IP \(bu 4
@@ -25,7 +25,7 @@ Options are as follows:
 .IP \(bu 4
 \fB-s\fR, \fB--setting\fR \fIsettings\fR: specify settings;
 .IP \(bu 4
-\fB-u\fR, \fB--use\fR \fIplugin\fR: use a transform plugin, optionally with options;
+\fB-u\fR, \fB--use\fR \fIplugin\fR: use a plugin, optionally with options;
 .IP \(bu 4
 \fB-e\fR, \fB--ext\fR \fIextensions\fR: specify file extensions to look for;
 .IP \(bu 4

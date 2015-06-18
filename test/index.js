@@ -950,6 +950,94 @@ describe('File(options?)', function () {
         });
     });
 
+    describe('#move()', function () {
+        it('should change an extension', function () {
+            var file = new File({
+              'directory': '~',
+              'filename': 'example',
+              'extension': 'markdown'
+            });
+
+            file.move({
+                'extension': 'md'
+            });
+
+            assert(file.filePath() === '~/example.md');
+        });
+
+        it('should change a filename', function () {
+            var file = new File({
+              'directory': '~',
+              'filename': 'example',
+              'extension': 'markdown'
+            });
+
+            file.move({
+                'filename': 'foo'
+            });
+
+            assert(file.filePath() === '~/foo.markdown');
+        });
+
+        it('should change a directory', function () {
+            var file = new File({
+              'directory': '~',
+              'filename': 'example',
+              'extension': 'markdown'
+            });
+
+            file.move({
+                'directory': '/var/www'
+            });
+
+            assert(file.filePath() === '/var/www/example.markdown');
+        });
+
+        it('should ignore not-given values', function () {
+            var file = new File();
+
+            file.extension = null;
+
+            file.move();
+
+            assert(file.filePath() === '');
+        });
+
+        it('should add a filename', function () {
+            var file = new File();
+
+            file.move({
+                'filename': 'example'
+            });
+
+            assert(file.filePath() === 'example.md');
+        });
+
+        it('should add a directory', function () {
+            var file = new File();
+
+            file.move({
+                'directory': '~',
+                'filename': 'example'
+            });
+
+            assert(file.filePath() === '~/example.md');
+        });
+
+        it('should add an extension', function () {
+            var file = new File({
+                'filename': 'README',
+                'extension': ''
+            });
+
+            file.move({
+                'extension': 'md'
+            });
+
+            assert(file.filePath() === 'README.md');
+        });
+    });
+
     describe('#hasFailed()', function () {
         it('should return `false` when without messages', function () {
             var file = new File();

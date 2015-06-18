@@ -460,8 +460,8 @@ function filePathFactory(file) {
      *
      * @example
      *   var file = new File({
-     *     'directory': '~'
-     *     'filename': 'example'
+     *     'directory': '~',
+     *     'filename': 'example',
      *     'extension': 'markdown'
      *   });
      *
@@ -503,10 +503,10 @@ function filePathFactory(file) {
  *
  * @example
  *   var file = new File({
- *     'directory': '~'
- *     'filename': 'example'
+ *     'directory': '~',
+ *     'filename': 'example',
  *     'extension': 'markdown',
- *     'contents': 'Foo *bar* baz',
+ *     'contents': 'Foo *bar* baz'
  *   });
  *
  *   file === File(file) // true
@@ -555,6 +555,40 @@ function File(options) {
      */
 
     self.filePath = filePathFactory(self);
+}
+
+/**
+ * Move a file by passing a new directory, filename,
+ * and extension.  When these are not given, the default
+ * values are kept.
+ *
+ * @example
+ *   var file = new File({
+ *     'directory': '~',
+ *     'filename': 'example',
+ *     'extension': 'markdown',
+ *     'contents': 'Foo *bar* baz'
+ *   });
+ *
+ *   file.move({'directory': '/var/www'});
+ *   file.filePath(); // '/var/www/example.markdown'
+ *
+ *   file.move({'extension': 'md'});
+ *   file.filePath(); // '/var/www/example.md'
+ *
+ * @this {File}
+ * @param {Object} options
+ */
+function move(options) {
+    var self = this;
+
+    if (!options) {
+        options = {};
+    }
+
+    self.directory = options.directory || self.directory || '';
+    self.filename = options.filename || self.filename || null;
+    self.extension = options.extension || self.extension || 'md';
 }
 
 /**
@@ -737,6 +771,7 @@ function toString() {
  * Methods.
  */
 
+File.prototype.move = move;
 File.prototype.exception = exception;
 File.prototype.toString = toString;
 File.prototype.warn = warn;

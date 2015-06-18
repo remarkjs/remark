@@ -19,7 +19,10 @@ Options are as follows:
 *   `-V`, `--version`: Output version number;
 
 *   `-o`, `--output` _path_: Specify output.  When _path_ is omitted, input
-    files are overwritten;
+    files are overwritten.  When _path_ is a directory, files are written to
+    that directory.  When the parent directory of _path_ exists, and multiple
+    files are given, an error is thrown, if one file is given it is written
+    to _path_.
 
 *   `-c`, `--config-path` _path_: specify configuration location;
 
@@ -27,7 +30,7 @@ Options are as follows:
 
 *   `-s`, `--setting` _settings_: specify settings;
 
-*   `-u`, `--use` _plugin_: use a transform plugin, optionally with options;
+*   `-u`, `--use` _plugin_: use a plugin, optionally with options;
 
 *   `-e`, `--ext` _extensions_: specify file extensions to look for;
 
