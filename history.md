@@ -7,6 +7,11 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.23.0 / 2015-06-18
+===================
+
+*   Add support for writing to directories to CLI ([8a6e464](https://github.com/wooorm/mdast/commit/8a6e464))
+
 0.22.1 / 2015-06-18
 ===================
 
