@@ -89,7 +89,6 @@
     "build-options": "node script/build-options.js",
     "build-bundle": "browserify index.js -s mdast > mdast.js",
     "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-expressions && npm run build-formatter && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle",
-    "prepublish": "npm run build"
+    "build": "npm run build-expressions && npm run build-formatter && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle"
   }
 }
