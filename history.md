@@ -7,6 +7,12 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.24.0 / 2015-06-21
+===================
+
+*   Add support for `'escape'` value for `entities` stringification ([518d3d8](https://github.com/wooorm/mdast/commit/518d3d8))
+*   Fix bug where entities in definitions were not decoded ([5454a6c](https://github.com/wooorm/mdast/commit/5454a6c))
+
 0.23.0 / 2015-06-18
 ===================
 
