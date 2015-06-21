@@ -32,6 +32,9 @@
 *   [wooorm/mdast-heading](https://github.com/wooorm/mdast-heading)
     — Markdown heading as ranges;
 
+*   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
+    — Compile Markdown to HTML documents;
+
 *   [wooorm/mdast-lint](https://github.com/wooorm/mdast-lint)
     — Markdown code style linter;
 
