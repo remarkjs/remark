@@ -3596,6 +3596,7 @@ var ENTITY_OPTIONS = objectCreate();
 ENTITY_OPTIONS.true = true;
 ENTITY_OPTIONS.false = true;
 ENTITY_OPTIONS.numbers = true;
+ENTITY_OPTIONS.escape = true;
 
 /*
  * Allowed list-bullet characters.
@@ -3707,6 +3708,7 @@ function encodeNoop(value) {
  */
 function encodeFactory(type, file) {
     var options = {};
+    var fn;
 
     if (type === 'false') {
         return encodeNoop;
@@ -3715,6 +3717,8 @@ function encodeFactory(type, file) {
     if (type === 'true') {
         options.useNamedReferences = true;
     }
+
+    fn = type === 'escape' ? 'escape' : 'encode';
 
     /**
      * Encode HTML entities using `he` using bound options.
@@ -3739,7 +3743,7 @@ function encodeFactory(type, file) {
      */
     function encode(value, node) {
         try {
-            return he.encode(value, options);
+            return he[fn](value, options);
         } catch (exception) {
             file.fail(exception, node.position);
         }

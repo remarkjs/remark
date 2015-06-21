@@ -38,7 +38,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Plain text:",
+          "value": "Plain text:",
           "position": {
             "start": {
               "line": 3,
@@ -46,7 +46,7 @@
             },
             "end": {
               "line": 3,
-              "column": 12
+              "column": 17
             },
             "indent": []
           }
@@ -59,7 +59,7 @@
         },
         "end": {
           "line": 3,
-          "column": 12
+          "column": 17
         },
         "indent": []
       }
