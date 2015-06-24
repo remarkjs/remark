@@ -26,6 +26,9 @@
 *   [wooorm/mdast-comment-config](https://github.com/wooorm/mdast-comment-config)
     — Set settings with comments during runtime;
 
+*   [hughsk/mdast-contributors](https://github.com/hughsk/mdast-contributors)
+    — Inject a given list of contributors into a table in a document;
+
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
