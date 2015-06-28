@@ -2,7 +2,7 @@
   "plugins": {
     "mdast-man": {
       "manual": "mdast",
-      "version": "0.22.1"
+      "version": "0.25.0"
     }
   }
 }

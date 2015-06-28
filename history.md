@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.25.0 / 2015-06-28
+===================
+
+*   Fix HTML support ([09ec06c](https://github.com/wooorm/mdast/commit/09ec06c))
+*   Add `hughsk/mdast-contributors` to plug-ins ([b16bc4f](https://github.com/wooorm/mdast/commit/b16bc4f))
+*   Fix bug where escaped final-emphasis markers were not recognised ([a7f55e1](https://github.com/wooorm/mdast/commit/a7f55e1))
+*   Add `mdast-html` to plug-ins ([a63d74b](https://github.com/wooorm/mdast/commit/a63d74b))
+
 0.24.0 / 2015-06-21
 ===================
 
