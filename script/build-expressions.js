@@ -93,6 +93,63 @@ expressions.breaks = breaks;
 expressions.breaksGFM = breaksGFM;
 
 /*
+ * HTML Block elements.
+ */
+
+var HTML_BLOCK_ELEMENTS = '(?:' + [
+    'article',
+    'header',
+    'aside',
+    'hgroup',
+    'blockquote',
+    'hr',
+    'iframe',
+    'body',
+    'li',
+    'map',
+    'button',
+    'object',
+    'canvas',
+    'ol',
+    'caption',
+    'output',
+    'col',
+    'p',
+    'colgroup',
+    'pre',
+    'dd',
+    'progress',
+    'div',
+    'section',
+    'dl',
+    'table',
+    'td',
+    'dt',
+    'tbody',
+    'embed',
+    'textarea',
+    'fieldset',
+    'tfoot',
+    'figcaption',
+    'th',
+    'figure',
+    'thead',
+    'footer',
+    'tr',
+    'form',
+    'ul',
+    'h1',
+    'h2',
+    'h3',
+    'h4',
+    'h5',
+    'h6',
+    'video',
+    'script',
+    'style'
+].join('|') + ')';
+
+/*
  * Block helpers.
  */
 
@@ -206,33 +263,46 @@ var inlineTags = '(?!' +
         ':\\/|[^\\w\\s@]*@' +
     ')\\b';
 
-rules.html = new RegExp(
-    '^[ \\t]*(?:' +
+var tagName = '(?:[a-zA-Z][a-zA-Z0-9]*)';
+var attributeName = '(?:[a-zA-Z_:][a-zA-Z0-9_.:-]*)';
+var whitespace = '(?:\\s+)';
+var unquotedAttribute = '[^"\'=<>`]+';
+var singleQuotedAttribute = '\'[^\']*\'';
+var doubleQuotedAttribute = '"[^"]*"';
+var attributeValue = '(?:' + unquotedAttribute + '|' + singleQuotedAttribute + '|' + doubleQuotedAttribute + ')';
+var attributeValueSpec = '(?:' + whitespace + '?' + '=' + whitespace + '?' + attributeValue + ')';
+var attribute = '(?:' + whitespace + attributeName + attributeValueSpec + '?)';
+var openTag = '(?:<' + tagName + attribute + '*' + whitespace + '?/?>)';
+var closingTag = '(?:</' + tagName + whitespace + '?>)';
+var openBlockTag = '(?:<' + HTML_BLOCK_ELEMENTS + attribute + '*' + whitespace + '?/?>?)';
+var closingBlockTag = '(?:</' + HTML_BLOCK_ELEMENTS + whitespace + '?>)';
+var htmlComment = '(?:<!--(?!-?>)(?:[^-]|-(?!-))*-->)';
+var processingInstruction = '(?:<\\?(?:[^\\?]|\\?(?!>))+\\?>)';
+var declaration = '(?:<![a-zA-Z]+\\s+[\\s\\S]+?>)';
+var cdata = '(?:<!\\[CDATA\\[[\\s\\S]+?\\]\\]>)';
+var htmlBlockTag = '(?:' + openBlockTag + '|' + closingBlockTag + ')';
+var htmlInlineTag = '^(?:' +
+    openTag + '|' +
+    closingTag + '|' +
+    htmlComment + '|' +
+    processingInstruction + '|' +
+    declaration + '|' +
+    cdata +
+')';
 
-        /*
-         * HTML comment.
-         */
-
-        cleanExpression('<!--[\\s\\S]*?-->') + '[ \\t]*(?:\\n|\\s*$)' +
-
-        '|' +
-
-        /*
-         * Closed tag.
-         */
-
-        cleanExpression('<(' + inlineTags + ')[\\s\\S]+?<\\/\\1>') + '[ \\t]*(?:\\n{2,}|\\s*$)' +
-
-        '|' +
-
-        /*
-         * Closing tag.
-         */
-
-        cleanExpression('<' + inlineTags + '(?:"[^"]*"|\'[^\']*\'|[^\'">])*?>') + '[ \\t]*(?:\\n{2,}|\\s*$)' +
-    ')',
-    'i'
-);
+rules.html = new RegExp('^(?:' +
+    '[ \\t]*' +
+    '(?:' +
+        htmlBlockTag + '|' +
+        htmlComment + '|' +
+        processingInstruction + '|' +
+        declaration + '|' +
+        cdata +
+    ')' +
+    '[\\s\\S]*?' +
+    '[ \\t]*?' +
+    '(?:\\n{2,}|\\s*$)' +
+')', 'i');
 
 rules.paragraph = new RegExp(
     '^(?:(?:' +
@@ -296,7 +366,7 @@ rules.escape = /^\\([\\`*{}\[\]()#+\-.!_>])/;
 
 rules.autoLink = /^<([^ >]+(@|:\/)[^ >]+)>/;
 
-rules.tag = /^<!--[\s\S]*?-->|^<\/?\w+(?:"[^"]*"|'[^']*'|[^'">])*?>/;
+rules.tag = new RegExp(htmlInlineTag);
 
 rules.strong = /^(_)_((?:\\[\s\S]|[^\\])+?)__(?!_)|^(\*)\*((?:\\[\s\S]|[^\\])+?)\*\*(?!\*)/;
 
