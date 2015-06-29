@@ -129,11 +129,11 @@
                   "position": {
                     "start": {
                       "line": 3,
-                      "column": 14
+                      "column": 16
                     },
                     "end": {
                       "line": 3,
-                      "column": 20
+                      "column": 22
                     },
                     "indent": []
                   }
@@ -207,11 +207,11 @@
                   "position": {
                     "start": {
                       "line": 4,
-                      "column": 14
+                      "column": 16
                     },
                     "end": {
                       "line": 4,
-                      "column": 20
+                      "column": 22
                     },
                     "indent": []
                   }
