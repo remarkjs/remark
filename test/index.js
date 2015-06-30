@@ -260,6 +260,17 @@ describe('mdast.stringify(ast, file, options?)', function () {
         }
     );
 
+    it('should throw when `options.listItemIndent` is not a valid ' +
+        'constant',
+        function () {
+            assert.throws(function () {
+                mdast.stringify(empty(), {
+                    'listItemIndent': 'foo'
+                });
+            }, /options\.listItemIndent/);
+        }
+    );
+
     it('should throw when `options.rule` is not a valid ' +
         'horizontal rule bullet',
         function () {

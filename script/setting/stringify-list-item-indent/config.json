@@ -1,0 +1,6 @@
+{
+  "title": "List Item Indent",
+  "stringify": {
+    "listItemIndent": "mixed"
+  }
+}

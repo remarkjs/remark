@@ -86,6 +86,7 @@ for a description of these settings.
 *   `fences` (boolean, default: `false`);
 *   `fence` (`"~"` or ``"`"``, default: ``"`"``);
 *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`);
+*   `listItemIndent` (`"tab"`, `"mixed"`, or `"1"`, default: `"tab"`);
 *   `rule` (`"-"`, `"\*"`, or `"_"`, default: `"*"`);
 *   `ruleRepetition` (number, default: `3`);
 *   `ruleSpaces` (boolean, default: `false`);

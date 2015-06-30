@@ -345,6 +345,7 @@ module.exports = {
         'fences': false,
         'fence': '`',
         'bullet': '-',
+        'listItemIndent': 'tab',
         'rule': '*',
         'ruleSpaces': true,
         'ruleRepetition': 3,
@@ -3533,7 +3534,6 @@ var objectCreate = utilities.create;
  * Constants.
  */
 
-var HALF = 2;
 var INDENT = 4;
 var MINIMUM_CODE_FENCE_LENGTH = 3;
 var YAML_FENCE_LENGTH = 3;
@@ -3648,6 +3648,20 @@ var ORDERED_MAP = objectCreate();
 
 ORDERED_MAP.true = 'visitOrderedItems';
 ORDERED_MAP.false = 'visitUnorderedItems';
+
+/*
+ * Allowed list-item-indent's.
+ */
+
+var LIST_ITEM_INDENTS = objectCreate();
+
+var LIST_ITEM_TAB = 'tab';
+var LIST_ITEM_ONE = '1';
+var LIST_ITEM_MIXED = 'mixed';
+
+LIST_ITEM_INDENTS[LIST_ITEM_ONE] = true;
+LIST_ITEM_INDENTS[LIST_ITEM_TAB] = true;
+LIST_ITEM_INDENTS[LIST_ITEM_MIXED] = true;
 
 /*
  * Which checkbox to use.
@@ -3921,6 +3935,7 @@ var maps = {
     'entities': ENTITY_OPTIONS,
     'bullet': LIST_BULLETS,
     'rule': HORIZONTAL_RULE_BULLETS,
+    'listItemIndent': LIST_ITEM_INDENTS,
     'emphasis': EMPHASIS_MARKERS,
     'strong': EMPHASIS_MARKERS,
     'fence': FENCE_MARKERS
@@ -4089,24 +4104,10 @@ compilerPrototype.visitOrderedItems = function (token) {
     var length = tokens.length;
     var start = token.start;
     var bullet;
-    var indent;
-    var spacing;
-    var value;
 
     while (++index < length) {
-        bullet = (increment ? start + index : start) + DOT + SPACE;
-
-        indent = Math.ceil(bullet.length / INDENT) * INDENT;
-        spacing = repeat(SPACE, indent - bullet.length);
-
-        value = bullet + spacing +
-            self.listItem(tokens[index], token, indent);
-
-        if (tokens[index].loose && index !== length - 1) {
-            value += LINE;
-        }
-
-        values[index] = value;
+        bullet = (increment ? start + index : start) + DOT;
+        values[index] = self.listItem(tokens[index], token, index, bullet);
     }
 
     return values.join(LINE);
@@ -4144,29 +4145,12 @@ compilerPrototype.visitUnorderedItems = function (token) {
     var self = this;
     var values = [];
     var tokens = token.children;
-    var index = -1;
     var length = tokens.length;
-    var bullet;
-    var spacing;
-    var value;
-
-    /*
-     * Unordered bullets are always one character, so
-     * the following can be hard coded.
-     */
-
-    bullet = self.options.bullet + SPACE;
-    spacing = repeat(SPACE, HALF);
+    var index = -1;
+    var bullet = self.options.bullet;
 
     while (++index < length) {
-        value = bullet + spacing +
-            self.listItem(tokens[index], token, INDENT);
-
-        if (tokens[index].loose && index !== length - 1) {
-            value += LINE;
-        }
-
-        values[index] = value;
+        values[index] = self.listItem(tokens[index], token, index, bullet);
     }
 
     return values.join(LINE);
@@ -4481,33 +4465,63 @@ compilerPrototype.list = function (token) {
  *       type: 'text',
  *       value: 'bar'
  *     }]
- *   }, null, null, 4);
- *   '[x] bar'
+ *   }, {
+ *     type: 'list',
+ *     ordered: false,
+ *     children: [{
+ *       type: 'listItem',
+ *       checked: true,
+ *       children: [{
+ *         type: 'text',
+ *         value: 'bar'
+ *       }]
+ *     }]
+ *   }, 0, '*');
+ *   '-   [x] bar'
  *
  * @param {Object} token - `listItem` node.
- * @param {Object} parent - Parent of `token`.
- * @param {number} padding - Indentation to use on
- *   subsequent lines.
- * @return {string} - Markdown list item (without bullet).
+ * @param {Object} parent - `list` node.
+ * @param {number} position - Index of `token` in `parent`.
+ * @param {string} bullet - Bullet to use.  This, and the
+ *   `listItemIndent` setting define the used indent.
+ * @return {string} - Markdown list item.
  */
-compilerPrototype.listItem = function (token, parent, padding) {
+compilerPrototype.listItem = function (token, parent, position, bullet) {
     var self = this;
+    var style = self.options.listItemIndent;
     var tokens = token.children;
     var values = [];
     var index = -1;
     var length = tokens.length;
+    var loose = token.loose;
     var value;
+    var indent;
+    var spacing;
 
     while (++index < length) {
         values[index] = self.visit(tokens[index], token);
     }
 
-    value = CHECKBOX_MAP[token.checked] +
-        values.join(token.loose ? BREAK : LINE);
+    value = CHECKBOX_MAP[token.checked] + values.join(loose ? BREAK : LINE);
 
-    value = pad(value, padding / INDENT);
+    if (
+        style === LIST_ITEM_ONE ||
+        (style === LIST_ITEM_MIXED && value.indexOf(LINE) === -1)
+    ) {
+        indent = bullet.length + 1;
+        spacing = SPACE;
+    } else {
+        indent = Math.ceil((bullet.length + 1) / INDENT) * INDENT;
+        spacing = repeat(SPACE, indent - bullet.length);
+    }
 
-    return value.slice(padding);
+    value = bullet + spacing + pad(value, indent / INDENT).slice(indent);
+
+    if (loose && parent.children.length - 1 !== position) {
+        value += LINE;
+    }
+
+    return value;
 };
 
 /**

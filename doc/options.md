@@ -26,6 +26,7 @@ Information on **mdast** itself is available in the project’s [readme.md](http
     *   [Encoding Entities](#encoding-entities)
     *   [Fence](#fence)
     *   [Fences](#fences)
+    *   [List Item Indent](#list-item-indent)
     *   [Loose Tables](#loose-tables)
     *   [List Marker Increase](#list-marker-increase)
     *   [Horizontal Rules](#horizontal-rules)
@@ -1140,6 +1141,84 @@ Yields:
     ```
     alert('Hello World!');
     ```
+
+### List Item Indent
+
+Setting `listItemIndent: "1"` (`"tab"`, `"mixed"`, or `"1"`, default: `"tab"`) will stringify list items
+with a single space following the bullet.
+
+The default, `"tab"`, will compile to bullets and spacing set to tab-stops
+(multiples of 4).
+
+The other value, `"mixed"`, uses `"tav"` when the list item spans multiple
+lines, and `"1"` otherwise.
+
+> **Note**: choosing `"tab"` results in the greatest support across
+> vendors when mixing lists, block quotes, indented code, &c.
+
+The following document:
+
+    1. foo bar baz.
+
+    <!--  -->
+
+    99. foo bar baz.
+
+    <!--  -->
+
+    999. foo bar baz.
+
+    <!--  -->
+
+    1. foo bar baz.
+       foo bar baz.
+
+    <!--  -->
+
+    99. foo bar baz.
+        foo bar baz.
+
+    <!--  -->
+
+    999. foo bar baz.
+         foo bar baz.
+
+And the below JavaScript:
+
+```javascript
+var ast = mdast.parse(document);
+
+mdast.stringify(ast, {
+  "listItemIndent": "mixed"
+});
+```
+
+Yields:
+
+    1. foo bar baz.
+
+    <!--  -->
+
+    99. foo bar baz.
+
+    <!--  -->
+
+    999. foo bar baz.
+
+    <!--  -->
+
+    1.  foo bar baz.
+        foo bar baz.
+
+    <!--  -->
+
+    99. foo bar baz.
+        foo bar baz.
+
+    <!--  -->
+
+    999.    foo bar baz.
+            foo bar baz.
 
 ### Loose Tables
 

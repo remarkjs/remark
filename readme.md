@@ -161,6 +161,7 @@ something else.
     *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/options.md#fence);
     *   `fences` (`boolean`, default: `false`) — See [Fences](doc/options.md#fences);
     *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/options.md#list-item-bullets);
+    *   `listItemIndent` (`"tab"`, `"mixed"` or `"1"`, default: `"tab"`) — See [List Item Indent](doc/options.md#list-item-indent);
     *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/options.md#list-marker-increasement);
     *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
     *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
