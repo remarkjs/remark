@@ -1144,8 +1144,8 @@ Yields:
 
 ### List Item Indent
 
-Setting `listItemIndent: "1"` (`"tab"`, `"mixed"`, or `"1"`, default: `"tab"`) will stringify list items
-with a single space following the bullet.
+Setting `listItemIndent: "1"` (`"tab"`, `"mixed"`, or `"1"`, default: `"tab"`)
+will stringify list items with a single space following the bullet.
 
 The default, `"tab"`, will compile to bullets and spacing set to tab-stops
 (multiples of 4).

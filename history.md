@@ -7,6 +7,12 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.26.0 / 2015-06-30
+===================
+
+*   Add support for `listItemIndent` stringification setting ([f645bc5](https://github.com/wooorm/mdast/commit/f645bc5))
+*   Fix table-cell position on padded cells ([6174e21](https://github.com/wooorm/mdast/commit/6174e21))
+
 0.25.0 / 2015-06-28
 ===================
 
