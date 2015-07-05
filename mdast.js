@@ -2482,14 +2482,14 @@ function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
  *   tokenizeReference(eat, '[foo][]', '[', 'foo', '');
  *   tokenizeReference(eat, '[foo][bar]', '[', 'foo', 'bar');
  *
- * @property {boolean} notInLink
  * @param {function(string)} eat
  * @param {string} $0 - Whole link.
  * @param {string} $1 - Prefix.
  * @param {string} $2 - identifier.
  * @param {string} $3 - Content.
- * @return {Node} - `linkReference`, `imageReference`, or
- *   `footnoteReference`.
+ * @return {Node?} - `linkReference`, `imageReference`, or
+ *   `footnoteReference`.  Returns null when this is a link
+ *   reference, but we're already in a link.
  */
 function tokenizeReference(eat, $0, $1, $2, $3) {
     var self = this;
@@ -2526,6 +2526,10 @@ function tokenizeReference(eat, $0, $1, $2, $3) {
         }
     }
 
+    if (self.inLink && type === 'link') {
+        return null;
+    }
+
     now.column += $1.length;
 
     node = {
@@ -2547,8 +2551,6 @@ function tokenizeReference(eat, $0, $1, $2, $3) {
 
     return eat($0)(node);
 }
-
-tokenizeReference.notInLink = true;
 
 /**
  * Tokenise strong emphasis.
