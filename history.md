@@ -7,6 +7,11 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.26.1 / 2015-07-05
+===================
+
+*   Fix nested reference support ([4fc2c47](https://github.com/wooorm/mdast/commit/4fc2c47))
+
 0.26.0 / 2015-06-30
 ===================
 
