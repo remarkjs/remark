@@ -7,6 +7,11 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.26.2 / 2015-07-06
+===================
+
+*   Fix incorrectly eaten initial table fence ([3da315e](https://github.com/wooorm/mdast/commit/3da315e))
+
 0.26.1 / 2015-07-05
 ===================
 
