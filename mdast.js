@@ -965,9 +965,9 @@ var EXPRESSION_RIGHT_ALIGNMENT = /^[ \t]*-+:[ \t]*$/;
 var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
 var EXPRESSION_LEFT_ALIGNMENT = /^[ \t]*:-+[ \t]*$/;
 var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
-var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|[ \t]*/g;
+var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|/g;
 var EXPRESSION_TABLE_CONTENT =
-    /((?:\\[\s\S]|[^\|])+?)([ \t]?\|[ \t]?\n?|\n?$)/g;
+    /[ \t]*?((?:\\[\s\S]|[^\|])+?)([ \t]?\|[ \t]?\n?|\n?$)/g;
 var EXPRESSION_TABLE_BORDER = /[ \t]*\|[ \t]*/;
 var EXPRESSION_BLOCK_QUOTE = /^[ \t]*>[ \t]?/gm;
 var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t)([^\n]*)/;
@@ -1743,7 +1743,6 @@ tokenizeFootnoteDefinition.notInBlockquote = true;
  */
 function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var self = this;
-    var now;
     var node;
     var index;
     var length;
@@ -1787,12 +1786,14 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
          */
         function eatCell(value, content, pipe) {
             var cell = utilities.trimLeft(content);
+            var diff = content.length - cell.length;
+            var now;
+
+            eat(content.slice(0, diff));
 
             now = eat.now();
 
-            now.column += content.length - cell.length;
-
-            eat(content)(self.renderInline(
+            eat(cell)(self.renderInline(
                 TABLE_CELL, utilities.trimRight(cell), now
             ), row);
 
