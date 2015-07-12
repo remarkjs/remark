@@ -236,7 +236,7 @@ stringify.forEach(renderSection);
  * Add toc.
  */
 
-toc()(root);
+mdast().use(toc).run(root);
 
 /*
  * Write.
