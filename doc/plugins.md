@@ -6,6 +6,8 @@
 
 *   [List of plugins](#list-of-plugins)
 
+*   [List of Utilities](#list-of-utilities)
+
 *   [Using Plugins](#using-plugins)
 
     *   [Programmatically](#programmatically)
@@ -21,7 +23,7 @@
 
     *   [Publishing](#publishing)
 
-## List of plugins
+## List of Plugins
 
 *   [wooorm/mdast-comment-config](https://github.com/wooorm/mdast-comment-config)
     — Set settings with comments during runtime;
@@ -38,14 +40,32 @@
 *   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
     — Compile Markdown to HTML documents;
 
+*   [wooorm/mdast-inline-links](https://github.com/wooorm/mdast-inline-links)
+    — Transform references and definitions into normal links and images;
+
 *   [wooorm/mdast-lint](https://github.com/wooorm/mdast-lint)
     — Markdown code style linter;
 
 *   [wooorm/mdast-man](https://github.com/wooorm/mdast-man)
     — Compile Markdown to Man pages (roff);
 
+*   [wooorm/mdast-message-sort](https://github.com/wooorm/mdast-message-sort)
+    — Sort mdast messages by line/column;
+
 *   [wooorm/mdast-range](https://github.com/wooorm/mdast-range)
     — Add range information;
+
+*   [mapbox/mdast-react](https://github.com/mapbox/mdast-react)
+    — Compile Markdown to React;
+
+*   [wooorm/mdast-reference-links](https://github.com/wooorm/mdast-reference-links)
+    — Transform links and images into references and definitions;
+
+*   [wooorm/mdast-slug](https://github.com/wooorm/mdast-slug)
+    — Add slugs to headings;
+
+*   [wooorm/mdast-strip-badges](https://github.com/wooorm/mdast-strip-badges)
+    — Remove badges (such as shields.io);
 
 *   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
@@ -61,6 +81,23 @@
 
 *   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone)
     — HTML comments as ranges or markers.
+
+## List of Utilities
+
+Although not **mdast** plug-ins, the following projects are useful when
+working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md):
+
+*   [wooorm/mdast-util-heading-style](https://github.com/wooorm/mdast-util-heading-style)
+    — Get the style of a heading (`"atx"`, `"atx-closed"`, or `"setext"`);
+
+*   [wooorm/mdast-util-position](https://github.com/wooorm/mdast-util-position)
+    — Get the position of nodes;
+
+*   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
+    — Get the plain text content of a node;
+
+*   [wooorm/mdast-util-visit](https://github.com/wooorm/mdast-util-visit)
+    — Recursively walk over nodes.
 
 ## Using Plugins
 
