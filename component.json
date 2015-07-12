@@ -17,10 +17,16 @@
     "cli"
   ],
   "dependencies": {
+    "wooorm/ccount": "^1.0.0",
+    "wooorm/collapse-white-space": "^1.0.0",
+    "matthewmueller/extend.js": "^0.0.2",
     "mathiasbynens/he": "^0.5.0",
+    "wooorm/longest-streak": "^1.0.0",
     "wooorm/markdown-table": "^0.4.0",
-    "segmentio/ware": "^1.2.0",
-    "jonschlinkert/repeat-string": "^1.5.2"
+    "jonschlinkert/repeat-string": "^1.5.2",
+    "component/trim": "^0.0.1",
+    "wooorm/trim-trailing-lines": "^1.0.0",
+    "segmentio/ware": "^1.2.0"
   },
   "repository": "wooorm/mdast",
   "scripts": [

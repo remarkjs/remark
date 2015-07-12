@@ -178,19 +178,6 @@ describe('mdast.parse(file, options?)', function () {
         he.decode.options.strict = false;
     });
 
-    it('should not accept inherited properties', function () {
-        /**
-         * Fixture for inherited options.
-         */
-        function CustomOptions() {}
-
-        CustomOptions.prototype.gfm = 'Invalid and inherited.';
-
-        assert.doesNotThrow(function () {
-            mdast.parse('', new CustomOptions());
-        });
-    });
-
     it('should be able to set options', function () {
         var processor = mdast();
         var html = processor.Parser.prototype.blockTokenizers.html;
@@ -405,23 +392,6 @@ describe('mdast.stringify(ast, file, options?)', function () {
             }, /options\.spacedTable/);
         }
     );
-
-    it('should not accept inherited properties', function () {
-        /**
-         * Fixture for inherited options.
-         */
-        function CustomOptions() {}
-
-        /*
-         * An inherited invalid `fence` option.
-         */
-
-        CustomOptions.prototype.fence = '-';
-
-        assert.doesNotThrow(function () {
-            mdast.stringify(empty(), new CustomOptions());
-        });
-    });
 
     it('should be able to set options', function () {
         var processor = mdast();

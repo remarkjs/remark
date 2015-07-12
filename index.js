@@ -5,6 +5,7 @@
  */
 
 var Ware = require('ware');
+var extend = require('extend.js');
 var parser = require('./lib/parse.js');
 var stringifier = require('./lib/stringify.js');
 var File = require('./lib/file.js');
@@ -14,7 +15,6 @@ var utilities = require('./lib/utilities.js');
  * Methods.
  */
 
-var clone = utilities.clone;
 var Parser = parser.Parser;
 var parseProto = Parser.prototype;
 var Compiler = stringifier.Compiler;
@@ -69,16 +69,16 @@ function constructParser() {
      * might modify.
      */
 
-    customProto.blockTokenizers = clone(parseProto.blockTokenizers);
-    customProto.blockMethods = clone(parseProto.blockMethods);
-    customProto.inlineTokenizers = clone(parseProto.inlineTokenizers);
-    customProto.inlineMethods = clone(parseProto.inlineMethods);
+    customProto.blockTokenizers = extend({}, parseProto.blockTokenizers);
+    customProto.blockMethods = extend([], parseProto.blockMethods);
+    customProto.inlineTokenizers = extend({}, parseProto.inlineTokenizers);
+    customProto.inlineMethods = extend([], parseProto.inlineMethods);
 
     expressions = parseProto.expressions;
     customProto.expressions = {};
 
     for (key in expressions) {
-        customProto.expressions[key] = clone(expressions[key]);
+        customProto.expressions[key] = extend({}, expressions[key]);
     }
 
     return CustomParser;
