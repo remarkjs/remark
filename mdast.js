@@ -6,6 +6,7 @@
  */
 
 var Ware = require('ware');
+var extend = require('extend.js');
 var parser = require('./lib/parse.js');
 var stringifier = require('./lib/stringify.js');
 var File = require('./lib/file.js');
@@ -15,7 +16,6 @@ var utilities = require('./lib/utilities.js');
  * Methods.
  */
 
-var clone = utilities.clone;
 var Parser = parser.Parser;
 var parseProto = Parser.prototype;
 var Compiler = stringifier.Compiler;
@@ -70,16 +70,16 @@ function constructParser() {
      * might modify.
      */
 
-    customProto.blockTokenizers = clone(parseProto.blockTokenizers);
-    customProto.blockMethods = clone(parseProto.blockMethods);
-    customProto.inlineTokenizers = clone(parseProto.inlineTokenizers);
-    customProto.inlineMethods = clone(parseProto.inlineMethods);
+    customProto.blockTokenizers = extend({}, parseProto.blockTokenizers);
+    customProto.blockMethods = extend([], parseProto.blockMethods);
+    customProto.inlineTokenizers = extend({}, parseProto.inlineTokenizers);
+    customProto.inlineMethods = extend([], parseProto.inlineMethods);
 
     expressions = parseProto.expressions;
     customProto.expressions = {};
 
     for (key in expressions) {
-        customProto.expressions[key] = clone(expressions[key]);
+        customProto.expressions[key] = extend({}, expressions[key]);
     }
 
     return CustomParser;
@@ -310,7 +310,7 @@ MDAST.process = process;
 
 module.exports = MDAST;
 
-},{"./lib/file.js":4,"./lib/parse.js":5,"./lib/stringify.js":6,"./lib/utilities.js":7,"ware":11}],2:[function(require,module,exports){
+},{"./lib/file.js":4,"./lib/parse.js":5,"./lib/stringify.js":6,"./lib/utilities.js":7,"extend.js":10,"ware":17}],2:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -802,6 +802,9 @@ module.exports = File;
 
 var he = require('he');
 var repeat = require('repeat-string');
+var trim = require('trim');
+var trimTrailingLines = require('trim-trailing-lines');
+var extend = require('extend.js');
 var utilities = require('./utilities.js');
 var defaultExpressions = require('./expressions.js');
 var defaultOptions = require('./defaults.js').parse;
@@ -810,15 +813,10 @@ var defaultOptions = require('./defaults.js').parse;
  * Methods.
  */
 
-var clone = utilities.clone;
-var copy = utilities.copy;
 var raise = utilities.raise;
-var trim = utilities.trim;
-var trimRightLines = utilities.trimRightLines;
 var clean = utilities.clean;
 var validate = utilities.validate;
 var normalize = utilities.normalizeIdentifier;
-var objectCreate = utilities.create;
 var arrayPush = [].push;
 
 /*
@@ -984,7 +982,7 @@ var EXPRESSION_TASK_ITEM = /^\[([\ \t]|x|X)\][\ \t]/;
  * which can be used as indentation.
  */
 
-var INDENTATION_CHARACTERS = objectCreate();
+var INDENTATION_CHARACTERS = {};
 
 INDENTATION_CHARACTERS[SPACE] = SPACE.length;
 INDENTATION_CHARACTERS[TAB] = TAB_SIZE;
@@ -1272,7 +1270,7 @@ function noopToggler() {
  * Define nodes of a type which can be merged.
  */
 
-var MERGEABLE_NODES = objectCreate();
+var MERGEABLE_NODES = {};
 
 /**
  * Merge two text nodes: `token` into `prev`.
@@ -1360,7 +1358,7 @@ function tokenizeNewline(eat, $0) {
  * @return {Node} - `code` node.
  */
 function tokenizeCode(eat, $0) {
-    $0 = trimRightLines($0);
+    $0 = trimTrailingLines($0);
 
     return eat($0)(this.renderCodeBlock(
         removeIndentation($0, TAB_SIZE), null, eat)
@@ -1384,7 +1382,7 @@ function tokenizeCode(eat, $0) {
  * @return {Node} - `code` node.
  */
 function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
-    $0 = trimRightLines($0);
+    $0 = trimTrailingLines($0);
 
     /*
      * If the initial fence was preceded by spaces,
@@ -1471,7 +1469,7 @@ function tokenizeHorizontalRule(eat, $0) {
 function tokenizeBlockquote(eat, $0) {
     var now = eat.now();
     var indent = this.indent(now.line);
-    var value = trimRightLines($0);
+    var value = trimTrailingLines($0);
     var add = eat(value);
 
     value = value.replace(EXPRESSION_BLOCK_QUOTE, function (prefix) {
@@ -1498,7 +1496,7 @@ function tokenizeBlockquote(eat, $0) {
 function tokenizeList(eat, $0, $1, $2) {
     var self = this;
     var firstBullet = $2;
-    var value = trimRightLines($0);
+    var value = trimTrailingLines($0);
     var matches = value.match(self.rules.item);
     var length = matches.length;
     var index = 0;
@@ -1532,7 +1530,7 @@ function tokenizeList(eat, $0, $1, $2) {
                 )
             ) {
                 matches = matches.slice(0, index);
-                matches[index - 1] = trimRightLines(matches[index - 1]);
+                matches[index - 1] = trimTrailingLines(matches[index - 1]);
 
                 length = matches.length;
 
@@ -1615,7 +1613,7 @@ function tokenizeList(eat, $0, $1, $2) {
  * @return {Node} - `html` node.
  */
 function tokenizeHtml(eat, $0) {
-    $0 = trimRightLines($0);
+    $0 = trimTrailingLines($0);
 
     return eat($0)(this.renderRaw(HTML, $0));
 }
@@ -1676,7 +1674,7 @@ tokenizeDefinition.notInBlockquote = true;
  * @return {Node} - `yaml` node.
  */
 function tokenizeYAMLFrontMatter(eat, $0, $1) {
-    return eat($0)(this.renderRaw(YAML, $1 ? trimRightLines($1) : EMPTY));
+    return eat($0)(this.renderRaw(YAML, $1 ? trimTrailingLines($1) : EMPTY));
 }
 
 tokenizeYAMLFrontMatter.onlyAtStart = true;
@@ -1747,7 +1745,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
     var index;
     var length;
 
-    $0 = trimRightLines($0);
+    $0 = trimTrailingLines($0);
 
     node = eat($0).reset({
         'type': TABLE,
@@ -1785,7 +1783,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
          * @return {string} - Empty string.
          */
         function eatCell(value, content, pipe) {
-            var cell = utilities.trimLeft(content);
+            var cell = trim.left(content);
             var diff = content.length - cell.length;
             var now;
 
@@ -1794,7 +1792,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
             now = eat.now();
 
             eat(cell)(self.renderInline(
-                TABLE_CELL, utilities.trimRight(cell), now
+                TABLE_CELL, trim.right(cell), now
             ), row);
 
             eat(pipe);
@@ -1845,7 +1843,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
      * Add the table rows to table's children.
      */
 
-    $5 = trimRightLines($5).split(NEW_LINE);
+    $5 = trimTrailingLines($5).split(NEW_LINE);
 
     index = -1;
     length = $5.length;
@@ -1883,7 +1881,7 @@ function tokenizeParagraph(eat, $0) {
         return null;
     }
 
-    $0 = trimRightLines($0);
+    $0 = trimTrailingLines($0);
 
     return eat($0)(this.renderInline(PARAGRAPH, $0, now));
 }
@@ -1917,7 +1915,7 @@ function renderCodeBlock(value, language, eat) {
     return {
         'type': CODE,
         'lang': language ? decode(this.descape(language), eat) : null,
-        'value': trimRightLines(value || EMPTY)
+        'value': trimTrailingLines(value || EMPTY)
     };
 }
 
@@ -2072,7 +2070,7 @@ function renderNormalListItem(value, position) {
  * A map of two functions which can create list items.
  */
 
-var LIST_ITEM_MAP = objectCreate();
+var LIST_ITEM_MAP = {};
 
 LIST_ITEM_MAP.true = renderPedanticListItem;
 LIST_ITEM_MAP.false = renderNormalListItem;
@@ -2676,7 +2674,7 @@ function tokenizeBreak(eat, $0) {
  */
 function Parser(options) {
     var self = this;
-    var rules = copy({}, self.expressions.rules);
+    var rules = extend({}, self.expressions.rules);
 
     self.inLink = false;
     self.atTop = true;
@@ -2686,7 +2684,7 @@ function Parser(options) {
     self.rules = rules;
     self.descape = descapeFactory(rules, 'escape');
 
-    self.options = clone(self.options);
+    self.options = extend({}, self.options);
 
     self.setOptions(options);
 }
@@ -2714,7 +2712,7 @@ Parser.prototype.setOptions = function (options) {
     if (options === null || options === undefined) {
         options = {};
     } else if (typeof options === 'object') {
-        options = clone(options);
+        options = extend({}, options);
     } else {
         raise(options, 'options');
     }
@@ -2725,16 +2723,16 @@ Parser.prototype.setOptions = function (options) {
         validate.boolean(options, key, current[key]);
 
         if (options[key]) {
-            copy(rules, expressions[key]);
+            extend(rules, expressions[key]);
         }
     }
 
     if (options.gfm && options.breaks) {
-        copy(rules, expressions.breaksGFM);
+        extend(rules, expressions.breaksGFM);
     }
 
     if (options.gfm && options.commonmark) {
-        copy(rules, expressions.commonmarkGFM);
+        extend(rules, expressions.commonmarkGFM);
     }
 
     if (options.commonmark) {
@@ -3502,7 +3500,7 @@ Parser.prototype.tokenizeFactory = tokenizeFactory;
 
 module.exports = parse;
 
-},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":7,"he":8,"repeat-string":10}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":7,"extend.js":10,"he":11,"repeat-string":14,"trim":16,"trim-trailing-lines":15}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -3520,6 +3518,9 @@ module.exports = parse;
 var he = require('he');
 var table = require('markdown-table');
 var repeat = require('repeat-string');
+var extend = require('extend.js');
+var ccount = require('ccount');
+var longesStreak = require('longest-streak');
 var utilities = require('./utilities.js');
 var defaultOptions = require('./defaults.js').stringify;
 
@@ -3527,11 +3528,8 @@ var defaultOptions = require('./defaults.js').stringify;
  * Methods.
  */
 
-var clone = utilities.clone;
 var raise = utilities.raise;
 var validate = utilities.validate;
-var count = utilities.countCharacter;
-var objectCreate = utilities.create;
 
 /*
  * Constants.
@@ -3598,7 +3596,7 @@ var DOUBLE_TILDE = TILDE + TILDE;
  * Allowed entity options.
  */
 
-var ENTITY_OPTIONS = objectCreate();
+var ENTITY_OPTIONS = {};
 
 ENTITY_OPTIONS.true = true;
 ENTITY_OPTIONS.false = true;
@@ -3609,7 +3607,7 @@ ENTITY_OPTIONS.escape = true;
  * Allowed list-bullet characters.
  */
 
-var LIST_BULLETS = objectCreate();
+var LIST_BULLETS = {};
 
 LIST_BULLETS[ASTERISK] = true;
 LIST_BULLETS[DASH] = true;
@@ -3619,7 +3617,7 @@ LIST_BULLETS[PLUS] = true;
  * Allowed horizontal-rule bullet characters.
  */
 
-var HORIZONTAL_RULE_BULLETS = objectCreate();
+var HORIZONTAL_RULE_BULLETS = {};
 
 HORIZONTAL_RULE_BULLETS[ASTERISK] = true;
 HORIZONTAL_RULE_BULLETS[DASH] = true;
@@ -3629,7 +3627,7 @@ HORIZONTAL_RULE_BULLETS[UNDERSCORE] = true;
  * Allowed emphasis characters.
  */
 
-var EMPHASIS_MARKERS = objectCreate();
+var EMPHASIS_MARKERS = {};
 
 EMPHASIS_MARKERS[UNDERSCORE] = true;
 EMPHASIS_MARKERS[ASTERISK] = true;
@@ -3638,7 +3636,7 @@ EMPHASIS_MARKERS[ASTERISK] = true;
  * Allowed fence markers.
  */
 
-var FENCE_MARKERS = objectCreate();
+var FENCE_MARKERS = {};
 
 FENCE_MARKERS[TICK] = true;
 FENCE_MARKERS[TILDE] = true;
@@ -3647,7 +3645,7 @@ FENCE_MARKERS[TILDE] = true;
  * Which method to use based on `list.ordered`.
  */
 
-var ORDERED_MAP = objectCreate();
+var ORDERED_MAP = {};
 
 ORDERED_MAP.true = 'visitOrderedItems';
 ORDERED_MAP.false = 'visitUnorderedItems';
@@ -3656,7 +3654,7 @@ ORDERED_MAP.false = 'visitUnorderedItems';
  * Allowed list-item-indent's.
  */
 
-var LIST_ITEM_INDENTS = objectCreate();
+var LIST_ITEM_INDENTS = {};
 
 var LIST_ITEM_TAB = 'tab';
 var LIST_ITEM_ONE = '1';
@@ -3670,7 +3668,7 @@ LIST_ITEM_INDENTS[LIST_ITEM_MIXED] = true;
  * Which checkbox to use.
  */
 
-var CHECKBOX_MAP = objectCreate();
+var CHECKBOX_MAP = {};
 
 CHECKBOX_MAP.null = EMPTY;
 CHECKBOX_MAP.undefined = EMPTY;
@@ -3792,7 +3790,7 @@ function encloseURI(uri, always) {
         always ||
         !uri.length ||
         EXPRESSIONS_WHITE_SPACE.test(uri) ||
-        count(uri, PARENTHESIS_OPEN) !== count(uri, PARENTHESIS_CLOSE)
+        ccount(uri, PARENTHESIS_OPEN) !== ccount(uri, PARENTHESIS_CLOSE)
     ) {
         return ANGLE_BRACKET_OPEN + uri + ANGLE_BRACKET_CLOSE;
     }
@@ -3827,44 +3825,6 @@ function encloseTitle(title) {
     }
 
     return delimiter + title + delimiter;
-}
-
-/**
- * Get the count of the longest repeating streak
- * of `character` in `value`.
- *
- * @example
- *   getLongestRepetition('` foo `` bar `', '`') // 2
- *
- * @param {string} value - Content.
- * @param {string} character - Single character to look
- *   for.
- * @return {number} - Number of characters at the place
- *   where `character` occurs in its longest streak in
- *   `value`.
- */
-function getLongestRepetition(value, character) {
-    var highestCount = 0;
-    var index = -1;
-    var length = value.length;
-    var currentCount = 0;
-    var currentCharacter;
-
-    while (++index < length) {
-        currentCharacter = value.charAt(index);
-
-        if (currentCharacter === character) {
-            currentCount++;
-
-            if (currentCount > highestCount) {
-                highestCount = currentCount;
-            }
-        } else {
-            currentCount = 0;
-        }
-    }
-
-    return highestCount;
 }
 
 /**
@@ -3913,7 +3873,7 @@ function Compiler(file, options) {
 
     self.file = file;
 
-    self.options = clone(self.options);
+    self.options = extend({}, self.options);
 
     self.setOptions(options);
 }
@@ -3966,7 +3926,7 @@ compilerPrototype.setOptions = function (options) {
     if (options === null || options === undefined) {
         options = {};
     } else if (typeof options === 'object') {
-        options = clone(options);
+        options = extend({}, options);
     } else {
         raise(options, 'options');
     }
@@ -4554,7 +4514,7 @@ compilerPrototype.listItem = function (token, parent, position, bullet) {
  */
 compilerPrototype.inlineCode = function (token) {
     var value = token.value;
-    var ticks = repeat(TICK, getLongestRepetition(value, TICK) + 1);
+    var ticks = repeat(TICK, longesStreak(value, TICK) + 1);
     var start = ticks;
     var end = ticks;
 
@@ -4651,7 +4611,7 @@ compilerPrototype.code = function (token) {
         return pad(value, 1);
     }
 
-    fence = getLongestRepetition(value, marker) + 1;
+    fence = longesStreak(value, marker) + 1;
 
     fence = repeat(marker, Math.max(fence, MINIMUM_CODE_FENCE_LENGTH));
 
@@ -5288,7 +5248,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":2,"./utilities.js":7,"he":8,"markdown-table":9,"repeat-string":10}],7:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":7,"ccount":8,"extend.js":10,"he":11,"longest-streak":12,"markdown-table":13,"repeat-string":14}],7:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5300,63 +5260,18 @@ module.exports = stringify;
 'use strict';
 
 /*
- * Methods.
+ * Dependencies.
  */
 
-var has = Object.prototype.hasOwnProperty;
+var collapseWhiteSpace = require('collapse-white-space');
 
 /*
  * Expressions.
  */
 
-var WHITE_SPACE_FINAL = /\s+$/;
-var NEW_LINES_FINAL = /\n+$/;
-var WHITE_SPACE_INITIAL = /^\s+/;
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 var EXPRESSION_SYMBOL_FOR_NEW_LINE = /\u2424/g;
-var WHITE_SPACE_COLLAPSABLE = /[ \t\n]+/g;
 var EXPRESSION_BOM = /^\ufeff/;
-
-/**
- * Shallow copy `context` into `target`.
- *
- * @example
- *   var target = {};
- *   copy(target, {foo: 'bar'}); // target
- *
- * @param {Object} target - Object to copy into.
- * @param {Object} context - Object to copy from.
- * @return {Object} - `target`.
- */
-function copy(target, context) {
-    var key;
-
-    for (key in context) {
-        if (has.call(context, key)) {
-            target[key] = context[key];
-        }
-    }
-
-    return target;
-}
-
-/**
- * Shallow clone `context`.
- *
- * @example
- *   clone({foo: 'bar'}) // {foo: 'bar'}
- *   clone(['foo', 'bar']) // ['foo', 'bar']
- *
- * @return {Object|Array} context - Object to clone.
- * @return {Object|Array} - Shallow clone of `context`.
- */
-function clone(context) {
-    if ('concat' in context) {
-        return context.concat();
-    }
-
-    return copy({}, context);
-}
 
 /**
  * Throw an exception with in its `message` `value`
@@ -5465,71 +5380,6 @@ function validateString(context, name, def, map) {
 }
 
 /**
- * Remove final white space from `value`.
- *
- * @example
- *   trimRight('foo '); // 'foo'
- *
- * @param {string} value - Content to trim.
- * @return {string} - Trimmed content.
- */
-function trimRight(value) {
-    return String(value).replace(WHITE_SPACE_FINAL, '');
-}
-
-/**
- * Remove final new line characters from `value`.
- *
- * @example
- *   trimRightLines('foo\n\n'); // 'foo'
- *
- * @param {string} value - Content to trim.
- * @return {string} - Trimmed content.
- */
-function trimRightLines(value) {
-    return String(value).replace(NEW_LINES_FINAL, '');
-}
-
-/**
- * Remove initial white space from `value`.
- *
- * @example
- *   trimLeft(' foo'); // 'foo'
- *
- * @param {string} value - Content to trim.
- * @return {string} - Trimmed content.
- */
-function trimLeft(value) {
-    return String(value).replace(WHITE_SPACE_INITIAL, '');
-}
-
-/**
- * Remove initial and final white space from `value`.
- *
- * @example
- *   trim(' foo '); // 'foo'
- *
- * @param {string} value - Content to trim.
- * @return {string} - Trimmed content.
- */
-function trim(value) {
-    return trimLeft(trimRight(value));
-}
-
-/**
- * Collapse white space.
- *
- * @example
- *   collapse('foo\t bar'); // 'foo bar'
- *
- * @param {string} value - Content to collapse.
- * @return {string} - Collapsed content.
- */
-function collapse(value) {
-    return String(value).replace(WHITE_SPACE_COLLAPSABLE, ' ');
-}
-
-/**
  * Clean a string in preperation of parsing.
  *
  * @example
@@ -5558,62 +5408,7 @@ function clean(value) {
  * @return {string} - Normalized content.
  */
 function normalizeIdentifier(value) {
-    return collapse(value).toLowerCase();
-}
-
-/**
- * Count how many characters `character` occur in `value`.
- *
- * @example
- *   countCharacter('foo(bar(baz)', '(') // 2
- *   countCharacter('foo(bar(baz)', ')') // 1
- *
- * @param {string} value - Content to search in.
- * @param {string} character - Character to search for.
- * @return {number} - Count.
- */
-function countCharacter(value, character) {
-    var index = -1;
-    var length = value.length;
-    var count = 0;
-
-    while (++index < length) {
-        if (value.charAt(index) === character) {
-            count++;
-        }
-    }
-
-    return count;
-}
-
-/**
- * Create an empty object.
- *
- * @example
- *   objectObject(); // Same as `{}`.
- *
- * @return {Object}
- */
-function objectObject() {
-    return {};
-}
-
-/*
- * Break coverage.
- */
-
-objectObject();
-
-/**
- * Create an object without prototype.
- *
- * @example
- *   objectNull(); // New object without prototype.
- *
- * @return {Object}
- */
-function objectNull() {
-    return Object.create(null);
+    return collapseWhiteSpace(value).toLowerCase();
 }
 
 /*
@@ -5630,26 +5425,114 @@ exports.validate = {
  * Expose.
  */
 
-exports.trim = trim;
-exports.trimLeft = trimLeft;
-exports.trimRight = trimRight;
-exports.trimRightLines = trimRightLines;
-exports.collapse = collapse;
 exports.normalizeIdentifier = normalizeIdentifier;
 exports.clean = clean;
 exports.raise = raise;
-exports.copy = copy;
-exports.clone = clone;
-exports.countCharacter = countCharacter;
 
-/* istanbul ignore else */
-if ('create' in Object) {
-    exports.create = objectNull;
-} else {
-    exports.create = objectObject;
+},{"collapse-white-space":9}],8:[function(require,module,exports){
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer. All rights reserved.
+ * @module ccount
+ * @fileoverview Count characters.
+ */
+
+'use strict';
+
+/**
+ * Count how many characters `character` occur in `value`.
+ *
+ * @example
+ *   ccount('foo(bar(baz)', '(') // 2
+ *   ccount('foo(bar(baz)', ')') // 1
+ *
+ * @param {string} value - Content, coerced to string.
+ * @param {string} character - Single character to look
+ *   for.
+ * @return {number} - Count.
+ * @throws {Error} - when `character` is not a single
+ *   character.
+ */
+function ccount(value, character) {
+    var index = -1;
+    var count = 0;
+    var length;
+
+    value = String(value);
+    length = value.length;
+
+    if (typeof character !== 'string' || character.length !== 1) {
+        throw new Error('Expected character');
+    }
+
+    while (++index < length) {
+        if (value.charAt(index) === character) {
+            count++;
+        }
+    }
+
+    return count;
 }
 
-},{}],8:[function(require,module,exports){
+/*
+ * Expose.
+ */
+
+module.exports = ccount;
+
+},{}],9:[function(require,module,exports){
+'use strict';
+
+/*
+ * Constants.
+ */
+
+var WHITE_SPACE_COLLAPSABLE = /\s+/g;
+var SPACE = ' ';
+
+/**
+ * Replace multiple white-space characters with a single space.
+ *
+ * @example
+ *   collapse(' \t\nbar \nbaz\t'); // ' bar baz '
+ *
+ * @param {string} value - Value with uncollapsed white-space,
+ *   coerced to string.
+ * @return {string} - Value with collapsed white-space.
+ */
+function collapse(value) {
+    return String(value).replace(WHITE_SPACE_COLLAPSABLE, SPACE);
+}
+
+/*
+ * Expose.
+ */
+
+module.exports = collapse;
+
+},{}],10:[function(require,module,exports){
+/**
+ * Extend an object with another.
+ *
+ * @param {Object, ...} src, ...
+ * @return {Object} merged
+ * @api private
+ */
+
+module.exports = function(src) {
+  var objs = [].slice.call(arguments, 1), obj;
+
+  for (var i = 0, len = objs.length; i < len; i++) {
+    obj = objs[i];
+    for (var prop in obj) {
+      src[prop] = obj[prop];
+    }
+  }
+
+  return src;
+}
+
+},{}],11:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -5982,7 +5865,60 @@ if ('create' in Object) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
+'use strict';
+
+/**
+ * Get the count of the longest repeating streak of
+ * `character` in `value`.
+ *
+ * @example
+ *   longestStreak('` foo `` bar `', '`') // 2
+ *
+ * @param {string} value - Content, coerced to string.
+ * @param {string} character - Single character to look
+ *   for.
+ * @return {number} - Number of characters at the place
+ *   where `character` occurs in its longest streak in
+ *   `value`.
+ * @throws {Error} - when `character` is not a single
+ *   character.
+ */
+function longestStreak(value, character) {
+    var count = 0;
+    var maximum = 0;
+    var index = -1;
+    var length;
+
+    value = String(value);
+    length = value.length;
+
+    if (typeof character !== 'string' || character.length !== 1) {
+        throw new Error('Expected character');
+    }
+
+    while (++index < length) {
+        if (value.charAt(index) === character) {
+            count++;
+
+            if (count > maximum) {
+                maximum = count;
+            }
+        } else {
+            count = 0;
+        }
+    }
+
+    return maximum;
+}
+
+/*
+ * Expose.
+ */
+
+module.exports = longestStreak;
+
+},{}],13:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6268,7 +6204,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 
-},{}],10:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -6336,7 +6272,61 @@ function repeat(str, num) {
 var res = '';
 var cache;
 
-},{}],11:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
+'use strict';
+
+/*
+ * Constants.
+ */
+
+var LINE = '\n';
+
+/**
+ * Remove final newline characters from `value`.
+ *
+ * @example
+ *   trimTrailingLines('foo\nbar'); // 'foo\nbar'
+ *   trimTrailingLines('foo\nbar\n'); // 'foo\nbar'
+ *   trimTrailingLines('foo\nbar\n\n'); // 'foo\nbar'
+ *
+ * @param {string} value - Value with trailing newlines,
+ *   coerced to string.
+ * @return {string} - Value without trailing newlines.
+ */
+function trimTrailingLines(value) {
+    var index;
+
+    value = String(value);
+    index = value.length;
+
+    while (value.charAt(--index) === LINE) { /* empty */ }
+
+    return value.slice(0, index + 1);
+}
+
+/*
+ * Expose.
+ */
+
+module.exports = trimTrailingLines;
+
+},{}],16:[function(require,module,exports){
+
+exports = module.exports = trim;
+
+function trim(str){
+  return str.replace(/^\s*|\s*$/g, '');
+}
+
+exports.left = function(str){
+  return str.replace(/^\s*/, '');
+};
+
+exports.right = function(str){
+  return str.replace(/\s*$/, '');
+};
+
+},{}],17:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -6429,7 +6419,7 @@ Ware.prototype.run = function () {
   return this;
 };
 
-},{"wrap-fn":12}],12:[function(require,module,exports){
+},{"wrap-fn":18}],18:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -6556,7 +6546,7 @@ function once(fn) {
   };
 }
 
-},{"co":13}],13:[function(require,module,exports){
+},{"co":19}],19:[function(require,module,exports){
 
 /**
  * slice() reference.
