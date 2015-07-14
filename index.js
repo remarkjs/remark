@@ -153,9 +153,9 @@ function use(attach, options) {
      */
 
     if ('length' in attach && typeof attach !== 'function') {
-        index = attach.length;
+        index = -1;
 
-        while (attach[--index]) {
+        while (attach[++index]) {
             self.use(attach[index]);
         }
 
