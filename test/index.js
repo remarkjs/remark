@@ -485,6 +485,18 @@ describe('mdast.use(plugin, options?)', function () {
         mdast.use([function () {}, function () {}]);
     });
 
+    it('should attach multiple attachers in the correct order', function () {
+        var order = [];
+
+        mdast.use([function () {
+            order.push(1);
+        }, function () {
+            order.push(2);
+        }]);
+
+        assert.deepEqual(order, [1, 2]);
+    });
+
     it('should return an instance of mdast', function () {
         var processor = mdast.use(noop);
 
