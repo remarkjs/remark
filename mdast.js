@@ -137,10 +137,12 @@ function MDAST() {
  * Attach a plugin.
  *
  * @param {Function|Array.<Function>} attach
- * @param {Object?} options
+ * @param {Object?} [options]
+ * @param {FileSet?} [fileSet] - Optional file-set,
+ *   passed by the CLI.
  * @return {MDAST}
  */
-function use(attach, options) {
+function use(attach, options, fileSet) {
     var self = this;
     var index;
     var transformer;
@@ -154,10 +156,10 @@ function use(attach, options) {
      */
 
     if ('length' in attach && typeof attach !== 'function') {
-        index = attach.length;
+        index = -1;
 
-        while (attach[--index]) {
-            self.use(attach[index]);
+        while (attach[++index]) {
+            self.use(attach[index], options, fileSet);
         }
 
         return self;
@@ -168,7 +170,7 @@ function use(attach, options) {
      */
 
     if (self.attachers.indexOf(attach) === -1) {
-        transformer = attach(self, options);
+        transformer = attach(self, options, fileSet);
 
         self.attachers.push(attach);
 

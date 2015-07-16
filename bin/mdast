@@ -21,16 +21,18 @@ var argv = process.argv;
 var exitStatus = 0;
 
 /**
- * Run.
+ * Failure handler.
  *
  * @param {Error?} exception
  */
-function done(exception) {
+function fail(exception, success) {
     if (exception) {
         stderr.write((exception.stack || exception) + '\n');
     }
 
-    exitStatus = 1;
+    if (exception || !success) {
+        exitStatus = 1;
+    }
 }
 
 /*
@@ -47,11 +49,7 @@ if (position !== -1) {
  * Process.
  */
 
-try {
-    cli(argv, done);
-} catch (err) {
-    done(err);
-}
+cli(argv, fail);
 
 /*
  * Exit.
