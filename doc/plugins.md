@@ -4,7 +4,7 @@
 
 ## Table of Contents
 
-*   [List of plugins](#list-of-plugins)
+*   [List of Plugins](#list-of-plugins)
 
 *   [List of Utilities](#list-of-utilities)
 
