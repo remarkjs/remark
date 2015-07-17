@@ -7,6 +7,16 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.27.0-rc.1 / 2015-07-17
+========================
+
+*   Add CLI-pipelines ([ee5e603](https://github.com/wooorm/mdast/commit/ee5e603))
+*   Fix order of multiple attachers in `mdast#use` ([070d664](https://github.com/wooorm/mdast/commit/070d664))
+*   Remove travis deploy ([f693521](https://github.com/wooorm/mdast/commit/f693521))
+*   Update `doc/plugins.md` ([be77bef](https://github.com/wooorm/mdast/commit/be77bef))
+*   Fix invalid build-script ([a5738a1](https://github.com/wooorm/mdast/commit/a5738a1))
+*   Refactor to externalise utilities ([09dfec2](https://github.com/wooorm/mdast/commit/09dfec2))
+
 0.26.2 / 2015-07-06
 ===================
 
