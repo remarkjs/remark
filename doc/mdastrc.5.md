@@ -19,6 +19,19 @@ field, whereas other files are used as a whole.
 
 ## FIELDS
 
+### output
+
+```json
+{
+  "output": "man/"
+}
+```
+
+The `output` field specifies whether or not files should be written to the
+file-system (similar to `-o`, `--output` _path_ on **mdast**(1)). It can
+be either a boolean, or a string. In the case of a string, the value is
+treated as the `target` or `directory` field for **mv**(1).
+
 ### settings
 
 ```json

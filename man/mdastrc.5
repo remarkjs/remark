@@ -15,6 +15,17 @@ All \fBmdastrc\fR(5) configuration files are in JSON.
 .P
 Automatically detected files named \fBpackage.json\fR use the \fBmdastConfig\fR field, whereas other files are used as a whole.
 .SH "FIELDS"
+.SS "output"
+.P
+.RS 2
+.nf
+\[lC]
+  \[dq]output\[dq]: \[dq]man\[sl]\[dq]
+\[rC]
+.fi
+.RE
+.P
+The \fBoutput\fR field specifies whether or not files should be written to the file-system (similar to \fB-o\fR, \fB--output\fR \fIpath\fR on \fBmdast\fR(1)). It can be either a boolean, or a string. In the case of a string, the value is treated as the \fBtarget\fR or \fBdirectory\fR field for \fBmv\fR(1).
 .SS "settings"
 .P
 .RS 2
