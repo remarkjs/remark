@@ -18,8 +18,9 @@
 
     *   [Plugin](#plugin)
 
-        *   [function attacher(mdast, options?)](#function-attachermdast-options)
+        *   [function attacher(mdast, options?, fileSet?)](#function-attachermdast-options-fileset)
         *   [function transformer(ast, file, next?)](#function-transformerast-file-next)
+        *   [function completer(fileSet, next?)](#function-completerfileset-next)
 
     *   [Publishing](#publishing)
 
@@ -190,11 +191,11 @@ An **mdast** plugin does one or two things:
 *   It transforms the AST.
 
 Both have their own function. The first is called an
-[“attacher”](#function-attachermdast-options). The second is named a
+[“attacher”](#function-attachermdast-options-fileset). The second is named a
 [“transformer”](#function-transformerast-file-next). An “attacher” may
 return a “transformer”.
 
-#### function attacher([mdast](https://github.com/wooorm/mdast#api), options?)
+#### function attacher([mdast](https://github.com/wooorm/mdast#api), options?, [fileSet](mdast.3.md#fileset)?)
 
 To modify the parser (for an example, see
 [`test/mentions.js`](https://github.com/wooorm/mdast/blob/master/test/mentions.js)),
@@ -218,6 +219,9 @@ or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
 
 *   `options` (`Object?`) — Plugin specific options.
 
+*   `fileSet` ([`fileSet?`](mdast.3.md#fileset)) — All files being processed
+    by **mdast**(1). Only passed on the Command-Line.
+
 **Returns**
 
 [`transformer`](#function-transformerast-file-next) (optional).
@@ -233,8 +237,8 @@ or [file](mdast.3.md#file) to add or remove nodes.
 
 **Signatures**
 
-*   `err? = plugin(ast, file)`.
-*   `err? = plugin(ast, file, next)`.
+*   `err? = transformer(ast, file)`.
+*   `err? = transformer(ast, file, next)`.
 
 **Parameters**
 
@@ -245,6 +249,38 @@ or [file](mdast.3.md#file) to add or remove nodes.
 
 *   `next` (`function(err?)`, optional) — If the signature includes both
     `ast` and `next`, `transformer` **may** finish asynchronous, and **must**
+    invoke `next(Error?)` on completion.
+
+**Returns**
+
+`err` (`Error`, optional) — Exception which will be thrown.
+
+#### function completer([fileSet](mdast.3.md#file), next?)
+
+To access all files once they are transformed, create a completer.
+A completer is invoked before files are compiled, written, and logged,
+but after reading, parsing, and transforming. Thus, a completer
+can still transform files or log messages.
+
+**Signatures**
+
+*   `err? = completer(fileSet)`.
+*   `err? = completer(fileSet, next)`.
+
+**Properties**
+
+*   `pluginId` (`*`) — `attacher` is invoked for each file, so if it
+    `use`s `completer` on the file-set, it would attach multiple times.
+    By providing `pluginId` on `completer`, **mdast** will ensure no
+    completers will be added if one is already added with their identifier.
+
+**Parameters**
+
+*   `fileSet` ([`fileSet?`](mdast.3.md#fileset)) — All files being processed
+    by **mdast**(1).
+
+*   `next` (`function(err?)`, optional) — If the signature includes both
+    `fileSet` and `next`, `compiler` **may** finish asynchronous, and **must**
     invoke `next(Error?)` on completion.
 
 **Returns**

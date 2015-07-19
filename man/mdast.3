@@ -383,6 +383,73 @@ Get the filename, with extension and directory, if applicable.
 \fBReturns\fR
 .P
 \fBstring\fR -- If the \fBfile\fR has a \fBfilename\fR, it will be prefixed with the directory (slashed), if applicable, and su\[Fi]xed with the (dotted) extension (if applicable). Otherwise, an empty string is returned.
+.SS "FileSet()"
+.P
+\fBmdast\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
+.SS "File\[sh]valueOf()"
+.SS "File\[sh]toJSON()"
+.P
+Get access to the file objects in a set.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBfiles \[eq] fileSet.valueOf()\fR.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+\fBArray.<File>\fR -- List of files being processed by \fBmdast\fR(1).
+.SS "FileSet\[sh]use(completer)"
+.P
+Add a completer to the middleware pipeline of a file-set. When all files are transformed, this pipeline is run and \fBcompleter\fR is invoked with \fBfileSet\fR.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBfileSet.use(completer)\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBcompleter\fR (\fBFunction\fR).
+.RE 0
+
+.SS "FileSet\[sh]add(file\[ba]filePath)"
+.P
+Add a new file to be processed by \fBmdast\fR(1). This given file is processed just like other files, with a few differences.
+.P
+Programmatically added files are:
+.RS 0
+.IP \(bu 4
+Ignored when their file-path is already added;
+.IP \(bu 4
+Never written to the file-system;
+.IP \(bu 4
+Not logged about.
+.RE 0
+
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBfileSet.use(filePath)\fR;
+.IP \(bu 4
+\fBfileSet.use(file)\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBfilePath\fR (\fBstring\fR) - Path to virtual file;
+.IP \(bu 4
+\fBfile\fR (\fBFile\fR) - Virtual file.
+.RE 0
+
 .SH "BUGS"
 .P
 \fIhttps://github.com/wooorm/mdast/issues\fR

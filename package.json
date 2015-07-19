@@ -89,7 +89,7 @@
     "make": "npm run lint && npm run test-coverage",
     "benchmark": "matcha benchmark.js",
     "regenerate": "node script/regenerate-fixtures.js",
-    "build-man": "mdast doc/*.?.md -c .mdastrc-man -q",
+    "build-man": "bin/mdast doc/*.?.md -c .mdastrc-man -q",
     "build-expressions": "node script/build-expressions.js",
     "build-formatter": "node script/build-formatter.js",
     "build-md": "bin/mdast . --quiet",

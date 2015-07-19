@@ -324,6 +324,61 @@ Get the filename, with extension and directory, if applicable.
 directory (slashed), if applicable, and suffixed with the (dotted) extension
 (if applicable).  Otherwise, an empty string is returned.
 
+### FileSet()
+
+**mdast**(1) compiles multiple files using a `FileSet` instance.  This set
+is exposed to plug-ins as an argument to the attacher. `FileSet`s
+should not be created by plug-ins.
+
+### File#valueOf()
+
+### File#toJSON()
+
+Get access to the file objects in a set.
+
+**Signatures**
+
+*   `files = fileSet.valueOf()`.
+
+**Returns**
+
+`Array.<File>` -- List of files being processed by **mdast**(1).
+
+### FileSet#use(completer)
+
+Add a completer to the middleware pipeline of a file-set.  When all
+files are transformed, this pipeline is run and `completer` is invoked
+with `fileSet`.
+
+**Signatures**
+
+*   `fileSet.use(completer)`.
+
+**Parameters**
+
+*   `completer` (`Function`).
+
+### FileSet#add(file|filePath)
+
+Add a new file to be processed by **mdast**(1). This given file is
+processed just like other files, with a few differences.
+
+Programmatically added files are:
+
+*   Ignored when their file-path is already added;
+*   Never written to the file-system;
+*   Not logged about.
+
+**Signatures**
+
+*   `fileSet.use(filePath)`;
+*   `fileSet.use(file)`.
+
+**Parameters**
+
+*   `filePath` (`string`) - Path to virtual file;
+*   `file` (`File`) - Virtual file.
+
 ## BUGS
 
 <https://github.com/wooorm/mdast/issues>
