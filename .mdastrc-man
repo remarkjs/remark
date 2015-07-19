@@ -1,4 +1,5 @@
 {
+  "output": "man/",
   "plugins": {
     "mdast-man": {
       "manual": "mdast",

@@ -1,4 +1,5 @@
 {
+  "output": true,
   "plugins": [
     "lint",
     "github",
