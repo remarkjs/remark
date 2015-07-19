@@ -1087,7 +1087,7 @@ It's possible to customise how GFM code fences are stringified:
 
 To render all code blocks with fences (the default behavior is to only use
 non-standard fences when a language-flag is present), use
-[`fences: true`](#fences).
+[`fences: true`](https://github.com/wooorm/mdast/blob/master/doc/options.md#fences).
 
 The following document:
 
@@ -1116,7 +1116,7 @@ Yields:
 Setting `fences: true` (default: `false`) will stringify code blocks without
 programming-language flags using heredoc-style fences.
 
-To use differen fence markers, use [`fence: string`](#fence).
+To use different fence markers, use [`fence: string`](https://github.com/wooorm/mdast/blob/master/doc/options.md#fence).
 
 The following document:
 

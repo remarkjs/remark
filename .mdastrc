@@ -5,6 +5,7 @@
     "github",
     "usage",
     "toc",
+    "validate-links",
     "yaml-config"
   ],
   "settings": {
