@@ -52,6 +52,9 @@
 *   [wooorm/mdast-message-sort](https://github.com/wooorm/mdast-message-sort)
     — Sort mdast messages by line/column;
 
+*   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
+    — Normalize headings depths, such as multiple top-level headings;
+
 *   [wooorm/mdast-range](https://github.com/wooorm/mdast-range)
     — Add range information;
 
@@ -67,11 +70,17 @@
 *   [wooorm/mdast-strip-badges](https://github.com/wooorm/mdast-strip-badges)
     — Remove badges (such as shields.io);
 
+*   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
+    — Remove empty paragraphs;
+
 *   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 
 *   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage)
     — Add a usage example to your readme;
+
+*   [wooorm/mdast-validate-links](https://github.com/wooorm/mdast-validate-links)
+    — Validate links point to existing headings and files;
 
 *   [wooorm/mdast-yaml](https://github.com/wooorm/mdast-yaml)
     — Parse and stringify YAML code blocks;
@@ -86,6 +95,9 @@
 
 Although not **mdast** plug-ins, the following projects are useful when
 working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md):
+
+*   [wooorm/mdast-util-definitions](https://github.com/wooorm/mdast-util-definitions)
+    — Find definition nodes;
 
 *   [wooorm/mdast-util-heading-style](https://github.com/wooorm/mdast-util-heading-style)
     — Get the style of a heading (`"atx"`, `"atx-closed"`, or `"setext"`);
