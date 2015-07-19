@@ -278,6 +278,7 @@ function process(value, options, done) {
     }
 
     ast = self.parse(file, options);
+    file.ast = ast;
     self.run(ast, file, callback);
 
     return result;
