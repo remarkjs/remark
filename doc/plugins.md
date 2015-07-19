@@ -255,7 +255,7 @@ or [file](mdast.3.md#file) to add or remove nodes.
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
-#### function completer([fileSet](mdast.3.md#file), next?)
+#### function completer([fileSet](mdast.3.md#fileset), next?)
 
 To access all files once they are transformed, create a completer.
 A completer is invoked before files are compiled, written, and logged,
