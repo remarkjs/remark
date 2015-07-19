@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.27.0 / 2015-07-19
+===================
+
+*   Refactor to move copying functionality to `file-pipeline/copy` ([ac7bbcc](https://github.com/wooorm/mdast/commit/ac7bbcc))
+*   Add `ast` property on files processed by API ([599641c](https://github.com/wooorm/mdast/commit/599641c))
+*   Add documentation for file-sets ([b33b724](https://github.com/wooorm/mdast/commit/b33b724))
+*   Add mdast-validate-links as a dependency ([72b0a1b](https://github.com/wooorm/mdast/commit/72b0a1b))
+
 0.27.0-rc.2 / 2015-07-19
 ========================
 
