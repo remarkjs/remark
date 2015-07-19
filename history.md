@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.27.0-rc.2 / 2015-07-19
+========================
+
+*   Add support for passing a file-path to `FileSet#add` ([57a0082](https://github.com/wooorm/mdast/commit/57a0082))
+*   Add `output` properties to rc-files ([a15567a](https://github.com/wooorm/mdast/commit/a15567a))
+*   Fix several CLI bugs, increase stability ([274ea66](https://github.com/wooorm/mdast/commit/274ea66))
+*   Remove `instanceof` operator in `file` ([3e84b34](https://github.com/wooorm/mdast/commit/3e84b34))
+
 0.27.0-rc.1 / 2015-07-17
 ========================
 
