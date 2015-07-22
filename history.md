@@ -7,6 +7,11 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.27.1 / 2015-07-22
+===================
+
+*   Fix failing UglifyJS2 by refactoring confusing code ([1a4fc46](https://github.com/wooorm/mdast/commit/1a4fc46))
+
 0.27.0 / 2015-07-19
 ===================
 
