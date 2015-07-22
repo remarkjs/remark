@@ -276,12 +276,14 @@ var openTag = '(?:<' + tagName + attribute + '*' + whitespace + '?/?>)';
 var closingTag = '(?:</' + tagName + whitespace + '?>)';
 var openBlockTag = '(?:<' + HTML_BLOCK_ELEMENTS + attribute + '*' + whitespace + '?/?>?)';
 var closingBlockTag = '(?:</' + HTML_BLOCK_ELEMENTS + whitespace + '?>)';
-var htmlComment = '(?:<!--(?!-?>)(?:[^-]|-(?!-))*-->)';
+var htmlComment = '<!--[\\s\\S]*?-->';
+var commonmarkComment = '(?:<!--(?!-?>)(?:[^-]|-(?!-))*-->)';
 var processingInstruction = '(?:<\\?(?:[^\\?]|\\?(?!>))+\\?>)';
 var declaration = '(?:<![a-zA-Z]+\\s+[\\s\\S]+?>)';
 var cdata = '(?:<!\\[CDATA\\[[\\s\\S]+?\\]\\]>)';
 var htmlBlockTag = '(?:' + openBlockTag + '|' + closingBlockTag + ')';
-var htmlInlineTag = '^(?:' +
+
+var inlineTag = '^(?:' +
     openTag + '|' +
     closingTag + '|' +
     htmlComment + '|' +
@@ -290,7 +292,16 @@ var htmlInlineTag = '^(?:' +
     cdata +
 ')';
 
-rules.html = new RegExp('^(?:' +
+var commonmarkInlineTag = '^(?:' +
+    openTag + '|' +
+    closingTag + '|' +
+    commonmarkComment + '|' +
+    processingInstruction + '|' +
+    declaration + '|' +
+    cdata +
+')';
+
+var html = new RegExp('^(?:' +
     '[ \\t]*' +
     '(?:' +
         htmlBlockTag + '|' +
@@ -303,6 +314,23 @@ rules.html = new RegExp('^(?:' +
     '[ \\t]*?' +
     '(?:\\n{2,}|\\s*$)' +
 ')', 'i');
+
+var commonmarkHTML = new RegExp('^(?:' +
+    '[ \\t]*' +
+    '(?:' +
+        htmlBlockTag + '|' +
+        commonmarkComment + '|' +
+        processingInstruction + '|' +
+        declaration + '|' +
+        cdata +
+    ')' +
+    '[\\s\\S]*?' +
+    '[ \\t]*?' +
+    '(?:\\n{2,}|\\s*$)' +
+')', 'i');
+
+rules.html = html;
+commonmark.html = commonmarkHTML;
 
 rules.paragraph = new RegExp(
     '^(?:(?:' +
@@ -366,7 +394,8 @@ rules.escape = /^\\([\\`*{}\[\]()#+\-.!_>])/;
 
 rules.autoLink = /^<([^ >]+(@|:\/)[^ >]+)>/;
 
-rules.tag = new RegExp(htmlInlineTag);
+rules.tag = new RegExp(inlineTag);
+commonmark.tag = new RegExp(commonmarkInlineTag);
 
 rules.strong = /^(_)_((?:\\[\s\S]|[^\\])+?)__(?!_)|^(\*)\*((?:\\[\s\S]|[^\\])+?)\*\*(?!\*)/;
 
