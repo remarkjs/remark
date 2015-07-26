@@ -57,7 +57,7 @@ Parse a markdown document into an abstract syntax tree.
 
 **Parameters**
 
-*   `file` (`File`) -- File object.
+*   `file` (`VFile`) -- Virtual file.
 *   `value` (`string`) -- Source of a (virtual) file.
 *   `options` (`Object`) -- Settings.  See `man 7 mdastconfig`.
 
@@ -78,31 +78,37 @@ Modify an abstract syntax tree by applying plugins to it.
 **Parameters**
 
 *   `ast` (`Object`) -- Syntax tree as returned by `parse()`;
-*   `file` (`File`) -- File object representing the input file;
-*   `value` (`string`) -- Source of the (virtual) input file;
+*   `file` (`VFile`) -- Virtual file;
+*   `value` (`string`) -- Source of the (virtual) file;
 *   `done` (`function done(err?, doc?, file?)`).
 
 **Returns**
 
 `Object` -- Given AST.
 
-### mdast.stringify(ast, options?)
+### mdast.stringify(ast?, file?, options?)
 
 Compile an abstract syntax tree into a document.
 
 **Signatures**
 
-*   `doc = mdast.stringify(ast, options?)`.
+*   `doc = mdast.stringify(ast?, file?, options?)`.
 
 **Parameters**
 
 *   `ast` (`Object`) -- Syntax tree as returned by `parse()`;
+*   `file` (`VFile`) -- Virtual file;
 *   `options` (`Object`) -- Settings.  See `man 7 mdastconfig`.
 
 **Returns**
 
 `string` -- Document.  Formatted in markdown by default, or in whatever a
 plugin generates.
+
+**Note**
+
+Either an AST or a file which was previously passed to `mdast#parse()`, must
+be given.
 
 ### mdast.process(file, options?, done?)
 
@@ -144,186 +150,6 @@ Invoked when processing is complete.
 `string` -- Document.  Formatted in markdown by default, or in whatever a
 plugin generates.
 
-### File()
-
-File objects make it easy to change the directory, name, or extension of a
-file: let's say multiple markdown files are converted to HTML.  Instead of
-overwriting the markdown sources, file objects make it easy to output files
-with a different (`"html"`) extension.  In addition, files expose the raw
-source to plugins.
-
-**Signatures**
-
-*   `file = File(file|value|options?)`.
-
-**Parameters**
-
-*   `value` (`string`) -- Contents of the file;
-
-*   `file` (`File`) -- Existing representation, immediately returned;
-
-*   `options` (`Object`): Parts:
-
-    *   `directory` (`string`, default: `''`) -- Parent directory;
-    *   `filename` (`string?`, default: `null`) -- Name, without extension;
-    *   `extension` (`string`, default: `'md'`) -- Extension, without dot;
-    *   `contents` (`string`, default: `''`) -- Raw value.
-
-**Returns**
-
-`File` -- Instance.
-
-**Notes**
-
-`File` exposes an interface compatible with ESLint's formatters.  For example,
-to expose warnings using ESLint's `compact` formatter, execute the following:
-
-```javascript
-var compact = require('eslint/lib/formatters/compact');
-var File = require('mdast/lib/file');
-
-var file = new File({
-    'directory': '~',
-    'filename': 'Hello',
-    'extension': 'markdown'
-});
-
-file.warn('Woops, something happened!');
-
-console.log(compact([file]));
-```
-
-Which would yield the following:
-
-```text
-~/Hello.markdown: line 0, col 0, Warning - Woops, something happened!
-
-1 problem
-```
-
-### File#toString()
-
-Getter for internal `contents` property.
-
-**Signatures**
-
-*   `value = file.toString()`.
-
-**Returns**
-
-`string` -- Contents.
-
-### File#messages
-
-A list of warnings and errors associated with the file.
-
-**Signature**
-
-*   `Array.<Message>`.
-
-Where `Message` has the following properties:
-
-*   `fatal` (`boolean?`) -- `true` when an exception occurred making
-    the file no longer processable;
-
-*   `message` (`string`) -- Error reason;
-
-*   `line` (`number`) -- Starting line of exception;
-
-*   `column` (`number`) -- Starting column of exception.
-
-**Notes**
-
-`File#exception()`, and in turn `File#warn()` and `File#fail()`,
-return `Error` objects that comply with this schema.  Its results
-can be added to `messages`.
-
-### File#hasFailed()
-
-Check if a fatal exception occurred making the file no longer processable.
-
-**Signatures**
-
-*   `hasFailed = file.hasFailed()`.
-
-**Returns**
-
-`boolean` -- `true` if at least one of `file`s `message`s has a `fatal`
-property set to `true`.
-
-### File#exception(reason, position?)
-
-Create an error.
-
-**Signatures**
-
-*   `err = file.exception(err|reason, node|location|position?)`.
-
-**Parameters**
-
-*   `err` (`Error`) -- Original error, whose stack is copied and message
-    is used;
-
-*   `reason` (`string`) -- Failure reason;
-
-*   `node` (`Node`) -- Syntax tree object;
-
-*   `location` (`Object`) -- Syntax tree location (found at `node.position`);
-
-*   `position` (`Object`) -- Syntax tree position (found at
-    `node.position.start`).
-
-**Returns**
-
-`Error` -- Pretty error with location information.
-
-This object has the following properties:
-
-*   `file` (`string?`) -- Filename (including directory and extension), if
-    applicable;
-
-*   `reason` (`string`) -- Failure reason;
-
-*   `line` (`number`) -- Starting line of exception;
-
-*   `column` (`number`) -- Starting column of exception.
-
-### File#warn(reason, position?)
-
-Creates an exception by passing its arguments to `File#exception()`, sets
-`fatal: false` on it, and adds it to `file`s `messages`.  Then, it returns
-the exception.
-
-**See**
-
-*   `File#exception(reason, position?)`
-
-### File#fail(reason, position?)
-
-Creates an exception by passing its arguments to `File#exception()`, sets
-`fatal: true` on it, and adds it to `file`s `messages`.  Then, it returns
-the exception.
-
-If `file` has a falsey `quiet` property, `File#fail()` throws the exception.
-
-**See**
-
-*   `File#exception(reason, position?)`
-
-### File#filePath()
-
-Get the filename, with extension and directory, if applicable.
-
-**Signatures**
-
-*   `filename? = file.filePath()`.
-
-**Returns**
-
-`string` -- If the `file` has a `filename`, it will be prefixed with the
-directory (slashed), if applicable, and suffixed with the (dotted) extension
-(if applicable).  Otherwise, an empty string is returned.
-
 ### FileSet()
 
 **mdast**(1) compiles multiple files using a `FileSet` instance.  This set
@@ -360,7 +186,7 @@ with `fileSet`.
 
 ### FileSet#add(file|filePath)
 
-Add a new file to be processed by **mdast**(1). This given file is
+Add a new file to be processed by **mdast**(1). The given file is
 processed just like other files, with a few differences.
 
 Programmatically added files are:

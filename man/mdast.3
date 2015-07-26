@@ -66,7 +66,7 @@ Parse a markdown document into an abstract syntax tree.
 \fBParameters\fR
 .RS 0
 .IP \(bu 4
-\fBfile\fR (\fBFile\fR) -- File object.
+\fBfile\fR (\fBVFile\fR) -- Virtual file.
 .IP \(bu 4
 \fBvalue\fR (\fBstring\fR) -- Source of a (virtual) file.
 .IP \(bu 4
@@ -95,9 +95,9 @@ Modify an abstract syntax tree by applying plugins to it.
 .IP \(bu 4
 \fBast\fR (\fBObject\fR) -- Syntax tree as returned by \fBparse()\fR;
 .IP \(bu 4
-\fBfile\fR (\fBFile\fR) -- File object representing the input file;
+\fBfile\fR (\fBVFile\fR) -- Virtual file;
 .IP \(bu 4
-\fBvalue\fR (\fBstring\fR) -- Source of the (virtual) input file;
+\fBvalue\fR (\fBstring\fR) -- Source of the (virtual) file;
 .IP \(bu 4
 \fBdone\fR (\fBfunction done(err?, doc?, file?)\fR).
 .RE 0
@@ -106,14 +106,14 @@ Modify an abstract syntax tree by applying plugins to it.
 \fBReturns\fR
 .P
 \fBObject\fR -- Given AST.
-.SS "mdast.stringify(ast, options?)"
+.SS "mdast.stringify(ast?, file?, options?)"
 .P
 Compile an abstract syntax tree into a document.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBdoc \[eq] mdast.stringify(ast, options?)\fR.
+\fBdoc \[eq] mdast.stringify(ast?, file?, options?)\fR.
 .RE 0
 
 .P
@@ -122,6 +122,8 @@ Compile an abstract syntax tree into a document.
 .IP \(bu 4
 \fBast\fR (\fBObject\fR) -- Syntax tree as returned by \fBparse()\fR;
 .IP \(bu 4
+\fBfile\fR (\fBVFile\fR) -- Virtual file;
+.IP \(bu 4
 \fBoptions\fR (\fBObject\fR) -- Settings. See \fBman 7 mdastconfig\fR.
 .RE 0
 
@@ -129,6 +131,10 @@ Compile an abstract syntax tree into a document.
 \fBReturns\fR
 .P
 \fBstring\fR -- Document. Formatted in markdown by default, or in whatever a plugin generates.
+.P
+\fBNote\fR
+.P
+Either an AST or a file which was previously passed to \fBmdast\[sh]parse()\fR, must be given.
 .SS "mdast.process(file, options?, done?)"
 .P
 Parse, modify, and compile a markdown document it into something else.
@@ -183,206 +189,6 @@ Invoked when processing is complete.
 \fBReturns\fR
 .P
 \fBstring\fR -- Document. Formatted in markdown by default, or in whatever a plugin generates.
-.SS "File()"
-.P
-File objects make it easy to change the directory, name, or extension of a file: let\[aq]s say multiple markdown files are converted to HTML. Instead of overwriting the markdown sources, file objects make it easy to output files with a different (\fB\[dq]html\[dq]\fR) extension. In addition, files expose the raw source to plugins.
-.P
-\fBSignatures\fR
-.RS 0
-.IP \(bu 4
-\fBfile \[eq] File(file\[ba]value\[ba]options?)\fR.
-.RE 0
-
-.P
-\fBParameters\fR
-.RS 0
-.IP \(bu 4
-\fBvalue\fR (\fBstring\fR) -- Contents of the file;
-.IP \(bu 4
-\fBfile\fR (\fBFile\fR) -- Existing representation, immediately returned;
-.IP \(bu 4
-\fBoptions\fR (\fBObject\fR): Parts:
-.RS 4
-.IP \(bu 4
-\fBdirectory\fR (\fBstring\fR, default: \fB\[aq]\[aq]\fR) -- Parent directory;
-.IP \(bu 4
-\fBfilename\fR (\fBstring?\fR, default: \fBnull\fR) -- Name, without extension;
-.IP \(bu 4
-\fBextension\fR (\fBstring\fR, default: \fB\[aq]md\[aq]\fR) -- Extension, without dot;
-.IP \(bu 4
-\fBcontents\fR (\fBstring\fR, default: \fB\[aq]\[aq]\fR) -- Raw value.
-.RE 0
-
-.RE 0
-
-.P
-\fBReturns\fR
-.P
-\fBFile\fR -- Instance.
-.P
-\fBNotes\fR
-.P
-\fBFile\fR exposes an interface compatible with ESLint\[aq]s formatters. For example, to expose warnings using ESLint\[aq]s \fBcompact\fR formatter, execute the following:
-.P
-.RS 2
-.nf
-var compact \[eq] require(\[aq]eslint\[sl]lib\[sl]formatters\[sl]compact\[aq]);
-var File \[eq] require(\[aq]mdast\[sl]lib\[sl]file\[aq]);
-
-var file \[eq] new File(\[lC]
-    \[aq]directory\[aq]: \[aq]\[ti]\[aq],
-    \[aq]filename\[aq]: \[aq]Hello\[aq],
-    \[aq]extension\[aq]: \[aq]markdown\[aq]
-\[rC]);
-
-file.warn(\[aq]Woops, something happened!\[aq]);
-
-console.log(compact(\[lB]file\[rB]));
-.fi
-.RE
-.P
-Which would yield the following:
-.P
-.RS 2
-.nf
-\[ti]\[sl]Hello.markdown: line 0, col 0, Warning - Woops, something happened!
-
-1 problem
-.fi
-.RE
-.SS "File\[sh]toString()"
-.P
-Getter for internal \fBcontents\fR property.
-.P
-\fBSignatures\fR
-.RS 0
-.IP \(bu 4
-\fBvalue \[eq] file.toString()\fR.
-.RE 0
-
-.P
-\fBReturns\fR
-.P
-\fBstring\fR -- Contents.
-.SS "File\[sh]messages"
-.P
-A list of warnings and errors associated with the file.
-.P
-\fBSignature\fR
-.RS 0
-.IP \(bu 4
-\fBArray.<Message>\fR.
-.RE 0
-
-.P
-Where \fBMessage\fR has the following properties:
-.RS 0
-.IP \(bu 4
-\fBfatal\fR (\fBboolean?\fR) -- \fBtrue\fR when an exception occurred making the file no longer processable;
-.IP \(bu 4
-\fBmessage\fR (\fBstring\fR) -- Error reason;
-.IP \(bu 4
-\fBline\fR (\fBnumber\fR) -- Starting line of exception;
-.IP \(bu 4
-\fBcolumn\fR (\fBnumber\fR) -- Starting column of exception.
-.RE 0
-
-.P
-\fBNotes\fR
-.P
-\fBFile\[sh]exception()\fR, and in turn \fBFile\[sh]warn()\fR and \fBFile\[sh]fail()\fR, return \fBError\fR objects that comply with this schema. Its results can be added to \fBmessages\fR.
-.SS "File\[sh]hasFailed()"
-.P
-Check if a fatal exception occurred making the file no longer processable.
-.P
-\fBSignatures\fR
-.RS 0
-.IP \(bu 4
-\fBhasFailed \[eq] file.hasFailed()\fR.
-.RE 0
-
-.P
-\fBReturns\fR
-.P
-\fBboolean\fR -- \fBtrue\fR if at least one of \fBfile\fRs \fBmessage\fRs has a \fBfatal\fR property set to \fBtrue\fR.
-.SS "File\[sh]exception(reason, position?)"
-.P
-Create an error.
-.P
-\fBSignatures\fR
-.RS 0
-.IP \(bu 4
-\fBerr \[eq] file.exception(err\[ba]reason, node\[ba]location\[ba]position?)\fR.
-.RE 0
-
-.P
-\fBParameters\fR
-.RS 0
-.IP \(bu 4
-\fBerr\fR (\fBError\fR) -- Original error, whose stack is copied and message is used;
-.IP \(bu 4
-\fBreason\fR (\fBstring\fR) -- Failure reason;
-.IP \(bu 4
-\fBnode\fR (\fBNode\fR) -- Syntax tree object;
-.IP \(bu 4
-\fBlocation\fR (\fBObject\fR) -- Syntax tree location (found at \fBnode.position\fR);
-.IP \(bu 4
-\fBposition\fR (\fBObject\fR) -- Syntax tree position (found at \fBnode.position.start\fR).
-.RE 0
-
-.P
-\fBReturns\fR
-.P
-\fBError\fR -- Pretty error with location information.
-.P
-This object has the following properties:
-.RS 0
-.IP \(bu 4
-\fBfile\fR (\fBstring?\fR) -- Filename (including directory and extension), if applicable;
-.IP \(bu 4
-\fBreason\fR (\fBstring\fR) -- Failure reason;
-.IP \(bu 4
-\fBline\fR (\fBnumber\fR) -- Starting line of exception;
-.IP \(bu 4
-\fBcolumn\fR (\fBnumber\fR) -- Starting column of exception.
-.RE 0
-
-.SS "File\[sh]warn(reason, position?)"
-.P
-Creates an exception by passing its arguments to \fBFile\[sh]exception()\fR, sets \fBfatal: false\fR on it, and adds it to \fBfile\fRs \fBmessages\fR. Then, it returns the exception.
-.P
-\fBSee\fR
-.RS 0
-.IP \(bu 4
-\fBFile\[sh]exception(reason, position?)\fR
-.RE 0
-
-.SS "File\[sh]fail(reason, position?)"
-.P
-Creates an exception by passing its arguments to \fBFile\[sh]exception()\fR, sets \fBfatal: true\fR on it, and adds it to \fBfile\fRs \fBmessages\fR. Then, it returns the exception.
-.P
-If \fBfile\fR has a falsey \fBquiet\fR property, \fBFile\[sh]fail()\fR throws the exception.
-.P
-\fBSee\fR
-.RS 0
-.IP \(bu 4
-\fBFile\[sh]exception(reason, position?)\fR
-.RE 0
-
-.SS "File\[sh]filePath()"
-.P
-Get the filename, with extension and directory, if applicable.
-.P
-\fBSignatures\fR
-.RS 0
-.IP \(bu 4
-\fBfilename? \[eq] file.filePath()\fR.
-.RE 0
-
-.P
-\fBReturns\fR
-.P
-\fBstring\fR -- If the \fBfile\fR has a \fBfilename\fR, it will be prefixed with the directory (slashed), if applicable, and su\[Fi]xed with the (dotted) extension (if applicable). Otherwise, an empty string is returned.
 .SS "FileSet()"
 .P
 \fBmdast\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
@@ -420,7 +226,7 @@ Add a completer to the middleware pipeline of a file-set. When all files are tra
 
 .SS "FileSet\[sh]add(file\[ba]filePath)"
 .P
-Add a new file to be processed by \fBmdast\fR(1). This given file is processed just like other files, with a few differences.
+Add a new file to be processed by \fBmdast\fR(1). The given file is processed just like other files, with a few differences.
 .P
 Programmatically added files are:
 .RS 0

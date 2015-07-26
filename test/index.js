@@ -4,8 +4,8 @@
 
 var assert = require('assert');
 var he = require('he');
+var VFile = require('vfile');
 var mdast = require('..');
-var File = require('../lib/file.js');
 var fixtures = require('./fixtures.js');
 var chalk = require('chalk');
 var diff = require('diff');
@@ -229,6 +229,16 @@ describe('mdast.stringify(ast, file, options?)', function () {
                 'type': 'unicorn'
             });
         }, /unicorn/);
+    });
+
+    it('should not throw when given a parsed file', function () {
+        var file = new VFile('foo');
+
+        mdast.parse(file);
+
+        assert.doesNotThrow(function () {
+            mdast.stringify(file);
+        });
     });
 
     it('should throw when `options` is not an object', function () {
@@ -457,7 +467,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
                         'column': 4
                     }
                 }
-            }, new File(), {
+            }, new VFile(), {
                 'entities': true
             });
         } catch (exception) {
@@ -606,7 +616,7 @@ describe('mdast.run(ast, file?, done?)', function () {
     });
 
     it('should accept a `file`', function () {
-        mdast.run(empty(), new File());
+        mdast.run(empty(), new VFile());
     });
 
     it('should return the given ast', function () {
@@ -742,7 +752,7 @@ describe('function transformer(ast, file, next?)', function () {
          */
         function assertion(ast, file) {
             assert(ast === result);
-            assert(file instanceof File);
+            assert(file instanceof VFile);
 
             isInvoked = true;
         }
@@ -825,389 +835,6 @@ describe('function transformer(ast, file, next?)', function () {
             '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg' +
             '?style=flat)](https://www.npmjs.com/package/mdast)\n'
         );
-    });
-});
-
-describe('File(options?)', function () {
-    it('should create a new `File`', function () {
-        assert(new File() instanceof File);
-    });
-
-    it('should work without `new`', function () {
-        /* eslint-disable new-cap */
-        assert(File() instanceof File);
-        /* eslint-enable new-cap */
-    });
-
-    it('should accept missing options', function () {
-        var file = new File();
-
-        assert(file.filename === null);
-        assert(file.extension === 'md');
-        assert(file.contents === '');
-    });
-
-    it('should accept a `string`', function () {
-        var file = new File('Test');
-
-        assert(file.filename === null);
-        assert(file.extension === 'md');
-        assert(file.contents === 'Test');
-    });
-
-    it('should accept an `Object`', function () {
-        var file = new File({
-            'filename': 'Untitled',
-            'extension': 'markdown',
-            'contents': 'Test'
-        });
-
-        assert(file.filename === 'Untitled');
-        assert(file.extension === 'markdown');
-        assert(file.contents === 'Test');
-    });
-
-    it('should accept a `File`', function () {
-        var file = new File(new File({
-            'filename': 'Untitled',
-            'extension': 'markdown',
-            'contents': 'Test'
-        }));
-
-        assert(file.filename === 'Untitled');
-        assert(file.extension === 'markdown');
-        assert(file.contents === 'Test');
-    });
-
-    describe('#filePath()', function () {
-        it('should return `""` without a filename', function () {
-            assert(new File().filePath() === '');
-        });
-
-        it('should return the filename without extension', function () {
-            assert(new File({
-                'filename': 'Untitled',
-                'extension': null
-            }).filePath() === 'Untitled');
-        });
-
-        it('should return the filename with extension', function () {
-            assert(new File({
-                'filename': 'Untitled',
-                'extension': 'markdown'
-            }).filePath() === 'Untitled.markdown');
-        });
-
-        it('should return the full file path', function () {
-            assert(new File({
-                'directory': 'foo/bar',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === 'foo/bar/baz.qux');
-        });
-
-        it('should not return an extra directory slash', function () {
-            assert(new File({
-                'directory': '~/',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === '~/baz.qux');
-        });
-
-        it('should not return the current directory', function () {
-            assert(new File({
-                'directory': '.',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === 'baz.qux');
-
-            assert(new File({
-                'directory': './',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === 'baz.qux');
-        });
-
-        it('should return the parent directory', function () {
-            assert(new File({
-                'directory': '..',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === '../baz.qux');
-
-            assert(new File({
-                'directory': '../',
-                'filename': 'baz',
-                'extension': 'qux'
-            }).filePath() === '../baz.qux');
-        });
-    });
-
-    describe('#move()', function () {
-        it('should change an extension', function () {
-            var file = new File({
-              'directory': '~',
-              'filename': 'example',
-              'extension': 'markdown'
-            });
-
-            file.move({
-                'extension': 'md'
-            });
-
-            assert(file.filePath() === '~/example.md');
-        });
-
-        it('should change a filename', function () {
-            var file = new File({
-              'directory': '~',
-              'filename': 'example',
-              'extension': 'markdown'
-            });
-
-            file.move({
-                'filename': 'foo'
-            });
-
-            assert(file.filePath() === '~/foo.markdown');
-        });
-
-        it('should change a directory', function () {
-            var file = new File({
-              'directory': '~',
-              'filename': 'example',
-              'extension': 'markdown'
-            });
-
-            file.move({
-                'directory': '/var/www'
-            });
-
-            assert(file.filePath() === '/var/www/example.markdown');
-        });
-
-        it('should ignore not-given values', function () {
-            var file = new File();
-
-            file.extension = null;
-
-            file.move();
-
-            assert(file.filePath() === '');
-        });
-
-        it('should add a filename', function () {
-            var file = new File();
-
-            file.move({
-                'filename': 'example'
-            });
-
-            assert(file.filePath() === 'example.md');
-        });
-
-        it('should add a directory', function () {
-            var file = new File();
-
-            file.move({
-                'directory': '~',
-                'filename': 'example'
-            });
-
-            assert(file.filePath() === '~/example.md');
-        });
-
-        it('should add an extension', function () {
-            var file = new File({
-                'filename': 'README',
-                'extension': ''
-            });
-
-            file.move({
-                'extension': 'md'
-            });
-
-            assert(file.filePath() === 'README.md');
-        });
-    });
-
-    describe('#hasFailed()', function () {
-        it('should return `false` when without messages', function () {
-            var file = new File();
-
-            assert(file.hasFailed() === false);
-
-            file.warn('Foo');
-
-            assert(file.hasFailed() === false);
-        });
-
-        it('should return `true` when with fatal messages', function () {
-            var file = new File();
-
-            file.quiet = true;
-
-            file.fail('Foo');
-
-            assert(file.hasFailed() === true);
-        });
-    });
-
-    describe('#exception(reason, position?)', function () {
-        it('should return an Error', function () {
-            assert(new File().exception('') instanceof Error);
-        });
-
-        it('should add properties', function () {
-            var err = new File({
-                'filename': 'untitled'
-            }).exception('test');
-
-            assert(err.file === 'untitled.md');
-            assert(err.reason === 'test');
-            assert(err.line === null);
-            assert(err.column === null);
-        });
-
-        it('should add properties on an unfilled file', function () {
-            var err = new File().exception('test');
-
-            assert(err.file === '');
-            assert(err.reason === 'test');
-            assert(err.line === null);
-            assert(err.column === null);
-        });
-
-        it('should create a pretty message', function () {
-            assert(new File().exception('test').message === 'test');
-        });
-
-        it('should have a pretty `toString()` message', function () {
-            assert(new File().exception('test').toString() === '1:1: test');
-        });
-
-        it('should include the filename in `toString()`', function () {
-            assert(new File({
-                'filename': 'untitled'
-            }).exception('test').toString() === 'untitled.md:1:1: test');
-        });
-
-        it('should accept an error', function () {
-            var err = new Error('foo');
-            var exception = new File().exception(err);
-
-            assert(exception.stack === err.stack);
-            assert(exception.message === err.message);
-        });
-
-        it('should accept a node', function () {
-            var node = empty();
-
-            node.position = {
-                'start': {
-                    'line': 2,
-                    'column': 1
-                },
-                'end': {
-                    'line': 2,
-                    'column': 5
-                }
-            };
-
-            assert(
-                new File().exception('test', node).toString() ===
-                '2:1-2:5: test'
-            );
-        });
-
-        it('should accept a location', function () {
-            var location = {
-                'start': {
-                    'line': 2,
-                    'column': 1
-                },
-                'end': {
-                    'line': 2,
-                    'column': 5
-                }
-            };
-
-            assert(
-                new File().exception('test', location).toString() ===
-                '2:1-2:5: test'
-            );
-        });
-
-        it('should accept a position', function () {
-            var position = {
-                'line': 2,
-                'column': 5
-            };
-
-            assert(
-                new File().exception('test', position).toString() ===
-                '2:5: test'
-            );
-        });
-    });
-
-    describe('#fail(reason, position?)', function () {
-        it('should add a fatal error to `messages`', function () {
-            var file = new File();
-            var message;
-
-            assert.throws(function () {
-                file.fail('Foo', {
-                    'line': 1,
-                    'column': 3
-                });
-            }, /1:3: Foo/);
-
-            assert(file.messages.length === 1);
-
-            message = file.messages[0];
-
-            assert(message.file === '');
-            assert(message.reason === 'Foo');
-            assert(message.line === 1);
-            assert(message.column === 3);
-            assert(message.name === '1:3');
-            assert(message.fatal === true);
-        });
-
-        it('should not throw when `quiet: true`', function () {
-            var file = new File();
-
-            file.quiet = true;
-
-            file.fail('Foo', {
-                'line': 1,
-                'column': 3
-            });
-        });
-    });
-
-    describe('#warn(reason, position?)', function () {
-        it('should add a non-fatal error to `messages`', function () {
-            var file = new File();
-            var message;
-
-            file.warn('Bar', {
-                'line': 9,
-                'column': 2
-            });
-
-            assert(file.messages.length === 1);
-
-            message = file.messages[0];
-
-            assert(message.file === '');
-            assert(message.reason === 'Bar');
-            assert(message.line === 9);
-            assert(message.column === 2);
-            assert(message.name === '9:2');
-            assert(message.fatal === false);
-        });
     });
 });
 

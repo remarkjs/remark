@@ -5,10 +5,10 @@
  */
 
 var Ware = require('ware');
+var VFile = require('vfile');
 var extend = require('extend.js');
 var parser = require('./lib/parse.js');
 var stringifier = require('./lib/stringify.js');
-var File = require('./lib/file.js');
 var utilities = require('./lib/utilities.js');
 
 /*
@@ -185,7 +185,7 @@ function use(attach, options, fileSet) {
  * Apply transformers to `node`.
  *
  * @param {Node} ast
- * @param {File?} [file]
+ * @param {VFile?} [file]
  * @param {Function?} [done]
  * @return {Node} - `ast`.
  */
@@ -197,7 +197,7 @@ function run(ast, file, done) {
         file = null;
     }
 
-    file = new File(file);
+    file = new VFile(file);
 
     done = typeof done === 'function' ? done : fail;
 
@@ -222,7 +222,10 @@ function run(ast, file, done) {
  * Wrapper to pass a file to `parser`.
  */
 function parse(value, options) {
-    return parser.call(this, new File(value), options);
+    var file = new VFile(value);
+    var ast = file.namespace('mdast').ast = parser.call(this, file, options);
+
+    return ast;
 }
 
 /**
@@ -234,19 +237,30 @@ function stringify(ast, file, options) {
         file = null;
     }
 
-    return stringifier.call(this, ast, new File(file), options);
+    if (!file && ast && !ast.type) {
+        file = ast;
+        ast = null;
+    }
+
+    file = new VFile(file);
+
+    if (!ast) {
+        ast = file.namespace('mdast').ast || ast;
+    }
+
+    return stringifier.call(this, ast, file, options);
 }
 
 /**
  * Parse a value and apply transformers.
  *
- * @param {string|File} value
+ * @param {string|VFile} value
  * @param {Object?} [options]
  * @param {Function?} [done]
  * @return {string?}
  */
 function process(value, options, done) {
-    var file = new File(value);
+    var file = new VFile(value);
     var self = this instanceof MDAST ? this : new MDAST();
     var result = null;
     var ast;
@@ -278,7 +292,7 @@ function process(value, options, done) {
     }
 
     ast = self.parse(file, options);
-    file.ast = ast;
+
     self.run(ast, file, callback);
 
     return result;

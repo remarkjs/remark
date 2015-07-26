@@ -226,14 +226,14 @@ or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
 
 [`transformer`](#function-transformerast-file-next) (optional).
 
-#### function transformer([ast](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node), [file](mdast.3.md#file), next?)
+#### function transformer([ast](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node), [file](https://github.com/wooorm/vfile#api), next?)
 
 To transform an AST, create a transformer. A transformer is a simple
 function which is invoked each time a document is
 [`mdast.process()`](https://github.com/wooorm/mdast#mdastprocessvalue-options-done)d
 or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should
 change the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node)
-or [file](mdast.3.md#file) to add or remove nodes.
+add or remove nodes or modify the [file](https://github.com/wooorm/vfile#api).
 
 **Signatures**
 
@@ -245,7 +245,7 @@ or [file](mdast.3.md#file) to add or remove nodes.
 *   `ast` (`Object`) — An AST as returned by
     [`mdast.parse()`](mdast.3.md#mdastparsefile-options);
 
-*   `file` (`File`) — [File](mdast.3.md#file) object.
+*   `file` (`VFile`) — [VFile](https://github.com/wooorm/vfile#api) object.
 
 *   `next` (`function(err?)`, optional) — If the signature includes both
     `ast` and `next`, `transformer` **may** finish asynchronous, and **must**

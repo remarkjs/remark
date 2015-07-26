@@ -6,10 +6,10 @@
  */
 
 var Ware = require('ware');
+var VFile = require('vfile');
 var extend = require('extend.js');
 var parser = require('./lib/parse.js');
 var stringifier = require('./lib/stringify.js');
-var File = require('./lib/file.js');
 var utilities = require('./lib/utilities.js');
 
 /*
@@ -186,7 +186,7 @@ function use(attach, options, fileSet) {
  * Apply transformers to `node`.
  *
  * @param {Node} ast
- * @param {File?} [file]
+ * @param {VFile?} [file]
  * @param {Function?} [done]
  * @return {Node} - `ast`.
  */
@@ -198,7 +198,7 @@ function run(ast, file, done) {
         file = null;
     }
 
-    file = new File(file);
+    file = new VFile(file);
 
     done = typeof done === 'function' ? done : fail;
 
@@ -223,7 +223,10 @@ function run(ast, file, done) {
  * Wrapper to pass a file to `parser`.
  */
 function parse(value, options) {
-    return parser.call(this, new File(value), options);
+    var file = new VFile(value);
+    var ast = file.namespace('mdast').ast = parser.call(this, file, options);
+
+    return ast;
 }
 
 /**
@@ -235,19 +238,30 @@ function stringify(ast, file, options) {
         file = null;
     }
 
-    return stringifier.call(this, ast, new File(file), options);
+    if (!file && ast && !ast.type) {
+        file = ast;
+        ast = null;
+    }
+
+    file = new VFile(file);
+
+    if (!ast) {
+        ast = file.namespace('mdast').ast || ast;
+    }
+
+    return stringifier.call(this, ast, file, options);
 }
 
 /**
  * Parse a value and apply transformers.
  *
- * @param {string|File} value
+ * @param {string|VFile} value
  * @param {Object?} [options]
  * @param {Function?} [done]
  * @return {string?}
  */
 function process(value, options, done) {
-    var file = new File(value);
+    var file = new VFile(value);
     var self = this instanceof MDAST ? this : new MDAST();
     var result = null;
     var ast;
@@ -279,7 +293,7 @@ function process(value, options, done) {
     }
 
     ast = self.parse(file, options);
-    file.ast = ast;
+
     self.run(ast, file, callback);
 
     return result;
@@ -313,7 +327,7 @@ MDAST.process = process;
 
 module.exports = MDAST;
 
-},{"./lib/file.js":4,"./lib/parse.js":5,"./lib/stringify.js":6,"./lib/utilities.js":7,"extend.js":10,"ware":17}],2:[function(require,module,exports){
+},{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"extend.js":9,"vfile":16,"ware":17}],2:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -433,376 +447,6 @@ module.exports = {
 };
 
 },{}],4:[function(require,module,exports){
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
- * @module File
- * @fileoverview Virtual file format to attach additional
- *   information related to the processed input.  Similar
- *   to`wearefractal/vinyl`.  Additionally, File can be
- *   passed directly to an ESLint formatter to visualise
- *   warnings and errors relating to a file.
- */
-
-'use strict';
-
-/**
- * ESLint's formatter API expects `filePath` to be a
- * string.  This hack supports invocation as well as
- * implicit coercion.
- *
- * @example
- *   var file = new File();
- *   filePath = filePathFactory(file);
- *
- * @param {File} file
- * @return {Function}
- */
-function filePathFactory(file) {
-    /**
-     * Get the location of `file`.
-     *
-     * Returns empty string when without `filename`.
-     *
-     * @example
-     *   var file = new File({
-     *     'directory': '~',
-     *     'filename': 'example',
-     *     'extension': 'markdown'
-     *   });
-     *
-     *   String(file.filePath); // ~/example.markdown
-     *   file.filePath() // ~/example.markdown
-     *
-     * @property {Function} toString - Itself.
-     * @return {string}
-     */
-    function filePath() {
-        var directory;
-
-        if (file.filename) {
-            directory = file.directory;
-
-            if (directory.charAt(directory.length - 1) === '/') {
-                directory = directory.slice(0, -1);
-            }
-
-            if (directory === '.') {
-                directory = '';
-            }
-
-            return (directory ? directory + '/' : '') +
-                file.filename +
-                (file.extension ? '.' + file.extension : '');
-        }
-
-        return '';
-    }
-
-    filePath.toString = filePath;
-
-    return filePath;
-}
-
-/**
- * Construct a new file.
- *
- * @example
- *   var file = new File({
- *     'directory': '~',
- *     'filename': 'example',
- *     'extension': 'markdown',
- *     'contents': 'Foo *bar* baz'
- *   });
- *
- *   file === File(file) // true
- *   file === new File(file) // true
- *   File('foo') instanceof File // true
- *
- * @constructor
- * @class {File}
- * @param {Object|File|string} [options] - either an
- *   options object, or the value of `contents` (both
- *   optional).  When a `file` is passed in, it's
- *   immediately returned.
- */
-function File(options) {
-    var self = this;
-
-    /*
-     * No `new` operator.
-     */
-
-    if (!(self instanceof File)) {
-        return new File(options);
-    }
-
-    /*
-     * Given file.
-     */
-
-    if (
-        options &&
-        typeof options.exception === 'function' &&
-        typeof options.hasFailed === 'function'
-    ) {
-        return options;
-    }
-
-    if (!options) {
-        options = {};
-    } else if (typeof options === 'string') {
-        options = {
-            'contents': options
-        };
-    }
-
-    self.filename = options.filename || null;
-    self.contents = options.contents || '';
-
-    self.directory = options.directory === undefined ? '' : options.directory;
-
-    self.extension = options.extension === undefined ?
-        'md' : options.extension;
-
-    self.messages = [];
-
-    /*
-     * Make sure eslint’s formatters stringify `filePath`
-     * properly.
-     */
-
-    self.filePath = filePathFactory(self);
-}
-
-/**
- * Move a file by passing a new directory, filename,
- * and extension.  When these are not given, the default
- * values are kept.
- *
- * @example
- *   var file = new File({
- *     'directory': '~',
- *     'filename': 'example',
- *     'extension': 'markdown',
- *     'contents': 'Foo *bar* baz'
- *   });
- *
- *   file.move({'directory': '/var/www'});
- *   file.filePath(); // '/var/www/example.markdown'
- *
- *   file.move({'extension': 'md'});
- *   file.filePath(); // '/var/www/example.md'
- *
- * @this {File}
- * @param {Object} options
- */
-function move(options) {
-    var self = this;
-
-    if (!options) {
-        options = {};
-    }
-
-    self.directory = options.directory || self.directory || '';
-    self.filename = options.filename || self.filename || null;
-    self.extension = options.extension || self.extension || 'md';
-}
-
-/**
- * Stringify a position.
- *
- * @example
- *   stringify({'line': 1, 'column': 3}) // '1:3'
- *   stringify({'line': 1}) // '1:1'
- *   stringify({'column': 3}) // '1:3'
- *   stringify() // '1:1'
- *
- * @param {Object?} [position] - Single position, like
- *   those available at `node.position.start`.
- * @return {string}
- */
-function stringify(position) {
-    if (!position) {
-        position = {};
-    }
-
-    return (position.line || 1) + ':' + (position.column || 1);
-}
-
-/**
- * Warn.
- *
- * Creates an exception (see `File#exception()`),
- * sets `fatal: false`, and adds it to the file's
- * `messages` list.
- *
- * @example
- *   var file = new File();
- *   file.warn('Something went wrong');
- *
- * @this {File}
- * @param {string|Error} reason - Reason for warning.
- * @param {Node|Location|Position} [position] - Location
- *   of warning in file.
- * @return {Error}
- */
-function warn(reason, position) {
-    var err = this.exception(reason, position);
-
-    err.fatal = false;
-
-    this.messages.push(err);
-
-    return err;
-}
-
-/**
- * Fail.
- *
- * Creates an exception (see `File#exception()`),
- * sets `fatal: true`, adds it to the file's
- * `messages` list.  If `quiet` is not true,
- * throws the error.
- *
- * @example
- *   var file = new File();
- *   file.fail('Something went wrong'); // throws
- *
- * @this {File}
- * @throws {Error} - When not `quiet: true`.
- * @param {string|Error} reason - Reason for failure.
- * @param {Node|Location|Position} [position] - Location
- *   of failure in file.
- * @return {Error} - Unless thrown, of course.
- */
-function fail(reason, position) {
-    var err = this.exception(reason, position);
-
-    err.fatal = true;
-
-    this.messages.push(err);
-
-    if (!this.quiet) {
-        throw err;
-    }
-
-    return err;
-}
-
-/**
- * Create a pretty exception with `reason` at `position`.
- * When an error is passed in as `reason`, copies the
- * stack.  This does not add a message to `messages`.
- *
- * @example
- *   var file = new File();
- *   var err = file.exception('Something went wrong');
- *
- * @this {File}
- * @param {string|Error} reason - Reason for message.
- * @param {Node|Location|Position} [position] - Location
- *   of message in file.
- * @return {Error} - An object including file information,
- *   line and column indices.
- */
-function exception(reason, position) {
-    var file = this.filePath();
-    var message = reason.message || reason;
-    var location;
-    var err;
-
-    /*
-     * Node / location / position.
-     */
-
-    if (position && position.position) {
-        position = position.position;
-    }
-
-    if (position && position.start) {
-        location = stringify(position.start) + '-' + stringify(position.end);
-        position = position.start;
-    } else {
-        location = stringify(position);
-    }
-
-    err = new Error(message);
-
-    err.name = (file ? file + ':' : '') + location;
-    err.file = file;
-    err.reason = message;
-    err.line = position ? position.line : null;
-    err.column = position ? position.column : null;
-
-    if (reason.stack) {
-        err.stack = reason.stack;
-    }
-
-    return err;
-}
-
-/**
- * Check if `file` has a fatal message.
- *
- * @example
- *   var file = new File();
- *   file.quiet = true;
- *   file.hasFailed; // false
- *
- *   file.fail('Something went wrong');
- *   file.hasFailed; // true
- *
- * @this {File}
- * @return {boolean}
- */
-function hasFailed() {
-    var messages = this.messages;
-    var index = -1;
-    var length = messages.length;
-
-    while (++index < length) {
-        if (messages[index].fatal) {
-            return true;
-        }
-    }
-
-    return false;
-}
-
-/**
- * Create a string representation of `file`.
- *
- * @example
- *   var file = new File('Foo');
- *   String(file); // 'Foo'
- *
- * @this {File}
- * @return {string} - value at the `contents` property
- *   in context.
- */
-function toString() {
-    return this.contents;
-}
-
-/*
- * Methods.
- */
-
-File.prototype.move = move;
-File.prototype.exception = exception;
-File.prototype.toString = toString;
-File.prototype.warn = warn;
-File.prototype.fail = fail;
-File.prototype.hasFailed = hasFailed;
-
-/*
- * Expose.
- */
-
-module.exports = File;
-
-},{}],5:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -3519,7 +3163,7 @@ Parser.prototype.tokenizeFactory = tokenizeFactory;
 
 module.exports = parse;
 
-},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":7,"extend.js":10,"he":11,"repeat-string":14,"trim":16,"trim-trailing-lines":15}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"extend.js":9,"he":10,"repeat-string":13,"trim":15,"trim-trailing-lines":14}],5:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5267,7 +4911,7 @@ stringify.Compiler = Compiler;
 
 module.exports = stringify;
 
-},{"./defaults.js":2,"./utilities.js":7,"ccount":8,"extend.js":10,"he":11,"longest-streak":12,"markdown-table":13,"repeat-string":14}],7:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":6,"ccount":7,"extend.js":9,"he":10,"longest-streak":11,"markdown-table":12,"repeat-string":13}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5448,7 +5092,7 @@ exports.normalizeIdentifier = normalizeIdentifier;
 exports.clean = clean;
 exports.raise = raise;
 
-},{"collapse-white-space":9}],8:[function(require,module,exports){
+},{"collapse-white-space":8}],7:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5499,7 +5143,7 @@ function ccount(value, character) {
 
 module.exports = ccount;
 
-},{}],9:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 /*
@@ -5529,7 +5173,7 @@ function collapse(value) {
 
 module.exports = collapse;
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 /**
  * Extend an object with another.
  *
@@ -5551,7 +5195,7 @@ module.exports = function(src) {
   return src;
 }
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -5884,7 +5528,7 @@ module.exports = function(src) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 'use strict';
 
 /**
@@ -5937,7 +5581,7 @@ function longestStreak(value, character) {
 
 module.exports = longestStreak;
 
-},{}],13:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6223,7 +5867,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -6291,7 +5935,7 @@ function repeat(str, num) {
 var res = '';
 var cache;
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 'use strict';
 
 /*
@@ -6329,7 +5973,7 @@ function trimTrailingLines(value) {
 
 module.exports = trimTrailingLines;
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -6344,6 +5988,523 @@ exports.left = function(str){
 exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
+
+},{}],16:[function(require,module,exports){
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module vfile
+ * @fileoverview Virtual file format to attach additional
+ *   information related to processed input.  Similar to
+ *   `wearefractal/vinyl`.  Additionally, `VFile` can be
+ *   passed directly to ESLint formatters to visualise
+ *   warnings and errors relating to a file.
+ * @example
+ *   var VFile = require('vfile');
+ *
+ *   var file = new VFile({
+ *     'directory': '~',
+ *     'filename': 'example',
+ *     'extension': 'txt',
+ *     'contents': 'Foo *bar* baz'
+ *   });
+ *
+ *   file.toString(); // 'Foo *bar* baz'
+ *   file.filePath(); // '~/example.txt'
+ *
+ *   file.move({'extension': 'md'});
+ *   file.filePath(); // '~/example.md'
+ *
+ *   file.warn('Something went wrong', {'line': 2, 'column': 3});
+ *   // { [~/example.md:2:3: Something went wrong]
+ *   //   name: '~/example.md:2:3',
+ *   //   file: '~/example.md',
+ *   //   reason: 'Something went wrong',
+ *   //   line: 2,
+ *   //   column: 3,
+ *   //   fatal: false }
+ */
+
+'use strict';
+
+var SEPARATOR = '/';
+
+try {
+    SEPARATOR = require('pa' + 'th').sep;
+} catch (e) { /* empty */ }
+
+/**
+ * File-related message with location information.
+ *
+ * @typedef {Error} VFileMessage
+ * @property {string} name - (Starting) location of the
+ *   message, preceded by its file-path when available,
+ *   and joined by `:`. Used internally by the native
+ *   `Error#toString()`.
+ * @property {string} file - File-path.
+ * @property {string} reason - Reason for message.
+ * @property {number?} line - Line of message, when
+ *   available.
+ * @property {number?} column - Column of message, when
+ *   available.
+ * @property {string?} stack - Stack of message, when
+ *   available.
+ * @property {boolean?} fatal - Whether the associated file
+ *   is still processable.
+ */
+
+/**
+ * Stringify a position.
+ *
+ * @example
+ *   stringify({'line': 1, 'column': 3}) // '1:3'
+ *   stringify({'line': 1}) // '1:1'
+ *   stringify({'column': 3}) // '1:3'
+ *   stringify() // '1:1'
+ *
+ * @private
+ * @param {Object?} [position] - Single position, like
+ *   those available at `node.position.start`.
+ * @return {string}
+ */
+function stringify(position) {
+    if (!position) {
+        position = {};
+    }
+
+    return (position.line || 1) + ':' + (position.column || 1);
+}
+
+/**
+ * ESLint's formatter API expects `filePath` to be a
+ * string.  This hack supports invocation as well as
+ * implicit coercion.
+ *
+ * @example
+ *   var file = new VFile({
+ *     'filename': 'example',
+ *     'extension': 'txt'
+ *   });
+ *
+ *   filePath = filePathFactory(file);
+ *
+ *   String(filePath); // 'example.txt'
+ *   filePath(); // 'example.txt'
+ *
+ * @private
+ * @param {VFile} file
+ * @return {Function}
+ */
+function filePathFactory(file) {
+    /**
+     * Get the filename, with extension and directory, if applicable.
+     *
+     * @example
+     *   var file = new VFile({
+     *     'directory': '~',
+     *     'filename': 'example',
+     *     'extension': 'txt'
+     *   });
+     *
+     *   String(file.filePath); // ~/example.txt
+     *   file.filePath() // ~/example.txt
+     *
+     * @memberof {VFile}
+     * @property {Function} toString - Itself. ESLint's
+     *   formatter API expects `filePath` to be `string`.
+     *   This hack supports invocation as well as implicit
+     *   coercion.
+     * @return {string} - If the `vFile` has a `filename`,
+     *   it will be prefixed with the directory (slashed),
+     *   if applicable, and suffixed with the (dotted)
+     *   extension (if applicable).  Otherwise, an empty
+     *   string is returned.
+     */
+    function filePath() {
+        var directory = file.directory;
+        var separator;
+
+        if (file.filename || file.extension) {
+            separator = directory.charAt(directory.length - 1);
+
+            if (separator === '/' || separator === '\\') {
+                directory = directory.slice(0, -1);
+            }
+
+            if (directory === '.') {
+                directory = '';
+            }
+
+            return (directory ? directory + SEPARATOR : '') +
+                file.filename +
+                (file.extension ? '.' + file.extension : '');
+        }
+
+        return '';
+    }
+
+    filePath.toString = filePath;
+
+    return filePath;
+}
+
+/**
+ * Construct a new file.
+ *
+ * @example
+ *   var file = new VFile({
+ *     'directory': '~',
+ *     'filename': 'example',
+ *     'extension': 'txt',
+ *     'contents': 'Foo *bar* baz'
+ *   });
+ *
+ *   file === VFile(file) // true
+ *   file === new VFile(file) // true
+ *   VFile('foo') instanceof VFile // true
+ *
+ * @constructor
+ * @class {VFile}
+ * @param {Object|VFile|string} [options] - either an
+ *   options object, or the value of `contents` (both
+ *   optional).  When a `file` is passed in, it's
+ *   immediately returned.
+ * @property {string} [contents=''] - Content of file.
+ * @property {string} [directory=''] - Path to parent
+ *   directory.
+ * @property {string} [filename=''] - Filename.
+ *   A file-path can still be generated when no filename
+ *   exists.
+ * @property {string} [extension=''] - Extension.
+ *   A file-path can still be generated when no extension
+ *   exists.
+ * @property {boolean?} quiet - Whether an error created by
+ *   `VFile#fail()` is returned (when truthy) or thrown
+ *   (when falsey). Ensure all `messages` associated with
+ *   a file are handled properly when setting this to
+ *   `true`.
+ * @property {Array.<VFileMessage>} messages - List of associated
+ *   messages.
+ */
+function VFile(options) {
+    var self = this;
+
+    /*
+     * No `new` operator.
+     */
+
+    if (!(self instanceof VFile)) {
+        return new VFile(options);
+    }
+
+    /*
+     * Given file.
+     */
+
+    if (
+        options &&
+        typeof options.message === 'function' &&
+        typeof options.hasFailed === 'function'
+    ) {
+        return options;
+    }
+
+    if (!options) {
+        options = {};
+    } else if (typeof options === 'string') {
+        options = {
+            'contents': options
+        };
+    }
+
+    self.contents = options.contents || '';
+    self.filename = options.filename || '';
+    self.directory = options.directory || '';
+    self.extension = options.extension || '';
+
+    self.messages = [];
+
+    /*
+     * Make sure eslint’s formatters stringify `filePath`
+     * properly.
+     */
+
+    self.filePath = filePathFactory(self);
+}
+
+/**
+ * Get the value of the file.
+ *
+ * @example
+ *   var vFile = new VFile('Foo');
+ *   String(vFile); // 'Foo'
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @return {string} - value at the `contents` property
+ *   in context.
+ */
+function toString() {
+    return this.contents;
+}
+
+/**
+ * Move a file by passing a new directory, filename,
+ * and extension.  When these are not given, the default
+ * values are kept.
+ *
+ * @example
+ *   var file = new VFile({
+ *     'directory': '~',
+ *     'filename': 'example',
+ *     'extension': 'txt',
+ *     'contents': 'Foo *bar* baz'
+ *   });
+ *
+ *   file.move({'directory': '/var/www'});
+ *   file.filePath(); // '/var/www/example.txt'
+ *
+ *   file.move({'extension': 'md'});
+ *   file.filePath(); // '/var/www/example.md'
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @param {Object?} [options]
+ * @return {VFile} - Context object.
+ */
+function move(options) {
+    var self = this;
+
+    if (!options) {
+        options = {};
+    }
+
+    self.directory = options.directory || self.directory || '';
+    self.filename = options.filename || self.filename || '';
+    self.extension = options.extension || self.extension || '';
+
+    return self;
+}
+
+/**
+ * Create a message with `reason` at `position`.
+ * When an error is passed in as `reason`, copies the
+ * stack.  This does not add a message to `messages`.
+ *
+ * @example
+ *   var file = new VFile();
+ *
+ *   file.message('Something went wrong');
+ *   // { [1:1: Something went wrong]
+ *   //   name: '1:1',
+ *   //   file: '',
+ *   //   reason: 'Something went wrong',
+ *   //   line: null,
+ *   //   column: null }
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @param {string|Error} reason - Reason for message.
+ * @param {Node|Location|Position} [position] - Location
+ *   of message in file.
+ * @return {VFileMessage} - File-related message with
+ *   location information.
+ */
+function message(reason, position) {
+    var filePath = this.filePath();
+    var location;
+    var err;
+
+    /*
+     * Node / location / position.
+     */
+
+    if (position && position.position) {
+        position = position.position;
+    }
+
+    if (position && position.start) {
+        location = stringify(position.start) + '-' + stringify(position.end);
+        position = position.start;
+    } else {
+        location = stringify(position);
+    }
+
+    err = new Error(reason.message || reason);
+
+    err.name = (filePath ? filePath + ':' : '') + location;
+    err.file = filePath;
+    err.reason = reason.message || reason;
+    err.line = position ? position.line : null;
+    err.column = position ? position.column : null;
+
+    if (reason.stack) {
+        err.stack = reason.stack;
+    }
+
+    return err;
+}
+
+/**
+ * Warn. Creates a non-fatal message (see `VFile#message()`),
+ * and adds it to the file's `messages` list.
+ *
+ * @example
+ *   var file = new VFile();
+ *
+ *   file.warn('Something went wrong');
+ *   // { [1:1: Something went wrong]
+ *   //   name: '1:1',
+ *   //   file: '',
+ *   //   reason: 'Something went wrong',
+ *   //   line: null,
+ *   //   column: null,
+ *   //   fatal: false }
+ *
+ * @see VFile#message
+ * @this {VFile}
+ * @memberof {VFile}
+ */
+function warn() {
+    var err = this.message.apply(this, arguments);
+
+    err.fatal = false;
+
+    this.messages.push(err);
+
+    return err;
+}
+
+/**
+ * Fail. Creates a fatal message (see `VFile#message()`),
+ * sets `fatal: true`, adds it to the file's
+ * `messages` list.
+ *
+ * If `quiet` is not `true`, throws the error.
+ *
+ * @example
+ *   var file = new VFile();
+ *
+ *   file.fail('Something went wrong');
+ *   // 1:1: Something went wrong
+ *   //     at VFile.exception (vfile/index.js:296:11)
+ *   //     at VFile.fail (vfile/index.js:360:20)
+ *   //     at repl:1:6
+ *
+ *   file.quiet = true;
+ *   file.fail('Something went wrong');
+ *   // { [1:1: Something went wrong]
+ *   //   name: '1:1',
+ *   //   file: '',
+ *   //   reason: 'Something went wrong',
+ *   //   line: null,
+ *   //   column: null,
+ *   //   fatal: true }
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @throws {VFileMessage} - When not `quiet: true`.
+ * @param {string|Error} reason - Reason for failure.
+ * @param {Node|Location|Position} [position] - Place
+ *   of failure in file.
+ * @return {VFileMessage} - Unless thrown, of course.
+ */
+function fail(reason, position) {
+    var err = this.message(reason, position);
+
+    err.fatal = true;
+
+    this.messages.push(err);
+
+    if (!this.quiet) {
+        throw err;
+    }
+
+    return err;
+}
+
+/**
+ * Check if a fatal message occurred making the file no
+ * longer processable.
+ *
+ * @example
+ *   var file = new VFile();
+ *   file.quiet = true;
+ *
+ *   file.hasFailed(); // false
+ *
+ *   file.fail('Something went wrong');
+ *   file.hasFailed(); // true
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @return {boolean} - `true` if at least one of file's
+ *   `messages` has a `fatal` property set to `true`
+ */
+function hasFailed() {
+    var messages = this.messages;
+    var index = -1;
+    var length = messages.length;
+
+    while (++index < length) {
+        if (messages[index].fatal) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+/**
+ * Access private information relating to a file.
+ *
+ * @example
+ *   var file = new VFile('Foo');
+ *
+ *   file.namespace('foo').bar = 'baz';
+ *
+ *   console.log(file.namespace('foo').bar) // 'baz';
+ *
+ * @this {VFile}
+ * @memberof {VFile}
+ * @param {string} key - Namespace key.
+ * @return {Object} - Private space.
+ */
+function namespace(key) {
+    var self = this;
+    var space = self.data;
+
+    if (!space) {
+        space = self.data = {};
+    }
+
+    if (!space[key]) {
+        space[key] = {};
+    }
+
+    return space[key];
+}
+
+/*
+ * Methods.
+ */
+
+var vFilePrototype = VFile.prototype;
+
+vFilePrototype.move = move;
+vFilePrototype.toString = toString;
+vFilePrototype.message = message;
+vFilePrototype.warn = warn;
+vFilePrototype.fail = fail;
+vFilePrototype.hasFailed = hasFailed;
+vFilePrototype.namespace = namespace;
+
+/*
+ * Expose.
+ */
+
+module.exports = VFile;
 
 },{}],17:[function(require,module,exports){
 /**

@@ -34,6 +34,7 @@
     "trim": "^0.0.1",
     "trim-trailing-lines": "^1.0.0",
     "user-home": "^2.0.0",
+    "vfile": "^1.0.0",
     "ware": "^1.2.0"
   },
   "repository": {

@@ -117,7 +117,7 @@ This section only covers the interface you’ll use most often. See
 *   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done)
     — Applies plugins to the syntax tree;
 
-*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-options)
+*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-file-options)
     — Compiles the syntax tree into a string;
 
 *   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done)
@@ -128,9 +128,6 @@ This section only covers the interface you’ll use most often. See
 
 *   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file)
     — Callback passed to `run()` and `process()`.
-
-*   [File()](doc/mdast.3.md#file)
-    — Wrapper around (virtual) files.
 
 ### [mdast](#api).process(value, [options](doc/options.md)?, done?)
 
