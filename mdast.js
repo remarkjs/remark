@@ -1,4 +1,12 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.mdast = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast
+ * @fileoverview Markdown processor powered by plugins.
+ */
+
 'use strict';
 
 /*
@@ -330,8 +338,9 @@ module.exports = MDAST;
 },{"./lib/parse.js":4,"./lib/stringify.js":5,"./lib/utilities.js":6,"extend.js":9,"vfile":16,"ware":17}],2:[function(require,module,exports){
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
- * @module Defaults
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:defaults
  * @fileoverview Default values for parse and
  *  stringification settings.
  */
@@ -449,8 +458,9 @@ module.exports = {
 },{}],4:[function(require,module,exports){
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
- * @module Parse
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:parse
  * @fileoverview Parse a markdown document into an
  *   abstract syntax tree.
  */
@@ -3166,8 +3176,9 @@ module.exports = parse;
 },{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"extend.js":9,"he":10,"repeat-string":13,"trim":15,"trim-trailing-lines":14}],5:[function(require,module,exports){
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
- * @module Stringify
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:stringify
  * @fileoverview Compile a an abstract syntax tree into
  *   a markdown document.
  */
@@ -4914,8 +4925,9 @@ module.exports = stringify;
 },{"./defaults.js":2,"./utilities.js":6,"ccount":7,"extend.js":9,"he":10,"longest-streak":11,"markdown-table":12,"repeat-string":13}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer. All rights reserved.
- * @module Utilities
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:utilities
  * @fileoverview Collection of tiny helpers useful for
  *   both parsing and compiling markdown.
  */

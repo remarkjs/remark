@@ -1,3 +1,11 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast
+ * @fileoverview Markdown processor powered by plugins.
+ */
+
 'use strict';
 
 /*
