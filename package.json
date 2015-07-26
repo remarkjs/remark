@@ -72,7 +72,7 @@
     "mdast-man": "^0.4.0",
     "mdast-toc": "^0.5.0",
     "mdast-usage": "^0.3.0",
-    "mdast-validate-links": "^0.2.0",
+    "mdast-validate-links": "^0.3.0",
     "mdast-yaml-config": "^0.2.0",
     "mocha": "^2.0.0"
   },
