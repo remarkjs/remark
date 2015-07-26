@@ -7,6 +7,12 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.27.2 / 2015-07-26
+===================
+
+*   Refactor to externalise file ([58a0f51](https://github.com/wooorm/mdast/commit/58a0f51))
+*   Fix and re-add invalid-comment support to non-commonmark ([16c9b92](https://github.com/wooorm/mdast/commit/16c9b92))
+
 0.27.1 / 2015-07-22
 ===================
 
