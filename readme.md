@@ -1,6 +1,6 @@
 # ![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
 
-[![Build Status](https://img.shields.io/travis/wooorm/mdast.svg?style=flat)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/coveralls/wooorm/mdast.svg?style=flat)](https://coveralls.io/r/wooorm/mdast?branch=master)
+[![Build Status](https://img.shields.io/travis/wooorm/mdast.svg)](https://travis-ci.org/wooorm/mdast) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/mdast.svg)](https://codecov.io/github/wooorm/mdast)
 
 **mdast** is a markdown processor powered by plugins. Lots of tests. Node,
 io.js, and the browser. 100% coverage.
