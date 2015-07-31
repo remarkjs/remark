@@ -11,21 +11,19 @@
     "mdast.js",
     "mdast.min.js"
   ],
-  "plugins": [
-    "jscs-jsdoc"
-  ],
   "jsDoc": {
     "checkAnnotations": "jsdoc3",
     "checkParamNames": true,
-    "requireParamTypes": true,
-    "checkRedundantParams": true,
-    "checkReturnTypes": true,
-    "checkRedundantReturns": true,
-    "requireReturnTypes": true,
-    "checkTypes": "strictNativeCase",
     "checkRedundantAccess": true,
+    "checkRedundantParams": true,
+    "checkRedundantReturns": true,
+    "checkReturnTypes": true,
+    "checkTypes": "strictNativeCase",
     "enforceExistence": true,
-    "requireHyphenBeforeDescription": true
+    "requireHyphenBeforeDescription": true,
+    "requireNewlineAfterDescription": true,
+    "requireParamTypes": true,
+    "requireReturnTypes": true
   },
   "requireCurlyBraces": [
     "if",
@@ -131,6 +129,7 @@
     "with"
   ],
   "disallowMultipleLineStrings": true,
+  "disallowMultipleLineBreaks": true,
   "validateLineBreaks": "LF",
   "validateQuoteMarks": "'",
   "disallowMixedSpacesAndTabs": true,
@@ -144,10 +143,5 @@
   "requireCapitalizedConstructors": true,
   "safeContextKeyword": "self",
   "requireDotNotation": true,
-  "disallowYodaConditions": true,
-  "validateJSDoc": {
-    "checkParamNames": true,
-    "checkRedundantParams": true,
-    "requireParamTypes": true
-  }
+  "disallowYodaConditions": true
 }

@@ -64,7 +64,7 @@
     "eslint": "^0.24.0",
     "esmangle": "^1.0.0",
     "istanbul": "^0.3.0",
-    "jscs": "^1.0.0",
+    "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
     "matcha": "^0.6.0",
     "mdast-github": "^0.3.0",
