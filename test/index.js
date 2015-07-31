@@ -36,9 +36,7 @@ function plugin() {
  * Delayed no-operation transformer.
  */
 function asyncTransformer(ast, file, next) {
-    setTimeout(function () {
-        next();
-    }, 4);
+    setTimeout(next, 4);
 }
 
 /**
