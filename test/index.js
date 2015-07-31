@@ -749,8 +749,8 @@ describe('function transformer(ast, file, next?)', function () {
          * Plugin.
          */
         function assertion(ast, file) {
-            assert(ast === result);
-            assert(file instanceof VFile);
+            assert.equal(ast, result);
+            assert('hasFailed' in file);
 
             isInvoked = true;
         }
