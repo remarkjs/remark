@@ -6,10 +6,7 @@
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {
     "duo": "^0.15.0",
-    "duo-babel": "^6.0.0",
-    "eslint": "^0.24.0",
-    "jscs": "^1.0.0",
-    "jscs-jsdoc": "^1.0.0"
+    "duo-babel": "^6.0.0"
   },
   "scripts": {
     "build": "duo --use duo-babel --type js --stdout < demo/index.js > demo/build.js",
