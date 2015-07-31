@@ -514,7 +514,7 @@ describe('mdast.use(plugin, options?)', function () {
     it('should attach an attacher', function () {
         var processor = mdast.use(noop);
 
-        assert(processor.attachers.length === 1);
+        assert(processor.ware.attachers.length === 1);
     });
 
     it('should attach a transformer', function () {
@@ -526,13 +526,7 @@ describe('mdast.use(plugin, options?)', function () {
     it('should attach multiple attachers', function () {
         var processor = mdast.use(function () {}).use(function () {});
 
-        assert(processor.attachers.length === 2);
-    });
-
-    it('should not attach the same attacher multiple times', function () {
-        var processor = mdast.use(plugin).use(plugin);
-
-        assert(processor.attachers.length === 1);
+        assert(processor.ware.attachers.length === 2);
     });
 
     it('should attach multiple transformers', function () {
