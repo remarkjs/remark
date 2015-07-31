@@ -7,6 +7,13 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.28.0 / 2015-07-31
+===================
+
+*   Replace coveralls with codecov ([f86ebed](https://github.com/wooorm/mdast/commit/f86ebed))
+*   Refactor to externalise core API ([9892ec4](https://github.com/wooorm/mdast/commit/9892ec4))
+*   Add missing scripts for component ([af0584c](https://github.com/wooorm/mdast/commit/af0584c))
+
 0.27.2 / 2015-07-26
 ===================
 
