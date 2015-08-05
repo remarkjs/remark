@@ -189,11 +189,11 @@ describe('mdast.parse(file, options?)', function () {
          * @param {string} $0
          */
         function replacement(eat, $0) {
-            var token = /<!--\s*(.*?)\s*-->/g.exec($0);
+            var node = /<!--\s*(.*?)\s*-->/g.exec($0);
             var options = {};
 
-            if (token) {
-                options[token[1]] = true;
+            if (node) {
+                options[node[1]] = true;
 
                 this.setOptions(options);
             }
@@ -417,11 +417,11 @@ describe('mdast.stringify(ast, file, options?)', function () {
          * Set option when an HMTL comment occurs:
          * `<!-- $key -->`, turns on `$key`.
          *
-         * @param {Object} token
+         * @param {Object} node
          * @return {string}
          */
-        function replacement(token) {
-            var value = token.value;
+        function replacement(node) {
+            var value = node.value;
             var result = /<!--\s*(.*?)\s*-->/g.exec(value);
             var options = {};
 

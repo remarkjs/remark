@@ -637,55 +637,55 @@ function noopToggler() {
 var MERGEABLE_NODES = {};
 
 /**
- * Merge two text nodes: `token` into `prev`.
+ * Merge two text nodes: `node` into `prev`.
  *
  * @param {Object} prev - Preceding sibling.
- * @param {Object} token - Following sibling.
+ * @param {Object} node - Following sibling.
  * @return {Object} - `prev`.
  */
-MERGEABLE_NODES.text = function (prev, token) {
-    prev.value += token.value;
+MERGEABLE_NODES.text = function (prev, node) {
+    prev.value += node.value;
 
     return prev;
 };
 
 /**
- * Merge two blockquotes: `token` into `prev`, unless in
+ * Merge two blockquotes: `node` into `prev`, unless in
  * CommonMark mode.
  *
  * @param {Object} prev - Preceding sibling.
- * @param {Object} token - Following sibling.
- * @return {Object} - `prev`, or `token` in CommonMark mode.
+ * @param {Object} node - Following sibling.
+ * @return {Object} - `prev`, or `node` in CommonMark mode.
  */
-MERGEABLE_NODES.blockquote = function (prev, token) {
+MERGEABLE_NODES.blockquote = function (prev, node) {
     if (this.options.commonmark) {
-        return token;
+        return node;
     }
 
-    prev.children = prev.children.concat(token.children);
+    prev.children = prev.children.concat(node.children);
 
     return prev;
 };
 
 /**
- * Merge two lists: `token` into `prev`. Knows, about
+ * Merge two lists: `node` into `prev`. Knows, about
  * which bullets were used.
  *
  * @param {Object} prev - Preceding sibling.
- * @param {Object} token - Following sibling.
- * @return {Object} - `prev`, or `token` when the lists are
+ * @param {Object} node - Following sibling.
+ * @return {Object} - `prev`, or `node` when the lists are
  *   of different types (a different bullet is used).
  */
-MERGEABLE_NODES.list = function (prev, token) {
+MERGEABLE_NODES.list = function (prev, node) {
     if (
         !this.currentBullet ||
         this.currentBullet !== this.previousBullet ||
         this.currentBullet.length !== 1
     ) {
-        return token;
+        return node;
     }
 
-    prev.children = prev.children.concat(token.children);
+    prev.children = prev.children.concat(node.children);
 
     return prev;
 };
@@ -1226,7 +1226,7 @@ function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
 tokenizeTable.onlyAtTop = true;
 
 /**
- * Tokenise a paragraph token.
+ * Tokenise a paragraph node.
  *
  * @example
  *   tokenizeParagraph(eat, 'Foo.');
@@ -1251,7 +1251,7 @@ function tokenizeParagraph(eat, $0) {
 }
 
 /**
- * Tokenise a text token.
+ * Tokenise a text node.
  *
  * @example
  *   tokenizeText(eat, 'foo');
@@ -1265,7 +1265,7 @@ function tokenizeText(eat, $0) {
 }
 
 /**
- * Create a code-block token.
+ * Create a code-block node.
  *
  * @example
  *   renderCodeBlock('foo()', 'js', now());
@@ -1284,7 +1284,7 @@ function renderCodeBlock(value, language, eat) {
 }
 
 /**
- * Create a list token.
+ * Create a list node.
  *
  * @example
  *   var children = [renderListItem('- foo')];
@@ -1440,7 +1440,7 @@ LIST_ITEM_MAP.true = renderPedanticListItem;
 LIST_ITEM_MAP.false = renderNormalListItem;
 
 /**
- * Create a list-item token.
+ * Create a list-item node.
  *
  * @example
  *   renderListItem('- _foo_', now());
@@ -1486,7 +1486,7 @@ function renderListItem(value, position) {
 }
 
 /**
- * Create a footnote-definition token.
+ * Create a footnote-definition node.
  *
  * @example
  *   renderFootnoteDefinition('1', '_foo_', now());
@@ -1499,9 +1499,9 @@ function renderListItem(value, position) {
 function renderFootnoteDefinition(identifier, value, position) {
     var self = this;
     var exitBlockquote = self.enterBlockquote();
-    var token;
+    var node;
 
-    token = {
+    node = {
         'type': FOOTNOTE_DEFINITION,
         'identifier': identifier,
         'children': self.tokenizeBlock(value, position)
@@ -1509,11 +1509,11 @@ function renderFootnoteDefinition(identifier, value, position) {
 
     exitBlockquote();
 
-    return token;
+    return node;
 }
 
 /**
- * Create a heading token.
+ * Create a heading node.
  *
  * @example
  *   renderHeading('_foo_', 1, now());
@@ -1532,7 +1532,7 @@ function renderHeading(value, depth, position) {
 }
 
 /**
- * Create a blockquote token.
+ * Create a blockquote node.
  *
  * @example
  *   renderBlockquote('_foo_', eat);
@@ -1544,18 +1544,18 @@ function renderHeading(value, depth, position) {
 function renderBlockquote(value, now) {
     var self = this;
     var exitBlockquote = self.enterBlockquote();
-    var token = {
+    var node = {
         'type': BLOCKQUOTE,
         'children': this.tokenizeBlock(value, now)
     };
 
     exitBlockquote();
 
-    return token;
+    return node;
 }
 
 /**
- * Create a void token.
+ * Create a void node.
  *
  * @example
  *   renderVoid('horizontalRule');
@@ -1587,7 +1587,7 @@ function renderParent(type, children) {
 }
 
 /**
- * Create a raw token.
+ * Create a raw node.
  *
  * @example
  *   renderRaw('inlineCode', 'foo()');
@@ -1604,7 +1604,7 @@ function renderRaw(type, value) {
 }
 
 /**
- * Create a link token.
+ * Create a link node.
  *
  * @example
  *   renderLink(true, 'example.com', 'example', 'Example Domain', now(), eat);
@@ -1622,9 +1622,9 @@ function renderRaw(type, value) {
 function renderLink(isLink, href, text, title, position, eat) {
     var self = this;
     var exitLink = self.enterLink();
-    var token;
+    var node;
 
-    token = {
+    node = {
         'type': isLink ? LINK : IMAGE,
         'title': title ? decode(self.descape(title), eat) : null
     };
@@ -1632,20 +1632,20 @@ function renderLink(isLink, href, text, title, position, eat) {
     href = decode(href, eat);
 
     if (isLink) {
-        token.href = href;
-        token.children = self.tokenizeInline(text, position);
+        node.href = href;
+        node.children = self.tokenizeInline(text, position);
     } else {
-        token.src = href;
-        token.alt = text ? decode(self.descape(text), eat) : null;
+        node.src = href;
+        node.alt = text ? decode(self.descape(text), eat) : null;
     }
 
     exitLink();
 
-    return token;
+    return node;
 }
 
 /**
- * Create a footnote token.
+ * Create a footnote node.
  *
  * @example
  *   renderFootnote('_foo_', now());
@@ -1659,7 +1659,7 @@ function renderFootnote(value, position) {
 }
 
 /**
- * Add a token with inline content.
+ * Add a node with inline content.
  *
  * @example
  *   renderInline('strong', '_foo_', now());
@@ -1674,7 +1674,7 @@ function renderInline(type, value, position) {
 }
 
 /**
- * Add a token with block content.
+ * Add a node with block content.
  *
  * @example
  *   renderBlock('blockquote', 'Foo.', now());
@@ -2163,7 +2163,7 @@ Parser.prototype.indent = function (start) {
 Parser.prototype.parse = function () {
     var self = this;
     var value = clean(String(self.file));
-    var token;
+    var node;
 
     /*
      * Add an `offset` matrix, used to keep track of
@@ -2172,20 +2172,20 @@ Parser.prototype.parse = function () {
 
     self.offset = {};
 
-    token = self.renderBlock(ROOT, value);
+    node = self.renderBlock(ROOT, value);
 
     if (self.options.position) {
-        token.position = {
+        node.position = {
             'start': {
                 'line': 1,
                 'column': 1
             }
         };
 
-        token.position.end = self.eof || token.position.start;
+        node.position.end = self.eof || node.position.start;
     }
 
-    return token;
+    return node;
 };
 
 /*
@@ -2465,7 +2465,7 @@ function tokenizeFactory(type) {
         }
 
         /**
-         * Add `token` to `parent`s children or to `tokens`.
+         * Add `node` to `parent`s children or to `tokens`.
          * Performs merges where possible.
          *
          * @example
@@ -2473,12 +2473,12 @@ function tokenizeFactory(type) {
          *
          *   add({}, {children: []});
          *
-         * @param {Object} token - Node to add.
+         * @param {Object} node - Node to add.
          * @param {Object} [parent] - Parent to insert into.
-         * @return {Object} - Added or merged into token.
+         * @return {Object} - Added or merged into node.
          */
-        add = function (token, parent) {
-            var isMultiple = 'length' in token;
+        add = function (node, parent) {
+            var isMultiple = 'length' in node;
             var prev;
             var children;
 
@@ -2489,26 +2489,26 @@ function tokenizeFactory(type) {
             }
 
             if (isMultiple) {
-                arrayPush.apply(children, token);
+                arrayPush.apply(children, node);
             } else {
-                if (type === INLINE && token.type === TEXT) {
-                    token.value = decode(token.value, eater);
+                if (type === INLINE && node.type === TEXT) {
+                    node.value = decode(node.value, eater);
                 }
 
                 prev = children[children.length - 1];
 
                 if (
                     prev &&
-                    token.type === prev.type &&
-                    token.type in MERGEABLE_NODES
+                    node.type === prev.type &&
+                    node.type in MERGEABLE_NODES
                 ) {
-                    token = MERGEABLE_NODES[token.type].call(
-                        self, prev, token
+                    node = MERGEABLE_NODES[node.type].call(
+                        self, prev, node
                     );
                 }
 
-                if (token !== prev) {
-                    children.push(token);
+                if (node !== prev) {
+                    children.push(node);
                 }
 
                 if (self.atStart && tokens.length) {
@@ -2516,7 +2516,7 @@ function tokenizeFactory(type) {
                 }
             }
 
-            return token;
+            return node;
         };
 
         /**
@@ -2844,7 +2844,7 @@ module.exports = Parser;
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast:stringify
- * @fileoverview Compile a an abstract syntax tree into
+ * @fileoverview Compile an abstract syntax tree into
  *   a markdown document.
  */
 
@@ -3111,7 +3111,15 @@ function encodeFactory(type, file) {
 }
 
 /**
- * Checks if `url` needs to be enclosed by angle brackets.
+ * Wrap `url` in angle brackets when needed, or when
+ * forced.
+ *
+ * In links, images, and definitions, the URL part needs
+ * to be enclosed when it:
+ *
+ * - has a length of `0`;
+ * - contains white-space;
+ * - has more or less opening than closing parentheses.
  *
  * @example
  *   encloseURI('foo bar') // '<foo bar>'
@@ -3140,7 +3148,7 @@ function encloseURI(uri, always) {
 /**
  * There is currently no way to support nested delimiters
  * across Markdown.pl, CommonMark, and GitHub (RedCarpet).
- * The following supports Markdown.pl, and GitHub.
+ * The following code supports Markdown.pl and GitHub.
  * CommonMark is not supported when mixing double- and
  * single quotes inside a title.
  *
@@ -3168,7 +3176,7 @@ function encloseTitle(title) {
 
 /**
  * Pad `value` with `level * INDENT` spaces.  Respects
- * lines.
+ * lines. Ignores empty lines.
  *
  * @example
  *   pad('foo', 1) // '    foo'
@@ -3290,7 +3298,7 @@ compilerPrototype.setOptions = function (options) {
 };
 
 /**
- * Visit a token.
+ * Visit a node.
  *
  * @example
  *   var compiler = new Compiler();
@@ -3304,26 +3312,30 @@ compilerPrototype.setOptions = function (options) {
  *   });
  *   // '**Foo**'
  *
- * @param {Object} token - Node.
- * @param {Object?} [parent] - `token`s parent node.
- * @return {string} - Compiled `token`.
+ * @param {Object} node - Node.
+ * @param {Object?} [parent] - `node`s parent.
+ * @return {string} - Compiled `node`.
  */
-compilerPrototype.visit = function (token, parent) {
+compilerPrototype.visit = function (node, parent) {
     var self = this;
 
-    if (typeof self[token.type] !== 'function') {
+    /*
+     * Fail on unknown nodes.
+     */
+
+    if (typeof self[node.type] !== 'function') {
         self.file.fail(
             'Missing compiler for node of type `' +
-            token.type + '`: ' + token,
-            token
+            node.type + '`: `' + node + '`',
+            node
         );
     }
 
-    return self[token.type](token, parent);
+    return self[node.type](node, parent);
 };
 
 /**
- * Visit all tokens.
+ * Visit all children of `parent`.
  *
  * @example
  *   var compiler = new Compiler();
@@ -3346,13 +3358,13 @@ compilerPrototype.visit = function (token, parent) {
  */
 compilerPrototype.all = function (parent) {
     var self = this;
-    var tokens = parent.children;
+    var children = parent.children;
     var values = [];
     var index = -1;
-    var length = tokens.length;
+    var length = children.length;
 
     while (++index < length) {
-        values[index] = self.visit(tokens[index], parent);
+        values[index] = self.visit(children[index], parent);
     }
 
     return values;
@@ -3362,14 +3374,14 @@ compilerPrototype.all = function (parent) {
  * Visit ordered list items.
  *
  * Starts the list with
- * `token.start` and increments each following list item
+ * `node.start` and increments each following list item
  * bullet by one:
  *
  *     2. foo
  *     3. bar
  *
  * In `incrementListMarker: false` mode, does not increment
- * each marker ans stays on `token.start`:
+ * each marker and stays on `node.start`:
  *
  *     1. foo
  *     1. bar
@@ -3393,23 +3405,23 @@ compilerPrototype.all = function (parent) {
  *   });
  *   // '1.  bar'
  *
- * @param {Object} token - `list` node with
+ * @param {Object} node - `list` node with
  *   `ordered: true`.
  * @return {string} - Markdown list.
  */
-compilerPrototype.visitOrderedItems = function (token) {
+compilerPrototype.visitOrderedItems = function (node) {
     var self = this;
     var increment = self.options.incrementListMarker;
     var values = [];
-    var tokens = token.children;
+    var start = node.start;
+    var children = node.children;
+    var length = children.length;
     var index = -1;
-    var length = tokens.length;
-    var start = token.start;
     var bullet;
 
     while (++index < length) {
         bullet = (increment ? start + index : start) + DOT;
-        values[index] = self.listItem(tokens[index], token, index, bullet);
+        values[index] = self.listItem(children[index], node, index, bullet);
     }
 
     return values.join(LINE);
@@ -3439,20 +3451,20 @@ compilerPrototype.visitOrderedItems = function (token) {
  *   });
  *   // '-   bar'
  *
- * @param {Object} token - `list` node with
+ * @param {Object} node - `list` node with
  *   `ordered: false`.
  * @return {string} - Markdown list.
  */
-compilerPrototype.visitUnorderedItems = function (token) {
+compilerPrototype.visitUnorderedItems = function (node) {
     var self = this;
     var values = [];
-    var tokens = token.children;
-    var length = tokens.length;
+    var children = node.children;
+    var length = children.length;
     var index = -1;
     var bullet = self.options.bullet;
 
     while (++index < length) {
-        values[index] = self.listItem(tokens[index], token, index, bullet);
+        values[index] = self.listItem(children[index], node, index, bullet);
     }
 
     return values.join(LINE);
@@ -3481,24 +3493,24 @@ compilerPrototype.visitUnorderedItems = function (token) {
  *   });
  *   // 'bar'
  *
- * @param {Object} token - `root` node.
+ * @param {Object} node - `root` node.
  * @return {string} - Markdown block content.
  */
-compilerPrototype.block = function (token) {
+compilerPrototype.block = function (node) {
     var self = this;
     var values = [];
-    var tokens = token.children;
+    var children = node.children;
+    var length = children.length;
     var index = -1;
-    var length = tokens.length;
     var child;
     var prev;
 
     while (++index < length) {
-        child = tokens[index];
+        child = children[index];
 
         if (prev) {
             /*
-             * Duplicate tokens, such as a list
+             * Duplicate nodes, such as a list
              * directly following another list,
              * often need multiple new lines.
              *
@@ -3520,7 +3532,7 @@ compilerPrototype.block = function (token) {
             }
         }
 
-        values.push(self.visit(child, token));
+        values.push(self.visit(child, node));
 
         prev = child;
     }
@@ -3548,11 +3560,11 @@ compilerPrototype.block = function (token) {
  *   });
  *   // 'bar'
  *
- * @param {Object} token - `root` node.
+ * @param {Object} node - `root` node.
  * @return {string} - Markdown document.
  */
-compilerPrototype.root = function (token) {
-    return this.block(token) + LINE;
+compilerPrototype.root = function (node) {
+    return this.block(node) + LINE;
 };
 
 /**
@@ -3589,15 +3601,15 @@ compilerPrototype.root = function (token) {
  *   });
  *   // '## **bar**'
  *
- * @param {Object} token - `heading` node.
+ * @param {Object} node - `heading` node.
  * @return {string} - Markdown heading.
  */
-compilerPrototype.heading = function (token) {
+compilerPrototype.heading = function (node) {
     var self = this;
     var setext = self.options.setext;
     var closeAtx = self.options.closeAtx;
-    var depth = token.depth;
-    var content = self.all(token).join(EMPTY);
+    var depth = node.depth;
+    var content = self.all(node).join(EMPTY);
     var prefix;
 
     if (setext && depth < 3) {
@@ -3605,7 +3617,7 @@ compilerPrototype.heading = function (token) {
             repeat(depth === 1 ? EQUALS : DASH, content.length);
     }
 
-    prefix = repeat(HASH, token.depth);
+    prefix = repeat(HASH, node.depth);
     content = prefix + SPACE + content;
 
     if (closeAtx) {
@@ -3636,11 +3648,11 @@ compilerPrototype.heading = function (token) {
  *   });
  *   // 'foo'
  *
- * @param {Object} token - `text` node.
+ * @param {Object} node - `text` node.
  * @return {string} - Raw markdown text.
  */
-compilerPrototype.text = function (token) {
-    return this.encode(token.value, token);
+compilerPrototype.text = function (node) {
+    return this.encode(node.value, node);
 };
 
 /**
@@ -3655,11 +3667,11 @@ compilerPrototype.text = function (token) {
  *   });
  *   // '\\\n'
  *
- * @param {Object} token - `escape` node.
+ * @param {Object} node - `escape` node.
  * @return {string} - Markdown escape.
  */
-compilerPrototype.escape = function (token) {
-    return '\\' + token.value;
+compilerPrototype.escape = function (node) {
+    return '\\' + node.value;
 };
 
 /**
@@ -3680,11 +3692,11 @@ compilerPrototype.escape = function (token) {
  *   });
  *   // '**bar**'
  *
- * @param {Object} token - `paragraph` node.
+ * @param {Object} node - `paragraph` node.
  * @return {string} - Markdown paragraph.
  */
-compilerPrototype.paragraph = function (token) {
-    return this.all(token).join(EMPTY);
+compilerPrototype.paragraph = function (node) {
+    return this.all(node).join(EMPTY);
 };
 
 /**
@@ -3708,13 +3720,13 @@ compilerPrototype.paragraph = function (token) {
  *   });
  *   // '> **bar**'
  *
- * @param {Object} token - `blockquote` node.
+ * @param {Object} node - `blockquote` node.
  * @return {string} - Markdown block quote.
  */
-compilerPrototype.blockquote = function (token) {
+compilerPrototype.blockquote = function (node) {
     var indent = ANGLE_BRACKET_CLOSE + SPACE;
 
-    return indent + this.block(token).split(LINE).join(LINE + indent);
+    return indent + this.block(node).split(LINE).join(LINE + indent);
 };
 
 /**
@@ -3737,11 +3749,11 @@ compilerPrototype.blockquote = function (token) {
  *   });
  *   // '-   bar'
  *
- * @param {Object} token - `list` node.
+ * @param {Object} node - `list` node.
  * @return {string} - Markdown list.
  */
-compilerPrototype.list = function (token) {
-    return this[ORDERED_MAP[token.ordered]](token);
+compilerPrototype.list = function (node) {
+    return this[ORDERED_MAP[node.ordered]](node);
 };
 
 /**
@@ -3781,30 +3793,30 @@ compilerPrototype.list = function (token) {
  *   }, 0, '*');
  *   '-   [x] bar'
  *
- * @param {Object} token - `listItem` node.
+ * @param {Object} node - `listItem` node.
  * @param {Object} parent - `list` node.
- * @param {number} position - Index of `token` in `parent`.
+ * @param {number} position - Index of `node` in `parent`.
  * @param {string} bullet - Bullet to use.  This, and the
  *   `listItemIndent` setting define the used indent.
  * @return {string} - Markdown list item.
  */
-compilerPrototype.listItem = function (token, parent, position, bullet) {
+compilerPrototype.listItem = function (node, parent, position, bullet) {
     var self = this;
     var style = self.options.listItemIndent;
-    var tokens = token.children;
+    var children = node.children;
     var values = [];
     var index = -1;
-    var length = tokens.length;
-    var loose = token.loose;
+    var length = children.length;
+    var loose = node.loose;
     var value;
     var indent;
     var spacing;
 
     while (++index < length) {
-        values[index] = self.visit(tokens[index], token);
+        values[index] = self.visit(children[index], node);
     }
 
-    value = CHECKBOX_MAP[token.checked] + values.join(loose ? BREAK : LINE);
+    value = CHECKBOX_MAP[node.checked] + values.join(loose ? BREAK : LINE);
 
     if (
         style === LIST_ITEM_ONE ||
@@ -3848,11 +3860,11 @@ compilerPrototype.listItem = function (token, parent, position, bullet) {
  *   });
  *   // '``foo(); `bar`; baz()``'
  *
- * @param {Object} token - `inlineCode` node.
+ * @param {Object} node - `inlineCode` node.
  * @return {string} - Markdown inline code.
  */
-compilerPrototype.inlineCode = function (token) {
-    var value = token.value;
+compilerPrototype.inlineCode = function (node) {
+    var value = node.value;
     var ticks = repeat(TICK, longesStreak(value, TICK) + 1);
     var start = ticks;
     var end = ticks;
@@ -3865,7 +3877,7 @@ compilerPrototype.inlineCode = function (token) {
         end = SPACE + end;
     }
 
-    return start + token.value + end;
+    return start + node.value + end;
 };
 
 /**
@@ -3880,12 +3892,12 @@ compilerPrototype.inlineCode = function (token) {
  *   });
  *   // '---\nfoo: bar\n---'
  *
- * @param {Object} token - `yaml` node.
+ * @param {Object} node - `yaml` node.
  * @return {string} - Markdown YAML document.
  */
-compilerPrototype.yaml = function (token) {
+compilerPrototype.yaml = function (node) {
     var delimiter = repeat(DASH, YAML_FENCE_LENGTH);
-    var value = token.value ? LINE + token.value : EMPTY;
+    var value = node.value ? LINE + node.value : EMPTY;
 
     return delimiter + value + LINE + delimiter;
 };
@@ -3933,13 +3945,13 @@ compilerPrototype.yaml = function (token) {
  *   });
  *   // '```js\nfooo();\n```'
  *
- * @param {Object} token - `code` node.
+ * @param {Object} node - `code` node.
  * @return {string} - Markdown code block.
  */
-compilerPrototype.code = function (token) {
-    var value = token.value;
+compilerPrototype.code = function (node) {
+    var value = node.value;
     var marker = this.options.fence;
-    var language = this.encode(token.lang || EMPTY, token);
+    var language = this.encode(node.lang || EMPTY, node);
     var fence;
 
     /*
@@ -3969,11 +3981,11 @@ compilerPrototype.code = function (token) {
  *   });
  *   // '<div>bar</div>'
  *
- * @param {Object} token - `html` node.
+ * @param {Object} node - `html` node.
  * @return {string} - Markdown HTML.
  */
-compilerPrototype.html = function (token) {
-    return token.value;
+compilerPrototype.html = function (node) {
+    return node.value;
 };
 
 /**
@@ -4035,15 +4047,15 @@ compilerPrototype.horizontalRule = function () {
  *   });
  *   // '**Foo**'
  *
- * @param {Object} token - `strong` node.
+ * @param {Object} node - `strong` node.
  * @return {string} - Markdown strong-emphasised text.
  */
-compilerPrototype.strong = function (token) {
+compilerPrototype.strong = function (node) {
     var marker = this.options.strong;
 
     marker = marker + marker;
 
-    return marker + this.all(token).join(EMPTY) + marker;
+    return marker + this.all(node).join(EMPTY) + marker;
 };
 
 /**
@@ -4067,13 +4079,13 @@ compilerPrototype.strong = function (token) {
  *   });
  *   // '_Foo_'
  *
- * @param {Object} token - `emphasis` node.
+ * @param {Object} node - `emphasis` node.
  * @return {string} - Markdown emphasised text.
  */
-compilerPrototype.emphasis = function (token) {
+compilerPrototype.emphasis = function (node) {
     var marker = this.options.emphasis;
 
-    return marker + this.all(token).join(EMPTY) + marker;
+    return marker + this.all(node).join(EMPTY) + marker;
 };
 
 /**
@@ -4108,11 +4120,11 @@ compilerPrototype.break = function () {
  *   });
  *   // '~~Foo~~'
  *
- * @param {Object} token - `delete` node.
+ * @param {Object} node - `delete` node.
  * @return {string} - Markdown strike-through.
  */
-compilerPrototype.delete = function (token) {
-    return DOUBLE_TILDE + this.all(token).join(EMPTY) + DOUBLE_TILDE;
+compilerPrototype.delete = function (node) {
+    return DOUBLE_TILDE + this.all(node).join(EMPTY) + DOUBLE_TILDE;
 };
 
 /**
@@ -4146,16 +4158,16 @@ compilerPrototype.delete = function (token) {
  *   });
  *   // '[Foo](http://example.com "Example Domain")'
  *
- * @param {Object} token - `link` node.
+ * @param {Object} node - `link` node.
  * @return {string} - Markdown link.
  */
-compilerPrototype.link = function (token) {
+compilerPrototype.link = function (node) {
     var self = this;
-    var url = self.encode(token.href, token);
-    var value = self.all(token).join(EMPTY);
+    var url = self.encode(node.href, node);
+    var value = self.all(node).join(EMPTY);
 
     if (
-        token.title === null &&
+        node.title === null &&
         PROTOCOL.test(url) &&
         (url === value || url === MAILTO + value)
     ) {
@@ -4164,8 +4176,8 @@ compilerPrototype.link = function (token) {
 
     url = encloseURI(url);
 
-    if (token.title) {
-        url += SPACE + encloseTitle(self.encode(token.title, token));
+    if (node.title) {
+        url += SPACE + encloseTitle(self.encode(node.title, node));
     }
 
     value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
@@ -4206,16 +4218,16 @@ compilerPrototype.link = function (token) {
  *   });
  *   // ''
  *
- * @param {Object} token - `linkReference` or
+ * @param {Object} node - `linkReference` or
  *   `imageReference` node.
  * @return {string} - Markdown label reference.
  */
-function label(token) {
+function label(node) {
     var value = EMPTY;
-    var type = token.referenceType;
+    var type = node.referenceType;
 
     if (type === 'full') {
-        value = token.identifier;
+        value = node.identifier;
     }
 
     if (type !== 'shortcut') {
@@ -4244,13 +4256,13 @@ function label(token) {
  *   });
  *   // '[Foo][]'
  *
- * @param {Object} token - `linkReference` node.
+ * @param {Object} node - `linkReference` node.
  * @return {string} - Markdown link reference.
  */
-compilerPrototype.linkReference = function (token) {
+compilerPrototype.linkReference = function (node) {
     return SQUARE_BRACKET_OPEN +
-        this.all(token).join(EMPTY) + SQUARE_BRACKET_CLOSE +
-        label(token);
+        this.all(node).join(EMPTY) + SQUARE_BRACKET_CLOSE +
+        label(node);
 };
 
 /**
@@ -4272,15 +4284,15 @@ compilerPrototype.linkReference = function (token) {
  *   });
  *   // '![Foo][foo]'
  *
- * @param {Object} token - `imageReference` node.
+ * @param {Object} node - `imageReference` node.
  * @return {string} - Markdown image reference.
  */
-compilerPrototype.imageReference = function (token) {
-    var alt = this.encode(token.alt, token);
+compilerPrototype.imageReference = function (node) {
+    var alt = this.encode(node.alt, node);
 
     return EXCLAMATION_MARK +
         SQUARE_BRACKET_OPEN + alt + SQUARE_BRACKET_CLOSE +
-        label(token);
+        label(node);
 };
 
 /**
@@ -4295,11 +4307,11 @@ compilerPrototype.imageReference = function (token) {
  *   });
  *   // '[^foo]'
  *
- * @param {Object} token - `footnoteReference` node.
+ * @param {Object} node - `footnoteReference` node.
  * @return {string} - Markdown footnote reference.
  */
-compilerPrototype.footnoteReference = function (token) {
-    return SQUARE_BRACKET_OPEN + CARET + token.identifier +
+compilerPrototype.footnoteReference = function (node) {
+    return SQUARE_BRACKET_OPEN + CARET + node.identifier +
         SQUARE_BRACKET_CLOSE;
 };
 
@@ -4322,15 +4334,15 @@ compilerPrototype.footnoteReference = function (token) {
  *   });
  *   // '[foo]: http://example.com "Example Domain"'
  *
- * @param {Object} token - `definition` node.
+ * @param {Object} node - `definition` node.
  * @return {string} - Markdown link- or image definition.
  */
-compilerPrototype.definition = function (token) {
-    var value = SQUARE_BRACKET_OPEN + token.identifier + SQUARE_BRACKET_CLOSE;
-    var url = encloseURI(token.link);
+compilerPrototype.definition = function (node) {
+    var value = SQUARE_BRACKET_OPEN + node.identifier + SQUARE_BRACKET_CLOSE;
+    var url = encloseURI(node.link);
 
-    if (token.title) {
-        url += SPACE + encloseTitle(token.title);
+    if (node.title) {
+        url += SPACE + encloseTitle(node.title);
     }
 
     return value + COLON + SPACE + url;
@@ -4358,20 +4370,20 @@ compilerPrototype.definition = function (token) {
  *   });
  *   // '![Foo](http://example.png/favicon.png "Example Icon")'
  *
- * @param {Object} token - `image` node.
+ * @param {Object} node - `image` node.
  * @return {string} - Markdown image.
  */
-compilerPrototype.image = function (token) {
+compilerPrototype.image = function (node) {
     var encode = this.encode;
-    var url = encloseURI(encode(token.src, token));
+    var url = encloseURI(encode(node.src, node));
     var value;
 
-    if (token.title) {
-        url += SPACE + encloseTitle(encode(token.title, token));
+    if (node.title) {
+        url += SPACE + encloseTitle(encode(node.title, node));
     }
 
     value = EXCLAMATION_MARK +
-        SQUARE_BRACKET_OPEN + encode(token.alt || EMPTY, token) +
+        SQUARE_BRACKET_OPEN + encode(node.alt || EMPTY, node) +
         SQUARE_BRACKET_CLOSE;
 
     value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
@@ -4394,11 +4406,11 @@ compilerPrototype.image = function (token) {
  *   });
  *   // '[^Foo]'
  *
- * @param {Object} token - `footnote` node.
+ * @param {Object} node - `footnote` node.
  * @return {string} - Markdown footnote.
  */
-compilerPrototype.footnote = function (token) {
-    return SQUARE_BRACKET_OPEN + CARET + this.all(token).join(EMPTY) +
+compilerPrototype.footnote = function (node) {
+    return SQUARE_BRACKET_OPEN + CARET + this.all(node).join(EMPTY) +
         SQUARE_BRACKET_CLOSE;
 };
 
@@ -4421,15 +4433,15 @@ compilerPrototype.footnote = function (token) {
  *   });
  *   // '[^foo]: bar'
  *
- * @param {Object} token - `footnoteDefinition` node.
+ * @param {Object} node - `footnoteDefinition` node.
  * @return {string} - Markdown footnote definition.
  */
-compilerPrototype.footnoteDefinition = function (token) {
-    var id = token.identifier.toLowerCase();
+compilerPrototype.footnoteDefinition = function (node) {
+    var id = node.identifier.toLowerCase();
 
     return SQUARE_BRACKET_OPEN + CARET + id +
         SQUARE_BRACKET_CLOSE + COLON + SPACE +
-        this.all(token).join(BREAK + repeat(SPACE, INDENT));
+        this.all(node).join(BREAK + repeat(SPACE, INDENT));
 };
 
 /**
@@ -4502,14 +4514,14 @@ compilerPrototype.footnoteDefinition = function (token) {
  *   });
  *   // '| Foo | Bar |\n| :-: | --- |\n| Baz | Qux |'
  *
- * @param {Object} token - `table` node.
+ * @param {Object} node - `table` node.
  * @return {string} - Markdown table.
  */
-compilerPrototype.table = function (token) {
+compilerPrototype.table = function (node) {
     var self = this;
     var loose = self.options.looseTable;
     var spaced = self.options.spacedTable;
-    var rows = token.children;
+    var rows = node.children;
     var index = rows.length;
     var result = [];
     var start;
@@ -4521,7 +4533,7 @@ compilerPrototype.table = function (token) {
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
 
     return table(result, {
-        'align': token.align,
+        'align': node.align,
         'start': start,
         'end': start.split(EMPTY).reverse().join(EMPTY),
         'delimiter': spaced ? SPACE + PIPE + SPACE : PIPE
@@ -4543,11 +4555,11 @@ compilerPrototype.table = function (token) {
  *   });
  *   // 'Qux'
  *
- * @param {Object} token - `tableCell` node.
+ * @param {Object} node - `tableCell` node.
  * @return {string} - Markdown table cell.
  */
-compilerPrototype.tableCell = function (token) {
-    return this.all(token).join(EMPTY);
+compilerPrototype.tableCell = function (node) {
+    return this.all(node).join(EMPTY);
 };
 
 /**
@@ -4789,31 +4801,35 @@ var rootParent = {}
  * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
  * Opera 11.6+, iOS 4.2+.
  *
+ * Due to various browser bugs, sometimes the Object implementation will be used even
+ * when the browser supports typed arrays.
+ *
  * Note:
  *
- * - Implementation must support adding new properties to `Uint8Array` instances.
- *   Firefox 4-29 lacked support, fixed in Firefox 30+.
- *   See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
+ *   - Firefox 4-29 lacks support for adding new properties to `Uint8Array` instances,
+ *     See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438.
  *
- *  - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
+ *   - Safari 5-7 lacks support for changing the `Object.prototype.constructor` property
+ *     on objects.
  *
- *  - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
- *    incorrect length in some situations.
+ *   - Chrome 9-10 is missing the `TypedArray.prototype.subarray` function.
  *
- * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they will
- * get the Object implementation, which is slower but will work correctly.
+ *   - IE10 has a broken `TypedArray.prototype.subarray` function which returns arrays of
+ *     incorrect length in some situations.
+
+ * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
+ * get the Object implementation, which is slower but behaves correctly.
  */
 Buffer.TYPED_ARRAY_SUPPORT = (function () {
-  function Foo () {}
+  function Bar () {}
   try {
-    var buf = new ArrayBuffer(0)
-    var arr = new Uint8Array(buf)
+    var arr = new Uint8Array(1)
     arr.foo = function () { return 42 }
-    arr.constructor = Foo
+    arr.constructor = Bar
     return arr.foo() === 42 && // typed array instances can be augmented
-        arr.constructor === Foo && // constructor can be set
+        arr.constructor === Bar && // constructor can be set
         typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
-        new Uint8Array(1).subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
   } catch (e) {
     return false
   }
@@ -6051,7 +6067,7 @@ Buffer._augment = function _augment (arr) {
   return arr
 }
 
-var INVALID_BASE64_RE = /[^+\/0-9A-z\-]/g
+var INVALID_BASE64_RE = /[^+\/0-9A-Za-z-_]/g
 
 function base64clean (str) {
   // Node strips out invalid characters like \n and \t from the string, base64-js does not
