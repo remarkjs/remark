@@ -1,4 +1,4 @@
-.TH "MDASTRC" "5" "July 2015" "0.28.0" "mdast"
+.TH "MDASTRC" "5" "August 2015" "0.28.0" "mdast"
 .SH "NAME"
 \fBmdastrc\fR - mdast config files
 .SH "SYNOPSIS"
@@ -8,7 +8,7 @@
 .P
 \fBmdast\fR gets its configuration from the command line and \fBmdastrc\fR files.
 .P
-For a list of available configuration options, see \fBmdast\fR(1) or \fIhttps://github.com/wooorm/mdast/blob/master/doc/options.md\fR.
+For a list of available configuration options, see \fBmdast\fR(1) or \fBmdastsetting\fR(7).
 .SH "FILES"
 .P
 All \fBmdastrc\fR(5) configuration files are in JSON.
@@ -39,7 +39,7 @@ The \fBoutput\fR field specifies whether or not files should be written to the f
 .fi
 .RE
 .P
-Settings contains an object mapping a setting to a value. See \fBman 7 mdastconfig\fR for available settings.
+Settings contains an object mapping a setting to a value. See \fBmdastsetting\fR(7) for available settings.
 .SS "plugins"
 .P
 List:
@@ -146,10 +146,10 @@ Then, when stringifying \fBdocs\[sl]doc.md\fR, \fBmdast\fR(1) would use \fBbulle
 When stringifying \fBreadme.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.mdastrc\fR takes precedence over \fBpackage.json\fR.
 .SH "BUGS"
 .P
-\fIhttps://github.com/wooorm/mdast/issues\fR
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdastignore\fR(5), \fBmdastconfig\fR(7).
+\fBmdast\fR(1), \fBmdastignore\fR(5), \fBmdastsetting\fR(7), \fBmdastsetting\fR(7).
 .SH "AUTHOR"
 .P
-Written by Titus Wormer \fItituswormer@gmail.com\fR
+Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

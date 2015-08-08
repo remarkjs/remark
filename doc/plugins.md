@@ -2,27 +2,18 @@
 
 # Plugins
 
+**mdast** plugins lie at the core of **mdast**’s vision. As they operate on
+the same syntax tree, there is no start-up time penalty when using more than
+one plug-in—something which traditional tools, which need to re-compile
+to markdown to connect together, can be immense on large documents.
+
 ## Table of Contents
 
 *   [List of Plugins](#list-of-plugins)
-
 *   [List of Utilities](#list-of-utilities)
-
-*   [Using Plugins](#using-plugins)
-
-    *   [Programmatically](#programmatically)
-    *   [CLI](#cli)
-    *   [.mdastrc](#mdastrc)
-
-*   [Creating Plugins](#creating-plugins)
-
-    *   [Plugin](#plugin)
-
-        *   [function attacher(mdast, options?, fileSet?)](#function-attachermdast-options-fileset)
-        *   [function transformer(ast, file, next?)](#function-transformerast-file-next)
-        *   [function completer(fileSet, next?)](#function-completerfileset-next)
-
-    *   [Publishing](#publishing)
+*   [Using plugins](#using-plugins)
+*   [Creating plugins](#creating-plugins)
+*   [Publishing plugins](#publishing-plugins)
 
 ## List of Plugins
 
@@ -95,7 +86,7 @@
 ## List of Utilities
 
 Although not **mdast** plug-ins, the following projects are useful when
-working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md):
+working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode.7.md):
 
 *   [wooorm/mdast-util-definitions](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
@@ -112,182 +103,17 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md)
 *   [wooorm/mdast-util-visit](https://github.com/wooorm/mdast-util-visit)
     — Recursively walk over nodes.
 
-## Using Plugins
+## Using plugins
 
-This section contains information on how to use **mdast** plugins. To create
-plugins, see [below](#creating-plugins).
+See [**mdastplugin**(7)](https://github.com/wooorm/mdast/blob/master/doc/mdastplugin.7.md)
+for more information on using plugins.
 
-### Programmatically
+## Creating plugins
 
-To use plugins in **mdast**(3), the JavaScript API, pass a plugin to
-`mdast.use(plugin, options)`.
+See [**mdastplugin**(3)](https://github.com/wooorm/mdast/blob/master/doc/mdastplugin.3.md)
+for more information on creating plugins.
 
-See [`man 3 mdast`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastuseplugin-options)
-for more information.
-
-### CLI
-
-To use plugins from the CLI, use the `--use` key (short: `-u`), which can be
-passed a single npm plugin, or a path to any CommonJS JavaScript file which
-exposes a plugin.
-When referencing an npm plugin, and the plugin’s name is prefixed by `mdast-`,
-this prefix can be omitted.
-
-To pass options, follow the plugin’s location by an equals sign (`=`), which
-is then followed by settings. For example, `--use toc=heading:contents`.
-
-Each setting is delimited by a comma or a semi-colon, and each key is separated
-with a colon from its value.
-
-See [`man 1 mdast`](https://github.com/wooorm/mdast/blob/master/doc/mdast.1.md)
-for more information.
-
-### .mdastrc
-
-`.mdastrc`, and `package.json` files can declare which plugins should be
-used by including either a list of plugins or a map of plugin–options pairs
-on a `plugins` field in the exposed object.
-When referencing an npm plugin, and the plugin’s name is prefixed by
-`mdast-`, this prefix can be omitted.
-
-For example, the following `.mdastrc` file will use
-[**mdast-github**](https://www.npmjs.com/package/mdast-github):
-
-```json
-{
-  "plugins": [
-    "github"
-  ]
-}
-```
-
-The below `.mdastrc` file does the same, but additionally provides options
-to the plugin:
-
-```json
-{
-  "plugins": {
-    "github": {
-      "repository": "foo/bar"
-    }
-  }
-}
-```
-
-See [`man 5 mdastrc`](https://github.com/wooorm/mdast/blob/master/doc/mdastrc.5.md)
-for more information.
-
-## Creating Plugins
-
-This section contains information on how **mdast** plugins work. It focusses
-on how to create plugins, rather than on how to implement them. To implement
-plugins, see [above](#using-plugins).
-
-### Plugin
-
-An **mdast** plugin does one or two things:
-
-*   It modifies the instance: the parser and/or the stringifier;
-*   It transforms the AST.
-
-Both have their own function. The first is called an
-[“attacher”](#function-attachermdast-options-fileset). The second is named a
-[“transformer”](#function-transformerast-file-next). An “attacher” may
-return a “transformer”.
-
-#### function attacher([mdast](https://github.com/wooorm/mdast#api), options?, [fileSet](mdast.3.md#fileset)?)
-
-To modify the parser (for an example, see
-[`test/mentions.js`](https://github.com/wooorm/mdast/blob/master/test/mentions.js)),
-create an attacher. An attacher is the thing passed to
-[`use`](https://github.com/wooorm/mdast#mdastuseplugin-options). It can
-receive plugin specific options, but that’s entirely up to the developer.
-An **attacher** is invoked when the plugin is first
-[`use`](https://github.com/wooorm/mdast#mdastuseplugin-options)d, and can
-return a transformer which will be called on subsequent
-[`mdast.process()`](https://github.com/wooorm/mdast#mdastprocessvalue-options-done)s
-or [`mdast.run()`](mdast.3.md#mdastrunast-file-done)s.
-
-**Signatures**
-
-*   `transformer? = attacher(mdast, options?)`.
-
-**Parameters**
-
-*   `mdast` (`Object`) — Context on which the plugin was
-    [`use`](https://github.com/wooorm/mdast#mdastuseplugin-options)d;
-
-*   `options` (`Object?`) — Plugin specific options.
-
-*   `fileSet` ([`fileSet?`](mdast.3.md#fileset)) — All files being processed
-    by **mdast**(1). Only passed on the Command-Line.
-
-**Returns**
-
-[`transformer`](#function-transformerast-file-next) (optional).
-
-#### function transformer([ast](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node), [file](https://github.com/wooorm/vfile#api), next?)
-
-To transform an AST, create a transformer. A transformer is a simple
-function which is invoked each time a document is
-[`mdast.process()`](https://github.com/wooorm/mdast#mdastprocessvalue-options-done)d
-or [`mdast.run()`](mdast.3.md#mdastrunast-file-done). A transformer should
-change the [AST](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#node)
-add or remove nodes or modify the [file](https://github.com/wooorm/vfile#api).
-
-**Signatures**
-
-*   `err? = transformer(ast, file)`.
-*   `err? = transformer(ast, file, next)`.
-
-**Parameters**
-
-*   `ast` (`Object`) — An AST as returned by
-    [`mdast.parse()`](mdast.3.md#mdastparsefile-options);
-
-*   `file` (`VFile`) — [VFile](https://github.com/wooorm/vfile#api) object.
-
-*   `next` (`function(err?)`, optional) — If the signature includes both
-    `ast` and `next`, `transformer` **may** finish asynchronous, and **must**
-    invoke `next(Error?)` on completion.
-
-**Returns**
-
-`err` (`Error`, optional) — Exception which will be thrown.
-
-#### function completer([fileSet](mdast.3.md#fileset), next?)
-
-To access all files once they are transformed, create a completer.
-A completer is invoked before files are compiled, written, and logged,
-but after reading, parsing, and transforming. Thus, a completer
-can still transform files or log messages.
-
-**Signatures**
-
-*   `err? = completer(fileSet)`.
-*   `err? = completer(fileSet, next)`.
-
-**Properties**
-
-*   `pluginId` (`*`) — `attacher` is invoked for each file, so if it
-    `use`s `completer` on the file-set, it would attach multiple times.
-    By providing `pluginId` on `completer`, **mdast** will ensure no
-    completers will be added if one is already added with their identifier.
-
-**Parameters**
-
-*   `fileSet` ([`fileSet?`](mdast.3.md#fileset)) — All files being processed
-    by **mdast**(1).
-
-*   `next` (`function(err?)`, optional) — If the signature includes both
-    `fileSet` and `next`, `compiler` **may** finish asynchronous, and **must**
-    invoke `next(Error?)` on completion.
-
-**Returns**
-
-`err` (`Error`, optional) — Exception which will be thrown.
-
-### Publishing
+## Publishing plugins
 
 It is recommended to publish a plugin as an
 [npm module](https://docs.npmjs.com/getting-started/publishing-npm-packages).
@@ -295,10 +121,15 @@ It is recommended to publish a plugin as an
 You should pick a name prefixed by `"mdast-"`, valid examples are
 [**mdast-toc**](https://www.npmjs.com/package/mdast-toc) or
 [**mdast-yaml-config**](https://www.npmjs.com/package/mdast-yaml-config).
+The reasoning here is that they can be used on the CLI without this prefix,
+but can still be meaningful. For example, `lint` was not available, but instead
+of opting for `liiint` or some other weird form, using `mdast-lint` ensured a
+unique name on package managers, while still being meaningful to users.
 
 Additionally, when the library could be used in the browser, I recommend
-publishing to [Bower](http://bower.io/docs/creating-packages/) and
+publishing to both [Bower](http://bower.io/docs/creating-packages/) and
 [Component](https://github.com/componentjs/guide/blob/master/creating-components/publishing.md).
+The latter will also make a package usable by [Duo](https://github.com/duojs/duo).
 
-When publishing a plugin, you should utilise the package manager’s keywords
+When publishing a plugin, you should utilize the package manager’s keywords
 functionality and include `"mdast"` in the list.

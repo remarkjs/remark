@@ -4,5 +4,4 @@ It's possible to customise how GFM code fences are stringified:
     blocks in the provided character.
 
 To render all code blocks with fences (the default behavior is to only use
-non-standard fences when a language-flag is present), use
-[`fences: true`](https://github.com/wooorm/mdast/blob/master/doc/options.md#fences).
+non-standard fences when a language-flag is present), use `fences: true`.

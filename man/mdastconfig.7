@@ -1,4 +1,4 @@
-.TH "MDASTCONFIG" "7" "July 2015" "0.28.0" "mdast"
+.TH "MDASTCONFIG" "7" "August 2015" "0.28.0" "mdast"
 .SH "NAME"
 \fBmdastconfig\fR - mdast configuration
 .SH "SYNOPSIS"
@@ -19,11 +19,11 @@ Plug-ins can configure mdast, for example, \fBmdast-yaml-config\fR allows per-fi
 .RE 0
 
 .P
-For a list of available configuration options, see the SETTINGS section below or \fIhttps://github.com/wooorm/mdast/blob/master/doc/options.md\fR.
-.SS "SETTINGS FOR \fBPROCESS\fR, \fBPARSE()\fR, AND \fBSTRINGIFY()\fR"
+For a list of available configuration settings, see \fBmdastsetting\fR(7).
+.SH "SETTINGS FOR \FBPROCESS\FR, \FBPARSE\FR, AND \FBSTRINGIFY\FR"
 .P
 To configure the programatic interface of \fBmdast\fR, pass an object as a second parameter to \fBprocess()\fR, \fBparse()\fR, and \fBstringify()\fR.
-.SS "COMMAND LINE SETTINGS"
+.SH "COMMAND LINE SETTINGS"
 .P
 To configure the shell interface of \fBmdast\fR, pass a string to the \fB--setting\fR (or \fB-s\fR) flag.
 .P
@@ -47,72 +47,15 @@ mdast --setting \[dq]foo: false, bar-baz: \[lB]\[rs]\[dq]qux\[rs]\[dq], 1\[rB]\[
 .RE
 .P
 Command Line Settings can be specified both in camel- and dash-case: \fBfoo-bar: true\fR and \fBfooBar: true\fR are treated equally.
-.SS "CONFIGURATION FILES"
+.SH "CONFIGURATION FILES"
 .P
 Specify directory specific settings with \fB.mdastrc\fR and \fBpackage.json\fR files. See \fBmdastrc\fR(5) for more information.
-.SH "SETTINGS"
-.SS "PARSE"
-.P
-See \fIhttps://github.com/wooorm/mdast/blob/master/doc/options.md#parse\fR for a description of these settings.
-.RS 0
-.IP \(bu 4
-\fBposition\fR (boolean, default: true);
-.IP \(bu 4
-\fBgfm\fR (boolean, default: true);
-.IP \(bu 4
-\fByaml\fR (boolean, default: true);
-.IP \(bu 4
-\fBpedantic\fR (boolean, default: false);
-.IP \(bu 4
-\fBcommonmark\fR (boolean, default: false);
-.IP \(bu 4
-\fBbreaks\fR (boolean, default: false);
-.IP \(bu 4
-\fBfootnotes\fR (boolean, default: false).
-.RE 0
-
-.SS "STRINGIFY"
-.P
-See \fIhttps://github.com/wooorm/mdast/blob/master/doc/options.md#stringify\fR for a description of these settings.
-.RS 0
-.IP \(bu 4
-\fBentities\fR (\fBfalse\fR, \fBtrue\fR, or \fB\[dq]numbers\[dq]\fR, default: \fBfalse\fR);
-.IP \(bu 4
-\fBsetext\fR (boolean, default: \fBfalse\fR);
-.IP \(bu 4
-\fBcloseAtx\fR (boolean, default: \fBfalse\fR);
-.IP \(bu 4
-\fBlooseTable\fR (boolean, default: \fBfalse\fR);
-.IP \(bu 4
-\fBspacedTable\fR (boolean, default: \fBtrue\fR);
-.IP \(bu 4
-\fBincrementListMarker\fR (boolean, default: \fBtrue\fR);
-.IP \(bu 4
-\fBfences\fR (boolean, default: \fBfalse\fR);
-.IP \(bu 4
-\fBfence\fR (\fB\[dq]\[ti]\[dq]\fR or \fB\[dq]\[ga]\[dq]\fR, default: \fB\[dq]\[ga]\[dq]\fR);
-.IP \(bu 4
-\fBbullet\fR (\fB\[dq]-\[dq]\fR, \fB\[dq]*\[dq]\fR, or \fB\[dq]\[pl]\[dq]\fR, default: \fB\[dq]-\[dq]\fR);
-.IP \(bu 4
-\fBlistItemIndent\fR (\fB\[dq]tab\[dq]\fR, \fB\[dq]mixed\[dq]\fR, or \fB\[dq]1\[dq]\fR, default: \fB\[dq]tab\[dq]\fR);
-.IP \(bu 4
-\fBrule\fR (\fB\[dq]-\[dq]\fR, \fB\[dq]\[rs]*\[dq]\fR, or \fB\[dq]\[ul]\[dq]\fR, default: \fB\[dq]*\[dq]\fR);
-.IP \(bu 4
-\fBruleRepetition\fR (number, default: \fB3\fR);
-.IP \(bu 4
-\fBruleSpaces\fR (boolean, default: \fBfalse\fR);
-.IP \(bu 4
-\fBstrong\fR (\fB\[dq]\[ul]\[dq]\fR or \fB\[dq]\[rs]*\[dq]\fR, default: \fB\[dq]*\[dq]\fR);
-.IP \(bu 4
-\fBemphasis\fR (\fB\[dq]\[rs]\[ul]\[dq]\fR or \fB\[dq]*\[dq]\fR, default: \fB\[dq]\[ul]\[dq]\fR).
-.RE 0
-
 .SH "BUGS"
 .P
-\fIhttps://github.com/wooorm/mdast/issues\fR
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdast\fR(3), \fBmdastrc\fR(5), \fBmdastignore\fR(5).
+\fBmdast\fR(1), \fBmdast\fR(3), \fBmdastrc\fR(5), \fBmdastignore\fR(5), \fBmdastsetting\fR(7).
 .SH "AUTHOR"
 .P
-Written by Titus Wormer \fItituswormer@gmail.com\fR
+Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

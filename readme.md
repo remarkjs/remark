@@ -114,10 +114,10 @@ This section only covers the interface you’ll use most often. See
 *   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options)
     — Parses markdown into an abstract syntax tree;
 
-*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunast-file-done)
+*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunnode-file-done)
     — Applies plugins to the syntax tree;
 
-*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifyast-file-options)
+*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifynode-file-options)
     — Compiles the syntax tree into a string;
 
 *   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done)
@@ -129,7 +129,7 @@ This section only covers the interface you’ll use most often. See
 *   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file)
     — Callback passed to `run()` and `process()`.
 
-### [mdast](#api).process(value, [options](doc/options.md)?, done?)
+### [mdast](#api).process(value, [options](doc/mdastsetting.7.md)?, done?)
 
 Parse a markdown document, apply plugins to it, and compile it into
 something else.
@@ -144,28 +144,28 @@ something else.
 
 *   `options` (`Object`) — Settings:
 
-    *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/options.md#github-flavoured-markdown);
-    *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/options.md#yaml);
-    *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/options.md#commonmark);
-    *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/options.md#footnotes);
-    *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/options.md#pedantic);
-    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/options.md#breaks);
-    *   `entities` (`boolean`, default: `false`) — See [Encoding Entities](doc/options.md#encoding-entities);
-    *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/options.md#setext-headings);
-    *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/options.md#closed-atx-headings);
-    *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/options.md#loose-tables);
-    *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/options.md#spaced-tables);
-    *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/options.md#fence);
-    *   `fences` (`boolean`, default: `false`) — See [Fences](doc/options.md#fences);
-    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/options.md#list-item-bullets);
-    *   `listItemIndent` (`"tab"`, `"mixed"` or `"1"`, default: `"tab"`) — See [List Item Indent](doc/options.md#list-item-indent);
-    *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/options.md#list-marker-increase);
-    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
-    *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
-    *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/options.md#horizontal-rules);
-    *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/options.md#emphasis-markers);
-    *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/options.md#emphasis-markers).
-    *   `position` (`boolean`, default: `true`) — See [Position](doc/options.md#position);
+    *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/mdastsetting.7.md#github-flavoured-markdown);
+    *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/mdastsetting.7.md#yaml);
+    *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/mdastsetting.7.md#commonmark);
+    *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/mdastsetting.7.md#footnotes);
+    *   `pedantic` (`boolean`, default: `false`) — See [Pedantic](doc/mdastsetting.7.md#pedantic);
+    *   `breaks` (`boolean`, default: `false`) — See [Breaks](doc/mdastsetting.7.md#breaks);
+    *   `entities` (`boolean`, default: `false`) — See [Encoding Entities](doc/mdastsetting.7.md#encoding-entities);
+    *   `setext` (`boolean`, default: `false`) — See [Setext Headings](doc/mdastsetting.7.md#setext-headings);
+    *   `closeAtx` (`boolean`, default: `false`) — See [Closed ATX Headings](doc/mdastsetting.7.md#closed-atx-headings);
+    *   `looseTable` (`boolean`, default: `false`) — See [Loose Tables](doc/mdastsetting.7.md#loose-tables);
+    *   `spacedTable` (`boolean`, default: `true`) — See [Spaced Tables](doc/mdastsetting.7.md#spaced-tables);
+    *   `fence` (`"~"` or ``"`"``, default: ``"`"``) — See [Fence](doc/mdastsetting.7.md#fence);
+    *   `fences` (`boolean`, default: `false`) — See [Fences](doc/mdastsetting.7.md#fences);
+    *   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`) — See [List Item Bullets](doc/mdastsetting.7.md#list-item-bullets);
+    *   `listItemIndent` (`"tab"`, `"mixed"` or `"1"`, default: `"tab"`) — See [List Item Indent](doc/mdastsetting.7.md#list-item-indent);
+    *   `incrementListMarker` (`boolean`, default: `true`) — See [List Marker Increase](doc/mdastsetting.7.md#list-marker-increase);
+    *   `rule` (`"-"`, `"*"`, or `"_"`, default: `"*"`) — See [Horizontal Rules](doc/mdastsetting.7.md#horizontal-rules);
+    *   `ruleRepetition` (`number`, default: `3`) — See [Horizontal Rules](doc/mdastsetting.7.md#horizontal-rules);
+    *   `ruleSpaces` (`boolean`, default `true`) — See [Horizontal Rules](doc/mdastsetting.7.md#horizontal-rules);
+    *   `strong` (`"_"`, or `"*"`, default `"*"`) — See [Emphasis Markers](doc/mdastsetting.7.md#emphasis-markers);
+    *   `emphasis` (`"_"`, or `"*"`, default `"_"`) — See [Emphasis Markers](doc/mdastsetting.7.md#emphasis-markers).
+    *   `position` (`boolean`, default: `true`) — See [Position](doc/mdastsetting.7.md#position);
 
 *   `done` (`function(Error?, string?)`) — Callback invoked when the output
     is generated with either an error, or a result. Only strictly needed when
@@ -182,7 +182,7 @@ The result is `null` if a plugin is asynchronous, in which case the callback
 `done` should’ve been passed (don’t worry: plugin creators make sure you know
     its async).
 
-### [mdast](#api).use([plugin](doc/plugins.md#plugin), options?)
+### [mdast](#api).use([plugin](doc/plugins.md#plugins), options?)
 
 Change the way [`mdast`](#api) works by using a [`plugin`](doc/plugins.md).
 
@@ -194,11 +194,8 @@ Change the way [`mdast`](#api) works by using a [`plugin`](doc/plugins.md).
 **Parameters**
 
 *   `plugin` (`Function`) — A [**Plugin**](doc/plugins.md);
-
 *   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/plugins.md)s;
-
-*   `options` (`Object?`) — Passed to the plugin. Specified by its
-    documentation.
+*   `options` (`Object?`) — Passed to plugin. Specified by its documentation.
 
 **Returns**
 

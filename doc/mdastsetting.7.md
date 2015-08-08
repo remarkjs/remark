@@ -1,10 +1,13 @@
-![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
+# mdastsetting(7) -- mdast settings
 
-# Options
+## SYNOPSIS
 
-This page contains information and usage examples regarding available options for [`mdast.parse()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options) and [`mdast.stringify()`](https://github.com/wooorm/mdast/blob/master/doc/mdast.3.md#mdaststringifyast-options).
+**mdast**(1), **mdast**(3), **mdastrc**(5)
 
-Information on **mdast** itself is available in the project’s [readme.md](https://github.com/wooorm/mdast#readme).
+## DESCRIPTION
+
+This page contains information and usage examples regarding
+available options for **mdast**(3)’s `parse()` and `stringify()`.
 
 ## Table of Contents
 
@@ -38,8 +41,7 @@ Information on **mdast** itself is available in the project’s [readme.md](http
 ### Breaks
 
 Setting `breaks: true` (default: `false`) exposes new line characters inside
-[**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph)s
-as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.
+Paragraphs as Breaks.
 
 The following document:
 
@@ -144,18 +146,14 @@ Yields:
 
 Setting `commonmark: true` (default: `false`):
 
-*   Adds support for empty lines to split
-    [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote)s;
+*   Adds support for empty lines to split **Blockquotes**;
 
-*   Adds support for parentheses (`(` and `)`) as delimiters for
-    [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link)
-    and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image)
-    titles;
+*   Adds support for parentheses (`(` and `)`) as delimiters for **Link** and
+    **Image** titles;
 
 *   Adds support for parsing any escaped
     [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes)
-    character as
-    [**Escape**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#escape)s;
+    character as **Escapes**;
 
 *   Adds support for parsing ordered list-items with a closing
     parenthesis (`)`);
@@ -163,10 +161,7 @@ Setting `commonmark: true` (default: `false`):
 *   Adds support for link reference definitions (and footnote reference
     definitions, when in `footnotes: true` mode) in blockquotes;
 
-*   Removes support for
-    [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code)
-    directly following a
-    [**Paragraph**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#paragraph);
+*   Removes support for **Code** directly following a **Paragraph**;
 
 *   Removes support for ATX-headings (`# Hash headings`) without spacing
     after initial hashes or and before closing hashes;
@@ -174,15 +169,14 @@ Setting `commonmark: true` (default: `false`):
 *   Removes support for Setext-headings (`Underline headings\n---`) when
     directly following a paragraph;
 
-*   Removes support for new lines in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image) titles;
+*   Removes support for new lines in **Link** and **Image** titles;
 
-*   Removes support for white space in [**Link**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#link) and [**Image**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#image) URLs when not enclosed in angle brackets (`<` and `>`);
+*   Removes support for white space in **Link** and **Image** URLs when not
+    enclosed in angle brackets (`<` and `>`);
 
-*   Removes support for lazy [**Blockquote**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#blockquote)
-    continuation—lines not preceded by a closing angle bracket (`>`)—for
-    [**List**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#list)s,
-    [**Code**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#code),
-    and [**HorizontalRule**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#horizontalrule)s.
+*   Removes support for lazy **Blockquote** continuation—lines not preceded by
+    a closing angle bracket (`>`)—for **List**s, **Code**, and
+    **HorizontalRule**.
 
 The following document:
 
@@ -564,18 +558,10 @@ Yields:
 
 Setting `gfm: true` (default: `true`) enables:
 
-*   [Fenced](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks)
-    code blocks;
-
-*   [Autolinking](https://help.github.com/articles/github-flavored-markdown/#url-autolinking)
-    of URLs;
-
-*   [Deletions](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
-    (strikethrough);
-
-*   [Task](https://help.github.com/articles/writing-on-github/#task-lists)
-    lists;
-
+*   [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks);
+*   [Autolinking of URLs](https://help.github.com/articles/github-flavored-markdown/#url-autolinking);
+*   [Deletions (strikethrough)](https://help.github.com/articles/github-flavored-markdown/#strikethrough);
+*   [Task lists](https://help.github.com/articles/writing-on-github/#task-lists);
 *   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables).
 
 The following document:
@@ -1116,8 +1102,7 @@ It's possible to customise how GFM code fences are stringified:
     blocks in the provided character.
 
 To render all code blocks with fences (the default behavior is to only use
-non-standard fences when a language-flag is present), use
-[`fences: true`](https://github.com/wooorm/mdast/blob/master/doc/options.md#fences).
+non-standard fences when a language-flag is present), use `fences: true`.
 
 The following document:
 
@@ -1150,7 +1135,7 @@ Yields:
 Setting `fences: true` (default: `false`) will stringify code blocks without
 programming-language flags using heredoc-style fences.
 
-To use different fence markers, use [`fence: string`](https://github.com/wooorm/mdast/blob/master/doc/options.md#fence).
+To use different fence markers, use `fence: string`.
 
 The following document:
 

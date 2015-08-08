@@ -2,57 +2,192 @@
 
 ## SYNOPSIS
 
-`mdast` \[`options`\] _file|dir_ _..._
+`mdast` \[`options`\] <_file|dir_ _..._>
 
 ## DESCRIPTION
 
-**mdast** is speedy Markdown parser (and stringifier) for multipurpose
-analysis in JavaScript.  Node.js and browser.  Lots of tests.  100%
-coverage.
+**mdast** is a markdown processor powered by plugins.
 
 Logs verbose debugging information when `$DEBUG` is set to `"mdast"`.
 
-Options are as follows:
+## OPTIONS
 
-*   `-h`, `--help`: Output usage information;
+### `-h`, `--help`
 
-*   `-V`, `--version`: Output version number;
+```sh
+mdast --help
+```
 
-*   `-o`, `--output` _path_: Specify output.  When _path_ is omitted, input
-    files are overwritten.  When _path_ is a directory, files are written to
-    that directory.  When the parent directory of _path_ exists, and multiple
-    files are given, an error is thrown, if one file is given it is written
-    to _path_.
+Output short usage information.
 
-*   `-c`, `--config-path` _path_: specify configuration location;
+### `-v`, `--version`
 
-*   `-i`, `--ignore-path` _path_: specify ignore location;
+```sh
+mdast --version
+```
 
-*   `-s`, `--setting` _settings_: specify settings;
+Output CLI version number.
 
-*   `-u`, `--use` _plugin_: use a plugin, optionally with options;
+### `-o`, `--output` \[_path_\]
 
-*   `-e`, `--ext` _extensions_: specify file extensions to look for;
+```sh
+mdast . --output
+mdast . --output doc
+mdast readme.md --output doc/foo.bar
+```
 
-*   `-a`, `--ast`: output AST information;
+Specify output.
 
-*   `-q`, `--quiet`: output only warnings and errors;
+*   If output is **not** given and one file is processed, the file is written
+    to **stdout**(4). See `--no-stdout` to disable this behavior;
 
-*   `-S`, `--silent`: output only errors;
+*   Otherwise, if output is **not** given and multiple files are processed,
+    files are neither written to **stdout**(4) nor to the file-system;
 
-*   `-f`, `--frail`: exit with 1 on warnings;
+*   Otherwise, if output is given but **without** path, input files are
+    overwritten;
 
-*   `--file-path <path>`: specify file path to process as
+*   Otherwise, if a path to an existing directory is given, files are written
+    to that directory;
 
-*   `--no-stdout`: disable writing to stdout;
+*   Otherwise, if one file is processed and the parent directory of the given
+    path exists, the file is written to the given path;
 
-*   `--no-color`: disable color in output;
+*   Otherwise, a fatal error is thrown.
 
-*   `--no-rc`: disable configuration from _.mdastrc_;
+### `-c`, `--config-path` <_path_>
 
-*   `--no-ignore`: disable ignoring from _.mdastignore_.
+```sh
+mdast --config-path mdastrc.json
+```
 
-A `--` argument tells the cli parser to stop reading flags.
+Specify configuration location. This loads an **mdastrc**(5) file which cannot
+be detected (either because `--no-rc` is given or because it has a different
+name) in addition to other detected files.
+
+### `-i`, `--ignore-path` <_path_>
+
+```sh
+mdast --ignore-path .gitignore
+```
+
+Specify ignore location. This loads an **mdastignore**(5) file which cannot be
+detected (either because `--no-ignore` is given or because it has a different
+name) in addition to other detected files.
+
+### `-s`, `--setting` <_settings_>
+
+```sh
+mdast --setting "position:false"
+```
+
+Specify settings (see **mdastsetting**(7)). This must be a valid JSON object
+except for a few differences. See **mdastconfig**(7) COMMAND LINE SETTINGS
+for more information.
+
+### `-u`, `--use` <_plugin_>
+
+```sh
+mdast --use man
+```
+
+Specify a plug-in to use, optionally with options. See **mdastplugin**(7)
+COMMAND LINE USAGE for more information.
+
+### `-e`, `--ext` <_extensions_>
+
+```sh
+mdast --ext .doc
+```
+
+Specify one or more extensions to include when searching for files.
+This will add the given `extensions` to the internal list, which includes
+`'md'`, `'markdown'`, `'mkd'`, `'mkdn'`, `'mkdown'`, and `'ron'`.
+
+The given `extensions` can be comma or semi-colon separated.
+
+### `-a`, `--ast`
+
+```sh
+mdast --ast
+```
+
+Instead of outputting document the internally used AST is exposed.
+
+### `-q`, `--quiet`
+
+```sh
+mdast --quiet
+```
+
+Do not output non-essential text, only warnings and errors.
+
+### `-S`, `--silent`
+
+```sh
+mdast --silent
+```
+
+Same as `-q`, `--quiet`, but also ignores warnings.
+
+### `-f`, `--frail`
+
+```sh
+mdast --frail
+```
+
+Exit with a status code of `1` if warnings are trigger for the processed
+code, instead of the default of only exiting with `1` on fatal errors.
+
+### `--file-path` <_path_>
+
+```sh
+cat readme.md | mdast --file-path readme.md > doc/out.md
+```
+
+Process the piped-in document as if it was a file at `path`.
+
+### `--no-stdout`
+
+```sh
+mdast --no-stdout
+```
+
+Do not write a processed file to **stdout**(4).
+
+### `--no-color`
+
+```sh
+mdast --no-color
+```
+
+Disable ANSI codes in output.
+
+### `--no-rc`
+
+```sh
+mdast --no-rc
+```
+
+Disabled configuration from **mdastrc**(5) files. This does not apply to
+explicitly provided files through `-c`, `--config-path`.
+
+### `--no-ignore`
+
+```sh
+mdast --no-ignore
+```
+
+Disabled configuration from **mdastignore**(5) files. This does not apply to
+explicitly provided files through `-i`, `--ignore-path`.
+
+### `--`
+
+```sh
+mdast . --
+```
+
+If a `--` argument is found, argument parsing is stopped.
 
 ## DIAGNOSTICS
 
@@ -64,7 +199,8 @@ A `--` argument tells the cli parser to stop reading flags.
 
 ## SEE ALSO
 
-**mdastrc**(5), **mdastignore**(5), **mdastconfig**(7), **mdast**(3).
+**mdastrc**(5), **mdastignore**(5), **mdastsetting**(7), **mdastconfig**(7),
+**mdastplugin**(7)
 
 ## AUTHOR
 

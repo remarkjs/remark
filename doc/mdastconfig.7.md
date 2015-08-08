@@ -20,15 +20,14 @@
 *   Plug-ins can configure mdast, for example, **mdast-yaml-config** allows
     per-file configuration to be set through YAML front-matter.
 
-For a list of available configuration options, see the SETTINGS section
-below or <https://github.com/wooorm/mdast/blob/master/doc/options.md>.
+For a list of available configuration settings, see **mdastsetting**(7).
 
-### SETTINGS FOR `PROCESS`, `PARSE()`, AND `STRINGIFY()`
+## SETTINGS FOR `PROCESS`, `PARSE`, AND `STRINGIFY`
 
 To configure the programatic interface of **mdast**, pass an object as a
 second parameter to `process()`, `parse()`, and `stringify()`.
 
-### COMMAND LINE SETTINGS
+## COMMAND LINE SETTINGS
 
 To configure the shell interface of **mdast**, pass a string to the
 `--setting` (or `-s`) flag.
@@ -52,46 +51,10 @@ mdast --setting "foo: false, bar-baz: [\"qux\", 1]"
 Command Line Settings can be specified both in camel- and dash-case:
 `foo-bar: true` and `fooBar: true` are treated equally.
 
-### CONFIGURATION FILES
+## CONFIGURATION FILES
 
 Specify directory specific settings with `.mdastrc` and `package.json`
 files.  See **mdastrc**(5) for more information.
-
-## SETTINGS
-
-### PARSE
-
-See <https://github.com/wooorm/mdast/blob/master/doc/options.md#parse>
-for a description of these settings.
-
-*   `position` (boolean, default: true);
-*   `gfm` (boolean, default: true);
-*   `yaml` (boolean, default: true);
-*   `pedantic` (boolean, default: false);
-*   `commonmark` (boolean, default: false);
-*   `breaks` (boolean, default: false);
-*   `footnotes` (boolean, default: false).
-
-### STRINGIFY
-
-See <https://github.com/wooorm/mdast/blob/master/doc/options.md#stringify>
-for a description of these settings.
-
-*   `entities` (`false`, `true`, or `"numbers"`, default: `false`);
-*   `setext` (boolean, default: `false`);
-*   `closeAtx` (boolean, default: `false`);
-*   `looseTable` (boolean, default: `false`);
-*   `spacedTable` (boolean, default: `true`);
-*   `incrementListMarker` (boolean, default: `true`);
-*   `fences` (boolean, default: `false`);
-*   `fence` (`"~"` or ``"`"``, default: ``"`"``);
-*   `bullet` (`"-"`, `"*"`, or `"+"`, default: `"-"`);
-*   `listItemIndent` (`"tab"`, `"mixed"`, or `"1"`, default: `"tab"`);
-*   `rule` (`"-"`, `"\*"`, or `"_"`, default: `"*"`);
-*   `ruleRepetition` (number, default: `3`);
-*   `ruleSpaces` (boolean, default: `false`);
-*   `strong` (`"_"` or `"\*"`, default: `"*"`);
-*   `emphasis` (`"\_"` or `"*"`, default: `"_"`).
 
 ## BUGS
 
@@ -99,7 +62,8 @@ for a description of these settings.
 
 ## SEE ALSO
 
-**mdast**(1), **mdast**(3), **mdastrc**(5), **mdastignore**(5).
+**mdast**(1), **mdast**(3), **mdastrc**(5), **mdastignore**(5),
+**mdastsetting**(7).
 
 ## AUTHOR
 

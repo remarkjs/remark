@@ -1,31 +1,128 @@
-.TH "MDAST" "3" "August 2015" "0.28.0" "mdast"
+.TH "MDASTPLUGIN" "3" "August 2015" "0.28.0" "mdast"
 .SH "NAME"
-\fBmdast\fR - Markdown processor
+\fBmdastplugin\fR - mdast plug-in creation
 .SH "SYNOPSIS"
 .P
 .RS 2
 .nf
-var mdast \[eq] require(\[aq]mdast\[aq]);
-var yamlConfig \[eq] require(\[aq]mdast-yaml-config\[aq]);
+\[sl]**
+ * Change a file-extension to \[ga]html\[ga].
+ *\[sl]
+function transformer(ast, file) \[lC]
+    file.move(\[lC]
+        \[aq]extension\[aq]: \[aq]html\[aq]
+    \[rC]);
+\[rC]
 
-\[sl]\[sl] Use a plugin.  mdast-yaml-config allows settings in YAML frontmatter.
-var processor \[eq] mdast().use(yamlConfig);
-
-\[sl]\[sl] Parse, modify, and stringify the document:
-var doc \[eq] processor.process(
-    \[aq]---\[rs]n\[aq] \[pl]
-    \[aq]mdast:\[rs]n\[aq] \[pl]
-    \[aq]  commonmark: true\[rs]n\[aq] \[pl]
-    \[aq]---\[rs]n\[aq] \[pl]
-    \[aq]\[rs]n\[aq] \[pl]
-    \[aq]2) Some *emphasis*, **strongness**, and \[ga]code\[ga].\[rs]n\[aq]
-);
+\[sl]**
+ * Expose.
+ *\[sl]
+module.exports \[eq] function () \[lC]
+    return transformer;
+\[rC];
 .fi
 .RE
 .SH "DESCRIPTION"
 .P
-This is the application programming interface documentation for \fBmdast\fR. To find documentation for the command line interface, see \fBmdast\fR(1).
-.SH "MDAST.USE(PLUGIN\[LB], OPTIONS\[RB])"
+This manual contains information on how \fBmdast\fR(3) plugins work. It focusses on how to create plugins, rather than on how to implement them. To implement plugins, see \fBmdast\fR(3) and \fBmdastplugin\fR(7).
+.P
+An \fBmdast\fR plugin does up to three things:
+.RS 0
+.IP \(bu 4
+It modifies the processor: the parser, the stringifier;
+.IP \(bu 4
+It transforms the AST;
+.IP \(bu 4
+It adds new files to be processed by \fBmdast\fR(1).
+.RE 0
+
+.P
+All have their own function. The first is called an \[lq]attacher\[rq] (see \fBATTACHER\fR). The second is named a \[lq]transformer\[rq] (see \fBTRANSFORMER\fR). The third is named a \[lq]completer\[rq] (see \fBCOMPLETER\fR). An \[lq]attacher\[rq] may return a \[lq]transformer\[rq] and attach a \[lq]completer\[rq].
+.SH "FUNCTION ATTACHER(MDAST\[LB], OPTIONS\[RB]\[LB], FILESET\[RB])"
+.P
+To modify the parser, the compiler, or access the file-set on \fBmdast\fR(1), create an attacher.
+.P
+An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific options, but that\[cq]s entirely up to the developer. An \fBattacher\fR is invoked when the plugin is \fBuse\fRd on an \fBmdast\fR instance, and can return a \fBtransformer\fR which will be called on subsequent processes.
+.P
+Note that \fBmdast\fR(1) invokes \fBattacher\fR for each file, not just once.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBtransformer? \[eq] attacher(mdast, options\[lB], fileSet\[rB])\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBmdast\fR (\fBObject\fR) \[em] Context on which the plugin was \fBuse\fRd;
+.IP \(bu 4
+\fBoptions\fR (\fBObject\fR, optional) \[em] Plugin specific options;
+.IP \(bu 4
+\fBfileSet\fR (\fBFileSet\fR, optional) \[em] Access to all files being processed by \fBmdast\fR(1). Only passed on the Command-Line.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+\fBtransformer\fR (optional) \[em] See FUNCTION TRANSFORMER(NODE, FILE\[lB], NEXT\[rB]).
+.SH "FUNCTION TRANSFORMER(NODE, FILE\[LB], NEXT\[RB])"
+.P
+To transform an \fBmdastnode\fR(7), create a \fBtransformer\fR. A \fBtransformer\fR is a simple function which is invoked each time a document is processed by a \fBmdast\fR processor. A transformer should transform \fBnode\fR or modify \fBfile\fR.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBerr? \[eq] transformer(node, file, \[lB]next\[rB])\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBnode\fR (\fBNode\fR) \[em] See \fBmdastnode\fR(7);
+.IP \(bu 4
+\fBfile\fR (\fBVFile\fR) \[em] Virtual file;
+.IP \(bu 4
+\fBnext\fR (\fBfunction(err?)\fR, optional) \[em] If the signature includes \fBnode\fR, \fBfile\fR, and \fBnext\fR, \fBtransformer\fR \fBmay\fR finish asynchronous, and \fBmust\fR invoke \fBnext()\fR on completion with an optional error.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+\fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
+.SH "FUNCTION COMPLETER(FILESET\[LB], NEXT\[RB])"
+.P
+To access all files once they are transformed, create a \fBcompleter\fR. A \fBcompleter\fR is invoked before files are compiled, written, and logged, but after reading, parsing, and transforming. Thus, a completer can still change files or add messages.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBerr? \[eq] completer(fileSet\[lB], next\[rB])\fR.
+.RE 0
+
+.P
+\fBProperties\fR
+.RS 0
+.IP \(bu 4
+\fBpluginId\fR (\fB*\fR) \[em] \fBattacher\fR is invoked for each file, so if it \fBuse\fRs \fBcompleter\fR on the file-set, it would attach multiple times. By providing \fBpluginId\fR on \fBcompleter\fR, \fBmdast\fR will ensure only one \fBcompleter\fR with that identifier is will be added.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBfileSet\fR (\fBFileSet\fR) \[em] All files being processed by \fBmdast\fR(1);
+.IP \(bu 4
+\fBnext\fR (\fBfunction(err?)\fR, optional) \[em] If the signature includes \fBfileSet\fR and \fBnext\fR, \fBcompleter\fR \fBmay\fR finish asynchronous, and \fBmust\fR invoke \fBnext()\fR on completion with an optional error.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+\fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
+.SS "mdast.use(plugin\[lB], options\[rB])"
 .P
 Change the way \fBmdast\fR works by using a plugin. Plugins are documented at \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]blob\[sl]master\[sl]doc\[sl]plugins.md\(ra\fR.
 .P
@@ -52,7 +149,7 @@ Change the way \fBmdast\fR works by using a plugin. Plugins are documented at \f
 \fBReturns\fR
 .P
 \fBObject\fR \[em] An instance of \fBmdast\fR. The instance functions just like the \fBmdast\fR library itself (it has the same methods), but caches the \fBuse\fRd plugins.
-.SH "MDAST.PARSE(FILE\[LB], OPTIONS\[RB])"
+.SS "mdast.parse(file\[lB], options\[rB])"
 .P
 Parse a markdown document into an \fBmdastnode\fR(7).
 .P
@@ -77,7 +174,7 @@ Parse a markdown document into an \fBmdastnode\fR(7).
 \fBReturns\fR
 .P
 \fBNode\fR \[em] Node. Nodes are documented at \fBmdastnode\fR(7).
-.SH "MDAST.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])"
+.SS "mdast.run(node\[lB], file\[rB]\[lB], done\[rB])"
 .P
 Transform a node by applying plug-ins to it. Either a node or a file which was previously passed to \fBparse()\fR, must be given.
 .P
@@ -133,7 +230,7 @@ Invoked when transformation is complete.
 \fBfile\fR (\fBFile\fR) \[em] File object representing the input file;
 .RE 0
 
-.SH "MDAST.STRINGIFY(NODE\[LB], FILE\[RB]\[LB], OPTIONS\[RB])"
+.SS "mdast.stringify(node\[lB], file\[rB]\[lB], options\[rB])"
 .P
 Compile a node into a document.
 .P
@@ -166,7 +263,7 @@ Compile a node into a document.
 \fBThrows\fR
 .P
 When no \fBnode\fR was given and no node was found on the file.
-.SH "MDAST.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])"
+.SS "mdast.process(file\[lB], options\[rB]\[lB], done\[rB])"
 .P
 Parse, transform, and compile markdown into something else.
 .P
@@ -216,11 +313,11 @@ Invoked when processing is complete.
 \fBfile\fR (\fBFile\fR) \[em] File object representing the input file;
 .RE 0
 
-.SH "FILESET()"
+.SS "FileSet()"
 .P
-\fBmdast\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
-.SH "FILESET.VALUEOF()"
-.SH "FILESET.TOJSON()"
+\fBmdast\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins. See FILESET in \fBmdast\fR(3) for more information.
+.SS "File\[sh]valueOf()"
+.SS "File\[sh]toJSON()"
 .P
 Get access to the file objects in a set.
 .P
@@ -234,7 +331,7 @@ Get access to the file objects in a set.
 \fBReturns\fR
 .P
 \fBArray.<File>\fR \[em] List of files being processed by \fBmdast\fR(1).
-.SH "FILESET.USE(COMPLETER)"
+.SS "FileSet\[sh]use(completer)"
 .P
 Add a completer to the middleware pipeline of a file-set. When all files are transformed, this pipeline is run and \fBcompleter\fR is invoked with \fBfileSet\fR.
 .P
@@ -251,7 +348,7 @@ Add a completer to the middleware pipeline of a file-set. When all files are tra
 \fBcompleter\fR (\fBFunction\fR).
 .RE 0
 
-.SH "FILESET.ADD(FILE\[BA]FILEPATH)"
+.SS "FileSet\[sh]add(file\[ba]filePath)"
 .P
 Add a new file to be processed by \fBmdast\fR(1). The given file is processed just like other files, with a few differences.
 .P
@@ -288,7 +385,7 @@ Not logged about.
 \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdastconfig\fR(7), \fBmdastnode\fR(7), \fBmdastsetting\fR(7).
+\fBmdast\fR(1), \fBmdast\fR(3), \fBmdastplugin\fR(7), \fBmdastnode\fR(7).
 .SH "AUTHOR"
 .P
 Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

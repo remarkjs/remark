@@ -86,21 +86,20 @@ sections.forEach(function (section) {
 var root;
 
 root = mdast.parse(
-    '![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)\n' +
-    '\n' +
-    '# Options\n' +
-    '\n' +
-    'This page contains information and usage examples regarding ' +
-        'available options for [`mdast.parse()`](https://github.com/' +
-        'wooorm/mdast/blob/master/doc/mdast.3.md#mdastparsefile-options)' +
-        ' and [`mdast.stringify()`](https://github.com/wooorm/mdast/blob/' +
-        'master/doc/mdast.3.md#mdaststringifyast-options).\n' +
-    '\n' +
-    'Information on **mdast** itself is available in the project’s ' +
-        '[readme.md](https://github.com/wooorm/mdast#readme).\n' +
-    '\n' +
-    '## Table of Contents\n' +
-    '\n'
+    [
+        '# mdastsetting(7) -- mdast settings',
+        '',
+        '## SYNOPSIS',
+        '',
+        '**mdast**(1), **mdast**(3), **mdastrc**(5)',
+        '',
+        '## DESCRIPTION',
+        '',
+        'This page contains information and usage examples regarding',
+        'available options for **mdast**(3)’s `parse()` and `stringify()`.',
+        '',
+        '## Table of Contents'
+    ].join('\n')
 );
 
 /**
@@ -244,4 +243,4 @@ mdast().use(toc).run(root);
  * Write.
  */
 
-fs.writeFileSync('doc/options.md', mdast.stringify(root, settings));
+fs.writeFileSync('doc/mdastsetting.7.md', mdast.stringify(root, settings));

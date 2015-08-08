@@ -1,64 +1,205 @@
-.TH "MDAST" "1" "July 2015" "0.28.0" "mdast"
+.TH "MDAST" "1" "August 2015" "0.28.0" "mdast"
 .SH "NAME"
 \fBmdast\fR - Markdown processor
 .SH "SYNOPSIS"
 .P
-\fBmdast\fR \[lB]\fBoptions\fR\[rB] \fIfile\[ba]dir\fR \fI...\fR
+\fBmdast\fR \[lB]\fBoptions\fR\[rB] <\fIfile\[ba]dir\fR \fI...\fR>
 .SH "DESCRIPTION"
 .P
-\fBmdast\fR is speedy Markdown parser (and stringifier) for multipurpose analysis in JavaScript. Node.js and browser. Lots of tests. 100% coverage.
+\fBmdast\fR is a markdown processor powered by plugins.
 .P
 Logs verbose debugging information when \fB\[Do]DEBUG\fR is set to \fB\[dq]mdast\[dq]\fR.
+.SH "OPTIONS"
+.SS "\fB-h\fR, \fB--help\fR"
 .P
-Options are as follows:
+.RS 2
+.nf
+mdast --help
+.fi
+.RE
+.P
+Output short usage information.
+.SS "\fB-v\fR, \fB--version\fR"
+.P
+.RS 2
+.nf
+mdast --version
+.fi
+.RE
+.P
+Output CLI version number.
+.SS "\fB-o\fR, \fB--output\fR \[lB]\fIpath\fR\[rB]"
+.P
+.RS 2
+.nf
+mdast . --output
+mdast . --output doc
+mdast readme.md --output doc\[sl]foo.bar
+.fi
+.RE
+.P
+Specify output.
 .RS 0
 .IP \(bu 4
-\fB-h\fR, \fB--help\fR: Output usage information;
+If output is \fBnot\fR given and one file is processed, the file is written to \fBstdout\fR(4). See \fB--no-stdout\fR to disable this behavior;
 .IP \(bu 4
-\fB-V\fR, \fB--version\fR: Output version number;
+Otherwise, if output is \fBnot\fR given and multiple files are processed, files are neither written to \fBstdout\fR(4) nor to the file-system;
 .IP \(bu 4
-\fB-o\fR, \fB--output\fR \fIpath\fR: Specify output. When \fIpath\fR is omitted, input files are overwritten. When \fIpath\fR is a directory, files are written to that directory. When the parent directory of \fIpath\fR exists, and multiple files are given, an error is thrown, if one file is given it is written to \fIpath\fR.
+Otherwise, if output is given but \fBwithout\fR path, input files are overwritten;
 .IP \(bu 4
-\fB-c\fR, \fB--config-path\fR \fIpath\fR: specify configuration location;
+Otherwise, if a path to an existing directory is given, files are written to that directory;
 .IP \(bu 4
-\fB-i\fR, \fB--ignore-path\fR \fIpath\fR: specify ignore location;
+Otherwise, if one file is processed and the parent directory of the given path exists, the file is written to the given path;
 .IP \(bu 4
-\fB-s\fR, \fB--setting\fR \fIsettings\fR: specify settings;
-.IP \(bu 4
-\fB-u\fR, \fB--use\fR \fIplugin\fR: use a plugin, optionally with options;
-.IP \(bu 4
-\fB-e\fR, \fB--ext\fR \fIextensions\fR: specify file extensions to look for;
-.IP \(bu 4
-\fB-a\fR, \fB--ast\fR: output AST information;
-.IP \(bu 4
-\fB-q\fR, \fB--quiet\fR: output only warnings and errors;
-.IP \(bu 4
-\fB-S\fR, \fB--silent\fR: output only errors;
-.IP \(bu 4
-\fB-f\fR, \fB--frail\fR: exit with 1 on warnings;
-.IP \(bu 4
-\fB--file-path <path>\fR: specify file path to process as
-.IP \(bu 4
-\fB--no-stdout\fR: disable writing to stdout;
-.IP \(bu 4
-\fB--no-color\fR: disable color in output;
-.IP \(bu 4
-\fB--no-rc\fR: disable configuration from \fI.mdastrc\fR;
-.IP \(bu 4
-\fB--no-ignore\fR: disable ignoring from \fI.mdastignore\fR.
+Otherwise, a fatal error is thrown.
 .RE 0
 
+.SS "\fB-c\fR, \fB--config-path\fR <\fIpath\fR>"
 .P
-A \fB--\fR argument tells the cli parser to stop reading flags.
+.RS 2
+.nf
+mdast --config-path mdastrc.json
+.fi
+.RE
+.P
+Specify configuration location. This loads an \fBmdastrc\fR(5) file which cannot be detected (either because \fB--no-rc\fR is given or because it has a different name) in addition to other detected files.
+.SS "\fB-i\fR, \fB--ignore-path\fR <\fIpath\fR>"
+.P
+.RS 2
+.nf
+mdast --ignore-path .gitignore
+.fi
+.RE
+.P
+Specify ignore location. This loads an \fBmdastignore\fR(5) file which cannot be detected (either because \fB--no-ignore\fR is given or because it has a different name) in addition to other detected files.
+.SS "\fB-s\fR, \fB--setting\fR <\fIsettings\fR>"
+.P
+.RS 2
+.nf
+mdast --setting \[dq]position:false\[dq]
+.fi
+.RE
+.P
+Specify settings (see \fBmdastsetting\fR(7)). This must be a valid JSON object except for a few differences. See \fBmdastconfig\fR(7) COMMAND LINE SETTINGS for more information.
+.SS "\fB-u\fR, \fB--use\fR <\fIplugin\fR>"
+.P
+.RS 2
+.nf
+mdast --use man
+.fi
+.RE
+.P
+Specify a plug-in to use, optionally with options. See \fBmdastplugin\fR(7) COMMAND LINE USAGE for more information.
+.SS "\fB-e\fR, \fB--ext\fR <\fIextensions\fR>"
+.P
+.RS 2
+.nf
+mdast --ext .doc
+.fi
+.RE
+.P
+Specify one or more extensions to include when searching for files. This will add the given \fBextensions\fR to the internal list, which includes \fB\[aq]md\[aq]\fR, \fB\[aq]markdown\[aq]\fR, \fB\[aq]mkd\[aq]\fR, \fB\[aq]mkdn\[aq]\fR, \fB\[aq]mkdown\[aq]\fR, and \fB\[aq]ron\[aq]\fR.
+.P
+The given \fBextensions\fR can be comma or semi-colon separated.
+.SS "\fB-a\fR, \fB--ast\fR"
+.P
+.RS 2
+.nf
+mdast --ast
+.fi
+.RE
+.P
+Instead of outputting document the internally used AST is exposed.
+.SS "\fB-q\fR, \fB--quiet\fR"
+.P
+.RS 2
+.nf
+mdast --quiet
+.fi
+.RE
+.P
+Do not output non-essential text, only warnings and errors.
+.SS "\fB-S\fR, \fB--silent\fR"
+.P
+.RS 2
+.nf
+mdast --silent
+.fi
+.RE
+.P
+Same as \fB-q\fR, \fB--quiet\fR, but also ignores warnings.
+.SS "\fB-f\fR, \fB--frail\fR"
+.P
+.RS 2
+.nf
+mdast --frail
+.fi
+.RE
+.P
+Exit with a status code of \fB1\fR if warnings are trigger for the processed code, instead of the default of only exiting with \fB1\fR on fatal errors.
+.SS "\fB--file-path\fR <\fIpath\fR>"
+.P
+.RS 2
+.nf
+cat readme.md \[ba] mdast --file-path readme.md > doc\[sl]out.md
+.fi
+.RE
+.P
+Process the piped-in document as if it was a file at \fBpath\fR.
+.SS "\fB--no-stdout\fR"
+.P
+.RS 2
+.nf
+mdast --no-stdout
+.fi
+.RE
+.P
+Do not write a processed file to \fBstdout\fR(4).
+.SS "\fB--no-color\fR"
+.P
+.RS 2
+.nf
+mdast --no-color
+.fi
+.RE
+.P
+Disable ANSI codes in output.
+.SS "\fB--no-rc\fR"
+.P
+.RS 2
+.nf
+mdast --no-rc
+.fi
+.RE
+.P
+Disabled configuration from \fBmdastrc\fR(5) files. This does not apply to explicitly provided files through \fB-c\fR, \fB--config-path\fR.
+.SS "\fB--no-ignore\fR"
+.P
+.RS 2
+.nf
+mdast --no-ignore
+.fi
+.RE
+.P
+Disabled configuration from \fBmdastignore\fR(5) files. This does not apply to explicitly provided files through \fB-i\fR, \fB--ignore-path\fR.
+.SS "\fB--\fR"
+.P
+.RS 2
+.nf
+mdast . --
+.fi
+.RE
+.P
+If a \fB--\fR argument is found, argument parsing is stopped.
 .SH "DIAGNOSTICS"
 .P
 \fBmdast\fR exits 0 on success, and 1 otherwise.
 .SH "BUGS"
 .P
-\fIhttps://github.com/wooorm/mdast/issues\fR
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdastrc\fR(5), \fBmdastignore\fR(5), \fBmdastconfig\fR(7), \fBmdast\fR(3).
+\fBmdastrc\fR(5), \fBmdastignore\fR(5), \fBmdastsetting\fR(7), \fBmdastconfig\fR(7), \fBmdastplugin\fR(7)
 .SH "AUTHOR"
 .P
-Written by Titus Wormer \fItituswormer@gmail.com\fR
+Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

@@ -1,0 +1,471 @@
+.TH "MDASTNODE" "7" "August 2015" "0.28.0" "mdast"
+.SH "NAME"
+\fBmdastnode\fR - mdast syntax representation
+.SH "SYNOPSIS"
+.P
+.RS 2
+.nf
+\[lC]
+  \[dq]type\[dq]: \[dq]strong\[dq],
+  \[dq]children\[dq]: \[lB]\[lC]
+    \[dq]type\[dq]: \[dq]text\[dq],
+    \[dq]value\[dq]: \[dq]Foo\[dq],
+    \[dq]position\[dq]: \[lC]
+      \[dq]start\[dq]: \[lC]
+          \[dq]line\[dq]: 1,
+          \[dq]column\[dq]: 3,
+          \[dq]offset\[dq]: 2
+      \[rC],
+      \[dq]end\[dq]: \[lC]
+          \[dq]line\[dq]: 1,
+          \[dq]column\[dq]: 6,
+          \[dq]offset\[dq]: 5
+      \[rC]
+    \[rC]
+  \[rC]\[rB],
+  \[dq]position\[dq]: \[lC]
+    \[dq]start\[dq]: \[lC]
+        \[dq]line\[dq]: 1,
+        \[dq]column\[dq]: 1,
+        \[dq]offset\[dq]: 0
+    \[rC],
+    \[dq]end\[dq]: \[lC]
+        \[dq]line\[dq]: 1,
+        \[dq]column\[dq]: 8,
+        \[dq]offset\[dq]: 7
+    \[rC]
+  \[rC]
+\[rC]
+.fi
+.RE
+.SH "DESCRIPTION"
+.P
+\fBmdast\fR exposes markdown as an abstract syntax tree. \fIAbstract\fR means not all information is stored in this tree and an exact replica of the original document cannot be re-created. \fISyntax Tree\fR means syntax \fBis\fR present in the tree, thus an exact syntactic document can be re-created.
+.P
+This manual contains the definition of the exposed nodes and what they represent.
+.SH "NODE"
+.P
+\fBmdast\fR(3)\[cq]s \fBparse\fR method returns \fBNode\fR objects\[em]plain vanilla objects. Every \fBmdast\fR node inherits the \fBNode\fR interface.
+.P
+.RS 2
+.nf
+interface Node \[lC]
+    type: string;
+    position: Location?;
+\[rC]
+.fi
+.RE
+.SH "LOCATION"
+.P
+\fBNode\fR can have a reference to its original location, if applicable. Start determines the line and column at which the original location starts; end, respectively; and indent the column at which further lines start.
+.P
+.RS 2
+.nf
+interface Location \[lC]
+    start: Position;
+    end: Position;
+    indent: \[lB]uint32 >\[eq] 1\[rB]
+\[rC]
+.fi
+.RE
+.SH "POSITION"
+.P
+A position contains a column and a line. Both start at \fB1\fR.
+.P
+.RS 2
+.nf
+interface Position \[lC]
+    line: uint32 >\[eq] 1;
+    column: uint32 >\[eq] 1;
+\[rC]
+.fi
+.RE
+.SH "PARENT"
+.P
+Most nodes inherit the \fBParent\fR (\fBNode\fR) interface: nodes which accept other nodes as children.
+.P
+.RS 2
+.nf
+interface Parent <: Node \[lC]
+    children: \[lB]Node\[rB];
+\[rC]
+.fi
+.RE
+.SH "TEXT"
+.P
+Most others inherit \fBText\fR (\fBNode\fR): nodes which accept a value.
+.P
+.RS 2
+.nf
+interface Text <: Node \[lC]
+    value: string;
+\[rC]
+.fi
+.RE
+.SH "ROOT"
+.P
+\fBRoot\fR (\fBParent\fR) houses all nodes.
+.P
+.RS 2
+.nf
+interface Root <: Parent \[lC]
+    type: \[dq]root\[dq];
+\[rC]
+.fi
+.RE
+.SH "PARAGRAPH"
+.P
+\fBParagraph\fR (\fBParent\fR) represents a unit of discourse dealing with a particular point or idea.
+.P
+.RS 2
+.nf
+interface Paragraph <: Parent \[lC]
+    type: \[dq]paragraph\[dq];
+\[rC]
+.fi
+.RE
+.SH "BLOCKQUOTE"
+.P
+\fBBlockquote\fR (\fBParent\fR) represents a quote.
+.P
+.RS 2
+.nf
+interface Blockquote <: Parent \[lC]
+    type: \[dq]blockquote\[dq];
+\[rC]
+.fi
+.RE
+.SH "HEADING"
+.P
+\fBHeading\fR (\fBParent\fR), just like with HMTL, with a level greater than or equal to 1, lower than or equal to 6.
+.P
+.RS 2
+.nf
+interface Heading <: Parent \[lC]
+    type: \[dq]heading\[dq];
+    depth: 1 <\[eq] uint32 <\[eq] 6;
+\[rC]
+.fi
+.RE
+.SH "CODE"
+.P
+\fBCode\fR (\fBText\fR) occurs at block level (see \fBInlineCode\fR for code spans). \fBCode\fR sports a language tag (when using Github Flavoured Markdown fences with a flag, \fBnull\fR otherwise).
+.P
+.RS 2
+.nf
+interface Code <: Text \[lC]
+    type: \[dq]code\[dq];
+    lang: string \[ba] null;
+\[rC]
+.fi
+.RE
+.SH "INLINECODE"
+.P
+\fBInlineCode\fR (\fBText\fR) occurs inline (see \fBCode\fR for blocks). Inline code does not sport a \fBlang\fR attribute.
+.P
+.RS 2
+.nf
+interface InlineCode <: Text \[lC]
+    type: \[dq]inlineCode\[dq];
+\[rC]
+.fi
+.RE
+.SH "YAML"
+.P
+\fBYAML\fR (\fBText\fR) can occur at the start of a document, and contains embedded YAML data.
+.P
+.RS 2
+.nf
+interface YAML <: Text \[lC]
+    type: \[dq]yaml\[dq];
+\[rC]
+.fi
+.RE
+.SH "HTML"
+.P
+\fBHTML\fR (\fBText\fR) contains embedded HTML.
+.P
+.RS 2
+.nf
+interface HTML <: Text \[lC]
+    type: \[dq]html\[dq];
+\[rC]
+.fi
+.RE
+.SH "LIST"
+.P
+\fBList\fR (\fBParent\fR) contains \fBListItem\fR\[cq]s.
+.P
+The \fBstart\fR property contains the starting number of the list when \fBordered: true\fR; \fBnull\fR otherwise.
+.P
+When all list items have \fBloose: false\fR, the list\[cq]s \fBloose\fR property is also \fBfalse\fR. Otherwise, \fBloose: true\fR.
+.P
+.RS 2
+.nf
+interface List <: Parent \[lC]
+    type: \[dq]list\[dq];
+    loose: true \[ba] false;
+    start: uint32 \[ba] null;
+    ordered: true \[ba] false;
+\[rC]
+.fi
+.RE
+.SH "LISTITEM"
+.P
+\fBListItem\fR (\fBParent\fR) is a child of a \fBList\fR.
+.P
+Loose \fBListItem\fR\[cq]s often contain more than one block-level elements.
+.P
+When in \fBgfm: true\fR mode, a checked property exists on \fBListItem\fR\[cq]s, either set to \fBtrue\fR (when checked), \fBfalse\fR (when unchecked), or \fBnull\fR (when not containing a checkbox). See \fBTask Lists on GitHub\fR \fI\(lahttps:\[sl]\[sl]help.github.com\[sl]articles\[sl]writing-on-github\[sl]\[sh]task-lists\(ra\fR for information.
+.P
+.RS 2
+.nf
+interface ListItem <: Parent \[lC]
+    type: \[dq]listItem\[dq];
+    loose: true \[ba] false;
+    checked: true \[ba] false \[ba] null \[ba] undefined;
+\[rC]
+.fi
+.RE
+.SH "TABLE"
+.P
+\fBTable\fR (\fBParent\fR) represents tabular data, with alignment. Its children are either \fBTableHeader\fR (the first child), or \fBTableRow\fR (all other children).
+.P
+\fBtable.align\fR represents the alignment of columns.
+.P
+.RS 2
+.nf
+interface Table <: Parent \[lC]
+    type: \[dq]table\[dq];
+    align: \[lB]alignType\[rB];
+\[rC]
+.fi
+.RE
+.P
+.RS 2
+.nf
+enum alignType \[lC]
+    \[dq]left\[dq] \[ba] \[dq]right\[dq] \[ba] \[dq]center\[dq] \[ba] null;
+\[rC]
+.fi
+.RE
+.SH "TABLEHEADER"
+.P
+\fBTableHeader\fR (\fBParent\fR). Its children are always \fBTableCell\fR.
+.P
+.RS 2
+.nf
+interface TableHeader <: Parent \[lC]
+    type: \[dq]tableHeader\[dq];
+\[rC]
+.fi
+.RE
+.SH "TABLEROW"
+.P
+\fBTableRow\fR (\fBParent\fR). Its children are always \fBTableCell\fR.
+.P
+.RS 2
+.nf
+interface TableRow <: Parent \[lC]
+    type: \[dq]tableRow\[dq];
+\[rC]
+.fi
+.RE
+.SH "TABLECELL"
+.P
+\fBTableCell\fR (\fBParent\fR). Contains a single tabular field.
+.P
+.RS 2
+.nf
+interface TableCell <: Parent \[lC]
+    type: \[dq]tableCell\[dq];
+\[rC]
+.fi
+.RE
+.SH "HORIZONTALRULE"
+.P
+Just a \fBHorizontalRule\fR (\fBNode\fR).
+.P
+.RS 2
+.nf
+interface HorizontalRule <: Node \[lC]
+    type: \[dq]horizontalRule\[dq];
+\[rC]
+.fi
+.RE
+.SH "BREAK"
+.P
+\fBBreak\fR (\fBNode\fR) represents an explicit line break.
+.P
+.RS 2
+.nf
+interface Break <: Node \[lC]
+    type: \[dq]break\[dq];
+\[rC]
+.fi
+.RE
+.SH "EMPHASIS"
+.P
+\fBEmphasis\fR (\fBParent\fR) represents slightly important text.
+.P
+.RS 2
+.nf
+interface Emphasis <: Parent \[lC]
+    type: \[dq]emphasis\[dq];
+\[rC]
+.fi
+.RE
+.SH "STRONG"
+.P
+\fBStrong\fR (\fBParent\fR) represents super important text.
+.P
+.RS 2
+.nf
+interface Strong <: Parent \[lC]
+    type: \[dq]strong\[dq];
+\[rC]
+.fi
+.RE
+.SH "DELETE"
+.P
+\fBDelete\fR (\fBParent\fR) represents text ready for removal.
+.P
+.RS 2
+.nf
+interface Delete <: Parent \[lC]
+    type: \[dq]delete\[dq];
+\[rC]
+.fi
+.RE
+.SH "LINK"
+.P
+\fBLink\fR (\fBParent\fR) represents the humble hyperlink.
+.P
+.RS 2
+.nf
+interface Link <: Parent \[lC]
+    type: \[dq]link\[dq];
+    title: string \[ba] null;
+    href: string;
+\[rC]
+.fi
+.RE
+.SH "IMAGE"
+.P
+\fBImage\fR (\fBNode\fR) represents the figurative figure.
+.P
+.RS 2
+.nf
+interface Image <: Node \[lC]
+    type: \[dq]image\[dq];
+    title: string \[ba] null;
+    alt: string \[ba] null;
+    src: string;
+\[rC]
+.fi
+.RE
+.SH "FOOTNOTE"
+.P
+\fBFootnote\fR (\fBParent\fR) represents an inline marker, whose content relates to the document but is outside its flow.
+.P
+.RS 2
+.nf
+interface Footnote <: Parent \[lC]
+    type: \[dq]footnote\[dq];
+\[rC]
+.fi
+.RE
+.SH "LINKREFERENCE"
+.P
+\fBLink\fR (\fBParent\fR) represents a humble hyperlink, its \fBhref\fR and \fBtitle\fR defined somewhere else in the document by a \fBDefinition\fR.
+.P
+.RS 2
+.nf
+interface LinkReference <: Parent \[lC]
+    type: \[dq]linkReference\[dq];
+    identifier: string;
+\[rC]
+.fi
+.RE
+.SH "IMAGEREFERENCE"
+.P
+\fBLink\fR (\fBNode\fR) represents a figurative figure, its \fBsrc\fR and \fBtitle\fR defined somewhere else in the document by a \fBDefinition\fR.
+.P
+.RS 2
+.nf
+interface ImageReference <: Node \[lC]
+    type: \[dq]imageReference\[dq];
+    alt: string \[ba] null;
+    identifier: string;
+\[rC]
+.fi
+.RE
+.SH "FOOTNOTEREFERENCE"
+.P
+\fBFootnoteReference\fR (\fBNode\fR) is like \fBFootnote\fR, but its content is already outside the documents flow: placed in a \fBFootnoteDefinition\fR.
+.P
+.RS 2
+.nf
+interface FootnoteReference <: Node \[lC]
+    type: \[dq]footnoteReference\[dq];
+    identifier: string;
+\[rC]
+.fi
+.RE
+.SH "DEFINITION"
+.P
+\fBDefinition\fR (\fBNode\fR) represents the definition (i.e., location and title) of a \fBLinkReference\fR or an \fBImageReference\fR.
+.P
+.RS 2
+.nf
+interface Definition <: Node \[lC]
+    type: \[dq]definition\[dq];
+    identifier: string;
+    title: string \[ba] null;
+    link: string;
+\[rC]
+.fi
+.RE
+.SH "FOOTNOTEDEFINITION"
+.P
+\fBFootnoteDefinition\fR (\fBParent\fR) represents the definition (i.e., content) of a \fBFootnoteReference\fR.
+.P
+.RS 2
+.nf
+interface FootnoteDefinition <: Parent \[lC]
+    type: \[dq]footnoteDefinition\[dq];
+    identifier: string;
+\[rC]
+.fi
+.RE
+.SH "TEXTNODE"
+.P
+\fBTextNode\fR (\fBText\fR) represents everything that\[cq]s just text. Note that its \fBtype\fR property is \fBtext\fR, but it\[cq]s different from \fBText\fR.
+.P
+.RS 2
+.nf
+interface TextNode <: Text \[lC]
+    type: \[dq]text\[dq];
+\[rC]
+.fi
+.RE
+.SH "ESCAPE"
+.P
+\fBEscape\fR (\fBText\fR) represents an escaped symbol. Useful when writing things otherwise seen as markdown syntax.
+.P
+.RS 2
+.nf
+interface Escape <: Text \[lC]
+    type: \[dq]escape\[dq];
+\[rC]
+.fi
+.RE
+.SH "BUGS"
+.P
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
+.SH "SEE ALSO"
+.P
+\fBmdast\fR(1), \fBmdast\fR(3).
+.SH "AUTHOR"
+.P
+Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

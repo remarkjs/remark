@@ -8,7 +8,8 @@
 
 **mdast** gets its configuration from the command line and **mdastrc** files.
 
-For a list of available configuration options, see **mdast**(1) or <https://github.com/wooorm/mdast/blob/master/doc/options.md>.
+For a list of available configuration options, see **mdast**(1) or
+**mdastsetting**(7).
 
 ## FILES
 
@@ -44,7 +45,7 @@ treated as the `target` or `directory` field for **mv**(1).
 ```
 
 Settings contains an object mapping a setting to a value.
-See `man 7 mdastconfig` for available settings.
+See **mdastsetting**(7) for available settings.
 
 ### plugins
 
@@ -151,7 +152,7 @@ When stringifying `readme.md`, **mdast**(1) would use `bullet: "-"`, because
 
 ## SEE ALSO
 
-**mdast**(1), **mdastignore**(5), **mdastconfig**(7).
+**mdast**(1), **mdastignore**(5), **mdastsetting**(7), **mdastsetting**(7).
 
 ## AUTHOR
 

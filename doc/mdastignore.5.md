@@ -29,7 +29,8 @@ Each line in a **mdastignore**(5) file provides a pattern which describes to
     a previously ignored file path;
 
 For documentation regarding the glob engine itself, such as wild-cards
-(`*`, `?`), brace expressions (`{one,two}`), see **minimist**(1).
+(`*`, `?`), brace expressions (`{one,two}`), see
+[isaacs/minimatch](https://github.com/isaacs/minimatch).
 
 You can pass a **gitignore**(5) file to **mdast**(1), because it has the same
 format as **mdastignore**(5):
@@ -55,7 +56,8 @@ are excluded.
 
 ## SEE ALSO
 
-**mdast**(1), **mdastrc**(5), **mdastconfig**(7).
+**mdast**(1), **mdastrc**(5), **mdastconfig**(7), **mdastsetting**(7),
+**gitignore**(5).
 
 ## AUTHOR
 
