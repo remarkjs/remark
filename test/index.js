@@ -1212,9 +1212,9 @@ describe('fixtures', function () {
             Object.keys(possibilities).forEach(function (key) {
                 var name = key || 'default';
                 var parse = possibilities[key];
+                var initialClean = !parse.position;
                 var node;
                 var markdown;
-                var initialClean = !parse.position;
 
                 it('should parse `' + name + '` correctly', function () {
                     node = mdast.parse(input, parse);
@@ -1227,18 +1227,18 @@ describe('fixtures', function () {
                      */
 
                     compare(node, trees[mapping[key]], false, initialClean);
+
+                    markdown = mdast.stringify(node, fixture.stringify);
                 });
 
                 if (output !== false) {
                     it('should stringify `' + name + '`', function () {
-                        markdown = mdast.stringify(node, fixture.stringify);
                         compare(node, mdast.parse(markdown, parse), true);
                     });
                 }
 
                 if (output === true) {
                     it('should stringify `' + name + '` exact', function () {
-                        markdown = mdast.stringify(node, fixture.stringify);
                         compareText(fixture.input, markdown);
                     });
                 }

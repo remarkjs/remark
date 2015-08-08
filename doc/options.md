@@ -43,8 +43,10 @@ as [**Break**](https://github.com/wooorm/mdast/blob/master/doc/nodes.md#break)s.
 
 The following document:
 
-    A
-    paragraph.
+```markdown
+A
+paragraph.
+```
 
 And the below JavaScript:
 
@@ -184,8 +186,10 @@ Setting `commonmark: true` (default: `false`):
 
 The following document:
 
-    This is a paragraph
-        and this is also part of the preceding paragraph.
+```markdown
+This is a paragraph
+    and this is also part of the preceding paragraph.
+```
 
 And the below JavaScript:
 
@@ -261,13 +265,15 @@ It’s possible to reference other footnotes inside footnotes.
 
 The following document:
 
-    Something something[^or something?].
+```markdown
+Something something[^or something?].
 
-    And something else[^1].
+And something else[^1].
 
-    [^1]: This reference style footnote can contains paragraphs.
+[^1]: This reference style footnote can contains paragraphs.
 
-       - and lists
+   - and lists
+```
 
 And the below JavaScript:
 
@@ -574,7 +580,9 @@ Setting `gfm: true` (default: `true`) enables:
 
 The following document:
 
-    hello ~~hi~~ world
+```markdown
+hello ~~hi~~ world
+```
 
 And the below JavaScript:
 
@@ -697,7 +705,9 @@ Setting `pedantic: true` (default: `false`):
 
 The following document:
 
-    Check out some_file_name.txt
+```markdown
+Check out some_file_name.txt
+```
 
 And the below JavaScript:
 
@@ -814,7 +824,9 @@ nodes: where each node was originally located in the markdown document.
 
 The following document:
 
-    Hello **world**!
+```markdown
+Hello **world**!
+```
 
 And the below JavaScript:
 
@@ -863,11 +875,13 @@ detected (thus ignoring markdown-like syntax).
 
 The following document:
 
-    ---
-    title: YAML is Cool
-    ---
+```markdown
+---
+title: YAML is Cool
+---
 
-    # YAML is Cool
+# YAML is Cool
+```
 
 And the below JavaScript:
 
@@ -957,11 +971,13 @@ bullets.
 
 The following document:
 
-    - First level
+```markdown
+- First level
 
-      - Second level
+  - Second level
 
-        - Third level
+    - Third level
+```
 
 And the below JavaScript:
 
@@ -975,11 +991,13 @@ mdast.stringify(ast, {
 
 Yields:
 
-    *   First level
+```markdown
+*   First level
 
-        *   Second level
+    *   Second level
 
-            *   Third level
+        *   Third level
+```
 
 ### Closed ATX Headings
 
@@ -988,11 +1006,13 @@ with additional hash-marks after the heading.
 
 The following document:
 
-    # First level
+```markdown
+# First level
 
-    ## Second level
+## Second level
 
-    ### Third level
+### Third level
+```
 
 And the below JavaScript:
 
@@ -1006,11 +1026,13 @@ mdast.stringify(ast, {
 
 Yields:
 
-    # First level #
+```markdown
+# First level #
 
-    ## Second level ##
+## Second level ##
 
-    ### Third level ###
+### Third level ###
+```
 
 ### Emphasis Markers
 
@@ -1025,9 +1047,11 @@ are stringified:
 
 The following document:
 
-    *emphasis*
+```markdown
+*emphasis*
 
-    __strong__
+__strong__
+```
 
 And the below JavaScript:
 
@@ -1042,9 +1066,11 @@ mdast.stringify(ast, {
 
 Yields:
 
-    _emphasis_
+```markdown
+_emphasis_
 
-    **strong**
+**strong**
+```
 
 ### Encoding Entities
 
@@ -1062,7 +1088,9 @@ ensure an ASCII document.
 
 The following document:
 
-    AT&T, [AT&T](http://at&t.com "AT&T"), ![AT&T](http://at&t.com/fav.ico "AT&T")
+```markdown
+AT&T, [AT&T](http://at&t.com "AT&T"), ![AT&T](http://at&t.com/fav.ico "AT&T")
+```
 
 And the below JavaScript:
 
@@ -1076,7 +1104,9 @@ mdast.stringify(ast, {
 
 Yields:
 
-    AT&amp;T, [AT&amp;T](http://at&amp;t.com "AT&amp;T"), ![AT&amp;T](http://at&amp;t.com/fav.ico "AT&amp;T")
+```markdown
+AT&amp;T, [AT&amp;T](http://at&amp;t.com "AT&amp;T"), ![AT&amp;T](http://at&amp;t.com/fav.ico "AT&amp;T")
+```
 
 ### Fence
 
@@ -1091,9 +1121,11 @@ non-standard fences when a language-flag is present), use
 
 The following document:
 
+````markdown
     ```javascript
     alert('Hello World!');
     ```
+````
 
 And the below JavaScript:
 
@@ -1107,9 +1139,11 @@ mdast.stringify(ast, {
 
 Yields:
 
+```markdown
     ~~~javascript
     alert('Hello World!');
     ~~~
+```
 
 ### Fences
 
@@ -1120,9 +1154,11 @@ To use different fence markers, use [`fence: string`](https://github.com/wooorm/
 
 The following document:
 
-    A code block:
+```markdown
+A code block:
 
-        alert('Hello World!');
+    alert('Hello World!');
+```
 
 And the below JavaScript:
 
@@ -1136,11 +1172,13 @@ mdast.stringify(ast, {
 
 Yields:
 
+````markdown
     A code block:
 
     ```
     alert('Hello World!');
     ```
+````
 
 ### List Item Indent
 
@@ -1158,30 +1196,32 @@ lines, and `"1"` otherwise.
 
 The following document:
 
-    1. foo bar baz.
+```markdown
+1. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    99. foo bar baz.
+99. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    999. foo bar baz.
+999. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    1. foo bar baz.
-       foo bar baz.
+1. foo bar baz.
+   foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    99. foo bar baz.
-        foo bar baz.
+99. foo bar baz.
+    foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    999. foo bar baz.
-         foo bar baz.
+999. foo bar baz.
+     foo bar baz.
+```
 
 And the below JavaScript:
 
@@ -1195,30 +1235,32 @@ mdast.stringify(ast, {
 
 Yields:
 
-    1. foo bar baz.
+```markdown
+1. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    99. foo bar baz.
+99. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    999. foo bar baz.
+999. foo bar baz.
 
-    <!--  -->
+<!--  -->
 
-    1.  foo bar baz.
+1.  foo bar baz.
+    foo bar baz.
+
+<!--  -->
+
+99. foo bar baz.
+    foo bar baz.
+
+<!--  -->
+
+999.    foo bar baz.
         foo bar baz.
-
-    <!--  -->
-
-    99. foo bar baz.
-        foo bar baz.
-
-    <!--  -->
-
-    999.    foo bar baz.
-            foo bar baz.
+```
 
 ### Loose Tables
 
@@ -1227,10 +1269,12 @@ with neither starting nor ending pipes.
 
 The following document:
 
-    | Hello | World  |
-    | :---- | -----: |
-    | How   |    are |
-    | you   | today? |
+```markdown
+| Hello | World  |
+| :---- | -----: |
+| How   |    are |
+| you   | today? |
+```
 
 And the below JavaScript:
 
@@ -1244,10 +1288,12 @@ mdast.stringify(ast, {
 
 Yields:
 
-    Hello |  World
-    :---- | -----:
-    How   |    are
-    you   | today?
+```markdown
+Hello |  World
+:---- | -----:
+How   |    are
+you   | today?
+```
 
 ### List Marker Increase
 
@@ -1257,14 +1303,16 @@ list items.
 
 The following document:
 
-    1.  Alpha;
-    2.  Bravo;
-    3.  Charley.
+```markdown
+1.  Alpha;
+2.  Bravo;
+3.  Charley.
 
 
-    3.  Delta;
-    4.  Echo;
-    5.  Foxtrott.
+3.  Delta;
+4.  Echo;
+5.  Foxtrott.
+```
 
 And the below JavaScript:
 
@@ -1278,14 +1326,16 @@ mdast.stringify(ast, {
 
 Yields:
 
-    1.  Alpha;
-    1.  Bravo;
-    1.  Charley.
+```markdown
+1.  Alpha;
+1.  Bravo;
+1.  Charley.
 
 
-    3.  Delta;
-    3.  Echo;
-    3.  Foxtrott.
+3.  Delta;
+3.  Echo;
+3.  Foxtrott.
+```
 
 ### Horizontal Rules
 
@@ -1303,9 +1353,11 @@ stringified:
 
 The following document:
 
-    A rule:
+```markdown
+A rule:
 
-    ---
+---
+```
 
 And the below JavaScript:
 
@@ -1321,9 +1373,11 @@ mdast.stringify(ast, {
 
 Yields:
 
-    A rule:
+```markdown
+A rule:
 
-    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+```
 
 ### Setext Headings
 
@@ -1336,11 +1390,13 @@ Respectively, primary headings are stringified with a row of equals-signs
 
 The following document:
 
-    # First level
+```markdown
+# First level
 
-    ## Second level
+## Second level
 
-    ### Third level
+### Third level
+```
 
 And the below JavaScript:
 
@@ -1354,13 +1410,15 @@ mdast.stringify(ast, {
 
 Yields:
 
-    First level
-    ===========
+```markdown
+First level
+===========
 
-    Second level
-    ------------
+Second level
+------------
 
-    ### Third level
+### Third level
+```
 
 ### Spaced Tables
 
@@ -1370,10 +1428,12 @@ delimiting pipes.
 
 The following document:
 
-    | Hello | World  |
-    | :---- | -----: |
-    | How   |    are |
-    | you   | today? |
+```markdown
+| Hello | World  |
+| :---- | -----: |
+| How   |    are |
+| you   | today? |
+```
 
 And the below JavaScript:
 
@@ -1387,7 +1447,9 @@ mdast.stringify(ast, {
 
 Yields:
 
-    |Hello| World|
-    |:----|-----:|
-    |How  |   are|
-    |you  |today?|
+```markdown
+|Hello| World|
+|:----|-----:|
+|How  |   are|
+|you  |today?|
+```

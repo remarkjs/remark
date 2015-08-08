@@ -2859,7 +2859,7 @@ var table = require('markdown-table');
 var repeat = require('repeat-string');
 var extend = require('extend.js');
 var ccount = require('ccount');
-var longesStreak = require('longest-streak');
+var longestStreak = require('longest-streak');
 var utilities = require('./utilities.js');
 var defaultOptions = require('./defaults.js').stringify;
 
@@ -2885,6 +2885,12 @@ var MAILTO = 'mailto:';
  */
 
 var EXPRESSIONS_WHITE_SPACE = /\s/;
+
+/*
+ * Naive fence expression.
+ */
+
+var FENCE = /([`~])\1{2}/;
 
 /*
  * Expression for a protocol.
@@ -3865,7 +3871,7 @@ compilerPrototype.listItem = function (node, parent, position, bullet) {
  */
 compilerPrototype.inlineCode = function (node) {
     var value = node.value;
-    var ticks = repeat(TICK, longesStreak(value, TICK) + 1);
+    var ticks = repeat(TICK, longestStreak(value, TICK) + 1);
     var start = ticks;
     var end = ticks;
 
@@ -3962,7 +3968,19 @@ compilerPrototype.code = function (node) {
         return pad(value, 1);
     }
 
-    fence = longesStreak(value, marker) + 1;
+    fence = longestStreak(value, marker) + 1;
+
+    /*
+     * Fix GFM / RedCarpet bug, where fence-like characters
+     * inside fenced code can exit a code-block.
+     * Yes, even when the outer fence uses different
+     * characters, or is longer.
+     * Thus, we can only pad the code to make it work.
+     */
+
+    if (FENCE.test(value)) {
+        value = pad(value, 1);
+    }
 
     fence = repeat(marker, Math.max(fence, MINIMUM_CODE_FENCE_LENGTH));
 
@@ -4907,8 +4925,13 @@ function fromObject (that, object) {
     throw new TypeError('must start with number, buffer, array or string')
   }
 
-  if (typeof ArrayBuffer !== 'undefined' && object.buffer instanceof ArrayBuffer) {
-    return fromTypedArray(that, object)
+  if (typeof ArrayBuffer !== 'undefined') {
+    if (object.buffer instanceof ArrayBuffer) {
+      return fromTypedArray(that, object)
+    }
+    if (object instanceof ArrayBuffer) {
+      return fromArrayBuffer(that, object)
+    }
   }
 
   if (object.length) return fromArrayLike(that, object)
@@ -4941,6 +4964,18 @@ function fromTypedArray (that, array) {
   // of the old Buffer constructor.
   for (var i = 0; i < length; i += 1) {
     that[i] = array[i] & 255
+  }
+  return that
+}
+
+function fromArrayBuffer (that, array) {
+  if (Buffer.TYPED_ARRAY_SUPPORT) {
+    // Return an augmented `Uint8Array` instance, for best performance
+    array.byteLength
+    that = Buffer._augment(new Uint8Array(array))
+  } else {
+    // Fallback: Return an object instance of the Buffer class
+    that = fromTypedArray(that, new Uint8Array(array))
   }
   return that
 }
@@ -5062,8 +5097,6 @@ Buffer.concat = function concat (list, length) {
 
   if (list.length === 0) {
     return new Buffer(0)
-  } else if (list.length === 1) {
-    return list[0]
   }
 
   var i
@@ -5238,13 +5271,13 @@ Buffer.prototype.indexOf = function indexOf (val, byteOffset) {
   throw new TypeError('val must be string, number or Buffer')
 }
 
-// `get` will be removed in Node 0.13+
+// `get` is deprecated
 Buffer.prototype.get = function get (offset) {
   console.log('.get() is deprecated. Access using array indexes instead.')
   return this.readUInt8(offset)
 }
 
-// `set` will be removed in Node 0.13+
+// `set` is deprecated
 Buffer.prototype.set = function set (v, offset) {
   console.log('.set() is deprecated. Access using array indexes instead.')
   return this.writeUInt8(v, offset)
@@ -5933,9 +5966,16 @@ Buffer.prototype.copy = function copy (target, targetStart, start, end) {
   }
 
   var len = end - start
+  var i
 
-  if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
-    for (var i = 0; i < len; i++) {
+  if (this === target && start < targetStart && targetStart < end) {
+    // descending copy from end
+    for (i = len - 1; i >= 0; i--) {
+      target[i + targetStart] = this[i + start]
+    }
+  } else if (len < 1000 || !Buffer.TYPED_ARRAY_SUPPORT) {
+    // ascending copy from start
+    for (i = 0; i < len; i++) {
       target[i + targetStart] = this[i + start]
     }
   } else {
@@ -6011,7 +6051,7 @@ Buffer._augment = function _augment (arr) {
   // save reference to original Uint8Array set method before overwriting
   arr._set = arr.set
 
-  // deprecated, will be removed in node 0.13+
+  // deprecated
   arr.get = BP.get
   arr.set = BP.set
 
