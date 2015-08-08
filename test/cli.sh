@@ -114,6 +114,15 @@ it "Should accept \`-q\`"
     assert $result ""
 
 #
+# `--no-stdout`.
+#
+
+it "Should accept \`--no-stdout\`"
+    result=$($COMMAND --quiet --no-stdout $markdown)
+    assert 0 $?
+    assert $result ""
+
+#
 # `--silent`.
 #
 

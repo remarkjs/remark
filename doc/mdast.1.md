@@ -42,6 +42,8 @@ Options are as follows:
 
 *   `--file-path <path>`: specify file path to process as
 
+*   `--no-stdout`: disable writing to stdout;
+
 *   `--no-color`: disable color in output;
 
 *   `--no-rc`: disable configuration from _.mdastrc_;
