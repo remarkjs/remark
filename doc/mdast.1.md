@@ -40,6 +40,8 @@ Options are as follows:
 
 *   `-S`, `--silent`: output only errors;
 
+*   `-f`, `--frail`: exit with 1 on warnings;
+
 *   `--file-path <path>`: specify file path to process as
 
 *   `--no-stdout`: disable writing to stdout;

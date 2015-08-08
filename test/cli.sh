@@ -44,6 +44,7 @@ markdown="test/cli/markdown.md"
 markdownAlt="test/cli/markdown-alt.md"
 npmPlugin="toc"
 plugin="test/badges.js"
+warn="test/warn.js"
 rc="test/cli/rc.json"
 ignore="test/cli/ignore.ini"
 
@@ -121,6 +122,21 @@ it "Should accept \`--no-stdout\`"
     result=$($COMMAND --quiet --no-stdout $markdown)
     assert 0 $?
     assert $result ""
+
+#
+# `--frail`.
+#
+
+it "Should accept \`--frail\`"
+    $COMMAND $markdown > /dev/null 2>&1
+    assert 0 $?
+
+    $COMMAND -u $warn $markdown --frail > /dev/null 2>&1
+    assert 1 $?
+
+it "Should accept \`-f\`"
+    $COMMAND -u $warn $markdown -f > /dev/null 2>&1
+    assert 1 $?
 
 #
 # `--silent`.
