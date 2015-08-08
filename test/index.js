@@ -7,16 +7,12 @@ var he = require('he');
 var VFile = require('vfile');
 var mdast = require('..');
 var fixtures = require('./fixtures.js');
-var chalk = require('chalk');
-var diff = require('diff');
 var badges = require('./badges.js');
 var mentions = require('./mentions.js');
 
 /*
  * Settings.
  */
-
-var INDENT = 2;
 
 /**
  * No-operation.
@@ -1148,8 +1144,6 @@ function clone(node, clean) {
  * Methods.
  */
 
-var stringify = JSON.stringify;
-
 /**
  * Diff node.
  *
@@ -1164,36 +1158,7 @@ function compare(node, baseline, clean, cleanBaseline) {
         cleanBaseline = true;
     }
 
-    try {
-        assert.deepEqual(clone(node, clean), clone(baseline, cleanBaseline));
-    } catch (error) {
-        /* istanbul ignore next */
-        logDifference(
-            stringify(clone(baseline, clean), null, INDENT),
-            stringify(clone(node, clean), null, INDENT)
-        );
-
-        /* istanbul ignore next */
-        throw error;
-    }
-}
-
-/**
- * Diff text.
- *
- * @param {string} value
- * @param {string} baseline
- */
-function compareText(value, baseline) {
-    try {
-        assert(value === baseline);
-    } catch (error) {
-        /* istanbul ignore next */
-        logDifference(baseline, value);
-
-        /* istanbul ignore next */
-        throw error;
-    }
+    assert.deepEqual(clone(node, clean), clone(baseline, cleanBaseline));
 }
 
 /*
@@ -1239,56 +1204,10 @@ describe('fixtures', function () {
 
                 if (output === true) {
                     it('should stringify `' + name + '` exact', function () {
-                        compareText(fixture.input, markdown);
+                        assert.equal(fixture.input, markdown);
                     });
                 }
             });
         });
     });
 });
-
-/* istanbul ignore next */
-
-/**
- * Log the difference between `value` and `alternative`.
- *
- * @param {string} value
- * @param {string} alternative
- */
-function logDifference(value, alternative) {
-    var difference = diff.diffLines(value, alternative);
-
-    if (difference && difference.length) {
-        difference.forEach(function (change, index) {
-            var colour;
-            var changes;
-            var start;
-            var end;
-
-            colour = change.added ? 'green' : change.removed ? 'red' : 'dim';
-
-            changes = change.value;
-
-            if (colour === 'dim') {
-                changes = changes.split('\n');
-
-                if (changes.length > 6) {
-                    start = changes.slice(0, 3);
-                    end = changes.slice(-3);
-
-                    if (index === 0) {
-                        start = [];
-                    } else if (index === difference.length - 1) {
-                        end = [];
-                    }
-
-                    changes = start.concat('...', end);
-                }
-
-                changes = changes.join('\n');
-            }
-
-            process.stdout.write(chalk[colour](changes));
-        });
-    }
-}
