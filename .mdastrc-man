@@ -2,8 +2,8 @@
   "output": "man/",
   "plugins": {
     "mdast-man": {
-      "manual": "mdast",
-      "version": "0.28.0"
+      "manual": "mdast manual",
+      "version": "0.29.0"
     }
   }
 }

@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+0.29.0 / 2015-08-08
+===================
+
+*   Update docs ([22fe26a](https://github.com/wooorm/mdast/commit/22fe26a))
+*   Fix “nested’ fenced code rendering for RedCarpet ([84e84d8](https://github.com/wooorm/mdast/commit/84e84d8))
+*   Add support for exiting with `1` on warnings ([06571a5](https://github.com/wooorm/mdast/commit/06571a5))
+*   Add support for not writing to STDOUT ([cde0cd3](https://github.com/wooorm/mdast/commit/cde0cd3))
+
 0.28.0 / 2015-07-31
 ===================
 
