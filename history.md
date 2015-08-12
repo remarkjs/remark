@@ -7,6 +7,14 @@ mdast:
 
 <!--lint disable maximum-line-length-->
 
+1.0.0 / 2015-08-12
+==================
+
+Nothing much changed, just that **mdast** is now officially stable!
+Thanks all for the 100 stars :wink:.
+
+*   Update eslint ([2fc7dbb](https://github.com/wooorm/mdast/commit/2fc7dbb))
+
 0.29.0 / 2015-08-08
 ===================
 
