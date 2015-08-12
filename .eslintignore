@@ -6,3 +6,4 @@ lib/expressions.js
 build.js
 mdast.js
 mdast.min.js
+example.js
