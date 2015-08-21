@@ -23,11 +23,11 @@ to markdown to connect together, can be immense on large documents.
 *   [hughsk/mdast-contributors](https://github.com/hughsk/mdast-contributors)
     — Inject a given list of contributors into a table in a document;
 
+*   [eush77/mdast-defsplit](https://github.com/eush77/mdast-defsplit)
+    — Extract inline link/image destinations as separate definitions;
+
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
-
-*   [wooorm/mdast-heading](https://github.com/wooorm/mdast-heading)
-    — Markdown heading as ranges;
 
 *   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
     — Compile Markdown to HTML documents;
@@ -40,9 +40,6 @@ to markdown to connect together, can be immense on large documents.
 
 *   [wooorm/mdast-man](https://github.com/wooorm/mdast-man)
     — Compile Markdown to Man pages (roff);
-
-*   [wooorm/mdast-message-sort](https://github.com/wooorm/mdast-message-sort)
-    — Sort mdast messages by line/column;
 
 *   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
     — Normalize headings depths, such as multiple top-level headings;
@@ -91,6 +88,9 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
 *   [wooorm/mdast-util-definitions](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
 
+*   [wooorm/mdast-util-heading-range](https://github.com/wooorm/mdast-util-heading-range)
+    — Markdown heading as ranges;
+
 *   [wooorm/mdast-util-heading-style](https://github.com/wooorm/mdast-util-heading-style)
     — Get the style of a heading (`"atx"`, `"atx-closed"`, or `"setext"`);
 
@@ -100,8 +100,12 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
 *   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
     — Get the plain text content of a node;
 
-*   [wooorm/mdast-util-visit](https://github.com/wooorm/mdast-util-visit)
-    — Recursively walk over nodes.
+In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
+for other utilities which work with **mdast** nodes, but also with
+[retext](https://github.com/wooorm/retext) nodes.
+
+And finally, see [`wooorm/vfile`](https://github.com/wooorm/vfile#related-tools)
+for a list of utilities for working with virtual files and
 
 ## Using plugins
 
