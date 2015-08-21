@@ -4,6 +4,14 @@
 
 <!--lint disable maximum-line-length-->
 
+1.1.0 / 2015-08-21
+==================
+
+*   Fix typo in man-page ([d435999](https://github.com/wooorm/mdast/commit/d435999))
+*   Update list of plug-ins ([4add9e6](https://github.com/wooorm/mdast/commit/4add9e6))
+*   Refactor to externalise reporter ([8c80af9](https://github.com/wooorm/mdast/commit/8c80af9))
+*   Refactor mdast(1) to externalise `to-vfile` ([69629d5](https://github.com/wooorm/mdast/commit/69629d5))
+
 1.0.0 / 2015-08-12
 ==================
 
