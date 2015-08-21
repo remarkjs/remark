@@ -136,7 +136,7 @@ Same as `-q`, `--quiet`, but also ignores warnings.
 mdast --frail
 ```
 
-Exit with a status code of `1` if warnings are trigger for the processed
+Exit with a status code of `1` if warnings are triggered for the processed
 code, instead of the default of only exiting with `1` on fatal errors.
 
 ### `--file-path` <_path_>
