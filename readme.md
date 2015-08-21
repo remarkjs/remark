@@ -216,7 +216,7 @@ npm install --global mdast
 Use:
 
 ```text
-Usage: mdast [options] file|dir ...
+Usage: mdast [options] <file|dir ...>
 
 Markdown processor powered by plugins
 
@@ -233,14 +233,16 @@ Options:
   -a, --ast                 output AST information
   -q, --quiet               output only warnings and errors
   -S, --silent              output only errors
+  -f, --frail               exit with 1 on warnings
   --file-path <path>        specify file path to process as
+  --no-stdout               disable writing to stdout
   --no-color                disable color in output
   --no-rc                   disable configuration from .mdastrc
   --no-ignore               disable ignore from .mdastignore
 
 Usage:
 
-# Pass `readme.md` through mdast
+# Process `readme.md`
 $ mdast readme.md -o readme-new.md
 
 # Pass stdin through mdast, with settings, to stdout
@@ -253,9 +255,9 @@ $ mdast --use toc=heading:"contents" readme.md -o
 # Rewrite markdown in a directory
 $ mdast . -o
 
-See also:
-
-man 1 mdast, man 3 mdast, man 5 mdastrc, man 5 mdastignore, man 7 mdastconfig
+See also: man 1 mdast, man 3 mdast, man 3 mdastplugin,
+  man 5 mdastrc, man 5 mdastignore, man 7 mdastsetting,
+  man 7 mdastconfig, man 7 mdastnode, man 7 mdastplugin.
 ```
 
 ## Benchmark
