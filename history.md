@@ -1,7 +1,4 @@
----
-mdast:
-  setext: true
----
+<!--mdast setext-->
 
 <!--lint disable no-multiple-toplevel-headings-->
 
