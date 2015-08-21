@@ -4,7 +4,6 @@
     "components/",
     "coverage/",
     "node_modules/",
-    "lib/cli/formatter.js",
     "lib/expressions.js",
     "script/build-expressions.js",
     "build.js",

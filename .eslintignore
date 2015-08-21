@@ -1,7 +1,6 @@
 build/
 components/
 coverage/
-lib/cli/formatter.js
 lib/expressions.js
 build.js
 mdast.js
