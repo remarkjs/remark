@@ -18,7 +18,7 @@ Thanks all for the 100 stars :wink:.
 *   Update docs ([22fe26a](https://github.com/wooorm/mdast/commit/22fe26a))
 *   Fix “nested’ fenced code rendering for RedCarpet ([84e84d8](https://github.com/wooorm/mdast/commit/84e84d8))
 *   Add support for exiting with `1` on warnings ([06571a5](https://github.com/wooorm/mdast/commit/06571a5))
-*   Add support for not writing to STDOUT ([cde0cd3](https://github.com/wooorm/mdast/commit/cde0cd3))
+*   Add support for not writing to stdout(4) ([cde0cd3](https://github.com/wooorm/mdast/commit/cde0cd3))
 
 0.28.0 / 2015-07-31
 ===================
@@ -619,7 +619,7 @@ Thanks all for the 100 stars :wink:.
 *   Rename `horizontal-rule` stringification options to `rule` ([da1c223](https://github.com/wooorm/mdast/commit/da1c223))
 *   Rename `setext-headings` stringification option to `setext` ([3f5d136](https://github.com/wooorm/mdast/commit/3f5d136))
 *   Remove `prefer` before several stirngification options ([17b2668](https://github.com/wooorm/mdast/commit/17b2668))
-*   Remove multiple new lines from CLI by using stdout instead of console ([c8a6a39](https://github.com/wooorm/mdast/commit/c8a6a39))
+*   Remove multiple new lines from CLI by using stdout(4) instead of console ([c8a6a39](https://github.com/wooorm/mdast/commit/c8a6a39))
 *   Remove multiple new lines after the stringified AST ([b1aaabd](https://github.com/wooorm/mdast/commit/b1aaabd))
 *   Fix bug in CLI with exit code when provided with invalid file path ([bea737e](https://github.com/wooorm/mdast/commit/bea737e))
 *   Add mention of same file input output to `cli.js` ([6b8aee0](https://github.com/wooorm/mdast/commit/6b8aee0))
