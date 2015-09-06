@@ -6,7 +6,7 @@
 .RS 2
 .nf
 \[sl]**
- * Change a file-extension to \[ga]html\[ga].
+ * Change a file-extension to \[ga]\[aq]html\[aq]\[ga].
  *\[sl]
 function transformer(ast, file) \[lC]
     file.move(\[lC]
@@ -16,6 +16,7 @@ function transformer(ast, file) \[lC]
 
 \[sl]**
  * Expose.
+ * This plugin can be used as \[ga]mdast.use(plugin)\[ga].
  *\[sl]
 module.exports \[eq] function () \[lC]
     return transformer;
@@ -39,6 +40,31 @@ It adds new files to be processed by \fBmdast\fR(1).
 .P
 All have their own function. The first is called an \[lq]attacher\[rq] (see \fBATTACHER\fR). The second is named a \[lq]transformer\[rq] (see \fBTRANSFORMER\fR). The third is named a \[lq]completer\[rq] (see \fBCOMPLETER\fR). An \[lq]attacher\[rq] may return a \[lq]transformer\[rq] and attach a \[lq]completer\[rq].
 .SH "FUNCTION ATTACHER(MDAST\[LB], OPTIONS\[RB]\[LB], FILESET\[RB])"
+.P
+.RS 2
+.nf
+\[sl]**
+ * Add an extension.
+ * The \[ga]processor\[ga] is the instance of mdast this attacher
+ * is \[ga]use\[ga]d on.\[lC]
+ * This plugin can be used as \[ga]mdast.use(plugin, \[lC]ext: \[aq]html\[aq]\[rC])\[ga].
+ *\[sl]
+module.exports \[eq] function (processor, options) \[lC]
+    var extension \[eq] (options \[ba]\[ba] \[lC]\[rC]).ext;
+
+    \[sl]**
+     * Change a file-extension to \[ga]extension\[ga].
+     *\[sl]
+    function transformer(ast, file) \[lC]
+        file.move(\[lC]
+            \[aq]extension\[aq]: extension
+        \[rC]);
+    \[rC]
+
+    return transformer;
+\[rC];
+.fi
+.RE
 .P
 To modify the parser, the compiler, or access the file-set on \fBmdast\fR(1), create an attacher.
 .P
@@ -68,6 +94,31 @@ Note that \fBmdast\fR(1) invokes \fBattacher\fR for each file, not just once.
 .P
 \fBtransformer\fR (optional) \[em] See FUNCTION TRANSFORMER(NODE, FILE\[lB], NEXT\[rB]).
 .SH "FUNCTION TRANSFORMER(NODE, FILE\[LB], NEXT\[RB])"
+.P
+.RS 2
+.nf
+var visit \[eq] require(\[aq]unist-util-visit\[aq]);
+
+\[sl]**
+ * Add a \[ga]js\[ga] language flag to code nodes when without flag.
+ *\[sl]
+function transformer(ast, file) \[lC]
+    visit(ast, \[aq]code\[aq], function (node) \[lC]
+        if (!node.lang) \[lC]
+            node.lang \[eq] \[aq]js\[aq];
+        \[rC]
+    \[rC]);
+\[rC]
+
+\[sl]**
+ * Expose.
+ * This plugin can be used as \[ga]mdast.use(plugin)\[ga].
+ *\[sl]
+module.exports \[eq] function () \[lC]
+    return transformer;
+\[rC];
+.fi
+.RE
 .P
 To transform an \fBmdastnode\fR(7), create a \fBtransformer\fR. A \fBtransformer\fR is a simple function which is invoked each time a document is processed by a \fBmdast\fR processor. A transformer should transform \fBnode\fR or modify \fBfile\fR.
 .P

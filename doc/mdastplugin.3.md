@@ -4,7 +4,7 @@
 
 ```js
 /**
- * Change a file-extension to `html`.
+ * Change a file-extension to `'html'`.
  */
 function transformer(ast, file) {
     file.move({
@@ -14,6 +14,7 @@ function transformer(ast, file) {
 
 /**
  * Expose.
+ * This plugin can be used as `mdast.use(plugin)`.
  */
 module.exports = function () {
     return transformer;
@@ -39,6 +40,29 @@ All have their own function. The first is called an
 return a “transformer” and attach a “completer”.
 
 ## function attacher(mdast\[, options\]\[, fileSet\])
+
+```js
+/**
+ * Add an extension.
+ * The `processor` is the instance of mdast this attacher
+ * is `use`d on.{
+ * This plugin can be used as `mdast.use(plugin, {ext: 'html'})`.
+ */
+module.exports = function (processor, options) {
+    var extension = (options || {}).ext;
+
+    /**
+     * Change a file-extension to `extension`.
+     */
+    function transformer(ast, file) {
+        file.move({
+            'extension': extension
+        });
+    }
+
+    return transformer;
+};
+```
 
 To modify the parser, the compiler, or access the file-set on **mdast**(1),
 create an attacher.
@@ -71,6 +95,29 @@ Note that **mdast**(1) invokes **attacher** for each file, not just once.
 `transformer` (optional) — See FUNCTION TRANSFORMER(NODE, FILE\[, NEXT\]).
 
 ## function transformer(node, file\[, next\])
+
+```js
+var visit = require('unist-util-visit');
+
+/**
+ * Add a `js` language flag to code nodes when without flag.
+ */
+function transformer(ast, file) {
+    visit(ast, 'code', function (node) {
+        if (!node.lang) {
+            node.lang = 'js';
+        }
+    });
+}
+
+/**
+ * Expose.
+ * This plugin can be used as `mdast.use(plugin)`.
+ */
+module.exports = function () {
+    return transformer;
+};
+```
 
 To transform an **mdastnode**(7), create a **transformer**. A **transformer**
 is a simple function which is invoked each time a document is processed by
