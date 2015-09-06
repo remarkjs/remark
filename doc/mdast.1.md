@@ -169,7 +169,7 @@ Disable ANSI codes in output.
 mdast --no-rc
 ```
 
-Disabled configuration from **mdastrc**(5) files. This does not apply to
+Disables configuration from **mdastrc**(5) files. This does not apply to
 explicitly provided files through `-c`, `--config-path`.
 
 ### `--no-ignore`
@@ -178,7 +178,7 @@ explicitly provided files through `-c`, `--config-path`.
 mdast --no-ignore
 ```
 
-Disabled configuration from **mdastignore**(5) files. This does not apply to
+Disables configuration from **mdastignore**(5) files. This does not apply to
 explicitly provided files through `-i`, `--ignore-path`.
 
 ### `--`
