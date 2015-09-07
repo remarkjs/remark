@@ -29,6 +29,7 @@
     "longest-streak": "^1.0.0",
     "markdown-table": "^0.4.0",
     "minimatch": "^2.0.0",
+    "npm-prefix": "^1.0.1",
     "repeat-string": "^1.5.0",
     "text-table": "^0.2.0",
     "to-vfile": "^1.0.0",
