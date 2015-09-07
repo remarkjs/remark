@@ -4,6 +4,15 @@
 
 <!--lint disable maximum-line-length-->
 
+1.2.0 / 2015-09-07
+==================
+
+*   Fix bug where colour on mdast(1) persisted ([ca2c53a](https://github.com/wooorm/mdast/commit/ca2c53a))
+*   Add support for loading global plugins ([5e2d32e](https://github.com/wooorm/mdast/commit/5e2d32e))
+*   Add more mdastplugin(3) examples ([8664a03](https://github.com/wooorm/mdast/commit/8664a03))
+*   Move all info output of mdast(1) to stderr(4) ([daed42f](https://github.com/wooorm/mdast/commit/daed42f))
+*   Refactor miscellaneous docs ([72412af](https://github.com/wooorm/mdast/commit/72412af))
+
 1.1.0 / 2015-08-21
 ==================
 
@@ -132,7 +141,7 @@ Thanks all for the 100 stars :wink:.
 ===================
 
 *   Update eslint ([5a3e9bb](https://github.com/wooorm/mdast/commit/5a3e9bb))
-*   Update man/ pages ([0c689f7](https://github.com/wooorm/mdast/commit/0c689f7))
+*   Update `man/` pages ([0c689f7](https://github.com/wooorm/mdast/commit/0c689f7))
 *   Add `<stdin>` label to CLI warnings when piping ([aba731f](https://github.com/wooorm/mdast/commit/aba731f))
 *   Fix typos ([688f63a](https://github.com/wooorm/mdast/commit/688f63a))
 *   Fix UMD-installation example in `readme.md` ([6caaecd](https://github.com/wooorm/mdast/commit/6caaecd))
