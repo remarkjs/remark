@@ -50,6 +50,9 @@ to markdown to connect together, can be immense on large documents.
 *   [mapbox/mdast-react](https://github.com/mapbox/mdast-react)
     — Compile Markdown to React;
 
+*   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
+    — Compile Markdown to Deku component;
+
 *   [wooorm/mdast-reference-links](https://github.com/wooorm/mdast-reference-links)
     — Transform links and images into references and definitions;
 
