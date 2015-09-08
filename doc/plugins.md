@@ -29,6 +29,9 @@ to markdown to connect together, can be immense on large documents.
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
+*   [ben-eb/mdast-highlight.js](https://github.com/ben-eb/mdast-highlight.js)
+    — Highlight code blocks in Markdown files with highlight.js;
+
 *   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
     — Compile Markdown to HTML documents;
 
@@ -40,6 +43,9 @@ to markdown to connect together, can be immense on large documents.
 
 *   [wooorm/mdast-man](https://github.com/wooorm/mdast-man)
     — Compile Markdown to Man pages (roff);
+
+*   [ben-eb/mdast-midas](https://github.com/ben-eb/mdast-midas)
+    — Highlight CSS in Markdown files with midas;
 
 *   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
     — Normalize headings depths, such as multiple top-level headings;
