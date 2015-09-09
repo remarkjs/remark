@@ -26,6 +26,9 @@ to markdown to connect together, can be immense on large documents.
 *   [eush77/mdast-defsplit](https://github.com/eush77/mdast-defsplit)
     — Extract inline link/image destinations as separate definitions;
 
+*   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
+    — Compile Markdown to Deku;
+
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
