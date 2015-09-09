@@ -27,13 +27,14 @@ to markdown to connect together, can be immense on large documents.
     — Extract inline link/image destinations as separate definitions;
 
 *   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
-    — Compile Markdown to Deku;
+    — Compile Markdown to [Deku](https://github.com/dekujs/deku);
 
 *   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
 *   [ben-eb/mdast-highlight.js](https://github.com/ben-eb/mdast-highlight.js)
-    — Highlight code blocks in Markdown files with highlight.js;
+    — Highlight code blocks in Markdown files with
+    [highlight.js](https://github.com/isagalaev/highlight.js);
 
 *   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
     — Compile Markdown to HTML documents;
@@ -48,7 +49,7 @@ to markdown to connect together, can be immense on large documents.
     — Compile Markdown to Man pages (roff);
 
 *   [ben-eb/mdast-midas](https://github.com/ben-eb/mdast-midas)
-    — Highlight CSS in Markdown files with midas;
+    — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas);
 
 *   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
     — Normalize headings depths, such as multiple top-level headings;
@@ -57,7 +58,7 @@ to markdown to connect together, can be immense on large documents.
     — Add range information;
 
 *   [mapbox/mdast-react](https://github.com/mapbox/mdast-react)
-    — Compile Markdown to React;
+    — Compile Markdown to [React](https://github.com/facebook/react);
 
 *   [wooorm/mdast-reference-links](https://github.com/wooorm/mdast-reference-links)
     — Transform links and images into references and definitions;
@@ -66,7 +67,7 @@ to markdown to connect together, can be immense on large documents.
     — Add slugs to headings;
 
 *   [wooorm/mdast-strip-badges](https://github.com/wooorm/mdast-strip-badges)
-    — Remove badges (such as shields.io);
+    — Remove badges (such as `shields.io`);
 
 *   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
     — Remove empty paragraphs;
