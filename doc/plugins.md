@@ -17,6 +17,9 @@ to markdown to connect together, can be immense on large documents.
 
 ## List of Plugins
 
+*   [ben-eb/mdast-autolink-headings](https://github.com/ben-eb/mdast-autolink-headings)
+    — Automatically add GitHub style links to headings;
+
 *   [wooorm/mdast-comment-config](https://github.com/wooorm/mdast-comment-config)
     — Set settings with comments during runtime;
 
