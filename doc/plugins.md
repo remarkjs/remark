@@ -93,6 +93,9 @@ to markdown to connect together, can be immense on large documents.
 *   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone)
     — HTML comments as ranges or markers.
 
+*   [ZotPlus/zotero-citations](https://github.com/ZotPlus/zotero-citations/blob/master/lib/schomd.coffee)
+    — Scholarly Markdown processor; specifically for Zotero right now but easily customizable.
+
 ## List of Utilities
 
 Although not **mdast** plug-ins, the following projects are useful when
