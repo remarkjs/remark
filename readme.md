@@ -180,7 +180,7 @@ to default to their default values.
 whatever a plugin generates.
 The result is `null` if a plugin is asynchronous, in which case the callback
 `done` should’ve been passed (don’t worry: plugin creators make sure you know
-    its async).
+its async).
 
 ### [mdast](#api).use([plugin](doc/plugins.md#plugins), options?)
 
