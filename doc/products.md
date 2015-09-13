@@ -27,8 +27,14 @@ for a list of plugins and utilities.
 *   [hughsk/contributor-table](https://github.com/hughsk/contributor-table)
     — Inject a list of git contributors
 
+*   [eush77/github-man](https://github.com/eush77/github-man)
+    — Open readme from GitHub repository as a man page.
+
 *   [man-n/man-n](https://github.com/man-n/man-n)
     — Browse npm with man(1);
+
+*   [eush77/npm-man](https://github.com/eush77/npm-man)
+    — Open any package readme from npm as a man page.
 
 *   [dthree/wat](https://github.com/dthree/wat)
     — Community-controlled cheat sheets for every coder.
