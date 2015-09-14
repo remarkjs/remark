@@ -101,6 +101,28 @@ mdast --ext .doc
 Specify one or more extensions to include when searching for files. This will add the given \fBextensions\fR to the internal list, which includes \fB\[aq]md\[aq]\fR, \fB\[aq]markdown\[aq]\fR, \fB\[aq]mkd\[aq]\fR, \fB\[aq]mkdn\[aq]\fR, \fB\[aq]mkdown\[aq]\fR, and \fB\[aq]ron\[aq]\fR.
 .P
 The given \fBextensions\fR can be comma or semi-colon separated.
+.SS "\fB-w\fR, \fB--watch\fR"
+.P
+.RS 2
+.nf
+mdast -w .
+.fi
+.RE
+.P
+Watch all files and reprocess when they change.
+.P
+When watching files which would normally regenerate, this behavior is ignored until the watch is closed.
+.P
+.RS 2
+.nf
+\[Do] mdast --no-rc readme.md -oqw
+\[sh] Watching... (press CTRL\[pl]C to exit)
+\[sh] Warning: mdast does not overwrite watched files until exit.
+\[sh] Messages and other files are not affected.
+.fi
+.RE
+.P
+The watch is stopped when \fBSIGINT\fR is received (usually done by pressing \fBCTRL-C\fR).
 .SS "\fB-a\fR, \fB--ast\fR"
 .P
 .RS 2

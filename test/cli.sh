@@ -1,14 +1,14 @@
 #!/bin/sh
 #!/bin/bash
 
-typeset -i tests=0
+tests="0"
 
 #
 # Describe.
 #
 
-function it {
-    let tests+=1
+it() {
+    tests=$((tests+1))
     description="$1"
 }
 
@@ -19,11 +19,13 @@ function it {
 # @param expected
 #
 
-function assert {
-    if [[ "$1" == "$2" ]]; then
+assert() {
+    if [ "$1" = "$2" ]; then
         printf "\033[32m.\033[0m"
     else
-        printf "\033[31m\nFAIL: $description\033[0m: '$1' != '$2'\n"
+        echo "size1: ${#1}"
+        echo "size2: ${#2}"
+        printf "\033[31m\nFAIL: %s\033[0m: '%s' != '%s'\n" "$description" "$1" "$2"
         exit 1
     fi
 }
@@ -65,15 +67,15 @@ tmp="test/cli/tmp.md"
 #
 
 it "Should accept a file"
-    $COMMAND $markdown > /dev/null 2>&1
+    $COMMAND "$markdown" > /dev/null 2>&1
     assert $? 0
 
 it "Should accept stdin"
-    cat $markdown | $COMMAND > /dev/null 2>&1
+    $COMMAND < "$markdown" > /dev/null 2>&1
     assert $? 0
 
 it "Should accept stdin as herestring"
-    $COMMAND <<< $(cat $markdown) > /dev/null 2>&1
+    $COMMAND <<< "$(cat $markdown)" > /dev/null 2>&1
     assert $? 0
 
 it "Should fail without input"
@@ -85,11 +87,11 @@ it "Should fail on an invalid file"
     assert $? 1
 
 it "Should not fail on multiple files"
-    $COMMAND $markdown $markdown > /dev/null 2>&1
+    $COMMAND "$markdown" "$markdown" > /dev/null 2>&1
     assert $? 0
 
 it "Should fail on stdin and files"
-    cat $markdown | $COMMAND $markdown > /dev/null 2>&1
+    cat "$markdown" | $COMMAND "$markdown" > /dev/null 2>&1
     assert $? 1
 
 it "Should ignore herestring when with files (for now)"
@@ -113,14 +115,14 @@ it "Should accept \`-a\`"
 #
 
 it "Should accept \`--quiet\`"
-    result=`$COMMAND --quiet $markdown $markdownAlt --output`
+    result=$($COMMAND --quiet $markdown $markdownAlt --output)
     assert 0 $?
-    assert $result ""
+    assert "$result" ""
 
 it "Should accept \`-q\`"
-    result=`$COMMAND -q $markdown $markdownAlt --output`
+    result=$($COMMAND -q $markdown $markdownAlt --output)
     assert 0 $?
-    assert $result ""
+    assert "$result" ""
 
 #
 # `--no-stdout`.
@@ -129,7 +131,7 @@ it "Should accept \`-q\`"
 it "Should accept \`--no-stdout\`"
     result=$($COMMAND --quiet --no-stdout $markdown)
     assert 0 $?
-    assert $result ""
+    assert "$result" ""
 
 #
 # `--frail`.
@@ -151,14 +153,14 @@ it "Should accept \`-f\`"
 #
 
 it "Should accept \`--silent\`"
-    result=`$COMMAND --silent $markdown $markdownAlt --output`
+    result=$($COMMAND --silent $markdown $markdownAlt --output)
     assert 0 $?
-    assert $result ""
+    assert "$result" ""
 
 it "Should accept \`-S\`"
-    result=`$COMMAND -S $markdown $markdownAlt --output`
+    result=$($COMMAND -S $markdown $markdownAlt --output)
     assert 0 $?
-    assert $result ""
+    assert "$result" ""
 
 #
 # `--output`.
@@ -373,11 +375,11 @@ it "Should fail on missing value for \`--setting\`"
 #
 
 it "Should accept \`--file-path <path>\`"
-    cat $markdown | $COMMAND --file-path $markdown > /dev/null 2>&1
+    $COMMAND --file-path "$markdown" < "$markdown" > /dev/null 2>&1
     assert $? 0
 
 it "Should fail on missing value for \`--file-path\`"
-    cat $markdown | $COMMAND --file-path > /dev/null 2>&1
+    $COMMAND --file-path < $markdown > /dev/null 2>&1
     assert $? 1
 
 it "Should fail \`--file-path <path>\` with files"
@@ -464,4 +466,4 @@ it "Should fail on unknown long options"
     $COMMAND --verbose > /dev/null 2>&1
     assert $? 1
 
-printf "\033[32m\n(✓) Passed $tests assertions without errors\033[0m\n"
+printf "\033[32m\n(✓) Passed %s assertions without errors\033[0m\n" "$tests"
