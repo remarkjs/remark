@@ -97,7 +97,7 @@ COMMAND LINE USAGE for more information.
 ### `-e`, `--ext` <_extensions_>
 
 ```sh
-mdast --ext .doc
+mdast --ext doc
 ```
 
 Specify one or more extensions to include when searching for files.
