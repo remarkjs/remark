@@ -230,6 +230,7 @@ Options:
   -s, --setting <settings>  specify settings
   -u, --use <plugins>       use transform plugin(s)
   -e, --ext <extensions>    specify extensions
+  -w, --watch               watch for changes and reprocess
   -a, --ast                 output AST information
   -q, --quiet               output only warnings and errors
   -S, --silent              output only errors
