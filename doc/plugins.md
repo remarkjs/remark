@@ -81,7 +81,7 @@ See [tools built with mdast »](https://github.com/wooorm/mdast/blob/master/doc/
     — Generate a Table of Contents (TOC) for Markdown files;
 
 *   [eush77/mdast-unlink](https://github.com/eush77/mdast-unlink)
-    — Remove all links, references and definitions
+    — Remove all links, references and definitions;
 
 *   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage)
     — Add a usage example to your readme;
@@ -106,6 +106,9 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
 *   [wooorm/mdast-util-definitions](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
 
+*   [wooorm/mdast-util-escape](https://github.com/wooorm/mdast-util-escape)
+    — Escape text to be inserted into a node;
+
 *   [wooorm/mdast-util-heading-range](https://github.com/wooorm/mdast-util-heading-range)
     — Markdown heading as ranges;
 
@@ -116,7 +119,7 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
     — Get the position of nodes;
 
 *   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
-    — Get the plain text content of a node;
+    — Get the plain text content of a node.
 
 In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
 for other utilities which work with **mdast** nodes, but also with
