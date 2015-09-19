@@ -45,39 +45,39 @@ npm install mdast
 
 ## Usage
 
+Load dependencies:
+
 ```javascript
 var mdast = require('mdast');
+var html = require('mdast-html');
 var yamlConfig = require('mdast-yaml-config');
 ```
 
-Use a plugin. mdast-yaml-config allows settings in YAML frontmatter.
+Use plugins:
 
 ```javascript
-var processor = mdast().use(yamlConfig);
+var processor = mdast().use(yamlConfig).use(html);
 ```
 
-Parse, modify, and stringify the document:
+Process the document:
 
 ```javascript
-var doc = processor.process(
-    '---\n' +
-    'mdast:\n' +
-    '  commonmark: true\n' +
-    '---\n' +
-    '\n' +
-    '2) Some *emphasis*, **strongness**, and `code`.\n'
-);
+var doc = processor.process([
+    '---',
+    'mdast:',
+    '  commonmark: true',
+    '---',
+    '',
+    '2) Some *emphasis*, **strongness**, and `code`.'
+].join('\n'));
 ```
 
 Yields:
 
-```markdown
----
-mdast:
-  commonmark: true
----
-
-2.  Some _emphasis_, **strongness**, and `code`.
+```html
+<ol start="2">
+<li>Some <em>emphasis</em>, <strong>strongness</strong>, and <code>code</code>.</li>
+</ol>
 ```
 
 ## API

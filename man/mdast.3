@@ -5,21 +5,23 @@
 .P
 .RS 2
 .nf
-var mdast \[eq] require(\[aq]mdast\[aq]);
+\[sl]\[sl] Load dependencies:
+var mdast \[eq] require(\[aq].\[sl]index.js\[aq]);
+var html \[eq] require(\[aq]mdast-html\[aq]);
 var yamlConfig \[eq] require(\[aq]mdast-yaml-config\[aq]);
 
-\[sl]\[sl] Use a plugin.  mdast-yaml-config allows settings in YAML frontmatter.
-var processor \[eq] mdast().use(yamlConfig);
+\[sl]\[sl] Use plugins:
+var processor \[eq] mdast().use(yamlConfig).use(html);
 
-\[sl]\[sl] Parse, modify, and stringify the document:
-var doc \[eq] processor.process(
-    \[aq]---\[rs]n\[aq] \[pl]
-    \[aq]mdast:\[rs]n\[aq] \[pl]
-    \[aq]  commonmark: true\[rs]n\[aq] \[pl]
-    \[aq]---\[rs]n\[aq] \[pl]
-    \[aq]\[rs]n\[aq] \[pl]
-    \[aq]2) Some *emphasis*, **strongness**, and \[ga]code\[ga].\[rs]n\[aq]
-);
+\[sl]\[sl] Process the document:
+var doc \[eq] processor.process(\[lB]
+    \[aq]---\[aq],
+    \[aq]mdast:\[aq],
+    \[aq]  commonmark: true\[aq],
+    \[aq]---\[aq],
+    \[aq]\[aq],
+    \[aq]2) Some *emphasis*, **strongness**, and \[ga]code\[ga].\[aq]
+\[rB].join(\[aq]\[rs]n\[aq]));
 .fi
 .RE
 .SH "DESCRIPTION"

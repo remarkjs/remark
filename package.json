@@ -76,6 +76,7 @@
     "matcha": "^0.6.0",
     "mdast-comment-config": "^1.0.0",
     "mdast-github": "^1.0.0",
+    "mdast-html": "^1.2.1",
     "mdast-lint": "^1.0.0",
     "mdast-man": "^1.0.0",
     "mdast-toc": "^1.0.0",
