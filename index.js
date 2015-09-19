@@ -22,7 +22,6 @@ var Compiler = require('./lib/stringify.js');
 
 module.exports = unified({
     'name': 'mdast',
-    'type': 'ast',
     'Parser': Parser,
     'Compiler': Compiler
 });

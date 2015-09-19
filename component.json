@@ -26,7 +26,7 @@
     "jonschlinkert/repeat-string": "^1.5.2",
     "component/trim": "^0.0.1",
     "wooorm/trim-trailing-lines": "^1.0.0",
-    "wooorm/unified": "^1.0.0"
+    "wooorm/unified": "^2.0.0"
   },
   "repository": "wooorm/mdast",
   "scripts": [

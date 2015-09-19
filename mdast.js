@@ -23,7 +23,6 @@ var Compiler = require('./lib/stringify.js');
 
 module.exports = unified({
     'name': 'mdast',
-    'type': 'ast',
     'Parser': Parser,
     'Compiler': Compiler
 });
@@ -4586,7 +4585,7 @@ compilerPrototype.tableCell = function (node) {
  * @example
  *   var file = new VFile('__Foo__');
  *
- *   file.namespace('mdast').ast = {
+ *   file.namespace('mdast').tree = {
  *     type: 'strong',
  *     children: [{
  *       type: 'text',
@@ -4601,7 +4600,7 @@ compilerPrototype.tableCell = function (node) {
  * @return {string} - Markdown document.
  */
 compilerPrototype.compile = function () {
-    return this.visit(this.file.namespace('mdast').ast);
+    return this.visit(this.file.namespace('mdast').tree);
 };
 
 /*
@@ -4793,12 +4792,14 @@ exports.clean = clean;
 exports.raise = raise;
 
 },{"collapse-white-space":13}],7:[function(require,module,exports){
+(function (global){
 /*!
  * The buffer module from node.js, for the browser.
  *
  * @author   Feross Aboukhadijeh <feross@feross.org> <http://feross.org>
  * @license  MIT
  */
+/* eslint-disable no-proto */
 
 var base64 = require('base64-js')
 var ieee754 = require('ieee754')
@@ -4838,20 +4839,22 @@ var rootParent = {}
  * We detect these buggy browsers and set `Buffer.TYPED_ARRAY_SUPPORT` to `false` so they
  * get the Object implementation, which is slower but behaves correctly.
  */
-Buffer.TYPED_ARRAY_SUPPORT = (function () {
-  function Bar () {}
-  try {
-    var arr = new Uint8Array(1)
-    arr.foo = function () { return 42 }
-    arr.constructor = Bar
-    return arr.foo() === 42 && // typed array instances can be augmented
-        arr.constructor === Bar && // constructor can be set
-        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
-        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
-  } catch (e) {
-    return false
-  }
-})()
+Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined
+  ? global.TYPED_ARRAY_SUPPORT
+  : (function () {
+      function Bar () {}
+      try {
+        var arr = new Uint8Array(1)
+        arr.foo = function () { return 42 }
+        arr.constructor = Bar
+        return arr.foo() === 42 && // typed array instances can be augmented
+            arr.constructor === Bar && // constructor can be set
+            typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
+            arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+      } catch (e) {
+        return false
+      }
+    })()
 
 function kMaxLength () {
   return Buffer.TYPED_ARRAY_SUPPORT
@@ -5007,10 +5010,16 @@ function fromJsonObject (that, object) {
   return that
 }
 
+if (Buffer.TYPED_ARRAY_SUPPORT) {
+  Buffer.prototype.__proto__ = Uint8Array.prototype
+  Buffer.__proto__ = Uint8Array
+}
+
 function allocate (that, length) {
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     // Return an augmented `Uint8Array` instance, for best performance
     that = Buffer._augment(new Uint8Array(length))
+    that.__proto__ = Buffer.prototype
   } else {
     // Fallback: Return an object instance of the Buffer class
     that.length = length
@@ -6327,6 +6336,7 @@ function blitBuffer (src, dst, offset, length) {
   return i
 }
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"base64-js":8,"ieee754":9,"is-array":10}],8:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
@@ -7646,6 +7656,8 @@ exports.right = function(str){
 
 'use strict';
 
+/* eslint-env commonjs */
+
 /*
  * Dependencies.
  */
@@ -7677,7 +7689,6 @@ var pipeline = ware()
  *
  * @param {Object} options - Configuration.
  * @param {string} options.name - Private storage.
- * @param {string} options.type - Type of syntax tree.
  * @param {Function} options.Parser - Class to turn a
  *   virtual file into a syntax tree.
  * @param {Function} options.Compiler - Class to turn a
@@ -7686,7 +7697,6 @@ var pipeline = ware()
  */
 function unified(options) {
     var name = options.name;
-    var type = options.type;
     var Parser = options.Parser;
     var Compiler = options.Compiler;
 
@@ -7767,9 +7777,9 @@ function unified(options) {
         space = file.namespace(name);
 
         if (!node) {
-            node = space[type] || node;
-        } else if (!space[type]) {
-            space[type] = node;
+            node = space.tree || node;
+        } else if (!space.tree) {
+            space.tree = node;
         }
 
         if (!node) {
@@ -7809,7 +7819,7 @@ function unified(options) {
         var CustomParser = (this && this.Parser) || Parser;
         var node = new CustomParser(file, settings).parse();
 
-        file.namespace(name)[type] = node;
+        file.namespace(name).tree = node;
 
         return node;
     }
@@ -7818,7 +7828,7 @@ function unified(options) {
      * Compile a file.
      *
      * Used the parsed node at the `name`
-     * namespace at `type` when no node was given.
+     * namespace at `'tree'` when no node was given.
      *
      * @this {Processor?} - Either a Processor instance or
      *   the Processor constructor.
@@ -7845,9 +7855,9 @@ function unified(options) {
         space = file.namespace(name);
 
         if (!node) {
-            node = space[type] || node;
-        } else if (!space[type]) {
-            space[type] = node;
+            node = space.tree || node;
+        } else if (!space.tree) {
+            space.tree = node;
         }
 
         if (!node) {
