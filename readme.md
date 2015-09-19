@@ -41,33 +41,7 @@ markdown in a build step.
 npm install mdast
 ```
 
-[Component.js](https://github.com/componentjs/component):
-
-```bash
-component install wooorm/mdast
-```
-
-[Bower](http://bower.io/#install-packages):
-
-```bash
-bower install mdast
-```
-
-[Duo](http://duojs.org/#getting-started):
-
-```javascript
-var mdast = require('wooorm/mdast');
-```
-
-UMD (globals/AMD/CommonJS) ([uncompressed](mdast.js) and
-[compressed](mdast.min.js)):
-
-```html
-<script src="path/to/mdast.js" charset="utf-8"></script>
-<script>
-    mdast.process('*hello* __world__'); // _hello_ **world**
-</script>
-```
+[Read more about alternatives ways to install and use »](doc/getting-started.md).
 
 ## Usage
 
