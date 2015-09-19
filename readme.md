@@ -83,25 +83,7 @@ Yields:
 ## API
 
 This section only covers the interface you’ll use most often. See
-[mdast(3) documentation](doc/mdast.3.md) for a more complete description:
-
-*   [mdast.parse(file, options?)](doc/mdast.3.md#mdastparsefile-options)
-    — Parses markdown into an abstract syntax tree;
-
-*   [mdast.run(ast, file, done?)](doc/mdast.3.md#mdastrunnode-file-done)
-    — Applies plugins to the syntax tree;
-
-*   [mdast.stringify(ast, options?)](doc/mdast.3.md#mdaststringifynode-file-options)
-    — Compiles the syntax tree into a string;
-
-*   [mdast.process(file, options?, done?)](doc/mdast.3.md#mdastprocessfile-options-done)
-    — More detailed than [below](#mdastprocessvalue-options-done);
-
-*   [mdast.use(plugin, options?)](doc/mdast.3.md#mdastuseplugin-options)
-    — More detailed than [below](#mdastuseplugin-options);
-
-*   [function done(err?, doc?, file?)](doc/mdast.3.md#function-doneerr-doc-file)
-    — Callback passed to `run()` and `process()`.
+[**mdast**(3) documentation](doc/mdast.3.md) for a more complete description.
 
 ### [mdast](#api).process(value, [options](doc/mdastsetting.7.md)?, done?)
 
