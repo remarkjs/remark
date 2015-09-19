@@ -29,8 +29,6 @@ markdown in a build step.
 
 *   [CLI](#cli)
 
-*   [Benchmark](#benchmark)
-
 *   [License](#license)
 
 ## Installation
@@ -215,20 +213,6 @@ $ mdast . -o
 See also: man 1 mdast, man 3 mdast, man 3 mdastplugin,
   man 5 mdastrc, man 5 mdastignore, man 7 mdastsetting,
   man 7 mdastconfig, man 7 mdastnode, man 7 mdastplugin.
-```
-
-## Benchmark
-
-On a MacBook Air, it parses ± 322Kb of markdown (in 214 documents) per second.
-
-```text
-          214 fixtures (total: 80.62Kb)
-   4 op/s » mdast.parse w/ `gfm: true`, and `yaml: true`
-  69 op/s » mdast.stringify w/ `gfm: true`, and `yaml: true`
-   4 op/s » mdast.parse w/ `gfm: false`, and `yaml: false`
-  70 op/s » mdast.stringify w/ `gfm: false`, and `yaml: false`
-   4 op/s » mdast.parse w/ `gfm: true`, `yaml: true`, and `commonmark: true`
-  72 op/s » mdast.stringify w/ `gfm: true`, `yaml: true`, and `commonmark: true`
 ```
 
 ## License

@@ -41,7 +41,6 @@
     "test/",
     "component.json",
     "package.json",
-    "benchmark.js",
     "build.js",
     "example.js",
     "cli.js",
