@@ -247,7 +247,7 @@ Usage:
 $ mdast readme.md -o readme-new.md
 
 # Pass stdin through mdast, with settings, to stdout
-$ cat readme.md | mdast -s "setext: true, bullet: "*"" > readme-new.md
+$ mdast -s "setext: true, bullet: \"*\"" < readme.md > readme-new.md
 
 # Use a plugin (with options)
 $ npm install mdast-toc
