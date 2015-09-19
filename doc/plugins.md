@@ -80,6 +80,9 @@ See [tools built with mdast »](https://github.com/wooorm/mdast/blob/master/doc/
 *   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 
+*   [eush77/mdast-unlink](https://github.com/eush77/mdast-unlink)
+    — Remove all links, references and definitions
+
 *   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage)
     — Add a usage example to your readme;
 
