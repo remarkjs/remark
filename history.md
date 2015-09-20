@@ -4,6 +4,15 @@
 
 <!--lint disable maximum-line-length-->
 
+2.0.0 / 2015-09-20
+==================
+
+*   Update unified (3dec23f)
+*   Update AUTHORS with recent contributors (49ec46f)
+*   Add support for watching files for changes to mdast(1) (b3078f9)
+*   Fix stdin detection in child-processes (8f1d7f1)
+*   Add list of tools built with mdast (d7ad2ac)
+
 1.2.0 / 2015-09-07
 ==================
 
