@@ -5,10 +5,15 @@
  */
 
 const mdast = require('wooorm/mdast@0.26.0');
+const mdastRange = require('wooorm/mdast-range@1.0.1');
+const vfile = require('wooorm/vfile');
 const debounce = require('component/debounce@1.0.0');
+const assign = require('sindresorhus/object-assign');
 const keycode = require('timoxley/keycode');
 const query = require('component/querystring');
 const events = require('component/event');
+const jquery = require('components/jquery');
+const jstree = require('vakata/jstree');
 
 /*
  * Constants.
@@ -31,7 +36,9 @@ P.S. You can also permalink the current document using \`⌘+s\` or \`Ctrl+s\`.
 
 const $write = document.getElementById('write');
 const $read = document.getElementById('read');
+const $readTree = document.getElementById('read-tree');
 const $ast = document.getElementsByName('ast')[0];
+const $astTree = document.getElementsByName('astTree')[0];
 const $stringify = document.querySelectorAll('.stringify');
 const $settings = document.getElementById('settings');
 const $toggleSettings = document.getElementById('toggle-settings');
@@ -50,17 +57,87 @@ const $options = [].concat(
 const options = {};
 
 /**
+ * Make jstree-formatted tree from mdast tree.
+ */
+function makeJstree(node) {
+    let text;
+
+    if (node.type != 'text') {
+        text = node.type;
+        const props = Object.keys(node)
+                  .filter((key) => (
+                      ['type', 'value', 'children', 'position'].indexOf(key) < 0 ||
+                          (key == 'value' && node.type != 'text')
+                  ))
+                  .map((key) => `${key}=${JSON.stringify(node[key])}`);
+
+        if (props.length) {
+            text += `(${props.join(', ')})`;
+        }
+    }
+    else {
+        text = JSON.stringify(node.value);
+    }
+
+    return assign({
+        text,
+        a_attr: {
+            title: text
+        },
+        data: {
+            position: node.position
+        }
+    }, node.children && {
+        children: node.children.map(makeJstree)
+    });
+}
+
+/**
  * Change.
  */
 function onchange() {
-    var fn = options.ast ? 'parse' : 'process';
-    var value = mdast[fn]($write.value, options);
+    if (!options.astTree) {
+        $readTree.style.display = 'none';
+        $read.style.display = 'block';
 
-    if (options.ast) {
-        value = JSON.stringify(value, 0, 2);
+        const fn = options.ast ? 'parse' : 'process';
+        const value = mdast[fn]($write.value, options);
+        $read.value = options.ast ? JSON.stringify(value, 0, 2) : value;
+    } else {
+        $read.style.display = 'none';
+        $readTree.style.display = 'block';
+
+        const file = vfile($write.value);
+        let ast = mdast.parse(file, assign({}, options, { position: true }));
+        ast = mdast.use(mdastRange).run(ast, file);
+
+        jquery($readTree)
+            .jstree('destroy')
+            .off('.jstree')
+            .on('hover_node.jstree', function (ev, data) {
+                const position = data.node.data.position;
+                $write.focus();
+                $write.setSelectionRange(position.start.offset, position.end.offset);
+            })
+            .on('dehover_node.jstree', function (ev, data) {
+                $write.setSelectionRange(0, 0);
+            })
+            .jstree({
+                core: {
+                    data: assign(makeJstree(ast), {
+                        state: {
+                            opened: true
+                        }
+                    }),
+                    themes: {
+                        name: 'proton',
+                        responsive: true
+                    }
+                },
+                conditionalselect: () => false,
+                plugins: ['wholerow', 'conditionalselect']
+            });
     }
-
-    $read.value = value;
 }
 
 /**
