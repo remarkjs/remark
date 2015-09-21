@@ -9,7 +9,9 @@
     "duo-babel": "^6.0.0"
   },
   "scripts": {
-    "build": "duo --use duo-babel --type js --stdout < demo/index.js > demo/build.js",
+    "build": "npm run build:js && npm run build:css",
+    "build:js": "duo --use duo-babel --type js --stdout < demo/index.js > demo/build.js",
+    "build:css": "duo --type css --stdout < index.css > build.css",
     "prepublish": "npm run build"
   }
 }
