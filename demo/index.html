@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>mdast - demo</title>
-    <link rel="stylesheet" href="../index.css" />
+    <link rel="stylesheet" href="../build.css" />
   </head>
   <body class="demo">
     <p class="tripple center">
@@ -139,6 +139,10 @@
             Show <abbr title="Abstract Syntax Tree">AST</abbr>?
           </label>
           <label>
+            <input name="astTree" type="checkbox" />
+            Interactive tree?
+          </label>
+          <label>
             <input name="position" type="checkbox" checked />
             Positional information?
           </label>
@@ -147,6 +151,7 @@
       <div class="editors spread">
         <textarea class="editor spread-block" id="write" spellcheck="false"></textarea>
         <textarea class="editor spread-block" id="read" readonly></textarea>
+        <div class="spread-block" id="read-tree"></div>
       </div>
     </div>
     <p class="tripple center">
