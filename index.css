@@ -138,6 +138,10 @@ input[type="number"] {
   width: 3em;
 }
 
+label [disabled] + span {
+  color: gray;
+}
+
 /*.editors {
   max-width: 60em;
   margin: 0 auto;

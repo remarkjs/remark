@@ -18,27 +18,27 @@
         <fieldset>
           <label>
             <input name="gfm" type="checkbox" class="parse" checked />
-            Github Flavoured Markdown?
+            <span>Github Flavoured Markdown?</span>
           </label>
           <label>
             <input name="yaml" type="checkbox" class="parse" checked />
-            YAML front matter?
+            <span>YAML front matter?</span>
           </label>
           <label>
             <input name="commonmark" type="checkbox" class="parse" />
-            CommonMark?
+            <span>CommonMark?</span>
           </label>
           <label>
             <input name="footnotes" type="checkbox" class="parse" />
-            Footnotes?
+            <span>Footnotes?</span>
           </label>
           <label>
             <input name="pedantic" type="checkbox" class="parse" />
-            Pedantic?
+            <span>Pedantic?</span>
           </label>
           <label>
             <input name="breaks" type="checkbox" class="parse" />
-            Breaks?
+            <span>Breaks?</span>
           </label>
         </fieldset>
         <fieldset>
@@ -48,21 +48,21 @@
               <option value="*">*</option>
               <option value="+">+</option>
             </select>
-            Bullet?
+            <span>Bullet?</span>
           </label>
           <label>
             <select name="strong" class="stringify">
               <option value="*" selected>*</option>
               <option value="_">_</option>
             </select>
-            Strong marker?
+            <span>Strong marker?</span>
           </label>
           <label>
             <select name="emphasis" class="stringify">
               <option value="*">*</option>
               <option value="_" selected>_</option>
             </select>
-            Emphasis marker?
+            <span>Emphasis marker?</span>
           </label>
           <label>
             <select name="rule" class="stringify">
@@ -70,21 +70,21 @@
               <option value="*" selected>*</option>
               <option value="_">_</option>
             </select>
-            Horizontal Rule?
+            <span>Horizontal Rule?</span>
           </label>
           <label>
             <input name="ruleRepetition" type="number" min="3" value="3" class="stringify" />
-            Horizontal Rule Repetition?
+            <span>Horizontal Rule Repetition?</span>
           </label>
           <label>
             <input name="ruleSpaces" type="checkbox" checked class="stringify" />
-            Horizontal Rule Spaces?
+            <span>Horizontal Rule Spaces?</span>
           </label>
         </fieldset>
         <fieldset>
           <label>
             <input name="incrementListMarker" type="checkbox" class="stringify" />
-            Increment list marker?
+            <span>Increment list marker?</span>
           </label>
           <label>
             <select name="listItemIndent" class="stringify">
@@ -92,36 +92,36 @@
               <option value="mixed">Mixed</option>
               <option value="1">1</option>
             </select>
-            List item indent?
+            <span>List item indent?</span>
           </label>
           <label>
             <input name="fences" type="checkbox" class="stringify" />
-            Fences?
+            <span>Fences?</span>
           </label>
           <label>
             <select name="fence" class="stringify">
               <option value="&grave;" selected>`</option>
               <option value="~">~</option>
             </select>
-            Fence Marker?
+            <span>Fence Marker?</span>
           </label>
           <label>
             <input name="spacedTable" type="checkbox" class="stringify" />
-            Pad tables?
+            <span>Pad tables?</span>
           </label>
           <label>
             <input name="looseTable" type="checkbox" class="stringify" />
-            Fence tables?
+            <span>Fence tables?</span>
           </label>
         </fieldset>
         <fieldset>
           <label>
-            <input name="setext" type="checkbox" class="parse" />
-            Setext Headings?
+            <input name="setext" type="checkbox" class="stringify" />
+            <span>Setext Headings?</span>
           </label>
           <label>
-            <input name="closeAtx" type="checkbox" class="parse" />
-            Closed ATX?
+            <input name="closeAtx" type="checkbox" class="stringify" />
+            <span>Closed ATX?</span>
           </label>
           <label>
             <select name="entities" class="stringify">
@@ -130,7 +130,7 @@
               <option value="numbers">Numbers</option>
               <option value="escape">Escapes</option>
             </select>
-            Entities?
+            <span>Entities?</span>
           </label>
         </fieldset>
         <fieldset>
@@ -140,11 +140,11 @@
               <option value="ast">JSON</option>
               <option value="tree">Tree</option>
             </select>
-            Ouput?
+            <span>Ouput?</span>
           </label>
           <label>
             <input name="position" type="checkbox" checked />
-            Positional information?
+            <span>Positional information?</span>
           </label>
         </fieldset>
       </section>
