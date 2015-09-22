@@ -227,7 +227,7 @@ function onintenttoggelsettings() {
     var hidden = $settings.classList.contains('hidden');
 
     $settings.classList[hidden ? 'remove' : 'add']('hidden');
-    $toggleSettings.textContent = (hidden ? 'Show' : 'Hide') + ' settings';
+    $toggleSettings.textContent = (hidden ? 'Hide' : 'Show') + ' settings';
 }
 
 function onintentclear() {
