@@ -135,12 +135,12 @@
         </fieldset>
         <fieldset>
           <label>
-            <input name="ast" type="checkbox" />
-            Show <abbr title="Abstract Syntax Tree">AST</abbr>?
-          </label>
-          <label>
-            <input name="astTree" type="checkbox" />
-            Interactive tree?
+            <select name="output">
+              <option value="markdown" selected>Markdown</option>
+              <option value="ast">JSON</option>
+              <option value="tree">Tree</option>
+            </select>
+            Ouput?
           </label>
           <label>
             <input name="position" type="checkbox" checked />

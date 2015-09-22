@@ -37,8 +37,8 @@ P.S. You can also permalink the current document using \`⌘+s\` or \`Ctrl+s\`.
 const $write = document.getElementById('write');
 const $read = document.getElementById('read');
 const $readTree = document.getElementById('read-tree');
-const $ast = document.getElementsByName('ast')[0];
-const $astTree = document.getElementsByName('astTree')[0];
+const $position = document.getElementsByName('position')[0];
+const $output = document.getElementsByName('output')[0];
 const $stringify = document.querySelectorAll('.stringify');
 const $settings = document.getElementById('settings');
 const $toggleSettings = document.getElementById('toggle-settings');
@@ -96,17 +96,17 @@ function makeJstree(node) {
  * Change.
  */
 function onchange() {
-    if (!options.astTree) {
-        $readTree.style.display = 'none';
-        $read.style.display = 'block';
+    const isTree = options.output === 'tree';
+    const isAST = options.output === 'ast';
 
-        const fn = options.ast ? 'parse' : 'process';
+    $readTree.style.display = isTree ? '' : 'none';
+    $read.style.display = isTree ? 'none' : '';
+
+    if (!isTree) {
+        const fn = isAST ? 'parse' : 'process';
         const value = mdast[fn]($write.value, options);
-        $read.value = options.ast ? JSON.stringify(value, 0, 2) : value;
+        $read.value = isAST ? JSON.stringify(value, 0, 2) : value;
     } else {
-        $read.style.display = 'none';
-        $readTree.style.display = 'block';
-
         const file = vfile($write.value);
         let ast = mdast.parse(file, assign({}, options, { position: true }));
         ast = mdast.use(mdastRange).run(ast, file);
@@ -205,12 +205,18 @@ onsettingchange.text = ontextchange;
 onsettingchange.number = onnumberchange;
 
 function onmethodchange() {
-    var length = $stringify.length;
-    var index = -1;
+    const $option = $output.selectedOptions[0];
+    const compiled = $option && $option.value === 'markdown';
+    const isTree = $option && $option.value === 'tree';
+    const length = $stringify.length;
+    let index = -1;
 
     while (++index < length) {
-        $stringify[index].disabled = $ast.checked;
+        $stringify[index].disabled = !compiled;
     }
+
+    $position.checked = isTree ? true : $position.checked;
+    $position.disabled = isTree;
 }
 
 /*
@@ -261,7 +267,7 @@ events.bind($permalink, 'click', onintentpermalink);
  */
 
 events.bind(window, 'change', onsettingchange);
-events.bind($ast, 'change', onmethodchange);
+events.bind($output, 'change', onmethodchange);
 
 events.bind($write, 'change', debouncedChange);
 events.bind($write, 'onpropertychange', debouncedChange);

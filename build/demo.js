@@ -120,8 +120,8 @@ var defaultText = 'Here’s a tiny demo for __mdast__.\n\nIts focus is to *showc
 var $write = document.getElementById('write');
 var $read = document.getElementById('read');
 var $readTree = document.getElementById('read-tree');
-var $ast = document.getElementsByName('ast')[0];
-var $astTree = document.getElementsByName('astTree')[0];
+var $position = document.getElementsByName('position')[0];
+var $output = document.getElementsByName('output')[0];
 var $stringify = document.querySelectorAll('.stringify');
 var $settings = document.getElementById('settings');
 var $toggleSettings = document.getElementById('toggle-settings');
@@ -174,17 +174,17 @@ function makeJstree(node) {
  * Change.
  */
 function onchange() {
-    if (!options.astTree) {
-        $readTree.style.display = 'none';
-        $read.style.display = 'block';
+    var isTree = options.output === 'tree';
+    var isAST = options.output === 'ast';
 
-        var fn = options.ast ? 'parse' : 'process';
+    $readTree.style.display = isTree ? '' : 'none';
+    $read.style.display = isTree ? 'none' : '';
+
+    if (!isTree) {
+        var fn = isAST ? 'parse' : 'process';
         var value = mdast[fn]($write.value, options);
-        $read.value = options.ast ? JSON.stringify(value, 0, 2) : value;
+        $read.value = isAST ? JSON.stringify(value, 0, 2) : value;
     } else {
-        $read.style.display = 'none';
-        $readTree.style.display = 'block';
-
         var file = vfile($write.value);
         var ast = mdast.parse(file, assign({}, options, { position: true }));
         ast = mdast.use(mdastRange).run(ast, file);
@@ -280,12 +280,18 @@ onsettingchange.text = ontextchange;
 onsettingchange.number = onnumberchange;
 
 function onmethodchange() {
+    var $option = $output.selectedOptions[0];
+    var compiled = $option && $option.value === 'markdown';
+    var isTree = $option && $option.value === 'tree';
     var length = $stringify.length;
     var index = -1;
 
     while (++index < length) {
-        $stringify[index].disabled = $ast.checked;
+        $stringify[index].disabled = !compiled;
     }
+
+    $position.checked = isTree ? true : $position.checked;
+    $position.disabled = isTree;
 }
 
 /*
@@ -336,7 +342,7 @@ events.bind($permalink, 'click', onintentpermalink);
  */
 
 events.bind(window, 'change', onsettingchange);
-events.bind($ast, 'change', onmethodchange);
+events.bind($output, 'change', onmethodchange);
 
 events.bind($write, 'change', debouncedChange);
 events.bind($write, 'onpropertychange', debouncedChange);
