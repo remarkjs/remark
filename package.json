@@ -10,8 +10,8 @@
   },
   "scripts": {
     "build": "npm run build:js && npm run build:css",
-    "build:js": "duo --use duo-babel --type js --stdout < demo.js > build/demo.js",
-    "build:css": "duo --type css --stdout < index.css > build/index.css",
+    "build:js": "duo --copy --use duo-babel --type js --stdout < demo.js > build/demo.js",
+    "build:css": "duo --copy --type css --stdout < index.css > build/index.css",
     "prepublish": "npm run build"
   }
 }
