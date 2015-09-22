@@ -1121,6 +1121,9 @@ filter: gray;
   font-family: 'Titillium Web', sans-serif, Arial, sans-serif;
 }
 
+
+html {
+  font-size: 20px;
 }
 
 body {
