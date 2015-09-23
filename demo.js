@@ -4,7 +4,7 @@
  * Dependencies.
  */
 
-const mdast = require('wooorm/mdast@0.26.0');
+const mdast = require('wooorm/mdast@2.x');
 const mdastRange = require('wooorm/mdast-range@1.0.1');
 const vfile = require('wooorm/vfile');
 const debounce = require('component/debounce@1.0.0');
