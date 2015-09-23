@@ -14,6 +14,7 @@ const query = require('component/querystring');
 const events = require('component/event');
 const jquery = require('components/jquery');
 const jstree = require('vakata/jstree');
+const escapeHtml = require('component/escape-html');
 
 /*
  * Constants.
@@ -78,6 +79,8 @@ function makeJstree(node) {
     else {
         text = JSON.stringify(node.value);
     }
+
+    text = escapeHtml(text);
 
     return assign({
         text,
