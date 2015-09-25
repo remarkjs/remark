@@ -248,39 +248,73 @@ var debouncedChange = debounce(onchange, 20);
  * Setting changes.
  */
 
-function ontextchange($target, name) {
-    options[name] = $target.value;
+function targetType($target) {
+    var type = $target.hasAttribute('type') ? $target.type : $target.nodeName.toLowerCase();
+    return type in getTargetValue ? type : 'text';
 }
 
-function onnumberchange($target, name) {
-    options[name] = Number($target.value);
+var getTargetValue = {
+    text: function text($target) {
+        return $target.value;
+    },
+    number: function number($target) {
+        return Number($target.value);
+    },
+    checkbox: function checkbox($target) {
+        return $target.checked;
+    },
+    select: function select($target) {
+        return $target.selectedIndex >= 0 && $target.selectedOptions[0].value;
+    }
+};
+
+var setTargetValue = {
+    text: function text($target, value) {
+        return $target.value = value;
+    },
+    number: function number($target, value) {
+        return $target.value = Number(value);
+    },
+    checkbox: function checkbox($target, value) {
+        return $target.checked = value;
+    },
+    select: function select($target, value) {
+        var $option = $target.querySelector('[value="' + value + '"]');
+        $target.selectedIndex = $option ? $option.index : -1;
+    }
+};
+
+function initializeOptions() {
+    for (var _name in localStorage) {
+        var $target = document.getElementsByName(_name)[0];
+        if (!$target) continue;
+
+        var type = targetType($target);
+        var value = localStorage.getItem(_name);
+        if (type == 'checkbox') {
+            value = value && value != 'false';
+        }
+
+        setTargetValue[type]($target, value);
+        options[_name] = value;
+    }
 }
 
-function oncheckboxchange($target, name) {
-    options[name] = $target.checked;
-}
-
-function onselectchange($target, name) {
-    var $option = $target.selectedOptions[0];
-
-    if ($option) options[name] = $option.value;
+function setOption(name, value) {
+    options[name] = value;
+    localStorage.setItem(name, value);
 }
 
 function onsettingchange(event) {
     var $target = event.target;
-    var type = $target.hasAttribute('type') ? $target.type : event.target.nodeName.toLowerCase();
+    var type = targetType($target);
 
     if (!$target.hasAttribute('name')) return;
 
-    onsettingchange[type in onsettingchange ? type : 'text']($target, $target.name);
+    setOption($target.name, getTargetValue[type]($target));
 
     debouncedChange();
 }
-
-onsettingchange.select = onselectchange;
-onsettingchange.checkbox = oncheckboxchange;
-onsettingchange.text = ontextchange;
-onsettingchange.number = onnumberchange;
 
 function onmethodchange() {
     var $option = $output.selectedOptions[0];
@@ -355,11 +389,9 @@ events.bind($write, 'input', debouncedChange);
  * Initial answer.
  */
 
-$options.forEach(function ($node) {
-    return onsettingchange({ 'target': $node });
-});
-
+initializeOptions();
 $write.value = getPermalink() || defaultText;
+onchange();
 
 /*
  * Focus editor.
