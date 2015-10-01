@@ -44,7 +44,7 @@ _.markdown_, or _.ron_ as extension.  Other files can be explicitly provided
 to **mdast**(1), or an `extension` can be given to **mdast**(1) using the
 `--extension, -e` flag.
 
-In addition to patterns in **mdastignore**(5) files, _node_modules/\*\*_ are
+In addition to patterns in **mdastignore**(5) files, _node\_modules/\*\*_ are
 always excluded.
 
 Unless provided directly to **mdast**(1), hidden directories (such as _.git_)

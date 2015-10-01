@@ -27,7 +27,7 @@ var doc = processor.process([
 This is the application programming interface documentation for **mdast**.
 To find documentation for the command line interface, see **mdast**(1).
 
-## mdast.use(plugin\[, options\])
+## mdast.use(plugin\[, options])
 
 Change the way **mdast** works by using a plugin.  Plugins are documented
 at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
@@ -49,7 +49,7 @@ at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
 **mdast** library itself (it has the same methods), but caches the `use`d
 plugins.
 
-## mdast.parse(file\[, options\])
+## mdast.parse(file\[, options])
 
 Parse a markdown document into an **mdastnode**(7).
 
@@ -67,7 +67,7 @@ Parse a markdown document into an **mdastnode**(7).
 
 `Node` — Node.  Nodes are documented at **mdastnode**(7).
 
-## mdast.run(node\[, file\]\[, done\])
+## mdast.run(node\[, file]\[, done])
 
 Transform a node by applying plug-ins to it. Either a node or a file which
 was previously passed to `parse()`, must be given.
@@ -111,7 +111,7 @@ Invoked when transformation is complete.
 *   `node` (`Node`) — Transformed node;
 *   `file` (`File`) — File object representing the input file;
 
-## mdast.stringify(node\[, file\]\[, options\])
+## mdast.stringify(node\[, file]\[, options])
 
 Compile a node into a document.
 
@@ -135,7 +135,7 @@ Compile a node into a document.
 
 When no `node` was given and no node was found on the file.
 
-## mdast.process(file\[, options\]\[, done\])
+## mdast.process(file\[, options]\[, done])
 
 Parse, transform, and compile markdown into something else.
 

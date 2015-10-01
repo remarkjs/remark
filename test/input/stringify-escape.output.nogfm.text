@@ -1,0 +1,75 @@
+Characters that should be escaped in general:
+
+\\ \` \* \[ \_
+
+Characters that shouldn't:
+
+{}]()#+-.!>"$%',/:;=?@^~
+
+Ampersands are escaped only when they would otherwise start an entity:
+
+-   &amp;copycat &amp;amp; &amp;#x26
+-   But: &copycat; `&between;` &foo; & AT&T &c
+
+Open parenthesis should be escaped after a shortcut reference:
+
+[ref]\(text)
+
+Hyphen should be escaped at the beginning of a line:
+
+\- not a list item
+\- not a list item
+  \+ not a list item
+
+Same for angle brackets:
+
+\> not a block quote
+
+And hash signs:
+
+\# not a heading
+  \## not a subheading
+
+Text under a shortcut reference should be preserved verbatim:
+
+-   [two*three]
+-   [two\*three]
+-   [a\a]
+-   [a\\a]
+-   [a\\\a]
+-   [a_a\_a]
+
+**GFM:**
+
+Colon should not be escaped in URLs:
+
+-   http://user:password@host:port/path?key=value#fragment
+-   https://user:password@host:port/path?key=value#fragment
+
+Double tildes should not be ~~escaped~~.
+Nor here: foo~~.
+
+Pipes should not be escaped here: |
+
+| here   | they     |
+| ------ | -------- |
+| should | nei|ther |
+
+Nor here:
+
+| here   | they   |
+| ------ | ------ |
+| should | though |
+
+Nor here:
+
+here   | they
+\----- | ------
+should | though
+
+**Commonmark:**
+
+Open angle bracket should be escaped:
+
+-   &lt;div>&lt;/div>
+-   &lt;http:google.com>

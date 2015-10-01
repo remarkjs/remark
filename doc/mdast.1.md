@@ -2,7 +2,7 @@
 
 ## SYNOPSIS
 
-`mdast` \[`options`\] <_file|dir_ _..._>
+`mdast` \[`options`] &lt;_file|dir_ _..._>
 
 ## DESCRIPTION
 
@@ -28,7 +28,7 @@ mdast --version
 
 Output CLI version number.
 
-### `-o`, `--output` \[_path_\]
+### `-o`, `--output` \[_path_]
 
 ```sh
 mdast . --output
@@ -55,7 +55,7 @@ Specify output.
 
 *   Otherwise, a fatal error is thrown.
 
-### `-c`, `--config-path` <_path_>
+### `-c`, `--config-path` &lt;_path_>
 
 ```sh
 mdast --config-path mdastrc.json
@@ -65,7 +65,7 @@ Specify configuration location. This loads an **mdastrc**(5) file which cannot
 be detected (either because `--no-rc` is given or because it has a different
 name) in addition to other detected files.
 
-### `-i`, `--ignore-path` <_path_>
+### `-i`, `--ignore-path` &lt;_path_>
 
 ```sh
 mdast --ignore-path .gitignore
@@ -75,7 +75,7 @@ Specify ignore location. This loads an **mdastignore**(5) file which cannot be
 detected (either because `--no-ignore` is given or because it has a different
 name) in addition to other detected files.
 
-### `-s`, `--setting` <_settings_>
+### `-s`, `--setting` &lt;_settings_>
 
 ```sh
 mdast --setting "position:false"
@@ -85,7 +85,7 @@ Specify settings (see **mdastsetting**(7)). This must be a valid JSON object
 except for a few differences. See **mdastconfig**(7) COMMAND LINE SETTINGS
 for more information.
 
-### `-u`, `--use` <_plugin_>
+### `-u`, `--use` &lt;_plugin_>
 
 ```sh
 mdast --use man
@@ -94,7 +94,7 @@ mdast --use man
 Specify a plug-in to use, optionally with options. See **mdastplugin**(7)
 COMMAND LINE USAGE for more information.
 
-### `-e`, `--ext` <_extensions_>
+### `-e`, `--ext` &lt;_extensions_>
 
 ```sh
 mdast --ext doc
@@ -160,7 +160,7 @@ mdast --frail
 Exit with a status code of `1` if warnings are triggered for the processed
 code, instead of the default of only exiting with `1` on fatal errors.
 
-### `--file-path` <_path_>
+### `--file-path` &lt;_path_>
 
 ```sh
 cat readme.md | mdast --file-path readme.md > doc/out.md

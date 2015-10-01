@@ -443,17 +443,6 @@ interface TextNode <: Text {
 }
 ```
 
-## ESCAPE
-
-**Escape** (**Text**) represents an escaped symbol.  Useful when writing
-things otherwise seen as markdown syntax.
-
-```idl
-interface Escape <: Text {
-    type: "escape";
-}
-```
-
 ## BUGS
 
 <https://github.com/wooorm/mdast/issues>

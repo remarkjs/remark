@@ -6,11 +6,26 @@
       "children": [
         {
           "type": "text",
-          "value": "Lots of entities are supported in mdast:  , &, ©, Æ,\nĎ, ¾, ℋ, ⅆ,\n∲, &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\nÿ, á, ©, and &.",
+          "value": "Lots of entities are supported in mdast:  , &, ©, Æ,",
           "position": {
             "start": {
               "line": 1,
               "column": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 73
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nĎ, ¾, ℋ, ⅆ,\n∲, &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\nÿ, á, ©, and &.",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 73
             },
             "end": {
               "line": 5,

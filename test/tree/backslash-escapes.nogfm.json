@@ -51,7 +51,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "\\",
           "position": {
             "start": {
@@ -97,7 +97,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "`",
           "position": {
             "start": {
@@ -143,7 +143,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "*",
           "position": {
             "start": {
@@ -189,7 +189,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "_",
           "position": {
             "start": {
@@ -235,7 +235,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "{",
           "position": {
             "start": {
@@ -281,7 +281,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "}",
           "position": {
             "start": {
@@ -327,7 +327,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "[",
           "position": {
             "start": {
@@ -373,7 +373,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "]",
           "position": {
             "start": {
@@ -419,7 +419,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "(",
           "position": {
             "start": {
@@ -465,7 +465,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": ")",
           "position": {
             "start": {
@@ -511,7 +511,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": ">",
           "position": {
             "start": {
@@ -557,7 +557,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "#",
           "position": {
             "start": {
@@ -603,7 +603,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": ".",
           "position": {
             "start": {
@@ -649,7 +649,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "!",
           "position": {
             "start": {
@@ -695,7 +695,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "+",
           "position": {
             "start": {
@@ -741,7 +741,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "-",
           "position": {
             "start": {
@@ -3331,7 +3331,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "escape",
+          "type": "text",
           "value": "*",
           "position": {
             "start": {
@@ -3361,7 +3361,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "*",
           "position": {
             "start": {
@@ -3392,7 +3392,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "escape",
+          "type": "text",
           "value": "_",
           "position": {
             "start": {
@@ -3422,7 +3422,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "_",
           "position": {
             "start": {
@@ -3453,7 +3453,7 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "escape",
+          "type": "text",
           "value": "`",
           "position": {
             "start": {
@@ -3483,7 +3483,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "`",
           "position": {
             "start": {

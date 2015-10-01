@@ -39,7 +39,7 @@ All have their own function. The first is called an
 “completer” (see **COMPLETER**). An “attacher” may
 return a “transformer” and attach a “completer”.
 
-## function attacher(mdast\[, options\]\[, fileSet\])
+## function attacher(mdast\[, options]\[, fileSet])
 
 ```js
 /**
@@ -92,9 +92,9 @@ Note that **mdast**(1) invokes **attacher** for each file, not just once.
 
 **Returns**
 
-`transformer` (optional) — See FUNCTION TRANSFORMER(NODE, FILE\[, NEXT\]).
+`transformer` (optional) — See FUNCTION TRANSFORMER(NODE, FILE\[, NEXT]).
 
-## function transformer(node, file\[, next\])
+## function transformer(node, file\[, next])
 
 ```js
 var visit = require('unist-util-visit');
@@ -144,7 +144,7 @@ a **mdast** processor. A transformer should transform `node` or modify `file`.
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
-## function completer(fileSet\[, next\])
+## function completer(fileSet\[, next])
 
 To access all files once they are transformed, create a **completer**.
 A **completer** is invoked before files are compiled, written, and logged, but
