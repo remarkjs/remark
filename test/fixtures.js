@@ -121,7 +121,11 @@ function parseOptions(name) {
             ) {
                 options.stringify[key] = value;
 
-                results.push(parts[index]);
+                // Protect common options from `parse` and `stringify` from
+                // appearing twice.
+                if (results.indexOf(parts[index]) < 0) {
+                    results.push(parts[index]);
+                }
             }
         }
     }
