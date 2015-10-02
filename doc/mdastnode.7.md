@@ -138,7 +138,7 @@ interface Blockquote <: Parent {
 
 ## HEADING
 
-**Heading** (**Parent**), just like with HMTL, with a level greater than or
+**Heading** (**Parent**), just like with HTML, with a level greater than or
 equal to 1, lower than or equal to 6.
 
 ```idl
