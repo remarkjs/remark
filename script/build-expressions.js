@@ -1,3 +1,11 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:script
+ * @fileoverview Build the expressions.
+ */
+
 'use strict';
 
 /* eslint-env node */
@@ -216,6 +224,7 @@ rules.list = new RegExp(
     ')'
 );
 
+/** Add parentheses to numbered list-item-bullets. */
 function replaceBullet(expression) {
     return expression.source.replace(/\\d\+\\\./g, '\\d+[\\.\\)]');
 }
@@ -435,7 +444,6 @@ var commonmarkInside =
         '[^\\[\\]]' +
     ')*?';
 
-
 var inside =
     '(?:' +
         '\\[[^\\]]*\\]' +
@@ -642,7 +650,6 @@ commonmark.escape = new RegExp(
         .replace('])', '"$%&\',/:;<=?@^~|])')
         .replace('([', '(\\n|[')
 );
-
 
 /*
  * GFM + Line Breaks Inline Grammar

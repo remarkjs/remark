@@ -1,3 +1,11 @@
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module mdast:script
+ * @fileoverview Build the options documentation.
+ */
+
 'use strict';
 
 /* eslint-env node */
@@ -7,14 +15,22 @@
  */
 
 var fs = require('fs');
+var path = require('path');
 var mdast = require('..');
 var toc = require('mdast-toc');
+
+/*
+ * Methods.
+ */
+
+var read = fs.readFileSync;
+var join = path.join;
 
 /*
  * Location for options.
  */
 
-var BASE = 'script/setting';
+var BASE = join('script', 'setting');
 
 /*
  * Get sections.
@@ -25,10 +41,10 @@ var sections;
 sections = fs.readdirSync(BASE).filter(function (filepath) {
     return filepath.charAt(0) !== '.';
 }).map(function (filepath) {
-    return BASE + '/' + filepath;
+    return join(BASE, filepath);
 });
 
-var settings = JSON.parse(fs.readFileSync('.mdastrc')).settings;
+var settings = JSON.parse(read('.mdastrc')).settings;
 
 /*
  * Get information for each section.
@@ -36,10 +52,10 @@ var settings = JSON.parse(fs.readFileSync('.mdastrc')).settings;
 
 sections = sections.map(function (filepath) {
     return {
-        'description': fs.readFileSync(filepath + '/description.md', 'utf8'),
+        'description': read(join(filepath, 'description.md'), 'utf8'),
         'path': filepath,
-        'options': fs.readFileSync(filepath + '/config.json', 'utf8'),
-        'fixture': fs.readFileSync(filepath + '/fixture.text', 'utf8'),
+        'options': read(join(filepath, 'config.json'), 'utf8'),
+        'fixture': read(join(filepath, 'fixture.text'), 'utf8'),
         'parseOnly': /parse/.test(filepath)
     };
 });
