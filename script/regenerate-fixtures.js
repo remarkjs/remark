@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-env node */
+
 var fs = require('fs');
 var mdast = require('..');
 var fixtures = require('../test/fixtures.js');

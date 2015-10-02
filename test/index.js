@@ -1,6 +1,6 @@
 'use strict';
 
-/* eslint-env mocha */
+/* eslint-env node, mocha */
 
 var assert = require('assert');
 var he = require('he');

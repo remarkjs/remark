@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-env node */
+
 /**
  * Transformer.
  */

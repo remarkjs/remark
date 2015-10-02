@@ -1,5 +1,7 @@
 'use strict';
 
+/* eslint-env node */
+
 /**
  * Check if `node` is the main heading.
  *
