@@ -2887,6 +2887,8 @@ var MINIMUM_CODE_FENCE_LENGTH = 3;
 var YAML_FENCE_LENGTH = 3;
 var MINIMUM_RULE_LENGTH = 3;
 var MAILTO = 'mailto:';
+var ERROR_LIST_ITEM_INDENT = 'Cannot indent code properly. See ' +
+    'http://git.io/mdast-lii';
 
 /*
  * Expressions.
@@ -3962,17 +3964,33 @@ compilerPrototype.yaml = function (node) {
  * @param {Object} node - `code` node.
  * @return {string} - Markdown code block.
  */
-compilerPrototype.code = function (node) {
+compilerPrototype.code = function (node, parent) {
+    var self = this;
     var value = node.value;
-    var marker = this.options.fence;
-    var language = this.encode(node.lang || EMPTY, node);
+    var options = self.options;
+    var marker = options.fence;
+    var language = self.encode(node.lang || EMPTY, node);
     var fence;
 
     /*
-     * Probably pedantic.
+     * Without (needed) fences.
      */
 
-    if (!language && !this.options.fences && value) {
+    if (!language && !options.fences && value) {
+        /*
+         * Throw when pedantic, in a list item which
+         * isn’t compiled using a tab.
+         */
+
+        if (
+            parent &&
+            parent.type === 'listItem' &&
+            options.listItemIndent !== LIST_ITEM_TAB &&
+            options.pedantic
+        ) {
+            self.file.fail(ERROR_LIST_ITEM_INDENT, node.position);
+        }
+
         return pad(value, 1);
     }
 

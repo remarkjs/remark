@@ -708,6 +708,22 @@ describe('mdast.process(value, options, done)', function () {
             assert(err === exception);
         }
     });
+
+    it('should throw when `pedantic` is `true`, `listItemIndent` is not ' +
+        '`tab`, and compiling code in a list-item',
+        function () {
+            assert.throws(function () {
+                mdast.process([
+                    '* List',
+                    '',
+                    '        code()'
+                ].join('\n'), {
+                    'pedantic': true,
+                    'listItemIndent': '1'
+                });
+            }, /Cannot indent code properly. See http:\/\/git.io\/mdast-lii/);
+        }
+    );
 });
 
 describe('function attacher(mdast, options)', function () {
