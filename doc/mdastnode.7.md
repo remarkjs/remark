@@ -10,27 +10,27 @@
     "value": "Foo",
     "position": {
       "start": {
-          "line": 1,
-          "column": 3,
-          "offset": 2
+        "line": 1,
+        "column": 3,
+        "offset": 2
       },
       "end": {
-          "line": 1,
-          "column": 6,
-          "offset": 5
+        "line": 1,
+        "column": 6,
+        "offset": 5
       }
     }
   }],
   "position": {
     "start": {
-        "line": 1,
-        "column": 1,
-        "offset": 0
+      "line": 1,
+      "column": 1,
+      "offset": 0
     },
     "end": {
-        "line": 1,
-        "column": 8,
-        "offset": 7
+      "line": 1,
+      "column": 8,
+      "offset": 7
     }
   }
 }
