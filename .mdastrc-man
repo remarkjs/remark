@@ -2,8 +2,9 @@
   "output": "man/",
   "plugins": {
     "mdast-man": {
+      "date": "2015-10-10",
       "manual": "mdast manual",
-      "version": "1.0.0"
+      "version": "2.0.0"
     }
   }
 }
