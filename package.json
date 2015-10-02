@@ -85,23 +85,21 @@
     "mocha": "^2.0.0"
   },
   "scripts": {
+    "build-man": "bin/mdast doc/*.?.md --config-path .mdastrc-man --quiet",
+    "build-expressions": "node script/build-expressions.js",
+    "build-md": "bin/mdast . --quiet --frail",
+    "build-options": "node script/build-options.js",
+    "build-bundle": "browserify index.js -s mdast > mdast.js",
+    "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
+    "lint-api": "eslint .",
+    "lint-style": "jscs --reporter inline .",
+    "lint": "npm run lint-api && npm run lint-style",
+    "build": "npm run build-expressions && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle",
     "test-api": "mocha --check-leaks test/index.js",
     "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
     "test-cli": "bash test/cli.sh",
     "test-coverage": "istanbul cover _mocha -- -- test/index.js",
     "test-travis": "npm run test-coverage && npm run test-cli",
-    "test": "npm run test-api && npm run test-cli",
-    "lint-api": "eslint .",
-    "lint-style": "jscs --reporter inline .",
-    "lint": "npm run lint-api && npm run lint-style",
-    "make": "npm run lint && npm run test-coverage",
-    "regenerate": "node script/regenerate-fixtures.js",
-    "build-man": "bin/mdast doc/*.?.md -c .mdastrc-man -q",
-    "build-expressions": "node script/build-expressions.js",
-    "build-md": "bin/mdast . --quiet",
-    "build-options": "node script/build-options.js",
-    "build-bundle": "browserify index.js -s mdast > mdast.js",
-    "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
-    "build": "npm run build-expressions && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle"
+    "test": "npm run build && npm run lint && npm run test-coverage && npm run test-cli"
   }
 }
