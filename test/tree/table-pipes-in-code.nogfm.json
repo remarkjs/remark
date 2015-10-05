@@ -1,0 +1,247 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "| abc |   head2 |\n| --- | ------: |\n| x   |   ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 11
+            },
+            "indent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "|||",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 11
+            },
+            "end": {
+              "line": 3,
+              "column": 16
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " |\n| x   |       ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 16
+            },
+            "end": {
+              "line": 4,
+              "column": 15
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "|\n| x   |",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 15
+            },
+            "end": {
+              "line": 5,
+              "column": 14
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "|",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 14
+            },
+            "end": {
+              "line": 5,
+              "column": 15
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "|\n| x   | `` f `` |\n| x   |    ```` |\n| x   |    ``f",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 15
+            },
+            "end": {
+              "line": 8,
+              "column": 16
+            },
+            "indent": [
+              1,
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": " |",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 16
+            },
+            "end": {
+              "line": 8,
+              "column": 18
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 8,
+          "column": 18
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "| abc |   head2\n| --- | ------:\n| x   |       ",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1
+            },
+            "end": {
+              "line": 12,
+              "column": 15
+            },
+            "indent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "| x   |",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 15
+            },
+            "end": {
+              "line": 13,
+              "column": 14
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "|",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 14
+            },
+            "end": {
+              "line": 13,
+              "column": 15
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "| x   | `` f ``\n| x   |    ````\n| x   |   ``f",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 15
+            },
+            "end": {
+              "line": 16,
+              "column": 15
+            },
+            "indent": [
+              1,
+              1,
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
+          "line": 16,
+          "column": 15
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 17,
+      "column": 1
+    }
+  }
+}
