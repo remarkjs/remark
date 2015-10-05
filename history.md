@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.1.0 / 2015-10-05
+==================
+
+*   Fix pipes inside code in tables ([baad536](https://github.com/wooorm/mdast/commit/baad536))
+*   Add processing of just the changed watched file to mdast(1) ([e3748d2](https://github.com/wooorm/mdast/commit/e3748d2))
+*   Add error when pedantic is used with incompatible options ([3326a89](https://github.com/wooorm/mdast/commit/3326a89))
+
 2.0.0 / 2015-09-20
 ==================
 
