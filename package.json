@@ -66,10 +66,13 @@
     "bin"
   ],
   "devDependencies": {
+    "bail": "^1.0.0",
     "browserify": "^11.0.0",
     "clone": "^1.0.1",
+    "escodegen": "^1.7.0",
     "eslint": "^1.1.0",
     "esmangle": "^1.0.0",
+    "esprima": "^2.6.0",
     "istanbul": "^0.3.0",
     "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
@@ -82,19 +85,20 @@
     "mdast-usage": "^1.0.1",
     "mdast-validate-links": "^1.0.0",
     "mdast-yaml-config": "^1.0.0",
-    "mocha": "^2.0.0"
+    "mocha": "^2.0.0",
+    "uglify-js": "^2.4.0"
   },
   "scripts": {
     "build-man": "bin/mdast doc/*.?.md --config-path .mdastrc-man --quiet",
     "build-expressions": "node script/build-expressions.js",
     "build-md": "bin/mdast . --quiet --frail",
+    "build-version": "node script/build-version.js",
     "build-options": "node script/build-options.js",
-    "build-bundle": "browserify index.js -s mdast > mdast.js",
-    "postbuild-bundle": "esmangle mdast.js > mdast.min.js",
+    "build-bundle": "node script/build-bundle.js",
     "lint-api": "eslint .",
     "lint-style": "jscs --reporter inline .",
     "lint": "npm run lint-api && npm run lint-style",
-    "build": "npm run build-expressions && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle",
+    "build": "npm run build-expressions && npm run build-version && npm run build-md && npm run build-options && npm run build-man && npm run build-bundle",
     "test-api": "mocha --check-leaks test/index.js",
     "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
     "test-cli": "bash test/cli.sh",

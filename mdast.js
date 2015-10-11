@@ -4,6 +4,7 @@
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast
+ * @version 2.1.0
  * @fileoverview Markdown processor powered by plugins.
  */
 
@@ -35,6 +36,7 @@ module.exports = unified({
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast:defaults
+ * @version 2.1.0
  * @fileoverview Default values for parse and
  *  stringification settings.
  */
@@ -158,6 +160,7 @@ module.exports = {
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast:parse
+ * @version 2.1.0
  * @fileoverview Parse a markdown document into an
  *   abstract syntax tree.
  */
@@ -2884,6 +2887,7 @@ module.exports = Parser;
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast:stringify
+ * @version 2.1.0
  * @fileoverview Compile an abstract syntax tree into
  *   a markdown document.
  */
@@ -4676,6 +4680,7 @@ module.exports = Compiler;
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast:utilities
+ * @version 2.1.0
  * @fileoverview Collection of tiny helpers useful for
  *   both parsing and compiling markdown.
  */
