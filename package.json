@@ -85,8 +85,7 @@
     "mdast-usage": "^1.0.1",
     "mdast-validate-links": "^1.0.0",
     "mdast-yaml-config": "^1.0.0",
-    "mocha": "^2.0.0",
-    "uglify-js": "^2.4.0"
+    "mocha": "^2.0.0"
   },
   "scripts": {
     "build-man": "bin/mdast doc/*.?.md --config-path .mdastrc-man --quiet",
