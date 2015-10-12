@@ -2798,8 +2798,7 @@ Parser.prototype.blockMethods = [
     'footnoteDefinition',
     'looseTable',
     'table',
-    'paragraph',
-    'blockText'
+    'paragraph'
 ];
 
 /**
