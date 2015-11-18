@@ -302,9 +302,6 @@ Thanks all for the 100 stars :wink:.
 *   Add, or better, re-add, plug-ins after update ([56a293d](https://github.com/wooorm/mdast/commit/56a293d))
 *   Update generated lib for [ed4a4c0](https://github.com/wooorm/mdast/commit/ed4a4c0) ([36c4c70](https://github.com/wooorm/mdast/commit/36c4c70))
 *   Update eslint ([eaa6900](https://github.com/wooorm/mdast/commit/eaa6900))
-*   0.14.0-rc.1 ([e329eea](https://github.com/wooorm/mdast/commit/e329eea))
-*   Refactor plugin mechanism ([7dc23a6](https://github.com/wooorm/mdast/commit/7dc23a6))
-*   Remove plugins from `.mdastrc` for the time being ([204e32a](https://github.com/wooorm/mdast/commit/204e32a))
 
 0.14.0-rc.1 / 2015-03-24
 ========================
