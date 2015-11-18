@@ -2,6 +2,16 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.2.0 / 2015-11-19
+==================
+
+*   Update dependencies ([c2aca8f](https://github.com/wooorm/mdast/commit/c2aca8f))
+*   Refactor to externalise file finding ([517d483](https://github.com/wooorm/mdast/commit/517d483))
+*   Refactor to make node to `encode` optional ([03c3361](https://github.com/wooorm/mdast/commit/03c3361))
+*   Add version to library, distribution files ([e245a43](https://github.com/wooorm/mdast/commit/e245a43))
+*   Remove output to stdout(4) when watching ([594a45f](https://github.com/wooorm/mdast/commit/594a45f))
+*   Remove variable capturing groups from regexes ([c17228c](https://github.com/wooorm/mdast/commit/c17228c))
+
 2.1.0 / 2015-10-05
 ==================
 
