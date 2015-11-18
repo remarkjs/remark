@@ -30,7 +30,7 @@ module.exports = unified({
     'Compiler': Compiler
 });
 
-},{"./lib/parse.js":4,"./lib/stringify.js":5,"unified":26}],2:[function(require,module,exports){
+},{"./lib/parse.js":4,"./lib/stringify.js":5,"unified":27}],2:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -2880,7 +2880,7 @@ Parser.prototype.tokenizeFactory = tokenizeFactory;
 
 module.exports = Parser;
 
-},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"extend.js":15,"he":16,"repeat-string":22,"trim":24,"trim-trailing-lines":23}],5:[function(require,module,exports){
+},{"./defaults.js":2,"./expressions.js":3,"./utilities.js":6,"extend.js":15,"he":17,"repeat-string":23,"trim":25,"trim-trailing-lines":24}],5:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -3144,7 +3144,7 @@ function encodeFactory(type, file) {
      *   encode('AT&T'); // 'ATT&#x26;T'
      *
      * @param {string} value - Content.
-     * @param {Object} node - Node which is compiled.
+     * @param {Object} [node] - Node which is compiled.
      * @return {string} - Encoded content.
      * @throws {Error} - When `file.quiet` is not `true`.
      *   However, by default `he` does not throw on
@@ -3153,10 +3153,12 @@ function encodeFactory(type, file) {
      *   invalid HTML.
      */
     function encode(value, node) {
+        /* istanbul ignore next - useful for other stringifiers */
+        var position = node ? node.position : null;
         try {
             return he[fn](value, options);
         } catch (exception) {
-            file.fail(exception, node.position);
+            file.fail(exception, position);
         }
     }
 
@@ -4673,7 +4675,7 @@ compilerPrototype.compile = function () {
 
 module.exports = Compiler;
 
-},{"./defaults.js":2,"./utilities.js":6,"ccount":11,"extend.js":15,"he":16,"longest-streak":20,"markdown-table":21,"repeat-string":22}],6:[function(require,module,exports){
+},{"./defaults.js":2,"./utilities.js":6,"ccount":11,"extend.js":15,"he":17,"longest-streak":21,"markdown-table":22,"repeat-string":23}],6:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -5011,7 +5013,7 @@ function patch(Ware) {
 
 module.exports = patch;
 
-},{"unherit":25}],8:[function(require,module,exports){
+},{"unherit":26}],8:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -5225,20 +5227,22 @@ var rootParent = {}
  */
 Buffer.TYPED_ARRAY_SUPPORT = global.TYPED_ARRAY_SUPPORT !== undefined
   ? global.TYPED_ARRAY_SUPPORT
-  : (function () {
-      function Bar () {}
-      try {
-        var arr = new Uint8Array(1)
-        arr.foo = function () { return 42 }
-        arr.constructor = Bar
-        return arr.foo() === 42 && // typed array instances can be augmented
-            arr.constructor === Bar && // constructor can be set
-            typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
-            arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
-      } catch (e) {
-        return false
-      }
-    })()
+  : typedArraySupport()
+
+function typedArraySupport () {
+  function Bar () {}
+  try {
+    var arr = new Uint8Array(1)
+    arr.foo = function () { return 42 }
+    arr.constructor = Bar
+    return arr.foo() === 42 && // typed array instances can be augmented
+        arr.constructor === Bar && // constructor can be set
+        typeof arr.subarray === 'function' && // chrome 9-10 lack `subarray`
+        arr.subarray(1, 1).byteLength === 0 // ie10 has broken `subarray`
+  } catch (e) {
+    return false
+  }
+}
 
 function kMaxLength () {
   return Buffer.TYPED_ARRAY_SUPPORT
@@ -6192,7 +6196,7 @@ Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
   offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
   if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
-  this[offset] = value
+  this[offset] = (value & 0xff)
   return offset + 1
 }
 
@@ -6209,7 +6213,7 @@ Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert
   offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = value
+    this[offset] = (value & 0xff)
     this[offset + 1] = (value >>> 8)
   } else {
     objectWriteUInt16(this, value, offset, true)
@@ -6223,7 +6227,7 @@ Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert
   if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = (value >>> 8)
-    this[offset + 1] = value
+    this[offset + 1] = (value & 0xff)
   } else {
     objectWriteUInt16(this, value, offset, false)
   }
@@ -6245,7 +6249,7 @@ Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert
     this[offset + 3] = (value >>> 24)
     this[offset + 2] = (value >>> 16)
     this[offset + 1] = (value >>> 8)
-    this[offset] = value
+    this[offset] = (value & 0xff)
   } else {
     objectWriteUInt32(this, value, offset, true)
   }
@@ -6260,7 +6264,7 @@ Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert
     this[offset] = (value >>> 24)
     this[offset + 1] = (value >>> 16)
     this[offset + 2] = (value >>> 8)
-    this[offset + 3] = value
+    this[offset + 3] = (value & 0xff)
   } else {
     objectWriteUInt32(this, value, offset, false)
   }
@@ -6313,7 +6317,7 @@ Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
   if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
   if (!Buffer.TYPED_ARRAY_SUPPORT) value = Math.floor(value)
   if (value < 0) value = 0xff + value + 1
-  this[offset] = value
+  this[offset] = (value & 0xff)
   return offset + 1
 }
 
@@ -6322,7 +6326,7 @@ Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) 
   offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = value
+    this[offset] = (value & 0xff)
     this[offset + 1] = (value >>> 8)
   } else {
     objectWriteUInt16(this, value, offset, true)
@@ -6336,7 +6340,7 @@ Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) 
   if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
     this[offset] = (value >>> 8)
-    this[offset + 1] = value
+    this[offset + 1] = (value & 0xff)
   } else {
     objectWriteUInt16(this, value, offset, false)
   }
@@ -6348,7 +6352,7 @@ Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) 
   offset = offset | 0
   if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
   if (Buffer.TYPED_ARRAY_SUPPORT) {
-    this[offset] = value
+    this[offset] = (value & 0xff)
     this[offset + 1] = (value >>> 8)
     this[offset + 2] = (value >>> 16)
     this[offset + 3] = (value >>> 24)
@@ -6367,7 +6371,7 @@ Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) 
     this[offset] = (value >>> 24)
     this[offset + 1] = (value >>> 16)
     this[offset + 2] = (value >>> 8)
-    this[offset + 3] = value
+    this[offset + 3] = (value & 0xff)
   } else {
     objectWriteUInt32(this, value, offset, false)
   }
@@ -6721,7 +6725,7 @@ function blitBuffer (src, dst, offset, length) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"base64-js":9,"ieee754":17,"is-array":19}],11:[function(require,module,exports){
+},{"base64-js":9,"ieee754":18,"is-array":20}],11:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -7285,6 +7289,94 @@ module.exports = function(src) {
 }
 
 },{}],16:[function(require,module,exports){
+'use strict';
+
+var hasOwn = Object.prototype.hasOwnProperty;
+var toStr = Object.prototype.toString;
+
+var isArray = function isArray(arr) {
+	if (typeof Array.isArray === 'function') {
+		return Array.isArray(arr);
+	}
+
+	return toStr.call(arr) === '[object Array]';
+};
+
+var isPlainObject = function isPlainObject(obj) {
+	if (!obj || toStr.call(obj) !== '[object Object]') {
+		return false;
+	}
+
+	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+	// Not own constructor property must be Object
+	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+		return false;
+	}
+
+	// Own properties are enumerated firstly, so to speed up,
+	// if last one is own, then all properties are own.
+	var key;
+	for (key in obj) {/**/}
+
+	return typeof key === 'undefined' || hasOwn.call(obj, key);
+};
+
+module.exports = function extend() {
+	var options, name, src, copy, copyIsArray, clone,
+		target = arguments[0],
+		i = 1,
+		length = arguments.length,
+		deep = false;
+
+	// Handle a deep copy situation
+	if (typeof target === 'boolean') {
+		deep = target;
+		target = arguments[1] || {};
+		// skip the boolean and the target
+		i = 2;
+	} else if ((typeof target !== 'object' && typeof target !== 'function') || target == null) {
+		target = {};
+	}
+
+	for (; i < length; ++i) {
+		options = arguments[i];
+		// Only deal with non-null/undefined values
+		if (options != null) {
+			// Extend the base object
+			for (name in options) {
+				src = target[name];
+				copy = options[name];
+
+				// Prevent never-ending loop
+				if (target !== copy) {
+					// Recurse if we're merging plain objects or arrays
+					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+						if (copyIsArray) {
+							copyIsArray = false;
+							clone = src && isArray(src) ? src : [];
+						} else {
+							clone = src && isPlainObject(src) ? src : {};
+						}
+
+						// Never move original objects, clone them
+						target[name] = extend(deep, clone, copy);
+
+					// Don't bring in undefined values
+					} else if (typeof copy !== 'undefined') {
+						target[name] = copy;
+					}
+				}
+			}
+		}
+	}
+
+	// Return the modified object
+	return target;
+};
+
+
+},{}],17:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 ;(function(root) {
@@ -7617,7 +7709,7 @@ module.exports = function(src) {
 }(this));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = nBytes * 8 - mLen - 1
@@ -7703,7 +7795,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -7728,7 +7820,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 
 /**
  * isArray
@@ -7763,7 +7855,7 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 /**
@@ -7816,7 +7908,7 @@ function longestStreak(value, character) {
 
 module.exports = longestStreak;
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 'use strict';
 
 /*
@@ -8102,7 +8194,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -8170,7 +8262,7 @@ function repeat(str, num) {
 var res = '';
 var cache;
 
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 'use strict';
 
 /*
@@ -8208,7 +8300,7 @@ function trimTrailingLines(value) {
 
 module.exports = trimTrailingLines;
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 
 exports = module.exports = trim;
 
@@ -8224,7 +8316,7 @@ exports.right = function(str){
   return str.replace(/\s*$/, '');
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -8311,7 +8403,7 @@ function unherit(Super) {
 
 module.exports = unherit;
 
-},{"clone":12,"inherits":18}],26:[function(require,module,exports){
+},{"clone":12,"inherits":19}],27:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -8333,6 +8425,13 @@ var ware = require('ware');
 var AttachWare = require('attach-ware')(ware);
 var VFile = require('vfile');
 var unherit = require('unherit');
+var extend;
+
+try {
+    extend = require('node-extend');
+} catch (e) {
+    extend = require('extend');
+}
 
 /*
  * Processing pipeline.
@@ -8365,6 +8464,7 @@ function unified(options) {
     var name = options.name;
     var Parser = options.Parser;
     var Compiler = options.Compiler;
+    var data = options.data;
 
     /**
      * Construct a Processor instance.
@@ -8384,6 +8484,10 @@ function unified(options) {
 
         self.Parser = unherit(Parser);
         self.Compiler = unherit(Compiler);
+
+        if (self.data) {
+            self.data = extend(true, {}, self.data);
+        }
     }
 
     /**
@@ -8483,7 +8587,7 @@ function unified(options) {
     function parse(value, settings) {
         var file = new VFile(value);
         var CustomParser = (this && this.Parser) || Parser;
-        var node = new CustomParser(file, settings).parse();
+        var node = new CustomParser(file, settings, instance(this)).parse();
 
         file.namespace(name).tree = node;
 
@@ -8530,7 +8634,7 @@ function unified(options) {
             throw new Error('Expected node, got ' + node);
         }
 
-        return new CustomCompiler(file, settings).compile();
+        return new CustomCompiler(file, settings, instance(this)).compile();
     }
 
     /**
@@ -8582,6 +8686,7 @@ function unified(options) {
     Processor.run = proto.run = run;
     Processor.stringify = proto.stringify = stringify;
     Processor.process = proto.process = process;
+    Processor.data = proto.data = data || null;
 
     return Processor;
 }
@@ -8592,7 +8697,7 @@ function unified(options) {
 
 module.exports = unified;
 
-},{"attach-ware":7,"bail":8,"unherit":25,"vfile":27,"ware":28}],27:[function(require,module,exports){
+},{"attach-ware":7,"bail":8,"extend":16,"node-extend":16,"unherit":26,"vfile":28,"ware":29}],28:[function(require,module,exports){
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -8636,6 +8741,55 @@ var SEPARATOR = '/';
 try {
     SEPARATOR = require('pa' + 'th').sep;
 } catch (e) { /* empty */ }
+
+/**
+ * Construct a new file message.
+ *
+ * Note: We cannot invoke `Error` on the created context,
+ * as that adds readonly `line` and `column` attributes on
+ * Safari 9, thus throwing and failing the data.
+ *
+ * @example
+ *   var message = new VFileMessage('Whoops!');
+ *
+ *   message instanceof Error // true
+ *
+ * @constructor
+ * @class {VFileMessage}
+ * @param {string} reason - Reason for messaging.
+ * @property {boolean} [fatal=null] - Whether the message
+ *   is fatal.
+ * @property {string} [name=''] - File-name and positional
+ *   information.
+ * @property {string} [file=''] - File-path.
+ * @property {string} [reason=''] - Reason for messaging.
+ * @property {number} [line=null] - Start of message.
+ * @property {number} [column=null] - Start of message.
+ * @property {Position|Location} [location=null] - Place of
+ *   message.
+ * @property {string} [stack] - Stack-trace of warning.
+ */
+function VFileMessage(reason) {
+    this.message = reason;
+}
+
+/**
+ * Inherit from `Error#`.
+ */
+function VFileMessagePrototype() {}
+
+VFileMessagePrototype.prototype = Error.prototype;
+
+var proto = new VFileMessagePrototype();
+
+VFileMessage.prototype = proto;
+
+/*
+ * Expose defaults.
+ */
+
+proto.file = proto.name = proto.reason = proto.message = proto.stack = '';
+proto.fatal = proto.column = proto.line = null;
 
 /**
  * File-related message with location information.
@@ -8964,7 +9118,7 @@ function message(reason, position) {
         }
     }
 
-    err = new Error(reason.message || reason);
+    err = new VFileMessage(reason.message || reason);
 
     err.name = (filePath ? filePath + ':' : '') + range;
     err.file = filePath;
@@ -9140,7 +9294,7 @@ vFilePrototype.namespace = namespace;
 
 module.exports = VFile;
 
-},{}],28:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 /**
  * Module Dependencies
  */
@@ -9233,7 +9387,7 @@ Ware.prototype.run = function () {
   return this;
 };
 
-},{"wrap-fn":29}],29:[function(require,module,exports){
+},{"wrap-fn":30}],30:[function(require,module,exports){
 /**
  * Module Dependencies
  */
