@@ -15,8 +15,9 @@
  */
 
 var fs = require('fs');
+var bail = require('bail');
 var toVFile = require('to-vfile');
-var Traverser = require('../lib/cli/traverser');
+var findDown = require('vfile-find-down');
 var pack = require('../package.json');
 
 /*
@@ -36,17 +37,18 @@ var VERSION = pack.version;
  * Update library files.
  */
 
-var files = new Traverser({
-    'extensions': ['js'],
-    'detectIgnore': false
-}).traverse(['lib']);
+findDown.all('.js', 'lib', function (err, files) {
+    bail(err);
 
-files.push(toVFile('index.js'));
+    files.push(toVFile('index.js'));
 
-files.forEach(function (file) {
-    write(file.filePath(), read(file.filePath(), 'utf8')
-        .replace(/^( \* @version ).+$/m, '$1' + VERSION)
-    );
+    files.forEach(function (file) {
+        write(
+            file.filePath(),
+            read(file.filePath(), 'utf8')
+                .replace(/^( \* @version ).+$/m, '$1' + VERSION)
+        );
+    });
 });
 
 /*
