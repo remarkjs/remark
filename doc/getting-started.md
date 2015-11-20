@@ -89,7 +89,11 @@ Read more about **AMD** on [requirejs.org](http://requirejs.org/docs/start.html#
 
 ### Package Managers
 
-First, if you haven’t already, install [Node](https://nodejs.org/en/download/).
+First, if you haven’t already, install Node:
+
+Either install node from its [download](https://nodejs.org/en/download/)
+documentation, or install [nvm](https://github.com/creationix/nvm#install-script)
+to [manage and update](https://github.com/creationix/nvm#usage) Node versions.
 
 #### [npm](https://docs.npmjs.com/cli/install)
 
