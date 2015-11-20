@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.2.1 / 2015-11-20
+==================
+
+*   Fix silent exit when without `.mdastignore` file ([7233fb2](https://github.com/wooorm/mdast/commit/7233fb2))
+
 2.2.0 / 2015-11-19
 ==================
 
