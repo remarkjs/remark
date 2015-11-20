@@ -114,7 +114,7 @@ Optionally: when using **mdast** inside a project, add it to a
   "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
-    "wooorm/mdast": "^1.0.0"
+    "wooorm/mdast": "^2.0.0"
   }
 }
 ```
@@ -124,8 +124,8 @@ See [**CommonJS**](#commonjs) on how to start using **mdast**.
 ### Download
 
 Using a [package manager](#package-managers) is suggested, but it’s possible
-to download [`mdast.min.js`](https://github.com/wooorm/mdast/blob/master/mdast.min.js)
-and save it to your project folder.
+to download [`mdast.js` and `mdast.min.js`](https://github.com/wooorm/mdast/releases)
+and save them to your project folder.
 
 See [**Globals**](#globals), [**AMD**](#amd), or [**CommonJS**](#commonjs) on
 how to start using **mdast**.
