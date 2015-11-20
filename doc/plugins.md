@@ -152,9 +152,8 @@ of opting for `liiint` or some other weird form, using `mdast-lint` ensured a
 unique name on package managers, while still being meaningful to users.
 
 Additionally, when the library could be used in the browser, I recommend
-publishing to both [Bower](http://bower.io/docs/creating-packages/) and
-[Component](https://github.com/componentjs/guide/blob/master/creating-components/publishing.md).
-The latter will also make a package usable by [Duo](https://github.com/duojs/duo).
+publishing at least to [Component](https://github.com/componentjs/guide/blob/master/creating-components/publishing.md).
+This will also make a package usable by [Duo](https://github.com/duojs/duo).
 
 When publishing a plugin, you should utilize the package manager’s keywords
 functionality and include `"mdast"` in the list.

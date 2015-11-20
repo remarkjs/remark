@@ -21,7 +21,6 @@ install with [npm](#npm).
 
         *   [npm](#npm)
         *   [Duo](#duo)
-        *   [Bower](#bower)
 
     *   [Download](#download)
 
@@ -29,7 +28,7 @@ install with [npm](#npm).
 
 ### CommonJS
 
-1.  Install with [**npm**](#npm), [**Duo**](#duo), [**Bower**](#bower), or
+1.  Install with [**npm**](#npm), [**Duo**](#duo), or
     [download](#download);
 
     *   When downloading or installing with **Bower**, follow step `2.` of
@@ -47,7 +46,7 @@ install with [npm](#npm).
 
 ### AMD
 
-1.  Install with [**bower**](#bower) or [download](#download);
+1.  [Download](#download);
 
 2.  Access **mdast**:
 
@@ -62,7 +61,7 @@ Read more about **AMD** on [requirejs.org](http://requirejs.org/docs/start.html#
 
 ### Globals
 
-1.  Install with [**bower**](#bower) or [download](#download);
+1.  [Download](#download);
 
 2.  Include `mdast.min.js` in HTML:
 
@@ -121,17 +120,6 @@ Optionally: when using **mdast** inside a project, add it to a
 ```
 
 See [**CommonJS**](#commonjs) on how to start using **mdast**.
-
-#### [Bower](http://bower.io/#install-packages)
-
-```sh
-bower install mdast
-```
-
-When using **mdast** inside a project, provide the `--save` flag.
-
-See [**Globals**](#globals), [**AMD**](#amd), or [**CommonJS**](#commonjs)
-on how to start using **mdast**.
 
 ### Download
 
