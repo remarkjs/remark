@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.2.2 / 2015-11-21
+==================
+
+*   Fix premature reporting ([a82d018](https://github.com/wooorm/mdast/commit/a82d018))
+*   Remove distribution files from version control ([f068edd](https://github.com/wooorm/mdast/commit/f068edd))
+*   Remove support for bower ([61162be](https://github.com/wooorm/mdast/commit/61162be))
+
 2.2.1 / 2015-11-20
 ==================
 
