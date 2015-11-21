@@ -1,4 +1,5 @@
 language: node_js
+script: npm run-script test-travis
 node_js:
 - '0.10'
 - '0.11'
