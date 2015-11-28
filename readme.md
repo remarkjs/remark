@@ -39,7 +39,7 @@ markdown in a build step.
 npm install mdast
 ```
 
-[Read more about alternatives ways to install and use »](doc/getting-started.md).
+[Read more about alternatives ways to install and use »](doc/installation.md)
 
 ## Usage
 
@@ -80,8 +80,7 @@ Yields:
 
 ## API
 
-This section only covers the interface you’ll use most often. See
-[**mdast**(3) documentation](doc/mdast.3.md) for a more complete description.
+[**Get Started with the API** »](doc/getting-started.md#application-programming-interface)
 
 ### [mdast](#api).process(value, [options](doc/mdastsetting.7.md)?, done?)
 
@@ -160,6 +159,8 @@ ensures the functioning of the **mdast** module does not change for other
 dependents.
 
 ## CLI
+
+[**Get Started with the CLI** »](doc/getting-started.md#command-line-interface)
 
 Install:
 
