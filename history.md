@@ -2,6 +2,14 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.3.0 / 2015-12-01
+==================
+
+*   Refactor to prefer prefixed plug-ins in mdast(1) ([44d4daa](https://github.com/wooorm/mdast/commit/44d4daa))
+*   Fix recursive `plugins` key handling in mdast(1) ([4bb02b2](https://github.com/wooorm/mdast/commit/4bb02b2))
+*   Add getting-started documentation ([a20d9d0](https://github.com/wooorm/mdast/commit/a20d9d0))
+*   Fix stdout(4) and stderr(4) usage ([501a377](https://github.com/wooorm/mdast/commit/501a377))
+
 2.2.2 / 2015-11-21
 ==================
 
