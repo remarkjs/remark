@@ -18,6 +18,7 @@
 var unified = require('unified');
 var Parser = require('./lib/parse.js');
 var Compiler = require('./lib/stringify.js');
+var escape = require('./lib/escape.json');
 
 /*
  * Exports.
@@ -26,5 +27,8 @@ var Compiler = require('./lib/stringify.js');
 module.exports = unified({
     'name': 'mdast',
     'Parser': Parser,
-    'Compiler': Compiler
+    'Compiler': Compiler,
+    'data': {
+        'escape': escape
+    }
 });
