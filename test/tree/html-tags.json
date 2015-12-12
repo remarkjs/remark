@@ -79,8 +79,24 @@
       }
     },
     {
-      "type": "html",
-      "value": "<article/>",
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<-article>",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1
+            },
+            "end": {
+              "line": 12,
+              "column": 11
+            },
+            "indent": []
+          }
+        }
+      ],
       "position": {
         "start": {
           "line": 12,
@@ -94,8 +110,24 @@
       }
     },
     {
-      "type": "html",
-      "value": "</article>",
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<article foo=",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1
+            },
+            "end": {
+              "line": 15,
+              "column": 14
+            },
+            "indent": []
+          }
+        }
+      ],
       "position": {
         "start": {
           "line": 15,
@@ -103,6 +135,175 @@
         },
         "end": {
           "line": 15,
+          "column": 14
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<article foo=\"bar",
+          "position": {
+            "start": {
+              "line": 18,
+              "column": 1
+            },
+            "end": {
+              "line": 18,
+              "column": 18
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 18,
+          "column": 1
+        },
+        "end": {
+          "line": 18,
+          "column": 18
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<article foo='bar",
+          "position": {
+            "start": {
+              "line": 21,
+              "column": 1
+            },
+            "end": {
+              "line": 21,
+              "column": 18
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 21,
+          "column": 1
+        },
+        "end": {
+          "line": 21,
+          "column": 18
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<article foo=bar ",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1
+            },
+            "end": {
+              "line": 24,
+              "column": 18
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1
+        },
+        "end": {
+          "line": 24,
+          "column": 18
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "html",
+      "value": "<article foo=bar >",
+      "position": {
+        "start": {
+          "line": 27,
+          "column": 1
+        },
+        "end": {
+          "line": 27,
+          "column": 19
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "html",
+      "value": "<article/>",
+      "position": {
+        "start": {
+          "line": 30,
+          "column": 1
+        },
+        "end": {
+          "line": 30,
+          "column": 11
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<-article/>",
+          "position": {
+            "start": {
+              "line": 33,
+              "column": 1
+            },
+            "end": {
+              "line": 33,
+              "column": 12
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 33,
+          "column": 1
+        },
+        "end": {
+          "line": 33,
+          "column": 12
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "html",
+      "value": "</article>",
+      "position": {
+        "start": {
+          "line": 36,
+          "column": 1
+        },
+        "end": {
+          "line": 36,
           "column": 11
         },
         "indent": []
@@ -113,11 +314,11 @@
       "value": "</ARTICLE>",
       "position": {
         "start": {
-          "line": 18,
+          "line": 39,
           "column": 1
         },
         "end": {
-          "line": 18,
+          "line": 39,
           "column": 11
         },
         "indent": []
@@ -128,11 +329,11 @@
       "value": "</aRtIcLe>",
       "position": {
         "start": {
-          "line": 21,
+          "line": 42,
           "column": 1
         },
         "end": {
-          "line": 21,
+          "line": 42,
           "column": 11
         },
         "indent": []
@@ -143,12 +344,105 @@
       "value": "</article  >",
       "position": {
         "start": {
-          "line": 24,
+          "line": 45,
           "column": 1
         },
         "end": {
-          "line": 24,
+          "line": 45,
           "column": 13
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</-article  >",
+          "position": {
+            "start": {
+              "line": 48,
+              "column": 1
+            },
+            "end": {
+              "line": 48,
+              "column": 14
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 48,
+          "column": 1
+        },
+        "end": {
+          "line": 48,
+          "column": 14
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</article",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 1
+            },
+            "end": {
+              "line": 51,
+              "column": 10
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 51,
+          "column": 1
+        },
+        "end": {
+          "line": 51,
+          "column": 10
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</article  ",
+          "position": {
+            "start": {
+              "line": 54,
+              "column": 1
+            },
+            "end": {
+              "line": 54,
+              "column": 12
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 54,
+          "column": 1
+        },
+        "end": {
+          "line": 54,
+          "column": 12
         },
         "indent": []
       }
@@ -162,11 +456,11 @@
           "value": "Inline",
           "position": {
             "start": {
-              "line": 26,
+              "line": 57,
               "column": 3
             },
             "end": {
-              "line": 26,
+              "line": 57,
               "column": 9
             },
             "indent": []
@@ -175,11 +469,11 @@
       ],
       "position": {
         "start": {
-          "line": 26,
+          "line": 57,
           "column": 1
         },
         "end": {
-          "line": 26,
+          "line": 57,
           "column": 9
         },
         "indent": []
@@ -193,11 +487,11 @@
           "value": "<span>",
           "position": {
             "start": {
-              "line": 28,
+              "line": 59,
               "column": 1
             },
             "end": {
-              "line": 28,
+              "line": 59,
               "column": 7
             },
             "indent": []
@@ -206,11 +500,11 @@
       ],
       "position": {
         "start": {
-          "line": 28,
+          "line": 59,
           "column": 1
         },
         "end": {
-          "line": 28,
+          "line": 59,
           "column": 7
         },
         "indent": []
@@ -224,11 +518,11 @@
           "value": "<SPAN>",
           "position": {
             "start": {
-              "line": 31,
+              "line": 62,
               "column": 1
             },
             "end": {
-              "line": 31,
+              "line": 62,
               "column": 7
             },
             "indent": []
@@ -237,11 +531,11 @@
       ],
       "position": {
         "start": {
-          "line": 31,
+          "line": 62,
           "column": 1
         },
         "end": {
-          "line": 31,
+          "line": 62,
           "column": 7
         },
         "indent": []
@@ -255,11 +549,11 @@
           "value": "<SpAn>",
           "position": {
             "start": {
-              "line": 34,
+              "line": 65,
               "column": 1
             },
             "end": {
-              "line": 34,
+              "line": 65,
               "column": 7
             },
             "indent": []
@@ -268,12 +562,43 @@
       ],
       "position": {
         "start": {
-          "line": 34,
+          "line": 65,
           "column": 1
         },
         "end": {
-          "line": 34,
+          "line": 65,
           "column": 7
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<-span>",
+          "position": {
+            "start": {
+              "line": 68,
+              "column": 1
+            },
+            "end": {
+              "line": 68,
+              "column": 8
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 68,
+          "column": 1
+        },
+        "end": {
+          "line": 68,
+          "column": 8
         },
         "indent": []
       }
@@ -286,11 +611,11 @@
           "value": "<span/>",
           "position": {
             "start": {
-              "line": 37,
+              "line": 71,
               "column": 1
             },
             "end": {
-              "line": 37,
+              "line": 71,
               "column": 8
             },
             "indent": []
@@ -299,12 +624,43 @@
       ],
       "position": {
         "start": {
-          "line": 37,
+          "line": 71,
           "column": 1
         },
         "end": {
-          "line": 37,
+          "line": 71,
           "column": 8
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<-span/>",
+          "position": {
+            "start": {
+              "line": 74,
+              "column": 1
+            },
+            "end": {
+              "line": 74,
+              "column": 9
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 74,
+          "column": 1
+        },
+        "end": {
+          "line": 74,
+          "column": 9
         },
         "indent": []
       }
@@ -317,11 +673,11 @@
           "value": "</span>",
           "position": {
             "start": {
-              "line": 40,
+              "line": 77,
               "column": 1
             },
             "end": {
-              "line": 40,
+              "line": 77,
               "column": 8
             },
             "indent": []
@@ -330,11 +686,11 @@
       ],
       "position": {
         "start": {
-          "line": 40,
+          "line": 77,
           "column": 1
         },
         "end": {
-          "line": 40,
+          "line": 77,
           "column": 8
         },
         "indent": []
@@ -348,11 +704,11 @@
           "value": "</SPAN>",
           "position": {
             "start": {
-              "line": 43,
+              "line": 80,
               "column": 1
             },
             "end": {
-              "line": 43,
+              "line": 80,
               "column": 8
             },
             "indent": []
@@ -361,11 +717,11 @@
       ],
       "position": {
         "start": {
-          "line": 43,
+          "line": 80,
           "column": 1
         },
         "end": {
-          "line": 43,
+          "line": 80,
           "column": 8
         },
         "indent": []
@@ -379,11 +735,11 @@
           "value": "</SpAn>",
           "position": {
             "start": {
-              "line": 46,
+              "line": 83,
               "column": 1
             },
             "end": {
-              "line": 46,
+              "line": 83,
               "column": 8
             },
             "indent": []
@@ -392,11 +748,11 @@
       ],
       "position": {
         "start": {
-          "line": 46,
+          "line": 83,
           "column": 1
         },
         "end": {
-          "line": 46,
+          "line": 83,
           "column": 8
         },
         "indent": []
@@ -410,11 +766,11 @@
           "value": "</span  >",
           "position": {
             "start": {
-              "line": 49,
+              "line": 86,
               "column": 1
             },
             "end": {
-              "line": 49,
+              "line": 86,
               "column": 10
             },
             "indent": []
@@ -423,12 +779,260 @@
       ],
       "position": {
         "start": {
-          "line": 49,
+          "line": 86,
           "column": 1
         },
         "end": {
-          "line": 49,
+          "line": 86,
           "column": 10
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</-span>",
+          "position": {
+            "start": {
+              "line": 89,
+              "column": 1
+            },
+            "end": {
+              "line": 89,
+              "column": 9
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 89,
+          "column": 1
+        },
+        "end": {
+          "line": 89,
+          "column": 9
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</span",
+          "position": {
+            "start": {
+              "line": 92,
+              "column": 1
+            },
+            "end": {
+              "line": 92,
+              "column": 7
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 92,
+          "column": 1
+        },
+        "end": {
+          "line": 92,
+          "column": 7
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "</span  ",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 1
+            },
+            "end": {
+              "line": 95,
+              "column": 9
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 95,
+          "column": 1
+        },
+        "end": {
+          "line": 95,
+          "column": 9
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<span foo=",
+          "position": {
+            "start": {
+              "line": 98,
+              "column": 1
+            },
+            "end": {
+              "line": 98,
+              "column": 11
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 98,
+          "column": 1
+        },
+        "end": {
+          "line": 98,
+          "column": 11
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<span foo=\"bar",
+          "position": {
+            "start": {
+              "line": 101,
+              "column": 1
+            },
+            "end": {
+              "line": 101,
+              "column": 15
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 101,
+          "column": 1
+        },
+        "end": {
+          "line": 101,
+          "column": 15
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<span foo='bar",
+          "position": {
+            "start": {
+              "line": 104,
+              "column": 1
+            },
+            "end": {
+              "line": 104,
+              "column": 15
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 104,
+          "column": 1
+        },
+        "end": {
+          "line": 104,
+          "column": 15
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<span foo=bar ",
+          "position": {
+            "start": {
+              "line": 107,
+              "column": 1
+            },
+            "end": {
+              "line": 107,
+              "column": 15
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 107,
+          "column": 1
+        },
+        "end": {
+          "line": 107,
+          "column": 15
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "html",
+          "value": "<span foo=bar >",
+          "position": {
+            "start": {
+              "line": 110,
+              "column": 1
+            },
+            "end": {
+              "line": 110,
+              "column": 16
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 110,
+          "column": 1
+        },
+        "end": {
+          "line": 110,
+          "column": 16
         },
         "indent": []
       }
@@ -440,7 +1044,7 @@
       "column": 1
     },
     "end": {
-      "line": 50,
+      "line": 111,
       "column": 1
     }
   }

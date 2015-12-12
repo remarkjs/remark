@@ -9,7 +9,28 @@
 <ArTiClE>
 
 
+<-article>
+
+
+<article foo=
+
+
+<article foo="bar
+
+
+<article foo='bar
+
+
+<article foo=bar
+
+
+<article foo=bar >
+
+
 <article/>
+
+
+<-article/>
 
 
 </article>
@@ -23,6 +44,16 @@
 
 </article  >
 
+
+</-article  >
+
+
+</article
+
+
+</article
+
+
 # Inline
 
 <span>
@@ -34,7 +65,13 @@
 <SpAn>
 
 
+<-span>
+
+
 <span/>
+
+
+<-span/>
 
 
 </span>
@@ -47,3 +84,27 @@
 
 
 </span  >
+
+
+</-span>
+
+
+</span
+
+
+</span
+
+
+<span foo=
+
+
+<span foo="bar
+
+
+<span foo='bar
+
+
+<span foo=bar
+
+
+<span foo=bar >
