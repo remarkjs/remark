@@ -3138,7 +3138,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and (matching delimiters)",
+          "href": "./world.html (and (matching delimiters))",
           "children": [
             {
               "type": "text",
@@ -3160,21 +3160,6 @@
             "start": {
               "line": 47,
               "column": 1
-            },
-            "end": {
-              "line": 47,
-              "column": 49
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 47,
-              "column": 49
             },
             "end": {
               "line": 47,
@@ -3200,9 +3185,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "./world.html (and (mismatched delimiters)",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -3224,6 +3209,21 @@
             "start": {
               "line": 49,
               "column": 1
+            },
+            "end": {
+              "line": 49,
+              "column": 8
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and (mismatched delimiters))",
+          "position": {
+            "start": {
+              "line": 49,
+              "column": 8
             },
             "end": {
               "line": 49,
@@ -3955,27 +3955,12 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and (matching delimiters)",
+          "src": "./world.png (and (matching delimiters))",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 91,
               "column": 1
-            },
-            "end": {
-              "line": 91,
-              "column": 49
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 91,
-              "column": 49
             },
             "end": {
               "line": 91,
@@ -4001,14 +3986,29 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "src": "./world.png (and (mismatched delimiters)",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 93,
               "column": 1
+            },
+            "end": {
+              "line": 93,
+              "column": 9
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and (mismatched delimiters))",
+          "position": {
+            "start": {
+              "line": 93,
+              "column": 9
             },
             "end": {
               "line": 93,

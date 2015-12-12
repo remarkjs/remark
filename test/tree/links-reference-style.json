@@ -1686,7 +1686,7 @@
         },
         {
           "type": "text",
-          "value": "this] and ",
+          "value": "this] and [this",
           "position": {
             "start": {
               "line": 57,
@@ -1694,36 +1694,18 @@
             },
             "end": {
               "line": 57,
-              "column": 42
+              "column": 47
             },
             "indent": []
           }
         },
         {
-          "type": "linkReference",
-          "identifier": "this\\",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "this\\",
-              "position": {
-                "start": {
-                  "line": 57,
-                  "column": 43
-                },
-                "end": {
-                  "line": 57,
-                  "column": 48
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "escape",
+          "value": "]",
           "position": {
             "start": {
               "line": 57,
-              "column": 42
+              "column": 47
             },
             "end": {
               "line": 57,

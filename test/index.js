@@ -124,13 +124,19 @@ describe('mdast.parse(file, options?)', function () {
         var message = 'Found it!';
         var hasThrown;
 
-        /**
-         * Tokenizer.
-         */
-        function emphasis(eat) {
-            eat.file.fail(message, eat.now());
+        /** Tokenizer. */
+        function emphasis(eat, value) {
+            if (value.charAt(0) === '*') {
+                eat.file.fail(message, eat.now());
+            }
         }
 
+        /** Locator. */
+        function locator(value, fromIndex) {
+            return value.indexOf('*', fromIndex);
+        }
+
+        emphasis.locator = locator;
         processor.Parser.prototype.inlineTokenizers.emphasis = emphasis;
 
         try {
@@ -146,6 +152,24 @@ describe('mdast.parse(file, options?)', function () {
         }
 
         assert(hasThrown === true);
+    });
+
+    it('should warn when missing locators', function () {
+        var processor = mdast();
+        var proto = processor.Parser.prototype;
+        var methods = proto.inlineMethods;
+        var file = new VFile('Hello *World*!');
+
+        /** Tokenizer. */
+        function noop() {}
+
+        proto.inlineTokenizers.foo = noop;
+        methods.splice(methods.indexOf('inlineText'), 0, 'foo');
+
+        file.quiet = true;
+        processor.parse(file);
+
+        assert.equal(String(file.messages[0]), '1:1: Missing locator: `foo`');
     });
 
     it('should throw `he` errors', function () {
