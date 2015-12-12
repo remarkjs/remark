@@ -1,0 +1,35 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "code",
+      "lang": "js",
+      "value": "foo();\n```bash",
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 4,
+          "column": 4
+        },
+        "indent": [
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 5,
+      "column": 1
+    }
+  }
+}
