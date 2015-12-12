@@ -32,9 +32,13 @@
   "scripts": [
     "index.js",
     "lib/defaults.js",
-    "lib/expressions.js",
     "lib/parse.js",
     "lib/stringify.js",
     "lib/utilities.js"
+  ],
+  "json": [
+    "lib/block-elements.json",
+    "lib/escape.json",
+    "lib/inline-text-stop.json"
   ]
 }

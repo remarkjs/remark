@@ -11,6 +11,7 @@
 'use strict';
 
 /* eslint-env node */
+/* eslint-disable no-console */
 
 /*
  * Dependencies.
@@ -32,7 +33,14 @@ fixtures.forEach(function (fixture) {
 
     Object.keys(mapping).forEach(function (key) {
         var filename = name + (key ? '.' + key : key) + '.json';
-        var result = mdast.parse(input, fixture.possibilities[key]);
+        var result;
+
+        try {
+            result = mdast.parse(input, fixture.possibilities[key]);
+        } catch (err) {
+            console.log('Could not regenerate `' + filename + '`');
+            throw err;
+        }
 
         result = JSON.stringify(result, null, 2) + '\n';
 

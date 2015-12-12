@@ -127,8 +127,10 @@ describe('mdast.parse(file, options?)', function () {
         /**
          * Tokenizer.
          */
-        function emphasis(eat) {
-            eat.file.fail(message, eat.now());
+        function emphasis(eat, value) {
+            if (value.charAt(0) === '*') {
+                eat.file.fail(message, eat.now());
+            }
         }
 
         processor.Parser.prototype.inlineTokenizers.emphasis = emphasis;

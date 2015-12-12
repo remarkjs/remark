@@ -19,60 +19,82 @@ var OVERWRITES = {};
 
 OVERWRITES.mentions = OVERWRITES.mention = 'blog/821';
 
-/*
+/**
+ * Tokenize a mention.
+ *
  * Username may only contain alphanumeric characters or
  * single hyphens, and cannot begin or end with a hyphen.
  *
- * `PERSON` is either a user or an organization, but also
- * matches a team:
+ * This matches a user, an organization, or a team:
  *
  *   https://github.com/blog/1121-introducing-team-mentions
- */
-
-var NAME = '(?:[a-z0-9]{1,2}|[a-z0-9][a-z0-9-]{1,37}[a-z0-9])';
-var PERSON = '(' + NAME + '(?:\\/' + NAME + ')?)';
-var MENTION = new RegExp('^@' + PERSON + '\\b(?!-)', 'i');
-
-/*
- * Expression that matches characters not used in the above
- * references.
- */
-
-var NON_GITHUB = /^[\s\S]+?(?:[^/.@#_a-zA-Z0-9-](?=@)|(?=$))/;
-
-/**
- * Render a mention.
  *
- * @param {Function} eat
- * @param {string} $0 - Whole content.
- * @param {Object} $1 - Username.
- * @return {Node}
+ * @example
+ *   tokenizeMention(eat, '@foo');
+ *
+ * @param {function(string)} eat
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `delete` node.
  */
-function mention(eat, $0, $1) {
-    var now = eat.now();
-    var href = 'https://github.com/';
+function mention(eat, value, silent) {
+    var index = 1;
+    var length = value.length;
+    var slash = -1;
+    var character;
+    var subvalue;
+    var handle;
+    var href;
+    var now;
 
-    href += has.call(OVERWRITES, $1) ? OVERWRITES[$1] : $1;
+    if (value.charAt(0) !== '@' || value.charAt(1) === '-') {
+        return;
+    }
 
-    return eat($0)(this.renderLink(true, href, $0, null, now, eat));
+    while (index < length) {
+        character = value.charAt(index);
+
+        if (character === '/') {
+            if (slash !== -1) {
+                break
+            }
+
+            slash = index;
+
+            if (
+                value.charAt(index - 1) === '-' ||
+                value.charAt(index + 1) === '-'
+            ) {
+                return;
+            }
+        } else if (!/[a-zA-Z0-9-]/.test(character)) {
+            break;
+        }
+
+        index++;
+    }
+
+    if (value.charAt(index - 1) === '-') {
+        return;
+    }
+
+    if (silent) {
+        return;
+    }
+
+    now = eat.now();
+    href = 'https://github.com/';
+    handle = value.slice(1, index);
+    subvalue = '@' + handle;
+
+    href += has.call(OVERWRITES, handle) ? OVERWRITES[handle] : handle;
+
+    return eat(subvalue)(
+        this.renderLink(true, href, subvalue, null, now, eat)
+    );
 }
 
 mention.notInLink = true;
-
-/**
- * Factory to parse plain-text, and look for github
- * entities.
- *
- * @param {Function} eat
- * @param {string} $0 - Content.
- * @return {Array.<Node>}
- */
-function inlineText(eat, $0) {
-    var self = this;
-    var now = eat.now();
-
-    return eat($0)(self.augmentGitHub($0, now));
-}
 
 /**
  * Attacher.
@@ -81,31 +103,20 @@ function inlineText(eat, $0) {
  */
 function attacher(mdast) {
     var proto = mdast.Parser.prototype;
-    var scope = proto.inlineTokenizers;
-    var current = scope.inlineText;
+    var methods = proto.inlineMethods;
+
+    /*
+     * Add `@` as a special inline character.
+     */
+
+    mdast.data.inlineTextStop.gfm.push('@');
 
     /*
      * Add a tokenizer to the `Parser`.
      */
 
-    proto.augmentGitHub = proto.tokenizeFactory('mentions');
-
-    proto.mentionsMethods = ['mention'];
-
-    proto.mentionsTokenizers = {
-        'mention': mention
-    };
-
-    proto.expressions.gfm.mention = MENTION;
-
-    /*
-     * Overwrite `inlineText`.
-     */
-
-    proto.mentionsMethods.push('mentionsText');
-    proto.mentionsTokenizers.mentionsText = current;
-    proto.expressions.rules.mentionsText = NON_GITHUB;
-    scope.inlineText = inlineText;
+    proto.inlineTokenizers.mention = mention;
+    methods.splice(methods.indexOf('inlineText'), 0, 'mention');
 }
 
 /*

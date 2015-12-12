@@ -5,9 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "./world(and-hello(world)",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -32,18 +32,18 @@
             },
             "end": {
               "line": 1,
-              "column": 34
+              "column": 8
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./world(and-hello(world)).",
           "position": {
             "start": {
               "line": 1,
-              "column": 34
+              "column": 8
             },
             "end": {
               "line": 1,
@@ -261,9 +261,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "src": "./world(and-hello(world)",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
@@ -272,18 +272,18 @@
             },
             "end": {
               "line": 9,
-              "column": 35
+              "column": 9
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./world(and-hello(world)).",
           "position": {
             "start": {
               "line": 9,
-              "column": 35
+              "column": 9
             },
             "end": {
               "line": 9,
