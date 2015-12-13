@@ -124,7 +124,6 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
 *   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
     — Get the plain text content of a node.
 
-
 In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
 for other utilities which work with **mdast** nodes, but also with
 [retext](https://github.com/wooorm/retext) nodes.
