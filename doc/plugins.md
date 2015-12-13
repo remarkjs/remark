@@ -116,7 +116,8 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
     — Get the style of a heading (`"atx"`, `"atx-closed"`, or `"setext"`);
 
 *   [anandthakker/mdast-util-inject](https://github.com/anandthakker/mdast-util-inject)
-    - Inject one AST into another at a specified heading, keeping heading structure intact;
+    — Inject one AST into another at a specified heading, keeping heading
+    structure intact;
 
 *   [wooorm/mdast-util-position](https://github.com/wooorm/mdast-util-position)
     — Get the position of nodes;
