@@ -10,10 +10,10 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
-              "type": "paragraph",
+              "type": "heading",
+              "depth": 2,
               "children": [
                 {
                   "type": "text",
@@ -37,10 +37,12 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 1,
-                  "column": 7
+                  "line": 2,
+                  "column": 4
                 },
-                "indent": []
+                "indent": [
+                  1
+                ]
               }
             }
           ],
@@ -50,10 +52,12 @@
               "column": 1
             },
             "end": {
-              "line": 1,
-              "column": 7
+              "line": 2,
+              "column": 4
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],
@@ -63,24 +67,12 @@
           "column": 1
         },
         "end": {
-          "line": 1,
-          "column": 7
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "horizontalRule",
-      "position": {
-        "start": {
-          "line": 2,
-          "column": 1
-        },
-        "end": {
           "line": 2,
           "column": 4
         },
-        "indent": []
+        "indent": [
+          1
+        ]
       }
     },
     {
@@ -92,7 +84,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -129,104 +120,6 @@
                     },
                     "indent": []
                   }
-                },
-                {
-                  "type": "text",
-                  "value": "\n",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 11
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 1
-                    },
-                    "indent": [
-                      1
-                    ]
-                  }
-                },
-                {
-                  "type": "linkReference",
-                  "identifier": "foo",
-                  "referenceType": "shortcut",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "foo",
-                      "position": {
-                        "start": {
-                          "line": 6,
-                          "column": 2
-                        },
-                        "end": {
-                          "line": 6,
-                          "column": 5
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 1
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 6
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": ": ",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 6
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "href": "http://google.com",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "http://google.com",
-                      "position": {
-                        "start": {
-                          "line": 6,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 6,
-                          "column": 25
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 25
-                    },
-                    "indent": []
-                  }
                 }
               ],
               "position": {
@@ -235,12 +128,10 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 6,
-                  "column": 25
+                  "line": 5,
+                  "column": 11
                 },
-                "indent": [
-                  1
-                ]
+                "indent": []
               }
             }
           ],
@@ -250,12 +141,10 @@
               "column": 1
             },
             "end": {
-              "line": 6,
-              "column": 25
+              "line": 5,
+              "column": 11
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         }
       ],
@@ -265,12 +154,27 @@
           "column": 1
         },
         "end": {
+          "line": 5,
+          "column": 11
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "foo",
+      "title": null,
+      "link": "http://google.com",
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1
+        },
+        "end": {
           "line": 6,
           "column": 25
         },
-        "indent": [
-          1
-        ]
+        "indent": []
       }
     },
     {
@@ -282,7 +186,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -298,11 +201,11 @@
                       "position": {
                         "start": {
                           "line": 9,
-                          "column": 6
+                          "column": 5
                         },
                         "end": {
                           "line": 9,
-                          "column": 10
+                          "column": 9
                         },
                         "indent": []
                       }

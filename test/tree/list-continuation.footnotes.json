@@ -129,104 +129,6 @@
                     },
                     "indent": []
                   }
-                },
-                {
-                  "type": "text",
-                  "value": "\n",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 11
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 1
-                    },
-                    "indent": [
-                      1
-                    ]
-                  }
-                },
-                {
-                  "type": "linkReference",
-                  "identifier": "foo",
-                  "referenceType": "shortcut",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "foo",
-                      "position": {
-                        "start": {
-                          "line": 6,
-                          "column": 2
-                        },
-                        "end": {
-                          "line": 6,
-                          "column": 5
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 1
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 6
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": ": ",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 6
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "href": "http://google.com",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "http://google.com",
-                      "position": {
-                        "start": {
-                          "line": 6,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 6,
-                          "column": 25
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 25
-                    },
-                    "indent": []
-                  }
                 }
               ],
               "position": {
@@ -235,12 +137,10 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 6,
-                  "column": 25
+                  "line": 5,
+                  "column": 11
                 },
-                "indent": [
-                  1
-                ]
+                "indent": []
               }
             }
           ],
@@ -250,12 +150,10 @@
               "column": 1
             },
             "end": {
-              "line": 6,
-              "column": 25
+              "line": 5,
+              "column": 11
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         }
       ],
@@ -265,12 +163,27 @@
           "column": 1
         },
         "end": {
+          "line": 5,
+          "column": 11
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "definition",
+      "identifier": "foo",
+      "title": null,
+      "link": "http://google.com",
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1
+        },
+        "end": {
           "line": 6,
           "column": 25
         },
-        "indent": [
-          1
-        ]
+        "indent": []
       }
     },
     {
@@ -288,51 +201,16 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "linkReference",
-                  "identifier": "^foo",
-                  "referenceType": "full",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "^foo",
-                      "position": {
-                        "start": {
-                          "line": 9,
-                          "column": 6
-                        },
-                        "end": {
-                          "line": 9,
-                          "column": 10
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
+                  "type": "footnoteReference",
+                  "identifier": "foo",
                   "position": {
                     "start": {
                       "line": 9,
                       "column": 4
                     },
                     "end": {
-                      "line": 10,
-                      "column": 7
-                    },
-                    "indent": [
-                      1
-                    ]
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": ": bar baz.",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 7
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 17
+                      "line": 9,
+                      "column": 10
                     },
                     "indent": []
                   }
@@ -344,12 +222,10 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 10,
-                  "column": 17
+                  "line": 9,
+                  "column": 10
                 },
-                "indent": [
-                  1
-                ]
+                "indent": []
               }
             }
           ],
@@ -359,12 +235,10 @@
               "column": 1
             },
             "end": {
-              "line": 10,
-              "column": 17
+              "line": 9,
+              "column": 10
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         }
       ],
@@ -374,12 +248,58 @@
           "column": 1
         },
         "end": {
+          "line": 9,
+          "column": 10
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "footnoteDefinition",
+      "identifier": "foo",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "bar baz.",
+              "position": {
+                "start": {
+                  "line": 10,
+                  "column": 9
+                },
+                "end": {
+                  "line": 10,
+                  "column": 17
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 9
+            },
+            "end": {
+              "line": 10,
+              "column": 17
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1
+        },
+        "end": {
           "line": 10,
           "column": 17
         },
-        "indent": [
-          1
-        ]
+        "indent": []
       }
     }
   ],

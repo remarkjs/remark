@@ -10,10 +10,10 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
-              "type": "paragraph",
+              "type": "heading",
+              "depth": 2,
               "children": [
                 {
                   "type": "text",
@@ -37,10 +37,12 @@
                   "column": 4
                 },
                 "end": {
-                  "line": 1,
-                  "column": 7
+                  "line": 2,
+                  "column": 4
                 },
-                "indent": []
+                "indent": [
+                  1
+                ]
               }
             }
           ],
@@ -50,10 +52,12 @@
               "column": 1
             },
             "end": {
-              "line": 1,
-              "column": 7
+              "line": 2,
+              "column": 4
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],
@@ -63,24 +67,12 @@
           "column": 1
         },
         "end": {
-          "line": 1,
-          "column": 7
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "horizontalRule",
-      "position": {
-        "start": {
-          "line": 2,
-          "column": 1
-        },
-        "end": {
           "line": 2,
           "column": 4
         },
-        "indent": []
+        "indent": [
+          1
+        ]
       }
     },
     {
@@ -92,7 +84,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -182,44 +173,11 @@
                 },
                 {
                   "type": "text",
-                  "value": ": ",
+                  "value": ": http://google.com",
                   "position": {
                     "start": {
                       "line": 6,
                       "column": 6
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 8
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "link",
-                  "title": null,
-                  "href": "http://google.com",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "http://google.com",
-                      "position": {
-                        "start": {
-                          "line": 6,
-                          "column": 8
-                        },
-                        "end": {
-                          "line": 6,
-                          "column": 25
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 8
                     },
                     "end": {
                       "line": 6,
@@ -282,7 +240,6 @@
         {
           "type": "listItem",
           "loose": false,
-          "checked": null,
           "children": [
             {
               "type": "paragraph",
@@ -298,11 +255,11 @@
                       "position": {
                         "start": {
                           "line": 9,
-                          "column": 6
+                          "column": 5
                         },
                         "end": {
                           "line": 9,
-                          "column": 10
+                          "column": 9
                         },
                         "indent": []
                       }
