@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.0.0-alpha.3 / 2015-12-14
+==========================
+
+*   Refactor to remove regular expressions ([6548415](https://github.com/wooorm/mdast/commit/6548415))
+
 2.3.0 / 2015-12-01
 ==================
 
