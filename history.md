@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.0.0-alpha.4 / 2015-12-14
+==========================
+
+*   Update dev-dependencies for changes in mdast ([3899929](https://github.com/wooorm/mdast/commit/3899929))
+*   Refactor to remove regular expressions ([6d13eb5](https://github.com/wooorm/mdast/commit/6d13eb5))
+
 2.3.0 / 2015-12-01
 ==================
 

@@ -3,7 +3,7 @@
  * @copyright 2015 Titus Wormer
  * @license MIT
  * @module mdast
- * @version 2.3.0
+ * @version 3.0.0-alpha.4
  * @fileoverview Markdown processor powered by plugins.
  */
 

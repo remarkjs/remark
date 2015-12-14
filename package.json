@@ -1,6 +1,6 @@
 {
   "name": "mdast",
-  "version": "2.3.0",
+  "version": "3.0.0-alpha.4",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
