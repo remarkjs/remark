@@ -55,7 +55,26 @@
             },
             "indent": []
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
         },
+        "end": {
+          "line": 1,
+          "column": 7
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "loose": false,
+      "children": [
         {
           "type": "listItem",
           "loose": false,
@@ -104,7 +123,26 @@
             },
             "indent": []
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 2,
+          "column": 1
         },
+        "end": {
+          "line": 2,
+          "column": 7
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "loose": false,
+      "children": [
         {
           "type": "listItem",
           "loose": false,
@@ -157,17 +195,14 @@
       ],
       "position": {
         "start": {
-          "line": 1,
+          "line": 3,
           "column": 1
         },
         "end": {
           "line": 3,
           "column": 7
         },
-        "indent": [
-          1,
-          1
-        ]
+        "indent": []
       }
     }
   ],
