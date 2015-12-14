@@ -4,8 +4,6 @@
     "components/",
     "coverage/",
     "node_modules/",
-    "lib/expressions.js",
-    "script/build-expressions.js",
     "build.js",
     "mdast.js",
     "mdast.min.js"
