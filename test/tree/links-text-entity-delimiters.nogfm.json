@@ -11,11 +11,26 @@
           "children": [
             {
               "type": "text",
-              "value": "Hello [world]!",
+              "value": "Hello [world]",
               "position": {
                 "start": {
                   "line": 1,
                   "column": 2
+                },
+                "end": {
+                  "line": 1,
+                  "column": 25
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "!",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 25
                 },
                 "end": {
                   "line": 1,
@@ -75,11 +90,26 @@
           "children": [
             {
               "type": "text",
-              "value": "Hello [world]!",
+              "value": "Hello [world]",
               "position": {
                 "start": {
                   "line": 3,
                   "column": 2
+                },
+                "end": {
+                  "line": 3,
+                  "column": 25
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "!",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 25
                 },
                 "end": {
                   "line": 3,
@@ -235,11 +265,26 @@
           "children": [
             {
               "type": "text",
-              "value": "Hello [world]!",
+              "value": "Hello [world]",
               "position": {
                 "start": {
                   "line": 9,
                   "column": 2
+                },
+                "end": {
+                  "line": 9,
+                  "column": 25
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "!",
+              "position": {
+                "start": {
+                  "line": 9,
+                  "column": 25
                 },
                 "end": {
                   "line": 9,
@@ -299,11 +344,26 @@
           "children": [
             {
               "type": "text",
-              "value": "Hello [world]!",
+              "value": "Hello [world]",
               "position": {
                 "start": {
                   "line": 11,
                   "column": 2
+                },
+                "end": {
+                  "line": 11,
+                  "column": 25
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "!",
+              "position": {
+                "start": {
+                  "line": 11,
+                  "column": 25
                 },
                 "end": {
                   "line": 11,

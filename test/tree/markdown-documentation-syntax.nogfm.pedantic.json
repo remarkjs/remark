@@ -1813,7 +1813,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "*",
           "position": {
             "start": {
@@ -1843,7 +1843,7 @@
           }
         },
         {
-          "type": "escape",
+          "type": "text",
           "value": "*",
           "position": {
             "start": {

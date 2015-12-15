@@ -426,8 +426,7 @@
           }
         },
         {
-          "type": "escape",
-          "value": "\n",
+          "type": "break",
           "position": {
             "start": {
               "line": 15,
@@ -458,8 +457,7 @@
           }
         },
         {
-          "type": "escape",
-          "value": "\n",
+          "type": "break",
           "position": {
             "start": {
               "line": 16,
