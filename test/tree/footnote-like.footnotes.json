@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This looks like a footnote, but is in fact, a ",
+          "value": "This one isn't even ",
           "position": {
             "start": {
               "line": 1,
@@ -14,59 +14,9 @@
             },
             "end": {
               "line": 1,
-              "column": 47
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "^link",
-          "referenceType": "full",
-          "children": [
-            {
-              "type": "text",
-              "value": "link",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 48
-                },
-                "end": {
-                  "line": 1,
-                  "column": 52
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 47
-            },
-            "end": {
-              "line": 1,
-              "column": 60
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".\nThis one isn't even ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 60
-            },
-            "end": {
-              "line": 2,
               "column": 21
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         },
         {
@@ -79,11 +29,11 @@
               "value": "defined",
               "position": {
                 "start": {
-                  "line": 2,
+                  "line": 1,
                   "column": 22
                 },
                 "end": {
-                  "line": 2,
+                  "line": 1,
                   "column": 29
                 },
                 "indent": []
@@ -92,11 +42,11 @@
           ],
           "position": {
             "start": {
-              "line": 2,
+              "line": 1,
               "column": 21
             },
             "end": {
-              "line": 2,
+              "line": 1,
               "column": 36
             },
             "indent": []
@@ -107,11 +57,11 @@
           "value": ".",
           "position": {
             "start": {
-              "line": 2,
+              "line": 1,
               "column": 36
             },
             "end": {
-              "line": 2,
+              "line": 1,
               "column": 37
             },
             "indent": []
@@ -124,27 +74,8 @@
           "column": 1
         },
         "end": {
-          "line": 2,
+          "line": 1,
           "column": 37
-        },
-        "indent": [
-          1
-        ]
-      }
-    },
-    {
-      "type": "definition",
-      "identifier": "^link",
-      "title": null,
-      "link": "~/foo/bar.baz",
-      "position": {
-        "start": {
-          "line": 4,
-          "column": 1
-        },
-        "end": {
-          "line": 4,
-          "column": 25
         },
         "indent": []
       }
@@ -162,11 +93,11 @@
               "value": "^both",
               "position": {
                 "start": {
-                  "line": 6,
+                  "line": 3,
                   "column": 3
                 },
                 "end": {
-                  "line": 6,
+                  "line": 3,
                   "column": 8
                 },
                 "indent": []
@@ -175,11 +106,11 @@
           ],
           "position": {
             "start": {
-              "line": 6,
+              "line": 3,
               "column": 1
             },
             "end": {
-              "line": 6,
+              "line": 3,
               "column": 17
             },
             "indent": []
@@ -190,11 +121,11 @@
           "value": ", ",
           "position": {
             "start": {
-              "line": 6,
+              "line": 3,
               "column": 17
             },
             "end": {
-              "line": 6,
+              "line": 3,
               "column": 19
             },
             "indent": []
@@ -210,11 +141,11 @@
               "value": "^this too",
               "position": {
                 "start": {
-                  "line": 6,
+                  "line": 3,
                   "column": 21
                 },
                 "end": {
-                  "line": 6,
+                  "line": 3,
                   "column": 30
                 },
                 "indent": []
@@ -223,11 +154,11 @@
           ],
           "position": {
             "start": {
-              "line": 6,
+              "line": 3,
               "column": 19
             },
             "end": {
-              "line": 6,
+              "line": 3,
               "column": 32
             },
             "indent": []
@@ -238,11 +169,11 @@
           "value": ".",
           "position": {
             "start": {
-              "line": 6,
+              "line": 3,
               "column": 32
             },
             "end": {
-              "line": 6,
+              "line": 3,
               "column": 33
             },
             "indent": []
@@ -251,11 +182,11 @@
       ],
       "position": {
         "start": {
-          "line": 6,
+          "line": 3,
           "column": 1
         },
         "end": {
-          "line": 6,
+          "line": 3,
           "column": 33
         },
         "indent": []
@@ -268,7 +199,7 @@
       "column": 1
     },
     "end": {
-      "line": 7,
+      "line": 4,
       "column": 1
     }
   }
