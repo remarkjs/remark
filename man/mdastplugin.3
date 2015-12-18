@@ -39,6 +39,8 @@ It adds new files to be processed by \fBmdast\fR(1).
 
 .P
 All have their own function. The first is called an \[lq]attacher\[rq] (see \fBATTACHER\fR). The second is named a \[lq]transformer\[rq] (see \fBTRANSFORMER\fR). The third is named a \[lq]completer\[rq] (see \fBCOMPLETER\fR). An \[lq]attacher\[rq] may return a \[lq]transformer\[rq] and attach a \[lq]completer\[rq].
+.P
+An attacher has access to the parser, which provides its own pluggable interface, consisting of tokenizers (see \fBTOKENIZER\fR) and locators (see \fBLOCATOR\fR).
 .SH "FUNCTION ATTACHER(MDAST\[LB], OPTIONS\[RB]\[LB], FILESET\[RB])"
 .P
 .RS 2
@@ -173,6 +175,91 @@ To access all files once they are transformed, create a \fBcompleter\fR. A \fBco
 \fBReturns\fR
 .P
 \fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
+.SH "FUNCTION TOKENIZER(EAT, VALUE, SILENT)"
+.P
+.RS 2
+.nf
+function mention(eat, value) \[lC]
+    var match \[eq] \[sl]\[ha]\[at](\[rs]w\[pl])\[sl].exec(value);
+
+    if (match) \[lC]
+        if (silent) \[lC]
+            return true;
+        \[rC]
+
+        return eat(match\[lB]0\[rB])(\[lC]
+            \[aq]type\[aq]: \[aq]link\[aq],
+            \[aq]href\[aq]: \[aq]https:\[sl]\[sl]my-social-network\[sl]\[aq] \[pl] match\[lB]1\[rB],
+            \[aq]children\[aq]: \[lB]\[lC]
+                \[aq]type\[aq]: \[aq]text\[aq],
+                \[aq]value\[aq]: match\[lB]0\[rB]
+            \[rC]\[rB]
+        \[rC]);
+    \[rC]
+\[rC]
+.fi
+.RE
+.P
+Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when there is a need to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBmdast\fR knows two types of tokenizers based on the kinds of markdown nodes: block-level (e.g., paragraphs or fenced code blocks) and inline-level (e.g., emphasis or inline code spans). Block-level tokenizers are the same as inline-level tokenizers, with the exception that the latter require \fBlocator\fR functions.
+.P
+Tokenizers \fItest\fR whether a certain given documents starts with a certain syntactic entity. When that occurs, they consume that token, a process which is called \[lq]eating\[rq] in mdast. Locators enable tokenizers to function faster by providing information on the where the next entity occurs.
+.P
+For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]blob\[sl]master\[sl]test\[sl]mentions.js\(ra\fR and how it utilises and attaches a tokenizer and a locator.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBNode? \[eq] transformer(eat, value)\fR;
+.IP \(bu 4
+\fBboolean? \[eq] transformer(eat, value, silent\[rB]\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBeat\fR (\fBFunction\fR) \[em] Function used to eat, when applicable, an entity;
+.IP \(bu 4
+\fBvalue\fR (\fBstring\fR) \[em] Value which might start an entity;
+.IP \(bu 4
+\fBsilent\fR (\fBboolean\fR, optional) \[em] When \fBtrue\fR, instead of actually eating a value, the tokenizer must return whether a node can definitely be found at the start of \fBvalue\fR.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+In \fInormal\fR mode, optionally an \fBmdastnode\fR(7) representing the eaten entity. Otherwise, in \fIsilent\fR mode, a truthy value must be returned when the tokenizer predicts with certainty an entity could be found.
+.SH "FUNCTION LOCATOR(VALUE, FROMINDEX)"
+.P
+.RS 2
+.nf
+function locator(value, fromIndex) \[lC]
+    return value.indexOf(\[aq]\[at]\[aq], fromIndex);
+\[rC]
+.fi
+.RE
+.P
+As mentioned in the previous section, locators are required for inline tokenization in order to keep the process performant. Locators enable inline tokenizers to function faster by providing information on the where the next entity occurs.
+.P
+\fBSignatures\fR
+.RS 0
+.IP \(bu 4
+\fBnumber \[eq] locator(value, fromIndex)\fR.
+.RE 0
+
+.P
+\fBParameters\fR
+.RS 0
+.IP \(bu 4
+\fBvalue\fR (\fBstring\fR) \[em] Value which might contain an entity;
+.IP \(bu 4
+\fBfromIndex\fR (\fBnumber\fR) \[em] Position to start searching at.
+.RE 0
+
+.P
+\fBReturns\fR
+.P
+The index at which the entity might start, and \fB-1\fR otherwise.
 .SH "BUGS"
 .P
 \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR

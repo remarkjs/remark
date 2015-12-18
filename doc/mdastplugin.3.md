@@ -39,6 +39,10 @@ All have their own function. The first is called an
 “completer” (see **COMPLETER**). An “attacher” may
 return a “transformer” and attach a “completer”.
 
+An attacher has access to the parser, which provides its own pluggable
+interface, consisting of tokenizers (see **TOKENIZER**) and locators
+(see **LOCATOR**).
+
 ## function attacher(mdast\[, options]\[, fileSet])
 
 ```js
@@ -175,6 +179,99 @@ files or add messages.
 **Returns**
 
 `err` (`Error`, optional) — Exception which will be thrown.
+
+## function tokenizer(eat, value, silent)
+
+```js
+function mention(eat, value) {
+    var match = /^@(\w+)/.exec(value);
+
+    if (match) {
+        if (silent) {
+            return true;
+        }
+
+        return eat(match[0])({
+            'type': 'link',
+            'href': 'https://my-social-network/' + match[1],
+            'children': [{
+                'type': 'text',
+                'value': match[0]
+            }]
+        });
+    }
+}
+```
+
+Most often, using transformers to manipulate a syntax-tree produces
+the desired output.  Sometimes, mainly when there is a need to
+introduce new syntactic entities with a certain level of precedence,
+interfacing with the parser is necessary.  **mdast** knows two types of
+tokenizers based on the kinds of markdown nodes: block-level (e.g., paragraphs
+or fenced code blocks) and inline-level (e.g., emphasis or inline code
+spans).  Block-level tokenizers are the same as inline-level tokenizers, with
+the exception that the latter require **locator** functions.
+
+Tokenizers _test_ whether a certain given documents starts with a certain
+syntactic entity.  When that occurs, they consume that token, a process which
+is called “eating” in mdast.  Locators enable tokenizers to function faster by
+providing information on the where the next entity occurs.
+
+For a complete example, see
+[`test/mentions.js`](https://github.com/wooorm/mdast/blob/master/test/mentions.js)
+and how it utilises and attaches a tokenizer and a locator.
+
+**Signatures**
+
+*   `Node? = transformer(eat, value)`;
+*   `boolean? = transformer(eat, value, silent]`.
+
+**Parameters**
+
+*   `eat` (`Function`)
+    — Function used to eat, when applicable, an entity;
+
+*   `value` (`string`)
+    — Value which might start an entity;
+
+*   `silent` (`boolean`, optional)
+    — When `true`, instead of actually eating a value, the tokenizer must
+    return whether a node can definitely be found at the start of `value`.
+
+**Returns**
+
+In _normal_ mode, optionally an **mdastnode**(7) representing the eaten
+entity.  Otherwise, in _silent_ mode, a truthy value must be returned when
+the tokenizer predicts with certainty an entity could be found.
+
+## function locator(value, fromIndex)
+
+```js
+function locator(value, fromIndex) {
+    return value.indexOf('@', fromIndex);
+}
+```
+
+As mentioned in the previous section, locators are required for inline
+tokenization in order to keep the process performant. Locators enable
+inline tokenizers to function faster by providing information on the
+where the next entity occurs.
+
+**Signatures**
+
+*   `number = locator(value, fromIndex)`.
+
+**Parameters**
+
+*   `value` (`string`)
+    — Value which might contain an entity;
+
+*   `fromIndex` (`number`)
+    — Position to start searching at.
+
+**Returns**
+
+The index at which the entity might start, and `-1` otherwise.
 
 ## BUGS
 

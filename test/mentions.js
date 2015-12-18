@@ -53,61 +53,28 @@ function locateMention(value, fromIndex) {
  * @return {Node?|boolean} - `delete` node.
  */
 function mention(eat, value, silent) {
-    var index = 1;
-    var length = value.length;
-    var slash = -1;
-    var character;
-    var subvalue;
+    var match = /^@(\w+)/.exec(value);
     var handle;
     var href;
-    var now;
 
-    if (value.charAt(0) !== '@' || value.charAt(1) === '-') {
-        return;
-    }
-
-    while (index < length) {
-        character = value.charAt(index);
-
-        if (character === '/') {
-            if (slash !== -1) {
-                break
-            }
-
-            slash = index;
-
-            if (
-                value.charAt(index - 1) === '-' ||
-                value.charAt(index + 1) === '-'
-            ) {
-                return;
-            }
-        } else if (!/[a-zA-Z0-9-]/.test(character)) {
-            break;
+    if (match) {
+        if (silent) {
+            return true;
         }
 
-        index++;
+        handle = match[1];
+        href = 'https://github.com/';
+        href += has.call(OVERWRITES, handle) ? OVERWRITES[handle] : handle;
+
+        return eat(match[0])({
+            'type': 'link',
+            'href': href,
+            'children': [{
+                'type': 'text',
+                'value': match[0]
+            }]
+        });
     }
-
-    if (value.charAt(index - 1) === '-') {
-        return;
-    }
-
-    if (silent) {
-        return;
-    }
-
-    now = eat.now();
-    href = 'https://github.com/';
-    handle = value.slice(1, index);
-    subvalue = '@' + handle;
-    now.column++;
-
-    href += has.call(OVERWRITES, handle) ? OVERWRITES[handle] : handle;
-
-    return eat(subvalue)(
-        this.renderLink(true, href, subvalue, null, now, eat)
-    );
 }
 
 mention.notInLink = true;
