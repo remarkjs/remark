@@ -72,4 +72,4 @@ browserify(path.join(__dirname, '..', 'index.js'), {
     write(absolute('mdast.min.js'), '/*' + comment + '*/\n' + doc);
 
     console.log(chalk.green('✓') + ' wrote `mdast.min.js`');
-})
+});

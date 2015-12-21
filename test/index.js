@@ -31,8 +31,12 @@ function plugin() {
 
 /**
  * Delayed no-operation transformer.
+ *
+ * @param {Node} node - Syntax-tree.
+ * @param {VFile} file - Virtual file.
+ * @param {Function} next - Callback invoked when done.
  */
-function asyncTransformer(ast, file, next) {
+function asyncTransformer(node, file, next) {
     setTimeout(next, 4);
 }
 
@@ -48,7 +52,7 @@ function asyncAttacher() {
 /**
  * Construct an empty node.
  *
- * @return {Object}
+ * @return {Node} - Empty `root` node.
  */
 function empty() {
     return {
@@ -125,14 +129,25 @@ describe('mdast.parse(file, options?)', function () {
         var message = 'Found it!';
         var hasThrown;
 
-        /** Tokenizer. */
+        /**
+         * Tokenizer.
+         *
+         * @param {Function} eat - Eater.
+         * @param {string} value - Rest of content.
+         */
         function emphasis(eat, value) {
             if (value.charAt(0) === '*') {
                 eat.file.fail(message, eat.now());
             }
         }
 
-        /** Locator. */
+        /**
+         * Locator.
+         *
+         * @param {string} value - Value to search.
+         * @param {number} fromIndex - Index to start searching at.
+         * @return {number} - Location of possible auto-link.
+         */
         function locator(value, fromIndex) {
             return value.indexOf('*', fromIndex);
         }
@@ -206,11 +221,11 @@ describe('mdast.parse(file, options?)', function () {
          * Set option when an HMTL comment occurs:
          * `<!-- $key -->`, turns on `$key`.
          *
-         * @param {function(string)} eat
-         * @param {string} $0
+         * @param {function(string)} eat - Eater.
+         * @param {string} value - Rest of content.
          */
-        function replacement(eat, $0) {
-            var node = /<!--\s*(.*?)\s*-->/g.exec($0);
+        function replacement(eat, value) {
+            var node = /<!--\s*(.*?)\s*-->/g.exec(value);
             var options = {};
 
             if (node) {
@@ -438,8 +453,8 @@ describe('mdast.stringify(ast, file, options?)', function () {
          * Set option when an HMTL comment occurs:
          * `<!-- $key -->`, turns on `$key`.
          *
-         * @param {Object} node
-         * @return {string}
+         * @param {Object} node - Node to compile.
+         * @return {string} - Compiled `node`.
          */
         function replacement(node) {
             var value = node.value;
@@ -588,6 +603,9 @@ describe('mdast.use(plugin, options?)', function () {
 
         /**
          * Attacher.
+         *
+         * @param {MDAST} processor - Processor.
+         * @param {Object} settings - Configuration.
          */
         function assertion(processor, settings) {
             assert('use' in processor);
@@ -690,6 +708,10 @@ describe('mdast.process(value, options, done)', function () {
 
         /**
          * Transformer.
+         *
+         * @param {Node} ast - Syntax-tree.
+         * @param {VFile} file - Virtual file.
+         * @param {Function} next - Callback invoked when done.
          */
         function transformer(ast, file, next) {
             setTimeout(function () {
@@ -778,6 +800,9 @@ describe('function transformer(ast, file, next?)', function () {
 
         /**
          * Plugin.
+         *
+         * @param {Node} ast - Syntax-tree.
+         * @param {VFile} file - Virtual file.
          */
         function assertion(ast, file) {
             assert.equal(ast, result);
@@ -873,7 +898,7 @@ var validateTokens;
 /**
  * Validate `children`.
  *
- * @param {Array.<Object>} children
+ * @param {Array.<Object>} children - Nodes to validate.
  */
 validateTokens = function (children) {
     children.forEach(validateToken);
@@ -882,7 +907,7 @@ validateTokens = function (children) {
 /**
  * Validate `context`.
  *
- * @param {Object} context
+ * @param {Object} context - Node to validate.
  */
 validateToken = function (context) {
     var keys = Object.keys(context).length;
@@ -1144,8 +1169,8 @@ validateToken = function (context) {
  * This usually happens inside Parser, but it also needs to be done whenever
  * position info is stripped from the AST.
  *
- * @param {Array.<Object>} nodes
- * @return {Array.<Object>}
+ * @param {Array.<Object>} nodes - Nodes to merge.
+ * @return {Array.<Object>} - Merged nodes.
  */
 function mergeTextNodes(nodes) {
     if (!nodes.length || nodes[0].position) {
@@ -1168,9 +1193,9 @@ function mergeTextNodes(nodes) {
 /**
  * Clone, and optionally clean from `position`, a node.
  *
- * @param {Object} node
- * @param {boolean} clean
- * @return {Object}
+ * @param {Object} node - Node to clone.
+ * @param {boolean} clean - Whether to clean.
+ * @return {Object} - Cloned node.
  */
 function clone(node, clean) {
     var result = Array.isArray(node) ? [] : {};
@@ -1217,9 +1242,11 @@ function clone(node, clean) {
 /**
  * Diff node.
  *
- * @param {Object} node
- * @param {Object} baseline
- * @param {boolean} clean
+ * @param {Node} node - Node to diff.
+ * @param {Node} baseline - Baseline reference.
+ * @param {boolean} clean - Whether to clean `node`.
+ * @param {boolean} cleanBaseline - Whether to clean
+ *   `baseline`.
  */
 function compare(node, baseline, clean, cleanBaseline) {
     validateToken(node);
@@ -1248,8 +1275,8 @@ describe('fixtures', function () {
                 var name = key || 'default';
                 var parse = possibilities[key];
                 var stringify = extend({}, fixture.stringify, {
-                    gfm: parse.gfm,
-                    commonmark: parse.commonmark
+                    'gfm': parse.gfm,
+                    'commonmark': parse.commonmark
                 });
                 var initialClean = !parse.position;
                 var node;

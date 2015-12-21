@@ -123,7 +123,7 @@ root = mdast.parse(
 /**
  * Define stringifier.
  *
- * @param {Object} section
+ * @param {Object} section - Section to render.
  */
 function renderSection(section) {
     var code;

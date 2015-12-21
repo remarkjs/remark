@@ -56,9 +56,9 @@ keys.forEach(function (key) {
 /**
  * Parse a `string` `value` into a javascript value.
  *
- * @param {string} key
- * @param {string} value
- * @return {Object}
+ * @param {string} key - Name of setting.
+ * @param {string} value - Associated value.
+ * @return {Object} - Parsed value.
  */
 function augment(key, value) {
     if (!value) {
@@ -86,8 +86,8 @@ augment.ruleRepetition = Number;
 /**
  * Parse options from a filename.
  *
- * @param {string} name
- * @return {Object}
+ * @param {string} name - File-name to parse.
+ * @return {Object} - Configuration.
  */
 function parseOptions(name) {
     var index = -1;
@@ -174,9 +174,9 @@ sources.forEach(function (source) {
  * solely of booleans, and all properties exist in
  * both.
  *
- * @param {Object} options
- * @param {Object} compare
- * @return {number}
+ * @param {Object} options - Configuration.
+ * @param {Object} compare - Object to compare to.
+ * @return {number} - Difference.
  */
 function difference(options, compare) {
     var count = 0;
@@ -194,10 +194,10 @@ function difference(options, compare) {
  * Find the closest fixture for a `source` in all
  * `fixtures`.  Returns a key of a fixture.
  *
- * @param {string} source
- * @param {Object} fixtures
- * @param {Object} options
- * @return {string}
+ * @param {string} source - File-name to resolve.
+ * @param {Object} fixtures - Available fixtures.
+ * @param {Object} options - Configuration.
+ * @return {string} - Resolved file-name.
  */
 function resolveFixture(source, fixtures, options) {
     var minimum = Infinity;
@@ -220,9 +220,9 @@ function resolveFixture(source, fixtures, options) {
  * Find the closest fixture for all `options`.  Returns
  * an object mapping options sources to fixture names.
  *
- * @param {Object} fixtures
- * @param {Object} options
- * @return {Object}
+ * @param {Object} fixtures - Map of fixtures.
+ * @param {Object} options - Configuration.
+ * @return {Object} - Resolved fixtures.
  */
 function resolveFixtures(fixtures, options) {
     var resolved = {};

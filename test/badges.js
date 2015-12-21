@@ -5,8 +5,8 @@
 /**
  * Check if `node` is the main heading.
  *
- * @param {Node} node
- * @return {boolean}
+ * @param {Node} node - Node to check.
+ * @return {boolean} - Whether `node` is the main heading.
  */
 function isHeading(node) {
     return node && node.type === 'heading' && node.depth === 1;
@@ -15,8 +15,8 @@ function isHeading(node) {
 /**
  * Get the value of `node`.
  *
- * @param {Node} node
- * @return {string}
+ * @param {Node} node - Node whose value to access.
+ * @return {string} - Textual representation of `node`.
  */
 function getValue(node) {
     return node &&
@@ -28,8 +28,8 @@ function getValue(node) {
 /**
  * Check if `node` has children.
  *
- * @param {Node} node
- * @return {boolean}
+ * @param {Node} node - Node to check.
+ * @return {boolean} - Whether `node` has children.
  */
 function hasChildren(node) {
     return node && 'children' in node;
@@ -38,13 +38,13 @@ function hasChildren(node) {
 /**
  * Search a node for a main heading.
  *
- * @param {Node} node
- * @return {Node?}
+ * @param {Node} node - Node to search.
+ * @return {Node?} - Heading node.
  */
 function search(node) {
-    var index,
-        length,
-        result;
+    var index;
+    var length;
+    var result;
 
     if (isHeading(node)) {
         return node;
@@ -71,8 +71,8 @@ function search(node) {
  * Checks `alt` or `title` when no value or children
  * exist.
  *
- * @param {Node} node
- * @return {string}
+ * @param {Node} node - Node to stringify.
+ * @return {string} - Textual representation of `node`.
  */
 function toString(node) {
     return getValue(node) || node.children.map(toString).join('') || '';
@@ -82,9 +82,11 @@ function toString(node) {
  * Create an npm badge, with a space before it.
  * Creates a flat badge when `options.flat: true`.
  *
- * @param {string} name
- * @param {Object?} options
- * @return {Array.<Node>}
+ * @param {string} name - Project name.
+ * @param {Object?} [options] - Configuration.
+ * @param {boolean?} [options.flat] - Whether to render a
+ *   flat badge.
+ * @return {Array.<Node>} - Nodes.
  */
 function createBadge(name, options) {
     var href = 'https://www.npmjs.com/package/' + name;
@@ -118,16 +120,16 @@ function createBadge(name, options) {
 /**
  * Attach.
  *
- * @param {MDAST} mdast
- * @param {Object} options
- * @return {Function}
+ * @param {MDAST} mdast - Processor.
+ * @param {Object} options - Configuration.
+ * @return {Function} - Transformer.
  */
 function attach(mdast, options) {
     /**
      * Adds an npm version badge to the main heading,
      * when available.
      *
-     * @param {Node} node
+     * @param {Node} node - AST.
      */
     return function (node) {
         var head = search(node);

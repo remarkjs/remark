@@ -47,7 +47,7 @@ function locateMention(value, fromIndex) {
  *   tokenizeMention(eat, '@foo');
  *
  * @property {Function} locator - Mention locator.
- * @param {function(string)} eat
+ * @param {function(string)} eat - Eater.
  * @param {string} value - Rest of content.
  * @param {boolean?} [silent] - Whether this is a dry run.
  * @return {Node?|boolean} - `delete` node.
@@ -83,7 +83,7 @@ mention.locator = locateMention;
 /**
  * Attacher.
  *
- * @param {MDAST} mdast
+ * @param {MDAST} mdast - Processor.
  */
 function attacher(mdast) {
     var proto = mdast.Parser.prototype;
