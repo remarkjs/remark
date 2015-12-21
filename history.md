@@ -5,7 +5,7 @@
 2.3.1 / 2015-12-21
 ==================
 
-*   Fix `package.json` files not loading on mdast(1) (1ef6e05)
+*   Fix `package.json` files not loading on mdast(1) ([1ef6e05](https://github.com/wooorm/mdast/commit/1ef6e05))
 
 2.3.0 / 2015-12-01
 ==================
