@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.3.1 / 2015-12-21
+==================
+
+*   Fix `package.json` files not loading on mdast(1) (1ef6e05)
+
 2.3.0 / 2015-12-01
 ==================
 
