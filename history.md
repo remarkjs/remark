@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+2.3.2 / 2015-12-21
+==================
+
+*   Fix missing link in `history.md` ([49453f7](https://github.com/wooorm/mdast/commit/49453f7))
+
 2.3.1 / 2015-12-21
 ==================
 
