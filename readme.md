@@ -6,13 +6,13 @@
 io.js, and the browser. 100% coverage.
 
 **mdast** is not just another markdown to HTML compiler. It can generate,
-and reformat, markdown too. It’s powered by [plugins](doc/plugins.md) to do
+and reformat, markdown too. It is powered by [plugins](doc/plugins.md) to do
 all kinds of things: [validate your markdown](https://github.com/wooorm/mdast-lint),
 [add links for GitHub references](https://github.com/wooorm/mdast-github), or
 [add a table of contents](https://github.com/wooorm/mdast-toc).
 
 The project contains both an extensive [JavaScript API](doc/mdast.3.md) for
-parsing, modifying, and stringifying markdown, and a friendly [Command Line
+parsing, modifying, and compiling markdown, and a friendly [Command Line
 Interface](doc/mdast.1.md) making it easy to validate, prepare, and compile
 markdown in a build step.
 
@@ -97,7 +97,7 @@ something else.
 
 *   `options` (`Object`) — Settings:
 
-    *   `gfm` (`boolean`, default: `true`) — See [Github Flavoured Markdown](doc/mdastsetting.7.md#github-flavoured-markdown);
+    *   `gfm` (`boolean`, default: `true`) — See [GitHub Flavoured Markdown](doc/mdastsetting.7.md#github-flavoured-markdown);
     *   `yaml` (`boolean`, default: `true`) — See [YAML](doc/mdastsetting.7.md#yaml);
     *   `commonmark` (`boolean`, default: `false`) — See [CommonMark](doc/mdastsetting.7.md#commonmark);
     *   `footnotes` (`boolean`, default: `false`) — See [Footnotes](doc/mdastsetting.7.md#footnotes);
@@ -122,7 +122,7 @@ something else.
 
 *   `done` (`function(Error?, string?)`) — Callback invoked when the output
     is generated with either an error, or a result. Only strictly needed when
-    async plugins are used.
+    asynchronous plugins are used.
 
 All options (including the options object itself) can be `null` or `undefined`
 to default to their default values.
@@ -132,8 +132,8 @@ to default to their default values.
 `string` or `null`: A document. Formatted in markdown by default, or in
 whatever a plugin generates.
 The result is `null` if a plugin is asynchronous, in which case the callback
-`done` should’ve been passed (don’t worry: plugin creators make sure you know
-its async).
+`done` should’ve been passed (do not worry: plugin creators make sure you know
+its asynchronous).
 
 ### [mdast](#api).use([plugin](doc/plugins.md#plugins), options?)
 

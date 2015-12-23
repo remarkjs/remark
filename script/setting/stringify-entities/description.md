@@ -1,7 +1,7 @@
 Setting `entities: true` (default: `false`) will
 [encode](https://github.com/mathiasbynens/he#heencodetext-options) any symbols
-that aren’t printable ASCII symbols and special HTML characters (`&`, `<`, `>`,
-`"`, `'`, and `` ` ``).
+that are not printable ASCII symbols and special HTML characters (`&`, `<`,
+`>`, `"`, `'`, and `` ` ``).
 
 When `true`, named entities are generated (`&` > `&amp;`); when `"numbers"`,
 numbered entities are generated (`&` > `&#x26;`); when `"escape"`, only

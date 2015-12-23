@@ -153,8 +153,8 @@ Parse, transform, and compile markdown into something else.
 **Returns**
 
 `string?` — Document.  Formatted in markdown by default, or in whatever a
-plugin generates. When an async transformer is used, `null` is returned and
-`done` must be given to receive the results upon completion.
+asynchronous generates. When an async transformer is used, `null` is
+returned and `done` must be given to receive the results upon completion.
 
 ### function done(err?, doc?, file?)
 

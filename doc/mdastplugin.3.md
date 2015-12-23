@@ -29,7 +29,7 @@ implement plugins, see **mdast**(3) and **mdastplugin**(7).
 
 An **mdast** plugin does up to three things:
 
-*   It modifies the processor: the parser, the stringifier;
+*   It modifies the processor: the parser, the compiler;
 *   It transforms the AST;
 *   It adds new files to be processed by **mdast**(1).
 
@@ -72,7 +72,7 @@ To modify the parser, the compiler, or access the file-set on **mdast**(1),
 create an attacher.
 
 An attacher is the thing passed to `use()`. It can receive plugin specific
-options, but that’s entirely up to the developer. An **attacher** is invoked
+options, but that is entirely up to the developer. An **attacher** is invoked
 when the plugin is `use`d on an **mdast** instance, and can return a
 **transformer** which will be called on subsequent processes.
 

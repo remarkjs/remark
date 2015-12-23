@@ -24,7 +24,7 @@ For a list of available configuration settings, see **mdastsetting**(7).
 
 ## SETTINGS FOR `PROCESS`, `PARSE`, AND `STRINGIFY`
 
-To configure the programatic interface of **mdast**, pass an object as a
+To configure the programmatic interface of **mdast**, pass an object as a
 second parameter to `process()`, `parse()`, and `stringify()`.
 
 ## COMMAND LINE SETTINGS

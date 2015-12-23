@@ -89,8 +89,8 @@ Precedence is as follows:
     directory of the processed file, and in ancestral directories;
 
 *   If no `.mdastrc` and `package.json` were detected in the directory of
-    the file or its ancestral directories, a per-user config file (`~/.mdastrc`)
-    is used;
+    the file or its ancestral directories, a per-user configuration file
+    (`~/.mdastrc`) is used;
 
 If both `.mdastrc` and `package.json` exist in a directory, the file named
 `.mdastrc` takes precedence in the cascade over `package.json`.
@@ -140,10 +140,10 @@ And `.mdastrc` contains:
 }
 ```
 
-Then, when stringifying `docs/doc.md`, **mdast**(1) would use `bullet: "+"`
+Then, when compiling `docs/doc.md`, **mdast**(1) would use `bullet: "+"`
 because `docs/.mdastrc` takes precedence over `.mdastrc` and `package.json`.
 
-When stringifying `readme.md`, **mdast**(1) would use `bullet: "-"`, because
+When compiling `readme.md`, **mdast**(1) would use `bullet: "-"`, because
 `.mdastrc` takes precedence over `package.json`.
 
 ## BUGS

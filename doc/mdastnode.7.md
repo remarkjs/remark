@@ -151,7 +151,7 @@ interface Heading <: Parent {
 ## CODE
 
 **Code** (**Text**) occurs at block level (see **InlineCode** for code spans).
-**Code** sports a language tag (when using Github Flavoured Markdown fences
+**Code** sports a language tag (when using GitHub Flavoured Markdown fences
 with a flag, `null` otherwise).
 
 ```idl
@@ -434,8 +434,8 @@ interface FootnoteDefinition <: Parent {
 
 ## TEXTNODE
 
-**TextNode** (**Text**) represents everything that’s just text.  Note that its
-`type` property is `text`, but it’s different from **Text**.
+**TextNode** (**Text**) represents everything that is just text.  Note that its
+`type` property is `text`, but it is different from **Text**.
 
 ```idl
 interface TextNode <: Text {

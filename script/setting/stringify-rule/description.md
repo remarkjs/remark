@@ -1,5 +1,5 @@
 Three options are provided to customise how horizontal rules will be
-stringified:
+compiled:
 
 *   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify
     horizontal rules using the provided character as its bullets;

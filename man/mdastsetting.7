@@ -278,7 +278,7 @@ Setting \fBfootnotes: true\fR (default: \fBfalse\fR) enables inline- and referen
 .P
 Footnotes are wrapped in square brackets, and preceded by a caret (\fB\[ha]\fR).
 .P
-It\[cq]s possible to reference other footnotes inside footnotes.
+It is possible to reference other footnotes inside footnotes.
 .P
 The following document:
 .P
@@ -1082,7 +1082,7 @@ Yields:
 .RE
 .SS "Emphasis Markers"
 .P
-Two options are provided to customise how slight- and strong emphasis are stringified:
+Two options are provided to customise how slight- and strong emphasis are compiled:
 .RS 0
 .IP \(bu 4
 \fBemphasis: string\fR (\fB\[dq]\[ul]\[dq]\fR or \fB\[dq]*\[dq]\fR, default: \fB\[dq]\[ul]\[dq]\fR) will wrap slight emphasis in the provided character;
@@ -1125,7 +1125,7 @@ Yields:
 .RE
 .SS "Encoding Entities"
 .P
-Setting \fBentities: true\fR (default: \fBfalse\fR) will \fBencode\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]mathiasbynens\[sl]he\[sh]heencodetext-options\(ra\fR any symbols that aren\[cq]t printable ASCII symbols and special HTML characters (\fB&\fR, \fB<\fR, \fB>\fR, \fB\[dq]\fR, \fB\[aq]\fR, and \fB\[ga]\fR).
+Setting \fBentities: true\fR (default: \fBfalse\fR) will \fBencode\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]mathiasbynens\[sl]he\[sh]heencodetext-options\(ra\fR any symbols that are not printable ASCII symbols and special HTML characters (\fB&\fR, \fB<\fR, \fB>\fR, \fB\[dq]\fR, \fB\[aq]\fR, and \fB\[ga]\fR).
 .P
 When \fBtrue\fR, named entities are generated (\fB&\fR > \fB&amp;\fR); when \fB\[dq]numbers\[dq]\fR, numbered entities are generated (\fB&\fR > \fB&\[sh]x26;\fR); when \fB\[dq]escape\[dq]\fR, only special HTML characters are encoded (\fB&\fR > \fB&amp;\fR, but \fBö\fR remains \fBö\fR).
 .P
@@ -1160,14 +1160,14 @@ AT&amp;T, \[lB]AT&amp;T\[rB](http:\[sl]\[sl]at&amp;t.com \[dq]AT&amp;T\[dq]), !\
 .RE
 .SS "Fence"
 .P
-It\[aq]s possible to customise how GFM code fences are stringified:
+It\[aq]s possible to customise how GFM code fences are compiled:
 .RS 0
 .IP \(bu 4
 \fBfence: string\fR (\fB\[dq]\[ti]\[dq]\fR or \fB\[dq]\[ga]\[dq]\fR, default: \fB\[dq]\[ga]\[dq]\fR) will wrap code blocks in the provided character.
 .RE 0
 
 .P
-To render all code blocks with fences (the default behavior is to only use non-standard fences when a language-flag is present), use \fBfences: true\fR.
+To render all code blocks with fences (the default behaviour is to only use non-standard fences when a language-flag is present), use \fBfences: true\fR.
 .P
 The following document:
 .P
@@ -1248,7 +1248,7 @@ The default, \fB\[dq]tab\[dq]\fR, will compile to bullets and spacing set to tab
 The other value, \fB\[dq]mixed\[dq]\fR, uses \fB\[dq]tab\[dq]\fR when the list item spans multiple lines, and \fB\[dq]1\[dq]\fR otherwise.
 .RS 0
 .P
-\fBNote\fR: choosing \fB\[dq]tab\[dq]\fR results in the greatest support across vendors when mixing lists, block quotes, indented code, &c.
+\fBNote\fR: choosing \fB\[dq]tab\[dq]\fR results in the greatest support across vendors when mixing lists, block quotes, indented code, etcetera.
 .RE 0
 
 .P
@@ -1409,7 +1409,7 @@ Yields:
 .RE
 .SS "Horizontal Rules"
 .P
-Three options are provided to customise how horizontal rules will be stringified:
+Three options are provided to customise how horizontal rules will be compiled:
 .RS 0
 .IP \(bu 4
 \fBrule: string\fR (\fB\[dq]-\[dq]\fR, \fB\[dq]*\[dq]\fR, or \fB\[dq]\[ul]\[dq]\fR, default: \fB\[dq]*\[dq]\fR) will stringify horizontal rules using the provided character as its bullets;
@@ -1457,7 +1457,7 @@ A rule:
 .P
 Setting \fBsetext: true\fR (default: \fBfalse\fR) will stringify primary and secondary headings using \fBSetext\fR \fI\(lahttp:\[sl]\[sl]en.wikipedia.org\[sl]wiki\[sl]Setext\[sh]Setext\[ul]tags\(ra\fR-style headings (underlines).
 .P
-Respectively, primary headings are stringified with a row of equals-signs (\fB\[eq]\fR), and secondary headings with a row of dashes (\fB-\fR).
+Respectively, primary headings are compiled with a row of equals-signs (\fB\[eq]\fR), and secondary headings with a row of dashes (\fB-\fR).
 .P
 The following document:
 .P

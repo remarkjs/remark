@@ -1,4 +1,4 @@
-Github, thus RedCarpet, has a bug where “nested” fenced code blocks,
+GitHub, thus RedCarpet, has a bug where “nested” fenced code blocks,
 even with shorter fences, can exit their actual “parent” block.
 
 Note that this bug does not occur on indented code-blocks.

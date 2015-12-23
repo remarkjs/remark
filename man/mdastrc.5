@@ -82,7 +82,7 @@ Files passed to \fBmdast\fR(1);
 .IP \(bu 4
 Files named \fB.mdastrc\fR and \fBmdastConfig\fR fields in \fBpackage.json\fR in the directory of the processed file, and in ancestral directories;
 .IP \(bu 4
-If no \fB.mdastrc\fR and \fBpackage.json\fR were detected in the directory of the file or its ancestral directories, a per-user config file (\fB\[ti]\[sl].mdastrc\fR) is used;
+If no \fB.mdastrc\fR and \fBpackage.json\fR were detected in the directory of the file or its ancestral directories, a per-user configuration file (\fB\[ti]\[sl].mdastrc\fR) is used;
 .RE 0
 
 .P
@@ -141,9 +141,9 @@ And \fB.mdastrc\fR contains:
 .fi
 .RE
 .P
-Then, when stringifying \fBdocs\[sl]doc.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]\[pl]\[dq]\fR because \fBdocs\[sl].mdastrc\fR takes precedence over \fB.mdastrc\fR and \fBpackage.json\fR.
+Then, when compiling \fBdocs\[sl]doc.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]\[pl]\[dq]\fR because \fBdocs\[sl].mdastrc\fR takes precedence over \fB.mdastrc\fR and \fBpackage.json\fR.
 .P
-When stringifying \fBreadme.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.mdastrc\fR takes precedence over \fBpackage.json\fR.
+When compiling \fBreadme.md\fR, \fBmdast\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.mdastrc\fR takes precedence over \fBpackage.json\fR.
 .SH "BUGS"
 .P
 \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR

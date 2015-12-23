@@ -8,4 +8,4 @@ The other value, `"mixed"`, uses `"tab"` when the list item spans multiple
 lines, and `"1"` otherwise.
 
 > **Note**: choosing `"tab"` results in the greatest support across
-> vendors when mixing lists, block quotes, indented code, &c.
+> vendors when mixing lists, block quotes, indented code, etcetera.

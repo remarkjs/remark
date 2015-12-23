@@ -30,7 +30,7 @@ This manual contains information on how \fBmdast\fR(3) plugins work. It focusses
 An \fBmdast\fR plugin does up to three things:
 .RS 0
 .IP \(bu 4
-It modifies the processor: the parser, the stringifier;
+It modifies the processor: the parser, the compiler;
 .IP \(bu 4
 It transforms the AST;
 .IP \(bu 4
@@ -70,7 +70,7 @@ module.exports \[eq] function (processor, options) \[lC]
 .P
 To modify the parser, the compiler, or access the file-set on \fBmdast\fR(1), create an attacher.
 .P
-An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific options, but that\[cq]s entirely up to the developer. An \fBattacher\fR is invoked when the plugin is \fBuse\fRd on an \fBmdast\fR instance, and can return a \fBtransformer\fR which will be called on subsequent processes.
+An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific options, but that is entirely up to the developer. An \fBattacher\fR is invoked when the plugin is \fBuse\fRd on an \fBmdast\fR instance, and can return a \fBtransformer\fR which will be called on subsequent processes.
 .P
 Note that \fBmdast\fR(1) invokes \fBattacher\fR for each file, not just once.
 .P

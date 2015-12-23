@@ -89,7 +89,7 @@ Read more about **AMD** on [requirejs.org](http://requirejs.org/docs/start.html#
 
 ### Package Managers
 
-First, if you haven’t already, install Node:
+First, if you have not already, install Node:
 
 Either install node from its [download](https://nodejs.org/en/download/)
 documentation, or install [nvm](https://github.com/creationix/nvm#install-script)
@@ -127,7 +127,7 @@ See [**CommonJS**](#commonjs) on how to start using **mdast**.
 
 ### Download
 
-Using a [package manager](#package-managers) is suggested, but it’s possible
+Using a [package manager](#package-managers) is suggested, but it is possible
 to download [`mdast.js` and `mdast.min.js`](https://github.com/wooorm/mdast/releases)
 and save them to your project folder.
 

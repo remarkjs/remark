@@ -39,7 +39,7 @@ mdast readme.md --output doc/foo.bar
 Specify output.
 
 *   If output is **not** given and one file is processed, the file is written
-    to **stdout**(4). See `--no-stdout` to disable this behavior;
+    to **stdout**(4). See `--no-stdout` to disable this behaviour;
 
 *   Otherwise, if output is **not** given and multiple files are processed,
     files are neither written to **stdout**(4) nor to the file-system;
@@ -115,7 +115,7 @@ mdast -w .
 Watch all files and reprocess when they change.
 
 When watching files which would normally regenerate,
-this behavior is ignored until the watch is closed.
+this behaviour is ignored until the watch is closed.
 
 ```sh
 $ mdast --no-rc readme.md -oqw

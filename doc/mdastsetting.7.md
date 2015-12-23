@@ -255,7 +255,7 @@ reference-style footnotes.
 
 Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
-It’s possible to reference other footnotes inside footnotes.
+It is possible to reference other footnotes inside footnotes.
 
 The following document:
 
@@ -1023,7 +1023,7 @@ Yields:
 ### Emphasis Markers
 
 Two options are provided to customise how slight- and strong emphasis
-are stringified:
+are compiled:
 
 *   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight
     emphasis in the provided character;
@@ -1062,8 +1062,8 @@ _emphasis_
 
 Setting `entities: true` (default: `false`) will
 [encode](https://github.com/mathiasbynens/he#heencodetext-options) any symbols
-that aren’t printable ASCII symbols and special HTML characters (`&`, `<`, `>`,
-`"`, `'`, and `` ` ``).
+that are not printable ASCII symbols and special HTML characters (`&`, `<`,
+`>`, `"`, `'`, and `` ` ``).
 
 When `true`, named entities are generated (`&` > `&amp;`); when `"numbers"`,
 numbered entities are generated (`&` > `&#x26;`); when `"escape"`, only
@@ -1096,12 +1096,12 @@ AT&amp;T, [AT&amp;T](http://at&amp;t.com "AT&amp;T"), ![AT&amp;T](http://at&amp;
 
 ### Fence
 
-It's possible to customise how GFM code fences are stringified:
+It's possible to customise how GFM code fences are compiled:
 
 *   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code
     blocks in the provided character.
 
-To render all code blocks with fences (the default behavior is to only use
+To render all code blocks with fences (the default behaviour is to only use
 non-standard fences when a language-flag is present), use `fences: true`.
 
 The following document:
@@ -1177,7 +1177,7 @@ The other value, `"mixed"`, uses `"tab"` when the list item spans multiple
 lines, and `"1"` otherwise.
 
 > **Note**: choosing `"tab"` results in the greatest support across
-> vendors when mixing lists, block quotes, indented code, &c.
+> vendors when mixing lists, block quotes, indented code, etcetera.
 
 The following document:
 
@@ -1325,7 +1325,7 @@ Yields:
 ### Horizontal Rules
 
 Three options are provided to customise how horizontal rules will be
-stringified:
+compiled:
 
 *   `rule: string` (`"-"`, `"*"`, or `"_"`, default: `"*"`) will stringify
     horizontal rules using the provided character as its bullets;
@@ -1370,7 +1370,7 @@ Setting `setext: true` (default: `false`) will stringify primary and secondary
 headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style
 headings (underlines).
 
-Respectively, primary headings are stringified with a row of equals-signs
+Respectively, primary headings are compiled with a row of equals-signs
 (`=`), and secondary headings with a row of dashes (`-`).
 
 The following document:

@@ -1,5 +1,5 @@
 Two options are provided to customise how slight- and strong emphasis
-are stringified:
+are compiled:
 
 *   `emphasis: string` (`"_"` or `"*"`, default: `"_"`) will wrap slight
     emphasis in the provided character;
