@@ -1,0 +1,49 @@
+> However, &MadeUpEntities; are kept in the document.
+
+> Entities even work in the language flag of fenced code blocks:
+
+> ```some&mdashlanguage
+> alert('Hello');
+> ```
+
+> And in an auto-link: <http://e
+> xample&mdashxample.com>
+
+> Foo and bar and http://example&mdashxample.com and baz.
+
+> Or in [l&mdashnks](
+>   ~/some&mdashfile "in some pl&mdashce")
+
+> Or in [l&mdashlnks](
+>   <~/some&mdashfile>
+>   "in some pl&mdashce")
+
+> Or in ![
+>   l&mdashnks
+> ](
+>   ~/some&mdashfile "in some pl&mdashce")
+
+***
+
+> Or in ![l&mdashlnks](
+>   <~/some&mdashfile>
+>   "in some pl&mdashce")
+
+> Or in ![
+>   l&mdashnks
+> ][12]
+
+> [1]: http://example&mdashxample.com "in some
+> pl&mdashce"
+
+> [
+>   1
+> ]: http://example&mdashxample.com "in some
+> pl&mdashce"
+
+***
+
+> But, entities are not interpreted in `inline c&oumlde`, or in
+> code blocks:
+
+>     C&OumlDE block.

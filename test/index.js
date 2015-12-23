@@ -2,8 +2,9 @@
 
 /* eslint-env node, mocha */
 
+var path = require('path');
+var fs = require('fs');
 var assert = require('assert');
-var he = require('he');
 var VFile = require('vfile');
 var extend = require('extend.js');
 var mdast = require('..');
@@ -188,28 +189,40 @@ describe('mdast.parse(file, options?)', function () {
         assert.equal(String(file.messages[0]), '1:1: Missing locator: `foo`');
     });
 
-    it('should throw `he` errors', function () {
-        var reason = 'Parse error: named character reference was ' +
-            'not terminated by a semicolon';
-        var hasThrown;
+    it('should warn with entity messages', function () {
+        var filePath = path.join('test', 'input', 'entities-advanced.text');
+        var doc = fs.readFileSync(filePath, 'utf8');
+        var file = new VFile(doc);
+        var notTerminated = 'Named character references must be ' +
+            'terminated by a semicolon';
 
-        he.decode.options.strict = true;
+        file.quiet = true;
 
-        try {
-            mdast.parse('Hello&amp.');
-        } catch (exception) {
-            hasThrown = true;
+        mdast.process(file);
 
-            assert(exception.file === '');
-            assert(exception.line === 1);
-            assert(exception.column === 11);
-            assert(exception.reason === reason);
-            assert(exception.toString() === '1:11: ' + reason);
-        }
-
-        assert(hasThrown === true);
-
-        he.decode.options.strict = false;
+        assert.deepEqual(file.messages.map(String), [
+          '1:13: Named character references must be known',
+          '5:16: ' + notTerminated,
+          '10:15: ' + notTerminated,
+          '12:39: ' + notTerminated,
+          '15:17: ' + notTerminated,
+          '15:39: ' + notTerminated,
+          '14:17: ' + notTerminated,
+          '18:18: ' + notTerminated,
+          '19:22: ' + notTerminated,
+          '17:17: ' + notTerminated,
+          '24:17: ' + notTerminated,
+          '24:39: ' + notTerminated,
+          '22:12: ' + notTerminated,
+          '29:18: ' + notTerminated,
+          '30:22: ' + notTerminated,
+          '28:18: ' + notTerminated,
+          '33:12: ' + notTerminated,
+          '36:28: ' + notTerminated,
+          '37:11: ' + notTerminated,
+          '41:26: ' + notTerminated,
+          '42:11: ' + notTerminated
+        ]);
     });
 
     it('should be able to set options', function () {
@@ -479,44 +492,6 @@ describe('mdast.stringify(ast, file, options?)', function () {
             '===========',
             ''
         ].join('\n'));
-    });
-
-    it('should throw `he` errors', function () {
-        var reason = 'Parse error: forbidden code point';
-        var hasThrown;
-
-        he.encode.options.strict = true;
-
-        try {
-            mdast.stringify({
-                'type': 'text',
-                'value': '\x01',
-                'position': {
-                    'start': {
-                        'line': 2,
-                        'column': 3
-                    },
-                    'end': {
-                        'line': 2,
-                        'column': 4
-                    }
-                }
-            }, new VFile(), {
-                'entities': true
-            });
-        } catch (exception) {
-            hasThrown = true;
-
-            assert(exception.file === '');
-            assert(exception.line === 2);
-            assert(exception.column === 3);
-            assert(exception.reason === reason);
-            assert(exception.toString() === '2:3-2:4: ' + reason);
-        }
-
-        assert(hasThrown === true);
-
-        he.decode.options.strict = false;
     });
 });
 

@@ -23,7 +23,9 @@
     "mathiasbynens/he": "^0.5.0",
     "wooorm/longest-streak": "^1.0.0",
     "wooorm/markdown-table": "^0.4.0",
+    "wooorm/parse-entities": "^1.0.0",
     "jonschlinkert/repeat-string": "^1.5.2",
+    "wooorm/stringify-entities": "^1.0.0",
     "component/trim": "^0.0.1",
     "wooorm/trim-trailing-lines": "^1.0.0",
     "wooorm/unified": "^2.0.0"

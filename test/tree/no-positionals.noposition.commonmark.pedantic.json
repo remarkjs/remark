@@ -131,6 +131,15 @@
           ]
         }
       ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "An entity: ©, and an warning entity: ©."
+        }
+      ]
     }
   ]
 }

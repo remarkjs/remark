@@ -38,11 +38,41 @@
       "children": [
         {
           "type": "text",
-          "value": "Plain text:",
+          "value": "Plain",
           "position": {
             "start": {
               "line": 3,
               "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 6
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 6
+            },
+            "end": {
+              "line": 3,
+              "column": 12
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "text:",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 12
             },
             "end": {
               "line": 3,
@@ -69,11 +99,101 @@
       "children": [
         {
           "type": "text",
-          "value": "AT&T with entity, AT&T with numeric entity, AT&T without entity.",
+          "value": "AT",
           "position": {
             "start": {
               "line": 5,
               "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 3
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 3
+            },
+            "end": {
+              "line": 5,
+              "column": 8
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "T with entity, AT",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8
+            },
+            "end": {
+              "line": 5,
+              "column": 25
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 25
+            },
+            "end": {
+              "line": 5,
+              "column": 30
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "T with numeric entity, AT",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 30
+            },
+            "end": {
+              "line": 5,
+              "column": 55
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 55
+            },
+            "end": {
+              "line": 5,
+              "column": 60
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "T without entity.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 60
             },
             "end": {
               "line": 5,
@@ -205,11 +325,41 @@
           "children": [
             {
               "type": "text",
-              "value": "http://at&t.com",
+              "value": "http://at",
               "position": {
                 "start": {
                   "line": 19,
                   "column": 2
+                },
+                "end": {
+                  "line": 19,
+                  "column": 11
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "&",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 11
+                },
+                "end": {
+                  "line": 19,
+                  "column": 16
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 16
                 },
                 "end": {
                   "line": 19,
@@ -253,11 +403,41 @@
           "children": [
             {
               "type": "text",
-              "value": "http://at&t.com",
+              "value": "http://at",
               "position": {
                 "start": {
                   "line": 19,
                   "column": 25
+                },
+                "end": {
+                  "line": 19,
+                  "column": 34
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "&",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 34
+                },
+                "end": {
+                  "line": 19,
+                  "column": 39
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 39
                 },
                 "end": {
                   "line": 19,
@@ -301,11 +481,41 @@
           "children": [
             {
               "type": "text",
-              "value": "http://at&t.com",
+              "value": "http://at",
               "position": {
                 "start": {
                   "line": 19,
                   "column": 52
+                },
+                "end": {
+                  "line": 19,
+                  "column": 61
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "&",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 61
+                },
+                "end": {
+                  "line": 19,
+                  "column": 66
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "t.com",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 66
                 },
                 "end": {
                   "line": 19,

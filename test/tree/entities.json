@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Lots of entities are supported in mdast:  , &, ©, Æ,",
+          "value": "Lots of entities are supported in mdast: ",
           "position": {
             "start": {
               "line": 1,
@@ -14,29 +14,406 @@
             },
             "end": {
               "line": 1,
-              "column": 73
+              "column": 42
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": "\nĎ, ¾, ℋ, ⅆ,\n∲, &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\nÿ, á, ©, and &.",
+          "value": " ",
           "position": {
             "start": {
               "line": 1,
-              "column": 73
+              "column": 42
+            },
+            "end": {
+              "line": 1,
+              "column": 48
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 48
+            },
+            "end": {
+              "line": 1,
+              "column": 50
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 50
+            },
+            "end": {
+              "line": 1,
+              "column": 55
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 55
+            },
+            "end": {
+              "line": 1,
+              "column": 57
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "©",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 57
+            },
+            "end": {
+              "line": 1,
+              "column": 63
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 63
+            },
+            "end": {
+              "line": 1,
+              "column": 65
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "Æ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 65
+            },
+            "end": {
+              "line": 1,
+              "column": 72
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\n",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 72
+            },
+            "end": {
+              "line": 2,
+              "column": 1
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "Ď",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 9
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 11
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "¾",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 11
+            },
+            "end": {
+              "line": 2,
+              "column": 19
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 19
+            },
+            "end": {
+              "line": 2,
+              "column": 21
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "ℋ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 21
+            },
+            "end": {
+              "line": 2,
+              "column": 35
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 35
+            },
+            "end": {
+              "line": 2,
+              "column": 37
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "ⅆ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 37
+            },
+            "end": {
+              "line": 2,
+              "column": 52
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ",\n",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 52
+            },
+            "end": {
+              "line": 3,
+              "column": 1
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "∲",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1
+            },
+            "end": {
+              "line": 3,
+              "column": 27
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\n",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 27
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            },
+            "indent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": "ÿ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 6
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 6
+            },
+            "end": {
+              "line": 5,
+              "column": 8
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "á",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 8
+            },
+            "end": {
+              "line": 5,
+              "column": 15
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 15
+            },
+            "end": {
+              "line": 5,
+              "column": 17
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "©",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 17
+            },
+            "end": {
+              "line": 5,
+              "column": 22
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ", and ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 22
+            },
+            "end": {
+              "line": 5,
+              "column": 28
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "&",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 28
+            },
+            "end": {
+              "line": 5,
+              "column": 32
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 32
             },
             "end": {
               "line": 5,
               "column": 33
             },
-            "indent": [
-              1,
-              1,
-              1,
-              1
-            ]
+            "indent": []
           }
         }
       ],
@@ -163,11 +540,41 @@
           "children": [
             {
               "type": "text",
-              "value": "línks",
+              "value": "l",
               "position": {
                 "start": {
                   "line": 15,
                   "column": 8
+                },
+                "end": {
+                  "line": 15,
+                  "column": 9
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "í",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 9
+                },
+                "end": {
+                  "line": 15,
+                  "column": 17
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": "nks",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 17
                 },
                 "end": {
                   "line": 15,

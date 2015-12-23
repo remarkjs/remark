@@ -9,7 +9,7 @@ Characters that shouldn't:
 Ampersands are escaped only when they would otherwise start an entity:
 
 -   &amp;copycat &amp;amp; &amp;#x26
--   But: &copycat; `&between;` &foo; & AT&T &c
+-   But: ©cat; `&between;` &foo; & AT&T &c
 
 Open parenthesis should be escaped after a shortcut reference:
 
