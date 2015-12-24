@@ -280,7 +280,7 @@ The index at which the entity might start, and `-1` otherwise.
 
 ## SEE ALSO
 
-**remark**(1), **remark**(3), **remarkplugin**(7).
+**remark**(1), **remark**(3), **remarkplugin**(7)
 
 ## Notes
 

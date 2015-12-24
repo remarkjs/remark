@@ -93,7 +93,7 @@ See **remarkrc**(5) for more information.
 
 ## SEE ALSO
 
-**remark**(1), **remark**(3), **remarkplugin**(7).
+**remark**(1), **remark**(3), **remarkplugin**(7)
 
 ## Notes
 

@@ -56,8 +56,8 @@ are excluded.
 
 ## SEE ALSO
 
-**remark**(1), **remarkrc**(5), **remarkconfig**(7), **remarksetting**(7),
-**gitignore**(5).
+**remark**(1), **remarkrc**(5), **gitignore**(5), **remarkconfig**(7),
+**remarksetting**(7)
 
 ## AUTHOR
 

@@ -232,7 +232,7 @@ Programmatically added files are:
 
 ## SEE ALSO
 
-**remark**(1), **remarkconfig**(7), **mdastsetting**(7).
+**remark**(1), **remarkconfig**(7), **remarksetting**(7)
 
 ## Notes
 
