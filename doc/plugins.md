@@ -22,7 +22,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [ben-eb/mdast-autolink-headings](https://github.com/ben-eb/mdast-autolink-headings)
     — Automatically add GitHub style links to headings;
 
-*   [wooorm/mdast-comment-config](https://github.com/wooorm/mdast-comment-config)
+*   [wooorm/remark-comment-config](https://github.com/wooorm/remark-comment-config)
     — Set settings with comments during runtime;
 
 *   [hughsk/mdast-contributors](https://github.com/hughsk/mdast-contributors)
@@ -34,23 +34,23 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
     — Compile Markdown to [Deku](https://github.com/dekujs/deku);
 
-*   [wooorm/mdast-github](https://github.com/wooorm/mdast-github)
+*   [wooorm/remark-github](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
 *   [ben-eb/mdast-highlight.js](https://github.com/ben-eb/mdast-highlight.js)
     — Highlight code blocks in Markdown files with
     [highlight.js](https://github.com/isagalaev/highlight.js);
 
-*   [wooorm/mdast-html](https://github.com/wooorm/mdast-html)
+*   [wooorm/remark-html](https://github.com/wooorm/remark-html)
     — Compile Markdown to HTML documents;
 
 *   [wooorm/mdast-inline-links](https://github.com/wooorm/mdast-inline-links)
     — Transform references and definitions into normal links and images;
 
-*   [wooorm/mdast-lint](https://github.com/wooorm/mdast-lint)
+*   [wooorm/remark-lint](https://github.com/wooorm/remark-lint)
     — Markdown code style linter;
 
-*   [wooorm/mdast-man](https://github.com/wooorm/mdast-man)
+*   [wooorm/remark-man](https://github.com/wooorm/remark-man)
     — Compile Markdown to Man pages (roff);
 
 *   [ben-eb/mdast-midas](https://github.com/ben-eb/mdast-midas)
@@ -68,7 +68,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/mdast-reference-links](https://github.com/wooorm/mdast-reference-links)
     — Transform links and images into references and definitions;
 
-*   [wooorm/mdast-slug](https://github.com/wooorm/mdast-slug)
+*   [wooorm/remark-slug](https://github.com/wooorm/remark-slug)
     — Add slugs to headings;
 
 *   [wooorm/mdast-strip-badges](https://github.com/wooorm/mdast-strip-badges)
@@ -77,26 +77,23 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
     — Remove empty paragraphs;
 
-*   [wooorm/mdast-toc](https://github.com/wooorm/mdast-toc)
+*   [wooorm/remark-toc](https://github.com/wooorm/remark-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 
 *   [eush77/mdast-unlink](https://github.com/eush77/mdast-unlink)
     — Remove all links, references and definitions;
 
-*   [wooorm/mdast-usage](https://github.com/wooorm/mdast-usage)
+*   [wooorm/remark-usage](https://github.com/wooorm/remark-usage)
     — Add a usage example to your readme;
 
-*   [wooorm/mdast-validate-links](https://github.com/wooorm/mdast-validate-links)
+*   [wooorm/remark-validate-links](https://github.com/wooorm/remark-validate-links)
     — Validate links point to existing headings and files;
 
-*   [wooorm/mdast-yaml](https://github.com/wooorm/mdast-yaml)
+*   [wooorm/remark-yaml](https://github.com/wooorm/remark-yaml)
     — Parse and stringify YAML code blocks;
 
-*   [wooorm/mdast-yaml-config](https://github.com/wooorm/mdast-yaml-config)
+*   [wooorm/remark-yaml-config](https://github.com/wooorm/remark-yaml-config)
     — Set settings with YAML during runtime;
-
-*   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone)
-    — HTML comments as ranges or markers.
 
 ## List of Utilities
 
@@ -124,6 +121,9 @@ working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 
 *   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
     — Get the plain text content of a node.
+
+*   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone)
+    — HTML comments as ranges or markers.
 
 In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
 for other utilities which work with **remark** nodes, but also with
