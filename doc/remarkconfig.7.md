@@ -64,7 +64,3 @@ files.  See **remarkrc**(5) for more information.
 
 **remark**(1), **remark**(3), **remarkignore**(5), **remarkrc**(5),
 **remarksetting**(7)
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>

@@ -285,7 +285,3 @@ The index at which the entity might start, and `-1` otherwise.
 ## Notes
 
 See also <https://github.com/wooorm/mdast>.
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>

@@ -237,7 +237,3 @@ Programmatically added files are:
 ## Notes
 
 See also <https://github.com/wooorm/mdast>.
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>

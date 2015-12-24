@@ -58,7 +58,3 @@ are excluded.
 
 **remark**(1), **remarkrc**(5), **gitignore**(5), **remarkconfig**(7),
 **remarksetting**(7)
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>

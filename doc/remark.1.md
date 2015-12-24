@@ -222,7 +222,3 @@ If a `--` argument is found, argument parsing is stopped.
 
 **remarkignore**(5), **remarkrc**(5), **remarkconfig**(7),
 **remarkplugin**(7), **remarksetting**(7)
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>

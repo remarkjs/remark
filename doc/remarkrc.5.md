@@ -153,7 +153,3 @@ When compiling `readme.md`, **remark**(1) would use `bullet: "-"`, because
 ## SEE ALSO
 
 **remark**(1), **remarkignore**(5), **remarksetting**(7)
-
-## AUTHOR
-
-Written by Titus Wormer <mailto:tituswormer@gmail.com>
