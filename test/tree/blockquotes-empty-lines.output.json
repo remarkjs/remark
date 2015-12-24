@@ -1,0 +1,96 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "blockquote",
+      "children": [
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note there is no space on the following line.",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 3
+                },
+                "end": {
+                  "line": 1,
+                  "column": 48
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 3
+            },
+            "end": {
+              "line": 1,
+              "column": 48
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "paragraph",
+          "children": [
+            {
+              "type": "text",
+              "value": "Note there is no space on the preceding line.",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 3
+                },
+                "end": {
+                  "line": 3,
+                  "column": 48
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 3
+            },
+            "end": {
+              "line": 3,
+              "column": 48
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 48
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 4,
+      "column": 1
+    }
+  }
+}
