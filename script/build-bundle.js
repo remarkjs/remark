@@ -2,8 +2,8 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:script
- * @fileoverview Bundle and mangle `mdast`.
+ * @module remark:script
+ * @fileoverview Bundle and mangle `remark`.
  */
 
 'use strict';
@@ -30,16 +30,16 @@ var write = fs.writeFileSync;
 var absolute = path.join.bind(null, __dirname, '..');
 
 browserify(path.join(__dirname, '..', 'index.js'), {
-    'standalone': 'mdast'
+    'standalone': 'remark'
 }).bundle(function (err, buf) {
     var ast;
     var comment;
 
     bail(err);
 
-    write(absolute('mdast.js'), buf);
+    write(absolute('remark.js'), buf);
 
-    console.log(chalk.green('✓') + ' wrote `mdast.js`');
+    console.log(chalk.green('✓') + ' wrote `remark.js`');
 
     ast = esprima.parse(buf, {
         'loc': true,
@@ -69,7 +69,7 @@ browserify(path.join(__dirname, '..', 'index.js'), {
         }
     });
 
-    write(absolute('mdast.min.js'), '/*' + comment + '*/\n' + doc);
+    write(absolute('remark.min.js'), '/*' + comment + '*/\n' + doc);
 
-    console.log(chalk.green('✓') + ' wrote `mdast.min.js`');
+    console.log(chalk.green('✓') + ' wrote `remark.min.js`');
 });

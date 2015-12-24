@@ -34,7 +34,7 @@ assert() {
 # Command.
 #
 
-COMMAND="bin/mdast"
+COMMAND="bin/remark"
 
 #
 # Fixtures
@@ -251,7 +251,7 @@ it "Should accept \`-u <unprefixed-npm-plugin>\`"
     assert $? 0
 
 it "Should accept \`-u <prefixed-npm-plugin>\`"
-    $COMMAND -u "mdast-$npmPlugin" $markdown > /dev/null 2>&1
+    $COMMAND -u "remark-$npmPlugin" $markdown > /dev/null 2>&1
     assert $? 0
 
 it "Should accept \`--use <unprefixed-npm-plugin>\`"
@@ -259,7 +259,7 @@ it "Should accept \`--use <unprefixed-npm-plugin>\`"
     assert $? 0
 
 it "Should accept \`--use <prefixed-npm-plugin>\`"
-    $COMMAND --use "mdast-$npmPlugin" $markdown > /dev/null 2>&1
+    $COMMAND --use "remark-$npmPlugin" $markdown > /dev/null 2>&1
     assert $? 0
 
 it "Should fail on \`-u <invalid-plugin>\`"

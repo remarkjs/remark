@@ -5,5 +5,5 @@ components/
 node_modules/
 coverage/
 build.js
-mdast.js
-mdast.min.js
+remark.js
+remark.min.js

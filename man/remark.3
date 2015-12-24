@@ -1,22 +1,22 @@
-.TH "MDAST" "3" "December 2015" "2.3.2" "mdast manual"
+.TH "REMARK" "3" "December 2015" "2.3.2" "remark manual"
 .SH "NAME"
-\fBmdast\fR - Markdown processor
+\fBremark\fR - Markdown processor
 .SH "SYNOPSIS"
 .P
 .RS 2
 .nf
 \[sl]\[sl] Load dependencies:
-var mdast \[eq] require(\[aq].\[sl]index.js\[aq]);
-var html \[eq] require(\[aq]mdast-html\[aq]);
-var yamlConfig \[eq] require(\[aq]mdast-yaml-config\[aq]);
+var remark \[eq] require(\[aq].\[sl]index.js\[aq]);
+var html \[eq] require(\[aq]remark-html\[aq]);
+var yamlConfig \[eq] require(\[aq]remark-yaml-config\[aq]);
 
 \[sl]\[sl] Use plugins:
-var processor \[eq] mdast().use(yamlConfig).use(html);
+var processor \[eq] remark().use(yamlConfig).use(html);
 
 \[sl]\[sl] Process the document:
 var doc \[eq] processor.process(\[lB]
     \[aq]---\[aq],
-    \[aq]mdast:\[aq],
+    \[aq]remark:\[aq],
     \[aq]  commonmark: true\[aq],
     \[aq]---\[aq],
     \[aq]\[aq],
@@ -26,17 +26,17 @@ var doc \[eq] processor.process(\[lB]
 .RE
 .SH "DESCRIPTION"
 .P
-This is the application programming interface documentation for \fBmdast\fR. To find documentation for the command line interface, see \fBmdast\fR(1).
-.SH "MDAST.USE(PLUGIN\[LB], OPTIONS\[RB])"
+This is the application programming interface documentation for \fBremark\fR. To find documentation for the command line interface, see \fBremark\fR(1).
+.SH "REMARK.USE(PLUGIN\[LB], OPTIONS\[RB])"
 .P
-Change the way \fBmdast\fR works by using a plugin. Plugins are documented at \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]blob\[sl]master\[sl]doc\[sl]plugins.md\(ra\fR.
+Change the way \fBremark\fR works by using a plugin. Plugins are documented at \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]blob\[sl]master\[sl]doc\[sl]plugins.md\(ra\fR.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBprocessor \[eq] mdast.use(plugin\[lB], options\[rB])\fR;
+\fBprocessor \[eq] remark.use(plugin\[lB], options\[rB])\fR;
 .IP \(bu 4
-\fBprocessor \[eq] mdast.use(plugins)\fR.
+\fBprocessor \[eq] remark.use(plugins)\fR.
 .RE 0
 
 .P
@@ -53,15 +53,15 @@ Change the way \fBmdast\fR works by using a plugin. Plugins are documented at \f
 .P
 \fBReturns\fR
 .P
-\fBObject\fR \[em] An instance of \fBmdast\fR. The instance functions just like the \fBmdast\fR library itself (it has the same methods), but caches the \fBuse\fRd plugins.
-.SH "MDAST.PARSE(FILE\[LB], OPTIONS\[RB])"
+\fBObject\fR \[em] An instance of \fBRemark\fR. The instance functions just like the \fBremark\fR object itself (it has the same methods), but caches the \fBuse\fRd plugins.
+.SH "REMARK.PARSE(FILE\[LB], OPTIONS\[RB])"
 .P
-Parse a markdown document into an \fBmdastnode\fR(7).
+Parse a markdown document into an \fBmdast\fR node.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBnode \[eq] mdast.parse(file\[ba]value\[lB], options\[rB])\fR.
+\fBnode \[eq] remark.parse(file\[ba]value\[lB], options\[rB])\fR.
 .RE 0
 
 .P
@@ -78,24 +78,24 @@ Parse a markdown document into an \fBmdastnode\fR(7).
 .P
 \fBReturns\fR
 .P
-\fBNode\fR \[em] Node. Nodes are documented at \fBmdastnode\fR(7).
-.SH "MDAST.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])"
+\fBNode\fR \[em] Node. Nodes are documented at \fBmdast\fR.
+.SH "REMARK.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])"
 .P
 Transform a node by applying plug-ins to it. Either a node or a file which was previously passed to \fBparse()\fR, must be given.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBnode \[eq] mdast.run(node\[lB], file\[ba]value\[rB]\[lB], done\[rB])\fR;
+\fBnode \[eq] remark.run(node\[lB], file\[ba]value\[rB]\[lB], done\[rB])\fR;
 .IP \(bu 4
-\fBnode \[eq] mdast.run(file\[lB], done\[rB])\fR.
+\fBnode \[eq] remark.run(file\[lB], done\[rB])\fR.
 .RE 0
 
 .P
 \fBParameters\fR
 .RS 0
 .IP \(bu 4
-\fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdastnode\fR(7);
+\fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdast\fR;
 .IP \(bu 4
 \fBfile\fR (\fBVFile\fR) \[em] Virtual file;
 .IP \(bu 4
@@ -135,23 +135,23 @@ Invoked when transformation is complete.
 \fBfile\fR (\fBFile\fR) \[em] File object representing the input file;
 .RE 0
 
-.SH "MDAST.STRINGIFY(NODE\[LB], FILE\[RB]\[LB], OPTIONS\[RB])"
+.SH "REMARK.STRINGIFY(NODE\[LB], FILE\[RB]\[LB], OPTIONS\[RB])"
 .P
 Compile a node into a document.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBdoc \[eq] mdast.stringify(node\[lB], file\[ba]value\[rB]\[lB], options\[rB])\fR;
+\fBdoc \[eq] remark.stringify(node\[lB], file\[ba]value\[rB]\[lB], options\[rB])\fR;
 .IP \(bu 4
-\fBdoc \[eq] mdast.stringify(file\[lB], options\[rB])\fR.
+\fBdoc \[eq] remark.stringify(file\[lB], options\[rB])\fR.
 .RE 0
 
 .P
 \fBParameters\fR
 .RS 0
 .IP \(bu 4
-\fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdastnode\fR(7);
+\fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdast\fR;
 .IP \(bu 4
 \fBfile\fR (\fBVFile\fR) \[em] Virtual file;
 .IP \(bu 4
@@ -168,14 +168,14 @@ Compile a node into a document.
 \fBThrows\fR
 .P
 When no \fBnode\fR was given and no node was found on the file.
-.SH "MDAST.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])"
+.SH "REMARK.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])"
 .P
 Parse, transform, and compile markdown into something else.
 .P
 \fBSignatures\fR
 .RS 0
 .IP \(bu 4
-\fBdoc? \[eq] mdast.process(file\[ba]value\[lB], options\[rB]\[lB], done\[rB])\fR.
+\fBdoc? \[eq] remark.process(file\[ba]value\[lB], options\[rB]\[lB], done\[rB])\fR.
 .RE 0
 
 .P
@@ -186,7 +186,7 @@ Parse, transform, and compile markdown into something else.
 .IP \(bu 4
 \fBvalue\fR (\fBstring\fR) \[em] Source of a (virtual) file;
 .IP \(bu 4
-\fBoptions\fR (\fBObject\fR) \[em] Settings. See \fBmdastsetting\fR(7);
+\fBoptions\fR (\fBObject\fR) \[em] Settings. See \fBremarksetting\fR(7);
 .IP \(bu 4
 \fBdone\fR (\fBfunction done(err?, doc?, file?)\fR.
 .RE 0
@@ -220,7 +220,7 @@ Invoked when processing is complete.
 
 .SH "FILESET()"
 .P
-\fBmdast\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
+\fBremark\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
 .SH "FILESET.VALUEOF()"
 .SH "FILESET.TOJSON()"
 .P
@@ -235,7 +235,7 @@ Get access to the file objects in a set.
 .P
 \fBReturns\fR
 .P
-\fBArray.<File>\fR \[em] List of files being processed by \fBmdast\fR(1).
+\fBArray.<File>\fR \[em] List of files being processed by \fBremark\fR(1).
 .SH "FILESET.USE(COMPLETER)"
 .P
 Add a completer to the middleware pipeline of a file-set. When all files are transformed, this pipeline is run and \fBcompleter\fR is invoked with \fBfileSet\fR.
@@ -255,7 +255,7 @@ Add a completer to the middleware pipeline of a file-set. When all files are tra
 
 .SH "FILESET.ADD(FILE\[BA]FILEPATH)"
 .P
-Add a new file to be processed by \fBmdast\fR(1). The given file is processed just like other files, with a few differences.
+Add a new file to be processed by \fBremark\fR(1). The given file is processed just like other files, with a few differences.
 .P
 Programmatically added files are:
 .RS 0
@@ -287,10 +287,13 @@ Not logged about.
 
 .SH "BUGS"
 .P
-\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdast\fR(1), \fBmdastconfig\fR(7), \fBmdastnode\fR(7), \fBmdastsetting\fR(7).
+\fBremark\fR(1), \fBremarkconfig\fR(7), \fBmdastsetting\fR(7).
+.SH "NOTES"
+.P
+See also \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\(ra\fR.
 .SH "AUTHOR"
 .P
 Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

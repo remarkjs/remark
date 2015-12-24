@@ -1,13 +1,13 @@
-![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
+![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
 
 # Plugins
 
-**mdast** plugins lie at the core of **mdast**’s vision. As they operate on
+**remark** plugins lie at the core of **remark**’s vision. As they operate on
 the same syntax tree, there is no start-up time penalty when using more than
 one plug-in: something which traditional tools, which need to re-compile
 to markdown to connect together need.
 
-See [tools built with mdast »](https://github.com/wooorm/mdast/blob/master/doc/products.md).
+See [tools built with remark »](https://github.com/wooorm/remark/blob/master/doc/products.md).
 
 ## Table of Contents
 
@@ -100,8 +100,8 @@ See [tools built with mdast »](https://github.com/wooorm/mdast/blob/master/doc/
 
 ## List of Utilities
 
-Although not **mdast** plug-ins, the following projects are useful when
-working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode.7.md):
+Although not **remark** plug-ins, the following projects are useful when
+working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 
 *   [wooorm/mdast-util-definitions](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
@@ -126,7 +126,7 @@ working with the [AST](https://github.com/wooorm/mdast/blob/master/doc/mdastnode
     — Get the plain text content of a node.
 
 In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
-for other utilities which work with **mdast** nodes, but also with
+for other utilities which work with **remark** nodes, but also with
 [retext](https://github.com/wooorm/retext) nodes.
 
 And finally, see [`wooorm/vfile`](https://github.com/wooorm/vfile#related-tools)
@@ -134,12 +134,12 @@ for a list of utilities for working with virtual files and
 
 ## Using plugins
 
-See [**mdastplugin**(7)](https://github.com/wooorm/mdast/blob/master/doc/mdastplugin.7.md)
+See [**remarkplugin**(7)](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.7.md)
 for more information on using plugins.
 
 ## Creating plugins
 
-See [**mdastplugin**(3)](https://github.com/wooorm/mdast/blob/master/doc/mdastplugin.3.md)
+See [**remarkplugin**(3)](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.3.md)
 for more information on creating plugins.
 
 ## Publishing plugins
@@ -147,12 +147,12 @@ for more information on creating plugins.
 It is recommended to publish a plugin as an
 [npm module](https://docs.npmjs.com/getting-started/publishing-npm-packages).
 
-You should pick a name prefixed by `"mdast-"`, valid examples are
-[**mdast-toc**](https://www.npmjs.com/package/mdast-toc) or
-[**mdast-yaml-config**](https://www.npmjs.com/package/mdast-yaml-config).
+You should pick a name prefixed by `"remark-"`, valid examples are
+[**remark-toc**](https://www.npmjs.com/package/remark-toc) or
+[**remark-yaml-config**](https://www.npmjs.com/package/remark-yaml-config).
 The reasoning here is that they can be used on the CLI without this prefix,
 but can still be meaningful. For example, `lint` was not available, but instead
-of opting for `liiint` or some other weird form, using `mdast-lint` ensured a
+of opting for `liiint` or some other weird form, using `remark-lint` ensured a
 unique name on package managers, while still being meaningful to users.
 
 Additionally, when the library could be used in the browser, I recommend
@@ -160,4 +160,4 @@ publishing at least to [Component](https://github.com/componentjs/guide/blob/mas
 This will also make a package usable by [Duo](https://github.com/duojs/duo).
 
 When publishing a plugin, you should utilize the package manager’s keywords
-functionality and include `"mdast"` in the list.
+functionality and include `"remark"` in the list.

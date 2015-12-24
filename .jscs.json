@@ -5,8 +5,8 @@
     "coverage/",
     "node_modules/",
     "build.js",
-    "mdast.js",
-    "mdast.min.js"
+    "remark.js",
+    "remark.min.js"
   ],
   "preset": "yandex",
   "requireQuotedKeysInObjects": true,

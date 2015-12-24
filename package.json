@@ -1,5 +1,5 @@
 {
-  "name": "mdast",
+  "name": "remark",
   "version": "2.3.2",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
@@ -52,14 +52,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/wooorm/mdast.git"
+    "url": "https://github.com/wooorm/remark.git"
   },
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "contributors": [
     "Christopher Jeffrey"
   ],
   "bin": {
-    "mdast": "bin/mdast"
+    "remark": "bin/remark"
   },
   "directories": {
     "man": "./man"
@@ -81,20 +81,20 @@
     "istanbul": "^0.4.0",
     "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
-    "mdast-comment-config": "^2.0.0-alpha.1",
-    "mdast-github": "^2.0.0-alpha.1",
-    "mdast-html": "^1.2.1",
-    "mdast-lint": "^2.0.0-alpha.1",
-    "mdast-man": "^1.0.0",
-    "mdast-toc": "^1.0.0",
-    "mdast-usage": "^2.0.0-alpha.1",
-    "mdast-validate-links": "^1.0.0",
-    "mdast-yaml-config": "^2.0.0-alpha.1",
+    "remark-comment-config": "^2.0.0",
+    "remark-github": "^2.0.0",
+    "remark-html": "^2.0.0",
+    "remark-lint": "^2.0.0",
+    "remark-man": "^2.0.0",
+    "remark-toc": "^2.0.0",
+    "remark-usage": "^2.0.0",
+    "remark-validate-links": "^2.0.0",
+    "remark-yaml-config": "^2.0.0",
     "mocha": "^2.0.0"
   },
   "scripts": {
-    "build-man": "bin/mdast doc/*.?.md --config-path .mdastrc-man --quiet",
-    "build-md": "bin/mdast . --quiet --frail",
+    "build-man": "bin/remark doc/*.?.md --config-path .remarkrc-man --quiet",
+    "build-md": "bin/remark . --quiet --frail",
     "build-version": "node script/build-version.js",
     "build-options": "node script/build-options.js",
     "build-bundle": "node script/build-bundle.js",

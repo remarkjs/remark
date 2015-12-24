@@ -1,20 +1,20 @@
-.TH "MDAST" "1" "December 2015" "2.3.2" "mdast manual"
+.TH "REMARK" "1" "December 2015" "2.3.2" "remark manual"
 .SH "NAME"
-\fBmdast\fR - Markdown processor
+\fBremark\fR - Markdown processor
 .SH "SYNOPSIS"
 .P
-\fBmdast\fR \[lB]\fBoptions\fR\[rB] <\fIfile\[ba]dir\fR \fI...\fR>
+\fBremark\fR \[lB]\fBoptions\fR\[rB] <\fIfile\[ba]dir\fR \fI...\fR>
 .SH "DESCRIPTION"
 .P
-\fBmdast\fR is a markdown processor powered by plugins.
+\fBremark\fR is a markdown processor powered by plugins.
 .P
-Logs verbose debugging information when \fB\[Do]DEBUG\fR is set to \fB\[dq]mdast\[dq]\fR.
+Logs verbose debugging information when \fB\[Do]DEBUG\fR is set to \fB\[dq]remark\[dq]\fR.
 .SH "OPTIONS"
 .SS "\fB-h\fR, \fB--help\fR"
 .P
 .RS 2
 .nf
-mdast --help
+remark --help
 .fi
 .RE
 .P
@@ -23,7 +23,7 @@ Output short usage information.
 .P
 .RS 2
 .nf
-mdast --version
+remark --version
 .fi
 .RE
 .P
@@ -32,9 +32,9 @@ Output CLI version number.
 .P
 .RS 2
 .nf
-mdast . --output
-mdast . --output doc
-mdast readme.md --output doc\[sl]foo.bar
+remark . --output
+remark . --output doc
+remark readme.md --output doc\[sl]foo.bar
 .fi
 .RE
 .P
@@ -58,43 +58,43 @@ Otherwise, a fatal error is thrown.
 .P
 .RS 2
 .nf
-mdast --config-path mdastrc.json
+remark --config-path remarkrc.json
 .fi
 .RE
 .P
-Specify configuration location. This loads an \fBmdastrc\fR(5) file which cannot be detected (either because \fB--no-rc\fR is given or because it has a different name) in addition to other detected files.
+Specify configuration location. This loads an \fBremarkrc\fR(5) file which cannot be detected (either because \fB--no-rc\fR is given or because it has a different name) in addition to other detected files.
 .SS "\fB-i\fR, \fB--ignore-path\fR <\fIpath\fR>"
 .P
 .RS 2
 .nf
-mdast --ignore-path .gitignore
+remark --ignore-path .gitignore
 .fi
 .RE
 .P
-Specify ignore location. This loads an \fBmdastignore\fR(5) file which cannot be detected (either because \fB--no-ignore\fR is given or because it has a different name) in addition to other detected files.
+Specify ignore location. This loads an \fBremarkignore\fR(5) file which cannot be detected (either because \fB--no-ignore\fR is given or because it has a different name) in addition to other detected files.
 .SS "\fB-s\fR, \fB--setting\fR <\fIsettings\fR>"
 .P
 .RS 2
 .nf
-mdast --setting \[dq]position:false\[dq]
+remark --setting \[dq]position:false\[dq]
 .fi
 .RE
 .P
-Specify settings (see \fBmdastsetting\fR(7)). This must be a valid JSON object except for a few differences. See \fBmdastconfig\fR(7) COMMAND LINE SETTINGS for more information.
+Specify settings (see \fBremarksetting\fR(7)). This must be a valid JSON object except for a few differences. See \fBremarkconfig\fR(7) COMMAND LINE SETTINGS for more information.
 .SS "\fB-u\fR, \fB--use\fR <\fIplugin\fR>"
 .P
 .RS 2
 .nf
-mdast --use man
+remark --use man
 .fi
 .RE
 .P
-Specify a plug-in to use, optionally with options. See \fBmdastplugin\fR(7) COMMAND LINE USAGE for more information.
+Specify a plug-in to use, optionally with options. See \fBremarkplugin\fR(7) COMMAND LINE USAGE for more information.
 .SS "\fB-e\fR, \fB--ext\fR <\fIextensions\fR>"
 .P
 .RS 2
 .nf
-mdast --ext doc
+remark --ext doc
 .fi
 .RE
 .P
@@ -105,7 +105,7 @@ The given \fBextensions\fR can be comma or semi-colon separated.
 .P
 .RS 2
 .nf
-mdast -w .
+remark -w .
 .fi
 .RE
 .P
@@ -115,9 +115,9 @@ When watching files which would normally regenerate, this behaviour is ignored u
 .P
 .RS 2
 .nf
-\[Do] mdast --no-rc readme.md -oqw
+\[Do] remark --no-rc readme.md -oqw
 \[sh] Watching... (press CTRL\[pl]C to exit)
-\[sh] Warning: mdast does not overwrite watched files until exit.
+\[sh] Warning: remark does not overwrite watched files until exit.
 \[sh] Messages and other files are not affected.
 .fi
 .RE
@@ -127,7 +127,7 @@ The watch is stopped when \fBSIGINT\fR is received (usually done by pressing \fB
 .P
 .RS 2
 .nf
-mdast --ast
+remark --ast
 .fi
 .RE
 .P
@@ -136,7 +136,7 @@ Instead of outputting document the internally used AST is exposed.
 .P
 .RS 2
 .nf
-mdast --quiet
+remark --quiet
 .fi
 .RE
 .P
@@ -145,7 +145,7 @@ Do not output non-essential text, only warnings and errors.
 .P
 .RS 2
 .nf
-mdast --silent
+remark --silent
 .fi
 .RE
 .P
@@ -154,7 +154,7 @@ Same as \fB-q\fR, \fB--quiet\fR, but also ignores warnings.
 .P
 .RS 2
 .nf
-mdast --frail
+remark --frail
 .fi
 .RE
 .P
@@ -163,7 +163,7 @@ Exit with a status code of \fB1\fR if warnings are triggered for the processed c
 .P
 .RS 2
 .nf
-cat readme.md \[ba] mdast --file-path readme.md > doc\[sl]out.md
+cat readme.md \[ba] remark --file-path readme.md > doc\[sl]out.md
 .fi
 .RE
 .P
@@ -172,7 +172,7 @@ Process the piped-in document as if it was a file at \fBpath\fR.
 .P
 .RS 2
 .nf
-mdast --no-stdout
+remark --no-stdout
 .fi
 .RE
 .P
@@ -181,7 +181,7 @@ Do not write a processed file to \fBstdout\fR(4).
 .P
 .RS 2
 .nf
-mdast --no-color
+remark --no-color
 .fi
 .RE
 .P
@@ -190,38 +190,38 @@ Disable ANSI codes in output.
 .P
 .RS 2
 .nf
-mdast --no-rc
+remark --no-rc
 .fi
 .RE
 .P
-Disables configuration from \fBmdastrc\fR(5) files. This does not apply to explicitly provided files through \fB-c\fR, \fB--config-path\fR.
+Disables configuration from \fBremarkrc\fR(5) files. This does not apply to explicitly provided files through \fB-c\fR, \fB--config-path\fR.
 .SS "\fB--no-ignore\fR"
 .P
 .RS 2
 .nf
-mdast --no-ignore
+remark --no-ignore
 .fi
 .RE
 .P
-Disables configuration from \fBmdastignore\fR(5) files. This does not apply to explicitly provided files through \fB-i\fR, \fB--ignore-path\fR.
+Disables configuration from \fBremarkignore\fR(5) files. This does not apply to explicitly provided files through \fB-i\fR, \fB--ignore-path\fR.
 .SS "\fB--\fR"
 .P
 .RS 2
 .nf
-mdast . --
+remark . --
 .fi
 .RE
 .P
 If a \fB--\fR argument is found, argument parsing is stopped.
 .SH "DIAGNOSTICS"
 .P
-\fBmdast\fR exits 0 on success, and 1 otherwise.
+\fBremark\fR exits 0 on success, and 1 otherwise.
 .SH "BUGS"
 .P
-\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]mdast\[sl]issues\(ra\fR
+\fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]issues\(ra\fR
 .SH "SEE ALSO"
 .P
-\fBmdastrc\fR(5), \fBmdastignore\fR(5), \fBmdastsetting\fR(7), \fBmdastconfig\fR(7), \fBmdastplugin\fR(7)
+\fBremarkrc\fR(5), \fBremarkignore\fR(5), \fBremarksetting\fR(7), \fBremarkconfig\fR(7), \fBremarkplugin\fR(7)
 .SH "AUTHOR"
 .P
 Written by Titus Wormer \fI\(latituswormer\[at]gmail.com\(ra\fR

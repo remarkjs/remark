@@ -1,13 +1,13 @@
-# mdastsetting(7) -- mdast settings
+# remarksetting(7) -- remark settings
 
 ## SYNOPSIS
 
-**mdast**(1), **mdast**(3), **mdastrc**(5)
+**remark**(1), **remark**(3), **remarkrc**(5)
 
 ## DESCRIPTION
 
 This page contains information and usage examples regarding
-available options for **mdast**(3)’s `parse()` and `stringify()`.
+available options for **remark**(3)’s `parse()` and `stringify()`.
 
 ## Table of Contents
 
@@ -53,7 +53,7 @@ paragraph.
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "breaks": true
 });
 ```
@@ -188,7 +188,7 @@ This is a paragraph
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "commonmark": true
 });
 ```
@@ -272,7 +272,7 @@ And something else[^1].
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "footnotes": true
 });
 ```
@@ -573,7 +573,7 @@ hello ~~hi~~ world
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "gfm": true
 });
 ```
@@ -698,7 +698,7 @@ Check out some_file_name.txt
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "pedantic": true
 });
 ```
@@ -817,7 +817,7 @@ Hello **world**!
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "position": false
 });
 ```
@@ -872,7 +872,7 @@ title: YAML is Cool
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document, {
+var ast = remark.parse(document, {
   "yaml": true
 });
 ```
@@ -968,9 +968,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "bullet": "*"
 });
 ```
@@ -1003,9 +1003,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "closeAtx": true
 });
 ```
@@ -1042,9 +1042,9 @@ __strong__
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "emphasis": "_",
   "strong": "*"
 });
@@ -1081,9 +1081,9 @@ AT&T, [AT&T](http://at&t.com "AT&T"), ![AT&T](http://at&t.com/fav.ico "AT&T")
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "entities": true
 });
 ```
@@ -1115,9 +1115,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "fence": "~"
 });
 ```
@@ -1148,9 +1148,9 @@ A code block:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "fences": true
 });
 ```
@@ -1211,9 +1211,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "listItemIndent": "mixed"
 });
 ```
@@ -1264,9 +1264,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "looseTable": true
 });
 ```
@@ -1302,9 +1302,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "incrementListMarker": false
 });
 ```
@@ -1347,9 +1347,9 @@ A rule:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "rule": "*",
   "ruleRepetition": 40,
   "ruleSpaces": true
@@ -1386,9 +1386,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "setext": true
 });
 ```
@@ -1423,9 +1423,9 @@ The following document:
 And the below JavaScript:
 
 ```javascript
-var ast = mdast.parse(document);
+var ast = remark.parse(document);
 
-mdast.stringify(ast, {
+remark.stringify(ast, {
   "spacedTable": false
 });
 ```

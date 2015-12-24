@@ -1,13 +1,13 @@
-![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
+![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
 
-# Built with mdast
+# Built with remark
 
-List of tools using [**mdast**](https://github.com/wooorm/mdast) internally.
+List of tools using [**remark**](https://github.com/wooorm/remark) internally.
 
-See [plugins](https://github.com/wooorm/mdast/blob/master/doc/plugins.md)
+See [plugins](https://github.com/wooorm/remark/blob/master/doc/plugins.md)
 for a list of plugins and utilities.
 
-## List of products using mdast
+## List of products using remark
 
 <!-- Projects are sorted alphabetically on their repo-name. -->
 

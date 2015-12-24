@@ -1,21 +1,21 @@
-# mdast(1) -- Markdown processor
+# remark(1) -- Markdown processor
 
 ## SYNOPSIS
 
-`mdast` \[`options`] &lt;_file|dir_ _..._>
+`remark` \[`options`] &lt;_file|dir_ _..._>
 
 ## DESCRIPTION
 
-**mdast** is a markdown processor powered by plugins.
+**remark** is a markdown processor powered by plugins.
 
-Logs verbose debugging information when `$DEBUG` is set to `"mdast"`.
+Logs verbose debugging information when `$DEBUG` is set to `"remark"`.
 
 ## OPTIONS
 
 ### `-h`, `--help`
 
 ```sh
-mdast --help
+remark --help
 ```
 
 Output short usage information.
@@ -23,7 +23,7 @@ Output short usage information.
 ### `-v`, `--version`
 
 ```sh
-mdast --version
+remark --version
 ```
 
 Output CLI version number.
@@ -31,9 +31,9 @@ Output CLI version number.
 ### `-o`, `--output` \[_path_]
 
 ```sh
-mdast . --output
-mdast . --output doc
-mdast readme.md --output doc/foo.bar
+remark . --output
+remark . --output doc
+remark readme.md --output doc/foo.bar
 ```
 
 Specify output.
@@ -58,46 +58,46 @@ Specify output.
 ### `-c`, `--config-path` &lt;_path_>
 
 ```sh
-mdast --config-path mdastrc.json
+remark --config-path remarkrc.json
 ```
 
-Specify configuration location. This loads an **mdastrc**(5) file which cannot
+Specify configuration location. This loads an **remarkrc**(5) file which cannot
 be detected (either because `--no-rc` is given or because it has a different
 name) in addition to other detected files.
 
 ### `-i`, `--ignore-path` &lt;_path_>
 
 ```sh
-mdast --ignore-path .gitignore
+remark --ignore-path .gitignore
 ```
 
-Specify ignore location. This loads an **mdastignore**(5) file which cannot be
+Specify ignore location. This loads an **remarkignore**(5) file which cannot be
 detected (either because `--no-ignore` is given or because it has a different
 name) in addition to other detected files.
 
 ### `-s`, `--setting` &lt;_settings_>
 
 ```sh
-mdast --setting "position:false"
+remark --setting "position:false"
 ```
 
-Specify settings (see **mdastsetting**(7)). This must be a valid JSON object
-except for a few differences. See **mdastconfig**(7) COMMAND LINE SETTINGS
+Specify settings (see **remarksetting**(7)). This must be a valid JSON object
+except for a few differences. See **remarkconfig**(7) COMMAND LINE SETTINGS
 for more information.
 
 ### `-u`, `--use` &lt;_plugin_>
 
 ```sh
-mdast --use man
+remark --use man
 ```
 
-Specify a plug-in to use, optionally with options. See **mdastplugin**(7)
+Specify a plug-in to use, optionally with options. See **remarkplugin**(7)
 COMMAND LINE USAGE for more information.
 
 ### `-e`, `--ext` &lt;_extensions_>
 
 ```sh
-mdast --ext doc
+remark --ext doc
 ```
 
 Specify one or more extensions to include when searching for files.
@@ -109,7 +109,7 @@ The given `extensions` can be comma or semi-colon separated.
 ### `-w`, `--watch`
 
 ```sh
-mdast -w .
+remark -w .
 ```
 
 Watch all files and reprocess when they change.
@@ -118,9 +118,9 @@ When watching files which would normally regenerate,
 this behaviour is ignored until the watch is closed.
 
 ```sh
-$ mdast --no-rc readme.md -oqw
+$ remark --no-rc readme.md -oqw
 # Watching... (press CTRL+C to exit)
-# Warning: mdast does not overwrite watched files until exit.
+# Warning: remark does not overwrite watched files until exit.
 # Messages and other files are not affected.
 ```
 
@@ -130,7 +130,7 @@ The watch is stopped when `SIGINT` is received (usually done by pressing
 ### `-a`, `--ast`
 
 ```sh
-mdast --ast
+remark --ast
 ```
 
 Instead of outputting document the internally used AST is exposed.
@@ -138,7 +138,7 @@ Instead of outputting document the internally used AST is exposed.
 ### `-q`, `--quiet`
 
 ```sh
-mdast --quiet
+remark --quiet
 ```
 
 Do not output non-essential text, only warnings and errors.
@@ -146,7 +146,7 @@ Do not output non-essential text, only warnings and errors.
 ### `-S`, `--silent`
 
 ```sh
-mdast --silent
+remark --silent
 ```
 
 Same as `-q`, `--quiet`, but also ignores warnings.
@@ -154,7 +154,7 @@ Same as `-q`, `--quiet`, but also ignores warnings.
 ### `-f`, `--frail`
 
 ```sh
-mdast --frail
+remark --frail
 ```
 
 Exit with a status code of `1` if warnings are triggered for the processed
@@ -163,7 +163,7 @@ code, instead of the default of only exiting with `1` on fatal errors.
 ### `--file-path` &lt;_path_>
 
 ```sh
-cat readme.md | mdast --file-path readme.md > doc/out.md
+cat readme.md | remark --file-path readme.md > doc/out.md
 ```
 
 Process the piped-in document as if it was a file at `path`.
@@ -171,7 +171,7 @@ Process the piped-in document as if it was a file at `path`.
 ### `--no-stdout`
 
 ```sh
-mdast --no-stdout
+remark --no-stdout
 ```
 
 Do not write a processed file to **stdout**(4).
@@ -179,7 +179,7 @@ Do not write a processed file to **stdout**(4).
 ### `--no-color`
 
 ```sh
-mdast --no-color
+remark --no-color
 ```
 
 Disable ANSI codes in output.
@@ -187,41 +187,41 @@ Disable ANSI codes in output.
 ### `--no-rc`
 
 ```sh
-mdast --no-rc
+remark --no-rc
 ```
 
-Disables configuration from **mdastrc**(5) files. This does not apply to
+Disables configuration from **remarkrc**(5) files. This does not apply to
 explicitly provided files through `-c`, `--config-path`.
 
 ### `--no-ignore`
 
 ```sh
-mdast --no-ignore
+remark --no-ignore
 ```
 
-Disables configuration from **mdastignore**(5) files. This does not apply to
+Disables configuration from **remarkignore**(5) files. This does not apply to
 explicitly provided files through `-i`, `--ignore-path`.
 
 ### `--`
 
 ```sh
-mdast . --
+remark . --
 ```
 
 If a `--` argument is found, argument parsing is stopped.
 
 ## DIAGNOSTICS
 
-`mdast` exits 0 on success, and 1 otherwise.
+`remark` exits 0 on success, and 1 otherwise.
 
 ## BUGS
 
-<https://github.com/wooorm/mdast/issues>
+<https://github.com/wooorm/remark/issues>
 
 ## SEE ALSO
 
-**mdastrc**(5), **mdastignore**(5), **mdastsetting**(7), **mdastconfig**(7),
-**mdastplugin**(7)
+**remarkrc**(5), **remarkignore**(5), **remarksetting**(7), **remarkconfig**(7),
+**remarkplugin**(7)
 
 ## AUTHOR
 

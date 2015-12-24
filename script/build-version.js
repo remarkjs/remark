@@ -2,7 +2,7 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:script
+ * @module remark:script
  * @fileoverview Persist `package.json`s version to other places.
  */
 
@@ -56,7 +56,7 @@ findDown.all('.js', 'lib', function (err, files) {
  */
 
 [
-    toVFile('.mdastrc-man'),
+    toVFile('.remarkrc-man'),
     toVFile('component.json')
 ].forEach(function (file) {
     write(file.filePath(), read(file.filePath(), 'utf8')

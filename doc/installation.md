@@ -1,10 +1,10 @@
-![mdast](https://cdn.rawgit.com/wooorm/mdast/master/logo.svg)
+![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
 
 # Installation
 
-To use **mdast**’s [API](https://github.com/wooorm/mdast#api),
-[install](#install) **mdast** and start to [use](#use) it using a
-preferred method. To use the [CLI](https://github.com/wooorm/mdast#cli),
+To use **remark**’s [API](https://github.com/wooorm/remark#api),
+[install](#install) **remark** and start to [use](#use) it using a
+preferred method. To use the [CLI](https://github.com/wooorm/remark#cli),
 install with [npm](#npm).
 
 ## Table of Contents
@@ -35,12 +35,12 @@ install with [npm](#npm).
         [**Globals**](#globals) and additionally load a **CommonJS** loader
         such as [require1k](http://stuk.github.io/require1k/).
 
-2.  Access `mdast`:
+2.  Access `remark`:
 
     ```js
-    var mdast = require('mdast');
+    var remark = require('remark');
 
-    console.log(mdast.process('*hello* __world__'));
+    console.log(remark.process('*hello* __world__'));
     // _hello_ **world**
     ```
 
@@ -48,11 +48,11 @@ install with [npm](#npm).
 
 1.  [Download](#download);
 
-2.  Access **mdast**:
+2.  Access **remark**:
 
     ```js
-    require(['path/to/mdast.min.js'], function (mdast) {
-        console.log(mdast.process('*hello* __world__'));
+    require(['path/to/remark.min.js'], function (remark) {
+        console.log(remark.process('*hello* __world__'));
         // _hello_ **world**
     });
     ```
@@ -63,25 +63,25 @@ Read more about **AMD** on [requirejs.org](http://requirejs.org/docs/start.html#
 
 1.  [Download](#download);
 
-2.  Include `mdast.min.js` in HTML:
+2.  Include `remark.min.js` in HTML:
 
     ```html
     <!DOCTYPE html>
     <html>
       <head>
-        <title>mdast example</title>
-        <script src="path/to/mdast.min.js" charset="utf-8"></script>
-        <script src="path/to/script/using/mdast.js" charset="utf-8"></script>
+        <title>remark example</title>
+        <script src="path/to/remark.min.js" charset="utf-8"></script>
+        <script src="path/to/script/using/remark.js" charset="utf-8"></script>
       </head>
       <body>
       </body>
     </html>
     ```
 
-3.  Access **mdast**:
+3.  Access **remark**:
 
     ```js
-    console.log(mdast.process('*hello* __world__'));
+    console.log(remark.process('*hello* __world__'));
     // _hello_ **world**
     ```
 
@@ -98,18 +98,18 @@ to [manage and update](https://github.com/creationix/nvm#usage) Node versions.
 #### [npm](https://docs.npmjs.com/cli/install)
 
 ```sh
-npm install mdast
+npm install remark
 ```
 
-When using the **mdast** CLI system-wide, provide the `--global` flag.
+When using the **remark** CLI system-wide, provide the `--global` flag.
 
-When using **mdast** inside a project, provide either `--save` or `--save-dev`.
+When using **remark** inside a project, provide either `--save` or `--save-dev`.
 
-See [**CommonJS**](#commonjs) on how to start using **mdast**.
+See [**CommonJS**](#commonjs) on how to start using **remark**.
 
 #### [Duo](http://duojs.org#getting-started)
 
-Optionally: when using **mdast** inside a project, add it to a
+Optionally: when using **remark** inside a project, add it to a
 [`component.json`](http://duojs.org/#ii-components) file:
 
 ```json
@@ -118,18 +118,18 @@ Optionally: when using **mdast** inside a project, add it to a
   "version": "0.0.1",
   "main": "index.js",
   "dependencies": {
-    "wooorm/mdast": "^2.0.0"
+    "wooorm/remark": "^2.0.0"
   }
 }
 ```
 
-See [**CommonJS**](#commonjs) on how to start using **mdast**.
+See [**CommonJS**](#commonjs) on how to start using **remark**.
 
 ### Download
 
 Using a [package manager](#package-managers) is suggested, but it is possible
-to download [`mdast.js` and `mdast.min.js`](https://github.com/wooorm/mdast/releases)
+to download [`remark.js` and `remark.min.js`](https://github.com/wooorm/remark/releases)
 and save them to your project folder.
 
 See [**Globals**](#globals), [**AMD**](#amd), or [**CommonJS**](#commonjs) on
-how to start using **mdast**.
+how to start using **remark**.

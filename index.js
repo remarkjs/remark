@@ -2,7 +2,7 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast
+ * @module remark
  * @version 2.3.2
  * @fileoverview Markdown processor powered by plugins.
  */

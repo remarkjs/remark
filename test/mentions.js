@@ -83,10 +83,10 @@ mention.locator = locateMention;
 /**
  * Attacher.
  *
- * @param {MDAST} mdast - Processor.
+ * @param {Remark} remark - Processor.
  */
-function attacher(mdast) {
-    var proto = mdast.Parser.prototype;
+function attacher(remark) {
+    var proto = remark.Parser.prototype;
     var methods = proto.inlineMethods;
 
     /*

@@ -2,7 +2,7 @@
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:script
+ * @module remark:script
  * @fileoverview Regenerate all fixtures according to their
  *   configuration (found in each filename), useful when
  *   the parser is modified to output different syntax trees.
@@ -19,7 +19,7 @@
 
 var fs = require('fs');
 var path = require('path');
-var mdast = require('..');
+var remark = require('..');
 var fixtures = require('../test/fixtures.js');
 
 /*
@@ -36,7 +36,7 @@ fixtures.forEach(function (fixture) {
         var result;
 
         try {
-            result = mdast.parse(input, fixture.possibilities[key]);
+            result = remark.parse(input, fixture.possibilities[key]);
         } catch (err) {
             console.log('Could not regenerate `' + filename + '`');
             throw err;

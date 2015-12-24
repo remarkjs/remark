@@ -13,7 +13,7 @@ deploy:
   api_key:
     secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
   file:
-    - "mdast.js"
-    - "mdast.min.js"
+    - "remark.js"
+    - "remark.min.js"
   on:
     tags: true

@@ -1,4 +1,4 @@
-# mdastplugin(3) -- mdast plug-in creation
+# remarkplugin(3) -- remark plug-in creation
 
 ## SYNOPSIS
 
@@ -14,7 +14,7 @@ function transformer(ast, file) {
 
 /**
  * Expose.
- * This plugin can be used as `mdast.use(plugin)`.
+ * This plugin can be used as `remark.use(plugin)`.
  */
 module.exports = function () {
     return transformer;
@@ -23,15 +23,15 @@ module.exports = function () {
 
 ## DESCRIPTION
 
-This manual contains information on how **mdast**(3) plugins work.  It
+This manual contains information on how **remark**(3) plugins work.  It
 focusses on how to create plugins, rather than on how to implement them. To
-implement plugins, see **mdast**(3) and **mdastplugin**(7).
+implement plugins, see **remark**(3) and **remarkplugin**(7).
 
-An **mdast** plugin does up to three things:
+An **remark** plugin does up to three things:
 
 *   It modifies the processor: the parser, the compiler;
 *   It transforms the AST;
-*   It adds new files to be processed by **mdast**(1).
+*   It adds new files to be processed by **remark**(1).
 
 All have their own function. The first is called an
 “attacher” (see **ATTACHER**). The second is named a
@@ -43,14 +43,14 @@ An attacher has access to the parser, which provides its own pluggable
 interface, consisting of tokenizers (see **TOKENIZER**) and locators
 (see **LOCATOR**).
 
-## function attacher(mdast\[, options]\[, fileSet])
+## function attacher(remark\[, options]\[, fileSet])
 
 ```js
 /**
  * Add an extension.
- * The `processor` is the instance of mdast this attacher
- * is `use`d on.{
- * This plugin can be used as `mdast.use(plugin, {ext: 'html'})`.
+ * The `processor` is the instance of remark this attacher
+ * is `use`d on.
+ * This plugin can be used as `remark.use(plugin, {ext: 'html'})`.
  */
 module.exports = function (processor, options) {
     var extension = (options || {}).ext;
@@ -68,31 +68,31 @@ module.exports = function (processor, options) {
 };
 ```
 
-To modify the parser, the compiler, or access the file-set on **mdast**(1),
+To modify the parser, the compiler, or access the file-set on **remark**(1),
 create an attacher.
 
 An attacher is the thing passed to `use()`. It can receive plugin specific
 options, but that is entirely up to the developer. An **attacher** is invoked
-when the plugin is `use`d on an **mdast** instance, and can return a
+when the plugin is `use`d on an **remark** instance, and can return a
 **transformer** which will be called on subsequent processes.
 
-Note that **mdast**(1) invokes **attacher** for each file, not just once.
+Note that **remark**(1) invokes **attacher** for each file, not just once.
 
 **Signatures**
 
-*   `transformer? = attacher(mdast, options[, fileSet])`.
+*   `transformer? = attacher(remark, options[, fileSet])`.
 
 **Parameters**
 
-*   `mdast` (`Object`)
+*   `remark` (`Object`)
     — Context on which the plugin was `use`d;
 
 *   `options` (`Object`, optional)
     — Plugin specific options;
 
 *   `fileSet` (`FileSet`, optional)
-    — Access to all files being processed by **mdast**(1). Only passed on the
-    Command-Line. See **mdast**(3) for more information regarding file-sets.
+    — Access to all files being processed by **remark**(1). Only passed on the
+    Command-Line. See **remark**(3) for more information regarding file-sets.
 
 **Returns**
 
@@ -116,16 +116,17 @@ function transformer(ast, file) {
 
 /**
  * Expose.
- * This plugin can be used as `mdast.use(plugin)`.
+ * This plugin can be used as `remark.use(plugin)`.
  */
 module.exports = function () {
     return transformer;
 };
 ```
 
-To transform an **mdastnode**(7), create a **transformer**. A **transformer**
+To transform an **mdast** node, create a **transformer**. A **transformer**
 is a simple function which is invoked each time a document is processed by
-a **mdast** processor. A transformer should transform `node` or modify `file`.
+a **remark** processor. A transformer should transform `node` or modify
+`file`.
 
 **Signatures**
 
@@ -134,7 +135,7 @@ a **mdast** processor. A transformer should transform `node` or modify `file`.
 **Parameters**
 
 *   `node` (`Node`)
-    — See **mdastnode**(7);
+    — See **mdast**;
 
 *   `file` (`VFile`)
     — Virtual file;
@@ -163,13 +164,13 @@ files or add messages.
 
 *   `pluginId` (`*`) — `attacher` is invoked for each file, so if it
     `use`s `completer` on the file-set, it would attach multiple times.
-    By providing `pluginId` on `completer`, **mdast** will ensure only one
+    By providing `pluginId` on `completer`, **remark** will ensure only one
     **completer** with that identifier is will be added.
 
 **Parameters**
 
 *   `fileSet` (`FileSet`)
-    — All files being processed by **mdast**(1);
+    — All files being processed by **remark**(1);
 
 *   `next` (`function(err?)`, optional)
     — If the signature includes `fileSet` and `next`, `completer` **may**
@@ -206,7 +207,7 @@ function mention(eat, value) {
 Most often, using transformers to manipulate a syntax-tree produces
 the desired output.  Sometimes, mainly when there is a need to
 introduce new syntactic entities with a certain level of precedence,
-interfacing with the parser is necessary.  **mdast** knows two types of
+interfacing with the parser is necessary.  **remark** knows two types of
 tokenizers based on the kinds of markdown nodes: block-level (e.g., paragraphs
 or fenced code blocks) and inline-level (e.g., emphasis or inline code
 spans).  Block-level tokenizers are the same as inline-level tokenizers, with
@@ -214,11 +215,11 @@ the exception that the latter require **locator** functions.
 
 Tokenizers _test_ whether a certain given documents starts with a certain
 syntactic entity.  When that occurs, they consume that token, a process which
-is called “eating” in mdast.  Locators enable tokenizers to function faster by
-providing information on the where the next entity occurs.
+is called “eating” in **remark**.  Locators enable tokenizers to function
+faster by providing information on the where the next entity occurs.
 
 For a complete example, see
-[`test/mentions.js`](https://github.com/wooorm/mdast/blob/master/test/mentions.js)
+[`test/mentions.js`](https://github.com/wooorm/remark/blob/master/test/mentions.js)
 and how it utilises and attaches a tokenizer and a locator.
 
 **Signatures**
@@ -240,7 +241,7 @@ and how it utilises and attaches a tokenizer and a locator.
 
 **Returns**
 
-In _normal_ mode, optionally an **mdastnode**(7) representing the eaten
+In _normal_ mode, optionally an **mdast** node representing the eaten
 entity.  Otherwise, in _silent_ mode, a truthy value must be returned when
 the tokenizer predicts with certainty an entity could be found.
 
@@ -275,11 +276,15 @@ The index at which the entity might start, and `-1` otherwise.
 
 ## BUGS
 
-<https://github.com/wooorm/mdast/issues>
+<https://github.com/wooorm/remark/issues>
 
 ## SEE ALSO
 
-**mdast**(1), **mdast**(3), **mdastplugin**(7), **mdastnode**(7).
+**remark**(1), **remark**(3), **remarkplugin**(7).
+
+## Notes
+
+See also <https://github.com/wooorm/mdast>.
 
 ## AUTHOR
 

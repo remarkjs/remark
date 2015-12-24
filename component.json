@@ -1,5 +1,5 @@
 {
-  "name": "mdast",
+  "name": "remark",
   "version": "2.3.2",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
@@ -30,7 +30,7 @@
     "wooorm/trim-trailing-lines": "^1.0.0",
     "wooorm/unified": "^2.0.0"
   },
-  "repository": "wooorm/mdast",
+  "repository": "wooorm/remark",
   "scripts": [
     "index.js",
     "lib/defaults.js",

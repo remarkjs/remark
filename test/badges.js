@@ -120,11 +120,11 @@ function createBadge(name, options) {
 /**
  * Attach.
  *
- * @param {MDAST} mdast - Processor.
+ * @param {Remark} remark - Processor.
  * @param {Object} options - Configuration.
  * @return {Function} - Transformer.
  */
-function attach(mdast, options) {
+function attach(remark, options) {
     /**
      * Adds an npm version badge to the main heading,
      * when available.

@@ -7,7 +7,7 @@ var fs = require('fs');
 var assert = require('assert');
 var VFile = require('vfile');
 var extend = require('extend.js');
-var mdast = require('..');
+var remark = require('..');
 var fixtures = require('./fixtures.js');
 var badges = require('./badges.js');
 var mentions = require('./mentions.js');
@@ -66,20 +66,20 @@ function empty() {
  * Tests.
  */
 
-describe('mdast.parse(file, options?)', function () {
+describe('remark.parse(file, options?)', function () {
     it('should accept a `string`', function () {
-        assert(mdast.parse('Alfred').children.length === 1);
+        assert(remark.parse('Alfred').children.length === 1);
     });
 
     it('should throw when `options` is not an object', function () {
         assert.throws(function () {
-            mdast.parse('', false);
+            remark.parse('', false);
         }, /options/);
     });
 
     it('should throw when `options.position` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'position': 0
             });
         }, /options.position/);
@@ -87,7 +87,7 @@ describe('mdast.parse(file, options?)', function () {
 
     it('should throw when `options.gfm` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'gfm': Infinity
             });
         }, /options.gfm/);
@@ -95,7 +95,7 @@ describe('mdast.parse(file, options?)', function () {
 
     it('should throw when `options.footnotes` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'footnotes': 1
             });
         }, /options.footnotes/);
@@ -103,7 +103,7 @@ describe('mdast.parse(file, options?)', function () {
 
     it('should throw when `options.breaks` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'breaks': 'unicorn'
             });
         }, /options.breaks/);
@@ -111,7 +111,7 @@ describe('mdast.parse(file, options?)', function () {
 
     it('should throw when `options.pedantic` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'pedantic': {}
             });
         }, /options.pedantic/);
@@ -119,14 +119,14 @@ describe('mdast.parse(file, options?)', function () {
 
     it('should throw when `options.yaml` is not a boolean', function () {
         assert.throws(function () {
-            mdast.parse('', {
+            remark.parse('', {
                 'yaml': [true]
             });
         }, /options.yaml/);
     });
 
     it('should throw parse errors', function () {
-        var processor = mdast();
+        var processor = remark();
         var message = 'Found it!';
         var hasThrown;
 
@@ -172,7 +172,7 @@ describe('mdast.parse(file, options?)', function () {
     });
 
     it('should warn when missing locators', function () {
-        var processor = mdast();
+        var processor = remark();
         var proto = processor.Parser.prototype;
         var methods = proto.inlineMethods;
         var file = new VFile('Hello *World*!');
@@ -198,7 +198,7 @@ describe('mdast.parse(file, options?)', function () {
 
         file.quiet = true;
 
-        mdast.process(file);
+        remark.process(file);
 
         assert.deepEqual(file.messages.map(String), [
           '1:13: Named character references must be known',
@@ -226,7 +226,7 @@ describe('mdast.parse(file, options?)', function () {
     });
 
     it('should be able to set options', function () {
-        var processor = mdast();
+        var processor = remark();
         var html = processor.Parser.prototype.blockTokenizers.html;
         var result;
 
@@ -263,16 +263,16 @@ describe('mdast.parse(file, options?)', function () {
     });
 });
 
-describe('mdast.stringify(ast, file, options?)', function () {
+describe('remark.stringify(ast, file, options?)', function () {
     it('should throw when `ast` is not an object', function () {
         assert.throws(function () {
-            mdast.stringify(false);
+            remark.stringify(false);
         }, /false/);
     });
 
     it('should throw when `ast` is not a valid node', function () {
         assert.throws(function () {
-            mdast.stringify({
+            remark.stringify({
                 'type': 'unicorn'
             });
         }, /unicorn/);
@@ -281,23 +281,23 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should not throw when given a parsed file', function () {
         var file = new VFile('foo');
 
-        mdast.parse(file);
+        remark.parse(file);
 
         assert.doesNotThrow(function () {
-            mdast.stringify(file);
+            remark.stringify(file);
         });
     });
 
     it('should throw when `options` is not an object', function () {
         assert.throws(function () {
-            mdast.stringify(empty(), false);
+            remark.stringify(empty(), false);
         }, /options/);
     });
 
     it('should throw when `options.bullet` is not a valid list bullet',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'bullet': true
                 });
             }, /options\.bullet/);
@@ -308,7 +308,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'constant',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'listItemIndent': 'foo'
                 });
             }, /options\.listItemIndent/);
@@ -319,7 +319,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'horizontal rule bullet',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'rule': true
                 });
             }, /options\.rule/);
@@ -329,7 +329,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.ruleSpaces` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'ruleSpaces': 1
                 });
             }, /options\.ruleSpaces/);
@@ -340,19 +340,19 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'valid repetition count',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'ruleRepetition': 1
                 });
             }, /options\.ruleRepetition/);
 
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'ruleRepetition': NaN
                 });
             }, /options\.ruleRepetition/);
 
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'ruleRepetition': true
                 });
             }, /options\.ruleRepetition/);
@@ -363,7 +363,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'valid emphasis marker',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'emphasis': '-'
                 });
             }, /options\.emphasis/);
@@ -374,7 +374,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'valid emphasis marker',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'strong': '-'
                 });
             }, /options\.strong/);
@@ -384,7 +384,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.setext` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'setext': 0
                 });
             }, /options\.setext/);
@@ -394,7 +394,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.incrementListMarker` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'incrementListMarker': -1
                 });
             }, /options\.incrementListMarker/);
@@ -404,7 +404,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.fences` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'fences': NaN
                 });
             }, /options\.fences/);
@@ -415,7 +415,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
         'valid fence marker',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'fence': '-'
                 });
             }, /options\.fence/);
@@ -424,7 +424,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
 
     it('should throw when `options.closeAtx` is not a boolean', function () {
         assert.throws(function () {
-            mdast.stringify(empty(), {
+            remark.stringify(empty(), {
                 'closeAtx': NaN
             });
         }, /options\.closeAtx/);
@@ -433,7 +433,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.looseTable` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'looseTable': 'Hello!'
                 });
             }, /options\.looseTable/);
@@ -443,7 +443,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     it('should throw when `options.spacedTable` is not a boolean',
         function () {
             assert.throws(function () {
-                mdast.stringify(empty(), {
+                remark.stringify(empty(), {
                     'spacedTable': 'World'
                 });
             }, /options\.spacedTable/);
@@ -451,7 +451,7 @@ describe('mdast.stringify(ast, file, options?)', function () {
     );
 
     it('should be able to set options', function () {
-        var processor = mdast();
+        var processor = remark();
         var html = processor.Compiler.prototype.html;
         var ast;
 
@@ -495,19 +495,19 @@ describe('mdast.stringify(ast, file, options?)', function () {
     });
 });
 
-describe('mdast.use(plugin, options?)', function () {
+describe('remark.use(plugin, options?)', function () {
     it('should accept an attacher', function () {
-        mdast.use(noop);
+        remark.use(noop);
     });
 
     it('should accept multiple attachers', function () {
-        mdast.use([function () {}, function () {}]);
+        remark.use([function () {}, function () {}]);
     });
 
     it('should attach multiple attachers in the correct order', function () {
         var order = [];
 
-        mdast.use([function () {
+        remark.use([function () {
             order.push(1);
         }, function () {
             order.push(2);
@@ -516,26 +516,26 @@ describe('mdast.use(plugin, options?)', function () {
         assert.deepEqual(order, [1, 2]);
     });
 
-    it('should return an instance of mdast', function () {
-        var processor = mdast.use(noop);
+    it('should return an instance of remark', function () {
+        var processor = remark.use(noop);
 
-        assert(mdast.use(noop) instanceof processor.constructor);
+        assert(remark.use(noop) instanceof processor.constructor);
     });
 
     it('should attach an attacher', function () {
-        var processor = mdast.use(noop);
+        var processor = remark.use(noop);
 
         assert(processor.ware.attachers.length === 1);
     });
 
     it('should attach a transformer', function () {
-        var processor = mdast.use(plugin);
+        var processor = remark.use(plugin);
 
         assert(processor.ware.fns.length === 1);
     });
 
     it('should attach multiple attachers', function () {
-        var processor = mdast.use(function () {}).use(function () {});
+        var processor = remark.use(function () {}).use(function () {});
 
         assert(processor.ware.attachers.length === 2);
     });
@@ -546,7 +546,7 @@ describe('mdast.use(plugin, options?)', function () {
         /**
          * Transformer.
          */
-        processor = mdast.use(function () {
+        processor = remark.use(function () {
             return function () {};
         }).use(function () {
             return function () {};
@@ -563,7 +563,7 @@ describe('mdast.use(plugin, options?)', function () {
          */
         function transformer() {}
 
-        processor = mdast.use(function () {
+        processor = remark.use(function () {
             return transformer;
         }).use(function () {
             return transformer;
@@ -579,7 +579,7 @@ describe('mdast.use(plugin, options?)', function () {
         /**
          * Attacher.
          *
-         * @param {MDAST} processor - Processor.
+         * @param {remark} processor - Processor.
          * @param {Object} settings - Configuration.
          */
         function assertion(processor, settings) {
@@ -589,7 +589,7 @@ describe('mdast.use(plugin, options?)', function () {
             isInvoked = true;
         }
 
-        mdast.use(assertion, options);
+        remark.use(assertion, options);
 
         assert(isInvoked === true);
     });
@@ -605,40 +605,40 @@ describe('mdast.use(plugin, options?)', function () {
         }
 
         assert.throws(function () {
-            mdast.use(thrower);
+            remark.use(thrower);
         }, /test/);
     });
 });
 
-describe('mdast.run(ast, file?, done?)', function () {
+describe('remark.run(ast, file?, done?)', function () {
     it('should accept an ast', function () {
-        mdast.run(empty());
+        remark.run(empty());
     });
 
     it('should throw when `ast` is not an AST', function () {
         assert.throws(function () {
-            mdast.run(false);
+            remark.run(false);
         }, /false/);
     });
 
     it('should accept a `file`', function () {
-        mdast.run(empty(), new VFile());
+        remark.run(empty(), new VFile());
     });
 
     it('should return the given ast', function () {
         var node = empty();
 
-        assert(node === mdast.run(node));
+        assert(node === remark.run(node));
     });
 
     it('should accept a `done` callback, without file', function (done) {
-        mdast.run(empty(), function (err) {
+        remark.run(empty(), function (err) {
             done(err);
         });
     });
 
     it('should accept a `done` callback', function (done) {
-        mdast.run(empty(), {
+        remark.run(empty(), {
             'filename': 'Untitled',
             'extension': 'md',
             'contents': ''
@@ -648,32 +648,32 @@ describe('mdast.run(ast, file?, done?)', function () {
     });
 });
 
-describe('mdast.process(value, options, done)', function () {
+describe('remark.process(value, options, done)', function () {
     it('should parse and stringify a file', function () {
-        assert(mdast.process('*foo*') === '_foo_\n');
+        assert(remark.process('*foo*') === '_foo_\n');
     });
 
     it('should accept parse options', function () {
-        assert(mdast.process('1)  foo', {
+        assert(remark.process('1)  foo', {
             'commonmark': true
         }) === '1.  foo\n');
     });
 
     it('should accept stringify options', function () {
-        assert(mdast.process('# foo', {
+        assert(remark.process('# foo', {
             'closeAtx': true
         }) === '# foo #\n');
     });
 
     it('should run plugins', function () {
         assert(
-            mdast.use(mentions).process('@mention') ===
+            remark.use(mentions).process('@mention') ===
             '[@mention](https://github.com/blog/821)\n'
         );
     });
 
     it('should run async plugins', function (done) {
-        mdast.use(asyncAttacher).process('Foo', function (err) {
+        remark.use(asyncAttacher).process('Foo', function (err) {
             done(err);
         });
     });
@@ -701,7 +701,7 @@ describe('mdast.process(value, options, done)', function () {
             return transformer;
         }
 
-        mdast.use(attacher).process('Foo', function (err) {
+        remark.use(attacher).process('Foo', function (err) {
             assert(err === exception);
             done();
         });
@@ -725,7 +725,7 @@ describe('mdast.process(value, options, done)', function () {
         }
 
         try {
-            mdast.use(attacher).process('Foo');
+            remark.use(attacher).process('Foo');
         } catch (err) {
             assert(err === exception);
         }
@@ -735,7 +735,7 @@ describe('mdast.process(value, options, done)', function () {
         '`tab`, and compiling code in a list-item',
         function () {
             assert.throws(function () {
-                mdast.process([
+                remark.process([
                     '* List',
                     '',
                     '        code()'
@@ -748,10 +748,10 @@ describe('mdast.process(value, options, done)', function () {
     );
 });
 
-describe('function attacher(mdast, options)', function () {
+describe('function attacher(remark, options)', function () {
     /*
      * Lot's of other tests are in
-     * `mdast.use(plugin, options)`.
+     * `remark.use(plugin, options)`.
      */
 
     it('should be able to modify `Parser` without affecting other instances',
@@ -759,18 +759,18 @@ describe('function attacher(mdast, options)', function () {
             var doc = 'Hello w/ a @mention!\n';
 
             assert(
-                mdast.use(mentions).process(doc) ===
+                remark.use(mentions).process(doc) ===
                 'Hello w/ a [@mention](https://github.com/blog/821)!\n'
             );
 
-            assert(mdast.process(doc) === doc);
+            assert(remark.process(doc) === doc);
         }
     );
 });
 
 describe('function transformer(ast, file, next?)', function () {
     it('should be invoked when `run()` is invoked', function () {
-        var result = mdast.parse('# Hello world');
+        var result = remark.parse('# Hello world');
         var isInvoked;
 
         /**
@@ -793,15 +793,15 @@ describe('function transformer(ast, file, next?)', function () {
             return assertion;
         }
 
-        mdast.use(attacher).run(result);
+        remark.use(attacher).run(result);
 
         assert(isInvoked === true);
     });
 
-    it('should fail mdast if an exception occurs', function () {
+    it('should fail remark if an exception occurs', function () {
         var exception = new Error('test');
         var fixture = '# Hello world';
-        var ast = mdast.parse(fixture);
+        var ast = remark.parse(fixture);
 
         /**
          * Thrower.
@@ -818,14 +818,14 @@ describe('function transformer(ast, file, next?)', function () {
         }
 
         assert.throws(function () {
-            mdast.use(attacher).run(ast);
+            remark.use(attacher).run(ast);
         }, /test/);
     });
 
-    it('should fail mdast if an exception is returned', function () {
+    it('should fail remark if an exception is returned', function () {
         var exception = new Error('test');
         var fixture = '# Hello world';
-        var ast = mdast.parse(fixture);
+        var ast = remark.parse(fixture);
 
         /**
          * Returner.
@@ -842,27 +842,27 @@ describe('function transformer(ast, file, next?)', function () {
         }
 
         assert.throws(function () {
-            mdast.use(attacher).run(ast);
+            remark.use(attacher).run(ast);
         }, /test/);
     });
 
     it('should work on an example plugin', function () {
-        var source = mdast.use(badges).process('# mdast');
+        var source = remark.use(badges).process('# remark');
 
         assert(
             source ===
-            '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg)' +
-            '](https://www.npmjs.com/package/mdast)\n'
+            '# remark [![Version](http://img.shields.io/npm/v/remark.svg)' +
+            '](https://www.npmjs.com/package/remark)\n'
         );
 
-        source = mdast.use(badges, {
+        source = remark.use(badges, {
             'flat': true
-        }).process('# mdast');
+        }).process('# remark');
 
         assert(
             source ===
-            '# mdast [![Version](http://img.shields.io/npm/v/mdast.svg' +
-            '?style=flat)](https://www.npmjs.com/package/mdast)\n'
+            '# remark [![Version](http://img.shields.io/npm/v/remark.svg' +
+            '?style=flat)](https://www.npmjs.com/package/remark)\n'
         );
     });
 });
@@ -1258,7 +1258,7 @@ describe('fixtures', function () {
                 var markdown;
 
                 it('should parse `' + name + '` correctly', function () {
-                    node = mdast.parse(input, parse);
+                    node = remark.parse(input, parse);
 
                     /*
                      * The first assertion should not clean positional
@@ -1269,12 +1269,12 @@ describe('fixtures', function () {
 
                     compare(node, trees[mapping[key]], false, initialClean);
 
-                    markdown = mdast.stringify(node, stringify);
+                    markdown = remark.stringify(node, stringify);
                 });
 
                 if (output !== false) {
                     it('should stringify `' + name + '`', function () {
-                        compare(node, mdast.parse(markdown, parse), true);
+                        compare(node, remark.parse(markdown, parse), true);
                     });
                 }
 

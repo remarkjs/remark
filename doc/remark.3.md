@@ -1,20 +1,20 @@
-# mdast(3) -- Markdown processor
+# remark(3) -- Markdown processor
 
 ## SYNOPSIS
 
 ```javascript
 // Load dependencies:
-var mdast = require('./index.js');
-var html = require('mdast-html');
-var yamlConfig = require('mdast-yaml-config');
+var remark = require('./index.js');
+var html = require('remark-html');
+var yamlConfig = require('remark-yaml-config');
 
 // Use plugins:
-var processor = mdast().use(yamlConfig).use(html);
+var processor = remark().use(yamlConfig).use(html);
 
 // Process the document:
 var doc = processor.process([
     '---',
-    'mdast:',
+    'remark:',
     '  commonmark: true',
     '---',
     '',
@@ -24,18 +24,18 @@ var doc = processor.process([
 
 ## DESCRIPTION
 
-This is the application programming interface documentation for **mdast**.
-To find documentation for the command line interface, see **mdast**(1).
+This is the application programming interface documentation for **remark**.
+To find documentation for the command line interface, see **remark**(1).
 
-## mdast.use(plugin\[, options])
+## remark.use(plugin\[, options])
 
-Change the way **mdast** works by using a plugin.  Plugins are documented
-at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
+Change the way **remark** works by using a plugin.  Plugins are documented
+at <https://github.com/wooorm/remark/blob/master/doc/plugins.md>.
 
 **Signatures**
 
-*   `processor = mdast.use(plugin[, options])`;
-*   `processor = mdast.use(plugins)`.
+*   `processor = remark.use(plugin[, options])`;
+*   `processor = remark.use(plugins)`.
 
 **Parameters**
 
@@ -45,17 +45,17 @@ at <https://github.com/wooorm/mdast/blob/master/doc/plugins.md>.
 
 **Returns**
 
-`Object` — An instance of **mdast**.  The instance functions just like the
-**mdast** library itself (it has the same methods), but caches the `use`d
+`Object` — An instance of **Remark**.  The instance functions just like the
+**remark** object itself (it has the same methods), but caches the `use`d
 plugins.
 
-## mdast.parse(file\[, options])
+## remark.parse(file\[, options])
 
-Parse a markdown document into an **mdastnode**(7).
+Parse a markdown document into an **mdast** node.
 
 **Signatures**
 
-*   `node = mdast.parse(file|value[, options])`.
+*   `node = remark.parse(file|value[, options])`.
 
 **Parameters**
 
@@ -65,21 +65,21 @@ Parse a markdown document into an **mdastnode**(7).
 
 **Returns**
 
-`Node` — Node.  Nodes are documented at **mdastnode**(7).
+`Node` — Node.  Nodes are documented at **mdast**.
 
-## mdast.run(node\[, file]\[, done])
+## remark.run(node\[, file]\[, done])
 
 Transform a node by applying plug-ins to it. Either a node or a file which
 was previously passed to `parse()`, must be given.
 
 **Signatures**
 
-*   `node = mdast.run(node[, file|value][, done])`;
-*   `node = mdast.run(file[, done])`.
+*   `node = remark.run(node[, file|value][, done])`;
+*   `node = remark.run(file[, done])`.
 
 **Parameters**
 
-*   `node` (`Object`) — Node as returned by `parse()`, see **mdastnode**(7);
+*   `node` (`Object`) — Node as returned by `parse()`, see **mdast**;
 
 *   `file` (`VFile`) — Virtual file;
 
@@ -111,18 +111,18 @@ Invoked when transformation is complete.
 *   `node` (`Node`) — Transformed node;
 *   `file` (`File`) — File object representing the input file;
 
-## mdast.stringify(node\[, file]\[, options])
+## remark.stringify(node\[, file]\[, options])
 
 Compile a node into a document.
 
 **Signatures**
 
-*   `doc = mdast.stringify(node[, file|value][, options])`;
-*   `doc = mdast.stringify(file[, options])`.
+*   `doc = remark.stringify(node[, file|value][, options])`;
+*   `doc = remark.stringify(file[, options])`.
 
 **Parameters**
 
-*   `node` (`Object`) — Node as returned by `parse()`, see **mdastnode**(7);
+*   `node` (`Object`) — Node as returned by `parse()`, see **mdast**;
 *   `file` (`VFile`) — Virtual file;
 *   `value` (`string`) — String representation of a file;
 *   `options` (`Object`) — Configuration.
@@ -135,19 +135,19 @@ Compile a node into a document.
 
 When no `node` was given and no node was found on the file.
 
-## mdast.process(file\[, options]\[, done])
+## remark.process(file\[, options]\[, done])
 
 Parse, transform, and compile markdown into something else.
 
 **Signatures**
 
-*   `doc? = mdast.process(file|value[, options][, done])`.
+*   `doc? = remark.process(file|value[, options][, done])`.
 
 **Parameters**
 
 *   `file` (`File`) — Virtual file;
 *   `value` (`string`) — Source of a (virtual) file;
-*   `options` (`Object`) — Settings.  See **mdastsetting**(7);
+*   `options` (`Object`) — Settings.  See **remarksetting**(7);
 *   `done` (`function done(err?, doc?, file?)`.
 
 **Returns**
@@ -173,7 +173,7 @@ Invoked when processing is complete.
 
 ## FileSet()
 
-**mdast**(1) compiles multiple files using a `FileSet` instance.  This set
+**remark**(1) compiles multiple files using a `FileSet` instance.  This set
 is exposed to plug-ins as an argument to the attacher. `FileSet`s
 should not be created by plug-ins.
 
@@ -189,7 +189,7 @@ Get access to the file objects in a set.
 
 **Returns**
 
-`Array.<File>` — List of files being processed by **mdast**(1).
+`Array.<File>` — List of files being processed by **remark**(1).
 
 ## fileSet.use(completer)
 
@@ -207,7 +207,7 @@ with `fileSet`.
 
 ## fileSet.add(file|filePath)
 
-Add a new file to be processed by **mdast**(1). The given file is
+Add a new file to be processed by **remark**(1). The given file is
 processed just like other files, with a few differences.
 
 Programmatically added files are:
@@ -228,11 +228,15 @@ Programmatically added files are:
 
 ## BUGS
 
-<https://github.com/wooorm/mdast/issues>
+<https://github.com/wooorm/remark/issues>
 
 ## SEE ALSO
 
-**mdast**(1), **mdastconfig**(7), **mdastnode**(7), **mdastsetting**(7).
+**remark**(1), **remarkconfig**(7), **mdastsetting**(7).
+
+## Notes
+
+See also <https://github.com/wooorm/mdast>.
 
 ## AUTHOR
 
