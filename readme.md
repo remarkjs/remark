@@ -2,6 +2,15 @@
 
 [![Build Status](https://img.shields.io/travis/wooorm/remark.svg)](https://travis-ci.org/wooorm/remark) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/remark.svg)](https://codecov.io/github/wooorm/remark) [![Inline docs](https://img.shields.io/badge/docs-A-brightgreen.svg)](http://inch-ci.org/github/wooorm/remark)
 
+> :warning:
+>
+> **remark** recently underwent quite some changes.
+> For one, it’s named changed from **mdast**. This means all the plug-ins
+> in the ecosystem need to change names too, which may result in some turbulence
+> the coming weeks (but most of the dust has already settled).
+>
+> [Read more about what changed and how to migrate »](https://github.com/wooorm/remark/releases/tag/3.0.0)
+
 **remark** is a markdown processor powered by plugins. Lots of tests. Node,
 io.js, and the browser. 100% coverage.
 
