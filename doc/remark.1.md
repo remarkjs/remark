@@ -8,7 +8,7 @@
 
 **remark** is a markdown processor powered by plugins.
 
-Logs verbose debugging information when `$DEBUG` is set to `"remark"`.
+Logs verbose debugging information when `$DEBUG` is set to `"*"`.
 
 ## OPTIONS
 
