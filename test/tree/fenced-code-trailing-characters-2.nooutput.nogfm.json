@@ -1,0 +1,83 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "inlineCode",
+          "value": "",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1
+            },
+            "end": {
+              "line": 2,
+              "column": 4
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": " aaa\n`",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 4
+            },
+            "end": {
+              "line": 3,
+              "column": 2
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 2
+            },
+            "end": {
+              "line": 3,
+              "column": 4
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1
+        },
+        "end": {
+          "line": 3,
+          "column": 4
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1
+    },
+    "end": {
+      "line": 4,
+      "column": 1
+    }
+  }
+}
