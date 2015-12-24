@@ -2,6 +2,24 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.0.0 / 2015-12-25
+==================
+
+*   Add migration guide and temporary warnings ([269f521](https://github.com/wooorm/remark/commit/269f521))
+*   Update list of plugins with project renames ([fb0fea9](https://github.com/wooorm/remark/commit/fb0fea9))
+*   Rename `mdast` to `remark` ([38fe53d](https://github.com/wooorm/remark/commit/38fe53d))
+*   Fix bug where blockquotes had trailing spaces ([a51f112](https://github.com/wooorm/remark/commit/a51f112))
+*   Refactor support for entities ([0c7b649](https://github.com/wooorm/remark/commit/0c7b649))
+*   Refactor code-style ([3dc2485](https://github.com/wooorm/remark/commit/3dc2485))
+*   Add documentation for interfacing with the parser ([7a5d16d](https://github.com/wooorm/remark/commit/7a5d16d))
+*   Fix footnote definitions without spacing ([46714b2](https://github.com/wooorm/remark/commit/46714b2))
+*   Fix empty `alt` value for `imageReference`, `image` ([698d569](https://github.com/wooorm/remark/commit/698d569))
+*   Fix unclosed angle-bracketed definition ([acebf81](https://github.com/wooorm/remark/commit/acebf81))
+*   Add escaping to compiler ([d1fe019](https://github.com/wooorm/remark/commit/d1fe019))
+*   Fix handling of definitions in commonmark-mode ([b7d6e53](https://github.com/wooorm/remark/commit/b7d6e53))
+*   Fix handling of list-item bullets in gfm-mode ([6e74759](https://github.com/wooorm/remark/commit/6e74759))
+*   Refactor to remove regular expressions ([25a26f2](https://github.com/wooorm/remark/commit/25a26f2))
+
 2.3.2 / 2015-12-21
 ==================
 
