@@ -58,7 +58,7 @@ Otherwise, a fatal error is thrown.
 .P
 .RS 2
 .nf
-remark --config-path remarkrc.json
+remark . --config-path remarkrc.json
 .fi
 .RE
 .P
@@ -67,7 +67,7 @@ Specify configuration location. This loads an \fBremarkrc\fR(5) file which canno
 .P
 .RS 2
 .nf
-remark --ignore-path .gitignore
+remark . --ignore-path .gitignore
 .fi
 .RE
 .P
@@ -76,7 +76,7 @@ Specify ignore location. This loads an \fBremarkignore\fR(5) file which cannot b
 .P
 .RS 2
 .nf
-remark --setting \[dq]position:false\[dq]
+remark readme.md --setting commonmark:true
 .fi
 .RE
 .P
@@ -85,7 +85,7 @@ Specify settings (see \fBremarksetting\fR(7)). This must be a valid JSON object 
 .P
 .RS 2
 .nf
-remark --use man
+remark readme.md --use man
 .fi
 .RE
 .P
@@ -94,7 +94,7 @@ Specify a plug-in to use, optionally with options. See \fBremarkplugin\fR(7) COM
 .P
 .RS 2
 .nf
-remark --ext doc
+remark . --ext doc
 .fi
 .RE
 .P
@@ -105,7 +105,7 @@ The given \fBextensions\fR can be comma or semi-colon separated.
 .P
 .RS 2
 .nf
-remark -w .
+remark . -w
 .fi
 .RE
 .P
@@ -127,7 +127,7 @@ The watch is stopped when \fBSIGINT\fR is received (usually done by pressing \fB
 .P
 .RS 2
 .nf
-remark --ast
+remark readme.md --ast
 .fi
 .RE
 .P
@@ -136,7 +136,7 @@ Instead of outputting document the internally used AST is exposed.
 .P
 .RS 2
 .nf
-remark --quiet
+remark readme.md --quiet
 .fi
 .RE
 .P
@@ -145,25 +145,25 @@ Do not output non-essential text, only warnings and errors.
 .P
 .RS 2
 .nf
-remark --silent
+remark readme.md --silent
 .fi
 .RE
 .P
-Same as \fB-q\fR, \fB--quiet\fR, but also ignores warnings.
+Do not output non-essential text or warning, only errors.
 .SS "\fB-f\fR, \fB--frail\fR"
 .P
 .RS 2
 .nf
-remark --frail
+remark readme.md --frail
 .fi
 .RE
 .P
-Exit with a status code of \fB1\fR if warnings are triggered for the processed code, instead of the default of only exiting with \fB1\fR on fatal errors.
+Exit with a status code of \fB1\fR if warnings or errors occur, instead of the default of only exiting with \fB1\fR on errors.
 .SS "\fB--file-path\fR <\fIpath\fR>"
 .P
 .RS 2
 .nf
-cat readme.md \[ba] remark --file-path readme.md > doc\[sl]out.md
+remark --file-path readme.md < readme.md > doc\[sl]out.md
 .fi
 .RE
 .P
@@ -172,7 +172,7 @@ Process the piped-in document as if it was a file at \fBpath\fR.
 .P
 .RS 2
 .nf
-remark --no-stdout
+remark readme.md --no-stdout
 .fi
 .RE
 .P
@@ -181,7 +181,7 @@ Do not write a processed file to \fBstdout\fR(4).
 .P
 .RS 2
 .nf
-remark --no-color
+remark readme.md --no-color
 .fi
 .RE
 .P
@@ -190,7 +190,7 @@ Disable ANSI codes in output.
 .P
 .RS 2
 .nf
-remark --no-rc
+remark readme.md --no-rc
 .fi
 .RE
 .P
@@ -199,7 +199,7 @@ Disables configuration from \fBremarkrc\fR(5) files. This does not apply to expl
 .P
 .RS 2
 .nf
-remark --no-ignore
+remark . --no-ignore
 .fi
 .RE
 .P

@@ -58,7 +58,7 @@ Specify output.
 ### `-c`, `--config-path` &lt;_path_>
 
 ```sh
-remark --config-path remarkrc.json
+remark . --config-path remarkrc.json
 ```
 
 Specify configuration location. This loads an **remarkrc**(5) file which cannot
@@ -68,7 +68,7 @@ name) in addition to other detected files.
 ### `-i`, `--ignore-path` &lt;_path_>
 
 ```sh
-remark --ignore-path .gitignore
+remark . --ignore-path .gitignore
 ```
 
 Specify ignore location. This loads an **remarkignore**(5) file which cannot be
@@ -78,7 +78,7 @@ name) in addition to other detected files.
 ### `-s`, `--setting` &lt;_settings_>
 
 ```sh
-remark --setting "position:false"
+remark readme.md --setting commonmark:true
 ```
 
 Specify settings (see **remarksetting**(7)). This must be a valid JSON object
@@ -88,7 +88,7 @@ for more information.
 ### `-u`, `--use` &lt;_plugin_>
 
 ```sh
-remark --use man
+remark readme.md --use man
 ```
 
 Specify a plug-in to use, optionally with options. See **remarkplugin**(7)
@@ -97,7 +97,7 @@ COMMAND LINE USAGE for more information.
 ### `-e`, `--ext` &lt;_extensions_>
 
 ```sh
-remark --ext doc
+remark . --ext doc
 ```
 
 Specify one or more extensions to include when searching for files.
@@ -109,7 +109,7 @@ The given `extensions` can be comma or semi-colon separated.
 ### `-w`, `--watch`
 
 ```sh
-remark -w .
+remark . -w
 ```
 
 Watch all files and reprocess when they change.
@@ -130,7 +130,7 @@ The watch is stopped when `SIGINT` is received (usually done by pressing
 ### `-a`, `--ast`
 
 ```sh
-remark --ast
+remark readme.md --ast
 ```
 
 Instead of outputting document the internally used AST is exposed.
@@ -138,7 +138,7 @@ Instead of outputting document the internally used AST is exposed.
 ### `-q`, `--quiet`
 
 ```sh
-remark --quiet
+remark readme.md --quiet
 ```
 
 Do not output non-essential text, only warnings and errors.
@@ -146,24 +146,24 @@ Do not output non-essential text, only warnings and errors.
 ### `-S`, `--silent`
 
 ```sh
-remark --silent
+remark readme.md --silent
 ```
 
-Same as `-q`, `--quiet`, but also ignores warnings.
+Do not output non-essential text or warning, only errors.
 
 ### `-f`, `--frail`
 
 ```sh
-remark --frail
+remark readme.md --frail
 ```
 
-Exit with a status code of `1` if warnings are triggered for the processed
-code, instead of the default of only exiting with `1` on fatal errors.
+Exit with a status code of `1` if warnings or errors occur,
+instead of the default of only exiting with `1` on errors.
 
 ### `--file-path` &lt;_path_>
 
 ```sh
-cat readme.md | remark --file-path readme.md > doc/out.md
+remark --file-path readme.md < readme.md > doc/out.md
 ```
 
 Process the piped-in document as if it was a file at `path`.
@@ -171,7 +171,7 @@ Process the piped-in document as if it was a file at `path`.
 ### `--no-stdout`
 
 ```sh
-remark --no-stdout
+remark readme.md --no-stdout
 ```
 
 Do not write a processed file to **stdout**(4).
@@ -179,7 +179,7 @@ Do not write a processed file to **stdout**(4).
 ### `--no-color`
 
 ```sh
-remark --no-color
+remark readme.md --no-color
 ```
 
 Disable ANSI codes in output.
@@ -187,7 +187,7 @@ Disable ANSI codes in output.
 ### `--no-rc`
 
 ```sh
-remark --no-rc
+remark readme.md --no-rc
 ```
 
 Disables configuration from **remarkrc**(5) files. This does not apply to
@@ -196,7 +196,7 @@ explicitly provided files through `-c`, `--config-path`.
 ### `--no-ignore`
 
 ```sh
-remark --no-ignore
+remark . --no-ignore
 ```
 
 Disables configuration from **remarkignore**(5) files. This does not apply to
