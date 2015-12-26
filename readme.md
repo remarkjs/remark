@@ -5,7 +5,7 @@
 > :warning:
 >
 > **remark** recently underwent quite some changes.
-> For one, it’s named changed from **mdast**. This means all the plug-ins
+> For one, it’s name changed from **mdast**. This means all the plug-ins
 > in the ecosystem need to change names too, which may result in some turbulence
 > the coming weeks (but most of the dust has already settled).
 >
