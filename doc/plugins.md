@@ -52,7 +52,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-html](https://github.com/wooorm/remark-html)
     — Compile Markdown to HTML documents;
 
-*   [wooorm/mdast-inline-links](https://github.com/wooorm/mdast-inline-links)
+*   [wooorm/remark-inline-links](https://github.com/wooorm/mdast-inline-links)
     — Transform references and definitions into normal links and images;
 
 *   [wooorm/remark-lint](https://github.com/wooorm/remark-lint)
@@ -67,19 +67,19 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
     — Normalize headings depths, such as multiple top-level headings;
 
-*   [wooorm/mdast-range](https://github.com/wooorm/mdast-range)
+*   [wooorm/remark-range](https://github.com/wooorm/mdast-range)
     — Add range information;
 
 *   [mapbox/mdast-react](https://github.com/mapbox/mdast-react)
     — Compile Markdown to [React](https://github.com/facebook/react);
 
-*   [wooorm/mdast-reference-links](https://github.com/wooorm/mdast-reference-links)
+*   [wooorm/remark-reference-links](https://github.com/wooorm/mdast-reference-links)
     — Transform links and images into references and definitions;
 
 *   [wooorm/remark-slug](https://github.com/wooorm/remark-slug)
     — Add slugs to headings;
 
-*   [wooorm/mdast-strip-badges](https://github.com/wooorm/mdast-strip-badges)
+*   [wooorm/remark-strip-badges](https://github.com/wooorm/mdast-strip-badges)
     — Remove badges (such as `shields.io`);
 
 *   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
