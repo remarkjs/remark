@@ -85,6 +85,10 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
     — Remove empty paragraphs;
 
+*   [remark-textr](https://github.com/denysdovhan/remark-textr)
+    — [Textr](https://github.com/shuvalov-anton/textr), a modular typographic
+    framework;
+
 *   [wooorm/remark-toc](https://github.com/wooorm/remark-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 
