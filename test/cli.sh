@@ -50,6 +50,7 @@ warn="test/warn.js"
 rc="test/cli/rc.json"
 ignore="test/cli/ignore.ini"
 
+extensionless="test/cli/extensionless"
 missing="test/cli/missing/markdown.md"
 missingPlugin="test/cli/missin/plugin.js"
 missingRC="test/cli/missing/rc.json"
@@ -68,6 +69,10 @@ tmp="test/cli/tmp.md"
 
 it "Should accept a file"
     $COMMAND "$markdown" > /dev/null 2>&1
+    assert $? 0
+
+it "Should accept an extensionless file"
+    $COMMAND "$extensionless" > /dev/null 2>&1
     assert $? 0
 
 it "Should accept stdin"
