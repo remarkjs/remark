@@ -4,8 +4,8 @@
  * Dependencies.
  */
 
-const mdast = require('wooorm/mdast@2.x');
-const mdastRange = require('wooorm/mdast-range@1.0.1');
+const remark = require('wooorm/remark@3.x');
+const remarkRange = require('wooorm/remark-range@2.x');
 const vfile = require('wooorm/vfile');
 const debounce = require('component/debounce@1.0.0');
 const assign = require('sindresorhus/object-assign');
@@ -20,7 +20,7 @@ const escapeHtml = require('component/escape-html');
  * Constants.
  */
 
-const defaultText = `Here’s a tiny demo for __mdast__.
+const defaultText = `Here’s a tiny demo for __remark__.
 
 Its focus is to *showcase* how the options above work.
 
@@ -107,12 +107,12 @@ function onchange() {
 
     if (!isTree) {
         const fn = isAST ? 'parse' : 'process';
-        const value = mdast[fn]($write.value, options);
+        const value = remark[fn]($write.value, options);
         $read.value = isAST ? JSON.stringify(value, 0, 2) : value;
     } else {
         const file = vfile($write.value);
-        let ast = mdast.parse(file, assign({}, options, { position: true }));
-        ast = mdast.use(mdastRange).run(ast, file);
+        let ast = remark.parse(file, assign({}, options, { position: true }));
+        ast = remark.use(remarkRange).run(ast, file);
 
         jquery($readTree)
             .jstree('destroy')

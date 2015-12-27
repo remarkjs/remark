@@ -96,8 +96,8 @@
  * Dependencies.
  */
 
-var mdast = require('wooorm/mdast@2.x');
-var mdastRange = require('wooorm/mdast-range@1.0.1');
+var remark = require('wooorm/remark@3.x');
+var remarkRange = require('wooorm/remark-range@2.x');
 var vfile = require('wooorm/vfile');
 var debounce = require('component/debounce@1.0.0');
 var assign = require('sindresorhus/object-assign');
@@ -112,7 +112,7 @@ var escapeHtml = require('component/escape-html');
  * Constants.
  */
 
-var defaultText = 'Here’s a tiny demo for __mdast__.\n\nIts focus is to *showcase* how the options above work.\n\nCheers!\n\n---\n\nP.S. You can also permalink the current document using `⌘+s` or `Ctrl+s`.\n';
+var defaultText = 'Here’s a tiny demo for __remark__.\n\nIts focus is to *showcase* how the options above work.\n\nCheers!\n\n---\n\nP.S. You can also permalink the current document using `⌘+s` or `Ctrl+s`.\n';
 
 /*
  * DOM elements.
@@ -185,12 +185,12 @@ function onchange() {
 
     if (!isTree) {
         var fn = isAST ? 'parse' : 'process';
-        var value = mdast[fn]($write.value, options);
+        var value = remark[fn]($write.value, options);
         $read.value = isAST ? JSON.stringify(value, 0, 2) : value;
     } else {
         var file = vfile($write.value);
-        var ast = mdast.parse(file, assign({}, options, { position: true }));
-        ast = mdast.use(mdastRange).run(ast, file);
+        var ast = remark.parse(file, assign({}, options, { position: true }));
+        ast = remark.use(remarkRange).run(ast, file);
 
         jquery($readTree).jstree('destroy').off('.jstree').on('hover_node.jstree', function (ev, data) {
             var position = data.node.data.position;
@@ -398,17 +398,20 @@ onchange();
  */
 
 $write.focus();
-}, {"wooorm/mdast@2.x":2,"wooorm/mdast-range@1.0.1":3,"wooorm/vfile":4,"component/debounce@1.0.0":5,"sindresorhus/object-assign":6,"timoxley/keycode":7,"component/querystring":8,"component/event":9,"components/jquery":10,"vakata/jstree":11,"component/escape-html":12}],
+}, {"wooorm/remark@3.x":2,"wooorm/remark-range@2.x":3,"wooorm/vfile":4,"component/debounce@1.0.0":5,"sindresorhus/object-assign":6,"timoxley/keycode":7,"component/querystring":8,"component/event":9,"components/jquery":10,"vakata/jstree":11,"component/escape-html":12}],
 2: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast
+ * @module remark
+ * @version 3.0.0
  * @fileoverview Markdown processor powered by plugins.
  */
 
 'use strict';
+
+/* eslint-env commonjs */
 
 /*
  * Dependencies.
@@ -417,6 +420,7 @@ $write.focus();
 var unified = require('unified');
 var Parser = require('./lib/parse.js');
 var Compiler = require('./lib/stringify.js');
+var escape = require('./lib/escape.json');
 
 /*
  * Exports.
@@ -425,9 +429,12 @@ var Compiler = require('./lib/stringify.js');
 module.exports = unified({
   'name': 'mdast',
   'Parser': Parser,
-  'Compiler': Compiler
+  'Compiler': Compiler,
+  'data': {
+    'escape': escape
+  }
 });
-}, {"unified":13,"./lib/parse.js":14,"./lib/stringify.js":15}],
+}, {"unified":13,"./lib/parse.js":14,"./lib/stringify.js":15,"./lib/escape.json":16}],
 13: [function(require, module, exports) {
 /**
  * @author Titus Wormer
@@ -450,6 +457,13 @@ var ware = require('ware');
 var AttachWare = require('attach-ware')(ware);
 var VFile = require('vfile');
 var unherit = require('unherit');
+var extend;
+
+try {
+    extend = require('node-extend');
+} catch (e) {
+    extend = require('extend');
+}
 
 /*
  * Processing pipeline.
@@ -479,6 +493,7 @@ function unified(options) {
     var name = options.name;
     var Parser = options.Parser;
     var Compiler = options.Compiler;
+    var data = options.data;
 
     /**
      * Construct a Processor instance.
@@ -498,6 +513,10 @@ function unified(options) {
 
         self.Parser = unherit(Parser);
         self.Compiler = unherit(Compiler);
+
+        if (self.data) {
+            self.data = extend(true, {}, self.data);
+        }
     }
 
     /**
@@ -597,7 +616,7 @@ function unified(options) {
     function parse(value, settings) {
         var file = new VFile(value);
         var CustomParser = this && this.Parser || Parser;
-        var node = new CustomParser(file, settings).parse();
+        var node = new CustomParser(file, settings, instance(this)).parse();
 
         file.namespace(name).tree = node;
 
@@ -644,7 +663,7 @@ function unified(options) {
             throw new Error('Expected node, got ' + node);
         }
 
-        return new CustomCompiler(file, settings).compile();
+        return new CustomCompiler(file, settings, instance(this)).compile();
     }
 
     /**
@@ -696,6 +715,7 @@ function unified(options) {
     Processor.run = proto.run = run;
     Processor.stringify = proto.stringify = stringify;
     Processor.process = proto.process = process;
+    Processor.data = proto.data = data || null;
 
     return Processor;
 }
@@ -705,8 +725,8 @@ function unified(options) {
  */
 
 module.exports = unified;
-}, {"bail":16,"ware":17,"attach-ware":18,"vfile":4,"unherit":19}],
-16: [function(require, module, exports) {
+}, {"bail":17,"ware":18,"attach-ware":19,"vfile":4,"unherit":20,"node-extend":21}],
+17: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -744,7 +764,7 @@ function bail(err) {
 
 module.exports = bail;
 }, {}],
-17: [function(require, module, exports) {
+18: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -836,8 +856,8 @@ Ware.prototype.run = function () {
 
   return this;
 };
-}, {"wrap-fn":20}],
-20: [function(require, module, exports) {
+}, {"wrap-fn":22}],
+22: [function(require, module, exports) {
 /**
  * Module Dependencies
  */
@@ -964,8 +984,8 @@ function once(fn) {
     return ret;
   };
 }
-}, {"co":21}],
-21: [function(require, module, exports) {
+}, {"co":23}],
+23: [function(require, module, exports) {
 
 /**
  * slice() reference.
@@ -1262,7 +1282,7 @@ function error(err) {
   });
 }
 }, {}],
-18: [function(require, module, exports) {
+19: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
@@ -1414,8 +1434,8 @@ function patch(Ware) {
 }
 
 module.exports = patch;
-}, {"unherit":19}],
-19: [function(require, module, exports) {
+}, {"unherit":20}],
+20: [function(require, module, exports) {
 "use strict";
 
 (function (f) {
@@ -1752,11 +1772,62 @@ module.exports = patch;
 
 'use strict';
 
+/* eslint-env commonjs */
+
 var SEPARATOR = '/';
 
 try {
     SEPARATOR = require('pa' + 'th').sep;
 } catch (e) {} /* empty */
+
+/**
+ * Construct a new file message.
+ *
+ * Note: We cannot invoke `Error` on the created context,
+ * as that adds readonly `line` and `column` attributes on
+ * Safari 9, thus throwing and failing the data.
+ *
+ * @example
+ *   var message = new VFileMessage('Whoops!');
+ *
+ *   message instanceof Error // true
+ *
+ * @constructor
+ * @class {VFileMessage}
+ * @param {string} reason - Reason for messaging.
+ * @property {boolean} [fatal=null] - Whether the message
+ *   is fatal.
+ * @property {string} [name=''] - File-name and positional
+ *   information.
+ * @property {string} [file=''] - File-path.
+ * @property {string} [reason=''] - Reason for messaging.
+ * @property {number} [line=null] - Start of message.
+ * @property {number} [column=null] - Start of message.
+ * @property {Position|Location} [location=null] - Place of
+ *   message.
+ * @property {string} [stack] - Stack-trace of warning.
+ */
+function VFileMessage(reason) {
+    this.message = reason;
+}
+
+/**
+ * Inherit from `Error#`.
+ */
+function VFileMessagePrototype() {}
+
+VFileMessagePrototype.prototype = Error.prototype;
+
+var proto = new VFileMessagePrototype();
+
+VFileMessage.prototype = proto;
+
+/*
+ * Expose defaults.
+ */
+
+proto.file = proto.name = proto.reason = proto.message = proto.stack = '';
+proto.fatal = proto.column = proto.line = null;
 
 /**
  * File-related message with location information.
@@ -1790,7 +1861,7 @@ try {
  * @private
  * @param {Object?} [position] - Single position, like
  *   those available at `node.position.start`.
- * @return {string}
+ * @return {string} - Compiled location.
  */
 function stringify(position) {
     if (!position) {
@@ -1818,7 +1889,7 @@ function stringify(position) {
  *
  * @private
  * @param {VFile} file - Virtual file.
- * @return {Function}
+ * @return {Function} - `filePath` getter.
  */
 function filePathFactory(file) {
     /**
@@ -2079,7 +2150,7 @@ function message(reason, position) {
         }
     }
 
-    err = new Error(reason.message || reason);
+    err = new VFileMessage(reason.message || reason);
 
     err.name = (filePath ? filePath + ':' : '') + range;
     err.file = filePath;
@@ -2255,207 +2326,279 @@ vFilePrototype.namespace = namespace;
 
 module.exports = VFile;
 }, {}],
+21: [function(require, module, exports) {
+'use strict';
+
+var hasOwn = Object.prototype.hasOwnProperty;
+var toStr = Object.prototype.toString;
+
+var isArray = function isArray(arr) {
+	if (typeof Array.isArray === 'function') {
+		return Array.isArray(arr);
+	}
+
+	return toStr.call(arr) === '[object Array]';
+};
+
+var isPlainObject = function isPlainObject(obj) {
+	if (!obj || toStr.call(obj) !== '[object Object]') {
+		return false;
+	}
+
+	var hasOwnConstructor = hasOwn.call(obj, 'constructor');
+	var hasIsPrototypeOf = obj.constructor && obj.constructor.prototype && hasOwn.call(obj.constructor.prototype, 'isPrototypeOf');
+	// Not own constructor property must be Object
+	if (obj.constructor && !hasOwnConstructor && !hasIsPrototypeOf) {
+		return false;
+	}
+
+	// Own properties are enumerated firstly, so to speed up,
+	// if last one is own, then all properties are own.
+	var key;
+	for (key in obj) {/**/}
+
+	return typeof key === 'undefined' || hasOwn.call(obj, key);
+};
+
+module.exports = function extend() {
+	var options,
+	    name,
+	    src,
+	    copy,
+	    copyIsArray,
+	    clone,
+	    target = arguments[0],
+	    i = 1,
+	    length = arguments.length,
+	    deep = false;
+
+	// Handle a deep copy situation
+	if (typeof target === 'boolean') {
+		deep = target;
+		target = arguments[1] || {};
+		// skip the boolean and the target
+		i = 2;
+	} else if (typeof target !== 'object' && typeof target !== 'function' || target == null) {
+		target = {};
+	}
+
+	for (; i < length; ++i) {
+		options = arguments[i];
+		// Only deal with non-null/undefined values
+		if (options != null) {
+			// Extend the base object
+			for (name in options) {
+				src = target[name];
+				copy = options[name];
+
+				// Prevent never-ending loop
+				if (target !== copy) {
+					// Recurse if we're merging plain objects or arrays
+					if (deep && copy && (isPlainObject(copy) || (copyIsArray = isArray(copy)))) {
+						if (copyIsArray) {
+							copyIsArray = false;
+							clone = src && isArray(src) ? src : [];
+						} else {
+							clone = src && isPlainObject(src) ? src : {};
+						}
+
+						// Never move original objects, clone them
+						target[name] = extend(deep, clone, copy);
+
+						// Don't bring in undefined values
+					} else if (typeof copy !== 'undefined') {
+							target[name] = copy;
+						}
+				}
+			}
+		}
+	}
+
+	// Return the modified object
+	return target;
+};
+}, {}],
 14: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:parse
+ * @module remark:parse
+ * @version 3.0.0
  * @fileoverview Parse a markdown document into an
  *   abstract syntax tree.
- */
-
-'use strict';
-
-/*
+ */'use strict'; /* eslint-env commonjs */ /*
  * Dependencies.
- */
-
-var he = require('he');
-var repeat = require('repeat-string');
-var trim = require('trim');
-var trimTrailingLines = require('trim-trailing-lines');
-var extend = require('extend.js');
-var utilities = require('./utilities.js');
-var defaultExpressions = require('./expressions.js');
-var defaultOptions = require('./defaults.js').parse;
-
-/*
+ */var decode=require('parse-entities');var repeat=require('repeat-string');var trim=require('trim');var trimTrailingLines=require('trim-trailing-lines');var extend=require('extend.js');var utilities=require('./utilities.js');var defaultOptions=require('./defaults.js').parse;var blockElements=require('./block-elements.json'); /*
  * Methods.
- */
-
-var raise = utilities.raise;
-var clean = utilities.clean;
-var validate = utilities.validate;
-var normalize = utilities.normalizeIdentifier;
-var arrayPush = [].push;
-
-/*
+ */var raise=utilities.raise;var clean=utilities.clean;var validate=utilities.validate;var normalize=utilities.normalizeIdentifier;var stateToggler=utilities.stateToggler;var mergeable=utilities.mergeable;var MERGEABLE_NODES=utilities.MERGEABLE_NODES;var has=({}).hasOwnProperty; /*
+ * Numeric constants.
+ */var SPACE_SIZE=1;var TAB_SIZE=4;var CODE_INDENT_LENGTH=4;var MIN_FENCE_COUNT=3;var MAX_ATX_COUNT=6;var MAX_LINE_HEADING_INDENT=3;var HORIZONTAL_RULE_MARKER_COUNT=3;var MIN_CLOSING_HTML_NEWLINE_COUNT=2;var MIN_BREAK_LENGTH=2;var MIN_TABLE_COLUMNS=2;var MIN_TABLE_ROWS=3; /*
+ * Error messages.
+ */var ERR_INFINITE_LOOP='Infinite loop';var ERR_MISSING_LOCATOR='Missing locator: ';var ERR_INCORRECTLY_EATEN='Incorrectly eaten value: please report this ' + 'warning on http://git.io/vUYWz'; /*
+ * Expressions.
+ */var EXPRESSION_BULLET=/^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t)([^\n]*)/;var EXPRESSION_PEDANTIC_BULLET=/^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;var EXPRESSION_INITIAL_INDENT=/^( {1,4}|\t)?/gm;var EXPRESSION_INITIAL_TAB=/^( {4}|\t)?/gm;var EXPRESSION_HTML_LINK_OPEN=/^<a /i;var EXPRESSION_HTML_LINK_CLOSE=/^<\/a>/i;var EXPRESSION_LOOSE_LIST_ITEM=/\n\n(?!\s*$)/;var EXPRESSION_TASK_ITEM=/^\[([\ \t]|x|X)\][\ \t]/; /*
  * Characters.
- */
-
-var AT_SIGN = '@';
-var CARET = '^';
-var EQUALS = '=';
-var EXCLAMATION_MARK = '!';
-var MAILTO_PROTOCOL = 'mailto:';
-var NEW_LINE = '\n';
-var SPACE = ' ';
-var TAB = '\t';
-var EMPTY = '';
-var LT = '<';
-var GT = '>';
-var BRACKET_OPEN = '[';
-
-/*
- * Types.
- */
-
-var BLOCK = 'block';
-var INLINE = 'inline';
-var HORIZONTAL_RULE = 'horizontalRule';
-var HTML = 'html';
-var YAML = 'yaml';
-var TABLE = 'table';
-var TABLE_CELL = 'tableCell';
-var TABLE_HEADER = 'tableHeader';
-var TABLE_ROW = 'tableRow';
-var PARAGRAPH = 'paragraph';
-var TEXT = 'text';
-var CODE = 'code';
-var LIST = 'list';
-var LIST_ITEM = 'listItem';
-var FOOTNOTE_DEFINITION = 'footnoteDefinition';
-var HEADING = 'heading';
-var BLOCKQUOTE = 'blockquote';
-var LINK = 'link';
-var IMAGE = 'image';
-var FOOTNOTE = 'footnote';
-var ESCAPE = 'escape';
-var STRONG = 'strong';
-var EMPHASIS = 'emphasis';
-var DELETE = 'delete';
-var INLINE_CODE = 'inlineCode';
-var BREAK = 'break';
-var ROOT = 'root';
-
-/**
- * Wrapper around he's `decode` function.
+ */var C_BACKSLASH='\\';var C_UNDERSCORE='_';var C_ASTERISK='*';var C_TICK='`';var C_AT_SIGN='@';var C_HASH='#';var C_PLUS='+';var C_DASH='-';var C_DOT='.';var C_PIPE='|';var C_DOUBLE_QUOTE='"';var C_SINGLE_QUOTE='\'';var C_COMMA=',';var C_SLASH='/';var C_COLON=':';var C_SEMI_COLON=';';var C_QUESTION_MARK='?';var C_CARET='^';var C_EQUALS='=';var C_EXCLAMATION_MARK='!';var C_TILDE='~';var C_LT='<';var C_GT='>';var C_BRACKET_OPEN='[';var C_BRACKET_CLOSE=']';var C_PAREN_OPEN='(';var C_PAREN_CLOSE=')';var C_SPACE=' ';var C_FORM_FEED='\f';var C_NEWLINE='\n';var C_CARRIAGE_RETURN='\r';var C_TAB='\t';var C_VERTICAL_TAB='\v';var C_NO_BREAK_SPACE=' ';var C_OGHAM_SPACE=' ';var C_MONGOLIAN_VOWEL_SEPARATOR='᠎';var C_EN_QUAD=' ';var C_EM_QUAD=' ';var C_EN_SPACE=' ';var C_EM_SPACE=' ';var C_THREE_PER_EM_SPACE=' ';var C_FOUR_PER_EM_SPACE=' ';var C_SIX_PER_EM_SPACE=' ';var C_FIGURE_SPACE=' ';var C_PUNCTUATION_SPACE=' ';var C_THIN_SPACE=' ';var C_HAIR_SPACE=' ';var C_LINE_SEPARATOR='​\u2028';var C_PARAGRAPH_SEPARATOR='​\u2029';var C_NARROW_NO_BREAK_SPACE=' ';var C_IDEOGRAPHIC_SPACE='　';var C_ZERO_WIDTH_NO_BREAK_SPACE='﻿';var C_X_LOWER='x'; /*
+ * Character codes.
+ */var CC_A_LOWER='a'.charCodeAt(0);var CC_A_UPPER='A'.charCodeAt(0);var CC_Z_LOWER='z'.charCodeAt(0);var CC_Z_UPPER='Z'.charCodeAt(0);var CC_0='0'.charCodeAt(0);var CC_9='9'.charCodeAt(0); /*
+ * Protocols.
+ */var HTTP_PROTOCOL='http://';var HTTPS_PROTOCOL='https://';var MAILTO_PROTOCOL='mailto:';var PROTOCOLS=[HTTP_PROTOCOL,HTTPS_PROTOCOL,MAILTO_PROTOCOL];var PROTOCOLS_LENGTH=PROTOCOLS.length; /*
+ * Textual constants.
+ */var YAML_FENCE=repeat(C_DASH,3);var CODE_INDENT=repeat(C_SPACE,CODE_INDENT_LENGTH);var EMPTY='';var BLOCK='block';var INLINE='inline';var COMMENT_START='<!--';var COMMENT_END='-->';var CDATA_START='<![CDATA[';var CDATA_END=']]>';var COMMENT_END_CHAR=COMMENT_END.charAt(0);var CDATA_END_CHAR=CDATA_END.charAt(0);var COMMENT_START_LENGTH=COMMENT_START.length;var COMMENT_END_LENGTH=COMMENT_END.length;var CDATA_START_LENGTH=CDATA_START.length;var CDATA_END_LENGTH=CDATA_END.length; /*
+ * Node types.
+ */var T_HORIZONTAL_RULE='horizontalRule';var T_HTML='html';var T_YAML='yaml';var T_TABLE='table';var T_TABLE_CELL='tableCell';var T_TABLE_HEADER='tableHeader';var T_TABLE_ROW='tableRow';var T_PARAGRAPH='paragraph';var T_TEXT='text';var T_CODE='code';var T_LIST='list';var T_LIST_ITEM='listItem';var T_DEFINITION='definition';var T_FOOTNOTE_DEFINITION='footnoteDefinition';var T_HEADING='heading';var T_BLOCKQUOTE='blockquote';var T_LINK='link';var T_IMAGE='image';var T_FOOTNOTE='footnote';var T_STRONG='strong';var T_EMPHASIS='emphasis';var T_DELETE='delete';var T_INLINE_CODE='inlineCode';var T_BREAK='break';var T_ROOT='root'; /*
+ * Available table alignments.
+ */var TABLE_ALIGN_LEFT='left';var TABLE_ALIGN_CENTER='center';var TABLE_ALIGN_RIGHT='right';var TABLE_ALIGN_NONE=null; /*
+ * Available reference types.
+ */var REFERENCE_TYPE_SHORTCUT='shortcut';var REFERENCE_TYPE_COLLAPSED='collapsed';var REFERENCE_TYPE_FULL='full'; /*
+ * A map of characters, and their column length,
+ * which can be used as indentation.
+ */var INDENTATION_CHARACTERS={};INDENTATION_CHARACTERS[C_SPACE] = SPACE_SIZE;INDENTATION_CHARACTERS[C_TAB] = TAB_SIZE; /*
+ * A map of characters, which can be used to mark emphasis.
+ */var EMPHASIS_MARKERS={};EMPHASIS_MARKERS[C_ASTERISK] = true;EMPHASIS_MARKERS[C_UNDERSCORE] = true; /*
+ * A map of characters, which can be used to mark rules.
+ */var RULE_MARKERS={};RULE_MARKERS[C_ASTERISK] = true;RULE_MARKERS[C_UNDERSCORE] = true;RULE_MARKERS[C_DASH] = true; /*
+ * A map of characters which can be used to mark
+ * list-items.
+ */var LIST_UNORDERED_MARKERS={};LIST_UNORDERED_MARKERS[C_ASTERISK] = true;LIST_UNORDERED_MARKERS[C_PLUS] = true;LIST_UNORDERED_MARKERS[C_DASH] = true; /*
+ * A map of characters which can be used to mark
+ * list-items after a digit.
+ */var LIST_ORDERED_MARKERS={};LIST_ORDERED_MARKERS[C_DOT] = true; /*
+ * A map of characters which can be used to mark
+ * list-items after a digit.
+ */var LIST_ORDERED_COMMONMARK_MARKERS={};LIST_ORDERED_COMMONMARK_MARKERS[C_DOT] = true;LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true; /*
+ * A map of characters, which can be used to mark link
+ * and image titles.
+ */var LINK_TITLE_MARKERS={};LINK_TITLE_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;LINK_TITLE_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE; /*
+ * A map of characters, which can be used to mark link
+ * and image titles in commonmark-mode.
+ */var COMMONMARK_LINK_TITLE_MARKERS={};COMMONMARK_LINK_TITLE_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;COMMONMARK_LINK_TITLE_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;COMMONMARK_LINK_TITLE_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE; /*
+ * A map of characters which can be used to mark setext
+ * headers, mapping to their corresponding depth.
+ */var SETEXT_MARKERS={};SETEXT_MARKERS[C_EQUALS] = 1;SETEXT_MARKERS[C_DASH] = 2; /*
+ * A map of two functions which can create list items.
+ */var LIST_ITEM_MAP={};LIST_ITEM_MAP['true'] = renderPedanticListItem;LIST_ITEM_MAP['false'] = renderNormalListItem; /**
+ * Check whether `character` is alphabetic.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` is
+ *   alphabetic.
+ */function isAlphabetic(character){var code=character.charCodeAt(0);return code >= CC_A_LOWER && code <= CC_Z_LOWER || code >= CC_A_UPPER && code <= CC_Z_UPPER;} /**
+ * Check whether `character` is numeric.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` is
+ *   numeric.
+ */function isNumeric(character){var code=character.charCodeAt(0);return code >= CC_0 && code <= CC_9;} /**
+ * Check whether `character` is a word character.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` is a
+ *   word character.
+ */function isWordCharacter(character){return character === C_UNDERSCORE || isAlphabetic(character) || isNumeric(character);} /**
+ * Check whether `character` is white-space.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` is
+ *   white-space.
+ */function isWhiteSpace(character){return character === C_SPACE || character === C_FORM_FEED || character === C_NEWLINE || character === C_CARRIAGE_RETURN || character === C_TAB || character === C_VERTICAL_TAB || character === C_NO_BREAK_SPACE || character === C_OGHAM_SPACE || character === C_MONGOLIAN_VOWEL_SEPARATOR || character === C_EN_QUAD || character === C_EM_QUAD || character === C_EN_SPACE || character === C_EM_SPACE || character === C_THREE_PER_EM_SPACE || character === C_FOUR_PER_EM_SPACE || character === C_SIX_PER_EM_SPACE || character === C_FIGURE_SPACE || character === C_PUNCTUATION_SPACE || character === C_THIN_SPACE || character === C_HAIR_SPACE || character === C_LINE_SEPARATOR || character === C_PARAGRAPH_SEPARATOR || character === C_NARROW_NO_BREAK_SPACE || character === C_IDEOGRAPHIC_SPACE || character === C_ZERO_WIDTH_NO_BREAK_SPACE;} /**
+ * Check whether `character` can be inside an unquoted
+ * attribute value.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` can be
+ *   inside an unquoted attribute value.
+ */function isUnquotedAttributeCharacter(character){return character !== C_DOUBLE_QUOTE && character !== C_SINGLE_QUOTE && character !== C_EQUALS && character !== C_LT && character !== C_GT && character !== C_TICK;} /**
+ * Check whether `character` can be inside a double-quoted
+ * attribute value.
+ *
+ * @property {string} delimiter - Closing delimiter.
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` can be
+ *   inside a double-quoted attribute value.
+ */function isDoubleQuotedAttributeCharacter(character){return character !== C_DOUBLE_QUOTE;}isDoubleQuotedAttributeCharacter.delimiter = C_DOUBLE_QUOTE; /**
+ * Check whether `character` can be inside a single-quoted
+ * attribute value.
+ *
+ * @property {string} delimiter - Closing delimiter.
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether or not `character` can be
+ *   inside a single-quoted attribute value.
+ */function isSingleQuotedAttributeCharacter(character){return character !== C_SINGLE_QUOTE;}isSingleQuotedAttributeCharacter.delimiter = C_SINGLE_QUOTE; /**
+ * Check whether `character` can be inside an enclosed
+ * URI.
+ *
+ * @property {string} delimiter - Closing delimiter.
+ * @param {string} character - Character to test.
+ * @return {boolean} - Whether or not `character` can be
+ *   inside an enclosed URI.
+ */function isEnclosedURLCharacter(character){return character !== C_GT && character !== C_BRACKET_OPEN && character !== C_BRACKET_CLOSE;}isEnclosedURLCharacter.delimiter = C_GT; /**
+ * Check whether `character` can be inside an unclosed
+ * URI.
+ *
+ * @param {string} character - Character to test.
+ * @return {boolean} - Whether or not `character` can be
+ *   inside an unclosed URI.
+ */function isUnclosedURLCharacter(character){return character !== C_BRACKET_OPEN && character !== C_BRACKET_CLOSE && !isWhiteSpace(character);} /**
+ * Factory to create an entity decoder.
+ *
+ * @param {Object} context - Context to attach to, e.g.,
+ *   a parser.
+ * @return {Function} - See `decode`.
+ */function decodeFactory(context){ /**
+     * Normalize `position` to add an `indent`.
+     *
+     * @param {Position} position - Reference
+     * @return {Position} - Augmented with `indent`.
+     */function normalize(position){return {'start':position,'indent':context.getIndent(position.line)};} /**
+     * Handle a warning.
+     *
+     * @this {VFile} - Virtual file.
+     * @param {string} reason - Reason for warning.
+     * @param {Position} position - Place of warning.
+     * @param {number} code - Code for warning.
+     */function handleWarning(reason,position,code){if(code === 3){return;}context.file.warn(reason,position);} /**
+     * Decode `value` (at `position`) into text-nodes.
+     *
+     * @param {string} value - Value to parse.
+     * @param {Position} position - Position to start parsing at.
+     * @param {Function} handler - Node handler.
+     */function decoder(value,position,handler){var hasPosition=context.options.position;decode(value,{'position':position && normalize(position),'warning':hasPosition && handleWarning,'text':handler,'reference':handler,'textContext':context,'referenceContext':context});} /**
+     * Decode `value` (at `position`) into a string.
+     *
+     * @param {string} value - Value to parse.
+     * @param {Position} position - Position to start
+     *   parsing at.
+     * @return {string} - Plain-text.
+     */function decodeRaw(value,position){return decode(value,{'position':position && normalize(position),'warning':context.options.position && handleWarning});}decoder.raw = decodeRaw;return decoder;} /**
+ * Factory to de-escape a value, based on a list at `key`
+ * in `scope`.
  *
  * @example
- *   decode('&amp;'); // '&'
- *   decode('&amp'); // '&'
+ *   var scope = {escape: ['a']}
+ *   var descape = descapeFactory(scope, 'escape');
  *
- * @param {string} value
- * @param {function(string)} eat
- * @return {string}
- * @throws {Error} - When `eat.file.quiet` is not `true`.
- *   However, by default `he` does not throw on incorrect
- *   encoded entities, but when
- *   `he.decode.options.strict: true`, they occur on
- *   entities with a missing closing semi-colon.
- */
-function decode(value, eat) {
-    try {
-        return he.decode(value);
-    } catch (exception) {
-        eat.file.fail(exception, eat.now());
-    }
-}
-
-/**
- * Factory to de-escape a value, based on an expression
- * at `key` in `scope`.
- *
- * @example
- *   var expressions = {escape: /\\(a)/}
- *   var descape = descapeFactory(expressions, 'escape');
- *
- * @param {Object} scope - Map of expressions.
- * @param {string} key - Key in `map` at which the
- *   non-global expression exists.
+ * @param {Object} scope - List of escapable characters.
+ * @param {string} key - Key in `map` at which the list
+ *   exists.
  * @return {function(string): string} - Function which
  *   takes a value and returns its unescaped version.
- */
-function descapeFactory(scope, key) {
-    var globalExpression;
-    var expression;
-
-    /**
-     * Private method to get a global expression
-     * from the expression at `key` in `scope`.
-     * This method is smart about not recreating
-     * the expressions every time.
-     *
-     * @private
-     * @return {RegExp}
-     */
-    function generate() {
-        if (scope[key] !== globalExpression) {
-            globalExpression = scope[key];
-            expression = new RegExp(scope[key].source.replace(CARET, EMPTY), 'g');
-        }
-
-        return expression;
-    }
-
-    /**
+ */function descapeFactory(scope,key){ /**
      * De-escape a string using the expression at `key`
      * in `scope`.
      *
      * @example
-     *   var expressions = {escape: /\\(a)/}
-     *   var descape = descapeFactory(expressions, 'escape');
-     *   descape('\a'); // 'a'
+     *   var scope = {escape: ['a']}
+     *   var descape = descapeFactory(scope, 'escape');
+     *   descape('\a \b'); // 'a \b'
      *
      * @param {string} value - Escaped string.
      * @return {string} - Unescaped string.
-     */
-    function descape(value) {
-        return value.replace(generate(), '$1');
-    }
-
-    return descape;
-}
-
-/*
- * Tab size.
- */
-
-var TAB_SIZE = 4;
-
-/*
- * Expressions.
- */
-
-var EXPRESSION_RIGHT_ALIGNMENT = /^[ \t]*-+:[ \t]*$/;
-var EXPRESSION_CENTER_ALIGNMENT = /^[ \t]*:-+:[ \t]*$/;
-var EXPRESSION_LEFT_ALIGNMENT = /^[ \t]*:-+[ \t]*$/;
-var EXPRESSION_TABLE_FENCE = /^[ \t]*|\|[ \t]*$/g;
-var EXPRESSION_TABLE_INITIAL = /^[ \t]*\|/g;
-var EXPRESSION_TABLE_CONTENT = /[ \t]*?((?:\\[\s\S]|[^\|])+?)([ \t]?\|[ \t]?\n?|\n?$)/g;
-var EXPRESSION_TABLE_BORDER = /[ \t]*\|[ \t]*/;
-var EXPRESSION_BLOCK_QUOTE = /^[ \t]*>[ \t]?/gm;
-var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t)([^\n]*)/;
-var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
-var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
-var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
-var EXPRESSION_HTML_LINK_OPEN = /^<a /i;
-var EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
-var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
-var EXPRESSION_TASK_ITEM = /^\[([\ \t]|x|X)\][\ \t]/;
-
-/*
- * A map of characters, and their column length,
- * which can be used as indentation.
- */
-
-var INDENTATION_CHARACTERS = {};
-
-INDENTATION_CHARACTERS[SPACE] = SPACE.length;
-INDENTATION_CHARACTERS[TAB] = TAB_SIZE;
-
-/**
+     */function descape(value){var prev=0;var index=value.indexOf(C_BACKSLASH);var escape=scope[key];var queue=[];var character;while(index !== -1) {queue.push(value.slice(prev,index));prev = index + 1;character = value.charAt(prev); /*
+             * If the following character is not a valid escape,
+             * add the slash.
+             */if(!character || escape.indexOf(character) === -1){queue.push(C_BACKSLASH);}index = value.indexOf(C_BACKSLASH,prev);}queue.push(value.slice(prev));return queue.join(EMPTY);}return descape;} /**
  * Gets indentation information for a line.
  *
  * @example
@@ -2472,36 +2615,8 @@ INDENTATION_CHARACTERS[TAB] = TAB_SIZE;
  *   // {indent: 6, stops: {4: 0, 5: 1, 6: 2}}
  *
  * @param {string} value - Indented line.
- * @return {Object}
- */
-function getIndent(value) {
-    var index = 0;
-    var indent = 0;
-    var character = value.charAt(index);
-    var stops = {};
-    var size;
-
-    while (character in INDENTATION_CHARACTERS) {
-        size = INDENTATION_CHARACTERS[character];
-
-        indent += size;
-
-        if (size > 1) {
-            indent = Math.floor(indent / size) * size;
-        }
-
-        stops[indent] = index;
-
-        character = value.charAt(++index);
-    }
-
-    return {
-        'indent': indent,
-        'stops': stops
-    };
-}
-
-/**
+ * @return {Object} - Indetation information.
+ */function getIndent(value){var index=0;var indent=0;var character=value.charAt(index);var stops={};var size;while(character in INDENTATION_CHARACTERS) {size = INDENTATION_CHARACTERS[character];indent += size;if(size > 1){indent = Math.floor(indent / size) * size;}stops[indent] = index;character = value.charAt(++index);}return {'indent':indent,'stops':stops};} /**
  * Remove the minimum indent from every line in `value`.
  * Supports both tab, spaced, and mixed indentation (as
  * well as possible).
@@ -2512,832 +2627,307 @@ function getIndent(value) {
  *   removeIndentation('\tfoo', 2); // '  foo'
  *   removeIndentation('  foo\n bar'); // ' foo\n bar'
  *
- * @param {string} value
+ * @param {string} value - Value to trim.
  * @param {number?} [maximum] - Maximum indentation
  *   to remove.
  * @return {string} - Unindented `value`.
- */
-function removeIndentation(value, maximum) {
-    var values = value.split(NEW_LINE);
-    var position = values.length + 1;
-    var minIndent = Infinity;
-    var matrix = [];
-    var index;
-    var indentation;
-    var stops;
-    var padding;
-
-    values.unshift(repeat(SPACE, maximum) + EXCLAMATION_MARK);
-
-    while (position--) {
-        indentation = getIndent(values[position]);
-
-        matrix[position] = indentation.stops;
-
-        if (trim(values[position]).length === 0) {
-            continue;
-        }
-
-        if (indentation.indent) {
-            if (indentation.indent > 0 && indentation.indent < minIndent) {
-                minIndent = indentation.indent;
-            }
-        } else {
-            minIndent = Infinity;
-
-            break;
-        }
-    }
-
-    if (minIndent !== Infinity) {
-        position = values.length;
-
-        while (position--) {
-            stops = matrix[position];
-            index = minIndent;
-
-            while (index && !(index in stops)) {
-                index--;
-            }
-
-            if (trim(values[position]).length !== 0 && minIndent && index !== minIndent) {
-                padding = TAB;
-            } else {
-                padding = EMPTY;
-            }
-
-            values[position] = padding + values[position].slice(index in stops ? stops[index] + 1 : 0);
-        }
-    }
-
-    values.shift();
-
-    return values.join(NEW_LINE);
-}
-
-/**
- * Ensure that `value` is at least indented with
- * `indent` spaces.  Does not support tabs. Does support
- * multiple lines.
- *
- * @example
- *   ensureIndentation('foo', 2); // '  foo'
- *   ensureIndentation('  foo', 4); // '    foo'
- *
- * @param {string} value
- * @param {number} indent - The maximum amount of
- *   spacing to insert.
- * @return {string} - indented `value`.
- */
-function ensureIndentation(value, indent) {
-    var values = value.split(NEW_LINE);
-    var length = values.length;
-    var index = -1;
-    var line;
-    var position;
-
-    while (++index < length) {
-        line = values[index];
-
-        position = -1;
-
-        while (++position < indent) {
-            if (line.charAt(position) !== SPACE) {
-                values[index] = repeat(SPACE, indent - position) + line;
-                break;
-            }
-        }
-    }
-
-    return values.join(NEW_LINE);
-}
-
-/**
- * Get the alignment from a table rule.
- *
- * @example
- *   getAlignment([':-', ':-:', '-:', '--']);
- *   // ['left', 'center', 'right', null];
- *
- * @param {Array.<string>} cells
- * @return {Array.<string?>}
- */
-function getAlignment(cells) {
-    var results = [];
-    var index = -1;
-    var length = cells.length;
-    var alignment;
-
-    while (++index < length) {
-        alignment = cells[index];
-
-        if (EXPRESSION_RIGHT_ALIGNMENT.test(alignment)) {
-            results[index] = 'right';
-        } else if (EXPRESSION_CENTER_ALIGNMENT.test(alignment)) {
-            results[index] = 'center';
-        } else if (EXPRESSION_LEFT_ALIGNMENT.test(alignment)) {
-            results[index] = 'left';
-        } else {
-            results[index] = null;
-        }
-    }
-
-    return results;
-}
-
-/**
- * Construct a state `toggler`: a function which inverses
- * `property` in context based on its current value.
- * The by `toggler` returned function restores that value.
- *
- * @example
- *   var context = {};
- *   var key = 'foo';
- *   var val = true;
- *   context[key] = val;
- *   context.enter = stateToggler(key, val);
- *   context[key]; // true
- *   var exit = context.enter();
- *   context[key]; // false
- *   var nested = context.enter();
- *   context[key]; // false
- *   nested();
- *   context[key]; // false
- *   exit();
- *   context[key]; // true
- *
- * @param {string} key - Property to toggle.
- * @param {boolean} state - It's default state.
- * @return {function(): function()} - Enter.
- */
-function stateToggler(key, state) {
-    /**
-     * Construct a toggler for the bound `key`.
-     *
-     * @return {Function} - Exit state.
-     */
-    function enter() {
-        var self = this;
-        var current = self[key];
-
-        self[key] = !state;
-
-        /**
-         * State canceler, cancels the state, if allowed.
-         */
-        function exit() {
-            self[key] = current;
-        }
-
-        return exit;
-    }
-
-    return enter;
-}
-
-/**
- * Construct a state toggler which doesn't toggle.
- *
- * @example
- *   var context = {};
- *   var key = 'foo';
- *   var val = true;
- *   context[key] = val;
- *   context.enter = noopToggler();
- *   context[key]; // true
- *   var exit = context.enter();
- *   context[key]; // true
- *   exit();
- *   context[key]; // true
- *
- * @return {function(): function()} - Enter.
- */
-function noopToggler() {
-    /**
-     * No-operation.
-     */
-    function exit() {}
-
-    /**
-     * @return {Function}
-     */
-    function enter() {
-        return exit;
-    }
-
-    return enter;
-}
-
-/*
- * Define nodes of a type which can be merged.
- */
-
-var MERGEABLE_NODES = {};
-
-/**
- * Merge two text nodes: `node` into `prev`.
- *
- * @param {Object} prev - Preceding sibling.
- * @param {Object} node - Following sibling.
- * @return {Object} - `prev`.
- */
-MERGEABLE_NODES.text = function (prev, node) {
-    prev.value += node.value;
-
-    return prev;
-};
-
-/**
- * Merge two blockquotes: `node` into `prev`, unless in
- * CommonMark mode.
- *
- * @param {Object} prev - Preceding sibling.
- * @param {Object} node - Following sibling.
- * @return {Object} - `prev`, or `node` in CommonMark mode.
- */
-MERGEABLE_NODES.blockquote = function (prev, node) {
-    if (this.options.commonmark) {
-        return node;
-    }
-
-    prev.children = prev.children.concat(node.children);
-
-    return prev;
-};
-
-/**
- * Merge two lists: `node` into `prev`. Knows, about
- * which bullets were used.
- *
- * @param {Object} prev - Preceding sibling.
- * @param {Object} node - Following sibling.
- * @return {Object} - `prev`, or `node` when the lists are
- *   of different types (a different bullet is used).
- */
-MERGEABLE_NODES.list = function (prev, node) {
-    if (!this.currentBullet || this.currentBullet !== this.previousBullet || this.currentBullet.length !== 1) {
-        return node;
-    }
-
-    prev.children = prev.children.concat(node.children);
-
-    return prev;
-};
-
-/**
- * Tokenise a line.  Unsets `currentBullet` and
- * `previousBullet` if more than one lines are found, thus
- * preventing lists from merging when they use different
- * bullets.
+ */function removeIndentation(value,maximum){var values=value.split(C_NEWLINE);var position=values.length + 1;var minIndent=Infinity;var matrix=[];var index;var indentation;var stops;var padding;values.unshift(repeat(C_SPACE,maximum) + C_EXCLAMATION_MARK);while(position--) {indentation = getIndent(values[position]);matrix[position] = indentation.stops;if(trim(values[position]).length === 0){continue;}if(indentation.indent){if(indentation.indent > 0 && indentation.indent < minIndent){minIndent = indentation.indent;}}else {minIndent = Infinity;break;}}if(minIndent !== Infinity){position = values.length;while(position--) {stops = matrix[position];index = minIndent;while(index && !(index in stops)) {index--;}if(trim(values[position]).length !== 0 && minIndent && index !== minIndent){padding = C_TAB;}else {padding = EMPTY;}values[position] = padding + values[position].slice(index in stops?stops[index] + 1:0);}}values.shift();return values.join(C_NEWLINE);} /**
+ * Tokenise a line.
  *
  * @example
  *   tokenizeNewline(eat, '\n\n');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Lines.
- */
-function tokenizeNewline(eat, $0) {
-    if ($0.length > 1) {
-        this.currentBullet = null;
-        this.previousBullet = null;
-    }
-
-    eat($0);
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {boolean?} - `true` when matching.
+ */function tokenizeNewline(eat,value,silent){var character=value.charAt(0);var length;var subvalue;var queue;var index;if(character !== C_NEWLINE){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}index = 1;length = value.length;subvalue = C_NEWLINE;queue = EMPTY;while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}queue += character;if(character === C_NEWLINE){subvalue += queue;queue = EMPTY;}index++;}eat(subvalue);} /**
  * Tokenise an indented code block.
  *
  * @example
  *   tokenizeCode(eat, '\tfoo');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole code.
- * @return {Node} - `code` node.
- */
-function tokenizeCode(eat, $0) {
-    $0 = trimTrailingLines($0);
-
-    return eat($0)(this.renderCodeBlock(removeIndentation($0, TAB_SIZE), null, eat));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `code` node.
+ */function tokenizeCode(eat,value,silent){var self=this;var index=-1;var length=value.length;var character;var subvalue=EMPTY;var content=EMPTY;var subvalueQueue=EMPTY;var contentQueue=EMPTY;var blankQueue;var indent;while(++index < length) {character = value.charAt(index);if(indent){indent = false;subvalue += subvalueQueue;content += contentQueue;subvalueQueue = contentQueue = EMPTY;if(character === C_NEWLINE){subvalueQueue = contentQueue = character;}else {subvalue += character;content += character;while(++index < length) {character = value.charAt(index);if(!character || character === C_NEWLINE){contentQueue = subvalueQueue = character;break;}subvalue += character;content += character;}}}else if(character === C_SPACE && value.charAt(index + 1) === C_SPACE && value.charAt(index + 2) === C_SPACE && value.charAt(index + 3) === C_SPACE){subvalueQueue += CODE_INDENT;index += 3;indent = true;}else if(character === C_TAB){subvalueQueue += character;indent = true;}else {blankQueue = EMPTY;while(character === C_TAB || character === C_SPACE) {blankQueue += character;character = value.charAt(++index);}if(character !== C_NEWLINE){break;}subvalueQueue += blankQueue + character;contentQueue += character;}}if(content){if(silent){return true;}return eat(subvalue)(self.renderCodeBlock(content));}} /**
  * Tokenise a fenced code block.
  *
  * @example
- *   var $0 = '```js\nfoo()\n```';
- *   tokenizeFences(eat, $0, '', '```', '`', 'js', 'foo()\n');
+ *   tokenizeFences(eat, '```js\nfoo()\n```');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole code.
- * @param {string} $1 - Initial spacing.
- * @param {string} $2 - Initial fence.
- * @param {string} $3 - Fence marker.
- * @param {string} $4 - Programming language flag.
- * @param {string} $5 - Content.
- * @return {Node} - `code` node.
- */
-function tokenizeFences(eat, $0, $1, $2, $3, $4, $5) {
-    $0 = trimTrailingLines($0);
-
-    /*
-     * If the initial fence was preceded by spaces,
-     * exdent that amount of white space from the code
-     * block.  Because it's possible that the code block
-     * is exdented, we first have to ensure at least
-     * those spaces are available.
-     */
-
-    if ($1) {
-        $5 = removeIndentation(ensureIndentation($5, $1.length), $1.length);
-    }
-
-    return eat($0)(this.renderCodeBlock($5, $4, eat));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `code` node.
+ */function tokenizeFences(eat,value,silent){var self=this;var settings=self.options;var length=value.length + 1;var index=0;var subvalue=EMPTY;var fenceCount;var marker;var character;var flag;var queue;var content;var exdentedContent;var closing;var exdentedClosing;var indent;var now;if(!settings.gfm){return;} /*
+     * Eat initial spacing.
+     */while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}subvalue += character;index++;}indent = index; // TODO: CHECK.
+/*
+     * Eat the fence.
+     */character = value.charAt(index);if(character !== C_TILDE && character !== C_TICK){return;}index++;marker = character;fenceCount = 1;subvalue += character;while(index < length) {character = value.charAt(index);if(character !== marker){break;}subvalue += character;fenceCount++;index++;}if(fenceCount < MIN_FENCE_COUNT){return;} /*
+     * Eat spacing before flag.
+     */while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}subvalue += character;index++;} /*
+     * Eat flag.
+     */flag = queue = EMPTY;while(index < length) {character = value.charAt(index);if(character === C_NEWLINE || character === C_TILDE || character === C_TICK){break;}if(character === C_SPACE || character === C_TAB){queue += character;}else {flag += queue + character;queue = EMPTY;}index++;}character = value.charAt(index);if(character && character !== C_NEWLINE){return;}if(silent){return true;}now = eat.now();now.column += subvalue.length;subvalue += flag;flag = self.decode.raw(self.descape(flag),now);if(queue){subvalue += queue;}queue = closing = exdentedClosing = content = exdentedContent = EMPTY; /*
+     * Eat content.
+     */while(index < length) {character = value.charAt(index);content += closing;exdentedContent += exdentedClosing;closing = exdentedClosing = EMPTY;if(character !== C_NEWLINE){content += character;exdentedClosing += character;index++;continue;} /*
+         * Add the newline to `subvalue` if its the first
+         * character. Otherwise, add it to the `closing`
+         * queue.
+         */if(!content){subvalue += character;}else {closing += character;exdentedClosing += character;}queue = EMPTY;index++;while(index < length) {character = value.charAt(index);if(character !== C_SPACE){break;}queue += character;index++;}closing += queue;exdentedClosing += queue.slice(indent);if(queue.length >= CODE_INDENT_LENGTH){continue;}queue = EMPTY;while(index < length) {character = value.charAt(index);if(character !== marker){break;}queue += character;index++;}closing += queue;exdentedClosing += queue;if(queue.length < fenceCount){continue;}queue = EMPTY;while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}closing += character;exdentedClosing += character;index++;}if(!character || character === C_NEWLINE){break;}}subvalue += content + closing;return eat(subvalue)(self.renderCodeBlock(exdentedContent,flag));} /**
  * Tokenise an ATX-style heading.
  *
  * @example
- *   tokenizeHeading(eat, ' # foo', ' ', '#', ' ', 'foo');
+ *   tokenizeHeading(eat, ' # foo');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole heading.
- * @param {string} $1 - Initial spacing.
- * @param {string} $2 - Hashes.
- * @param {string} $3 - Internal spacing.
- * @param {string} $4 - Content.
- * @return {Node} - `heading` node.
- */
-function tokenizeHeading(eat, $0, $1, $2, $3, $4) {
-    var now = eat.now();
-
-    now.column += ($1 + $2 + ($3 || '')).length;
-
-    return eat($0)(this.renderHeading($4, $2.length, now));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `heading` node.
+ */function tokenizeHeading(eat,value,silent){var self=this;var settings=self.options;var length=value.length + 1;var index=-1;var now=eat.now();var subvalue=EMPTY;var content=EMPTY;var character;var queue;var depth; /*
+     * Eat initial spacing.
+     */while(++index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){index--;break;}subvalue += character;} /*
+     * Eat hashes.
+     */depth = 0;length = index + MAX_ATX_COUNT + 1;while(++index <= length) {character = value.charAt(index);if(character !== C_HASH){index--;break;}subvalue += character;depth++;}if(!depth || !settings.pedantic && value.charAt(index + 1) === C_HASH){return;}length = value.length + 1; /*
+     * Eat intermediate white-space.
+     */queue = EMPTY;while(++index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){index--;break;}queue += character;} /*
+     * Exit when not in pedantic mode without spacing.
+     */if(!settings.pedantic && !queue.length && character && character !== C_NEWLINE){return;}if(silent){return true;} /*
+     * Eat content.
+     */subvalue += queue;queue = content = EMPTY;while(++index < length) {character = value.charAt(index);if(!character || character === C_NEWLINE){break;}if(character !== C_SPACE && character !== C_TAB && character !== C_HASH){content += queue + character;queue = EMPTY;continue;}while(character === C_SPACE || character === C_TAB) {queue += character;character = value.charAt(++index);}while(character === C_HASH) {queue += character;character = value.charAt(++index);}while(character === C_SPACE || character === C_TAB) {queue += character;character = value.charAt(++index);}index--;}now.column += subvalue.length;subvalue += content + queue;return eat(subvalue)(self.renderHeading(content,depth,now));} /**
  * Tokenise a Setext-style heading.
  *
  * @example
- *   tokenizeLineHeading(eat, 'foo\n===', '', 'foo', '=');
+ *   tokenizeLineHeading(eat, 'foo\n===');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole heading.
- * @param {string} $1 - Initial spacing.
- * @param {string} $2 - Content.
- * @param {string} $3 - Underline marker.
- * @return {Node} - `heading` node.
- */
-function tokenizeLineHeading(eat, $0, $1, $2, $3) {
-    var now = eat.now();
-
-    now.column += $1.length;
-
-    return eat($0)(this.renderHeading($2, $3 === EQUALS ? 1 : 2, now));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `heading` node.
+ */function tokenizeLineHeading(eat,value,silent){var self=this;var now=eat.now();var length=value.length;var index=-1;var subvalue=EMPTY;var content;var queue;var character;var marker;var depth; /*
+     * Eat initial indentation.
+     */while(++index < length) {character = value.charAt(index);if(character !== C_SPACE || index >= MAX_LINE_HEADING_INDENT){index--;break;}subvalue += character;} /*
+     * Eat content.
+     */content = queue = EMPTY;while(++index < length) {character = value.charAt(index);if(character === C_NEWLINE){index--;break;}if(character === C_SPACE || character === C_TAB){queue += character;}else {content += queue + character;queue = EMPTY;}}now.column += subvalue.length;subvalue += content + queue; /*
+     * Ensure the content is followed by a newline and a
+     * valid marker.
+     */character = value.charAt(++index);marker = value.charAt(++index);if(character !== C_NEWLINE || !SETEXT_MARKERS[marker]){return;}if(silent){return true;}subvalue += character; /*
+     * Eat Setext-line.
+     */queue = marker;depth = SETEXT_MARKERS[marker];while(++index < length) {character = value.charAt(index);if(character !== marker){if(character !== C_NEWLINE){return;}index--;break;}queue += character;}return eat(subvalue + queue)(self.renderHeading(content,depth,now));} /**
  * Tokenise a horizontal rule.
  *
  * @example
  *   tokenizeHorizontalRule(eat, '***');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole rule.
- * @return {Node} - `horizontalRule` node.
- */
-function tokenizeHorizontalRule(eat, $0) {
-    return eat($0)(this.renderVoid(HORIZONTAL_RULE));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `horizontalRule` node.
+ */function tokenizeHorizontalRule(eat,value,silent){var self=this;var index=-1;var length=value.length + 1;var subvalue=EMPTY;var character;var marker;var markerCount;var queue;while(++index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE){break;}subvalue += character;}if(RULE_MARKERS[character] !== true){return;}marker = character;subvalue += character;markerCount = 1;queue = EMPTY;while(++index < length) {character = value.charAt(index);if(character === marker){markerCount++;subvalue += queue + marker;queue = EMPTY;}else if(character === C_SPACE){queue += character;}else if(markerCount >= HORIZONTAL_RULE_MARKER_COUNT && (!character || character === C_NEWLINE)){subvalue += queue;if(silent){return true;}return eat(subvalue)(self.renderVoid(T_HORIZONTAL_RULE));}else {return;}}} /**
  * Tokenise a blockquote.
  *
  * @example
  *   tokenizeBlockquote(eat, '> Foo');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole blockquote.
- * @return {Node} - `blockquote` node.
- */
-function tokenizeBlockquote(eat, $0) {
-    var now = eat.now();
-    var indent = this.indent(now.line);
-    var value = trimTrailingLines($0);
-    var add = eat(value);
-
-    value = value.replace(EXPRESSION_BLOCK_QUOTE, function (prefix) {
-        indent(prefix.length);
-
-        return '';
-    });
-
-    return add(this.renderBlockquote(value, now));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `blockquote` node.
+ */function tokenizeBlockquote(eat,value,silent){var self=this;var commonmark=self.options.commonmark;var now=eat.now();var indent=self.indent(now.line);var length=value.length;var values=[];var contents=[];var indents=[];var add;var tokenizers;var index=0;var character;var rest;var nextIndex;var content;var line;var startIndex;var prefixed;while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}index++;}if(value.charAt(index) !== C_GT){return;}if(silent){return true;}tokenizers = self.blockTokenizers;index = 0;while(index < length) {nextIndex = value.indexOf(C_NEWLINE,index);startIndex = index;prefixed = false;if(nextIndex === -1){nextIndex = length;}while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}index++;}if(value.charAt(index) === C_GT){index++;prefixed = true;if(value.charAt(index) === C_SPACE){index++;}}else {index = startIndex;}content = value.slice(index,nextIndex);if(!prefixed && !trim(content)){index = startIndex;break;}if(!prefixed){rest = value.slice(index);if(commonmark && (tokenizers.code.call(self,eat,rest,true) || tokenizers.fences.call(self,eat,rest,true) || tokenizers.heading.call(self,eat,rest,true) || tokenizers.lineHeading.call(self,eat,rest,true) || tokenizers.horizontalRule.call(self,eat,rest,true) || tokenizers.html.call(self,eat,rest,true) || tokenizers.list.call(self,eat,rest,true))){break;}if(!commonmark && (tokenizers.definition.call(self,eat,rest,true) || tokenizers.footnoteDefinition.call(self,eat,rest,true))){break;}}line = startIndex === index?content:value.slice(startIndex,nextIndex);indents.push(index - startIndex);values.push(line);contents.push(content);index = nextIndex + 1;}index = -1;length = indents.length;add = eat(values.join(C_NEWLINE));while(++index < length) {indent(indents[index]);}return add(self.renderBlockquote(contents.join(C_NEWLINE),now));} /**
  * Tokenise a list.
  *
  * @example
- *   tokenizeList(eat, '- Foo', '', '-');
+ *   tokenizeList(eat, '- Foo');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole list.
- * @param {string} $1 - Indent.
- * @param {string} $2 - Bullet.
- * @return {Node} - `list` node.
- */
-function tokenizeList(eat, $0, $1, $2) {
-    var self = this;
-    var firstBullet = $2;
-    var value = trimTrailingLines($0);
-    var matches = value.match(self.rules.item);
-    var length = matches.length;
-    var index = 0;
-    var isLoose = false;
-    var now;
-    var bullet;
-    var item;
-    var enterTop;
-    var exitBlockquote;
-    var node;
-    var indent;
-    var size;
-    var position;
-    var end;
-
-    /*
-     * Determine if all list-items belong to the
-     * same list.
-     */
-
-    if (!self.options.pedantic) {
-        while (++index < length) {
-            bullet = self.rules.bullet.exec(matches[index])[0];
-
-            if (firstBullet !== bullet && (firstBullet.length === 1 && bullet.length === 1 || bullet.charAt(bullet.length - 1) !== firstBullet.charAt(firstBullet.length - 1))) {
-                matches = matches.slice(0, index);
-                matches[index - 1] = trimTrailingLines(matches[index - 1]);
-
-                length = matches.length;
-
-                break;
-            }
-        }
-    }
-
-    if (self.options.commonmark) {
-        index = -1;
-
-        while (++index < length) {
-            item = matches[index];
-            indent = self.rules.indent.exec(item);
-            indent = indent[1] + repeat(SPACE, indent[2].length) + indent[3];
-            size = getIndent(indent).indent;
-            position = indent.length;
-            end = item.length;
-
-            while (++position < end) {
-                if (item.charAt(position) === NEW_LINE && item.charAt(position - 1) === NEW_LINE && getIndent(item.slice(position + 1)).indent < size) {
-                    matches[index] = item.slice(0, position - 1);
-
-                    matches = matches.slice(0, index + 1);
-                    length = matches.length;
-
-                    break;
-                }
-            }
-        }
-    }
-
-    self.previousBullet = self.currentBullet;
-    self.currentBullet = firstBullet;
-
-    index = -1;
-
-    node = eat(matches.join(NEW_LINE)).reset(self.renderList([], firstBullet));
-
-    enterTop = self.exitTop();
-    exitBlockquote = self.enterBlockquote();
-
-    while (++index < length) {
-        item = matches[index];
-        now = eat.now();
-
-        item = eat(item)(self.renderListItem(item, now), node);
-
-        if (item.loose) {
-            isLoose = true;
-        }
-
-        if (index !== length - 1) {
-            eat(NEW_LINE);
-        }
-    }
-
-    node.loose = isLoose;
-
-    enterTop();
-    exitBlockquote();
-
-    return node;
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `list` node.
+ */function tokenizeList(eat,value,silent){var self=this;var commonmark=self.options.commonmark;var pedantic=self.options.pedantic;var tokenizers=self.blockTokenizers;var markers;var index=0;var length=value.length;var start=null;var queue;var ordered;var character;var marker;var nextIndex;var startIndex;var prefixed;var currentMarker;var content;var line;var prevEmpty;var empty;var items;var allLines;var emptyLines;var item;var enterTop;var exitBlockquote;var isLoose;var node;var now;var end;var indented;var size;while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}index++;}character = value.charAt(index);markers = commonmark?LIST_ORDERED_COMMONMARK_MARKERS:LIST_ORDERED_MARKERS;if(LIST_UNORDERED_MARKERS[character] === true){marker = character;ordered = false;}else {ordered = true;queue = EMPTY;while(index < length) {character = value.charAt(index);if(!isNumeric(character)){break;}queue += character;index++;}character = value.charAt(index);if(!queue || markers[character] !== true){return;}start = parseInt(queue,10);marker = character;}character = value.charAt(++index);if(character !== C_SPACE && character !== C_TAB){return;}if(silent){return true;}index = 0;items = [];allLines = [];emptyLines = [];while(index < length) {nextIndex = value.indexOf(C_NEWLINE,index);startIndex = index;prefixed = false;indented = false;if(nextIndex === -1){nextIndex = length;}end = index + TAB_SIZE;size = 0;while(index < length) {character = value.charAt(index);if(character === C_TAB){size += TAB_SIZE - size % TAB_SIZE;}else if(character === C_SPACE){size++;}else {break;}index++;}if(size >= TAB_SIZE){indented = true;}if(item && size >= item.indent){indented = true;}character = value.charAt(index);currentMarker = null;if(!indented){if(LIST_UNORDERED_MARKERS[character] === true){currentMarker = character;index++;size++;}else {queue = EMPTY;while(index < length) {character = value.charAt(index);if(!isNumeric(character)){break;}queue += character;index++;}character = value.charAt(index);index++;if(queue && markers[character] === true){currentMarker = character;size += queue.length + 1;}}if(currentMarker){character = value.charAt(index);if(character === C_TAB){size += TAB_SIZE - size % TAB_SIZE;index++;}else if(character === C_SPACE){end = index + TAB_SIZE;while(index < end) {if(value.charAt(index) !== C_SPACE){break;}index++;size++;}if(index === end && value.charAt(index) === C_SPACE){index -= TAB_SIZE - 1;size -= TAB_SIZE - 1;}}else {currentMarker = null;}}}if(currentMarker){if(commonmark && marker !== currentMarker){break;}prefixed = true;}else {if(!commonmark && !indented && value.charAt(startIndex) === C_SPACE){indented = true;}else if(commonmark && item){indented = size >= item.indent || size > TAB_SIZE;}prefixed = false;index = startIndex;}line = value.slice(startIndex,nextIndex);content = startIndex === index?line:value.slice(index,nextIndex);if(currentMarker && RULE_MARKERS[currentMarker] === true){if(tokenizers.horizontalRule.call(self,eat,line,true)){break;}}prevEmpty = empty;empty = !trim(content).length;if(indented && item){item.value = item.value.concat(emptyLines,line);allLines = allLines.concat(emptyLines,line);emptyLines = [];}else if(prefixed){if(emptyLines.length){item.value.push(EMPTY);item.trail = emptyLines.concat();}item = { // 'bullet': value.slice(startIndex, index),
+'value':[line],'indent':size,'trail':[]};items.push(item);allLines = allLines.concat(emptyLines,line);emptyLines = [];}else if(empty){ // TODO: disable when in pedantic-mode.
+if(prevEmpty){break;}emptyLines.push(line);}else {if(prevEmpty){break;}if(!pedantic && tokenizers.horizontalRule.call(self,eat,line,true)){break;}if(!commonmark){if(tokenizers.definition.call(self,eat,line,true) || tokenizers.footnoteDefinition.call(self,eat,line,true)){break;}}item.value = item.value.concat(emptyLines,line);allLines = allLines.concat(emptyLines,line);emptyLines = [];}index = nextIndex + 1;}node = eat(allLines.join(C_NEWLINE)).reset({'type':T_LIST,'ordered':ordered,'start':start,'loose':null,'children':[]});enterTop = self.exitTop();exitBlockquote = self.enterBlockquote();isLoose = false;index = -1;length = items.length;while(++index < length) {item = items[index].value.join(C_NEWLINE);now = eat.now();item = eat(item)(self.renderListItem(item,now),node);if(item.loose){isLoose = true;}item = items[index].trail.join(C_NEWLINE);if(index !== length - 1){item += C_NEWLINE;}eat(item);}enterTop();exitBlockquote();node.loose = isLoose;return node;} /**
+ * Try to match comment.
+ *
+ * @param {string} value - Value to parse.
+ * @param {Object} settings - Configuration as available on
+ *   a parser.
+ * @return {string?} - When applicable, the comment at the
+ *   start of `value`.
+ */function eatHTMLComment(value,settings){var index=COMMENT_START_LENGTH;var queue=COMMENT_START;var length=value.length;var commonmark=settings.commonmark;var character;var hasNonDash;if(value.slice(0,index) === queue){while(index < length) {character = value.charAt(index);if(character === COMMENT_END_CHAR && value.slice(index,index + COMMENT_END_LENGTH) === COMMENT_END){return queue + COMMENT_END;}if(commonmark){if(character === C_GT && !hasNonDash){return;}if(character === C_DASH){if(value.charAt(index + 1) === C_DASH){return;}}else {hasNonDash = true;}}queue += character;index++;}}} /**
+ * Try to match CDATA.
+ *
+ * @param {string} value - Value to parse.
+ * @return {string?} - When applicable, the CDATA at the
+ *   start of `value`.
+ */function eatHTMLCDATA(value){var index=CDATA_START_LENGTH;var queue=value.slice(0,index);var length=value.length;var character;if(queue.toUpperCase() === CDATA_START){while(index < length) {character = value.charAt(index);if(character === CDATA_END_CHAR && value.slice(index,index + CDATA_END_LENGTH) === CDATA_END){return queue + CDATA_END;}queue += character;index++;}}} /**
+ * Try to match a processing instruction.
+ *
+ * @param {string} value - Value to parse.
+ * @return {string?} - When applicable, the processing
+ *   instruction at the start of `value`.
+ */function eatHTMLProcessingInstruction(value){var index=0;var queue=EMPTY;var length=value.length;var character;if(value.charAt(index) === C_LT && value.charAt(++index) === C_QUESTION_MARK){queue = C_LT + C_QUESTION_MARK;index++;while(index < length) {character = value.charAt(index);if(character === C_QUESTION_MARK && value.charAt(index + 1) === C_GT){return queue + character + C_GT;}queue += character;index++;}}} /**
+ * Try to match a declaration.
+ *
+ * @param {string} value - Value to parse.
+ * @return {string?} - When applicable, the declaration at
+ *   the start of `value`.
+ */function eatHTMLDeclaration(value){var index=0;var length=value.length;var queue=EMPTY;var subqueue=EMPTY;var character;if(value.charAt(index) === C_LT && value.charAt(++index) === C_EXCLAMATION_MARK){queue = C_LT + C_EXCLAMATION_MARK;index++; /*
+         * Eat as many alphabetic characters as
+         * possible.
+         */while(index < length) {character = value.charAt(index);if(!isAlphabetic(character)){break;}subqueue += character;index++;}character = value.charAt(index);if(!subqueue || !isWhiteSpace(character)){return;}queue += subqueue + character;index++;while(index < length) {character = value.charAt(index);if(character === C_GT){return queue;}queue += character;index++;}}} /**
+ * Try to match a closing tag.
+ *
+ * @param {string} value - Value to parse.
+ * @param {boolean?} [isBlock] - Whether the tag-name
+ *   must be a known block-level node to match.
+ * @return {string?} - When applicable, the closing tag at
+ *   the start of `value`.
+ */function eatHTMLClosingTag(value,isBlock){var index=0;var length=value.length;var queue=EMPTY;var subqueue=EMPTY;var character;if(value.charAt(index) === C_LT && value.charAt(++index) === C_SLASH){queue = C_LT + C_SLASH;subqueue = character = value.charAt(++index);if(!isAlphabetic(character)){return;}index++; /*
+         * Eat as many alphabetic characters as
+         * possible.
+         */while(index < length) {character = value.charAt(index);if(!isAlphabetic(character) && !isNumeric(character)){break;}subqueue += character;index++;}if(isBlock && blockElements.indexOf(subqueue.toLowerCase()) === -1){return;}queue += subqueue; /*
+         * Eat white-space.
+         */while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}queue += character;index++;}if(value.charAt(index) === C_GT){return queue + C_GT;}}} /**
+ * Try to match an opening tag.
+ *
+ * @param {string} value - Value to parse.
+ * @param {boolean?} [isBlock] - Whether the tag-name
+ *   must be a known block-level node to match.
+ * @return {string?} - When applicable, the opening tag at
+ *   the start of `value`.
+ */function eatHTMLOpeningTag(value,isBlock){var index=0;var length=value.length;var queue=EMPTY;var subqueue=EMPTY;var character=value.charAt(index);var hasEquals;var test;if(character === C_LT){queue = character;subqueue = character = value.charAt(++index);if(!isAlphabetic(character)){return;}index++; /*
+         * Eat as many alphabetic characters as
+         * possible.
+         */while(index < length) {character = value.charAt(index);if(!isAlphabetic(character) && !isNumeric(character)){break;}subqueue += character;index++;}if(isBlock && blockElements.indexOf(subqueue.toLowerCase()) === -1){return;}queue += subqueue;subqueue = EMPTY; /*
+         * Find attributes.
+         */while(index < length) { /*
+             * Eat white-space.
+             */while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}subqueue += character;index++;}if(!subqueue){break;} /*
+             * Eat an attribute name.
+             */queue += subqueue;subqueue = EMPTY;character = value.charAt(index);if(isAlphabetic(character) || character === C_UNDERSCORE || character === C_COLON){subqueue = character;index++;while(index < length) {character = value.charAt(index);if(!isAlphabetic(character) && !isNumeric(character) && character !== C_UNDERSCORE && character !== C_COLON && character !== C_DOT && character !== C_DASH){break;}subqueue += character;index++;}}if(!subqueue){break;}queue += subqueue;subqueue = EMPTY;hasEquals = false; /*
+             * Eat zero or more white-space and one
+             * equals sign.
+             */while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){if(!hasEquals && character === C_EQUALS){hasEquals = true;}else {break;}}subqueue += character;index++;}queue += subqueue;subqueue = EMPTY;if(!hasEquals){queue += subqueue;}else {character = value.charAt(index);queue += subqueue;if(character === C_DOUBLE_QUOTE){test = isDoubleQuotedAttributeCharacter;subqueue = character;index++;}else if(character === C_SINGLE_QUOTE){test = isSingleQuotedAttributeCharacter;subqueue = character;index++;}else {test = isUnquotedAttributeCharacter;subqueue = EMPTY;}while(index < length) {character = value.charAt(index);if(!test(character)){break;}subqueue += character;index++;}character = value.charAt(index);index++;if(!test.delimiter){if(!subqueue.length){return;}index--;}else if(character === test.delimiter){subqueue += character;}else {return;}queue += subqueue;subqueue = EMPTY;}} /*
+         * More white-space is already eaten by the
+         * attributes subroutine.
+         */character = value.charAt(index); /*
+         * Eat an optional backslash (for self-closing
+         * tags).
+         */if(character === C_SLASH){queue += character;character = value.charAt(++index);}return character === C_GT?queue + character:null;}} /**
  * Tokenise HTML.
  *
  * @example
- *   tokenizeHtml(eat, '<span>foo</span>');
+ *   tokenizeHTML(eat, '<span>foo</span>');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole HTML.
- * @return {Node} - `html` node.
- */
-function tokenizeHtml(eat, $0) {
-    $0 = trimTrailingLines($0);
-
-    return eat($0)(this.renderRaw(HTML, $0));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `html` node.
+ */function tokenizeHTML(eat,value,silent){var self=this;var index=0;var length=value.length;var subvalue=EMPTY;var offset;var lineCount;var character;var queue; /*
+     * Eat initial spacing.
+     */while(index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE){break;}subvalue += character;index++;}offset = index;value = value.slice(offset); /*
+     * Try to eat an HTML thing.
+     */queue = eatHTMLComment(value,self.options) || eatHTMLCDATA(value) || eatHTMLProcessingInstruction(value) || eatHTMLDeclaration(value) || eatHTMLClosingTag(value,true) || eatHTMLOpeningTag(value,true);if(!queue){return;}if(silent){return true;}subvalue += queue;index = subvalue.length - offset;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character === C_NEWLINE){queue += character;lineCount++;}else if(queue.length < MIN_CLOSING_HTML_NEWLINE_COUNT){subvalue += queue + character;queue = EMPTY;}else {break;}index++;}return eat(subvalue)(self.renderRaw(T_HTML,subvalue));} /**
  * Tokenise a definition.
  *
  * @example
- *   var $0 = '[foo]: http://example.com "Example Domain"';
- *   var $1 = 'foo';
- *   var $2 = 'http://example.com';
- *   var $3 = 'Example Domain';
- *   tokenizeDefinition(eat, $0, $1, $2, $3);
+ *   var value = '[foo]: http://example.com "Example Domain"';
+ *   tokenizeDefinition(eat, value);
  *
  * @property {boolean} onlyAtTop
  * @property {boolean} notInBlockquote
- * @param {function(string)} eat
- * @param {string} $0 - Whole definition.
- * @param {string} $1 - Key.
- * @param {string} $2 - URL.
- * @param {string} $3 - Title.
- * @return {Node} - `definition` node.
- */
-function tokenizeDefinition(eat, $0, $1, $2, $3) {
-    var link = $2;
-
-    /*
-     * Remove angle-brackets from `link`.
-     */
-
-    if (link.charAt(0) === LT && link.charAt(link.length - 1) === GT) {
-        link = link.slice(1, -1);
-    }
-
-    return eat($0)({
-        'type': 'definition',
-        'identifier': normalize($1),
-        'title': $3 ? decode(this.descape($3), eat) : null,
-        'link': decode(this.descape(link), eat)
-    });
-}
-
-tokenizeDefinition.onlyAtTop = true;
-tokenizeDefinition.notInBlockquote = true;
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `definition` node.
+ */function tokenizeDefinition(eat,value,silent){var self=this;var commonmark=self.options.commonmark;var index=0;var length=value.length;var subvalue=EMPTY;var beforeURL;var beforeTitle;var queue;var character;var test;var identifier;var url;var title;while(index < length) {character = value.charAt(index);if(character !== C_SPACE && character !== C_TAB){break;}subvalue += character;index++;}character = value.charAt(index);if(character !== C_BRACKET_OPEN){return;}index++;subvalue += character;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character === C_BRACKET_CLOSE){break;}else if(character === C_BACKSLASH){queue += character;index++;character = value.charAt(index);}queue += character;index++;}if(!queue || value.charAt(index) !== C_BRACKET_CLOSE || value.charAt(index + 1) !== C_COLON){return;}identifier = queue;subvalue += queue + C_BRACKET_CLOSE + C_COLON;index = subvalue.length;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE && character !== C_NEWLINE){break;}subvalue += character;index++;}character = value.charAt(index);queue = EMPTY;beforeURL = subvalue;if(character === C_LT){index++;while(index < length) {character = value.charAt(index);if(!isEnclosedURLCharacter(character)){break;}queue += character;index++;}character = value.charAt(index);if(character !== isEnclosedURLCharacter.delimiter){if(commonmark){return;}index -= queue.length + 1;queue = EMPTY;}else {subvalue += C_LT + queue + character;index++;}}if(!queue){while(index < length) {character = value.charAt(index);if(!isUnclosedURLCharacter(character)){break;}queue += character;index++;}subvalue += queue;}if(!queue){return;}url = queue;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE && character !== C_NEWLINE){break;}queue += character;index++;}character = value.charAt(index);test = null;if(character === C_DOUBLE_QUOTE){test = C_DOUBLE_QUOTE;}else if(character === C_SINGLE_QUOTE){test = C_SINGLE_QUOTE;}else if(character === C_PAREN_OPEN){test = C_PAREN_CLOSE;}if(!test){queue = EMPTY;index = subvalue.length;}else if(!queue){return;}else {subvalue += queue + character;index = subvalue.length;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character === test){break;}if(character === C_NEWLINE){index++;character = value.charAt(index);if(character === C_NEWLINE || character === test){return;}queue += C_NEWLINE;}queue += character;index++;}character = value.charAt(index);if(character !== test){return;}beforeTitle = subvalue;subvalue += queue + character;index++;title = queue;queue = EMPTY;}while(index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE){break;}subvalue += character;index++;}character = value.charAt(index);if(!character || character === C_NEWLINE){if(silent){return true;}beforeURL = eat(beforeURL).test().end;url = self.decode.raw(self.descape(url),beforeURL);if(title){beforeTitle = eat(beforeTitle).test().end;title = self.decode.raw(self.descape(title),beforeTitle);}return eat(subvalue)({'type':T_DEFINITION,'identifier':normalize(identifier),'title':title || null,'link':url});}}tokenizeDefinition.onlyAtTop = true;tokenizeDefinition.notInBlockquote = true; /**
  * Tokenise YAML front matter.
  *
  * @example
- *   var $0 = '---\nfoo: bar\n---';
- *   var $1 = 'foo: bar';
- *   tokenizeYAMLFrontMatter(eat, $0, $1);
+ *   tokenizeYAMLFrontMatter(eat, '---\nfoo: bar\n---');
  *
  * @property {boolean} onlyAtStart
- * @param {function(string)} eat
- * @param {string} $0 - Whole front matter.
- * @param {string} $1 - Content.
- * @return {Node} - `yaml` node.
- */
-function tokenizeYAMLFrontMatter(eat, $0, $1) {
-    return eat($0)(this.renderRaw(YAML, $1 ? trimTrailingLines($1) : EMPTY));
-}
-
-tokenizeYAMLFrontMatter.onlyAtStart = true;
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `yaml` node.
+ */function tokenizeYAMLFrontMatter(eat,value,silent){var self=this;var subvalue;var content;var index;var length;var character;var queue;if(!self.options.yaml || value.charAt(0) !== C_DASH || value.charAt(1) !== C_DASH || value.charAt(2) !== C_DASH || value.charAt(3) !== C_NEWLINE){return;}subvalue = YAML_FENCE + C_NEWLINE;content = queue = EMPTY;index = 3;length = value.length;while(++index < length) {character = value.charAt(index);if(character === C_DASH && (queue || !content) && value.charAt(index + 1) === C_DASH && value.charAt(index + 2) === C_DASH){ /* istanbul ignore if - never used (yet) */if(silent){return true;}subvalue += queue + YAML_FENCE;return eat(subvalue)(self.renderRaw(T_YAML,content));}if(character === C_NEWLINE){queue += character;}else {subvalue += queue + character;content += queue + character;queue = EMPTY;}}}tokenizeYAMLFrontMatter.onlyAtStart = true; /**
  * Tokenise a footnote definition.
  *
  * @example
- *   var $0 = '[foo]: Bar.';
- *   var $1 = '[foo]';
- *   var $2 = 'foo';
- *   var $3 = 'Bar.';
- *   tokenizeFootnoteDefinition(eat, $0, $1, $2, $3);
+ *   tokenizeFootnoteDefinition(eat, '[^foo]: Bar.');
  *
  * @property {boolean} onlyAtTop
  * @property {boolean} notInBlockquote
- * @param {function(string)} eat
- * @param {string} $0 - Whole definition.
- * @param {string} $1 - Whole key.
- * @param {string} $2 - Key.
- * @param {string} $3 - Whole value.
- * @return {Node} - `footnoteDefinition` node.
- */
-function tokenizeFootnoteDefinition(eat, $0, $1, $2, $3) {
-    var self = this;
-    var now = eat.now();
-    var indent = self.indent(now.line);
-
-    $3 = $3.replace(EXPRESSION_INITIAL_TAB, function (value) {
-        indent(value.length);
-
-        return EMPTY;
-    });
-
-    now.column += $1.length;
-
-    return eat($0)(self.renderFootnoteDefinition(normalize($2), $3, now));
-}
-
-tokenizeFootnoteDefinition.onlyAtTop = true;
-tokenizeFootnoteDefinition.notInBlockquote = true;
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `footnoteDefinition` node.
+ */function tokenizeFootnoteDefinition(eat,value,silent){var self=this;var index;var length;var subvalue;var now;var indent;var content;var queue;var subqueue;var character;var identifier;if(!self.options.footnotes){return;}index = 0;length = value.length;subvalue = EMPTY;now = eat.now();indent = self.indent(now.line);while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}subvalue += character;index++;}if(value.charAt(index) !== C_BRACKET_OPEN || value.charAt(index + 1) !== C_CARET){return;}subvalue += C_BRACKET_OPEN + C_CARET;index = subvalue.length;queue = EMPTY;while(index < length) {character = value.charAt(index);if(character === C_BRACKET_CLOSE){break;}else if(character === C_BACKSLASH){queue += character;index++;character = value.charAt(index);}queue += character;index++;}if(!queue || value.charAt(index) !== C_BRACKET_CLOSE || value.charAt(index + 1) !== C_COLON){return;}if(silent){return true;}identifier = normalize(queue);subvalue += queue + C_BRACKET_CLOSE + C_COLON;index = subvalue.length;while(index < length) {character = value.charAt(index);if(character !== C_TAB && character !== C_SPACE){break;}subvalue += character;index++;}now.column += subvalue.length;queue = content = subqueue = EMPTY;while(index < length) {character = value.charAt(index);if(character === C_NEWLINE){subqueue = character;index++;while(index < length) {character = value.charAt(index);if(character !== C_NEWLINE){break;}subqueue += character;index++;}queue += subqueue;subqueue = EMPTY;while(index < length) {character = value.charAt(index);if(character !== C_SPACE){break;}subqueue += character;index++;}if(!subqueue.length){break;}queue += subqueue;}if(queue){content += queue;queue = EMPTY;}content += character;index++;}subvalue += content;content = content.replace(EXPRESSION_INITIAL_TAB,function(line){indent(line.length);return EMPTY;});return eat(subvalue)(self.renderFootnoteDefinition(identifier,content,now));}tokenizeFootnoteDefinition.onlyAtTop = true;tokenizeFootnoteDefinition.notInBlockquote = true; /**
  * Tokenise a table.
  *
  * @example
- *   var $0 = ' | foo |\n | --- |\n | bar |';
- *   var $1 = ' | foo |';
- *   var $2 = '| foo |';
- *   var $3 = ' | --- |';
- *   var $4 = '| --- |';
- *   var $5 = ' | bar |';
- *   tokenizeTable(eat, $0, $1, $2, $3, $4, $5);
+ *   tokenizeTable(eat, ' | foo |\n | --- |\n | bar |');
  *
  * @property {boolean} onlyAtTop
- * @param {function(string)} eat
- * @param {string} $0 - Whole table.
- * @param {string} $1 - Whole heading.
- * @param {string} $2 - Trimmed heading.
- * @param {string} $3 - Whole alignment.
- * @param {string} $4 - Trimmed alignment.
- * @param {string} $5 - Rows.
- * @return {Node} - `table` node.
- */
-function tokenizeTable(eat, $0, $1, $2, $3, $4, $5) {
-    var self = this;
-    var node;
-    var index;
-    var length;
-
-    $0 = trimTrailingLines($0);
-
-    node = eat($0).reset({
-        'type': TABLE,
-        'align': [],
-        'children': []
-    });
-
-    /**
-     * Eat a fence.  Returns an empty string so it can be
-     * passed to `String#replace()`.
-     *
-     * @param {string} value - Fence.
-     * @return {string} - Empty string.
-     */
-    function eatFence(value) {
-        eat(value);
-
-        return EMPTY;
-    }
-
-    /**
-     * Factory to eat a cell to a bound `row`.
-     *
-     * @param {Object} row - Parent to add cells to.
-     * @return {Function} - `eatCell` bound to `row`.
-     */
-    function eatCellFactory(row) {
-        /**
-         * Eat a cell.  Returns an empty string so it can be
-         * passed to `String#replace()`.
-         *
-         * @param {string} value - Complete match.
-         * @param {string} content - Cell content.
-         * @param {string} pipe - Fence.
-         * @return {string} - Empty string.
-         */
-        function eatCell(value, content, pipe) {
-            var cell = trim.left(content);
-            var diff = content.length - cell.length;
-            var now;
-
-            eat(content.slice(0, diff));
-
-            now = eat.now();
-
-            eat(cell)(self.renderInline(TABLE_CELL, trim.right(cell), now), row);
-
-            eat(pipe);
-
-            return EMPTY;
-        }
-
-        return eatCell;
-    }
-
-    /**
-     * Eat a row of type `type`.
-     *
-     * @param {string} type - Type of the returned node,
-     *   such as `tableHeader` or `tableRow`.
-     * @param {string} value - Row, including initial and
-     *   final fences.
-     */
-    function renderRow(type, value) {
-        var row = eat(value).reset(self.renderParent(type, []), node);
-
-        value.replace(EXPRESSION_TABLE_INITIAL, eatFence).replace(EXPRESSION_TABLE_CONTENT, eatCellFactory(row));
-    }
-
-    /*
-     * Add the table's header.
-     */
-
-    renderRow(TABLE_HEADER, $1);
-
-    eat(NEW_LINE);
-
-    /*
-     * Add the table's alignment.
-     */
-
-    eat($3);
-
-    $4 = $4.replace(EXPRESSION_TABLE_FENCE, EMPTY).split(EXPRESSION_TABLE_BORDER);
-
-    node.align = getAlignment($4);
-
-    /*
-     * Add the table rows to table's children.
-     */
-
-    $5 = trimTrailingLines($5).split(NEW_LINE);
-
-    index = -1;
-    length = $5.length;
-
-    while (++index < length) {
-        renderRow(TABLE_ROW, $5[index]);
-
-        if (index !== length - 1) {
-            eat(NEW_LINE);
-        }
-    }
-
-    return node;
-}
-
-tokenizeTable.onlyAtTop = true;
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `table` node.
+ */function tokenizeTable(eat,value,silent){var self=this;var index;var alignments;var alignment;var subvalue;var row;var length;var lines;var queue;var character;var hasDash;var align;var cell;var preamble;var count;var opening;var now;var position;var lineCount;var line;var rows;var table;var lineIndex;var pipeIndex;var first; /*
+     * Exit when not in gfm-mode.
+     */if(!self.options.gfm){return;} /*
+     * Get the rows.
+     * Detecting tables soon is hard, so there are some
+     * checks for performance here, such as the minimum
+     * number of rows, and allowed characters in the
+     * alignment row.
+     */index = lineCount = 0;length = value.length + 1;lines = [];while(index < length) {lineIndex = value.indexOf(C_NEWLINE,index);pipeIndex = value.indexOf(C_PIPE,index + 1);if(pipeIndex === -1 || pipeIndex > lineIndex){if(lineCount < MIN_TABLE_ROWS){return;}break;}lines.push(value.slice(index,lineIndex));lineCount++;index = lineIndex + 1;} /*
+     * Parse the alignment row.
+     */subvalue = lines.join(C_NEWLINE);alignments = lines.splice(1,1)[0];index = 0;length = alignments.length;lineCount--;alignment = false;align = [];while(index < length) {character = alignments.charAt(index);if(character === C_PIPE){hasDash = null;if(alignment === false){if(first === false){return;}}else {align.push(alignment);alignment = false;}first = false;}else if(character === C_DASH){hasDash = true;alignment = alignment || TABLE_ALIGN_NONE;}else if(character === C_COLON){if(alignment === TABLE_ALIGN_LEFT){alignment = TABLE_ALIGN_CENTER;}else if(hasDash && alignment === TABLE_ALIGN_NONE){alignment = TABLE_ALIGN_RIGHT;}else {alignment = TABLE_ALIGN_LEFT;}}else if(!isWhiteSpace(character)){return;}index++;}if(alignment !== false){align.push(alignment);} /*
+     * Exit when without enough columns.
+     */if(align.length < MIN_TABLE_COLUMNS){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;} /*
+     * Parse the rows.
+     */position = -1;rows = [];table = eat(subvalue).reset({'type':T_TABLE,'align':align,'children':rows});while(++position < lineCount) {line = lines[position];row = self.renderParent(position?T_TABLE_ROW:T_TABLE_HEADER,[]); /*
+         * Eat a newline character when this is not the
+         * first row.
+         */if(position){eat(C_NEWLINE);} /*
+         * Eat the alignment row.
+         */if(position === 1){eat(alignments + C_NEWLINE);} /*
+         * Eat the row.
+         */eat(line).reset(row,table);length = line.length + 1;index = 0;queue = EMPTY;cell = EMPTY;preamble = true;count = opening = null;while(index < length) {character = line.charAt(index);if(character === C_TAB || character === C_SPACE){if(cell){queue += character;}else {eat(character);}index++;continue;}if(character === EMPTY || character === C_PIPE){if(preamble){eat(character);}else {if(character && opening){queue += character;index++;continue;}if((cell || character) && !preamble){subvalue = cell;if(queue.length > 1){if(character){subvalue += queue.slice(0,queue.length - 1);queue = queue.charAt(queue.length - 1);}else {subvalue += queue;queue = EMPTY;}}now = eat.now();eat(subvalue)(self.renderInline(T_TABLE_CELL,cell,now),row);}eat(queue + character);queue = EMPTY;cell = EMPTY;}}else {if(queue){cell += queue;queue = EMPTY;}cell += character;if(character === C_BACKSLASH && index !== length - 2){cell += line.charAt(index + 1);index++;}if(character === C_TICK){count = 1;while(line.charAt(index + 1) === character) {cell += character;index++;count++;}if(!opening){opening = count;}else if(count >= opening){opening = 0;}}}preamble = false;index++;}}return table;}tokenizeTable.onlyAtTop = true; /**
  * Tokenise a paragraph node.
  *
  * @example
  *   tokenizeParagraph(eat, 'Foo.');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole paragraph.
- * @return {Node?} - `paragraph` node, when the node does
- *   not just contain white space.
- */
-function tokenizeParagraph(eat, $0) {
-    var now = eat.now();
-
-    if (trim($0) === EMPTY) {
-        eat($0);
-
-        return null;
-    }
-
-    $0 = trimTrailingLines($0);
-
-    return eat($0)(this.renderInline(PARAGRAPH, $0, now));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `paragraph` node.
+ */function tokenizeParagraph(eat,value,silent){var self=this;var settings=self.options;var commonmark=settings.commonmark;var gfm=settings.gfm;var tokenizers=self.blockTokenizers;var index=value.indexOf(C_NEWLINE);var length=value.length;var position;var subvalue;var character;var size;var now;while(index < length) { /*
+         * Eat everything if there’s no following newline.
+         */if(index === -1){index = length;break;} /*
+         * Stop if the next character is NEWLINE.
+         */if(value.charAt(index + 1) === C_NEWLINE){break;} /*
+         * In commonmark-mode, following indented lines
+         * are part of the paragraph.
+         */if(commonmark){size = 0;position = index + 1;while(position < length) {character = value.charAt(position);if(character === C_TAB){size = TAB_SIZE;break;}else if(character === C_SPACE){size++;}else {break;}position++;}if(size >= TAB_SIZE){index = value.indexOf(C_NEWLINE,index + 1);continue;}} /*
+         * Check if the following code contains a possible
+         * block.
+         */subvalue = value.slice(index + 1);if(tokenizers.horizontalRule.call(self,eat,subvalue,true) || tokenizers.heading.call(self,eat,subvalue,true) || tokenizers.fences.call(self,eat,subvalue,true) || tokenizers.blockquote.call(self,eat,subvalue,true) || tokenizers.html.call(self,eat,subvalue,true)){break;}if(gfm && tokenizers.list.call(self,eat,subvalue,true)){break;}if(!commonmark && (tokenizers.lineHeading.call(self,eat,subvalue,true) || tokenizers.definition.call(self,eat,subvalue,true) || tokenizers.footnoteDefinition.call(self,eat,subvalue,true))){break;}index = value.indexOf(C_NEWLINE,index + 1);}subvalue = value.slice(0,index);if(trim(subvalue) === EMPTY){eat(subvalue);return null;} /* istanbul ignore if - never used (yet) */if(silent){return true;}now = eat.now();subvalue = trimTrailingLines(subvalue);return eat(subvalue)(self.renderInline(T_PARAGRAPH,subvalue,now));} /**
  * Tokenise a text node.
  *
  * @example
  *   tokenizeText(eat, 'foo');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole text.
- * @return {Node} - `text` node.
- */
-function tokenizeText(eat, $0) {
-    return eat($0)(this.renderRaw(TEXT, $0));
-}
-
-/**
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `text` node.
+ */function tokenizeText(eat,value,silent){var self=this;var methods;var tokenizers;var index;var length;var subvalue;var position;var tokenizer;var name;var min;var now; /* istanbul ignore if - never used (yet) */if(silent){return true;}methods = self.inlineMethods;length = methods.length;tokenizers = self.inlineTokenizers;index = -1;min = value.length;while(++index < length) {name = methods[index];if(name === 'inlineText' || !tokenizers[name]){continue;}tokenizer = tokenizers[name].locator;if(!tokenizer){eat.file.fail(ERR_MISSING_LOCATOR + C_TICK + name + C_TICK);continue;}position = tokenizer.call(self,value,1);if(position !== -1 && position < min){min = position;}}subvalue = value.slice(0,min);now = eat.now();self.decode(subvalue,now,function(content,position,source){eat(source || content)(self.renderRaw(T_TEXT,content));});} /**
  * Create a code-block node.
  *
  * @example
@@ -3345,49 +2935,9 @@ function tokenizeText(eat, $0) {
  *
  * @param {string?} [value] - Code.
  * @param {string?} [language] - Optional language flag.
- * @param {Function} eat
+ * @param {Function} eat - Eater.
  * @return {Object} - `code` node.
- */
-function renderCodeBlock(value, language, eat) {
-    return {
-        'type': CODE,
-        'lang': language ? decode(this.descape(language), eat) : null,
-        'value': trimTrailingLines(value || EMPTY)
-    };
-}
-
-/**
- * Create a list node.
- *
- * @example
- *   var children = [renderListItem('- foo')];
- *   renderList(children, '-');
- *
- * @param {string} children - Children.
- * @param {string} bullet - First bullet.
- * @return {Object} - `list` node.
- */
-function renderList(children, bullet) {
-    var start = parseInt(bullet, 10);
-
-    if (start !== start) {
-        start = null;
-    }
-
-    /*
-     * `loose` should be added later.
-     */
-
-    return {
-        'type': LIST,
-        'ordered': bullet.length > 1,
-        'start': start,
-        'loose': null,
-        'children': children
-    };
-}
-
-/**
+ */function renderCodeBlock(value,language){return {'type':T_CODE,'lang':language || null,'value':trimTrailingLines(value || EMPTY)};} /**
  * Create a list-item using overly simple mechanics.
  *
  * @example
@@ -3396,41 +2946,18 @@ function renderList(children, bullet) {
  * @param {string} value - List-item.
  * @param {Object} position - List-item location.
  * @return {string} - Cleaned `value`.
- */
-function renderPedanticListItem(value, position) {
-    var self = this;
-    var indent = self.indent(position.line);
-
-    /**
+ */function renderPedanticListItem(value,position){var self=this;var indent=self.indent(position.line); /**
      * A simple replacer which removed all matches,
      * and adds their length to `offset`.
      *
-     * @param {string} $0
-     * @return {string}
-     */
-    function replacer($0) {
-        indent($0.length);
-
-        return EMPTY;
-    }
-
-    /*
-     * Remove the list-item's bullet.
-     */
-
-    value = value.replace(EXPRESSION_PEDANTIC_BULLET, replacer);
-
-    /*
+     * @param {string} $0 - Indentation to subtract.
+     * @return {string} - An empty string.
+     */function replacer($0){indent($0.length);return EMPTY;} /*
+     * Remove the list-item’s bullet.
+     */value = value.replace(EXPRESSION_PEDANTIC_BULLET,replacer); /*
      * The initial line was also matched by the below, so
      * we reset the `line`.
-     */
-
-    indent = self.indent(position.line);
-
-    return value.replace(EXPRESSION_INITIAL_INDENT, replacer);
-}
-
-/**
+     */indent = self.indent(position.line);return value.replace(EXPRESSION_INITIAL_INDENT,replacer);} /**
  * Create a list-item using sane mechanics.
  *
  * @example
@@ -3439,78 +2966,20 @@ function renderPedanticListItem(value, position) {
  * @param {string} value - List-item.
  * @param {Object} position - List-item location.
  * @return {string} - Cleaned `value`.
- */
-function renderNormalListItem(value, position) {
-    var self = this;
-    var indent = self.indent(position.line);
-    var bullet;
-    var rest;
-    var lines;
-    var trimmedLines;
-    var index;
-    var length;
-    var max;
-
-    /*
-     * Remove the list-item's bullet.
-     */
-
-    value = value.replace(EXPRESSION_BULLET, function ($0, $1, $2, $3, $4) {
-        bullet = $1 + $2 + $3;
-        rest = $4;
-
-        /*
+ */function renderNormalListItem(value,position){var self=this;var indent=self.indent(position.line);var bullet;var rest;var lines;var trimmedLines;var index;var length;var max; /*
+     * Remove the list-item’s bullet.
+     */value = value.replace(EXPRESSION_BULLET,function($0,$1,$2,$3,$4){bullet = $1 + $2 + $3;rest = $4; /*
          * Make sure that the first nine numbered list items
          * can indent with an extra space.  That is, when
          * the bullet did not receive an extra final space.
-         */
-
-        if (Number($2) < 10 && bullet.length % 2 === 1) {
-            $2 = SPACE + $2;
-        }
-
-        max = $1 + repeat(SPACE, $2.length) + $3;
-
-        return max + rest;
-    });
-
-    lines = value.split(NEW_LINE);
-
-    trimmedLines = removeIndentation(value, getIndent(max).indent).split(NEW_LINE);
-
-    /*
+         */if(Number($2) < 10 && bullet.length % 2 === 1){$2 = C_SPACE + $2;}max = $1 + repeat(C_SPACE,$2.length) + $3;return max + rest;});lines = value.split(C_NEWLINE);trimmedLines = removeIndentation(value,getIndent(max).indent).split(C_NEWLINE); /*
      * We replaced the initial bullet with something
      * else above, which was used to trick
      * `removeIndentation` into removing some more
      * characters when possible. However, that could
      * result in the initial line to be stripped more
      * than it should be.
-     */
-
-    trimmedLines[0] = rest;
-
-    indent(bullet.length);
-
-    index = 0;
-    length = lines.length;
-
-    while (++index < length) {
-        indent(lines[index].length - trimmedLines[index].length);
-    }
-
-    return trimmedLines.join(NEW_LINE);
-}
-
-/*
- * A map of two functions which can create list items.
- */
-
-var LIST_ITEM_MAP = {};
-
-LIST_ITEM_MAP['true'] = renderPedanticListItem;
-LIST_ITEM_MAP['false'] = renderNormalListItem;
-
-/**
+     */trimmedLines[0] = rest;indent(bullet.length);index = 0;length = lines.length;while(++index < length) {indent(lines[index].length - trimmedLines[index].length);}return trimmedLines.join(C_NEWLINE);} /**
  * Create a list-item node.
  *
  * @example
@@ -3519,43 +2988,7 @@ LIST_ITEM_MAP['false'] = renderNormalListItem;
  * @param {Object} value - List-item.
  * @param {Object} position - List-item location.
  * @return {Object} - `listItem` node.
- */
-function renderListItem(value, position) {
-    var self = this;
-    var checked = null;
-    var node;
-    var task;
-    var indent;
-
-    value = LIST_ITEM_MAP[self.options.pedantic].apply(self, arguments);
-
-    if (self.options.gfm) {
-        task = value.match(EXPRESSION_TASK_ITEM);
-
-        if (task) {
-            indent = task[0].length;
-            checked = task[1].toLowerCase() === 'x';
-
-            self.indent(position.line)(indent);
-            value = value.slice(indent);
-        }
-    }
-
-    node = {
-        'type': LIST_ITEM,
-        'loose': EXPRESSION_LOOSE_LIST_ITEM.test(value) || value.charAt(value.length - 1) === NEW_LINE
-    };
-
-    if (self.options.gfm) {
-        node.checked = checked;
-    }
-
-    node.children = self.tokenizeBlock(value, position);
-
-    return node;
-}
-
-/**
+ */function renderListItem(value,position){var self=this;var checked=null;var node;var task;var indent;value = LIST_ITEM_MAP[self.options.pedantic].apply(self,arguments);if(self.options.gfm){task = value.match(EXPRESSION_TASK_ITEM);if(task){indent = task[0].length;checked = task[1].toLowerCase() === C_X_LOWER;self.indent(position.line)(indent);value = value.slice(indent);}}node = {'type':T_LIST_ITEM,'loose':EXPRESSION_LOOSE_LIST_ITEM.test(value) || value.charAt(value.length - 1) === C_NEWLINE};if(self.options.gfm){node.checked = checked;}node.children = self.tokenizeBlock(value,position);return node;} /**
  * Create a footnote-definition node.
  *
  * @example
@@ -3565,24 +2998,7 @@ function renderListItem(value, position) {
  * @param {string} value - Contents
  * @param {Object} position - Definition location.
  * @return {Object} - `footnoteDefinition` node.
- */
-function renderFootnoteDefinition(identifier, value, position) {
-    var self = this;
-    var exitBlockquote = self.enterBlockquote();
-    var node;
-
-    node = {
-        'type': FOOTNOTE_DEFINITION,
-        'identifier': identifier,
-        'children': self.tokenizeBlock(value, position)
-    };
-
-    exitBlockquote();
-
-    return node;
-}
-
-/**
+ */function renderFootnoteDefinition(identifier,value,position){var self=this;var exitBlockquote=self.enterBlockquote();var node;node = {'type':T_FOOTNOTE_DEFINITION,'identifier':identifier,'children':self.tokenizeBlock(value,position)};exitBlockquote();return node;} /**
  * Create a heading node.
  *
  * @example
@@ -3592,16 +3008,7 @@ function renderFootnoteDefinition(identifier, value, position) {
  * @param {number} depth - Heading depth.
  * @param {Object} position - Heading content location.
  * @return {Object} - `heading` node
- */
-function renderHeading(value, depth, position) {
-    return {
-        'type': HEADING,
-        'depth': depth,
-        'children': this.tokenizeInline(value, position)
-    };
-}
-
-/**
+ */function renderHeading(value,depth,position){return {'type':T_HEADING,'depth':depth,'children':this.tokenizeInline(value,position)};} /**
  * Create a blockquote node.
  *
  * @example
@@ -3610,21 +3017,7 @@ function renderHeading(value, depth, position) {
  * @param {string} value - Content.
  * @param {Object} now - Position.
  * @return {Object} - `blockquote` node.
- */
-function renderBlockquote(value, now) {
-    var self = this;
-    var exitBlockquote = self.enterBlockquote();
-    var node = {
-        'type': BLOCKQUOTE,
-        'children': this.tokenizeBlock(value, now)
-    };
-
-    exitBlockquote();
-
-    return node;
-}
-
-/**
+ */function renderBlockquote(value,now){var self=this;var exitBlockquote=self.enterBlockquote();var node={'type':T_BLOCKQUOTE,'children':self.tokenizeBlock(value,now)};exitBlockquote();return node;} /**
  * Create a void node.
  *
  * @example
@@ -3632,14 +3025,7 @@ function renderBlockquote(value, now) {
  *
  * @param {string} type - Node type.
  * @return {Object} - Node of type `type`.
- */
-function renderVoid(type) {
-    return {
-        'type': type
-    };
-}
-
-/**
+ */function renderVoid(type){return {'type':type};} /**
  * Create a parent.
  *
  * @example
@@ -3648,15 +3034,7 @@ function renderVoid(type) {
  * @param {string} type - Node type.
  * @param {Array.<Object>} children - Child nodes.
  * @return {Object} - Node of type `type`.
- */
-function renderParent(type, children) {
-    return {
-        'type': type,
-        'children': children
-    };
-}
-
-/**
+ */function renderParent(type,children){return {'type':type,'children':children};} /**
  * Create a raw node.
  *
  * @example
@@ -3665,15 +3043,7 @@ function renderParent(type, children) {
  * @param {string} type - Node type.
  * @param {string} value - Contents.
  * @return {Object} - Node of type `type`.
- */
-function renderRaw(type, value) {
-    return {
-        'type': type,
-        'value': value
-    };
-}
-
-/**
+ */function renderRaw(type,value){return {'type':type,'value':value};} /**
  * Create a link node.
  *
  * @example
@@ -3686,35 +3056,8 @@ function renderRaw(type, value) {
  * @param {string} text - Content.
  * @param {string?} title - Title.
  * @param {Object} position - Location of link.
- * @param {function(string)} eat
  * @return {Object} - `link` or `image` node.
- */
-function renderLink(isLink, href, text, title, position, eat) {
-    var self = this;
-    var exitLink = self.enterLink();
-    var node;
-
-    node = {
-        'type': isLink ? LINK : IMAGE,
-        'title': title ? decode(self.descape(title), eat) : null
-    };
-
-    href = decode(href, eat);
-
-    if (isLink) {
-        node.href = href;
-        node.children = self.tokenizeInline(text, position);
-    } else {
-        node.src = href;
-        node.alt = text ? decode(self.descape(text), eat) : null;
-    }
-
-    exitLink();
-
-    return node;
-}
-
-/**
+ */function renderLink(isLink,href,text,title,position){var self=this;var exitLink=self.enterLink();var node;node = {'type':isLink?T_LINK:T_IMAGE,'title':title || null};if(isLink){node.href = href;node.children = self.tokenizeInline(text,position);}else {node.src = href;node.alt = text?self.decode.raw(self.descape(text),position):null;}exitLink();return node;} /**
  * Create a footnote node.
  *
  * @example
@@ -3723,12 +3066,7 @@ function renderLink(isLink, href, text, title, position, eat) {
  * @param {string} value - Contents.
  * @param {Object} position - Location of footnote.
  * @return {Object} - `footnote` node.
- */
-function renderFootnote(value, position) {
-    return this.renderInline(FOOTNOTE, value, position);
-}
-
-/**
+ */function renderFootnote(value,position){return this.renderInline(T_FOOTNOTE,value,position);} /**
  * Add a node with inline content.
  *
  * @example
@@ -3738,12 +3076,7 @@ function renderFootnote(value, position) {
  * @param {string} value - Contents.
  * @param {Object} position - Location of node.
  * @return {Object} - Node of type `type`.
- */
-function renderInline(type, value, position) {
-    return this.renderParent(type, this.tokenizeInline(value, position));
-}
-
-/**
+ */function renderInline(type,value,position){return this.renderParent(type,this.tokenizeInline(value,position));} /**
  * Add a node with block content.
  *
  * @example
@@ -3753,340 +3086,268 @@ function renderInline(type, value, position) {
  * @param {string} value - Contents.
  * @param {Object} position - Location of node.
  * @return {Object} - Node of type `type`.
- */
-function renderBlock(type, value, position) {
-    return this.renderParent(type, this.tokenizeBlock(value, position));
-}
-
-/**
+ */function renderBlock(type,value,position){return this.renderParent(type,this.tokenizeBlock(value,position));} /**
+ * Find a possible escape sequence.
+ *
+ * @example
+ *   locateEscape('foo \- bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible escape sequence.
+ */function locateEscape(value,fromIndex){return value.indexOf(C_BACKSLASH,fromIndex);} /**
  * Tokenise an escape sequence.
  *
  * @example
- *   tokenizeEscape(eat, '\\a', 'a');
+ *   tokenizeEscape(eat, '\\a');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole escape.
- * @param {string} $1 - Escaped character.
- * @return {Node} - `escape` node.
- */
-function tokenizeEscape(eat, $0, $1) {
-    return eat($0)(this.renderRaw(ESCAPE, $1));
-}
-
-/**
+ * @property {Function} locator - Escape locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `text` or `break` node.
+ */function tokenizeEscape(eat,value,silent){var self=this;var character;if(value.charAt(0) === C_BACKSLASH){character = value.charAt(1);if(self.escape.indexOf(character) !== -1){ /* istanbul ignore if - never used (yet) */if(silent){return true;}return eat(C_BACKSLASH + character)(character === C_NEWLINE?self.renderVoid(T_BREAK):self.renderRaw(T_TEXT,character));}}}tokenizeEscape.locator = locateEscape; /**
+ * Find a possible auto-link.
+ *
+ * @example
+ *   locateAutoLink('foo <bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible auto-link.
+ */function locateAutoLink(value,fromIndex){return value.indexOf(C_LT,fromIndex);} /**
  * Tokenise a URL in carets.
  *
  * @example
- *   tokenizeAutoLink(eat, '<http://foo.bar>', 'http://foo.bar', '');
+ *   tokenizeAutoLink(eat, '<http://foo.bar>');
  *
  * @property {boolean} notInLink
- * @param {function(string)} eat
- * @param {string} $0 - Whole link.
- * @param {string} $1 - URL.
- * @param {string?} [$2] - Protocol or at.
- * @return {Node} - `link` node.
- */
-function tokenizeAutoLink(eat, $0, $1, $2) {
-    var self = this;
-    var href = $1;
-    var text = $1;
-    var now = eat.now();
-    var offset = 1;
-    var tokenize;
-    var node;
-
-    if ($2 === AT_SIGN) {
-        if (text.substr(0, MAILTO_PROTOCOL.length).toLowerCase() !== MAILTO_PROTOCOL) {
-            href = MAILTO_PROTOCOL + text;
-        } else {
-            text = text.substr(MAILTO_PROTOCOL.length);
-            offset += MAILTO_PROTOCOL.length;
-        }
-    }
-
-    now.column += offset;
-
-    /*
+ * @property {Function} locator - Auto-link locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `link` node.
+ */function tokenizeAutoLink(eat,value,silent){var self;var subvalue;var length;var index;var queue;var character;var hasAtCharacter;var link;var now;var content;var tokenize;var node;if(value.charAt(0) !== C_LT){return;}self = this;subvalue = EMPTY;length = value.length;index = 0;queue = EMPTY;hasAtCharacter = false;link = EMPTY;index++;subvalue = C_LT;while(index < length) {character = value.charAt(index);if(character === C_SPACE || character === C_GT || character === C_AT_SIGN || character === C_COLON && value.charAt(index + 1) === C_SLASH){break;}queue += character;index++;}if(!queue){return;}link += queue;queue = EMPTY;character = value.charAt(index);link += character;index++;if(character === C_AT_SIGN){hasAtCharacter = true;}else {if(character !== C_COLON || value.charAt(index + 1) !== C_SLASH){return;}link += C_SLASH;index++;}while(index < length) {character = value.charAt(index);if(character === C_SPACE || character === C_GT){break;}queue += character;index++;}character = value.charAt(index);if(!queue || character !== C_GT){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}link += queue;content = link;subvalue += link + character;now = eat.now();now.column++;if(hasAtCharacter){if(link.substr(0,MAILTO_PROTOCOL.length).toLowerCase() !== MAILTO_PROTOCOL){link = MAILTO_PROTOCOL + link;}else {content = content.substr(MAILTO_PROTOCOL.length);now.column += MAILTO_PROTOCOL.length;}} /*
      * Temporarily remove support for escapes in autolinks.
-     */
-
-    tokenize = self.inlineTokenizers.escape;
-    self.inlineTokenizers.escape = null;
-
-    node = eat($0)(self.renderLink(true, href, text, null, now, eat));
-
-    self.inlineTokenizers.escape = tokenize;
-
-    return node;
-}
-
-tokenizeAutoLink.notInLink = true;
-
-/**
+     */tokenize = self.inlineTokenizers.escape;self.inlineTokenizers.escape = null;node = eat(subvalue)(self.renderLink(true,decode(link),content,null,now,eat));self.inlineTokenizers.escape = tokenize;return node;}tokenizeAutoLink.notInLink = true;tokenizeAutoLink.locator = locateAutoLink; /**
+ * Find a possible URL.
+ *
+ * @example
+ *   locateURL('foo http://bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible URL.
+ */function locateURL(value,fromIndex){var index=-1;var min=-1;var position;if(!this.options.gfm){return -1;}while(++index < PROTOCOLS_LENGTH) {position = value.indexOf(PROTOCOLS[index],fromIndex);if(position !== -1 && (position < min || min === -1)){min = position;}}return min;} /**
  * Tokenise a URL in text.
  *
  * @example
  *   tokenizeURL(eat, 'http://foo.bar');
  *
  * @property {boolean} notInLink
- * @param {function(string)} eat
- * @param {string} $0 - Whole link.
- * @return {Node} - `link` node.
- */
-function tokenizeURL(eat, $0) {
-    var now = eat.now();
-
-    return eat($0)(this.renderLink(true, $0, $0, null, now, eat));
-}
-
-tokenizeURL.notInLink = true;
-
-/**
+ * @property {Function} locator - URL locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `link` node.
+ */function tokenizeURL(eat,value,silent){var self=this;var subvalue;var content;var character;var index;var position;var protocol;var match;var length;var queue;var once;var now;if(!self.options.gfm){return;}subvalue = EMPTY;index = -1;length = PROTOCOLS_LENGTH;while(++index < length) {protocol = PROTOCOLS[index];match = value.slice(0,protocol.length);if(match.toLowerCase() === protocol){subvalue = match;break;}}if(!subvalue){return;}index = subvalue.length;length = value.length;queue = EMPTY;while(index < length) {character = value.charAt(index);if(isWhiteSpace(character) || character === C_LT){break;}if(character === C_DOT || character === C_COMMA || character === C_COLON || character === C_SEMI_COLON || character === C_DOUBLE_QUOTE || character === C_SINGLE_QUOTE || character === C_PAREN_CLOSE || character === C_BRACKET_CLOSE){if(once){break;}once = true;}queue += character;index++;}if(!queue){return;}subvalue += queue;content = subvalue;if(protocol === MAILTO_PROTOCOL){position = queue.indexOf(C_AT_SIGN);if(position === -1 || position === length - 1){return;}content = content.substr(MAILTO_PROTOCOL.length);} /* istanbul ignore if - never used (yet) */if(silent){return true;}now = eat.now();return eat(subvalue)(self.renderLink(true,decode(subvalue),content,null,now,eat));}tokenizeURL.notInLink = true;tokenizeURL.locator = locateURL; /**
+ * Find a possible tag.
+ *
+ * @example
+ *   locateTag('foo <bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible tag.
+ */function locateTag(value,fromIndex){return value.indexOf(C_LT,fromIndex);} /**
  * Tokenise an HTML tag.
  *
  * @example
  *   tokenizeTag(eat, '<span foo="bar">');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Content.
- * @return {Node} - `html` node.
- */
-function tokenizeTag(eat, $0) {
-    var self = this;
-
-    if (!self.inLink && EXPRESSION_HTML_LINK_OPEN.test($0)) {
-        self.inLink = true;
-    } else if (self.inLink && EXPRESSION_HTML_LINK_CLOSE.test($0)) {
-        self.inLink = false;
-    }
-
-    return eat($0)(self.renderRaw(HTML, $0));
-}
-
-/**
+ * @property {Function} locator - Tag locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `html` node.
+ */function tokenizeTag(eat,value,silent){var self=this;var subvalue=eatHTMLComment(value,self.options) || eatHTMLCDATA(value) || eatHTMLProcessingInstruction(value) || eatHTMLDeclaration(value) || eatHTMLClosingTag(value) || eatHTMLOpeningTag(value);if(!subvalue){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}if(!self.inLink && EXPRESSION_HTML_LINK_OPEN.test(subvalue)){self.inLink = true;}else if(self.inLink && EXPRESSION_HTML_LINK_CLOSE.test(subvalue)){self.inLink = false;}return eat(subvalue)(self.renderRaw(T_HTML,subvalue));}tokenizeTag.locator = locateTag; /**
+ * Find a possible link.
+ *
+ * @example
+ *   locateLink('foo ![bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible link.
+ */function locateLink(value,fromIndex){var link=value.indexOf(C_BRACKET_OPEN,fromIndex);var image=value.indexOf(C_EXCLAMATION_MARK + C_BRACKET_OPEN,fromIndex);if(image === -1){return link;} /*
+     * Link can never be `-1` if an image is found, so we don’t need to
+     * check for that :)
+     */return link < image?link:image;} /**
  * Tokenise a link.
  *
  * @example
- *   tokenizeLink(
- *     eat, '![foo](fav.ico "Favicon")', '![', 'foo', null,
- *     'fav.ico', 'Foo Domain'
- *   );
+ *   tokenizeLink(eat, '![foo](fav.ico "Favicon"));
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole link.
- * @param {string} $1 - Prefix.
- * @param {string} $2 - Text.
- * @param {string?} $3 - URL wrapped in angle braces.
- * @param {string?} $4 - Literal URL.
- * @param {string?} $5 - Title wrapped in single or double
- *   quotes.
- * @param {string?} [$6] - Title wrapped in double quotes.
- * @param {string?} [$7] - Title wrapped in parentheses.
- * @return {Node?} - `link` node, `image` node, or `null`.
- */
-function tokenizeLink(eat, $0, $1, $2, $3, $4, $5, $6, $7) {
-    var isLink = $1 === BRACKET_OPEN;
-    var href = $4 || $3 || '';
-    var title = $7 || $6 || $5;
-    var now;
-
-    if (!isLink || !this.inLink) {
-        now = eat.now();
-
-        now.column += $1.length;
-
-        return eat($0)(this.renderLink(isLink, this.descape(href), $2, title, now, eat));
-    }
-
-    return null;
-}
-
-/**
+ * @property {Function} locator - Link locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `link` or `image` node.
+ */function tokenizeLink(eat,value,silent){var self=this;var subvalue=EMPTY;var index=0;var character=value.charAt(0);var beforeURL;var beforeTitle;var whiteSpaceQueue;var commonmark;var openCount;var hasMarker;var markers;var isImage;var content;var marker;var length;var title;var depth;var queue;var url;var now; /*
+     * Detect whether this is an image.
+     */if(character === C_EXCLAMATION_MARK){isImage = true;subvalue = character;character = value.charAt(++index);} /*
+     * Eat the opening.
+     */if(character !== C_BRACKET_OPEN){return;} /*
+     * Exit when this is a link and we’re already inside
+     * a link.
+     */if(!isImage && self.inLink){return;}subvalue += character;queue = EMPTY;index++; /*
+     * Eat the content.
+     */commonmark = self.options.commonmark;length = value.length;now = eat.now();depth = 0;now.column += index;while(index < length) {character = value.charAt(index);if(character === C_BRACKET_OPEN){depth++;}else if(character === C_BRACKET_CLOSE){ /*
+             * Allow a single closing bracket when not in
+             * commonmark-mode.
+             */if(!commonmark && !depth){if(value.charAt(index + 1) === C_PAREN_OPEN){break;}depth++;}if(depth === 0){break;}depth--;}queue += character;index++;} /*
+     * Eat the content closing.
+     */if(value.charAt(index) !== C_BRACKET_CLOSE || value.charAt(++index) !== C_PAREN_OPEN){return;}subvalue += queue + C_BRACKET_CLOSE + C_PAREN_OPEN;index++;content = queue; /*
+     * Eat white-space.
+     */while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}subvalue += character;index++;} /*
+     * Eat the URL.
+     */character = value.charAt(index);markers = commonmark?COMMONMARK_LINK_TITLE_MARKERS:LINK_TITLE_MARKERS;openCount = 0;queue = EMPTY;beforeURL = subvalue;if(character === C_LT){index++;beforeURL += C_LT;while(index < length) {character = value.charAt(index);if(character === C_GT){break;}if(commonmark && character === C_NEWLINE){return;}queue += character;index++;}if(value.charAt(index) !== C_GT){return;}subvalue += C_LT + queue + C_GT;url = queue;index++;}else {character = null;whiteSpaceQueue = EMPTY;while(index < length) {character = value.charAt(index);if(whiteSpaceQueue && has.call(markers,character)){break;}if(isWhiteSpace(character)){if(commonmark){break;}whiteSpaceQueue += character;}else {if(character === C_PAREN_OPEN){depth++;openCount++;}else if(character === C_PAREN_CLOSE){if(depth === 0){break;}depth--;}queue += whiteSpaceQueue;whiteSpaceQueue = EMPTY;if(character === C_BACKSLASH){queue += C_BACKSLASH;character = value.charAt(++index);}queue += character;}index++;}queue = queue;subvalue += queue;url = queue;index = subvalue.length;} /*
+     * Eat white-space.
+     */queue = EMPTY;while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}queue += character;index++;}character = value.charAt(index);subvalue += queue; /*
+     * Eat the title.
+     */if(queue && has.call(markers,character)){index++;subvalue += character;queue = EMPTY;marker = markers[character];beforeTitle = subvalue; /*
+         * In commonmark-mode, things are pretty easy: the
+         * marker cannot occur inside the title.
+         *
+         * Non-commonmark does, however, support nested
+         * delimiters.
+         */if(commonmark){while(index < length) {character = value.charAt(index);if(character === marker){break;}if(character === C_BACKSLASH){queue += C_BACKSLASH;character = value.charAt(++index);}index++;queue += character;}character = value.charAt(index);if(character !== marker){return;}title = queue;subvalue += queue + character;index++;while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}subvalue += character;index++;}}else {whiteSpaceQueue = EMPTY;while(index < length) {character = value.charAt(index);if(character === marker){if(hasMarker){queue += marker + whiteSpaceQueue;whiteSpaceQueue = EMPTY;}hasMarker = true;}else if(!hasMarker){queue += character;}else if(character === C_PAREN_CLOSE){subvalue += queue + marker + whiteSpaceQueue;title = queue;break;}else if(isWhiteSpace(character)){whiteSpaceQueue += character;}else {queue += marker + whiteSpaceQueue + character;whiteSpaceQueue = EMPTY;hasMarker = false;}index++;}}}if(value.charAt(index) !== C_PAREN_CLOSE){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}subvalue += C_PAREN_CLOSE;url = self.decode.raw(self.descape(url),eat(beforeURL).test().end);if(title){beforeTitle = eat(beforeTitle).test().end;title = self.decode.raw(self.descape(title),beforeTitle);}return eat(subvalue)(self.renderLink(!isImage,url,content,title,now,eat));}tokenizeLink.locator = locateLink; /**
  * Tokenise a reference link, image, or footnote;
  * shortcut reference link, or footnote.
  *
  * @example
- *   tokenizeReference(eat, '[foo]', '[', 'foo');
- *   tokenizeReference(eat, '[foo][]', '[', 'foo', '');
- *   tokenizeReference(eat, '[foo][bar]', '[', 'foo', 'bar');
+ *   tokenizeReference(eat, '[foo]');
+ *   tokenizeReference(eat, '[foo][]');
+ *   tokenizeReference(eat, '[foo][bar]');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole link.
- * @param {string} $1 - Prefix.
- * @param {string} $2 - identifier.
- * @param {string} $3 - Content.
- * @return {Node?} - `linkReference`, `imageReference`, or
- *   `footnoteReference`.  Returns null when this is a link
- *   reference, but we're already in a link.
- */
-function tokenizeReference(eat, $0, $1, $2, $3) {
-    var self = this;
-    var text = $2;
-    var identifier = $3 || $2;
-    var type = $1 === BRACKET_OPEN ? 'link' : 'image';
-    var isFootnote = self.options.footnotes && identifier.charAt(0) === CARET;
-    var now = eat.now();
-    var referenceType;
-    var node;
-    var exitLink;
-
-    if ($3 === undefined) {
-        referenceType = 'shortcut';
-    } else if ($3 === '') {
-        referenceType = 'collapsed';
-    } else {
-        referenceType = 'full';
-    }
-
-    if (referenceType !== 'shortcut') {
-        isFootnote = false;
-    }
-
-    if (isFootnote) {
-        identifier = identifier.substr(1);
-    }
-
-    if (isFootnote) {
-        if (identifier.indexOf(SPACE) !== -1) {
-            return eat($0)(self.renderFootnote(identifier, eat.now()));
-        } else {
-            type = 'footnote';
-        }
-    }
-
-    if (self.inLink && type === 'link') {
-        return null;
-    }
-
-    now.column += $1.length;
-
-    node = {
-        'type': type + 'Reference',
-        'identifier': normalize(identifier)
-    };
-
-    if (type === 'link' || type === 'image') {
-        node.referenceType = referenceType;
-    }
-
-    if (type === 'link') {
-        exitLink = self.enterLink();
-        node.children = self.tokenizeInline(text, now);
-        exitLink();
-    } else if (type === 'image') {
-        node.alt = decode(self.descape(text), eat);
-    }
-
-    return eat($0)(node);
-}
-
-/**
+ * @property {Function} locator - Reference locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - Reference node.
+ */function tokenizeReference(eat,value,silent){var self=this;var character=value.charAt(0);var index=0;var length=value.length;var subvalue=EMPTY;var intro=EMPTY;var type=T_LINK;var referenceType=REFERENCE_TYPE_SHORTCUT;var text;var identifier;var now;var node;var exitLink;var queue;var bracketed;var depth; /*
+     * Check whether we’re eating an image.
+     */if(character === C_EXCLAMATION_MARK){type = T_IMAGE;intro = character;character = value.charAt(++index);}if(character !== C_BRACKET_OPEN){return;}index++;intro += character;queue = EMPTY; /*
+     * Check whether we’re eating a footnote.
+     */if(self.options.footnotes && type === T_LINK && value.charAt(index) === C_CARET){intro += C_CARET;index++;type = T_FOOTNOTE;} /*
+     * Eat the text.
+     */depth = 0;while(index < length) {character = value.charAt(index);if(character === C_BRACKET_OPEN){bracketed = true;depth++;}else if(character === C_BRACKET_CLOSE){if(!depth){break;}depth--;}if(character === C_BACKSLASH){queue += C_BACKSLASH;character = value.charAt(++index);}queue += character;index++;}subvalue = text = queue;character = value.charAt(index);if(character !== C_BRACKET_CLOSE){return;}index++;subvalue += character;queue = EMPTY;while(index < length) {character = value.charAt(index);if(!isWhiteSpace(character)){break;}queue += character;index++;}character = value.charAt(index);if(character !== C_BRACKET_OPEN){if(!text){return;}identifier = text;}else {identifier = EMPTY;queue += character;index++;while(index < length) {character = value.charAt(index);if(character === C_BRACKET_OPEN || character === C_BRACKET_CLOSE){break;}if(character === C_BACKSLASH){identifier += C_BACKSLASH;character = value.charAt(++index);}identifier += character;index++;}character = value.charAt(index);if(character === C_BRACKET_CLOSE){queue += identifier + character;index++;referenceType = identifier?REFERENCE_TYPE_FULL:REFERENCE_TYPE_COLLAPSED;}else {identifier = EMPTY;}subvalue += queue;queue = EMPTY;} /*
+     * Brackets cannot be inside the identifier.
+     */if(referenceType !== REFERENCE_TYPE_FULL && bracketed){return;} /*
+     * Inline footnotes cannot have an identifier.
+     */if(type === T_FOOTNOTE && referenceType !== REFERENCE_TYPE_SHORTCUT){type = T_LINK;intro = C_BRACKET_OPEN + C_CARET;text = C_CARET + text;}subvalue = intro + subvalue;if(type === T_LINK && self.inLink){return null;} /* istanbul ignore if - never used (yet) */if(silent){return true;}if(type === T_FOOTNOTE && text.indexOf(C_SPACE) !== -1){return eat(subvalue)(self.renderFootnote(text,eat.now()));}now = eat.now();now.column += intro.length;identifier = referenceType === REFERENCE_TYPE_FULL?identifier:text;node = {'type':type + 'Reference','identifier':normalize(identifier)};if(type === T_LINK || type === T_IMAGE){node.referenceType = referenceType;}if(type === T_LINK){exitLink = self.enterLink();node.children = self.tokenizeInline(text,now);exitLink();}else if(type === T_IMAGE){node.alt = self.decode.raw(self.descape(text),now) || null;}return eat(subvalue)(node);}tokenizeReference.locator = locateLink; /**
+ * Find a possible strong emphasis.
+ *
+ * @example
+ *   locateStrong('foo **bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible strong emphasis.
+ */function locateStrong(value,fromIndex){var asterisk=value.indexOf(C_ASTERISK + C_ASTERISK,fromIndex);var underscore=value.indexOf(C_UNDERSCORE + C_UNDERSCORE,fromIndex);if(underscore === -1){return asterisk;}if(asterisk === -1){return underscore;}return underscore < asterisk?underscore:asterisk;} /**
  * Tokenise strong emphasis.
  *
  * @example
- *   tokenizeStrong(eat, '**foo**', '**', 'foo');
- *   tokenizeStrong(eat, '__foo__', null, null, '__', 'foo');
+ *   tokenizeStrong(eat, '**foo**');
+ *   tokenizeStrong(eat, '__foo__');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole emphasis.
- * @param {string?} $1 - Marker.
- * @param {string?} $2 - Content.
- * @param {string?} [$3] - Marker.
- * @param {string?} [$4] - Content.
- * @return {Node?} - `strong` node, when not empty.
- */
-function tokenizeStrong(eat, $0, $1, $2, $3, $4) {
-    var now = eat.now();
-    var value = $2 || $4;
-
-    if (trim(value) === EMPTY) {
-        return null;
-    }
-
-    now.column += 2;
-
-    return eat($0)(this.renderInline(STRONG, value, now));
-}
-
-/**
+ * @property {Function} locator - Strong emphasis locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `strong` node.
+ */function tokenizeStrong(eat,value,silent){var self=this;var index=0;var character=value.charAt(index);var now;var pedantic;var marker;var queue;var subvalue;var length;var prev;if(EMPHASIS_MARKERS[character] !== true || value.charAt(++index) !== character){return;}pedantic = self.options.pedantic;marker = character;subvalue = marker + marker;length = value.length;index++;queue = character = EMPTY;if(pedantic && isWhiteSpace(value.charAt(index))){return;}while(index < length) {prev = character;character = value.charAt(index);if(character === marker && value.charAt(index + 1) === marker && (!pedantic || !isWhiteSpace(prev))){character = value.charAt(index + 2);if(character !== marker){if(!trim(queue)){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}now = eat.now();now.column += 2;return eat(subvalue + queue + subvalue)(self.renderInline(T_STRONG,queue,now));}}if(!pedantic && character === C_BACKSLASH){queue += character;character = value.charAt(++index);}queue += character;index++;}}tokenizeStrong.locator = locateStrong; /**
+ * Find possible slight emphasis.
+ *
+ * @example
+ *   locateEmphasis('foo *bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible slight emphasis.
+ */function locateEmphasis(value,fromIndex){var asterisk=value.indexOf(C_ASTERISK,fromIndex);var underscore=value.indexOf(C_UNDERSCORE,fromIndex);if(underscore === -1){return asterisk;}if(asterisk === -1){return underscore;}return underscore < asterisk?underscore:asterisk;} /**
  * Tokenise slight emphasis.
  *
  * @example
- *   tokenizeEmphasis(eat, '*foo*', '*', 'foo');
- *   tokenizeEmphasis(eat, '_foo_', null, null, '_', 'foo');
+ *   tokenizeEmphasis(eat, '*foo*');
+ *   tokenizeEmphasis(eat, '_foo_');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole emphasis.
- * @param {string?} $1 - Marker.
- * @param {string?} $2 - Content.
- * @param {string?} [$3] - Marker.
- * @param {string?} [$4] - Content.
- * @return {Node?} - `emphasis` node, when not empty.
- */
-function tokenizeEmphasis(eat, $0, $1, $2, $3, $4) {
-    var now = eat.now();
-    var marker = $1 || $3;
-    var value = $2 || $4;
-
-    if (trim(value) === EMPTY || value.charAt(0) === marker || value.charAt(value.length - 1) === marker) {
-        return null;
-    }
-
-    now.column += 1;
-
-    return eat($0)(this.renderInline(EMPHASIS, value, now));
-}
-
-/**
+ * @property {Function} locator - Slight emphasis locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `emphasis` node.
+ */function tokenizeEmphasis(eat,value,silent){var self=this;var index=0;var character=value.charAt(index);var now;var pedantic;var marker;var queue;var subvalue;var length;var prev;if(EMPHASIS_MARKERS[character] !== true){return;}pedantic = self.options.pedantic;subvalue = marker = character;length = value.length;index++;queue = character = EMPTY;if(pedantic && isWhiteSpace(value.charAt(index))){return;}while(index < length) {prev = character;character = value.charAt(index);if(character === marker && (!pedantic || !isWhiteSpace(prev))){character = value.charAt(++index);if(character !== marker){if(!trim(queue) || prev === marker){return;}if(pedantic || marker !== C_UNDERSCORE || !isWordCharacter(character)){ /* istanbul ignore if - never used (yet) */if(silent){return true;}now = eat.now();now.column++;return eat(subvalue + queue + marker)(self.renderInline(T_EMPHASIS,queue,now));}}queue += marker;}if(!pedantic && character === C_BACKSLASH){queue += character;character = value.charAt(++index);}queue += character;index++;}}tokenizeEmphasis.locator = locateEmphasis; /**
+ * Find a possible deletion.
+ *
+ * @example
+ *   locateDeletion('foo ~~bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible deletion.
+ */function locateDeletion(value,fromIndex){return value.indexOf(C_TILDE + C_TILDE,fromIndex);} /**
  * Tokenise a deletion.
  *
  * @example
- *   tokenizeDeletion(eat, '~~foo~~', '~~', 'foo');
+ *   tokenizeDeletion(eat, '~~foo~~');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole deletion.
- * @param {string} $1 - Content.
- * @return {Node} - `delete` node.
- */
-function tokenizeDeletion(eat, $0, $1) {
-    var now = eat.now();
-
-    now.column += 2;
-
-    return eat($0)(this.renderInline(DELETE, $1, now));
-}
-
-/**
+ * @property {Function} locator - Deletion locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `delete` node.
+ */function tokenizeDeletion(eat,value,silent){var self=this;var character=EMPTY;var previous=EMPTY;var preceding=EMPTY;var subvalue=EMPTY;var index;var length;var now;if(!self.options.gfm || value.charAt(0) !== C_TILDE || value.charAt(1) !== C_TILDE || isWhiteSpace(value.charAt(2))){return;}index = 1;length = value.length;now = eat.now();now.column += 2;while(++index < length) {character = value.charAt(index);if(character === C_TILDE && previous === C_TILDE && (!preceding || !isWhiteSpace(preceding))){ /* istanbul ignore if - never used (yet) */if(silent){return true;}return eat(C_TILDE + C_TILDE + subvalue + C_TILDE + C_TILDE)(self.renderInline(T_DELETE,subvalue,now));}subvalue += previous;preceding = previous;previous = character;}}tokenizeDeletion.locator = locateDeletion; /**
+ * Find possible inline code.
+ *
+ * @example
+ *   locateInlineCode('foo `bar'); // 4
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible inline code.
+ */function locateInlineCode(value,fromIndex){return value.indexOf(C_TICK,fromIndex);} /**
  * Tokenise inline code.
  *
  * @example
- *   tokenizeInlineCode(eat, '`foo()`', '`', 'foo()');
+ *   tokenizeInlineCode(eat, '`foo()`');
  *
- * @param {function(string)} eat
- * @param {string} $0 - Whole code.
- * @param {string} $1 - Initial markers.
- * @param {string} $2 - Content.
- * @return {Node} - `inlineCode` node.
- */
-function tokenizeInlineCode(eat, $0, $1, $2) {
-    return eat($0)(this.renderRaw(INLINE_CODE, trim($2 || '')));
-}
-
-/**
+ * @property {Function} locator - Inline code locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `inlineCode` node.
+ */function tokenizeInlineCode(eat,value,silent){var self=this;var length=value.length;var index=0;var queue=EMPTY;var tickQueue=EMPTY;var contentQueue;var whiteSpaceQueue;var count;var openingCount;var subvalue;var character;var found;var next;while(index < length) {if(value.charAt(index) !== C_TICK){break;}queue += C_TICK;index++;}if(!queue){return;}subvalue = queue;openingCount = index;queue = EMPTY;next = value.charAt(index);count = 0;while(index < length) {character = next;next = value.charAt(index + 1);if(character === C_TICK){count++;tickQueue += character;}else {count = 0;queue += character;}if(count && next !== C_TICK){if(count === openingCount){subvalue += queue + tickQueue;found = true;break;}queue += tickQueue;tickQueue = EMPTY;}index++;}if(!found){if(openingCount % 2 !== 0){return;}queue = EMPTY;} /* istanbul ignore if - never used (yet) */if(silent){return true;}contentQueue = whiteSpaceQueue = EMPTY;length = queue.length;index = -1;while(++index < length) {character = queue.charAt(index);if(isWhiteSpace(character)){whiteSpaceQueue += character;continue;}if(whiteSpaceQueue){if(contentQueue){contentQueue += whiteSpaceQueue;}whiteSpaceQueue = EMPTY;}contentQueue += character;}return eat(subvalue)(self.renderRaw(T_INLINE_CODE,contentQueue));}tokenizeInlineCode.locator = locateInlineCode; /**
+ * Find a possible break.
+ *
+ * @example
+ *   locateBreak('foo   \nbar'); // 3
+ *
+ * @param {string} value - Value to search.
+ * @param {number} fromIndex - Index to start searching at.
+ * @return {number} - Location of possible break.
+ */function locateBreak(value,fromIndex){var index=value.indexOf(C_NEWLINE,fromIndex);while(index > fromIndex) {if(value.charAt(index - 1) !== C_SPACE){break;}index--;}return index;} /**
  * Tokenise a break.
  *
  * @example
  *   tokenizeBreak(eat, '  \n');
  *
- * @param {function(string)} eat
- * @param {string} $0
- * @return {Node} - `break` node.
- */
-function tokenizeBreak(eat, $0) {
-    return eat($0)(this.renderVoid(BREAK));
-}
-
-/**
+ * @property {Function} locator - Break locator.
+ * @param {function(string)} eat - Eater.
+ * @param {string} value - Rest of content.
+ * @param {boolean?} [silent] - Whether this is a dry run.
+ * @return {Node?|boolean} - `break` node.
+ */function tokenizeBreak(eat,value,silent){var self=this;var breaks=self.options.breaks;var length=value.length;var index=-1;var queue=EMPTY;var character;while(++index < length) {character = value.charAt(index);if(character === C_NEWLINE){if(!breaks && index < MIN_BREAK_LENGTH){return;} /* istanbul ignore if - never used (yet) */if(silent){return true;}queue += character;return eat(queue)(self.renderVoid(T_BREAK));}if(character !== C_SPACE){return;}queue += character;}}tokenizeBreak.locator = locateBreak; /**
  * Construct a new parser.
  *
  * @example
@@ -4097,26 +3358,7 @@ function tokenizeBreak(eat, $0) {
  * @param {VFile} file - File to parse.
  * @param {Object?} [options] - Passed to
  *   `Parser#setOptions()`.
- */
-function Parser(file, options) {
-    var self = this;
-    var rules = extend({}, self.expressions.rules);
-
-    self.file = file;
-    self.inLink = false;
-    self.atTop = true;
-    self.atStart = true;
-    self.inBlockquote = false;
-
-    self.rules = rules;
-    self.descape = descapeFactory(rules, 'escape');
-
-    self.options = extend({}, self.options);
-
-    self.setOptions(options);
-}
-
-/**
+ */function Parser(file,options,processor){var self=this;self.file = file;self.inLink = false;self.atTop = true;self.atStart = true;self.inBlockquote = false;self.data = processor.data;self.descape = descapeFactory(self,'escape');self.decode = decodeFactory(self);self.options = extend({},self.options);self.setOptions(options);} /**
  * Set options.  Does not overwrite previously set
  * options.
  *
@@ -4128,91 +3370,30 @@ function Parser(file, options) {
  * @throws {Error} - When an option is invalid.
  * @param {Object?} [options] - Parse settings.
  * @return {Parser} - `self`.
- */
-Parser.prototype.setOptions = function (options) {
-    var self = this;
-    var expressions = self.expressions;
-    var rules = self.rules;
-    var current = self.options;
-    var key;
-
-    if (options === null || options === undefined) {
-        options = {};
-    } else if (typeof options === 'object') {
-        options = extend({}, options);
-    } else {
-        raise(options, 'options');
-    }
-
-    self.options = options;
-
-    for (key in defaultOptions) {
-        validate.boolean(options, key, current[key]);
-
-        if (options[key]) {
-            extend(rules, expressions[key]);
-        }
-    }
-
-    if (options.gfm && options.breaks) {
-        extend(rules, expressions.breaksGFM);
-    }
-
-    if (options.gfm && options.commonmark) {
-        extend(rules, expressions.commonmarkGFM);
-    }
-
-    if (options.commonmark) {
-        self.enterBlockquote = noopToggler();
-    }
-
-    return self;
-};
-
-/*
+ */Parser.prototype.setOptions = function(options){var self=this;var escape=self.data.escape;var current=self.options;var key;if(options === null || options === undefined){options = {};}else if(typeof options === 'object'){options = extend({},options);}else {raise(options,'options');}for(key in defaultOptions) {validate.boolean(options,key,current[key]);}self.options = options;if(options.commonmark){self.escape = escape.commonmark;}else if(options.gfm){self.escape = escape.gfm;}else {self.escape = escape['default'];}return self;}; /*
  * Expose `defaults`.
- */
-
-Parser.prototype.options = defaultOptions;
-
-/*
- * Expose `expressions`.
- */
-
-Parser.prototype.expressions = defaultExpressions;
-
-/**
+ */Parser.prototype.options = defaultOptions; /**
  * Factory to track indentation for each line corresponding
  * to the given `start` and the number of invocations.
  *
  * @param {number} start - Starting line.
  * @return {function(offset)} - Indenter.
- */
-Parser.prototype.indent = function (start) {
-    var self = this;
-    var line = start;
-
-    /**
+ */Parser.prototype.indent = function(start){var self=this;var line=start; /**
      * Intender which increments the global offset,
      * starting at the bound line, and further incrementing
      * each line for each invocation.
      *
      * @example
-     *   indenter(2)
+     *   indenter(2);
      *
      * @param {number} offset - Number to increment the
      *   offset.
-     */
-    function indenter(offset) {
-        self.offset[line] = (self.offset[line] || 0) + offset;
-
-        line++;
-    }
-
-    return indenter;
-};
-
-/**
+     */function indenter(offset){self.offset[line] = (self.offset[line] || 0) + offset;line++;}return indenter;}; /**
+ * Get found offsets starting at `start`.
+ *
+ * @param {number} start - Starting line.
+ * @return {Array.<number>} - Offsets starting at `start`.
+ */Parser.prototype.getIndent = function(start){var offset=this.offset;var result=[];while(++start) {if(!(start in offset)){break;}result.push((offset[start] || 0) + 1);}return result;}; /**
  * Parse the bound file.
  *
  * @example
@@ -4220,64 +3401,14 @@ Parser.prototype.indent = function (start) {
  *
  * @this {Parser}
  * @return {Object} - `root` node.
- */
-Parser.prototype.parse = function () {
-    var self = this;
-    var value = clean(String(self.file));
-    var node;
-
-    /*
+ */Parser.prototype.parse = function(){var self=this;var value=clean(String(self.file));var node; /*
      * Add an `offset` matrix, used to keep track of
      * syntax and white space indentation per line.
-     */
-
-    self.offset = {};
-
-    node = self.renderBlock(ROOT, value);
-
-    if (self.options.position) {
-        node.position = {
-            'start': {
-                'line': 1,
-                'column': 1
-            }
-        };
-
-        node.position.end = self.eof || node.position.start;
-    }
-
-    return node;
-};
-
-/*
+     */self.offset = {};node = self.renderBlock(T_ROOT,value);if(self.options.position){node.position = {'start':{'line':1,'column':1}};node.position.end = self.eof || node.position.start;}return node;}; /*
  * Enter and exit helpers.
- */
-
-Parser.prototype.enterLink = stateToggler('inLink', false);
-Parser.prototype.exitTop = stateToggler('atTop', true);
-Parser.prototype.exitStart = stateToggler('atStart', true);
-Parser.prototype.enterBlockquote = stateToggler('inBlockquote', false);
-
-/*
+ */Parser.prototype.enterLink = stateToggler('inLink',false);Parser.prototype.exitTop = stateToggler('atTop',true);Parser.prototype.exitStart = stateToggler('atStart',true);Parser.prototype.enterBlockquote = stateToggler('inBlockquote',false); /*
  * Expose helpers
- */
-
-Parser.prototype.renderRaw = renderRaw;
-Parser.prototype.renderVoid = renderVoid;
-Parser.prototype.renderParent = renderParent;
-Parser.prototype.renderInline = renderInline;
-Parser.prototype.renderBlock = renderBlock;
-
-Parser.prototype.renderLink = renderLink;
-Parser.prototype.renderCodeBlock = renderCodeBlock;
-Parser.prototype.renderBlockquote = renderBlockquote;
-Parser.prototype.renderList = renderList;
-Parser.prototype.renderListItem = renderListItem;
-Parser.prototype.renderFootnoteDefinition = renderFootnoteDefinition;
-Parser.prototype.renderHeading = renderHeading;
-Parser.prototype.renderFootnote = renderFootnote;
-
-/**
+ */Parser.prototype.renderRaw = renderRaw;Parser.prototype.renderVoid = renderVoid;Parser.prototype.renderParent = renderParent;Parser.prototype.renderInline = renderInline;Parser.prototype.renderBlock = renderBlock;Parser.prototype.renderLink = renderLink;Parser.prototype.renderCodeBlock = renderCodeBlock;Parser.prototype.renderBlockquote = renderBlockquote;Parser.prototype.renderListItem = renderListItem;Parser.prototype.renderFootnoteDefinition = renderFootnoteDefinition;Parser.prototype.renderHeading = renderHeading;Parser.prototype.renderFootnote = renderFootnote; /**
  * Construct a tokenizer.  This creates both
  * `tokenizeInline` and `tokenizeBlock`.
  *
@@ -4287,10 +3418,8 @@ Parser.prototype.renderFootnote = renderFootnote;
  * @param {string} type - Name of parser, used to find
  *   its expressions (`%sMethods`) and tokenizers
  *   (`%Tokenizers`).
- * @return {function(string, Object?): Array.<Object>}
- */
-function tokenizeFactory(type) {
-    /**
+ * @return {Function} - Tokenizer.
+ */function tokenizeFactory(type){ /**
      * Tokenizer for a bound `type`
      *
      * @example
@@ -4301,118 +3430,34 @@ function tokenizeFactory(type) {
      * @param {Object?} [location] - Offset at which `value`
      *   starts.
      * @return {Array.<Object>} - Nodes.
-     */
-    function tokenize(value, location) {
-        var self = this;
-        var offset = self.offset;
-        var tokens = [];
-        var rules = self.rules;
-        var methods = self[type + 'Methods'];
-        var tokenizers = self[type + 'Tokenizers'];
-        var line = location ? location.line : 1;
-        var column = location ? location.column : 1;
-        var patchPosition = self.options.position;
-        var add;
-        var index;
-        var length;
-        var method;
-        var name;
-        var match;
-        var matched;
-        var valueLength;
-        var eater;
-
-        /*
+     */function tokenize(value,location){var self=this;var offset=self.offset;var tokens=[];var methods=self[type + 'Methods'];var tokenizers=self[type + 'Tokenizers'];var line=location?location.line:1;var column=location?location.column:1;var patchPosition=self.options.position;var add;var index;var length;var method;var name;var matched;var valueLength;var eater; /*
          * Trim white space only lines.
-         */
-
-        if (!value) {
-            return tokens;
-        }
-
-        /**
+         */if(!value){return tokens;} /**
          * Update line and column based on `value`.
          *
          * @example
          *   updatePosition('foo');
          *
-         * @param {string} subvalue
-         */
-        function updatePosition(subvalue) {
-            var character = -1;
-            var subvalueLength = subvalue.length;
-            var lastIndex = -1;
-
-            while (++character < subvalueLength) {
-                if (subvalue.charAt(character) === NEW_LINE) {
-                    lastIndex = character;
-                    line++;
-                }
-            }
-
-            if (lastIndex === -1) {
-                column = column + subvalue.length;
-            } else {
-                column = subvalue.length - lastIndex;
-            }
-
-            if (line in offset) {
-                if (lastIndex !== -1) {
-                    column += offset[line];
-                } else if (column <= offset[line]) {
-                    column = offset[line] + 1;
-                }
-            }
-        }
-
-        /**
-         * Get offset. Called before the fisrt character is
+         * @param {string} subvalue - Subvalue to eat.
+         */function updatePosition(subvalue){var lastIndex=-1;var index=subvalue.indexOf(C_NEWLINE);while(index !== -1) {line++;lastIndex = index;index = subvalue.indexOf(C_NEWLINE,index + 1);}if(lastIndex === -1){column = column + subvalue.length;}else {column = subvalue.length - lastIndex;}if(line in offset){if(lastIndex !== -1){column += offset[line];}else if(column <= offset[line]){column = offset[line] + 1;}}} /**
+         * Get offset. Called before the first character is
          * eaten to retrieve the range's offsets.
          *
          * @return {Function} - `done`, to be called when
          *   the last character is eaten.
-         */
-        function getOffset() {
-            var indentation = [];
-            var pos = line + 1;
-
-            /**
+         */function getOffset(){var indentation=[];var pos=line + 1; /**
              * Done. Called when the last character is
-             * eaten to retrieve the range's offsets.
+             * eaten to retrieve the range’s offsets.
              *
              * @return {Array.<number>} - Offset.
-             */
-            function done() {
-                var last = line + 1;
-
-                while (pos < last) {
-                    indentation.push((offset[pos] || 0) + 1);
-
-                    pos++;
-                }
-
-                return indentation;
-            }
-
-            return done;
-        }
-
-        /**
+             */function done(){var last=line + 1;while(pos < last) {indentation.push((offset[pos] || 0) + 1);pos++;}return indentation;}return done;} /**
          * Get the current position.
          *
          * @example
          *   position = now(); // {line: 1, column: 1}
          *
-         * @return {Object}
-         */
-        function now() {
-            return {
-                'line': line,
-                'column': column
-            };
-        }
-
-        /**
+         * @return {Object} - Current Position.
+         */function now(){return {'line':line,'column':column};} /**
          * Store position information for a node.
          *
          * @example
@@ -4421,14 +3466,8 @@ function tokenizeFactory(type) {
          *   location = new Position(start);
          *   // {start: {line: 1, column: 1}, end: {line: 1, column: 3}}
          *
-         * @param {Object} start
-         */
-        function Position(start) {
-            this.start = start;
-            this.end = now();
-        }
-
-        /**
+         * @param {Object} start - Starting position.
+         */function Position(start){this.start = start;this.end = now();} /**
          * Throw when a value is incorrectly eaten.
          * This shouldn’t happen but will throw on new,
          * incorrect rules.
@@ -4443,15 +3482,7 @@ function tokenizeFactory(type) {
          *
          * @param {string} subvalue - Value to be eaten.
          * @throws {Error} - When `subvalue` cannot be eaten.
-         */
-        function validateEat(subvalue) {
-            /* istanbul ignore if */
-            if (value.substring(0, subvalue.length) !== subvalue) {
-                self.file.fail('Incorrectly eaten value: please report this ' + 'warning on http://git.io/vUYWz', now());
-            }
-        }
-
-        /**
+         */function validateEat(subvalue){ /* istanbul ignore if */if(value.substring(0,subvalue.length) !== subvalue){self.file.fail(ERR_INCORRECTLY_EATEN,now());}} /**
          * Mark position and patch `node.position`.
          *
          * @example
@@ -4465,12 +3496,8 @@ function tokenizeFactory(type) {
          *   //   }
          *   // }
          *
-         * @returns {function(Node): Node}
-         */
-        function position() {
-            var before = now();
-
-            /**
+         * @returns {Function} - Updater.
+         */function position(){var before=now(); /**
              * Add the position to a node.
              *
              * @example
@@ -4478,51 +3505,19 @@ function tokenizeFactory(type) {
              *
              * @param {Node} node - Node to attach position
              *   on.
+             * @param {Array} [indent] - Indentation for
+             *   `node`.
              * @return {Node} - `node`.
-             */
-            function update(node, indent) {
-                var prev = node.position;
-                var start = prev ? prev.start : before;
-                var combined = [];
-                var n = prev && prev.end.line;
-                var l = before.line;
-
-                node.position = new Position(start);
-
-                /*
+             */function update(node,indent){var prev=node.position;var start=prev?prev.start:before;var combined=[];var n=prev && prev.end.line;var l=before.line;node.position = new Position(start); /*
                  * If there was already a `position`, this
-                 * node was merged.  Fixing `start` wasn't
+                 * node was merged.  Fixing `start` wasn’t
                  * hard, but the indent is different.
                  * Especially because some information, the
-                 * indent between `n` and `l` wasn't
+                 * indent between `n` and `l` wasn’t
                  * tracked.  Luckily, that space is
                  * (should be?) empty, so we can safely
                  * check for it now.
-                 */
-
-                if (prev) {
-                    combined = prev.indent;
-
-                    if (n < l) {
-                        while (++n < l) {
-                            combined.push((offset[n] || 0) + 1);
-                        }
-
-                        combined.push(before.column);
-                    }
-
-                    indent = combined.concat(indent);
-                }
-
-                node.position.indent = indent;
-
-                return node;
-            }
-
-            return update;
-        }
-
-        /**
+                 */if(prev && indent && prev.indent){combined = prev.indent;if(n < l){while(++n < l) {combined.push((offset[n] || 0) + 1);}combined.push(before.column);}indent = combined.concat(indent);}node.position.indent = indent || [];return node;}return update;} /**
          * Add `node` to `parent`s children or to `tokens`.
          * Performs merges where possible.
          *
@@ -4534,44 +3529,7 @@ function tokenizeFactory(type) {
          * @param {Object} node - Node to add.
          * @param {Object} [parent] - Parent to insert into.
          * @return {Object} - Added or merged into node.
-         */
-        add = function (node, parent) {
-            var isMultiple = ('length' in node);
-            var prev;
-            var children;
-
-            if (!parent) {
-                children = tokens;
-            } else {
-                children = parent.children;
-            }
-
-            if (isMultiple) {
-                arrayPush.apply(children, node);
-            } else {
-                if (type === INLINE && node.type === TEXT) {
-                    node.value = decode(node.value, eater);
-                }
-
-                prev = children[children.length - 1];
-
-                if (prev && node.type === prev.type && node.type in MERGEABLE_NODES) {
-                    node = MERGEABLE_NODES[node.type].call(self, prev, node);
-                }
-
-                if (node !== prev) {
-                    children.push(node);
-                }
-
-                if (self.atStart && tokens.length) {
-                    self.exitStart();
-                }
-            }
-
-            return node;
-        };
-
-        /**
+         */add = function(node,parent){var prev;var children;if(!parent){children = tokens;}else {children = parent.children;}prev = children[children.length - 1];if(prev && node.type === prev.type && node.type in MERGEABLE_NODES && mergeable(prev) && mergeable(node)){node = MERGEABLE_NODES[node.type].call(self,prev,node);}if(node !== prev){children.push(node);}if(self.atStart && tokens.length){self.exitStart();}return node;}; /**
          * Remove `subvalue` from `value`.
          * Expects `subvalue` to be at the start from
          * `value`, and applies no validation.
@@ -4583,25 +3541,14 @@ function tokenizeFactory(type) {
          *   and passed to `updatePosition`.
          * @return {Function} - Wrapper around `add`, which
          *   also adds `position` to node.
-         */
-        function eat(subvalue) {
-            var indent = getOffset();
-            var pos = position();
-            var current = now();
-
-            validateEat(subvalue);
-
-            /**
+         */function eat(subvalue){var indent=getOffset();var pos=position();var current=now();validateEat(subvalue); /**
              * Add the given arguments, add `position` to
              * the returned node, and return the node.
              *
-             * @return {Node}
-             */
-            function apply() {
-                return pos(add.apply(null, arguments), indent);
-            }
-
-            /**
+             * @param {Object} node - Node to add.
+             * @param {Object} [parent] - Node to insert into.
+             * @return {Node} - Added node.
+             */function apply(node,parent){return pos(add(pos(node),parent),indent);} /**
              * Functions just like apply, but resets the
              * content:  the line and column are reversed,
              * and the eaten value is re-added.
@@ -4612,30 +3559,13 @@ function tokenizeFactory(type) {
              * See `apply` above for what parameters are
              * expected.
              *
-             * @return {Node}
-             */
-            function reset() {
-                var node = apply.apply(null, arguments);
-
-                line = current.line;
-                column = current.column;
-                value = subvalue + value;
-
-                return node;
-            }
-
-            apply.reset = reset;
-
-            value = value.substring(subvalue.length);
-
-            updatePosition(subvalue);
-
-            indent = indent();
-
-            return apply;
-        }
-
-        /**
+             * @return {Node} - Added node.
+             */function reset(){var node=apply.apply(null,arguments);line = current.line;column = current.column;value = subvalue + value;return node;} /**
+             * Test the position, after eating, and reverse
+             * to a not-eaten state.
+             *
+             * @return {Position} - Position after eating `subvalue`.
+             */function test(){var result=pos({});line = current.line;column = current.column;value = subvalue + value;return result.position;}apply.reset = reset;apply.test = reset.test = test;value = value.substring(subvalue.length);updatePosition(subvalue);indent = indent();return apply;} /**
          * Same as `eat` above, but will not add positional
          * information to nodes.
          *
@@ -4644,150 +3574,44 @@ function tokenizeFactory(type) {
          *
          * @param {string} subvalue - Removed from `value`.
          * @return {Function} - Wrapper around `add`.
-         */
-        function noEat(subvalue) {
-            validateEat(subvalue);
-
-            /**
+         */function noEat(subvalue){validateEat(subvalue); /**
              * Add the given arguments, and return the
              * node.
              *
-             * @return {Node}
-             */
-            function apply() {
-                return add.apply(null, arguments);
-            }
-
-            /**
+             * @return {Node} - Added node.
+             */function apply(){return add.apply(null,arguments);} /**
              * Functions just like apply, but resets the
              * content: the eaten value is re-added.
              *
-             * @return {Node}
-             */
-            function reset() {
-                var node = apply.apply(null, arguments);
-
-                value = subvalue + value;
-
-                return node;
-            }
-
-            apply.reset = reset;
-
-            value = value.substring(subvalue.length);
-
-            return apply;
-        }
-
-        /*
+             * @return {Node} - Added node.
+             */function reset(){var node=apply.apply(null,arguments);value = subvalue + value;return node;} /**
+             * Test the position, which in this mode is an
+             * empty object.
+             *
+             * @return {Object} - Empty position object.
+             */function test(){value = subvalue + value;return {};}apply.reset = reset;apply.test = reset.test = test;value = value.substring(subvalue.length);return apply;} /*
          * Expose the eater, depending on if `position`s
          * should be patched on nodes.
-         */
-
-        eater = patchPosition ? eat : noEat;
-
-        /*
+         */eater = patchPosition?eat:noEat; /*
          * Expose `now` on `eater`.
-         */
-
-        eater.now = now;
-
-        /*
+         */eater.now = now; /*
          * Expose `file` on `eater`.
-         */
-
-        eater.file = self.file;
-
-        /*
+         */eater.file = self.file; /*
          * Sync initial offset.
-         */
-
-        updatePosition(EMPTY);
-
-        /*
+         */updatePosition(EMPTY); /*
          * Iterate over `value`, and iterate over all
-         * block-expressions.  When one matches, invoke
-         * its companion function.  If no expression
-         * matches, something failed (should not happen)
-         * and an exception is thrown.
-         */
-
-        while (value) {
-            index = -1;
-            length = methods.length;
-            matched = false;
-
-            while (++index < length) {
-                name = methods[index];
-                method = tokenizers[name];
-
-                if (method && rules[name] && (!method.onlyAtStart || self.atStart) && (!method.onlyAtTop || self.atTop) && (!method.notInBlockquote || !self.inBlockquote) && (!method.notInLink || !self.inLink)) {
-                    match = rules[name].exec(value);
-
-                    if (match) {
-                        valueLength = value.length;
-
-                        method.apply(self, [eater].concat(match));
-
-                        matched = valueLength !== value.length;
-
-                        if (matched) {
-                            break;
-                        }
-                    }
-                }
-            }
-
-            /* istanbul ignore if */
-            if (!matched) {
-                self.file.fail('Infinite loop', eater.now());
-
-                /*
+         * tokenizers.  When one eats something, re-iterate
+         * with the remaining value.  If no tokenizer eats,
+         * something failed (should not happen) and an
+         * exception is thrown.
+         */while(value) {index = -1;length = methods.length;matched = false;while(++index < length) {name = methods[index];method = tokenizers[name];if(method && (!method.onlyAtStart || self.atStart) && (!method.onlyAtTop || self.atTop) && (!method.notInBlockquote || !self.inBlockquote) && (!method.notInLink || !self.inLink)){valueLength = value.length;method.apply(self,[eater,value]);matched = valueLength !== value.length;if(matched){break;}}} /* istanbul ignore if */if(!matched){self.file.fail(ERR_INFINITE_LOOP,eater.now()); /*
                  * Errors are not thrown on `File#fail`
                  * when `quiet: true`.
-                 */
-
-                break;
-            }
-        }
-
-        self.eof = now();
-
-        return tokens;
-    }
-
-    return tokenize;
-}
-
-/*
+                 */break;}}self.eof = now();return tokens;}return tokenize;} /*
  * Expose tokenizers for block-level nodes.
- */
-
-Parser.prototype.blockTokenizers = {
-    'yamlFrontMatter': tokenizeYAMLFrontMatter,
-    'newline': tokenizeNewline,
-    'code': tokenizeCode,
-    'fences': tokenizeFences,
-    'heading': tokenizeHeading,
-    'lineHeading': tokenizeLineHeading,
-    'horizontalRule': tokenizeHorizontalRule,
-    'blockquote': tokenizeBlockquote,
-    'list': tokenizeList,
-    'html': tokenizeHtml,
-    'definition': tokenizeDefinition,
-    'footnoteDefinition': tokenizeFootnoteDefinition,
-    'looseTable': tokenizeTable,
-    'table': tokenizeTable,
-    'paragraph': tokenizeParagraph
-};
-
-/*
+ */Parser.prototype.blockTokenizers = {'yamlFrontMatter':tokenizeYAMLFrontMatter,'newline':tokenizeNewline,'code':tokenizeCode,'fences':tokenizeFences,'heading':tokenizeHeading,'lineHeading':tokenizeLineHeading,'horizontalRule':tokenizeHorizontalRule,'blockquote':tokenizeBlockquote,'list':tokenizeList,'html':tokenizeHTML,'definition':tokenizeDefinition,'footnoteDefinition':tokenizeFootnoteDefinition,'table':tokenizeTable,'paragraph':tokenizeParagraph}; /*
  * Expose order in which to parse block-level nodes.
- */
-
-Parser.prototype.blockMethods = ['yamlFrontMatter', 'newline', 'code', 'fences', 'blockquote', 'heading', 'horizontalRule', 'list', 'lineHeading', 'html', 'definition', 'footnoteDefinition', 'looseTable', 'table', 'paragraph', 'blockText'];
-
-/**
+ */Parser.prototype.blockMethods = ['yamlFrontMatter','newline','code','fences','blockquote','heading','horizontalRule','list','lineHeading','html','footnoteDefinition','definition','looseTable','table','paragraph']; /**
  * Block tokenizer.
  *
  * @example
@@ -4796,37 +3620,11 @@ Parser.prototype.blockMethods = ['yamlFrontMatter', 'newline', 'code', 'fences',
  *
  * @param {string} value - Content.
  * @return {Array.<Object>} - Nodes.
- */
-
-Parser.prototype.tokenizeBlock = tokenizeFactory(BLOCK);
-
-/*
+ */Parser.prototype.tokenizeBlock = tokenizeFactory(BLOCK); /*
  * Expose tokenizers for inline-level nodes.
- */
-
-Parser.prototype.inlineTokenizers = {
-    'escape': tokenizeEscape,
-    'autoLink': tokenizeAutoLink,
-    'url': tokenizeURL,
-    'tag': tokenizeTag,
-    'link': tokenizeLink,
-    'reference': tokenizeReference,
-    'shortcutReference': tokenizeReference,
-    'strong': tokenizeStrong,
-    'emphasis': tokenizeEmphasis,
-    'deletion': tokenizeDeletion,
-    'inlineCode': tokenizeInlineCode,
-    'break': tokenizeBreak,
-    'inlineText': tokenizeText
-};
-
-/*
+ */Parser.prototype.inlineTokenizers = {'escape':tokenizeEscape,'autoLink':tokenizeAutoLink,'url':tokenizeURL,'tag':tokenizeTag,'link':tokenizeLink,'reference':tokenizeReference,'strong':tokenizeStrong,'emphasis':tokenizeEmphasis,'deletion':tokenizeDeletion,'inlineCode':tokenizeInlineCode,'break':tokenizeBreak,'inlineText':tokenizeText}; /*
  * Expose order in which to parse inline-level nodes.
- */
-
-Parser.prototype.inlineMethods = ['escape', 'autoLink', 'url', 'tag', 'link', 'reference', 'shortcutReference', 'strong', 'emphasis', 'deletion', 'inlineCode', 'break', 'inlineText'];
-
-/**
+ */Parser.prototype.inlineMethods = ['escape','autoLink','url','tag','link','reference','shortcutReference','strong','emphasis','deletion','inlineCode','break','inlineText']; /**
  * Inline tokenizer.
  *
  * @example
@@ -4835,345 +3633,2851 @@ Parser.prototype.inlineMethods = ['escape', 'autoLink', 'url', 'tag', 'link', 'r
  *
  * @param {string} value - Content.
  * @return {Array.<Object>} - Nodes.
- */
-
-Parser.prototype.tokenizeInline = tokenizeFactory(INLINE);
-
-/*
+ */Parser.prototype.tokenizeInline = tokenizeFactory(INLINE); /*
  * Expose `tokenizeFactory` so dependencies could create
  * their own tokenizers.
- */
-
-Parser.prototype.tokenizeFactory = tokenizeFactory;
-
-/*
+ */Parser.prototype.tokenizeFactory = tokenizeFactory; /*
  * Expose `parse` on `module.exports`.
+ */module.exports = Parser;
+}, {"parse-entities":24,"repeat-string":25,"trim":26,"trim-trailing-lines":27,"extend.js":28,"./utilities.js":29,"./defaults.js":30,"./block-elements.json":31}],
+24: [function(require, module, exports) {
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module parse-entities
+ * @fileoverview Parse HTML character references: fast, spec-compliant,
+ *   positional information.
  */
 
-module.exports = Parser;
-}, {"he":22,"repeat-string":23,"trim":24,"trim-trailing-lines":25,"extend.js":26,"./utilities.js":27,"./expressions.js":28,"./defaults.js":29}],
-22: [function(require, module, exports) {
-/*! http://mths.be/he v0.5.0 by @mathias | MIT license */
 'use strict';
 
-;(function (root) {
+/* eslint-env commonjs */
 
-	// Detect free variables `exports`.
-	var freeExports = typeof exports == 'object' && exports;
+/*
+ * Dependencies.
+ */
 
-	// Detect free variable `module`.
-	var freeModule = typeof module == 'object' && module && module.exports == freeExports && module;
+var characterEntities = require('character-entities');
+var characterReferenceInvalid = require('character-reference-invalid');
 
-	// Detect free variable `global`, from Node.js or Browserified code,
-	// and use it as `root`.
-	var freeGlobal = typeof global == 'object' && global;
-	if (freeGlobal.global === freeGlobal || freeGlobal.window === freeGlobal) {
-		root = freeGlobal;
-	}
+/*
+ * Methods.
+ */
 
-	/*--------------------------------------------------------------------------*/
+var fromCharCode = String.fromCharCode;
+var has = Object.prototype.hasOwnProperty;
+var noop = Function.prototype;
 
-	// All astral symbols.
-	var regexAstralSymbols = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
-	// All ASCII symbols (not just printable ASCII) except those listed in the
-	// first column of the overrides table.
-	// http://whatwg.org/html/tokenization.html#table-charref-overrides
-	var regexAsciiWhitelist = /[\x01-\x7F]/g;
-	// All BMP symbols that are not ASCII newlines, printable ASCII symbols, or
-	// code points listed in the first column of the overrides table on
-	// http://whatwg.org/html/tokenization.html#table-charref-overrides.
-	var regexBmpWhitelist = /[\x01-\t\x0B\f\x0E-\x1F\x7F\x81\x8D\x8F\x90\x9D\xA0-\uFFFF]/g;
+/*
+ * Reference types.
+ */
 
-	var regexEncodeNonAscii = /<\u20D2|=\u20E5|>\u20D2|\u205F\u200A|\u219D\u0338|\u2202\u0338|\u2220\u20D2|\u2229\uFE00|\u222A\uFE00|\u223C\u20D2|\u223D\u0331|\u223E\u0333|\u2242\u0338|\u224B\u0338|\u224D\u20D2|\u224E\u0338|\u224F\u0338|\u2250\u0338|\u2261\u20E5|\u2264\u20D2|\u2265\u20D2|\u2266\u0338|\u2267\u0338|\u2268\uFE00|\u2269\uFE00|\u226A\u0338|\u226A\u20D2|\u226B\u0338|\u226B\u20D2|\u227F\u0338|\u2282\u20D2|\u2283\u20D2|\u228A\uFE00|\u228B\uFE00|\u228F\u0338|\u2290\u0338|\u2293\uFE00|\u2294\uFE00|\u22B4\u20D2|\u22B5\u20D2|\u22D8\u0338|\u22D9\u0338|\u22DA\uFE00|\u22DB\uFE00|\u22F5\u0338|\u22F9\u0338|\u2933\u0338|\u29CF\u0338|\u29D0\u0338|\u2A6D\u0338|\u2A70\u0338|\u2A7D\u0338|\u2A7E\u0338|\u2AA1\u0338|\u2AA2\u0338|\u2AAC\uFE00|\u2AAD\uFE00|\u2AAF\u0338|\u2AB0\u0338|\u2AC5\u0338|\u2AC6\u0338|\u2ACB\uFE00|\u2ACC\uFE00|\u2AFD\u20E5|[\xA0-\u0113\u0116-\u0122\u0124-\u012B\u012E-\u014D\u0150-\u017E\u0192\u01B5\u01F5\u0237\u02C6\u02C7\u02D8-\u02DD\u0311\u0391-\u03A1\u03A3-\u03A9\u03B1-\u03C9\u03D1\u03D2\u03D5\u03D6\u03DC\u03DD\u03F0\u03F1\u03F5\u03F6\u0401-\u040C\u040E-\u044F\u0451-\u045C\u045E\u045F\u2002-\u2005\u2007-\u2010\u2013-\u2016\u2018-\u201A\u201C-\u201E\u2020-\u2022\u2025\u2026\u2030-\u2035\u2039\u203A\u203E\u2041\u2043\u2044\u204F\u2057\u205F-\u2063\u20AC\u20DB\u20DC\u2102\u2105\u210A-\u2113\u2115-\u211E\u2122\u2124\u2127-\u2129\u212C\u212D\u212F-\u2131\u2133-\u2138\u2145-\u2148\u2153-\u215E\u2190-\u219B\u219D-\u21A7\u21A9-\u21AE\u21B0-\u21B3\u21B5-\u21B7\u21BA-\u21DB\u21DD\u21E4\u21E5\u21F5\u21FD-\u2205\u2207-\u2209\u220B\u220C\u220F-\u2214\u2216-\u2218\u221A\u221D-\u2238\u223A-\u2257\u2259\u225A\u225C\u225F-\u2262\u2264-\u228B\u228D-\u229B\u229D-\u22A5\u22A7-\u22B0\u22B2-\u22BB\u22BD-\u22DB\u22DE-\u22E3\u22E6-\u22F7\u22F9-\u22FE\u2305\u2306\u2308-\u2310\u2312\u2313\u2315\u2316\u231C-\u231F\u2322\u2323\u232D\u232E\u2336\u233D\u233F\u237C\u23B0\u23B1\u23B4-\u23B6\u23DC-\u23DF\u23E2\u23E7\u2423\u24C8\u2500\u2502\u250C\u2510\u2514\u2518\u251C\u2524\u252C\u2534\u253C\u2550-\u256C\u2580\u2584\u2588\u2591-\u2593\u25A1\u25AA\u25AB\u25AD\u25AE\u25B1\u25B3-\u25B5\u25B8\u25B9\u25BD-\u25BF\u25C2\u25C3\u25CA\u25CB\u25EC\u25EF\u25F8-\u25FC\u2605\u2606\u260E\u2640\u2642\u2660\u2663\u2665\u2666\u266A\u266D-\u266F\u2713\u2717\u2720\u2736\u2758\u2772\u2773\u27C8\u27C9\u27E6-\u27ED\u27F5-\u27FA\u27FC\u27FF\u2902-\u2905\u290C-\u2913\u2916\u2919-\u2920\u2923-\u292A\u2933\u2935-\u2939\u293C\u293D\u2945\u2948-\u294B\u294E-\u2976\u2978\u2979\u297B-\u297F\u2985\u2986\u298B-\u2996\u299A\u299C\u299D\u29A4-\u29B7\u29B9\u29BB\u29BC\u29BE-\u29C5\u29C9\u29CD-\u29D0\u29DC-\u29DE\u29E3-\u29E5\u29EB\u29F4\u29F6\u2A00-\u2A02\u2A04\u2A06\u2A0C\u2A0D\u2A10-\u2A17\u2A22-\u2A27\u2A29\u2A2A\u2A2D-\u2A31\u2A33-\u2A3C\u2A3F\u2A40\u2A42-\u2A4D\u2A50\u2A53-\u2A58\u2A5A-\u2A5D\u2A5F\u2A66\u2A6A\u2A6D-\u2A75\u2A77-\u2A9A\u2A9D-\u2AA2\u2AA4-\u2AB0\u2AB3-\u2AC8\u2ACB\u2ACC\u2ACF-\u2ADB\u2AE4\u2AE6-\u2AE9\u2AEB-\u2AF3\u2AFD\uFB00-\uFB04]|\uD835[\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDCCF\uDD04\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDD6B]/g;
-	var encodeMap = { '\xC1': 'Aacute', '\xE1': 'aacute', 'Ă': 'Abreve', 'ă': 'abreve', '∾': 'ac', '∿': 'acd', '∾̳': 'acE', '\xC2': 'Acirc', '\xE2': 'acirc', '\xB4': 'acute', 'А': 'Acy', 'а': 'acy', '\xC6': 'AElig', '\xE6': 'aelig', '⁡': 'af', '𝔄': 'Afr', '𝔞': 'afr', '\xC0': 'Agrave', '\xE0': 'agrave', 'ℵ': 'aleph', 'Α': 'Alpha', 'α': 'alpha', 'Ā': 'Amacr', 'ā': 'amacr', '⨿': 'amalg', '&': 'amp', '⩕': 'andand', '⩓': 'And', '∧': 'and', '⩜': 'andd', '⩘': 'andslope', '⩚': 'andv', '∠': 'ang', '⦤': 'ange', '⦨': 'angmsdaa', '⦩': 'angmsdab', '⦪': 'angmsdac', '⦫': 'angmsdad', '⦬': 'angmsdae', '⦭': 'angmsdaf', '⦮': 'angmsdag', '⦯': 'angmsdah', '∡': 'angmsd', '∟': 'angrt', '⊾': 'angrtvb', '⦝': 'angrtvbd', '∢': 'angsph', '\xC5': 'angst', '⍼': 'angzarr', 'Ą': 'Aogon', 'ą': 'aogon', '𝔸': 'Aopf', '𝕒': 'aopf', '⩯': 'apacir', '≈': 'ap', '⩰': 'apE', '≊': 'ape', '≋': 'apid', '\'': 'apos', '\xE5': 'aring', '𝒜': 'Ascr', '𝒶': 'ascr', '≔': 'colone', '*': 'ast', '≍': 'CupCap', '\xC3': 'Atilde', '\xE3': 'atilde', '\xC4': 'Auml', '\xE4': 'auml', '∳': 'awconint', '⨑': 'awint', '≌': 'bcong', '϶': 'bepsi', '‵': 'bprime', '∽': 'bsim', '⋍': 'bsime', '∖': 'setmn', '⫧': 'Barv', '⊽': 'barvee', '⌅': 'barwed', '⌆': 'Barwed', '⎵': 'bbrk', '⎶': 'bbrktbrk', 'Б': 'Bcy', 'б': 'bcy', '„': 'bdquo', '∵': 'becaus', '⦰': 'bemptyv', 'ℬ': 'Bscr', 'Β': 'Beta', 'β': 'beta', 'ℶ': 'beth', '≬': 'twixt', '𝔅': 'Bfr', '𝔟': 'bfr', '⋂': 'xcap', '◯': 'xcirc', '⋃': 'xcup', '⨀': 'xodot', '⨁': 'xoplus', '⨂': 'xotime', '⨆': 'xsqcup', '★': 'starf', '▽': 'xdtri', '△': 'xutri', '⨄': 'xuplus', '⋁': 'Vee', '⋀': 'Wedge', '⤍': 'rbarr', '⧫': 'lozf', '▪': 'squf', '▴': 'utrif', '▾': 'dtrif', '◂': 'ltrif', '▸': 'rtrif', '␣': 'blank', '▒': 'blk12', '░': 'blk14', '▓': 'blk34', '█': 'block', '=⃥': 'bne', '≡⃥': 'bnequiv', '⫭': 'bNot', '⌐': 'bnot', '𝔹': 'Bopf', '𝕓': 'bopf', '⊥': 'bot', '⋈': 'bowtie', '⧉': 'boxbox', '┐': 'boxdl', '╕': 'boxdL', '╖': 'boxDl', '╗': 'boxDL', '┌': 'boxdr', '╒': 'boxdR', '╓': 'boxDr', '╔': 'boxDR', '─': 'boxh', '═': 'boxH', '┬': 'boxhd', '╤': 'boxHd', '╥': 'boxhD', '╦': 'boxHD', '┴': 'boxhu', '╧': 'boxHu', '╨': 'boxhU', '╩': 'boxHU', '⊟': 'minusb', '⊞': 'plusb', '⊠': 'timesb', '┘': 'boxul', '╛': 'boxuL', '╜': 'boxUl', '╝': 'boxUL', '└': 'boxur', '╘': 'boxuR', '╙': 'boxUr', '╚': 'boxUR', '│': 'boxv', '║': 'boxV', '┼': 'boxvh', '╪': 'boxvH', '╫': 'boxVh', '╬': 'boxVH', '┤': 'boxvl', '╡': 'boxvL', '╢': 'boxVl', '╣': 'boxVL', '├': 'boxvr', '╞': 'boxvR', '╟': 'boxVr', '╠': 'boxVR', '˘': 'breve', '\xA6': 'brvbar', '𝒷': 'bscr', '⁏': 'bsemi', '⧅': 'bsolb', '\\': 'bsol', '⟈': 'bsolhsub', '•': 'bull', '≎': 'bump', '⪮': 'bumpE', '≏': 'bumpe', 'Ć': 'Cacute', 'ć': 'cacute', '⩄': 'capand', '⩉': 'capbrcup', '⩋': 'capcap', '∩': 'cap', '⋒': 'Cap', '⩇': 'capcup', '⩀': 'capdot', 'ⅅ': 'DD', '∩︀': 'caps', '⁁': 'caret', 'ˇ': 'caron', 'ℭ': 'Cfr', '⩍': 'ccaps', 'Č': 'Ccaron', 'č': 'ccaron', '\xC7': 'Ccedil', '\xE7': 'ccedil', 'Ĉ': 'Ccirc', 'ĉ': 'ccirc', '∰': 'Cconint', '⩌': 'ccups', '⩐': 'ccupssm', 'Ċ': 'Cdot', 'ċ': 'cdot', '\xB8': 'cedil', '⦲': 'cemptyv', '\xA2': 'cent', '\xB7': 'middot', '𝔠': 'cfr', 'Ч': 'CHcy', 'ч': 'chcy', '✓': 'check', 'Χ': 'Chi', 'χ': 'chi', 'ˆ': 'circ', '≗': 'cire', '↺': 'olarr', '↻': 'orarr', '⊛': 'oast', '⊚': 'ocir', '⊝': 'odash', '⊙': 'odot', '\xAE': 'reg', 'Ⓢ': 'oS', '⊖': 'ominus', '⊕': 'oplus', '⊗': 'otimes', '○': 'cir', '⧃': 'cirE', '⨐': 'cirfnint', '⫯': 'cirmid', '⧂': 'cirscir', '∲': 'cwconint', '”': 'rdquo', '’': 'rsquo', '♣': 'clubs', ':': 'colon', '∷': 'Colon', '⩴': 'Colone', ',': 'comma', '@': 'commat', '∁': 'comp', '∘': 'compfn', 'ℂ': 'Copf', '≅': 'cong', '⩭': 'congdot', '≡': 'equiv', '∮': 'oint', '∯': 'Conint', '𝕔': 'copf', '∐': 'coprod', '\xA9': 'copy', '℗': 'copysr', '↵': 'crarr', '✗': 'cross', '⨯': 'Cross', '𝒞': 'Cscr', '𝒸': 'cscr', '⫏': 'csub', '⫑': 'csube', '⫐': 'csup', '⫒': 'csupe', '⋯': 'ctdot', '⤸': 'cudarrl', '⤵': 'cudarrr', '⋞': 'cuepr', '⋟': 'cuesc', '↶': 'cularr', '⤽': 'cularrp', '⩈': 'cupbrcap', '⩆': 'cupcap', '∪': 'cup', '⋓': 'Cup', '⩊': 'cupcup', '⊍': 'cupdot', '⩅': 'cupor', '∪︀': 'cups', '↷': 'curarr', '⤼': 'curarrm', '⋎': 'cuvee', '⋏': 'cuwed', '\xA4': 'curren', '∱': 'cwint', '⌭': 'cylcty', '†': 'dagger', '‡': 'Dagger', 'ℸ': 'daleth', '↓': 'darr', '↡': 'Darr', '⇓': 'dArr', '‐': 'dash', '⫤': 'Dashv', '⊣': 'dashv', '⤏': 'rBarr', '˝': 'dblac', 'Ď': 'Dcaron', 'ď': 'dcaron', 'Д': 'Dcy', 'д': 'dcy', '⇊': 'ddarr', 'ⅆ': 'dd', '⤑': 'DDotrahd', '⩷': 'eDDot', '\xB0': 'deg', '∇': 'Del', 'Δ': 'Delta', 'δ': 'delta', '⦱': 'demptyv', '⥿': 'dfisht', '𝔇': 'Dfr', '𝔡': 'dfr', '⥥': 'dHar', '⇃': 'dharl', '⇂': 'dharr', '˙': 'dot', '`': 'grave', '˜': 'tilde', '⋄': 'diam', '♦': 'diams', '\xA8': 'die', 'ϝ': 'gammad', '⋲': 'disin', '\xF7': 'div', '⋇': 'divonx', 'Ђ': 'DJcy', 'ђ': 'djcy', '⌞': 'dlcorn', '⌍': 'dlcrop', '$': 'dollar', '𝔻': 'Dopf', '𝕕': 'dopf', '⃜': 'DotDot', '≐': 'doteq', '≑': 'eDot', '∸': 'minusd', '∔': 'plusdo', '⊡': 'sdotb', '⇐': 'lArr', '⇔': 'iff', '⟸': 'xlArr', '⟺': 'xhArr', '⟹': 'xrArr', '⇒': 'rArr', '⊨': 'vDash', '⇑': 'uArr', '⇕': 'vArr', '∥': 'par', '⤓': 'DownArrowBar', '⇵': 'duarr', '̑': 'DownBreve', '⥐': 'DownLeftRightVector', '⥞': 'DownLeftTeeVector', '⥖': 'DownLeftVectorBar', '↽': 'lhard', '⥟': 'DownRightTeeVector', '⥗': 'DownRightVectorBar', '⇁': 'rhard', '↧': 'mapstodown', '⊤': 'top', '⤐': 'RBarr', '⌟': 'drcorn', '⌌': 'drcrop', '𝒟': 'Dscr', '𝒹': 'dscr', 'Ѕ': 'DScy', 'ѕ': 'dscy', '⧶': 'dsol', 'Đ': 'Dstrok', 'đ': 'dstrok', '⋱': 'dtdot', '▿': 'dtri', '⥯': 'duhar', '⦦': 'dwangle', 'Џ': 'DZcy', 'џ': 'dzcy', '⟿': 'dzigrarr', '\xC9': 'Eacute', '\xE9': 'eacute', '⩮': 'easter', 'Ě': 'Ecaron', 'ě': 'ecaron', '\xCA': 'Ecirc', '\xEA': 'ecirc', '≖': 'ecir', '≕': 'ecolon', 'Э': 'Ecy', 'э': 'ecy', 'Ė': 'Edot', 'ė': 'edot', 'ⅇ': 'ee', '≒': 'efDot', '𝔈': 'Efr', '𝔢': 'efr', '⪚': 'eg', '\xC8': 'Egrave', '\xE8': 'egrave', '⪖': 'egs', '⪘': 'egsdot', '⪙': 'el', '∈': 'in', '⏧': 'elinters', 'ℓ': 'ell', '⪕': 'els', '⪗': 'elsdot', 'Ē': 'Emacr', 'ē': 'emacr', '∅': 'empty', '◻': 'EmptySmallSquare', '▫': 'EmptyVerySmallSquare', ' ': 'emsp13', ' ': 'emsp14', ' ': 'emsp', 'Ŋ': 'ENG', 'ŋ': 'eng', ' ': 'ensp', 'Ę': 'Eogon', 'ę': 'eogon', '𝔼': 'Eopf', '𝕖': 'eopf', '⋕': 'epar', '⧣': 'eparsl', '⩱': 'eplus', 'ε': 'epsi', 'Ε': 'Epsilon', 'ϵ': 'epsiv', '≂': 'esim', '⩵': 'Equal', '=': 'equals', '≟': 'equest', '⇌': 'rlhar', '⩸': 'equivDD', '⧥': 'eqvparsl', '⥱': 'erarr', '≓': 'erDot', 'ℯ': 'escr', 'ℰ': 'Escr', '⩳': 'Esim', 'Η': 'Eta', 'η': 'eta', '\xD0': 'ETH', '\xF0': 'eth', '\xCB': 'Euml', '\xEB': 'euml', '€': 'euro', '!': 'excl', '∃': 'exist', 'Ф': 'Fcy', 'ф': 'fcy', '♀': 'female', 'ﬃ': 'ffilig', 'ﬀ': 'fflig', 'ﬄ': 'ffllig', '𝔉': 'Ffr', '𝔣': 'ffr', 'ﬁ': 'filig', '◼': 'FilledSmallSquare', 'fj': 'fjlig', '♭': 'flat', 'ﬂ': 'fllig', '▱': 'fltns', 'ƒ': 'fnof', '𝔽': 'Fopf', '𝕗': 'fopf', '∀': 'forall', '⋔': 'fork', '⫙': 'forkv', 'ℱ': 'Fscr', '⨍': 'fpartint', '\xBD': 'half', '⅓': 'frac13', '\xBC': 'frac14', '⅕': 'frac15', '⅙': 'frac16', '⅛': 'frac18', '⅔': 'frac23', '⅖': 'frac25', '\xBE': 'frac34', '⅗': 'frac35', '⅜': 'frac38', '⅘': 'frac45', '⅚': 'frac56', '⅝': 'frac58', '⅞': 'frac78', '⁄': 'frasl', '⌢': 'frown', '𝒻': 'fscr', 'ǵ': 'gacute', 'Γ': 'Gamma', 'γ': 'gamma', 'Ϝ': 'Gammad', '⪆': 'gap', 'Ğ': 'Gbreve', 'ğ': 'gbreve', 'Ģ': 'Gcedil', 'Ĝ': 'Gcirc', 'ĝ': 'gcirc', 'Г': 'Gcy', 'г': 'gcy', 'Ġ': 'Gdot', 'ġ': 'gdot', '≥': 'ge', '≧': 'gE', '⪌': 'gEl', '⋛': 'gel', '⩾': 'ges', '⪩': 'gescc', '⪀': 'gesdot', '⪂': 'gesdoto', '⪄': 'gesdotol', '⋛︀': 'gesl', '⪔': 'gesles', '𝔊': 'Gfr', '𝔤': 'gfr', '≫': 'gg', '⋙': 'Gg', 'ℷ': 'gimel', 'Ѓ': 'GJcy', 'ѓ': 'gjcy', '⪥': 'gla', '≷': 'gl', '⪒': 'glE', '⪤': 'glj', '⪊': 'gnap', '⪈': 'gne', '≩': 'gnE', '⋧': 'gnsim', '𝔾': 'Gopf', '𝕘': 'gopf', '⪢': 'GreaterGreater', '≳': 'gsim', '𝒢': 'Gscr', 'ℊ': 'gscr', '⪎': 'gsime', '⪐': 'gsiml', '⪧': 'gtcc', '⩺': 'gtcir', '>': 'gt', '⋗': 'gtdot', '⦕': 'gtlPar', '⩼': 'gtquest', '⥸': 'gtrarr', '≩︀': 'gvnE', ' ': 'hairsp', 'ℋ': 'Hscr', 'Ъ': 'HARDcy', 'ъ': 'hardcy', '⥈': 'harrcir', '↔': 'harr', '↭': 'harrw', '^': 'Hat', 'ℏ': 'hbar', 'Ĥ': 'Hcirc', 'ĥ': 'hcirc', '♥': 'hearts', '…': 'mldr', '⊹': 'hercon', '𝔥': 'hfr', 'ℌ': 'Hfr', '⤥': 'searhk', '⤦': 'swarhk', '⇿': 'hoarr', '∻': 'homtht', '↩': 'larrhk', '↪': 'rarrhk', '𝕙': 'hopf', 'ℍ': 'Hopf', '―': 'horbar', '𝒽': 'hscr', 'Ħ': 'Hstrok', 'ħ': 'hstrok', '⁃': 'hybull', '\xCD': 'Iacute', '\xED': 'iacute', '⁣': 'ic', '\xCE': 'Icirc', '\xEE': 'icirc', 'И': 'Icy', 'и': 'icy', 'İ': 'Idot', 'Е': 'IEcy', 'е': 'iecy', '\xA1': 'iexcl', '𝔦': 'ifr', 'ℑ': 'Im', '\xCC': 'Igrave', '\xEC': 'igrave', 'ⅈ': 'ii', '⨌': 'qint', '∭': 'tint', '⧜': 'iinfin', '℩': 'iiota', 'Ĳ': 'IJlig', 'ĳ': 'ijlig', 'Ī': 'Imacr', 'ī': 'imacr', 'ℐ': 'Iscr', 'ı': 'imath', '⊷': 'imof', 'Ƶ': 'imped', '℅': 'incare', '∞': 'infin', '⧝': 'infintie', '⊺': 'intcal', '∫': 'int', '∬': 'Int', 'ℤ': 'Zopf', '⨗': 'intlarhk', '⨼': 'iprod', '⁢': 'it', 'Ё': 'IOcy', 'ё': 'iocy', 'Į': 'Iogon', 'į': 'iogon', '𝕀': 'Iopf', '𝕚': 'iopf', 'Ι': 'Iota', 'ι': 'iota', '\xBF': 'iquest', '𝒾': 'iscr', '⋵': 'isindot', '⋹': 'isinE', '⋴': 'isins', '⋳': 'isinsv', 'Ĩ': 'Itilde', 'ĩ': 'itilde', 'І': 'Iukcy', 'і': 'iukcy', '\xCF': 'Iuml', '\xEF': 'iuml', 'Ĵ': 'Jcirc', 'ĵ': 'jcirc', 'Й': 'Jcy', 'й': 'jcy', '𝔍': 'Jfr', '𝔧': 'jfr', 'ȷ': 'jmath', '𝕁': 'Jopf', '𝕛': 'jopf', '𝒥': 'Jscr', '𝒿': 'jscr', 'Ј': 'Jsercy', 'ј': 'jsercy', 'Є': 'Jukcy', 'є': 'jukcy', 'Κ': 'Kappa', 'κ': 'kappa', 'ϰ': 'kappav', 'Ķ': 'Kcedil', 'ķ': 'kcedil', 'К': 'Kcy', 'к': 'kcy', '𝔎': 'Kfr', '𝔨': 'kfr', 'ĸ': 'kgreen', 'Х': 'KHcy', 'х': 'khcy', 'Ќ': 'KJcy', 'ќ': 'kjcy', '𝕂': 'Kopf', '𝕜': 'kopf', '𝒦': 'Kscr', '𝓀': 'kscr', '⇚': 'lAarr', 'Ĺ': 'Lacute', 'ĺ': 'lacute', '⦴': 'laemptyv', 'ℒ': 'Lscr', 'Λ': 'Lambda', 'λ': 'lambda', '⟨': 'lang', '⟪': 'Lang', '⦑': 'langd', '⪅': 'lap', '\xAB': 'laquo', '⇤': 'larrb', '⤟': 'larrbfs', '←': 'larr', '↞': 'Larr', '⤝': 'larrfs', '↫': 'larrlp', '⤹': 'larrpl', '⥳': 'larrsim', '↢': 'larrtl', '⤙': 'latail', '⤛': 'lAtail', '⪫': 'lat', '⪭': 'late', '⪭︀': 'lates', '⤌': 'lbarr', '⤎': 'lBarr', '❲': 'lbbrk', '{': 'lcub', '[': 'lsqb', '⦋': 'lbrke', '⦏': 'lbrksld', '⦍': 'lbrkslu', 'Ľ': 'Lcaron', 'ľ': 'lcaron', 'Ļ': 'Lcedil', 'ļ': 'lcedil', '⌈': 'lceil', 'Л': 'Lcy', 'л': 'lcy', '⤶': 'ldca', '“': 'ldquo', '⥧': 'ldrdhar', '⥋': 'ldrushar', '↲': 'ldsh', '≤': 'le', '≦': 'lE', '⇆': 'lrarr', '⟦': 'lobrk', '⥡': 'LeftDownTeeVector', '⥙': 'LeftDownVectorBar', '⌊': 'lfloor', '↼': 'lharu', '⇇': 'llarr', '⇋': 'lrhar', '⥎': 'LeftRightVector', '↤': 'mapstoleft', '⥚': 'LeftTeeVector', '⋋': 'lthree', '⧏': 'LeftTriangleBar', '⊲': 'vltri', '⊴': 'ltrie', '⥑': 'LeftUpDownVector', '⥠': 'LeftUpTeeVector', '⥘': 'LeftUpVectorBar', '↿': 'uharl', '⥒': 'LeftVectorBar', '⪋': 'lEg', '⋚': 'leg', '⩽': 'les', '⪨': 'lescc', '⩿': 'lesdot', '⪁': 'lesdoto', '⪃': 'lesdotor', '⋚︀': 'lesg', '⪓': 'lesges', '⋖': 'ltdot', '≶': 'lg', '⪡': 'LessLess', '≲': 'lsim', '⥼': 'lfisht', '𝔏': 'Lfr', '𝔩': 'lfr', '⪑': 'lgE', '⥢': 'lHar', '⥪': 'lharul', '▄': 'lhblk', 'Љ': 'LJcy', 'љ': 'ljcy', '≪': 'll', '⋘': 'Ll', '⥫': 'llhard', '◺': 'lltri', 'Ŀ': 'Lmidot', 'ŀ': 'lmidot', '⎰': 'lmoust', '⪉': 'lnap', '⪇': 'lne', '≨': 'lnE', '⋦': 'lnsim', '⟬': 'loang', '⇽': 'loarr', '⟵': 'xlarr', '⟷': 'xharr', '⟼': 'xmap', '⟶': 'xrarr', '↬': 'rarrlp', '⦅': 'lopar', '𝕃': 'Lopf', '𝕝': 'lopf', '⨭': 'loplus', '⨴': 'lotimes', '∗': 'lowast', '_': 'lowbar', '↙': 'swarr', '↘': 'searr', '◊': 'loz', '(': 'lpar', '⦓': 'lparlt', '⥭': 'lrhard', '‎': 'lrm', '⊿': 'lrtri', '‹': 'lsaquo', '𝓁': 'lscr', '↰': 'lsh', '⪍': 'lsime', '⪏': 'lsimg', '‘': 'lsquo', '‚': 'sbquo', 'Ł': 'Lstrok', 'ł': 'lstrok', '⪦': 'ltcc', '⩹': 'ltcir', '<': 'lt', '⋉': 'ltimes', '⥶': 'ltlarr', '⩻': 'ltquest', '◃': 'ltri', '⦖': 'ltrPar', '⥊': 'lurdshar', '⥦': 'luruhar', '≨︀': 'lvnE', '\xAF': 'macr', '♂': 'male', '✠': 'malt', '⤅': 'Map', '↦': 'map', '↥': 'mapstoup', '▮': 'marker', '⨩': 'mcomma', 'М': 'Mcy', 'м': 'mcy', '—': 'mdash', '∺': 'mDDot', ' ': 'MediumSpace', 'ℳ': 'Mscr', '𝔐': 'Mfr', '𝔪': 'mfr', '℧': 'mho', '\xB5': 'micro', '⫰': 'midcir', '∣': 'mid', '−': 'minus', '⨪': 'minusdu', '∓': 'mp', '⫛': 'mlcp', '⊧': 'models', '𝕄': 'Mopf', '𝕞': 'mopf', '𝓂': 'mscr', 'Μ': 'Mu', 'μ': 'mu', '⊸': 'mumap', 'Ń': 'Nacute', 'ń': 'nacute', '∠⃒': 'nang', '≉': 'nap', '⩰̸': 'napE', '≋̸': 'napid', 'ŉ': 'napos', '♮': 'natur', 'ℕ': 'Nopf', '\xA0': 'nbsp', '≎̸': 'nbump', '≏̸': 'nbumpe', '⩃': 'ncap', 'Ň': 'Ncaron', 'ň': 'ncaron', 'Ņ': 'Ncedil', 'ņ': 'ncedil', '≇': 'ncong', '⩭̸': 'ncongdot', '⩂': 'ncup', 'Н': 'Ncy', 'н': 'ncy', '–': 'ndash', '⤤': 'nearhk', '↗': 'nearr', '⇗': 'neArr', '≠': 'ne', '≐̸': 'nedot', '​': 'ZeroWidthSpace', '≢': 'nequiv', '⤨': 'toea', '≂̸': 'nesim', '\n': 'NewLine', '∄': 'nexist', '𝔑': 'Nfr', '𝔫': 'nfr', '≧̸': 'ngE', '≱': 'nge', '⩾̸': 'nges', '⋙̸': 'nGg', '≵': 'ngsim', '≫⃒': 'nGt', '≯': 'ngt', '≫̸': 'nGtv', '↮': 'nharr', '⇎': 'nhArr', '⫲': 'nhpar', '∋': 'ni', '⋼': 'nis', '⋺': 'nisd', 'Њ': 'NJcy', 'њ': 'njcy', '↚': 'nlarr', '⇍': 'nlArr', '‥': 'nldr', '≦̸': 'nlE', '≰': 'nle', '⩽̸': 'nles', '≮': 'nlt', '⋘̸': 'nLl', '≴': 'nlsim', '≪⃒': 'nLt', '⋪': 'nltri', '⋬': 'nltrie', '≪̸': 'nLtv', '∤': 'nmid', '⁠': 'NoBreak', '𝕟': 'nopf', '⫬': 'Not', '\xAC': 'not', '≭': 'NotCupCap', '∦': 'npar', '∉': 'notin', '≹': 'ntgl', '⋵̸': 'notindot', '⋹̸': 'notinE', '⋷': 'notinvb', '⋶': 'notinvc', '⧏̸': 'NotLeftTriangleBar', '≸': 'ntlg', '⪢̸': 'NotNestedGreaterGreater', '⪡̸': 'NotNestedLessLess', '∌': 'notni', '⋾': 'notnivb', '⋽': 'notnivc', '⊀': 'npr', '⪯̸': 'npre', '⋠': 'nprcue', '⧐̸': 'NotRightTriangleBar', '⋫': 'nrtri', '⋭': 'nrtrie', '⊏̸': 'NotSquareSubset', '⋢': 'nsqsube', '⊐̸': 'NotSquareSuperset', '⋣': 'nsqsupe', '⊂⃒': 'vnsub', '⊈': 'nsube', '⊁': 'nsc', '⪰̸': 'nsce', '⋡': 'nsccue', '≿̸': 'NotSucceedsTilde', '⊃⃒': 'vnsup', '⊉': 'nsupe', '≁': 'nsim', '≄': 'nsime', '⫽⃥': 'nparsl', '∂̸': 'npart', '⨔': 'npolint', '⤳̸': 'nrarrc', '↛': 'nrarr', '⇏': 'nrArr', '↝̸': 'nrarrw', '𝒩': 'Nscr', '𝓃': 'nscr', '⊄': 'nsub', '⫅̸': 'nsubE', '⊅': 'nsup', '⫆̸': 'nsupE', '\xD1': 'Ntilde', '\xF1': 'ntilde', 'Ν': 'Nu', 'ν': 'nu', '#': 'num', '№': 'numero', ' ': 'numsp', '≍⃒': 'nvap', '⊬': 'nvdash', '⊭': 'nvDash', '⊮': 'nVdash', '⊯': 'nVDash', '≥⃒': 'nvge', '>⃒': 'nvgt', '⤄': 'nvHarr', '⧞': 'nvinfin', '⤂': 'nvlArr', '≤⃒': 'nvle', '<⃒': 'nvlt', '⊴⃒': 'nvltrie', '⤃': 'nvrArr', '⊵⃒': 'nvrtrie', '∼⃒': 'nvsim', '⤣': 'nwarhk', '↖': 'nwarr', '⇖': 'nwArr', '⤧': 'nwnear', '\xD3': 'Oacute', '\xF3': 'oacute', '\xD4': 'Ocirc', '\xF4': 'ocirc', 'О': 'Ocy', 'о': 'ocy', 'Ő': 'Odblac', 'ő': 'odblac', '⨸': 'odiv', '⦼': 'odsold', 'Œ': 'OElig', 'œ': 'oelig', '⦿': 'ofcir', '𝔒': 'Ofr', '𝔬': 'ofr', '˛': 'ogon', '\xD2': 'Ograve', '\xF2': 'ograve', '⧁': 'ogt', '⦵': 'ohbar', 'Ω': 'ohm', '⦾': 'olcir', '⦻': 'olcross', '‾': 'oline', '⧀': 'olt', 'Ō': 'Omacr', 'ō': 'omacr', 'ω': 'omega', 'Ο': 'Omicron', 'ο': 'omicron', '⦶': 'omid', '𝕆': 'Oopf', '𝕠': 'oopf', '⦷': 'opar', '⦹': 'operp', '⩔': 'Or', '∨': 'or', '⩝': 'ord', 'ℴ': 'oscr', '\xAA': 'ordf', '\xBA': 'ordm', '⊶': 'origof', '⩖': 'oror', '⩗': 'orslope', '⩛': 'orv', '𝒪': 'Oscr', '\xD8': 'Oslash', '\xF8': 'oslash', '⊘': 'osol', '\xD5': 'Otilde', '\xF5': 'otilde', '⨶': 'otimesas', '⨷': 'Otimes', '\xD6': 'Ouml', '\xF6': 'ouml', '⌽': 'ovbar', '⏞': 'OverBrace', '⎴': 'tbrk', '⏜': 'OverParenthesis', '\xB6': 'para', '⫳': 'parsim', '⫽': 'parsl', '∂': 'part', 'П': 'Pcy', 'п': 'pcy', '%': 'percnt', '.': 'period', '‰': 'permil', '‱': 'pertenk', '𝔓': 'Pfr', '𝔭': 'pfr', 'Φ': 'Phi', 'φ': 'phi', 'ϕ': 'phiv', '☎': 'phone', 'Π': 'Pi', 'π': 'pi', 'ϖ': 'piv', 'ℎ': 'planckh', '⨣': 'plusacir', '⨢': 'pluscir', '+': 'plus', '⨥': 'plusdu', '⩲': 'pluse', '\xB1': 'pm', '⨦': 'plussim', '⨧': 'plustwo', '⨕': 'pointint', '𝕡': 'popf', 'ℙ': 'Popf', '\xA3': 'pound', '⪷': 'prap', '⪻': 'Pr', '≺': 'pr', '≼': 'prcue', '⪯': 'pre', '≾': 'prsim', '⪹': 'prnap', '⪵': 'prnE', '⋨': 'prnsim', '⪳': 'prE', '′': 'prime', '″': 'Prime', '∏': 'prod', '⌮': 'profalar', '⌒': 'profline', '⌓': 'profsurf', '∝': 'prop', '⊰': 'prurel', '𝒫': 'Pscr', '𝓅': 'pscr', 'Ψ': 'Psi', 'ψ': 'psi', ' ': 'puncsp', '𝔔': 'Qfr', '𝔮': 'qfr', '𝕢': 'qopf', 'ℚ': 'Qopf', '⁗': 'qprime', '𝒬': 'Qscr', '𝓆': 'qscr', '⨖': 'quatint', '?': 'quest', '"': 'quot', '⇛': 'rAarr', '∽̱': 'race', 'Ŕ': 'Racute', 'ŕ': 'racute', '√': 'Sqrt', '⦳': 'raemptyv', '⟩': 'rang', '⟫': 'Rang', '⦒': 'rangd', '⦥': 'range', '\xBB': 'raquo', '⥵': 'rarrap', '⇥': 'rarrb', '⤠': 'rarrbfs', '⤳': 'rarrc', '→': 'rarr', '↠': 'Rarr', '⤞': 'rarrfs', '⥅': 'rarrpl', '⥴': 'rarrsim', '⤖': 'Rarrtl', '↣': 'rarrtl', '↝': 'rarrw', '⤚': 'ratail', '⤜': 'rAtail', '∶': 'ratio', '❳': 'rbbrk', '}': 'rcub', ']': 'rsqb', '⦌': 'rbrke', '⦎': 'rbrksld', '⦐': 'rbrkslu', 'Ř': 'Rcaron', 'ř': 'rcaron', 'Ŗ': 'Rcedil', 'ŗ': 'rcedil', '⌉': 'rceil', 'Р': 'Rcy', 'р': 'rcy', '⤷': 'rdca', '⥩': 'rdldhar', '↳': 'rdsh', 'ℜ': 'Re', 'ℛ': 'Rscr', 'ℝ': 'Ropf', '▭': 'rect', '⥽': 'rfisht', '⌋': 'rfloor', '𝔯': 'rfr', '⥤': 'rHar', '⇀': 'rharu', '⥬': 'rharul', 'Ρ': 'Rho', 'ρ': 'rho', 'ϱ': 'rhov', '⇄': 'rlarr', '⟧': 'robrk', '⥝': 'RightDownTeeVector', '⥕': 'RightDownVectorBar', '⇉': 'rrarr', '⊢': 'vdash', '⥛': 'RightTeeVector', '⋌': 'rthree', '⧐': 'RightTriangleBar', '⊳': 'vrtri', '⊵': 'rtrie', '⥏': 'RightUpDownVector', '⥜': 'RightUpTeeVector', '⥔': 'RightUpVectorBar', '↾': 'uharr', '⥓': 'RightVectorBar', '˚': 'ring', '‏': 'rlm', '⎱': 'rmoust', '⫮': 'rnmid', '⟭': 'roang', '⇾': 'roarr', '⦆': 'ropar', '𝕣': 'ropf', '⨮': 'roplus', '⨵': 'rotimes', '⥰': 'RoundImplies', ')': 'rpar', '⦔': 'rpargt', '⨒': 'rppolint', '›': 'rsaquo', '𝓇': 'rscr', '↱': 'rsh', '⋊': 'rtimes', '▹': 'rtri', '⧎': 'rtriltri', '⧴': 'RuleDelayed', '⥨': 'ruluhar', '℞': 'rx', 'Ś': 'Sacute', 'ś': 'sacute', '⪸': 'scap', 'Š': 'Scaron', 'š': 'scaron', '⪼': 'Sc', '≻': 'sc', '≽': 'sccue', '⪰': 'sce', '⪴': 'scE', 'Ş': 'Scedil', 'ş': 'scedil', 'Ŝ': 'Scirc', 'ŝ': 'scirc', '⪺': 'scnap', '⪶': 'scnE', '⋩': 'scnsim', '⨓': 'scpolint', '≿': 'scsim', 'С': 'Scy', 'с': 'scy', '⋅': 'sdot', '⩦': 'sdote', '⇘': 'seArr', '\xA7': 'sect', ';': 'semi', '⤩': 'tosa', '✶': 'sext', '𝔖': 'Sfr', '𝔰': 'sfr', '♯': 'sharp', 'Щ': 'SHCHcy', 'щ': 'shchcy', 'Ш': 'SHcy', 'ш': 'shcy', '↑': 'uarr', '\xAD': 'shy', 'Σ': 'Sigma', 'σ': 'sigma', 'ς': 'sigmaf', '∼': 'sim', '⩪': 'simdot', '≃': 'sime', '⪞': 'simg', '⪠': 'simgE', '⪝': 'siml', '⪟': 'simlE', '≆': 'simne', '⨤': 'simplus', '⥲': 'simrarr', '⨳': 'smashp', '⧤': 'smeparsl', '⌣': 'smile', '⪪': 'smt', '⪬': 'smte', '⪬︀': 'smtes', 'Ь': 'SOFTcy', 'ь': 'softcy', '⌿': 'solbar', '⧄': 'solb', '/': 'sol', '𝕊': 'Sopf', '𝕤': 'sopf', '♠': 'spades', '⊓': 'sqcap', '⊓︀': 'sqcaps', '⊔': 'sqcup', '⊔︀': 'sqcups', '⊏': 'sqsub', '⊑': 'sqsube', '⊐': 'sqsup', '⊒': 'sqsupe', '□': 'squ', '𝒮': 'Sscr', '𝓈': 'sscr', '⋆': 'Star', '☆': 'star', '⊂': 'sub', '⋐': 'Sub', '⪽': 'subdot', '⫅': 'subE', '⊆': 'sube', '⫃': 'subedot', '⫁': 'submult', '⫋': 'subnE', '⊊': 'subne', '⪿': 'subplus', '⥹': 'subrarr', '⫇': 'subsim', '⫕': 'subsub', '⫓': 'subsup', '∑': 'sum', '♪': 'sung', '\xB9': 'sup1', '\xB2': 'sup2', '\xB3': 'sup3', '⊃': 'sup', '⋑': 'Sup', '⪾': 'supdot', '⫘': 'supdsub', '⫆': 'supE', '⊇': 'supe', '⫄': 'supedot', '⟉': 'suphsol', '⫗': 'suphsub', '⥻': 'suplarr', '⫂': 'supmult', '⫌': 'supnE', '⊋': 'supne', '⫀': 'supplus', '⫈': 'supsim', '⫔': 'supsub', '⫖': 'supsup', '⇙': 'swArr', '⤪': 'swnwar', '\xDF': 'szlig', '\t': 'Tab', '⌖': 'target', 'Τ': 'Tau', 'τ': 'tau', 'Ť': 'Tcaron', 'ť': 'tcaron', 'Ţ': 'Tcedil', 'ţ': 'tcedil', 'Т': 'Tcy', 'т': 'tcy', '⃛': 'tdot', '⌕': 'telrec', '𝔗': 'Tfr', '𝔱': 'tfr', '∴': 'there4', 'Θ': 'Theta', 'θ': 'theta', 'ϑ': 'thetav', '  ': 'ThickSpace', ' ': 'thinsp', '\xDE': 'THORN', '\xFE': 'thorn', '⨱': 'timesbar', '\xD7': 'times', '⨰': 'timesd', '⌶': 'topbot', '⫱': 'topcir', '𝕋': 'Topf', '𝕥': 'topf', '⫚': 'topfork', '‴': 'tprime', '™': 'trade', '▵': 'utri', '≜': 'trie', '◬': 'tridot', '⨺': 'triminus', '⨹': 'triplus', '⧍': 'trisb', '⨻': 'tritime', '⏢': 'trpezium', '𝒯': 'Tscr', '𝓉': 'tscr', 'Ц': 'TScy', 'ц': 'tscy', 'Ћ': 'TSHcy', 'ћ': 'tshcy', 'Ŧ': 'Tstrok', 'ŧ': 'tstrok', '\xDA': 'Uacute', '\xFA': 'uacute', '↟': 'Uarr', '⥉': 'Uarrocir', 'Ў': 'Ubrcy', 'ў': 'ubrcy', 'Ŭ': 'Ubreve', 'ŭ': 'ubreve', '\xDB': 'Ucirc', '\xFB': 'ucirc', 'У': 'Ucy', 'у': 'ucy', '⇅': 'udarr', 'Ű': 'Udblac', 'ű': 'udblac', '⥮': 'udhar', '⥾': 'ufisht', '𝔘': 'Ufr', '𝔲': 'ufr', '\xD9': 'Ugrave', '\xF9': 'ugrave', '⥣': 'uHar', '▀': 'uhblk', '⌜': 'ulcorn', '⌏': 'ulcrop', '◸': 'ultri', 'Ū': 'Umacr', 'ū': 'umacr', '⏟': 'UnderBrace', '⏝': 'UnderParenthesis', '⊎': 'uplus', 'Ų': 'Uogon', 'ų': 'uogon', '𝕌': 'Uopf', '𝕦': 'uopf', '⤒': 'UpArrowBar', '↕': 'varr', 'υ': 'upsi', 'ϒ': 'Upsi', 'Υ': 'Upsilon', '⇈': 'uuarr', '⌝': 'urcorn', '⌎': 'urcrop', 'Ů': 'Uring', 'ů': 'uring', '◹': 'urtri', '𝒰': 'Uscr', '𝓊': 'uscr', '⋰': 'utdot', 'Ũ': 'Utilde', 'ũ': 'utilde', '\xDC': 'Uuml', '\xFC': 'uuml', '⦧': 'uwangle', '⦜': 'vangrt', '⊊︀': 'vsubne', '⫋︀': 'vsubnE', '⊋︀': 'vsupne', '⫌︀': 'vsupnE', '⫨': 'vBar', '⫫': 'Vbar', '⫩': 'vBarv', 'В': 'Vcy', 'в': 'vcy', '⊩': 'Vdash', '⊫': 'VDash', '⫦': 'Vdashl', '⊻': 'veebar', '≚': 'veeeq', '⋮': 'vellip', '|': 'vert', '‖': 'Vert', '❘': 'VerticalSeparator', '≀': 'wr', '𝔙': 'Vfr', '𝔳': 'vfr', '𝕍': 'Vopf', '𝕧': 'vopf', '𝒱': 'Vscr', '𝓋': 'vscr', '⊪': 'Vvdash', '⦚': 'vzigzag', 'Ŵ': 'Wcirc', 'ŵ': 'wcirc', '⩟': 'wedbar', '≙': 'wedgeq', '℘': 'wp', '𝔚': 'Wfr', '𝔴': 'wfr', '𝕎': 'Wopf', '𝕨': 'wopf', '𝒲': 'Wscr', '𝓌': 'wscr', '𝔛': 'Xfr', '𝔵': 'xfr', 'Ξ': 'Xi', 'ξ': 'xi', '⋻': 'xnis', '𝕏': 'Xopf', '𝕩': 'xopf', '𝒳': 'Xscr', '𝓍': 'xscr', '\xDD': 'Yacute', '\xFD': 'yacute', 'Я': 'YAcy', 'я': 'yacy', 'Ŷ': 'Ycirc', 'ŷ': 'ycirc', 'Ы': 'Ycy', 'ы': 'ycy', '\xA5': 'yen', '𝔜': 'Yfr', '𝔶': 'yfr', 'Ї': 'YIcy', 'ї': 'yicy', '𝕐': 'Yopf', '𝕪': 'yopf', '𝒴': 'Yscr', '𝓎': 'yscr', 'Ю': 'YUcy', 'ю': 'yucy', '\xFF': 'yuml', 'Ÿ': 'Yuml', 'Ź': 'Zacute', 'ź': 'zacute', 'Ž': 'Zcaron', 'ž': 'zcaron', 'З': 'Zcy', 'з': 'zcy', 'Ż': 'Zdot', 'ż': 'zdot', 'ℨ': 'Zfr', 'Ζ': 'Zeta', 'ζ': 'zeta', '𝔷': 'zfr', 'Ж': 'ZHcy', 'ж': 'zhcy', '⇝': 'zigrarr', '𝕫': 'zopf', '𝒵': 'Zscr', '𝓏': 'zscr', '‍': 'zwj', '‌': 'zwnj' };
+var NAMED = 'named';
+var HEXADECIMAL = 'hexadecimal';
+var DECIMAL = 'decimal';
 
-	var regexEscape = /["&'<>`]/g;
-	var escapeMap = {
-		'"': '&quot;',
-		'&': '&amp;',
-		'\'': '&#x27;',
-		'<': '&lt;',
-		// See https://mathiasbynens.be/notes/ambiguous-ampersands: in HTML, the
-		// following is not strictly necessary unless it’s part of a tag or an
-		// unquoted attribute value. We’re only escaping it to support those
-		// situations, and for XML support.
-		'>': '&gt;',
-		// In Internet Explorer ≤ 8, the backtick character can be used
-		// to break out of (un)quoted attribute values or HTML comments.
-		// See http://html5sec.org/#102, http://html5sec.org/#108, and
-		// http://html5sec.org/#133.
-		'`': '&#x60;'
-	};
+/*
+ * Map of bases.
+ */
 
-	var regexInvalidEntity = /&#(?:[xX][^a-fA-F0-9]|[^0-9xX])/;
-	var regexInvalidRawCodePoint = /[\0-\x08\x0B\x0E-\x1F\x7F-\x9F\uFDD0-\uFDEF\uFFFE\uFFFF]|[\uD83F\uD87F\uD8BF\uD8FF\uD93F\uD97F\uD9BF\uD9FF\uDA3F\uDA7F\uDABF\uDAFF\uDB3F\uDB7F\uDBBF\uDBFF][\uDFFE\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
-	var regexDecode = /&#([0-9]+)(;?)|&#[xX]([a-fA-F0-9]+)(;?)|&([0-9a-zA-Z]+);|&(Aacute|iacute|Uacute|plusmn|otilde|Otilde|Agrave|agrave|yacute|Yacute|oslash|Oslash|Atilde|atilde|brvbar|Ccedil|ccedil|ograve|curren|divide|Eacute|eacute|Ograve|oacute|Egrave|egrave|ugrave|frac12|frac14|frac34|Ugrave|Oacute|Iacute|ntilde|Ntilde|uacute|middot|Igrave|igrave|iquest|aacute|laquo|THORN|micro|iexcl|icirc|Icirc|Acirc|ucirc|ecirc|Ocirc|ocirc|Ecirc|Ucirc|aring|Aring|aelig|AElig|acute|pound|raquo|acirc|times|thorn|szlig|cedil|COPY|Auml|ordf|ordm|uuml|macr|Uuml|auml|Ouml|ouml|para|nbsp|Euml|quot|QUOT|euml|yuml|cent|sect|copy|sup1|sup2|sup3|Iuml|iuml|shy|eth|reg|not|yen|amp|AMP|REG|uml|ETH|deg|gt|GT|LT|lt)([=a-zA-Z0-9])?/g;
-	var decodeMap = { 'Aacute': '\xC1', 'aacute': '\xE1', 'Abreve': 'Ă', 'abreve': 'ă', 'ac': '∾', 'acd': '∿', 'acE': '∾̳', 'Acirc': '\xC2', 'acirc': '\xE2', 'acute': '\xB4', 'Acy': 'А', 'acy': 'а', 'AElig': '\xC6', 'aelig': '\xE6', 'af': '⁡', 'Afr': '𝔄', 'afr': '𝔞', 'Agrave': '\xC0', 'agrave': '\xE0', 'alefsym': 'ℵ', 'aleph': 'ℵ', 'Alpha': 'Α', 'alpha': 'α', 'Amacr': 'Ā', 'amacr': 'ā', 'amalg': '⨿', 'amp': '&', 'AMP': '&', 'andand': '⩕', 'And': '⩓', 'and': '∧', 'andd': '⩜', 'andslope': '⩘', 'andv': '⩚', 'ang': '∠', 'ange': '⦤', 'angle': '∠', 'angmsdaa': '⦨', 'angmsdab': '⦩', 'angmsdac': '⦪', 'angmsdad': '⦫', 'angmsdae': '⦬', 'angmsdaf': '⦭', 'angmsdag': '⦮', 'angmsdah': '⦯', 'angmsd': '∡', 'angrt': '∟', 'angrtvb': '⊾', 'angrtvbd': '⦝', 'angsph': '∢', 'angst': '\xC5', 'angzarr': '⍼', 'Aogon': 'Ą', 'aogon': 'ą', 'Aopf': '𝔸', 'aopf': '𝕒', 'apacir': '⩯', 'ap': '≈', 'apE': '⩰', 'ape': '≊', 'apid': '≋', 'apos': '\'', 'ApplyFunction': '⁡', 'approx': '≈', 'approxeq': '≊', 'Aring': '\xC5', 'aring': '\xE5', 'Ascr': '𝒜', 'ascr': '𝒶', 'Assign': '≔', 'ast': '*', 'asymp': '≈', 'asympeq': '≍', 'Atilde': '\xC3', 'atilde': '\xE3', 'Auml': '\xC4', 'auml': '\xE4', 'awconint': '∳', 'awint': '⨑', 'backcong': '≌', 'backepsilon': '϶', 'backprime': '‵', 'backsim': '∽', 'backsimeq': '⋍', 'Backslash': '∖', 'Barv': '⫧', 'barvee': '⊽', 'barwed': '⌅', 'Barwed': '⌆', 'barwedge': '⌅', 'bbrk': '⎵', 'bbrktbrk': '⎶', 'bcong': '≌', 'Bcy': 'Б', 'bcy': 'б', 'bdquo': '„', 'becaus': '∵', 'because': '∵', 'Because': '∵', 'bemptyv': '⦰', 'bepsi': '϶', 'bernou': 'ℬ', 'Bernoullis': 'ℬ', 'Beta': 'Β', 'beta': 'β', 'beth': 'ℶ', 'between': '≬', 'Bfr': '𝔅', 'bfr': '𝔟', 'bigcap': '⋂', 'bigcirc': '◯', 'bigcup': '⋃', 'bigodot': '⨀', 'bigoplus': '⨁', 'bigotimes': '⨂', 'bigsqcup': '⨆', 'bigstar': '★', 'bigtriangledown': '▽', 'bigtriangleup': '△', 'biguplus': '⨄', 'bigvee': '⋁', 'bigwedge': '⋀', 'bkarow': '⤍', 'blacklozenge': '⧫', 'blacksquare': '▪', 'blacktriangle': '▴', 'blacktriangledown': '▾', 'blacktriangleleft': '◂', 'blacktriangleright': '▸', 'blank': '␣', 'blk12': '▒', 'blk14': '░', 'blk34': '▓', 'block': '█', 'bne': '=⃥', 'bnequiv': '≡⃥', 'bNot': '⫭', 'bnot': '⌐', 'Bopf': '𝔹', 'bopf': '𝕓', 'bot': '⊥', 'bottom': '⊥', 'bowtie': '⋈', 'boxbox': '⧉', 'boxdl': '┐', 'boxdL': '╕', 'boxDl': '╖', 'boxDL': '╗', 'boxdr': '┌', 'boxdR': '╒', 'boxDr': '╓', 'boxDR': '╔', 'boxh': '─', 'boxH': '═', 'boxhd': '┬', 'boxHd': '╤', 'boxhD': '╥', 'boxHD': '╦', 'boxhu': '┴', 'boxHu': '╧', 'boxhU': '╨', 'boxHU': '╩', 'boxminus': '⊟', 'boxplus': '⊞', 'boxtimes': '⊠', 'boxul': '┘', 'boxuL': '╛', 'boxUl': '╜', 'boxUL': '╝', 'boxur': '└', 'boxuR': '╘', 'boxUr': '╙', 'boxUR': '╚', 'boxv': '│', 'boxV': '║', 'boxvh': '┼', 'boxvH': '╪', 'boxVh': '╫', 'boxVH': '╬', 'boxvl': '┤', 'boxvL': '╡', 'boxVl': '╢', 'boxVL': '╣', 'boxvr': '├', 'boxvR': '╞', 'boxVr': '╟', 'boxVR': '╠', 'bprime': '‵', 'breve': '˘', 'Breve': '˘', 'brvbar': '\xA6', 'bscr': '𝒷', 'Bscr': 'ℬ', 'bsemi': '⁏', 'bsim': '∽', 'bsime': '⋍', 'bsolb': '⧅', 'bsol': '\\', 'bsolhsub': '⟈', 'bull': '•', 'bullet': '•', 'bump': '≎', 'bumpE': '⪮', 'bumpe': '≏', 'Bumpeq': '≎', 'bumpeq': '≏', 'Cacute': 'Ć', 'cacute': 'ć', 'capand': '⩄', 'capbrcup': '⩉', 'capcap': '⩋', 'cap': '∩', 'Cap': '⋒', 'capcup': '⩇', 'capdot': '⩀', 'CapitalDifferentialD': 'ⅅ', 'caps': '∩︀', 'caret': '⁁', 'caron': 'ˇ', 'Cayleys': 'ℭ', 'ccaps': '⩍', 'Ccaron': 'Č', 'ccaron': 'č', 'Ccedil': '\xC7', 'ccedil': '\xE7', 'Ccirc': 'Ĉ', 'ccirc': 'ĉ', 'Cconint': '∰', 'ccups': '⩌', 'ccupssm': '⩐', 'Cdot': 'Ċ', 'cdot': 'ċ', 'cedil': '\xB8', 'Cedilla': '\xB8', 'cemptyv': '⦲', 'cent': '\xA2', 'centerdot': '\xB7', 'CenterDot': '\xB7', 'cfr': '𝔠', 'Cfr': 'ℭ', 'CHcy': 'Ч', 'chcy': 'ч', 'check': '✓', 'checkmark': '✓', 'Chi': 'Χ', 'chi': 'χ', 'circ': 'ˆ', 'circeq': '≗', 'circlearrowleft': '↺', 'circlearrowright': '↻', 'circledast': '⊛', 'circledcirc': '⊚', 'circleddash': '⊝', 'CircleDot': '⊙', 'circledR': '\xAE', 'circledS': 'Ⓢ', 'CircleMinus': '⊖', 'CirclePlus': '⊕', 'CircleTimes': '⊗', 'cir': '○', 'cirE': '⧃', 'cire': '≗', 'cirfnint': '⨐', 'cirmid': '⫯', 'cirscir': '⧂', 'ClockwiseContourIntegral': '∲', 'CloseCurlyDoubleQuote': '”', 'CloseCurlyQuote': '’', 'clubs': '♣', 'clubsuit': '♣', 'colon': ':', 'Colon': '∷', 'Colone': '⩴', 'colone': '≔', 'coloneq': '≔', 'comma': ',', 'commat': '@', 'comp': '∁', 'compfn': '∘', 'complement': '∁', 'complexes': 'ℂ', 'cong': '≅', 'congdot': '⩭', 'Congruent': '≡', 'conint': '∮', 'Conint': '∯', 'ContourIntegral': '∮', 'copf': '𝕔', 'Copf': 'ℂ', 'coprod': '∐', 'Coproduct': '∐', 'copy': '\xA9', 'COPY': '\xA9', 'copysr': '℗', 'CounterClockwiseContourIntegral': '∳', 'crarr': '↵', 'cross': '✗', 'Cross': '⨯', 'Cscr': '𝒞', 'cscr': '𝒸', 'csub': '⫏', 'csube': '⫑', 'csup': '⫐', 'csupe': '⫒', 'ctdot': '⋯', 'cudarrl': '⤸', 'cudarrr': '⤵', 'cuepr': '⋞', 'cuesc': '⋟', 'cularr': '↶', 'cularrp': '⤽', 'cupbrcap': '⩈', 'cupcap': '⩆', 'CupCap': '≍', 'cup': '∪', 'Cup': '⋓', 'cupcup': '⩊', 'cupdot': '⊍', 'cupor': '⩅', 'cups': '∪︀', 'curarr': '↷', 'curarrm': '⤼', 'curlyeqprec': '⋞', 'curlyeqsucc': '⋟', 'curlyvee': '⋎', 'curlywedge': '⋏', 'curren': '\xA4', 'curvearrowleft': '↶', 'curvearrowright': '↷', 'cuvee': '⋎', 'cuwed': '⋏', 'cwconint': '∲', 'cwint': '∱', 'cylcty': '⌭', 'dagger': '†', 'Dagger': '‡', 'daleth': 'ℸ', 'darr': '↓', 'Darr': '↡', 'dArr': '⇓', 'dash': '‐', 'Dashv': '⫤', 'dashv': '⊣', 'dbkarow': '⤏', 'dblac': '˝', 'Dcaron': 'Ď', 'dcaron': 'ď', 'Dcy': 'Д', 'dcy': 'д', 'ddagger': '‡', 'ddarr': '⇊', 'DD': 'ⅅ', 'dd': 'ⅆ', 'DDotrahd': '⤑', 'ddotseq': '⩷', 'deg': '\xB0', 'Del': '∇', 'Delta': 'Δ', 'delta': 'δ', 'demptyv': '⦱', 'dfisht': '⥿', 'Dfr': '𝔇', 'dfr': '𝔡', 'dHar': '⥥', 'dharl': '⇃', 'dharr': '⇂', 'DiacriticalAcute': '\xB4', 'DiacriticalDot': '˙', 'DiacriticalDoubleAcute': '˝', 'DiacriticalGrave': '`', 'DiacriticalTilde': '˜', 'diam': '⋄', 'diamond': '⋄', 'Diamond': '⋄', 'diamondsuit': '♦', 'diams': '♦', 'die': '\xA8', 'DifferentialD': 'ⅆ', 'digamma': 'ϝ', 'disin': '⋲', 'div': '\xF7', 'divide': '\xF7', 'divideontimes': '⋇', 'divonx': '⋇', 'DJcy': 'Ђ', 'djcy': 'ђ', 'dlcorn': '⌞', 'dlcrop': '⌍', 'dollar': '$', 'Dopf': '𝔻', 'dopf': '𝕕', 'Dot': '\xA8', 'dot': '˙', 'DotDot': '⃜', 'doteq': '≐', 'doteqdot': '≑', 'DotEqual': '≐', 'dotminus': '∸', 'dotplus': '∔', 'dotsquare': '⊡', 'doublebarwedge': '⌆', 'DoubleContourIntegral': '∯', 'DoubleDot': '\xA8', 'DoubleDownArrow': '⇓', 'DoubleLeftArrow': '⇐', 'DoubleLeftRightArrow': '⇔', 'DoubleLeftTee': '⫤', 'DoubleLongLeftArrow': '⟸', 'DoubleLongLeftRightArrow': '⟺', 'DoubleLongRightArrow': '⟹', 'DoubleRightArrow': '⇒', 'DoubleRightTee': '⊨', 'DoubleUpArrow': '⇑', 'DoubleUpDownArrow': '⇕', 'DoubleVerticalBar': '∥', 'DownArrowBar': '⤓', 'downarrow': '↓', 'DownArrow': '↓', 'Downarrow': '⇓', 'DownArrowUpArrow': '⇵', 'DownBreve': '̑', 'downdownarrows': '⇊', 'downharpoonleft': '⇃', 'downharpoonright': '⇂', 'DownLeftRightVector': '⥐', 'DownLeftTeeVector': '⥞', 'DownLeftVectorBar': '⥖', 'DownLeftVector': '↽', 'DownRightTeeVector': '⥟', 'DownRightVectorBar': '⥗', 'DownRightVector': '⇁', 'DownTeeArrow': '↧', 'DownTee': '⊤', 'drbkarow': '⤐', 'drcorn': '⌟', 'drcrop': '⌌', 'Dscr': '𝒟', 'dscr': '𝒹', 'DScy': 'Ѕ', 'dscy': 'ѕ', 'dsol': '⧶', 'Dstrok': 'Đ', 'dstrok': 'đ', 'dtdot': '⋱', 'dtri': '▿', 'dtrif': '▾', 'duarr': '⇵', 'duhar': '⥯', 'dwangle': '⦦', 'DZcy': 'Џ', 'dzcy': 'џ', 'dzigrarr': '⟿', 'Eacute': '\xC9', 'eacute': '\xE9', 'easter': '⩮', 'Ecaron': 'Ě', 'ecaron': 'ě', 'Ecirc': '\xCA', 'ecirc': '\xEA', 'ecir': '≖', 'ecolon': '≕', 'Ecy': 'Э', 'ecy': 'э', 'eDDot': '⩷', 'Edot': 'Ė', 'edot': 'ė', 'eDot': '≑', 'ee': 'ⅇ', 'efDot': '≒', 'Efr': '𝔈', 'efr': '𝔢', 'eg': '⪚', 'Egrave': '\xC8', 'egrave': '\xE8', 'egs': '⪖', 'egsdot': '⪘', 'el': '⪙', 'Element': '∈', 'elinters': '⏧', 'ell': 'ℓ', 'els': '⪕', 'elsdot': '⪗', 'Emacr': 'Ē', 'emacr': 'ē', 'empty': '∅', 'emptyset': '∅', 'EmptySmallSquare': '◻', 'emptyv': '∅', 'EmptyVerySmallSquare': '▫', 'emsp13': ' ', 'emsp14': ' ', 'emsp': ' ', 'ENG': 'Ŋ', 'eng': 'ŋ', 'ensp': ' ', 'Eogon': 'Ę', 'eogon': 'ę', 'Eopf': '𝔼', 'eopf': '𝕖', 'epar': '⋕', 'eparsl': '⧣', 'eplus': '⩱', 'epsi': 'ε', 'Epsilon': 'Ε', 'epsilon': 'ε', 'epsiv': 'ϵ', 'eqcirc': '≖', 'eqcolon': '≕', 'eqsim': '≂', 'eqslantgtr': '⪖', 'eqslantless': '⪕', 'Equal': '⩵', 'equals': '=', 'EqualTilde': '≂', 'equest': '≟', 'Equilibrium': '⇌', 'equiv': '≡', 'equivDD': '⩸', 'eqvparsl': '⧥', 'erarr': '⥱', 'erDot': '≓', 'escr': 'ℯ', 'Escr': 'ℰ', 'esdot': '≐', 'Esim': '⩳', 'esim': '≂', 'Eta': 'Η', 'eta': 'η', 'ETH': '\xD0', 'eth': '\xF0', 'Euml': '\xCB', 'euml': '\xEB', 'euro': '€', 'excl': '!', 'exist': '∃', 'Exists': '∃', 'expectation': 'ℰ', 'exponentiale': 'ⅇ', 'ExponentialE': 'ⅇ', 'fallingdotseq': '≒', 'Fcy': 'Ф', 'fcy': 'ф', 'female': '♀', 'ffilig': 'ﬃ', 'fflig': 'ﬀ', 'ffllig': 'ﬄ', 'Ffr': '𝔉', 'ffr': '𝔣', 'filig': 'ﬁ', 'FilledSmallSquare': '◼', 'FilledVerySmallSquare': '▪', 'fjlig': 'fj', 'flat': '♭', 'fllig': 'ﬂ', 'fltns': '▱', 'fnof': 'ƒ', 'Fopf': '𝔽', 'fopf': '𝕗', 'forall': '∀', 'ForAll': '∀', 'fork': '⋔', 'forkv': '⫙', 'Fouriertrf': 'ℱ', 'fpartint': '⨍', 'frac12': '\xBD', 'frac13': '⅓', 'frac14': '\xBC', 'frac15': '⅕', 'frac16': '⅙', 'frac18': '⅛', 'frac23': '⅔', 'frac25': '⅖', 'frac34': '\xBE', 'frac35': '⅗', 'frac38': '⅜', 'frac45': '⅘', 'frac56': '⅚', 'frac58': '⅝', 'frac78': '⅞', 'frasl': '⁄', 'frown': '⌢', 'fscr': '𝒻', 'Fscr': 'ℱ', 'gacute': 'ǵ', 'Gamma': 'Γ', 'gamma': 'γ', 'Gammad': 'Ϝ', 'gammad': 'ϝ', 'gap': '⪆', 'Gbreve': 'Ğ', 'gbreve': 'ğ', 'Gcedil': 'Ģ', 'Gcirc': 'Ĝ', 'gcirc': 'ĝ', 'Gcy': 'Г', 'gcy': 'г', 'Gdot': 'Ġ', 'gdot': 'ġ', 'ge': '≥', 'gE': '≧', 'gEl': '⪌', 'gel': '⋛', 'geq': '≥', 'geqq': '≧', 'geqslant': '⩾', 'gescc': '⪩', 'ges': '⩾', 'gesdot': '⪀', 'gesdoto': '⪂', 'gesdotol': '⪄', 'gesl': '⋛︀', 'gesles': '⪔', 'Gfr': '𝔊', 'gfr': '𝔤', 'gg': '≫', 'Gg': '⋙', 'ggg': '⋙', 'gimel': 'ℷ', 'GJcy': 'Ѓ', 'gjcy': 'ѓ', 'gla': '⪥', 'gl': '≷', 'glE': '⪒', 'glj': '⪤', 'gnap': '⪊', 'gnapprox': '⪊', 'gne': '⪈', 'gnE': '≩', 'gneq': '⪈', 'gneqq': '≩', 'gnsim': '⋧', 'Gopf': '𝔾', 'gopf': '𝕘', 'grave': '`', 'GreaterEqual': '≥', 'GreaterEqualLess': '⋛', 'GreaterFullEqual': '≧', 'GreaterGreater': '⪢', 'GreaterLess': '≷', 'GreaterSlantEqual': '⩾', 'GreaterTilde': '≳', 'Gscr': '𝒢', 'gscr': 'ℊ', 'gsim': '≳', 'gsime': '⪎', 'gsiml': '⪐', 'gtcc': '⪧', 'gtcir': '⩺', 'gt': '>', 'GT': '>', 'Gt': '≫', 'gtdot': '⋗', 'gtlPar': '⦕', 'gtquest': '⩼', 'gtrapprox': '⪆', 'gtrarr': '⥸', 'gtrdot': '⋗', 'gtreqless': '⋛', 'gtreqqless': '⪌', 'gtrless': '≷', 'gtrsim': '≳', 'gvertneqq': '≩︀', 'gvnE': '≩︀', 'Hacek': 'ˇ', 'hairsp': ' ', 'half': '\xBD', 'hamilt': 'ℋ', 'HARDcy': 'Ъ', 'hardcy': 'ъ', 'harrcir': '⥈', 'harr': '↔', 'hArr': '⇔', 'harrw': '↭', 'Hat': '^', 'hbar': 'ℏ', 'Hcirc': 'Ĥ', 'hcirc': 'ĥ', 'hearts': '♥', 'heartsuit': '♥', 'hellip': '…', 'hercon': '⊹', 'hfr': '𝔥', 'Hfr': 'ℌ', 'HilbertSpace': 'ℋ', 'hksearow': '⤥', 'hkswarow': '⤦', 'hoarr': '⇿', 'homtht': '∻', 'hookleftarrow': '↩', 'hookrightarrow': '↪', 'hopf': '𝕙', 'Hopf': 'ℍ', 'horbar': '―', 'HorizontalLine': '─', 'hscr': '𝒽', 'Hscr': 'ℋ', 'hslash': 'ℏ', 'Hstrok': 'Ħ', 'hstrok': 'ħ', 'HumpDownHump': '≎', 'HumpEqual': '≏', 'hybull': '⁃', 'hyphen': '‐', 'Iacute': '\xCD', 'iacute': '\xED', 'ic': '⁣', 'Icirc': '\xCE', 'icirc': '\xEE', 'Icy': 'И', 'icy': 'и', 'Idot': 'İ', 'IEcy': 'Е', 'iecy': 'е', 'iexcl': '\xA1', 'iff': '⇔', 'ifr': '𝔦', 'Ifr': 'ℑ', 'Igrave': '\xCC', 'igrave': '\xEC', 'ii': 'ⅈ', 'iiiint': '⨌', 'iiint': '∭', 'iinfin': '⧜', 'iiota': '℩', 'IJlig': 'Ĳ', 'ijlig': 'ĳ', 'Imacr': 'Ī', 'imacr': 'ī', 'image': 'ℑ', 'ImaginaryI': 'ⅈ', 'imagline': 'ℐ', 'imagpart': 'ℑ', 'imath': 'ı', 'Im': 'ℑ', 'imof': '⊷', 'imped': 'Ƶ', 'Implies': '⇒', 'incare': '℅', 'in': '∈', 'infin': '∞', 'infintie': '⧝', 'inodot': 'ı', 'intcal': '⊺', 'int': '∫', 'Int': '∬', 'integers': 'ℤ', 'Integral': '∫', 'intercal': '⊺', 'Intersection': '⋂', 'intlarhk': '⨗', 'intprod': '⨼', 'InvisibleComma': '⁣', 'InvisibleTimes': '⁢', 'IOcy': 'Ё', 'iocy': 'ё', 'Iogon': 'Į', 'iogon': 'į', 'Iopf': '𝕀', 'iopf': '𝕚', 'Iota': 'Ι', 'iota': 'ι', 'iprod': '⨼', 'iquest': '\xBF', 'iscr': '𝒾', 'Iscr': 'ℐ', 'isin': '∈', 'isindot': '⋵', 'isinE': '⋹', 'isins': '⋴', 'isinsv': '⋳', 'isinv': '∈', 'it': '⁢', 'Itilde': 'Ĩ', 'itilde': 'ĩ', 'Iukcy': 'І', 'iukcy': 'і', 'Iuml': '\xCF', 'iuml': '\xEF', 'Jcirc': 'Ĵ', 'jcirc': 'ĵ', 'Jcy': 'Й', 'jcy': 'й', 'Jfr': '𝔍', 'jfr': '𝔧', 'jmath': 'ȷ', 'Jopf': '𝕁', 'jopf': '𝕛', 'Jscr': '𝒥', 'jscr': '𝒿', 'Jsercy': 'Ј', 'jsercy': 'ј', 'Jukcy': 'Є', 'jukcy': 'є', 'Kappa': 'Κ', 'kappa': 'κ', 'kappav': 'ϰ', 'Kcedil': 'Ķ', 'kcedil': 'ķ', 'Kcy': 'К', 'kcy': 'к', 'Kfr': '𝔎', 'kfr': '𝔨', 'kgreen': 'ĸ', 'KHcy': 'Х', 'khcy': 'х', 'KJcy': 'Ќ', 'kjcy': 'ќ', 'Kopf': '𝕂', 'kopf': '𝕜', 'Kscr': '𝒦', 'kscr': '𝓀', 'lAarr': '⇚', 'Lacute': 'Ĺ', 'lacute': 'ĺ', 'laemptyv': '⦴', 'lagran': 'ℒ', 'Lambda': 'Λ', 'lambda': 'λ', 'lang': '⟨', 'Lang': '⟪', 'langd': '⦑', 'langle': '⟨', 'lap': '⪅', 'Laplacetrf': 'ℒ', 'laquo': '\xAB', 'larrb': '⇤', 'larrbfs': '⤟', 'larr': '←', 'Larr': '↞', 'lArr': '⇐', 'larrfs': '⤝', 'larrhk': '↩', 'larrlp': '↫', 'larrpl': '⤹', 'larrsim': '⥳', 'larrtl': '↢', 'latail': '⤙', 'lAtail': '⤛', 'lat': '⪫', 'late': '⪭', 'lates': '⪭︀', 'lbarr': '⤌', 'lBarr': '⤎', 'lbbrk': '❲', 'lbrace': '{', 'lbrack': '[', 'lbrke': '⦋', 'lbrksld': '⦏', 'lbrkslu': '⦍', 'Lcaron': 'Ľ', 'lcaron': 'ľ', 'Lcedil': 'Ļ', 'lcedil': 'ļ', 'lceil': '⌈', 'lcub': '{', 'Lcy': 'Л', 'lcy': 'л', 'ldca': '⤶', 'ldquo': '“', 'ldquor': '„', 'ldrdhar': '⥧', 'ldrushar': '⥋', 'ldsh': '↲', 'le': '≤', 'lE': '≦', 'LeftAngleBracket': '⟨', 'LeftArrowBar': '⇤', 'leftarrow': '←', 'LeftArrow': '←', 'Leftarrow': '⇐', 'LeftArrowRightArrow': '⇆', 'leftarrowtail': '↢', 'LeftCeiling': '⌈', 'LeftDoubleBracket': '⟦', 'LeftDownTeeVector': '⥡', 'LeftDownVectorBar': '⥙', 'LeftDownVector': '⇃', 'LeftFloor': '⌊', 'leftharpoondown': '↽', 'leftharpoonup': '↼', 'leftleftarrows': '⇇', 'leftrightarrow': '↔', 'LeftRightArrow': '↔', 'Leftrightarrow': '⇔', 'leftrightarrows': '⇆', 'leftrightharpoons': '⇋', 'leftrightsquigarrow': '↭', 'LeftRightVector': '⥎', 'LeftTeeArrow': '↤', 'LeftTee': '⊣', 'LeftTeeVector': '⥚', 'leftthreetimes': '⋋', 'LeftTriangleBar': '⧏', 'LeftTriangle': '⊲', 'LeftTriangleEqual': '⊴', 'LeftUpDownVector': '⥑', 'LeftUpTeeVector': '⥠', 'LeftUpVectorBar': '⥘', 'LeftUpVector': '↿', 'LeftVectorBar': '⥒', 'LeftVector': '↼', 'lEg': '⪋', 'leg': '⋚', 'leq': '≤', 'leqq': '≦', 'leqslant': '⩽', 'lescc': '⪨', 'les': '⩽', 'lesdot': '⩿', 'lesdoto': '⪁', 'lesdotor': '⪃', 'lesg': '⋚︀', 'lesges': '⪓', 'lessapprox': '⪅', 'lessdot': '⋖', 'lesseqgtr': '⋚', 'lesseqqgtr': '⪋', 'LessEqualGreater': '⋚', 'LessFullEqual': '≦', 'LessGreater': '≶', 'lessgtr': '≶', 'LessLess': '⪡', 'lesssim': '≲', 'LessSlantEqual': '⩽', 'LessTilde': '≲', 'lfisht': '⥼', 'lfloor': '⌊', 'Lfr': '𝔏', 'lfr': '𝔩', 'lg': '≶', 'lgE': '⪑', 'lHar': '⥢', 'lhard': '↽', 'lharu': '↼', 'lharul': '⥪', 'lhblk': '▄', 'LJcy': 'Љ', 'ljcy': 'љ', 'llarr': '⇇', 'll': '≪', 'Ll': '⋘', 'llcorner': '⌞', 'Lleftarrow': '⇚', 'llhard': '⥫', 'lltri': '◺', 'Lmidot': 'Ŀ', 'lmidot': 'ŀ', 'lmoustache': '⎰', 'lmoust': '⎰', 'lnap': '⪉', 'lnapprox': '⪉', 'lne': '⪇', 'lnE': '≨', 'lneq': '⪇', 'lneqq': '≨', 'lnsim': '⋦', 'loang': '⟬', 'loarr': '⇽', 'lobrk': '⟦', 'longleftarrow': '⟵', 'LongLeftArrow': '⟵', 'Longleftarrow': '⟸', 'longleftrightarrow': '⟷', 'LongLeftRightArrow': '⟷', 'Longleftrightarrow': '⟺', 'longmapsto': '⟼', 'longrightarrow': '⟶', 'LongRightArrow': '⟶', 'Longrightarrow': '⟹', 'looparrowleft': '↫', 'looparrowright': '↬', 'lopar': '⦅', 'Lopf': '𝕃', 'lopf': '𝕝', 'loplus': '⨭', 'lotimes': '⨴', 'lowast': '∗', 'lowbar': '_', 'LowerLeftArrow': '↙', 'LowerRightArrow': '↘', 'loz': '◊', 'lozenge': '◊', 'lozf': '⧫', 'lpar': '(', 'lparlt': '⦓', 'lrarr': '⇆', 'lrcorner': '⌟', 'lrhar': '⇋', 'lrhard': '⥭', 'lrm': '‎', 'lrtri': '⊿', 'lsaquo': '‹', 'lscr': '𝓁', 'Lscr': 'ℒ', 'lsh': '↰', 'Lsh': '↰', 'lsim': '≲', 'lsime': '⪍', 'lsimg': '⪏', 'lsqb': '[', 'lsquo': '‘', 'lsquor': '‚', 'Lstrok': 'Ł', 'lstrok': 'ł', 'ltcc': '⪦', 'ltcir': '⩹', 'lt': '<', 'LT': '<', 'Lt': '≪', 'ltdot': '⋖', 'lthree': '⋋', 'ltimes': '⋉', 'ltlarr': '⥶', 'ltquest': '⩻', 'ltri': '◃', 'ltrie': '⊴', 'ltrif': '◂', 'ltrPar': '⦖', 'lurdshar': '⥊', 'luruhar': '⥦', 'lvertneqq': '≨︀', 'lvnE': '≨︀', 'macr': '\xAF', 'male': '♂', 'malt': '✠', 'maltese': '✠', 'Map': '⤅', 'map': '↦', 'mapsto': '↦', 'mapstodown': '↧', 'mapstoleft': '↤', 'mapstoup': '↥', 'marker': '▮', 'mcomma': '⨩', 'Mcy': 'М', 'mcy': 'м', 'mdash': '—', 'mDDot': '∺', 'measuredangle': '∡', 'MediumSpace': ' ', 'Mellintrf': 'ℳ', 'Mfr': '𝔐', 'mfr': '𝔪', 'mho': '℧', 'micro': '\xB5', 'midast': '*', 'midcir': '⫰', 'mid': '∣', 'middot': '\xB7', 'minusb': '⊟', 'minus': '−', 'minusd': '∸', 'minusdu': '⨪', 'MinusPlus': '∓', 'mlcp': '⫛', 'mldr': '…', 'mnplus': '∓', 'models': '⊧', 'Mopf': '𝕄', 'mopf': '𝕞', 'mp': '∓', 'mscr': '𝓂', 'Mscr': 'ℳ', 'mstpos': '∾', 'Mu': 'Μ', 'mu': 'μ', 'multimap': '⊸', 'mumap': '⊸', 'nabla': '∇', 'Nacute': 'Ń', 'nacute': 'ń', 'nang': '∠⃒', 'nap': '≉', 'napE': '⩰̸', 'napid': '≋̸', 'napos': 'ŉ', 'napprox': '≉', 'natural': '♮', 'naturals': 'ℕ', 'natur': '♮', 'nbsp': '\xA0', 'nbump': '≎̸', 'nbumpe': '≏̸', 'ncap': '⩃', 'Ncaron': 'Ň', 'ncaron': 'ň', 'Ncedil': 'Ņ', 'ncedil': 'ņ', 'ncong': '≇', 'ncongdot': '⩭̸', 'ncup': '⩂', 'Ncy': 'Н', 'ncy': 'н', 'ndash': '–', 'nearhk': '⤤', 'nearr': '↗', 'neArr': '⇗', 'nearrow': '↗', 'ne': '≠', 'nedot': '≐̸', 'NegativeMediumSpace': '​', 'NegativeThickSpace': '​', 'NegativeThinSpace': '​', 'NegativeVeryThinSpace': '​', 'nequiv': '≢', 'nesear': '⤨', 'nesim': '≂̸', 'NestedGreaterGreater': '≫', 'NestedLessLess': '≪', 'NewLine': '\n', 'nexist': '∄', 'nexists': '∄', 'Nfr': '𝔑', 'nfr': '𝔫', 'ngE': '≧̸', 'nge': '≱', 'ngeq': '≱', 'ngeqq': '≧̸', 'ngeqslant': '⩾̸', 'nges': '⩾̸', 'nGg': '⋙̸', 'ngsim': '≵', 'nGt': '≫⃒', 'ngt': '≯', 'ngtr': '≯', 'nGtv': '≫̸', 'nharr': '↮', 'nhArr': '⇎', 'nhpar': '⫲', 'ni': '∋', 'nis': '⋼', 'nisd': '⋺', 'niv': '∋', 'NJcy': 'Њ', 'njcy': 'њ', 'nlarr': '↚', 'nlArr': '⇍', 'nldr': '‥', 'nlE': '≦̸', 'nle': '≰', 'nleftarrow': '↚', 'nLeftarrow': '⇍', 'nleftrightarrow': '↮', 'nLeftrightarrow': '⇎', 'nleq': '≰', 'nleqq': '≦̸', 'nleqslant': '⩽̸', 'nles': '⩽̸', 'nless': '≮', 'nLl': '⋘̸', 'nlsim': '≴', 'nLt': '≪⃒', 'nlt': '≮', 'nltri': '⋪', 'nltrie': '⋬', 'nLtv': '≪̸', 'nmid': '∤', 'NoBreak': '⁠', 'NonBreakingSpace': '\xA0', 'nopf': '𝕟', 'Nopf': 'ℕ', 'Not': '⫬', 'not': '\xAC', 'NotCongruent': '≢', 'NotCupCap': '≭', 'NotDoubleVerticalBar': '∦', 'NotElement': '∉', 'NotEqual': '≠', 'NotEqualTilde': '≂̸', 'NotExists': '∄', 'NotGreater': '≯', 'NotGreaterEqual': '≱', 'NotGreaterFullEqual': '≧̸', 'NotGreaterGreater': '≫̸', 'NotGreaterLess': '≹', 'NotGreaterSlantEqual': '⩾̸', 'NotGreaterTilde': '≵', 'NotHumpDownHump': '≎̸', 'NotHumpEqual': '≏̸', 'notin': '∉', 'notindot': '⋵̸', 'notinE': '⋹̸', 'notinva': '∉', 'notinvb': '⋷', 'notinvc': '⋶', 'NotLeftTriangleBar': '⧏̸', 'NotLeftTriangle': '⋪', 'NotLeftTriangleEqual': '⋬', 'NotLess': '≮', 'NotLessEqual': '≰', 'NotLessGreater': '≸', 'NotLessLess': '≪̸', 'NotLessSlantEqual': '⩽̸', 'NotLessTilde': '≴', 'NotNestedGreaterGreater': '⪢̸', 'NotNestedLessLess': '⪡̸', 'notni': '∌', 'notniva': '∌', 'notnivb': '⋾', 'notnivc': '⋽', 'NotPrecedes': '⊀', 'NotPrecedesEqual': '⪯̸', 'NotPrecedesSlantEqual': '⋠', 'NotReverseElement': '∌', 'NotRightTriangleBar': '⧐̸', 'NotRightTriangle': '⋫', 'NotRightTriangleEqual': '⋭', 'NotSquareSubset': '⊏̸', 'NotSquareSubsetEqual': '⋢', 'NotSquareSuperset': '⊐̸', 'NotSquareSupersetEqual': '⋣', 'NotSubset': '⊂⃒', 'NotSubsetEqual': '⊈', 'NotSucceeds': '⊁', 'NotSucceedsEqual': '⪰̸', 'NotSucceedsSlantEqual': '⋡', 'NotSucceedsTilde': '≿̸', 'NotSuperset': '⊃⃒', 'NotSupersetEqual': '⊉', 'NotTilde': '≁', 'NotTildeEqual': '≄', 'NotTildeFullEqual': '≇', 'NotTildeTilde': '≉', 'NotVerticalBar': '∤', 'nparallel': '∦', 'npar': '∦', 'nparsl': '⫽⃥', 'npart': '∂̸', 'npolint': '⨔', 'npr': '⊀', 'nprcue': '⋠', 'nprec': '⊀', 'npreceq': '⪯̸', 'npre': '⪯̸', 'nrarrc': '⤳̸', 'nrarr': '↛', 'nrArr': '⇏', 'nrarrw': '↝̸', 'nrightarrow': '↛', 'nRightarrow': '⇏', 'nrtri': '⋫', 'nrtrie': '⋭', 'nsc': '⊁', 'nsccue': '⋡', 'nsce': '⪰̸', 'Nscr': '𝒩', 'nscr': '𝓃', 'nshortmid': '∤', 'nshortparallel': '∦', 'nsim': '≁', 'nsime': '≄', 'nsimeq': '≄', 'nsmid': '∤', 'nspar': '∦', 'nsqsube': '⋢', 'nsqsupe': '⋣', 'nsub': '⊄', 'nsubE': '⫅̸', 'nsube': '⊈', 'nsubset': '⊂⃒', 'nsubseteq': '⊈', 'nsubseteqq': '⫅̸', 'nsucc': '⊁', 'nsucceq': '⪰̸', 'nsup': '⊅', 'nsupE': '⫆̸', 'nsupe': '⊉', 'nsupset': '⊃⃒', 'nsupseteq': '⊉', 'nsupseteqq': '⫆̸', 'ntgl': '≹', 'Ntilde': '\xD1', 'ntilde': '\xF1', 'ntlg': '≸', 'ntriangleleft': '⋪', 'ntrianglelefteq': '⋬', 'ntriangleright': '⋫', 'ntrianglerighteq': '⋭', 'Nu': 'Ν', 'nu': 'ν', 'num': '#', 'numero': '№', 'numsp': ' ', 'nvap': '≍⃒', 'nvdash': '⊬', 'nvDash': '⊭', 'nVdash': '⊮', 'nVDash': '⊯', 'nvge': '≥⃒', 'nvgt': '>⃒', 'nvHarr': '⤄', 'nvinfin': '⧞', 'nvlArr': '⤂', 'nvle': '≤⃒', 'nvlt': '<⃒', 'nvltrie': '⊴⃒', 'nvrArr': '⤃', 'nvrtrie': '⊵⃒', 'nvsim': '∼⃒', 'nwarhk': '⤣', 'nwarr': '↖', 'nwArr': '⇖', 'nwarrow': '↖', 'nwnear': '⤧', 'Oacute': '\xD3', 'oacute': '\xF3', 'oast': '⊛', 'Ocirc': '\xD4', 'ocirc': '\xF4', 'ocir': '⊚', 'Ocy': 'О', 'ocy': 'о', 'odash': '⊝', 'Odblac': 'Ő', 'odblac': 'ő', 'odiv': '⨸', 'odot': '⊙', 'odsold': '⦼', 'OElig': 'Œ', 'oelig': 'œ', 'ofcir': '⦿', 'Ofr': '𝔒', 'ofr': '𝔬', 'ogon': '˛', 'Ograve': '\xD2', 'ograve': '\xF2', 'ogt': '⧁', 'ohbar': '⦵', 'ohm': 'Ω', 'oint': '∮', 'olarr': '↺', 'olcir': '⦾', 'olcross': '⦻', 'oline': '‾', 'olt': '⧀', 'Omacr': 'Ō', 'omacr': 'ō', 'Omega': 'Ω', 'omega': 'ω', 'Omicron': 'Ο', 'omicron': 'ο', 'omid': '⦶', 'ominus': '⊖', 'Oopf': '𝕆', 'oopf': '𝕠', 'opar': '⦷', 'OpenCurlyDoubleQuote': '“', 'OpenCurlyQuote': '‘', 'operp': '⦹', 'oplus': '⊕', 'orarr': '↻', 'Or': '⩔', 'or': '∨', 'ord': '⩝', 'order': 'ℴ', 'orderof': 'ℴ', 'ordf': '\xAA', 'ordm': '\xBA', 'origof': '⊶', 'oror': '⩖', 'orslope': '⩗', 'orv': '⩛', 'oS': 'Ⓢ', 'Oscr': '𝒪', 'oscr': 'ℴ', 'Oslash': '\xD8', 'oslash': '\xF8', 'osol': '⊘', 'Otilde': '\xD5', 'otilde': '\xF5', 'otimesas': '⨶', 'Otimes': '⨷', 'otimes': '⊗', 'Ouml': '\xD6', 'ouml': '\xF6', 'ovbar': '⌽', 'OverBar': '‾', 'OverBrace': '⏞', 'OverBracket': '⎴', 'OverParenthesis': '⏜', 'para': '\xB6', 'parallel': '∥', 'par': '∥', 'parsim': '⫳', 'parsl': '⫽', 'part': '∂', 'PartialD': '∂', 'Pcy': 'П', 'pcy': 'п', 'percnt': '%', 'period': '.', 'permil': '‰', 'perp': '⊥', 'pertenk': '‱', 'Pfr': '𝔓', 'pfr': '𝔭', 'Phi': 'Φ', 'phi': 'φ', 'phiv': 'ϕ', 'phmmat': 'ℳ', 'phone': '☎', 'Pi': 'Π', 'pi': 'π', 'pitchfork': '⋔', 'piv': 'ϖ', 'planck': 'ℏ', 'planckh': 'ℎ', 'plankv': 'ℏ', 'plusacir': '⨣', 'plusb': '⊞', 'pluscir': '⨢', 'plus': '+', 'plusdo': '∔', 'plusdu': '⨥', 'pluse': '⩲', 'PlusMinus': '\xB1', 'plusmn': '\xB1', 'plussim': '⨦', 'plustwo': '⨧', 'pm': '\xB1', 'Poincareplane': 'ℌ', 'pointint': '⨕', 'popf': '𝕡', 'Popf': 'ℙ', 'pound': '\xA3', 'prap': '⪷', 'Pr': '⪻', 'pr': '≺', 'prcue': '≼', 'precapprox': '⪷', 'prec': '≺', 'preccurlyeq': '≼', 'Precedes': '≺', 'PrecedesEqual': '⪯', 'PrecedesSlantEqual': '≼', 'PrecedesTilde': '≾', 'preceq': '⪯', 'precnapprox': '⪹', 'precneqq': '⪵', 'precnsim': '⋨', 'pre': '⪯', 'prE': '⪳', 'precsim': '≾', 'prime': '′', 'Prime': '″', 'primes': 'ℙ', 'prnap': '⪹', 'prnE': '⪵', 'prnsim': '⋨', 'prod': '∏', 'Product': '∏', 'profalar': '⌮', 'profline': '⌒', 'profsurf': '⌓', 'prop': '∝', 'Proportional': '∝', 'Proportion': '∷', 'propto': '∝', 'prsim': '≾', 'prurel': '⊰', 'Pscr': '𝒫', 'pscr': '𝓅', 'Psi': 'Ψ', 'psi': 'ψ', 'puncsp': ' ', 'Qfr': '𝔔', 'qfr': '𝔮', 'qint': '⨌', 'qopf': '𝕢', 'Qopf': 'ℚ', 'qprime': '⁗', 'Qscr': '𝒬', 'qscr': '𝓆', 'quaternions': 'ℍ', 'quatint': '⨖', 'quest': '?', 'questeq': '≟', 'quot': '"', 'QUOT': '"', 'rAarr': '⇛', 'race': '∽̱', 'Racute': 'Ŕ', 'racute': 'ŕ', 'radic': '√', 'raemptyv': '⦳', 'rang': '⟩', 'Rang': '⟫', 'rangd': '⦒', 'range': '⦥', 'rangle': '⟩', 'raquo': '\xBB', 'rarrap': '⥵', 'rarrb': '⇥', 'rarrbfs': '⤠', 'rarrc': '⤳', 'rarr': '→', 'Rarr': '↠', 'rArr': '⇒', 'rarrfs': '⤞', 'rarrhk': '↪', 'rarrlp': '↬', 'rarrpl': '⥅', 'rarrsim': '⥴', 'Rarrtl': '⤖', 'rarrtl': '↣', 'rarrw': '↝', 'ratail': '⤚', 'rAtail': '⤜', 'ratio': '∶', 'rationals': 'ℚ', 'rbarr': '⤍', 'rBarr': '⤏', 'RBarr': '⤐', 'rbbrk': '❳', 'rbrace': '}', 'rbrack': ']', 'rbrke': '⦌', 'rbrksld': '⦎', 'rbrkslu': '⦐', 'Rcaron': 'Ř', 'rcaron': 'ř', 'Rcedil': 'Ŗ', 'rcedil': 'ŗ', 'rceil': '⌉', 'rcub': '}', 'Rcy': 'Р', 'rcy': 'р', 'rdca': '⤷', 'rdldhar': '⥩', 'rdquo': '”', 'rdquor': '”', 'rdsh': '↳', 'real': 'ℜ', 'realine': 'ℛ', 'realpart': 'ℜ', 'reals': 'ℝ', 'Re': 'ℜ', 'rect': '▭', 'reg': '\xAE', 'REG': '\xAE', 'ReverseElement': '∋', 'ReverseEquilibrium': '⇋', 'ReverseUpEquilibrium': '⥯', 'rfisht': '⥽', 'rfloor': '⌋', 'rfr': '𝔯', 'Rfr': 'ℜ', 'rHar': '⥤', 'rhard': '⇁', 'rharu': '⇀', 'rharul': '⥬', 'Rho': 'Ρ', 'rho': 'ρ', 'rhov': 'ϱ', 'RightAngleBracket': '⟩', 'RightArrowBar': '⇥', 'rightarrow': '→', 'RightArrow': '→', 'Rightarrow': '⇒', 'RightArrowLeftArrow': '⇄', 'rightarrowtail': '↣', 'RightCeiling': '⌉', 'RightDoubleBracket': '⟧', 'RightDownTeeVector': '⥝', 'RightDownVectorBar': '⥕', 'RightDownVector': '⇂', 'RightFloor': '⌋', 'rightharpoondown': '⇁', 'rightharpoonup': '⇀', 'rightleftarrows': '⇄', 'rightleftharpoons': '⇌', 'rightrightarrows': '⇉', 'rightsquigarrow': '↝', 'RightTeeArrow': '↦', 'RightTee': '⊢', 'RightTeeVector': '⥛', 'rightthreetimes': '⋌', 'RightTriangleBar': '⧐', 'RightTriangle': '⊳', 'RightTriangleEqual': '⊵', 'RightUpDownVector': '⥏', 'RightUpTeeVector': '⥜', 'RightUpVectorBar': '⥔', 'RightUpVector': '↾', 'RightVectorBar': '⥓', 'RightVector': '⇀', 'ring': '˚', 'risingdotseq': '≓', 'rlarr': '⇄', 'rlhar': '⇌', 'rlm': '‏', 'rmoustache': '⎱', 'rmoust': '⎱', 'rnmid': '⫮', 'roang': '⟭', 'roarr': '⇾', 'robrk': '⟧', 'ropar': '⦆', 'ropf': '𝕣', 'Ropf': 'ℝ', 'roplus': '⨮', 'rotimes': '⨵', 'RoundImplies': '⥰', 'rpar': ')', 'rpargt': '⦔', 'rppolint': '⨒', 'rrarr': '⇉', 'Rrightarrow': '⇛', 'rsaquo': '›', 'rscr': '𝓇', 'Rscr': 'ℛ', 'rsh': '↱', 'Rsh': '↱', 'rsqb': ']', 'rsquo': '’', 'rsquor': '’', 'rthree': '⋌', 'rtimes': '⋊', 'rtri': '▹', 'rtrie': '⊵', 'rtrif': '▸', 'rtriltri': '⧎', 'RuleDelayed': '⧴', 'ruluhar': '⥨', 'rx': '℞', 'Sacute': 'Ś', 'sacute': 'ś', 'sbquo': '‚', 'scap': '⪸', 'Scaron': 'Š', 'scaron': 'š', 'Sc': '⪼', 'sc': '≻', 'sccue': '≽', 'sce': '⪰', 'scE': '⪴', 'Scedil': 'Ş', 'scedil': 'ş', 'Scirc': 'Ŝ', 'scirc': 'ŝ', 'scnap': '⪺', 'scnE': '⪶', 'scnsim': '⋩', 'scpolint': '⨓', 'scsim': '≿', 'Scy': 'С', 'scy': 'с', 'sdotb': '⊡', 'sdot': '⋅', 'sdote': '⩦', 'searhk': '⤥', 'searr': '↘', 'seArr': '⇘', 'searrow': '↘', 'sect': '\xA7', 'semi': ';', 'seswar': '⤩', 'setminus': '∖', 'setmn': '∖', 'sext': '✶', 'Sfr': '𝔖', 'sfr': '𝔰', 'sfrown': '⌢', 'sharp': '♯', 'SHCHcy': 'Щ', 'shchcy': 'щ', 'SHcy': 'Ш', 'shcy': 'ш', 'ShortDownArrow': '↓', 'ShortLeftArrow': '←', 'shortmid': '∣', 'shortparallel': '∥', 'ShortRightArrow': '→', 'ShortUpArrow': '↑', 'shy': '\xAD', 'Sigma': 'Σ', 'sigma': 'σ', 'sigmaf': 'ς', 'sigmav': 'ς', 'sim': '∼', 'simdot': '⩪', 'sime': '≃', 'simeq': '≃', 'simg': '⪞', 'simgE': '⪠', 'siml': '⪝', 'simlE': '⪟', 'simne': '≆', 'simplus': '⨤', 'simrarr': '⥲', 'slarr': '←', 'SmallCircle': '∘', 'smallsetminus': '∖', 'smashp': '⨳', 'smeparsl': '⧤', 'smid': '∣', 'smile': '⌣', 'smt': '⪪', 'smte': '⪬', 'smtes': '⪬︀', 'SOFTcy': 'Ь', 'softcy': 'ь', 'solbar': '⌿', 'solb': '⧄', 'sol': '/', 'Sopf': '𝕊', 'sopf': '𝕤', 'spades': '♠', 'spadesuit': '♠', 'spar': '∥', 'sqcap': '⊓', 'sqcaps': '⊓︀', 'sqcup': '⊔', 'sqcups': '⊔︀', 'Sqrt': '√', 'sqsub': '⊏', 'sqsube': '⊑', 'sqsubset': '⊏', 'sqsubseteq': '⊑', 'sqsup': '⊐', 'sqsupe': '⊒', 'sqsupset': '⊐', 'sqsupseteq': '⊒', 'square': '□', 'Square': '□', 'SquareIntersection': '⊓', 'SquareSubset': '⊏', 'SquareSubsetEqual': '⊑', 'SquareSuperset': '⊐', 'SquareSupersetEqual': '⊒', 'SquareUnion': '⊔', 'squarf': '▪', 'squ': '□', 'squf': '▪', 'srarr': '→', 'Sscr': '𝒮', 'sscr': '𝓈', 'ssetmn': '∖', 'ssmile': '⌣', 'sstarf': '⋆', 'Star': '⋆', 'star': '☆', 'starf': '★', 'straightepsilon': 'ϵ', 'straightphi': 'ϕ', 'strns': '\xAF', 'sub': '⊂', 'Sub': '⋐', 'subdot': '⪽', 'subE': '⫅', 'sube': '⊆', 'subedot': '⫃', 'submult': '⫁', 'subnE': '⫋', 'subne': '⊊', 'subplus': '⪿', 'subrarr': '⥹', 'subset': '⊂', 'Subset': '⋐', 'subseteq': '⊆', 'subseteqq': '⫅', 'SubsetEqual': '⊆', 'subsetneq': '⊊', 'subsetneqq': '⫋', 'subsim': '⫇', 'subsub': '⫕', 'subsup': '⫓', 'succapprox': '⪸', 'succ': '≻', 'succcurlyeq': '≽', 'Succeeds': '≻', 'SucceedsEqual': '⪰', 'SucceedsSlantEqual': '≽', 'SucceedsTilde': '≿', 'succeq': '⪰', 'succnapprox': '⪺', 'succneqq': '⪶', 'succnsim': '⋩', 'succsim': '≿', 'SuchThat': '∋', 'sum': '∑', 'Sum': '∑', 'sung': '♪', 'sup1': '\xB9', 'sup2': '\xB2', 'sup3': '\xB3', 'sup': '⊃', 'Sup': '⋑', 'supdot': '⪾', 'supdsub': '⫘', 'supE': '⫆', 'supe': '⊇', 'supedot': '⫄', 'Superset': '⊃', 'SupersetEqual': '⊇', 'suphsol': '⟉', 'suphsub': '⫗', 'suplarr': '⥻', 'supmult': '⫂', 'supnE': '⫌', 'supne': '⊋', 'supplus': '⫀', 'supset': '⊃', 'Supset': '⋑', 'supseteq': '⊇', 'supseteqq': '⫆', 'supsetneq': '⊋', 'supsetneqq': '⫌', 'supsim': '⫈', 'supsub': '⫔', 'supsup': '⫖', 'swarhk': '⤦', 'swarr': '↙', 'swArr': '⇙', 'swarrow': '↙', 'swnwar': '⤪', 'szlig': '\xDF', 'Tab': '\t', 'target': '⌖', 'Tau': 'Τ', 'tau': 'τ', 'tbrk': '⎴', 'Tcaron': 'Ť', 'tcaron': 'ť', 'Tcedil': 'Ţ', 'tcedil': 'ţ', 'Tcy': 'Т', 'tcy': 'т', 'tdot': '⃛', 'telrec': '⌕', 'Tfr': '𝔗', 'tfr': '𝔱', 'there4': '∴', 'therefore': '∴', 'Therefore': '∴', 'Theta': 'Θ', 'theta': 'θ', 'thetasym': 'ϑ', 'thetav': 'ϑ', 'thickapprox': '≈', 'thicksim': '∼', 'ThickSpace': '  ', 'ThinSpace': ' ', 'thinsp': ' ', 'thkap': '≈', 'thksim': '∼', 'THORN': '\xDE', 'thorn': '\xFE', 'tilde': '˜', 'Tilde': '∼', 'TildeEqual': '≃', 'TildeFullEqual': '≅', 'TildeTilde': '≈', 'timesbar': '⨱', 'timesb': '⊠', 'times': '\xD7', 'timesd': '⨰', 'tint': '∭', 'toea': '⤨', 'topbot': '⌶', 'topcir': '⫱', 'top': '⊤', 'Topf': '𝕋', 'topf': '𝕥', 'topfork': '⫚', 'tosa': '⤩', 'tprime': '‴', 'trade': '™', 'TRADE': '™', 'triangle': '▵', 'triangledown': '▿', 'triangleleft': '◃', 'trianglelefteq': '⊴', 'triangleq': '≜', 'triangleright': '▹', 'trianglerighteq': '⊵', 'tridot': '◬', 'trie': '≜', 'triminus': '⨺', 'TripleDot': '⃛', 'triplus': '⨹', 'trisb': '⧍', 'tritime': '⨻', 'trpezium': '⏢', 'Tscr': '𝒯', 'tscr': '𝓉', 'TScy': 'Ц', 'tscy': 'ц', 'TSHcy': 'Ћ', 'tshcy': 'ћ', 'Tstrok': 'Ŧ', 'tstrok': 'ŧ', 'twixt': '≬', 'twoheadleftarrow': '↞', 'twoheadrightarrow': '↠', 'Uacute': '\xDA', 'uacute': '\xFA', 'uarr': '↑', 'Uarr': '↟', 'uArr': '⇑', 'Uarrocir': '⥉', 'Ubrcy': 'Ў', 'ubrcy': 'ў', 'Ubreve': 'Ŭ', 'ubreve': 'ŭ', 'Ucirc': '\xDB', 'ucirc': '\xFB', 'Ucy': 'У', 'ucy': 'у', 'udarr': '⇅', 'Udblac': 'Ű', 'udblac': 'ű', 'udhar': '⥮', 'ufisht': '⥾', 'Ufr': '𝔘', 'ufr': '𝔲', 'Ugrave': '\xD9', 'ugrave': '\xF9', 'uHar': '⥣', 'uharl': '↿', 'uharr': '↾', 'uhblk': '▀', 'ulcorn': '⌜', 'ulcorner': '⌜', 'ulcrop': '⌏', 'ultri': '◸', 'Umacr': 'Ū', 'umacr': 'ū', 'uml': '\xA8', 'UnderBar': '_', 'UnderBrace': '⏟', 'UnderBracket': '⎵', 'UnderParenthesis': '⏝', 'Union': '⋃', 'UnionPlus': '⊎', 'Uogon': 'Ų', 'uogon': 'ų', 'Uopf': '𝕌', 'uopf': '𝕦', 'UpArrowBar': '⤒', 'uparrow': '↑', 'UpArrow': '↑', 'Uparrow': '⇑', 'UpArrowDownArrow': '⇅', 'updownarrow': '↕', 'UpDownArrow': '↕', 'Updownarrow': '⇕', 'UpEquilibrium': '⥮', 'upharpoonleft': '↿', 'upharpoonright': '↾', 'uplus': '⊎', 'UpperLeftArrow': '↖', 'UpperRightArrow': '↗', 'upsi': 'υ', 'Upsi': 'ϒ', 'upsih': 'ϒ', 'Upsilon': 'Υ', 'upsilon': 'υ', 'UpTeeArrow': '↥', 'UpTee': '⊥', 'upuparrows': '⇈', 'urcorn': '⌝', 'urcorner': '⌝', 'urcrop': '⌎', 'Uring': 'Ů', 'uring': 'ů', 'urtri': '◹', 'Uscr': '𝒰', 'uscr': '𝓊', 'utdot': '⋰', 'Utilde': 'Ũ', 'utilde': 'ũ', 'utri': '▵', 'utrif': '▴', 'uuarr': '⇈', 'Uuml': '\xDC', 'uuml': '\xFC', 'uwangle': '⦧', 'vangrt': '⦜', 'varepsilon': 'ϵ', 'varkappa': 'ϰ', 'varnothing': '∅', 'varphi': 'ϕ', 'varpi': 'ϖ', 'varpropto': '∝', 'varr': '↕', 'vArr': '⇕', 'varrho': 'ϱ', 'varsigma': 'ς', 'varsubsetneq': '⊊︀', 'varsubsetneqq': '⫋︀', 'varsupsetneq': '⊋︀', 'varsupsetneqq': '⫌︀', 'vartheta': 'ϑ', 'vartriangleleft': '⊲', 'vartriangleright': '⊳', 'vBar': '⫨', 'Vbar': '⫫', 'vBarv': '⫩', 'Vcy': 'В', 'vcy': 'в', 'vdash': '⊢', 'vDash': '⊨', 'Vdash': '⊩', 'VDash': '⊫', 'Vdashl': '⫦', 'veebar': '⊻', 'vee': '∨', 'Vee': '⋁', 'veeeq': '≚', 'vellip': '⋮', 'verbar': '|', 'Verbar': '‖', 'vert': '|', 'Vert': '‖', 'VerticalBar': '∣', 'VerticalLine': '|', 'VerticalSeparator': '❘', 'VerticalTilde': '≀', 'VeryThinSpace': ' ', 'Vfr': '𝔙', 'vfr': '𝔳', 'vltri': '⊲', 'vnsub': '⊂⃒', 'vnsup': '⊃⃒', 'Vopf': '𝕍', 'vopf': '𝕧', 'vprop': '∝', 'vrtri': '⊳', 'Vscr': '𝒱', 'vscr': '𝓋', 'vsubnE': '⫋︀', 'vsubne': '⊊︀', 'vsupnE': '⫌︀', 'vsupne': '⊋︀', 'Vvdash': '⊪', 'vzigzag': '⦚', 'Wcirc': 'Ŵ', 'wcirc': 'ŵ', 'wedbar': '⩟', 'wedge': '∧', 'Wedge': '⋀', 'wedgeq': '≙', 'weierp': '℘', 'Wfr': '𝔚', 'wfr': '𝔴', 'Wopf': '𝕎', 'wopf': '𝕨', 'wp': '℘', 'wr': '≀', 'wreath': '≀', 'Wscr': '𝒲', 'wscr': '𝓌', 'xcap': '⋂', 'xcirc': '◯', 'xcup': '⋃', 'xdtri': '▽', 'Xfr': '𝔛', 'xfr': '𝔵', 'xharr': '⟷', 'xhArr': '⟺', 'Xi': 'Ξ', 'xi': 'ξ', 'xlarr': '⟵', 'xlArr': '⟸', 'xmap': '⟼', 'xnis': '⋻', 'xodot': '⨀', 'Xopf': '𝕏', 'xopf': '𝕩', 'xoplus': '⨁', 'xotime': '⨂', 'xrarr': '⟶', 'xrArr': '⟹', 'Xscr': '𝒳', 'xscr': '𝓍', 'xsqcup': '⨆', 'xuplus': '⨄', 'xutri': '△', 'xvee': '⋁', 'xwedge': '⋀', 'Yacute': '\xDD', 'yacute': '\xFD', 'YAcy': 'Я', 'yacy': 'я', 'Ycirc': 'Ŷ', 'ycirc': 'ŷ', 'Ycy': 'Ы', 'ycy': 'ы', 'yen': '\xA5', 'Yfr': '𝔜', 'yfr': '𝔶', 'YIcy': 'Ї', 'yicy': 'ї', 'Yopf': '𝕐', 'yopf': '𝕪', 'Yscr': '𝒴', 'yscr': '𝓎', 'YUcy': 'Ю', 'yucy': 'ю', 'yuml': '\xFF', 'Yuml': 'Ÿ', 'Zacute': 'Ź', 'zacute': 'ź', 'Zcaron': 'Ž', 'zcaron': 'ž', 'Zcy': 'З', 'zcy': 'з', 'Zdot': 'Ż', 'zdot': 'ż', 'zeetrf': 'ℨ', 'ZeroWidthSpace': '​', 'Zeta': 'Ζ', 'zeta': 'ζ', 'zfr': '𝔷', 'Zfr': 'ℨ', 'ZHcy': 'Ж', 'zhcy': 'ж', 'zigrarr': '⇝', 'zopf': '𝕫', 'Zopf': 'ℤ', 'Zscr': '𝒵', 'zscr': '𝓏', 'zwj': '‍', 'zwnj': '‌' };
-	var decodeMapLegacy = { 'Aacute': '\xC1', 'aacute': '\xE1', 'Acirc': '\xC2', 'acirc': '\xE2', 'acute': '\xB4', 'AElig': '\xC6', 'aelig': '\xE6', 'Agrave': '\xC0', 'agrave': '\xE0', 'amp': '&', 'AMP': '&', 'Aring': '\xC5', 'aring': '\xE5', 'Atilde': '\xC3', 'atilde': '\xE3', 'Auml': '\xC4', 'auml': '\xE4', 'brvbar': '\xA6', 'Ccedil': '\xC7', 'ccedil': '\xE7', 'cedil': '\xB8', 'cent': '\xA2', 'copy': '\xA9', 'COPY': '\xA9', 'curren': '\xA4', 'deg': '\xB0', 'divide': '\xF7', 'Eacute': '\xC9', 'eacute': '\xE9', 'Ecirc': '\xCA', 'ecirc': '\xEA', 'Egrave': '\xC8', 'egrave': '\xE8', 'ETH': '\xD0', 'eth': '\xF0', 'Euml': '\xCB', 'euml': '\xEB', 'frac12': '\xBD', 'frac14': '\xBC', 'frac34': '\xBE', 'gt': '>', 'GT': '>', 'Iacute': '\xCD', 'iacute': '\xED', 'Icirc': '\xCE', 'icirc': '\xEE', 'iexcl': '\xA1', 'Igrave': '\xCC', 'igrave': '\xEC', 'iquest': '\xBF', 'Iuml': '\xCF', 'iuml': '\xEF', 'laquo': '\xAB', 'lt': '<', 'LT': '<', 'macr': '\xAF', 'micro': '\xB5', 'middot': '\xB7', 'nbsp': '\xA0', 'not': '\xAC', 'Ntilde': '\xD1', 'ntilde': '\xF1', 'Oacute': '\xD3', 'oacute': '\xF3', 'Ocirc': '\xD4', 'ocirc': '\xF4', 'Ograve': '\xD2', 'ograve': '\xF2', 'ordf': '\xAA', 'ordm': '\xBA', 'Oslash': '\xD8', 'oslash': '\xF8', 'Otilde': '\xD5', 'otilde': '\xF5', 'Ouml': '\xD6', 'ouml': '\xF6', 'para': '\xB6', 'plusmn': '\xB1', 'pound': '\xA3', 'quot': '"', 'QUOT': '"', 'raquo': '\xBB', 'reg': '\xAE', 'REG': '\xAE', 'sect': '\xA7', 'shy': '\xAD', 'sup1': '\xB9', 'sup2': '\xB2', 'sup3': '\xB3', 'szlig': '\xDF', 'THORN': '\xDE', 'thorn': '\xFE', 'times': '\xD7', 'Uacute': '\xDA', 'uacute': '\xFA', 'Ucirc': '\xDB', 'ucirc': '\xFB', 'Ugrave': '\xD9', 'ugrave': '\xF9', 'uml': '\xA8', 'Uuml': '\xDC', 'uuml': '\xFC', 'Yacute': '\xDD', 'yacute': '\xFD', 'yen': '\xA5', 'yuml': '\xFF' };
-	var decodeMapNumeric = { '0': '�', '128': '€', '130': '‚', '131': 'ƒ', '132': '„', '133': '…', '134': '†', '135': '‡', '136': 'ˆ', '137': '‰', '138': 'Š', '139': '‹', '140': 'Œ', '142': 'Ž', '145': '‘', '146': '’', '147': '“', '148': '”', '149': '•', '150': '–', '151': '—', '152': '˜', '153': '™', '154': 'š', '155': '›', '156': 'œ', '158': 'ž', '159': 'Ÿ' };
-	var invalidReferenceCodePoints = [1, 2, 3, 4, 5, 6, 7, 8, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154, 155, 156, 157, 158, 159, 64976, 64977, 64978, 64979, 64980, 64981, 64982, 64983, 64984, 64985, 64986, 64987, 64988, 64989, 64990, 64991, 64992, 64993, 64994, 64995, 64996, 64997, 64998, 64999, 65000, 65001, 65002, 65003, 65004, 65005, 65006, 65007, 65534, 65535, 131070, 131071, 196606, 196607, 262142, 262143, 327678, 327679, 393214, 393215, 458750, 458751, 524286, 524287, 589822, 589823, 655358, 655359, 720894, 720895, 786430, 786431, 851966, 851967, 917502, 917503, 983038, 983039, 1048574, 1048575, 1114110, 1114111];
+var BASE = {};
 
-	/*--------------------------------------------------------------------------*/
+BASE[HEXADECIMAL] = 16;
+BASE[DECIMAL] = 10;
 
-	var stringFromCharCode = String.fromCharCode;
+/*
+ * Warning messages.
+ */
 
-	var object = {};
-	var hasOwnProperty = object.hasOwnProperty;
-	var has = function has(object, propertyName) {
-		return hasOwnProperty.call(object, propertyName);
-	};
+var NUMERIC_REFERENCE = 'Numeric character references';
+var NAMED_REFERENCE = 'Named character references';
+var TERMINATED = ' must be terminated by a semicolon';
+var VOID = ' cannot be empty';
 
-	var contains = function contains(array, value) {
-		var index = -1;
-		var length = array.length;
-		while (++index < length) {
-			if (array[index] == value) {
-				return true;
-			}
-		}
-		return false;
-	};
+var NAMED_NOT_TERMINATED = 1;
+var NUMERIC_NOT_TERMINATED = 2;
+var NAMED_EMPTY = 3;
+var NUMERIC_EMPTY = 4;
+var NAMED_UNKNOWN = 5;
+var NUMERIC_DISALLOWED = 6;
+var NUMERIC_PROHIBITED = 7;
 
-	var merge = function merge(options, defaults) {
-		if (!options) {
-			return defaults;
-		}
-		var result = {};
-		var key;
-		for (key in defaults) {
-			// A `hasOwnProperty` check is not needed here, since only recognized
-			// option names are used anyway. Any others are ignored.
-			result[key] = has(options, key) ? options[key] : defaults[key];
-		}
-		return result;
-	};
+var MESSAGES = {};
 
-	// Modified version of `ucs2encode`; see http://mths.be/punycode.
-	var codePointToSymbol = function codePointToSymbol(codePoint, strict) {
-		var output = '';
-		if (codePoint >= 0xD800 && codePoint <= 0xDFFF || codePoint > 0x10FFFF) {
-			// See issue #4:
-			// “Otherwise, if the number is in the range 0xD800 to 0xDFFF or is
-			// greater than 0x10FFFF, then this is a parse error. Return a U+FFFD
-			// REPLACEMENT CHARACTER.”
-			if (strict) {
-				parseError('character reference outside the permissible Unicode range');
-			}
-			return '�';
-		}
-		if (has(decodeMapNumeric, codePoint)) {
-			if (strict) {
-				parseError('disallowed character reference');
-			}
-			return decodeMapNumeric[codePoint];
-		}
-		if (strict && contains(invalidReferenceCodePoints, codePoint)) {
-			parseError('disallowed character reference');
-		}
-		if (codePoint > 0xFFFF) {
-			codePoint -= 0x10000;
-			output += stringFromCharCode(codePoint >>> 10 & 0x3FF | 0xD800);
-			codePoint = 0xDC00 | codePoint & 0x3FF;
-		}
-		output += stringFromCharCode(codePoint);
-		return output;
-	};
+MESSAGES[NAMED_NOT_TERMINATED] = NAMED_REFERENCE + TERMINATED;
+MESSAGES[NUMERIC_NOT_TERMINATED] = NUMERIC_REFERENCE + TERMINATED;
+MESSAGES[NAMED_EMPTY] = NAMED_REFERENCE + VOID;
+MESSAGES[NUMERIC_EMPTY] = NUMERIC_REFERENCE + VOID;
+MESSAGES[NAMED_UNKNOWN] = NAMED_REFERENCE + ' must be known';
+MESSAGES[NUMERIC_DISALLOWED] = NUMERIC_REFERENCE + ' cannot be disallowed';
+MESSAGES[NUMERIC_PROHIBITED] = NUMERIC_REFERENCE + ' cannot be outside the ' + 'permissible Unicode range';
 
-	var hexEscape = function hexEscape(symbol) {
-		return '&#x' + symbol.charCodeAt(0).toString(16).toUpperCase() + ';';
-	};
+/*
+ * Characters.
+ */
 
-	var parseError = function parseError(message) {
-		throw Error('Parse error: ' + message);
-	};
+var REPLACEMENT = '�';
+var FORM_FEED = '\f';
+var AMPERSAND = '&';
+var OCTOTHORP = '#';
+var SEMICOLON = ';';
+var NEWLINE = '\n';
+var X_LOWER = 'x';
+var X_UPPER = 'X';
+var SPACE = ' ';
+var LESS_THAN = '<';
+var EQUAL = '=';
+var EMPTY = '';
+var TAB = '\t';
 
-	/*--------------------------------------------------------------------------*/
+/**
+ * Get the character-code at the first indice in
+ * `character`.
+ *
+ * @param {string} character - Value.
+ * @return {number} - Character-code at the first indice
+ *   in `character`.
+ */
+function charCode(character) {
+    return character.charCodeAt(0);
+}
 
-	var encode = function encode(string, options) {
-		options = merge(options, encode.options);
-		var strict = options.strict;
-		if (strict && regexInvalidRawCodePoint.test(string)) {
-			parseError('forbidden code point');
-		}
-		var encodeEverything = options.encodeEverything;
-		var useNamedReferences = options.useNamedReferences;
-		var allowUnsafeSymbols = options.allowUnsafeSymbols;
-		if (encodeEverything) {
-			// Encode ASCII symbols.
-			string = string.replace(regexAsciiWhitelist, function (symbol) {
-				// Use named references if requested & possible.
-				if (useNamedReferences && has(encodeMap, symbol)) {
-					return '&' + encodeMap[symbol] + ';';
-				}
-				return hexEscape(symbol);
-			});
-			// Shorten a few escapes that represent two symbols, of which at least one
-			// is within the ASCII range.
-			if (useNamedReferences) {
-				string = string.replace(/&gt;\u20D2/g, '&nvgt;').replace(/&lt;\u20D2/g, '&nvlt;').replace(/&#x66;&#x6A;/g, '&fjlig;');
-			}
-			// Encode non-ASCII symbols.
-			if (useNamedReferences) {
-				// Encode non-ASCII symbols that can be replaced with a named reference.
-				string = string.replace(regexEncodeNonAscii, function (string) {
-					// Note: there is no need to check `has(encodeMap, string)` here.
-					return '&' + encodeMap[string] + ';';
-				});
-			}
-			// Note: any remaining non-ASCII symbols are handled outside of the `if`.
-		} else if (useNamedReferences) {
-				// Apply named character references.
-				// Encode `<>"'&` using named character references.
-				if (!allowUnsafeSymbols) {
-					string = string.replace(regexEscape, function (string) {
-						return '&' + encodeMap[string] + ';'; // no need to check `has()` here
-					});
-				}
-				// Shorten escapes that represent two symbols, of which at least one is
-				// `<>"'&`.
-				string = string.replace(/&gt;\u20D2/g, '&nvgt;').replace(/&lt;\u20D2/g, '&nvlt;');
-				// Encode non-ASCII symbols that can be replaced with a named reference.
-				string = string.replace(regexEncodeNonAscii, function (string) {
-					// Note: there is no need to check `has(encodeMap, string)` here.
-					return '&' + encodeMap[string] + ';';
-				});
-			} else if (!allowUnsafeSymbols) {
-				// Encode `<>"'&` using hexadecimal escapes, now that they’re not handled
-				// using named character references.
-				string = string.replace(regexEscape, hexEscape);
-			}
-		return string
-		// Encode astral symbols.
-		.replace(regexAstralSymbols, function ($0) {
-			// https://mathiasbynens.be/notes/javascript-encoding#surrogate-formulae
-			var high = $0.charCodeAt(0);
-			var low = $0.charCodeAt(1);
-			var codePoint = (high - 0xD800) * 0x400 + low - 0xDC00 + 0x10000;
-			return '&#x' + codePoint.toString(16).toUpperCase() + ';';
-		})
-		// Encode any remaining BMP symbols that are not printable ASCII symbols
-		// using a hexadecimal escape.
-		.replace(regexBmpWhitelist, hexEscape);
-	};
-	// Expose default options (so they can be overridden globally).
-	encode.options = {
-		'allowUnsafeSymbols': false,
-		'encodeEverything': false,
-		'strict': false,
-		'useNamedReferences': false
-	};
+/**
+ * Check whether `character` is a decimal.
+ *
+ * @param {string} character - Value.
+ * @return {boolean} - Whether `character` is a decimal.
+ */
+function isDecimal(character) {
+    var code = charCode(character);
 
-	var decode = function decode(html, options) {
-		options = merge(options, decode.options);
-		var strict = options.strict;
-		if (strict && regexInvalidEntity.test(html)) {
-			parseError('malformed character reference');
-		}
-		return html.replace(regexDecode, function ($0, $1, $2, $3, $4, $5, $6, $7) {
-			var codePoint;
-			var semicolon;
-			var hexDigits;
-			var reference;
-			var next;
-			if ($1) {
-				// Decode decimal escapes, e.g. `&#119558;`.
-				codePoint = $1;
-				semicolon = $2;
-				if (strict && !semicolon) {
-					parseError('character reference was not terminated by a semicolon');
-				}
-				return codePointToSymbol(codePoint, strict);
-			}
-			if ($3) {
-				// Decode hexadecimal escapes, e.g. `&#x1D306;`.
-				hexDigits = $3;
-				semicolon = $4;
-				if (strict && !semicolon) {
-					parseError('character reference was not terminated by a semicolon');
-				}
-				codePoint = parseInt(hexDigits, 16);
-				return codePointToSymbol(codePoint, strict);
-			}
-			if ($5) {
-				// Decode named character references with trailing `;`, e.g. `&copy;`.
-				reference = $5;
-				if (has(decodeMap, reference)) {
-					return decodeMap[reference];
-				} else {
-					// Ambiguous ampersand; see http://mths.be/notes/ambiguous-ampersands.
-					if (strict) {
-						parseError('named character reference was not terminated by a semicolon');
-					}
-					return $0;
-				}
-			}
-			// If we’re still here, it’s a legacy reference for sure. No need for an
-			// extra `if` check.
-			// Decode named character references without trailing `;`, e.g. `&amp`
-			// This is only a parse error if it gets converted to `&`, or if it is
-			// followed by `=` in an attribute context.
-			reference = $6;
-			next = $7;
-			if (next && options.isAttributeValue) {
-				if (strict && next == '=') {
-					parseError('`&` did not start a character reference');
-				}
-				return $0;
-			} else {
-				if (strict) {
-					parseError('named character reference was not terminated by a semicolon');
-				}
-				// Note: there is no need to check `has(decodeMapLegacy, reference)`.
-				return decodeMapLegacy[reference] + (next || '');
-			}
-		});
-	};
-	// Expose default options (so they can be overridden globally).
-	decode.options = {
-		'isAttributeValue': false,
-		'strict': false
-	};
+    return code >= 48 /* 0 */ && code <= 57 /* 9 */;
+}
 
-	var escape = function escape(string) {
-		return string.replace(regexEscape, function ($0) {
-			// Note: there is no need to check `has(escapeMap, $0)` here.
-			return escapeMap[$0];
-		});
-	};
+/**
+ * Check whether `character` is a hexadecimal.
+ *
+ * @param {string} character - Value.
+ * @return {boolean} - Whether `character` is a
+ *   hexadecimal.
+ */
+function isHexadecimal(character) {
+    var code = charCode(character);
 
-	/*--------------------------------------------------------------------------*/
+    return code >= 48 /* 0 */ && code <= 57 /* 9 */ || code >= 65 /* A */ && code <= 70 /* F */ || code >= 97 /* a */ && code <= 102 /* f */;
+}
 
-	var he = {
-		'version': '0.5.0',
-		'encode': encode,
-		'decode': decode,
-		'escape': escape,
-		'unescape': decode
-	};
+/**
+ * Check whether `character` is an alphanumeric.
+ *
+ * @param {string} character - Value.
+ * @return {boolean} - Whether `character` is an
+ *   alphanumeric.
+ */
+function isAlphanumeric(character) {
+    var code = charCode(character);
 
-	// Some AMD build optimizers, like r.js, check for specific condition patterns
-	// like the following:
-	if (typeof define == 'function' && typeof define.amd == 'object' && define.amd) {
-		define(function () {
-			return he;
-		});
-	} else if (freeExports && !freeExports.nodeType) {
-		if (freeModule) {
-			// in Node.js or RingoJS v0.8.0+
-			freeModule.exports = he;
-		} else {
-			// in Narwhal or RingoJS v0.7.0-
-			for (var key in he) {
-				has(he, key) && (freeExports[key] = he[key]);
-			}
-		}
-	} else {
-		// in Rhino or a web browser
-		root.he = he;
-	}
-})(undefined);
+    return code >= 48 /* 0 */ && code <= 57 /* 9 */ || code >= 65 /* A */ && code <= 90 /* Z */ || code >= 97 /* a */ && code <= 122 /* z */;
+}
+
+/**
+ * Check whether `character` is outside the permissible
+ * unicode range.
+ *
+ * @param {number} characterCode - Value.
+ * @return {boolean} - Whether `character` is an
+ *   outside the permissible unicode range.
+ */
+function isProhibited(characterCode) {
+    return characterCode >= 0xD800 && characterCode <= 0xDFFF || characterCode > 0x10FFFF;
+}
+
+/**
+ * Check whether `character` is disallowed.
+ *
+ * @param {number} characterCode - Value.
+ * @return {boolean} - Whether `character` is disallowed.
+ */
+function isWarning(characterCode) {
+    return characterCode >= 0x0001 && characterCode <= 0x0008 || characterCode >= 0x000D && characterCode <= 0x001F || characterCode >= 0x007F && characterCode <= 0x009F || characterCode >= 0xFDD0 && characterCode <= 0xFDEF || characterCode === 0x000B || characterCode === 0xFFFE || characterCode === 0xFFFF || characterCode === 0x1FFFE || characterCode === 0x1FFFF || characterCode === 0x2FFFE || characterCode === 0x2FFFF || characterCode === 0x3FFFE || characterCode === 0x3FFFF || characterCode === 0x4FFFE || characterCode === 0x4FFFF || characterCode === 0x5FFFE || characterCode === 0x5FFFF || characterCode === 0x6FFFE || characterCode === 0x6FFFF || characterCode === 0x7FFFE || characterCode === 0x7FFFF || characterCode === 0x8FFFE || characterCode === 0x8FFFF || characterCode === 0x9FFFE || characterCode === 0x9FFFF || characterCode === 0xAFFFE || characterCode === 0xAFFFF || characterCode === 0xBFFFE || characterCode === 0xBFFFF || characterCode === 0xCFFFE || characterCode === 0xCFFFF || characterCode === 0xDFFFE || characterCode === 0xDFFFF || characterCode === 0xEFFFE || characterCode === 0xEFFFF || characterCode === 0xFFFFE || characterCode === 0xFFFFF || characterCode === 0x10FFFE || characterCode === 0x10FFFF;
+}
+
+/*
+ * Map of types to tests. Each type of character reference
+ * accepts different characters. This test is used to
+ * detect whether a reference has ended (as the semicolon
+ * is not strictly needed).
+ */
+
+var TESTS = {};
+
+TESTS[NAMED] = isAlphanumeric;
+TESTS[DECIMAL] = isDecimal;
+TESTS[HEXADECIMAL] = isHexadecimal;
+
+/**
+ * Parse entities.
+ *
+ * @param {string} value - Value to tokenise.
+ * @param {Object?} [settings] - Configuration.
+ */
+function parse(value, settings) {
+    var additional = settings.additional;
+    var handleText = settings.text;
+    var handleReference = settings.reference;
+    var handleWarning = settings.warning;
+    var textContext = settings.textContext;
+    var referenceContext = settings.referenceContext;
+    var warningContext = settings.warningContext;
+    var pos = settings.position;
+    var indent = settings.indent || [];
+    var length = value.length;
+    var index = 0;
+    var lines = -1;
+    var column = pos.column || 1;
+    var line = pos.line || 1;
+    var queue = EMPTY;
+    var result = [];
+    var entityCharacters;
+    var terminated;
+    var characters;
+    var character;
+    var reference;
+    var following;
+    var warning;
+    var reason;
+    var output;
+    var entity;
+    var begin;
+    var start;
+    var type;
+    var test;
+    var prev;
+    var next;
+    var diff;
+    var end;
+
+    /**
+     * Get current position.
+     *
+     * @return {Object} - Positional information of a
+     *   single point.
+     */
+    function now() {
+        return {
+            'line': line,
+            'column': column,
+            'offset': index + (pos.offset || 0)
+        };
+    }
+
+    /**
+     * “Throw” a parse-error: a warning.
+     *
+     * @param {number} code - Identifier of reason for
+     *   failing.
+     * @param {number} offset - Offset in characters from
+     *   the current position point at which the
+     *   parse-error ocurred, cannot point past newlines.
+     */
+    function parseError(code, offset) {
+        var position = now();
+
+        position.column += offset;
+        position.offset += offset;
+
+        handleWarning.call(warningContext, MESSAGES[code], position, code);
+    }
+
+    /**
+     * Get character at position.
+     *
+     * @param {number} position - Indice of character in `value`.
+     * @return {string} - Character at `position` in
+     *   `value`.
+     */
+    function at(position) {
+        return value.charAt(position);
+    }
+
+    /**
+     * Flush `queue` (normal text). Macro invoked before
+     * each entity and at the end of `value`.
+     *
+     * Does nothing when `queue` is empty.
+     */
+    function flush() {
+        if (queue) {
+            result.push(queue);
+
+            if (handleText) {
+                handleText.call(textContext, queue, {
+                    'start': prev,
+                    'end': now()
+                });
+            }
+
+            queue = EMPTY;
+        }
+    }
+
+    /*
+     * Cache the current point.
+     */
+
+    prev = now();
+
+    /*
+     * Wrap `handleWarning`.
+     */
+
+    warning = handleWarning ? parseError : noop;
+
+    /*
+     * Ensure the algorithm walks over the first character
+     * and the end (inclusive).
+     */
+
+    index--;
+    length++;
+
+    while (++index < length) {
+        /*
+         * If the previous character was a newline.
+         */
+
+        if (character === NEWLINE) {
+            column = indent[lines] || 1;
+        }
+
+        character = at(index);
+
+        /*
+         * Handle anything other than an ampersand,
+         * including newlines and EOF.
+         */
+
+        if (character !== AMPERSAND) {
+            if (character === NEWLINE) {
+                line++;
+                lines++;
+                column = 0;
+            }
+
+            if (character) {
+                queue += character;
+                column++;
+            } else {
+                flush();
+            }
+        } else {
+            following = at(index + 1);
+
+            /*
+             * The behaviour depends on the identity of the next character.
+             */
+
+            if (following === TAB || following === NEWLINE || following === FORM_FEED || following === SPACE || following === LESS_THAN || following === AMPERSAND || following === EMPTY || additional && following === additional) {
+                /*
+                 * Not a character reference. No characters
+                 * are consumed, and nothing is returned.
+                 * This is not an error, either.
+                 */
+
+                queue += character;
+                column++;
+
+                continue;
+            }
+
+            start = begin = end = index + 1;
+
+            /*
+             * Numerical entity.
+             */
+
+            if (following !== OCTOTHORP) {
+                type = NAMED;
+            } else {
+                end = ++begin;
+
+                /*
+                 * The behaviour further depends on the
+                 * character after the U+0023 NUMBER SIGN.
+                 */
+
+                following = at(end);
+
+                if (following === X_LOWER || following === X_UPPER) {
+                    /*
+                     * ASCII hex digits.
+                     */
+
+                    type = HEXADECIMAL;
+                    end = ++begin;
+                } else {
+                    /*
+                     * ASCII digits.
+                     */
+
+                    type = DECIMAL;
+                }
+            }
+
+            entityCharacters = entity = characters = EMPTY;
+            test = TESTS[type];
+            end--;
+
+            while (++end < length) {
+                following = at(end);
+
+                if (!test(following)) {
+                    break;
+                }
+
+                characters += following;
+
+                /*
+                 * Check if we can match a named reference.
+                 * If so, we cache that as the last viable
+                 * named reference.  This ensures we do not
+                 * need to walk backwards later.
+                 */
+
+                if (type === NAMED && has.call(characterEntities, characters)) {
+                    entityCharacters = characters;
+                    entity = characterEntities[characters];
+                }
+            }
+
+            terminated = at(end) === SEMICOLON;
+
+            if (terminated) {
+                end++;
+            }
+
+            diff = 1 + end - start;
+
+            if (!characters) {
+                /*
+                 * An empty (possible) entity is valid, unless
+                 * its numeric (thus an ampersand followed by
+                 * an octothorp).
+                 */
+
+                if (type !== NAMED) {
+                    warning(NUMERIC_EMPTY, diff);
+                }
+            } else if (type === NAMED) {
+                /*
+                 * An ampersand followed by anything
+                 * unknown, and not terminated, is invalid.
+                 */
+
+                if (terminated && !entity) {
+                    warning(NAMED_UNKNOWN, 1);
+                } else {
+                    /*
+                     * If theres something after an entity
+                     * name which is not known, cap the
+                     * reference.
+                     */
+
+                    if (entityCharacters !== characters) {
+                        end = begin + entityCharacters.length;
+                        diff = 1 + end - begin;
+                        terminated = false;
+                    }
+
+                    /*
+                     * If the reference is not terminated,
+                     * warn.
+                     */
+
+                    if (!terminated) {
+                        reason = entityCharacters ? NAMED_NOT_TERMINATED : NAMED_EMPTY;
+
+                        if (!settings.attribute) {
+                            warning(reason, diff);
+                        } else {
+                            following = at(end);
+
+                            if (following === EQUAL) {
+                                warning(reason, diff);
+                                entity = null;
+                            } else if (isAlphanumeric(following)) {
+                                entity = null;
+                            } else {
+                                warning(reason, diff);
+                            }
+                        }
+                    }
+                }
+
+                reference = entity;
+            } else {
+                if (!terminated) {
+                    /*
+                     * All non-terminated numeric entities are
+                     * not rendered, and trigger a warning.
+                     */
+
+                    warning(NUMERIC_NOT_TERMINATED, diff);
+                }
+
+                /*
+                 * When terminated and number, parse as
+                 * either hexadecimal or decimal.
+                 */
+
+                reference = parseInt(characters, BASE[type]);
+
+                /*
+                 * Trigger a warning when the parsed number
+                 * is prohibited, and replace with
+                 * replacement character.
+                 */
+
+                if (isProhibited(reference)) {
+                    warning(NUMERIC_PROHIBITED, diff);
+
+                    reference = REPLACEMENT;
+                } else if (reference in characterReferenceInvalid) {
+                    /*
+                     * Trigger a warning when the parsed number
+                     * is disallowed, and replace by an
+                     * alternative.
+                     */
+
+                    warning(NUMERIC_DISALLOWED, diff);
+
+                    reference = characterReferenceInvalid[reference];
+                } else {
+                    /*
+                     * Parse the number.
+                     */
+
+                    output = EMPTY;
+
+                    /*
+                     * Trigger a warning when the parsed
+                     * number should not be used.
+                     */
+
+                    if (isWarning(reference)) {
+                        warning(NUMERIC_DISALLOWED, diff);
+                    }
+
+                    /*
+                     * Stringify the number.
+                     */
+
+                    if (reference > 0xFFFF) {
+                        reference -= 0x10000;
+                        output += fromCharCode(reference >>> 10 & 0x3FF | 0xD800);
+
+                        reference = 0xDC00 | reference & 0x3FF;
+                    }
+
+                    reference = output + fromCharCode(reference);
+                }
+            }
+
+            /*
+             * If we could not find a reference, queue the
+             * checked characters (as normal characters),
+             * and move the pointer to their end. This is
+             * possible because we can be certain neither
+             * newlines nor ampersands are included.
+             */
+
+            if (!reference) {
+                characters = value.slice(start - 1, end);
+                queue += characters;
+                column += characters.length;
+                index = end - 1;
+            } else {
+                /*
+                 * Found it! First eat the queued
+                 * characters as normal text, then eat
+                 * an entity.
+                 */
+
+                flush();
+
+                prev = now();
+                index = end - 1;
+                column += end - start + 1;
+                result.push(reference);
+                next = now();
+                next.offset++;
+
+                if (handleReference) {
+                    handleReference.call(referenceContext, reference, {
+                        'start': prev,
+                        'end': next
+                    }, value.slice(start - 1, end));
+                }
+
+                prev = next;
+            }
+        }
+    }
+
+    /*
+     * Return the reduced nodes, and any possible warnings.
+     */
+
+    return result.join(EMPTY);
+}
+
+var defaults = {
+    'warning': null,
+    'reference': null,
+    'text': null,
+    'warningContext': null,
+    'referenceContext': null,
+    'textContext': null,
+    'position': {},
+    'additional': null,
+    'attribute': false
+};
+
+/**
+ * Wrap to ensure clean parameters are given to `parse`.
+ *
+ * @param {string} value - Value with entities.
+ * @param {Object?} [options] - Configuration.
+ */
+function wrapper(value, options) {
+    var settings = {};
+    var key;
+
+    if (!options) {
+        options = {};
+    }
+
+    for (key in defaults) {
+        settings[key] = options[key] || defaults[key];
+    }
+
+    if (settings.position.indent || settings.position.start) {
+        settings.indent = settings.position.indent || [];
+        settings.position = settings.position.start;
+    }
+
+    return parse(value, settings);
+}
+
+/*
+ * Expose.
+ */
+
+module.exports = wrapper;
+}, {"character-entities":32,"character-reference-invalid":33}],
+32: [function(require, module, exports) {
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module character-entities
+ * @fileoverview HTML character entity information.
+ */
+
+'use strict';
+
+/* eslint-env commonjs */
+
+/*
+ * Expose.
+ */
+
+module.exports = require('./index.json');
+}, {"./index.json":34}],
+34: [function(require, module, exports) {
+module.exports = {
+  "AElig": "Æ",
+  "AMP": "&",
+  "Aacute": "Á",
+  "Abreve": "Ă",
+  "Acirc": "Â",
+  "Acy": "А",
+  "Afr": "𝔄",
+  "Agrave": "À",
+  "Alpha": "Α",
+  "Amacr": "Ā",
+  "And": "⩓",
+  "Aogon": "Ą",
+  "Aopf": "𝔸",
+  "ApplyFunction": "⁡",
+  "Aring": "Å",
+  "Ascr": "𝒜",
+  "Assign": "≔",
+  "Atilde": "Ã",
+  "Auml": "Ä",
+  "Backslash": "∖",
+  "Barv": "⫧",
+  "Barwed": "⌆",
+  "Bcy": "Б",
+  "Because": "∵",
+  "Bernoullis": "ℬ",
+  "Beta": "Β",
+  "Bfr": "𝔅",
+  "Bopf": "𝔹",
+  "Breve": "˘",
+  "Bscr": "ℬ",
+  "Bumpeq": "≎",
+  "CHcy": "Ч",
+  "COPY": "©",
+  "Cacute": "Ć",
+  "Cap": "⋒",
+  "CapitalDifferentialD": "ⅅ",
+  "Cayleys": "ℭ",
+  "Ccaron": "Č",
+  "Ccedil": "Ç",
+  "Ccirc": "Ĉ",
+  "Cconint": "∰",
+  "Cdot": "Ċ",
+  "Cedilla": "¸",
+  "CenterDot": "·",
+  "Cfr": "ℭ",
+  "Chi": "Χ",
+  "CircleDot": "⊙",
+  "CircleMinus": "⊖",
+  "CirclePlus": "⊕",
+  "CircleTimes": "⊗",
+  "ClockwiseContourIntegral": "∲",
+  "CloseCurlyDoubleQuote": "”",
+  "CloseCurlyQuote": "’",
+  "Colon": "∷",
+  "Colone": "⩴",
+  "Congruent": "≡",
+  "Conint": "∯",
+  "ContourIntegral": "∮",
+  "Copf": "ℂ",
+  "Coproduct": "∐",
+  "CounterClockwiseContourIntegral": "∳",
+  "Cross": "⨯",
+  "Cscr": "𝒞",
+  "Cup": "⋓",
+  "CupCap": "≍",
+  "DD": "ⅅ",
+  "DDotrahd": "⤑",
+  "DJcy": "Ђ",
+  "DScy": "Ѕ",
+  "DZcy": "Џ",
+  "Dagger": "‡",
+  "Darr": "↡",
+  "Dashv": "⫤",
+  "Dcaron": "Ď",
+  "Dcy": "Д",
+  "Del": "∇",
+  "Delta": "Δ",
+  "Dfr": "𝔇",
+  "DiacriticalAcute": "´",
+  "DiacriticalDot": "˙",
+  "DiacriticalDoubleAcute": "˝",
+  "DiacriticalGrave": "`",
+  "DiacriticalTilde": "˜",
+  "Diamond": "⋄",
+  "DifferentialD": "ⅆ",
+  "Dopf": "𝔻",
+  "Dot": "¨",
+  "DotDot": "⃜",
+  "DotEqual": "≐",
+  "DoubleContourIntegral": "∯",
+  "DoubleDot": "¨",
+  "DoubleDownArrow": "⇓",
+  "DoubleLeftArrow": "⇐",
+  "DoubleLeftRightArrow": "⇔",
+  "DoubleLeftTee": "⫤",
+  "DoubleLongLeftArrow": "⟸",
+  "DoubleLongLeftRightArrow": "⟺",
+  "DoubleLongRightArrow": "⟹",
+  "DoubleRightArrow": "⇒",
+  "DoubleRightTee": "⊨",
+  "DoubleUpArrow": "⇑",
+  "DoubleUpDownArrow": "⇕",
+  "DoubleVerticalBar": "∥",
+  "DownArrow": "↓",
+  "DownArrowBar": "⤓",
+  "DownArrowUpArrow": "⇵",
+  "DownBreve": "̑",
+  "DownLeftRightVector": "⥐",
+  "DownLeftTeeVector": "⥞",
+  "DownLeftVector": "↽",
+  "DownLeftVectorBar": "⥖",
+  "DownRightTeeVector": "⥟",
+  "DownRightVector": "⇁",
+  "DownRightVectorBar": "⥗",
+  "DownTee": "⊤",
+  "DownTeeArrow": "↧",
+  "Downarrow": "⇓",
+  "Dscr": "𝒟",
+  "Dstrok": "Đ",
+  "ENG": "Ŋ",
+  "ETH": "Ð",
+  "Eacute": "É",
+  "Ecaron": "Ě",
+  "Ecirc": "Ê",
+  "Ecy": "Э",
+  "Edot": "Ė",
+  "Efr": "𝔈",
+  "Egrave": "È",
+  "Element": "∈",
+  "Emacr": "Ē",
+  "EmptySmallSquare": "◻",
+  "EmptyVerySmallSquare": "▫",
+  "Eogon": "Ę",
+  "Eopf": "𝔼",
+  "Epsilon": "Ε",
+  "Equal": "⩵",
+  "EqualTilde": "≂",
+  "Equilibrium": "⇌",
+  "Escr": "ℰ",
+  "Esim": "⩳",
+  "Eta": "Η",
+  "Euml": "Ë",
+  "Exists": "∃",
+  "ExponentialE": "ⅇ",
+  "Fcy": "Ф",
+  "Ffr": "𝔉",
+  "FilledSmallSquare": "◼",
+  "FilledVerySmallSquare": "▪",
+  "Fopf": "𝔽",
+  "ForAll": "∀",
+  "Fouriertrf": "ℱ",
+  "Fscr": "ℱ",
+  "GJcy": "Ѓ",
+  "GT": ">",
+  "Gamma": "Γ",
+  "Gammad": "Ϝ",
+  "Gbreve": "Ğ",
+  "Gcedil": "Ģ",
+  "Gcirc": "Ĝ",
+  "Gcy": "Г",
+  "Gdot": "Ġ",
+  "Gfr": "𝔊",
+  "Gg": "⋙",
+  "Gopf": "𝔾",
+  "GreaterEqual": "≥",
+  "GreaterEqualLess": "⋛",
+  "GreaterFullEqual": "≧",
+  "GreaterGreater": "⪢",
+  "GreaterLess": "≷",
+  "GreaterSlantEqual": "⩾",
+  "GreaterTilde": "≳",
+  "Gscr": "𝒢",
+  "Gt": "≫",
+  "HARDcy": "Ъ",
+  "Hacek": "ˇ",
+  "Hat": "^",
+  "Hcirc": "Ĥ",
+  "Hfr": "ℌ",
+  "HilbertSpace": "ℋ",
+  "Hopf": "ℍ",
+  "HorizontalLine": "─",
+  "Hscr": "ℋ",
+  "Hstrok": "Ħ",
+  "HumpDownHump": "≎",
+  "HumpEqual": "≏",
+  "IEcy": "Е",
+  "IJlig": "Ĳ",
+  "IOcy": "Ё",
+  "Iacute": "Í",
+  "Icirc": "Î",
+  "Icy": "И",
+  "Idot": "İ",
+  "Ifr": "ℑ",
+  "Igrave": "Ì",
+  "Im": "ℑ",
+  "Imacr": "Ī",
+  "ImaginaryI": "ⅈ",
+  "Implies": "⇒",
+  "Int": "∬",
+  "Integral": "∫",
+  "Intersection": "⋂",
+  "InvisibleComma": "⁣",
+  "InvisibleTimes": "⁢",
+  "Iogon": "Į",
+  "Iopf": "𝕀",
+  "Iota": "Ι",
+  "Iscr": "ℐ",
+  "Itilde": "Ĩ",
+  "Iukcy": "І",
+  "Iuml": "Ï",
+  "Jcirc": "Ĵ",
+  "Jcy": "Й",
+  "Jfr": "𝔍",
+  "Jopf": "𝕁",
+  "Jscr": "𝒥",
+  "Jsercy": "Ј",
+  "Jukcy": "Є",
+  "KHcy": "Х",
+  "KJcy": "Ќ",
+  "Kappa": "Κ",
+  "Kcedil": "Ķ",
+  "Kcy": "К",
+  "Kfr": "𝔎",
+  "Kopf": "𝕂",
+  "Kscr": "𝒦",
+  "LJcy": "Љ",
+  "LT": "<",
+  "Lacute": "Ĺ",
+  "Lambda": "Λ",
+  "Lang": "⟪",
+  "Laplacetrf": "ℒ",
+  "Larr": "↞",
+  "Lcaron": "Ľ",
+  "Lcedil": "Ļ",
+  "Lcy": "Л",
+  "LeftAngleBracket": "⟨",
+  "LeftArrow": "←",
+  "LeftArrowBar": "⇤",
+  "LeftArrowRightArrow": "⇆",
+  "LeftCeiling": "⌈",
+  "LeftDoubleBracket": "⟦",
+  "LeftDownTeeVector": "⥡",
+  "LeftDownVector": "⇃",
+  "LeftDownVectorBar": "⥙",
+  "LeftFloor": "⌊",
+  "LeftRightArrow": "↔",
+  "LeftRightVector": "⥎",
+  "LeftTee": "⊣",
+  "LeftTeeArrow": "↤",
+  "LeftTeeVector": "⥚",
+  "LeftTriangle": "⊲",
+  "LeftTriangleBar": "⧏",
+  "LeftTriangleEqual": "⊴",
+  "LeftUpDownVector": "⥑",
+  "LeftUpTeeVector": "⥠",
+  "LeftUpVector": "↿",
+  "LeftUpVectorBar": "⥘",
+  "LeftVector": "↼",
+  "LeftVectorBar": "⥒",
+  "Leftarrow": "⇐",
+  "Leftrightarrow": "⇔",
+  "LessEqualGreater": "⋚",
+  "LessFullEqual": "≦",
+  "LessGreater": "≶",
+  "LessLess": "⪡",
+  "LessSlantEqual": "⩽",
+  "LessTilde": "≲",
+  "Lfr": "𝔏",
+  "Ll": "⋘",
+  "Lleftarrow": "⇚",
+  "Lmidot": "Ŀ",
+  "LongLeftArrow": "⟵",
+  "LongLeftRightArrow": "⟷",
+  "LongRightArrow": "⟶",
+  "Longleftarrow": "⟸",
+  "Longleftrightarrow": "⟺",
+  "Longrightarrow": "⟹",
+  "Lopf": "𝕃",
+  "LowerLeftArrow": "↙",
+  "LowerRightArrow": "↘",
+  "Lscr": "ℒ",
+  "Lsh": "↰",
+  "Lstrok": "Ł",
+  "Lt": "≪",
+  "Map": "⤅",
+  "Mcy": "М",
+  "MediumSpace": " ",
+  "Mellintrf": "ℳ",
+  "Mfr": "𝔐",
+  "MinusPlus": "∓",
+  "Mopf": "𝕄",
+  "Mscr": "ℳ",
+  "Mu": "Μ",
+  "NJcy": "Њ",
+  "Nacute": "Ń",
+  "Ncaron": "Ň",
+  "Ncedil": "Ņ",
+  "Ncy": "Н",
+  "NegativeMediumSpace": "​",
+  "NegativeThickSpace": "​",
+  "NegativeThinSpace": "​",
+  "NegativeVeryThinSpace": "​",
+  "NestedGreaterGreater": "≫",
+  "NestedLessLess": "≪",
+  "NewLine": "\n",
+  "Nfr": "𝔑",
+  "NoBreak": "⁠",
+  "NonBreakingSpace": " ",
+  "Nopf": "ℕ",
+  "Not": "⫬",
+  "NotCongruent": "≢",
+  "NotCupCap": "≭",
+  "NotDoubleVerticalBar": "∦",
+  "NotElement": "∉",
+  "NotEqual": "≠",
+  "NotEqualTilde": "≂̸",
+  "NotExists": "∄",
+  "NotGreater": "≯",
+  "NotGreaterEqual": "≱",
+  "NotGreaterFullEqual": "≧̸",
+  "NotGreaterGreater": "≫̸",
+  "NotGreaterLess": "≹",
+  "NotGreaterSlantEqual": "⩾̸",
+  "NotGreaterTilde": "≵",
+  "NotHumpDownHump": "≎̸",
+  "NotHumpEqual": "≏̸",
+  "NotLeftTriangle": "⋪",
+  "NotLeftTriangleBar": "⧏̸",
+  "NotLeftTriangleEqual": "⋬",
+  "NotLess": "≮",
+  "NotLessEqual": "≰",
+  "NotLessGreater": "≸",
+  "NotLessLess": "≪̸",
+  "NotLessSlantEqual": "⩽̸",
+  "NotLessTilde": "≴",
+  "NotNestedGreaterGreater": "⪢̸",
+  "NotNestedLessLess": "⪡̸",
+  "NotPrecedes": "⊀",
+  "NotPrecedesEqual": "⪯̸",
+  "NotPrecedesSlantEqual": "⋠",
+  "NotReverseElement": "∌",
+  "NotRightTriangle": "⋫",
+  "NotRightTriangleBar": "⧐̸",
+  "NotRightTriangleEqual": "⋭",
+  "NotSquareSubset": "⊏̸",
+  "NotSquareSubsetEqual": "⋢",
+  "NotSquareSuperset": "⊐̸",
+  "NotSquareSupersetEqual": "⋣",
+  "NotSubset": "⊂⃒",
+  "NotSubsetEqual": "⊈",
+  "NotSucceeds": "⊁",
+  "NotSucceedsEqual": "⪰̸",
+  "NotSucceedsSlantEqual": "⋡",
+  "NotSucceedsTilde": "≿̸",
+  "NotSuperset": "⊃⃒",
+  "NotSupersetEqual": "⊉",
+  "NotTilde": "≁",
+  "NotTildeEqual": "≄",
+  "NotTildeFullEqual": "≇",
+  "NotTildeTilde": "≉",
+  "NotVerticalBar": "∤",
+  "Nscr": "𝒩",
+  "Ntilde": "Ñ",
+  "Nu": "Ν",
+  "OElig": "Œ",
+  "Oacute": "Ó",
+  "Ocirc": "Ô",
+  "Ocy": "О",
+  "Odblac": "Ő",
+  "Ofr": "𝔒",
+  "Ograve": "Ò",
+  "Omacr": "Ō",
+  "Omega": "Ω",
+  "Omicron": "Ο",
+  "Oopf": "𝕆",
+  "OpenCurlyDoubleQuote": "“",
+  "OpenCurlyQuote": "‘",
+  "Or": "⩔",
+  "Oscr": "𝒪",
+  "Oslash": "Ø",
+  "Otilde": "Õ",
+  "Otimes": "⨷",
+  "Ouml": "Ö",
+  "OverBar": "‾",
+  "OverBrace": "⏞",
+  "OverBracket": "⎴",
+  "OverParenthesis": "⏜",
+  "PartialD": "∂",
+  "Pcy": "П",
+  "Pfr": "𝔓",
+  "Phi": "Φ",
+  "Pi": "Π",
+  "PlusMinus": "±",
+  "Poincareplane": "ℌ",
+  "Popf": "ℙ",
+  "Pr": "⪻",
+  "Precedes": "≺",
+  "PrecedesEqual": "⪯",
+  "PrecedesSlantEqual": "≼",
+  "PrecedesTilde": "≾",
+  "Prime": "″",
+  "Product": "∏",
+  "Proportion": "∷",
+  "Proportional": "∝",
+  "Pscr": "𝒫",
+  "Psi": "Ψ",
+  "QUOT": "\"",
+  "Qfr": "𝔔",
+  "Qopf": "ℚ",
+  "Qscr": "𝒬",
+  "RBarr": "⤐",
+  "REG": "®",
+  "Racute": "Ŕ",
+  "Rang": "⟫",
+  "Rarr": "↠",
+  "Rarrtl": "⤖",
+  "Rcaron": "Ř",
+  "Rcedil": "Ŗ",
+  "Rcy": "Р",
+  "Re": "ℜ",
+  "ReverseElement": "∋",
+  "ReverseEquilibrium": "⇋",
+  "ReverseUpEquilibrium": "⥯",
+  "Rfr": "ℜ",
+  "Rho": "Ρ",
+  "RightAngleBracket": "⟩",
+  "RightArrow": "→",
+  "RightArrowBar": "⇥",
+  "RightArrowLeftArrow": "⇄",
+  "RightCeiling": "⌉",
+  "RightDoubleBracket": "⟧",
+  "RightDownTeeVector": "⥝",
+  "RightDownVector": "⇂",
+  "RightDownVectorBar": "⥕",
+  "RightFloor": "⌋",
+  "RightTee": "⊢",
+  "RightTeeArrow": "↦",
+  "RightTeeVector": "⥛",
+  "RightTriangle": "⊳",
+  "RightTriangleBar": "⧐",
+  "RightTriangleEqual": "⊵",
+  "RightUpDownVector": "⥏",
+  "RightUpTeeVector": "⥜",
+  "RightUpVector": "↾",
+  "RightUpVectorBar": "⥔",
+  "RightVector": "⇀",
+  "RightVectorBar": "⥓",
+  "Rightarrow": "⇒",
+  "Ropf": "ℝ",
+  "RoundImplies": "⥰",
+  "Rrightarrow": "⇛",
+  "Rscr": "ℛ",
+  "Rsh": "↱",
+  "RuleDelayed": "⧴",
+  "SHCHcy": "Щ",
+  "SHcy": "Ш",
+  "SOFTcy": "Ь",
+  "Sacute": "Ś",
+  "Sc": "⪼",
+  "Scaron": "Š",
+  "Scedil": "Ş",
+  "Scirc": "Ŝ",
+  "Scy": "С",
+  "Sfr": "𝔖",
+  "ShortDownArrow": "↓",
+  "ShortLeftArrow": "←",
+  "ShortRightArrow": "→",
+  "ShortUpArrow": "↑",
+  "Sigma": "Σ",
+  "SmallCircle": "∘",
+  "Sopf": "𝕊",
+  "Sqrt": "√",
+  "Square": "□",
+  "SquareIntersection": "⊓",
+  "SquareSubset": "⊏",
+  "SquareSubsetEqual": "⊑",
+  "SquareSuperset": "⊐",
+  "SquareSupersetEqual": "⊒",
+  "SquareUnion": "⊔",
+  "Sscr": "𝒮",
+  "Star": "⋆",
+  "Sub": "⋐",
+  "Subset": "⋐",
+  "SubsetEqual": "⊆",
+  "Succeeds": "≻",
+  "SucceedsEqual": "⪰",
+  "SucceedsSlantEqual": "≽",
+  "SucceedsTilde": "≿",
+  "SuchThat": "∋",
+  "Sum": "∑",
+  "Sup": "⋑",
+  "Superset": "⊃",
+  "SupersetEqual": "⊇",
+  "Supset": "⋑",
+  "THORN": "Þ",
+  "TRADE": "™",
+  "TSHcy": "Ћ",
+  "TScy": "Ц",
+  "Tab": "\t",
+  "Tau": "Τ",
+  "Tcaron": "Ť",
+  "Tcedil": "Ţ",
+  "Tcy": "Т",
+  "Tfr": "𝔗",
+  "Therefore": "∴",
+  "Theta": "Θ",
+  "ThickSpace": "  ",
+  "ThinSpace": " ",
+  "Tilde": "∼",
+  "TildeEqual": "≃",
+  "TildeFullEqual": "≅",
+  "TildeTilde": "≈",
+  "Topf": "𝕋",
+  "TripleDot": "⃛",
+  "Tscr": "𝒯",
+  "Tstrok": "Ŧ",
+  "Uacute": "Ú",
+  "Uarr": "↟",
+  "Uarrocir": "⥉",
+  "Ubrcy": "Ў",
+  "Ubreve": "Ŭ",
+  "Ucirc": "Û",
+  "Ucy": "У",
+  "Udblac": "Ű",
+  "Ufr": "𝔘",
+  "Ugrave": "Ù",
+  "Umacr": "Ū",
+  "UnderBar": "_",
+  "UnderBrace": "⏟",
+  "UnderBracket": "⎵",
+  "UnderParenthesis": "⏝",
+  "Union": "⋃",
+  "UnionPlus": "⊎",
+  "Uogon": "Ų",
+  "Uopf": "𝕌",
+  "UpArrow": "↑",
+  "UpArrowBar": "⤒",
+  "UpArrowDownArrow": "⇅",
+  "UpDownArrow": "↕",
+  "UpEquilibrium": "⥮",
+  "UpTee": "⊥",
+  "UpTeeArrow": "↥",
+  "Uparrow": "⇑",
+  "Updownarrow": "⇕",
+  "UpperLeftArrow": "↖",
+  "UpperRightArrow": "↗",
+  "Upsi": "ϒ",
+  "Upsilon": "Υ",
+  "Uring": "Ů",
+  "Uscr": "𝒰",
+  "Utilde": "Ũ",
+  "Uuml": "Ü",
+  "VDash": "⊫",
+  "Vbar": "⫫",
+  "Vcy": "В",
+  "Vdash": "⊩",
+  "Vdashl": "⫦",
+  "Vee": "⋁",
+  "Verbar": "‖",
+  "Vert": "‖",
+  "VerticalBar": "∣",
+  "VerticalLine": "|",
+  "VerticalSeparator": "❘",
+  "VerticalTilde": "≀",
+  "VeryThinSpace": " ",
+  "Vfr": "𝔙",
+  "Vopf": "𝕍",
+  "Vscr": "𝒱",
+  "Vvdash": "⊪",
+  "Wcirc": "Ŵ",
+  "Wedge": "⋀",
+  "Wfr": "𝔚",
+  "Wopf": "𝕎",
+  "Wscr": "𝒲",
+  "Xfr": "𝔛",
+  "Xi": "Ξ",
+  "Xopf": "𝕏",
+  "Xscr": "𝒳",
+  "YAcy": "Я",
+  "YIcy": "Ї",
+  "YUcy": "Ю",
+  "Yacute": "Ý",
+  "Ycirc": "Ŷ",
+  "Ycy": "Ы",
+  "Yfr": "𝔜",
+  "Yopf": "𝕐",
+  "Yscr": "𝒴",
+  "Yuml": "Ÿ",
+  "ZHcy": "Ж",
+  "Zacute": "Ź",
+  "Zcaron": "Ž",
+  "Zcy": "З",
+  "Zdot": "Ż",
+  "ZeroWidthSpace": "​",
+  "Zeta": "Ζ",
+  "Zfr": "ℨ",
+  "Zopf": "ℤ",
+  "Zscr": "𝒵",
+  "aacute": "á",
+  "abreve": "ă",
+  "ac": "∾",
+  "acE": "∾̳",
+  "acd": "∿",
+  "acirc": "â",
+  "acute": "´",
+  "acy": "а",
+  "aelig": "æ",
+  "af": "⁡",
+  "afr": "𝔞",
+  "agrave": "à",
+  "alefsym": "ℵ",
+  "aleph": "ℵ",
+  "alpha": "α",
+  "amacr": "ā",
+  "amalg": "⨿",
+  "amp": "&",
+  "and": "∧",
+  "andand": "⩕",
+  "andd": "⩜",
+  "andslope": "⩘",
+  "andv": "⩚",
+  "ang": "∠",
+  "ange": "⦤",
+  "angle": "∠",
+  "angmsd": "∡",
+  "angmsdaa": "⦨",
+  "angmsdab": "⦩",
+  "angmsdac": "⦪",
+  "angmsdad": "⦫",
+  "angmsdae": "⦬",
+  "angmsdaf": "⦭",
+  "angmsdag": "⦮",
+  "angmsdah": "⦯",
+  "angrt": "∟",
+  "angrtvb": "⊾",
+  "angrtvbd": "⦝",
+  "angsph": "∢",
+  "angst": "Å",
+  "angzarr": "⍼",
+  "aogon": "ą",
+  "aopf": "𝕒",
+  "ap": "≈",
+  "apE": "⩰",
+  "apacir": "⩯",
+  "ape": "≊",
+  "apid": "≋",
+  "apos": "'",
+  "approx": "≈",
+  "approxeq": "≊",
+  "aring": "å",
+  "ascr": "𝒶",
+  "ast": "*",
+  "asymp": "≈",
+  "asympeq": "≍",
+  "atilde": "ã",
+  "auml": "ä",
+  "awconint": "∳",
+  "awint": "⨑",
+  "bNot": "⫭",
+  "backcong": "≌",
+  "backepsilon": "϶",
+  "backprime": "‵",
+  "backsim": "∽",
+  "backsimeq": "⋍",
+  "barvee": "⊽",
+  "barwed": "⌅",
+  "barwedge": "⌅",
+  "bbrk": "⎵",
+  "bbrktbrk": "⎶",
+  "bcong": "≌",
+  "bcy": "б",
+  "bdquo": "„",
+  "becaus": "∵",
+  "because": "∵",
+  "bemptyv": "⦰",
+  "bepsi": "϶",
+  "bernou": "ℬ",
+  "beta": "β",
+  "beth": "ℶ",
+  "between": "≬",
+  "bfr": "𝔟",
+  "bigcap": "⋂",
+  "bigcirc": "◯",
+  "bigcup": "⋃",
+  "bigodot": "⨀",
+  "bigoplus": "⨁",
+  "bigotimes": "⨂",
+  "bigsqcup": "⨆",
+  "bigstar": "★",
+  "bigtriangledown": "▽",
+  "bigtriangleup": "△",
+  "biguplus": "⨄",
+  "bigvee": "⋁",
+  "bigwedge": "⋀",
+  "bkarow": "⤍",
+  "blacklozenge": "⧫",
+  "blacksquare": "▪",
+  "blacktriangle": "▴",
+  "blacktriangledown": "▾",
+  "blacktriangleleft": "◂",
+  "blacktriangleright": "▸",
+  "blank": "␣",
+  "blk12": "▒",
+  "blk14": "░",
+  "blk34": "▓",
+  "block": "█",
+  "bne": "=⃥",
+  "bnequiv": "≡⃥",
+  "bnot": "⌐",
+  "bopf": "𝕓",
+  "bot": "⊥",
+  "bottom": "⊥",
+  "bowtie": "⋈",
+  "boxDL": "╗",
+  "boxDR": "╔",
+  "boxDl": "╖",
+  "boxDr": "╓",
+  "boxH": "═",
+  "boxHD": "╦",
+  "boxHU": "╩",
+  "boxHd": "╤",
+  "boxHu": "╧",
+  "boxUL": "╝",
+  "boxUR": "╚",
+  "boxUl": "╜",
+  "boxUr": "╙",
+  "boxV": "║",
+  "boxVH": "╬",
+  "boxVL": "╣",
+  "boxVR": "╠",
+  "boxVh": "╫",
+  "boxVl": "╢",
+  "boxVr": "╟",
+  "boxbox": "⧉",
+  "boxdL": "╕",
+  "boxdR": "╒",
+  "boxdl": "┐",
+  "boxdr": "┌",
+  "boxh": "─",
+  "boxhD": "╥",
+  "boxhU": "╨",
+  "boxhd": "┬",
+  "boxhu": "┴",
+  "boxminus": "⊟",
+  "boxplus": "⊞",
+  "boxtimes": "⊠",
+  "boxuL": "╛",
+  "boxuR": "╘",
+  "boxul": "┘",
+  "boxur": "└",
+  "boxv": "│",
+  "boxvH": "╪",
+  "boxvL": "╡",
+  "boxvR": "╞",
+  "boxvh": "┼",
+  "boxvl": "┤",
+  "boxvr": "├",
+  "bprime": "‵",
+  "breve": "˘",
+  "brvbar": "¦",
+  "bscr": "𝒷",
+  "bsemi": "⁏",
+  "bsim": "∽",
+  "bsime": "⋍",
+  "bsol": "\\",
+  "bsolb": "⧅",
+  "bsolhsub": "⟈",
+  "bull": "•",
+  "bullet": "•",
+  "bump": "≎",
+  "bumpE": "⪮",
+  "bumpe": "≏",
+  "bumpeq": "≏",
+  "cacute": "ć",
+  "cap": "∩",
+  "capand": "⩄",
+  "capbrcup": "⩉",
+  "capcap": "⩋",
+  "capcup": "⩇",
+  "capdot": "⩀",
+  "caps": "∩︀",
+  "caret": "⁁",
+  "caron": "ˇ",
+  "ccaps": "⩍",
+  "ccaron": "č",
+  "ccedil": "ç",
+  "ccirc": "ĉ",
+  "ccups": "⩌",
+  "ccupssm": "⩐",
+  "cdot": "ċ",
+  "cedil": "¸",
+  "cemptyv": "⦲",
+  "cent": "¢",
+  "centerdot": "·",
+  "cfr": "𝔠",
+  "chcy": "ч",
+  "check": "✓",
+  "checkmark": "✓",
+  "chi": "χ",
+  "cir": "○",
+  "cirE": "⧃",
+  "circ": "ˆ",
+  "circeq": "≗",
+  "circlearrowleft": "↺",
+  "circlearrowright": "↻",
+  "circledR": "®",
+  "circledS": "Ⓢ",
+  "circledast": "⊛",
+  "circledcirc": "⊚",
+  "circleddash": "⊝",
+  "cire": "≗",
+  "cirfnint": "⨐",
+  "cirmid": "⫯",
+  "cirscir": "⧂",
+  "clubs": "♣",
+  "clubsuit": "♣",
+  "colon": ":",
+  "colone": "≔",
+  "coloneq": "≔",
+  "comma": ",",
+  "commat": "@",
+  "comp": "∁",
+  "compfn": "∘",
+  "complement": "∁",
+  "complexes": "ℂ",
+  "cong": "≅",
+  "congdot": "⩭",
+  "conint": "∮",
+  "copf": "𝕔",
+  "coprod": "∐",
+  "copy": "©",
+  "copysr": "℗",
+  "crarr": "↵",
+  "cross": "✗",
+  "cscr": "𝒸",
+  "csub": "⫏",
+  "csube": "⫑",
+  "csup": "⫐",
+  "csupe": "⫒",
+  "ctdot": "⋯",
+  "cudarrl": "⤸",
+  "cudarrr": "⤵",
+  "cuepr": "⋞",
+  "cuesc": "⋟",
+  "cularr": "↶",
+  "cularrp": "⤽",
+  "cup": "∪",
+  "cupbrcap": "⩈",
+  "cupcap": "⩆",
+  "cupcup": "⩊",
+  "cupdot": "⊍",
+  "cupor": "⩅",
+  "cups": "∪︀",
+  "curarr": "↷",
+  "curarrm": "⤼",
+  "curlyeqprec": "⋞",
+  "curlyeqsucc": "⋟",
+  "curlyvee": "⋎",
+  "curlywedge": "⋏",
+  "curren": "¤",
+  "curvearrowleft": "↶",
+  "curvearrowright": "↷",
+  "cuvee": "⋎",
+  "cuwed": "⋏",
+  "cwconint": "∲",
+  "cwint": "∱",
+  "cylcty": "⌭",
+  "dArr": "⇓",
+  "dHar": "⥥",
+  "dagger": "†",
+  "daleth": "ℸ",
+  "darr": "↓",
+  "dash": "‐",
+  "dashv": "⊣",
+  "dbkarow": "⤏",
+  "dblac": "˝",
+  "dcaron": "ď",
+  "dcy": "д",
+  "dd": "ⅆ",
+  "ddagger": "‡",
+  "ddarr": "⇊",
+  "ddotseq": "⩷",
+  "deg": "°",
+  "delta": "δ",
+  "demptyv": "⦱",
+  "dfisht": "⥿",
+  "dfr": "𝔡",
+  "dharl": "⇃",
+  "dharr": "⇂",
+  "diam": "⋄",
+  "diamond": "⋄",
+  "diamondsuit": "♦",
+  "diams": "♦",
+  "die": "¨",
+  "digamma": "ϝ",
+  "disin": "⋲",
+  "div": "÷",
+  "divide": "÷",
+  "divideontimes": "⋇",
+  "divonx": "⋇",
+  "djcy": "ђ",
+  "dlcorn": "⌞",
+  "dlcrop": "⌍",
+  "dollar": "$",
+  "dopf": "𝕕",
+  "dot": "˙",
+  "doteq": "≐",
+  "doteqdot": "≑",
+  "dotminus": "∸",
+  "dotplus": "∔",
+  "dotsquare": "⊡",
+  "doublebarwedge": "⌆",
+  "downarrow": "↓",
+  "downdownarrows": "⇊",
+  "downharpoonleft": "⇃",
+  "downharpoonright": "⇂",
+  "drbkarow": "⤐",
+  "drcorn": "⌟",
+  "drcrop": "⌌",
+  "dscr": "𝒹",
+  "dscy": "ѕ",
+  "dsol": "⧶",
+  "dstrok": "đ",
+  "dtdot": "⋱",
+  "dtri": "▿",
+  "dtrif": "▾",
+  "duarr": "⇵",
+  "duhar": "⥯",
+  "dwangle": "⦦",
+  "dzcy": "џ",
+  "dzigrarr": "⟿",
+  "eDDot": "⩷",
+  "eDot": "≑",
+  "eacute": "é",
+  "easter": "⩮",
+  "ecaron": "ě",
+  "ecir": "≖",
+  "ecirc": "ê",
+  "ecolon": "≕",
+  "ecy": "э",
+  "edot": "ė",
+  "ee": "ⅇ",
+  "efDot": "≒",
+  "efr": "𝔢",
+  "eg": "⪚",
+  "egrave": "è",
+  "egs": "⪖",
+  "egsdot": "⪘",
+  "el": "⪙",
+  "elinters": "⏧",
+  "ell": "ℓ",
+  "els": "⪕",
+  "elsdot": "⪗",
+  "emacr": "ē",
+  "empty": "∅",
+  "emptyset": "∅",
+  "emptyv": "∅",
+  "emsp13": " ",
+  "emsp14": " ",
+  "emsp": " ",
+  "eng": "ŋ",
+  "ensp": " ",
+  "eogon": "ę",
+  "eopf": "𝕖",
+  "epar": "⋕",
+  "eparsl": "⧣",
+  "eplus": "⩱",
+  "epsi": "ε",
+  "epsilon": "ε",
+  "epsiv": "ϵ",
+  "eqcirc": "≖",
+  "eqcolon": "≕",
+  "eqsim": "≂",
+  "eqslantgtr": "⪖",
+  "eqslantless": "⪕",
+  "equals": "=",
+  "equest": "≟",
+  "equiv": "≡",
+  "equivDD": "⩸",
+  "eqvparsl": "⧥",
+  "erDot": "≓",
+  "erarr": "⥱",
+  "escr": "ℯ",
+  "esdot": "≐",
+  "esim": "≂",
+  "eta": "η",
+  "eth": "ð",
+  "euml": "ë",
+  "euro": "€",
+  "excl": "!",
+  "exist": "∃",
+  "expectation": "ℰ",
+  "exponentiale": "ⅇ",
+  "fallingdotseq": "≒",
+  "fcy": "ф",
+  "female": "♀",
+  "ffilig": "ﬃ",
+  "fflig": "ﬀ",
+  "ffllig": "ﬄ",
+  "ffr": "𝔣",
+  "filig": "ﬁ",
+  "fjlig": "fj",
+  "flat": "♭",
+  "fllig": "ﬂ",
+  "fltns": "▱",
+  "fnof": "ƒ",
+  "fopf": "𝕗",
+  "forall": "∀",
+  "fork": "⋔",
+  "forkv": "⫙",
+  "fpartint": "⨍",
+  "frac12": "½",
+  "frac13": "⅓",
+  "frac14": "¼",
+  "frac15": "⅕",
+  "frac16": "⅙",
+  "frac18": "⅛",
+  "frac23": "⅔",
+  "frac25": "⅖",
+  "frac34": "¾",
+  "frac35": "⅗",
+  "frac38": "⅜",
+  "frac45": "⅘",
+  "frac56": "⅚",
+  "frac58": "⅝",
+  "frac78": "⅞",
+  "frasl": "⁄",
+  "frown": "⌢",
+  "fscr": "𝒻",
+  "gE": "≧",
+  "gEl": "⪌",
+  "gacute": "ǵ",
+  "gamma": "γ",
+  "gammad": "ϝ",
+  "gap": "⪆",
+  "gbreve": "ğ",
+  "gcirc": "ĝ",
+  "gcy": "г",
+  "gdot": "ġ",
+  "ge": "≥",
+  "gel": "⋛",
+  "geq": "≥",
+  "geqq": "≧",
+  "geqslant": "⩾",
+  "ges": "⩾",
+  "gescc": "⪩",
+  "gesdot": "⪀",
+  "gesdoto": "⪂",
+  "gesdotol": "⪄",
+  "gesl": "⋛︀",
+  "gesles": "⪔",
+  "gfr": "𝔤",
+  "gg": "≫",
+  "ggg": "⋙",
+  "gimel": "ℷ",
+  "gjcy": "ѓ",
+  "gl": "≷",
+  "glE": "⪒",
+  "gla": "⪥",
+  "glj": "⪤",
+  "gnE": "≩",
+  "gnap": "⪊",
+  "gnapprox": "⪊",
+  "gne": "⪈",
+  "gneq": "⪈",
+  "gneqq": "≩",
+  "gnsim": "⋧",
+  "gopf": "𝕘",
+  "grave": "`",
+  "gscr": "ℊ",
+  "gsim": "≳",
+  "gsime": "⪎",
+  "gsiml": "⪐",
+  "gt": ">",
+  "gtcc": "⪧",
+  "gtcir": "⩺",
+  "gtdot": "⋗",
+  "gtlPar": "⦕",
+  "gtquest": "⩼",
+  "gtrapprox": "⪆",
+  "gtrarr": "⥸",
+  "gtrdot": "⋗",
+  "gtreqless": "⋛",
+  "gtreqqless": "⪌",
+  "gtrless": "≷",
+  "gtrsim": "≳",
+  "gvertneqq": "≩︀",
+  "gvnE": "≩︀",
+  "hArr": "⇔",
+  "hairsp": " ",
+  "half": "½",
+  "hamilt": "ℋ",
+  "hardcy": "ъ",
+  "harr": "↔",
+  "harrcir": "⥈",
+  "harrw": "↭",
+  "hbar": "ℏ",
+  "hcirc": "ĥ",
+  "hearts": "♥",
+  "heartsuit": "♥",
+  "hellip": "…",
+  "hercon": "⊹",
+  "hfr": "𝔥",
+  "hksearow": "⤥",
+  "hkswarow": "⤦",
+  "hoarr": "⇿",
+  "homtht": "∻",
+  "hookleftarrow": "↩",
+  "hookrightarrow": "↪",
+  "hopf": "𝕙",
+  "horbar": "―",
+  "hscr": "𝒽",
+  "hslash": "ℏ",
+  "hstrok": "ħ",
+  "hybull": "⁃",
+  "hyphen": "‐",
+  "iacute": "í",
+  "ic": "⁣",
+  "icirc": "î",
+  "icy": "и",
+  "iecy": "е",
+  "iexcl": "¡",
+  "iff": "⇔",
+  "ifr": "𝔦",
+  "igrave": "ì",
+  "ii": "ⅈ",
+  "iiiint": "⨌",
+  "iiint": "∭",
+  "iinfin": "⧜",
+  "iiota": "℩",
+  "ijlig": "ĳ",
+  "imacr": "ī",
+  "image": "ℑ",
+  "imagline": "ℐ",
+  "imagpart": "ℑ",
+  "imath": "ı",
+  "imof": "⊷",
+  "imped": "Ƶ",
+  "in": "∈",
+  "incare": "℅",
+  "infin": "∞",
+  "infintie": "⧝",
+  "inodot": "ı",
+  "int": "∫",
+  "intcal": "⊺",
+  "integers": "ℤ",
+  "intercal": "⊺",
+  "intlarhk": "⨗",
+  "intprod": "⨼",
+  "iocy": "ё",
+  "iogon": "į",
+  "iopf": "𝕚",
+  "iota": "ι",
+  "iprod": "⨼",
+  "iquest": "¿",
+  "iscr": "𝒾",
+  "isin": "∈",
+  "isinE": "⋹",
+  "isindot": "⋵",
+  "isins": "⋴",
+  "isinsv": "⋳",
+  "isinv": "∈",
+  "it": "⁢",
+  "itilde": "ĩ",
+  "iukcy": "і",
+  "iuml": "ï",
+  "jcirc": "ĵ",
+  "jcy": "й",
+  "jfr": "𝔧",
+  "jmath": "ȷ",
+  "jopf": "𝕛",
+  "jscr": "𝒿",
+  "jsercy": "ј",
+  "jukcy": "є",
+  "kappa": "κ",
+  "kappav": "ϰ",
+  "kcedil": "ķ",
+  "kcy": "к",
+  "kfr": "𝔨",
+  "kgreen": "ĸ",
+  "khcy": "х",
+  "kjcy": "ќ",
+  "kopf": "𝕜",
+  "kscr": "𝓀",
+  "lAarr": "⇚",
+  "lArr": "⇐",
+  "lAtail": "⤛",
+  "lBarr": "⤎",
+  "lE": "≦",
+  "lEg": "⪋",
+  "lHar": "⥢",
+  "lacute": "ĺ",
+  "laemptyv": "⦴",
+  "lagran": "ℒ",
+  "lambda": "λ",
+  "lang": "⟨",
+  "langd": "⦑",
+  "langle": "⟨",
+  "lap": "⪅",
+  "laquo": "«",
+  "larr": "←",
+  "larrb": "⇤",
+  "larrbfs": "⤟",
+  "larrfs": "⤝",
+  "larrhk": "↩",
+  "larrlp": "↫",
+  "larrpl": "⤹",
+  "larrsim": "⥳",
+  "larrtl": "↢",
+  "lat": "⪫",
+  "latail": "⤙",
+  "late": "⪭",
+  "lates": "⪭︀",
+  "lbarr": "⤌",
+  "lbbrk": "❲",
+  "lbrace": "{",
+  "lbrack": "[",
+  "lbrke": "⦋",
+  "lbrksld": "⦏",
+  "lbrkslu": "⦍",
+  "lcaron": "ľ",
+  "lcedil": "ļ",
+  "lceil": "⌈",
+  "lcub": "{",
+  "lcy": "л",
+  "ldca": "⤶",
+  "ldquo": "“",
+  "ldquor": "„",
+  "ldrdhar": "⥧",
+  "ldrushar": "⥋",
+  "ldsh": "↲",
+  "le": "≤",
+  "leftarrow": "←",
+  "leftarrowtail": "↢",
+  "leftharpoondown": "↽",
+  "leftharpoonup": "↼",
+  "leftleftarrows": "⇇",
+  "leftrightarrow": "↔",
+  "leftrightarrows": "⇆",
+  "leftrightharpoons": "⇋",
+  "leftrightsquigarrow": "↭",
+  "leftthreetimes": "⋋",
+  "leg": "⋚",
+  "leq": "≤",
+  "leqq": "≦",
+  "leqslant": "⩽",
+  "les": "⩽",
+  "lescc": "⪨",
+  "lesdot": "⩿",
+  "lesdoto": "⪁",
+  "lesdotor": "⪃",
+  "lesg": "⋚︀",
+  "lesges": "⪓",
+  "lessapprox": "⪅",
+  "lessdot": "⋖",
+  "lesseqgtr": "⋚",
+  "lesseqqgtr": "⪋",
+  "lessgtr": "≶",
+  "lesssim": "≲",
+  "lfisht": "⥼",
+  "lfloor": "⌊",
+  "lfr": "𝔩",
+  "lg": "≶",
+  "lgE": "⪑",
+  "lhard": "↽",
+  "lharu": "↼",
+  "lharul": "⥪",
+  "lhblk": "▄",
+  "ljcy": "љ",
+  "ll": "≪",
+  "llarr": "⇇",
+  "llcorner": "⌞",
+  "llhard": "⥫",
+  "lltri": "◺",
+  "lmidot": "ŀ",
+  "lmoust": "⎰",
+  "lmoustache": "⎰",
+  "lnE": "≨",
+  "lnap": "⪉",
+  "lnapprox": "⪉",
+  "lne": "⪇",
+  "lneq": "⪇",
+  "lneqq": "≨",
+  "lnsim": "⋦",
+  "loang": "⟬",
+  "loarr": "⇽",
+  "lobrk": "⟦",
+  "longleftarrow": "⟵",
+  "longleftrightarrow": "⟷",
+  "longmapsto": "⟼",
+  "longrightarrow": "⟶",
+  "looparrowleft": "↫",
+  "looparrowright": "↬",
+  "lopar": "⦅",
+  "lopf": "𝕝",
+  "loplus": "⨭",
+  "lotimes": "⨴",
+  "lowast": "∗",
+  "lowbar": "_",
+  "loz": "◊",
+  "lozenge": "◊",
+  "lozf": "⧫",
+  "lpar": "(",
+  "lparlt": "⦓",
+  "lrarr": "⇆",
+  "lrcorner": "⌟",
+  "lrhar": "⇋",
+  "lrhard": "⥭",
+  "lrm": "‎",
+  "lrtri": "⊿",
+  "lsaquo": "‹",
+  "lscr": "𝓁",
+  "lsh": "↰",
+  "lsim": "≲",
+  "lsime": "⪍",
+  "lsimg": "⪏",
+  "lsqb": "[",
+  "lsquo": "‘",
+  "lsquor": "‚",
+  "lstrok": "ł",
+  "lt": "<",
+  "ltcc": "⪦",
+  "ltcir": "⩹",
+  "ltdot": "⋖",
+  "lthree": "⋋",
+  "ltimes": "⋉",
+  "ltlarr": "⥶",
+  "ltquest": "⩻",
+  "ltrPar": "⦖",
+  "ltri": "◃",
+  "ltrie": "⊴",
+  "ltrif": "◂",
+  "lurdshar": "⥊",
+  "luruhar": "⥦",
+  "lvertneqq": "≨︀",
+  "lvnE": "≨︀",
+  "mDDot": "∺",
+  "macr": "¯",
+  "male": "♂",
+  "malt": "✠",
+  "maltese": "✠",
+  "map": "↦",
+  "mapsto": "↦",
+  "mapstodown": "↧",
+  "mapstoleft": "↤",
+  "mapstoup": "↥",
+  "marker": "▮",
+  "mcomma": "⨩",
+  "mcy": "м",
+  "mdash": "—",
+  "measuredangle": "∡",
+  "mfr": "𝔪",
+  "mho": "℧",
+  "micro": "µ",
+  "mid": "∣",
+  "midast": "*",
+  "midcir": "⫰",
+  "middot": "·",
+  "minus": "−",
+  "minusb": "⊟",
+  "minusd": "∸",
+  "minusdu": "⨪",
+  "mlcp": "⫛",
+  "mldr": "…",
+  "mnplus": "∓",
+  "models": "⊧",
+  "mopf": "𝕞",
+  "mp": "∓",
+  "mscr": "𝓂",
+  "mstpos": "∾",
+  "mu": "μ",
+  "multimap": "⊸",
+  "mumap": "⊸",
+  "nGg": "⋙̸",
+  "nGt": "≫⃒",
+  "nGtv": "≫̸",
+  "nLeftarrow": "⇍",
+  "nLeftrightarrow": "⇎",
+  "nLl": "⋘̸",
+  "nLt": "≪⃒",
+  "nLtv": "≪̸",
+  "nRightarrow": "⇏",
+  "nVDash": "⊯",
+  "nVdash": "⊮",
+  "nabla": "∇",
+  "nacute": "ń",
+  "nang": "∠⃒",
+  "nap": "≉",
+  "napE": "⩰̸",
+  "napid": "≋̸",
+  "napos": "ŉ",
+  "napprox": "≉",
+  "natur": "♮",
+  "natural": "♮",
+  "naturals": "ℕ",
+  "nbsp": " ",
+  "nbump": "≎̸",
+  "nbumpe": "≏̸",
+  "ncap": "⩃",
+  "ncaron": "ň",
+  "ncedil": "ņ",
+  "ncong": "≇",
+  "ncongdot": "⩭̸",
+  "ncup": "⩂",
+  "ncy": "н",
+  "ndash": "–",
+  "ne": "≠",
+  "neArr": "⇗",
+  "nearhk": "⤤",
+  "nearr": "↗",
+  "nearrow": "↗",
+  "nedot": "≐̸",
+  "nequiv": "≢",
+  "nesear": "⤨",
+  "nesim": "≂̸",
+  "nexist": "∄",
+  "nexists": "∄",
+  "nfr": "𝔫",
+  "ngE": "≧̸",
+  "nge": "≱",
+  "ngeq": "≱",
+  "ngeqq": "≧̸",
+  "ngeqslant": "⩾̸",
+  "nges": "⩾̸",
+  "ngsim": "≵",
+  "ngt": "≯",
+  "ngtr": "≯",
+  "nhArr": "⇎",
+  "nharr": "↮",
+  "nhpar": "⫲",
+  "ni": "∋",
+  "nis": "⋼",
+  "nisd": "⋺",
+  "niv": "∋",
+  "njcy": "њ",
+  "nlArr": "⇍",
+  "nlE": "≦̸",
+  "nlarr": "↚",
+  "nldr": "‥",
+  "nle": "≰",
+  "nleftarrow": "↚",
+  "nleftrightarrow": "↮",
+  "nleq": "≰",
+  "nleqq": "≦̸",
+  "nleqslant": "⩽̸",
+  "nles": "⩽̸",
+  "nless": "≮",
+  "nlsim": "≴",
+  "nlt": "≮",
+  "nltri": "⋪",
+  "nltrie": "⋬",
+  "nmid": "∤",
+  "nopf": "𝕟",
+  "not": "¬",
+  "notin": "∉",
+  "notinE": "⋹̸",
+  "notindot": "⋵̸",
+  "notinva": "∉",
+  "notinvb": "⋷",
+  "notinvc": "⋶",
+  "notni": "∌",
+  "notniva": "∌",
+  "notnivb": "⋾",
+  "notnivc": "⋽",
+  "npar": "∦",
+  "nparallel": "∦",
+  "nparsl": "⫽⃥",
+  "npart": "∂̸",
+  "npolint": "⨔",
+  "npr": "⊀",
+  "nprcue": "⋠",
+  "npre": "⪯̸",
+  "nprec": "⊀",
+  "npreceq": "⪯̸",
+  "nrArr": "⇏",
+  "nrarr": "↛",
+  "nrarrc": "⤳̸",
+  "nrarrw": "↝̸",
+  "nrightarrow": "↛",
+  "nrtri": "⋫",
+  "nrtrie": "⋭",
+  "nsc": "⊁",
+  "nsccue": "⋡",
+  "nsce": "⪰̸",
+  "nscr": "𝓃",
+  "nshortmid": "∤",
+  "nshortparallel": "∦",
+  "nsim": "≁",
+  "nsime": "≄",
+  "nsimeq": "≄",
+  "nsmid": "∤",
+  "nspar": "∦",
+  "nsqsube": "⋢",
+  "nsqsupe": "⋣",
+  "nsub": "⊄",
+  "nsubE": "⫅̸",
+  "nsube": "⊈",
+  "nsubset": "⊂⃒",
+  "nsubseteq": "⊈",
+  "nsubseteqq": "⫅̸",
+  "nsucc": "⊁",
+  "nsucceq": "⪰̸",
+  "nsup": "⊅",
+  "nsupE": "⫆̸",
+  "nsupe": "⊉",
+  "nsupset": "⊃⃒",
+  "nsupseteq": "⊉",
+  "nsupseteqq": "⫆̸",
+  "ntgl": "≹",
+  "ntilde": "ñ",
+  "ntlg": "≸",
+  "ntriangleleft": "⋪",
+  "ntrianglelefteq": "⋬",
+  "ntriangleright": "⋫",
+  "ntrianglerighteq": "⋭",
+  "nu": "ν",
+  "num": "#",
+  "numero": "№",
+  "numsp": " ",
+  "nvDash": "⊭",
+  "nvHarr": "⤄",
+  "nvap": "≍⃒",
+  "nvdash": "⊬",
+  "nvge": "≥⃒",
+  "nvgt": ">⃒",
+  "nvinfin": "⧞",
+  "nvlArr": "⤂",
+  "nvle": "≤⃒",
+  "nvlt": "<⃒",
+  "nvltrie": "⊴⃒",
+  "nvrArr": "⤃",
+  "nvrtrie": "⊵⃒",
+  "nvsim": "∼⃒",
+  "nwArr": "⇖",
+  "nwarhk": "⤣",
+  "nwarr": "↖",
+  "nwarrow": "↖",
+  "nwnear": "⤧",
+  "oS": "Ⓢ",
+  "oacute": "ó",
+  "oast": "⊛",
+  "ocir": "⊚",
+  "ocirc": "ô",
+  "ocy": "о",
+  "odash": "⊝",
+  "odblac": "ő",
+  "odiv": "⨸",
+  "odot": "⊙",
+  "odsold": "⦼",
+  "oelig": "œ",
+  "ofcir": "⦿",
+  "ofr": "𝔬",
+  "ogon": "˛",
+  "ograve": "ò",
+  "ogt": "⧁",
+  "ohbar": "⦵",
+  "ohm": "Ω",
+  "oint": "∮",
+  "olarr": "↺",
+  "olcir": "⦾",
+  "olcross": "⦻",
+  "oline": "‾",
+  "olt": "⧀",
+  "omacr": "ō",
+  "omega": "ω",
+  "omicron": "ο",
+  "omid": "⦶",
+  "ominus": "⊖",
+  "oopf": "𝕠",
+  "opar": "⦷",
+  "operp": "⦹",
+  "oplus": "⊕",
+  "or": "∨",
+  "orarr": "↻",
+  "ord": "⩝",
+  "order": "ℴ",
+  "orderof": "ℴ",
+  "ordf": "ª",
+  "ordm": "º",
+  "origof": "⊶",
+  "oror": "⩖",
+  "orslope": "⩗",
+  "orv": "⩛",
+  "oscr": "ℴ",
+  "oslash": "ø",
+  "osol": "⊘",
+  "otilde": "õ",
+  "otimes": "⊗",
+  "otimesas": "⨶",
+  "ouml": "ö",
+  "ovbar": "⌽",
+  "par": "∥",
+  "para": "¶",
+  "parallel": "∥",
+  "parsim": "⫳",
+  "parsl": "⫽",
+  "part": "∂",
+  "pcy": "п",
+  "percnt": "%",
+  "period": ".",
+  "permil": "‰",
+  "perp": "⊥",
+  "pertenk": "‱",
+  "pfr": "𝔭",
+  "phi": "φ",
+  "phiv": "ϕ",
+  "phmmat": "ℳ",
+  "phone": "☎",
+  "pi": "π",
+  "pitchfork": "⋔",
+  "piv": "ϖ",
+  "planck": "ℏ",
+  "planckh": "ℎ",
+  "plankv": "ℏ",
+  "plus": "+",
+  "plusacir": "⨣",
+  "plusb": "⊞",
+  "pluscir": "⨢",
+  "plusdo": "∔",
+  "plusdu": "⨥",
+  "pluse": "⩲",
+  "plusmn": "±",
+  "plussim": "⨦",
+  "plustwo": "⨧",
+  "pm": "±",
+  "pointint": "⨕",
+  "popf": "𝕡",
+  "pound": "£",
+  "pr": "≺",
+  "prE": "⪳",
+  "prap": "⪷",
+  "prcue": "≼",
+  "pre": "⪯",
+  "prec": "≺",
+  "precapprox": "⪷",
+  "preccurlyeq": "≼",
+  "preceq": "⪯",
+  "precnapprox": "⪹",
+  "precneqq": "⪵",
+  "precnsim": "⋨",
+  "precsim": "≾",
+  "prime": "′",
+  "primes": "ℙ",
+  "prnE": "⪵",
+  "prnap": "⪹",
+  "prnsim": "⋨",
+  "prod": "∏",
+  "profalar": "⌮",
+  "profline": "⌒",
+  "profsurf": "⌓",
+  "prop": "∝",
+  "propto": "∝",
+  "prsim": "≾",
+  "prurel": "⊰",
+  "pscr": "𝓅",
+  "psi": "ψ",
+  "puncsp": " ",
+  "qfr": "𝔮",
+  "qint": "⨌",
+  "qopf": "𝕢",
+  "qprime": "⁗",
+  "qscr": "𝓆",
+  "quaternions": "ℍ",
+  "quatint": "⨖",
+  "quest": "?",
+  "questeq": "≟",
+  "quot": "\"",
+  "rAarr": "⇛",
+  "rArr": "⇒",
+  "rAtail": "⤜",
+  "rBarr": "⤏",
+  "rHar": "⥤",
+  "race": "∽̱",
+  "racute": "ŕ",
+  "radic": "√",
+  "raemptyv": "⦳",
+  "rang": "⟩",
+  "rangd": "⦒",
+  "range": "⦥",
+  "rangle": "⟩",
+  "raquo": "»",
+  "rarr": "→",
+  "rarrap": "⥵",
+  "rarrb": "⇥",
+  "rarrbfs": "⤠",
+  "rarrc": "⤳",
+  "rarrfs": "⤞",
+  "rarrhk": "↪",
+  "rarrlp": "↬",
+  "rarrpl": "⥅",
+  "rarrsim": "⥴",
+  "rarrtl": "↣",
+  "rarrw": "↝",
+  "ratail": "⤚",
+  "ratio": "∶",
+  "rationals": "ℚ",
+  "rbarr": "⤍",
+  "rbbrk": "❳",
+  "rbrace": "}",
+  "rbrack": "]",
+  "rbrke": "⦌",
+  "rbrksld": "⦎",
+  "rbrkslu": "⦐",
+  "rcaron": "ř",
+  "rcedil": "ŗ",
+  "rceil": "⌉",
+  "rcub": "}",
+  "rcy": "р",
+  "rdca": "⤷",
+  "rdldhar": "⥩",
+  "rdquo": "”",
+  "rdquor": "”",
+  "rdsh": "↳",
+  "real": "ℜ",
+  "realine": "ℛ",
+  "realpart": "ℜ",
+  "reals": "ℝ",
+  "rect": "▭",
+  "reg": "®",
+  "rfisht": "⥽",
+  "rfloor": "⌋",
+  "rfr": "𝔯",
+  "rhard": "⇁",
+  "rharu": "⇀",
+  "rharul": "⥬",
+  "rho": "ρ",
+  "rhov": "ϱ",
+  "rightarrow": "→",
+  "rightarrowtail": "↣",
+  "rightharpoondown": "⇁",
+  "rightharpoonup": "⇀",
+  "rightleftarrows": "⇄",
+  "rightleftharpoons": "⇌",
+  "rightrightarrows": "⇉",
+  "rightsquigarrow": "↝",
+  "rightthreetimes": "⋌",
+  "ring": "˚",
+  "risingdotseq": "≓",
+  "rlarr": "⇄",
+  "rlhar": "⇌",
+  "rlm": "‏",
+  "rmoust": "⎱",
+  "rmoustache": "⎱",
+  "rnmid": "⫮",
+  "roang": "⟭",
+  "roarr": "⇾",
+  "robrk": "⟧",
+  "ropar": "⦆",
+  "ropf": "𝕣",
+  "roplus": "⨮",
+  "rotimes": "⨵",
+  "rpar": ")",
+  "rpargt": "⦔",
+  "rppolint": "⨒",
+  "rrarr": "⇉",
+  "rsaquo": "›",
+  "rscr": "𝓇",
+  "rsh": "↱",
+  "rsqb": "]",
+  "rsquo": "’",
+  "rsquor": "’",
+  "rthree": "⋌",
+  "rtimes": "⋊",
+  "rtri": "▹",
+  "rtrie": "⊵",
+  "rtrif": "▸",
+  "rtriltri": "⧎",
+  "ruluhar": "⥨",
+  "rx": "℞",
+  "sacute": "ś",
+  "sbquo": "‚",
+  "sc": "≻",
+  "scE": "⪴",
+  "scap": "⪸",
+  "scaron": "š",
+  "sccue": "≽",
+  "sce": "⪰",
+  "scedil": "ş",
+  "scirc": "ŝ",
+  "scnE": "⪶",
+  "scnap": "⪺",
+  "scnsim": "⋩",
+  "scpolint": "⨓",
+  "scsim": "≿",
+  "scy": "с",
+  "sdot": "⋅",
+  "sdotb": "⊡",
+  "sdote": "⩦",
+  "seArr": "⇘",
+  "searhk": "⤥",
+  "searr": "↘",
+  "searrow": "↘",
+  "sect": "§",
+  "semi": ";",
+  "seswar": "⤩",
+  "setminus": "∖",
+  "setmn": "∖",
+  "sext": "✶",
+  "sfr": "𝔰",
+  "sfrown": "⌢",
+  "sharp": "♯",
+  "shchcy": "щ",
+  "shcy": "ш",
+  "shortmid": "∣",
+  "shortparallel": "∥",
+  "shy": "­",
+  "sigma": "σ",
+  "sigmaf": "ς",
+  "sigmav": "ς",
+  "sim": "∼",
+  "simdot": "⩪",
+  "sime": "≃",
+  "simeq": "≃",
+  "simg": "⪞",
+  "simgE": "⪠",
+  "siml": "⪝",
+  "simlE": "⪟",
+  "simne": "≆",
+  "simplus": "⨤",
+  "simrarr": "⥲",
+  "slarr": "←",
+  "smallsetminus": "∖",
+  "smashp": "⨳",
+  "smeparsl": "⧤",
+  "smid": "∣",
+  "smile": "⌣",
+  "smt": "⪪",
+  "smte": "⪬",
+  "smtes": "⪬︀",
+  "softcy": "ь",
+  "sol": "/",
+  "solb": "⧄",
+  "solbar": "⌿",
+  "sopf": "𝕤",
+  "spades": "♠",
+  "spadesuit": "♠",
+  "spar": "∥",
+  "sqcap": "⊓",
+  "sqcaps": "⊓︀",
+  "sqcup": "⊔",
+  "sqcups": "⊔︀",
+  "sqsub": "⊏",
+  "sqsube": "⊑",
+  "sqsubset": "⊏",
+  "sqsubseteq": "⊑",
+  "sqsup": "⊐",
+  "sqsupe": "⊒",
+  "sqsupset": "⊐",
+  "sqsupseteq": "⊒",
+  "squ": "□",
+  "square": "□",
+  "squarf": "▪",
+  "squf": "▪",
+  "srarr": "→",
+  "sscr": "𝓈",
+  "ssetmn": "∖",
+  "ssmile": "⌣",
+  "sstarf": "⋆",
+  "star": "☆",
+  "starf": "★",
+  "straightepsilon": "ϵ",
+  "straightphi": "ϕ",
+  "strns": "¯",
+  "sub": "⊂",
+  "subE": "⫅",
+  "subdot": "⪽",
+  "sube": "⊆",
+  "subedot": "⫃",
+  "submult": "⫁",
+  "subnE": "⫋",
+  "subne": "⊊",
+  "subplus": "⪿",
+  "subrarr": "⥹",
+  "subset": "⊂",
+  "subseteq": "⊆",
+  "subseteqq": "⫅",
+  "subsetneq": "⊊",
+  "subsetneqq": "⫋",
+  "subsim": "⫇",
+  "subsub": "⫕",
+  "subsup": "⫓",
+  "succ": "≻",
+  "succapprox": "⪸",
+  "succcurlyeq": "≽",
+  "succeq": "⪰",
+  "succnapprox": "⪺",
+  "succneqq": "⪶",
+  "succnsim": "⋩",
+  "succsim": "≿",
+  "sum": "∑",
+  "sung": "♪",
+  "sup1": "¹",
+  "sup2": "²",
+  "sup3": "³",
+  "sup": "⊃",
+  "supE": "⫆",
+  "supdot": "⪾",
+  "supdsub": "⫘",
+  "supe": "⊇",
+  "supedot": "⫄",
+  "suphsol": "⟉",
+  "suphsub": "⫗",
+  "suplarr": "⥻",
+  "supmult": "⫂",
+  "supnE": "⫌",
+  "supne": "⊋",
+  "supplus": "⫀",
+  "supset": "⊃",
+  "supseteq": "⊇",
+  "supseteqq": "⫆",
+  "supsetneq": "⊋",
+  "supsetneqq": "⫌",
+  "supsim": "⫈",
+  "supsub": "⫔",
+  "supsup": "⫖",
+  "swArr": "⇙",
+  "swarhk": "⤦",
+  "swarr": "↙",
+  "swarrow": "↙",
+  "swnwar": "⤪",
+  "szlig": "ß",
+  "target": "⌖",
+  "tau": "τ",
+  "tbrk": "⎴",
+  "tcaron": "ť",
+  "tcedil": "ţ",
+  "tcy": "т",
+  "tdot": "⃛",
+  "telrec": "⌕",
+  "tfr": "𝔱",
+  "there4": "∴",
+  "therefore": "∴",
+  "theta": "θ",
+  "thetasym": "ϑ",
+  "thetav": "ϑ",
+  "thickapprox": "≈",
+  "thicksim": "∼",
+  "thinsp": " ",
+  "thkap": "≈",
+  "thksim": "∼",
+  "thorn": "þ",
+  "tilde": "˜",
+  "times": "×",
+  "timesb": "⊠",
+  "timesbar": "⨱",
+  "timesd": "⨰",
+  "tint": "∭",
+  "toea": "⤨",
+  "top": "⊤",
+  "topbot": "⌶",
+  "topcir": "⫱",
+  "topf": "𝕥",
+  "topfork": "⫚",
+  "tosa": "⤩",
+  "tprime": "‴",
+  "trade": "™",
+  "triangle": "▵",
+  "triangledown": "▿",
+  "triangleleft": "◃",
+  "trianglelefteq": "⊴",
+  "triangleq": "≜",
+  "triangleright": "▹",
+  "trianglerighteq": "⊵",
+  "tridot": "◬",
+  "trie": "≜",
+  "triminus": "⨺",
+  "triplus": "⨹",
+  "trisb": "⧍",
+  "tritime": "⨻",
+  "trpezium": "⏢",
+  "tscr": "𝓉",
+  "tscy": "ц",
+  "tshcy": "ћ",
+  "tstrok": "ŧ",
+  "twixt": "≬",
+  "twoheadleftarrow": "↞",
+  "twoheadrightarrow": "↠",
+  "uArr": "⇑",
+  "uHar": "⥣",
+  "uacute": "ú",
+  "uarr": "↑",
+  "ubrcy": "ў",
+  "ubreve": "ŭ",
+  "ucirc": "û",
+  "ucy": "у",
+  "udarr": "⇅",
+  "udblac": "ű",
+  "udhar": "⥮",
+  "ufisht": "⥾",
+  "ufr": "𝔲",
+  "ugrave": "ù",
+  "uharl": "↿",
+  "uharr": "↾",
+  "uhblk": "▀",
+  "ulcorn": "⌜",
+  "ulcorner": "⌜",
+  "ulcrop": "⌏",
+  "ultri": "◸",
+  "umacr": "ū",
+  "uml": "¨",
+  "uogon": "ų",
+  "uopf": "𝕦",
+  "uparrow": "↑",
+  "updownarrow": "↕",
+  "upharpoonleft": "↿",
+  "upharpoonright": "↾",
+  "uplus": "⊎",
+  "upsi": "υ",
+  "upsih": "ϒ",
+  "upsilon": "υ",
+  "upuparrows": "⇈",
+  "urcorn": "⌝",
+  "urcorner": "⌝",
+  "urcrop": "⌎",
+  "uring": "ů",
+  "urtri": "◹",
+  "uscr": "𝓊",
+  "utdot": "⋰",
+  "utilde": "ũ",
+  "utri": "▵",
+  "utrif": "▴",
+  "uuarr": "⇈",
+  "uuml": "ü",
+  "uwangle": "⦧",
+  "vArr": "⇕",
+  "vBar": "⫨",
+  "vBarv": "⫩",
+  "vDash": "⊨",
+  "vangrt": "⦜",
+  "varepsilon": "ϵ",
+  "varkappa": "ϰ",
+  "varnothing": "∅",
+  "varphi": "ϕ",
+  "varpi": "ϖ",
+  "varpropto": "∝",
+  "varr": "↕",
+  "varrho": "ϱ",
+  "varsigma": "ς",
+  "varsubsetneq": "⊊︀",
+  "varsubsetneqq": "⫋︀",
+  "varsupsetneq": "⊋︀",
+  "varsupsetneqq": "⫌︀",
+  "vartheta": "ϑ",
+  "vartriangleleft": "⊲",
+  "vartriangleright": "⊳",
+  "vcy": "в",
+  "vdash": "⊢",
+  "vee": "∨",
+  "veebar": "⊻",
+  "veeeq": "≚",
+  "vellip": "⋮",
+  "verbar": "|",
+  "vert": "|",
+  "vfr": "𝔳",
+  "vltri": "⊲",
+  "vnsub": "⊂⃒",
+  "vnsup": "⊃⃒",
+  "vopf": "𝕧",
+  "vprop": "∝",
+  "vrtri": "⊳",
+  "vscr": "𝓋",
+  "vsubnE": "⫋︀",
+  "vsubne": "⊊︀",
+  "vsupnE": "⫌︀",
+  "vsupne": "⊋︀",
+  "vzigzag": "⦚",
+  "wcirc": "ŵ",
+  "wedbar": "⩟",
+  "wedge": "∧",
+  "wedgeq": "≙",
+  "weierp": "℘",
+  "wfr": "𝔴",
+  "wopf": "𝕨",
+  "wp": "℘",
+  "wr": "≀",
+  "wreath": "≀",
+  "wscr": "𝓌",
+  "xcap": "⋂",
+  "xcirc": "◯",
+  "xcup": "⋃",
+  "xdtri": "▽",
+  "xfr": "𝔵",
+  "xhArr": "⟺",
+  "xharr": "⟷",
+  "xi": "ξ",
+  "xlArr": "⟸",
+  "xlarr": "⟵",
+  "xmap": "⟼",
+  "xnis": "⋻",
+  "xodot": "⨀",
+  "xopf": "𝕩",
+  "xoplus": "⨁",
+  "xotime": "⨂",
+  "xrArr": "⟹",
+  "xrarr": "⟶",
+  "xscr": "𝓍",
+  "xsqcup": "⨆",
+  "xuplus": "⨄",
+  "xutri": "△",
+  "xvee": "⋁",
+  "xwedge": "⋀",
+  "yacute": "ý",
+  "yacy": "я",
+  "ycirc": "ŷ",
+  "ycy": "ы",
+  "yen": "¥",
+  "yfr": "𝔶",
+  "yicy": "ї",
+  "yopf": "𝕪",
+  "yscr": "𝓎",
+  "yucy": "ю",
+  "yuml": "ÿ",
+  "zacute": "ź",
+  "zcaron": "ž",
+  "zcy": "з",
+  "zdot": "ż",
+  "zeetrf": "ℨ",
+  "zeta": "ζ",
+  "zfr": "𝔷",
+  "zhcy": "ж",
+  "zigrarr": "⇝",
+  "zopf": "𝕫",
+  "zscr": "𝓏",
+  "zwj": "‍",
+  "zwnj": "‌"
+}
+;
 }, {}],
-23: [function(require, module, exports) {
+33: [function(require, module, exports) {
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module character-reference-invalid
+ * @fileoverview HTML invalid numeric character reference information.
+ */
+
+'use strict';
+
+/* eslint-env commonjs */
+
+/*
+ * Expose.
+ */
+
+module.exports = require('./index.json');
+}, {"./index.json":35}],
+35: [function(require, module, exports) {
+module.exports = {
+  "0": "�",
+  "128": "€",
+  "130": "‚",
+  "131": "ƒ",
+  "132": "„",
+  "133": "…",
+  "134": "†",
+  "135": "‡",
+  "136": "ˆ",
+  "137": "‰",
+  "138": "Š",
+  "139": "‹",
+  "140": "Œ",
+  "142": "Ž",
+  "145": "‘",
+  "146": "’",
+  "147": "“",
+  "148": "”",
+  "149": "•",
+  "150": "–",
+  "151": "—",
+  "152": "˜",
+  "153": "™",
+  "154": "š",
+  "155": "›",
+  "156": "œ",
+  "158": "ž",
+  "159": "Ÿ"
+}
+;
+}, {}],
+25: [function(require, module, exports) {
 /*!
  * repeat-string <https://github.com/jonschlinkert/repeat-string>
  *
@@ -5241,7 +6545,7 @@ function repeat(str, num) {
 var res = '';
 var cache;
 }, {}],
-24: [function(require, module, exports) {
+26: [function(require, module, exports) {
 'use strict';
 
 exports = module.exports = trim;
@@ -5261,7 +6565,7 @@ exports.right = function (str) {
   return str.replace(/\s*$/, '');
 };
 }, {}],
-25: [function(require, module, exports) {
+27: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5299,7 +6603,7 @@ function trimTrailingLines(value) {
 
 module.exports = trimTrailingLines;
 }, {}],
-26: [function(require, module, exports) {
+28: [function(require, module, exports) {
 /**
  * Extend an object with another.
  *
@@ -5324,17 +6628,20 @@ module.exports = function (src) {
   return src;
 };
 }, {}],
-27: [function(require, module, exports) {
+29: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:utilities
+ * @module remark:utilities
+ * @version 3.0.0
  * @fileoverview Collection of tiny helpers useful for
  *   both parsing and compiling markdown.
  */
 
 'use strict';
+
+/* eslint-env commonjs */
 
 /*
  * Dependencies.
@@ -5482,6 +6789,118 @@ function normalizeIdentifier(value) {
     return collapseWhiteSpace(value).toLowerCase();
 }
 
+/**
+ * Construct a state `toggler`: a function which inverses
+ * `property` in context based on its current value.
+ * The by `toggler` returned function restores that value.
+ *
+ * @example
+ *   var context = {};
+ *   var key = 'foo';
+ *   var val = true;
+ *   context[key] = val;
+ *   context.enter = stateToggler(key, val);
+ *   context[key]; // true
+ *   var exit = context.enter();
+ *   context[key]; // false
+ *   var nested = context.enter();
+ *   context[key]; // false
+ *   nested();
+ *   context[key]; // false
+ *   exit();
+ *   context[key]; // true
+ *
+ * @param {string} key - Property to toggle.
+ * @param {boolean} state - It's default state.
+ * @return {function(): function()} - Enter.
+ */
+function stateToggler(key, state) {
+    /**
+     * Construct a toggler for the bound `key`.
+     *
+     * @return {Function} - Exit state.
+     */
+    function enter() {
+        var self = this;
+        var current = self[key];
+
+        self[key] = !state;
+
+        /**
+         * State canceler, cancels the state, if allowed.
+         */
+        function exit() {
+            self[key] = current;
+        }
+
+        return exit;
+    }
+
+    return enter;
+}
+
+/*
+ * Define nodes of a type which can be merged.
+ */
+
+var MERGEABLE_NODES = {};
+
+/**
+ * Check whether a node is mergeable with adjacent nodes.
+ *
+ * @param {Object} node - Node to check.
+ * @return {boolean} - Whether `node` is mergable.
+ */
+function mergeable(node) {
+    var start;
+    var end;
+
+    if (node.type !== 'text' || !node.position) {
+        return true;
+    }
+
+    start = node.position.start;
+    end = node.position.end;
+
+    /*
+     * Only merge nodes which occupy the same size as their
+     * `value`.
+     */
+
+    return start.line !== end.line || end.column - start.column === node.value.length;
+}
+
+/**
+ * Merge two text nodes: `node` into `prev`.
+ *
+ * @param {Object} prev - Preceding sibling.
+ * @param {Object} node - Following sibling.
+ * @return {Object} - `prev`.
+ */
+MERGEABLE_NODES.text = function (prev, node) {
+    prev.value += node.value;
+
+    return prev;
+};
+
+/**
+ * Merge two blockquotes: `node` into `prev`, unless in
+ * CommonMark mode.
+ *
+ * @param {Object} prev - Preceding sibling.
+ * @param {Object} node - Following sibling.
+ * @return {Object} - `prev`, or `node` in CommonMark mode.
+ */
+MERGEABLE_NODES.blockquote = function (prev, node) {
+    if (this.options.commonmark) {
+        return node;
+    }
+
+    prev.children = prev.children.concat(node.children);
+
+    return prev;
+};
+
 /*
  * Expose `validate`.
  */
@@ -5499,8 +6918,11 @@ exports.validate = {
 exports.normalizeIdentifier = normalizeIdentifier;
 exports.clean = clean;
 exports.raise = raise;
-}, {"collapse-white-space":30}],
-30: [function(require, module, exports) {
+exports.stateToggler = stateToggler;
+exports.mergeable = mergeable;
+exports.MERGEABLE_NODES = MERGEABLE_NODES;
+}, {"collapse-white-space":36}],
+36: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -5530,94 +6952,20 @@ function collapse(value) {
 
 module.exports = collapse;
 }, {}],
-28: [function(require, module, exports) {
-/* This file is generated by `script/build-expressions.js` */
-'use strict';
-
-module.exports = {
-  'rules': {
-    'newline': /^\n([ \t]*\n)*/,
-    'code': /^((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+/,
-    'horizontalRule': /^[ \t]*([-*_])( *\1){2,} *(?=\n|$)/,
-    'heading': /^([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)/,
-    'lineHeading': /^(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)/,
-    'definition': /^[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)/,
-    'bullet': /(?:[*+-]|\d+\.)/,
-    'indent': /^([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)/,
-    'item': /([ \t]*)((?:[*+-]|\d+\.))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+\.)[ \t])[^\n]*)*/gm,
-    'list': /^([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+\.)[ \t])|$)/,
-    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'html': /^(?:[ \t]*(?:(?:(?:<(?:article|header|aside|hgroup|blockquote|hr|iframe|body|li|map|button|object|canvas|ol|caption|output|col|p|colgroup|pre|dd|progress|div|section|dl|table|td|dt|tbody|embed|textarea|fieldset|tfoot|figcaption|th|figure|thead|footer|tr|form|ul|h1|h2|h3|h4|h5|h6|video|script|style)(?:(?:\s+)(?:[a-zA-Z_:][a-zA-Z0-9_.:-]*)(?:(?:\s+)?=(?:\s+)?(?:[^"'=<>`]+|'[^']*'|"[^"]*"))?)*(?:\s+)?\/?>?)|(?:<\/(?:article|header|aside|hgroup|blockquote|hr|iframe|body|li|map|button|object|canvas|ol|caption|output|col|p|colgroup|pre|dd|progress|div|section|dl|table|td|dt|tbody|embed|textarea|fieldset|tfoot|figcaption|th|figure|thead|footer|tr|form|ul|h1|h2|h3|h4|h5|h6|video|script|style)(?:\s+)?>))|<!--[\s\S]*?-->|(?:<\?(?:[^\?]|\?(?!>))+\?>)|(?:<![a-zA-Z]+\s+[\s\S]+?>)|(?:<!\[CDATA\[[\s\S]+?\]\]>))[\s\S]*?[ \t]*?(?:\n{2,}|\s*$))/i,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)(?!mailto:)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'escape': /^\\([\\`*{}\[\]()#+\-.!_>])/,
-    'autoLink': /^<([^ >]+(@|:\/)[^ >]+)>/,
-    'tag': /^(?:(?:<(?:[a-zA-Z][a-zA-Z0-9]*)(?:(?:\s+)(?:[a-zA-Z_:][a-zA-Z0-9_.:-]*)(?:(?:\s+)?=(?:\s+)?(?:[^"'=<>`]+|'[^']*'|"[^"]*"))?)*(?:\s+)?\/?>)|(?:<\/(?:[a-zA-Z][a-zA-Z0-9]*)(?:\s+)?>)|<!--[\s\S]*?-->|(?:<\?(?:[^\?]|\?(?!>))+\?>)|(?:<![a-zA-Z]+\s+[\s\S]+?>)|(?:<!\[CDATA\[[\s\S]+?\]\]>))/,
-    'strong': /^(_)_((?:\\[\s\S]|[^\\])+?)__(?!_)|^(\*)\*((?:\\[\s\S]|[^\\])+?)\*\*(?!\*)/,
-    'emphasis': /^\b(_)((?:__|\\[\s\S]|[^\\])+?)_\b|^(\*)((?:\*\*|\\[\s\S]|[^\\])+?)\*(?!\*)/,
-    'inlineCode': /^(`+)((?!`)[\s\S]*?(?:`\s+|[^`]))?(\1)(?!`)/,
-    'break': /^ {2,}\n(?!\s*$)/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| {2,}\n|$)/,
-    'link': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\)])*?\)|\\[\s\S]|[\s\S])*?)|<([\s\S]*?)>)(?:\s+['"]([\s\S]*?)['"])?\s*\)/,
-    'shortcutReference': /^(!?\[)((?:\\[\s\S]|[^\[\]])+?)\]/,
-    'reference': /^(!?\[)((?:\[[^\]]*\]|[^\[\]]|\](?=[^\[]*\]))*)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/
-  },
-  'gfm': {
-    'fences': /^( *)(([`~])\3{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\2\3*[ \t]*(?=\n|$)|$)/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*[ \t]*(?=\n|$)|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|([ \t]*)(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?[ \t]*(?=\n|$)|(\ {0,3})([^\n]+?)[ \t]*\n\ {0,3}(=|-){1,}[ \t]*(?=\n|$)|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$)|(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)(?!mailto:)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'table': /^( *\|(.+))\n( *\|( *[-:]+[-| :]*)\n)((?: *\|.*(?:\n|$))*)/,
-    'looseTable': /^( *(\S.*\|.*))\n( *([-:]+ *\|[-| :]*)\n)((?:.*\|.*(?:\n|$))*)/,
-    'escape': /^\\([\\`*{}\[\]()#+\-.!_>~|])/,
-    'url': /^https?:\/\/[^\s<]+[^<.,:;"')\]\s]/,
-    'deletion': /^~~(?=\S)([\s\S]*?\S)~~/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| {2,}\n|$)/
-  },
-  'footnotes': {
-    'footnoteDefinition': /^( *\[\^([^\]]+)\]: *)([^\n]+(\n+ +[^\n]+)*)/
-  },
-  'yaml': {
-    'yamlFrontMatter': /^-{3}\n([\s\S]+?\n)?-{3}/
-  },
-  'pedantic': {
-    'heading': /^([ \t]*)(#{1,6})([ \t]*)([^\n]*?)[ \t]*#*[ \t]*(?=\n|$)/,
-    'strong': /^(_)_(?=\S)([\s\S]*?\S)__(?!_)|^(\*)\*(?=\S)([\s\S]*?\S)\*\*(?!\*)/,
-    'emphasis': /^(_)(?=\S)([\s\S]*?\S)_(?!_)|^(\*)(?=\S)([\s\S]*?\S)\*(?!\*)/
-  },
-  'commonmark': {
-    'list': /^([ \t]*)((?:[*+-]|\d+[\.\)]))[ \t][\s\S]+?(?:(?=\n+\1?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\1(?:[*+-]|\d+[\.\)])[ \t])|$)/,
-    'item': /([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)[^\n]*(?:\n(?!\1(?:[*+-]|\d+[\.\)])[ \t])[^\n]*)*/gm,
-    'bullet': /(?:[*+-]|\d+[\.\)])/,
-    'indent': /^([ \t]*)((?:[*+-]|\d+[\.\)]))( {1,4}(?! )| |\t)/,
-    'html': /^(?:[ \t]*(?:(?:(?:<(?:article|header|aside|hgroup|blockquote|hr|iframe|body|li|map|button|object|canvas|ol|caption|output|col|p|colgroup|pre|dd|progress|div|section|dl|table|td|dt|tbody|embed|textarea|fieldset|tfoot|figcaption|th|figure|thead|footer|tr|form|ul|h1|h2|h3|h4|h5|h6|video|script|style)(?:(?:\s+)(?:[a-zA-Z_:][a-zA-Z0-9_.:-]*)(?:(?:\s+)?=(?:\s+)?(?:[^"'=<>`]+|'[^']*'|"[^"]*"))?)*(?:\s+)?\/?>?)|(?:<\/(?:article|header|aside|hgroup|blockquote|hr|iframe|body|li|map|button|object|canvas|ol|caption|output|col|p|colgroup|pre|dd|progress|div|section|dl|table|td|dt|tbody|embed|textarea|fieldset|tfoot|figcaption|th|figure|thead|footer|tr|form|ul|h1|h2|h3|h4|h5|h6|video|script|style)(?:\s+)?>))|(?:<!--(?!-?>)(?:[^-]|-(?!-))*-->)|(?:<\?(?:[^\?]|\?(?!>))+\?>)|(?:<![a-zA-Z]+\s+[\s\S]+?>)|(?:<!\[CDATA\[[\s\S]+?\]\]>))[\s\S]*?[ \t]*?(?:\n{2,}|\s*$))/i,
-    'tag': /^(?:(?:<(?:[a-zA-Z][a-zA-Z0-9]*)(?:(?:\s+)(?:[a-zA-Z_:][a-zA-Z0-9_.:-]*)(?:(?:\s+)?=(?:\s+)?(?:[^"'=<>`]+|'[^']*'|"[^"]*"))?)*(?:\s+)?\/?>)|(?:<\/(?:[a-zA-Z][a-zA-Z0-9]*)(?:\s+)?>)|(?:<!--(?!-?>)(?:[^-]|-(?!-))*-->)|(?:<\?(?:[^\?]|\?(?!>))+\?>)|(?:<![a-zA-Z]+\s+[\s\S]+?>)|(?:<!\[CDATA\[[\s\S]+?\]\]>))/,
-    'link': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\(\s*(?:(?!<)((?:\((?:\\[\s\S]|[^\(\)\s])*?\)|\\[\s\S]|[^\(\)\s])*?)|<([^\n]*?)>)(?:\s+(?:\'((?:\\[\s\S]|[^\'])*?)\'|"((?:\\[\s\S]|[^"])*?)"|\(((?:\\[\s\S]|[^\)])*?)\)))?\s*\)/,
-    'reference': /^(!?\[)((?:(?:\[(?:\[(?:\\[\s\S]|[^\[\]])*?\]|\\[\s\S]|[^\[\]])*?\])|\\[\s\S]|[^\[\]])*?)\]\s*\[((?:\\[\s\S]|[^\[\]])*)\]/,
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|(\ {0,3})(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)(?!mailto:)\w+(?!:\/|[^\w\s@]*@)\b))+)/,
-    'blockquote': /^(?=[ \t]*>)(?:(?:(?:[ \t]*>[^\n]*\n)*(?:[ \t]*>[^\n]+(?=\n|$))|(?![ \t]*>)(?![ \t]*([-*_])( *\1){2,} *(?=\n|$)|([ \t]*)((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\3?(?:[-*_][ \t]*){3,}(?:\n|$))|(?=\n+[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))|\n{2,}(?![ \t])(?!\3(?:[*+-]|\d+\.)[ \t])|$)|( *)(([`~])\10{2,})[ \t]*([^\n`~]+)?[ \t]*(?:\n([\s\S]*?))??(?:\n\ {0,3}\9\10*[ \t]*(?=\n|$)|$)|((?: {4}|\t)[^\n]*\n?([ \t]*\n)*)+|[ \t]*\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?[ \t]*(?=\n|$))[^\n]+)(?:\n|$))*(?:[ \t]*>[ \t]*(?:\n[ \t]*>[ \t]*)*)?/,
-    'escape': /^\\(\n|[\\`*{}\[\]()#+\-.!_>"$%&',\/:;<=?@^~|])/
-  },
-  'commonmarkGFM': {
-    'paragraph': /^(?:(?:[^\n]+\n?(?!\ {0,3}([-*_])( *\1){2,} *(?=\n|$)|( *)(([`~])\5{2,})\ {0,3}([^\n`~]+)?\ {0,3}(?:\n([\s\S]*?))??(?:\n\ {0,3}\4\5*\ {0,3}(?=\n|$)|$)|(\ {0,3})((?:[*+-]|\d+\.))[ \t][\s\S]+?(?:(?=\n+\8?(?:[-*_]\ {0,3}){3,}(?:\n|$))|(?=\n+\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))|\n{2,}(?![ \t])(?!\8(?:[*+-]|\d+\.)[ \t])|$)|(\ {0,3})(#{1,6})(?:([ \t]+)([^\n]+?))??(?:[ \t]+#+)?\ {0,3}(?=\n|$)|(?=\ {0,3}>)(?:(?:(?:\ {0,3}>[^\n]*\n)*(?:\ {0,3}>[^\n]+(?=\n|$))|(?!\ {0,3}>)(?!\ {0,3}\[((?:[^\\](?:\\|\\(?:\\{2})+)\]|[^\]])+)\]:[ \t\n]*(<[^>\[\]]+>|[^\s\[\]]+)(?:[ \t\n]+['"(]((?:[^\n]|\n(?!\n))*?)['")])?\ {0,3}(?=\n|$))[^\n]+)(?:\n|$))*(?:\ {0,3}>\ {0,3}(?:\n\ {0,3}>\ {0,3})*)?|<(?!(?:a|em|strong|small|s|cite|q|dfn|abbr|data|time|code|var|samp|kbd|sub|sup|i|b|u|mark|ruby|rt|rp|bdi|bdo|span|br|wbr|ins|del|img)\b)(?!mailto:)\w+(?!:\/|[^\w\s@]*@)\b))+)/
-  },
-  'breaks': {
-    'break': /^ *\n(?!\s*$)/,
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`]| *\n|$)/
-  },
-  'breaksGFM': {
-    'inlineText': /^[\s\S]+?(?=[\\<!\[_*`~]|https?:\/\/| *\n|$)/
-  }
-};
-}, {}],
-29: [function(require, module, exports) {
+30: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:defaults
+ * @module remark:defaults
+ * @version 3.0.0
  * @fileoverview Default values for parse and
  *  stringification settings.
  */
 
 'use strict';
+
+/* eslint-env commonjs */
 
 /*
  * Note that `stringify.entities` is a string.
@@ -5634,6 +6982,8 @@ module.exports = {
         'breaks': false
     },
     'stringify': {
+        'gfm': true,
+        'commonmark': false,
         'entities': 'false',
         'setext': false,
         'closeAtx': false,
@@ -5652,23 +7002,82 @@ module.exports = {
     }
 };
 }, {}],
+31: [function(require, module, exports) {
+module.exports = [
+    "article",
+    "header",
+    "aside",
+    "hgroup",
+    "blockquote",
+    "hr",
+    "iframe",
+    "body",
+    "li",
+    "map",
+    "button",
+    "object",
+    "canvas",
+    "ol",
+    "caption",
+    "output",
+    "col",
+    "p",
+    "colgroup",
+    "pre",
+    "dd",
+    "progress",
+    "div",
+    "section",
+    "dl",
+    "table",
+    "td",
+    "dt",
+    "tbody",
+    "embed",
+    "textarea",
+    "fieldset",
+    "tfoot",
+    "figcaption",
+    "th",
+    "figure",
+    "thead",
+    "footer",
+    "tr",
+    "form",
+    "ul",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "h5",
+    "h6",
+    "video",
+    "script",
+    "style"
+]
+;
+}, {}],
 15: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:stringify
+ * @module remark:stringify
+ * @version 3.0.0
  * @fileoverview Compile an abstract syntax tree into
  *   a markdown document.
  */
 
 'use strict';
 
+/* eslint-env commonjs */
+
 /*
  * Dependencies.
  */
 
-var he = require('he');
+var decode = require('parse-entities');
+var encode = require('stringify-entities');
 var table = require('markdown-table');
 var repeat = require('repeat-string');
 var extend = require('extend.js');
@@ -5683,6 +7092,9 @@ var defaultOptions = require('./defaults.js').stringify;
 
 var raise = utilities.raise;
 var validate = utilities.validate;
+var stateToggler = utilities.stateToggler;
+var mergeable = utilities.mergeable;
+var MERGEABLE_NODES = utilities.MERGEABLE_NODES;
 
 /*
  * Constants.
@@ -5693,6 +7105,7 @@ var MINIMUM_CODE_FENCE_LENGTH = 3;
 var YAML_FENCE_LENGTH = 3;
 var MINIMUM_RULE_LENGTH = 3;
 var MAILTO = 'mailto:';
+var ERROR_LIST_ITEM_INDENT = 'Cannot indent code properly. See ' + 'http://git.io/mdast-lii';
 
 /*
  * Expressions.
@@ -5715,21 +7128,32 @@ var FENCE = /([`~])\1{2}/;
 var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
 
 /*
+ * Punctuation characters.
+ */
+
+var PUNCTUATION = /[-!"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~_]/;
+
+/*
  * Characters.
  */
 
 var ANGLE_BRACKET_CLOSE = '>';
 var ANGLE_BRACKET_OPEN = '<';
 var ASTERISK = '*';
+var BACKSLASH = '\\';
 var CARET = '^';
 var COLON = ':';
+var SEMICOLON = ';';
 var DASH = '-';
 var DOT = '.';
 var EMPTY = '';
 var EQUALS = '=';
 var EXCLAMATION_MARK = '!';
 var HASH = '#';
+var AMPERSAND = '&';
 var LINE = '\n';
+var CARRIAGE = '\r';
+var FORM_FEED = '\f';
 var PARENTHESIS_OPEN = '(';
 var PARENTHESIS_CLOSE = ')';
 var PIPE = '|';
@@ -5737,11 +7161,21 @@ var PLUS = '+';
 var QUOTE_DOUBLE = '"';
 var QUOTE_SINGLE = '\'';
 var SPACE = ' ';
+var TAB = '\t';
+var VERTICAL_TAB = '\u000b';
 var SQUARE_BRACKET_OPEN = '[';
 var SQUARE_BRACKET_CLOSE = ']';
 var TICK = '`';
 var TILDE = '~';
 var UNDERSCORE = '_';
+
+/*
+ * Entities.
+ */
+
+var ENTITY_AMPERSAND = AMPERSAND + 'amp' + SEMICOLON;
+var ENTITY_ANGLE_BRACKET_OPEN = AMPERSAND + 'lt' + SEMICOLON;
+var ENTITY_COLON = AMPERSAND + '#x3A' + SEMICOLON;
 
 /*
  * Character combinations.
@@ -5857,35 +7291,18 @@ function encodeNoop(value) {
  * which encodes using numbered references when `type` is
  * `'numbers'`.
  *
- * By default this should not throw errors, but he does
- * throw an error when in `strict` mode:
- *
- *     he.encode.options.strict = true;
- *     encodeFactory('true')('\x01') // throws
- *
- * These are thrown on the currently compiled `File`.
- *
  * @example
- *   var file = new File();
- *
- *   var encode = encodeFactory('false', file);
- *   encode('AT&T') // 'AT&T'
- *
- *   encode = encodeFactory('true', file);
- *   encode('AT&T') // 'AT&amp;T'
- *
- *   encode = encodeFactory('numbers', file);
- *   encode('AT&T') // 'ATT&#x26;T'
+ *   encodeFactory('false')('AT&T') // 'AT&T'
+ *   encodeFactory('true')('AT&T') // 'AT&amp;T'
+ *   encodeFactory('numbers')('AT&T') // 'ATT&#x26;T'
  *
  * @param {string} type - Either `'true'`, `'false'`, or
- *   `numbers`.
- * @param {File} file - Currently compiled virtual file.
+ *   `'numbers'`.
  * @return {function(string): string} - Function which
  *   takes a value and returns its encoded version.
  */
-function encodeFactory(type, file) {
+function encodeFactory(type) {
     var options = {};
-    var fn;
 
     if (type === 'false') {
         return encodeNoop;
@@ -5895,7 +7312,9 @@ function encodeFactory(type, file) {
         options.useNamedReferences = true;
     }
 
-    fn = type === 'escape' ? 'escape' : 'encode';
+    if (type === 'escape') {
+        options.escapeOnly = options.useNamedReferences = true;
+    }
 
     /**
      * Encode HTML entities using `he` using bound options.
@@ -5910,7 +7329,7 @@ function encodeFactory(type, file) {
      *   encode('AT&T'); // 'ATT&#x26;T'
      *
      * @param {string} value - Content.
-     * @param {Object} node - Node which is compiled.
+     * @param {Object} [node] - Node which is compiled.
      * @return {string} - Encoded content.
      * @throws {Error} - When `file.quiet` is not `true`.
      *   However, by default `he` does not throw on
@@ -5918,15 +7337,275 @@ function encodeFactory(type, file) {
      *   `he.encode.options.strict: true`, they occur on
      *   invalid HTML.
      */
-    function encode(value, node) {
-        try {
-            return he[fn](value, options);
-        } catch (exception) {
-            file.fail(exception, node.position);
+    function encoder(value) {
+        return encode(value, options);
+    }
+
+    return encoder;
+}
+
+/**
+ * Check if a string starts with HTML entity.
+ *
+ * @example
+ *   startsWithEntity('&copycat') // true
+ *   startsWithEntity('&foo &amp &bar') // false
+ *
+ * @param {string} value - Value to check.
+ * @return {boolean} - Whether `value` starts an entity.
+ */
+function startsWithEntity(value) {
+    var prefix;
+
+    /* istanbul ignore if - Currently also tested for at
+     * implemention, but we keep it here because that’s
+     * proper. */
+    if (value.charAt(0) !== AMPERSAND) {
+        return false;
+    }
+
+    prefix = value.split(AMPERSAND, 2).join(AMPERSAND);
+
+    return decode(prefix).length !== prefix.length;
+}
+
+/**
+ * Check if `character` is a valid alignment row character.
+ *
+ * @example
+ *   isAlignmentRowCharacter(':') // true
+ *   isAlignmentRowCharacter('=') // false
+ *
+ * @param {string} character - Character to check.
+ * @return {boolean} - Whether `character` is a valid
+ *   alignment row character.
+ */
+function isAlignmentRowCharacter(character) {
+    return character === COLON || character === DASH || character === SPACE || character === PIPE;
+}
+
+/**
+ * Check if `index` in `value` is inside an alignment row.
+ *
+ * @example
+ *   isInAlignmentRow(':--:', 2) // true
+ *   isInAlignmentRow(':--:\n:-*-:', 9) // false
+ *
+ * @param {string} value - Value to check.
+ * @param {number} index - Position in `value` to check.
+ * @return {boolean} - Whether `index` in `value` is in
+ *   an alignment row.
+ */
+function isInAlignmentRow(value, index) {
+    var length = value.length;
+    var start = index;
+    var character;
+
+    while (++index < length) {
+        character = value.charAt(index);
+
+        if (character === LINE) {
+            break;
+        }
+
+        if (!isAlignmentRowCharacter(character)) {
+            return false;
         }
     }
 
-    return encode;
+    index = start;
+
+    while (--index > -1) {
+        character = value.charAt(index);
+
+        if (character === LINE) {
+            break;
+        }
+
+        if (!isAlignmentRowCharacter(character)) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+/**
+ * Factory to escape characters.
+ *
+ * @example
+ *   var escape = escapeFactory({ commonmark: true });
+ *   escape('x*x', { type: 'text', value: 'x*x' }) // 'x\\*x'
+ *
+ * @param {Object} options - Compiler options.
+ * @return {function(value, node, parent): string} - Function which
+ *   takes a value and a node and (optionally) its parent and returns
+ *   its escaped value.
+ */
+function escapeFactory(options) {
+    /**
+     * Escape punctuation characters in a node's value.
+     *
+     * @param {string} value - Value to escape.
+     * @param {Object} node - Node in which `value` exists.
+     * @param {Object} [parent] - Parent of `node`.
+     * @return {string} - Escaped `value`.
+     */
+    return function escape(value, node, parent) {
+        var self = this;
+        var gfm = options.gfm;
+        var commonmark = options.commonmark;
+        var siblings = parent && parent.children;
+        var index = siblings && siblings.indexOf(node);
+        var prev = siblings && siblings[index - 1];
+        var next = siblings && siblings[index + 1];
+        var length = value.length;
+        var position = -1;
+        var queue = [];
+        var escaped = queue;
+        var afterNewLine;
+        var character;
+
+        if (prev) {
+            afterNewLine = prev.type === 'text' && /\n\s*$/.test(prev.value);
+        } else if (parent) {
+            afterNewLine = parent.type === 'paragraph';
+        }
+
+        while (++position < length) {
+            character = value.charAt(position);
+
+            if (character === BACKSLASH || character === TICK || character === ASTERISK || character === SQUARE_BRACKET_OPEN || character === UNDERSCORE || self.inLink && character === SQUARE_BRACKET_CLOSE || gfm && character === PIPE && (self.inTable || isInAlignmentRow(value, position))) {
+                afterNewLine = false;
+                queue.push(BACKSLASH);
+            } else if (character === ANGLE_BRACKET_OPEN) {
+                afterNewLine = false;
+
+                if (commonmark) {
+                    queue.push(BACKSLASH);
+                } else {
+                    queue.push(ENTITY_ANGLE_BRACKET_OPEN);
+                    continue;
+                }
+            } else if (gfm && !self.inLink && character === COLON && (queue.slice(-6).join(EMPTY) === 'mailto' || queue.slice(-5).join(EMPTY) === 'https' || queue.slice(-4).join(EMPTY) === 'http')) {
+                afterNewLine = false;
+
+                if (commonmark) {
+                    queue.push(BACKSLASH);
+                } else {
+                    queue.push(ENTITY_COLON);
+                    continue;
+                }
+                /* istanbul ignore if - Impossible to test with
+                 * the current set-up.  We need tests which try
+                 * to force markdown content into the tree. */
+            } else if (character === AMPERSAND && startsWithEntity(value.slice(position))) {
+                    afterNewLine = false;
+
+                    if (commonmark) {
+                        queue.push(BACKSLASH);
+                    } else {
+                        queue.push(ENTITY_AMPERSAND);
+                        continue;
+                    }
+                } else if (gfm && character === TILDE && value.charAt(position + 1) === TILDE) {
+                    queue.push(BACKSLASH, TILDE);
+                    afterNewLine = false;
+                    position += 1;
+                } else if (character === LINE) {
+                    afterNewLine = true;
+                } else if (afterNewLine) {
+                    if (character === ANGLE_BRACKET_CLOSE || character === HASH || LIST_BULLETS[character]) {
+                        queue.push(BACKSLASH);
+                        afterNewLine = false;
+                    } else if (character !== SPACE && character !== TAB && character !== CARRIAGE && character !== VERTICAL_TAB && character !== FORM_FEED) {
+                        afterNewLine = false;
+                    }
+                }
+
+            queue.push(character);
+        }
+
+        /*
+         * Multi-node versions.
+         */
+
+        if (siblings && node.type === 'text') {
+            /*
+             * Check for an opening parentheses after a
+             * link-reference (which can be joined by
+             * white-space).
+             */
+
+            if (prev && prev.referenceType === 'shortcut') {
+                position = -1;
+                length = escaped.length;
+
+                while (++position < length) {
+                    character = escaped[position];
+
+                    if (character === SPACE || character === TAB) {
+                        continue;
+                    }
+
+                    if (character === PARENTHESIS_OPEN) {
+                        escaped[position] = BACKSLASH + character;
+                    }
+
+                    if (character === COLON) {
+                        if (commonmark) {
+                            escaped[position] = BACKSLASH + character;
+                        } else {
+                            escaped[position] = ENTITY_COLON;
+                        }
+                    }
+
+                    break;
+                }
+            }
+
+            /*
+             * Ensure non-auto-links are not seen as links.
+             * This pattern needs to check the preceding
+             * nodes too.
+             */
+
+            if (gfm && !self.inLink && prev && prev.type === 'text' && value.charAt(0) === COLON) {
+                queue = prev.value.slice(-6);
+
+                if (queue === 'mailto' || queue.slice(-5) === 'https' || queue.slice(-4) === 'http') {
+                    if (commonmark) {
+                        escaped.unshift(BACKSLASH);
+                    } else {
+                        escaped.splice(0, 1, ENTITY_COLON);
+                    }
+                }
+            }
+
+            /*
+             * Escape ampersand if it would otherwise
+             * start an entity.
+             */
+
+            if (next && next.type === 'text' && value.slice(-1) === AMPERSAND && startsWithEntity(AMPERSAND + next.value)) {
+                if (commonmark) {
+                    escaped.splice(escaped.length - 1, 0, BACKSLASH);
+                } else {
+                    escaped.push('amp', SEMICOLON);
+                }
+            }
+
+            /*
+             * Escape double tildes in GFM.
+             */
+
+            if (gfm && next && next.type === 'text' && value.slice(-1) === TILDE && next.value.charAt(0) === TILDE) {
+                escaped.splice(escaped.length - 1, 0, BACKSLASH);
+            }
+        }
+
+        return escaped.join(EMPTY);
+    };
 }
 
 /**
@@ -5947,7 +7626,7 @@ function encodeFactory(type, file) {
  *   encloseURI('example.com') // 'example.com'
  *   encloseURI('example.com', true) // '<example.com>'
  *
- * @param {string} uri
+ * @param {string} uri - URI to enclose.
  * @param {boolean?} [always] - Force enclosing.
  * @return {boolean} - Properly enclosed `uri`.
  */
@@ -6102,12 +7781,20 @@ compilerPrototype.setOptions = function (options) {
         raise(ruleRepetition, 'options.ruleRepetition');
     }
 
-    self.encode = encodeFactory(String(options.entities), self.file);
+    self.encode = encodeFactory(String(options.entities));
+    self.escape = escapeFactory(options);
 
     self.options = options;
 
     return self;
 };
+
+/*
+ * Enter and exit helpers.
+ */
+
+compilerPrototype.enterLink = stateToggler('inLink', false);
+compilerPrototype.enterTable = stateToggler('inTable', false);
 
 /**
  * Visit a node.
@@ -6168,12 +7855,27 @@ compilerPrototype.all = function (parent) {
     var self = this;
     var children = parent.children;
     var values = [];
-    var index = -1;
+    var index = 0;
     var length = children.length;
+    var node = children[0];
+    var next;
+
+    if (length === 0) {
+        return values;
+    }
 
     while (++index < length) {
-        values[index] = self.visit(children[index], parent);
+        next = children[index];
+
+        if (node.type === next.type && node.type in MERGEABLE_NODES && mergeable(node) && mergeable(next)) {
+            node = MERGEABLE_NODES[node.type].call(self, node, next);
+        } else {
+            values.push(self.visit(node, parent));
+            node = next;
+        }
     }
+
+    values.push(self.visit(node, parent));
 
     return values;
 };
@@ -6452,29 +8154,11 @@ compilerPrototype.heading = function (node) {
  *   // 'foo'
  *
  * @param {Object} node - `text` node.
+ * @param {Object} parent - Parent of `node`.
  * @return {string} - Raw markdown text.
  */
-compilerPrototype.text = function (node) {
-    return this.encode(node.value, node);
-};
-
-/**
- * Stringify escaped text.
- *
- * @example
- *   var compiler = new Compiler();
- *
- *   compiler.escape({
- *     type: 'escape',
- *     value: '\n'
- *   });
- *   // '\\\n'
- *
- * @param {Object} node - `escape` node.
- * @return {string} - Markdown escape.
- */
-compilerPrototype.escape = function (node) {
-    return '\\' + node.value;
+compilerPrototype.text = function (node, parent) {
+    return this.encode(this.escape(node.value, node, parent), node);
 };
 
 /**
@@ -6527,9 +8211,18 @@ compilerPrototype.paragraph = function (node) {
  * @return {string} - Markdown block quote.
  */
 compilerPrototype.blockquote = function (node) {
-    var indent = ANGLE_BRACKET_CLOSE + SPACE;
+    var values = this.block(node).split(LINE);
+    var result = [];
+    var length = values.length;
+    var index = -1;
+    var value;
 
-    return indent + this.block(node).split(LINE).join(LINE + indent);
+    while (++index < length) {
+        value = values[index];
+        result[index] = (value ? SPACE : EMPTY) + value;
+    }
+
+    return ANGLE_BRACKET_CLOSE + result.join(LINE + ANGLE_BRACKET_CLOSE);
 };
 
 /**
@@ -6746,19 +8439,31 @@ compilerPrototype.yaml = function (node) {
  *   // '```js\nfooo();\n```'
  *
  * @param {Object} node - `code` node.
+ * @param {Object} parent - Parent of `node`.
  * @return {string} - Markdown code block.
  */
-compilerPrototype.code = function (node) {
+compilerPrototype.code = function (node, parent) {
+    var self = this;
     var value = node.value;
-    var marker = this.options.fence;
-    var language = this.encode(node.lang || EMPTY, node);
+    var options = self.options;
+    var marker = options.fence;
+    var language = self.encode(node.lang || EMPTY, node);
     var fence;
 
     /*
-     * Probably pedantic.
+     * Without (needed) fences.
      */
 
-    if (!language && !this.options.fences && value) {
+    if (!language && !options.fences && value) {
+        /*
+         * Throw when pedantic, in a list item which
+         * isn’t compiled using a tab.
+         */
+
+        if (parent && parent.type === 'listItem' && options.listItemIndent !== LIST_ITEM_TAB && options.pedantic) {
+            self.file.fail(ERROR_LIST_ITEM_INDENT, node.position);
+        }
+
         return pad(value, 1);
     }
 
@@ -6903,6 +8608,10 @@ compilerPrototype.emphasis = function (node) {
 /**
  * Stringify a hard break.
  *
+ * In Commonmark mode, trailing backslash form is used in order
+ * to preserve trailing whitespace that the line may end with,
+ * and also for better visibility.
+ *
  * @example
  *   var compiler = new Compiler();
  *
@@ -6914,7 +8623,7 @@ compilerPrototype.emphasis = function (node) {
  * @return {string} - Hard markdown break.
  */
 compilerPrototype['break'] = function () {
-    return SPACE + SPACE + LINE;
+    return this.options.commonmark ? BACKSLASH + LINE : SPACE + SPACE + LINE;
 };
 
 /**
@@ -6976,16 +8685,25 @@ compilerPrototype['delete'] = function (node) {
 compilerPrototype.link = function (node) {
     var self = this;
     var url = self.encode(node.href, node);
+    var exit = self.enterLink();
+    var escapedURL = self.encode(self.escape(node.href, node));
     var value = self.all(node).join(EMPTY);
 
-    if (node.title === null && PROTOCOL.test(url) && (url === value || url === MAILTO + value)) {
-        return encloseURI(url, true);
+    exit();
+
+    if (node.title === null && PROTOCOL.test(url) && (escapedURL === value || escapedURL === MAILTO + value)) {
+        /*
+         * Backslash escapes do not work in autolinks,
+         * so we do not escape.
+         */
+
+        return encloseURI(self.encode(node.href), true);
     }
 
     url = encloseURI(url);
 
     if (node.title) {
-        url += SPACE + encloseTitle(self.encode(node.title, node));
+        url += SPACE + encloseTitle(self.encode(self.escape(node.title, node), node));
     }
 
     value = SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE;
@@ -7046,6 +8764,73 @@ function label(node) {
 }
 
 /**
+ * For shortcut reference links, the contents is also an
+ * identifier, and for identifiers extra backslashes do
+ * matter.
+ *
+ * This function takes an escaped value from shortcut's children
+ * and an identifier and removes extra backslashes.
+ *
+ * @example
+ *   unescapeShortcutLinkReference('a\\*b', 'a*b')
+ *   // 'a*b'
+ *
+ * @param {string} value - Escaped and stringified link value.
+ * @param {string} identifier - Link identifier, in one of its
+ *   equivalent forms.
+ * @return {string} - Link value with some characters unescaped.
+ */
+function unescapeShortcutLinkReference(value, identifier) {
+    var index = 0;
+    var position = 0;
+    var length = value.length;
+    var count = identifier.length;
+    var result = [];
+    var start;
+
+    while (index < length) {
+        /*
+         * Take next non-punctuation characters from `value`.
+         */
+
+        start = index;
+
+        while (index < length && !PUNCTUATION.test(value.charAt(index))) {
+            index += 1;
+        }
+
+        result.push(value.slice(start, index));
+
+        /*
+         * Advance `position` to the next punctuation character.
+         */
+        while (position < count && !PUNCTUATION.test(identifier.charAt(position))) {
+            position += 1;
+        }
+
+        /*
+         * Take next punctuation characters from `identifier`.
+         */
+        start = position;
+
+        while (position < count && PUNCTUATION.test(identifier.charAt(position))) {
+            position += 1;
+        }
+
+        result.push(identifier.slice(start, position));
+
+        /*
+         * Advance `index` to the next non-punctuation character.
+         */
+        while (index < length && PUNCTUATION.test(value.charAt(index))) {
+            index += 1;
+        }
+    }
+
+    return result.join(EMPTY);
+}
+
+/**
  * Stringify a link reference.
  *
  * See `label()` on how reference labels are created.
@@ -7068,7 +8853,17 @@ function label(node) {
  * @return {string} - Markdown link reference.
  */
 compilerPrototype.linkReference = function (node) {
-    return SQUARE_BRACKET_OPEN + this.all(node).join(EMPTY) + SQUARE_BRACKET_CLOSE + label(node);
+    var self = this;
+    var exitLink = self.enterLink();
+    var value = self.all(node).join(EMPTY);
+
+    exitLink();
+
+    if (node.referenceType == 'shortcut') {
+        value = unescapeShortcutLinkReference(value, node.identifier);
+    }
+
+    return SQUARE_BRACKET_OPEN + value + SQUARE_BRACKET_CLOSE + label(node);
 };
 
 /**
@@ -7094,7 +8889,7 @@ compilerPrototype.linkReference = function (node) {
  * @return {string} - Markdown image reference.
  */
 compilerPrototype.imageReference = function (node) {
-    var alt = this.encode(node.alt, node);
+    var alt = this.encode(node.alt, node) || EMPTY;
 
     return EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + alt + SQUARE_BRACKET_CLOSE + label(node);
 };
@@ -7177,15 +8972,14 @@ compilerPrototype.definition = function (node) {
  * @return {string} - Markdown image.
  */
 compilerPrototype.image = function (node) {
-    var encode = this.encode;
-    var url = encloseURI(encode(node.src, node));
+    var url = encloseURI(this.encode(node.src, node));
     var value;
 
     if (node.title) {
-        url += SPACE + encloseTitle(encode(node.title, node));
+        url += SPACE + encloseTitle(this.encode(node.title, node));
     }
 
-    value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + encode(node.alt || EMPTY, node) + SQUARE_BRACKET_CLOSE;
+    value = EXCLAMATION_MARK + SQUARE_BRACKET_OPEN + this.encode(node.alt || EMPTY, node) + SQUARE_BRACKET_CLOSE;
 
     value += PARENTHESIS_OPEN + url + PARENTHESIS_CLOSE;
 
@@ -7321,12 +9115,15 @@ compilerPrototype.table = function (node) {
     var spaced = self.options.spacedTable;
     var rows = node.children;
     var index = rows.length;
+    var exit = self.enterTable();
     var result = [];
     var start;
 
     while (index--) {
         result[index] = self.all(rows[index]);
     }
+
+    exit();
 
     start = loose ? EMPTY : spaced ? PIPE + SPACE : PIPE;
 
@@ -7389,8 +9186,444 @@ compilerPrototype.compile = function () {
  */
 
 module.exports = Compiler;
-}, {"he":22,"markdown-table":31,"repeat-string":23,"extend.js":26,"ccount":32,"longest-streak":33,"./utilities.js":27,"./defaults.js":29}],
-31: [function(require, module, exports) {
+}, {"parse-entities":24,"stringify-entities":37,"markdown-table":38,"repeat-string":25,"extend.js":28,"ccount":39,"longest-streak":40,"./utilities.js":29,"./defaults.js":30}],
+37: [function(require, module, exports) {
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module stringify-entities
+ * @fileoverview Encode HTML character references and character entities.
+ */
+
+'use strict';
+
+/* eslint-env commonjs */
+
+/*
+ * Dependencies.
+ */
+
+var entities = require('character-entities-html4');
+var EXPRESSION_NAMED = require('./lib/expression.js');
+
+/*
+ * Methods.
+ */
+
+var has = ({}).hasOwnProperty;
+
+/*
+ * List of enforced escapes.
+ */
+
+var escapes = ['"', '\'', '<', '>', '&', '`'];
+
+/*
+ * Map of characters to names.
+ */
+
+var characters = {};
+
+(function () {
+    var name;
+
+    for (name in entities) {
+        characters[entities[name]] = name;
+    }
+})();
+
+/*
+ * Regular expressions.
+ */
+
+var EXPRESSION_ESCAPE = new RegExp('[' + escapes.join('') + ']', 'g');
+var EXPRESSION_SURROGATE_PAIR = /[\uD800-\uDBFF][\uDC00-\uDFFF]/g;
+var EXPRESSION_BMP = /[\x01-\t\x0B\f\x0E-\x1F\x7F\x81\x8D\x8F\x90\x9D\xA0-\uFFFF]/g;
+
+/**
+ * Transform `code` into a hexadecimal character reference.
+ *
+ * @param {number} code - Number to encode.
+ * @return {string} - `code` encoded as hexadecimal.
+ */
+function characterCodeToHexadecimalReference(code) {
+    return '&#x' + code.toString(16).toUpperCase() + ';';
+}
+
+/**
+ * Transform `character` into a hexadecimal character
+ * reference.
+ *
+ * @param {string} character - Character to encode.
+ * @return {string} - `character` encoded as hexadecimal.
+ */
+function characterToHexadecimalReference(character) {
+    return characterCodeToHexadecimalReference(character.charCodeAt(0));
+}
+
+/**
+ * Transform `code` into an entity.
+ *
+ * @param {string} name - Name to wrap.
+ * @return {string} - `name` encoded as hexadecimal.
+ */
+function toNamedEntity(name) {
+    return '&' + name + ';';
+}
+
+/**
+ * Transform `code` into an entity.
+ *
+ * @param {string} character - Character to encode.
+ * @return {string} - `name` encoded as hexadecimal.
+ */
+function characterToNamedEntity(character) {
+    return toNamedEntity(characters[character]);
+}
+
+/**
+ * Encode special characters in `value`.
+ *
+ * @param {string} value - Value to encode.
+ * @param {Object?} [options] - Configuration.
+ * @param {boolean?} [options.escapeOnly=false]
+ *   - Whether to only escape required characters.
+ * @param {boolean?} [options.useNamedReferences=false]
+ *   - Whether to use entities where possible.
+ * @return {string} - Encoded `value`.
+ */
+function encode(value, options) {
+    var settings = options || {};
+    var escapeOnly = settings.escapeOnly;
+    var named = settings.useNamedReferences;
+    var map = named ? characters : null;
+
+    value = value.replace(EXPRESSION_ESCAPE, function (character) {
+        return map && has.call(map, character) ? toNamedEntity(map[character]) : characterToHexadecimalReference(character);
+    });
+
+    if (escapeOnly) {
+        return value;
+    }
+
+    if (named) {
+        value = value.replace(EXPRESSION_NAMED, characterToNamedEntity);
+    }
+
+    return value.replace(EXPRESSION_SURROGATE_PAIR, function (pair) {
+        return characterCodeToHexadecimalReference((pair.charCodeAt(0) - 0xD800) * 0x400 + pair.charCodeAt(1) - 0xDC00 + 0x10000);
+    }).replace(EXPRESSION_BMP, characterToHexadecimalReference);
+}
+
+/**
+ * Shortcut to escape special characters in HTML.
+ *
+ * @param {string} value - Value to encode.
+ * @return {string} - Encoded `value`.
+ */
+function escape(value) {
+    return encode(value, {
+        'escapeOnly': true,
+        'useNamedReferences': true
+    });
+}
+
+encode.escape = escape;
+
+/*
+ * Expose.
+ */
+
+module.exports = encode;
+}, {"character-entities-html4":41,"./lib/expression.js":42}],
+41: [function(require, module, exports) {
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module character-entities-html4
+ * @fileoverview HTML4 character entity information.
+ */
+
+'use strict';
+
+/* eslint-env commonjs */
+
+/*
+ * Expose.
+ */
+
+module.exports = require('./index.json');
+}, {"./index.json":43}],
+43: [function(require, module, exports) {
+module.exports = {
+  "nbsp": " ",
+  "iexcl": "¡",
+  "cent": "¢",
+  "pound": "£",
+  "curren": "¤",
+  "yen": "¥",
+  "brvbar": "¦",
+  "sect": "§",
+  "uml": "¨",
+  "copy": "©",
+  "ordf": "ª",
+  "laquo": "«",
+  "not": "¬",
+  "shy": "­",
+  "reg": "®",
+  "macr": "¯",
+  "deg": "°",
+  "plusmn": "±",
+  "sup2": "²",
+  "sup3": "³",
+  "acute": "´",
+  "micro": "µ",
+  "para": "¶",
+  "middot": "·",
+  "cedil": "¸",
+  "sup1": "¹",
+  "ordm": "º",
+  "raquo": "»",
+  "frac14": "¼",
+  "frac12": "½",
+  "frac34": "¾",
+  "iquest": "¿",
+  "Agrave": "À",
+  "Aacute": "Á",
+  "Acirc": "Â",
+  "Atilde": "Ã",
+  "Auml": "Ä",
+  "Aring": "Å",
+  "AElig": "Æ",
+  "Ccedil": "Ç",
+  "Egrave": "È",
+  "Eacute": "É",
+  "Ecirc": "Ê",
+  "Euml": "Ë",
+  "Igrave": "Ì",
+  "Iacute": "Í",
+  "Icirc": "Î",
+  "Iuml": "Ï",
+  "ETH": "Ð",
+  "Ntilde": "Ñ",
+  "Ograve": "Ò",
+  "Oacute": "Ó",
+  "Ocirc": "Ô",
+  "Otilde": "Õ",
+  "Ouml": "Ö",
+  "times": "×",
+  "Oslash": "Ø",
+  "Ugrave": "Ù",
+  "Uacute": "Ú",
+  "Ucirc": "Û",
+  "Uuml": "Ü",
+  "Yacute": "Ý",
+  "THORN": "Þ",
+  "szlig": "ß",
+  "agrave": "à",
+  "aacute": "á",
+  "acirc": "â",
+  "atilde": "ã",
+  "auml": "ä",
+  "aring": "å",
+  "aelig": "æ",
+  "ccedil": "ç",
+  "egrave": "è",
+  "eacute": "é",
+  "ecirc": "ê",
+  "euml": "ë",
+  "igrave": "ì",
+  "iacute": "í",
+  "icirc": "î",
+  "iuml": "ï",
+  "eth": "ð",
+  "ntilde": "ñ",
+  "ograve": "ò",
+  "oacute": "ó",
+  "ocirc": "ô",
+  "otilde": "õ",
+  "ouml": "ö",
+  "divide": "÷",
+  "oslash": "ø",
+  "ugrave": "ù",
+  "uacute": "ú",
+  "ucirc": "û",
+  "uuml": "ü",
+  "yacute": "ý",
+  "thorn": "þ",
+  "yuml": "ÿ",
+  "fnof": "ƒ",
+  "Alpha": "Α",
+  "Beta": "Β",
+  "Gamma": "Γ",
+  "Delta": "Δ",
+  "Epsilon": "Ε",
+  "Zeta": "Ζ",
+  "Eta": "Η",
+  "Theta": "Θ",
+  "Iota": "Ι",
+  "Kappa": "Κ",
+  "Lambda": "Λ",
+  "Mu": "Μ",
+  "Nu": "Ν",
+  "Xi": "Ξ",
+  "Omicron": "Ο",
+  "Pi": "Π",
+  "Rho": "Ρ",
+  "Sigma": "Σ",
+  "Tau": "Τ",
+  "Upsilon": "Υ",
+  "Phi": "Φ",
+  "Chi": "Χ",
+  "Psi": "Ψ",
+  "Omega": "Ω",
+  "alpha": "α",
+  "beta": "β",
+  "gamma": "γ",
+  "delta": "δ",
+  "epsilon": "ε",
+  "zeta": "ζ",
+  "eta": "η",
+  "theta": "θ",
+  "iota": "ι",
+  "kappa": "κ",
+  "lambda": "λ",
+  "mu": "μ",
+  "nu": "ν",
+  "xi": "ξ",
+  "omicron": "ο",
+  "pi": "π",
+  "rho": "ρ",
+  "sigmaf": "ς",
+  "sigma": "σ",
+  "tau": "τ",
+  "upsilon": "υ",
+  "phi": "φ",
+  "chi": "χ",
+  "psi": "ψ",
+  "omega": "ω",
+  "thetasym": "ϑ",
+  "upsih": "ϒ",
+  "piv": "ϖ",
+  "bull": "•",
+  "hellip": "…",
+  "prime": "′",
+  "Prime": "″",
+  "oline": "‾",
+  "frasl": "⁄",
+  "weierp": "℘",
+  "image": "ℑ",
+  "real": "ℜ",
+  "trade": "™",
+  "alefsym": "ℵ",
+  "larr": "←",
+  "uarr": "↑",
+  "rarr": "→",
+  "darr": "↓",
+  "harr": "↔",
+  "crarr": "↵",
+  "lArr": "⇐",
+  "uArr": "⇑",
+  "rArr": "⇒",
+  "dArr": "⇓",
+  "hArr": "⇔",
+  "forall": "∀",
+  "part": "∂",
+  "exist": "∃",
+  "empty": "∅",
+  "nabla": "∇",
+  "isin": "∈",
+  "notin": "∉",
+  "ni": "∋",
+  "prod": "∏",
+  "sum": "∑",
+  "minus": "−",
+  "lowast": "∗",
+  "radic": "√",
+  "prop": "∝",
+  "infin": "∞",
+  "ang": "∠",
+  "and": "∧",
+  "or": "∨",
+  "cap": "∩",
+  "cup": "∪",
+  "int": "∫",
+  "there4": "∴",
+  "sim": "∼",
+  "cong": "≅",
+  "asymp": "≈",
+  "ne": "≠",
+  "equiv": "≡",
+  "le": "≤",
+  "ge": "≥",
+  "sub": "⊂",
+  "sup": "⊃",
+  "nsub": "⊄",
+  "sube": "⊆",
+  "supe": "⊇",
+  "oplus": "⊕",
+  "otimes": "⊗",
+  "perp": "⊥",
+  "sdot": "⋅",
+  "lceil": "⌈",
+  "rceil": "⌉",
+  "lfloor": "⌊",
+  "rfloor": "⌋",
+  "lang": "〈",
+  "rang": "〉",
+  "loz": "◊",
+  "spades": "♠",
+  "clubs": "♣",
+  "hearts": "♥",
+  "diams": "♦",
+  "quot": "\"",
+  "amp": "&",
+  "lt": "<",
+  "gt": ">",
+  "OElig": "Œ",
+  "oelig": "œ",
+  "Scaron": "Š",
+  "scaron": "š",
+  "Yuml": "Ÿ",
+  "circ": "ˆ",
+  "tilde": "˜",
+  "ensp": " ",
+  "emsp": " ",
+  "thinsp": " ",
+  "zwnj": "‌",
+  "zwj": "‍",
+  "lrm": "‎",
+  "rlm": "‏",
+  "ndash": "–",
+  "mdash": "—",
+  "lsquo": "‘",
+  "rsquo": "’",
+  "sbquo": "‚",
+  "ldquo": "“",
+  "rdquo": "”",
+  "bdquo": "„",
+  "dagger": "†",
+  "Dagger": "‡",
+  "permil": "‰",
+  "lsaquo": "‹",
+  "rsaquo": "›",
+  "euro": "€"
+}
+;
+}, {}],
+42: [function(require, module, exports) {
+/* This script was generated by `script/generate-expression.js` */
+
+'use strict';
+
+/* eslint-env commonjs */
+/* eslint-disable no-irregular-whitespace */
+
+module.exports = /[ ¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿƒΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩαβγδεζηθικλμνξοπρςστυφχψωϑϒϖ•…′″‾⁄℘ℑℜ™ℵ←↑→↓↔↵⇐⇑⇒⇓⇔∀∂∃∅∇∈∉∋∏∑−∗√∝∞∠∧∨∩∪∫∴∼≅≈≠≡≤≥⊂⊃⊄⊆⊇⊕⊗⊥⋅⌈⌉⌊⌋〈〉◊♠♣♥♦ŒœŠšŸˆ˜   ‌‍‎‏–—‘’‚“”„†‡‰‹›€]/g;
+}, {}],
+38: [function(require, module, exports) {
 'use strict';
 
 /*
@@ -7674,7 +9907,7 @@ function markdownTable(table, options) {
 
 module.exports = markdownTable;
 }, {}],
-32: [function(require, module, exports) {
+39: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -7725,7 +9958,7 @@ function ccount(value, character) {
 
 module.exports = ccount;
 }, {}],
-33: [function(require, module, exports) {
+40: [function(require, module, exports) {
 'use strict';
 
 /**
@@ -7778,12 +10011,90 @@ function longestStreak(value, character) {
 
 module.exports = longestStreak;
 }, {}],
+16: [function(require, module, exports) {
+module.exports = {
+  "default": [
+    "\\",
+    "`",
+    "*",
+    "{",
+    "}",
+    "[",
+    "]",
+    "(",
+    ")",
+    "#",
+    "+",
+    "-",
+    ".",
+    "!",
+    "_",
+    ">"
+  ],
+  "gfm": [
+    "\\",
+    "`",
+    "*",
+    "{",
+    "}",
+    "[",
+    "]",
+    "(",
+    ")",
+    "#",
+    "+",
+    "-",
+    ".",
+    "!",
+    "_",
+    ">",
+    "~",
+    "|"
+  ],
+  "commonmark": [
+    "\\",
+    "`",
+    "*",
+    "{",
+    "}",
+    "[",
+    "]",
+    "(",
+    ")",
+    "#",
+    "+",
+    "-",
+    ".",
+    "!",
+    "_",
+    ">",
+    "~",
+    "|",
+    "\n",
+    "\"",
+    "$",
+    "%",
+    "&",
+    "'",
+    ",",
+    "/",
+    ":",
+    ";",
+    "<",
+    "=",
+    "?",
+    "@",
+    "^"
+  ]
+}
+;
+}, {}],
 3: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer
  * @license MIT
- * @module mdast:range
+ * @module remark:range
  * @fileoverview Patch index-based range on mdast nodes.
  */
 
@@ -7801,7 +10112,7 @@ var visit = require('unist-util-visit');
  * Calculate offsets for `lines`.
  *
  * @param {Array.<string>} lines - Lines to compile.
- * @return {Array.<number>}
+ * @return {Array.<number>} - List of offsets per line.
  */
 function toOffsets(lines) {
     var total = 0;
@@ -7820,6 +10131,7 @@ function toOffsets(lines) {
  * Add an offset based on `offsets` to `position`.
  *
  * @param {Object} position - Position.
+ * @param {Function} fn - Calculator.
  */
 function addRange(position, fn) {
     position.offset = fn(position);
@@ -7909,7 +10221,7 @@ function transformer(ast, file) {
      */
 
     if (!file || typeof file.contents !== 'string') {
-        throw new Error('Missing `file` for mdast-range');
+        throw new Error('Missing `file` for remark-range');
     }
 
     /*
@@ -7957,8 +10269,8 @@ function attacher() {
  */
 
 module.exports = attacher;
-}, {"unist-util-visit":34}],
-34: [function(require, module, exports) {
+}, {"unist-util-visit":44}],
+44: [function(require, module, exports) {
 /**
  * @author Titus Wormer
  * @copyright 2015 Titus Wormer. All rights reserved.
@@ -8129,8 +10441,8 @@ module.exports = function debounce(func, wait, immediate) {
     return result;
   };
 };
-}, {"date-now":35}],
-35: [function(require, module, exports) {
+}, {"date-now":45}],
+45: [function(require, module, exports) {
 "use strict";
 
 module.exports = Date.now || now;
@@ -8434,8 +10746,8 @@ exports.stringify = function (obj) {
 
   return pairs.join('&');
 };
-}, {"trim":24,"type":36}],
-36: [function(require, module, exports) {
+}, {"trim":26,"type":46}],
+46: [function(require, module, exports) {
 /**
  * toString ref.
  */
@@ -9934,7 +12246,7 @@ offset = elem.getBoundingClientRect();}else { // Get *real* offsetParent
 offsetParent = this.offsetParent(); // Get correct offsets
 offset = this.offset();if(!jQuery.nodeName(offsetParent[0],"html")){parentOffset = offsetParent.offset();} // Add offsetParent borders
 parentOffset.top += jQuery.css(offsetParent[0],"borderTopWidth",true);parentOffset.left += jQuery.css(offsetParent[0],"borderLeftWidth",true);} // Subtract parent offsets and element margins
-return {top:offset.top - parentOffset.top - jQuery.css(elem,"marginTop",true),left:offset.left - parentOffset.left - jQuery.css(elem,"marginLeft",true)};},offsetParent:function offsetParent(){return this.map(function(){var offsetParent=this.offsetParent || docElem;while(offsetParent && (!jQuery.nodeName(offsetParent,"html") && jQuery.css(offsetParent,"position") === "static")) {offsetParent = offsetParent.offsetParent;}return offsetParent || docElem;});}}); // Create scrollLeft and scrollTop methods
+return {top:offset.top - parentOffset.top - jQuery.css(elem,"marginTop",true),left:offset.left - parentOffset.left - jQuery.css(elem,"marginLeft",true)};},offsetParent:function offsetParent(){return this.map(function(){var offsetParent=this.offsetParent || docElem;while(offsetParent && !jQuery.nodeName(offsetParent,"html") && jQuery.css(offsetParent,"position") === "static") {offsetParent = offsetParent.offsetParent;}return offsetParent || docElem;});}}); // Create scrollLeft and scrollTop methods
 jQuery.each({scrollLeft:"pageXOffset",scrollTop:"pageYOffset"},function(method,prop){var top="pageYOffset" === prop;jQuery.fn[method] = function(val){return access(this,function(elem,method,val){var win=getWindow(elem);if(val === undefined){return win?win[prop]:elem[method];}if(win){win.scrollTo(!top?val:window.pageXOffset,top?val:window.pageYOffset);}else {elem[method] = val;}},method,val,arguments.length,null);};}); // Support: Safari<7+, Chrome<37+
 // Add the top/left cssHooks using jQuery.fn.position
 // Webkit bug: https://bugs.webkit.org/show_bug.cgi?id=29084
@@ -11502,7 +13814,7 @@ $(document).on('dnd_start.vakata.jstree',function(e,data){lastmv = false;lastev 
 if(data.event.target.id && data.event.target.id === 'jstree-marker'){return;}lastev = data.event;var ins=$.jstree.reference(data.event.target),ref=false,off=false,rel=false,tmp,l,t,h,p,i,o,ok,t1,t2,op,ps,pr,ip,tm; // if we are over an instance
 if(ins && ins._data && ins._data.dnd){marker.attr('class','jstree-' + ins.get_theme() + (ins.settings.core.themes.responsive?' jstree-dnd-responsive':''));data.helper.children().attr('class','jstree-' + ins.get_theme() + ' jstree-' + ins.get_theme() + '-' + ins.get_theme_variant() + ' ' + (ins.settings.core.themes.responsive?' jstree-dnd-responsive':'')).find('.jstree-copy').first()[data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?'show':'hide'](); // if are hovering the container itself add a new root node
 if((data.event.target === ins.element[0] || data.event.target === ins.get_container_ul()[0]) && ins.get_container_ul().children().length === 0){ok = true;for(t1 = 0,t2 = data.data.nodes.length;t1 < t2;t1++) {ok = ok && ins.check(data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?"copy_node":"move_node",data.data.origin && data.data.origin !== ins?data.data.origin.get_node(data.data.nodes[t1]):data.data.nodes[t1],$.jstree.root,'last',{'dnd':true,'ref':ins.get_node($.jstree.root),'pos':'i','origin':data.data.origin,'is_multi':data.data.origin && data.data.origin !== ins,'is_foreign':!data.data.origin});if(!ok){break;}}if(ok){lastmv = {'ins':ins,'par':$.jstree.root,'pos':'last'};marker.hide();data.helper.find('.jstree-icon').first().removeClass('jstree-er').addClass('jstree-ok');return;}}else { // if we are hovering a tree node
-ref = ins.settings.dnd.large_drop_target?$(data.event.target).closest('.jstree-node').children('.jstree-anchor'):$(data.event.target).closest('.jstree-anchor');if(ref && ref.length && ref.parent().is('.jstree-closed, .jstree-open, .jstree-leaf')){off = ref.offset();rel = data.event.pageY - off.top;h = ref.outerHeight();if(rel < h / 3){o = ['b','i','a'];}else if(rel > h - h / 3){o = ['a','i','b'];}else {o = rel > h / 2?['i','a','b']:['i','b','a'];}$.each(o,function(j,v){switch(v){case 'b':l = off.left - 6;t = off.top;p = ins.get_parent(ref);i = ref.parent().index();break;case 'i':ip = ins.settings.dnd.inside_pos;tm = ins.get_node(ref.parent());l = off.left - 2;t = off.top + h / 2 + 1;p = tm.id;i = ip === 'first'?0:ip === 'last'?tm.children.length:Math.min(ip,tm.children.length);break;case 'a':l = off.left - 6;t = off.top + h;p = ins.get_parent(ref);i = ref.parent().index() + 1;break;}ok = true;for(t1 = 0,t2 = data.data.nodes.length;t1 < t2;t1++) {op = data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?"copy_node":"move_node";ps = i;if(op === "move_node" && v === 'a' && (data.data.origin && data.data.origin === ins) && p === ins.get_parent(data.data.nodes[t1])){pr = ins.get_node(p);if(ps > $.inArray(data.data.nodes[t1],pr.children)){ps -= 1;}}ok = ok && (ins && ins.settings && ins.settings.dnd && ins.settings.dnd.check_while_dragging === false || ins.check(op,data.data.origin && data.data.origin !== ins?data.data.origin.get_node(data.data.nodes[t1]):data.data.nodes[t1],p,ps,{'dnd':true,'ref':ins.get_node(ref.parent()),'pos':v,'origin':data.data.origin,'is_multi':data.data.origin && data.data.origin !== ins,'is_foreign':!data.data.origin}));if(!ok){if(ins && ins.last_error){laster = ins.last_error();}break;}}if(v === 'i' && ref.parent().is('.jstree-closed') && ins.settings.dnd.open_timeout){opento = setTimeout((function(x,z){return function(){x.open_node(z);};})(ins,ref),ins.settings.dnd.open_timeout);}if(ok){lastmv = {'ins':ins,'par':p,'pos':v === 'i' && ip === 'last' && i === 0 && !ins.is_loaded(tm)?'last':i};marker.css({'left':l + 'px','top':t + 'px'}).show();data.helper.find('.jstree-icon').first().removeClass('jstree-er').addClass('jstree-ok');laster = {};o = true;return false;}});if(o === true){return;}}}}lastmv = false;data.helper.find('.jstree-icon').removeClass('jstree-ok').addClass('jstree-er');marker.hide();}).on('dnd_scroll.vakata.jstree',function(e,data){if(!data || !data.data || !data.data.jstree){return;}marker.hide();lastmv = false;lastev = false;data.helper.find('.jstree-icon').first().removeClass('jstree-ok').addClass('jstree-er');}).on('dnd_stop.vakata.jstree',function(e,data){if(opento){clearTimeout(opento);}if(!data || !data.data || !data.data.jstree){return;}marker.hide().detach();var i,j,nodes=[];if(lastmv){for(i = 0,j = data.data.nodes.length;i < j;i++) {nodes[i] = data.data.origin?data.data.origin.get_node(data.data.nodes[i]):data.data.nodes[i];}lastmv.ins[data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?'copy_node':'move_node'](nodes,lastmv.par,lastmv.pos,false,false,false,data.data.origin);}else {i = $(data.event.target).closest('.jstree');if(i.length && laster && laster.error && laster.error === 'check'){i = i.jstree(true);if(i){i.settings.core.error.call(this,laster);}}}lastev = false;lastmv = false;}).on('keyup.jstree keydown.jstree',function(e,data){data = $.vakata.dnd._get();if(data && data.data && data.data.jstree){data.helper.find('.jstree-copy').first()[data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (e.metaKey || e.ctrlKey))?'show':'hide']();if(lastev){lastev.metaKey = e.metaKey;lastev.ctrlKey = e.ctrlKey;$.vakata.dnd._trigger('move',lastev);}}});}); // helpers
+ref = ins.settings.dnd.large_drop_target?$(data.event.target).closest('.jstree-node').children('.jstree-anchor'):$(data.event.target).closest('.jstree-anchor');if(ref && ref.length && ref.parent().is('.jstree-closed, .jstree-open, .jstree-leaf')){off = ref.offset();rel = data.event.pageY - off.top;h = ref.outerHeight();if(rel < h / 3){o = ['b','i','a'];}else if(rel > h - h / 3){o = ['a','i','b'];}else {o = rel > h / 2?['i','a','b']:['i','b','a'];}$.each(o,function(j,v){switch(v){case 'b':l = off.left - 6;t = off.top;p = ins.get_parent(ref);i = ref.parent().index();break;case 'i':ip = ins.settings.dnd.inside_pos;tm = ins.get_node(ref.parent());l = off.left - 2;t = off.top + h / 2 + 1;p = tm.id;i = ip === 'first'?0:ip === 'last'?tm.children.length:Math.min(ip,tm.children.length);break;case 'a':l = off.left - 6;t = off.top + h;p = ins.get_parent(ref);i = ref.parent().index() + 1;break;}ok = true;for(t1 = 0,t2 = data.data.nodes.length;t1 < t2;t1++) {op = data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?"copy_node":"move_node";ps = i;if(op === "move_node" && v === 'a' && data.data.origin && data.data.origin === ins && p === ins.get_parent(data.data.nodes[t1])){pr = ins.get_node(p);if(ps > $.inArray(data.data.nodes[t1],pr.children)){ps -= 1;}}ok = ok && (ins && ins.settings && ins.settings.dnd && ins.settings.dnd.check_while_dragging === false || ins.check(op,data.data.origin && data.data.origin !== ins?data.data.origin.get_node(data.data.nodes[t1]):data.data.nodes[t1],p,ps,{'dnd':true,'ref':ins.get_node(ref.parent()),'pos':v,'origin':data.data.origin,'is_multi':data.data.origin && data.data.origin !== ins,'is_foreign':!data.data.origin}));if(!ok){if(ins && ins.last_error){laster = ins.last_error();}break;}}if(v === 'i' && ref.parent().is('.jstree-closed') && ins.settings.dnd.open_timeout){opento = setTimeout((function(x,z){return function(){x.open_node(z);};})(ins,ref),ins.settings.dnd.open_timeout);}if(ok){lastmv = {'ins':ins,'par':p,'pos':v === 'i' && ip === 'last' && i === 0 && !ins.is_loaded(tm)?'last':i};marker.css({'left':l + 'px','top':t + 'px'}).show();data.helper.find('.jstree-icon').first().removeClass('jstree-er').addClass('jstree-ok');laster = {};o = true;return false;}});if(o === true){return;}}}}lastmv = false;data.helper.find('.jstree-icon').removeClass('jstree-ok').addClass('jstree-er');marker.hide();}).on('dnd_scroll.vakata.jstree',function(e,data){if(!data || !data.data || !data.data.jstree){return;}marker.hide();lastmv = false;lastev = false;data.helper.find('.jstree-icon').first().removeClass('jstree-ok').addClass('jstree-er');}).on('dnd_stop.vakata.jstree',function(e,data){if(opento){clearTimeout(opento);}if(!data || !data.data || !data.data.jstree){return;}marker.hide().detach();var i,j,nodes=[];if(lastmv){for(i = 0,j = data.data.nodes.length;i < j;i++) {nodes[i] = data.data.origin?data.data.origin.get_node(data.data.nodes[i]):data.data.nodes[i];}lastmv.ins[data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (data.event.metaKey || data.event.ctrlKey))?'copy_node':'move_node'](nodes,lastmv.par,lastmv.pos,false,false,false,data.data.origin);}else {i = $(data.event.target).closest('.jstree');if(i.length && laster && laster.error && laster.error === 'check'){i = i.jstree(true);if(i){i.settings.core.error.call(this,laster);}}}lastev = false;lastmv = false;}).on('keyup.jstree keydown.jstree',function(e,data){data = $.vakata.dnd._get();if(data && data.data && data.data.jstree){data.helper.find('.jstree-copy').first()[data.data.origin && (data.data.origin.settings.dnd.always_copy || data.data.origin.settings.dnd.copy && (e.metaKey || e.ctrlKey))?'show':'hide']();if(lastev){lastev.metaKey = e.metaKey;lastev.ctrlKey = e.ctrlKey;$.vakata.dnd._trigger('move',lastev);}}});}); // helpers
 (function($){$.vakata.html = {div:$('<div />'),escape:function escape(str){return $.vakata.html.div.text(str).html();},strip:function strip(str){return $.vakata.html.div.empty().append($.parseHTML(str)).text();}}; // private variable
 var vakata_dnd={element:false,target:false,is_down:false,is_drag:false,helper:false,helper_w:0,data:false,init_x:0,init_y:0,scroll_l:0,scroll_t:0,scroll_e:false,scroll_i:false,is_touch:false};$.vakata.dnd = {settings:{scroll_speed:10,scroll_proximity:20,helper_left:5,helper_top:10,threshold:5,threshold_touch:50},_trigger:function _trigger(event_name,e){var data=$.vakata.dnd._get();data.event = e;$(document).triggerHandler("dnd_" + event_name + ".vakata",data);},_get:function _get(){return {"data":vakata_dnd.data,"element":vakata_dnd.element,"helper":vakata_dnd.helper};},_clean:function _clean(){if(vakata_dnd.helper){vakata_dnd.helper.remove();}if(vakata_dnd.scroll_i){clearInterval(vakata_dnd.scroll_i);vakata_dnd.scroll_i = false;}vakata_dnd = {element:false,target:false,is_down:false,is_drag:false,helper:false,helper_w:0,data:false,init_x:0,init_y:0,scroll_l:0,scroll_t:0,scroll_e:false,scroll_i:false,is_touch:false};$(document).off("mousemove.vakata.jstree touchmove.vakata.jstree",$.vakata.dnd.drag);$(document).off("mouseup.vakata.jstree touchend.vakata.jstree",$.vakata.dnd.stop);},_scroll:function _scroll(init_only){if(!vakata_dnd.scroll_e || !vakata_dnd.scroll_l && !vakata_dnd.scroll_t){if(vakata_dnd.scroll_i){clearInterval(vakata_dnd.scroll_i);vakata_dnd.scroll_i = false;}return false;}if(!vakata_dnd.scroll_i){vakata_dnd.scroll_i = setInterval($.vakata.dnd._scroll,100);return false;}if(init_only === true){return false;}var i=vakata_dnd.scroll_e.scrollTop(),j=vakata_dnd.scroll_e.scrollLeft();vakata_dnd.scroll_e.scrollTop(i + vakata_dnd.scroll_t * $.vakata.dnd.settings.scroll_speed);vakata_dnd.scroll_e.scrollLeft(j + vakata_dnd.scroll_l * $.vakata.dnd.settings.scroll_speed);if(i !== vakata_dnd.scroll_e.scrollTop() || j !== vakata_dnd.scroll_e.scrollLeft()){ /**
 					 * triggered on the document when a drag causes an element to scroll

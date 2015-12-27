@@ -1,3 +1,3 @@
-# mdast.js.org
+# remark.js.org
 
-**mdast** website.
+**remark** website.

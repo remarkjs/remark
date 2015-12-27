@@ -1,8 +1,8 @@
 {
-  "name": "mdast.com",
+  "name": "remark.com",
   "private": true,
   "version": "0.0.0",
-  "description": "The mdast.com website",
+  "description": "The remark.com website",
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {
     "duo": "^0.15.0",
