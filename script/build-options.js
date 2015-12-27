@@ -17,7 +17,7 @@
 var fs = require('fs');
 var path = require('path');
 var remark = require('..');
-var toc = require('mdast-toc');
+var toc = require('remark-toc');
 
 /*
  * Methods.
