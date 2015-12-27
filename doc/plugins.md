@@ -27,7 +27,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 >
 > (Are you a plug-in author? See [below](#renaming-from-mdast-to-remark))
 
-*   [ben-eb/mdast-autolink-headings](https://github.com/ben-eb/mdast-autolink-headings)
+*   [ben-eb/remark-autolink-headings](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings;
 
 *   [wooorm/remark-comment-config](https://github.com/wooorm/remark-comment-config)
