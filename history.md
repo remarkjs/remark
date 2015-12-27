@@ -2,6 +2,14 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.0.1 / 2015-12-27
+==================
+
+*   Fix files without extension in remark(1) ([6d8bcd5](https://github.com/wooorm/remark/commit/6d8bcd5))
+*   Refactor remark(1) examples in docs to be valid ([fb0cbe8](https://github.com/wooorm/remark/commit/fb0cbe8))
+*   Add `remark-textr` to list of plugins ([098052a](https://github.com/wooorm/remark/commit/098052a))
+*   Update list of plugins with renames ([caf5232](https://github.com/wooorm/remark/commit/caf5232))
+
 3.0.0 / 2015-12-25
 ==================
 
