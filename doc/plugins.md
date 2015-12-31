@@ -55,6 +55,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-inline-links](https://github.com/wooorm/mdast-inline-links)
     — Transform references and definitions into normal links and images;
 
+*   [wooorm/remark-license](https://github.com/wooorm/remark-license)
+    — Add a license section;
+
 *   [wooorm/remark-lint](https://github.com/wooorm/remark-lint)
     — Markdown code style linter;
 
@@ -100,6 +103,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 
 *   [wooorm/remark-validate-links](https://github.com/wooorm/remark-validate-links)
     — Validate links point to existing headings and files;
+
+*   [wooorm/remark-vdom](https://github.com/wooorm/remark-vdom)
+    — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/);
 
 *   [wooorm/remark-yaml](https://github.com/wooorm/remark-yaml)
     — Parse and stringify YAML code blocks;
