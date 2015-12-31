@@ -9,11 +9,17 @@ node_js:
 after_script: npm install codecov.io && cat ./coverage/lcov.info | codecov
 sudo: false
 deploy:
-  provider: releases
-  api_key:
-    secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
-  file:
-    - "remark.js"
-    - "remark.min.js"
-  on:
-    tags: true
+  - provider: npm
+    email: tituswormer@gmail.com
+    api_key:
+      secure: h4ADxR4z3G3m7hweVZlq64ytgENE4UPUesnpiQbwcRBcQy79TNcITWJ/61yEnhEHB94FEuP/rMC3KU2Ho7kinyeO/JNoK1YlhVKKBZuIYwsJ4Op3ndwZ71TCPe0wIbWxOfhO9L7t6oytNnPg9gWNqLkQW8rBZ+ujdcdtMQ82XZE=
+    on:
+      tags: true
+  - provider: releases
+    api_key:
+      secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
+    file:
+      - "remark.js"
+      - "remark.min.js"
+    on:
+      tags: true
