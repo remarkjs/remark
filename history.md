@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.1.0 / 2015-12-31
+==================
+
+*   Add support for injecting plugins into remark(1) ([4e65d70](https://github.com/wooorm/remark/commit/4e65d70))
+
 3.0.1 / 2015-12-27
 ==================
 
