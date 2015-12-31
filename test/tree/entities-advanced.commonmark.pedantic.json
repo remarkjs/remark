@@ -100,7 +100,7 @@
       "children": [
         {
           "type": "code",
-          "lang": "some—language",
+          "lang": "some©language",
           "value": "alert('Hello');",
           "position": {
             "start": {
@@ -157,7 +157,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://e\nxample—xample.com",
+              "href": "http://e\nxample©xample.com",
               "children": [
                 {
                   "type": "text",
@@ -178,7 +178,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 10,
@@ -186,7 +186,7 @@
                     },
                     "end": {
                       "line": 10,
-                      "column": 15
+                      "column": 14
                     },
                     "indent": []
                   }
@@ -197,11 +197,11 @@
                   "position": {
                     "start": {
                       "line": 10,
-                      "column": 15
+                      "column": 14
                     },
                     "end": {
                       "line": 10,
-                      "column": 25
+                      "column": 24
                     },
                     "indent": []
                   }
@@ -214,7 +214,7 @@
                 },
                 "end": {
                   "line": 10,
-                  "column": 26
+                  "column": 25
                 },
                 "indent": [
                   3
@@ -229,7 +229,7 @@
             },
             "end": {
               "line": 10,
-              "column": 26
+              "column": 25
             },
             "indent": [
               3
@@ -244,7 +244,7 @@
         },
         "end": {
           "line": 10,
-          "column": 26
+          "column": 25
         },
         "indent": [
           1
@@ -275,7 +275,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://example—xample.com",
+              "href": "http://example©xample.com",
               "children": [
                 {
                   "type": "text",
@@ -294,7 +294,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 12,
@@ -302,7 +302,7 @@
                     },
                     "end": {
                       "line": 12,
-                      "column": 39
+                      "column": 38
                     },
                     "indent": []
                   }
@@ -313,11 +313,11 @@
                   "position": {
                     "start": {
                       "line": 12,
-                      "column": 39
+                      "column": 38
                     },
                     "end": {
                       "line": 12,
-                      "column": 49
+                      "column": 48
                     },
                     "indent": []
                   }
@@ -330,7 +330,7 @@
                 },
                 "end": {
                   "line": 12,
-                  "column": 49
+                  "column": 48
                 },
                 "indent": []
               }
@@ -341,11 +341,11 @@
               "position": {
                 "start": {
                   "line": 12,
-                  "column": 49
+                  "column": 48
                 },
                 "end": {
                   "line": 12,
-                  "column": 58
+                  "column": 57
                 },
                 "indent": []
               }
@@ -358,7 +358,7 @@
             },
             "end": {
               "line": 12,
-              "column": 58
+              "column": 57
             },
             "indent": []
           }
@@ -371,7 +371,7 @@
         },
         "end": {
           "line": 12,
-          "column": 58
+          "column": 57
         },
         "indent": []
       }
@@ -399,8 +399,8 @@
             },
             {
               "type": "link",
-              "title": "in some pl—ce",
-              "href": "~/some—file",
+              "title": "in some pl©ce",
+              "href": "~/some©file",
               "children": [
                 {
                   "type": "text",
@@ -419,7 +419,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 14,
@@ -427,7 +427,7 @@
                     },
                     "end": {
                       "line": 14,
-                      "column": 17
+                      "column": 16
                     },
                     "indent": []
                   }
@@ -438,11 +438,11 @@
                   "position": {
                     "start": {
                       "line": 14,
-                      "column": 17
+                      "column": 16
                     },
                     "end": {
                       "line": 14,
-                      "column": 20
+                      "column": 19
                     },
                     "indent": []
                   }
@@ -455,7 +455,7 @@
                 },
                 "end": {
                   "line": 15,
-                  "column": 43
+                  "column": 41
                 },
                 "indent": [
                   3
@@ -470,7 +470,7 @@
             },
             "end": {
               "line": 15,
-              "column": 43
+              "column": 41
             },
             "indent": [
               3
@@ -485,7 +485,7 @@
         },
         "end": {
           "line": 15,
-          "column": 43
+          "column": 41
         },
         "indent": [
           1
@@ -515,8 +515,8 @@
             },
             {
               "type": "link",
-              "title": "in some pl—ce",
-              "href": "~/some—file",
+              "title": "in some pl©ce",
+              "href": "~/some©file",
               "children": [
                 {
                   "type": "text",
@@ -535,7 +535,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 17,
@@ -543,7 +543,7 @@
                     },
                     "end": {
                       "line": 17,
-                      "column": 17
+                      "column": 16
                     },
                     "indent": []
                   }
@@ -554,11 +554,11 @@
                   "position": {
                     "start": {
                       "line": 17,
-                      "column": 17
+                      "column": 16
                     },
                     "end": {
                       "line": 17,
-                      "column": 21
+                      "column": 20
                     },
                     "indent": []
                   }
@@ -571,7 +571,7 @@
                 },
                 "end": {
                   "line": 19,
-                  "column": 26
+                  "column": 25
                 },
                 "indent": [
                   3,
@@ -587,7 +587,7 @@
             },
             "end": {
               "line": 19,
-              "column": 26
+              "column": 25
             },
             "indent": [
               3,
@@ -603,7 +603,7 @@
         },
         "end": {
           "line": 19,
-          "column": 26
+          "column": 25
         },
         "indent": [
           1,
@@ -634,9 +634,9 @@
             },
             {
               "type": "image",
-              "title": "in some pl—ce",
-              "src": "~/some—file",
-              "alt": "\n  l—nks\n",
+              "title": "in some pl©ce",
+              "src": "~/some©file",
+              "alt": "\n  l©nks\n",
               "position": {
                 "start": {
                   "line": 21,
@@ -644,7 +644,7 @@
                 },
                 "end": {
                   "line": 24,
-                  "column": 43
+                  "column": 41
                 },
                 "indent": [
                   3,
@@ -661,7 +661,7 @@
             },
             "end": {
               "line": 24,
-              "column": 43
+              "column": 41
             },
             "indent": [
               3,
@@ -678,7 +678,7 @@
         },
         "end": {
           "line": 24,
-          "column": 43
+          "column": 41
         },
         "indent": [
           1,
@@ -724,9 +724,9 @@
             },
             {
               "type": "image",
-              "title": "in some pl—ce",
-              "src": "~/some—file",
-              "alt": "l—lnks",
+              "title": "in some pl©ce",
+              "src": "~/some©file",
+              "alt": "l©lnks",
               "position": {
                 "start": {
                   "line": 28,
@@ -734,7 +734,7 @@
                 },
                 "end": {
                   "line": 30,
-                  "column": 26
+                  "column": 25
                 },
                 "indent": [
                   3,
@@ -750,7 +750,7 @@
             },
             "end": {
               "line": 30,
-              "column": 26
+              "column": 25
             },
             "indent": [
               3,
@@ -766,7 +766,7 @@
         },
         "end": {
           "line": 30,
-          "column": 26
+          "column": 25
         },
         "indent": [
           1,
@@ -799,7 +799,7 @@
               "type": "imageReference",
               "identifier": "12",
               "referenceType": "full",
-              "alt": "\n  l—nks\n",
+              "alt": "\n  l©nks\n",
               "position": {
                 "start": {
                   "line": 32,
@@ -904,7 +904,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://example—xample.com",
+              "href": "http://example©xample.com",
               "children": [
                 {
                   "type": "text",
@@ -923,7 +923,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 36,
@@ -931,7 +931,7 @@
                     },
                     "end": {
                       "line": 36,
-                      "column": 28
+                      "column": 27
                     },
                     "indent": []
                   }
@@ -942,11 +942,11 @@
                   "position": {
                     "start": {
                       "line": 36,
-                      "column": 28
+                      "column": 27
                     },
                     "end": {
                       "line": 36,
-                      "column": 38
+                      "column": 37
                     },
                     "indent": []
                   }
@@ -959,7 +959,7 @@
                 },
                 "end": {
                   "line": 36,
-                  "column": 38
+                  "column": 37
                 },
                 "indent": []
               }
@@ -970,7 +970,7 @@
               "position": {
                 "start": {
                   "line": 36,
-                  "column": 38
+                  "column": 37
                 },
                 "end": {
                   "line": 37,
@@ -983,7 +983,7 @@
             },
             {
               "type": "text",
-              "value": "—",
+              "value": "©",
               "position": {
                 "start": {
                   "line": 37,
@@ -991,7 +991,7 @@
                 },
                 "end": {
                   "line": 37,
-                  "column": 11
+                  "column": 10
                 },
                 "indent": []
               }
@@ -1002,11 +1002,11 @@
               "position": {
                 "start": {
                   "line": 37,
-                  "column": 11
+                  "column": 10
                 },
                 "end": {
                   "line": 37,
-                  "column": 14
+                  "column": 13
                 },
                 "indent": []
               }
@@ -1019,7 +1019,7 @@
             },
             "end": {
               "line": 37,
-              "column": 14
+              "column": 13
             },
             "indent": [
               3
@@ -1034,7 +1034,7 @@
         },
         "end": {
           "line": 37,
-          "column": 14
+          "column": 13
         },
         "indent": [
           1
@@ -1104,7 +1104,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://example—xample.com",
+              "href": "http://example©xample.com",
               "children": [
                 {
                   "type": "text",
@@ -1123,7 +1123,7 @@
                 },
                 {
                   "type": "text",
-                  "value": "—",
+                  "value": "©",
                   "position": {
                     "start": {
                       "line": 41,
@@ -1131,7 +1131,7 @@
                     },
                     "end": {
                       "line": 41,
-                      "column": 26
+                      "column": 25
                     },
                     "indent": []
                   }
@@ -1142,11 +1142,11 @@
                   "position": {
                     "start": {
                       "line": 41,
-                      "column": 26
+                      "column": 25
                     },
                     "end": {
                       "line": 41,
-                      "column": 36
+                      "column": 35
                     },
                     "indent": []
                   }
@@ -1159,7 +1159,7 @@
                 },
                 "end": {
                   "line": 41,
-                  "column": 36
+                  "column": 35
                 },
                 "indent": []
               }
@@ -1170,7 +1170,7 @@
               "position": {
                 "start": {
                   "line": 41,
-                  "column": 36
+                  "column": 35
                 },
                 "end": {
                   "line": 42,
@@ -1183,7 +1183,7 @@
             },
             {
               "type": "text",
-              "value": "—",
+              "value": "©",
               "position": {
                 "start": {
                   "line": 42,
@@ -1191,7 +1191,7 @@
                 },
                 "end": {
                   "line": 42,
-                  "column": 11
+                  "column": 10
                 },
                 "indent": []
               }
@@ -1202,11 +1202,11 @@
               "position": {
                 "start": {
                   "line": 42,
-                  "column": 11
+                  "column": 10
                 },
                 "end": {
                   "line": 42,
-                  "column": 14
+                  "column": 13
                 },
                 "indent": []
               }
@@ -1219,7 +1219,7 @@
             },
             "end": {
               "line": 42,
-              "column": 14
+              "column": 13
             },
             "indent": [
               3,
@@ -1236,7 +1236,7 @@
         },
         "end": {
           "line": 42,
-          "column": 14
+          "column": 13
         },
         "indent": [
           1,
