@@ -2,7 +2,7 @@
   "output": "man/",
   "plugins": {
     "remark-man": {
-      "date": "2015-12-01",
+      "date": "2016-01-02",
       "manual": "remark manual",
       "version": "3.1.0"
     }

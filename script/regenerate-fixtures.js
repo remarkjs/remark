@@ -1,6 +1,6 @@
 /**
  * @author Titus Wormer
- * @copyright 2015 Titus Wormer
+ * @copyright 2015-2016 Titus Wormer
  * @license MIT
  * @module remark:script
  * @fileoverview Regenerate all fixtures according to their
