@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.1.1 / 2016-01-02
+==================
+
+*   Update copyright date-references to 2016 ([48151aa](https://github.com/wooorm/remark/commit/48151aa))
+*   Fix stdin(4) detection on Windows ([c2562bc](https://github.com/wooorm/remark/commit/c2562bc))
+*   Add `remark-license`, `remark-vdom` to list of plugins ([6ca52bb](https://github.com/wooorm/remark/commit/6ca52bb))
+
 3.1.0 / 2015-12-31
 ==================
 
