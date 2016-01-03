@@ -205,24 +205,25 @@ Options:
   --no-rc                   disable configuration from .remarkrc
   --no-ignore               disable ignore from .remarkignore
 
-Usage:
-
-# Process `readme.md`
-$ remark readme.md -o readme-new.md
-
-# Pass stdin through remark, with settings, to stdout
-$ remark -s "setext: true, bullet: \"*\"" < readme.md > readme-new.md
-
-# Use a plugin (with options)
-$ npm install remark-toc
-$ remark --use toc=heading:"contents" readme.md -o
-
-# Rewrite markdown in a directory
-$ remark . -o
-
-See also: man 1 remark, man 3 remark, man 3 remarkplugin,
-  man 5 remarkrc, man 5 remarkignore,
+See also: man 1 remark, man 3 remark,
+  man 3 remarkplugin, man 5 remarkrc,
+  man 5 remarkignore, man 7 remarksetting,
   man 7 remarkconfig, man 7 remarkplugin.
+
+Examples:
+
+  # Process `readme.md`
+  $ remark readme.md -o readme-new.md
+
+  # Pass stdin(4) through remark, with settings, to stdout(4)
+  $ remark --setting "setext: true, bullet: \"*\"" < readme.md > readme-new.md
+
+  # Use a plugin (with options)
+  $ npm install remark-toc
+  $ remark readme.md --use "toc=heading:\"contents\"" -o
+
+  # Rewrite markdown in a directory
+  $ remark . -o
 ```
 
 ## License
