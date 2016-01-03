@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.1.2 / 2016-01-03
+==================
+
+*   Fix globs to files without extension in remark(1) ([20e253f](https://github.com/wooorm/remark/commit/20e253f))
+
 3.1.1 / 2016-01-02
 ==================
 
