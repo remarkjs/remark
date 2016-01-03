@@ -3,10 +3,12 @@
 \fBremark\fR - Markdown processor
 .SH "SYNOPSIS"
 .P
-\fBremark\fR \[lB]\fBoptions\fR\[rB] <\fIfile\[ba]dir\fR \fI...\fR>
+\fBremark\fR \[lB]\fBoptions\fR\[rB] <\fIpathspec\fR...>
 .SH "DESCRIPTION"
 .P
 \fBremark\fR is a markdown processor powered by plugins.
+.P
+<\fIpathspec\fR...> refers to files to process. Fileglobs (e.g., \fB*.md\fR) can be given to add all matching files. Directories can be given (e.g. \fBdir\fR to add \fBdir\[sl]readme.md\fR and \fBdir\[sl]sub\[sl]history.mkd\fR) to add files with a known markdown extension (see the \fB-e\fR, \fB--ext\fR flag).
 .P
 Logs verbose debugging information when \fB\[Do]DEBUG\fR is set to \fB\[dq]*\[dq]\fR.
 .SH "OPTIONS"

@@ -180,7 +180,7 @@ npm install --global remark
 Use:
 
 ```text
-Usage: remark [options] <file|dir ...>
+Usage: remark [options] <pathspec...>
 
 Markdown processor powered by plugins
 

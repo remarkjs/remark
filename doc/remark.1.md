@@ -2,11 +2,16 @@
 
 ## SYNOPSIS
 
-`remark` \[`options`] &lt;_file|dir_ _..._>
+`remark` \[`options`] &lt;_pathspec_...>
 
 ## DESCRIPTION
 
 **remark** is a markdown processor powered by plugins.
+
+&lt;_pathspec_...> refers to files to process.  Fileglobs (e.g., `*.md`)
+can be given to add all matching files.  Directories can be given (e.g. `dir`
+to add `dir/readme.md` and `dir/sub/history.mkd`) to add files with a known
+markdown extension (see the `-e`, `--ext` flag).
 
 Logs verbose debugging information when `$DEBUG` is set to `"*"`.
 
