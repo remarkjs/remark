@@ -33,7 +33,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-comment-config](https://github.com/wooorm/remark-comment-config)
     — Set settings with comments during runtime;
 
-*   [hughsk/mdast-contributors](https://github.com/hughsk/mdast-contributors)
+*   [hughsk/remark-contributors](https://github.com/hughsk/remark-contributors)
     — Inject a given list of contributors into a table in a document;
 
 *   [eush77/mdast-defsplit](https://github.com/eush77/mdast-defsplit)
