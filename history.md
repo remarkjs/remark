@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.1.3 / 2016-01-04
+==================
+
+*   Fix table without body support to remark(3) ([9a3bc47](https://github.com/wooorm/remark/commit/9a3bc47))
+*   Refactor output of `-h, --help` in remark(1) ([1d36801](https://github.com/wooorm/remark/commit/1d36801))
+*   Add docs for fileglob support in remark(1) ([f9f9a36](https://github.com/wooorm/remark/commit/f9f9a36))
+
 3.1.2 / 2016-01-03
 ==================
 
