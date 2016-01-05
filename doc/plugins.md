@@ -39,9 +39,6 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [eush77/remark-defsplit](https://github.com/eush77/remark-defsplit)
     — Extract inline link/image destinations as separate definitions;
 
-*   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
-    — Compile Markdown to [Deku](https://github.com/dekujs/deku);
-
 *   [wooorm/remark-github](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
