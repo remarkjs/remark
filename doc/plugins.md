@@ -36,7 +36,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [hughsk/remark-contributors](https://github.com/hughsk/remark-contributors)
     — Inject a given list of contributors into a table in a document;
 
-*   [eush77/mdast-defsplit](https://github.com/eush77/mdast-defsplit)
+*   [eush77/remark-defsplit](https://github.com/eush77/remark-defsplit)
     — Extract inline link/image destinations as separate definitions;
 
 *   [rsystem-se/mdast-deku](https://github.com/rsystem-se/mdast-deku)
