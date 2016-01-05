@@ -67,8 +67,8 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [ben-eb/mdast-midas](https://github.com/ben-eb/mdast-midas)
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas);
 
-*   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
-    — Normalize headings depths, such as multiple top-level headings;
+*   [eush77/remark-normalize-headings](https://github.com/eush77/remark-normalize-headings)
+    — Make sure there is no more than a single top-level heading in the document
 
 *   [wooorm/remark-range](https://github.com/wooorm/mdast-range)
     — Add range information;
@@ -85,7 +85,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-strip-badges](https://github.com/wooorm/mdast-strip-badges)
     — Remove badges (such as `shields.io`);
 
-*   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
+*   [eush77/remark-squeeze-paragraphs](https://github.com/eush77/remark-squeeze-paragraphs)
     — Remove empty paragraphs;
 
 *   [denysdovhan/remark-textr](https://github.com/denysdovhan/remark-textr)
@@ -95,7 +95,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-toc](https://github.com/wooorm/remark-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 
-*   [eush77/mdast-unlink](https://github.com/eush77/mdast-unlink)
+*   [eush77/remark-unlink](https://github.com/eush77/remark-unlink)
     — Remove all links, references and definitions;
 
 *   [wooorm/remark-usage](https://github.com/wooorm/remark-usage)
@@ -139,6 +139,12 @@ working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 
 *   [wooorm/mdast-util-to-string](https://github.com/wooorm/mdast-util-to-string)
     — Get the plain text content of a node.
+
+*   [eush77/mdast-normalize-headings](https://github.com/eush77/mdast-normalize-headings)
+    — Make sure there is no more than a single top-level heading in the document
+
+*   [eush77/mdast-squeeze-paragraphs](https://github.com/eush77/mdast-squeeze-paragraphs)
+    — Remove empty paragraphs;
 
 *   [wooorm/mdast-zone](https://github.com/wooorm/mdast-zone)
     — HTML comments as ranges or markers.
