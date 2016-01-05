@@ -202,7 +202,7 @@ Here are some tips for the change:
     `remark-html` on GitHub or npm), and a deprecation notice, and publish it
     as `mdast-foo@2.0.0` (yes, a major bump too).
 
-*   Use `npm deprecate mdast-foo@2.0.0 'Renamed to`remark-foo`'`, with
+*   Use ``npm deprecate mdast-foo@2.0.0 'Renamed to`remark-foo`'``, with
     some additional information if needed.
 
 That would ensure no users get any deprecation notices normally, but if they
