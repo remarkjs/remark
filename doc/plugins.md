@@ -42,7 +42,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-github](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
-*   [ben-eb/mdast-highlight.js](https://github.com/ben-eb/mdast-highlight.js)
+*   [ben-eb/remark-highlight.js](https://github.com/ben-eb/remark-highlight.js)
     — Highlight code blocks in Markdown files with
     [highlight.js](https://github.com/isagalaev/highlight.js);
 
