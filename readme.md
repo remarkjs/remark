@@ -1,8 +1,6 @@
 # ![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
 
-[![Join the chat at https://gitter.im/wooorm/remark](https://badges.gitter.im/wooorm/remark.svg)](https://gitter.im/wooorm/remark?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
-[![Build Status](https://img.shields.io/travis/wooorm/remark.svg)](https://travis-ci.org/wooorm/remark) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/remark.svg)](https://codecov.io/github/wooorm/remark) [![Inline docs](https://img.shields.io/badge/docs-A-brightgreen.svg)](http://inch-ci.org/github/wooorm/remark)
+[![Build Status](https://img.shields.io/travis/wooorm/remark.svg)](https://travis-ci.org/wooorm/remark) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/remark.svg)](https://codecov.io/github/wooorm/remark) [![Inline docs](https://img.shields.io/badge/docs-A-brightgreen.svg)](http://inch-ci.org/github/wooorm/remark) [![Chat](https://img.shields.io/gitter/room/wooorm/remark.svg)](https://gitter.im/wooorm/remark)
 
 > :warning:
 >
