@@ -61,7 +61,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-man](https://github.com/wooorm/remark-man)
     — Compile Markdown to Man pages (roff);
 
-*   [ben-eb/mdast-midas](https://github.com/ben-eb/mdast-midas)
+*   [ben-eb/remark-midas](https://github.com/ben-eb/remark-midas)
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas);
 
 *   [eush77/remark-normalize-headings](https://github.com/eush77/remark-normalize-headings)
