@@ -54,5 +54,5 @@ for a list of plugins and utilities.
 
 ### Metalsmith
 
-*   [ben-eb/metalsmith-mdast](https://github.com/ben-eb/metalsmith-mdast)
-    — Convert markdown to html with mdast in metalsmith.
+*   [ben-eb/metalsmith-remark](https://github.com/ben-eb/metalsmith-remark)
+    — Convert markdown to html with remark in metalsmith.
