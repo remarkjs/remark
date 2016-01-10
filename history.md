@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.2.0 / 2016-01-10
+==================
+
+*   Fix void list-items in remark(3) ([6a42de4](https://github.com/wooorm/remark/commit/6a42de4))
+*   Add Gitter badge to `readme.md` ([4cc1109](https://github.com/wooorm/remark/commit/4cc1109))
+*   Fix tables without final newline in remark(3) ([fd2f281](https://github.com/wooorm/remark/commit/fd2f281))
+
 3.1.3 / 2016-01-04
 ==================
 
