@@ -196,7 +196,7 @@ Here are some tips for the change:
     **remark**.
 
 *   Then, create a near-empty project with a `readme.md` (pointing to to
-    `remark-html` on GitHub or npm), and a deprecation notice, and publish it
+    `remark-foo` on GitHub or npm), and a deprecation notice, and publish it
     as `mdast-foo@2.0.0` (yes, a major bump too).
 
 *   Use ``npm deprecate mdast-foo@2.0.0 'Renamed to`remark-foo`'``, with
