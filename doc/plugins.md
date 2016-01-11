@@ -16,7 +16,6 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [Using plugins](#using-plugins)
 *   [Creating plugins](#creating-plugins)
 *   [Publishing plugins](#publishing-plugins)
-*   [Renaming from mdast to remark](#renaming-from-mdast-to-remark)
 
 ## List of Plugins
 
@@ -178,26 +177,3 @@ This will also make a package usable by [Duo](https://github.com/duojs/duo).
 
 When publishing a plugin, you should utilize the package manager’s keywords
 functionality and include `"remark"` in the list.
-
-## Renaming from _mdast_ to _remark_
-
-First of all, thanks for taking the time to work with me on this. 👍
-I definitely value the time you put into the name-change.  A lot.
-
-Here are some tips for the change:
-
-*   I suggest upping to a new major release, released with the new name.  In
-    the case of `mdast-foo@1.2.1`, that would go to `remark-foo@2.0.0`.
-    That updated version should depend and work with, as it name suggests,
-    **remark**.
-
-*   Then, create a near-empty project with a `readme.md` (pointing to to
-    `remark-foo` on GitHub or npm), and a deprecation notice, and publish it
-    as `mdast-foo@2.0.0` (yes, a major bump too).
-
-*   Use ``npm deprecate mdast-foo@2.0.0 'Renamed to`remark-foo`'``, with
-    some additional information if needed.
-
-That would ensure no users get any deprecation notices normally, but if they
-are in the process of updating their dependencies, they’ll get one and
-hopefully rename their dependency. 😄
