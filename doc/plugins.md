@@ -76,6 +76,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-reference-links](https://github.com/wooorm/remark-reference-links)
     — Transform links and images into references and definitions;
 
+*   [wooorm/remark-retext](https://github.com/wooorm/remark-retext)
+    — [retext](https://github.com/wooorm/retext) support;
+
 *   [wooorm/remark-slug](https://github.com/wooorm/remark-slug)
     — Add slugs to headings;
 
