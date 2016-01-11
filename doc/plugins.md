@@ -70,7 +70,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [wooorm/remark-range](https://github.com/wooorm/remark-range)
     — Add range information;
 
-*   [mapbox/mdast-react](https://github.com/mapbox/mdast-react)
+*   [mapbox/remark-react](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react);
 
 *   [wooorm/remark-reference-links](https://github.com/wooorm/remark-reference-links)
