@@ -20,13 +20,6 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 
 ## List of Plugins
 
-> :warning: **mdast is currently being renamed to remark** :warning:
->
-> All plug-ins prefixed with `remark-` are guaranteed to work.
-> Plug-ins prefixed with `mdast-` might as well, but without warrantees.
->
-> (Are you a plug-in author? See [below](#renaming-from-mdast-to-remark))
-
 *   [ben-eb/remark-autolink-headings](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings;
 
