@@ -57,6 +57,6 @@ to use asterisks (`*`) or underscores (`_`) for emphasis.
 
 **remark** gets really cool when you combine it with plugins.
 
-*   [View available plug-ins and utilities »](https://github.com/wooorm/remark/blob/master/doc/plugins.md)
+*   [View plug-ins and utilities »](https://github.com/wooorm/remark/blob/master/doc/plugins.md)
 *   [Read how to use plug-ins in  **remarkplugin**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.7.md)
 *   [Read how to create plug-ins in **remarkplugin**(3) »](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.3.md)

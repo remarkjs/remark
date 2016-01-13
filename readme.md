@@ -27,8 +27,8 @@ markdown in a build step.
 
 *   [API](#api)
 
-    *   [remark.process(value, options?, done?)](#remarkprocessvalue-options-done)
-    *   [remark.use(plugin, options?)](#remarkuseplugin-options)
+    *   [remark.process(value\[, options\]\[, done\])](#remarkprocessvalue-options-done)
+    *   [remark.use(plugin\[, options\])](#remarkuseplugin-options)
 
 *   [CLI](#cli)
 
@@ -85,7 +85,7 @@ Yields:
 
 [**Get Started with the API** »](doc/getting-started.md#application-programming-interface)
 
-### [remark](#api).process(value, [options](doc/remarksetting.7.md)?, done?)
+### `remark.process(value[, options][, done])`
 
 Parse a markdown document, apply plugins to it, and compile it into
 something else.
@@ -138,7 +138,7 @@ The result is `null` if a plugin is asynchronous, in which case the callback
 `done` should’ve been passed (do not worry: plugin creators make sure you know
 its asynchronous).
 
-### [remark](#api).use([plugin](doc/plugins.md#plugins), options?)
+### `remark.use(plugin[, options])`
 
 Change the way [`remark`](#api) works by using a [`plugin`](doc/plugins.md).
 

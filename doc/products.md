@@ -13,35 +13,35 @@ for a list of plugins and utilities.
 
 ### Apps
 
-*   [minodisk/markn](https://github.com/minodisk/markn)
+*   [`minodisk/markn`](https://github.com/minodisk/markn)
     — Lightweight markdown viewer.
 
-*   [rhysd/Shiba](https://github.com/rhysd/Shiba)
+*   [`rhysd/Shiba`](https://github.com/rhysd/Shiba)
     — Live markdown previewer with linter;
 
 ### CLI
 
-*   [wooorm/alex](https://github.com/wooorm/alex)
+*   [`wooorm/alex`](https://github.com/wooorm/alex)
     — Catch insensitive, inconsiderate writing;
 
-*   [hughsk/contributor-table](https://github.com/hughsk/contributor-table)
+*   [`hughsk/contributor-table`](https://github.com/hughsk/contributor-table)
     — Inject a list of git contributors
 
-*   [eush77/github-man](https://github.com/eush77/github-man)
+*   [`eush77/github-man`](https://github.com/eush77/github-man)
     — Open readme from GitHub repository as a man page.
 
-*   [man-n/man-n](https://github.com/man-n/man-n)
+*   [`man-n/man-n`](https://github.com/man-n/man-n)
     — Browse npm with man(1);
 
-*   [eush77/npm-man](https://github.com/eush77/npm-man)
+*   [`eush77/npm-man`](https://github.com/eush77/npm-man)
     — Open any package readme from npm as a man page.
 
-*   [dthree/wat](https://github.com/dthree/wat)
+*   [`dthree/wat`](https://github.com/dthree/wat)
     — Community-controlled cheat sheets for every coder.
 
 ### Atom
 
-*   [AtomLinter/linter-markdown](https://github.com/AtomLinter/linter-markdown)
+*   [`AtomLinter/linter-markdown`](https://github.com/AtomLinter/linter-markdown)
     — Lint markdown files within atom;
 
 *   [ZotPlus/zotero-citations](https://github.com/ZotPlus/zotero-citations)

@@ -170,30 +170,37 @@ Yields:
 .RE
 .SS "CommonMark"
 .P
-Setting \fBcommonmark: true\fR (default: \fBfalse\fR):
+Setting \fBcommonmark: true\fR (default: \fBfalse\fR) allows and disallows several constructs.
+.P
+The following constructs are allowed:
 .RS 0
 .IP \(bu 4
-Adds support for empty lines to split \fBBlockquotes\fR;
+Empty lines to split \fBBlockquotes\fR;
 .IP \(bu 4
-Adds support for parentheses (\fB(\fR and \fB)\fR) as delimiters for \fBLink\fR and \fBImage\fR titles;
+Parentheses (\fB(\fR and \fB)\fR) as delimiters for \fBLink\fR and \fBImage\fR titles;
 .IP \(bu 4
-Adds support for parsing any escaped \fBASCII-punctuation\fR \fI\(lahttp:\[sl]\[sl]spec.commonmark.org\[sl]0.18\[sl]\[sh]backslash-escapes\(ra\fR character as \fBEscapes\fR;
+Any escaped \fBASCII-punctuation\fR \fI\(lahttp:\[sl]\[sl]spec.commonmark.org\[sl]0.18\[sl]\[sh]backslash-escapes\(ra\fR character;
 .IP \(bu 4
-Adds support for parsing ordered list-items with a closing parenthesis (\fB)\fR);
+Ordered list-items with a closing parenthesis (\fB)\fR);
 .IP \(bu 4
-Adds support for link reference definitions (and footnote reference definitions, when in \fBfootnotes: true\fR mode) in blockquotes;
+Link (and footnote, when enabled) reference definitions in blockquotes;
+.RE 0
+
+.P
+The following constructs are not allowed:
+.RS 0
 .IP \(bu 4
-Removes support for \fBCode\fR directly following a \fBParagraph\fR;
+\fBCode\fR directly following a \fBParagraph\fR;
 .IP \(bu 4
-Removes support for ATX-headings (\fB\[sh] Hash headings\fR) without spacing after initial hashes or and before closing hashes;
+ATX-headings (\fB\[sh] Hash headings\fR) without spacing after initial hashes or and before closing hashes;
 .IP \(bu 4
-Removes support for Setext-headings (\fBUnderline headings\[rs]n---\fR) when directly following a paragraph;
+Setext headings (\fBUnderline headings\[rs]n---\fR) when following a paragraph;
 .IP \(bu 4
-Removes support for new lines in \fBLink\fR and \fBImage\fR titles;
+Newlines in \fBLink\fR and \fBImage\fR titles;
 .IP \(bu 4
-Removes support for white space in \fBLink\fR and \fBImage\fR URLs when not enclosed in angle brackets (\fB<\fR and \fB>\fR);
+White space in \fBLink\fR and \fBImage\fR URLs in auto-links (links in brackets, \fB<\fR and \fB>\fR);
 .IP \(bu 4
-Removes support for lazy \fBBlockquote\fR continuation\[em]lines not preceded by a closing angle bracket (\fB>\fR)\[em]for \fBList\fRs, \fBCode\fR, and \fBHorizontalRule\fR.
+Lazy \fBBlockquote\fR continuation\[em]lines not preceded by a closing angle bracket (\fB>\fR)\[em]for \fBList\fRs, \fBCode\fR, and \fBHorizontalRule\fR.
 .RE 0
 
 .P
@@ -274,7 +281,7 @@ Yields:
 .RE
 .SS "Footnotes"
 .P
-Setting \fBfootnotes: true\fR (default: \fBfalse\fR) enables inline- and reference-style footnotes.
+Setting \fBfootnotes: true\fR (default: \fBfalse\fR) enables inline and reference footnotes.
 .P
 Footnotes are wrapped in square brackets, and preceded by a caret (\fB\[ha]\fR).
 .P
@@ -846,7 +853,7 @@ Yields:
 .RE
 .SS "Position"
 .P
-Setting \fBgfm: false\fR (default: \fBtrue\fR) disables positional information on nodes: where each node was originally located in the markdown document.
+Setting \fBposition: false\fR (default: \fBtrue\fR) disables positions on nodes. Positions show where each node was originally located in the document.
 .RS 0
 .P
 \fBCareful! Disabling this will stop some plug-ins from working and will no longer show line\[sl]column information in warnings!\fR
@@ -1455,7 +1462,7 @@ A rule:
 .RE
 .SS "Setext Headings"
 .P
-Setting \fBsetext: true\fR (default: \fBfalse\fR) will stringify primary and secondary headings using \fBSetext\fR \fI\(lahttp:\[sl]\[sl]en.wikipedia.org\[sl]wiki\[sl]Setext\[sh]Setext\[ul]tags\(ra\fR-style headings (underlines).
+Setting \fBsetext: true\fR (default: \fBfalse\fR) will stringify headings as \fBSetext\fR \fI\(lahttp:\[sl]\[sl]en.wikipedia.org\[sl]wiki\[sl]Setext\[sh]Setext\[ul]tags\(ra\fR (underlines) when possible.
 .P
 Respectively, primary headings are compiled with a row of equals-signs (\fB\[eq]\fR), and secondary headings with a row of dashes (\fB-\fR).
 .P

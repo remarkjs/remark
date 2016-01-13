@@ -28,9 +28,8 @@ Each line in a **remarkignore**(5) file provides a pattern which describes to
 *   Lines which start with a interrogation-mark (`!`) negate, thus re-adding
     a previously ignored file path;
 
-For documentation regarding the glob engine itself, such as wild-cards
-(`*`, `?`), brace expressions (`{one,two}`), see
-[isaacs/minimatch](https://github.com/isaacs/minimatch).
+For documentation regarding support of wild-cards (`*`, `?`), brace
+expressions (`{one,two}`), and more, see [`minimatch`](https://github.com/isaacs/minimatch).
 
 You can pass a **gitignore**(5) file to **remark**(1), because it has the same
 format as **remarkignore**(5):

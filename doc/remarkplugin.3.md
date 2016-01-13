@@ -43,7 +43,7 @@ An attacher has access to the parser, which provides its own pluggable
 interface, consisting of tokenizers (see **TOKENIZER**) and locators
 (see **LOCATOR**).
 
-## function attacher(remark\[, options]\[, fileSet])
+## `function attacher(remark[, options][, fileSet])`
 
 ```js
 /**
@@ -98,7 +98,7 @@ Note that **remark**(1) invokes **attacher** for each file, not just once.
 
 `transformer` (optional) — See FUNCTION TRANSFORMER(NODE, FILE\[, NEXT]).
 
-## function transformer(node, file\[, next])
+## `function transformer(node, file[, next])`
 
 ```js
 var visit = require('unist-util-visit');
@@ -149,7 +149,7 @@ a **remark** processor. A transformer should transform `node` or modify
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
-## function completer(fileSet\[, next])
+## `function completer(fileSet[, next])`
 
 To access all files once they are transformed, create a **completer**.
 A **completer** is invoked before files are compiled, written, and logged, but
@@ -181,7 +181,7 @@ files or add messages.
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
-## function tokenizer(eat, value, silent)
+## `function tokenizer(eat, value, silent)`
 
 ```js
 function mention(eat, value) {
@@ -208,9 +208,9 @@ Most often, using transformers to manipulate a syntax-tree produces
 the desired output.  Sometimes, mainly when there is a need to
 introduce new syntactic entities with a certain level of precedence,
 interfacing with the parser is necessary.  **remark** knows two types of
-tokenizers based on the kinds of markdown nodes: block-level (e.g., paragraphs
-or fenced code blocks) and inline-level (e.g., emphasis or inline code
-spans).  Block-level tokenizers are the same as inline-level tokenizers, with
+tokenizers based on the kinds of markdown nodes: block level (e.g., paragraphs
+or fenced code blocks) and inline level (e.g., emphasis or inline code
+spans).  Block level tokenizers are the same as inline level tokenizers, with
 the exception that the latter require **locator** functions.
 
 Tokenizers _test_ whether a certain given documents starts with a certain
@@ -245,7 +245,7 @@ In _normal_ mode, optionally an **mdast** node representing the eaten
 entity.  Otherwise, in _silent_ mode, a truthy value must be returned when
 the tokenizer predicts with certainty an entity could be found.
 
-## function locator(value, fromIndex)
+## `function locator(value, fromIndex)`
 
 ```js
 function locator(value, fromIndex) {

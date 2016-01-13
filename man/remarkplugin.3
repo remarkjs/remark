@@ -41,7 +41,7 @@ It adds new files to be processed by \fBremark\fR(1).
 All have their own function. The first is called an \[lq]attacher\[rq] (see \fBATTACHER\fR). The second is named a \[lq]transformer\[rq] (see \fBTRANSFORMER\fR). The third is named a \[lq]completer\[rq] (see \fBCOMPLETER\fR). An \[lq]attacher\[rq] may return a \[lq]transformer\[rq] and attach a \[lq]completer\[rq].
 .P
 An attacher has access to the parser, which provides its own pluggable interface, consisting of tokenizers (see \fBTOKENIZER\fR) and locators (see \fBLOCATOR\fR).
-.SH "FUNCTION ATTACHER(REMARK\[LB], OPTIONS\[RB]\[LB], FILESET\[RB])"
+.SH "\FBFUNCTION ATTACHER(REMARK\[LB], OPTIONS\[RB]\[LB], FILESET\[RB])\FR"
 .P
 .RS 2
 .nf
@@ -95,7 +95,7 @@ Note that \fBremark\fR(1) invokes \fBattacher\fR for each file, not just once.
 \fBReturns\fR
 .P
 \fBtransformer\fR (optional) \[em] See FUNCTION TRANSFORMER(NODE, FILE\[lB], NEXT\[rB]).
-.SH "FUNCTION TRANSFORMER(NODE, FILE\[LB], NEXT\[RB])"
+.SH "\FBFUNCTION TRANSFORMER(NODE, FILE\[LB], NEXT\[RB])\FR"
 .P
 .RS 2
 .nf
@@ -145,7 +145,7 @@ To transform an \fBmdast\fR node, create a \fBtransformer\fR. A \fBtransformer\f
 \fBReturns\fR
 .P
 \fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
-.SH "FUNCTION COMPLETER(FILESET\[LB], NEXT\[RB])"
+.SH "\FBFUNCTION COMPLETER(FILESET\[LB], NEXT\[RB])\FR"
 .P
 To access all files once they are transformed, create a \fBcompleter\fR. A \fBcompleter\fR is invoked before files are compiled, written, and logged, but after reading, parsing, and transforming. Thus, a completer can still change files or add messages.
 .P
@@ -175,7 +175,7 @@ To access all files once they are transformed, create a \fBcompleter\fR. A \fBco
 \fBReturns\fR
 .P
 \fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
-.SH "FUNCTION TOKENIZER(EAT, VALUE, SILENT)"
+.SH "\FBFUNCTION TOKENIZER(EAT, VALUE, SILENT)\FR"
 .P
 .RS 2
 .nf
@@ -200,7 +200,7 @@ function mention(eat, value) \[lC]
 .fi
 .RE
 .P
-Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when there is a need to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBremark\fR knows two types of tokenizers based on the kinds of markdown nodes: block-level (e.g., paragraphs or fenced code blocks) and inline-level (e.g., emphasis or inline code spans). Block-level tokenizers are the same as inline-level tokenizers, with the exception that the latter require \fBlocator\fR functions.
+Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when there is a need to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBremark\fR knows two types of tokenizers based on the kinds of markdown nodes: block level (e.g., paragraphs or fenced code blocks) and inline level (e.g., emphasis or inline code spans). Block level tokenizers are the same as inline level tokenizers, with the exception that the latter require \fBlocator\fR functions.
 .P
 Tokenizers \fItest\fR whether a certain given documents starts with a certain syntactic entity. When that occurs, they consume that token, a process which is called \[lq]eating\[rq] in \fBremark\fR. Locators enable tokenizers to function faster by providing information on the where the next entity occurs.
 .P
@@ -229,7 +229,7 @@ For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\
 \fBReturns\fR
 .P
 In \fInormal\fR mode, optionally an \fBmdast\fR node representing the eaten entity. Otherwise, in \fIsilent\fR mode, a truthy value must be returned when the tokenizer predicts with certainty an entity could be found.
-.SH "FUNCTION LOCATOR(VALUE, FROMINDEX)"
+.SH "\FBFUNCTION LOCATOR(VALUE, FROMINDEX)\FR"
 .P
 .RS 2
 .nf

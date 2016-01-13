@@ -1,6 +1,7 @@
 {
   "output": true,
   "plugins": [
+    "script/natural-language",
     "comment-config",
     "lint",
     "github",

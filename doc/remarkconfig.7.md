@@ -17,8 +17,8 @@
 *   **remark**(1) additionally accepts configuration through a `settings`
     key in **remarkrc**(5) configuration files;
 
-*   Plug-ins can configure **remark**, for example, **remark-yaml-config**
-    allows per-file configuration to be set through YAML front-matter.
+*   Plug-ins can configure **remark**. For example, `remark-yaml-config`
+    allows configuration to be set through YAML front-matter.
 
 For a list of available configuration settings, see **remarksetting**(7).
 

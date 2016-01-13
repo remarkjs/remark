@@ -81,16 +81,20 @@
     "istanbul": "^0.4.0",
     "jscs": "^2.0.0",
     "jscs-jsdoc": "^1.0.0",
+    "mocha": "^2.0.0",
     "remark-comment-config": "^2.0.0",
     "remark-github": "^3.0.0",
     "remark-html": "^2.0.0",
     "remark-lint": "^2.0.0",
     "remark-man": "^2.0.0",
+    "remark-retext": "^1.0.1",
     "remark-toc": "^2.0.0",
     "remark-usage": "^2.0.0",
     "remark-validate-links": "^2.0.0",
     "remark-yaml-config": "^2.0.0",
-    "mocha": "^2.0.0"
+    "retext": "^1.0.0",
+    "retext-equality": "^1.6.4",
+    "retext-readability": "^1.0.0"
   },
   "scripts": {
     "build-man": "bin/remark doc/*.?.md --config-path .remarkrc-man --quiet",

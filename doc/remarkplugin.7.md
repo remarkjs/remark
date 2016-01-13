@@ -62,7 +62,7 @@ When referencing an npm plugin, and the plugin’s name is prefixed by
 `remark-`, this prefix can be omitted.
 
 For example, the following `.remarkrc` file will use
-[**remark-lint**](https://www.npmjs.com/package/remark-lint):
+[`remark-lint`](https://www.npmjs.com/package/remark-lint):
 
 ```json
 {

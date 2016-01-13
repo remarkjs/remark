@@ -26,10 +26,10 @@ var doc \[eq] processor.process(\[lB]
 .RE
 .SH "DESCRIPTION"
 .P
-This is the application programming interface documentation for \fBremark\fR. To find documentation for the command line interface, see \fBremark\fR(1).
-.SH "REMARK.USE(PLUGIN\[LB], OPTIONS\[RB])"
+These are the docs for the application programming interface of \fBremark\fR. To find documentation for the command line interface, see \fBremark\fR(1).
+.SH "\FBREMARK.USE(PLUGIN\[LB], OPTIONS\[RB])\FR"
 .P
-Change the way \fBremark\fR works by using a plugin. Plugins are documented at \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]blob\[sl]master\[sl]doc\[sl]plugins.md\(ra\fR.
+Change the way \fBremark\fR works by using a plugin. Plugins are documented at on GitHub.
 .P
 \fBSignatures\fR
 .RS 0
@@ -54,7 +54,7 @@ Change the way \fBremark\fR works by using a plugin. Plugins are documented at \
 \fBReturns\fR
 .P
 \fBObject\fR \[em] An instance of \fBRemark\fR. The instance functions just like the \fBremark\fR object itself (it has the same methods), but caches the \fBuse\fRd plugins.
-.SH "REMARK.PARSE(FILE\[LB], OPTIONS\[RB])"
+.SH "\FBREMARK.PARSE(FILE\[LB], OPTIONS\[RB])\FR"
 .P
 Parse a markdown document into an \fBmdast\fR node.
 .P
@@ -79,7 +79,7 @@ Parse a markdown document into an \fBmdast\fR node.
 \fBReturns\fR
 .P
 \fBNode\fR \[em] Node. Nodes are documented at \fBmdast\fR.
-.SH "REMARK.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])"
+.SH "\FBREMARK.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])\FR"
 .P
 Transform a node by applying plug-ins to it. Either a node or a file which was previously passed to \fBparse()\fR, must be given.
 .P
@@ -112,7 +112,7 @@ Transform a node by applying plug-ins to it. Either a node or a file which was p
 \fBThrows\fR
 .P
 When no \fBnode\fR was given and no node was found on the file.
-.SS "function done(err, node, file)"
+.SS "\fBfunction done(err, node, file)\fR"
 .P
 Invoked when transformation is complete.
 .P
@@ -135,7 +135,7 @@ Invoked when transformation is complete.
 \fBfile\fR (\fBFile\fR) \[em] File object representing the input file;
 .RE 0
 
-.SH "REMARK.STRINGIFY(NODE\[LB], FILE\[RB]\[LB], OPTIONS\[RB])"
+.SH "\FBREMARK.STRINGIFY(NODE\[LB], FILE\[RB]\[LB], OPTIONS\[RB])\FR"
 .P
 Compile a node into a document.
 .P
@@ -168,7 +168,7 @@ Compile a node into a document.
 \fBThrows\fR
 .P
 When no \fBnode\fR was given and no node was found on the file.
-.SH "REMARK.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])"
+.SH "\FBREMARK.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])\FR"
 .P
 Parse, transform, and compile markdown into something else.
 .P
@@ -195,7 +195,7 @@ Parse, transform, and compile markdown into something else.
 \fBReturns\fR
 .P
 \fBstring?\fR \[em] Document. Formatted in markdown by default, or in whatever a asynchronous generates. When an async transformer is used, \fBnull\fR is returned and \fBdone\fR must be given to receive the results upon completion.
-.SS "function done(err?, doc?, file?)"
+.SS "\fBfunction done(err\[lB], doc\[lB], file\[rB]\[rB])\fR"
 .P
 Invoked when processing is complete.
 .P
@@ -218,11 +218,11 @@ Invoked when processing is complete.
 \fBfile\fR (\fBFile\fR) \[em] File object representing the input file;
 .RE 0
 
-.SH "FILESET()"
+.SH "\FBFILESET()\FR"
 .P
 \fBremark\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
-.SH "FILESET.VALUEOF()"
-.SH "FILESET.TOJSON()"
+.SH "\FBFILESET.VALUEOF()\FR"
+.SH "\FBFILESET.TOJSON()\FR"
 .P
 Get access to the file objects in a set.
 .P
@@ -236,7 +236,7 @@ Get access to the file objects in a set.
 \fBReturns\fR
 .P
 \fBArray.<File>\fR \[em] List of files being processed by \fBremark\fR(1).
-.SH "FILESET.USE(COMPLETER)"
+.SH "\FBFILESET.USE(COMPLETER)\FR"
 .P
 Add a completer to the middleware pipeline of a file-set. When all files are transformed, this pipeline is run and \fBcompleter\fR is invoked with \fBfileSet\fR.
 .P
@@ -253,7 +253,7 @@ Add a completer to the middleware pipeline of a file-set. When all files are tra
 \fBcompleter\fR (\fBFunction\fR).
 .RE 0
 
-.SH "FILESET.ADD(FILE\[BA]FILEPATH)"
+.SH "\FBFILESET.ADD(FILE \[BA] FILEPATH)\FR"
 .P
 Add a new file to be processed by \fBremark\fR(1). The given file is processed just like other files, with a few differences.
 .P

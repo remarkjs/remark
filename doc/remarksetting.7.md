@@ -144,39 +144,38 @@ Yields:
 
 ### CommonMark
 
-Setting `commonmark: true` (default: `false`):
+Setting `commonmark: true` (default: `false`) allows and disallows
+several constructs.
 
-*   Adds support for empty lines to split **Blockquotes**;
+The following constructs are allowed:
 
-*   Adds support for parentheses (`(` and `)`) as delimiters for **Link** and
-    **Image** titles;
+*   Empty lines to split **Blockquotes**;
 
-*   Adds support for parsing any escaped
-    [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes)
-    character as **Escapes**;
+*   Parentheses (`(` and `)`) as delimiters for **Link** and **Image** titles;
 
-*   Adds support for parsing ordered list-items with a closing
-    parenthesis (`)`);
+*   Any escaped [ASCII-punctuation](http://spec.commonmark.org/0.18/#backslash-escapes)
+    character;
 
-*   Adds support for link reference definitions (and footnote reference
-    definitions, when in `footnotes: true` mode) in blockquotes;
+*   Ordered list-items with a closing parenthesis (`)`);
 
-*   Removes support for **Code** directly following a **Paragraph**;
+*   Link (and footnote, when enabled) reference definitions in blockquotes;
 
-*   Removes support for ATX-headings (`# Hash headings`) without spacing
-    after initial hashes or and before closing hashes;
+The following constructs are not allowed:
 
-*   Removes support for Setext-headings (`Underline headings\n---`) when
-    directly following a paragraph;
+*   **Code** directly following a **Paragraph**;
 
-*   Removes support for new lines in **Link** and **Image** titles;
+*   ATX-headings (`# Hash headings`) without spacing after initial hashes
+    or and before closing hashes;
 
-*   Removes support for white space in **Link** and **Image** URLs when not
-    enclosed in angle brackets (`<` and `>`);
+*   Setext headings (`Underline headings\n---`) when following a paragraph;
 
-*   Removes support for lazy **Blockquote** continuation—lines not preceded by
-    a closing angle bracket (`>`)—for **List**s, **Code**, and
-    **HorizontalRule**.
+*   Newlines in **Link** and **Image** titles;
+
+*   White space in **Link** and **Image** URLs in auto-links (links in
+    brackets, `<` and `>`);
+
+*   Lazy **Blockquote** continuation—lines not preceded by a closing angle
+    bracket (`>`)—for **List**s, **Code**, and **HorizontalRule**.
 
 The following document:
 
@@ -250,8 +249,8 @@ Yields:
 
 ### Footnotes
 
-Setting `footnotes: true` (default: `false`) enables inline- and
-reference-style footnotes.
+Setting `footnotes: true` (default: `false`) enables inline and
+reference footnotes.
 
 Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
@@ -802,8 +801,9 @@ Yields:
 
 ### Position
 
-Setting `gfm: false` (default: `true`) disables positional information on
-nodes: where each node was originally located in the markdown document.
+Setting `position: false` (default: `true`) disables positions on
+nodes. Positions show where each node was originally located in the
+document.
 
 > **Careful! Disabling this will stop some plug-ins from working and
 > will no longer show line/column information in warnings!**
@@ -1366,9 +1366,8 @@ A rule:
 
 ### Setext Headings
 
-Setting `setext: true` (default: `false`) will stringify primary and secondary
-headings using [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags)-style
-headings (underlines).
+Setting `setext: true` (default: `false`) will stringify headings as [Setext](http://en.wikipedia.org/wiki/Setext#Setext_tags) (underlines)
+when possible.
 
 Respectively, primary headings are compiled with a row of equals-signs
 (`=`), and secondary headings with a row of dashes (`-`).
