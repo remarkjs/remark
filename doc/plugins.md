@@ -22,6 +22,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`ben-eb/remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings;
 
+*   [`ben-eb/remark-comment-blocks`](https://github.com/ben-eb/remark-comment-blocks)
+    — Wrap Markdown with a comment block;
+
 *   [`wooorm/remark-comment-config`](https://github.com/wooorm/remark-comment-config)
     — Set settings with comments during runtime;
 
