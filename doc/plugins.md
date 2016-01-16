@@ -116,9 +116,6 @@ working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 *   [`wooorm/mdast-util-definitions`](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
 
-*   [`wooorm/mdast-util-escape`](https://github.com/wooorm/mdast-util-escape)
-    — Escape text to be inserted into a node;
-
 *   [`wooorm/mdast-util-heading-range`](https://github.com/wooorm/mdast-util-heading-range)
     — Markdown heading as ranges;
 
