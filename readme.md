@@ -42,7 +42,7 @@ markdown in a build step.
 npm install remark
 ```
 
-[Read more about alternatives ways to install and use »](doc/installation.md)
+[Read more about alternative ways to install and use »](doc/installation.md)
 
 ## Usage
 
