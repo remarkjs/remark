@@ -37,6 +37,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`wooorm/remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
+*   [`ben-eb/remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
+    — Adjust the gap between headings;
+
 *   [`ben-eb/remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
     — Highlight code blocks in Markdown files with
     [highlight.js](https://github.com/isagalaev/highlight.js);
