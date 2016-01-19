@@ -2,6 +2,14 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.2.1 / 2016-01-19
+==================
+
+*   Fix empty list-item bug in remark(3) ([`8a62652`](https://github.com/wooorm/remark/commit/8a62652))
+*   Add support for default arguments to remark(1) ([`9ab6dc8`](https://github.com/wooorm/remark/commit/9ab6dc8))
+*   Fix injecting virtual files on remark(1) ([`397028a`](https://github.com/wooorm/remark/commit/397028a))
+*   Add natural-language validation ([`d1c52a3`](https://github.com/wooorm/remark/commit/d1c52a3))
+
 3.2.0 / 2016-01-10
 ==================
 
