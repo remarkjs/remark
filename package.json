@@ -38,7 +38,6 @@
     "parse-entities": "^1.0.0",
     "repeat-string": "^1.5.0",
     "stringify-entities": "^1.0.0",
-    "text-table": "^0.2.0",
     "to-vfile": "^1.0.0",
     "trim": "^0.0.1",
     "trim-trailing-lines": "^1.0.0",
