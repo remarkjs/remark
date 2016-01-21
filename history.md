@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.2.2 / 2016-01-21
+==================
+
+*   Refactor internal ignore API in remark(1) ([`c94c7df`](https://github.com/wooorm/remark/commit/c94c7df))
+
 3.2.1 / 2016-01-19
 ==================
 
