@@ -98,26 +98,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "http://,",
-          "children": [
-            {
-              "type": "text",
-              "value": "http://,",
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 1
-                },
-                "end": {
-                  "line": 7,
-                  "column": 9
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "http://,",
           "position": {
             "start": {
               "line": 7,
@@ -147,26 +129,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "https://:",
-          "children": [
-            {
-              "type": "text",
-              "value": "https://:",
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 1
-                },
-                "end": {
-                  "line": 9,
-                  "column": 10
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "https://:",
           "position": {
             "start": {
               "line": 9,
@@ -227,26 +191,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "http://\"",
-          "children": [
-            {
-              "type": "text",
-              "value": "http://\"",
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 1
-                },
-                "end": {
-                  "line": 13,
-                  "column": 9
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "http://\"",
           "position": {
             "start": {
               "line": 13,
@@ -276,26 +222,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "https://'",
-          "children": [
-            {
-              "type": "text",
-              "value": "https://'",
-              "position": {
-                "start": {
-                  "line": 15,
-                  "column": 1
-                },
-                "end": {
-                  "line": 15,
-                  "column": 10
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "https://'",
           "position": {
             "start": {
               "line": 15,
@@ -356,26 +284,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "href": "http://]",
-          "children": [
-            {
-              "type": "text",
-              "value": "http://]",
-              "position": {
-                "start": {
-                  "line": 19,
-                  "column": 1
-                },
-                "end": {
-                  "line": 19,
-                  "column": 9
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "http://]",
           "position": {
             "start": {
               "line": 19,
