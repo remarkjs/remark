@@ -37,7 +37,7 @@
       "children": [
         {
           "type": "text",
-          "value": "So should this: mailto:foo@bar.com.",
+          "value": "Also, subdomain should be a part of the link (http://foo.example.com/(hello",
           "position": {
             "start": {
               "line": 3,
@@ -45,7 +45,55 @@
             },
             "end": {
               "line": 3,
-              "column": 36
+              "column": 76
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "world",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "world",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 77
+                },
+                "end": {
+                  "line": 3,
+                  "column": 82
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 76
+            },
+            "end": {
+              "line": 3,
+              "column": 83
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")).",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 83
+            },
+            "end": {
+              "line": 3,
+              "column": 86
             },
             "indent": []
           }
@@ -58,6 +106,37 @@
         },
         "end": {
           "line": 3,
+          "column": 86
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "So should this: mailto:foo@bar.com.",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1
+            },
+            "end": {
+              "line": 5,
+              "column": 36
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1
+        },
+        "end": {
+          "line": 5,
           "column": 36
         },
         "indent": []
@@ -70,7 +149,7 @@
       "column": 1
     },
     "end": {
-      "line": 4,
+      "line": 6,
       "column": 1
     }
   }
