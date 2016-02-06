@@ -2,7 +2,7 @@
   "type": "root",
   "children": [
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 1,
@@ -16,7 +16,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 2,

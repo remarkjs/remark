@@ -121,7 +121,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 3,
@@ -306,7 +306,7 @@
           "checked": null,
           "children": [
             {
-              "type": "horizontalRule",
+              "type": "thematicBreak",
               "position": {
                 "start": {
                   "line": 12,
@@ -719,7 +719,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 24,

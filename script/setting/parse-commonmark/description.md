@@ -29,4 +29,4 @@ The following constructs are not allowed:
     brackets, `<` and `>`);
 
 *   Lazy **Blockquote** continuation—lines not preceded by a closing angle
-    bracket (`>`)—for **List**s, **Code**, and **HorizontalRule**.
+    bracket (`>`)—for **List**s, **Code**, and **ThematicBreak**.

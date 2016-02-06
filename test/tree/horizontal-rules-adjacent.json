@@ -2,7 +2,7 @@
   "type": "root",
   "children": [
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 1,
@@ -16,7 +16,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 2,
@@ -30,7 +30,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 3,
@@ -106,7 +106,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 8,
@@ -151,7 +151,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 11,
@@ -199,7 +199,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 16,

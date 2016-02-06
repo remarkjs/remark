@@ -999,7 +999,7 @@ validateToken = function (context) {
         return;
     }
 
-    if (type === 'horizontalRule' || type === 'break') {
+    if (type === 'thematicBreak' || type === 'break') {
         assert(keys === 1);
 
         return;
