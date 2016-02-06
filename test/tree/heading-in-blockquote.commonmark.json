@@ -149,7 +149,7 @@
       }
     },
     {
-      "type": "horizontalRule",
+      "type": "thematicBreak",
       "position": {
         "start": {
           "line": 7,

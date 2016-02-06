@@ -651,7 +651,7 @@
                       }
                     },
                     {
-                      "type": "horizontalRule",
+                      "type": "thematicBreak",
                       "position": {
                         "start": {
                           "line": 30,
@@ -973,7 +973,7 @@
                       }
                     },
                     {
-                      "type": "horizontalRule",
+                      "type": "thematicBreak",
                       "position": {
                         "start": {
                           "line": 43,
