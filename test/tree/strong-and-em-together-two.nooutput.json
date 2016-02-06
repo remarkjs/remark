@@ -10,11 +10,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 25
+              "column": 25,
+              "offset": 24
             },
             "indent": []
           }
@@ -23,11 +25,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 25
+          "column": 25,
+          "offset": 24
         },
         "indent": []
       }
@@ -41,11 +45,13 @@
           "position": {
             "start": {
               "line": 3,
-              "column": 1
+              "column": 1,
+              "offset": 26
             },
             "end": {
               "line": 3,
-              "column": 38
+              "column": 38,
+              "offset": 63
             },
             "indent": []
           }
@@ -54,11 +60,13 @@
       "position": {
         "start": {
           "line": 3,
-          "column": 1
+          "column": 1,
+          "offset": 26
         },
         "end": {
           "line": 3,
-          "column": 38
+          "column": 38,
+          "offset": 63
         },
         "indent": []
       }
@@ -72,11 +80,13 @@
           "position": {
             "start": {
               "line": 5,
-              "column": 1
+              "column": 1,
+              "offset": 65
             },
             "end": {
               "line": 5,
-              "column": 8
+              "column": 8,
+              "offset": 72
             },
             "indent": []
           }
@@ -90,11 +100,13 @@
               "position": {
                 "start": {
                   "line": 5,
-                  "column": 9
+                  "column": 9,
+                  "offset": 73
                 },
                 "end": {
                   "line": 5,
-                  "column": 20
+                  "column": 20,
+                  "offset": 84
                 },
                 "indent": []
               }
@@ -103,11 +115,13 @@
           "position": {
             "start": {
               "line": 5,
-              "column": 8
+              "column": 8,
+              "offset": 72
             },
             "end": {
               "line": 5,
-              "column": 21
+              "column": 21,
+              "offset": 85
             },
             "indent": []
           }
@@ -118,11 +132,13 @@
           "position": {
             "start": {
               "line": 5,
-              "column": 21
+              "column": 21,
+              "offset": 85
             },
             "end": {
               "line": 5,
-              "column": 25
+              "column": 25,
+              "offset": 89
             },
             "indent": []
           }
@@ -131,11 +147,13 @@
       "position": {
         "start": {
           "line": 5,
-          "column": 1
+          "column": 1,
+          "offset": 65
         },
         "end": {
           "line": 5,
-          "column": 25
+          "column": 25,
+          "offset": 89
         },
         "indent": []
       }
@@ -149,11 +167,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 1
+              "column": 1,
+              "offset": 91
             },
             "end": {
               "line": 7,
-              "column": 3
+              "column": 3,
+              "offset": 93
             },
             "indent": []
           }
@@ -167,11 +187,13 @@
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 4
+                  "column": 4,
+                  "offset": 94
                 },
                 "end": {
                   "line": 7,
-                  "column": 8
+                  "column": 8,
+                  "offset": 98
                 },
                 "indent": []
               }
@@ -180,11 +202,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 3
+              "column": 3,
+              "offset": 93
             },
             "end": {
               "line": 7,
-              "column": 9
+              "column": 9,
+              "offset": 99
             },
             "indent": []
           }
@@ -195,11 +219,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 9
+              "column": 9,
+              "offset": 99
             },
             "end": {
               "line": 7,
-              "column": 12
+              "column": 12,
+              "offset": 102
             },
             "indent": []
           }
@@ -213,11 +239,13 @@
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 13
+                  "column": 13,
+                  "offset": 103
                 },
                 "end": {
                   "line": 7,
-                  "column": 15
+                  "column": 15,
+                  "offset": 105
                 },
                 "indent": []
               }
@@ -226,11 +254,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 12
+              "column": 12,
+              "offset": 102
             },
             "end": {
               "line": 7,
-              "column": 16
+              "column": 16,
+              "offset": 106
             },
             "indent": []
           }
@@ -241,11 +271,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 16
+              "column": 16,
+              "offset": 106
             },
             "end": {
               "line": 7,
-              "column": 20
+              "column": 20,
+              "offset": 110
             },
             "indent": []
           }
@@ -259,11 +291,13 @@
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 21
+                  "column": 21,
+                  "offset": 111
                 },
                 "end": {
                   "line": 7,
-                  "column": 24
+                  "column": 24,
+                  "offset": 114
                 },
                 "indent": []
               }
@@ -272,11 +306,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 20
+              "column": 20,
+              "offset": 110
             },
             "end": {
               "line": 7,
-              "column": 25
+              "column": 25,
+              "offset": 115
             },
             "indent": []
           }
@@ -287,11 +323,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 25
+              "column": 25,
+              "offset": 115
             },
             "end": {
               "line": 7,
-              "column": 38
+              "column": 38,
+              "offset": 128
             },
             "indent": []
           }
@@ -300,11 +338,13 @@
       "position": {
         "start": {
           "line": 7,
-          "column": 1
+          "column": 1,
+          "offset": 91
         },
         "end": {
           "line": 7,
-          "column": 38
+          "column": 38,
+          "offset": 128
         },
         "indent": []
       }
@@ -313,11 +353,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 8,
-      "column": 1
+      "column": 1,
+      "offset": 129
     }
   }
 }

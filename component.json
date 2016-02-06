@@ -28,7 +28,8 @@
     "wooorm/stringify-entities": "^1.0.0",
     "component/trim": "^0.0.1",
     "wooorm/trim-trailing-lines": "^1.0.0",
-    "wooorm/unified": "^2.0.0"
+    "wooorm/unified": "^2.0.0",
+    "wooorm/vfile-location": "^2.0.0"
   },
   "repository": "wooorm/remark",
   "scripts": [

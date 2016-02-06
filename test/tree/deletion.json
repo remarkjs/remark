@@ -10,11 +10,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 7
+              "column": 7,
+              "offset": 6
             },
             "indent": []
           }
@@ -28,11 +30,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 9,
+                  "offset": 8
                 },
                 "end": {
                   "line": 1,
-                  "column": 11
+                  "column": 11,
+                  "offset": 10
                 },
                 "indent": []
               }
@@ -41,11 +45,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 7
+              "column": 7,
+              "offset": 6
             },
             "end": {
               "line": 1,
-              "column": 13
+              "column": 13,
+              "offset": 12
             },
             "indent": []
           }
@@ -56,11 +62,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 13
+              "column": 13,
+              "offset": 12
             },
             "end": {
               "line": 1,
-              "column": 19
+              "column": 19,
+              "offset": 18
             },
             "indent": []
           }
@@ -69,11 +77,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 19
+          "column": 19,
+          "offset": 18
         },
         "indent": []
       }
@@ -82,11 +92,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 2,
-      "column": 1
+      "column": 1,
+      "offset": 19
     }
   }
 }
