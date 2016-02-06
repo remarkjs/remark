@@ -10,11 +10,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 3,
-              "column": 6
+              "column": 6,
+              "offset": 21
             },
             "indent": [
               1,
@@ -26,11 +28,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 3,
-          "column": 6
+          "column": 6,
+          "offset": 21
         },
         "indent": [
           1,
@@ -42,11 +46,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 3,
-      "column": 6
+      "column": 6,
+      "offset": 21
     }
   }
 }

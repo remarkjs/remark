@@ -6,11 +6,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 4
+          "column": 4,
+          "offset": 3
         },
         "indent": []
       }
@@ -24,11 +26,13 @@
           "position": {
             "start": {
               "line": 2,
-              "column": 1
+              "column": 1,
+              "offset": 4
             },
             "end": {
               "line": 4,
-              "column": 17
+              "column": 17,
+              "offset": 40
             },
             "indent": [
               1,
@@ -40,11 +44,13 @@
       "position": {
         "start": {
           "line": 2,
-          "column": 1
+          "column": 1,
+          "offset": 4
         },
         "end": {
           "line": 4,
-          "column": 17
+          "column": 17,
+          "offset": 40
         },
         "indent": [
           1,
@@ -57,11 +63,13 @@
       "position": {
         "start": {
           "line": 5,
-          "column": 1
+          "column": 1,
+          "offset": 41
         },
         "end": {
           "line": 5,
-          "column": 4
+          "column": 4,
+          "offset": 44
         },
         "indent": []
       }
@@ -76,11 +84,13 @@
           "position": {
             "start": {
               "line": 7,
-              "column": 3
+              "column": 3,
+              "offset": 48
             },
             "end": {
               "line": 7,
-              "column": 11
+              "column": 11,
+              "offset": 56
             },
             "indent": []
           }
@@ -89,11 +99,13 @@
       "position": {
         "start": {
           "line": 7,
-          "column": 1
+          "column": 1,
+          "offset": 46
         },
         "end": {
           "line": 7,
-          "column": 11
+          "column": 11,
+          "offset": 56
         },
         "indent": []
       }
@@ -102,11 +114,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 8,
-      "column": 1
+      "column": 1,
+      "offset": 57
     }
   }
 }

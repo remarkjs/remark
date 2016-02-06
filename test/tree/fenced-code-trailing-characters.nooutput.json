@@ -8,11 +8,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 4,
-          "column": 4
+          "column": 4,
+          "offset": 24
         },
         "indent": [
           1,
@@ -25,11 +27,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 5,
-      "column": 1
+      "column": 1,
+      "offset": 25
     }
   }
 }

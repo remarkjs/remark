@@ -15,11 +15,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 2
+                  "column": 2,
+                  "offset": 1
                 },
                 "end": {
                   "line": 1,
-                  "column": 6
+                  "column": 6,
+                  "offset": 5
                 },
                 "indent": []
               }
@@ -30,11 +32,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 6
+                  "column": 6,
+                  "offset": 5
                 },
                 "end": {
                   "line": 1,
-                  "column": 9
+                  "column": 9,
+                  "offset": 8
                 },
                 "indent": []
               }
@@ -45,11 +49,13 @@
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 9,
+                  "offset": 8
                 },
                 "end": {
                   "line": 1,
-                  "column": 19
+                  "column": 19,
+                  "offset": 18
                 },
                 "indent": []
               }
@@ -58,11 +64,13 @@
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 26
+              "column": 26,
+              "offset": 25
             },
             "indent": []
           }
@@ -71,11 +79,13 @@
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 26
+          "column": 26,
+          "offset": 25
         },
         "indent": []
       }
@@ -84,11 +94,13 @@
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 2,
-      "column": 1
+      "column": 1,
+      "offset": 26
     }
   }
 }

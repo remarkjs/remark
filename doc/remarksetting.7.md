@@ -73,11 +73,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 2
+              "column": 2,
+              "offset": 1
             },
             "indent": []
           }
@@ -87,11 +89,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 2
+              "column": 2,
+              "offset": 1
             },
             "end": {
               "line": 2,
-              "column": 1
+              "column": 1,
+              "offset": 2
             },
             "indent": [
               1
@@ -104,11 +108,13 @@ Yields:
           "position": {
             "start": {
               "line": 2,
-              "column": 1
+              "column": 1,
+              "offset": 2
             },
             "end": {
               "line": 2,
-              "column": 11
+              "column": 11,
+              "offset": 12
             },
             "indent": []
           }
@@ -117,11 +123,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 2,
-          "column": 11
+          "column": 11,
+          "offset": 12
         },
         "indent": [
           1
@@ -132,11 +140,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 3,
-      "column": 1
+      "column": 1,
+      "offset": 13
     }
   }
 }
@@ -207,11 +217,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 2,
-              "column": 54
+              "column": 54,
+              "offset": 73
             },
             "indent": [
               1
@@ -222,11 +234,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 2,
-          "column": 54
+          "column": 54,
+          "offset": 73
         },
         "indent": [
           1
@@ -237,11 +251,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 3,
-      "column": 1
+      "column": 1,
+      "offset": 74
     }
   }
 }
@@ -291,11 +307,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 20
+              "column": 20,
+              "offset": 19
             },
             "indent": []
           }
@@ -309,11 +327,13 @@ Yields:
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 36
+                  "column": 36,
+                  "offset": 35
                 },
                 "end": {
                   "line": 1,
-                  "column": 49
+                  "column": 49,
+                  "offset": 48
                 },
                 "indent": []
               }
@@ -322,11 +342,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 20
+              "column": 20,
+              "offset": 19
             },
             "end": {
               "line": 1,
-              "column": 36
+              "column": 36,
+              "offset": 35
             },
             "indent": []
           }
@@ -337,11 +359,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 36
+              "column": 36,
+              "offset": 35
             },
             "end": {
               "line": 1,
-              "column": 37
+              "column": 37,
+              "offset": 36
             },
             "indent": []
           }
@@ -350,11 +374,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 37
+          "column": 37,
+          "offset": 36
         },
         "indent": []
       }
@@ -368,11 +394,13 @@ Yields:
           "position": {
             "start": {
               "line": 3,
-              "column": 1
+              "column": 1,
+              "offset": 38
             },
             "end": {
               "line": 3,
-              "column": 19
+              "column": 19,
+              "offset": 56
             },
             "indent": []
           }
@@ -383,11 +411,13 @@ Yields:
           "position": {
             "start": {
               "line": 3,
-              "column": 19
+              "column": 19,
+              "offset": 56
             },
             "end": {
               "line": 3,
-              "column": 23
+              "column": 23,
+              "offset": 60
             },
             "indent": []
           }
@@ -398,11 +428,13 @@ Yields:
           "position": {
             "start": {
               "line": 3,
-              "column": 23
+              "column": 23,
+              "offset": 60
             },
             "end": {
               "line": 3,
-              "column": 24
+              "column": 24,
+              "offset": 61
             },
             "indent": []
           }
@@ -411,11 +443,13 @@ Yields:
       "position": {
         "start": {
           "line": 3,
-          "column": 1
+          "column": 1,
+          "offset": 38
         },
         "end": {
           "line": 3,
-          "column": 24
+          "column": 24,
+          "offset": 61
         },
         "indent": []
       }
@@ -433,11 +467,13 @@ Yields:
               "position": {
                 "start": {
                   "line": 5,
-                  "column": 7
+                  "column": 7,
+                  "offset": 69
                 },
                 "end": {
                   "line": 5,
-                  "column": 61
+                  "column": 61,
+                  "offset": 123
                 },
                 "indent": []
               }
@@ -446,11 +482,13 @@ Yields:
           "position": {
             "start": {
               "line": 5,
-              "column": 7
+              "column": 7,
+              "offset": 69
             },
             "end": {
               "line": 5,
-              "column": 61
+              "column": 61,
+              "offset": 123
             },
             "indent": []
           }
@@ -475,11 +513,13 @@ Yields:
                       "position": {
                         "start": {
                           "line": 7,
-                          "column": 6
+                          "column": 6,
+                          "offset": 130
                         },
                         "end": {
                           "line": 7,
-                          "column": 15
+                          "column": 15,
+                          "offset": 139
                         },
                         "indent": []
                       }
@@ -488,11 +528,13 @@ Yields:
                   "position": {
                     "start": {
                       "line": 7,
-                      "column": 6
+                      "column": 6,
+                      "offset": 130
                     },
                     "end": {
                       "line": 7,
-                      "column": 15
+                      "column": 15,
+                      "offset": 139
                     },
                     "indent": []
                   }
@@ -501,11 +543,13 @@ Yields:
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 1
+                  "column": 1,
+                  "offset": 125
                 },
                 "end": {
                   "line": 7,
-                  "column": 15
+                  "column": 15,
+                  "offset": 139
                 },
                 "indent": []
               }
@@ -514,11 +558,13 @@ Yields:
           "position": {
             "start": {
               "line": 7,
-              "column": 1
+              "column": 1,
+              "offset": 125
             },
             "end": {
               "line": 7,
-              "column": 15
+              "column": 15,
+              "offset": 139
             },
             "indent": []
           }
@@ -527,11 +573,13 @@ Yields:
       "position": {
         "start": {
           "line": 5,
-          "column": 1
+          "column": 1,
+          "offset": 63
         },
         "end": {
           "line": 7,
-          "column": 15
+          "column": 15,
+          "offset": 139
         },
         "indent": [
           1,
@@ -543,11 +591,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 8,
-      "column": 1
+      "column": 1,
+      "offset": 140
     }
   }
 }
@@ -592,11 +642,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 7
+              "column": 7,
+              "offset": 6
             },
             "indent": []
           }
@@ -610,11 +662,13 @@ Yields:
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 9,
+                  "offset": 8
                 },
                 "end": {
                   "line": 1,
-                  "column": 11
+                  "column": 11,
+                  "offset": 10
                 },
                 "indent": []
               }
@@ -623,11 +677,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 7
+              "column": 7,
+              "offset": 6
             },
             "end": {
               "line": 1,
-              "column": 13
+              "column": 13,
+              "offset": 12
             },
             "indent": []
           }
@@ -638,11 +694,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 13
+              "column": 13,
+              "offset": 12
             },
             "end": {
               "line": 1,
-              "column": 19
+              "column": 19,
+              "offset": 18
             },
             "indent": []
           }
@@ -651,11 +709,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 19
+          "column": 19,
+          "offset": 18
         },
         "indent": []
       }
@@ -664,11 +724,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 2,
-      "column": 1
+      "column": 1,
+      "offset": 19
     }
   }
 }
@@ -717,11 +779,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 1
+              "column": 1,
+              "offset": 0
             },
             "end": {
               "line": 1,
-              "column": 15
+              "column": 15,
+              "offset": 14
             },
             "indent": []
           }
@@ -735,11 +799,13 @@ Yields:
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 16
+                  "column": 16,
+                  "offset": 15
                 },
                 "end": {
                   "line": 1,
-                  "column": 20
+                  "column": 20,
+                  "offset": 19
                 },
                 "indent": []
               }
@@ -748,11 +814,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 15
+              "column": 15,
+              "offset": 14
             },
             "end": {
               "line": 1,
-              "column": 21
+              "column": 21,
+              "offset": 20
             },
             "indent": []
           }
@@ -763,11 +831,13 @@ Yields:
           "position": {
             "start": {
               "line": 1,
-              "column": 21
+              "column": 21,
+              "offset": 20
             },
             "end": {
               "line": 1,
-              "column": 29
+              "column": 29,
+              "offset": 28
             },
             "indent": []
           }
@@ -776,11 +846,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 1,
-          "column": 29
+          "column": 29,
+          "offset": 28
         },
         "indent": []
       }
@@ -789,11 +861,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 2,
-      "column": 1
+      "column": 1,
+      "offset": 29
     }
   }
 }
@@ -889,11 +963,13 @@ Yields:
       "position": {
         "start": {
           "line": 1,
-          "column": 1
+          "column": 1,
+          "offset": 0
         },
         "end": {
           "line": 3,
-          "column": 4
+          "column": 4,
+          "offset": 27
         },
         "indent": [
           1,
@@ -911,11 +987,13 @@ Yields:
           "position": {
             "start": {
               "line": 5,
-              "column": 3
+              "column": 3,
+              "offset": 31
             },
             "end": {
               "line": 5,
-              "column": 15
+              "column": 15,
+              "offset": 43
             },
             "indent": []
           }
@@ -924,11 +1002,13 @@ Yields:
       "position": {
         "start": {
           "line": 5,
-          "column": 1
+          "column": 1,
+          "offset": 29
         },
         "end": {
           "line": 5,
-          "column": 15
+          "column": 15,
+          "offset": 43
         },
         "indent": []
       }
@@ -937,11 +1017,13 @@ Yields:
   "position": {
     "start": {
       "line": 1,
-      "column": 1
+      "column": 1,
+      "offset": 0
     },
     "end": {
       "line": 6,
-      "column": 1
+      "column": 1,
+      "offset": 44
     }
   }
 }
