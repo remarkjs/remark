@@ -24,7 +24,7 @@
         {
           "type": "image",
           "title": "Amet",
-          "src": "http://amet.com/amet.jpeg",
+          "url": "http://amet.com/amet.jpeg",
           "alt": "amet",
           "position": {
             "start": {
@@ -95,7 +95,7 @@
         {
           "type": "image",
           "title": "Finibus",
-          "src": "http://finibus.com/finibus.png",
+          "url": "http://finibus.com/finibus.png",
           "alt": "finibus",
           "position": {
             "start": {
@@ -131,7 +131,7 @@
         {
           "type": "image",
           "title": "Facilisi",
-          "src": "http://facilisi.com/facilisi.gif",
+          "url": "http://facilisi.com/facilisi.gif",
           "alt": "facilisi",
           "position": {
             "start": {
@@ -202,7 +202,7 @@
         {
           "type": "image",
           "title": "Faucibus",
-          "src": "http://faucibus.com/faucibus.tiff",
+          "url": "http://faucibus.com/faucibus.tiff",
           "alt": "faucibus",
           "position": {
             "start": {

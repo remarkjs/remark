@@ -8,7 +8,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://shields.io",
+          "url": "http://shields.io",
           "children": [
             {
               "type": "text",
@@ -63,7 +63,7 @@
         {
           "type": "link",
           "title": "mdast",
-          "href": "https://travis-ci.org/wooorm/mdast",
+          "url": "https://travis-ci.org/wooorm/mdast",
           "children": [
             {
               "type": "text",
@@ -118,7 +118,7 @@
         {
           "type": "link",
           "title": "An example",
-          "href": "http://example.com",
+          "url": "http://example.com",
           "children": [
             {
               "type": "text",

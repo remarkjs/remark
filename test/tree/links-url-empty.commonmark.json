@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "",
+          "url": "",
           "children": [
             {
               "type": "text",
@@ -79,7 +79,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "",
+          "url": "",
           "children": [
             {
               "type": "text",
@@ -151,7 +151,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "",
+          "url": "",
           "alt": "Hello",
           "position": {
             "start": {
@@ -205,7 +205,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "",
+          "url": "",
           "alt": "World",
           "position": {
             "start": {

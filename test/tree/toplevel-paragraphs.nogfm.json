@@ -643,7 +643,7 @@
       "type": "definition",
       "identifier": "how",
       "title": null,
-      "link": "/are/you",
+      "url": "/are/you",
       "position": {
         "start": {
           "line": 33,

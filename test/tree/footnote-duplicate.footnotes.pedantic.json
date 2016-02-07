@@ -97,7 +97,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
+              "url": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
               "children": [
                 {
                   "type": "text",
@@ -257,7 +257,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
+              "url": "http://en.wikipedia.org/wiki/International_Phonetic_Alphabet",
               "children": [
                 {
                   "type": "text",

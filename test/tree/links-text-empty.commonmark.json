@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [],
           "position": {
             "start": {
@@ -61,7 +61,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [],
           "position": {
             "start": {
@@ -115,7 +115,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": null,
           "position": {
             "start": {
@@ -169,7 +169,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": null,
           "position": {
             "start": {

@@ -5,7 +5,7 @@
       "type": "definition",
       "identifier": "test",
       "title": "Google",
-      "link": "http://google.com/",
+      "url": "http://google.com/",
       "position": {
         "start": {
           "line": 1,
@@ -1241,7 +1241,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "//hello",
+          "url": "//hello",
           "children": [
             {
               "type": "text",
@@ -1297,7 +1297,7 @@
         {
           "type": "image",
           "title": "a title",
-          "src": "src",
+          "url": "src",
           "alt": "alt",
           "position": {
             "start": {
@@ -1335,7 +1335,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "src",
+          "url": "src",
           "alt": null,
           "position": {
             "start": {

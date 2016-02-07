@@ -77,7 +77,7 @@
       "type": "definition",
       "identifier": "bar",
       "title": null,
-      "link": "</url",
+      "url": "</url",
       "position": {
         "start": {
           "line": 3,

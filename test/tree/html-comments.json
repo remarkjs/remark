@@ -99,7 +99,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "https://html.spec.whatwg.org/multipage/syntax.html#comments",
+          "url": "https://html.spec.whatwg.org/multipage/syntax.html#comments",
           "children": [
             {
               "type": "text",

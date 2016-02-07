@@ -450,7 +450,7 @@
         {
           "type": "link",
           "title": "and text",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -505,7 +505,7 @@
         {
           "type": "link",
           "title": "and \"matching delimiters\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -560,7 +560,7 @@
         {
           "type": "link",
           "title": "and \"mismatched delimiters",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -615,7 +615,7 @@
         {
           "type": "link",
           "title": "and \\\"escapes\\\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -670,7 +670,7 @@
         {
           "type": "link",
           "title": "and \"named entities\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -725,7 +725,7 @@
         {
           "type": "link",
           "title": "and \"numbered entities\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -816,7 +816,7 @@
         {
           "type": "link",
           "title": "and text",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -871,7 +871,7 @@
         {
           "type": "link",
           "title": "and 'matching delimiters'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -926,7 +926,7 @@
         {
           "type": "link",
           "title": "and 'mismatched delimiters",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -981,7 +981,7 @@
         {
           "type": "link",
           "title": "and \\'escapes\\'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1036,7 +1036,7 @@
         {
           "type": "link",
           "title": "and 'named entities'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1091,7 +1091,7 @@
         {
           "type": "link",
           "title": "and 'numbered entities'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1182,7 +1182,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and text)",
+          "url": "./world.html (and text)",
           "children": [
             {
               "type": "text",
@@ -1237,7 +1237,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and (matching delimiters))",
+          "url": "./world.html (and (matching delimiters))",
           "children": [
             {
               "type": "text",
@@ -1364,7 +1364,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and (escapes))",
+          "url": "./world.html (and (escapes))",
           "children": [
             {
               "type": "text",
@@ -1419,7 +1419,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and (named entities))",
+          "url": "./world.html (and (named entities))",
           "children": [
             {
               "type": "text",
@@ -1474,7 +1474,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (and (numbered entities))",
+          "url": "./world.html (and (numbered entities))",
           "children": [
             {
               "type": "text",
@@ -1601,7 +1601,7 @@
         {
           "type": "image",
           "title": "and text",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1638,7 +1638,7 @@
         {
           "type": "image",
           "title": "and \"matching delimiters\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1675,7 +1675,7 @@
         {
           "type": "image",
           "title": "and \"mismatched delimiters",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1712,7 +1712,7 @@
         {
           "type": "image",
           "title": "and \\\"escapes\\\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1749,7 +1749,7 @@
         {
           "type": "image",
           "title": "and \"named entities\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1786,7 +1786,7 @@
         {
           "type": "image",
           "title": "and \"numbered entities\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1859,7 +1859,7 @@
         {
           "type": "image",
           "title": "and text",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1896,7 +1896,7 @@
         {
           "type": "image",
           "title": "and 'matching delimiters'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1933,7 +1933,7 @@
         {
           "type": "image",
           "title": "and 'mismatched delimiters",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1970,7 +1970,7 @@
         {
           "type": "image",
           "title": "and \\'escapes\\'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2007,7 +2007,7 @@
         {
           "type": "image",
           "title": "and 'named entities'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2044,7 +2044,7 @@
         {
           "type": "image",
           "title": "and 'numbered entities'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2117,7 +2117,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and text)",
+          "url": "./world.png (and text)",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2154,7 +2154,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and (matching delimiters))",
+          "url": "./world.png (and (matching delimiters))",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2245,7 +2245,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and (escapes))",
+          "url": "./world.png (and (escapes))",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2282,7 +2282,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and (named entities))",
+          "url": "./world.png (and (named entities))",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2319,7 +2319,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.png (and (numbered entities))",
+          "url": "./world.png (and (numbered entities))",
           "alt": "Hello",
           "position": {
             "start": {
