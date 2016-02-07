@@ -386,7 +386,7 @@
       "type": "definition",
       "identifier": "s",
       "title": "Markdown Syntax",
-      "link": "/projects/markdown/syntax",
+      "url": "/projects/markdown/syntax",
       "position": {
         "start": {
           "line": 30,
@@ -403,7 +403,7 @@
       "type": "definition",
       "identifier": "d",
       "title": "Markdown Dingus",
-      "link": "/projects/markdown/dingus",
+      "url": "/projects/markdown/dingus",
       "position": {
         "start": {
           "line": 31,
@@ -420,7 +420,7 @@
       "type": "definition",
       "identifier": "src",
       "title": null,
-      "link": "/projects/markdown/basics.text",
+      "url": "/projects/markdown/basics.text",
       "position": {
         "start": {
           "line": 32,

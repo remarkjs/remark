@@ -84,7 +84,7 @@
       "type": "definition",
       "identifier": "simple case",
       "title": null,
-      "link": "/simple",
+      "url": "/simple",
       "position": {
         "start": {
           "line": 3,
@@ -271,7 +271,7 @@
       "type": "definition",
       "identifier": "line break",
       "title": null,
-      "link": "/foo",
+      "url": "/foo",
       "position": {
         "start": {
           "line": 13,
@@ -385,7 +385,7 @@
       "type": "definition",
       "identifier": "this",
       "title": null,
-      "link": "/this",
+      "url": "/this",
       "position": {
         "start": {
           "line": 18,
@@ -402,7 +402,7 @@
       "type": "definition",
       "identifier": "that",
       "title": null,
-      "link": "/that",
+      "url": "/that",
       "position": {
         "start": {
           "line": 19,
@@ -419,7 +419,7 @@
       "type": "definition",
       "identifier": "other",
       "title": null,
-      "link": "/other",
+      "url": "/other",
       "position": {
         "start": {
           "line": 20,

@@ -179,7 +179,7 @@
       "type": "definition",
       "identifier": "2",
       "title": null,
-      "link": "hello",
+      "url": "hello",
       "position": {
         "start": {
           "line": 7,
@@ -416,7 +416,7 @@
       "type": "definition",
       "identifier": "4",
       "title": null,
-      "link": "hello",
+      "url": "hello",
       "position": {
         "start": {
           "line": 15,
@@ -486,7 +486,7 @@
       "type": "definition",
       "identifier": "1",
       "title": null,
-      "link": "foo",
+      "url": "foo",
       "position": {
         "start": {
           "line": 20,

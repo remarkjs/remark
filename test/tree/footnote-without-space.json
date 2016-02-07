@@ -196,7 +196,7 @@
       "type": "definition",
       "identifier": "^xyz",
       "title": null,
-      "link": "Baz",
+      "url": "Baz",
       "position": {
         "start": {
           "line": 5,

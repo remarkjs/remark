@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": "Hello \\'World\\' Hello!",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -71,7 +71,7 @@
         {
           "type": "link",
           "title": "Hello \\'World\\' Hello!",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -135,7 +135,7 @@
         {
           "type": "image",
           "title": "Hello \\'World\\' Hello!",
-          "src": "./world.html",
+          "url": "./world.html",
           "alt": "Hello",
           "position": {
             "start": {
@@ -183,7 +183,7 @@
         {
           "type": "image",
           "title": "Hello \\'World\\' Hello!",
-          "src": "./world.html",
+          "url": "./world.html",
           "alt": "Hello",
           "position": {
             "start": {

@@ -554,7 +554,7 @@
         {
           "type": "link",
           "title": "in some plæce",
-          "href": "~/some—file",
+          "url": "~/some—file",
           "children": [
             {
               "type": "text",
@@ -648,7 +648,7 @@
         {
           "type": "image",
           "title": "© Someone",
-          "src": "~/an–image.png",
+          "url": "~/an–image.png",
           "alt": "ímages",
           "position": {
             "start": {

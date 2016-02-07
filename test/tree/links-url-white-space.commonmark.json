@@ -71,7 +71,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./wo rld.html",
+          "url": "./wo rld.html",
           "children": [
             {
               "type": "text",
@@ -183,7 +183,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./wo rld.png",
+          "url": "./wo rld.png",
           "alt": "Hello",
           "position": {
             "start": {

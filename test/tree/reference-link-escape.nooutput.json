@@ -367,7 +367,7 @@
       "type": "definition",
       "identifier": "b\\*r*",
       "title": null,
-      "link": "http://google.com",
+      "url": "http://google.com",
       "position": {
         "start": {
           "line": 5,

@@ -54,7 +54,7 @@
       "type": "definition",
       "identifier": "hi",
       "title": null,
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 3,

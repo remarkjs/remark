@@ -198,7 +198,7 @@
                 {
                   "type": "link",
                   "title": null,
-                  "href": "http://google.com",
+                  "url": "http://google.com",
                   "children": [
                     {
                       "type": "text",

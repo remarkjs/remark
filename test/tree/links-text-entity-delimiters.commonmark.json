@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [
             {
               "type": "text",
@@ -131,7 +131,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [
             {
               "type": "text",
@@ -255,7 +255,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": "Hello [world]!",
           "position": {
             "start": {
@@ -303,7 +303,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": "Hello [world]!",
           "position": {
             "start": {
@@ -351,7 +351,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [
             {
               "type": "text",
@@ -475,7 +475,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./hello-world.html",
+          "url": "./hello-world.html",
           "children": [
             {
               "type": "text",
@@ -599,7 +599,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": "Hello [world]!",
           "position": {
             "start": {
@@ -647,7 +647,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./hello-world.html",
+          "url": "./hello-world.html",
           "alt": "Hello [world]!",
           "position": {
             "start": {

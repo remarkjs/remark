@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world and some spaces.html",
+          "url": "./world and some spaces.html",
           "children": [
             {
               "type": "text",
@@ -56,7 +56,7 @@
         {
           "type": "link",
           "title": "and a title",
-          "href": "./world and some spaces.html",
+          "url": "./world and some spaces.html",
           "children": [
             {
               "type": "text",

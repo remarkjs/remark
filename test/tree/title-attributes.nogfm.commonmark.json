@@ -402,7 +402,7 @@
         {
           "type": "link",
           "title": "and text",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -579,7 +579,7 @@
         {
           "type": "link",
           "title": "and \"escapes\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -628,7 +628,7 @@
         {
           "type": "link",
           "title": "and \"named entities\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -677,7 +677,7 @@
         {
           "type": "link",
           "title": "and \"numbered entities\"",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -758,7 +758,7 @@
         {
           "type": "link",
           "title": "and text",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -935,7 +935,7 @@
         {
           "type": "link",
           "title": "and 'escapes'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -984,7 +984,7 @@
         {
           "type": "link",
           "title": "and 'named entities'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1033,7 +1033,7 @@
         {
           "type": "link",
           "title": "and 'numbered entities'",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1114,7 +1114,7 @@
         {
           "type": "link",
           "title": "and text",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1163,7 +1163,7 @@
         {
           "type": "link",
           "title": "and (matching delimiters",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1227,7 +1227,7 @@
         {
           "type": "link",
           "title": "and (mismatched delimiters",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1276,7 +1276,7 @@
         {
           "type": "link",
           "title": "and (escapes)",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1325,7 +1325,7 @@
         {
           "type": "link",
           "title": "and (named entities)",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1374,7 +1374,7 @@
         {
           "type": "link",
           "title": "and (numbered entities)",
-          "href": "./world.html",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -1487,7 +1487,7 @@
         {
           "type": "image",
           "title": "and text",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1616,7 +1616,7 @@
         {
           "type": "image",
           "title": "and \"escapes\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1649,7 +1649,7 @@
         {
           "type": "image",
           "title": "and \"named entities\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1682,7 +1682,7 @@
         {
           "type": "image",
           "title": "and \"numbered entities\"",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1747,7 +1747,7 @@
         {
           "type": "image",
           "title": "and text",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1876,7 +1876,7 @@
         {
           "type": "image",
           "title": "and 'escapes'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1909,7 +1909,7 @@
         {
           "type": "image",
           "title": "and 'named entities'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -1942,7 +1942,7 @@
         {
           "type": "image",
           "title": "and 'numbered entities'",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2007,7 +2007,7 @@
         {
           "type": "image",
           "title": "and text",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2040,7 +2040,7 @@
         {
           "type": "image",
           "title": "and (matching delimiters",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2088,7 +2088,7 @@
         {
           "type": "image",
           "title": "and (mismatched delimiters",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2121,7 +2121,7 @@
         {
           "type": "image",
           "title": "and (escapes)",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2154,7 +2154,7 @@
         {
           "type": "image",
           "title": "and (named entities)",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -2187,7 +2187,7 @@
         {
           "type": "image",
           "title": "and (numbered entities)",
-          "src": "./world.png",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {

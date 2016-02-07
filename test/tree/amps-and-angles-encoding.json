@@ -365,7 +365,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "/script?foo=1&bar=2",
+          "url": "/script?foo=1&bar=2",
           "children": [
             {
               "type": "text",
@@ -444,7 +444,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "/script?foo=1&bar=2",
+          "url": "/script?foo=1&bar=2",
           "children": [
             {
               "type": "text",
@@ -506,7 +506,7 @@
       "type": "definition",
       "identifier": "1",
       "title": null,
-      "link": "http://example.com/?foo=1&bar=2",
+      "url": "http://example.com/?foo=1&bar=2",
       "position": {
         "start": {
           "line": 20,
@@ -523,7 +523,7 @@
       "type": "definition",
       "identifier": "2",
       "title": "AT&T",
-      "link": "http://att.com/",
+      "url": "http://att.com/",
       "position": {
         "start": {
           "line": 21,

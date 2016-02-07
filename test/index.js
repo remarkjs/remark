@@ -1037,7 +1037,8 @@ validateToken = function (context) {
             typeof context.title === 'string'
         );
 
-        assert(typeof context.link === 'string');
+        assert(typeof context.url === 'string');
+        assert(context.link === undefined);
 
         assert(keys === 4);
 
@@ -1050,7 +1051,8 @@ validateToken = function (context) {
             context.title === null ||
             typeof context.title === 'string'
         );
-        assert(typeof context.href === 'string');
+        assert(typeof context.url === 'string');
+        assert(context.href === undefined);
         assert(keys === 4);
 
         return;
@@ -1065,7 +1067,8 @@ validateToken = function (context) {
             context.alt === null ||
             typeof context.alt === 'string'
         );
-        assert(typeof context.src === 'string');
+        assert(typeof context.url === 'string');
+        assert(context.src === undefined);
         assert(keys === 4);
 
         return;

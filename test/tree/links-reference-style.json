@@ -246,7 +246,7 @@
       "type": "definition",
       "identifier": "1",
       "title": "Title",
-      "link": "/url/",
+      "url": "/url/",
       "position": {
         "start": {
           "line": 8,
@@ -703,7 +703,7 @@
       "type": "definition",
       "identifier": "once",
       "title": null,
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 22,
@@ -720,7 +720,7 @@
       "type": "definition",
       "identifier": "twice",
       "title": null,
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 24,
@@ -737,7 +737,7 @@
       "type": "definition",
       "identifier": "thrice",
       "title": null,
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 26,
@@ -770,7 +770,7 @@
       "type": "definition",
       "identifier": "b",
       "title": null,
-      "link": "/url/",
+      "url": "/url/",
       "position": {
         "start": {
           "line": 31,
@@ -1593,7 +1593,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "/somethingelse/",
+          "url": "/somethingelse/",
           "children": [
             {
               "type": "text",
@@ -1746,7 +1746,7 @@
       "type": "definition",
       "identifier": "this",
       "title": null,
-      "link": "foo",
+      "url": "foo",
       "position": {
         "start": {
           "line": 59,
@@ -1947,7 +1947,7 @@
       "type": "definition",
       "identifier": "link breaks",
       "title": null,
-      "link": "/url/",
+      "url": "/url/",
       "position": {
         "start": {
           "line": 71,

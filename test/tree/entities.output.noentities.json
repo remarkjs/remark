@@ -201,7 +201,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -249,7 +249,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -297,7 +297,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -422,7 +422,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -470,7 +470,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -518,7 +518,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://at&t.com",
+          "url": "http://at&t.com",
           "children": [
             {
               "type": "text",
@@ -643,7 +643,7 @@
         {
           "type": "link",
           "title": "AT&T",
-          "href": "http://att.com",
+          "url": "http://att.com",
           "children": [
             {
               "type": "text",
@@ -691,7 +691,7 @@
         {
           "type": "link",
           "title": "AT&T",
-          "href": "http://att.com",
+          "url": "http://att.com",
           "children": [
             {
               "type": "text",
@@ -739,7 +739,7 @@
         {
           "type": "link",
           "title": "AT&T",
-          "href": "http://example.com",
+          "url": "http://example.com",
           "children": [
             {
               "type": "text",
@@ -864,7 +864,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://at&t.com/fav.ico",
+          "url": "http://at&t.com/fav.ico",
           "alt": "With entity",
           "position": {
             "start": {
@@ -896,7 +896,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://at&t.com/fav.ico",
+          "url": "http://at&t.com/fav.ico",
           "alt": "numeric entity",
           "position": {
             "start": {
@@ -928,7 +928,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://at&t.com/fav.ico",
+          "url": "http://at&t.com/fav.ico",
           "alt": "without entity",
           "position": {
             "start": {
@@ -1037,7 +1037,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "AT&T with entity",
           "position": {
             "start": {
@@ -1069,7 +1069,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "AT&T with numeric entity",
           "position": {
             "start": {
@@ -1101,7 +1101,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "AT&T without entity",
           "position": {
             "start": {
@@ -1210,7 +1210,7 @@
         {
           "type": "image",
           "title": "AT&T",
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "With entity",
           "position": {
             "start": {
@@ -1242,7 +1242,7 @@
         {
           "type": "image",
           "title": "AT&T",
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "numeric entity",
           "position": {
             "start": {
@@ -1274,7 +1274,7 @@
         {
           "type": "image",
           "title": "AT&T",
-          "src": "http://att.com/fav.ico",
+          "url": "http://att.com/fav.ico",
           "alt": "without entity",
           "position": {
             "start": {
@@ -1493,7 +1493,7 @@
       "type": "definition",
       "identifier": "favicon",
       "title": "ATT favicon",
-      "link": "http://att.com/fav.ico",
+      "url": "http://att.com/fav.ico",
       "position": {
         "start": {
           "line": 45,

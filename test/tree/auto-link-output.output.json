@@ -22,7 +22,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://example.com/",
+          "url": "http://example.com/",
           "children": [
             {
               "type": "text",
@@ -101,7 +101,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "mailto:somename@example.com",
+          "url": "mailto:somename@example.com",
           "children": [
             {
               "type": "text",
@@ -182,7 +182,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "google.com",
+          "url": "google.com",
           "children": [
             {
               "type": "text",

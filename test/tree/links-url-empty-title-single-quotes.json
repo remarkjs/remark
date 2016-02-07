@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "'World!'",
+          "url": "'World!'",
           "children": [
             {
               "type": "text",
@@ -71,7 +71,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "'World!'",
+          "url": "'World!'",
           "children": [
             {
               "type": "text",
@@ -135,7 +135,7 @@
         {
           "type": "link",
           "title": "World!",
-          "href": "",
+          "url": "",
           "children": [
             {
               "type": "text",
@@ -199,7 +199,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "'World!'",
+          "url": "'World!'",
           "alt": "Hello",
           "position": {
             "start": {
@@ -247,7 +247,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "'World!'",
+          "url": "'World!'",
           "alt": "Hello",
           "position": {
             "start": {
@@ -295,7 +295,7 @@
         {
           "type": "image",
           "title": "World!",
-          "src": "",
+          "url": "",
           "alt": "World",
           "position": {
             "start": {

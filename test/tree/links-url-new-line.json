@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./wo\nrld.html",
+          "url": "./wo\nrld.html",
           "children": [
             {
               "type": "text",
@@ -75,7 +75,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./wo\nrld.html",
+          "url": "./wo\nrld.html",
           "children": [
             {
               "type": "text",
@@ -143,7 +143,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./wo\nrld.png",
+          "url": "./wo\nrld.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -195,7 +195,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./wo\nrld.png",
+          "url": "./wo\nrld.png",
           "alt": "Hello",
           "position": {
             "start": {

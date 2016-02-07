@@ -22,7 +22,7 @@
         {
           "type": "link",
           "title": "Amet",
-          "href": "http://amet.com",
+          "url": "http://amet.com",
           "children": [
             {
               "type": "text",
@@ -101,7 +101,7 @@
         {
           "type": "link",
           "title": "Finibus",
-          "href": "http://finibus.com",
+          "url": "http://finibus.com",
           "children": [
             {
               "type": "text",
@@ -149,7 +149,7 @@
         {
           "type": "link",
           "title": "Facilisi",
-          "href": "http://facilisi.com",
+          "url": "http://facilisi.com",
           "children": [
             {
               "type": "text",
@@ -228,7 +228,7 @@
         {
           "type": "link",
           "title": "Faucibus",
-          "href": "http://faucibus.com",
+          "url": "http://faucibus.com",
           "children": [
             {
               "type": "text",

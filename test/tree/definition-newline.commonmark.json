@@ -262,7 +262,7 @@
       "type": "definition",
       "identifier": "baz",
       "title": "foo\nbar",
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 12,
@@ -281,7 +281,7 @@
       "type": "definition",
       "identifier": "baz",
       "title": "foo\nbar",
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 15,

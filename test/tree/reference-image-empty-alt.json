@@ -38,7 +38,7 @@
       "type": "definition",
       "identifier": "1",
       "title": null,
-      "link": "/xyz.png",
+      "url": "/xyz.png",
       "position": {
         "start": {
           "line": 3,

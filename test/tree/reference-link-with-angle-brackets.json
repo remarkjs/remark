@@ -54,7 +54,7 @@
       "type": "definition",
       "identifier": "foo",
       "title": null,
-      "link": "./url with spaces",
+      "url": "./url with spaces",
       "position": {
         "start": {
           "line": 3,

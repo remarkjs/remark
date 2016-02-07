@@ -104,13 +104,13 @@ function createBadge(name, options) {
         {
             'type': 'link',
             'title': null,
-            'href': href,
+            'url': href,
             'children': [
                 {
                     'type': 'image',
                     'title': null,
-                    'alt': 'Version',
-                    'src': src
+                    'url': src,
+                    'alt': 'Version'
                 }
             ]
         }
