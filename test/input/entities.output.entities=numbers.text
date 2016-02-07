@@ -43,3 +43,11 @@ Image Reference `alt`:
 ![AT&#x26;T with entity][favicon], ![AT&#x26;T with numeric entity][favicon], ![AT&#x26;T without entity][favicon].
 
 [favicon]: http://att.com/fav.ico "ATT favicon"
+
+Shortcut and collapsed references:
+
+[foo&bar], [foo&bar][], [foo&amp;bar], [foo&amp;bar][].
+
+[foo&bar]: http://example.com
+
+[foo&amp;bar]: http://example.com
