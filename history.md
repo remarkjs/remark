@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+3.2.3 / 2016-02-07
+==================
+
+*   Fix entities in shortcut and collapsed references ([`bb1683a`](https://github.com/wooorm/remark/commit/bb1683a))
+*   Fix subdomains for literal URLs in remark(3) ([`8ff7ab4`](https://github.com/wooorm/remark/commit/8ff7ab4))
+
 3.2.2 / 2016-01-21
 ==================
 
