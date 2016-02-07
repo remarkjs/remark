@@ -277,7 +277,7 @@
       "type": "definition",
       "identifier": "bar",
       "title": "bar",
-      "link": "https://bar.com",
+      "url": "https://bar.com",
       "position": {
         "start": {
           "line": 13,
@@ -296,7 +296,7 @@
       "type": "definition",
       "identifier": "baz",
       "title": "baz",
-      "link": "https://baz.com",
+      "url": "https://baz.com",
       "position": {
         "start": {
           "line": 14,

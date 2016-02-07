@@ -7,7 +7,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "./world.html (Hello World!)",
+          "url": "./world.html (Hello World!)",
           "children": [
             {
               "type": "text",
@@ -151,7 +151,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "./world.html (Hello World!)",
+          "url": "./world.html (Hello World!)",
           "alt": "Hello",
           "position": {
             "start": {

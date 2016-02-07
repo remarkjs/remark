@@ -24,7 +24,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://example.com/hello-world",
+          "url": "http://example.com/hello-world",
           "children": [
             {
               "type": "text",
@@ -113,7 +113,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://foo.example.com/(hello[world])",
+          "url": "http://foo.example.com/(hello[world])",
           "children": [
             {
               "type": "text",
@@ -202,7 +202,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "mailto:foo@bar.com",
+          "url": "mailto:foo@bar.com",
           "children": [
             {
               "type": "text",

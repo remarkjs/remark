@@ -194,7 +194,7 @@ function mention(eat, value) {
 
         return eat(match[0])({
             'type': 'link',
-            'href': 'https://my-social-network/' + match[1],
+            'url': 'https://my-social-network/' + match[1],
             'children': [{
                 'type': 'text',
                 'value': match[0]

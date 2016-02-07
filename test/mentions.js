@@ -55,7 +55,7 @@ function locateMention(value, fromIndex) {
 function mention(eat, value, silent) {
     var match = /^@(\w+)/.exec(value);
     var handle;
-    var href;
+    var url;
 
     if (match) {
         if (silent) {
@@ -63,12 +63,12 @@ function mention(eat, value, silent) {
         }
 
         handle = match[1];
-        href = 'https://github.com/';
-        href += has.call(OVERWRITES, handle) ? OVERWRITES[handle] : handle;
+        url = 'https://github.com/';
+        url += has.call(OVERWRITES, handle) ? OVERWRITES[handle] : handle;
 
         return eat(match[0])({
             'type': 'link',
-            'href': href,
+            'url': url,
             'children': [{
                 'type': 'text',
                 'value': match[0]
