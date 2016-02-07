@@ -46,7 +46,7 @@
       ],
       "children": [
         {
-          "type": "tableHeader",
+          "type": "tableRow",
           "children": [
             {
               "type": "tableCell",

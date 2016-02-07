@@ -9,7 +9,7 @@
       ],
       "children": [
         {
-          "type": "tableHeader",
+          "type": "tableRow",
           "children": [
             {
               "type": "tableCell",
@@ -598,7 +598,7 @@
       ],
       "children": [
         {
-          "type": "tableHeader",
+          "type": "tableRow",
           "children": [
             {
               "type": "tableCell",

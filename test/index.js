@@ -931,7 +931,6 @@ validateToken = function (context) {
     if (
         type === 'paragraph' ||
         type === 'blockquote' ||
-        type === 'tableHeader' ||
         type === 'tableRow' ||
         type === 'tableCell' ||
         type === 'strong' ||
