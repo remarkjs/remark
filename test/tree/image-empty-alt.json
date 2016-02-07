@@ -7,7 +7,7 @@
         {
           "type": "image",
           "title": null,
-          "src": "/xyz.png",
+          "url": "/xyz.png",
           "alt": null,
           "position": {
             "start": {

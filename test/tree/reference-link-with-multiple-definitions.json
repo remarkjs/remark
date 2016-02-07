@@ -60,7 +60,7 @@
       "type": "definition",
       "identifier": "foo",
       "title": null,
-      "link": "first",
+      "url": "first",
       "position": {
         "start": {
           "line": 3,
@@ -79,7 +79,7 @@
       "type": "definition",
       "identifier": "foo",
       "title": null,
-      "link": "second",
+      "url": "second",
       "position": {
         "start": {
           "line": 4,

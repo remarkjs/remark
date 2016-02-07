@@ -8,12 +8,12 @@
         {
           "type": "link",
           "title": null,
-          "href": "http://shields.io",
+          "url": "http://shields.io",
           "children": [
             {
               "type": "image",
               "title": null,
-              "src": "https://img.shields.io/badge/unicorn-approved-ff69b4.svg",
+              "url": "https://img.shields.io/badge/unicorn-approved-ff69b4.svg",
               "alt": "Unicorn approved",
               "position": {
                 "start": {
@@ -65,12 +65,12 @@
         {
           "type": "link",
           "title": null,
-          "href": "https://travis-ci.org/wooorm/mdast",
+          "url": "https://travis-ci.org/wooorm/mdast",
           "children": [
             {
               "type": "image",
               "title": null,
-              "src": "https://img.shields.io/travis/wooorm/mdast.svg?style=flat",
+              "url": "https://img.shields.io/travis/wooorm/mdast.svg?style=flat",
               "alt": "Build Status",
               "position": {
                 "start": {
@@ -122,12 +122,12 @@
         {
           "type": "link",
           "title": "An example",
-          "href": "http://example.com",
+          "url": "http://example.com",
           "children": [
             {
               "type": "image",
               "title": null,
-              "src": "https://img.shields.io/badge/style-flat--squared-green.svg?style=flat-square",
+              "url": "https://img.shields.io/badge/style-flat--squared-green.svg?style=flat-square",
               "alt": "Be Square",
               "position": {
                 "start": {

@@ -451,7 +451,7 @@
       "type": "definition",
       "identifier": "paragraph",
       "title": null,
-      "link": "http://example.com",
+      "url": "http://example.com",
       "position": {
         "start": {
           "line": 11,

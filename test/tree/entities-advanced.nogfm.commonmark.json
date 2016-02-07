@@ -195,7 +195,7 @@
             {
               "type": "link",
               "title": null,
-              "href": "http://e\nxample©xample.com",
+              "url": "http://e\nxample©xample.com",
               "children": [
                 {
                   "type": "text",
@@ -414,7 +414,7 @@
             {
               "type": "link",
               "title": "in some pl©ce",
-              "href": "~/some©file",
+              "url": "~/some©file",
               "children": [
                 {
                   "type": "text",
@@ -544,7 +544,7 @@
             {
               "type": "link",
               "title": "in some pl©ce",
-              "href": "~/some©file",
+              "url": "~/some©file",
               "children": [
                 {
                   "type": "text",
@@ -677,7 +677,7 @@
             {
               "type": "image",
               "title": "in some pl©ce",
-              "src": "~/some©file",
+              "url": "~/some©file",
               "alt": "\n  l©nks\n",
               "position": {
                 "start": {
@@ -777,7 +777,7 @@
             {
               "type": "image",
               "title": "in some pl©ce",
-              "src": "~/some©file",
+              "url": "~/some©file",
               "alt": "l©lnks",
               "position": {
                 "start": {

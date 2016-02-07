@@ -60,7 +60,7 @@
       "type": "definition",
       "identifier": "hi",
       "title": "there",
-      "link": "/url",
+      "url": "/url",
       "position": {
         "start": {
           "line": 3,

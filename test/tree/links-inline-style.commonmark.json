@@ -24,7 +24,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "/url/",
+          "url": "/url/",
           "children": [
             {
               "type": "text",
@@ -96,7 +96,7 @@
         {
           "type": "link",
           "title": "title",
-          "href": "/url/",
+          "url": "/url/",
           "children": [
             {
               "type": "text",
@@ -168,7 +168,7 @@
         {
           "type": "link",
           "title": "title preceded by two spaces",
-          "href": "/url/",
+          "url": "/url/",
           "children": [
             {
               "type": "text",
@@ -240,7 +240,7 @@
         {
           "type": "link",
           "title": "title preceded by a tab",
-          "href": "/url/",
+          "url": "/url/",
           "children": [
             {
               "type": "text",
@@ -312,7 +312,7 @@
         {
           "type": "link",
           "title": "title has spaces afterward",
-          "href": "/url/",
+          "url": "/url/",
           "children": [
             {
               "type": "text",
@@ -528,7 +528,7 @@
         {
           "type": "link",
           "title": null,
-          "href": "",
+          "url": "",
           "children": [
             {
               "type": "text",

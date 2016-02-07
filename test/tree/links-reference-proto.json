@@ -202,7 +202,7 @@
       "type": "definition",
       "identifier": "tostring",
       "title": null,
-      "link": "http://primary.com",
+      "url": "http://primary.com",
       "position": {
         "start": {
           "line": 3,
@@ -221,7 +221,7 @@
       "type": "definition",
       "identifier": "__proto__",
       "title": null,
-      "link": "http://tertiary.com",
+      "url": "http://tertiary.com",
       "position": {
         "start": {
           "line": 4,
@@ -240,7 +240,7 @@
       "type": "definition",
       "identifier": "constructor",
       "title": null,
-      "link": "http://secondary.com",
+      "url": "http://secondary.com",
       "position": {
         "start": {
           "line": 5,

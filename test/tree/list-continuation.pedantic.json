@@ -184,7 +184,7 @@
       "type": "definition",
       "identifier": "foo",
       "title": null,
-      "link": "http://google.com",
+      "url": "http://google.com",
       "position": {
         "start": {
           "line": 6,
