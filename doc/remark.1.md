@@ -132,13 +132,30 @@ $ remark --no-rc readme.md -oqw
 The watch is stopped when `SIGINT` is received (usually done by pressing
 `CTRL-C`).
 
-### `-a`, `--ast`
+### `-t`, `--tree`
 
 ```sh
-remark readme.md --ast
+remark --tree < input.json > output.json
 ```
 
-Instead of outputting document the internally used AST is exposed.
+Read input as a syntax tree instead of markdown and write output as a
+syntax tree instead of markdown.
+
+### `--tree-in`
+
+```sh
+remark --tree-in < input.json > output.md
+```
+
+Read input as a syntax tree instead of markdown.
+
+### `--tree-out`
+
+```sh
+remark --tree-out < input.md > output.json
+```
+
+Write output as a syntax tree instead of markdown.
 
 ### `-q`, `--quiet`
 

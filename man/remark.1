@@ -125,15 +125,33 @@ When watching files which would normally regenerate, this behaviour is ignored u
 .RE
 .P
 The watch is stopped when \fBSIGINT\fR is received (usually done by pressing \fBCTRL-C\fR).
-.SS "\fB-a\fR, \fB--ast\fR"
+.SS "\fB-t\fR, \fB--tree\fR"
 .P
 .RS 2
 .nf
-remark readme.md --ast
+remark --tree < input.json > output.json
 .fi
 .RE
 .P
-Instead of outputting document the internally used AST is exposed.
+Read input as a syntax tree instead of markdown and write output as a syntax tree instead of markdown.
+.SS "\fB--tree-in\fR"
+.P
+.RS 2
+.nf
+remark --tree-in < input.json > output.md
+.fi
+.RE
+.P
+Read input as a syntax tree instead of markdown.
+.SS "\fB--tree-out\fR"
+.P
+.RS 2
+.nf
+remark --tree-out < input.md > output.json
+.fi
+.RE
+.P
+Write output as a syntax tree instead of markdown.
 .SS "\fB-q\fR, \fB--quiet\fR"
 .P
 .RS 2
