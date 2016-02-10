@@ -1,7 +1,4 @@
 # `node_modules/` is already ignored.
 
-# Duo’s components include docs.
-components
-
 # Make sure the fixtures do not get overwritten.
 test/{input,tree}

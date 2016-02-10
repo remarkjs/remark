@@ -1,7 +1,6 @@
 .DS_Store
 *.log
 build/
-components/
 node_modules/
 coverage/
 build.js

@@ -55,11 +55,9 @@ findDown.all('.js', 'lib', function (err, files) {
  * Update manifests.
  */
 
-[
-    toVFile('.remarkrc-man'),
-    toVFile('component.json')
-].forEach(function (file) {
-    write(file.filePath(), read(file.filePath(), 'utf8')
-        .replace(/("version": ")[^"]+(")/m, '$1' + VERSION + '$2')
-    );
-});
+var manrc = toVFile('.remarkrc-man');
+
+write(
+    manrc.filePath(),
+    read(manrc.filePath(), 'utf8').replace(/("version": ")[^"]+(")/m, '$1' + VERSION + '$2')
+);

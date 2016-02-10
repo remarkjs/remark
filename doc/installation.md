@@ -17,19 +17,14 @@ install with [npm](#npm).
 
 *   [Install](#install)
 
-    *   [Package Managers](#package-managers)
-
-        *   [npm](#npm)
-        *   [Duo](#duo)
-
+    *   [npm](#npm)
     *   [Download](#download)
 
 ## Use
 
 ### CommonJS
 
-1.  Install with [**npm**](#npm), [**Duo**](#duo), or
-    [download](#download);
+1.  Install with [**npm**](#npm) or [download](#download);
 
     *   When downloading or installing with **Bower**, follow step `2.` of
         [**Globals**](#globals) and additionally load a **CommonJS** loader
@@ -87,15 +82,13 @@ Read more about **AMD** on [requirejs.org](http://requirejs.org/docs/start.html#
 
 ## Install
 
-### Package Managers
+### [npm](https://docs.npmjs.com/cli/install)
 
 First, if you have not already, install Node:
 
 Either install node from its [download](https://nodejs.org/en/download/)
 documentation, or install [nvm](https://github.com/creationix/nvm#install-script)
 to [manage and update](https://github.com/creationix/nvm#usage) Node versions.
-
-#### [npm](https://docs.npmjs.com/cli/install)
 
 ```sh
 npm install remark
@@ -104,24 +97,6 @@ npm install remark
 When using the **remark** CLI system-wide, provide the `--global` flag.
 
 When using **remark** inside a project, provide either `--save` or `--save-dev`.
-
-See [**CommonJS**](#commonjs) on how to start using **remark**.
-
-#### [Duo](http://duojs.org#getting-started)
-
-Optionally: when using **remark** inside a project, add it to a
-[`component.json`](http://duojs.org/#ii-components) file:
-
-```json
-{
-  "name": "duo-component",
-  "version": "0.0.1",
-  "main": "index.js",
-  "dependencies": {
-    "wooorm/remark": "^2.0.0"
-  }
-}
-```
 
 See [**CommonJS**](#commonjs) on how to start using **remark**.
 

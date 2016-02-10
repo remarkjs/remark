@@ -171,9 +171,5 @@ but can still be meaningful. For example, `lint` was not available, but instead
 of opting for `liiint` or some other weird form, using `remark-lint` ensured a
 unique name on package managers, while still being meaningful to users.
 
-Additionally, when the library could be used in the browser, I recommend
-publishing at least to [Component](https://github.com/componentjs/guide/blob/master/creating-components/publishing.md).
-This will also make a package usable by [Duo](https://github.com/duojs/duo).
-
 When publishing a plugin, you should utilize the package manager’s keywords
 functionality and include `"remark"` in the list.

@@ -1,7 +1,6 @@
 {
   "excludeFiles": [
     "build/",
-    "components/",
     "coverage/",
     "node_modules/",
     "build.js",
