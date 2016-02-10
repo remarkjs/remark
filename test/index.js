@@ -452,7 +452,7 @@ describe('remark.stringify(ast, file, options?)', function () {
 
     it('should be able to set options', function () {
         var processor = remark();
-        var html = processor.Compiler.prototype.html;
+        var html = processor.Compiler.prototype.visitors.html;
         var ast;
 
         ast = processor.parse([
@@ -483,7 +483,7 @@ describe('remark.stringify(ast, file, options?)', function () {
             return html.apply(this, arguments);
         }
 
-        processor.Compiler.prototype.html = replacement;
+        processor.Compiler.prototype.visitors.html = replacement;
 
         assert(processor.stringify(ast) === [
             '<!-- setext -->',
