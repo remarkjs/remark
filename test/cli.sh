@@ -104,15 +104,11 @@ it "Should ignore herestring when with files (for now)"
     assert $? 0
 
 #
-# `--ast`.
+# `--tree-out`.
 #
 
-it "Should accept \`--ast\`"
-    $COMMAND --ast $markdown > /dev/null 2>&1
-    assert $? 0
-
-it "Should accept \`-a\`"
-    $COMMAND -a $markdown > /dev/null 2>&1
+it "Should accept \`--tree-out\`"
+    $COMMAND --tree-out $markdown > /dev/null 2>&1
     assert $? 0
 
 #

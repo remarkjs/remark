@@ -189,11 +189,13 @@ Options:
   -u, --use <plugins>       use transform plugin(s)
   -e, --ext <extensions>    specify extensions
   -w, --watch               watch for changes and reprocess
-  -a, --ast                 output AST information
   -q, --quiet               output only warnings and errors
   -S, --silent              output only errors
   -f, --frail               exit with 1 on warnings
+  -t, --tree                input and output syntax tree
   --file-path <path>        specify file path to process as
+  --tree-out                output syntax tree
+  --tree-in                 input syntax tree
   --no-stdout               disable writing to stdout
   --no-color                disable color in output
   --no-rc                   disable configuration from .remarkrc
