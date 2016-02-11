@@ -157,9 +157,14 @@ sources.forEach(function (source) {
      * certainly result in duplicate fixtures,
      * that I've ignored it for the virtual
      * options.
+     *
+     * Same for `position`.
      */
 
-    if (options.parse.breaks !== defaults.parse.breaks) {
+    if (
+        options.parse.breaks !== defaults.parse.breaks ||
+        options.parse.position !== defaults.parse.position
+    ) {
         physical[source] = options.parse;
     } else {
         virtual[source] = options.parse;
