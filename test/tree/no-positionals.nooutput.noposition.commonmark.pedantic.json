@@ -137,7 +137,23 @@
       "children": [
         {
           "type": "text",
-          "value": "An entity: ©, and an warning entity: ©."
+          "value": "An entity: "
+        },
+        {
+          "type": "text",
+          "value": "©"
+        },
+        {
+          "type": "text",
+          "value": ", and an warning entity: "
+        },
+        {
+          "type": "text",
+          "value": "©"
+        },
+        {
+          "type": "text",
+          "value": "."
         }
       ]
     }

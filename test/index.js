@@ -899,7 +899,7 @@ validateToken = function (context) {
      * Validate position.
      */
 
-    if ('position' in context) {
+    if (context.position) {
         assert('start' in context.position);
         assert('end' in context.position);
 
@@ -908,7 +908,9 @@ validateToken = function (context) {
 
         assert('line' in context.position.end);
         assert('column' in context.position.end);
+    }
 
+    if ('position' in context) {
         keys--;
     }
 
@@ -1180,6 +1182,10 @@ function clone(node, clean) {
     Object.keys(node).forEach(function (key) {
         var value = node[key];
 
+        if (value === undefined) {
+            return;
+        }
+
         /*
          * Remove `position` when needed.
          */
@@ -1201,7 +1207,7 @@ function clone(node, clean) {
 
         if (value !== null && typeof value === 'object') {
             result[key] = clone(value, clean);
-            if (key === 'children' && clean) {
+            if (key === 'children') {
                 result[key] = mergeTextNodes(result[key]);
             }
         } else {
