@@ -125,6 +125,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 Although not **remark** plug-ins, the following projects are useful when
 working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 
+*   [`wooorm/mdast-comment-marker`](https://github.com/wooorm/mdast-comment-marker)
+    — Parse a comment marker;
+
 *   [`wooorm/mdast-util-definitions`](https://github.com/wooorm/mdast-util-definitions)
     — Find definition nodes;
 
