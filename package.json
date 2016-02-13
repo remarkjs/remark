@@ -41,7 +41,7 @@
     "to-vfile": "^1.0.0",
     "trim": "^0.0.1",
     "trim-trailing-lines": "^1.0.0",
-    "unified": "^2.0.0",
+    "unified": "^3.0.0",
     "unist-util-remove-position": "^1.0.0",
     "user-home": "^2.0.0",
     "vfile": "^1.1.0",
