@@ -1,22 +1,25 @@
-# ![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
+# ![remark][logo]
 
-[![Build Status](https://img.shields.io/travis/wooorm/remark.svg)](https://travis-ci.org/wooorm/remark) [![Coverage Status](https://img.shields.io/codecov/c/github/wooorm/remark.svg)](https://codecov.io/github/wooorm/remark) [![Inline docs](https://img.shields.io/badge/docs-A-brightgreen.svg)](http://inch-ci.org/github/wooorm/remark) [![Chat](https://img.shields.io/gitter/room/wooorm/remark.svg)](https://gitter.im/wooorm/remark)
+[![Build Status][build-badge]][build-status]
+[![Coverage Status][coverage-badge]][coverage-status]
+[![Inline docs][docs-badge]][docs-status]
+[![Chat][chat-badge]][chat]
 
 > **remark** recently changed its name from **mdast**. [Read more about
-> what changed and how to migrate »](https://github.com/wooorm/remark/releases/tag/3.0.0)
+> what changed and how to migrate »][migrating]
 
 **remark** is a markdown processor powered by plugins. Lots of tests. Node,
 io.js, and the browser. 100% coverage.
 
 **remark** is not just another markdown to HTML compiler. It can generate,
-and reformat, markdown too. Powered by [plugins](doc/plugins.md) to do
-all kinds of things: [validate your markdown](https://github.com/wooorm/remark-lint),
-[add links for GitHub references](https://github.com/wooorm/remark-github), or
-[add a table of contents](https://github.com/wooorm/remark-toc).
+and reformat, markdown too. Powered by [plugins][] to do
+all kinds of things: [validate your markdown][remark-lint],
+[add links for GitHub references][remark-github], or
+[add a table of contents][remark-toc].
 
-The project has both an extensive [JavaScript API](doc/remark.3.md) for
+The project has both an extensive [JavaScript API][remark-3] for
 parsing, modifying, and compiling markdown, and a friendly [Command Line
-Interface](doc/remark.1.md) making it easy to validate, prepare, and compile
+Interface][remark-1] making it easy to validate, prepare, and compile
 markdown in a build step.
 
 ## Table of Contents
@@ -36,13 +39,13 @@ markdown in a build step.
 
 ## Installation
 
-[npm](https://docs.npmjs.com/cli/install):
+[npm][]:
 
 ```bash
 npm install remark
 ```
 
-[Read more about alternative ways to install and use »](doc/installation.md)
+[Read more about alternative ways to install and use »][install]
 
 ## Usage
 
@@ -83,7 +86,7 @@ Yields:
 
 ## API
 
-[**Get Started with the API** »](doc/getting-started.md#application-programming-interface)
+[**Get Started with the API** »][start-api]
 
 ### `remark.process(value[, options][, done])`
 
@@ -140,7 +143,7 @@ its asynchronous).
 
 ### `remark.use(plugin[, options])`
 
-Change the way [`remark`](#api) works by using a [`plugin`](doc/plugins.md).
+Change the way [`remark`][api] works by using a [`plugin`][plugins].
 
 **Signatures**
 
@@ -149,8 +152,8 @@ Change the way [`remark`](#api) works by using a [`plugin`](doc/plugins.md).
 
 **Parameters**
 
-*   `plugin` (`Function`) — A [**Plugin**](doc/plugins.md);
-*   `plugins` (`Array.<Function>`) — A list of [**Plugin**](doc/plugins.md)s;
+*   `plugin` (`Function`) — A [**Plugin**][plugins];
+*   `plugins` (`Array.<Function>`) — A list of [**Plugin**][plugins]s;
 *   `options` (`Object?`) — Passed to plugin. Specified by its documentation.
 
 **Returns**
@@ -163,7 +166,7 @@ dependents.
 
 ## CLI
 
-[**Get Started with the CLI** »](doc/getting-started.md#command-line-interface)
+[**Get Started with the CLI** »][start-cli]
 
 Install:
 
@@ -221,6 +224,50 @@ Examples:
   # Rewrite markdown in a directory
   $ remark . -o
 ```
+
+<!-- Definitions -->
+
+[logo]: https://cdn.rawgit.com/wooorm/remark/master/logo.svg
+
+[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+
+[build-status]: https://travis-ci.org/wooorm/remark
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+
+[coverage-status]: https://codecov.io/github/wooorm/remark
+
+[docs-badge]: https://img.shields.io/badge/docs-A-brightgreen.svg
+
+[docs-status]: http://inch-ci.org/github/wooorm/remark
+
+[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+
+[chat]: https://gitter.im/wooorm/remark
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[migrating]: https://github.com/wooorm/remark/releases/tag/3.0.0
+
+[remark-lint]: https://github.com/wooorm/remark-lint
+
+[remark-github]: https://github.com/wooorm/remark-github
+
+[remark-toc]: https://github.com/wooorm/remark-toc
+
+[remark-1]: doc/remark.1.md
+
+[remark-3]: doc/remark.3.md
+
+[plugins]: doc/plugins.md
+
+[install]: doc/installation.md
+
+[start-api]: doc/getting-started.md#application-programming-interface
+
+[start-cli]: doc/getting-started.md#command-line-interface
+
+[api]: #api
 
 ## License
 

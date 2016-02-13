@@ -1,15 +1,17 @@
 {
   "output": true,
-  "plugins": [
-    "script/natural-language",
-    "comment-config",
-    "lint",
-    "github",
-    "usage",
-    "toc",
-    "license",
-    "validate-links"
-  ],
+  "plugins": {
+    "script/natural-language": null,
+    "comment-config": null,
+    "lint": {
+      "final-definition": false
+    },
+    "github": null,
+    "usage": null,
+    "toc": null,
+    "license": null,
+    "validate-links": null
+  },
   "settings": {
     "bullet": "*"
   }
