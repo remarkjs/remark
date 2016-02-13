@@ -62,6 +62,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`wooorm/remark-man`](https://github.com/wooorm/remark-man)
     — Compile Markdown to Man pages (roff);
 
+*   [`wooorm/remark-message-control`](https://github.com/wooorm/remark-message-control)
+    — Enable, disable, and ignore messages;
+
 *   [`ben-eb/remark-midas`](https://github.com/ben-eb/remark-midas)
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas);
 
