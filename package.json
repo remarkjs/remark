@@ -83,7 +83,7 @@
     "browserify": "^13.0.0",
     "clone": "^1.0.1",
     "escodegen": "^1.7.0",
-    "eslint": "^1.1.0",
+    "eslint": "^2.0.0",
     "esmangle": "^1.0.0",
     "esprima": "^2.6.0",
     "istanbul": "^0.4.0",
