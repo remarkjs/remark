@@ -34,6 +34,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`eush77/remark-defsplit`](https://github.com/eush77/remark-defsplit)
     — Extract inline link and image destinations as separate definitions;
 
+*   [`laat/remark-first-heading`](https://github.com/laat/remark-first-heading)
+    — Replacing the first heading in a document;
+
 *   [`wooorm/remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
