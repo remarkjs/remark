@@ -92,6 +92,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`eush77/remark-squeeze-paragraphs`](https://github.com/eush77/remark-squeeze-paragraphs)
     — Remove empty paragraphs;
 
+*   [`yoshuawuyts/remark-swagger`](https://github.com/yoshuawuyts/remark-swagger)
+    — Insert a swagger specification;
+
 *   [`denysdovhan/remark-textr`](https://github.com/denysdovhan/remark-textr)
     — [`Textr`](https://github.com/shuvalov-anton/textr), a modular typographic
     framework;
