@@ -8,4 +8,4 @@ numbered entities are generated (`&` > `&#x26;`); when `"escape"`, only
 special HTML characters are encoded (`&` > `&amp;`, but `ö` remains `ö`).
 
 Although markdown does not need to encode HTML entities, they can be useful to
-ensure an ASCII document.
+make sure the compiled document is in ASCII.

@@ -3,4 +3,4 @@ reference footnotes.
 
 Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
-It is possible to reference other footnotes inside footnotes.
+Footnotes can be references inside other footnotes.

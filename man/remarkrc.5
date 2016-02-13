@@ -13,7 +13,7 @@ For a list of available configuration options, see \fBremark\fR(1) or \fBremarks
 .P
 All \fBremarkrc\fR(5) configuration files are in JSON.
 .P
-Automatically detected files named \fBpackage.json\fR use the \fBremarkConfig\fR field, whereas other files are used as a whole.
+Automatically detected files named \fBpackage.json\fR use the \fBremarkConfig\fR field, where other files are used as a whole.
 .SH "FIELDS"
 .SS "output"
 .P
@@ -25,7 +25,7 @@ Automatically detected files named \fBpackage.json\fR use the \fBremarkConfig\fR
 .fi
 .RE
 .P
-The \fBoutput\fR field specifies whether or not files should be written to the file-system (similar to \fB-o\fR, \fB--output\fR \fIpath\fR on \fBremark\fR(1)). It can be either a boolean, or a string. In the case of a string, the value is treated as the \fBtarget\fR or \fBdirectory\fR field for \fBmv\fR(1).
+The \fBoutput\fR field specifies whether files should be written to the file-system (like \fB-o\fR, \fB--output\fR \fIpath\fR on \fBremark\fR(1)). It can be either a boolean, or a string. In the case of a string, the value is treated as the \fBtarget\fR or \fBdirectory\fR field for \fBmv\fR(1).
 .SS "settings"
 .P
 .RS 2
@@ -39,7 +39,7 @@ The \fBoutput\fR field specifies whether or not files should be written to the f
 .fi
 .RE
 .P
-Settings contains an object mapping a setting to a value. See \fBremarksetting\fR(7) for available settings.
+Settings has an object mapping a setting to a value. See \fBremarksetting\fR(7) for available settings.
 .SS "plugins"
 .P
 List:
@@ -68,7 +68,7 @@ Options:
 .fi
 .RE
 .P
-The \fBplugins\fR field contains either an array of plugins, or an object mapping plugins to their options.
+The \fBplugins\fR field has either an array of plugins, or an object mapping plugins to their options.
 .P
 When a plugin is prefixed with \fBremark-\fR (which is recommended), the prefix can be omitted in the plugin list or map.
 .SH "CASCADE"
@@ -115,7 +115,7 @@ Where \fBdocs\[sl].remarkrc\fR looks as follows:
 .fi
 .RE
 .P
-And \fBpackage.json\fR contains:
+And \fBpackage.json\fR has:
 .P
 .RS 2
 .nf
@@ -129,7 +129,7 @@ And \fBpackage.json\fR contains:
 .fi
 .RE
 .P
-And \fB.remarkrc\fR contains:
+And \fB.remarkrc\fR has:
 .P
 .RS 2
 .nf

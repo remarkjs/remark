@@ -2,8 +2,8 @@
 
 # Plugins
 
-**remark** plugins lie at the core of **remark**’s vision. As they operate on
-the same syntax tree, there is no start-up time penalty when using more than
+**remark** plugins lie at the core of **remark**’s vision. As they work on
+the same syntax tree, no start-up time penalty is inflicted when using more than
 one plug-in: something which traditional tools, which need to re-compile
 to markdown to connect together need.
 
@@ -69,7 +69,7 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas);
 
 *   [`eush77/remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
-    — Make sure there is no more than a single top-level heading in the document
+    — Make sure no more than a single top-level heading is in the document
 
 *   [`wooorm/remark-range`](https://github.com/wooorm/remark-range)
     — Add range information;
@@ -148,7 +148,7 @@ working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
     — Get the plain text content of a node.
 
 *   [`eush77/mdast-normalize-headings`](https://github.com/eush77/mdast-normalize-headings)
-    — Make sure there is no more than a single top-level heading in the document
+    — Make sure no more than a single top-level heading is in the document
 
 *   [`eush77/mdast-squeeze-paragraphs`](https://github.com/eush77/mdast-squeeze-paragraphs)
     — Remove empty paragraphs;
@@ -156,7 +156,7 @@ working with the AST ([**mdast**](https://github.com/wooorm/mdast)):
 *   [`wooorm/mdast-zone`](https://github.com/wooorm/mdast-zone)
     — HTML comments as ranges or markers.
 
-In addition, see [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
+See [`unist`](https://github.com/wooorm/unist#unist-node-utilties)
 for other utilities which work with **remark** nodes, but also with
 [retext](https://github.com/wooorm/retext) nodes.
 
@@ -175,8 +175,7 @@ for more information on creating plugins.
 
 ## Publishing plugins
 
-It is recommended to publish a plugin as an
-[npm module](https://docs.npmjs.com/getting-started/publishing-npm-packages).
+Publish a plugin as an [npm module](https://docs.npmjs.com/getting-started/publishing-npm-packages).
 
 You should pick a name prefixed by `"remark-"`, valid examples are
 [`remark-toc`](https://www.npmjs.com/package/remark-toc) or
@@ -186,5 +185,5 @@ but can still be meaningful. For example, `lint` was not available, but instead
 of opting for `liiint` or some other weird form, using `remark-lint` ensured a
 unique name on package managers, while still being meaningful to users.
 
-When publishing a plugin, you should utilize the package manager’s keywords
+When publishing a plugin, you should use the package manager’s keywords
 functionality and include `"remark"` in the list.

@@ -94,16 +94,16 @@ to [manage and update](https://github.com/creationix/nvm#usage) Node versions.
 npm install remark
 ```
 
-When using the **remark** CLI system-wide, provide the `--global` flag.
+When using the **remark** CLI system-wide, use the `--global` flag.
 
-When using **remark** inside a project, provide either `--save` or `--save-dev`.
+When using **remark** inside a project, use either `--save` or `--save-dev`.
 
 See [**CommonJS**](#commonjs) on how to start using **remark**.
 
 ### Download
 
-Using a [package manager](#package-managers) is suggested, but it is possible
-to download [`remark.js` and `remark.min.js`](https://github.com/wooorm/remark/releases)
+Using a [package manager](#package-managers) is suggested, but you can
+download [`remark.js` and `remark.min.js`](https://github.com/wooorm/remark/releases)
 and save them to your project folder.
 
 See [**Globals**](#globals), [**AMD**](#amd), or [**CommonJS**](#commonjs) on

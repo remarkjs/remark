@@ -113,8 +113,8 @@ root = remark.parse(
         '',
         '## DESCRIPTION',
         '',
-        'This page contains information and usage examples regarding',
-        'available options for **remark**(3)’s `parse()` and `stringify()`.',
+        'This page holds information and usage examples on available',
+        'options for **remark**(3)’s `parse()` and `stringify()`.',
         '',
         '## Table of Contents'
     ].join('\n')

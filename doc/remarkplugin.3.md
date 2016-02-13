@@ -23,9 +23,9 @@ module.exports = function () {
 
 ## DESCRIPTION
 
-This manual contains information on how **remark**(3) plugins work.  It
-focusses on how to create plugins, rather than on how to implement them. To
-implement plugins, see **remark**(3) and **remarkplugin**(7).
+This manual holds information on how **remark**(3) plugins work.  It
+focusses on how to create plugins, rather than on how to use them. To
+use plugins, see **remark**(3) and **remarkplugin**(7).
 
 An **remark** plugin does up to three things:
 
@@ -68,13 +68,13 @@ module.exports = function (processor, options) {
 };
 ```
 
-To modify the parser, the compiler, or access the file-set on **remark**(1),
+To change the parser, the compiler, or access the file-set on **remark**(1),
 create an attacher.
 
 An attacher is the thing passed to `use()`. It can receive plugin specific
 options, but that is entirely up to the developer. An **attacher** is invoked
 when the plugin is `use`d on an **remark** instance, and can return a
-**transformer** which will be called on subsequent processes.
+**transformer** which will be called on further processes.
 
 Note that **remark**(1) invokes **attacher** for each file, not just once.
 
@@ -92,7 +92,7 @@ Note that **remark**(1) invokes **attacher** for each file, not just once.
 
 *   `fileSet` (`FileSet`, optional)
     — Access to all files being processed by **remark**(1). Only passed on the
-    Command-Line. See **remark**(3) for more information regarding file-sets.
+    Command-Line. See **remark**(3) for more information on file-sets.
 
 **Returns**
 
@@ -163,9 +163,9 @@ files or add messages.
 **Properties**
 
 *   `pluginId` (`*`) — `attacher` is invoked for each file, so if it
-    `use`s `completer` on the file-set, it would attach multiple times.
-    By providing `pluginId` on `completer`, **remark** will ensure only one
-    **completer** with that identifier is will be added.
+    `use`s `completer` on the file-set, it would attach many times.
+    By providing `pluginId` on `completer`, **remark** will make sure
+    only one **completer** with that identifier is will be added.
 
 **Parameters**
 
@@ -205,13 +205,14 @@ function mention(eat, value) {
 ```
 
 Most often, using transformers to manipulate a syntax-tree produces
-the desired output.  Sometimes, mainly when there is a need to
-introduce new syntactic entities with a certain level of precedence,
-interfacing with the parser is necessary.  **remark** knows two types of
-tokenizers based on the kinds of markdown nodes: block level (e.g., paragraphs
-or fenced code blocks) and inline level (e.g., emphasis or inline code
-spans).  Block level tokenizers are the same as inline level tokenizers, with
-the exception that the latter require **locator** functions.
+the desired output.  Sometimes, mainly when needing to introduce new
+syntactic entities with a certain level of precedence, interfacing with
+the parser is necessary.  **remark** knows two types of tokenizers
+based on the kinds of markdown nodes: block level (for example,
+paragraphs or fenced code blocks) and inline level (for example,
+emphasis or inline code spans).  Block level tokenizers are the same
+as inline level tokenizers, with the exception that the latter must have
+**locator** functions.
 
 Tokenizers _test_ whether a certain given documents starts with a certain
 syntactic entity.  When that occurs, they consume that token, a process which
@@ -233,7 +234,7 @@ and how it utilises and attaches a tokenizer and a locator.
     — Function used to eat, when applicable, an entity;
 
 *   `value` (`string`)
-    — Value which might start an entity;
+    — Value which may start an entity;
 
 *   `silent` (`boolean`, optional)
     — When `true`, instead of actually eating a value, the tokenizer must
@@ -253,10 +254,10 @@ function locator(value, fromIndex) {
 }
 ```
 
-As mentioned in the previous section, locators are required for inline
-tokenization in order to keep the process performant. Locators enable
-inline tokenizers to function faster by providing information on the
-where the next entity occurs.
+As mentioned in the “tokenizer” section, locators are required for inline
+tokenization to keep the process performant. Locators enable inline
+tokenizers to function faster by providing information on the where
+the next entity occurs.
 
 **Signatures**
 
@@ -265,14 +266,14 @@ where the next entity occurs.
 **Parameters**
 
 *   `value` (`string`)
-    — Value which might contain an entity;
+    — Value which may contain an entity;
 
 *   `fromIndex` (`number`)
     — Position to start searching at.
 
 **Returns**
 
-The index at which the entity might start, and `-1` otherwise.
+The index at which the entity may start, and `-1` otherwise.
 
 ## BUGS
 

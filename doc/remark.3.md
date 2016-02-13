@@ -70,7 +70,7 @@ Parse a markdown document into an **mdast** node.
 ## `remark.run(node[, file][, done])`
 
 Transform a node by applying plug-ins to it. Either a node or a file which
-was previously passed to `parse()`, must be given.
+was passed to `parse()`, must be given.
 
 **Signatures**
 
@@ -173,7 +173,7 @@ Invoked when processing is complete.
 
 ## `FileSet()`
 
-**remark**(1) compiles multiple files using a `FileSet` instance.  This set
+**remark**(1) compiles files using a `FileSet` instance.  This set
 is exposed to plug-ins as an argument to the attacher. `FileSet`s
 should not be created by plug-ins.
 

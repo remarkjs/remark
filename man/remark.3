@@ -81,7 +81,7 @@ Parse a markdown document into an \fBmdast\fR node.
 \fBNode\fR \[em] Node. Nodes are documented at \fBmdast\fR.
 .SH "\FBREMARK.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])\FR"
 .P
-Transform a node by applying plug-ins to it. Either a node or a file which was previously passed to \fBparse()\fR, must be given.
+Transform a node by applying plug-ins to it. Either a node or a file which was passed to \fBparse()\fR, must be given.
 .P
 \fBSignatures\fR
 .RS 0
@@ -220,7 +220,7 @@ Invoked when processing is complete.
 
 .SH "\FBFILESET()\FR"
 .P
-\fBremark\fR(1) compiles multiple files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
+\fBremark\fR(1) compiles files using a \fBFileSet\fR instance. This set is exposed to plug-ins as an argument to the attacher. \fBFileSet\fRs should not be created by plug-ins.
 .SH "\FBFILESET.VALUEOF()\FR"
 .SH "\FBFILESET.TOJSON()\FR"
 .P

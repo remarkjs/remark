@@ -6,7 +6,7 @@
 \fBremark\fR(1), \fBremark\fR(3), \fBremarkrc\fR(5)
 .SH "DESCRIPTION"
 .P
-This page contains information and usage examples regarding available options for \fBremark\fR(3)\[cq]s \fBparse()\fR and \fBstringify()\fR.
+This page holds information and usage examples on available options for \fBremark\fR(3)\[cq]s \fBparse()\fR and \fBstringify()\fR.
 .SH "TABLE OF CONTENTS"
 .RS 0
 .IP \(bu 4
@@ -202,7 +202,7 @@ The following constructs are not allowed:
 .IP \(bu 4
 \fBCode\fR directly following a \fBParagraph\fR;
 .IP \(bu 4
-ATX-headings (\fB\[sh] Hash headings\fR) without spacing after initial hashes or and before closing hashes;
+ATX-headings (\fB\[sh] Hash headings\fR) without spacing after opening hashes or and before closing hashes;
 .IP \(bu 4
 Setext headings (\fBUnderline headings\[rs]n---\fR) when following a paragraph;
 .IP \(bu 4
@@ -301,7 +301,7 @@ Setting \fBfootnotes: true\fR (default: \fBfalse\fR) enables inline and referenc
 .P
 Footnotes are wrapped in square brackets, and preceded by a caret (\fB\[ha]\fR).
 .P
-It is possible to reference other footnotes inside footnotes.
+Footnotes can be references inside other footnotes.
 .P
 The following document:
 .P
@@ -793,7 +793,7 @@ Adds support for emphasis and strongness, with underscores (\fB\[ul]\fR), inside
 .IP \(bu 4
 Adds support for different list bullets (\fB*\fR, \fB-\fR, \fB\[pl]\fR) for the same list (when in \fBcommonmark: true\fR mode, the same goes for both ordered list delimiters: \fB.\fR and \fB)\fR);
 .IP \(bu 4
-Removes less spaces in list-items (a maximum of four instead of the whole indent).
+Removes less spaces in list-items (at most four instead of the whole indent).
 .RE 0
 
 .P
@@ -1132,7 +1132,7 @@ Yields:
 .RE
 .SS "Closed ATX Headings"
 .P
-Setting \fBcloseAtx: true\fR (default: \fBfalse\fR) will stringify ATX headings with additional hash-marks after the heading.
+Setting \fBcloseAtx: true\fR (default: \fBfalse\fR) will stringify ATX headings with extra hash-marks after the heading.
 .P
 The following document:
 .P
@@ -1218,7 +1218,7 @@ Setting \fBentities: true\fR (default: \fBfalse\fR) will \fBencode\fR \fI\(lahtt
 .P
 When \fBtrue\fR, named entities are generated (\fB&\fR > \fB&amp;\fR); when \fB\[dq]numbers\[dq]\fR, numbered entities are generated (\fB&\fR > \fB&\[sh]x26;\fR); when \fB\[dq]escape\[dq]\fR, only special HTML characters are encoded (\fB&\fR > \fB&amp;\fR, but \fBö\fR remains \fBö\fR).
 .P
-Although markdown does not need to encode HTML entities, they can be useful to ensure an ASCII document.
+Although markdown does not need to encode HTML entities, they can be useful to make sure the compiled document is in ASCII.
 .P
 The following document:
 .P
@@ -1256,7 +1256,7 @@ It\[aq]s possible to customise how GFM code fences are compiled:
 .RE 0
 
 .P
-To render all code blocks with fences (the default behaviour is to only use non-standard fences when a language-flag is present), use \fBfences: true\fR.
+To compile all code blocks with fences (the default behaviour is to only use non-standard fences when a language-flag is present), use \fBfences: true\fR.
 .P
 The following document:
 .P
@@ -1334,7 +1334,7 @@ Setting \fBlistItemIndent: \[dq]1\[dq]\fR (\fB\[dq]tab\[dq]\fR, \fB\[dq]mixed\[d
 .P
 The default, \fB\[dq]tab\[dq]\fR, will compile to bullets and spacing set to tab-stops (multiples of 4).
 .P
-The other value, \fB\[dq]mixed\[dq]\fR, uses \fB\[dq]tab\[dq]\fR when the list item spans multiple lines, and \fB\[dq]1\[dq]\fR otherwise.
+The other value, \fB\[dq]mixed\[dq]\fR, uses \fB\[dq]tab\[dq]\fR when the list item spans more than one line, and \fB\[dq]1\[dq]\fR otherwise.
 .RS 0
 .P
 \fBNote\fR: choosing \fB\[dq]tab\[dq]\fR results in the greatest support across vendors when mixing lists, block quotes, indented code, etcetera.

@@ -25,7 +25,7 @@ module.exports \[eq] function () \[lC]
 .RE
 .SH "DESCRIPTION"
 .P
-This manual contains information on how \fBremark\fR(3) plugins work. It focusses on how to create plugins, rather than on how to implement them. To implement plugins, see \fBremark\fR(3) and \fBremarkplugin\fR(7).
+This manual holds information on how \fBremark\fR(3) plugins work. It focusses on how to create plugins, rather than on how to use them. To use plugins, see \fBremark\fR(3) and \fBremarkplugin\fR(7).
 .P
 An \fBremark\fR plugin does up to three things:
 .RS 0
@@ -68,9 +68,9 @@ module.exports \[eq] function (processor, options) \[lC]
 .fi
 .RE
 .P
-To modify the parser, the compiler, or access the file-set on \fBremark\fR(1), create an attacher.
+To change the parser, the compiler, or access the file-set on \fBremark\fR(1), create an attacher.
 .P
-An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific options, but that is entirely up to the developer. An \fBattacher\fR is invoked when the plugin is \fBuse\fRd on an \fBremark\fR instance, and can return a \fBtransformer\fR which will be called on subsequent processes.
+An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific options, but that is entirely up to the developer. An \fBattacher\fR is invoked when the plugin is \fBuse\fRd on an \fBremark\fR instance, and can return a \fBtransformer\fR which will be called on further processes.
 .P
 Note that \fBremark\fR(1) invokes \fBattacher\fR for each file, not just once.
 .P
@@ -88,7 +88,7 @@ Note that \fBremark\fR(1) invokes \fBattacher\fR for each file, not just once.
 .IP \(bu 4
 \fBoptions\fR (\fBObject\fR, optional) \[em] Plugin specific options;
 .IP \(bu 4
-\fBfileSet\fR (\fBFileSet\fR, optional) \[em] Access to all files being processed by \fBremark\fR(1). Only passed on the Command-Line. See \fBremark\fR(3) for more information regarding file-sets.
+\fBfileSet\fR (\fBFileSet\fR, optional) \[em] Access to all files being processed by \fBremark\fR(1). Only passed on the Command-Line. See \fBremark\fR(3) for more information on file-sets.
 .RE 0
 
 .P
@@ -159,7 +159,7 @@ To access all files once they are transformed, create a \fBcompleter\fR. A \fBco
 \fBProperties\fR
 .RS 0
 .IP \(bu 4
-\fBpluginId\fR (\fB*\fR) \[em] \fBattacher\fR is invoked for each file, so if it \fBuse\fRs \fBcompleter\fR on the file-set, it would attach multiple times. By providing \fBpluginId\fR on \fBcompleter\fR, \fBremark\fR will ensure only one \fBcompleter\fR with that identifier is will be added.
+\fBpluginId\fR (\fB*\fR) \[em] \fBattacher\fR is invoked for each file, so if it \fBuse\fRs \fBcompleter\fR on the file-set, it would attach many times. By providing \fBpluginId\fR on \fBcompleter\fR, \fBremark\fR will make sure only one \fBcompleter\fR with that identifier is will be added.
 .RE 0
 
 .P
@@ -200,7 +200,7 @@ function mention(eat, value) \[lC]
 .fi
 .RE
 .P
-Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when there is a need to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBremark\fR knows two types of tokenizers based on the kinds of markdown nodes: block level (e.g., paragraphs or fenced code blocks) and inline level (e.g., emphasis or inline code spans). Block level tokenizers are the same as inline level tokenizers, with the exception that the latter require \fBlocator\fR functions.
+Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when needing to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBremark\fR knows two types of tokenizers based on the kinds of markdown nodes: block level (for example, paragraphs or fenced code blocks) and inline level (for example, emphasis or inline code spans). Block level tokenizers are the same as inline level tokenizers, with the exception that the latter must have \fBlocator\fR functions.
 .P
 Tokenizers \fItest\fR whether a certain given documents starts with a certain syntactic entity. When that occurs, they consume that token, a process which is called \[lq]eating\[rq] in \fBremark\fR. Locators enable tokenizers to function faster by providing information on the where the next entity occurs.
 .P
@@ -220,7 +220,7 @@ For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\
 .IP \(bu 4
 \fBeat\fR (\fBFunction\fR) \[em] Function used to eat, when applicable, an entity;
 .IP \(bu 4
-\fBvalue\fR (\fBstring\fR) \[em] Value which might start an entity;
+\fBvalue\fR (\fBstring\fR) \[em] Value which may start an entity;
 .IP \(bu 4
 \fBsilent\fR (\fBboolean\fR, optional) \[em] When \fBtrue\fR, instead of actually eating a value, the tokenizer must return whether a node can definitely be found at the start of \fBvalue\fR.
 .RE 0
@@ -239,7 +239,7 @@ function locator(value, fromIndex) \[lC]
 .fi
 .RE
 .P
-As mentioned in the previous section, locators are required for inline tokenization in order to keep the process performant. Locators enable inline tokenizers to function faster by providing information on the where the next entity occurs.
+As mentioned in the \[lq]tokenizer\[rq] section, locators are required for inline tokenization to keep the process performant. Locators enable inline tokenizers to function faster by providing information on the where the next entity occurs.
 .P
 \fBSignatures\fR
 .RS 0
@@ -251,7 +251,7 @@ As mentioned in the previous section, locators are required for inline tokenizat
 \fBParameters\fR
 .RS 0
 .IP \(bu 4
-\fBvalue\fR (\fBstring\fR) \[em] Value which might contain an entity;
+\fBvalue\fR (\fBstring\fR) \[em] Value which may contain an entity;
 .IP \(bu 4
 \fBfromIndex\fR (\fBnumber\fR) \[em] Position to start searching at.
 .RE 0
@@ -259,7 +259,7 @@ As mentioned in the previous section, locators are required for inline tokenizat
 .P
 \fBReturns\fR
 .P
-The index at which the entity might start, and \fB-1\fR otherwise.
+The index at which the entity may start, and \fB-1\fR otherwise.
 .SH "BUGS"
 .P
 \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]issues\(ra\fR

@@ -16,7 +16,7 @@ For a list of available configuration options, see **remark**(1) or
 All **remarkrc**(5) configuration files are in JSON.
 
 Automatically detected files named `package.json` use the `remarkConfig`
-field, whereas other files are used as a whole.
+field, where other files are used as a whole.
 
 ## FIELDS
 
@@ -28,8 +28,8 @@ field, whereas other files are used as a whole.
 }
 ```
 
-The `output` field specifies whether or not files should be written to the
-file-system (similar to `-o`, `--output` _path_ on **remark**(1)). It can
+The `output` field specifies whether files should be written to the
+file-system (like `-o`, `--output` _path_ on **remark**(1)). It can
 be either a boolean, or a string. In the case of a string, the value is
 treated as the `target` or `directory` field for **mv**(1).
 
@@ -44,7 +44,7 @@ treated as the `target` or `directory` field for **mv**(1).
 }
 ```
 
-Settings contains an object mapping a setting to a value.
+Settings has an object mapping a setting to a value.
 See **remarksetting**(7) for available settings.
 
 ### plugins
@@ -71,7 +71,7 @@ Options:
 }
 ```
 
-The `plugins` field contains either an array of plugins, or an object mapping
+The `plugins` field has either an array of plugins, or an object mapping
 plugins to their options.
 
 When a plugin is prefixed with `remark-` (which is recommended), the prefix
@@ -118,7 +118,7 @@ Where `docs/.remarkrc` looks as follows:
 }
 ```
 
-And `package.json` contains:
+And `package.json` has:
 
 ```json
 {
@@ -130,7 +130,7 @@ And `package.json` contains:
 }
 ```
 
-And `.remarkrc` contains:
+And `.remarkrc` has:
 
 ```json
 {

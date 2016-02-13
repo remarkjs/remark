@@ -17,19 +17,19 @@ files.
 ## FILES
 
 Each line in a **remarkignore**(5) file provides a pattern which describes to
-**remark** whether or not to process a given path.
+**remark** whether to process a given path.
 
-*   Lines are trimmed of initial and final white space;
+*   Lines are trimmed of white space;
 
 *   Empty lines are ignored;
 
 *   Lines which start with an octothorp (`#`) are ignored;
 
 *   Lines which start with a interrogation-mark (`!`) negate, thus re-adding
-    a previously ignored file path;
+    an ignored file path;
 
-For documentation regarding support of wild-cards (`*`, `?`), brace
-expressions (`{one,two}`), and more, see [`minimatch`](https://github.com/isaacs/minimatch).
+For documentation on support of wild-cards (`*`, `?`), brace expressions
+(`{one,two}`), and more, see [`minimatch`](https://github.com/isaacs/minimatch).
 
 You can pass a **gitignore**(5) file to **remark**(1), because it has the same
 format as **remarkignore**(5):
@@ -43,7 +43,7 @@ _.markdown_, or _.ron_ as extension.  Other files can be explicitly provided
 to **remark**(1), or an `extension` can be given to **remark**(1) using the
 `--extension, -e` flag.
 
-In addition to patterns in **remarkignore**(5) files, _node\_modules/\*\*_ are
+Besides patterns in **remarkignore**(5) files, _node\_modules/\*\*_ are
 always excluded.
 
 Unless provided directly to **remark**(1), hidden directories (such as _.git_)

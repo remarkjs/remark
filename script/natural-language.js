@@ -22,7 +22,33 @@
 var retext = require('retext');
 var remark2retext = require('remark-retext');
 var readability = require('retext-readability');
+var profanities = require('retext-profanities');
 var equality = require('retext-equality');
+var simplify = require('retext-simplify');
+
+/*
+ * Processor.
+ */
+
+var naturalLanguage = retext()
+    .use(equality)
+    .use(profanities)
+    .use(readability, {
+        'age': 20
+    })
+    .use(simplify, {
+        'ignore': [
+            'option',
+            'plugin',
+            'interface',
+            'parameters',
+            'function',
+            'modify',
+            'component',
+            'render',
+            'validate'
+        ]
+    });
 
 /**
  * Attacher.
@@ -30,9 +56,7 @@ var equality = require('retext-equality');
  * @param {Remark} remark - Processor.
  */
 function attacher(remark) {
-    remark.use(remark2retext, retext().use(readability, {
-        'age': 20
-    }).use(equality));
+    remark.use(remark2retext, naturalLanguage);
 }
 
 module.exports = attacher;

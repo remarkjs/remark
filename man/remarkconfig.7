@@ -6,7 +6,7 @@
 \fBremark\fR(1), \fBremark\fR(3), \fBremarkrc\fR(5)
 .SH "DESCRIPTION"
 .P
-\fBremark\fR is configured from multiple sources:
+\fBremark\fR is configured from four sources:
 .RS 0
 .IP \(bu 4
 \fBremark\fR(3) accepts configuration as a parameter to its \fBparse()\fR, \fBrun()\fR, and \fBstringify()\fR methods;
@@ -25,7 +25,7 @@ For a list of available configuration settings, see \fBremarksetting\fR(7).
 To configure the programmatic interface of \fBremark\fR, pass an object as a second parameter to \fBprocess()\fR, \fBparse()\fR, and \fBstringify()\fR.
 .SH "COMMAND LINE SETTINGS"
 .P
-To configure the shell interface of \fBremark\fR, pass a string to the \fB--setting\fR (or \fB-s\fR) flag.
+To configure the CLI of \fBremark\fR, pass a string to the \fB--setting\fR (or \fB-s\fR) flag.
 .P
 Command line settings are just JSON, with two exceptions:
 .RS 0

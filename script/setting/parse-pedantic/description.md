@@ -7,5 +7,5 @@ Setting `pedantic: true` (default: `false`):
     (when in `commonmark: true` mode, the same goes for both ordered list
     delimiters: `.` and `)`);
 
-*   Removes less spaces in list-items (a maximum of four instead of the whole
+*   Removes less spaces in list-items (at most four instead of the whole
     indent).

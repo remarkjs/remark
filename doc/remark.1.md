@@ -8,10 +8,10 @@
 
 **remark** is a markdown processor powered by plugins.
 
-&lt;_pathspec_...> refers to files to process.  Fileglobs (e.g., `*.md`)
-can be given to add all matching files.  Directories can be given (e.g. `dir`
-to add `dir/readme.md` and `dir/sub/history.mkd`) to add files with a known
-markdown extension (see the `-e`, `--ext` flag).
+&lt;_pathspec_...> refers to files to process.  Fileglobs (for example,
+`*.md`) can be given to add all matching files.  Directories can be
+given (for example, `dir` to add `dir/readme.md` and `dir/sub/history.mkd`)
+to add files with a known markdown extension (see the `-e`, `--ext` flag).
 
 Logs verbose debugging information when `$DEBUG` is set to `"*"`.
 
@@ -46,8 +46,9 @@ Specify output.
 *   If output is **not** given and one file is processed, the file is written
     to **stdout**(4). See `--no-stdout` to disable this behaviour;
 
-*   Otherwise, if output is **not** given and multiple files are processed,
-    files are neither written to **stdout**(4) nor to the file-system;
+*   Otherwise, if output is **not** given and more than one file is
+    processed, files are neither written to **stdout**(4) nor to the
+    file-system;
 
 *   Otherwise, if output is given but **without** path, input files are
     overwritten;
@@ -66,9 +67,9 @@ Specify output.
 remark . --config-path remarkrc.json
 ```
 
-Specify configuration location. This loads an **remarkrc**(5) file which cannot
+Specify configuration location. This loads a **remarkrc**(5) file which cannot
 be detected (either because `--no-rc` is given or because it has a different
-name) in addition to other detected files.
+name) besides other detected files.
 
 ### `-i`, `--ignore-path` &lt;_path_>
 
@@ -78,7 +79,7 @@ remark . --ignore-path .gitignore
 
 Specify ignore location. This loads an **remarkignore**(5) file which cannot be
 detected (either because `--no-ignore` is given or because it has a different
-name) in addition to other detected files.
+name) besides to other detected files.
 
 ### `-s`, `--setting` &lt;_settings_>
 

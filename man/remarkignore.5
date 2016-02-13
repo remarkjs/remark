@@ -11,20 +11,20 @@ When \fBremark\fR(1) searches for applicable files, you can tell it to ignore ce
 Unlike \fBremarkrc\fR(5) configuration files, \fBremarkignore\fR(5) files do not cascade: when one is found (or given), the program stops looking for further files.
 .SH "FILES"
 .P
-Each line in a \fBremarkignore\fR(5) file provides a pattern which describes to \fBremark\fR whether or not to process a given path.
+Each line in a \fBremarkignore\fR(5) file provides a pattern which describes to \fBremark\fR whether to process a given path.
 .RS 0
 .IP \(bu 4
-Lines are trimmed of initial and final white space;
+Lines are trimmed of white space;
 .IP \(bu 4
 Empty lines are ignored;
 .IP \(bu 4
 Lines which start with an octothorp (\fB\[sh]\fR) are ignored;
 .IP \(bu 4
-Lines which start with a interrogation-mark (\fB!\fR) negate, thus re-adding a previously ignored file path;
+Lines which start with a interrogation-mark (\fB!\fR) negate, thus re-adding an ignored file path;
 .RE 0
 
 .P
-For documentation regarding support of wild-cards (\fB*\fR, \fB?\fR), brace expressions (\fB\[lC]one,two\[rC]\fR), and more, see \fB\fBminimatch\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]isaacs\[sl]minimatch\(ra\fR.
+For documentation on support of wild-cards (\fB*\fR, \fB?\fR), brace expressions (\fB\[lC]one,two\[rC]\fR), and more, see \fB\fBminimatch\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]isaacs\[sl]minimatch\(ra\fR.
 .P
 You can pass a \fBgitignore\fR(5) file to \fBremark\fR(1), because it has the same format as \fBremarkignore\fR(5):
 .P
@@ -36,7 +36,7 @@ remark --ignore-path .gitignore
 .P
 \fBremark\fR(1) searches for files with \fI.md\fR, \fI.mkd\fR, \fI.mkdn\fR, \fI.mkdown\fR, \fI.markdown\fR, or \fI.ron\fR as extension. Other files can be explicitly provided to \fBremark\fR(1), or an \fBextension\fR can be given to \fBremark\fR(1) using the \fB--extension, -e\fR flag.
 .P
-In addition to patterns in \fBremarkignore\fR(5) files, \fInode\[ul]modules\[sl]**\fR are always excluded.
+Besides patterns in \fBremarkignore\fR(5) files, \fInode\[ul]modules\[sl]**\fR are always excluded.
 .P
 Unless provided directly to \fBremark\fR(1), hidden directories (such as \fI.git\fR) are excluded.
 .SH "BUGS"

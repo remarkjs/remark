@@ -9,12 +9,12 @@
 io.js, and the browser. 100% coverage.
 
 **remark** is not just another markdown to HTML compiler. It can generate,
-and reformat, markdown too. It is powered by [plugins](doc/plugins.md) to do
+and reformat, markdown too. Powered by [plugins](doc/plugins.md) to do
 all kinds of things: [validate your markdown](https://github.com/wooorm/remark-lint),
 [add links for GitHub references](https://github.com/wooorm/remark-github), or
 [add a table of contents](https://github.com/wooorm/remark-toc).
 
-The project contains both an extensive [JavaScript API](doc/remark.3.md) for
+The project has both an extensive [JavaScript API](doc/remark.3.md) for
 parsing, modifying, and compiling markdown, and a friendly [Command Line
 Interface](doc/remark.1.md) making it easy to validate, prepare, and compile
 markdown in a build step.
@@ -157,7 +157,7 @@ Change the way [`remark`](#api) works by using a [`plugin`](doc/plugins.md).
 
 `Object`: an instance of Remark: The returned object functions just like
 **remark** (it has the same methods), but caches the `use`d plugins. This
-provides the ability to chain `use` calls to use multiple plugins, but
+provides the ability to chain `use` calls to use more than one plugin, but
 ensures the functioning of the **remark** module does not change for other
 dependents.
 

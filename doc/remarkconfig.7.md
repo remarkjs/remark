@@ -6,7 +6,7 @@
 
 ## DESCRIPTION
 
-**remark** is configured from multiple sources:
+**remark** is configured from four sources:
 
 *   **remark**(3) accepts configuration as a parameter to its `parse()`,
     `run()`, and `stringify()` methods;
@@ -29,8 +29,8 @@ second parameter to `process()`, `parse()`, and `stringify()`.
 
 ## COMMAND LINE SETTINGS
 
-To configure the shell interface of **remark**, pass a string to the
-`--setting` (or `-s`) flag.
+To configure the CLI of **remark**, pass a string to the `--setting`
+(or `-s`) flag.
 
 Command line settings are just JSON, with two exceptions:
 

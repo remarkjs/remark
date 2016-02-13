@@ -6,8 +6,8 @@
 
 ## DESCRIPTION
 
-This page contains information and usage examples regarding
-available options for **remark**(3)’s `parse()` and `stringify()`.
+This page holds information and usage examples on available
+options for **remark**(3)’s `parse()` and `stringify()`.
 
 ## Table of Contents
 
@@ -174,7 +174,7 @@ The following constructs are not allowed:
 
 *   **Code** directly following a **Paragraph**;
 
-*   ATX-headings (`# Hash headings`) without spacing after initial hashes
+*   ATX-headings (`# Hash headings`) without spacing after opening hashes
     or and before closing hashes;
 
 *   Setext headings (`Underline headings\n---`) when following a paragraph;
@@ -270,7 +270,7 @@ reference footnotes.
 
 Footnotes are wrapped in square brackets, and preceded by a caret (`^`).
 
-It is possible to reference other footnotes inside footnotes.
+Footnotes can be references inside other footnotes.
 
 The following document:
 
@@ -747,7 +747,7 @@ Setting `pedantic: true` (default: `false`):
     (when in `commonmark: true` mode, the same goes for both ordered list
     delimiters: `.` and `)`);
 
-*   Removes less spaces in list-items (a maximum of four instead of the whole
+*   Removes less spaces in list-items (at most four instead of the whole
     indent).
 
 The following document:
@@ -1070,7 +1070,7 @@ Yields:
 ### Closed ATX Headings
 
 Setting `closeAtx: true` (default: `false`) will stringify ATX headings
-with additional hash-marks after the heading.
+with extra hash-marks after the heading.
 
 The following document:
 
@@ -1152,7 +1152,7 @@ numbered entities are generated (`&` > `&#x26;`); when `"escape"`, only
 special HTML characters are encoded (`&` > `&amp;`, but `ö` remains `ö`).
 
 Although markdown does not need to encode HTML entities, they can be useful to
-ensure an ASCII document.
+make sure the compiled document is in ASCII.
 
 The following document:
 
@@ -1183,7 +1183,7 @@ It's possible to customise how GFM code fences are compiled:
 *   `fence: string` (`"~"` or ``"`"``, default: ``"`"``) will wrap code
     blocks in the provided character.
 
-To render all code blocks with fences (the default behaviour is to only use
+To compile all code blocks with fences (the default behaviour is to only use
 non-standard fences when a language-flag is present), use `fences: true`.
 
 The following document:
@@ -1255,8 +1255,8 @@ will stringify list items with a single space following the bullet.
 The default, `"tab"`, will compile to bullets and spacing set to tab-stops
 (multiples of 4).
 
-The other value, `"mixed"`, uses `"tab"` when the list item spans multiple
-lines, and `"1"` otherwise.
+The other value, `"mixed"`, uses `"tab"` when the list item spans more
+than one line, and `"1"` otherwise.
 
 > **Note**: choosing `"tab"` results in the greatest support across
 > vendors when mixing lists, block quotes, indented code, etcetera.

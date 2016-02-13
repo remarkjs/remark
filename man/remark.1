@@ -8,7 +8,7 @@
 .P
 \fBremark\fR is a markdown processor powered by plugins.
 .P
-<\fIpathspec\fR...> refers to files to process. Fileglobs (e.g., \fB*.md\fR) can be given to add all matching files. Directories can be given (e.g. \fBdir\fR to add \fBdir\[sl]readme.md\fR and \fBdir\[sl]sub\[sl]history.mkd\fR) to add files with a known markdown extension (see the \fB-e\fR, \fB--ext\fR flag).
+<\fIpathspec\fR...> refers to files to process. Fileglobs (for example, \fB*.md\fR) can be given to add all matching files. Directories can be given (for example, \fBdir\fR to add \fBdir\[sl]readme.md\fR and \fBdir\[sl]sub\[sl]history.mkd\fR) to add files with a known markdown extension (see the \fB-e\fR, \fB--ext\fR flag).
 .P
 Logs verbose debugging information when \fB\[Do]DEBUG\fR is set to \fB\[dq]*\[dq]\fR.
 .SH "OPTIONS"
@@ -45,7 +45,7 @@ Specify output.
 .IP \(bu 4
 If output is \fBnot\fR given and one file is processed, the file is written to \fBstdout\fR(4). See \fB--no-stdout\fR to disable this behaviour;
 .IP \(bu 4
-Otherwise, if output is \fBnot\fR given and multiple files are processed, files are neither written to \fBstdout\fR(4) nor to the file-system;
+Otherwise, if output is \fBnot\fR given and more than one file is processed, files are neither written to \fBstdout\fR(4) nor to the file-system;
 .IP \(bu 4
 Otherwise, if output is given but \fBwithout\fR path, input files are overwritten;
 .IP \(bu 4
@@ -64,7 +64,7 @@ remark . --config-path remarkrc.json
 .fi
 .RE
 .P
-Specify configuration location. This loads an \fBremarkrc\fR(5) file which cannot be detected (either because \fB--no-rc\fR is given or because it has a different name) in addition to other detected files.
+Specify configuration location. This loads a \fBremarkrc\fR(5) file which cannot be detected (either because \fB--no-rc\fR is given or because it has a different name) besides other detected files.
 .SS "\fB-i\fR, \fB--ignore-path\fR <\fIpath\fR>"
 .P
 .RS 2
@@ -73,7 +73,7 @@ remark . --ignore-path .gitignore
 .fi
 .RE
 .P
-Specify ignore location. This loads an \fBremarkignore\fR(5) file which cannot be detected (either because \fB--no-ignore\fR is given or because it has a different name) in addition to other detected files.
+Specify ignore location. This loads an \fBremarkignore\fR(5) file which cannot be detected (either because \fB--no-ignore\fR is given or because it has a different name) besides to other detected files.
 .SS "\fB-s\fR, \fB--setting\fR <\fIsettings\fR>"
 .P
 .RS 2

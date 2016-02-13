@@ -18,7 +18,7 @@ The following constructs are not allowed:
 
 *   **Code** directly following a **Paragraph**;
 
-*   ATX-headings (`# Hash headings`) without spacing after initial hashes
+*   ATX-headings (`# Hash headings`) without spacing after opening hashes
     or and before closing hashes;
 
 *   Setext headings (`Underline headings\n---`) when following a paragraph;

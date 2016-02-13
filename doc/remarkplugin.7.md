@@ -20,11 +20,11 @@ remark.use(lint).process('Alpha **Bravo** Charlie');
 
 ## DESCRIPTION
 
-This manual contains information on how **remark**(3) plugins can be used. To
+This manual holds information on how **remark**(3) plugins can be used. To
 create plugins, see **remarkplugin**(3).
 
-**remark** plugins lie at the core of **remark**’s vision. As they operate on
-the same syntax tree, there is no start-up time penalty when using more than
+**remark** plugins lie at the core of **remark**’s vision. As they work on
+the same syntax tree, no more time is spent on start-up when using more than
 one plug-in—something which traditional tools, which need to re-compile
 to markdown to connect together, can be immense on large documents.
 
