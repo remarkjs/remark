@@ -37,6 +37,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`wooorm/remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 
+*   [`ben-eb/remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
+    — Adjust the gap between headings; 
+
 *   [`ben-eb/remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
     — Highlight code blocks in Markdown files with
     [highlight.js](https://github.com/isagalaev/highlight.js);
@@ -101,6 +104,9 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 
 *   [`wooorm/remark-vdom`](https://github.com/wooorm/remark-vdom)
     — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/);
+
+*   [`ben-eb/remark-word-wrap`](https://github.com/ben-eb/remark-word-wrap)
+    — Wrap lines of Markdown to a specified width; 
 
 *   [`wooorm/remark-yaml`](https://github.com/wooorm/remark-yaml)
     — Parse and stringify YAML code blocks;
