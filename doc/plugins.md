@@ -71,9 +71,6 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`eush77/remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
     — Make sure no more than a single top-level heading is in the document
 
-*   [`wooorm/remark-range`](https://github.com/wooorm/remark-range)
-    — Add range information;
-
 *   [`mapbox/remark-react`](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react);
 
