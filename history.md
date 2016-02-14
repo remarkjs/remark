@@ -2,6 +2,26 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.0.0 / 2016-02-14
+==================
+
+*   Update to make sure plug-ins are used over files ([`e445030`](https://github.com/wooorm/remark/commit/e445030))
+*   Update unified ([`2e17441`](https://github.com/wooorm/remark/commit/2e17441))
+*   Add support for syntax tree input to remark(1) ([`86bb88e`](https://github.com/wooorm/remark/commit/86bb88e))
+*   Remove support for Duo ([`480b01a`](https://github.com/wooorm/remark/commit/480b01a))
+*   Refactor how compiler picks visitors ([`bfb5812`](https://github.com/wooorm/remark/commit/bfb5812))
+*   Rename `link`, `src`, `href` properties to `url` ([`801a1b6`](https://github.com/wooorm/remark/commit/801a1b6))
+*   Remove `undefined` value for `checked` on list-items ([`d0452d3`](https://github.com/wooorm/remark/commit/d0452d3))
+*   Rename `horizontalRule` to `thematicBreak` ([`67b36a0`](https://github.com/wooorm/remark/commit/67b36a0))
+*   Add `offset`s to nodes when parsing in remark(3) ([`070d977`](https://github.com/wooorm/remark/commit/070d977))
+*   Remove `tableHeader` definition ([`593bb82`](https://github.com/wooorm/remark/commit/593bb82))
+
+3.2.3 / 2016-02-07
+==================
+
+*   Fix entities in shortcut and collapsed references ([`bb1683a`](https://github.com/wooorm/remark/commit/bb1683a))
+*   Fix subdomains for literal URLs in remark(3) ([`8ff7ab4`](https://github.com/wooorm/remark/commit/8ff7ab4))
+
 3.2.2 / 2016-01-21
 ==================
 
