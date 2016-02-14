@@ -114,9 +114,6 @@ See [tools built with remark »](https://github.com/wooorm/remark/blob/master/do
 *   [`wooorm/remark-vdom`](https://github.com/wooorm/remark-vdom)
     — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/);
 
-*   [`wooorm/remark-yaml`](https://github.com/wooorm/remark-yaml)
-    — Parse and stringify YAML code blocks;
-
 *   [`wooorm/remark-yaml-config`](https://github.com/wooorm/remark-yaml-config)
     — Set settings with YAML during runtime;
 
