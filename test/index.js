@@ -743,7 +743,7 @@ describe('remark.process(value, options, done)', function () {
                     'pedantic': true,
                     'listItemIndent': '1'
                 });
-            }, /Cannot indent code properly. See http:\/\/git.io\/mdast-lii/);
+            }, /Cannot indent code properly. See http:\/\/git.io\/vgFvT/);
         }
     );
 });
