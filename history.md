@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.1.0 / 2016-02-16
+==================
+
+*   Remove redundant escaped emphasis markers in words ([`b9699bb`](https://github.com/wooorm/remark/commit/b9699bb))
+
 4.0.0 / 2016-02-14
 ==================
 
