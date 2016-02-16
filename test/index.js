@@ -1259,7 +1259,8 @@ describe('fixtures', function () {
                 var parse = possibilities[key];
                 var stringify = extend({}, fixture.stringify, {
                     'gfm': parse.gfm,
-                    'commonmark': parse.commonmark
+                    'commonmark': parse.commonmark,
+                    'pedantic': parse.pedantic
                 });
                 var initialClean = !parse.position;
                 var node;
@@ -1277,7 +1278,7 @@ describe('fixtures', function () {
 
                     compare(node, trees[mapping[key]], false, initialClean);
 
-                    markdown = remark.stringify(node, stringify);
+                    markdown = remark.stringify(clone(node), stringify);
                 });
 
                 if (output !== false) {
