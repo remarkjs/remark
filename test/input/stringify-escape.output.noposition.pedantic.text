@@ -1,12 +1,12 @@
 Characters that should be escaped in general:
 
-\\ \` \* \[
+\\ \` \* \[ \_
 
 Characters that shouldn't:
 
 {}]()#+-.!>"$%',/:;=?@^~
 
-Underscores are \_escaped\_ unless they appear in_the_middle_of_a_word.
+Underscores are always \_escaped\_, even when they appear in\_the\_middle\_of\_a\_word.
 
 Ampersands are escaped only when they would otherwise start an entity:
 
@@ -43,30 +43,30 @@ Text under a shortcut reference should be preserved verbatim:
 
 **GFM:**
 
-Colon should not be escaped in URLs:
+Colon should be escaped in URLs:
 
--   http://user:password@host:port/path?key=value#fragment
--   https://user:password@host:port/path?key=value#fragment
+-   http&#x3A;//user:password@host:port/path?key=value#fragment
+-   https&#x3A;//user:password@host:port/path?key=value#fragment
 
-Double tildes should not be ~~escaped~~.
-Nor here: foo~~.
+Double tildes should be \~~escaped\~~.
+And here: foo\~~.
 
 Pipes should not be escaped here: |
 
 | here   | they     |
 | ------ | -------- |
-| should | nei|ther |
+| should | tho\|ugh |
 
-Nor here:
+And here:
 
 | here   | they   |
-| ------ | ------ |
+\| ---- \| ----- \|
 | should | though |
 
-Nor here:
+And here:
 
 here   | they
-\----- | ------
+\---- \| ------
 should | though
 
 **Commonmark:**
@@ -74,4 +74,4 @@ should | though
 Open angle bracket should be escaped:
 
 -   &lt;div>&lt;/div>
--   &lt;http:google.com>
+-   &lt;http&#x3A;google.com>

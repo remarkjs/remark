@@ -43,7 +43,7 @@ _.markdown_, or _.ron_ as extension.  Other files can be explicitly provided
 to **remark**(1), or an `extension` can be given to **remark**(1) using the
 `--extension, -e` flag.
 
-Besides patterns in **remarkignore**(5) files, _node\_modules/\*\*_ are
+Besides patterns in **remarkignore**(5) files, _node_modules/\*\*_ are
 always excluded.
 
 Unless provided directly to **remark**(1), hidden directories (such as _.git_)

@@ -1,10 +1,12 @@
 Characters that should be escaped in general:
 
-\\ \` \* \[ \_
+\\ \` \* \[
 
 Characters that shouldn't:
 
 {}]()#+-.!>"$%',/:;=?@^~
+
+Underscores are \_escaped\_ unless they appear in_the_middle_of_a_word.
 
 Ampersands are escaped only when they would otherwise start an entity:
 
