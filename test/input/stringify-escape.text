@@ -7,6 +7,7 @@ Characters that shouldn't:
 {}]()#+-.!>"$%',/:;=?@^~
 
 Underscores are \_escaped\_ unless they appear in_the_middle_of_a_word.
+or **_here**, or here__
 
 Ampersands are escaped only when they would otherwise start an entity:
 
