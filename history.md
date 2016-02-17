@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.1.1 / 2016-02-17
+==================
+
+*   Fix fatal error on structures for table-like nodes ([`7b39253`](https://github.com/wooorm/remark/commit/7b39253))
+*   Fix help links in error messages ([`7819a12`](https://github.com/wooorm/remark/commit/7819a12))
+
 4.1.0 / 2016-02-16
 ==================
 
