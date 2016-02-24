@@ -1278,7 +1278,7 @@ describe('fixtures', function () {
 
                     compare(node, trees[mapping[key]], false, initialClean);
 
-                    markdown = remark.stringify(clone(node), stringify);
+                    markdown = remark.stringify(node, stringify);
                 });
 
                 if (output !== false) {
