@@ -25,9 +25,9 @@ module.exports \[eq] function () \[lC]
 .RE
 .SH "DESCRIPTION"
 .P
-This manual holds information on how \fBremark\fR(3) plugins work. It focusses on how to create plugins, rather than on how to use them. To use plugins, see \fBremark\fR(3) and \fBremarkplugin\fR(7).
+This manual holds information on how \fBremark\fR(3) plugins work. It focuses on how to create plugins, rather than on how to use them. To use plugins, see \fBremark\fR(3) and \fBremarkplugin\fR(7).
 .P
-An \fBremark\fR plugin does up to three things:
+A \fBremark\fR plugin does up to three things:
 .RS 0
 .IP \(bu 4
 It modifies the processor: the parser, the compiler;
@@ -202,9 +202,9 @@ function mention(eat, value) \[lC]
 .P
 Most often, using transformers to manipulate a syntax-tree produces the desired output. Sometimes, mainly when needing to introduce new syntactic entities with a certain level of precedence, interfacing with the parser is necessary. \fBremark\fR knows two types of tokenizers based on the kinds of markdown nodes: block level (for example, paragraphs or fenced code blocks) and inline level (for example, emphasis or inline code spans). Block level tokenizers are the same as inline level tokenizers, with the exception that the latter must have \fBlocator\fR functions.
 .P
-Tokenizers \fItest\fR whether a certain given documents starts with a certain syntactic entity. When that occurs, they consume that token, a process which is called \[lq]eating\[rq] in \fBremark\fR. Locators enable tokenizers to function faster by providing information on the where the next entity occurs.
+Tokenizers \fItest\fR whether a document starts with a certain syntactic entity. When that occurs, they consume that token, a process which is called \[lq]eating\[rq] in \fBremark\fR. Locators enable tokenizers to function faster by providing information on where the next entity occurs.
 .P
-For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]blob\[sl]master\[sl]test\[sl]mentions.js\(ra\fR and how it utilises and attaches a tokenizer and a locator.
+For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]blob\[sl]master\[sl]test\[sl]mentions.js\(ra\fR and how it utilises and attaches a tokenizer and locator.
 .P
 \fBSignatures\fR
 .RS 0
