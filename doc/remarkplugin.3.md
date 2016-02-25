@@ -24,10 +24,10 @@ module.exports = function () {
 ## DESCRIPTION
 
 This manual holds information on how **remark**(3) plugins work.  It
-focusses on how to create plugins, rather than on how to use them. To
+focuses on how to create plugins, rather than on how to use them. To
 use plugins, see **remark**(3) and **remarkplugin**(7).
 
-An **remark** plugin does up to three things:
+A **remark** plugin does up to three things:
 
 *   It modifies the processor: the parser, the compiler;
 *   It transforms the AST;
@@ -214,14 +214,14 @@ emphasis or inline code spans).  Block level tokenizers are the same
 as inline level tokenizers, with the exception that the latter must have
 **locator** functions.
 
-Tokenizers _test_ whether a certain given documents starts with a certain
+Tokenizers _test_ whether a document starts with a certain
 syntactic entity.  When that occurs, they consume that token, a process which
 is called “eating” in **remark**.  Locators enable tokenizers to function
 faster by providing information on the where the next entity occurs.
 
 For a complete example, see
 [`test/mentions.js`](https://github.com/wooorm/remark/blob/master/test/mentions.js)
-and how it utilises and attaches a tokenizer and a locator.
+and how it utilises and attaches a tokenizer and locator.
 
 **Signatures**
 
