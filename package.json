@@ -100,7 +100,7 @@
     "remark-usage": "^3.0.0",
     "remark-validate-links": "^3.0.0",
     "remark-yaml-config": "^3.0.0",
-    "retext": "^1.0.0",
+    "retext": "^2.0.0",
     "retext-equality": "^2.2.1",
     "retext-profanities": "^1.1.0",
     "retext-readability": "^1.0.0",
