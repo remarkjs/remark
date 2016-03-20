@@ -2,6 +2,12 @@
 ---
 
 
+1. foo
+```js
+code();
+```
+
+
 1. [foo][]
 [foo]: http://google.com
 
