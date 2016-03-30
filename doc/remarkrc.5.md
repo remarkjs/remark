@@ -145,7 +145,8 @@ module.exports = {
 ```
 
 Then, when compiling `docs/doc.md`, **remark**(1) would use `bullet: "+"`
-because `docs/.remarkrc` takes precedence over `.remarkrc.js` and `package.json`.
+because `docs/.remarkrc` takes precedence over `.remarkrc.js` and
+`package.json`.
 
 When compiling `readme.md`, **remark**(1) would use `bullet: "-"`, because
 `.remarkrc.js` takes precedence over `package.json`.

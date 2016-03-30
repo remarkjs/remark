@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.2.0 / 2016-03-30
+==================
+
+*   Add support for `.remarkrc.js` files ([`cd59707`](https://github.com/wooorm/remark/commit/cd59707))
+*   Fix list item continuation and fenced-code ([`b208e2d`](https://github.com/wooorm/remark/commit/b208e2d))
+
 4.1.1 / 2016-02-17
 ==================
 
