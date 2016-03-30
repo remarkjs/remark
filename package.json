@@ -107,7 +107,7 @@
     "retext-simplify": "^1.1.0"
   },
   "scripts": {
-    "build-man": "bin/remark doc/*.?.md --config-path .remarkrc-man --quiet",
+    "build-man": "bin/remark doc/*.?.md --config-path .remarkrc-man.js --quiet",
     "build-md": "bin/remark . --quiet --frail",
     "build-version": "node script/build-version.js",
     "build-options": "node script/build-options.js",

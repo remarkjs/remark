@@ -55,7 +55,7 @@ findDown.all('.js', 'lib', function (err, files) {
  * Update manifests.
  */
 
-var manrc = toVFile('.remarkrc-man');
+var manrc = toVFile('.remarkrc-man.js');
 
 write(
     manrc.filePath(),
