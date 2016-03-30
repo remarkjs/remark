@@ -13,7 +13,9 @@ For a list of available configuration options, see **remark**(1) or
 
 ## FILES
 
-All **remarkrc**(5) configuration files are in JSON.
+`.remarkrc` and `package.json` **remarkrc**(5) configuration files
+are in JSON.  `.remarkrc.js` is a CommonJS module exporting a JSON
+object.
 
 Automatically detected files named `package.json` use the `remarkConfig`
 field, where other files are used as a whole.
@@ -85,15 +87,17 @@ Precedence is as follows:
 
 *   Files passed to **remark**(1);
 
-*   Files named `.remarkrc` and `remarkConfig` fields in `package.json` in the
-    directory of the processed file, and in ancestral directories;
+*   Files named `.remarkrc`, `.remarkrc.js`, and `remarkConfig` fields
+    in `package.json` in the directory of the processed file, and in
+    ancestral directories;
 
-*   If no `.remarkrc` and `package.json` were detected in the directory of
-    the file or its ancestral directories, a per-user configuration file
-    (`~/.remarkrc`) is used;
+*   If no `.remarkrc`, `.remarkrc.js`, and `package.json` were detected
+    in the directory of the file or its ancestral directories, per-user
+    configuration files (`~/.remarkrc` and `~/.remarkrc.js`) are used;
 
-If both `.remarkrc` and `package.json` exist in a directory, the file named
-`.remarkrc` takes precedence in the cascade over `package.json`.
+If more than one `.remarkrc`, `.remarkrc.js`, or `package.json` are
+found in a directory, the file named `.remarkrc` takes precedence in the
+cascade over `.remarkrc.js`, which in turn precedes over `package.json`.
 
 For example, for the following project:
 
@@ -103,7 +107,7 @@ project
 |   |-- .remarkrc
 |   |-- doc.md
 |
-|-- .remarkrc
+|-- .remarkrc.js
 |-- package.json
 |-- readme.md
 ```
@@ -112,9 +116,9 @@ Where `docs/.remarkrc` looks as follows:
 
 ```json
 {
-    "settings": {
-        "bullet": "+"
-    }
+  "settings": {
+    "bullet": "+"
+  }
 }
 ```
 
@@ -122,29 +126,29 @@ And `package.json` has:
 
 ```json
 {
-    "remarkConfig": {
-        "settings": {
-            "bullet": "*"
-        }
+  "remarkConfig": {
+    "settings": {
+      "bullet": "*"
     }
+  }
 }
 ```
 
-And `.remarkrc` has:
+And `.remarkrc.js` has:
 
-```json
-{
-    "settings": {
-        "bullet": "-"
-    }
-}
+```js
+module.exports = {
+  settings: {
+    bullet: '-'
+  }
+};
 ```
 
 Then, when compiling `docs/doc.md`, **remark**(1) would use `bullet: "+"`
-because `docs/.remarkrc` takes precedence over `.remarkrc` and `package.json`.
+because `docs/.remarkrc` takes precedence over `.remarkrc.js` and `package.json`.
 
 When compiling `readme.md`, **remark**(1) would use `bullet: "-"`, because
-`.remarkrc` takes precedence over `package.json`.
+`.remarkrc.js` takes precedence over `package.json`.
 
 ## BUGS
 

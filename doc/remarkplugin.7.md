@@ -55,11 +55,11 @@ See **remark**(1)’s `-u`, `--use` option for more information.
 
 ### .remarkrc
 
-`.remarkrc` and `package.json` files can declare which plugins should be
-used by including either a list of plugins or a map of plugin–options pairs
-on a `plugins` field in the exposed object.
-When referencing an npm plugin, and the plugin’s name is prefixed by
-`remark-`, this prefix can be omitted.
+`.remarkrc`, `.remarkrc.js`, and `package.json` files can declare
+which plugins should be used by including either a list of plugins
+or a map of plugin–options pairs on a `plugins` field in the exposed
+object.  When referencing an npm plugin, and the plugin’s name is
+prefixed by `remark-`, this prefix can be omitted.
 
 For example, the following `.remarkrc` file will use
 [`remark-lint`](https://www.npmjs.com/package/remark-lint):

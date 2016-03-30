@@ -18,6 +18,7 @@ var fs = require('fs');
 var path = require('path');
 var remark = require('..');
 var toc = require('remark-toc');
+var settings = require('../.remarkrc.js').settings;
 
 /*
  * Methods.
@@ -43,8 +44,6 @@ sections = fs.readdirSync(BASE).filter(function (filepath) {
 }).map(function (filepath) {
     return join(BASE, filepath);
 });
-
-var settings = JSON.parse(read('.remarkrc')).settings;
 
 /*
  * Get information for each section.

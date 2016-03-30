@@ -53,8 +53,8 @@ Command Line Settings can be specified both in camel- and dash-case:
 
 ## CONFIGURATION FILES
 
-Specify directory specific settings with `.remarkrc` and `package.json`
-files.  See **remarkrc**(5) for more information.
+Specify directory specific settings with `.remarkrc`, `.remarkrc.js`,
+and `package.json` files.  See **remarkrc**(5) for more information.
 
 ## BUGS
 

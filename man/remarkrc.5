@@ -11,7 +11,7 @@
 For a list of available configuration options, see \fBremark\fR(1) or \fBremarksetting\fR(7).
 .SH "FILES"
 .P
-All \fBremarkrc\fR(5) configuration files are in JSON.
+\fB.remarkrc\fR and \fBpackage.json\fR \fBremarkrc\fR(5) configuration files are in JSON. \fB.remarkrc.js\fR is a CommonJS module exporting a JSON object.
 .P
 Automatically detected files named \fBpackage.json\fR use the \fBremarkConfig\fR field, where other files are used as a whole.
 .SH "FIELDS"
@@ -80,13 +80,13 @@ Plug-ins and settings passed to \fBremark\fR(1);
 .IP \(bu 4
 Files passed to \fBremark\fR(1);
 .IP \(bu 4
-Files named \fB.remarkrc\fR and \fBremarkConfig\fR fields in \fBpackage.json\fR in the directory of the processed file, and in ancestral directories;
+Files named \fB.remarkrc\fR, \fB.remarkrc.js\fR, and \fBremarkConfig\fR fields in \fBpackage.json\fR in the directory of the processed file, and in ancestral directories;
 .IP \(bu 4
-If no \fB.remarkrc\fR and \fBpackage.json\fR were detected in the directory of the file or its ancestral directories, a per-user configuration file (\fB\[ti]\[sl].remarkrc\fR) is used;
+If no \fB.remarkrc\fR, \fB.remarkrc.js\fR, and \fBpackage.json\fR were detected in the directory of the file or its ancestral directories, per-user configuration files (\fB\[ti]\[sl].remarkrc\fR and \fB\[ti]\[sl].remarkrc.js\fR) are used;
 .RE 0
 
 .P
-If both \fB.remarkrc\fR and \fBpackage.json\fR exist in a directory, the file named \fB.remarkrc\fR takes precedence in the cascade over \fBpackage.json\fR.
+If more than one \fB.remarkrc\fR, \fB.remarkrc.js\fR, or \fBpackage.json\fR are found in a directory, the file named \fB.remarkrc\fR takes precedence in the cascade over \fB.remarkrc.js\fR, which in turn precedes over \fBpackage.json\fR.
 .P
 For example, for the following project:
 .P
@@ -97,7 +97,7 @@ project
 \[ba]   \[ba]-- .remarkrc
 \[ba]   \[ba]-- doc.md
 \[ba]
-\[ba]-- .remarkrc
+\[ba]-- .remarkrc.js
 \[ba]-- package.json
 \[ba]-- readme.md
 .fi
@@ -108,9 +108,9 @@ Where \fBdocs\[sl].remarkrc\fR looks as follows:
 .RS 2
 .nf
 \[lC]
-    \[dq]settings\[dq]: \[lC]
-        \[dq]bullet\[dq]: \[dq]\[pl]\[dq]
-    \[rC]
+  \[dq]settings\[dq]: \[lC]
+    \[dq]bullet\[dq]: \[dq]\[pl]\[dq]
+  \[rC]
 \[rC]
 .fi
 .RE
@@ -120,30 +120,30 @@ And \fBpackage.json\fR has:
 .RS 2
 .nf
 \[lC]
-    \[dq]remarkConfig\[dq]: \[lC]
-        \[dq]settings\[dq]: \[lC]
-            \[dq]bullet\[dq]: \[dq]*\[dq]
-        \[rC]
+  \[dq]remarkConfig\[dq]: \[lC]
+    \[dq]settings\[dq]: \[lC]
+      \[dq]bullet\[dq]: \[dq]*\[dq]
     \[rC]
+  \[rC]
 \[rC]
 .fi
 .RE
 .P
-And \fB.remarkrc\fR has:
+And \fB.remarkrc.js\fR has:
 .P
 .RS 2
 .nf
-\[lC]
-    \[dq]settings\[dq]: \[lC]
-        \[dq]bullet\[dq]: \[dq]-\[dq]
-    \[rC]
-\[rC]
+module.exports \[eq] \[lC]
+  settings: \[lC]
+    bullet: \[aq]-\[aq]
+  \[rC]
+\[rC];
 .fi
 .RE
 .P
-Then, when compiling \fBdocs\[sl]doc.md\fR, \fBremark\fR(1) would use \fBbullet: \[dq]\[pl]\[dq]\fR because \fBdocs\[sl].remarkrc\fR takes precedence over \fB.remarkrc\fR and \fBpackage.json\fR.
+Then, when compiling \fBdocs\[sl]doc.md\fR, \fBremark\fR(1) would use \fBbullet: \[dq]\[pl]\[dq]\fR because \fBdocs\[sl].remarkrc\fR takes precedence over \fB.remarkrc.js\fR and \fBpackage.json\fR.
 .P
-When compiling \fBreadme.md\fR, \fBremark\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.remarkrc\fR takes precedence over \fBpackage.json\fR.
+When compiling \fBreadme.md\fR, \fBremark\fR(1) would use \fBbullet: \[dq]-\[dq]\fR, because \fB.remarkrc.js\fR takes precedence over \fBpackage.json\fR.
 .SH "BUGS"
 .P
 \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]issues\(ra\fR
