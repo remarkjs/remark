@@ -78,11 +78,11 @@ when the plugin is `use`d on an **remark** instance, and can return a
 
 Note that **remark**(1) invokes **attacher** for each file, not just once.
 
-**Signatures**
+**Signatures**:
 
 *   `transformer? = attacher(remark, options[, fileSet])`.
 
-**Parameters**
+**Parameters**:
 
 *   `remark` (`Object`)
     — Context on which the plugin was `use`d;
@@ -94,7 +94,7 @@ Note that **remark**(1) invokes **attacher** for each file, not just once.
     — Access to all files being processed by **remark**(1). Only passed on the
     Command-Line. See **remark**(3) for more information on file-sets.
 
-**Returns**
+**Returns**:
 
 `transformer` (optional) — See FUNCTION TRANSFORMER(NODE, FILE\[, NEXT]).
 
@@ -128,11 +128,11 @@ is a simple function which is invoked each time a document is processed by
 a **remark** processor. A transformer should transform `node` or modify
 `file`.
 
-**Signatures**
+**Signatures**:
 
 *   `err? = transformer(node, file, [next])`.
 
-**Parameters**
+**Parameters**:
 
 *   `node` (`Node`)
     — See **mdast**;
@@ -145,7 +145,7 @@ a **remark** processor. A transformer should transform `node` or modify
     **may** finish asynchronous, and **must** invoke `next()` on completion
     with an optional error.
 
-**Returns**
+**Returns**:
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
@@ -156,18 +156,18 @@ A **completer** is invoked before files are compiled, written, and logged, but
 after reading, parsing, and transforming. Thus, a completer can still change
 files or add messages.
 
-**Signatures**
+**Signatures**:
 
 *   `err? = completer(fileSet[, next])`.
 
-**Properties**
+**Properties**:
 
 *   `pluginId` (`*`) — `attacher` is invoked for each file, so if it
     `use`s `completer` on the file-set, it would attach many times.
     By providing `pluginId` on `completer`, **remark** will make sure
     only one **completer** with that identifier is will be added.
 
-**Parameters**
+**Parameters**:
 
 *   `fileSet` (`FileSet`)
     — All files being processed by **remark**(1);
@@ -177,7 +177,7 @@ files or add messages.
     finish asynchronous, and **must** invoke `next()` on completion with an
     optional error.
 
-**Returns**
+**Returns**:
 
 `err` (`Error`, optional) — Exception which will be thrown.
 
@@ -223,12 +223,12 @@ For a complete example, see
 [`test/mentions.js`](https://github.com/wooorm/remark/blob/master/test/mentions.js)
 and how it utilises and attaches a tokenizer and locator.
 
-**Signatures**
+**Signatures**:
 
 *   `Node? = transformer(eat, value)`;
 *   `boolean? = transformer(eat, value, silent]`.
 
-**Parameters**
+**Parameters**:
 
 *   `eat` (`Function`)
     — Function used to eat, when applicable, an entity;
@@ -240,7 +240,7 @@ and how it utilises and attaches a tokenizer and locator.
     — When `true`, instead of actually eating a value, the tokenizer must
     return whether a node can definitely be found at the start of `value`.
 
-**Returns**
+**Returns**:
 
 In _normal_ mode, optionally an **mdast** node representing the eaten
 entity.  Otherwise, in _silent_ mode, a truthy value must be returned when
@@ -259,11 +259,11 @@ tokenization to keep the process performant. Locators enable inline
 tokenizers to function faster by providing information on the where
 the next entity occurs.
 
-**Signatures**
+**Signatures**:
 
 *   `number = locator(value, fromIndex)`.
 
-**Parameters**
+**Parameters**:
 
 *   `value` (`string`)
     — Value which may contain an entity;
@@ -271,7 +271,7 @@ the next entity occurs.
 *   `fromIndex` (`number`)
     — Position to start searching at.
 
-**Returns**
+**Returns**:
 
 The index at which the entity may start, and `-1` otherwise.
 

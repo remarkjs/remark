@@ -93,11 +93,11 @@ Yields:
 Parse a markdown document, apply plugins to it, and compile it into
 something else.
 
-**Signatures**
+**Signatures**:
 
 *   `doc = remark.process(value, options?, done?)`.
 
-**Parameters**
+**Parameters**:
 
 *   `value` (`string`) — Markdown document;
 
@@ -133,7 +133,7 @@ something else.
 All options (including the options object itself) can be `null` or `undefined`
 to default to their default values.
 
-**Returns**
+**Returns**:
 
 `string` or `null`: A document. Formatted in markdown by default, or in
 whatever a plugin generates.
@@ -145,18 +145,18 @@ its asynchronous).
 
 Change the way [`remark`][api] works by using a [`plugin`][plugins].
 
-**Signatures**
+**Signatures**:
 
 *   `processor = remark.use(plugin, options?)`;
 *   `processor = remark.use(plugins)`.
 
-**Parameters**
+**Parameters**:
 
 *   `plugin` (`Function`) — A [**Plugin**][plugins];
 *   `plugins` (`Array.<Function>`) — A list of [**Plugin**][plugins]s;
 *   `options` (`Object?`) — Passed to plugin. Specified by its documentation.
 
-**Returns**
+**Returns**:
 
 `Object`: an instance of Remark: The returned object functions just like
 **remark** (it has the same methods), but caches the `use`d plugins. This

@@ -74,14 +74,14 @@ An attacher is the thing passed to \fBuse()\fR. It can receive plugin specific o
 .P
 Note that \fBremark\fR(1) invokes \fBattacher\fR for each file, not just once.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBtransformer? \[eq] attacher(remark, options\[lB], fileSet\[rB])\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBremark\fR (\fBObject\fR) \[em] Context on which the plugin was \fBuse\fRd;
@@ -92,7 +92,7 @@ Note that \fBremark\fR(1) invokes \fBattacher\fR for each file, not just once.
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBtransformer\fR (optional) \[em] See FUNCTION TRANSFORMER(NODE, FILE\[lB], NEXT\[rB]).
 .SH "\FBFUNCTION TRANSFORMER(NODE, FILE\[LB], NEXT\[RB])\FR"
@@ -124,14 +124,14 @@ module.exports \[eq] function () \[lC]
 .P
 To transform an \fBmdast\fR node, create a \fBtransformer\fR. A \fBtransformer\fR is a simple function which is invoked each time a document is processed by a \fBremark\fR processor. A transformer should transform \fBnode\fR or modify \fBfile\fR.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBerr? \[eq] transformer(node, file, \[lB]next\[rB])\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBnode\fR (\fBNode\fR) \[em] See \fBmdast\fR;
@@ -142,28 +142,28 @@ To transform an \fBmdast\fR node, create a \fBtransformer\fR. A \fBtransformer\f
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
 .SH "\FBFUNCTION COMPLETER(FILESET\[LB], NEXT\[RB])\FR"
 .P
 To access all files once they are transformed, create a \fBcompleter\fR. A \fBcompleter\fR is invoked before files are compiled, written, and logged, but after reading, parsing, and transforming. Thus, a completer can still change files or add messages.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBerr? \[eq] completer(fileSet\[lB], next\[rB])\fR.
 .RE 0
 
 .P
-\fBProperties\fR
+\fBProperties\fR:
 .RS 0
 .IP \(bu 4
 \fBpluginId\fR (\fB*\fR) \[em] \fBattacher\fR is invoked for each file, so if it \fBuse\fRs \fBcompleter\fR on the file-set, it would attach many times. By providing \fBpluginId\fR on \fBcompleter\fR, \fBremark\fR will make sure only one \fBcompleter\fR with that identifier is will be added.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBfileSet\fR (\fBFileSet\fR) \[em] All files being processed by \fBremark\fR(1);
@@ -172,7 +172,7 @@ To access all files once they are transformed, create a \fBcompleter\fR. A \fBco
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBerr\fR (\fBError\fR, optional) \[em] Exception which will be thrown.
 .SH "\FBFUNCTION TOKENIZER(EAT, VALUE, SILENT)\FR"
@@ -206,7 +206,7 @@ Tokenizers \fItest\fR whether a document starts with a certain syntactic entity.
 .P
 For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]wooorm\[sl]remark\[sl]blob\[sl]master\[sl]test\[sl]mentions.js\(ra\fR and how it utilises and attaches a tokenizer and locator.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBNode? \[eq] transformer(eat, value)\fR;
@@ -215,7 +215,7 @@ For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBeat\fR (\fBFunction\fR) \[em] Function used to eat, when applicable, an entity;
@@ -226,7 +226,7 @@ For a complete example, see \fB\fBtest\[sl]mentions.js\fR\fR \fI\(lahttps:\[sl]\
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 In \fInormal\fR mode, optionally an \fBmdast\fR node representing the eaten entity. Otherwise, in \fIsilent\fR mode, a truthy value must be returned when the tokenizer predicts with certainty an entity could be found.
 .SH "\FBFUNCTION LOCATOR(VALUE, FROMINDEX)\FR"
@@ -241,14 +241,14 @@ function locator(value, fromIndex) \[lC]
 .P
 As mentioned in the \[lq]tokenizer\[rq] section, locators are required for inline tokenization to keep the process performant. Locators enable inline tokenizers to function faster by providing information on the where the next entity occurs.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBnumber \[eq] locator(value, fromIndex)\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBvalue\fR (\fBstring\fR) \[em] Value which may contain an entity;
@@ -257,7 +257,7 @@ As mentioned in the \[lq]tokenizer\[rq] section, locators are required for inlin
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 The index at which the entity may start, and \fB-1\fR otherwise.
 .SH "BUGS"

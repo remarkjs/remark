@@ -31,7 +31,7 @@ These are the docs for the application programming interface of \fBremark\fR. To
 .P
 Change the way \fBremark\fR works by using a plugin. Plugins are documented at on GitHub.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBprocessor \[eq] remark.use(plugin\[lB], options\[rB])\fR;
@@ -40,7 +40,7 @@ Change the way \fBremark\fR works by using a plugin. Plugins are documented at o
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBplugin\fR (\fBFunction\fR) \[em] Plugin.
@@ -51,21 +51,21 @@ Change the way \fBremark\fR works by using a plugin. Plugins are documented at o
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBObject\fR \[em] An instance of \fBRemark\fR. The instance functions just like the \fBremark\fR object itself (it has the same methods), but caches the \fBuse\fRd plugins.
 .SH "\FBREMARK.PARSE(FILE\[LB], OPTIONS\[RB])\FR"
 .P
 Parse a markdown document into an \fBmdast\fR node.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBnode \[eq] remark.parse(file\[ba]value\[lB], options\[rB])\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBfile\fR (\fBVFile\fR) \[em] Virtual file;
@@ -76,14 +76,14 @@ Parse a markdown document into an \fBmdast\fR node.
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBNode\fR \[em] Node. Nodes are documented at \fBmdast\fR.
 .SH "\FBREMARK.RUN(NODE\[LB], FILE\[RB]\[LB], DONE\[RB])\FR"
 .P
 Transform a node by applying plug-ins to it. Either a node or a file which was passed to \fBparse()\fR, must be given.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBnode \[eq] remark.run(node\[lB], file\[ba]value\[rB]\[lB], done\[rB])\fR;
@@ -92,7 +92,7 @@ Transform a node by applying plug-ins to it. Either a node or a file which was p
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdast\fR;
@@ -105,18 +105,18 @@ Transform a node by applying plug-ins to it. Either a node or a file which was p
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBNode\fR \[em] The given node.
 .P
-\fBThrows\fR
+\fBThrows\fR:
 .P
 When no \fBnode\fR was given and no node was found on the file.
 .SS "\fBfunction done(err, node, file)\fR"
 .P
 Invoked when transformation is complete.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBfunction done(err)\fR;
@@ -125,7 +125,7 @@ Invoked when transformation is complete.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBerr\fR (\fBError\fR) \[em] Failure;
@@ -139,7 +139,7 @@ Invoked when transformation is complete.
 .P
 Compile a node into a document.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBdoc \[eq] remark.stringify(node\[lB], file\[ba]value\[rB]\[lB], options\[rB])\fR;
@@ -148,7 +148,7 @@ Compile a node into a document.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBnode\fR (\fBObject\fR) \[em] Node as returned by \fBparse()\fR, see \fBmdast\fR;
@@ -161,25 +161,25 @@ Compile a node into a document.
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBdoc\fR (\fBstring\fR) \[em] Document.
 .P
-\fBThrows\fR
+\fBThrows\fR:
 .P
 When no \fBnode\fR was given and no node was found on the file.
 .SH "\FBREMARK.PROCESS(FILE\[LB], OPTIONS\[RB]\[LB], DONE\[RB])\FR"
 .P
 Parse, transform, and compile markdown into something else.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBdoc? \[eq] remark.process(file\[ba]value\[lB], options\[rB]\[lB], done\[rB])\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBfile\fR (\fBFile\fR) \[em] Virtual file;
@@ -192,14 +192,14 @@ Parse, transform, and compile markdown into something else.
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBstring?\fR \[em] Document. Formatted in markdown by default, or in whatever a asynchronous generates. When an async transformer is used, \fBnull\fR is returned and \fBdone\fR must be given to receive the results upon completion.
 .SS "\fBfunction done(err\[lB], doc\[lB], file\[rB]\[rB])\fR"
 .P
 Invoked when processing is complete.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBfunction done(err)\fR;
@@ -208,7 +208,7 @@ Invoked when processing is complete.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBerr\fR (\fBError\fR) \[em] Failure;
@@ -226,28 +226,28 @@ Invoked when processing is complete.
 .P
 Get access to the file objects in a set.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBfiles \[eq] fileSet.valueOf()\fR.
 .RE 0
 
 .P
-\fBReturns\fR
+\fBReturns\fR:
 .P
 \fBArray.<File>\fR \[em] List of files being processed by \fBremark\fR(1).
 .SH "\FBFILESET.USE(COMPLETER)\FR"
 .P
 Add a completer to the middleware pipeline of a file-set. When all files are transformed, this pipeline is run and \fBcompleter\fR is invoked with \fBfileSet\fR.
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBfileSet.use(completer)\fR.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBcompleter\fR (\fBFunction\fR).
@@ -268,7 +268,7 @@ Not logged about.
 .RE 0
 
 .P
-\fBSignatures\fR
+\fBSignatures\fR:
 .RS 0
 .IP \(bu 4
 \fBfileSet.use(filePath)\fR;
@@ -277,7 +277,7 @@ Not logged about.
 .RE 0
 
 .P
-\fBParameters\fR
+\fBParameters\fR:
 .RS 0
 .IP \(bu 4
 \fBfilePath\fR (\fBstring\fR) - Path to virtual file;
