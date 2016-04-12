@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.2.1 / 2016-04-12
+==================
+
+*   Fix non-magic globs from matching all files ([`a4ec698`](https://github.com/wooorm/remark/commit/a4ec698))
+
 4.2.0 / 2016-03-30
 ==================
 
