@@ -95,10 +95,6 @@ it "Should not fail on multiple files"
     $COMMAND "$markdown" "$markdown" > /dev/null 2>&1
     assert $? 0
 
-it "Should fail on stdin and files"
-    cat "$markdown" | $COMMAND "$markdown" > /dev/null 2>&1
-    assert $? 1
-
 it "Should ignore herestring when with files (for now)"
     $COMMAND $markdown <<< "$(cat $markdown)" > /dev/null 2>&1
     assert $? 0
