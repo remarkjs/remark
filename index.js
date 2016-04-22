@@ -3,7 +3,7 @@
  * @copyright 2015-2016 Titus Wormer
  * @license MIT
  * @module remark
- * @version 4.2.1
+ * @version 4.2.2
  * @fileoverview Markdown processor powered by plugins.
  */
 

@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings maximum-line-length-->
 
+4.2.2 / 2016-04-22
+==================
+
+*   Remove false-positive in incorrect stdin(4) detection ([`e1aa9f6`](https://github.com/wooorm/remark/commit/e1aa9f6))
+
 4.2.1 / 2016-04-12
 ==================
 
