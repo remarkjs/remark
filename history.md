@@ -140,7 +140,7 @@
 2.2.2 / 2015-11-21
 ==================
 
-*   Fix premature reporting ([`a82d018`](https://github.com/wooorm/remark/commit/a82d018))
+*   Fix untimely reporting ([`a82d018`](https://github.com/wooorm/remark/commit/a82d018))
 *   Remove distribution files from version control ([`f068edd`](https://github.com/wooorm/remark/commit/f068edd))
 *   Remove support for bower ([`61162be`](https://github.com/wooorm/remark/commit/61162be))
 

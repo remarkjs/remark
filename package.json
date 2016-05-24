@@ -17,7 +17,7 @@
     "cli"
   ],
   "dependencies": {
-    "camelcase": "^2.0.0",
+    "camelcase": "^3.0.0",
     "ccount": "^1.0.0",
     "chalk": "^1.0.0",
     "chokidar": "^1.0.5",
@@ -86,8 +86,8 @@
     "esmangle": "^1.0.0",
     "esprima": "^2.6.0",
     "istanbul": "^0.4.0",
-    "jscs": "^2.0.0",
-    "jscs-jsdoc": "^1.0.0",
+    "jscs": "^3.0.0",
+    "jscs-jsdoc": "^2.0.0",
     "mocha": "^2.0.0",
     "remark-comment-config": "^3.0.0",
     "remark-github": "^4.0.1",
@@ -102,7 +102,7 @@
     "remark-yaml-config": "^3.0.0",
     "retext": "^2.0.0",
     "retext-equality": "^2.2.1",
-    "retext-profanities": "^1.1.0",
+    "retext-profanities": "^2.0.0",
     "retext-readability": "^1.0.0",
     "retext-simplify": "^1.1.0"
   },

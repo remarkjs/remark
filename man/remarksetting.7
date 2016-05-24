@@ -1216,7 +1216,7 @@ Yields:
 .P
 Setting \fBentities: true\fR (default: \fBfalse\fR) will \fBencode\fR \fI\(lahttps:\[sl]\[sl]github.com\[sl]mathiasbynens\[sl]he\[sh]heencodetext-options\(ra\fR any symbols that are not printable ASCII symbols and special HTML characters (\fB&\fR, \fB<\fR, \fB>\fR, \fB\[dq]\fR, \fB\[aq]\fR, and \fB\[ga]\fR).
 .P
-When \fBtrue\fR, named entities are generated (\fB&\fR > \fB&amp;\fR); when \fB\[dq]numbers\[dq]\fR, numbered entities are generated (\fB&\fR > \fB&\[sh]x26;\fR); when \fB\[dq]escape\[dq]\fR, only special HTML characters are encoded (\fB&\fR > \fB&amp;\fR, but \fBö\fR remains \fBö\fR).
+When \fBtrue\fR, named entities are generated (\fB&\fR > \fB&amp;\fR). When \fB\[dq]numbers\[dq]\fR, numbered entities are generated (\fB&\fR > \fB&\[sh]x26;\fR). When \fB\[dq]escape\[dq]\fR, special HTML characters are encoded (\fB&\fR > \fB&amp;\fR, \fBö\fR does not).
 .P
 Although markdown does not need to encode HTML entities, they can be useful to make sure the compiled document is in ASCII.
 .P
