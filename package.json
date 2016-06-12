@@ -30,6 +30,7 @@
     "branches": 100
   },
   "scripts": {
+    "postinstall": "lerna bootstrap",
     "build-md": "packages/remark-cli/cli.js . --frail --quiet",
     "build-bundle": "node script/build-bundle.js",
     "build": "npm run build-md && npm run build-bundle",
