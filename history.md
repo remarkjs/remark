@@ -2,6 +2,11 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+5.0.0 / 2016-06-12
+==================
+
+*   Refactor project to monorepo ([`8108fe5`](https://github.com/wooorm/remark/commit/8108fe5))
+
 4.2.2 / 2016-04-22
 ==================
 

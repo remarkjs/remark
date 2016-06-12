@@ -14,8 +14,8 @@
     "process"
   ],
   "dependencies": {
-    "remark-parse": "0.0.0",
-    "remark-stringify": "0.0.0",
+    "remark-parse": "^1.0.0",
+    "remark-stringify": "^1.0.0",
     "unified": "^4.1.1"
   },
   "homepage": "http://remark.js.org",
