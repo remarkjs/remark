@@ -1,21 +1,15 @@
 language: node_js
 script: npm run-script test-travis
 node_js:
-- '0.10'
 - '0.11'
 - '0.12'
 - '4.0'
 - '5.0'
-after_script: npm install codecov.io && cat ./coverage/lcov.info | codecov
+- '6.0'
+after_success:
+- bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
-  - provider: npm
-    email: tituswormer@gmail.com
-    api_key:
-      secure: h4ADxR4z3G3m7hweVZlq64ytgENE4UPUesnpiQbwcRBcQy79TNcITWJ/61yEnhEHB94FEuP/rMC3KU2Ho7kinyeO/JNoK1YlhVKKBZuIYwsJ4Op3ndwZ71TCPe0wIbWxOfhO9L7t6oytNnPg9gWNqLkQW8rBZ+ujdcdtMQ82XZE=
-    on:
-      tags: true
-      node: '5.0'
   - provider: releases
     api_key:
       secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
@@ -24,3 +18,4 @@ deploy:
       - "remark.min.js"
     on:
       tags: true
+      node: '6.0'

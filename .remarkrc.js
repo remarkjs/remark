@@ -8,18 +8,22 @@
 module.exports = {
     'output': true,
     'plugins': {
-        /* Custom natural-language validation. */
-        'script/natural-language': null,
-        'comment-config': null,
-        'lint': {
-            /* Ignore `final-definition` for `license` */
-            'final-definition': false
+        // 'comment-config': null,
+        // 'github': null,
+        // 'validate-links': null,
+        'toc': {
+            'maxDepth': 3,
+            'tight': true
         },
-        'github': null,
-        'usage': null,
-        'toc': null,
-        'license': null,
-        'validate-links': null
+        'lint': {
+            /* `h6` for signatures. */
+            'no-duplicate-headings': false,
+            'heading-increment': false,
+
+            /* Lists. */
+            'list-item-spacing': false,
+            'no-missing-blank-lines': false
+        }
     },
     'settings': {
         /* I personally like asterisks. */

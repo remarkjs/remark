@@ -1,9 +1,8 @@
 {
   "excludeFiles": [
-    "build/",
-    "coverage/",
-    "node_modules/",
-    "build.js",
+    "**/coverage",
+    "**/node_modules",
+    "packages/remark/cli.js",
     "remark.js",
     "remark.min.js"
   ],
@@ -15,7 +14,8 @@
     "value": 79,
     "allExcept": [
       "regex",
-      "urlComments"
+      "urlComments",
+      "require"
     ]
   },
   "requireQuotedKeysInObjects": true,

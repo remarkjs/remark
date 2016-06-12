@@ -1,8 +1,0 @@
-{
-  "title": "Horizontal Rules",
-  "stringify": {
-    "rule": "*",
-    "ruleRepetition": 40,
-    "ruleSpaces": true
-  }
-}

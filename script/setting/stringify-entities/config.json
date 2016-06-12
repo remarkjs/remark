@@ -1,6 +1,0 @@
-{
-  "title": "Encoding Entities",
-  "stringify": {
-    "entities": true
-  }
-}

@@ -24,52 +24,71 @@ var browserify = require('browserify');
 var esprima = require('esprima');
 var esmangle = require('esmangle');
 var escodegen = require('escodegen');
-
+var pack = require('../packages/remark/package.json');
 var write = fs.writeFileSync;
 
-var absolute = path.join.bind(null, __dirname, '..');
+var comment = [
+    '/*!',
+    ' * @copyright 2015 Titus Wormer',
+    ' * @license ' + pack.license,
+    ' * @module ' + pack.name,
+    ' * @version ' + pack.version,
+    ' */',
+    ''
+].join('\n');
 
-browserify(path.join(__dirname, '..', 'index.js'), {
-    'standalone': 'remark'
-}).bundle(function (err, buf) {
-    var ast;
-    var comment;
+var input = path.join.bind(null, __dirname, '..', 'packages', 'remark');
+var output = path.join.bind(null, __dirname, '..');
 
+var opts = {
+    'standalone': 'remark',
+    'detectGlobals': false,
+    'insertGlobals': ['process', 'global', '__filename', '__dirname']
+};
+
+browserify(input('index.js'), opts).bundle(function (err, buf) {
     bail(err);
 
-    write(absolute('remark.js'), buf);
+    write(output('remark.js'), comment + buf);
 
     console.log(chalk.green('✓') + ' wrote `remark.js`');
-
-    ast = esprima.parse(buf, {
-        'loc': true,
-        'range': true,
-        'raw': true,
-        'comment': true,
-        'tolerant': true
-    });
-
-    comment = ast.comments[0].value;
-
-    var doc = escodegen.generate(esmangle.mangle(esmangle.optimize(ast, {
-        'destructive': true,
-        'directive': true,
-        'preserveCompletionValue': false,
-        'legacy': false,
-        'topLevelContext': null,
-        'inStrictCode': true
-    })), {
-        'format': {
-            'renumber': true,
-            'hexadecimal': true,
-            'escapeless': true,
-            'compact': true,
-            'semicolons': false,
-            'parentheses': false
-        }
-    });
-
-    write(absolute('remark.min.js'), '/*' + comment + '*/\n' + doc);
-
-    console.log(chalk.green('✓') + ' wrote `remark.min.js`');
 });
+
+browserify(input('index.js'), opts)
+    .transform('uglifyify', {
+        'global': true,
+        'sourcemap': false
+    })
+    .bundle(function (err, buf) {
+        var ast;
+
+        bail(err);
+
+        ast = esmangle.mangle(esmangle.optimize(esprima.parse(buf, {
+            'loc': true,
+            'range': true,
+            'raw': true,
+            'comment': true,
+            'tolerant': true
+        }), {
+            'destructive': true,
+            'directive': true,
+            'preserveCompletionValue': false,
+            'legacy': false,
+            'topLevelContext': null,
+            'inStrictCode': true
+        }));
+
+        write(output('remark.min.js'), comment + escodegen.generate(ast, {
+            'format': {
+                'renumber': true,
+                'hexadecimal': true,
+                'escapeless': true,
+                'compact': true,
+                'semicolons': false,
+                'parentheses': false
+            }
+        }));
+
+        console.log(chalk.green('✓') + ' wrote `remark.min.js`');
+    });

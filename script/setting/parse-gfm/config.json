@@ -1,6 +1,0 @@
-{
-  "title": "GitHub Flavoured Markdown",
-  "parse": {
-    "gfm": true
-  }
-}

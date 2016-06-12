@@ -1,6 +1,6 @@
 <!--remark setext-->
 
-<!--lint disable no-multiple-toplevel-headings maximum-line-length-->
+<!--lint disable no-multiple-toplevel-headings-->
 
 4.2.2 / 2016-04-22
 ==================

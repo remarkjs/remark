@@ -1,62 +1,203 @@
-![remark](https://cdn.rawgit.com/wooorm/remark/master/logo.svg)
+![remark][logo]
 
 # Getting Started
 
-**remark** is a markdown processor powered by plugins. The core of **remark**
-is the syntax tree ([**mdast**](https://github.com/wooorm/mdast)). A syntax
-tree makes it easy for other programs to read and write something, in this
-case markdown.
+**remark** transforms markdown.  It’s an ecosystem of [plug-ins][plugins].
+If you get stuck, [issues][] and [Gitter][] are good places to get help.
 
-*   It could be used to read certain information from structured markdown
-    documents. For example, an [**awesome** list
-    »](https://github.com/sindresorhus/awesome/issues/427#issuecomment-160111301)
+## Table of Contents
 
-*   It could be used to generate markdown from other data. For example,
-    [API docs with **documentation**
-    »](https://github.com/documentationjs/documentation)
+*   [Introduction](#introduction)
+*   [Command-line](#command-line)
+*   [Using remark in a project](#using-remark-in-a-project)
+*   [Programmatic usage](#programmatic-usage)
 
-[Read how to install **remark** »](https://github.com/wooorm/remark/blob/master/doc/installation.md)
+## Introduction
 
-## Application Programming Interface
+Out of the box, **remark** transpiles markdown:
+markdown is given, reformatted, and written:
 
-The core of **remark**, called **remark**(3), reads and writes markdown. And,
-allows authors to use plug-ins which transform markdown documents.
+```md
+# Alpha #
+Bravo charlie **delta** __echo__.
+- Foxtrot
+*  Golf
++ Hotel
+```
 
-*   [Read how to install **remark**(3) »](https://github.com/wooorm/remark/blob/master/doc/installation.md)
-*   [Read more on the API in **remark**(3) »](https://github.com/wooorm/remark/blob/master/doc/remark.3.md)
+Yields:
 
-## Command Line Interface
+```md
+# Alpha
 
-On top of the core sits an elaborate CLI, called **remark**(1), which can be
-used to validate, prepare, and compile markdown in a build step.
+Bravo charlie **delta** **echo**.
 
-*   [Read how to install **remark**(1) with npm »](https://github.com/wooorm/remark/blob/master/doc/installation.md#npm)
-*   [Read more on the CLI in **remark**(1) »](https://github.com/wooorm/remark/blob/master/doc/remark.1.md)
-*   [Read how to use plug-ins in  **remarkplugin**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.7.md#command-line-usage)
-*   [Read how to use settings in **remarkconfig**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarkconfig.7.md#command-line-settings)
-*   [Read how to use configuration files in **remarkrc**(5) »](https://github.com/wooorm/remark/blob/master/doc/remarkrc.5.md)
-*   [Read how to ignore files in **remarkignore**(5) »](https://github.com/wooorm/remark/blob/master/doc/remarkignore.5.md)
+-   Foxtrot
+-   Golf
+-   Hotel
+```
 
-## Configuration
+But, much more can be done, [through plug-ins][plugins].
 
-Most customisation is deferred to plug-ins, but the core of **remark** has
-several settings. For example, which flavour of markdown is used, or whether
-to use asterisks (`*`) or underscores (`_`) for emphasis.
+## Command-line
 
-*   [View available settings in **remarksetting**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarksetting.7.md)
-*   [Read how to set settings in **remarkconfig**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarkconfig.7.md)
+**remark**’s CLI is a simple way to process markdown files from the
+command line.  Its interface is provided by [**unified-args**][unified-args].
 
-## Syntax Tree
+Install [`remark-cli`][cli] and dependencies with [npm][]:
 
-**remark** exposes markdown as an abstract syntax tree, defined by
-**mdast**.
+```bash
+npm install --global remark-cli remark-lint remark-html
+```
 
-*   [Read more on the AST in **mdast** »](https://github.com/wooorm/mdast)
+`readme.md` contains:
 
-## Plug-ins
+```md
+## Hello world!
+```
 
-**remark** gets really cool when you combine it with plugins.
+`remark readme.md --use lint --use html` yields:
 
-*   [View plug-ins and utilities »](https://github.com/wooorm/remark/blob/master/doc/plugins.md)
-*   [Read how to use plug-ins in  **remarkplugin**(7) »](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.7.md)
-*   [Read how to create plug-ins in **remarkplugin**(3) »](https://github.com/wooorm/remark/blob/master/doc/remarkplugin.3.md)
+```txt
+<h2>Hello world!</h2>
+readme.md:
+   1:1-1:16  warning  First heading level should be `1`         first-heading-level
+   1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
+
+⚠ 3 warnings
+```
+
+## Using remark in a project
+
+In the previous example, `remark-cli` was installed globally.  That’s
+generally a bad idea.  Here we’re going to use the CLI to lint
+an npm package.
+
+Say we have the following `package.json`:
+
+```json
+{
+  "name": "my-package",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "node test.js"
+  }
+}
+```
+
+And install `remark-cli` and `remark-lint` into it as a dev-dependency:
+
+```sh
+npm install remark-cli --save-dev
+```
+
+The `--save-dev` option stores the dependencies in our `package.json`:
+
+```diff
+ {
+   "name": "my-package",
+   "version": "1.0.0",
++  "devDependencies": {
++    "remark-cli": "^1.0.0",
++    "remark-lint": "^4.0.0"
++  },
+   "scripts": {
+     "test": "node test.js"
+   }
+ }
+```
+
+Then, we change our `test` script to include remark.
+
+```diff
+ {
+   "name": "my-package",
+   "version": "1.0.0",
+   "devDependencies": {
+     "remark-cli": "^1.0.0",
+     "remark-lint": "^4.0.0"
+   },
+   "scripts": {
+-    "test": "node test.js"
++    "test": "remark . --use lint --quiet --frail && node test.js"
+   }
+ }
+```
+
+Now from the command line we can run:
+
+```sh
+npm test
+```
+
+This will lint all markdown files when we test the project.
+[`--frail`][frail] ensures the command fails if a code-style violation
+is found, and [`--quiet`][quiet] hides successful files from the report.
+
+## Programmatic usage
+
+The programmatic interface of **remark** is provided by
+[**unified**][unified].  In fact, [`remark`][api] is two plug-ins:
+[`remark-parse`][parse] and [`remark-stringify`][stringify].
+
+Install [`remark`][api] and dependencies with [npm][]:
+
+```bash
+npm install remark remark-lint remark-html vfile-reporter
+```
+
+`index.js` contains:
+
+```js
+var remark = require('remark');
+var lint = require('remark-lint');
+var html = require('remark-html');
+var report = require('vfile-reporter');
+
+remark().use(lint).use(html).process('## Hello world!', function (err, file) {
+    file.filename = 'example';
+    file.extension = 'md';
+    console.log(file.toString());
+    console.error(report(file));
+});
+```
+
+`node index.js` yields:
+
+```txt
+<h2>Hello world!</h2>
+example.md:
+        1:1  warning  Missing newline character at end of file  final-newline
+   1:1-1:16  warning  First heading level should be `1`         first-heading-level
+   1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
+
+⚠ 3 warnings
+```
+
+<!-- Definitions -->
+
+[logo]: https://cdn.rawgit.com/wooorm/remark/master/logo.svg
+
+[issues]: https://github.com/wooorm/remark/issues
+
+[gitter]: https://gitter.im/wooorm/remark
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[api]: https://github.com/wooorm/remark/tree/master/packages/remark
+
+[cli]: https://github.com/wooorm/remark/tree/master/packages/remark-cli
+
+[plugins]: https://github.com/wooorm/remark/tree/master/doc/plugins.md
+
+[unified]: https://github.com/wooorm/unified
+
+[unified-args]: https://github.com/wooorm/unified-args
+
+[frail]: https://github.com/wooorm/unified-args#--frail
+
+[quiet]: https://github.com/wooorm/unified-args#--quiet
+
+[parse]: https://github.com/wooorm/remark/tree/master/packages/remark-parse
+
+[stringify]: https://github.com/wooorm/remark/tree/master/packages/remark-stringify

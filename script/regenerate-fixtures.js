@@ -19,8 +19,8 @@
 
 var fs = require('fs');
 var path = require('path');
-var remark = require('..');
-var fixtures = require('../test/fixtures.js');
+var remark = require('../packages/remark')();
+var fixtures = require('../test/fixtures');
 
 /*
  * Regenerate.
@@ -44,6 +44,9 @@ fixtures.forEach(function (fixture) {
 
         result = JSON.stringify(result, null, 2) + '\n';
 
-        fs.writeFileSync(path.join('test/tree/', filename), result);
+        fs.writeFileSync(
+            path.join('test', 'fixtures', 'tree', filename),
+            result
+        );
     });
 });

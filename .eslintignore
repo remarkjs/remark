@@ -1,6 +1,5 @@
-build/
-coverage/
-build.js
+**/coverage
+**/node_modules
+packages/remark/cli.js
 remark.js
 remark.min.js
-example.js
