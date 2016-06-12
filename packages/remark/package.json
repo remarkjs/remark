@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
