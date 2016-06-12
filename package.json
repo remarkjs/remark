@@ -7,12 +7,15 @@
   "devDependencies": {
     "bail": "^1.0.0",
     "browserify": "^13.0.0",
-    "clone": "^1.0.1",
+    "camelcase": "^3.0.0",
+    "chalk": "^1.1.3",
+    "clone": "^1.0.2",
     "escodegen": "^1.7.0",
     "eslint": "^2.0.0",
     "esmangle": "^1.0.0",
     "esprima": "^2.6.0",
     "execa": "^0.4.0",
+    "extend": "^3.0.0",
     "jscs": "^3.0.0",
     "jscs-jsdoc": "^2.0.0",
     "lerna": "^2.0.0-beta.18",
@@ -21,7 +24,8 @@
     "remark-lint": "^4.0.0",
     "remark-toc": "^3.0.0",
     "tape": "^4.5.1",
-    "uglifyify": "^3.0.1"
+    "uglifyify": "^3.0.1",
+    "vfile": "^1.4.0"
   },
   "nyc": {
     "check-coverage": true,
