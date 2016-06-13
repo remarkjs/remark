@@ -85,32 +85,9 @@ See [tools built with remark »][products].
 
 ## List of Utilities
 
-Although not **remark** plug-ins, the following projects are useful when
-working with the AST ([**mdast**][mdast]):
-
-*   [`wooorm/mdast-comment-marker`](https://github.com/wooorm/mdast-comment-marker)
-    — Parse a comment marker;
-*   [`wooorm/mdast-util-definitions`](https://github.com/wooorm/mdast-util-definitions)
-    — Find definition nodes;
-*   [`wooorm/mdast-util-heading-range`](https://github.com/wooorm/mdast-util-heading-range)
-    — Markdown heading as ranges;
-*   [`wooorm/mdast-util-heading-style`](https://github.com/wooorm/mdast-util-heading-style)
-    — Get the style of a heading node;
-*   [`anandthakker/mdast-util-inject`](https://github.com/anandthakker/mdast-util-inject)
-    — Inject a tree into another at a given heading;
-*   [`wooorm/mdast-util-position`](https://github.com/wooorm/mdast-util-position)
-    — Get the position of nodes;
-*   [`wooorm/mdast-util-to-string`](https://github.com/wooorm/mdast-util-to-string)
-    — Get the plain text content of a node;
-*   [`eush77/mdast-normalize-headings`](https://github.com/eush77/mdast-normalize-headings)
-    — Ensure at most one top-level heading is in the document;
-*   [`eush77/mdast-squeeze-paragraphs`](https://github.com/eush77/mdast-squeeze-paragraphs)
-    — Remove empty paragraphs;
-*   [`wooorm/mdast-zone`](https://github.com/wooorm/mdast-zone)
-    — HTML comments as ranges or markers.
-
-See [`unist`][unist-util] for other utilities which work with **mdast**
-nodes, too.
+See [**mdast**][mdast-util] for a list of utilities for working with
+the AST.  See [`unist`][unist-util] for other utilities which work with
+**mdast** nodes, too.
 
 And finally, see [`wooorm/vfile`][vfile-util] for a list of utilities
 for working with virtual files and
@@ -150,7 +127,7 @@ functionality and include `"remark"` in the list.
 
 [products]: https://github.com/wooorm/remark/blob/master/doc/products.md
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast-util]: https://github.com/wooorm/mdast#list-of-utilities
 
 [unist-util]: https://github.com/wooorm/unist#unist-node-utilties
 
