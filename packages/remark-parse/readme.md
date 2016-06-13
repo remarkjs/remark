@@ -387,7 +387,7 @@ The given `node`.
 
 [chat]: https://gitter.im/wooorm/remark
 
-[license]: LICENSE
+[license]: https://github.com/wooorm/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 
@@ -423,13 +423,13 @@ The given `node`.
 
 [options-breaks]: #optionsbreaks
 
-[parser]: #parser
+[parser]: https://github.com/wooorm/unified#processorparser
 
 [extend]: #extending-the-parser
 
 [tokenizer]: #function-tokenizereat-value-silent
 
-[locator]: #tokenizer-locatorvalue-fromindex
+[locator]: #tokenizerlocatorvalue-fromindex
 
 [eat]: #eatsubvalue
 

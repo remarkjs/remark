@@ -21,8 +21,11 @@
     "lerna": "^2.0.0-beta.18",
     "mocha": "^2.0.0",
     "nyc": "^6.4.4",
+    "remark-comment-config": "^4.0.0",
+    "remark-github": "^5.0.0",
     "remark-lint": "^4.0.0",
     "remark-toc": "^3.0.0",
+    "remark-validate-links": "^4.0.0",
     "tape": "^4.5.1",
     "uglifyify": "^3.0.1",
     "vfile": "^1.4.0"

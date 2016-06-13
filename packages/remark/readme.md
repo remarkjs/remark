@@ -63,7 +63,7 @@ Yields:
 
 [chat]: https://gitter.im/wooorm/remark
 
-[license]: LICENSE
+[license]: https://github.com/wooorm/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 

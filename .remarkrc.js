@@ -23,7 +23,10 @@ module.exports = {
             /* Lists. */
             'list-item-spacing': false,
             'no-missing-blank-lines': false
-        }
+        },
+        "github": null,
+        "comment-config": null,
+        "validate-links": null
     },
     'settings': {
         /* I personally like asterisks. */
