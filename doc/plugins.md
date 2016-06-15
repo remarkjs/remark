@@ -82,6 +82,8 @@ See [tools built with remark »][products].
     — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/);
 *   [`wooorm/remark-yaml-config`](https://github.com/wooorm/remark-yaml-config)
     — Configure remark with YAML.
+*   [`sfrdmn/remark-yaml-annotations`](https://github.com/sfrdmn/remark-yaml-annotations)
+    — Extend Markdown with YAML-based annotation syntax
 
 ## List of Utilities
 
