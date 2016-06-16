@@ -4413,9 +4413,10 @@ function tokenizeLink(eat, value, silent) {
     var subvalue = EMPTY;
     var index = 0;
     var character = value.charAt(0);
+    var closed;
     var beforeURL;
     var beforeTitle;
-    var whiteSpaceQueue;
+    var subqueue;
     var commonmark;
     var openCount;
     var hasMarker;
@@ -4474,7 +4475,7 @@ function tokenizeLink(eat, value, silent) {
     now.offset += index;
 
     while (index < length) {
-        character = value.charAt(index);
+        subqueue = character = value.charAt(index);
 
         if (character === C_BRACKET_OPEN) {
             depth++;
@@ -4485,38 +4486,54 @@ function tokenizeLink(eat, value, silent) {
              */
 
             if (!commonmark && !depth) {
+                if (self.options.gfm) {
+                    while (index < length) {
+                        character = value.charAt(index + 1);
+
+                        if (!isWhiteSpace(character)) {
+                            break;
+                        }
+
+                        subqueue += character;
+                        index++;
+                    }
+                }
+
                 if (value.charAt(index + 1) === C_PAREN_OPEN) {
+                    subqueue += C_PAREN_OPEN;
+                    closed = true;
+                    index++;
+
                     break;
                 }
 
                 depth++;
             }
 
-            if (depth === 0) {
+            if (!depth && value.charAt(index + 1) === C_PAREN_OPEN) {
+                subqueue += C_PAREN_OPEN;
+                closed = true;
+                index++;
+
                 break;
             }
 
             depth--;
         }
 
-        queue += character;
+        queue += subqueue;
+        subqueue = EMPTY;
         index++;
     }
 
-    /*
-     * Eat the content closing.
-     */
-
-    if (
-        value.charAt(index) !== C_BRACKET_CLOSE ||
-        value.charAt(++index) !== C_PAREN_OPEN
-    ) {
+    /* Eat the content closing. */
+    if (!closed) {
         return;
     }
 
-    subvalue += queue + C_BRACKET_CLOSE + C_PAREN_OPEN;
-    index++;
     content = queue;
+    subvalue += queue + subqueue;
+    index++;
 
     /*
      * Eat white-space.
@@ -4571,12 +4588,12 @@ function tokenizeLink(eat, value, silent) {
         index++;
     } else {
         character = null;
-        whiteSpaceQueue = EMPTY;
+        subqueue = EMPTY;
 
         while (index < length) {
             character = value.charAt(index);
 
-            if (whiteSpaceQueue && has.call(markers, character)) {
+            if (subqueue && has.call(markers, character)) {
                 break;
             }
 
@@ -4585,7 +4602,7 @@ function tokenizeLink(eat, value, silent) {
                     break;
                 }
 
-                whiteSpaceQueue += character;
+                subqueue += character;
             } else {
                 if (character === C_PAREN_OPEN) {
                     depth++;
@@ -4598,8 +4615,8 @@ function tokenizeLink(eat, value, silent) {
                     depth--;
                 }
 
-                queue += whiteSpaceQueue;
-                whiteSpaceQueue = EMPTY;
+                queue += subqueue;
+                subqueue = EMPTY;
 
                 if (character === C_BACKSLASH) {
                     queue += C_BACKSLASH;
@@ -4694,29 +4711,29 @@ function tokenizeLink(eat, value, silent) {
                 index++;
             }
         } else {
-            whiteSpaceQueue = EMPTY;
+            subqueue = EMPTY;
 
             while (index < length) {
                 character = value.charAt(index);
 
                 if (character === marker) {
                     if (hasMarker) {
-                        queue += marker + whiteSpaceQueue;
-                        whiteSpaceQueue = EMPTY;
+                        queue += marker + subqueue;
+                        subqueue = EMPTY;
                     }
 
                     hasMarker = true;
                 } else if (!hasMarker) {
                     queue += character;
                 } else if (character === C_PAREN_CLOSE) {
-                    subvalue += queue + marker + whiteSpaceQueue;
+                    subvalue += queue + marker + subqueue;
                     title = queue;
                     break;
                 } else if (isWhiteSpace(character)) {
-                    whiteSpaceQueue += character;
+                    subqueue += character;
                 } else {
-                    queue += marker + whiteSpaceQueue + character;
-                    whiteSpaceQueue = EMPTY;
+                    queue += marker + subqueue + character;
+                    subqueue = EMPTY;
                     hasMarker = false;
                 }
 
@@ -5310,7 +5327,7 @@ function tokenizeInlineCode(eat, value, silent) {
     var queue = EMPTY;
     var tickQueue = EMPTY;
     var contentQueue;
-    var whiteSpaceQueue;
+    var subqueue;
     var count;
     var openingCount;
     var subvalue;
@@ -5376,7 +5393,7 @@ function tokenizeInlineCode(eat, value, silent) {
         return true;
     }
 
-    contentQueue = whiteSpaceQueue = EMPTY;
+    contentQueue = subqueue = EMPTY;
     length = queue.length;
     index = -1;
 
@@ -5384,16 +5401,16 @@ function tokenizeInlineCode(eat, value, silent) {
         character = queue.charAt(index);
 
         if (isWhiteSpace(character)) {
-            whiteSpaceQueue += character;
+            subqueue += character;
             continue;
         }
 
-        if (whiteSpaceQueue) {
+        if (subqueue) {
             if (contentQueue) {
-                contentQueue += whiteSpaceQueue;
+                contentQueue += subqueue;
             }
 
-            whiteSpaceQueue = EMPTY;
+            subqueue = EMPTY;
         }
 
         contentQueue += character;

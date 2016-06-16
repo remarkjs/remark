@@ -167,7 +167,7 @@
           "children": [
             {
               "type": "text",
-              "value": "Read more about it on wikipedia: ",
+              "value": "Read more about it here.",
               "position": {
                 "start": {
                   "line": 7,
@@ -176,62 +176,8 @@
                 },
                 "end": {
                   "line": 7,
-                  "column": 43,
-                  "offset": 364
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "link",
-              "title": null,
-              "url": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "http://en.wikipedia.org/wiki/NATO_phonetic_alphabet",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 44,
-                      "offset": 365
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 95,
-                      "offset": 416
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 43,
-                  "offset": 364
-                },
-                "end": {
-                  "line": 7,
-                  "column": 96,
-                  "offset": 417
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": ".",
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 96,
-                  "offset": 417
-                },
-                "end": {
-                  "line": 7,
-                  "column": 97,
-                  "offset": 418
+                  "column": 34,
+                  "offset": 355
                 },
                 "indent": []
               }
@@ -245,8 +191,8 @@
             },
             "end": {
               "line": 7,
-              "column": 97,
-              "offset": 418
+              "column": 34,
+              "offset": 355
             },
             "indent": []
           }
@@ -260,8 +206,8 @@
         },
         "end": {
           "line": 7,
-          "column": 97,
-          "offset": 418
+          "column": 34,
+          "offset": 355
         },
         "indent": []
       }
@@ -276,7 +222,7 @@
     "end": {
       "line": 8,
       "column": 1,
-      "offset": 419
+      "offset": 356
     }
   }
 }
