@@ -18,7 +18,7 @@
     "extend": "^3.0.0",
     "jscs": "^3.0.0",
     "jscs-jsdoc": "^2.0.0",
-    "lerna": "^2.0.0-beta.18",
+    "lerna": "2.0.0-beta.20",
     "mocha": "^2.0.0",
     "nyc": "^6.4.4",
     "remark-comment-config": "^4.0.0",
