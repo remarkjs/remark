@@ -738,6 +738,7 @@ function escapeFactory(options) {
                         value.charAt(offset) === DOT ||
                         (
                             commonmark &&
+                            /* istanbul ignore next - hard to test :( */
                             value.charAt(offset) === PARENTHESIS_CLOSE
                         )
                     ) {
