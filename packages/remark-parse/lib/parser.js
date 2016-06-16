@@ -1466,10 +1466,6 @@ function tokenizeSetextHeading(eat, value, silent) {
         return;
     }
 
-    if (silent) {
-        return true;
-    }
-
     subvalue += character;
 
     /*
@@ -1492,6 +1488,10 @@ function tokenizeSetextHeading(eat, value, silent) {
         }
 
         queue += character;
+    }
+
+    if (silent) {
+        return true;
     }
 
     return eat(subvalue + queue)(self.renderHeading(content, depth, now));
