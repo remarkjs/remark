@@ -237,7 +237,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "hello\n* world\nhow",
+                  "value": "hello",
                   "position": {
                     "start": {
                       "line": 12,
@@ -245,14 +245,11 @@
                       "offset": 58
                     },
                     "end": {
-                      "line": 14,
+                      "line": 12,
                       "column": 8,
-                      "offset": 81
+                      "offset": 63
                     },
-                    "indent": [
-                      3,
-                      5
-                    ]
+                    "indent": []
                   }
                 }
               ],
@@ -263,12 +260,93 @@
                   "offset": 58
                 },
                 "end": {
+                  "line": 12,
+                  "column": 8,
+                  "offset": 63
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "start": null,
+              "loose": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "loose": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "world\nhow",
+                          "position": {
+                            "start": {
+                              "line": 13,
+                              "column": 5,
+                              "offset": 68
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 8,
+                              "offset": 81
+                            },
+                            "indent": [
+                              5
+                            ]
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 13,
+                          "column": 5,
+                          "offset": 68
+                        },
+                        "end": {
+                          "line": 14,
+                          "column": 8,
+                          "offset": 81
+                        },
+                        "indent": [
+                          5
+                        ]
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 13,
+                      "column": 3,
+                      "offset": 66
+                    },
+                    "end": {
+                      "line": 14,
+                      "column": 8,
+                      "offset": 81
+                    },
+                    "indent": [
+                      5
+                    ]
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 13,
+                  "column": 3,
+                  "offset": 66
+                },
+                "end": {
                   "line": 14,
                   "column": 8,
                   "offset": 81
                 },
                 "indent": [
-                  3,
                   5
                 ]
               }

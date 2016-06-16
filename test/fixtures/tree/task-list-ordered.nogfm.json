@@ -201,7 +201,7 @@
                 },
                 {
                   "type": "text",
-                  "value": " Earth:\n1. ",
+                  "value": " Earth:",
                   "position": {
                     "start": {
                       "line": 3,
@@ -209,65 +209,9 @@
                       "offset": 56
                     },
                     "end": {
-                      "line": 4,
-                      "column": 8,
-                      "offset": 71
-                    },
-                    "indent": [
-                      5
-                    ]
-                  }
-                },
-                {
-                  "type": "linkReference",
-                  "identifier": "x",
-                  "referenceType": "shortcut",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "x",
-                      "position": {
-                        "start": {
-                          "line": 4,
-                          "column": 9,
-                          "offset": 72
-                        },
-                        "end": {
-                          "line": 4,
-                          "column": 10,
-                          "offset": 73
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 4,
-                      "column": 8,
-                      "offset": 71
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 11,
-                      "offset": 74
-                    },
-                    "indent": []
-                  }
-                },
-                {
-                  "type": "text",
-                  "value": " Moon.",
-                  "position": {
-                    "start": {
-                      "line": 4,
-                      "column": 11,
-                      "offset": 74
-                    },
-                    "end": {
-                      "line": 4,
-                      "column": 17,
-                      "offset": 80
+                      "line": 3,
+                      "column": 14,
+                      "offset": 63
                     },
                     "indent": []
                   }
@@ -280,13 +224,124 @@
                   "offset": 53
                 },
                 "end": {
+                  "line": 3,
+                  "column": 14,
+                  "offset": 63
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "list",
+              "ordered": true,
+              "start": 1,
+              "loose": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "loose": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "linkReference",
+                          "identifier": "x",
+                          "referenceType": "shortcut",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "x",
+                              "position": {
+                                "start": {
+                                  "line": 4,
+                                  "column": 9,
+                                  "offset": 72
+                                },
+                                "end": {
+                                  "line": 4,
+                                  "column": 10,
+                                  "offset": 73
+                                },
+                                "indent": []
+                              }
+                            }
+                          ],
+                          "position": {
+                            "start": {
+                              "line": 4,
+                              "column": 8,
+                              "offset": 71
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 11,
+                              "offset": 74
+                            },
+                            "indent": []
+                          }
+                        },
+                        {
+                          "type": "text",
+                          "value": " Moon.",
+                          "position": {
+                            "start": {
+                              "line": 4,
+                              "column": 11,
+                              "offset": 74
+                            },
+                            "end": {
+                              "line": 4,
+                              "column": 17,
+                              "offset": 80
+                            },
+                            "indent": []
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 4,
+                          "column": 8,
+                          "offset": 71
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 17,
+                          "offset": 80
+                        },
+                        "indent": []
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 5,
+                      "offset": 68
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 17,
+                      "offset": 80
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 5,
+                  "offset": 68
+                },
+                "end": {
                   "line": 4,
                   "column": 17,
                   "offset": 80
                 },
-                "indent": [
-                  5
-                ]
+                "indent": []
               }
             }
           ],

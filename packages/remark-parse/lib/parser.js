@@ -3447,7 +3447,20 @@ function tokenizeParagraph(eat, value, silent) {
             break;
         }
 
-        if (gfm && tokenizers.list.call(self, eat, subvalue, true)) {
+        /*
+         * Break if the following line starts a list, when
+         * already in a list, or when in commonmark, or when
+         * in gfm mode and the bullet is *not* numeric.
+         */
+
+        if (
+            tokenizers.list.call(self, eat, subvalue, true) &&
+            (
+                self.inList ||
+                commonmark ||
+                (gfm && !isNumeric(trim.left(subvalue).charAt(0)))
+            )
+        ) {
             break;
         }
 

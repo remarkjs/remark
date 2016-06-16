@@ -98,6 +98,16 @@ var TILDE = '~';
 var UNDERSCORE = '_';
 
 /**
+ * Check whether `character` is numeric.
+ *
+ * @param {string} character - Single character to check.
+ * @return {boolean} - Whether `character` is numeric.
+ */
+function isNumeric(character) {
+    return /[0-9]/.test(character);
+}
+
+/**
  * Check whether `character` is alphanumeric.
  *
  * @param {string} character - Single character to check.
@@ -611,6 +621,7 @@ function escapeFactory(options) {
         var character;
         var wordCharBefore;
         var wordCharAfter;
+        var offset;
 
         if (prev) {
             afterNewLine = prev.type === 'text' && /\n\s*$/.test(prev.value);
@@ -711,6 +722,30 @@ function escapeFactory(options) {
                     LIST_BULLETS[character]
                 ) {
                     queue.push(BACKSLASH);
+                    afterNewLine = false;
+                } else if (isNumeric(character)) {
+                    offset = position + 1;
+
+                    while (offset < length) {
+                        if (!isNumeric(value.charAt(offset))) {
+                            break;
+                        }
+
+                        offset++;
+                    }
+
+                    if (
+                        value.charAt(offset) === DOT ||
+                        (
+                            commonmark &&
+                            value.charAt(offset) === PARENTHESIS_CLOSE
+                        )
+                    ) {
+                        queue.push(value.slice(position, offset), BACKSLASH);
+                        position = offset;
+                        character = value.charAt(position);
+                    }
+
                     afterNewLine = false;
                 } else if (
                     character !== SPACE &&

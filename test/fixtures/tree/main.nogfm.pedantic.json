@@ -278,7 +278,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "List Item 2\n* New List Item 1\nHi, this is a list item.\n* New List Item 2\nAnother item\n    Code goes here.\n    Lots of it...\n* New List Item 3\nThe last item",
+                  "value": "List Item 2",
                   "position": {
                     "start": {
                       "line": 16,
@@ -286,20 +286,11 @@
                       "offset": 432
                     },
                     "end": {
-                      "line": 24,
-                      "column": 18,
-                      "offset": 613
+                      "line": 16,
+                      "column": 14,
+                      "offset": 443
                     },
-                    "indent": [
-                      3,
-                      5,
-                      3,
-                      5,
-                      5,
-                      5,
-                      3,
-                      5
-                    ]
+                    "indent": []
                   }
                 }
               ],
@@ -310,12 +301,221 @@
                   "offset": 432
                 },
                 "end": {
+                  "line": 16,
+                  "column": 14,
+                  "offset": 443
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "list",
+              "ordered": false,
+              "start": null,
+              "loose": false,
+              "children": [
+                {
+                  "type": "listItem",
+                  "loose": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 1\nHi, this is a list item.",
+                          "position": {
+                            "start": {
+                              "line": 17,
+                              "column": 5,
+                              "offset": 448
+                            },
+                            "end": {
+                              "line": 18,
+                              "column": 29,
+                              "offset": 492
+                            },
+                            "indent": [
+                              5
+                            ]
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 17,
+                          "column": 5,
+                          "offset": 448
+                        },
+                        "end": {
+                          "line": 18,
+                          "column": 29,
+                          "offset": 492
+                        },
+                        "indent": [
+                          5
+                        ]
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 17,
+                      "column": 3,
+                      "offset": 446
+                    },
+                    "end": {
+                      "line": 18,
+                      "column": 29,
+                      "offset": 492
+                    },
+                    "indent": [
+                      5
+                    ]
+                  }
+                },
+                {
+                  "type": "listItem",
+                  "loose": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 2\nAnother item\nCode goes here.\nLots of it...",
+                          "position": {
+                            "start": {
+                              "line": 19,
+                              "column": 5,
+                              "offset": 497
+                            },
+                            "end": {
+                              "line": 22,
+                              "column": 22,
+                              "offset": 575
+                            },
+                            "indent": [
+                              5,
+                              9,
+                              9
+                            ]
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 19,
+                          "column": 5,
+                          "offset": 497
+                        },
+                        "end": {
+                          "line": 22,
+                          "column": 22,
+                          "offset": 575
+                        },
+                        "indent": [
+                          5,
+                          9,
+                          9
+                        ]
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 19,
+                      "column": 3,
+                      "offset": 495
+                    },
+                    "end": {
+                      "line": 22,
+                      "column": 22,
+                      "offset": 575
+                    },
+                    "indent": [
+                      5,
+                      5,
+                      5
+                    ]
+                  }
+                },
+                {
+                  "type": "listItem",
+                  "loose": false,
+                  "checked": null,
+                  "children": [
+                    {
+                      "type": "paragraph",
+                      "children": [
+                        {
+                          "type": "text",
+                          "value": "New List Item 3\nThe last item",
+                          "position": {
+                            "start": {
+                              "line": 23,
+                              "column": 5,
+                              "offset": 580
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 18,
+                              "offset": 613
+                            },
+                            "indent": [
+                              5
+                            ]
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 23,
+                          "column": 5,
+                          "offset": 580
+                        },
+                        "end": {
+                          "line": 24,
+                          "column": 18,
+                          "offset": 613
+                        },
+                        "indent": [
+                          5
+                        ]
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 23,
+                      "column": 3,
+                      "offset": 578
+                    },
+                    "end": {
+                      "line": 24,
+                      "column": 18,
+                      "offset": 613
+                    },
+                    "indent": [
+                      5
+                    ]
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 3,
+                  "offset": 446
+                },
+                "end": {
                   "line": 24,
                   "column": 18,
                   "offset": 613
                 },
                 "indent": [
-                  3,
                   5,
                   3,
                   5,
@@ -615,7 +815,7 @@
                   "children": [
                     {
                       "type": "text",
-                      "value": "bq Item 2\n* New bq Item 1\n* New bq Item 2\nText here",
+                      "value": "bq Item 2",
                       "position": {
                         "start": {
                           "line": 35,
@@ -623,15 +823,11 @@
                           "offset": 712
                         },
                         "end": {
-                          "line": 38,
+                          "line": 35,
                           "column": 14,
-                          "offset": 775
+                          "offset": 721
                         },
-                        "indent": [
-                          5,
-                          5,
-                          5
-                        ]
+                        "indent": []
                       }
                     }
                   ],
@@ -642,12 +838,148 @@
                       "offset": 712
                     },
                     "end": {
+                      "line": 35,
+                      "column": 14,
+                      "offset": 721
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "list",
+                  "ordered": false,
+                  "start": null,
+                  "loose": false,
+                  "children": [
+                    {
+                      "type": "listItem",
+                      "loose": false,
+                      "checked": null,
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "New bq Item 1",
+                              "position": {
+                                "start": {
+                                  "line": 36,
+                                  "column": 7,
+                                  "offset": 728
+                                },
+                                "end": {
+                                  "line": 36,
+                                  "column": 20,
+                                  "offset": 741
+                                },
+                                "indent": []
+                              }
+                            }
+                          ],
+                          "position": {
+                            "start": {
+                              "line": 36,
+                              "column": 7,
+                              "offset": 728
+                            },
+                            "end": {
+                              "line": 36,
+                              "column": 20,
+                              "offset": 741
+                            },
+                            "indent": []
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 36,
+                          "column": 5,
+                          "offset": 726
+                        },
+                        "end": {
+                          "line": 36,
+                          "column": 20,
+                          "offset": 741
+                        },
+                        "indent": []
+                      }
+                    },
+                    {
+                      "type": "listItem",
+                      "loose": false,
+                      "checked": null,
+                      "children": [
+                        {
+                          "type": "paragraph",
+                          "children": [
+                            {
+                              "type": "text",
+                              "value": "New bq Item 2\nText here",
+                              "position": {
+                                "start": {
+                                  "line": 37,
+                                  "column": 7,
+                                  "offset": 748
+                                },
+                                "end": {
+                                  "line": 38,
+                                  "column": 14,
+                                  "offset": 775
+                                },
+                                "indent": [
+                                  5
+                                ]
+                              }
+                            }
+                          ],
+                          "position": {
+                            "start": {
+                              "line": 37,
+                              "column": 7,
+                              "offset": 748
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 14,
+                              "offset": 775
+                            },
+                            "indent": [
+                              5
+                            ]
+                          }
+                        }
+                      ],
+                      "position": {
+                        "start": {
+                          "line": 37,
+                          "column": 5,
+                          "offset": 746
+                        },
+                        "end": {
+                          "line": 38,
+                          "column": 14,
+                          "offset": 775
+                        },
+                        "indent": [
+                          5
+                        ]
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 36,
+                      "column": 5,
+                      "offset": 726
+                    },
+                    "end": {
                       "line": 38,
                       "column": 14,
                       "offset": 775
                     },
                     "indent": [
-                      5,
                       5,
                       5
                     ]
