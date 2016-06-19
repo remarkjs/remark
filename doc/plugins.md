@@ -57,6 +57,8 @@ See [tools built with remark »][products].
     — Compile Markdown to [React](https://github.com/facebook/react);
 *   [`wooorm/remark-reference-links`](https://github.com/wooorm/remark-reference-links)
     — Transform links and images into references and definitions;
+*   [`wooorm/remark-rehype`](https://github.com/wooorm/remark-rehype)
+    — [rehype](https://github.com/wooorm/rehype) support;
 *   [`wooorm/remark-retext`](https://github.com/wooorm/remark-retext)
     — [retext](https://github.com/wooorm/retext) support;
 *   [`wooorm/remark-slug`](https://github.com/wooorm/remark-slug)
