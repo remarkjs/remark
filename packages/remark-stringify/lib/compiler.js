@@ -810,7 +810,7 @@ function escapeFactory(options) {
 
                 if (
                     next &&
-                    index === position &&
+                    position === length &&
                     next.type === 'text' &&
                     next.value.charAt(0) === PARENTHESIS_OPEN
                 ) {
