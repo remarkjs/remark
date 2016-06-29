@@ -287,21 +287,21 @@ LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true;
  * and image titles.
  */
 
-var LINK_TITLE_MARKERS = {};
+var LINK_MARKERS = {};
 
-LINK_TITLE_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
-LINK_TITLE_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
+LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
+LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
 
 /*
  * A map of characters, which can be used to mark link
  * and image titles in commonmark-mode.
  */
 
-var COMMONMARK_LINK_TITLE_MARKERS = {};
+var COMMONMARK_LINK_MARKERS = {};
 
-COMMONMARK_LINK_TITLE_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
-COMMONMARK_LINK_TITLE_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
-COMMONMARK_LINK_TITLE_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE;
+COMMONMARK_LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
+COMMONMARK_LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
+COMMONMARK_LINK_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE;
 
 /*
  * A map of characters which can be used to mark setext
@@ -4413,11 +4413,14 @@ function tokenizeLink(eat, value, silent) {
     var subvalue = EMPTY;
     var index = 0;
     var character = value.charAt(0);
+    var commonmark = self.options.commonmark;
+    var gfm = self.options.gfm;
     var closed;
+    var count;
+    var opening;
     var beforeURL;
     var beforeTitle;
     var subqueue;
-    var commonmark;
     var openCount;
     var hasMarker;
     var markers;
@@ -4466,7 +4469,6 @@ function tokenizeLink(eat, value, silent) {
      * Eat the content.
      */
 
-    commonmark = self.options.commonmark;
     length = value.length;
     now = eat.now();
     depth = 0;
@@ -4477,16 +4479,38 @@ function tokenizeLink(eat, value, silent) {
     while (index < length) {
         subqueue = character = value.charAt(index);
 
-        if (character === C_BRACKET_OPEN) {
-            depth++;
-        } else if (character === C_BRACKET_CLOSE) {
-            /*
-             * Allow a single closing bracket when not in
-             * commonmark-mode.
-             */
+        if (character === C_TICK) {
+            /* Inline-code in link content. */
+            count = 1;
 
-            if (!commonmark && !depth) {
-                if (self.options.gfm) {
+            while (value.charAt(index + 1) === C_TICK) {
+                subqueue += character;
+                index++;
+                count++;
+            }
+
+            if (!opening) {
+                opening = count;
+            } else if (count >= opening) {
+                opening = 0;
+            }
+        } else if (character === C_BACKSLASH) {
+            /* Allow brackets to be escaped. */
+            index++;
+            subqueue += value.charAt(index);
+        /* In GFM mode, brackets in code still count.
+         * In all other modes, they don’t.  This empty
+         * block prevents the next statements are
+         * entered. */
+        } else if ((!opening || gfm) && character === C_BRACKET_OPEN) {
+            depth++;
+        } else if ((!opening || gfm) && character === C_BRACKET_CLOSE) {
+            if (depth) {
+                depth--;
+            } else {
+                /* Allow white-space between content and
+                 * url in GFM mode. */
+                if (gfm) {
                     while (index < length) {
                         character = value.charAt(index + 1);
 
@@ -4499,26 +4523,16 @@ function tokenizeLink(eat, value, silent) {
                     }
                 }
 
-                if (value.charAt(index + 1) === C_PAREN_OPEN) {
-                    subqueue += C_PAREN_OPEN;
-                    closed = true;
-                    index++;
-
-                    break;
+                if (value.charAt(index + 1) !== C_PAREN_OPEN) {
+                    return;
                 }
 
-                depth++;
-            }
-
-            if (!depth && value.charAt(index + 1) === C_PAREN_OPEN) {
                 subqueue += C_PAREN_OPEN;
                 closed = true;
                 index++;
 
                 break;
             }
-
-            depth--;
         }
 
         queue += subqueue;
@@ -4555,7 +4569,7 @@ function tokenizeLink(eat, value, silent) {
      */
 
     character = value.charAt(index);
-    markers = commonmark ? COMMONMARK_LINK_TITLE_MARKERS : LINK_TITLE_MARKERS;
+    markers = commonmark ? COMMONMARK_LINK_MARKERS : LINK_MARKERS;
     openCount = 0;
     queue = EMPTY;
     beforeURL = subvalue;

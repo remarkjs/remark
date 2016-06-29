@@ -5,13 +5,13 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "the `",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": null,
+          "url": "/url",
           "children": [
             {
               "type": "text",
-              "value": "the `",
+              "value": "the ",
               "position": {
                 "start": {
                   "line": 1,
@@ -20,8 +20,42 @@
                 },
                 "end": {
                   "line": 1,
-                  "column": 7,
-                  "offset": 6
+                  "column": 6,
+                  "offset": 5
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "inlineCode",
+              "value": "]",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 6,
+                  "offset": 5
+                },
+                "end": {
+                  "line": 1,
+                  "column": 9,
+                  "offset": 8
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " character",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 9,
+                  "offset": 8
+                },
+                "end": {
+                  "line": 1,
+                  "column": 19,
+                  "offset": 18
                 },
                 "indent": []
               }
@@ -32,23 +66,6 @@
               "line": 1,
               "column": 1,
               "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "` character](/url)",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 8,
-              "offset": 7
             },
             "end": {
               "line": 1,
@@ -77,47 +94,67 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[the ",
+          "type": "link",
+          "title": null,
+          "url": "/url",
+          "children": [
+            {
+              "type": "text",
+              "value": "the ",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2,
+                  "offset": 28
+                },
+                "end": {
+                  "line": 3,
+                  "column": 6,
+                  "offset": 32
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "inlineCode",
+              "value": "[",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 6,
+                  "offset": 32
+                },
+                "end": {
+                  "line": 3,
+                  "column": 13,
+                  "offset": 39
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " character",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 13,
+                  "offset": 39
+                },
+                "end": {
+                  "line": 3,
+                  "column": 23,
+                  "offset": 49
+                },
+                "indent": []
+              }
+            }
+          ],
           "position": {
             "start": {
               "line": 3,
               "column": 1,
               "offset": 27
-            },
-            "end": {
-              "line": 3,
-              "column": 6,
-              "offset": 32
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "[",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 6,
-              "offset": 32
-            },
-            "end": {
-              "line": 3,
-              "column": 13,
-              "offset": 39
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " character](/url)",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 13,
-              "offset": 39
             },
             "end": {
               "line": 3,
@@ -146,69 +183,52 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "text",
-          "value": "[the ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 1,
-              "offset": 58
-            },
-            "end": {
-              "line": 5,
-              "column": 6,
-              "offset": 63
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 6,
-              "offset": 63
-            },
-            "end": {
-              "line": 5,
-              "column": 8,
-              "offset": 65
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 8,
-              "offset": 65
-            },
-            "end": {
-              "line": 5,
-              "column": 9,
-              "offset": 66
-            },
-            "indent": []
-          }
-        },
-        {
           "type": "link",
           "title": null,
           "url": "/url",
           "children": [
             {
               "type": "text",
-              "value": " `",
+              "value": "the ",
               "position": {
                 "start": {
                   "line": 5,
-                  "column": 10,
-                  "offset": 67
+                  "column": 2,
+                  "offset": 59
+                },
+                "end": {
+                  "line": 5,
+                  "column": 6,
+                  "offset": 63
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "inlineCode",
+              "value": "",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 6,
+                  "offset": 63
+                },
+                "end": {
+                  "line": 5,
+                  "column": 8,
+                  "offset": 65
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "text",
+              "value": " [ `",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 8,
+                  "offset": 65
                 },
                 "end": {
                   "line": 5,
@@ -256,8 +276,8 @@
           "position": {
             "start": {
               "line": 5,
-              "column": 9,
-              "offset": 66
+              "column": 1,
+              "offset": 58
             },
             "end": {
               "line": 5,
