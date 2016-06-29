@@ -19,6 +19,10 @@ Open parenthesis should be escaped after a shortcut reference:
 
 [ref]\(text)
 
+And after a shortcut reference and a space (for GitHub):
+
+[ref] \(text)
+
 Hyphen should be escaped at the beginning of a line:
 
 \- not a list item

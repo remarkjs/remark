@@ -249,6 +249,43 @@
       "children": [
         {
           "type": "text",
+          "value": "And after a shortcut reference and a space (for GitHub):"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "linkReference",
+          "identifier": "ref",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "ref"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "value": " "
+        },
+        {
+          "type": "text",
+          "value": "("
+        },
+        {
+          "type": "text",
+          "value": "text)"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
           "value": "Hyphen should be escaped at the beginning of a line:"
         }
       ]

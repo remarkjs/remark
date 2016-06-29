@@ -801,6 +801,21 @@ function escapeFactory(options) {
 
                     break;
                 }
+
+                /*
+                 * If the current node is all spaces / tabs,
+                 * preceded by a shortcut, and followed by
+                 * a text starting with `(`, escape it.
+                 */
+
+                if (
+                    next &&
+                    index === position &&
+                    next.type === 'text' &&
+                    next.value.charAt(0) === PARENTHESIS_OPEN
+                ) {
+                    escaped.push(BACKSLASH);
+                }
             }
 
             /*
@@ -868,17 +883,13 @@ function escapeFactory(options) {
              * in pedantic mode).
              */
 
-            wordCharBefore = (
-                prev &&
+            wordCharBefore = prev &&
                 prev.type === 'text' &&
                 isAlphanumeric(prev.value.slice(-1))
-            );
 
-            wordCharAfter = (
-                next &&
+            wordCharAfter = next &&
                 next.type === 'text' &&
                 isAlphanumeric(next.value.charAt(0))
-            );
 
             if (length <= 1) {
                 if (
@@ -1223,37 +1234,44 @@ compilerPrototype.all = function (parent) {
     var self = this;
     var children = parent.children;
     var values = [];
-    var index = 0;
+    var results = [];
     var length = children.length;
-    var mergedLength = 1;
+    var index = 0;
     var node = children[0];
     var next;
 
-    if (length === 0) {
+    if (!length) {
         return values;
     }
+
+    length++;
 
     while (++index < length) {
         next = children[index];
 
         if (
-            node.type === next.type &&
+            next &&
             node.type === 'text' &&
+            node.type === next.type &&
             mergeable(node) &&
             mergeable(next)
         ) {
             node.value += next.value;
         } else {
-            values.push(self.visit(node, parent));
+            values.push(node);
             node = next;
-            children[mergedLength++] = node;
         }
     }
 
-    values.push(self.visit(node, parent));
-    children.length = mergedLength;
+    index = -1;
+    length = values.length;
+    parent.children = values;
 
-    return values;
+    while (++index < length) {
+        results[index] = self.visit(values[index], parent);
+    }
+
+    return results;
 };
 
 /**
