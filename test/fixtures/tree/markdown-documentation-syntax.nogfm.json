@@ -9766,7 +9766,7 @@
       "children": [
         {
           "type": "text",
-          "value": "And then define the link:\n\t",
+          "value": "And then define the link:",
           "position": {
             "start": {
               "line": 633,
@@ -9774,13 +9774,11 @@
               "offset": 19470
             },
             "end": {
-              "line": 634,
-              "column": 2,
-              "offset": 19497
+              "line": 633,
+              "column": 26,
+              "offset": 19495
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         }
       ],
@@ -9791,13 +9789,11 @@
           "offset": 19470
         },
         "end": {
-          "line": 634,
-          "column": 2,
-          "offset": 19497
+          "line": 633,
+          "column": 26,
+          "offset": 19495
         },
-        "indent": [
-          1
-        ]
+        "indent": []
       }
     },
     {

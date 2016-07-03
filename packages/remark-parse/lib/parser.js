@@ -3475,7 +3475,13 @@ function tokenizeParagraph(eat, value, silent) {
             break;
         }
 
+        position = index;
         index = value.indexOf(C_NEWLINE, index + 1);
+
+        if (index !== -1 && trim(value.slice(position, index)) === EMPTY) {
+            index = position;
+            break;
+        }
     }
 
     subvalue = value.slice(0, index);
