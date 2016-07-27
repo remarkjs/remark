@@ -1,14 +1,12 @@
 /**
  * @author Titus Wormer
- * @copyright 2015-2016 Titus Wormer
+ * @copyright 2015 Titus Wormer
  * @license MIT
  * @module remark
  * @fileoverview Markdown processor powered by plugins.
  */
 
 'use strict';
-
-/* eslint-env commonjs */
 
 /* Dependencies. */
 var unified = require('unified');

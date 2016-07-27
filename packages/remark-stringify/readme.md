@@ -22,16 +22,16 @@ var toc = require('remark-toc');
 var stringify = require('remark-stringify');
 
 process.stdin
-    .pipe(unified())
-    .use(markdown)
-    .use(toc)
-    .use(html)
-    .pipe(process.stdout, {
-        'bullet': '*',
-        'fence': '~',
-        'fences': true,
-        'incrementListMarker': false
-    });
+  .pipe(unified())
+  .use(markdown)
+  .use(toc)
+  .use(html)
+  .pipe(process.stdout, {
+    bullet: '*',
+    fence: '~',
+    fences: true,
+    incrementListMarker: false
+  });
 ```
 
 ## Table of Contents

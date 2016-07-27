@@ -21,12 +21,10 @@ var markdown = require('remark-parse');
 var html = require('remark-html');
 
 process.stdin
-    .pipe(unified())
-    .use(markdown)
-    .use(html)
-    .pipe(process.stdout, {
-        'commonmark': true
-    });
+  .pipe(unified())
+  .use(markdown)
+  .use(html)
+  .pipe(process.stdout, {commonmark: true});
 ```
 
 ## Table of Contents

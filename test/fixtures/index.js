@@ -1,62 +1,54 @@
-'use strict';
-
-/* eslint-env node */
-
-/*
- * Dependencies.
+/**
+ * @author Titus Wormer
+ * @copyright 2015 Titus Wormer
+ * @license MIT
+ * @module remark
+ * @fileoverview Get fixtures.
  */
 
+'use strict';
+
+/* Dependencies. */
 var fs = require('fs');
 var path = require('path');
+var has = require('has');
 var camelcase = require('camelcase');
 var clone = require('clone');
 var parseDefaults = require('../../packages/remark-parse/lib/defaults.js');
 var stringifyDefaults = require('../../packages/remark-stringify/lib/defaults.js');
 
-/*
- * Methods.
- */
-
+/* Methods. */
 var read = fs.readFileSync;
 var exists = fs.existsSync;
 var stat = fs.statSync;
 var join = path.join;
 
 var defaults = {
-    'parse': parseDefaults,
-    'stringify': stringifyDefaults
-}
+  parse: parseDefaults,
+  stringify: stringifyDefaults
+};
 
 var typeMap = {
-    'true': 'all',
-    'false': 'physical'
+  true: 'all',
+  false: 'physical'
 };
 
 var TYPE = typeMap[Boolean(process.env.TEST_EXTENDED)];
 
-/*
- * Defaults.
- */
-
+/* Defaults. */
 var keys = Object.keys(defaults.parse);
 
-/*
- * Create a single source with all parse options turned
- * to their default values.
- */
-
+/* Create a single source with all parse options turned
+ * to their default values. */
 var sources = [keys.join('.')];
 
-/*
- * Create all possible `parse` values.
- */
-
+/* Create all possible `parse` values. */
 keys.forEach(function (key) {
-    sources = [].concat.apply(sources, sources.map(function (source) {
-        return source.split('.').map(function (subkey) {
-            return subkey === key ? 'no' + key : subkey;
-        }).join('.');
-    }));
+  sources = [].concat.apply(sources, sources.map(function (source) {
+    return source.split('.').map(function (subkey) {
+      return subkey === key ? 'no' + key : subkey;
+    }).join('.');
+  }));
 });
 
 /**
@@ -67,24 +59,21 @@ keys.forEach(function (key) {
  * @return {Object} - Parsed value.
  */
 function augment(key, value) {
+  if (!value) {
+    value = key.slice(0, 2) !== 'no';
+
     if (!value) {
-        value = key.slice(0, 2) !== 'no';
-
-        if (!value) {
-            key = key.slice(2);
-        }
+      key = key.slice(2);
     }
+  }
 
-    key = camelcase(key);
+  key = camelcase(key);
 
-    if (augment.hasOwnProperty(key)) {
-        value = augment[key](value);
-    }
+  if (has(augment, key)) {
+    value = augment[key](value);
+  }
 
-    return {
-        'key': key,
-        'value': value
-    };
+  return {key: key, value: value};
 }
 
 augment.ruleRepetition = Number;
@@ -96,87 +85,84 @@ augment.ruleRepetition = Number;
  * @return {Object} - Configuration.
  */
 function parseOptions(name) {
-    var index = -1;
-    var parts = name.split('.');
-    var results = [];
-    var length = parts.length;
-    var options = clone(defaults);
-    var part;
-    var augmented;
-    var key;
-    var value;
+  var index = -1;
+  var parts = name.split('.');
+  var results = [];
+  var length = parts.length;
+  var options = clone(defaults);
+  var part;
+  var augmented;
+  var key;
+  var value;
 
-    while (++index < length) {
-        part = parts[index].split('=');
-        augmented = augment(part[0], part.slice(1).join('='));
-        key = augmented.key;
-        value = augmented.value;
+  while (++index < length) {
+    part = parts[index].split('=');
+    augmented = augment(part[0], part.slice(1).join('='));
+    key = augmented.key;
+    value = augmented.value;
 
-        if (key === 'output') {
-            options[key] = value;
-        } else {
-            if (key in defaults.parse && value !== options.parse[key]) {
-                options.parse[key] = value;
+    if (key === 'output') {
+      options[key] = value;
+    } else {
+      if (key in defaults.parse && value !== options.parse[key]) {
+        options.parse[key] = value;
 
-                results.push(parts[index]);
-            }
+        results.push(parts[index]);
+      }
 
-            if (
-                key in defaults.stringify &&
-                value !== options.stringify[key]
-            ) {
-                options.stringify[key] = value;
+      if (
+        key in defaults.stringify &&
+        value !== options.stringify[key]
+      ) {
+        options.stringify[key] = value;
 
-                // Protect common options from `parse` and `stringify` from
-                // appearing twice.
-                if (results.indexOf(parts[index]) < 0) {
-                    results.push(parts[index]);
-                }
-            }
+        // Protect common options from `parse` and `stringify` from
+        // appearing twice.
+        if (results.indexOf(parts[index]) < 0) {
+          results.push(parts[index]);
         }
+      }
     }
+  }
 
-    options.source = results.join('.');
+  options.source = results.join('.');
 
-    return options;
+  return options;
 }
 
-/*
- * Cache all possible options.
+/* Cache all possible options.
  *
  * Virtual options are generated when no fixtures exist,
  * whereas physical options are only used whn a file
- * exists.
- */
-
+ * exists. */
 var virtual = {};
 var physical = {};
 var all = {};
 
 sources.forEach(function (source) {
-    var options = parseOptions(source);
+  var options = parseOptions(source);
 
-    source = options.source;
+  source = options.source;
 
-    /*
-     * Breaks are such a tiny feature, but almost
-     * certainly result in duplicate fixtures,
-     * that I've ignored it for the virtual
-     * options.
-     *
-     * Same for `position`.
-     */
+  /*
+   * Breaks are such a tiny feature, but almost
+   * certainly result in duplicate fixtures,
+   * that I've ignored it for the virtual
+   * options.
+   *
+   * Same for `position`.
+   */
 
-    if (
-        options.parse.breaks !== defaults.parse.breaks ||
-        options.parse.position !== defaults.parse.position
-    ) {
-        physical[source] = options.parse;
-    } else {
-        virtual[source] = options.parse;
-    }
+  if (
+    options.parse.breaks !== defaults.parse.breaks ||
+    options.parse.position !== defaults.parse.position
+  ) {
+    physical[source] = options.parse;
+  } else {
+    virtual[source] = options.parse;
+  }
 
-    all[source] = options.parse;
+  all[source] = options.parse;
 });
 
 /**
@@ -190,15 +176,15 @@ sources.forEach(function (source) {
  * @return {number} - Difference.
  */
 function difference(options, compare) {
-    var count = 0;
+  var count = 0;
 
-    Object.keys(options).forEach(function (key) {
-        if (options[key] !== compare[key]) {
-            count++;
-        }
-    });
+  Object.keys(options).forEach(function (key) {
+    if (options[key] !== compare[key]) {
+      count++;
+    }
+  });
 
-    return count;
+  return count;
 }
 
 /**
@@ -211,20 +197,20 @@ function difference(options, compare) {
  * @return {string} - Resolved file-name.
  */
 function resolveFixture(source, fixtures, options) {
-    var minimum = Infinity;
-    var resolved;
-    var offset;
+  var minimum = Infinity;
+  var resolved;
+  var offset;
 
-    Object.keys(fixtures).forEach(function (key) {
-        offset = difference(options[source], options[key]);
+  Object.keys(fixtures).forEach(function (key) {
+    offset = difference(options[source], options[key]);
 
-        if (offset < minimum) {
-            minimum = offset;
-            resolved = key;
-        }
-    });
+    if (offset < minimum) {
+      minimum = offset;
+      resolved = key;
+    }
+  });
 
-    return resolved;
+  return resolved;
 }
 
 /**
@@ -236,85 +222,80 @@ function resolveFixture(source, fixtures, options) {
  * @return {Object} - Resolved fixtures.
  */
 function resolveFixtures(fixtures, options) {
-    var resolved = {};
+  var resolved = {};
 
-    Object.keys(options).forEach(function (source) {
-        resolved[source] = resolveFixture(source, fixtures, options);
-    });
+  Object.keys(options).forEach(function (source) {
+    resolved[source] = resolveFixture(source, fixtures, options);
+  });
 
-    return resolved;
+  return resolved;
 }
 
-/*
- * Gather fixtures.
- */
+/* Gather fixtures. */
+var tests = fs
+  .readdirSync(join(__dirname, 'input'))
+  .filter(function (filepath) {
+    return filepath.indexOf('.') !== 0;
+  })
+  .map(function (filepath) {
+    var filename = filepath.split('.').slice(0, -1);
+    var name = filename.join('.');
+    var settings = parseOptions(name);
+    var input = read(join(__dirname, 'input', filepath), 'utf-8');
+    var fixtures = {};
+    var possibilities = {};
+    var resolved;
 
-var tests = fs.readdirSync(join(__dirname, 'input'))
-    .filter(function (filepath) {
-        return filepath.indexOf('.') !== 0;
-    }).map(function (filepath) {
-        var filename = filepath.split('.').slice(0, -1);
-        var name = filename.join('.');
-        var settings = parseOptions(name);
-        var input = read(join(__dirname, 'input', filepath), 'utf-8');
-        var fixtures = {};
-        var possibilities = {};
-        var resolved;
+    Object.keys(all).forEach(function (source) {
+      var treename;
+      var tree;
 
-        Object.keys(all).forEach(function (source) {
-            var treename;
-            var tree;
+      treename = [
+        filename.join('.'),
+        source ? '.' + source : '',
+        '.json'
+      ].join('');
 
-            treename = [
-                filename.join('.'),
-                source ? '.' + source : '',
-                '.json'
-            ].join('');
+      tree = join(__dirname, 'tree', treename);
 
-            tree = join(__dirname, 'tree', treename);
+      if (exists(tree)) {
+        fixtures[source] = JSON.parse(read(tree, 'utf-8'));
 
-            if (exists(tree)) {
-                fixtures[source] = JSON.parse(read(tree, 'utf-8'));
+        possibilities[source] = all[source];
+      } else if (
+        TYPE === typeMap.true &&
+        source in virtual &&
+        !settings.output
+      ) {
+        possibilities[source] = all[source];
+      }
+    });
 
-                possibilities[source] = all[source];
-            } else if (
-                TYPE === typeMap.true &&
-                source in virtual &&
-                !settings.output
-            ) {
-                possibilities[source] = all[source];
-            }
-        });
-
-        if (!Object.keys(fixtures).length) {
-            throw new Error('Missing fixture for `' + name + '`');
-        }
-
-        resolved = resolveFixtures(fixtures, possibilities);
-
-        if (settings.output) {
-            if (Object.keys(fixtures).length > 1) {
-                throw new Error(
-                    'Multiple fixtures for output `' + name + '`'
-                );
-            }
-        }
-
-        return {
-            'input': input,
-            'possibilities': possibilities,
-            'mapping': resolved,
-            'trees': fixtures,
-            'stringify': settings.stringify,
-            'output': settings.output,
-            'size': stat(join(__dirname, 'input', filepath)).size,
-            'name': name
-        };
+    if (!Object.keys(fixtures).length) {
+      throw new Error('Missing fixture for `' + name + '`');
     }
-);
 
-/*
- * Expose tests.
- */
+    resolved = resolveFixtures(fixtures, possibilities);
 
+    if (settings.output) {
+      if (Object.keys(fixtures).length > 1) {
+        throw new Error(
+          'Multiple fixtures for output `' + name + '`'
+        );
+      }
+    }
+
+    return {
+      input: input,
+      possibilities: possibilities,
+      mapping: resolved,
+      trees: fixtures,
+      stringify: settings.stringify,
+      output: settings.output,
+      size: stat(join(__dirname, 'input', filepath)).size,
+      name: name
+    };
+  });
+
+/* Expose tests. */
 module.exports = tests;

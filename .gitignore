@@ -3,5 +3,5 @@
 *.log
 node_modules
 coverage
-remark.js
-remark.min.js
+/remark.js
+/remark.min.js

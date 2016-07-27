@@ -155,23 +155,20 @@ var html = require('remark-html');
 var report = require('vfile-reporter');
 
 remark().use(lint).use(html).process('## Hello world!', function (err, file) {
-    file.filename = 'example';
-    file.extension = 'md';
-    console.log(file.toString());
-    console.error(report(file));
+  console.error(report(err || file));
+  console.log(String(file));
 });
 ```
 
 `node index.js` yields:
 
 ```txt
-<h2>Hello world!</h2>
-example.md:
         1:1  warning  Missing newline character at end of file  final-newline
    1:1-1:16  warning  First heading level should be `1`         first-heading-level
    1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
 
 ⚠ 3 warnings
+<h2>Hello world!</h2>
 ```
 
 <!-- Definitions -->

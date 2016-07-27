@@ -28,15 +28,14 @@ var html = require('remark-html');
 var report = require('vfile-reporter');
 
 remark().use(lint).use(html).process('## Hello world!', function (err, file) {
-    console.error(report(file));
-    console.log(file.toString());
+  console.error(report(err || file));
+  console.log(String(file));
 });
 ```
 
 Yields:
 
 ```txt
-<stdin>
         1:1  warning  Missing newline character at end of file  final-newline
    1:1-1:16  warning  First heading level should be `1`         first-heading-level
    1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
