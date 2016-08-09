@@ -51,6 +51,8 @@ See [plug-ins][plugins] for a list of plugins and utilities.
     — 😱 Modern website generator;
 *   [`mapbox/retext-mapbox-standard`](https://github.com/mapbox/retext-mapbox-standard)
     — Enforce Mapbox rules about language.
+*   [`sindresorhus/awesome-lint`](https://github.com/sindresorhus/awesome-lint)
+    — 😎 Linter for Awesome lists.
 
 <!--Definitions:-->
 
