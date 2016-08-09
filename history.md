@@ -2,6 +2,17 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+5.1.0 / 2016-08-09
+==================
+
+*   Fix white-space only lines to be seen as blank lines ([`f919648`](https://github.com/wooorm/remark/commit/f919648))
+*   Fix link escaping ([`fd77939`](https://github.com/wooorm/remark/commit/fd77939))
+*   Fix link parsing algorithm’s handling of brackets ([`7460933`](https://github.com/wooorm/remark/commit/7460933))
+*   Fix escaping of loose links in GFM ([`58a7036`](https://github.com/wooorm/remark/commit/58a7036))
+*   Add support for spaced gfm links ([`1617a6c`](https://github.com/wooorm/remark/commit/1617a6c))
+*   Fix incorrect setext detection algorithm ([`52e4e80`](https://github.com/wooorm/remark/commit/52e4e80))
+*   Fix when list-item markers interrupt paragraphs ([`97b2e12`](https://github.com/wooorm/remark/commit/97b2e12))
+
 5.0.0 / 2016-06-12
 ==================
 
