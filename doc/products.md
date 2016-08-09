@@ -2,7 +2,7 @@
 
 # Products
 
-List of tools built with remark [**remark**][remark] internally.
+List of tools using remark [**remark**][remark] internally.
 
 See [plug-ins][plugins] for a list of plugins and utilities.
 
@@ -12,10 +12,12 @@ See [plug-ins][plugins] for a list of plugins and utilities.
 
 ### Integrations
 
-*   [`AtomLinter/linter-markdown`](https://github.com/AtomLinter/linter-markdown)
-    — Lint markdown files within [Atom](https://github.com/atom/atom);
+*   [`wooorm/linter-remark`](https://github.com/wooorm/linter-remark)
+    — [Atom](https://github.com/atom/atom) linter;
 *   [`denysdovhan/gulp-remark`](https://github.com/denysdovhan/gulp-remark)
     — [Gulp](https://github.com/gulpjs/gulp) plugin;
+*   [`ChristianMurphy/grunt-remark`](https://github.com/ChristianMurphy/grunt-remark)
+    — [Grunt](https://github.com/gruntjs/grunt) plugin;
 *   [`ben-eb/metalsmith-remark`](https://github.com/ben-eb/metalsmith-remark)
     — [Metalsmith](https://github.com/metalsmith/metalsmith) plugin;
 *   [`eslint/eslint-plugin-markdown`](https://github.com/eslint/eslint-plugin-markdown)
@@ -51,6 +53,8 @@ See [plug-ins][plugins] for a list of plugins and utilities.
     — 😱 Modern website generator;
 *   [`mapbox/retext-mapbox-standard`](https://github.com/mapbox/retext-mapbox-standard)
     — Enforce Mapbox rules about language.
+*   [`Shopify/rorybot`](https://github.com/Shopify/rorybot)
+    — Catch writing that doesn't follow Shopify style guide rules.
 *   [`sindresorhus/awesome-lint`](https://github.com/sindresorhus/awesome-lint)
     — 😎 Linter for Awesome lists.
 
