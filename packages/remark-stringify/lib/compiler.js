@@ -699,6 +699,7 @@ function escapeFactory(options) {
             ) {
                 afterNewLine = false;
 
+                /* istanbul ignore if */
                 if (commonmark) {
                     queue.push(BACKSLASH);
                 } else {

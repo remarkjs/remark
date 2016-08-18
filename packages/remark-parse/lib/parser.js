@@ -2516,7 +2516,6 @@ function tokenizeBlockHTML(eat, value, silent) {
     var length = value.length;
     var subvalue = EMPTY;
     var offset;
-    var lineCount;
     var character;
     var queue;
 
@@ -2566,7 +2565,6 @@ function tokenizeBlockHTML(eat, value, silent) {
 
         if (character === C_NEWLINE) {
             queue += character;
-            lineCount++;
         } else if (queue.length < MIN_CLOSING_HTML_NEWLINE_COUNT) {
             subvalue += queue + character;
             queue = EMPTY;
@@ -4427,7 +4425,6 @@ function tokenizeLink(eat, value, silent) {
     var beforeURL;
     var beforeTitle;
     var subqueue;
-    var openCount;
     var hasMarker;
     var markers;
     var isImage;
@@ -4576,7 +4573,6 @@ function tokenizeLink(eat, value, silent) {
 
     character = value.charAt(index);
     markers = commonmark ? COMMONMARK_LINK_MARKERS : LINK_MARKERS;
-    openCount = 0;
     queue = EMPTY;
     beforeURL = subvalue;
 
@@ -4626,7 +4622,6 @@ function tokenizeLink(eat, value, silent) {
             } else {
                 if (character === C_PAREN_OPEN) {
                     depth++;
-                    openCount++;
                 } else if (character === C_PAREN_CLOSE) {
                     if (depth === 0) {
                         break;
