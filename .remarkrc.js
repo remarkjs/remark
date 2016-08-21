@@ -33,3 +33,6 @@ module.exports = {
     'bullet': '*'
   }
 };
+
+/* Remove when everything’s updated. */
+module.exports = {};
