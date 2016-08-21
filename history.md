@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+n.n.n / 2016-08-21
+==================
+
+*   Add support for presets, better vfile’s, more ([`24c6890`](https://github.com/wooorm/remark/commit/24c6890))
+*   Refactor code-style to use `xo` ([`904aaee`](https://github.com/wooorm/remark/commit/904aaee))
+
 5.1.0 / 2016-08-09
 ==================
 
