@@ -17,7 +17,7 @@
     "execa": "^0.4.0",
     "extend": "^3.0.0",
     "has": "^1.0.1",
-    "lerna": "2.0.0-beta.20",
+    "lerna": "2.0.0-beta.26",
     "mdast-util-assert": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
     "nyc": "^8.0.0",
@@ -31,7 +31,7 @@
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
     "unist-util-visit": "^1.1.0",
-    "vfile": "^1.4.0",
+    "vfile": "^2.0.0",
     "xo": "^0.16.0"
   },
   "nyc": {

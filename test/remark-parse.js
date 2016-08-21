@@ -12,7 +12,7 @@
 var path = require('path');
 var fs = require('fs');
 var test = require('tape');
-var VFile = require('vfile');
+var vfile = require('vfile');
 var remark = require('../packages/remark');
 
 /* Test `remark-parse`. */
@@ -115,7 +115,7 @@ test('remark().parse(file, options?)', function (t) {
     var processor = remark();
     var proto = processor.Parser.prototype;
     var methods = proto.inlineMethods;
-    var file = new VFile('Hello *World*!');
+    var file = vfile('Hello *World*!');
 
     /* Tokenizer. */
     function noop() {}
@@ -123,22 +123,21 @@ test('remark().parse(file, options?)', function (t) {
     proto.inlineTokenizers.foo = noop;
     methods.splice(methods.indexOf('inlineText'), 0, 'foo');
 
-    file.quiet = true;
-    processor.parse(file);
-
-    st.equal(String(file.messages[0]), '1:1: Missing locator: `foo`');
+    st.throws(
+      function () {
+        processor.parse(file);
+      },
+      /1:1: Missing locator: `foo`/
+    );
 
     st.end();
   });
 
   t.test('should warn about entities', function (st) {
     var filePath = path.join('test', 'fixtures', 'input', 'entities-advanced.text');
-    var doc = fs.readFileSync(filePath, 'utf8');
-    var file = new VFile(doc);
+    var file = vfile(fs.readFileSync(filePath));
     var notTerminated = 'Named character references must be ' +
       'terminated by a semicolon';
-
-    file.quiet = true;
 
     remark().process(file);
 

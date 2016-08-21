@@ -158,10 +158,6 @@ function factory(type) {
       /* istanbul ignore if */
       if (!matched) {
         self.file.fail('Infinite loop', eat.now());
-
-        /* Errors are not thrown on `File#fail`
-         * when `quiet: true`. */
-        break;
       }
     }
 

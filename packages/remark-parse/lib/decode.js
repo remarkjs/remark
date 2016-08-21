@@ -63,7 +63,7 @@ function factory(ctx) {
       return;
     }
 
-    ctx.file.warn(reason, position);
+    ctx.file.message(reason, position);
   }
 
   /**

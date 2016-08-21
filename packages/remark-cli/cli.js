@@ -26,6 +26,7 @@ start({
     cli.name + ': ' + cli.version
   ].join(', '),
   pluginPrefix: proc.name,
+  presetPrefix: proc.name + '-preset',
   packageField: proc.name + 'Config',
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',

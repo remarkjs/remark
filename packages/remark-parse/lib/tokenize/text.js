@@ -55,7 +55,6 @@ function text(eat, value, silent) {
 
     if (!tokenizer) {
       eat.file.fail('Missing locator: `' + name + '`');
-      continue;
     }
 
     position = tokenizer.call(self, value, 1);
