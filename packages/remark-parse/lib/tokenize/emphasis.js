@@ -70,6 +70,7 @@ function emphasis(eat, value, silent) {
         }
 
         if (!pedantic && marker === C_UNDERSCORE && word(character)) {
+          queue += marker;
           continue;
         }
 
