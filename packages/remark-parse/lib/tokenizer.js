@@ -157,7 +157,7 @@ function factory(type) {
 
       /* istanbul ignore if */
       if (!matched) {
-        self.file.fail('Infinite loop', eat.now());
+        self.file.fail(new Error('Infinite loop'), eat.now());
       }
     }
 
@@ -283,9 +283,13 @@ function factory(type) {
     function validateEat(subvalue) {
       /* istanbul ignore if */
       if (value.substring(0, subvalue.length) !== subvalue) {
+        /* Capture stack-trace. */
         self.file.fail(
-          'Incorrectly eaten value: please report this ' +
-          'warning on http://git.io/vg5Ft', now()
+          new Error(
+            'Incorrectly eaten value: please report this ' +
+            'warning on http://git.io/vg5Ft'
+          ),
+          now()
         );
       }
     }

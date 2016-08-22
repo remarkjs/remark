@@ -25,8 +25,10 @@ function one(node, parent) {
   /* Fail on unknown nodes. */
   if (typeof visitors[node.type] !== 'function') {
     self.file.fail(
-      'Missing compiler for node of type `' +
-      node.type + '`: `' + node + '`',
+      new Error(
+        'Missing compiler for node of type `' +
+        node.type + '`: `' + node + '`'
+      ),
       node
     );
   }
