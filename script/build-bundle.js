@@ -35,11 +35,7 @@ var comment = [
 var input = path.join.bind(null, __dirname, '..', 'packages', 'remark');
 var output = path.join.bind(null, __dirname, '..');
 
-var opts = {
-  standalone: pack.name,
-  detectGlobals: false,
-  insertGlobals: ['process', 'global', '__filename', '__dirname']
-};
+var opts = {standalone: pack.name};
 
 browserify(input('index.js'), opts).bundle(function (err, buf) {
   bail(err);
