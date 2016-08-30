@@ -239,7 +239,7 @@ var tests = fs
   })
   .map(function (filepath) {
     var filename = filepath.split('.').slice(0, -1);
-    var name = filename.join('.');
+    var name = filename.join('.').replace('-asterick-', '*');
     var settings = parseOptions(name);
     var input = read(join(__dirname, 'input', filepath), 'utf-8');
     var fixtures = {};
