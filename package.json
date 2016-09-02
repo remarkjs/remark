@@ -34,12 +34,6 @@
     "vfile": "^2.0.0",
     "xo": "^0.16.0"
   },
-  "nyc": {
-    "check-coverage": true,
-    "lines": 100,
-    "functions": 100,
-    "branches": 100
-  },
   "scripts": {
     "postinstall": "lerna bootstrap",
     "build-md": "packages/remark-cli/cli.js . --frail --quiet",
@@ -51,6 +45,12 @@
     "test-cli": "node test/cli.js",
     "test-coverage": "nyc --reporter lcov tape test",
     "test": "npm run build && npm run lint && npm run test-coverage"
+  },
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100
   },
   "xo": {
     "space": true,
