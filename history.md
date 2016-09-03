@@ -2,7 +2,16 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
-n.n.n / 2016-08-21
+6.0.1 / 2016-09-03
+==================
+
+*   Fix bug when installing both CLI and API as siblings ([`13719de`](https://github.com/wooorm/remark/commit/13719de))
+*   Rename fixtures with `*` in path to use asterisk ([`80dc0c3`](https://github.com/wooorm/remark/commit/80dc0c3))
+*   Fix browser build ([`414e775`](https://github.com/wooorm/remark/commit/414e775))
+*   Fix bug on emphasis and underscores in words ([`0c3eeff`](https://github.com/wooorm/remark/commit/0c3eeff))
+*   Add proper stack-traces to fatal errors ([`8ad6df4`](https://github.com/wooorm/remark/commit/8ad6df4))
+
+6.0.0 / 2016-08-21
 ==================
 
 *   Add support for presets, better vfile’s, more ([`24c6890`](https://github.com/wooorm/remark/commit/24c6890))
