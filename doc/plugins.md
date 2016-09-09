@@ -125,7 +125,7 @@ functionality and include `"remark"` in the list.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/master/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
 
 [plugins]: #list-of-plugins
 

@@ -173,7 +173,7 @@ remark().use(lint).use(html).process('## Hello world!', function (err, file) {
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/master/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
 
 [issues]: https://github.com/wooorm/remark/issues
 
