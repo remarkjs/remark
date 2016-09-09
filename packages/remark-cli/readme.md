@@ -47,6 +47,7 @@ Options:
   -s  --setting <settings>  specify settings
   -e  --ext <extensions>    specify extensions
   -u  --use <plugins>       use plugins
+  -p  --preset <presets>    use presets
   -w  --watch               watch for changes and reprocess
   -q  --quiet               output only warnings and errors
   -S  --silent              output only errors
