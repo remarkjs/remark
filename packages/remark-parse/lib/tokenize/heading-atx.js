@@ -55,7 +55,6 @@ function atxHeading(eat, value, silent) {
 
   /* Eat hashes. */
   depth = 0;
-  length = index + MAX_ATX_COUNT + 1;
 
   while (++index <= length) {
     character = value.charAt(index);
@@ -67,6 +66,10 @@ function atxHeading(eat, value, silent) {
 
     subvalue += character;
     depth++;
+  }
+
+  if (depth > MAX_ATX_COUNT) {
+    return;
   }
 
   if (
