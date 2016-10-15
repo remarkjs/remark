@@ -157,6 +157,8 @@ function validateString(context, name, def, map) {
     value = def;
   }
 
+  value = String(value);
+
   if (!(value in map)) {
     raise(value, 'options.' + name);
   }
