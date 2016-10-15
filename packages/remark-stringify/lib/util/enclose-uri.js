@@ -40,7 +40,7 @@ var re = /\s/;
  * @return {boolean} - Properly enclosed `uri`.
  */
 function enclose(uri, always) {
-  if (always || !uri.length || re.test(uri) || count(uri, '(') !== count(uri, ')')) {
+  if (always || uri.length === 0 || re.test(uri) || count(uri, '(') !== count(uri, ')')) {
     return '<' + uri + '>';
   }
 

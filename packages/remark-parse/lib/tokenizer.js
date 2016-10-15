@@ -395,7 +395,7 @@ function factory(type) {
         children.push(node);
       }
 
-      if (self.atStart && tokens.length) {
+      if (self.atStart && tokens.length !== 0) {
         self.exitStart();
       }
 

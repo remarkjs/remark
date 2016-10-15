@@ -295,7 +295,7 @@ function list(eat, value, silent) {
       allLines = allLines.concat(emptyLines, line);
       emptyLines = [];
     } else if (prefixed) {
-      if (emptyLines.length) {
+      if (emptyLines.length !== 0) {
         item.value.push('');
         item.trail = emptyLines.concat();
       }

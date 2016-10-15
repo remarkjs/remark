@@ -183,7 +183,7 @@ function match(value, isBlock) {
         index++;
 
         if (!test.delimiter) {
-          if (!subqueue.length) {
+          if (subqueue.length === 0) {
             return;
           }
 

@@ -164,7 +164,7 @@ function footnoteDefinition(eat, value, silent) {
         index++;
       }
 
-      if (!subqueue.length) {
+      if (subqueue.length === 0) {
         break;
       }
 

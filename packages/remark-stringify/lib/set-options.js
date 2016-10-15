@@ -22,10 +22,10 @@ module.exports = setOptions;
 var maps = {
   entities: {true: true, false: true, numbers: true, escape: true},
   bullet: {'*': true, '-': true, '+': true},
-  rule: {'-': true, '_': true, '*': true},
+  rule: {'-': true, _: true, '*': true},
   listItemIndent: {tab: true, mixed: true, 1: true},
-  emphasis: {'_': true, '*': true},
-  strong: {'_': true, '*': true},
+  emphasis: {_: true, '*': true},
+  strong: {_: true, '*': true},
   fence: {'`': true, '~': true}
 };
 

@@ -56,7 +56,7 @@ browserify(input('index.js'), opts)
 
     bail(err);
 
-    ast = esmangle.mangle(esmangle.optimize(esprima.parse(buf, {
+    ast = esmangle.mangle(esmangle.optimize(esprima.parse(String(buf), {
       loc: true,
       range: true,
       raw: true,

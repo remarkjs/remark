@@ -98,7 +98,7 @@ function atxHeading(eat, value, silent) {
   /* Exit when not in pedantic mode without spacing. */
   if (
     !settings.pedantic &&
-    !queue.length &&
+    queue.length === 0 &&
     character &&
     character !== C_NEWLINE
   ) {
