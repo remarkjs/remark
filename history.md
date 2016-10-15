@@ -2,6 +2,12 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+6.1.0 / 2016-10-15
+==================
+
+*   Add support for passing `1` to `list-item-indent` ([`6495262`](https://github.com/wooorm/remark/commit/6495262))
+*   Fix parsing of ATX-like paragraph with 8 hashes ([`9d81d0c`](https://github.com/wooorm/remark/commit/9d81d0c))
+
 6.0.1 / 2016-09-03
 ==================
 
