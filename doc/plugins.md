@@ -25,11 +25,19 @@ See [tools built with remark »][products].
 *   [`wooorm/remark-comment-config`](https://github.com/wooorm/remark-comment-config)
     — Configure remark with comments;
 *   [`hughsk/remark-contributors`](https://github.com/hughsk/remark-contributors)
-    — Inject a given list of contributors into a table in a document;
+    — Inject a given table of contributors;
 *   [`eush77/remark-defsplit`](https://github.com/eush77/remark-defsplit)
     — Extract inline link and image destinations as separate definitions;
+*   [`rhysd/remark-emoji`](https://github.com/rhysd/remark-emoji)
+    — Transform unicode emoji to Gemoji shortcodes;
+*   [`jackycute/remark-emoji-to-gemoji`](https://github.com/jackycute/remark-emoji-to-gemoji)
+    — Transform Gemoji shortcodes to unicode emoji;
 *   [`laat/remark-first-heading`](https://github.com/laat/remark-first-heading)
     — Replacing the first heading in a document;
+*   [`wooorm/remark-gemoji`](https://github.com/wooorm/remark-gemoji)
+    — Gemoji short-code support in remark;
+*   [`jackycute/remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
+    — Transform Gemoji shortcodes to Unicode emoji;
 *   [`wooorm/remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments;
 *   [`ben-eb/remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
@@ -39,8 +47,12 @@ See [tools built with remark »][products].
     [highlight.js](https://github.com/isagalaev/highlight.js);
 *   [`wooorm/remark-html`](https://github.com/wooorm/remark-html)
     — Compile Markdown to HTML documents;
+*   [`jackycute/remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
+    — Transform unicode emoji to HTML images;
 *   [`wooorm/remark-inline-links`](https://github.com/wooorm/remark-inline-links)
-    — Transform references and definitions into normal links and images;
+    — Transform references and definitions to normal links and images;
+*   [`bizen241/remark-inline-math`](https://github.com/bizen241/remark-inline-math)
+    — Inline math support;
 *   [`wooorm/remark-license`](https://github.com/wooorm/remark-license)
     — Add a license section;
 *   [`wooorm/remark-lint`](https://github.com/wooorm/remark-lint)
@@ -55,12 +67,18 @@ See [tools built with remark »][products].
     — Ensure at most one top-level heading is in the document
 *   [`mapbox/remark-react`](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react);
+*   [`bebraw/remark-react-lowlight`](https://github.com/bebraw/remark-react-lowlight)
+    — Syntax highlighting for
+    [remark-react](https://github.com/mapbox/remark-react) through
+    [lowlight](https://github.com/wooorm/lowlight);
 *   [`wooorm/remark-reference-links`](https://github.com/wooorm/remark-reference-links)
-    — Transform links and images into references and definitions;
+    — Transform links and images to references and definitions;
 *   [`wooorm/remark-rehype`](https://github.com/wooorm/remark-rehype)
     — [rehype](https://github.com/wooorm/rehype) support;
 *   [`wooorm/remark-retext`](https://github.com/wooorm/remark-retext)
     — [retext](https://github.com/wooorm/retext) support;
+*   [`strugee/remark-rewrite-headers`](https://github.com/strugee/remark-rewrite-headers)
+    — Change heading levels;
 *   [`wooorm/remark-slug`](https://github.com/wooorm/remark-slug)
     — Add slugs to headings;
 *   [`wooorm/remark-strip-badges`](https://github.com/wooorm/remark-strip-badges)
