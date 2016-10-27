@@ -37,6 +37,7 @@ var TYPE = typeMap[Boolean(process.env.TEST_EXTENDED)];
 
 /* Defaults. */
 var keys = Object.keys(defaults.parse);
+keys.splice(keys.indexOf('blocks'), 1);
 
 /* Create a single source with all parse options turned
  * to their default values. */
@@ -150,12 +151,13 @@ sources.forEach(function (source) {
    * that I've ignored it for the virtual
    * options.
    *
-   * Same for `position`.
+   * Same for `position`, and `blocks`.
    */
 
   if (
     options.parse.breaks !== defaults.parse.breaks ||
-    options.parse.position !== defaults.parse.position
+    options.parse.position !== defaults.parse.position ||
+    options.parse.blocks !== defaults.parse.blocks
   ) {
     physical[source] = options.parse;
   } else {

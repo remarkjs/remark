@@ -37,6 +37,7 @@ var MIN_CLOSING_HTML_NEWLINE_COUNT = 2;
  */
 function blockHTML(eat, value, silent) {
   var self = this;
+  var blocks = self.options.blocks;
   var index = 0;
   var length = value.length;
   var subvalue = '';
@@ -64,8 +65,8 @@ function blockHTML(eat, value, silent) {
     cdata(value) ||
     instruction(value) ||
     declaration(value) ||
-    closing(value, true) ||
-    opening(value, true);
+    closing(value, blocks) ||
+    opening(value, blocks);
 
   if (!queue) {
     return;

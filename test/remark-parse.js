@@ -79,6 +79,30 @@ test('remark().parse(file, options?)', function (t) {
     'should throw when `options.yaml` is not a boolean'
   );
 
+  t.deepEqual(
+    remark().parse('<foo></foo>', {position: false}),
+    {
+      type: 'root',
+      children: [{
+        type: 'paragraph',
+        children: [
+          {type: 'html', value: '<foo>'},
+          {type: 'html', value: '</foo>'}
+        ]
+      }]
+    },
+    'should work without `blocks`'
+  );
+
+  t.deepEqual(
+    remark().parse('<foo></foo>', {blocks: ['foo'], position: false}),
+    {
+      type: 'root',
+      children: [{type: 'html', value: '<foo></foo>'}]
+    },
+    'should support given `blocks`'
+  );
+
   t.test('should throw parse errors', function (st) {
     var processor = remark();
     var message = 'Found it!';

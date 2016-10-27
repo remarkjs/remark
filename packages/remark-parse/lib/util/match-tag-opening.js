@@ -12,7 +12,6 @@
 var alphabetical = require('is-alphabetical');
 var decimal = require('is-decimal');
 var whitespace = require('is-whitespace-character');
-var blockElements = require('../block-elements.json');
 
 /* Expose. */
 module.exports = match;
@@ -29,12 +28,12 @@ var C_EQUALS = '=';
  * Try to match a closing tag.
  *
  * @param {string} value - Value to parse.
- * @param {boolean?} [isBlock] - Whether the tag-name
- *   must be a known block-level node to match.
+ * @param {Array.<string>?} [blocks] - Known block tag-names,
+ *   which must be matched if given.
  * @return {string?} - When applicable, the closing tag at
  *   the start of `value`.
  */
-function match(value, isBlock) {
+function match(value, blocks) {
   var index = 0;
   var length = value.length;
   var queue = '';
@@ -66,7 +65,7 @@ function match(value, isBlock) {
       index++;
     }
 
-    if (isBlock && blockElements.indexOf(subqueue.toLowerCase()) === -1) {
+    if (blocks && blocks.indexOf(subqueue.toLowerCase()) === -1) {
       return;
     }
 

@@ -64,6 +64,7 @@ The following settings are supported:
 *   [`footnotes`][options-footnotes] (`boolean`, default: `false`);
 *   [`pedantic`][options-pedantic] (`boolean`, default: `false`);
 *   [`breaks`][options-breaks] (`boolean`, default: `false`).
+*   [`blocks`][options-blocks] (`Array.<string>`, default: list of block HTML elements);
 
 ##### `options.gfm`
 
@@ -144,6 +145,16 @@ paragraph.
 
 Breaks mode (default: `false`) exposes newline characters inside
 paragraphs as breaks.
+
+##### `options.blocks`
+
+```md
+<block>foo
+</block>
+```
+
+Blocks (default: a list of HTML block elements) exposes
+let’s users define block-level HTML elements.
 
 ##### `options.pedantic`
 
@@ -420,6 +431,8 @@ The given `node`.
 [options-pedantic]: #optionspedantic
 
 [options-breaks]: #optionsbreaks
+
+[options-blocks]: #optionsblocks
 
 [parser]: https://github.com/wooorm/unified#processorparser
 

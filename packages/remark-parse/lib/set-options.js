@@ -53,7 +53,10 @@ function setOptions(options) {
       value = current[key];
     }
 
-    if (typeof value !== 'boolean') {
+    if (
+      (key !== 'blocks' && typeof value !== 'boolean') ||
+      (key === 'blocks' && typeof value !== 'object')
+    ) {
       throw new Error(
         'Invalid value `' + value + '` ' +
         'for setting `options.' + key + '`'
