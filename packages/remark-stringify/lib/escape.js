@@ -131,10 +131,14 @@ function factory(options) {
           }
 
           if (markers.indexOf(value.charAt(offset)) !== -1) {
-            queue.push(value.slice(position, offset));
-            position = offset;
-            character = value.charAt(position);
-            replace = true;
+            next = value.charAt(offset + 1);
+
+            if (!next || next === ' ' || next === '\t' || next === '\n') {
+              queue.push(value.slice(position, offset));
+              position = offset;
+              character = value.charAt(position);
+              replace = true;
+            }
           }
         }
       }

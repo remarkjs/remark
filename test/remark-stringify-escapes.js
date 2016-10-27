@@ -105,19 +105,43 @@ test('stringify escapes', function (t) {
   t.equal(stringify(u('strong', [u('text', '\n'), u('text', '+b')])), '**\n\\+b**', '`+` (after newline)');
 
   t.equal(stringify('.a'), '.a', '`.`');
-  t.equal(stringify('1.a'), '1\\.a', '`.` (without parent)');
-  t.equal(stringify(u('paragraph', [u('text', '1.a')])), '1\\.a', '`1.` (in paragraph)');
+  t.equal(stringify('1.a'), '1.a', '`.` (without parent, without space)');
+  t.equal(stringify('1. '), '1\\. ', '`.` (without parent, with space)');
+  t.equal(stringify('1.\t'), '1\\.\t', '`.` (without parent, with tab)');
+  t.equal(stringify('1.\n'), '1\\.\n', '`.` (without parent, with newline)');
+  t.equal(stringify('1.'), '1\\.', '`.` (without parent, with EOF)');
+  t.equal(stringify(u('paragraph', [u('text', '1.a')])), '1.a', '`1.` (in paragraph, without space)');
+  t.equal(stringify(u('paragraph', [u('text', '1. ')])), '1\\. ', '`1.` (in paragraph, with space)');
+  t.equal(stringify(u('paragraph', [u('text', '1.\t')])), '1\\.\t', '`1.` (in paragraph, with tab)');
+  t.equal(stringify(u('paragraph', [u('text', '1.\n')])), '1\\.\n', '`1.` (in paragraph, with newline)');
+  t.equal(stringify(u('paragraph', [u('text', '1.')])), '1\\.', '`1.` (in paragraph, with EOF)');
   t.equal(stringify(u('strong', [u('text', '1.a')])), '**1.a**', '`1.` (in non-paragraph)');
   t.equal(stringify(u('strong', [u('text', 'a'), u('text', '1.b')])), '**a1.b**', '`1.` (after sibling)');
-  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1.b')])), '**\n1\\.b**', '`1.` (after newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1.b')])), '**\n1.b**', '`1.` (after newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1. ')])), '**\n1\\. **', '`1.` (after newline, with space)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1.\t')])), '**\n1\\.\t**', '`1.` (after newline, with tab)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1.\n')])), '**\n1\\.\n**', '`1.` (after newline, with newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1.')])), '**\n1\\.**', '`1.` (after newline, with EOL)');
 
   t.equal(stringify(')a'), ')a', '`)`');
   t.equal(stringify('1)a'), '1)a', '`)` (default)');
-  t.equal(stringify('1)a', commonmark), '1\\)a', '`)` (commonmark, without parent)');
-  t.equal(stringify(u('paragraph', [u('text', '1)a')]), commonmark), '1\\)a', '`1)` (in paragraph)');
+  t.equal(stringify('1)a', commonmark), '1)a', '`)` (commonmark, without parent)');
+  t.equal(stringify('1) ', commonmark), '1\\) ', '`)` (commonmark, without parent, with space)');
+  t.equal(stringify('1)\t', commonmark), '1\\)\t', '`)` (commonmark, without parent, with tab)');
+  t.equal(stringify('1)\n', commonmark), '1\\)\n', '`)` (commonmark, without parent, with newline)');
+  t.equal(stringify('1)', commonmark), '1\\)', '`)` (commonmark, without parent, with EOL)');
+  t.equal(stringify(u('paragraph', [u('text', '1)a')]), commonmark), '1)a', '`1)` (in paragraph)');
+  t.equal(stringify(u('paragraph', [u('text', '1) ')]), commonmark), '1\\) ', '`1)` (in paragraph, with space)');
+  t.equal(stringify(u('paragraph', [u('text', '1)\t')]), commonmark), '1\\)\t', '`1)` (in paragraph, with tab)');
+  t.equal(stringify(u('paragraph', [u('text', '1)\n')]), commonmark), '1\\)\n', '`1)` (in paragraph, with newline)');
+  t.equal(stringify(u('paragraph', [u('text', '1)')]), commonmark), '1\\)', '`1)` (in paragraph, with EOL)');
   t.equal(stringify(u('strong', [u('text', '1)a')]), commonmark), '**1)a**', '`1)` (in non-paragraph)');
   t.equal(stringify(u('strong', [u('text', 'a'), u('text', '1)b')]), commonmark), '**a1)b**', '`1)` (after sibling)');
-  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1)b')]), commonmark), '**\n1\\)b**', '`1)` (after newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1)b')]), commonmark), '**\n1)b**', '`1)` (after newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1) ')]), commonmark), '**\n1\\) **', '`1)` (after newline, with space)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1)\t')]), commonmark), '**\n1\\)\t**', '`1)` (after newline, with tab)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1)\n')]), commonmark), '**\n1\\)\n**', '`1)` (after newline, with newline)');
+  t.equal(stringify(u('strong', [u('text', '\n'), u('text', '1)')]), commonmark), '**\n1\\)**', '`1)` (after newline, with EOL)');
 
   t.equal(
     stringify(u('paragraph', [
