@@ -1,0 +1,330 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "loose": true,
+      "children": [
+        {
+          "type": "listItem",
+          "loose": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this is a list item\nindented with tabs",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 3,
+                      "offset": 2
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 20,
+                      "offset": 41
+                    },
+                    "indent": [
+                      2
+                    ]
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 3,
+                  "offset": 2
+                },
+                "end": {
+                  "line": 2,
+                  "column": 20,
+                  "offset": 41
+                },
+                "indent": [
+                  2
+                ]
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 1,
+              "offset": 42
+            },
+            "indent": [
+              1,
+              1
+            ]
+          }
+        },
+        {
+          "type": "listItem",
+          "loose": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "this is a list item\nindented with spaces",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 5,
+                      "offset": 47
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 25,
+                      "offset": 91
+                    },
+                    "indent": [
+                      5
+                    ]
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 5,
+                  "offset": 47
+                },
+                "end": {
+                  "line": 5,
+                  "column": 25,
+                  "offset": 91
+                },
+                "indent": [
+                  5
+                ]
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1,
+              "offset": 43
+            },
+            "end": {
+              "line": 5,
+              "column": 25,
+              "offset": 91
+            },
+            "indent": [
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 25,
+          "offset": 91
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Code:",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 93
+            },
+            "end": {
+              "line": 7,
+              "column": 6,
+              "offset": 98
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 93
+        },
+        "end": {
+          "line": 7,
+          "column": 6,
+          "offset": 98
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "this code block is indented by one tab",
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 100
+        },
+        "end": {
+          "line": 9,
+          "column": 40,
+          "offset": 139
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And:",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1,
+              "offset": 141
+            },
+            "end": {
+              "line": 11,
+              "column": 5,
+              "offset": 145
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 141
+        },
+        "end": {
+          "line": 11,
+          "column": 5,
+          "offset": 145
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "\tthis code block is indented by two tabs",
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1,
+          "offset": 147
+        },
+        "end": {
+          "line": 13,
+          "column": 42,
+          "offset": 188
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "And:",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1,
+              "offset": 190
+            },
+            "end": {
+              "line": 15,
+              "column": 5,
+              "offset": 194
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 190
+        },
+        "end": {
+          "line": 15,
+          "column": 5,
+          "offset": 194
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "code",
+      "lang": null,
+      "value": "+\tthis is an example list item\n\tindented with tabs\n\n+   this is an example list item\n    indented with spaces",
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 196
+        },
+        "end": {
+          "line": 21,
+          "column": 26,
+          "offset": 310
+        },
+        "indent": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 22,
+      "column": 1,
+      "offset": 311
+    }
+  }
+}

@@ -79,6 +79,7 @@ function list(eat, value, silent) {
   var index = 0;
   var length = value.length;
   var start = null;
+  var size = 0;
   var queue;
   var ordered;
   var character;
@@ -102,16 +103,23 @@ function list(eat, value, silent) {
   var now;
   var end;
   var indented;
-  var size;
 
   while (index < length) {
     character = value.charAt(index);
 
-    if (character !== C_SPACE && character !== C_TAB) {
+    if (character === C_TAB) {
+      size += TAB_SIZE - (size % TAB_SIZE);
+    } else if (character === C_SPACE) {
+      size++;
+    } else {
       break;
     }
 
     index++;
+  }
+
+  if (size >= TAB_SIZE) {
+    return;
   }
 
   character = value.charAt(index);
