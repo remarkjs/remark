@@ -2,6 +2,13 @@
 
 <!--lint disable no-multiple-toplevel-headings-->
 
+6.2.0 / 2016-10-27
+==================
+
+*   Add support for configuring block-level tag-names ([`1dce2f0`](https://github.com/wooorm/remark/commit/1dce2f0))
+*   Fix fatal error when indenting with both tabs and spaces ([`6568fc8`](https://github.com/wooorm/remark/commit/6568fc8))
+*   Fix superfluous escape for list-markers ([`a93cdab`](https://github.com/wooorm/remark/commit/a93cdab))
+
 6.1.0 / 2016-10-15
 ==================
 
