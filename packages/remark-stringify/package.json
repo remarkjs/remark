@@ -31,7 +31,7 @@
     "is-alphanumeric": "^1.0.0",
     "is-decimal": "^1.0.0",
     "is-whitespace-character": "^1.0.0",
-    "longest-streak": "^1.0.0",
+    "longest-streak": "^2.0.1",
     "markdown-escapes": "^1.0.0",
     "markdown-table": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
