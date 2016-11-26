@@ -1,5 +1,7 @@
 html {
   font-size: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, helvetica, helvetica neue, ubuntu, roboto, noto, segoe ui, arial, sans-serif;
+  line-height: 1.5375;
 }
 
 body {
@@ -8,16 +10,7 @@ body {
   color: #333333;
   overflow-y: scroll;
   overflow-x: hidden;
-}
-
-body {
-  font-family: 'Neuton', serif;
-  line-height: 1.430;
-}
-
-h1, h2, h3, h4, h5, h6, .button, .settings, .buttons {
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.538;
+  font-weight: 300;
 }
 
 code {
@@ -290,6 +283,7 @@ a:hover, a:focus {
 
 .byline {
   font-size: 1.33em;
+  font-weight: lighter;
   margin: 0;
 }
 
