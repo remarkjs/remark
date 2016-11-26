@@ -35,7 +35,7 @@ var C_X_LOWER = 'x';
 /* Constants. */
 var TAB_SIZE = 4;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
-var EXPRESSION_TASK_ITEM = /^\[([ \t]|x|X)\][ \t]/;
+var EXPRESSION_TASK_ITEM = /^\[([ \t]|x|X)][ \t]/;
 var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/;
 var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
 var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;

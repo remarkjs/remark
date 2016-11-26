@@ -15,7 +15,7 @@ var entityPrefixLength = require('./entity-prefix-length');
 module.exports = copy;
 
 /* Punctuation characters. */
-var PUNCTUATION = /[-!"#$%&'()*+,.\/:;<=>?@\[\\\]^`{|}~_]/;
+var PUNCTUATION = /[-!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~_]/;
 
 /**
  * For shortcut and collapsed reference links, the contents
