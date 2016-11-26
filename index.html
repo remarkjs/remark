@@ -17,98 +17,98 @@
     <section class="section text">
       <div class="content">
         <h2 id="introduction">Introduction</h2>
-        <p><strong>remark</strong> parses and compiles markdown. It lets programs process markdown without ever compiling to HTML (<a href="https://github.com/wooorm/remark">it can though</a>) by creating a syntax tree. This enables code analysis (e.g., <a href="https://github.com/wooorm/remark-lint">remark-lint</a>), code transformation (e.g., <a href="https://github.com/wooorm/remark-toc">remark-toc</a>), and code generation (<a href="https://github.com/wooorm/remark/blob/master/doc/options.md#stringify">built in</a>).</p>
+        <p><strong>remark</strong> parses and compiles markdown. It lets programs process markdown without ever compiling to HTML (<a href="https://github.com/wooorm/remark-html">it can though</a>) by creating a syntax tree. This enables code analysis (e.g., <a href="https://github.com/wooorm/remark-lint">remark-lint</a>), code transformation (e.g., <a href="https://github.com/wooorm/remark-toc">remark-toc</a>), and code generation (<a href="https://github.com/wooorm/remark/tree/master/packages/remark-stringify#api">built in</a>).</p>
         <p>It aims to do for markdown what esprima did for javascript and PostCSS for css: bring markdown into the tooling age.</p>
-        <p><strong>remark</strong> has lots of <a href="https://travis-ci.org/wooorm/remark">tests</a> (800+), great <a href="https://codecov.io/github/wooorm/remark">coverage</a> (100%), a free <a href="http://opensource.org/licenses/MIT">license</a>, sensible code style (eslint, jscs), internal <a href="https://inch-ci.org/github/wooorm/remark/">documentation</a>, and <a href="https://github.com/wooorm/remark/tree/master/man">man pages</a>.</p>
+        <p><strong>remark</strong> has lots of <a href="https://travis-ci.org/wooorm/remark">tests</a> (800+), great <a href="https://codecov.io/github/wooorm/remark">coverage</a> (100%), a free <a href="http://opensource.org/licenses/MIT">license</a>, sensible code style (eslint, jscs), internal <a href="https://inch-ci.org/github/wooorm/remark/">documentation</a>.</p>
         <p class="double"><a href="https://github.com/wooorm/remark">GitHub »</a></p>
         <p class="double"><a href="./demo/">Demo »</a></p>
       </div>
     </section>
     <section class="section text">
-        <div class="content">
-            <h2 id="cli">CLI</h2>
-            <img src="./asset/screen-shot.png">
-            <p>The Command Line Interface is powerful, it supports all settings the API provides and has built-in support for regenerating markdown files in a project according to a given style-guide, and emits warnings triggered by plug-ins in a beautiful fashion.</p>
-            <p>Settings and plug-ins can be provided through <a href="https://github.com/wooorm/remark/blob/master/doc/remarkrc.5.md">cascading configuration files</a> (<code>.remarkrc</code> or an <code>"remarkConfig"</code> property in <code>package.json</code> files).</p>
-            <p class="double"><a href="https://github.com/wooorm/remark/blob/master/doc/remark.1.md">CLI docs »</a></p>
-        </div>
+      <div class="content">
+        <h2 id="cli">CLI</h2>
+        <img src="./asset/screen-shot.png">
+        <p>The Command Line Interface is powerful, it supports all settings the API provides and has built-in support for regenerating markdown files in a project according to a given style-guide, and emits warnings triggered by plug-ins in a beautiful fashion.</p>
+        <p>Settings and plug-ins can be provided through <a href="https://github.com/wooorm/unified-engine/blob/master/doc/configure.md">cascading configuration files</a> (<code>.remarkrc</code> or an <code>"remarkConfig"</code> property in <code>package.json</code> files).</p>
+        <p class="double"><a href="https://github.com/wooorm/remark/tree/master/packages/remark-cli">CLI docs »</a></p>
+      </div>
     </section>
     <section class="section text">
-        <div class="content">
-            <h2 id="api">API</h2>
-            <p>Require dependencies:</p>
-            <pre><code><span class="code key">const</span> remark = <span class="code fn">require</span>(<span class="code string">'remark'</span>);
+      <div class="content">
+        <h2 id="api">API</h2>
+        <p>Require dependencies:</p>
+        <pre><code><span class="code key">const</span> remark = <span class="code fn">require</span>(<span class="code string">'remark'</span>);
 <span class="code key">const</span> yamlConfig = <span class="code fn">require</span>(<span class="code string">'remark-yaml-config'</span>);</code></pre>
-            <p>Use a plugin. <a href="https://github.com/wooorm/remark-yaml-config">remark-yaml-config</a> allows settings in YAML frontmatter:</p>
-            <pre><code><span class="code key">const</span> processor = <span class="code fn">remark</span>().<span class="code fn">use</span>(yamlConfig);</code></pre>
-            <p>Parse, modify, and stringify the document:</p>
-            <pre><code><span class="code key">const</span> doc = processor.<span class="code fn">process</span>(<span class="code string">`---
+        <p>Use a plugin. <a href="https://github.com/wooorm/remark-yaml-config">remark-yaml-config</a> allows settings in YAML frontmatter:</p>
+        <pre><code><span class="code key">const</span> processor = <span class="code fn">remark</span>().<span class="code fn">use</span>(yamlConfig);</code></pre>
+        <p>Parse, modify, and stringify the document:</p>
+        <pre><code><span class="code key">const</span> doc = processor.<span class="code fn">process</span>(<span class="code string">`---
 remark:
   commonmark: true
 ---
 
 2) Some *emphasis*, **strongness**, and `code`.
 `</span>);</code></pre>
-            <p>Yields:</p>
-            <pre><code>---
+        <p>Yields:</p>
+        <pre><code>---
 <span class="code string">remark</span>:
   <span class="code string">commonmark</span>: <span class="code operator">true</span>
 ---
 
 <span class="code operator">2.</span>  Some <em class="code"><span class="code operator">_</span>emphasis<span class="code operator">_</span></em>, <strong class="code"><span class="code operator">**</span>strongness<span class="code operator">**</span></strong>, and <span class="code string">`code`</span>.</code></pre>
-            <hr>
-            <p>The Application Programming Interface is the gist of <strong>remark</strong> and the CLI. The API allows advanced markdown processing through several parsing and stringification settings.</p>
-            <p><strong>remark</strong> understand multiple flavours of markdown (<a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavoured</a>, <a href="http://commonmark.org">CommonMark</a>, and more) and generates documents based on provided style settings (list bullets, syntax markers, indentation, and more).</p>
-            <p class="double"><a href="https://github.com/wooorm/remark/blob/master/doc/remark.3.md">API docs »</a></p>
-        </div>
+        <hr>
+        <p>The Application Programming Interface is the gist of <strong>remark</strong> and the CLI. The API allows advanced markdown processing through several parsing and stringification settings.</p>
+        <p><strong>remark</strong> understand multiple flavours of markdown (<a href="https://help.github.com/articles/github-flavored-markdown/">GitHub Flavoured</a>, <a href="http://commonmark.org">CommonMark</a>, and more) and generates documents based on provided style settings (list bullets, syntax markers, indentation, and more).</p>
+        <p class="double"><a href="https://github.com/wooorm/remark/tree/master/packages/remark">API docs »</a></p>
+      </div>
     </section>
     <section class="section text">
-        <div class="content">
-            <h2 id="plug-ins">Plug-ins</h2>
+      <div class="content">
+        <h2 id="plug-ins">Plug-ins</h2>
+      </div>
+      <div class="spread tripple">
+        <div class="spread-block">
+          <h3 id="code-transformation">Code Transformation</h3>
+          <ul>
+            <li><a class="plug-in-name" href="https://github.com/hughsk/remark-contributors">hughsk/remark-contributors</a> <span class="plug-in-description">Inject contributors;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-github">wooorm/remark-github</a> <span class="plug-in-description">Auto-link GitHub references;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-toc">wooorm/remark-toc</a> <span class="plug-in-description">Inject a Table of Contents;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-usage">wooorm/remark-usage</a> <span class="plug-in-description">Inject a usage example;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-inline-links">wooorm/remark-inline-links</a> <span class="plug-in-description">References &rarr; links;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-reference-links">wooorm/remark-reference-links</a> <span class="plug-in-description">Links &rarr; references.</span></li>
+          </ul>
+          <h3 id="analysis">Analysis</h3>
+          <ul>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-lint">wooorm/remark-lint</a> <span class="plug-in-description">Code style linter;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-validate-links">wooorm/remark-validate-links</a> <span class="plug-in-description">Check relative URLs.</span></li>
+          </ul>
         </div>
-        <div class="spread tripple">
-            <div class="spread-block">
-                <h3 id="code-transformation">Code Transformation</h3>
-                <ul>
-                    <li><a class="plug-in-name" href="https://github.com/hughsk/mdast-contributors">hughsk/mdast-contributors</a> <span class="plug-in-description">Inject contributors;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-github">wooorm/remark-github</a> <span class="plug-in-description">Auto-link GitHub references;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-toc">wooorm/remark-toc</a> <span class="plug-in-description">Inject a Table of Contents;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-usage">wooorm/remark-usage</a> <span class="plug-in-description">Inject a usage example;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-inline-links">wooorm/remark-inline-links</a> <span class="plug-in-description">References &rarr; links;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-reference-links">wooorm/remark-reference-links</a> <span class="plug-in-description">Links &rarr; references.</span></li>
-                </ul>
-                <h3 id="analysis">Analysis</h3>
-                <ul>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-lint">wooorm/remark-lint</a> <span class="plug-in-description">Code style linter;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-validate-links">wooorm/remark-validate-links</a> <span class="plug-in-description">Check relative URLs.</span></li>
-                </ul>
-            </div>
-            <div class="spread-block">
-                <h3 id="compilation">Compilation</h3>
-                <ul>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-html">wooorm/remark-html</a> <span class="plug-in-description">Compile to HTML documents;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-man">wooorm/remark-man</a> <span class="plug-in-description">Compile to Man pages (roff);</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/mapbox/mdast-react">mapbox/mdast-react</a> <span class="plug-in-description">Compile to React.</span></li>
-                </ul>
-                <h3 id="configuration">Configuration</h3>
-                <ul>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-comment-config">wooorm/remark-comment-config</a> <span class="plug-in-description">Configure with comments;</span></li>
-                    <li><a class="plug-in-name" href="https://github.com/wooorm/remark-yaml-config">wooorm/remark-yaml-config</a> <span class="plug-in-description">Configure with YAML frontmatter.</span></li>
-                </ul>
-            </div>
+        <div class="spread-block">
+          <h3 id="compilation">Compilation</h3>
+          <ul>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-html">wooorm/remark-html</a> <span class="plug-in-description">Compile to HTML documents;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-man">wooorm/remark-man</a> <span class="plug-in-description">Compile to Man pages (roff);</span></li>
+            <li><a class="plug-in-name" href="https://github.com/mapbox/remark-react">mapbox/mdast-react</a> <span class="plug-in-description">Compile to React.</span></li>
+          </ul>
+          <h3 id="configuration">Configuration</h3>
+          <ul>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-comment-config">wooorm/remark-comment-config</a> <span class="plug-in-description">Configure with comments;</span></li>
+            <li><a class="plug-in-name" href="https://github.com/wooorm/remark-yaml-config">wooorm/remark-yaml-config</a> <span class="plug-in-description">Configure with YAML frontmatter.</span></li>
+          </ul>
         </div>
-        <div class="content">
-            <p>Plug-ins are the core of <strong>remark</strong>. As noted earlier, they analyse, transform, configure, and generate documents based on given settings.</p>
-            <p>To use plugins on the CLI, use the <code>--use</code> or <code>-u</code> key:</p>
-            <pre><code>npm install --global remark remark-lint
+      </div>
+      <div class="content">
+        <p>Plug-ins are the core of <strong>remark</strong>. As noted earlier, they analyse, transform, configure, and generate documents based on given settings.</p>
+        <p>To use plugins on the CLI, use the <code>--use</code> or <code>-u</code> key:</p>
+        <pre><code>npm install --global remark remark-lint
 remark --use remark-lint example.md</code></pre>
-            <p>In the API, use the <code>use()</code> function:</p>
-            <pre><code><span class="code key">const</span> remark = <span class="code fn">require</span>(<span class="code string">'remark'</span>);
+        <p>In the API, use the <code>use()</code> function:</p>
+        <pre><code><span class="code key">const</span> remark = <span class="code fn">require</span>(<span class="code string">'remark'</span>);
 <span class="code key">const</span> lint = <span class="code fn">require</span>(<span class="code string">'remark-lint'</span>);
 <span class="code key">const</span> processor = <span class="code fn">remark</span>().<span class="code fn">use</span>(lint);</code></pre>
-            <p>It’s also easy to create plug-ins yourself. Read how to do that in the docs.</p>
-            <p class="double"><a href="https://github.com/wooorm/remark/blob/master/doc/plugins.md">Plug-in docs »</a></p>
-        </div>
+        <p>It’s also easy to create plug-ins yourself. Read how to do that in the docs.</p>
+        <p class="double"><a href="https://github.com/wooorm/remark/blob/master/doc/plugins.md">Plug-in docs »</a></p>
+      </div>
     </section>
     <section class="section cover">
       <div class="cover-inner">
