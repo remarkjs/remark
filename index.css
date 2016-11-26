@@ -1,5 +1,3 @@
-@import 'orangehill/jstree-bootstrap-theme:/dist/themes/proton/style.css';
-
 html {
   font-size: 20px;
 }
@@ -264,7 +262,7 @@ a:hover, a:focus {
 
 .cover {
   height: 100%;
-  background-image: url("./asset/cover.jpg");
+  background-image: url("../asset/cover.jpg");
   background-size: 100%;
   background-size: cover;
   background-position: center;
@@ -353,4 +351,8 @@ a:hover, a:focus {
 .button:hover, .button:focus {
   color: white;
   background-color: #e05d44;
+}
+
+.jstree-proton {
+  font-family: sans-serif;
 }

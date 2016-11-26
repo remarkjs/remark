@@ -1,7 +1,7 @@
-.DS_STORE
+.DS_Store
+.nyc_output
 *.log
-/bower_components/
-/components/
-/coverage/
-/node_modules/
-/build.js
+node_modules
+coverage
+/remark.js
+/remark.min.js

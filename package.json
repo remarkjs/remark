@@ -5,13 +5,35 @@
   "description": "The remark.com website",
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {
-    "duo": "^0.15.0",
-    "duo-babel": "^6.0.0"
+    "component-event": "^0.2.0",
+    "component-querystring": "^2.0.0",
+    "debounce": "^1.0.0",
+    "escape-html": "^1.0.3",
+    "jquery": "^3.1.1",
+    "jstree": "^3.3.3",
+    "jstree-bootstrap-theme": "github:orangehill/jstree-bootstrap-theme",
+    "keycode": "^2.1.7",
+    "object-assign": "^4.1.0",
+    "remark": "^6.2.0",
+    "vfile": "^2.0.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.1",
+    "xo": "^0.17.1"
   },
   "scripts": {
+    "build:js": "browserify demo.js > build/demo.js",
+    "build:css:external": "cp ./node_modules/jstree-bootstrap-theme/dist/themes/proton/*.{png,gif,css} build",
+    "build:css:local": "cp index.css build/index.css",
+    "build:css": "npm run build:css:external && npm run build:css:local",
     "build": "npm run build:js && npm run build:css",
-    "build:js": "duo --copy --use duo-babel --type js --stdout < demo.js > build/demo.js",
-    "build:css": "duo --copy --type css --stdout < index.css > build/index.css",
-    "prepublish": "npm run build"
+    "lint": "xo",
+    "test": "npm run build && npm run lint"
+  },
+  "xo": {
+    "space": true,
+    "ignore": [
+      "build/**/*.js"
+    ]
   }
 }
