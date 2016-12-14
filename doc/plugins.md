@@ -90,6 +90,8 @@ See [tools built with remark »][products].
 *   [`denysdovhan/remark-textr`](https://github.com/denysdovhan/remark-textr)
     — [`Textr`](https://github.com/shuvalov-anton/textr), a modular typographic
     framework;
+*   [`RichardLitt/remark-title`](https://github.com/RichardLitt/remark-title)
+    - Check and inject the title of a markdown as the first element.
 *   [`wooorm/remark-toc`](https://github.com/wooorm/remark-toc)
     — Generate a Table of Contents (TOC) for Markdown files;
 *   [`eush77/remark-unlink`](https://github.com/eush77/remark-unlink)
