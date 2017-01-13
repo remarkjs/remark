@@ -26,8 +26,8 @@ var C_NEWLINE = '\n';
 var C_TAB = '\t';
 
 /* Constants. */
-var MIN_TABLE_COLUMNS = 2;
-var MIN_TABLE_ROWS = 2;
+var MIN_TABLE_COLUMNS = 1;
+var MIN_TABLE_ROWS = 1;
 
 /* Available table alignments. */
 var TABLE_ALIGN_LEFT = 'left';
