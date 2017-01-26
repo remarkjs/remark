@@ -32,6 +32,8 @@ See [tools built with remark »][products].
     — Transform unicode emoji to Gemoji shortcodes;
 *   [`jackycute/remark-emoji-to-gemoji`](https://github.com/jackycute/remark-emoji-to-gemoji)
     — Transform Gemoji shortcodes to unicode emoji;
+*   [`xuopled/remark-external-links`](https://github.com/xuopled/remark-external-links)
+    — Automatically adds the target and rel attributes to external links;
 *   [`laat/remark-first-heading`](https://github.com/laat/remark-first-heading)
     — Replacing the first heading in a document;
 *   [`wooorm/remark-gemoji`](https://github.com/wooorm/remark-gemoji)
