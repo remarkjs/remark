@@ -178,6 +178,14 @@ test('remark().stringify(ast, file, options?)', function (t) {
     'should throw when `options.spacedTable` is not a boolean'
   );
 
+  t.throws(
+    function () {
+      remark().stringify(empty(), {paddedTable: 'Not a boolean'});
+    },
+    /options\.paddedTable/,
+    'should throw when `options.paddedTable` is not a boolean'
+  );
+
   t.test('should be able to set options', function (st) {
     var processor = remark();
     var html = processor.Compiler.prototype.visitors.html;

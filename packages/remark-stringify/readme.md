@@ -90,6 +90,8 @@ The following settings are supported:
     — Create tables without fences (initial and final pipes).
 *   `spacedTable` (`boolean`, default: `true`)
     — Create tables without spacing between pipes and content.
+*   `paddedTable` (`boolean`, default: `true`)
+    — Create tables with padding in each cell so that they are the same size.
 *   `fence` (`'~'` or ``'`'``, default: ``'`'``)
     — Fence marker to use for code blocks.
 *   `fences` (`boolean`, default: `false`)
