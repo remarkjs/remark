@@ -42,6 +42,7 @@ function table(node) {
   var self = this;
   var loose = self.options.looseTable;
   var spaced = self.options.spacedTable;
+  var pad = self.options.paddedTable;
   var rows = node.children;
   var index = rows.length;
   var exit = self.enterTable();
@@ -66,6 +67,7 @@ function table(node) {
 
   return markdownTable(result, {
     align: node.align,
+    pad: pad,
     start: start,
     end: end,
     delimiter: spaced ? ' | ' : '|'

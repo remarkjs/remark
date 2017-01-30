@@ -17,6 +17,7 @@ module.exports = {
   closeAtx: false,
   looseTable: false,
   spacedTable: true,
+  paddedTable: true,
   incrementListMarker: true,
   fences: false,
   fence: '`',
