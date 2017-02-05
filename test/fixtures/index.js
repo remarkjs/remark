@@ -273,7 +273,7 @@ var tests = fs
       }
     });
 
-    if (!Object.keys(fixtures).length) {
+    if (Object.keys(fixtures).length === 0) {
       throw new Error('Missing fixture for `' + name + '`');
     }
 

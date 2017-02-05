@@ -34,5 +34,6 @@
     "cli.js"
   ],
   "bin": "cli.js",
-  "scripts": {}
+  "scripts": {},
+  "xo": false
 }

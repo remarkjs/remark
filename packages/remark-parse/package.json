@@ -43,5 +43,6 @@
     "unist-util-remove-position": "^1.0.0",
     "vfile-location": "^2.0.0",
     "xtend": "^4.0.1"
-  }
+  },
+  "xo": false
 }
