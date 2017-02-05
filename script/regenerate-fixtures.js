@@ -35,6 +35,8 @@ fixtures.forEach(function (fixture) {
 
     result = JSON.stringify(result, null, 2) + '\n';
 
+    filename = filename.replace(/\*/g, '-asterisk-');
+
     fs.writeFileSync(
       path.join('test', 'fixtures', 'tree', filename),
       result
