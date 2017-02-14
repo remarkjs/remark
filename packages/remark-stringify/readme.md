@@ -23,9 +23,9 @@ var stringify = require('remark-stringify');
 
 process.stdin
   .pipe(unified())
-  .use(markdown)
+  .use(parse)
   .use(toc)
-  .use(html)
+  .use(stringify)
   .pipe(process.stdout, {
     bullet: '*',
     fence: '~',
