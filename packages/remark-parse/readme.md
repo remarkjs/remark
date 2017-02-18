@@ -283,7 +283,7 @@ information on where the next entity may occur.
 *   `notInBlock` (`boolean`)
     — Whether nodes cannot be in blockquotes, lists, or footnote
     definitions;
-*   `notInLink` (`boolean`)
+*   `notInList` (`boolean`)
     — Whether nodes cannot be in lists.
 *   `notInLink` (`boolean`)
     — Whether nodes cannot be in links.
