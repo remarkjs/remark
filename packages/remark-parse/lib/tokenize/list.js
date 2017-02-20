@@ -15,6 +15,7 @@ var repeat = require('repeat-string');
 var decimal = require('is-decimal');
 var getIndent = require('../util/get-indentation');
 var removeIndent = require('../util/remove-indentation');
+var interrupt = require('../util/interrupt');
 
 module.exports = list;
 
@@ -61,8 +62,8 @@ LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true;
 function list(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;
-  var pedantic = self.options.pedantic;
   var tokenizers = self.blockTokenizers;
+  var interuptors = self.interruptList;
   var markers;
   var index = 0;
   var length = value.length;
@@ -316,23 +317,8 @@ function list(eat, value, silent) {
         break;
       }
 
-      if (
-          !pedantic &&
-          (
-            tokenizers.fencedCode.call(self, eat, line, true) ||
-            tokenizers.thematicBreak.call(self, eat, line, true)
-          )
-      ) {
+      if (interrupt(interuptors, tokenizers, self, [eat, line, true])) {
         break;
-      }
-
-      if (!commonmark) {
-        if (
-          tokenizers.definition.call(self, eat, line, true) ||
-          tokenizers.footnote.call(self, eat, line, true)
-        ) {
-          break;
-        }
       }
 
       item.value = item.value.concat(emptyLines, line);

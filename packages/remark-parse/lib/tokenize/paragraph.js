@@ -11,6 +11,7 @@
 var trim = require('trim');
 var decimal = require('is-decimal');
 var trimTrailingLines = require('trim-trailing-lines');
+var interrupt = require('../util/interrupt');
 
 module.exports = paragraph;
 
@@ -27,6 +28,7 @@ function paragraph(eat, value, silent) {
   var commonmark = settings.commonmark;
   var gfm = settings.gfm;
   var tokenizers = self.blockTokenizers;
+  var interruptors = self.interruptParagraph;
   var index = value.indexOf(C_NEWLINE);
   var length = value.length;
   var position;
@@ -74,17 +76,11 @@ function paragraph(eat, value, silent) {
       }
     }
 
-    /* Check if the following code contains a possible
-     * block. */
     subvalue = value.slice(index + 1);
 
-    if (
-      tokenizers.thematicBreak.call(self, eat, subvalue, true) ||
-      tokenizers.atxHeading.call(self, eat, subvalue, true) ||
-      tokenizers.fencedCode.call(self, eat, subvalue, true) ||
-      tokenizers.blockquote.call(self, eat, subvalue, true) ||
-      tokenizers.html.call(self, eat, subvalue, true)
-    ) {
+    /* Check if the following code contains a possible
+     * block. */
+    if (interrupt(interruptors, tokenizers, self, [eat, subvalue, true])) {
       break;
     }
 
@@ -97,17 +93,6 @@ function paragraph(eat, value, silent) {
         self.inList ||
         commonmark ||
         (gfm && !decimal(trim.left(subvalue).charAt(0)))
-      )
-    ) {
-      break;
-    }
-
-    if (
-      !commonmark &&
-      (
-        tokenizers.setextHeading.call(self, eat, subvalue, true) ||
-        tokenizers.definition.call(self, eat, subvalue, true) ||
-        tokenizers.footnote.call(self, eat, subvalue, true)
       )
     ) {
       break;
