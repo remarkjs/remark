@@ -11,7 +11,7 @@
 /* Expose. */
 module.exports = indentation;
 
-/* A map of characters, and their column length,
+/* Map of characters, and their column length,
  * which can be used as indentation. */
 var characters = {' ': 1, '\t': 4};
 

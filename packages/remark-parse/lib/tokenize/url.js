@@ -8,17 +8,14 @@
 
 'use strict';
 
-/* Dependencies. */
 var decode = require('parse-entities');
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/url');
 
-/* Expose. */
 module.exports = url;
 url.locator = locate;
 url.notInLink = true;
 
-/* Constants. */
 var C_BRACKET_OPEN = '[';
 var C_BRACKET_CLOSE = ']';
 var C_PAREN_OPEN = '(';
@@ -26,7 +23,6 @@ var C_PAREN_CLOSE = ')';
 var C_LT = '<';
 var C_AT_SIGN = '@';
 
-/* Protocols. */
 var HTTP_PROTOCOL = 'http://';
 var HTTPS_PROTOCOL = 'https://';
 var MAILTO_PROTOCOL = 'mailto:';
@@ -39,15 +35,7 @@ var PROTOCOLS = [
 
 var PROTOCOLS_LENGTH = PROTOCOLS.length;
 
-/**
- * Tokenise a link.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `link` node.
- */
+/* Tokenise a URL. */
 function url(eat, value, silent) {
   var self = this;
   var subvalue;

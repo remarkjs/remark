@@ -8,27 +8,16 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/delete');
 
-/* Expose. */
 module.exports = strikethrough;
 strikethrough.locator = locate;
 
-/* Constants. */
 var C_TILDE = '~';
 var DOUBLE = '~~';
 
-/**
- * Tokenise strikethrough.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `delete` node.
- */
+/* Tokenise strikethrough. */
 function strikethrough(eat, value, silent) {
   var self = this;
   var character = '';

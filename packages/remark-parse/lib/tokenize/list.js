@@ -10,17 +10,14 @@
 
 /* eslint-disable max-params */
 
-/* Dependencies. */
 var trim = require('trim');
 var repeat = require('repeat-string');
 var decimal = require('is-decimal');
 var getIndent = require('../util/get-indentation');
 var removeIndent = require('../util/remove-indentation');
 
-/* Expose. */
 module.exports = list;
 
-/* Characters. */
 var C_ASTERISK = '*';
 var C_UNDERSCORE = '_';
 var C_PLUS = '+';
@@ -32,7 +29,6 @@ var C_TAB = '\t';
 var C_PAREN_CLOSE = ')';
 var C_X_LOWER = 'x';
 
-/* Constants. */
 var TAB_SIZE = 4;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
 var EXPRESSION_TASK_ITEM = /^\[([ \t]|x|X)][ \t]/;
@@ -40,7 +36,7 @@ var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\
 var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
 var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
 
-/* A map of characters which can be used to mark
+/* Map of characters which can be used to mark
  * list-items. */
 var LIST_UNORDERED_MARKERS = {};
 
@@ -48,28 +44,20 @@ LIST_UNORDERED_MARKERS[C_ASTERISK] = true;
 LIST_UNORDERED_MARKERS[C_PLUS] = true;
 LIST_UNORDERED_MARKERS[C_DASH] = true;
 
-/* A map of characters which can be used to mark
+/* Map of characters which can be used to mark
  * list-items after a digit. */
 var LIST_ORDERED_MARKERS = {};
 
 LIST_ORDERED_MARKERS[C_DOT] = true;
 
-/* A map of characters which can be used to mark
+/* Map of characters which can be used to mark
  * list-items after a digit. */
 var LIST_ORDERED_COMMONMARK_MARKERS = {};
 
 LIST_ORDERED_COMMONMARK_MARKERS[C_DOT] = true;
 LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true;
 
-/**
- * Tokenise a list.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `list` node.
- */
+/* Tokenise a list. */
 function list(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;
@@ -436,34 +424,10 @@ function listItem(ctx, value, position) {
   };
 }
 
-/**
- * Create a list-item using overly simple mechanics.
- *
- * @example
- *   renderPedanticListItem('- _foo_', now());
- *
- * @param {Object} ctx - Parser.
- * @param {string} value - List-item.
- * @param {Object} position - List-item location.
- * @return {string} - Cleaned `value`.
- */
+/* Create a list-item using overly simple mechanics. */
 function pedanticListItem(ctx, value, position) {
   var offsets = ctx.offset;
   var line = position.line;
-
-  /**
-   * A simple replacer which removed all matches,
-   * and adds their length to `offset`.
-   *
-   * @param {string} $0 - Indentation to subtract.
-   * @return {string} - An empty string.
-   */
-  function replacer($0) {
-    offsets[line] = (offsets[line] || 0) + $0.length;
-    line++;
-
-    return '';
-  }
 
   /* Remove the list-item’s bullet. */
   value = value.replace(EXPRESSION_PEDANTIC_BULLET, replacer);
@@ -473,19 +437,18 @@ function pedanticListItem(ctx, value, position) {
   line = position.line;
 
   return value.replace(EXPRESSION_INITIAL_INDENT, replacer);
+
+  /* A simple replacer which removed all matches,
+   * and adds their length to `offset`. */
+  function replacer($0) {
+    offsets[line] = (offsets[line] || 0) + $0.length;
+    line++;
+
+    return '';
+  }
 }
 
-/**
- * Create a list-item using sane mechanics.
- *
- * @example
- *   renderNormalListItem('- _foo_', now());
- *
- * @param {Object} ctx - Parser.
- * @param {string} value - List-item.
- * @param {Object} position - List-item location.
- * @return {string} - Cleaned `value`.
- */
+/* Create a list-item using sane mechanics. */
 function normalListItem(ctx, value, position) {
   var offsets = ctx.offset;
   var line = position.line;
@@ -498,21 +461,7 @@ function normalListItem(ctx, value, position) {
   var length;
 
   /* Remove the list-item’s bullet. */
-  value = value.replace(EXPRESSION_BULLET, function ($0, $1, $2, $3, $4) {
-    bullet = $1 + $2 + $3;
-    rest = $4;
-
-    /* Make sure that the first nine numbered list items
-     * can indent with an extra space.  That is, when
-     * the bullet did not receive an extra final space. */
-    if (Number($2) < 10 && bullet.length % 2 === 1) {
-      $2 = C_SPACE + $2;
-    }
-
-    max = $1 + repeat(C_SPACE, $2.length) + $3;
-
-    return max + rest;
-  });
+  value = value.replace(EXPRESSION_BULLET, replacer);
 
   lines = value.split(C_NEWLINE);
 
@@ -539,4 +488,20 @@ function normalListItem(ctx, value, position) {
   }
 
   return trimmedLines.join(C_NEWLINE);
+
+  function replacer($0, $1, $2, $3, $4) {
+    bullet = $1 + $2 + $3;
+    rest = $4;
+
+    /* Make sure that the first nine numbered list items
+     * can indent with an extra space.  That is, when
+     * the bullet did not receive an extra final space. */
+    if (Number($2) < 10 && bullet.length % 2 === 1) {
+      $2 = C_SPACE + $2;
+    }
+
+    max = $1 + repeat(C_SPACE, $2.length) + $3;
+
+    return max + rest;
+  }
 }

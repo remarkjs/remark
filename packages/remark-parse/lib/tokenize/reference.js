@@ -8,16 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/link');
 var normalize = require('../util/normalize');
 
-/* Expose. */
 module.exports = reference;
 reference.locator = locate;
 
-/* Constants. */
 var T_LINK = 'link';
 var T_IMAGE = 'image';
 var T_FOOTNOTE = 'footnote';
@@ -29,16 +26,7 @@ var C_BACKSLASH = '\\';
 var C_BRACKET_OPEN = '[';
 var C_BRACKET_CLOSE = ']';
 
-/**
- * Tokenise a reference.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `footnoteReference`,
- *   `linkReference`, or `imageReference` node.
- */
+/* Tokenise a reference. */
 function reference(eat, value, silent) {
   var self = this;
   var character = value.charAt(0);

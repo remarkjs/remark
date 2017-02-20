@@ -8,16 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 var normalize = require('../util/normalize');
 
-/* Expose. */
 module.exports = footnoteDefinition;
 footnoteDefinition.notInList = true;
 footnoteDefinition.notInBlock = true;
 
-/* Characters */
 var C_BACKSLASH = '\\';
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
@@ -27,17 +24,9 @@ var C_BRACKET_CLOSE = ']';
 var C_CARET = '^';
 var C_COLON = ':';
 
-/* Constants. */
 var EXPRESSION_INITIAL_TAB = /^( {4}|\t)?/gm;
 
-/**
- * Tokenise a footnote definition.
- *
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `footnoteDefinition` node.
- */
+/* Tokenise a footnote definition. */
 function footnoteDefinition(eat, value, silent) {
   var self = this;
   var offsets = self.offset;

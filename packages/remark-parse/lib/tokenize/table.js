@@ -8,14 +8,11 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 
-/* Expose. */
 module.exports = table;
 table.notInList = true;
 
-/* Characters. */
 var C_BACKSLASH = '\\';
 var C_TICK = '`';
 var C_DASH = '-';
@@ -25,25 +22,15 @@ var C_SPACE = ' ';
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 
-/* Constants. */
 var MIN_TABLE_COLUMNS = 2;
 var MIN_TABLE_ROWS = 2;
 
-/* Available table alignments. */
 var TABLE_ALIGN_LEFT = 'left';
 var TABLE_ALIGN_CENTER = 'center';
 var TABLE_ALIGN_RIGHT = 'right';
 var TABLE_ALIGN_NONE = null;
 
-/**
- * Tokenise a table.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `table` node.
- */
+/* Tokenise a table. */
 function table(eat, value, silent) {
   var self = this;
   var index;

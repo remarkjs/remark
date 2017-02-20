@@ -8,7 +8,6 @@
 
 'use strict';
 
-/* Dependencies. */
 var cdata = require('../util/match-cdata');
 var comment = require('../util/match-comment');
 var declaration = require('../util/match-declaration');
@@ -16,25 +15,15 @@ var instruction = require('../util/match-instruction');
 var closing = require('../util/match-tag-closing');
 var opening = require('../util/match-tag-opening');
 
-/* Expose. */
 module.exports = blockHTML;
 
-/* Characters. */
 var C_TAB = '\t';
 var C_SPACE = ' ';
 var C_NEWLINE = '\n';
 
-/* Constants. */
 var MIN_CLOSING_HTML_NEWLINE_COUNT = 2;
 
-/**
- * Tokenise block HTML.
- *
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `html` node.
- */
+/* Tokenise block HTML. */
 function blockHTML(eat, value, silent) {
   var self = this;
   var blocks = self.options.blocks;

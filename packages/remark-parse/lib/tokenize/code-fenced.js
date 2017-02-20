@@ -8,32 +8,20 @@
 
 'use strict';
 
-/* Dependencies. */
 var trim = require('trim-trailing-lines');
 
-/* Expose. */
 module.exports = fencedCode;
 
-/* Characters */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
 var C_TILDE = '~';
 var C_TICK = '`';
 
-/* Constants */
 var MIN_FENCE_COUNT = 3;
 var CODE_INDENT_COUNT = 4;
 
-/**
- * Tokenise fenced code.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `code` node.
- */
+/* Tokenise fenced code. */
 function fencedCode(eat, value, silent) {
   var self = this;
   var settings = self.options;

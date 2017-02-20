@@ -8,35 +8,24 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = setextHeading;
 
-/* Characters */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
 var C_EQUALS = '=';
 var C_DASH = '-';
 
-/* Constants. */
 var MAX_HEADING_INDENT = 3;
 
-/* A map of characters which can be used to mark setext
+/* Map of characters which can be used to mark setext
  * headers, mapping to their corresponding depth. */
 var SETEXT_MARKERS = {};
 
 SETEXT_MARKERS[C_EQUALS] = 1;
 SETEXT_MARKERS[C_DASH] = 2;
 
-/**
- * Tokenise an setext-style heading.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `heading` node.
- */
+/* Tokenise an setext-style heading. */
 function setextHeading(eat, value, silent) {
   var self = this;
   var now = eat.now();

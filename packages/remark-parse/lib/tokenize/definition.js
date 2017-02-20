@@ -8,16 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 var normalize = require('../util/normalize');
 
-/* Expose. */
 module.exports = definition;
 definition.notInList = true;
 definition.notInBlock = true;
 
-/* Characters */
 var C_DOUBLE_QUOTE = '"';
 var C_SINGLE_QUOTE = '\'';
 var C_BACKSLASH = '\\';
@@ -32,14 +29,7 @@ var C_COLON = ':';
 var C_LT = '<';
 var C_GT = '>';
 
-/**
- * Tokenise a definition.
- *
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `definition` node.
- */
+/* Tokenise a definition. */
 function definition(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;
@@ -280,15 +270,7 @@ function definition(eat, value, silent) {
   }
 }
 
-/**
- * Check whether `character` can be inside an enclosed
- * URI.
- *
- * @property {string} delimiter - Closing delimiter.
- * @param {string} character - Character to test.
- * @return {boolean} - Whether `character` can be inside
- *   an enclosed URI.
- */
+/* Check if `character` can be inside an enclosed URI. */
 function isEnclosedURLCharacter(character) {
   return character !== C_GT &&
     character !== C_BRACKET_OPEN &&
@@ -297,14 +279,7 @@ function isEnclosedURLCharacter(character) {
 
 isEnclosedURLCharacter.delimiter = C_GT;
 
-/**
- * Check whether `character` can be inside an unclosed
- * URI.
- *
- * @param {string} character - Character to test.
- * @return {boolean} - Whether `character` can be inside
- *   an unclosed URI.
- */
+/* Check if `character` can be inside an unclosed URI. */
 function isUnclosedURLCharacter(character) {
   return character !== C_BRACKET_OPEN &&
     character !== C_BRACKET_CLOSE &&

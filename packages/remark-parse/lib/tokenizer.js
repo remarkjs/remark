@@ -8,18 +8,14 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = factory;
 
-/* Define nodes of a type which can be merged. */
-var MERGEABLE_NODES = {};
+var MERGEABLE_NODES = {
+  text: mergeText,
+  blockquote: mergeBlockquote
+};
 
-/**
- * Check whether a node is mergeable with adjacent nodes.
- *
- * @param {Object} node - Node to check.
- * @return {boolean} - Whether `node` is mergable.
- */
+/* Check whether a node is mergeable with adjacent nodes. */
 function mergeable(node) {
   var start;
   var end;
@@ -37,28 +33,16 @@ function mergeable(node) {
       end.column - start.column === node.value.length;
 }
 
-/**
- * Merge two text nodes: `node` into `prev`.
- *
- * @param {Object} prev - Preceding sibling.
- * @param {Object} node - Following sibling.
- * @return {Object} - `prev`.
- */
-MERGEABLE_NODES.text = function (prev, node) {
+/* Merge two text nodes: `node` into `prev`. */
+function mergeText(prev, node) {
   prev.value += node.value;
 
   return prev;
-};
+}
 
-/**
- * Merge two blockquotes: `node` into `prev`, unless in
- * CommonMark mode.
- *
- * @param {Object} prev - Preceding sibling.
- * @param {Object} node - Following sibling.
- * @return {Object} - `prev`, or `node` in CommonMark mode.
- */
-MERGEABLE_NODES.blockquote = function (prev, node) {
+/* Merge two blockquotes: `node` into `prev`, unless in
+ * CommonMark mode. */
+function mergeBlockquote(prev, node) {
   if (this.options.commonmark) {
     return node;
   }
@@ -66,35 +50,14 @@ MERGEABLE_NODES.blockquote = function (prev, node) {
   prev.children = prev.children.concat(node.children);
 
   return prev;
-};
+}
 
-/**
- * Construct a tokenizer.  This creates both
- * `tokenizeInline` and `tokenizeBlock`.
- *
- * @example
- *   Parser.prototype.tokenizeInline = tokenizeFactory('inline');
- *
- * @param {string} type - Name of parser, used to find
- *   its expressions (`%sMethods`) and tokenizers
- *   (`%Tokenizers`).
- * @return {Function} - Tokenizer.
- */
+/* Construct a tokenizer.  This creates both
+ * `tokenizeInline` and `tokenizeBlock`. */
 function factory(type) {
   return tokenize;
 
-  /**
-   * Tokenizer for a bound `type`
-   *
-   * @example
-   *   parser = new Parser();
-   *   parser.tokenizeInline('_foo_');
-   *
-   * @param {string} value - Content.
-   * @param {Object} location - Offset at which `value`
-   *   starts.
-   * @return {Array.<Object>} - Nodes.
-   */
+  /* Tokenizer for a bound `type`. */
   function tokenize(value, location) {
     var self = this;
     var offset = self.offset;

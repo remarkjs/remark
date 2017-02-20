@@ -8,24 +8,14 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = yaml;
 yaml.onlyAtStart = true;
 
-/* Constants */
 var FENCE = '---';
 var C_DASH = '-';
 var C_NEWLINE = '\n';
 
-/**
- * Tokenise YAML.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `yaml` node.
- */
+/* Tokenise YAML. */
 function yaml(eat, value, silent) {
   var self = this;
   var subvalue;

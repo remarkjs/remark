@@ -8,28 +8,15 @@
 
 'use strict';
 
-/* Dependencies. */
 var xtend = require('xtend');
 var removePosition = require('unist-util-remove-position');
 
-/* Expose. */
 module.exports = parse;
 
-/* Characters. */
 var C_NEWLINE = '\n';
-
-/* Constants. */
 var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 
-/**
- * Parse the bound file.
- *
- * @example
- *   new Parser(new File('_Foo_.')).parse();
- *
- * @this {Parser}
- * @return {Object} - `root` node.
- */
+/* Parse the bound file. */
 function parse() {
   var self = this;
   var value = String(self.file);

@@ -8,25 +8,14 @@
 
 'use strict';
 
-/* Dependencies. */
 var locate = require('../locate/break');
 
-/* Expose. */
 module.exports = hardBreak;
 hardBreak.locator = locate;
 
-/* Constants. */
 var MIN_BREAK_LENGTH = 2;
 
-/**
- * Tokenise a break.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `break` node.
- */
+/* Tokenise a break. */
 function hardBreak(eat, value, silent) {
   var self = this;
   var breaks = self.options.breaks;

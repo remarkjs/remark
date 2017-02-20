@@ -8,29 +8,17 @@
 
 'use strict';
 
-/* Dependencies. */
 var entities = require('parse-entities');
 
-/* Expose. */
 module.exports = factory;
 
-/**
- * Factory to create an entity decoder.
- *
- * @param {Object} ctx - Context to attach to.
- * @return {Function} - See `decode`.
- */
+/* Factory to create an entity decoder. */
 function factory(ctx) {
   decoder.raw = decodeRaw;
 
   return decoder;
 
-  /**
-   * Normalize `position` to add an `indent`.
-   *
-   * @param {Position} position - Reference
-   * @return {Position} - Augmented with `indent`.
-   */
+  /* Normalize `position` to add an `indent`. */
   function normalize(position) {
     var offsets = ctx.offset;
     var line = position.line;
@@ -50,14 +38,9 @@ function factory(ctx) {
     };
   }
 
-  /**
-   * Handle a warning.
-   *
-   * @this {VFile} - Virtual file.
-   * @param {string} reason - Reason for warning.
-   * @param {Position} position - Place of warning.
-   * @param {number} code - Code for warning.
-   */
+  /* Handle a warning.
+   * See https://github.com/wooorm/parse-entities
+   * for the warnings. */
   function handleWarning(reason, position, code) {
     if (code === 3) {
       return;
@@ -66,13 +49,7 @@ function factory(ctx) {
     ctx.file.message(reason, position);
   }
 
-  /**
-   * Decode `value` (at `position`) into text-nodes.
-   *
-   * @param {string} value - Value to parse.
-   * @param {Position} position - Position to start parsing at.
-   * @param {Function} handler - Node handler.
-   */
+  /* Decode `value` (at `position`) into text-nodes. */
   function decoder(value, position, handler) {
     entities(value, {
       position: normalize(position),
@@ -84,14 +61,7 @@ function factory(ctx) {
     });
   }
 
-  /**
-   * Decode `value` (at `position`) into a string.
-   *
-   * @param {string} value - Value to parse.
-   * @param {Position} position - Position to start
-   *   parsing at.
-   * @return {string} - Plain-text.
-   */
+  /* Decode `value` (at `position`) into a string. */
   function decodeRaw(value, position) {
     return entities(value, {
       position: normalize(position),

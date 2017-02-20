@@ -11,35 +11,13 @@
 /* Expose. */
 module.exports = factory;
 
-/**
- * Factory to de-escape a value, based on a list at `key`
- * in `ctx`.
- *
- * @example
- *   var ctx = {escape: ['a']}
- *   var unescape = unescapeFactory(ctx, 'escape');
- *
- * @param {Object} ctx - List of escapable characters.
- * @param {string} key - Key in `map` at which the list
- *   exists.
- * @return {function(string): string} - Function which
- *   takes a value and returns its unescaped version.
- */
+/* Factory to de-escape a value, based on a list at `key`
+ * in `ctx`. */
 function factory(ctx, key) {
   return unescape;
 
-  /**
-   * De-escape a string using the expression at `key`
-   * in `ctx`.
-   *
-   * @example
-   *   var ctx = {escape: ['a']}
-   *   var unescape = unescapeFactory(ctx, 'escape');
-   *   unescape('\a \b'); // 'a \b'
-   *
-   * @param {string} value - Escaped string.
-   * @return {string} - Unescaped string.
-   */
+  /* De-escape a string using the expression at `key`
+   * in `ctx`. */
   function unescape(value) {
     var prev = 0;
     var index = value.indexOf('\\');

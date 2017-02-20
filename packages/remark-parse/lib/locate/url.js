@@ -8,18 +8,10 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = locate;
 
 var PROTOCOLS = ['https://', 'http://', 'mailto:'];
 
-/**
- * Find a possible token.
- *
- * @param {string} value - Value to search.
- * @param {number} fromIndex - Index to start searching at.
- * @return {number} - Location.
- */
 function locate(value, fromIndex) {
   var length = PROTOCOLS.length;
   var index = -1;

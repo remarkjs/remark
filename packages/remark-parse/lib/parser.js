@@ -8,7 +8,6 @@
 
 'use strict';
 
-/* Dependencies. */
 var xtend = require('xtend');
 var toggle = require('state-toggle');
 var vfileLocation = require('vfile-location');
@@ -16,21 +15,9 @@ var unescape = require('./unescape');
 var decode = require('./decode');
 var tokenizer = require('./tokenizer');
 
-/* Expose `attacher`. */
 module.exports = Parser;
 
-/**
- * Construct a new parser.
- *
- * @example
- *   var parser = new Parser(new VFile('Foo'));
- *
- * @constructor
- * @class {Parser}
- * @param {VFile} file - File to parse.
- * @param {Object?} [options] - Passed to
- *   `Parser#setOptions()`.
- */
+/* Construct a new parser. */
 function Parser(file, options) {
   this.file = file;
   this.offset = {};
@@ -103,9 +90,7 @@ proto.tokenizeBlock = tokenizer('block');
 proto.tokenizeInline = tokenizer('inline');
 proto.tokenizeFactory = tokenizer;
 
-/**
- * Get all keys in `value`.
- */
+/* Get all keys in `value`. */
 function keys(value) {
   var result = [];
   var key;

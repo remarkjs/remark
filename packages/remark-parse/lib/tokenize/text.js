@@ -8,18 +8,9 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = text;
 
-/**
- * Tokenise text.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `text` node.
- */
+/* Tokenise text. */
 function text(eat, value, silent) {
   var self = this;
   var methods;

@@ -8,22 +8,12 @@
 
 'use strict';
 
-/* Dependencies. */
 var locate = require('../locate/escape');
 
-/* Expose. */
 module.exports = escape;
 escape.locator = locate;
 
-/**
- * Tokenise an escape.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `text` or `break` node.
- */
+/* Tokenise an escape. */
 function escape(eat, value, silent) {
   var self = this;
   var character;

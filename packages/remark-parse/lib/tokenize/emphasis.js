@@ -8,29 +8,18 @@
 
 'use strict';
 
-/* Dependencies. */
 var trim = require('trim');
 var word = require('is-word-character');
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/emphasis');
 
-/* Expose. */
 module.exports = emphasis;
 emphasis.locator = locate;
 
-/* Constants. */
 var C_ASTERISK = '*';
 var C_UNDERSCORE = '_';
 
-/**
- * Tokenise emphasis.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `emphasis` node.
- */
+/* Tokenise emphasis. */
 function emphasis(eat, value, silent) {
   var self = this;
   var index = 0;

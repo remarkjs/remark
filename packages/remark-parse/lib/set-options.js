@@ -8,27 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var xtend = require('xtend');
 var escapes = require('markdown-escapes');
 var defaults = require('./defaults');
 
-/* Expose `attacher`. */
 module.exports = setOptions;
 
-/**
- * Set options.  Does not overwrite previously set
- * options.
- *
- * @example
- *   var parser = new Parser();
- *   parser.setOptions({gfm: true});
- *
- * @this {Parser}
- * @throws {Error} - When an option is invalid.
- * @param {Object?} [options] - Parse settings.
- * @return {Parser} - `self`.
- */
+/* Set options. */
 function setOptions(options) {
   var self = this;
   var current = self.options;

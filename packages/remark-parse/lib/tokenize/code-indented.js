@@ -8,31 +8,19 @@
 
 'use strict';
 
-/* Dependencies. */
 var repeat = require('repeat-string');
 var trim = require('trim-trailing-lines');
 
-/* Expose. */
 module.exports = indentedCode;
 
-/* Characters */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
 
-/* Constants */
 var CODE_INDENT_COUNT = 4;
 var CODE_INDENT = repeat(C_SPACE, CODE_INDENT_COUNT);
 
-/**
- * Tokenise indented code.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `code` node.
- */
+/* Tokenise indented code. */
 function indentedCode(eat, value, silent) {
   var index = -1;
   var length = value.length;

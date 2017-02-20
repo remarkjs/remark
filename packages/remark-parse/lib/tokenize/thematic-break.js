@@ -8,10 +8,8 @@
 
 'use strict';
 
-/* Expose. */
 module.exports = thematicBreak;
 
-/* Characters */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
@@ -19,17 +17,9 @@ var C_ASTERISK = '*';
 var C_UNDERSCORE = '_';
 var C_DASH = '-';
 
-/* Constants. */
 var THEMATIC_BREAK_MARKER_COUNT = 3;
 
-/**
- * Tokenise a thematic break.
- *
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `thematicBreak` node.
- */
+/* Tokenise a thematic break. */
 function thematicBreak(eat, value, silent) {
   var index = -1;
   var length = value.length + 1;

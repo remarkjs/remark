@@ -8,26 +8,15 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/code-inline');
 
-/* Expose. */
 module.exports = inlineCode;
 inlineCode.locator = locate;
 
-/* Constants. */
 var C_TICK = '`';
 
-/**
- * Tokenise inline code.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `inlineCode` node.
- */
+/* Tokenise inline code. */
 function inlineCode(eat, value, silent) {
   var length = value.length;
   var index = 0;

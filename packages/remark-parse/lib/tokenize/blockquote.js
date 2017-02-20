@@ -8,27 +8,16 @@
 
 'use strict';
 
-/* Dependencies. */
 var trim = require('trim');
 
-/* Expose. */
 module.exports = blockquote;
 
-/* Characters */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
 var C_GT = '>';
 
-/**
- * Tokenise a blockquote.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `blockquote` node.
- */
+/* Tokenise a blockquote. */
 function blockquote(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;

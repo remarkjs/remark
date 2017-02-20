@@ -8,28 +8,17 @@
 
 'use strict';
 
-/* Dependencies. */
 var trim = require('trim');
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/strong');
 
-/* Expose. */
 module.exports = strong;
 strong.locator = locate;
 
-/* Constants. */
 var C_ASTERISK = '*';
 var C_UNDERSCORE = '_';
 
-/**
- * Tokenise strong.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `strong` node.
- */
+/* Tokenise strong. */
 function strong(eat, value, silent) {
   var self = this;
   var index = 0;

@@ -8,16 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var has = require('has');
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/link');
 
-/* Expose. */
 module.exports = link;
 link.locator = locate;
 
-/* Constants. */
 var C_BACKSLASH = '\\';
 var C_BRACKET_OPEN = '[';
 var C_BRACKET_CLOSE = ']';
@@ -29,14 +26,14 @@ var C_TICK = '`';
 var C_DOUBLE_QUOTE = '"';
 var C_SINGLE_QUOTE = '\'';
 
-/* A map of characters, which can be used to mark link
+/* Map of characters, which can be used to mark link
  * and image titles. */
 var LINK_MARKERS = {};
 
 LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
 LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
 
-/* A map of characters, which can be used to mark link
+/* Map of characters, which can be used to mark link
  * and image titles in commonmark-mode. */
 var COMMONMARK_LINK_MARKERS = {};
 
@@ -44,15 +41,7 @@ COMMONMARK_LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
 COMMONMARK_LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
 COMMONMARK_LINK_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE;
 
-/**
- * Tokenise a link.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `link` node.
- */
+/* Tokenise a link. */
 function link(eat, value, silent) {
   var self = this;
   var subvalue = '';

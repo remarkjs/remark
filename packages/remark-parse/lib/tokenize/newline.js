@@ -8,21 +8,11 @@
 
 'use strict';
 
-/* Dependencies. */
 var whitespace = require('is-whitespace-character');
 
-/* Expose. */
 module.exports = newline;
 
-/**
- * Tokenise newline.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {boolean?} - boolean in silent mode, nothing otherwise.
- */
+/* Tokenise newline. */
 function newline(eat, value, silent) {
   var character = value.charAt(0);
   var length;

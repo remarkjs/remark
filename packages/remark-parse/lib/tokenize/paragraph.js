@@ -8,31 +8,19 @@
 
 'use strict';
 
-/* Dependencies. */
 var trim = require('trim');
 var decimal = require('is-decimal');
 var trimTrailingLines = require('trim-trailing-lines');
 
-/* Expose. */
 module.exports = paragraph;
 
-/* Characters. */
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_SPACE = ' ';
 
-/* Constants. */
 var TAB_SIZE = 4;
 
-/**
- * Tokenise paragraph.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {boolean?} - boolean in silent mode, nothing otherwise.
- */
+/* Tokenise paragraph. */
 function paragraph(eat, value, silent) {
   var self = this;
   var settings = self.options;

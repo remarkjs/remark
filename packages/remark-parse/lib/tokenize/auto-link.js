@@ -8,16 +8,13 @@
 
 'use strict';
 
-/* Dependencies. */
 var decode = require('parse-entities');
 var locate = require('../locate/tag');
 
-/* Expose. */
 module.exports = autoLink;
 autoLink.locator = locate;
 autoLink.notInLink = true;
 
-/* Constants. */
 var C_LT = '<';
 var C_GT = '>';
 var C_AT_SIGN = '@';
@@ -25,15 +22,7 @@ var C_SLASH = '/';
 var MAILTO = 'mailto:';
 var MAILTO_LENGTH = MAILTO.length;
 
-/**
- * Tokenise a link.
- *
- * @property {Function} locator.
- * @param {function(string)} eat - Eater.
- * @param {string} value - Rest of content.
- * @param {boolean?} [silent] - Whether this is a dry run.
- * @return {Node?|boolean} - `link` node.
- */
+/* Tokenise a link. */
 function autoLink(eat, value, silent) {
   var self;
   var subvalue;
