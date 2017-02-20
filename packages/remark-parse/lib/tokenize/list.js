@@ -62,6 +62,7 @@ LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true;
 function list(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;
+  var pedantic = self.options.pedantic;
   var tokenizers = self.blockTokenizers;
   var interuptors = self.interruptList;
   var markers;
@@ -255,7 +256,7 @@ function list(eat, value, silent) {
     }
 
     if (currentMarker) {
-      if (commonmark && marker !== currentMarker) {
+      if (!pedantic && marker !== currentMarker) {
         break;
       }
 

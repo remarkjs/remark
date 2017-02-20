@@ -41,11 +41,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": true,
+      "loose": false,
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "checked": null,
           "children": [
             {
@@ -95,19 +95,41 @@
               "offset": 25
             },
             "end": {
-              "line": 5,
-              "column": 1,
-              "offset": 49
+              "line": 4,
+              "column": 12,
+              "offset": 48
             },
             "indent": [
-              1,
               1
             ]
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 25
         },
+        "end": {
+          "line": 4,
+          "column": 12,
+          "offset": 48
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "loose": false,
+      "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "checked": null,
           "children": [
             {
@@ -157,19 +179,41 @@
               "offset": 50
             },
             "end": {
-              "line": 8,
-              "column": 1,
-              "offset": 75
+              "line": 7,
+              "column": 12,
+              "offset": 74
             },
             "indent": [
-              1,
               1
             ]
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 50
         },
+        "end": {
+          "line": 7,
+          "column": 12,
+          "offset": 74
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "start": null,
+      "loose": false,
+      "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "loose": false,
           "checked": null,
           "children": [
             {
@@ -219,16 +263,38 @@
               "offset": 76
             },
             "end": {
-              "line": 11,
-              "column": 1,
-              "offset": 100
+              "line": 10,
+              "column": 12,
+              "offset": 99
             },
             "indent": [
-              1,
               1
             ]
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 9,
+          "column": 1,
+          "offset": 76
         },
+        "end": {
+          "line": 10,
+          "column": 12,
+          "offset": 99
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "loose": false,
+      "children": [
         {
           "type": "listItem",
           "loose": false,
@@ -293,9 +359,9 @@
       ],
       "position": {
         "start": {
-          "line": 3,
+          "line": 12,
           "column": 1,
-          "offset": 25
+          "offset": 101
         },
         "end": {
           "line": 13,
@@ -303,15 +369,6 @@
           "offset": 125
         },
         "indent": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           1
         ]
       }
