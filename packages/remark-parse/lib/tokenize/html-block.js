@@ -8,31 +8,38 @@
 
 'use strict';
 
-var cdata = require('../util/match-cdata');
-var comment = require('../util/match-comment');
-var declaration = require('../util/match-declaration');
-var instruction = require('../util/match-instruction');
-var closing = require('../util/match-tag-closing');
-var opening = require('../util/match-tag-opening');
+var openCloseTag = require('../util/html').openCloseTag;
 
 module.exports = blockHTML;
 
 var C_TAB = '\t';
 var C_SPACE = ' ';
 var C_NEWLINE = '\n';
-
-var MIN_CLOSING_HTML_NEWLINE_COUNT = 2;
+var C_LT = '<';
 
 /* Tokenise block HTML. */
 function blockHTML(eat, value, silent) {
   var self = this;
   var blocks = self.options.blocks;
-  var index = 0;
   var length = value.length;
-  var subvalue = '';
+  var index = 0;
+  var next;
+  var line;
   var offset;
   var character;
-  var queue;
+  var count;
+  var sequence;
+  var subvalue;
+
+  var sequences = [
+    [/^<(script|pre|style)(?=(\s|>|$))/i, /<\/(script|pre|style)>/i, true],
+    [/^<!--/, /-->/, true],
+    [/^<\?/, /\?>/, true],
+    [/^<![A-Za-z]/, />/, true],
+    [/^<!\[CDATA\[/, /\]\]>/, true],
+    [new RegExp('^</?(' + blocks.join('|') + ')(?=(\\s|/?>|$))', 'i'), /^$/, true],
+    [new RegExp(openCloseTag.source + '\\s*$'), /^$/, false]
+  ];
 
   /* Eat initial spacing. */
   while (index < length) {
@@ -42,50 +49,55 @@ function blockHTML(eat, value, silent) {
       break;
     }
 
-    subvalue += character;
     index++;
   }
 
-  offset = index;
-  value = value.slice(offset);
+  if (value.charAt(index) !== C_LT) {
+    return;
+  }
 
-  /* Try to eat an HTML thing. */
-  queue = comment(value, self.options) ||
-    cdata(value) ||
-    instruction(value) ||
-    declaration(value) ||
-    closing(value, blocks) ||
-    opening(value, blocks);
+  next = value.indexOf(C_NEWLINE, index + 1);
+  next = next === -1 ? length : next;
+  line = value.slice(index, next);
+  offset = -1;
+  count = sequences.length;
 
-  if (!queue) {
+  while (++offset < count) {
+    if (sequences[offset][0].test(line)) {
+      sequence = sequences[offset];
+      break;
+    }
+  }
+
+  if (!sequence) {
     return;
   }
 
   if (silent) {
-    return true;
+    return sequence[2];
   }
 
-  subvalue += queue;
-  index = subvalue.length - offset;
-  queue = '';
+  index = next;
 
-  while (index < length) {
-    character = value.charAt(index);
+  if (!sequence[1].test(line)) {
+    while (index < length) {
+      next = value.indexOf(C_NEWLINE, index + 1);
+      next = next === -1 ? length : next;
+      line = value.slice(index + 1, next);
 
-    if (character === C_NEWLINE) {
-      queue += character;
-    } else if (queue.length < MIN_CLOSING_HTML_NEWLINE_COUNT) {
-      subvalue += queue + character;
-      queue = '';
-    } else {
-      break;
+      if (sequence[1].test(line)) {
+        if (line) {
+          index = next;
+        }
+
+        break;
+      }
+
+      index = next;
     }
-
-    index++;
   }
 
-  return eat(subvalue)({
-    type: 'html',
-    value: subvalue
-  });
+  subvalue = value.slice(0, index);
+
+  return eat(subvalue)({type: 'html', value: subvalue});
 }

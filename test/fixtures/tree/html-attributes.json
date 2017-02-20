@@ -157,28 +157,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "text",
-          "value": "<div baz\nqux",
-          "position": {
-            "start": {
-              "line": 24,
-              "column": 1,
-              "offset": 213
-            },
-            "end": {
-              "line": 25,
-              "column": 4,
-              "offset": 225
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<div baz\nqux",
       "position": {
         "start": {
           "line": 24,
@@ -232,26 +212,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span foo=\"bar 'baz' qux\" foo='bar \"baz\" qux' foo=baz>",
-          "position": {
-            "start": {
-              "line": 29,
-              "column": 1,
-              "offset": 237
-            },
-            "end": {
-              "line": 29,
-              "column": 55,
-              "offset": 291
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span foo=\"bar 'baz' qux\" foo='bar \"baz\" qux' foo=baz>",
       "position": {
         "start": {
           "line": 29,
@@ -267,26 +229,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span foo>",
-          "position": {
-            "start": {
-              "line": 32,
-              "column": 1,
-              "offset": 294
-            },
-            "end": {
-              "line": 32,
-              "column": 11,
-              "offset": 304
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span foo>",
       "position": {
         "start": {
           "line": 32,
@@ -302,26 +246,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span>",
-          "position": {
-            "start": {
-              "line": 35,
-              "column": 1,
-              "offset": 307
-            },
-            "end": {
-              "line": 35,
-              "column": 7,
-              "offset": 313
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span>",
       "position": {
         "start": {
           "line": 35,
@@ -337,26 +263,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span :foo:bar:09:=\"baz\">",
-          "position": {
-            "start": {
-              "line": 38,
-              "column": 1,
-              "offset": 316
-            },
-            "end": {
-              "line": 38,
-              "column": 26,
-              "offset": 341
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span :foo:bar:09:=\"baz\">",
       "position": {
         "start": {
           "line": 38,
@@ -372,26 +280,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span foo.bar_09->",
-          "position": {
-            "start": {
-              "line": 41,
-              "column": 1,
-              "offset": 344
-            },
-            "end": {
-              "line": 41,
-              "column": 19,
-              "offset": 362
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span foo.bar_09->",
       "position": {
         "start": {
           "line": 41,
@@ -407,26 +297,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span foo.bar_09-   >",
-          "position": {
-            "start": {
-              "line": 44,
-              "column": 1,
-              "offset": 365
-            },
-            "end": {
-              "line": 44,
-              "column": 22,
-              "offset": 386
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span foo.bar_09-   >",
       "position": {
         "start": {
           "line": 44,
@@ -442,26 +314,8 @@
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "html",
-          "value": "<span foo.bar_09-   />",
-          "position": {
-            "start": {
-              "line": 47,
-              "column": 1,
-              "offset": 389
-            },
-            "end": {
-              "line": 47,
-              "column": 23,
-              "offset": 411
-            },
-            "indent": []
-          }
-        }
-      ],
+      "type": "html",
+      "value": "<span foo.bar_09-   />",
       "position": {
         "start": {
           "line": 47,
