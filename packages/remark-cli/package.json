@@ -21,9 +21,6 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
   ],
-  "engines": {
-    "node": ">=0.11.0"
-  },
   "bin": {
     "remark": "cli.js"
   },

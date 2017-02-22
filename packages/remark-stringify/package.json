@@ -19,9 +19,6 @@
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
     "Eugene Sharygin <eush77@gmail.com>"
   ],
-  "engines": {
-    "node": ">=0.11.0"
-  },
   "files": [
     "index.js",
     "lib"
