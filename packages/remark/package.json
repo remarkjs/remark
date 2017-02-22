@@ -14,7 +14,6 @@
     "process"
   ],
   "dependencies": {
-    "load-plugin": "^2.0.0",
     "remark-parse": "^2.2.0",
     "remark-stringify": "^2.2.0",
     "unified": "^5.0.0"
@@ -30,10 +29,8 @@
     "node": ">=0.11.0"
   },
   "files": [
-    "index.js",
-    "cli.js"
+    "index.js"
   ],
-  "bin": "cli.js",
   "scripts": {},
   "xo": false
 }
