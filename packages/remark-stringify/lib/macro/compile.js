@@ -20,6 +20,6 @@ module.exports = compile;
  * @param {Node} node - Syntax tree.
  * @return {string} - Markdown document.
  */
-function compile(node) {
-  return this.visit(compact(node, this.options.commonmark));
+function compile() {
+  return this.visit(compact(this.tree, this.options.commonmark));
 }

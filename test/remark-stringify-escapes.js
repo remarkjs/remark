@@ -258,5 +258,5 @@ function stringify(value, options) {
     node.position = uncollapsable;
   });
 
-  return remark().stringify(tree, options);
+  return remark().data('settings', options || {}).stringify(tree);
 }

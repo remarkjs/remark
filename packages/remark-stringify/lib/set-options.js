@@ -60,7 +60,7 @@ function setOptions(options) {
   }
 
   for (key in defaults) {
-    validate[typeof current[key]](options, key, current[key], maps[key]);
+    validate[typeof defaults[key]](options, key, current[key], maps[key]);
   }
 
   ruleRepetition = options.ruleRepetition;

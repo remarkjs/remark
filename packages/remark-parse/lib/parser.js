@@ -18,11 +18,11 @@ var tokenizer = require('./tokenizer');
 module.exports = Parser;
 
 /* Construct a new parser. */
-function Parser(file, options) {
+function Parser(doc, file) {
   this.file = file;
   this.offset = {};
   this.options = xtend(this.options);
-  this.setOptions(options);
+  this.setOptions({});
 
   this.inList = this.inBlock = this.inLink = false;
   this.atStart = true;

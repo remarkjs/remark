@@ -1,19 +1,14 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse
- * @fileoverview Markdown parser.
- */
-
 'use strict';
 
 var unherit = require('unherit');
+var xtend = require('xtend');
 var Parser = require('./lib/parser.js');
 
-module.exports = exports = parse;
-exports.Parser = Parser;
+module.exports = parse;
+parse.Parser = Parser;
 
-function parse(processor) {
-  processor.Parser = unherit(Parser);
+function parse(options) {
+  var Local = unherit(Parser);
+  Local.prototype.options = xtend(Local.prototype.options, this.data('settings'), options);
+  this.Parser = Local;
 }

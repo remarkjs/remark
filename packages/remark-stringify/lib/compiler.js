@@ -21,14 +21,13 @@ module.exports = Compiler;
  * @constructor
  * @class {Compiler}
  * @param {File} file - Virtual file.
- * @param {Object?} [options] - Passed to
- *   `Compiler#setOptions()`.
  */
-function Compiler(file, options) {
+function Compiler(tree, file) {
   this.inLink = this.inTable = false;
+  this.tree = tree;
   this.file = file;
   this.options = xtend(this.options);
-  this.setOptions(options);
+  this.setOptions({});
 }
 
 /* Cache prototype. */

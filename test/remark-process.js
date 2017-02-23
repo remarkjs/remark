@@ -13,35 +13,32 @@ var test = require('tape');
 var remark = require('../packages/remark');
 
 /* Test `remark`. */
-test('remark().process(value, options, done)', function (t) {
+test('remark().processSync(value)', function (t) {
   t.equal(
-    remark().process('*foo*').toString(),
+    remark().processSync('*foo*').toString(),
     '_foo_\n',
     'should parse and stringify a file'
   );
 
   t.equal(
-    remark().process('1)  foo', {commonmark: true}).toString(),
+    remark().data('settings', {commonmark: true}).processSync('1)  foo').toString(),
     '1.  foo\n',
     'should accept parse options'
   );
 
   t.equal(
-    remark().process('# foo', {closeAtx: true}).toString(),
+    remark().data('settings', {closeAtx: true}).processSync('# foo').toString(),
     '# foo #\n',
     'should accept stringify options'
   );
 
   t.throws(
     function () {
-      remark().process([
+      remark().data('settings', {pedantic: true, listItemIndent: '1'}).processSync([
         '* List',
         '',
         '        code()'
-      ].join('\n'), {
-        pedantic: true,
-        listItemIndent: '1'
-      });
+      ].join('\n'));
     },
     /Cannot indent code properly. See http:\/\/git.io\/vgFvT/,
     'should throw when `pedantic` is `true`, `listItemIndent` ' +

@@ -44,18 +44,13 @@ test('fixtures', function (t) {
       Object.keys(possibilities).forEach(function (key) {
         var name = key || 'default';
         var parse = possibilities[key];
-        var stringify;
         var node;
         var markdown;
         var recompiled;
 
-        stringify = extend({}, fixture.stringify, {
-          gfm: parse.gfm,
-          commonmark: parse.commonmark,
-          pedantic: parse.pedantic
-        });
-
-        node = remark().parse(input, parse);
+        node = remark()
+          .data('settings', parse)
+          .parse(input);
 
         mdast(node);
 
@@ -65,10 +60,15 @@ test('fixtures', function (t) {
           'should parse `' + name + '` correctly'
         );
 
-        markdown = remark().stringify(node, stringify);
+        markdown = remark()
+          .data('settings', extend({}, fixture.stringify, parse))
+          .stringify(node);
 
         if (output !== false) {
-          recompiled = remark().parse(markdown, parse);
+          recompiled = remark()
+            .data('settings', parse)
+            .parse(markdown);
+
           mdast(recompiled);
 
           st.deepEqual(
