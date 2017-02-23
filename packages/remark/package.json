@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "6.2.0",
+  "version": "7.0.0",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
@@ -14,9 +14,9 @@
     "process"
   ],
   "dependencies": {
-    "remark-parse": "^2.2.0",
-    "remark-stringify": "^2.2.0",
-    "unified": "^5.0.0"
+    "remark-parse": "^3.0.0",
+    "remark-stringify": "^3.0.0",
+    "unified": "^6.0.0"
   },
   "homepage": "http://remark.js.org",
   "repository": "https://github.com/wooorm/remark/tree/master/packages/remark",
