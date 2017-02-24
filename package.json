@@ -21,11 +21,7 @@
     "mdast-util-assert": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
     "nyc": "^10.0.0",
-    "remark-comment-config": "^4.0.0",
-    "remark-github": "^6.0.1",
-    "remark-lint": "^5.1.0",
-    "remark-toc": "^3.0.0",
-    "remark-validate-links": "^5.0.0",
+    "remark-preset-wooorm": "^2.0.0",
     "tape": "^4.5.1",
     "uglifyify": "^3.0.1",
     "unist-builder": "^1.0.2",
@@ -36,7 +32,7 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "build-md": "# packages/remark-cli/cli.js . --frail --quiet",
+    "build-md": "packages/remark-cli/cli.js . --frail --quiet",
     "build-bundle": "node script/build-bundle.js",
     "build": "npm run build-md && npm run build-bundle",
     "lint": "xo",
@@ -67,5 +63,8 @@
     "ignores": [
       "remark.js"
     ]
+  },
+  "remarkConfig": {
+    "plugins": ["preset-wooorm"]
   }
 }

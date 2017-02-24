@@ -2,7 +2,7 @@
 
 # Products
 
-List of tools using remark [**remark**][remark] internally.
+List of tools using [**remark**][remark] internally.
 
 See [plug-ins][plugins] for a list of plugins and utilities.
 
@@ -54,7 +54,7 @@ See [plug-ins][plugins] for a list of plugins and utilities.
 *   [`mapbox/retext-mapbox-standard`](https://github.com/mapbox/retext-mapbox-standard)
     — Enforce Mapbox rules about language.
 *   [`Shopify/rorybot`](https://github.com/Shopify/rorybot)
-    — Catch writing that doesn't follow Shopify style guide rules.
+    — Catch writing that doesn’t follow Shopify style guide rules.
 *   [`sindresorhus/awesome-lint`](https://github.com/sindresorhus/awesome-lint)
     — 😎 Linter for Awesome lists.
 

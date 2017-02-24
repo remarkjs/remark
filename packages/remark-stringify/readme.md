@@ -1,7 +1,7 @@
 # remark-stringify [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
 [Compiler][] for [**unified**][unified].  Stringifies an
-[**mdast**][mdast] syntax tree to markdown.  Used in the [**remark**
+[**MDAST**][mdast] syntax tree to markdown.  Used in the [**remark**
 processor][processor].  Can be [extended][extend] to change how
 markdown is compiled.
 
@@ -48,7 +48,7 @@ process.stdin
 
 ### `processor.use(stringify)`
 
-Configure the `processor` to stringify [**mdast**][mdast] syntax trees
+Configure the `processor` to stringify [**MDAST**][mdast] syntax trees
 to markdown.
 
 ###### `options`

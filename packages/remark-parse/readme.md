@@ -1,7 +1,7 @@
 # remark-parse [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
 [Parser][] for [**unified**][unified].  Parses markdown to an
-[**mdast**][mdast] syntax tree.  Used in the [**remark**
+[**MDAST**][mdast] syntax tree.  Used in the [**remark**
 processor][processor].  Can be [extended][extend] to change how
 markdown is parsed.
 
@@ -50,7 +50,7 @@ process.stdin
 ### `processor.use(parse)`
 
 Configure the `processor` to read markdown as input and process an
-[**mdast**][mdast] syntax tree.
+[**MDAST**][mdast] syntax tree.
 
 #### `options`
 
@@ -64,7 +64,8 @@ The following settings are supported:
 *   [`footnotes`][options-footnotes] (`boolean`, default: `false`);
 *   [`pedantic`][options-pedantic] (`boolean`, default: `false`);
 *   [`breaks`][options-breaks] (`boolean`, default: `false`).
-*   [`blocks`][options-blocks] (`Array.<string>`, default: list of block HTML elements);
+*   [`blocks`][options-blocks] (`Array.<string>`, default: list of block HTML
+    elements);
 
 ##### `options.gfm`
 

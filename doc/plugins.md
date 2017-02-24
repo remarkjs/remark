@@ -111,9 +111,9 @@ See [tools built with remark »][products].
 
 ## List of Utilities
 
-See [**mdast**][mdast-util] for a list of utilities for working with
+See [**MDAST**][mdast-util] for a list of utilities for working with
 the AST.  See [`unist`][unist-util] for other utilities which work with
-**mdast** nodes, too.
+**MDAST** nodes, too.
 
 And finally, see [`wooorm/vfile`][vfile-util] for a list of utilities
 for working with virtual files and
