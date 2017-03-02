@@ -191,8 +191,8 @@ prototype to change how markdown is parsed.
 The below plug-in adds a [tokenizer][] for at-mentions.
 
 ```js
-function mentions(processor) {
-    var Parser = processor.Parser;
+function mentions() {
+    var Parser = this.Parser;
     var tokenizers = Parser.prototype.inlineTokenizers;
     var methods = Parser.prototype.inlineMethods;
 
