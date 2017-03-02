@@ -135,8 +135,8 @@ The below plug-in modifies a [visitor][] to add an extra blank line
 before level two headings.
 
 ```js
-function gap(processor) {
-    var Compiler = processor.Compiler;
+function gap() {
+    var Compiler = this.Compiler;
     var visitors = Compiler.prototype.visitors;
     var heading = visitors.heading;
 
