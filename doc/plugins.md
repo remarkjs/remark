@@ -63,6 +63,8 @@ See [tools built with remark »][products].
     — Markdown code style linter;
 *   [`wooorm/remark-man`](https://github.com/wooorm/remark-man)
     — Compile Markdown to Man pages (roff);
+*   [`rokt33r/remark-math`](https://github.com/rokt33r/remark-math)
+    — Math inline and block support;
 *   [`wooorm/remark-message-control`](https://github.com/wooorm/remark-message-control)
     — Enable, disable, and ignore messages;
 *   [`ben-eb/remark-midas`](https://github.com/ben-eb/remark-midas)
