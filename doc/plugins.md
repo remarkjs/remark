@@ -53,6 +53,8 @@ See [tools built with remark »][products].
     — Compile Markdown to HTML documents;
 *   [`jackycute/remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
     — Transform unicode emoji to HTML images;
+*   [`rokt33r/remark-html-katex`](https://github.com/rokt33r/remark-math/blob/master/packages/remark-html-katex/readme.md)
+    — Transform math inline and block nodes to styled HTML equations with [KaTeX](https://github.com/Khan/KaTeX);
 *   [`wooorm/remark-inline-links`](https://github.com/wooorm/remark-inline-links)
     — Transform references and definitions to normal links and images;
 *   [`bizen241/remark-inline-math`](https://github.com/bizen241/remark-inline-math)
