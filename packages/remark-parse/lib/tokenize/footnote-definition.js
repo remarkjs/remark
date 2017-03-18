@@ -119,7 +119,9 @@ function footnoteDefinition(eat, value, silent) {
 
   now.column += subvalue.length;
   now.offset += subvalue.length;
-  queue = content = subqueue = '';
+  queue = '';
+  content = '';
+  subqueue = '';
 
   while (index < length) {
     character = value.charAt(index);

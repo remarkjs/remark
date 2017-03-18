@@ -9,7 +9,7 @@
 'use strict';
 
 var attributeName = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
-var unquoted = '[^"\'=<>`\\x00-\\x20]+';
+var unquoted = '[^"\'=<>`\\u0000-\\u0020]+';
 var singleQuoted = '\'[^\']*\'';
 var doubleQuoted = '"[^"]*"';
 var attributeValue = '(?:' + unquoted + '|' + singleQuoted + '|' + doubleQuoted + ')';

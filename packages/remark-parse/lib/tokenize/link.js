@@ -100,7 +100,8 @@ function link(eat, value, silent) {
   now.offset += index;
 
   while (index < length) {
-    subqueue = character = value.charAt(index);
+    character = value.charAt(index);
+    subqueue = character;
 
     if (character === C_TICK) {
       /* Inline-code in link content. */

@@ -100,7 +100,8 @@ function atxHeading(eat, value, silent) {
 
   /* Eat content. */
   subvalue += queue;
-  queue = content = '';
+  queue = '';
+  content = '';
 
   while (++index < length) {
     character = value.charAt(index);

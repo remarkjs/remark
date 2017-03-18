@@ -40,10 +40,12 @@ function indentedCode(eat, value, silent) {
 
       subvalue += subvalueQueue;
       content += contentQueue;
-      subvalueQueue = contentQueue = '';
+      subvalueQueue = '';
+      contentQueue = '';
 
       if (character === C_NEWLINE) {
-        subvalueQueue = contentQueue = character;
+        subvalueQueue = character;
+        contentQueue = character;
       } else {
         subvalue += character;
         content += character;
@@ -52,7 +54,8 @@ function indentedCode(eat, value, silent) {
           character = value.charAt(index);
 
           if (!character || character === C_NEWLINE) {
-            contentQueue = subvalueQueue = character;
+            contentQueue = character;
+            subvalueQueue = character;
             break;
           }
 

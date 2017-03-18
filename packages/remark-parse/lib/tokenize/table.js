@@ -68,7 +68,8 @@ function table(eat, value, silent) {
    * checks for performance here, such as the minimum
    * number of rows, and allowed characters in the
    * alignment row. */
-  index = lineCount = 0;
+  index = 0;
+  lineCount = 0;
   length = value.length + 1;
   lines = [];
 
@@ -175,9 +176,11 @@ function table(eat, value, silent) {
 
     length = line.length + 1;
     index = 0;
-    queue = cell = '';
+    queue = '';
+    cell = '';
     preamble = true;
-    count = opening = null;
+    count = null;
+    opening = null;
 
     while (index < length) {
       character = line.charAt(index);
@@ -226,7 +229,8 @@ function table(eat, value, silent) {
 
           eat(queue + character);
 
-          queue = cell = '';
+          queue = '';
+          cell = '';
         }
       } else {
         if (queue) {

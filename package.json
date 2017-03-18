@@ -28,7 +28,7 @@
     "unist-util-remove-position": "^1.1.0",
     "unist-util-visit": "^1.1.0",
     "vfile": "^2.0.0",
-    "xo": "^0.17.0"
+    "xo": "^0.18.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
@@ -50,12 +50,13 @@
   },
   "xo": {
     "space": true,
+    "esnext": false,
     "rules": {
       "import/no-unassigned-import": "off",
-      "import/no-dynamic-require": "off",
+      "unicorn/prefer-type-error": "off",
+      "unicorn/escape-case": "off",
       "eqeqeq": "off",
       "guard-for-in": "off",
-      "max-lines": "off",
       "max-depth": "off",
       "complexity": "off",
       "no-eq-null": "off"

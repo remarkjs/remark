@@ -51,7 +51,8 @@ function setextHeading(eat, value, silent) {
   }
 
   /* Eat content. */
-  content = queue = '';
+  content = '';
+  queue = '';
 
   while (++index < length) {
     character = value.charAt(index);

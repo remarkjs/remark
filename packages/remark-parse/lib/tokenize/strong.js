@@ -43,7 +43,8 @@ function strong(eat, value, silent) {
   subvalue = marker + marker;
   length = value.length;
   index++;
-  queue = character = '';
+  queue = '';
+  character = '';
 
   if (pedantic && whitespace(value.charAt(index))) {
     return;

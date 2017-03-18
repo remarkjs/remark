@@ -99,7 +99,8 @@ function fencedCode(eat, value, silent) {
   }
 
   /* Eat flag. */
-  flag = queue = '';
+  flag = '';
+  queue = '';
 
   while (index < length) {
     character = value.charAt(index);
@@ -143,14 +144,19 @@ function fencedCode(eat, value, silent) {
     subvalue += queue;
   }
 
-  queue = closing = exdentedClosing = content = exdentedContent = '';
+  queue = '';
+  closing = '';
+  exdentedClosing = '';
+  content = '';
+  exdentedContent = '';
 
   /* Eat content. */
   while (index < length) {
     character = value.charAt(index);
     content += closing;
     exdentedContent += exdentedClosing;
-    closing = exdentedClosing = '';
+    closing = '';
+    exdentedClosing = '';
 
     if (character !== C_NEWLINE) {
       content += character;

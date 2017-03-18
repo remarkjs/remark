@@ -37,10 +37,12 @@ function emphasis(eat, value, silent) {
   }
 
   pedantic = self.options.pedantic;
-  subvalue = marker = character;
+  subvalue = character;
+  marker = character;
   length = value.length;
   index++;
-  queue = character = '';
+  queue = '';
+  character = '';
 
   if (pedantic && whitespace(value.charAt(index))) {
     return;

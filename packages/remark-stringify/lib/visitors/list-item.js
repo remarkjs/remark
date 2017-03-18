@@ -16,11 +16,12 @@ var pad = require('../util/pad');
 module.exports = listItem;
 
 /* Which checkbox to use. */
-var CHECKBOX_MAP = {};
-
-CHECKBOX_MAP.undefined = CHECKBOX_MAP.null = '';
-CHECKBOX_MAP.true = '[x] ';
-CHECKBOX_MAP.false = '[ ] ';
+var CHECKBOX_MAP = {
+  undefined: '',
+  null: '',
+  true: '[x] ',
+  false: '[ ] '
+};
 
 /**
  * Stringify a list item.

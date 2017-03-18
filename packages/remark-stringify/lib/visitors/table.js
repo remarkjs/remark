@@ -57,12 +57,14 @@ function table(node) {
   exit();
 
   if (loose) {
-    start = end = '';
+    start = '';
+    end = '';
   } else if (spaced) {
     start = '| ';
     end = ' |';
   } else {
-    start = end = '|';
+    start = '|';
+    end = '|';
   }
 
   return markdownTable(result, {

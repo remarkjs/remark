@@ -191,7 +191,8 @@ function encodeFactory(type) {
   }
 
   if (type === 'escape') {
-    options.escapeOnly = options.useNamedReferences = true;
+    options.escapeOnly = true;
+    options.useNamedReferences = true;
   }
 
   return wrapped;

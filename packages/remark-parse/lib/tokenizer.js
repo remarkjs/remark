@@ -385,7 +385,8 @@ function factory(type) {
       validateEat(subvalue);
 
       apply.reset = reset;
-      apply.test = reset.test = test;
+      reset.test = test;
+      apply.test = test;
 
       value = value.substring(subvalue.length);
 

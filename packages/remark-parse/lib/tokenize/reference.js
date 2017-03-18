@@ -97,7 +97,8 @@ function reference(eat, value, silent) {
     index++;
   }
 
-  subvalue = content = queue;
+  subvalue = queue;
+  content = queue;
   character = value.charAt(index);
 
   if (character !== C_BRACKET_CLOSE) {

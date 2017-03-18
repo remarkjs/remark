@@ -24,7 +24,9 @@ function Parser(doc, file) {
   this.options = xtend(this.options);
   this.setOptions({});
 
-  this.inList = this.inBlock = this.inLink = false;
+  this.inList = false;
+  this.inBlock = false;
+  this.inLink = false;
   this.atStart = true;
 
   this.toOffset = vfileLocation(file).toOffset;

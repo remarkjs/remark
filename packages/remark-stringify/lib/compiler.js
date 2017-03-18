@@ -23,7 +23,8 @@ module.exports = Compiler;
  * @param {File} file - Virtual file.
  */
 function Compiler(tree, file) {
-  this.inLink = this.inTable = false;
+  this.inLink = false;
+  this.inTable = false;
   this.tree = tree;
   this.file = file;
   this.options = xtend(this.options);

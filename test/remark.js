@@ -32,7 +32,7 @@ test('fixtures', function (t) {
       return;
     }
 
-    setImmediate(next); // queue next.
+    setImmediate(next); // Queue next.
 
     t.test(fixture.name, function (st) {
       var input = fixture.input;

@@ -89,7 +89,8 @@ function inlineCode(eat, value, silent) {
     return true;
   }
 
-  contentQueue = subqueue = '';
+  contentQueue = '';
+  subqueue = '';
   length = queue.length;
   index = -1;
 

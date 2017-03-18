@@ -36,7 +36,8 @@ function yaml(eat, value, silent) {
   }
 
   subvalue = FENCE + C_NEWLINE;
-  content = queue = '';
+  content = '';
+  queue = '';
   index = 3;
   length = value.length;
 

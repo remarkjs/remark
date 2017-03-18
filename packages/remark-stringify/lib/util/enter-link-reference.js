@@ -40,7 +40,8 @@ function enter(compiler, node) {
     return exit;
   }
 
-  compiler.encode = compiler.escape = returner;
+  compiler.escape = returner;
+  compiler.encode = returner;
 
   return function () {
     compiler.encode = encode;
