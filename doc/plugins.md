@@ -114,6 +114,8 @@ See [tools built with remark »][products].
     — Extend Markdown with YAML-based annotation syntax;
 *   [`wooorm/remark-yaml-config`](https://github.com/wooorm/remark-yaml-config)
     — Configure remark with YAML.
+*   [`sfrdmn/remark-yaml-annotations`](https://github.com/sfrdmn/remark-yaml-annotations)
+    — Extend Markdown with YAML-based annotation syntax
 
 ## List of Utilities
 
