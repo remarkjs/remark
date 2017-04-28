@@ -22,7 +22,7 @@ var C_SPACE = ' ';
 var C_NEWLINE = '\n';
 var C_TAB = '\t';
 
-var MIN_TABLE_COLUMNS = 2;
+var MIN_TABLE_COLUMNS = 1;
 var MIN_TABLE_ROWS = 2;
 
 var TABLE_ALIGN_LEFT = 'left';

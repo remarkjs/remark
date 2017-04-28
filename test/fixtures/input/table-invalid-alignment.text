@@ -15,9 +15,3 @@ Invalid characters:
 | a | b | c |
 |---|-*-|---|
 | d | e | f |
-
-Too few columns:
-
-| a |
-|---|
-| d |
