@@ -13,7 +13,7 @@
 /* Dependencies. */
 var fs = require('fs');
 var path = require('path');
-var remark = require('../packages/remark')();
+var remark = require('../packages/remark');
 var fixtures = require('../test/fixtures');
 
 /* Regenerate. */
@@ -27,7 +27,9 @@ fixtures.forEach(function (fixture) {
     var result;
 
     try {
-      result = remark.parse(input, fixture.possibilities[key]);
+      result = remark()
+        .data('settings', fixture.possibilities[key])
+        .parse(input);
     } catch (err) {
       console.log('Could not regenerate `' + filename + '`');
       throw err;
