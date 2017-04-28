@@ -3,11 +3,11 @@
 The [**remark**][remark] processor is a markdown processor powered by
 [plug-ins][plugins].
 
-*   Interface by [**unified**][unified];
-*   [**MDAST**][mdast] syntax tree;
-*   Parses markdown to the tree with [**remark-parse**][parse];
-*   [Plug-ins][plugins] transform the tree;
-*   Compiles the tree to markdown using [**remark-stringify**][stringify].
+*   Interface by [**unified**][unified]
+*   [**MDAST**][mdast] syntax tree
+*   Parses markdown to the tree with [**remark-parse**][parse]
+*   [Plug-ins][plugins] transform the tree
+*   Compiles the tree to markdown using [**remark-stringify**][stringify]
 
 Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
 

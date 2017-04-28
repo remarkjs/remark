@@ -58,68 +58,68 @@ Options are passed later through [`processor.stringify()`][stringify],
 The following settings are supported:
 
 *   `gfm` (`boolean`, default: `true`):
-    *   Escape pipes (`|`, for tables);
+    *   Escape pipes (`|`, for tables)
     *   Escape colons (`:`, for literal URLs)
-    *   Escape tildes (`~`, for strike-through).
+    *   Escape tildes (`~`, for strike-through)
 *   `commonmark` (`boolean`, default: `false`):
-    *   Compile adjacent blockquotes separately;
-    *   Escape more characters using slashes, instead of as entities.
+    *   Compile adjacent blockquotes separately
+    *   Escape more characters using slashes, instead of as entities
 *   `pedantic` (`boolean`, default: `false`):
-    *   Escape underscores in words.
+    *   Escape underscores in words
 *   `entities` (`string` or `boolean`, default: `false`):
 
     *   `true` — Entities are generated for special HTML characters
         (`&` > `&amp;`) and non-ASCII characters (`©` > `&copy;`).
         If named entities are not (widely) supported, numbered character
-        references are used (`’` > `&#x2019;`);
+        references are used (`’` > `&#x2019;`)
 
     *   `'numbers'` — Numbered entities are generated (`&` > `&#x26;`)
-        for special HTML characters and non-ASCII characters.
+        for special HTML characters and non-ASCII characters
 
     *   `'escape'` — Special HTML characters are encoded (`&` >
-        `&amp;`, `’` > `&#x2019;`), non-ASCII characters not (ö persists).
+        `&amp;`, `’` > `&#x2019;`), non-ASCII characters not (ö persists)
 
 *   `setext` (`boolean`, default: `false`)
     — Compile headings, when possible, in Setext-style: using `=` for
     level one headings and `-` for level two headings.  Other heading
-    levels are compiled as ATX (respecting `closeAtx`).
+    levels are compiled as ATX (respecting `closeAtx`)
 *   `closeAtx` (`boolean`, default: `false`)
     — Compile ATX headings with the same amount of closing hashes as
-    opening hashes.
+    opening hashes
 *   `looseTable` (`boolean`, default: `false`)
-    — Create tables without fences (initial and final pipes).
+    — Create tables without fences (initial and final pipes)
 *   `spacedTable` (`boolean`, default: `true`)
-    — Create tables without spacing between pipes and content.
+    — Create tables without spacing between pipes and content
 *   `paddedTable` (`boolean`, default: `true`)
-    — Create tables with padding in each cell so that they are the same size.
+    — Create tables with padding in each cell so that they are the same size
 *   `fence` (`'~'` or ``'`'``, default: ``'`'``)
-    — Fence marker to use for code blocks.
+    — Fence marker to use for code blocks
 *   `fences` (`boolean`, default: `false`)
-    — Stringify code blocks without language with fences.
+    — Stringify code blocks without language with fences
 *   `bullet` (`'-'`, `'*'`, or `'+'`, default: `'-'`)
-    — Bullet marker to use for unordered list items.
+    — Bullet marker to use for unordered list items
 *   `listItemIndent` (`'tab'`, `'mixed'` or `'1'`, default: `'tab'`)
 
     How to indent the content from list items:
 
-    *   `'tab'`: use tab stops (4 spaces);
-    *   `'1'`: use one space;
-    *   `'mixed'`: use `1` for tight and `tab` for loose list items.
+    *   `'tab'`: use tab stops (4 spaces)
+    *   `'1'`: use one space
+    *   `'mixed'`: use `1` for tight and `tab` for loose list items
 
 *   `incrementListMarker` (`boolean`, default: `true`)
-    — Whether to increment ordered list item bullets.
+    — Whether to increment ordered list item bullets
 *   `rule` (`'-'`, `'*'`, or `'_'`, default: `'*'`)
-    — Marker to use for thematic breaks (horizontal rules).
+    — Marker to use for thematic breaks (horizontal rules)
 *   `ruleRepetition` (`number`, default: `3`)
     — Number of markers to use for thematic breaks (horizontal rules).
-    Should be `3` or more.
+    Should be `3` or more
 *   `ruleSpaces` (`boolean`, default `true`)
     — Whether to pad thematic break (horizontal rule) markers with
-    spaces.
+    spaces
 *   `strong` (`'_'` or `'*'`, default `'*'`)
-    — Marker to use for importance.
+    — Marker to use for importance
 *   `emphasis` (`'_'` or `'*'`, default `'_'`)
-    — Marker to use for emphasis.
+    — Marker to use for emphasis
 
 ### `stringify.Compiler`
 
@@ -159,8 +159,8 @@ Stringify `node`.
 
 ###### Parameters
 
-*   `node` ([`Node`][node]) — Node to compile;
-*   `parent` ([`Node`][node], optional) — Parent of `node`.
+*   `node` ([`Node`][node]) — Node to compile
+*   `parent` ([`Node`][node], optional) — Parent of `node`
 
 ###### Returns
 

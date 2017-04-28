@@ -58,14 +58,14 @@ Options are passed later through [`processor.parse()`][parse],
 [`processor.process()`][process], or [`processor.pipe()`][pipe].
 The following settings are supported:
 
-*   [`gfm`][options-gfm] (`boolean`, default: `true`);
-*   [`yaml`][options-yaml] (`boolean`, default: `true`);
-*   [`commonmark`][options-commonmark] (`boolean`, default: `false`);
-*   [`footnotes`][options-footnotes] (`boolean`, default: `false`);
-*   [`pedantic`][options-pedantic] (`boolean`, default: `false`);
-*   [`breaks`][options-breaks] (`boolean`, default: `false`).
+*   [`gfm`][options-gfm] (`boolean`, default: `true`)
+*   [`yaml`][options-yaml] (`boolean`, default: `true`)
+*   [`commonmark`][options-commonmark] (`boolean`, default: `false`)
+*   [`footnotes`][options-footnotes] (`boolean`, default: `false`)
+*   [`pedantic`][options-pedantic] (`boolean`, default: `false`)
+*   [`breaks`][options-breaks] (`boolean`, default: `false`)
 *   [`blocks`][options-blocks] (`Array.<string>`, default: list of block HTML
-    elements);
+    elements)
 
 ##### `options.gfm`
 
@@ -75,11 +75,11 @@ hello ~~hi~~ world
 
 GFM mode (default: `true`) turns on:
 
-*   [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks);
-*   [Autolinking of URLs](https://help.github.com/articles/github-flavored-markdown/#url-autolinking);
-*   [Deletions (strikethrough)](https://help.github.com/articles/github-flavored-markdown/#strikethrough);
-*   [Task lists](https://help.github.com/articles/writing-on-github/#task-lists);
-*   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables).
+*   [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks)
+*   [Autolinking of URLs](https://help.github.com/articles/github-flavored-markdown/#url-autolinking)
+*   [Deletions (strikethrough)](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
+*   [Task lists](https://help.github.com/articles/writing-on-github/#task-lists)
+*   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables)
 
 ##### `options.yaml`
 
@@ -103,23 +103,23 @@ This is a paragraph
 
 CommonMark mode (default: `false`) allows:
 
-*   Empty lines to split blockquotes;
-*   Parentheses (`(` and `)`) around for link and image titles;
-*   Any escaped [ASCII-punctuation][escapes] character;
-*   Closing parenthesis (`)`) as an ordered list marker;
-*   URL definitions (and footnotes, when enabled) in blockquotes.
+*   Empty lines to split blockquotes
+*   Parentheses (`(` and `)`) around for link and image titles
+*   Any escaped [ASCII-punctuation][escapes] character
+*   Closing parenthesis (`)`) as an ordered list marker
+*   URL definitions (and footnotes, when enabled) in blockquotes
 
 CommonMark mode disallows:
 
-*   Code directly following a paragraph;
+*   Code directly following a paragraph
 *   ATX-headings (`# Hash headings`) without spacing after opening hashes
-    or and before closing hashes;
-*   Setext headings (`Underline headings\n---`) when following a paragraph;
-*   Newlines in link and image titles;
+    or and before closing hashes
+*   Setext headings (`Underline headings\n---`) when following a paragraph
+*   Newlines in link and image titles
 *   White space in link and image URLs in auto-links (links in brackets,
-    `<` and `>`);
+    `<` and `>`)
 *   Lazy blockquote continuation, lines not preceded by a closing angle
-    bracket (`>`), for lists, code, and thematicBreak.
+    bracket (`>`), for lists, code, and thematicBreak
 
 ##### `options.footnotes`
 
@@ -166,12 +166,12 @@ Check out some_file_name.txt
 Pedantic mode (default: `false`) turns on:
 
 *   Emphasis (`_alpha_`) and importance (`__bravo__`) with underscores
-    in words;
-*   Unordered lists with different markers (`*`, `-`, `+`);
+    in words
+*   Unordered lists with different markers (`*`, `-`, `+`)
 *   If `commonmark` is also turned on, ordered lists with different
-    markers (`.`, `)`);
+    markers (`.`, `)`)
 *   And pedantic mode removes less spaces in list-items (at most four,
-    instead of the whole indent).
+    instead of the whole indent)
 
 ### `parse.Parser`
 
@@ -266,33 +266,33 @@ information on where the next entity may occur.
 
 ###### Signatures
 
-*   `Node? = tokenizer(eat, value)`;
-*   `boolean? = tokenizer(eat, value, silent)`.
+*   `Node? = tokenizer(eat, value)`
+*   `boolean? = tokenizer(eat, value, silent)`
 
 ###### Parameters
 
-*   `eat` ([`Function`][eat]) — Eat, when applicable, an entity;
-*   `value` (`string`) — Value which may start an entity;
-*   `silent` (`boolean`, optional) — Whether to detect or consume.
+*   `eat` ([`Function`][eat]) — Eat, when applicable, an entity
+*   `value` (`string`) — Value which may start an entity
+*   `silent` (`boolean`, optional) — Whether to detect or consume
 
 ###### Properties
 
 *   `locator` ([`Function`][locator])
-    — Required for inline tokenizers;
+    — Required for inline tokenizers
 *   `onlyAtStart` (`boolean`)
-    — Whether nodes can only be found at the beginning of the document;
+    — Whether nodes can only be found at the beginning of the document
 *   `notInBlock` (`boolean`)
     — Whether nodes cannot be in blockquotes, lists, or footnote
-    definitions;
+    definitions
 *   `notInList` (`boolean`)
-    — Whether nodes cannot be in lists.
+    — Whether nodes cannot be in lists
 *   `notInLink` (`boolean`)
-    — Whether nodes cannot be in links.
+    — Whether nodes cannot be in links
 
 ###### Returns
 
-*   In _silent_ mode, whether a node can be found at the start of `value`;
-*   In _normal_ mode, a node if it can be found at the start of `value`.
+*   In _silent_ mode, whether a node can be found at the start of `value`
+*   In _normal_ mode, a node if it can be found at the start of `value`
 
 ### `tokenizer.locator(value, fromIndex)`
 
@@ -310,8 +310,8 @@ the index they return, but they must skip any nodes.
 
 ###### Parameters
 
-*   `value` (`string`) — Value which may contain an entity;
-*   `fromIndex` (`number`) — Position to start searching at.
+*   `value` (`string`) — Value which may contain an entity
+*   `fromIndex` (`number`) — Position to start searching at
 
 ###### Returns
 
@@ -346,9 +346,9 @@ Add [positional information][location] to `node` and add it to `parent`.
 
 ###### Parameters
 
-*   `node` ([`Node`][node]) - Node to patch position on and insert;
+*   `node` ([`Node`][node]) - Node to patch position on and insert
 *   `parent` ([`Node`][node], optional) - Place to add `node` to in
-    the syntax tree.  Defaults to the currently processed node.
+    the syntax tree.  Defaults to the currently processed node
 
 ###### Returns
 
@@ -371,9 +371,9 @@ for list items
 
 ###### Parameters
 
-*   `node` ([`Node`][node]) - Node to patch position on and insert;
+*   `node` ([`Node`][node]) - Node to patch position on and insert
 *   `parent` ([`Node`][node], optional) - Place to add `node` to in
-    the syntax tree.  Defaults to the currently processed node.
+    the syntax tree.  Defaults to the currently processed node
 
 ###### Returns
 

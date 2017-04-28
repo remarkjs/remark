@@ -2,12 +2,12 @@
 
 Command-line interface for [**remark**][remark].
 
-*   Loads [`remark-` plugins][plugins];
-*   Searches for [markdown extensions][markdown-extensions];
-*   Ignores paths found in [`.remarkignore` files][ignore-file];
-*   Loads configuration from [`.remarkrc`, `.remarkrc.js` files][config-file];
+*   Loads [`remark-` plugins][plugins]
+*   Searches for [markdown extensions][markdown-extensions]
+*   Ignores paths found in [`.remarkignore` files][ignore-file]
+*   Loads configuration from [`.remarkrc`, `.remarkrc.js` files][config-file]
 *   Uses configuration from [`remarkConfig` fields in `package.json`
-    files][config-file].
+    files][config-file]
 
 ## Installation
 

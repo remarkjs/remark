@@ -12,8 +12,8 @@ all kinds of things: [check markdown code style][remark-lint],
 [add a table of contents][remark-toc], or
 [compile to man pages][remark-man].
 
-*   [`remark`][api] — Programmatic interface;
-*   [`remark-cli`][cli] — Command-line interface.
+*   [`remark`][api] — Programmatic interface
+*   [`remark-cli`][cli] — Command-line interface
 
 Oh, and [plug-ins][plugins]?!
 
