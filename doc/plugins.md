@@ -20,6 +20,8 @@ See [tools built with remark »][products].
 
 *   [`ben-eb/remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings;
+*   [`ben-eb/remark-bookmarks`](https://github.com/ben-eb/remark-bookmarks)
+    – Link manager for Markdown files;
 *   [`sethvincent/remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
     – Add an id, classes, and data attributes to `<span>` tags in markdown;
 *   [`ben-eb/remark-comment-blocks`](https://github.com/ben-eb/remark-comment-blocks)
