@@ -23,8 +23,9 @@ npm install remark-cli
 # Add a table of contents to `readme.md`
 $ remark readme.md --use toc --output
 
-# Lint all markdown files in the current directory
-$ remark . --use lint
+# Lint markdown files in the current directory
+# according to the markdown style guide.
+$ remark . --use preset-lint-markdown-style-guide
 ```
 
 ## CLI
