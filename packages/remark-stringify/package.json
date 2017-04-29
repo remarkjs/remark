@@ -1,6 +1,6 @@
 {
   "name": "remark-stringify",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Markdown compiler for remark",
   "license": "MIT",
   "keywords": [
