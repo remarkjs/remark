@@ -44,27 +44,33 @@ But, much more can be done, [through plug-ins][plugins].
 **remark**’s CLI is a simple way to process markdown files from the
 command line.  Its interface is provided by [**unified-args**][unified-args].
 
-Install [`remark-cli`][cli] and dependencies with [npm][]:
+Install [`remark-cli`][cli] and dependencies (in this case a [linting
+preset][preset] and [`remark-html`][html]) with [npm][]:
 
-```bash
-npm install --global remark-cli remark-lint remark-html
+```sh
+npm install --global remark-cli remark-html remark-preset-lint-markdown-style-guide
 ```
 
 `readme.md` contains:
 
 ```md
-## Hello world!
+_Hello_.
 ```
 
-`remark readme.md --use lint --use html` yields:
+Now, to process `readme.md`, run the following:
+
+```sh
+remark readme.md --use html --use preset-lint-markdown-style-guide
+```
+
+Yields:
 
 ```txt
-<h2>Hello world!</h2>
-readme.md:
-   1:1-1:16  warning  First heading level should be `1`         first-heading-level
-   1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
+<p><em>Hello</em>.</p>
+readme.md.md
+  1:1-1:8  warning  Emphasis should use `*` as a marker  emphasis-marker  remark-lint
 
-⚠ 3 warnings
+⚠ 1 warning
 ```
 
 ## Using remark in a project
@@ -85,10 +91,11 @@ Say we have the following `package.json`:
 }
 ```
 
-And install `remark-cli` and `remark-lint` into it as a dev-dependency:
+And install `remark-cli`, `remark-html`, and
+`remark-preset-lint-markdown-style-guide` into it as a dev-dependencies:
 
 ```sh
-npm install remark-cli --save-dev
+npm install --save-dev remark-cli remark-html remark-preset-lint-markdown-style-guide
 ```
 
 The `--save-dev` option stores the dependencies in our `package.json`:
@@ -98,8 +105,9 @@ The `--save-dev` option stores the dependencies in our `package.json`:
    "name": "my-package",
    "version": "1.0.0",
 +  "devDependencies": {
-+    "remark-cli": "^1.0.0",
-+    "remark-lint": "^4.0.0"
++    "remark-cli": "^3.0.0",
++    "remark-html": "^6.0.0",
++    "remark-preset-lint-markdown-style-guide": "^1.0.0"
 +  },
    "scripts": {
      "test": "node test.js"
@@ -107,19 +115,27 @@ The `--save-dev` option stores the dependencies in our `package.json`:
  }
 ```
 
-Then, we change our `test` script to include remark.
+Then, we change our `test` script to include remark, and add
+configuration:
 
 ```diff
  {
    "name": "my-package",
    "version": "1.0.0",
    "devDependencies": {
-     "remark-cli": "^1.0.0",
-     "remark-lint": "^4.0.0"
+     "remark-cli": "^3.0.0",
+     "remark-html": "^6.0.0",
+     "remark-preset-lint-markdown-style-guide": "^1.0.0"
    },
    "scripts": {
 -    "test": "node test.js"
-+    "test": "remark . --use lint --quiet --frail && node test.js"
++    "test": "remark . --quiet --frail && node test.js"
++  },
++  "remarkConfig": {
++    "plugins": [
++      "preset-lint-markdown-style-guide",
++      "html"
++    ]
    }
  }
 ```
@@ -142,33 +158,34 @@ The programmatic interface of **remark** is provided by
 
 Install [`remark`][api] and dependencies with [npm][]:
 
-```bash
-npm install remark remark-lint remark-html vfile-reporter
+```sh
+npm install vfile-reporter remark remark-html remark-preset-lint-markdown-style-guide
 ```
 
 `index.js` contains:
 
 ```js
 var remark = require('remark');
-var lint = require('remark-lint');
+var styleGuide = require('remark-preset-lint-markdown-style-guide');
 var html = require('remark-html');
 var report = require('vfile-reporter');
 
-remark().use(lint).use(html).process('## Hello world!', function (err, file) {
-  console.error(report(err || file));
-  console.log(String(file));
-});
+remark()
+  .use(styleGuide)
+  .use(html)
+  .process('_Hello_.', function (err, file) {
+    console.error(report(err || file));
+    console.log(String(file));
+  });
 ```
 
 `node index.js` yields:
 
 ```txt
-        1:1  warning  Missing newline character at end of file  final-newline
-   1:1-1:16  warning  First heading level should be `1`         first-heading-level
-   1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
+  1:1-1:8  warning  Emphasis should use `*` as a marker  emphasis-marker  remark-lint
 
-⚠ 3 warnings
-<h2>Hello world!</h2>
+⚠ 1 warning
+<p><em>Hello</em>.</p>
 ```
 
 <!-- Definitions -->
@@ -198,3 +215,7 @@ remark().use(lint).use(html).process('## Hello world!', function (err, file) {
 [parse]: https://github.com/wooorm/remark/tree/master/packages/remark-parse
 
 [stringify]: https://github.com/wooorm/remark/tree/master/packages/remark-stringify
+
+[preset]: https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide
+
+[html]: https://github.com/wooorm/remark-html

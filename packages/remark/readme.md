@@ -15,7 +15,7 @@ Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
 
 [npm][]:
 
-```bash
+```sh
 npm install remark
 ```
 
@@ -23,24 +23,25 @@ npm install remark
 
 ```js
 var remark = require('remark');
-var lint = require('remark-lint');
+var recommended = require('remark-preset-lint-recommended');
 var html = require('remark-html');
 var report = require('vfile-reporter');
 
-remark().use(lint).use(html).process('## Hello world!', function (err, file) {
-  console.error(report(err || file));
-  console.log(String(file));
-});
+remark()
+  .use(recommended)
+  .use(html)
+  .process('## Hello world!', function (err, file) {
+    console.error(report(err || file));
+    console.log(String(file));
+  });
 ```
 
 Yields:
 
 ```txt
-        1:1  warning  Missing newline character at end of file  final-newline
-   1:1-1:16  warning  First heading level should be `1`         first-heading-level
-   1:1-1:16  warning  Don’t add a trailing `!` to headings      no-heading-punctuation
+1:1  warning  Missing newline character at end of file  final-newline  remark-lint
 
-⚠ 3 warnings
+⚠ 1 warning
 <h2>Hello world!</h2>
 ```
 

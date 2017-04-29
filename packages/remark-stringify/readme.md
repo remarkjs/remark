@@ -9,7 +9,7 @@ markdown is compiled.
 
 [npm][]:
 
-```bash
+```sh
 npm install remark-stringify
 ```
 
@@ -17,21 +17,24 @@ npm install remark-stringify
 
 ```js
 var unified = require('unified');
+var createStream = require('unified-stream');
 var parse = require('remark-parse');
 var toc = require('remark-toc');
 var stringify = require('remark-stringify');
 
-process.stdin
-  .pipe(unified())
+var processor = unified()
   .use(parse)
   .use(toc)
-  .use(stringify)
-  .pipe(process.stdout, {
+  .use(stringify, {
     bullet: '*',
     fence: '~',
     fences: true,
     incrementListMarker: false
   });
+
+process.stdin
+  .pipe(createStream(processor))
+  .pipe(process.stdout);
 ```
 
 ## Table of Contents
@@ -135,18 +138,19 @@ The below plug-in modifies a [visitor][] to add an extra blank line
 before level two headings.
 
 ```js
-function gap() {
-    var Compiler = this.Compiler;
-    var visitors = Compiler.prototype.visitors;
-    var heading = visitors.heading;
-
-    /* Add a visitor for `heading`s. */
-    visitors.heading = function (node) {
-        return (node.depth === 2 ? '\n' : '') + heading.apply(this, arguments);
-    };
-}
-
 module.exports = gap;
+
+function gap() {
+  var Compiler = this.Compiler;
+  var visitors = Compiler.prototype.visitors;
+  var heading = visitors.heading;
+
+  visitors.heading = heading;
+
+  function heading(node) {
+    return (node.depth === 2 ? '\n' : '') + heading.apply(this, arguments);
+  }
+}
 ```
 
 ### `Compiler#visitors`

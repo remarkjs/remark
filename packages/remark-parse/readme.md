@@ -9,7 +9,7 @@ markdown is parsed.
 
 [npm][]:
 
-```bash
+```sh
 npm install remark-parse
 ```
 
@@ -17,14 +17,17 @@ npm install remark-parse
 
 ```js
 var unified = require('unified');
+var createStream = require('unified-stream');
 var markdown = require('remark-parse');
 var html = require('remark-html');
 
-process.stdin
-  .pipe(unified())
-  .use(markdown)
+var processor = unified()
+  .use(markdown, {commonmark: true})
   .use(html)
-  .pipe(process.stdout, {commonmark: true});
+
+process.stdin
+  .pipe(createStream(processor))
+  .pipe(process.stdout);
 ```
 
 ## Table of Contents
@@ -191,19 +194,19 @@ prototype to change how markdown is parsed.
 The below plug-in adds a [tokenizer][] for at-mentions.
 
 ```js
-function mentions() {
-    var Parser = this.Parser;
-    var tokenizers = Parser.prototype.inlineTokenizers;
-    var methods = Parser.prototype.inlineMethods;
-
-    /* Add an inline tokenizer (defined in the following example). */
-    tokenizers.mention = tokenizeMention;
-
-    /* Run it just before `text`. */
-    methods.splice(methods.indexOf('text'), 0, 'mention');
-}
-
 module.exports = mentions;
+
+function mentions() {
+  var Parser = this.Parser;
+  var tokenizers = Parser.prototype.inlineTokenizers;
+  var methods = Parser.prototype.inlineMethods;
+
+  /* Add an inline tokenizer (defined in the following example). */
+  tokenizers.mention = tokenizeMention;
+
+  /* Run it just before `text`. */
+  methods.splice(methods.indexOf('text'), 0, 'mention');
+}
 ```
 
 ### `Parser#blockTokenizers`
@@ -231,27 +234,24 @@ which they run.
 ### `function tokenizer(eat, value, silent)`
 
 ```js
-function tokenizeMention(eat, value, silent) {
-    var match = /^@(\w+)/.exec(value);
-
-    if (match) {
-        if (silent) {
-            return true;
-        }
-
-        return eat(match[0])({
-            'type': 'link',
-            'url': 'https://social-network/' + match[1],
-            'children': [{
-                'type': 'text',
-                'value': match[0]
-            }]
-        });
-    }
-}
-
 tokenizeMention.notInLink = true;
 tokenizeMention.locator = locateMention;
+
+function tokenizeMention(eat, value, silent) {
+  var match = /^@(\w+)/.exec(value);
+
+  if (match) {
+    if (silent) {
+      return true;
+    }
+
+    return eat(match[0])({
+      type: 'link',
+      url: 'https://social-network/' + match[1],
+      children: [{type: 'text', value: match[0]}]
+    });
+  }
+}
 ```
 
 The parser knows two types of tokenizers: block level and inline level.
@@ -298,7 +298,7 @@ information on where the next entity may occur.
 
 ```js
 function locateMention(value, fromIndex) {
-    return value.indexOf('@', fromIndex);
+  return value.indexOf('@', fromIndex);
 }
 ```
 

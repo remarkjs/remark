@@ -13,13 +13,13 @@ Command-line interface for [**remark**][remark].
 
 [npm][]:
 
-```bash
+```sh
 npm install remark-cli
 ```
 
 ## Usage
 
-```bash
+```sh
 # Add a table of contents to `readme.md`
 $ remark readme.md --use toc --output
 
