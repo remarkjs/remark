@@ -22,7 +22,7 @@
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
   ],
   "bin": {
-    "remark": "cli.js"
+    "remark": "./cli.js"
   },
   "files": [
     "cli.js"
