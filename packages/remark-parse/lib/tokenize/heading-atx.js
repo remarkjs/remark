@@ -56,6 +56,9 @@ function atxHeading(eat, value, silent) {
     subvalue += character;
     depth++;
   }
+  if (depth > MAX_ATX_COUNT) {
+    return;
+  }
 
   if (depth > MAX_ATX_COUNT) {
     return;
