@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf8">
     <title>remark - markdown processor powered by plugins</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="index.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="index.css">
     <meta name="theme-color" content="#e05d44">
     <meta name="author" content="Titus Wormer">
     <meta name="description" content="markdown processor powered by plugins.">
@@ -34,7 +35,16 @@
     <meta property="profile:username" content="wooorm">
     <meta property="profile:first_name" content="Titus">
     <meta property="profile:last_name" content="Wormer">
-    <meta property="article:published_time" content="2017-05-20T00:00:00.000+02:00"><meta itemprop="name" content="remark: markdown processor powered by plugins"><meta itemprop="headline" content="markdown processor powered by plugins"><meta itemprop="url" content="http://remark.js.org"><meta itemprop="publisher" content="Titus Wormer" itemscope itemtype="https://schema.org/Person"><meta itemprop="description" content="markdown processor powered by plugins."><meta itemprop="image" content="https://cdn.rawgit.com/wooorm/remark/gh-pages/screenshot.png"><meta itemprop="dateCreated" content="2017-05-20"><meta itemprop="datePublished" content="2017-05-20"></head>
+    <meta property="article:published_time" content="2017-05-20T00:00:00.000+02:00">
+    <meta itemprop="name" content="remark: markdown processor powered by plugins">
+    <meta itemprop="headline" content="markdown processor powered by plugins">
+    <meta itemprop="url" content="http://remark.js.org">
+    <meta itemprop="publisher" content="Titus Wormer" itemscope itemtype="https://schema.org/Person">
+    <meta itemprop="description" content="markdown processor powered by plugins.">
+    <meta itemprop="image" content="https://cdn.rawgit.com/wooorm/remark/gh-pages/screenshot.png">
+    <meta itemprop="dateCreated" content="2017-05-20">
+    <meta itemprop="datePublished" content="2017-05-20">
+  </head>
   <body>
     <article class="cover">
       <div class="cover-inner">
@@ -43,7 +53,8 @@
       </div>
     </article>
     <article>
-      <!--Legacy IDs--><a name="introduction"></a>
+      <!--Legacy IDs-->
+      <a name="introduction"></a>
       <a name="plugins"></a>
       <h2 id="core">Core</h2>
       <p>
@@ -72,6 +83,7 @@
         <a href="https://astexplorer.net/#/gist/0a92bbf654aca4fdfb3f139254cf0bad/ffe102014c188434c027e43661dbe6ec30042ee2">AST Explorer</a>.
       </p>
     </article>
+
     <article>
       <h2 id="cli">CLI</h2>
       <p>
@@ -80,7 +92,9 @@
         in a project according to a given style-guide, and emits warnings
         triggered by plugins in a beautiful fashion.
       </p>
+
       <p>Say <code>example.md</code> looks as follows:</p>
+
       <figure class="gist window">
         <figcaption>
           <span class="chrome button close"></span>
@@ -88,12 +102,14 @@
           <span class="chrome button fullscreen"></span>
           <span class="chrome title">example.md</span>
         </figcaption>
-        <pre><code class="hljs language-markdown"><span class="hljs-bullet">* </span>Hello
+        <pre><code class="hljs language-markdown">* Hello
 
-[<span class="hljs-string">World</span>][<span class="hljs-symbol"></span>]
+[World][]
 </code></pre>
       </figure>
+
       <p>Now, by running remark in a terminal we’ll see the following:</p>
+
       <figure class="terminal window">
         <figcaption>
           <span class="chrome button close"></span>
@@ -108,8 +124,12 @@
 
 <span class="hl">⚠</span> 2 warnings</span></pre>
       </figure>
-      <p>Read more about the CLI in its <a href="https://github.com/wooorm/remark/tree/master/packages/remark-cli"><code>readme</code></a>.</p>
+
+      <p>
+        Read more about the CLI in its <a href="https://github.com/wooorm/remark/tree/master/packages/remark-cli"><code>readme</code></a>.
+      </p>
     </article>
+
     <article>
       <h2 id="api">API</h2>
       <p>
@@ -118,6 +138,7 @@
         <a href="https://github.com/unifiedjs/unified#api">API documentation</a>
         for more info.
       </p>
+
       <p>
         Say we have the following <code>index.js</code> file using
         remark,
@@ -125,6 +146,7 @@
         <a href="https://github.com/wooorm/remark-html"><code>remark-html</code></a>,
         and <a href="https://github.com/vfile/vfile-reporter"><code>vfile-reporter</code></a>:
       </p>
+
       <figure class="gist window">
         <figcaption>
           <span class="chrome button close"></span>
@@ -132,23 +154,25 @@
           <span class="chrome button fullscreen"></span>
           <span class="chrome title">index.js</span>
         </figcaption>
-        <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> remark = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark'</span>);
-<span class="hljs-keyword">var</span> guide = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark-preset-lint-markdown-style-guide'</span>);
-<span class="hljs-keyword">var</span> html = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark-html'</span>);
-<span class="hljs-keyword">var</span> report = <span class="hljs-built_in">require</span>(<span class="hljs-string">'vfile-reporter'</span>);
+        <pre><code class="hljs language-js">var remark = require('remark');
+var guide = require('remark-preset-lint-markdown-style-guide');
+var html = require('remark-html');
+var report = require('vfile-reporter');
 
 remark()
   .use(guide)
   .use(html)
-  .process(<span class="hljs-string">'*emphasis* and _importance_'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">err, file</span>) </span>{
-    <span class="hljs-built_in">console</span>.log(<span class="hljs-built_in">String</span>(file));
-    <span class="hljs-built_in">console</span>.error(report(err || file));
+  .process('*emphasis* and _importance_', function (err, file) {
+    console.log(String(file));
+    console.error(report(err || file));
   });</code></pre>
       </figure>
+
       <p>
         Now, after installing dependencies and running <code>index.js</code>
         with Node, you’ll see the following:
       </p>
+
       <figure class="terminal window">
         <figcaption>
           <span class="chrome button close"></span>
@@ -164,7 +188,7 @@ remark()
 └── vfile-reporter@3.0.0</span>
 
 <span class="command">node index.js</span><span class="output">
-&#x3C;p>&#x3C;em>emphasis&#x3C;/em> and &#x3C;em>importance&#x3C;/em>&#x3C;/p>
+&lt;p>&lt;em>emphasis&lt;/em> and &lt;em>importance&lt;/em>&lt;/p>
 <span class="hl">example.md</span>
   1:16-1:28  <span class="hl">warning</span>  Emphasis should use `*` as a marker  emphasis-marker
 
@@ -172,6 +196,7 @@ remark()
 </pre>
       </figure>
     </article>
+
     <article>
       <h2 id="unified"><span class="hl unified">uni</span>fied</h2>
       <p>
@@ -185,10 +210,12 @@ remark()
         <a href="https://github.com/syntax-tree/hast">hast</a> with
         <a href="https://github.com/wooorm/rehype">rehype</a> for HTML.
       </p>
+
       <p>
         unified also bridges between syntaxes, such as between markdown and HTML,
         as can be seen below:
       </p>
+
       <figure class="gist window">
         <figcaption>
           <span class="chrome button close"></span>
@@ -196,20 +223,20 @@ remark()
           <span class="chrome button fullscreen"></span>
           <span class="chrome title">index.js</span>
         </figcaption>
-        <pre><code class="hljs language-js"><span class="hljs-keyword">var</span> unified = <span class="hljs-built_in">require</span>(<span class="hljs-string">'unified'</span>);
-<span class="hljs-keyword">var</span> stream = <span class="hljs-built_in">require</span>(<span class="hljs-string">'unified-stream'</span>);
-<span class="hljs-keyword">var</span> markdown = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark-parse'</span>);
-<span class="hljs-keyword">var</span> toc = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark-toc'</span>);
-<span class="hljs-keyword">var</span> remark2rehype = <span class="hljs-built_in">require</span>(<span class="hljs-string">'remark-rehype'</span>);
-<span class="hljs-keyword">var</span> doc = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rehype-document'</span>);
-<span class="hljs-keyword">var</span> format = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rehype-format'</span>);
-<span class="hljs-keyword">var</span> html = <span class="hljs-built_in">require</span>(<span class="hljs-string">'rehype-stringify'</span>);
+        <pre><code class="hljs language-js">var unified = require('unified');
+var stream = require('unified-stream');
+var markdown = require('remark-parse');
+var toc = require('remark-toc');
+var remark2rehype = require('remark-rehype');
+var doc = require('rehype-document');
+var format = require('rehype-format');
+var html = require('rehype-stringify');
 
-<span class="hljs-keyword">var</span> processor = unified()
+var processor = unified()
   .use(markdown)
   .use(toc)
   .use(remark2rehype)
-  .use(doc, {<span class="hljs-attr">title</span>: <span class="hljs-string">'Contents'</span>})
+  .use(doc, {title: 'Contents'})
   .use(format)
   .use(html);
 
@@ -217,18 +244,22 @@ process.stdin
   .pipe(stream(processor))
   .pipe(process.stdout);</code></pre>
       </figure>
+
       <p>
         View the unified project on
         <a href="https://github.com/unifiedjs/unified">GitHub</a> or peruse
         the <a href="https://unifiedjs.github.io">website</a>.
       </p>
     </article>
+
     <footer>
       <p>
         made by <a href="https://github.com/wooorm">@wooorm</a> and
         <a href="https://github.com/wooorm/remark/graphs/contributors">contributors</a>
       </p>
-      <p>view the project on <a href="https://github.com/wooorm/remark">GitHub</a></p>
+      <p>
+        view the project on <a href="https://github.com/wooorm/remark">GitHub</a>
+      </p>
       <p><a href="https://github.com/wooorm/remark/tree/gh-pages">fork this site</a></p>
     </footer>
     <script>

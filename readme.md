@@ -1,3 +1,3 @@
-# remark.js.org
+#### [`remark.js.org`](http://remark.js.org)
 
-**remark** website.
+[![screenshot](screenshot.png)](http://remark.js.org)
