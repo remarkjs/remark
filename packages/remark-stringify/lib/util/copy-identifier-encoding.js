@@ -6,16 +6,14 @@
  * @fileoverview Encode based on the identifier.
  */
 
-'use strict';
-
 /* Dependencies. */
-var entityPrefixLength = require('./entity-prefix-length');
+import entityPrefixLength from './entity-prefix-length';
 
 /* Expose. */
-module.exports = copy;
+export default copy;
 
 /* Punctuation characters. */
-var PUNCTUATION = /[-!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~_]/;
+const PUNCTUATION = /[-!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~_]/;
 
 /**
  * For shortcut and collapsed reference links, the contents
@@ -37,12 +35,12 @@ var PUNCTUATION = /[-!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~_]/;
  * @return {string} - Encoded link value.
  */
 function copy(value, identifier) {
-  var length = value.length;
-  var count = identifier.length;
-  var result = [];
-  var position = 0;
-  var index = 0;
-  var start;
+  const length = value.length;
+  const count = identifier.length;
+  const result = [];
+  let position = 0;
+  let index = 0;
+  let start;
 
   while (index < length) {
     /* Take next non-punctuation characters from `value`. */

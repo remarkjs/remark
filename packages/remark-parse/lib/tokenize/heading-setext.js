@@ -6,37 +6,35 @@
  * @fileoverview Tokenise an setext-style heading.
  */
 
-'use strict';
+export default setextHeading;
 
-module.exports = setextHeading;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_EQUALS = '=';
+const C_DASH = '-';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_EQUALS = '=';
-var C_DASH = '-';
-
-var MAX_HEADING_INDENT = 3;
+const MAX_HEADING_INDENT = 3;
 
 /* Map of characters which can be used to mark setext
  * headers, mapping to their corresponding depth. */
-var SETEXT_MARKERS = {};
+const SETEXT_MARKERS = {};
 
 SETEXT_MARKERS[C_EQUALS] = 1;
 SETEXT_MARKERS[C_DASH] = 2;
 
 /* Tokenise an setext-style heading. */
 function setextHeading(eat, value, silent) {
-  var self = this;
-  var now = eat.now();
-  var length = value.length;
-  var index = -1;
-  var subvalue = '';
-  var content;
-  var queue;
-  var character;
-  var marker;
-  var depth;
+  const self = this;
+  const now = eat.now();
+  const length = value.length;
+  let index = -1;
+  let subvalue = '';
+  let content;
+  let queue;
+  let character;
+  let marker;
+  let depth;
 
   /* Eat initial indentation. */
   while (++index < length) {
@@ -110,7 +108,7 @@ function setextHeading(eat, value, silent) {
 
   return eat(subvalue + queue)({
     type: 'heading',
-    depth: depth,
+    depth,
     children: self.tokenizeInline(content, now)
   });
 }

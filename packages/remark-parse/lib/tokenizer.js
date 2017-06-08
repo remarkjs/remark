@@ -6,27 +6,23 @@
  * @fileoverview Markdown tokenizer.
  */
 
-'use strict';
+export default factory;
 
-module.exports = factory;
-
-var MERGEABLE_NODES = {
+const MERGEABLE_NODES = {
   text: mergeText,
   blockquote: mergeBlockquote
 };
 
 /* Check whether a node is mergeable with adjacent nodes. */
 function mergeable(node) {
-  var start;
-  var end;
+  let start;
+  let end;
 
   if (node.type !== 'text' || !node.position) {
     return true;
   }
-
   start = node.position.start;
   end = node.position.end;
-
   /* Only merge nodes which occupy the same size as their
    * `value`. */
   return start.line !== end.line ||
@@ -59,19 +55,19 @@ function factory(type) {
 
   /* Tokenizer for a bound `type`. */
   function tokenize(value, location) {
-    var self = this;
-    var offset = self.offset;
-    var tokens = [];
-    var methods = self[type + 'Methods'];
-    var tokenizers = self[type + 'Tokenizers'];
-    var line = location.line;
-    var column = location.column;
-    var index;
-    var length;
-    var method;
-    var name;
-    var matched;
-    var valueLength;
+    const self = this;
+    const offset = self.offset;
+    const tokens = [];
+    const methods = self[type + 'Methods'];
+    const tokenizers = self[type + 'Tokenizers'];
+    let line = location.line;
+    let column = location.column;
+    let index;
+    let length;
+    let method;
+    let name;
+    let matched;
+    let valueLength;
 
     /* Trim white space only lines. */
     if (!value) {
@@ -138,8 +134,8 @@ function factory(type) {
      * @param {string} subvalue - Subvalue to eat.
      */
     function updatePosition(subvalue) {
-      var lastIndex = -1;
-      var index = subvalue.indexOf('\n');
+      let lastIndex = -1;
+      let index = subvalue.indexOf('\n');
 
       while (index !== -1) {
         line++;
@@ -170,8 +166,8 @@ function factory(type) {
      *   the last character is eaten.
      */
     function getOffset() {
-      var indentation = [];
-      var pos = line + 1;
+      const indentation = [];
+      let pos = line + 1;
 
       /**
        * Done.  Called when the last character is
@@ -180,7 +176,7 @@ function factory(type) {
        * @return {Array.<number>} - Offset.
        */
       return function () {
-        var last = line + 1;
+        const last = line + 1;
 
         while (pos < last) {
           indentation.push((offset[pos] || 0) + 1);
@@ -201,7 +197,7 @@ function factory(type) {
      * @return {Object} - Current Position.
      */
     function now() {
-      var pos = {line: line, column: column};
+      const pos = {line, column};
 
       pos.offset = self.toOffset(pos);
 
@@ -274,7 +270,7 @@ function factory(type) {
      * @returns {Function} - Updater.
      */
     function position() {
-      var before = now();
+      const before = now();
 
       return update;
 
@@ -291,11 +287,11 @@ function factory(type) {
        * @return {Node} - `node`.
        */
       function update(node, indent) {
-        var prev = node.position;
-        var start = prev ? prev.start : before;
-        var combined = [];
-        var n = prev && prev.end.line;
-        var l = before.line;
+        const prev = node.position;
+        const start = prev ? prev.start : before;
+        let combined = [];
+        let n = prev && prev.end.line;
+        const l = before.line;
 
         node.position = new Position(start);
 
@@ -341,8 +337,8 @@ function factory(type) {
      * @return {Object} - Added or merged into node.
      */
     function add(node, parent) {
-      var children = parent ? parent.children : tokens;
-      var prev = children[children.length - 1];
+      const children = parent ? parent.children : tokens;
+      const prev = children[children.length - 1];
 
       if (
         prev &&
@@ -378,9 +374,9 @@ function factory(type) {
      *   also adds `position` to node.
      */
     function eat(subvalue) {
-      var indent = getOffset();
-      var pos = position();
-      var current = now();
+      let indent = getOffset();
+      let pos = position();
+      const current = now();
 
       validateEat(subvalue);
 
@@ -422,7 +418,7 @@ function factory(type) {
        * @return {Node} - Added node.
        */
       function reset() {
-        var node = apply.apply(null, arguments);
+        const node = apply.apply(null, arguments);
 
         line = current.line;
         column = current.column;
@@ -438,7 +434,7 @@ function factory(type) {
        * @return {Position} - Position after eating `subvalue`.
        */
       function test() {
-        var result = pos({});
+        const result = pos({});
 
         line = current.line;
         column = current.column;

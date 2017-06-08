@@ -7,18 +7,16 @@
  * @fileoverview CLI to process markdown.
  */
 
-'use strict';
-
 /* Dependencies. */
-var start = require('unified-args');
-var extensions = require('markdown-extensions');
-var processor = require('remark');
-var proc = require('remark/package.json');
-var cli = require('./package.json');
+import start from 'unified-args';
+import extensions from 'markdown-extensions';
+import processor from 'remark';
+import proc from 'remark/package.json';
+import cli from './package.json';
 
 /* Start. */
 start({
-  processor: processor,
+  processor,
   name: proc.name,
   description: cli.description,
   version: [
@@ -30,5 +28,5 @@ start({
   packageField: proc.name + 'Config',
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',
-  extensions: extensions
+  extensions
 });

@@ -6,31 +6,29 @@
  * @fileoverview Tokenise indented code.
  */
 
-'use strict';
+import repeat from 'repeat-string';
+import trim from 'trim-trailing-lines';
 
-var repeat = require('repeat-string');
-var trim = require('trim-trailing-lines');
+export default indentedCode;
 
-module.exports = indentedCode;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-
-var CODE_INDENT_COUNT = 4;
-var CODE_INDENT = repeat(C_SPACE, CODE_INDENT_COUNT);
+const CODE_INDENT_COUNT = 4;
+const CODE_INDENT = repeat(C_SPACE, CODE_INDENT_COUNT);
 
 /* Tokenise indented code. */
 function indentedCode(eat, value, silent) {
-  var index = -1;
-  var length = value.length;
-  var subvalue = '';
-  var content = '';
-  var subvalueQueue = '';
-  var contentQueue = '';
-  var character;
-  var blankQueue;
-  var indent;
+  let index = -1;
+  const length = value.length;
+  let subvalue = '';
+  let content = '';
+  let subvalueQueue = '';
+  let contentQueue = '';
+  let character;
+  let blankQueue;
+  let indent;
 
   while (++index < length) {
     character = value.charAt(index);

@@ -6,44 +6,42 @@
  * @fileoverview Tokenise a reference.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/link';
+import normalize from '../util/normalize';
 
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/link');
-var normalize = require('../util/normalize');
-
-module.exports = reference;
+export default reference;
 reference.locator = locate;
 
-var T_LINK = 'link';
-var T_IMAGE = 'image';
-var T_FOOTNOTE = 'footnote';
-var REFERENCE_TYPE_SHORTCUT = 'shortcut';
-var REFERENCE_TYPE_COLLAPSED = 'collapsed';
-var REFERENCE_TYPE_FULL = 'full';
-var C_CARET = '^';
-var C_BACKSLASH = '\\';
-var C_BRACKET_OPEN = '[';
-var C_BRACKET_CLOSE = ']';
+const T_LINK = 'link';
+const T_IMAGE = 'image';
+const T_FOOTNOTE = 'footnote';
+const REFERENCE_TYPE_SHORTCUT = 'shortcut';
+const REFERENCE_TYPE_COLLAPSED = 'collapsed';
+const REFERENCE_TYPE_FULL = 'full';
+const C_CARET = '^';
+const C_BACKSLASH = '\\';
+const C_BRACKET_OPEN = '[';
+const C_BRACKET_CLOSE = ']';
 
 /* Tokenise a reference. */
 function reference(eat, value, silent) {
-  var self = this;
-  var character = value.charAt(0);
-  var index = 0;
-  var length = value.length;
-  var subvalue = '';
-  var intro = '';
-  var type = T_LINK;
-  var referenceType = REFERENCE_TYPE_SHORTCUT;
-  var content;
-  var identifier;
-  var now;
-  var node;
-  var exit;
-  var queue;
-  var bracketed;
-  var depth;
+  const self = this;
+  let character = value.charAt(0);
+  let index = 0;
+  const length = value.length;
+  let subvalue = '';
+  let intro = '';
+  let type = T_LINK;
+  let referenceType = REFERENCE_TYPE_SHORTCUT;
+  let content;
+  let identifier;
+  let now;
+  let node;
+  let exit;
+  let queue;
+  let bracketed;
+  let depth;
 
   /* Check whether we’re eating an image. */
   if (character === '!') {

@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = html;
+export default html;
 
 /**
  * Stringify html.

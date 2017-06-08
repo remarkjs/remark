@@ -6,14 +6,12 @@
  * @fileoverview Stringify a link reference.
  */
 
-'use strict';
-
 /* Dependencies. */
-var copy = require('../util/copy-identifier-encoding');
-var label = require('../util/label');
+import copy from '../util/copy-identifier-encoding';
+import label from '../util/label';
 
 /* Expose. */
-module.exports = linkReference;
+export default linkReference;
 
 /**
  * Stringify a link reference.
@@ -22,10 +20,10 @@ module.exports = linkReference;
  * @return {string} - Markdown link reference.
  */
 function linkReference(node) {
-  var self = this;
-  var type = node.referenceType;
-  var exit = self.enterLinkReference(self, node);
-  var value = self.all(node).join('');
+  const self = this;
+  const type = node.referenceType;
+  const exit = self.enterLinkReference(self, node);
+  let value = self.all(node).join('');
 
   exit();
 

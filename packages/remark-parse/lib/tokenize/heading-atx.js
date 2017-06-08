@@ -6,29 +6,27 @@
  * @fileoverview Tokenise an ATX-style heading.
  */
 
-'use strict';
+export default atxHeading;
 
-module.exports = atxHeading;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_HASH = '#';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_HASH = '#';
-
-var MAX_ATX_COUNT = 6;
+const MAX_ATX_COUNT = 6;
 
 /* Tokenise an ATX-style heading. */
 function atxHeading(eat, value, silent) {
-  var self = this;
-  var settings = self.options;
-  var length = value.length + 1;
-  var index = -1;
-  var now = eat.now();
-  var subvalue = '';
-  var content = '';
-  var character;
-  var queue;
-  var depth;
+  const self = this;
+  const settings = self.options;
+  let length = value.length + 1;
+  let index = -1;
+  const now = eat.now();
+  let subvalue = '';
+  let content = '';
+  let character;
+  let queue;
+  let depth;
 
   /* Eat initial spacing. */
   while (++index < length) {
@@ -144,7 +142,7 @@ function atxHeading(eat, value, silent) {
 
   return eat(subvalue)({
     type: 'heading',
-    depth: depth,
+    depth,
     children: self.tokenizeInline(content, now)
   });
 }

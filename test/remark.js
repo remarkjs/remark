@@ -7,25 +7,23 @@
  *   and remark-stringify.
  */
 
-'use strict';
-
 /* Dependencies. */
-var test = require('tape');
-var extend = require('extend');
-var remove = require('unist-util-remove-position');
-var compact = require('mdast-util-compact');
-var mdast = require('mdast-util-assert');
-var remark = require('../packages/remark');
-var fixtures = require('./fixtures');
+import test from 'tape';
+import extend from 'extend';
+import remove from 'unist-util-remove-position';
+import compact from 'mdast-util-compact';
+import mdast from 'mdast-util-assert';
+import remark from '../packages/remark';
+import fixtures from './fixtures';
 
 /* Methods. */
 /* Test all fixtures. */
-test('fixtures', function (t) {
-  var index = -1;
+test('fixtures', t => {
+  let index = -1;
 
   /* Check the next fixture. */
   function next() {
-    var fixture = fixtures[++index];
+    const fixture = fixtures[++index];
 
     if (!fixture) {
       t.end();
@@ -34,19 +32,19 @@ test('fixtures', function (t) {
 
     setImmediate(next); // Queue next.
 
-    t.test(fixture.name, function (st) {
-      var input = fixture.input;
-      var possibilities = fixture.possibilities;
-      var mapping = fixture.mapping;
-      var trees = fixture.trees;
-      var output = fixture.output;
+    t.test(fixture.name, st => {
+      const input = fixture.input;
+      const possibilities = fixture.possibilities;
+      const mapping = fixture.mapping;
+      const trees = fixture.trees;
+      const output = fixture.output;
 
-      Object.keys(possibilities).forEach(function (key) {
-        var name = key || 'default';
-        var parse = possibilities[key];
-        var node;
-        var markdown;
-        var recompiled;
+      Object.keys(possibilities).forEach(key => {
+        const name = key || 'default';
+        const parse = possibilities[key];
+        let node;
+        let markdown;
+        let recompiled;
 
         node = remark()
           .data('settings', parse)

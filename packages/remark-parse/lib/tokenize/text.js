@@ -6,23 +6,21 @@
  * @fileoverview Tokenise text.
  */
 
-'use strict';
-
-module.exports = text;
+export default text;
 
 /* Tokenise text. */
 function text(eat, value, silent) {
-  var self = this;
-  var methods;
-  var tokenizers;
-  var index;
-  var length;
-  var subvalue;
-  var position;
-  var tokenizer;
-  var name;
-  var min;
-  var now;
+  const self = this;
+  let methods;
+  let tokenizers;
+  let index;
+  let length;
+  let subvalue;
+  let position;
+  let tokenizer;
+  let name;
+  let min;
+  let now;
 
   /* istanbul ignore if - never used (yet) */
   if (silent) {
@@ -58,7 +56,7 @@ function text(eat, value, silent) {
   subvalue = value.slice(0, min);
   now = eat.now();
 
-  self.decode(subvalue, now, function (content, position, source) {
+  self.decode(subvalue, now, (content, position, source) => {
     eat(source || content)({
       type: 'text',
       value: content

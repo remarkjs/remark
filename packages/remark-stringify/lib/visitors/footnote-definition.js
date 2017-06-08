@@ -6,13 +6,11 @@
  * @fileoverview Stringify a footnote-definition.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = footnoteDefinition;
+export default footnoteDefinition;
 
 /**
  * Stringify a footnote definition.
@@ -21,8 +19,8 @@ module.exports = footnoteDefinition;
  * @return {string} - Markdown footnote definition.
  */
 function footnoteDefinition(node) {
-  var id = node.identifier.toLowerCase();
-  var content = this.all(node).join('\n\n' + repeat(' ', 4));
+  const id = node.identifier.toLowerCase();
+  const content = this.all(node).join('\n\n' + repeat(' ', 4));
 
   return '[^' + id + ']: ' + content;
 }

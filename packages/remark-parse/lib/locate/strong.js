@@ -6,13 +6,11 @@
  * @fileoverview Locate bold / strong / importance.
  */
 
-'use strict';
-
-module.exports = locate;
+export default locate;
 
 function locate(value, fromIndex) {
-  var asterisk = value.indexOf('**', fromIndex);
-  var underscore = value.indexOf('__', fromIndex);
+  const asterisk = value.indexOf('**', fromIndex);
+  const underscore = value.indexOf('__', fromIndex);
 
   if (underscore === -1) {
     return asterisk;

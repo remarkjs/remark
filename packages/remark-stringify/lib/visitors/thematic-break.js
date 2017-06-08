@@ -6,13 +6,11 @@
  * @fileoverview Stringify a thematic-break.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = thematic;
+export default thematic;
 
 /**
  * Stringify a `thematic-break`.
@@ -34,7 +32,7 @@ module.exports = thematic;
  * @return {string} - Markdown thematic break.
  */
 function thematic() {
-  var options = this.options;
-  var rule = repeat(options.rule, options.ruleRepetition);
+  const options = this.options;
+  const rule = repeat(options.rule, options.ruleRepetition);
   return options.ruleSpaces ? rule.split('').join(' ') : rule;
 }

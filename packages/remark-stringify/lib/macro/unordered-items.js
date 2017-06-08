@@ -6,10 +6,8 @@
  * @fileoverview Stringify unordered list items.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = unorderedItems;
+export default unorderedItems;
 
 /**
  * Visit unordered list items.
@@ -21,13 +19,13 @@ module.exports = unorderedItems;
  * @return {string} - Compiled children.
  */
 function unorderedItems(node) {
-  var self = this;
-  var bullet = self.options.bullet;
-  var fn = self.visitors.listItem;
-  var children = node.children;
-  var length = children.length;
-  var index = -1;
-  var values = [];
+  const self = this;
+  const bullet = self.options.bullet;
+  const fn = self.visitors.listItem;
+  const children = node.children;
+  const length = children.length;
+  let index = -1;
+  const values = [];
 
   while (++index < length) {
     values[index] = fn.call(self, children[index], node, index, bullet);

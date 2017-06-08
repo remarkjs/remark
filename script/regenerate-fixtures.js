@@ -8,23 +8,21 @@
  *   the parser is modified to output different syntax trees.
  */
 
-'use strict';
-
 /* Dependencies. */
-var fs = require('fs');
-var path = require('path');
-var remark = require('../packages/remark');
-var fixtures = require('../test/fixtures');
+import fs from 'fs';
+import path from 'path';
+import remark from '../packages/remark';
+import fixtures from '../test/fixtures';
 
 /* Regenerate. */
-fixtures.forEach(function (fixture) {
-  var input = fixture.input;
-  var name = fixture.name;
-  var mapping = fixture.mapping;
+fixtures.forEach(fixture => {
+  const input = fixture.input;
+  const name = fixture.name;
+  const mapping = fixture.mapping;
 
-  Object.keys(mapping).forEach(function (key) {
-    var filename = name + (key ? '.' + key : key) + '.json';
-    var result;
+  Object.keys(mapping).forEach(key => {
+    let filename = name + (key ? '.' + key : key) + '.json';
+    let result;
 
     try {
       result = remark()

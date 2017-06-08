@@ -6,10 +6,8 @@
  * @fileoverview Stringify a reference label.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = label;
+export default label;
 
 /**
  * Stringify a reference label.
@@ -25,8 +23,8 @@ module.exports = label;
  * @return {string} - Markdown label reference.
  */
 function label(node) {
-  var type = node.referenceType;
-  var value = type === 'full' ? node.identifier : '';
+  const type = node.referenceType;
+  const value = type === 'full' ? node.identifier : '';
 
   return type === 'shortcut' ? value : '[' + value + ']';
 }

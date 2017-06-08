@@ -1,14 +1,12 @@
-'use strict';
+import unherit from 'unherit';
+import xtend from 'xtend';
+import Compiler from './lib/compiler.js';
 
-var unherit = require('unherit');
-var xtend = require('xtend');
-var Compiler = require('./lib/compiler.js');
-
-module.exports = stringify;
+export default stringify;
 stringify.Compiler = Compiler;
 
 function stringify(options) {
-  var Local = unherit(Compiler);
+  const Local = unherit(Compiler);
   Local.prototype.options = xtend(Local.prototype.options, this.data('settings'), options);
   this.Compiler = Local;
 }

@@ -6,14 +6,12 @@
  * @fileoverview Test suite for `remark.process()`.
  */
 
-'use strict';
-
 /* Dependencies. */
-var test = require('tape');
-var remark = require('../packages/remark');
+import test from 'tape';
+import remark from '../packages/remark';
 
 /* Test `remark`. */
-test('remark().processSync(value)', function (t) {
+test('remark().processSync(value)', t => {
   t.equal(
     remark().processSync('*foo*').toString(),
     '_foo_\n',
@@ -33,7 +31,7 @@ test('remark().processSync(value)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {pedantic: true, listItemIndent: '1'}).processSync([
         '* List',
         '',

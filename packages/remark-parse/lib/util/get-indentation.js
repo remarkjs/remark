@@ -6,14 +6,12 @@
  * @fileoverview Get indentation.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = indentation;
+export default indentation;
 
 /* Map of characters, and their column length,
  * which can be used as indentation. */
-var characters = {' ': 1, '\t': 4};
+const characters = {' ': 1, '\t': 4};
 
 /**
  * Gets indentation information for a line.
@@ -22,11 +20,11 @@ var characters = {' ': 1, '\t': 4};
  * @return {Object} - Indetation information.
  */
 function indentation(value) {
-  var index = 0;
-  var indent = 0;
-  var character = value.charAt(index);
-  var stops = {};
-  var size;
+  let index = 0;
+  let indent = 0;
+  let character = value.charAt(index);
+  const stops = {};
+  let size;
 
   while (character in characters) {
     size = characters[character];
@@ -42,5 +40,5 @@ function indentation(value) {
     character = value.charAt(++index);
   }
 
-  return {indent: indent, stops: stops};
+  return {indent, stops};
 }

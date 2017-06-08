@@ -6,10 +6,8 @@
  * @fileoverview Quote a `title` the best way possible.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = enclose;
+export default enclose;
 
 /**
  * There is currently no way to support nested delimiters
@@ -31,6 +29,6 @@ module.exports = enclose;
  * @return {string} - Properly enclosed title.
  */
 function enclose(title) {
-  var delimiter = title.indexOf('"') === -1 ? '"' : '\'';
+  const delimiter = title.indexOf('"') === -1 ? '"' : '\'';
   return delimiter + title + delimiter;
 }

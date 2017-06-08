@@ -6,18 +6,18 @@
  * @fileoverview Test suite for `remark.parse()`.
  */
 
-'use strict';
-
 /* Dependencies. */
-var path = require('path');
-var fs = require('fs');
-var test = require('tape');
-var vfile = require('vfile');
-var remark = require('../packages/remark');
-var Parser = require('../packages/remark-parse').Parser;
+import path from 'path';
+import fs from 'fs';
+import test from 'tape';
+import vfile from 'vfile';
+import remark from '../packages/remark';
+import parse from '../packages/remark-parse';
+
+const Parser = parse.Parser;
 
 /* Test `remark-parse`. */
-test('remark().parse(file)', function (t) {
+test('remark().parse(file)', t => {
   t.equal(
     remark().parse('Alfred').children.length,
     1,
@@ -25,7 +25,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {position: 0}).parse('');
     },
     /options.position/,
@@ -33,16 +33,16 @@ test('remark().parse(file)', function (t) {
   );
 
   t.doesNotThrow(
-    function () {
-      var parser = new Parser();
+    () => {
+      const parser = new Parser();
       parser.setOptions();
     },
     'should not throw when setting nothing'
   );
 
   t.throws(
-    function () {
-      var parser = new Parser();
+    () => {
+      const parser = new Parser();
       parser.setOptions(true);
     },
     /^Error: Invalid value `true` for setting `options`$/,
@@ -50,7 +50,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {gfm: Infinity}).parse('');
     },
     /options.gfm/,
@@ -58,7 +58,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {footnotes: 1}).parse('');
     },
     /options.footnotes/,
@@ -66,7 +66,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {breaks: 'unicorn'}).parse('');
     },
     /options.breaks/,
@@ -74,7 +74,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {pedantic: {}}).parse('');
     },
     /options.pedantic/,
@@ -82,7 +82,7 @@ test('remark().parse(file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {yaml: [true]}).parse('');
     },
     /options.yaml/,
@@ -113,8 +113,8 @@ test('remark().parse(file)', function (t) {
     'should support given `blocks`'
   );
 
-  t.test('should throw parse errors', function (st) {
-    var processor = remark().use(plugin);
+  t.test('should throw parse errors', st => {
+    const processor = remark().use(plugin);
 
     st.plan(5);
 
@@ -144,11 +144,11 @@ test('remark().parse(file)', function (t) {
     }
   });
 
-  t.test('should warn when missing locators', function (st) {
-    var processor = remark().use(plugin);
+  t.test('should warn when missing locators', st => {
+    const processor = remark().use(plugin);
 
     st.throws(
-      function () {
+      () => {
         processor.parse(vfile('Hello *World*!'));
       },
       /1:1: Missing locator: `foo`/
@@ -157,8 +157,8 @@ test('remark().parse(file)', function (t) {
     st.end();
 
     function plugin() {
-      var proto = this.Parser.prototype;
-      var methods = proto.inlineMethods;
+      const proto = this.Parser.prototype;
+      const methods = proto.inlineMethods;
 
       /* Tokenizer. */
       function noop() {}
@@ -168,10 +168,10 @@ test('remark().parse(file)', function (t) {
     }
   });
 
-  t.test('should warn about entities', function (st) {
-    var filePath = path.join('test', 'fixtures', 'input', 'entities-advanced.text');
-    var file = vfile(fs.readFileSync(filePath));
-    var notTerminated = 'Named character references must be ' +
+  t.test('should warn about entities', st => {
+    const filePath = path.join('test', 'fixtures', 'input', 'entities-advanced.text');
+    const file = vfile(fs.readFileSync(filePath));
+    const notTerminated = 'Named character references must be ' +
       'terminated by a semicolon';
 
     remark().parse(file);
@@ -206,8 +206,8 @@ test('remark().parse(file)', function (t) {
     st.end();
   });
 
-  t.test('should be able to set options', function (st) {
-    var tree = remark().use(plugin).parse([
+  t.test('should be able to set options', st => {
+    const tree = remark().use(plugin).parse([
       '<!-- commonmark -->',
       '',
       '1)   Hello World',
@@ -219,14 +219,14 @@ test('remark().parse(file)', function (t) {
     st.end();
 
     function plugin() {
-      var html = this.Parser.prototype.blockTokenizers.html;
+      const html = this.Parser.prototype.blockTokenizers.html;
 
       this.Parser.prototype.blockTokenizers.html = replacement;
 
       /* Set option when an HMTL comment occurs. */
       function replacement(eat, value) {
-        var node = /<!--\s*(.*?)\s*-->/g.exec(value);
-        var options = {};
+        const node = /<!--\s*(.*?)\s*-->/g.exec(value);
+        const options = {};
 
         if (node) {
           options[node[1]] = true;

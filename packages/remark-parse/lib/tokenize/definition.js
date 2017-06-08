@@ -6,44 +6,42 @@
  * @fileoverview Tokenise a definition.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
+import normalize from '../util/normalize';
 
-var whitespace = require('is-whitespace-character');
-var normalize = require('../util/normalize');
-
-module.exports = definition;
+export default definition;
 definition.notInList = true;
 definition.notInBlock = true;
 
-var C_DOUBLE_QUOTE = '"';
-var C_SINGLE_QUOTE = '\'';
-var C_BACKSLASH = '\\';
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_BRACKET_OPEN = '[';
-var C_BRACKET_CLOSE = ']';
-var C_PAREN_OPEN = '(';
-var C_PAREN_CLOSE = ')';
-var C_COLON = ':';
-var C_LT = '<';
-var C_GT = '>';
+const C_DOUBLE_QUOTE = '"';
+const C_SINGLE_QUOTE = '\'';
+const C_BACKSLASH = '\\';
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_BRACKET_OPEN = '[';
+const C_BRACKET_CLOSE = ']';
+const C_PAREN_OPEN = '(';
+const C_PAREN_CLOSE = ')';
+const C_COLON = ':';
+const C_LT = '<';
+const C_GT = '>';
 
 /* Tokenise a definition. */
 function definition(eat, value, silent) {
-  var self = this;
-  var commonmark = self.options.commonmark;
-  var index = 0;
-  var length = value.length;
-  var subvalue = '';
-  var beforeURL;
-  var beforeTitle;
-  var queue;
-  var character;
-  var test;
-  var identifier;
-  var url;
-  var title;
+  const self = this;
+  const commonmark = self.options.commonmark;
+  let index = 0;
+  const length = value.length;
+  let subvalue = '';
+  let beforeURL;
+  let beforeTitle;
+  let queue;
+  let character;
+  let test;
+  let identifier;
+  let url;
+  let title;
 
   while (index < length) {
     character = value.charAt(index);
@@ -265,7 +263,7 @@ function definition(eat, value, silent) {
       type: 'definition',
       identifier: normalize(identifier),
       title: title || null,
-      url: url
+      url
     });
   }
 }

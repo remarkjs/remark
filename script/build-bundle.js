@@ -6,23 +6,21 @@
  * @fileoverview Bundle and mangle `remark`.
  */
 
-'use strict';
-
 /* Dependencies. */
-var fs = require('fs');
-var path = require('path');
-var chalk = require('chalk');
-var bail = require('bail');
-var browserify = require('browserify');
-var esprima = require('esprima');
-var esmangle = require('esmangle');
-var escodegen = require('escodegen');
-var pack = require('../packages/remark/package.json');
+import fs from 'fs';
+import path from 'path';
+import chalk from 'chalk';
+import bail from 'bail';
+import browserify from 'browserify';
+import esprima from 'esprima';
+import esmangle from 'esmangle';
+import escodegen from 'escodegen';
+import pack from '../packages/remark/package.json';
 
 /* Methods. */
-var write = fs.writeFileSync;
+const write = fs.writeFileSync;
 
-var comment = [
+const comment = [
   '/*!',
   ' * @copyright 2015 Titus Wormer',
   ' * @license ' + pack.license,
@@ -32,12 +30,12 @@ var comment = [
   ''
 ].join('\n');
 
-var input = path.join.bind(null, __dirname, '..', 'packages', 'remark');
-var output = path.join.bind(null, __dirname, '..');
+const input = path.join.bind(null, __dirname, '..', 'packages', 'remark');
+const output = path.join.bind(null, __dirname, '..');
 
-var opts = {standalone: pack.name};
+const opts = {standalone: pack.name};
 
-browserify(input('index.js'), opts).bundle(function (err, buf) {
+browserify(input('index.js'), opts).bundle((err, buf) => {
   bail(err);
 
   write(output('remark.js'), comment + buf);
@@ -51,8 +49,8 @@ browserify(input('index.js'), opts)
     global: true,
     sourcemap: false
   })
-  .bundle(function (err, buf) {
-    var ast;
+  .bundle((err, buf) => {
+    let ast;
 
     bail(err);
 

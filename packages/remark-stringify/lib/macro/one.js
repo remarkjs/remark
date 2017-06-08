@@ -6,10 +6,8 @@
  * @fileoverview Stringify a node.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = one;
+export default one;
 
 /**
  * Visit a node.
@@ -19,8 +17,8 @@ module.exports = one;
  * @return {string} - Compiled `node`.
  */
 function one(node, parent) {
-  var self = this;
-  var visitors = self.visitors;
+  const self = this;
+  const visitors = self.visitors;
 
   /* Fail on unknown nodes. */
   if (typeof visitors[node.type] !== 'function') {

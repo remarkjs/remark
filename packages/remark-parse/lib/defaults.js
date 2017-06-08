@@ -6,16 +6,16 @@
  * @fileoverview Default options for `parse`.
  */
 
-'use strict';
+import blocks from './block-elements';
 
 /* Expose. */
-module.exports = {
+export default {
   position: true,
   gfm: true,
   yaml: true,
   commonmark: false,
   footnotes: false,
   pedantic: false,
-  blocks: require('./block-elements'),
+  blocks,
   breaks: false
 };

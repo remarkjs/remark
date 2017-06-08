@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = text;
+export default text;
 
 /**
  * Stringify text.

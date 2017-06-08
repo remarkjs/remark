@@ -6,13 +6,11 @@
  * @fileoverview Stringify a strong.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = strong;
+export default strong;
 
 /**
  * Stringify a `strong`.
@@ -27,6 +25,6 @@ module.exports = strong;
  * @return {string} - Markdown strong.
  */
 function strong(node) {
-  var marker = repeat(this.options.strong, 2);
+  const marker = repeat(this.options.strong, 2);
   return marker + this.all(node).join('') + marker;
 }

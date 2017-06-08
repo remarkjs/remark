@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = tableCell;
+export default tableCell;
 
 /**
  * Stringify a table cell.

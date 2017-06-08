@@ -6,23 +6,21 @@
  * @fileoverview Tokenise a break.
  */
 
-'use strict';
+const locate = require('../locate/break');
 
-var locate = require('../locate/break');
-
-module.exports = hardBreak;
+export default hardBreak;
 hardBreak.locator = locate;
 
-var MIN_BREAK_LENGTH = 2;
+const MIN_BREAK_LENGTH = 2;
 
 /* Tokenise a break. */
 function hardBreak(eat, value, silent) {
-  var self = this;
-  var breaks = self.options.breaks;
-  var length = value.length;
-  var index = -1;
-  var queue = '';
-  var character;
+  const self = this;
+  const breaks = self.options.breaks;
+  const length = value.length;
+  let index = -1;
+  let queue = '';
+  let character;
 
   while (++index < length) {
     character = value.charAt(index);

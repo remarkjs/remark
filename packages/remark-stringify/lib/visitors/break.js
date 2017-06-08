@@ -6,13 +6,11 @@
  * @fileoverview Stringify a break.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = lineBreak;
+export default lineBreak;
 
 /* Constants. */
-var map = {true: '\\\n', false: '  \n'};
+const map = {true: '\\\n', false: '  \n'};
 
 /**
  * Stringify a hard break.

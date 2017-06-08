@@ -6,40 +6,38 @@
  * @fileoverview Tokenise a list.
  */
 
-'use strict';
-
 /* eslint-disable max-params */
 
-var trim = require('trim');
-var repeat = require('repeat-string');
-var decimal = require('is-decimal');
-var getIndent = require('../util/get-indentation');
-var removeIndent = require('../util/remove-indentation');
-var interrupt = require('../util/interrupt');
+import trim from 'trim';
+import repeat from 'repeat-string';
+import decimal from 'is-decimal';
+import getIndent from '../util/get-indentation';
+import removeIndent from '../util/remove-indentation';
+import interrupt from '../util/interrupt';
 
-module.exports = list;
+export default list;
 
-var C_ASTERISK = '*';
-var C_UNDERSCORE = '_';
-var C_PLUS = '+';
-var C_DASH = '-';
-var C_DOT = '.';
-var C_SPACE = ' ';
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_PAREN_CLOSE = ')';
-var C_X_LOWER = 'x';
+const C_ASTERISK = '*';
+const C_UNDERSCORE = '_';
+const C_PLUS = '+';
+const C_DASH = '-';
+const C_DOT = '.';
+const C_SPACE = ' ';
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_PAREN_CLOSE = ')';
+const C_X_LOWER = 'x';
 
-var TAB_SIZE = 4;
-var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
-var EXPRESSION_TASK_ITEM = /^\[([ \t]|x|X)][ \t]/;
-var EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/;
-var EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
-var EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
+const TAB_SIZE = 4;
+const EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
+const EXPRESSION_TASK_ITEM = /^\[([ \t]|x|X)][ \t]/;
+const EXPRESSION_BULLET = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/;
+const EXPRESSION_PEDANTIC_BULLET = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/;
+const EXPRESSION_INITIAL_INDENT = /^( {1,4}|\t)?/gm;
 
 /* Map of characters which can be used to mark
  * list-items. */
-var LIST_UNORDERED_MARKERS = {};
+const LIST_UNORDERED_MARKERS = {};
 
 LIST_UNORDERED_MARKERS[C_ASTERISK] = true;
 LIST_UNORDERED_MARKERS[C_PLUS] = true;
@@ -47,52 +45,52 @@ LIST_UNORDERED_MARKERS[C_DASH] = true;
 
 /* Map of characters which can be used to mark
  * list-items after a digit. */
-var LIST_ORDERED_MARKERS = {};
+const LIST_ORDERED_MARKERS = {};
 
 LIST_ORDERED_MARKERS[C_DOT] = true;
 
 /* Map of characters which can be used to mark
  * list-items after a digit. */
-var LIST_ORDERED_COMMONMARK_MARKERS = {};
+const LIST_ORDERED_COMMONMARK_MARKERS = {};
 
 LIST_ORDERED_COMMONMARK_MARKERS[C_DOT] = true;
 LIST_ORDERED_COMMONMARK_MARKERS[C_PAREN_CLOSE] = true;
 
 /* Tokenise a list. */
 function list(eat, value, silent) {
-  var self = this;
-  var commonmark = self.options.commonmark;
-  var pedantic = self.options.pedantic;
-  var tokenizers = self.blockTokenizers;
-  var interuptors = self.interruptList;
-  var markers;
-  var index = 0;
-  var length = value.length;
-  var start = null;
-  var size = 0;
-  var queue;
-  var ordered;
-  var character;
-  var marker;
-  var nextIndex;
-  var startIndex;
-  var prefixed;
-  var currentMarker;
-  var content;
-  var line;
-  var prevEmpty;
-  var empty;
-  var items;
-  var allLines;
-  var emptyLines;
-  var item;
-  var enterTop;
-  var exitBlockquote;
-  var isLoose;
-  var node;
-  var now;
-  var end;
-  var indented;
+  const self = this;
+  const commonmark = self.options.commonmark;
+  const pedantic = self.options.pedantic;
+  const tokenizers = self.blockTokenizers;
+  const interuptors = self.interruptList;
+  let markers;
+  let index = 0;
+  let length = value.length;
+  let start = null;
+  let size = 0;
+  let queue;
+  let ordered;
+  let character;
+  let marker;
+  let nextIndex;
+  let startIndex;
+  let prefixed;
+  let currentMarker;
+  let content;
+  let line;
+  let prevEmpty;
+  let empty;
+  let items;
+  let allLines;
+  let emptyLines;
+  let item;
+  let enterTop;
+  let exitBlockquote;
+  let isLoose;
+  let node;
+  let now;
+  let end;
+  let indented;
 
   while (index < length) {
     character = value.charAt(index);
@@ -332,8 +330,8 @@ function list(eat, value, silent) {
 
   node = eat(allLines.join(C_NEWLINE)).reset({
     type: 'list',
-    ordered: ordered,
-    start: start,
+    ordered,
+    start,
     loose: null,
     children: []
   });
@@ -383,11 +381,11 @@ function list(eat, value, silent) {
  * @return {Object} - `listItem` node.
  */
 function listItem(ctx, value, position) {
-  var offsets = ctx.offset;
-  var fn = ctx.options.pedantic ? pedanticListItem : normalListItem;
-  var checked = null;
-  var task;
-  var indent;
+  const offsets = ctx.offset;
+  const fn = ctx.options.pedantic ? pedanticListItem : normalListItem;
+  let checked = null;
+  let task;
+  let indent;
 
   value = fn.apply(null, arguments);
 
@@ -406,15 +404,15 @@ function listItem(ctx, value, position) {
     type: 'listItem',
     loose: EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
       value.charAt(value.length - 1) === C_NEWLINE,
-    checked: checked,
+    checked,
     children: ctx.tokenizeBlock(value, position)
   };
 }
 
 /* Create a list-item using overly simple mechanics. */
 function pedanticListItem(ctx, value, position) {
-  var offsets = ctx.offset;
-  var line = position.line;
+  const offsets = ctx.offset;
+  let line = position.line;
 
   /* Remove the list-item’s bullet. */
   value = value.replace(EXPRESSION_PEDANTIC_BULLET, replacer);
@@ -437,15 +435,15 @@ function pedanticListItem(ctx, value, position) {
 
 /* Create a list-item using sane mechanics. */
 function normalListItem(ctx, value, position) {
-  var offsets = ctx.offset;
-  var line = position.line;
-  var max;
-  var bullet;
-  var rest;
-  var lines;
-  var trimmedLines;
-  var index;
-  var length;
+  const offsets = ctx.offset;
+  let line = position.line;
+  let max;
+  let bullet;
+  let rest;
+  let lines;
+  let trimmedLines;
+  let index;
+  let length;
 
   /* Remove the list-item’s bullet. */
   value = value.replace(EXPRESSION_BULLET, replacer);

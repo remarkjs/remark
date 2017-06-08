@@ -6,13 +6,11 @@
  * @fileoverview Normalize an identifier.
  */
 
-'use strict';
-
 /* Dependencies. */
-var collapseWhiteSpace = require('collapse-white-space');
+import collapseWhiteSpace from 'collapse-white-space';
 
 /* Expose. */
-module.exports = normalize;
+export default normalize;
 
 /**
  * Normalize an identifier.  Collapses multiple white space

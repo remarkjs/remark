@@ -6,39 +6,37 @@
  * @fileoverview Tokenise fenced code.
  */
 
-'use strict';
+import trim from 'trim-trailing-lines';
 
-var trim = require('trim-trailing-lines');
+export default fencedCode;
 
-module.exports = fencedCode;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_TILDE = '~';
+const C_TICK = '`';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_TILDE = '~';
-var C_TICK = '`';
-
-var MIN_FENCE_COUNT = 3;
-var CODE_INDENT_COUNT = 4;
+const MIN_FENCE_COUNT = 3;
+const CODE_INDENT_COUNT = 4;
 
 /* Tokenise fenced code. */
 function fencedCode(eat, value, silent) {
-  var self = this;
-  var settings = self.options;
-  var length = value.length + 1;
-  var index = 0;
-  var subvalue = '';
-  var fenceCount;
-  var marker;
-  var character;
-  var flag;
-  var queue;
-  var content;
-  var exdentedContent;
-  var closing;
-  var exdentedClosing;
-  var indent;
-  var now;
+  const self = this;
+  const settings = self.options;
+  const length = value.length + 1;
+  let index = 0;
+  let subvalue = '';
+  let fenceCount;
+  let marker;
+  let character;
+  let flag;
+  let queue;
+  let content;
+  let exdentedContent;
+  let closing;
+  let exdentedClosing;
+  let indent;
+  let now;
 
   if (!settings.gfm) {
     return;

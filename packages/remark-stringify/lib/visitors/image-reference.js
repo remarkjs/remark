@@ -6,13 +6,11 @@
  * @fileoverview Stringify an image reference.
  */
 
-'use strict';
-
 /* Dependencies. */
-var label = require('../util/label');
+import label from '../util/label';
 
 /* Expose. */
-module.exports = imageReference;
+export default imageReference;
 
 /**
  * Stringify an image reference.

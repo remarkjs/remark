@@ -6,10 +6,8 @@
  * @fileoverview Stringify a block.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = block;
+export default block;
 
 /**
  * Stringify a block node with block children (e.g., `root`
@@ -23,13 +21,13 @@ module.exports = block;
  * @return {string} - Compiled children.
  */
 function block(node) {
-  var self = this;
-  var values = [];
-  var children = node.children;
-  var length = children.length;
-  var index = -1;
-  var child;
-  var prev;
+  const self = this;
+  const values = [];
+  const children = node.children;
+  const length = children.length;
+  let index = -1;
+  let child;
+  let prev;
 
   while (++index < length) {
     child = children[index];

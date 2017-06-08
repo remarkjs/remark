@@ -6,14 +6,12 @@
  * @fileoverview Stringify inline code.
  */
 
-'use strict';
-
 /* Dependencies. */
-var streak = require('longest-streak');
-var repeat = require('repeat-string');
+import streak from 'longest-streak';
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = inlineCode;
+export default inlineCode;
 
 /**
  * Stringify inline code.
@@ -32,10 +30,10 @@ module.exports = inlineCode;
  * @return {string} - Markdown inline code.
  */
 function inlineCode(node) {
-  var value = node.value;
-  var ticks = repeat('`', streak(value, '`') + 1);
-  var start = ticks;
-  var end = ticks;
+  const value = node.value;
+  const ticks = repeat('`', streak(value, '`') + 1);
+  let start = ticks;
+  let end = ticks;
 
   if (value.charAt(0) === '`') {
     start += ' ';

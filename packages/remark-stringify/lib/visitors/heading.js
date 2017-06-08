@@ -6,13 +6,11 @@
  * @fileoverview Stringify a heading.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = heading;
+export default heading;
 
 /**
  * Stringify heading.
@@ -36,12 +34,12 @@ module.exports = heading;
  * @return {string} - Markdown heading.
  */
 function heading(node) {
-  var self = this;
-  var depth = node.depth;
-  var setext = self.options.setext;
-  var closeAtx = self.options.closeAtx;
-  var content = self.all(node).join('');
-  var prefix;
+  const self = this;
+  const depth = node.depth;
+  const setext = self.options.setext;
+  const closeAtx = self.options.closeAtx;
+  const content = self.all(node).join('');
+  let prefix;
 
   if (setext && depth < 3) {
     return content + '\n' + repeat(depth === 1 ? '=' : '-', content.length);

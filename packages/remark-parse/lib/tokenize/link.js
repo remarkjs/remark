@@ -6,36 +6,34 @@
  * @fileoverview Tokenise a link.
  */
 
-'use strict';
+import has from 'has';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/link';
 
-var has = require('has');
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/link');
-
-module.exports = link;
+export default link;
 link.locator = locate;
 
-var C_BACKSLASH = '\\';
-var C_BRACKET_OPEN = '[';
-var C_BRACKET_CLOSE = ']';
-var C_PAREN_OPEN = '(';
-var C_PAREN_CLOSE = ')';
-var C_LT = '<';
-var C_GT = '>';
-var C_TICK = '`';
-var C_DOUBLE_QUOTE = '"';
-var C_SINGLE_QUOTE = '\'';
+const C_BACKSLASH = '\\';
+const C_BRACKET_OPEN = '[';
+const C_BRACKET_CLOSE = ']';
+const C_PAREN_OPEN = '(';
+const C_PAREN_CLOSE = ')';
+const C_LT = '<';
+const C_GT = '>';
+const C_TICK = '`';
+const C_DOUBLE_QUOTE = '"';
+const C_SINGLE_QUOTE = '\'';
 
 /* Map of characters, which can be used to mark link
  * and image titles. */
-var LINK_MARKERS = {};
+const LINK_MARKERS = {};
 
 LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
 LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
 
 /* Map of characters, which can be used to mark link
  * and image titles in commonmark-mode. */
-var COMMONMARK_LINK_MARKERS = {};
+const COMMONMARK_LINK_MARKERS = {};
 
 COMMONMARK_LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
 COMMONMARK_LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
@@ -43,31 +41,31 @@ COMMONMARK_LINK_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE;
 
 /* Tokenise a link. */
 function link(eat, value, silent) {
-  var self = this;
-  var subvalue = '';
-  var index = 0;
-  var character = value.charAt(0);
-  var commonmark = self.options.commonmark;
-  var gfm = self.options.gfm;
-  var closed;
-  var count;
-  var opening;
-  var beforeURL;
-  var beforeTitle;
-  var subqueue;
-  var hasMarker;
-  var markers;
-  var isImage;
-  var content;
-  var marker;
-  var length;
-  var title;
-  var depth;
-  var queue;
-  var url;
-  var now;
-  var exit;
-  var node;
+  const self = this;
+  let subvalue = '';
+  let index = 0;
+  let character = value.charAt(0);
+  const commonmark = self.options.commonmark;
+  const gfm = self.options.gfm;
+  let closed;
+  let count;
+  let opening;
+  let beforeURL;
+  let beforeTitle;
+  let subqueue;
+  let hasMarker;
+  let markers;
+  let isImage;
+  let content;
+  let marker;
+  let length;
+  let title;
+  let depth;
+  let queue;
+  let url;
+  let now;
+  let exit;
+  let node;
 
   /* Detect whether this is an image. */
   if (character === '!') {
@@ -384,7 +382,7 @@ function link(eat, value, silent) {
   node = {
     type: isImage ? 'image' : 'link',
     title: title || null,
-    url: url
+    url
   };
 
   if (isImage) {

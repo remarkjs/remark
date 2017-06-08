@@ -6,12 +6,12 @@
  * @fileoverview Test suite for `remark.stringify()`.
  */
 
-'use strict';
-
 /* Dependencies. */
-var test = require('tape');
-var remark = require('../packages/remark');
-var Compiler = require('../packages/remark-stringify').Compiler;
+import test from 'tape';
+import remark from '../packages/remark';
+import stringify from '../packages/remark-stringify';
+
+const Compiler = stringify.Compiler;
 
 /* Construct an empty node. */
 function empty() {
@@ -19,9 +19,9 @@ function empty() {
 }
 
 /* Test `remark-stringify`. */
-test('remark().stringify(ast, file)', function (t) {
+test('remark().stringify(ast, file)', t => {
   t.throws(
-    function () {
+    () => {
       remark().stringify(false);
     },
     /false/,
@@ -29,38 +29,38 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.doesNotThrow(
-    function () {
-      var compiler = new Compiler();
+    () => {
+      const compiler = new Compiler();
       compiler.setOptions();
     },
     'should not throw when setting nothing'
   );
 
   t.throws(
-    function () {
-      var compiler = new Compiler();
+    () => {
+      const compiler = new Compiler();
       compiler.setOptions(true);
     },
     /^Error: Invalid value `true` for setting `options`$/,
     'should throw when setting invalid values'
   );
 
-  t.test('should ignore nully numbers', function (st) {
-    var compiler = new Compiler();
+  t.test('should ignore nully numbers', st => {
+    const compiler = new Compiler();
     compiler.setOptions({ruleRepetition: null});
     st.equal(compiler.options.ruleRepetition, 3);
     st.end();
   });
 
-  t.test('should ignore nully strings', function (st) {
-    var compiler = new Compiler();
+  t.test('should ignore nully strings', st => {
+    const compiler = new Compiler();
     compiler.setOptions({listItemIndent: null});
     st.equal(compiler.options.listItemIndent, 'tab');
     st.end();
   });
 
   t.throws(
-    function () {
+    () => {
       remark().stringify({type: 'unicorn'});
     },
     /unicorn/,
@@ -68,7 +68,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {bullet: true}).stringify(empty());
     },
     /options\.bullet/,
@@ -76,7 +76,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {listItemIndent: 'foo'}).stringify(empty());
     },
     /options\.listItemIndent/,
@@ -85,7 +85,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {rule: true}).stringify(empty());
     },
     /options\.rule/,
@@ -94,7 +94,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {ruleSpaces: 1}).stringify(empty());
     },
     /options\.ruleSpaces/,
@@ -102,7 +102,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {ruleRepetition: 1}).stringify(empty());
     },
     /options\.ruleRepetition/,
@@ -110,7 +110,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {ruleRepetition: NaN}).stringify(empty());
     },
     /options\.ruleRepetition/,
@@ -118,7 +118,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {ruleRepetition: true}).stringify(empty());
     },
     /options\.ruleRepetition/,
@@ -126,7 +126,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {emphasis: '-'}).stringify(empty());
     },
     /options\.emphasis/,
@@ -135,7 +135,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {strong: '-'}).stringify(empty());
     },
     /options\.strong/,
@@ -144,7 +144,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {setext: 0}).stringify(empty());
     },
     /options\.setext/,
@@ -152,7 +152,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {incrementListMarker: -1}).stringify(empty());
     },
     /options\.incrementListMarker/,
@@ -161,7 +161,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {fences: NaN}).stringify(empty());
     },
     /options\.fences/,
@@ -169,7 +169,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {fence: '-'}).stringify(empty());
     },
     /options\.fence/,
@@ -178,7 +178,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {closeAtx: NaN}).stringify(empty());
     },
     /options\.closeAtx/,
@@ -186,7 +186,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {looseTable: '!'}).stringify(empty());
     },
     /options\.looseTable/,
@@ -194,7 +194,7 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {spacedTable: '?'}).stringify(empty());
     },
     /options\.spacedTable/,
@@ -202,48 +202,48 @@ test('remark().stringify(ast, file)', function (t) {
   );
 
   t.throws(
-    function () {
+    () => {
       remark().data('settings', {paddedTable: '.'}).stringify(empty());
     },
     /options\.paddedTable/,
     'should throw when `options.paddedTable` is not a boolean'
   );
 
-  t.test('should support valid strings', function (st) {
-    var compiler = new Compiler();
+  t.test('should support valid strings', st => {
+    const compiler = new Compiler();
     st.equal(compiler.options.listItemIndent, 'tab');
     compiler.setOptions({listItemIndent: 'mixed'});
     st.equal(compiler.options.listItemIndent, 'mixed');
     st.end();
   });
 
-  t.test('should support valid numbers', function (st) {
-    var compiler = new Compiler();
+  t.test('should support valid numbers', st => {
+    const compiler = new Compiler();
     st.equal(compiler.options.ruleRepetition, 3);
     compiler.setOptions({ruleRepetition: 5});
     st.equal(compiler.options.ruleRepetition, 5);
     st.end();
   });
 
-  t.test('should support valid booleans', function (st) {
-    var compiler = new Compiler();
+  t.test('should support valid booleans', st => {
+    const compiler = new Compiler();
     st.equal(compiler.options.looseTable, false);
     compiler.setOptions({looseTable: true});
     st.equal(compiler.options.looseTable, true);
     st.end();
   });
 
-  t.test('should support valid enums', function (st) {
-    var compiler = new Compiler();
+  t.test('should support valid enums', st => {
+    const compiler = new Compiler();
     st.equal(compiler.options.strong, '*');
     compiler.setOptions({strong: '_'});
     st.equal(compiler.options.strong, '_');
     st.end();
   });
 
-  t.test('should be able to set options', function (st) {
-    var processor = remark().use(plugin);
-    var tree = processor.parse([
+  t.test('should be able to set options', st => {
+    const processor = remark().use(plugin);
+    const tree = processor.parse([
       '<!-- setext -->',
       '',
       '# Hello World',
@@ -262,15 +262,15 @@ test('remark().stringify(ast, file)', function (t) {
     );
 
     function plugin() {
-      var html = processor.Compiler.prototype.visitors.html;
+      const html = processor.Compiler.prototype.visitors.html;
 
       processor.Compiler.prototype.visitors.html = replacement;
 
       /* Set option when an HMTL comment occurs */
       function replacement(node) {
-        var value = node.value;
-        var result = /<!--\s*(.*?)\s*-->/g.exec(value);
-        var options = {};
+        const value = node.value;
+        const result = /<!--\s*(.*?)\s*-->/g.exec(value);
+        const options = {};
 
         if (result) {
           options[result[1]] = true;

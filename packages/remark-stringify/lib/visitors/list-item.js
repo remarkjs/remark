@@ -6,17 +6,15 @@
  * @fileoverview Stringify a list item.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
-var pad = require('../util/pad');
+import repeat from 'repeat-string';
+import pad from '../util/pad';
 
 /* Expose. */
-module.exports = listItem;
+export default listItem;
 
 /* Which checkbox to use. */
-var CHECKBOX_MAP = {
+const CHECKBOX_MAP = {
   undefined: '',
   null: '',
   true: '[x] ',
@@ -44,16 +42,16 @@ var CHECKBOX_MAP = {
  * @return {string} - Markdown list item.
  */
 function listItem(node, parent, position, bullet) {
-  var self = this;
-  var style = self.options.listItemIndent;
-  var loose = node.loose;
-  var children = node.children;
-  var length = children.length;
-  var values = [];
-  var index = -1;
-  var value;
-  var indent;
-  var spacing;
+  const self = this;
+  const style = self.options.listItemIndent;
+  const loose = node.loose;
+  const children = node.children;
+  const length = children.length;
+  const values = [];
+  let index = -1;
+  let value;
+  let indent;
+  let spacing;
 
   while (++index < length) {
     values[index] = self.visit(children[index], node);

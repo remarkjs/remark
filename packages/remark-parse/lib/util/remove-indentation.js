@@ -6,20 +6,18 @@
  * @fileoverview Remove indentation.
  */
 
-'use strict';
-
 /* Dependencies. */
-var trim = require('trim');
-var repeat = require('repeat-string');
-var getIndent = require('./get-indentation');
+import trim from 'trim';
+import repeat from 'repeat-string';
+import getIndent from './get-indentation';
 
 /* Expose. */
-module.exports = indentation;
+export default indentation;
 
 /* Characters. */
-var C_SPACE = ' ';
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
+const C_SPACE = ' ';
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
 
 /**
  * Remove the minimum indent from every line in `value`.
@@ -38,14 +36,14 @@ var C_TAB = '\t';
  * @return {string} - Unindented `value`.
  */
 function indentation(value, maximum) {
-  var values = value.split(C_NEWLINE);
-  var position = values.length + 1;
-  var minIndent = Infinity;
-  var matrix = [];
-  var index;
-  var indentation;
-  var stops;
-  var padding;
+  const values = value.split(C_NEWLINE);
+  let position = values.length + 1;
+  let minIndent = Infinity;
+  const matrix = [];
+  let index;
+  let indentation;
+  let stops;
+  let padding;
 
   values.unshift(repeat(C_SPACE, maximum) + '!');
 

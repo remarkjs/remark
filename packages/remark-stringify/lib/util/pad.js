@@ -6,16 +6,14 @@
  * @fileoverview Pad a given value.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = pad;
+export default pad;
 
 /* Constants. */
-var INDENT = 4;
+const INDENT = 4;
 
 /**
  * Pad `value` with `level * INDENT` spaces.  Respects
@@ -29,8 +27,8 @@ var INDENT = 4;
  * @return {string} - Padded `value`.
  */
 function pad(value, level) {
-  var index;
-  var padding;
+  let index;
+  let padding;
 
   value = value.split('\n');
 
