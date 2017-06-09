@@ -6,30 +6,28 @@
  * @fileoverview Tokenise inline code.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/code-inline';
 
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/code-inline');
-
-module.exports = inlineCode;
+export default inlineCode;
 inlineCode.locator = locate;
 
-var C_TICK = '`';
+const C_TICK = '`';
 
 /* Tokenise inline code. */
 function inlineCode(eat, value, silent) {
-  var length = value.length;
-  var index = 0;
-  var queue = '';
-  var tickQueue = '';
-  var contentQueue;
-  var subqueue;
-  var count;
-  var openingCount;
-  var subvalue;
-  var character;
-  var found;
-  var next;
+  let length = value.length;
+  let index = 0;
+  let queue = '';
+  let tickQueue = '';
+  let contentQueue;
+  let subqueue;
+  let count;
+  let openingCount;
+  let subvalue;
+  let character;
+  let found;
+  let next;
 
   while (index < length) {
     if (value.charAt(index) !== C_TICK) {

@@ -6,18 +6,16 @@
  * @fileoverview Stringify a link.
  */
 
-'use strict';
-
 /* Dependencies. */
-var uri = require('../util/enclose-uri');
-var title = require('../util/enclose-title');
+import uri from '../util/enclose-uri';
+import title from '../util/enclose-title';
 
 /* Expose. */
-module.exports = link;
+export default link;
 
 /* Expression for a protocol:
  * http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax */
-var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
+const PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
 
 /**
  * Stringify a link.
@@ -40,11 +38,11 @@ var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
  * @return {string} - Markdown link.
  */
 function link(node) {
-  var self = this;
-  var content = self.encode(node.url || '', node);
-  var exit = self.enterLink();
-  var escaped = self.encode(self.escape(node.url || '', node));
-  var value = self.all(node).join('');
+  const self = this;
+  let content = self.encode(node.url || '', node);
+  const exit = self.enterLink();
+  const escaped = self.encode(self.escape(node.url || '', node));
+  const value = self.all(node).join('');
 
   exit();
 

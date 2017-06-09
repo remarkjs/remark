@@ -1,14 +1,12 @@
-'use strict';
+import unherit from 'unherit';
+import xtend from 'xtend';
+import Parser from './lib/parser.js';
 
-var unherit = require('unherit');
-var xtend = require('xtend');
-var Parser = require('./lib/parser.js');
-
-module.exports = parse;
+export default parse;
 parse.Parser = Parser;
 
 function parse(options) {
-  var Local = unherit(Parser);
+  const Local = unherit(Parser);
   Local.prototype.options = xtend(Local.prototype.options, this.data('settings'), options);
   this.Parser = Local;
 }

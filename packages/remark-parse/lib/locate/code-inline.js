@@ -6,9 +6,7 @@
  * @fileoverview Locate inline code.
  */
 
-'use strict';
-
-module.exports = locate;
+export default locate;
 
 function locate(value, fromIndex) {
   return value.indexOf('`', fromIndex);

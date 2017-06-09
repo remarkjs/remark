@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = footnoteReference;
+export default footnoteReference;
 
 /**
  * Stringify a footnote reference.

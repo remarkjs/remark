@@ -6,24 +6,22 @@
  * @fileoverview Tokenise inline HTML.
  */
 
-'use strict';
+import alphabetical from 'is-alphabetical';
+import locate from '../locate/tag';
+import {tag} from '../util/html';
 
-var alphabetical = require('is-alphabetical');
-var locate = require('../locate/tag');
-var tag = require('../util/html').tag;
-
-module.exports = inlineHTML;
+export default inlineHTML;
 inlineHTML.locator = locate;
 
-var EXPRESSION_HTML_LINK_OPEN = /^<a /i;
-var EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
+const EXPRESSION_HTML_LINK_OPEN = /^<a /i;
+const EXPRESSION_HTML_LINK_CLOSE = /^<\/a>/i;
 
 /* Tokenise inline HTML. */
 function inlineHTML(eat, value, silent) {
-  var self = this;
-  var length = value.length;
-  var character;
-  var subvalue;
+  const self = this;
+  const length = value.length;
+  let character;
+  let subvalue;
 
   if (value.charAt(0) !== '<' || length < 3) {
     return;

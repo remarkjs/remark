@@ -6,32 +6,30 @@
  * @fileoverview Tokenise block HTML.
  */
 
-'use strict';
+const openCloseTag = require('../util/html').openCloseTag;
 
-var openCloseTag = require('../util/html').openCloseTag;
+export default blockHTML;
 
-module.exports = blockHTML;
-
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_NEWLINE = '\n';
-var C_LT = '<';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_NEWLINE = '\n';
+const C_LT = '<';
 
 /* Tokenise block HTML. */
 function blockHTML(eat, value, silent) {
-  var self = this;
-  var blocks = self.options.blocks;
-  var length = value.length;
-  var index = 0;
-  var next;
-  var line;
-  var offset;
-  var character;
-  var count;
-  var sequence;
-  var subvalue;
+  const self = this;
+  const blocks = self.options.blocks;
+  const length = value.length;
+  let index = 0;
+  let next;
+  let line;
+  let offset;
+  let character;
+  let count;
+  let sequence;
+  let subvalue;
 
-  var sequences = [
+  const sequences = [
     [/^<(script|pre|style)(?=(\s|>|$))/i, /<\/(script|pre|style)>/i, true],
     [/^<!--/, /-->/, true],
     [/^<\?/, /\?>/, true],

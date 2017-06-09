@@ -6,14 +6,12 @@
  * @fileoverview Stringify an image.
  */
 
-'use strict';
-
 /* Dependencies. */
-var uri = require('../util/enclose-uri');
-var title = require('../util/enclose-title');
+import uri from '../util/enclose-uri';
+import title from '../util/enclose-title';
 
 /* Expose. */
-module.exports = image;
+export default image;
 
 /**
  * Stringify an image.
@@ -30,10 +28,10 @@ module.exports = image;
  * @return {string} - Markdown image.
  */
 function image(node) {
-  var self = this;
-  var content = uri(self.encode(node.url || '', node));
-  var exit = self.enterLink();
-  var alt = self.encode(self.escape(node.alt || '', node));
+  const self = this;
+  let content = uri(self.encode(node.url || '', node));
+  const exit = self.enterLink();
+  const alt = self.encode(self.escape(node.alt || '', node));
 
   exit();
 

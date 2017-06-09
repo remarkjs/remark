@@ -6,10 +6,8 @@
  * @fileoverview Stringify ordered list items.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = orderedItems;
+export default orderedItems;
 
 /**
  * Visit ordered list items.
@@ -35,15 +33,15 @@ module.exports = orderedItems;
  * @return {string} - Compiled children.
  */
 function orderedItems(node) {
-  var self = this;
-  var fn = self.visitors.listItem;
-  var increment = self.options.incrementListMarker;
-  var values = [];
-  var start = node.start;
-  var children = node.children;
-  var length = children.length;
-  var index = -1;
-  var bullet;
+  const self = this;
+  const fn = self.visitors.listItem;
+  const increment = self.options.incrementListMarker;
+  const values = [];
+  const start = node.start;
+  const children = node.children;
+  const length = children.length;
+  let index = -1;
+  let bullet;
 
   while (++index < length) {
     bullet = (increment ? start + index : start) + '.';

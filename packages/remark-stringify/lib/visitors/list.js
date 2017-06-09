@@ -6,13 +6,11 @@
  * @fileoverview Stringify a list.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = list;
+export default list;
 
 /* Which method to use based on `list.ordered`. */
-var ORDERED_MAP = {
+const ORDERED_MAP = {
   true: 'visitOrderedItems',
   false: 'visitUnorderedItems'
 };

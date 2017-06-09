@@ -300,4 +300,4 @@ var tests = fs
   });
 
 /* Expose tests. */
-module.exports = tests;
+export default tests;

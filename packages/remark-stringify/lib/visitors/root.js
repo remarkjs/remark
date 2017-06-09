@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = root;
+export default root;
 
 /**
  * Stringify a root.

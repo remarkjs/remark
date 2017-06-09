@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = returner;
+export default returner;
 
 /**
  * @param {*} value - Anything.

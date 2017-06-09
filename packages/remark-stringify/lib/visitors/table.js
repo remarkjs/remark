@@ -6,13 +6,11 @@
  * @fileoverview Stringify a table.
  */
 
-'use strict';
-
 /* Dependencies. */
-var markdownTable = require('markdown-table');
+import markdownTable from 'markdown-table';
 
 /* Expose. */
-module.exports = table;
+export default table;
 
 /**
  * Stringify table.
@@ -39,16 +37,16 @@ module.exports = table;
  * @return {string} - Markdown table.
  */
 function table(node) {
-  var self = this;
-  var loose = self.options.looseTable;
-  var spaced = self.options.spacedTable;
-  var pad = self.options.paddedTable;
-  var rows = node.children;
-  var index = rows.length;
-  var exit = self.enterTable();
-  var result = [];
-  var start;
-  var end;
+  const self = this;
+  const loose = self.options.looseTable;
+  const spaced = self.options.spacedTable;
+  const pad = self.options.paddedTable;
+  const rows = node.children;
+  let index = rows.length;
+  const exit = self.enterTable();
+  const result = [];
+  let start;
+  let end;
 
   while (index--) {
     result[index] = self.all(rows[index]);
@@ -69,9 +67,9 @@ function table(node) {
 
   return markdownTable(result, {
     align: node.align,
-    pad: pad,
-    start: start,
-    end: end,
+    pad,
+    start,
+    end,
     delimiter: spaced ? ' | ' : '|'
   });
 }

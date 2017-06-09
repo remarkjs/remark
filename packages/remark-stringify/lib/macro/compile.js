@@ -6,13 +6,11 @@
  * @fileoverview Compile the given node.
  */
 
-'use strict';
-
 /* Dependencies. */
-var compact = require('mdast-util-compact');
+import compact from 'mdast-util-compact';
 
 /* Expose. */
-module.exports = compile;
+export default compile;
 
 /**
  * Stringify the given tree.

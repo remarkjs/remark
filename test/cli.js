@@ -6,26 +6,24 @@
  * @fileoverview Test suite for remark-cli.
  */
 
-'use strict';
-
 /* Dependencies. */
-var path = require('path');
-var execa = require('execa');
-var test = require('tape');
+import path from 'path';
+import execa from 'execa';
+import test from 'tape';
 
 /* Methods. */
-var join = path.join;
+const join = path.join;
 
 /* Tests. */
-test('remark-cli', function (t) {
+test('remark-cli', t => {
   t.plan(2);
 
-  t.test('should show help on `--help`', function (st) {
-    var bin = join('packages', 'remark-cli', 'cli.js');
+  t.test('should show help on `--help`', st => {
+    const bin = join('packages', 'remark-cli', 'cli.js');
 
     st.plan(1);
 
-    execa.stderr(bin, ['--help']).then(function (result) {
+    execa.stderr(bin, ['--help']).then(result => {
       st.equal(
         result,
         [
@@ -72,12 +70,12 @@ test('remark-cli', function (t) {
     });
   });
 
-  t.test('should show version on `--version`', function (st) {
-    var bin = join('packages', 'remark-cli', 'cli.js');
+  t.test('should show version on `--version`', st => {
+    const bin = join('packages', 'remark-cli', 'cli.js');
 
     st.plan(2);
 
-    execa.stderr(bin, ['--version']).then(function (result) {
+    execa.stderr(bin, ['--version']).then(result => {
       st.ok(
         /remark: \d+\.\d+\.\d+/.test(result),
         'should include remark version'

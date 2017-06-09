@@ -6,14 +6,12 @@
  * @fileoverview Stringify a definition.
  */
 
-'use strict';
-
 /* Dependencies. */
-var uri = require('../util/enclose-uri');
-var title = require('../util/enclose-title');
+import uri from '../util/enclose-uri';
+import title from '../util/enclose-title';
 
 /* Expose. */
-module.exports = definition;
+export default definition;
 
 /**
  * Stringify an URL definition.
@@ -27,7 +25,7 @@ module.exports = definition;
  * @return {string} - Markdown definition.
  */
 function definition(node) {
-  var content = uri(node.url);
+  let content = uri(node.url);
 
   if (node.title) {
     content += ' ' + title(node.title);

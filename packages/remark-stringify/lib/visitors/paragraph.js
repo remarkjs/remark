@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = paragraph;
+export default paragraph;
 
 /**
  * Stringify a paragraph.

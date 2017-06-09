@@ -6,10 +6,8 @@
  * @fileoverview Stringify a emphasis.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = emphasis;
+export default emphasis;
 
 /**
  * Stringify a `emphasis`.
@@ -24,6 +22,6 @@ module.exports = emphasis;
  * @return {string} - Markdown emphasis.
  */
 function emphasis(node) {
-  var marker = this.options.emphasis;
+  const marker = this.options.emphasis;
   return marker + this.all(node).join('') + marker;
 }

@@ -50,7 +50,7 @@
   },
   "xo": {
     "space": true,
-    "esnext": false,
+    "esnext": true,
     "rules": {
       "import/no-unassigned-import": "off",
       "unicorn/prefer-type-error": "off",
@@ -59,7 +59,9 @@
       "guard-for-in": "off",
       "max-depth": "off",
       "complexity": "off",
-      "no-eq-null": "off"
+      "no-eq-null": "off",
+      "prefer-const": "off",
+      "import/extensions": "off"
     },
     "ignores": [
       "remark.js"

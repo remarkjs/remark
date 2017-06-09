@@ -6,27 +6,25 @@
  * @fileoverview Tokenise strikethrough.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/delete';
 
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/delete');
-
-module.exports = strikethrough;
+export default strikethrough;
 strikethrough.locator = locate;
 
-var C_TILDE = '~';
-var DOUBLE = '~~';
+const C_TILDE = '~';
+const DOUBLE = '~~';
 
 /* Tokenise strikethrough. */
 function strikethrough(eat, value, silent) {
-  var self = this;
-  var character = '';
-  var previous = '';
-  var preceding = '';
-  var subvalue = '';
-  var index;
-  var length;
-  var now;
+  const self = this;
+  let character = '';
+  let previous = '';
+  let preceding = '';
+  let subvalue = '';
+  let index;
+  let length;
+  let now;
 
   if (
     !self.options.gfm ||

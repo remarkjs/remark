@@ -6,21 +6,19 @@
  * @fileoverview Get indentation.
  */
 
-'use strict';
-
-module.exports = interrupt;
+export default interrupt;
 
 function interrupt(interruptors, tokenizers, ctx, params) {
-  var bools = ['pedantic', 'commonmark'];
-  var count = bools.length;
-  var length = interruptors.length;
-  var index = -1;
-  var interruptor;
-  var config;
-  var fn;
-  var offset;
-  var bool;
-  var ignore;
+  const bools = ['pedantic', 'commonmark'];
+  const count = bools.length;
+  const length = interruptors.length;
+  let index = -1;
+  let interruptor;
+  let config;
+  let fn;
+  let offset;
+  let bool;
+  let ignore;
 
   while (++index < length) {
     interruptor = interruptors[index];

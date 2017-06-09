@@ -6,57 +6,55 @@
  * @fileoverview Tokenise a table.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
 
-var whitespace = require('is-whitespace-character');
-
-module.exports = table;
+export default table;
 table.notInList = true;
 
-var C_BACKSLASH = '\\';
-var C_TICK = '`';
-var C_DASH = '-';
-var C_PIPE = '|';
-var C_COLON = ':';
-var C_SPACE = ' ';
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
+const C_BACKSLASH = '\\';
+const C_TICK = '`';
+const C_DASH = '-';
+const C_PIPE = '|';
+const C_COLON = ':';
+const C_SPACE = ' ';
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
 
-var MIN_TABLE_COLUMNS = 1;
-var MIN_TABLE_ROWS = 2;
+const MIN_TABLE_COLUMNS = 1;
+const MIN_TABLE_ROWS = 2;
 
-var TABLE_ALIGN_LEFT = 'left';
-var TABLE_ALIGN_CENTER = 'center';
-var TABLE_ALIGN_RIGHT = 'right';
-var TABLE_ALIGN_NONE = null;
+const TABLE_ALIGN_LEFT = 'left';
+const TABLE_ALIGN_CENTER = 'center';
+const TABLE_ALIGN_RIGHT = 'right';
+const TABLE_ALIGN_NONE = null;
 
 /* Tokenise a table. */
 function table(eat, value, silent) {
-  var self = this;
-  var index;
-  var alignments;
-  var alignment;
-  var subvalue;
-  var row;
-  var length;
-  var lines;
-  var queue;
-  var character;
-  var hasDash;
-  var align;
-  var cell;
-  var preamble;
-  var count;
-  var opening;
-  var now;
-  var position;
-  var lineCount;
-  var line;
-  var rows;
-  var table;
-  var lineIndex;
-  var pipeIndex;
-  var first;
+  const self = this;
+  let index;
+  let alignments;
+  let alignment;
+  let subvalue;
+  let row;
+  let length;
+  let lines;
+  let queue;
+  let character;
+  let hasDash;
+  let align;
+  let cell;
+  let preamble;
+  let count;
+  let opening;
+  let now;
+  let position;
+  let lineCount;
+  let line;
+  let rows;
+  let table;
+  let lineIndex;
+  let pipeIndex;
+  let first;
 
   /* Exit when not in gfm-mode. */
   if (!self.options.gfm) {
@@ -157,7 +155,7 @@ function table(eat, value, silent) {
 
   table = eat(subvalue).reset({
     type: 'table',
-    align: align,
+    align,
     children: rows
   });
 

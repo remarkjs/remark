@@ -6,13 +6,11 @@
  * @fileoverview Encode based on the identifier.
  */
 
-'use strict';
-
 /* Dependencies. */
-var decode = require('parse-entities');
+import decode from 'parse-entities';
 
 /* Expose. */
-module.exports = length;
+export default length;
 
 /**
  * Returns the length of HTML entity that is a prefix of
@@ -27,7 +25,7 @@ module.exports = length;
  * @return {number} - Length of an entity.
  */
 function length(value) {
-  var prefix;
+  let prefix;
 
   /* istanbul ignore if - Currently also tested for at
    * implemention, but we keep it here because that’s

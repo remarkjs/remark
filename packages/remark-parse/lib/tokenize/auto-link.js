@@ -6,36 +6,34 @@
  * @fileoverview Tokenise an auto-link.
  */
 
-'use strict';
+import decode from 'parse-entities';
+import locate from '../locate/tag';
 
-var decode = require('parse-entities');
-var locate = require('../locate/tag');
-
-module.exports = autoLink;
+export default autoLink;
 autoLink.locator = locate;
 autoLink.notInLink = true;
 
-var C_LT = '<';
-var C_GT = '>';
-var C_AT_SIGN = '@';
-var C_SLASH = '/';
-var MAILTO = 'mailto:';
-var MAILTO_LENGTH = MAILTO.length;
+const C_LT = '<';
+const C_GT = '>';
+const C_AT_SIGN = '@';
+const C_SLASH = '/';
+const MAILTO = 'mailto:';
+const MAILTO_LENGTH = MAILTO.length;
 
 /* Tokenise a link. */
 function autoLink(eat, value, silent) {
-  var self;
-  var subvalue;
-  var length;
-  var index;
-  var queue;
-  var character;
-  var hasAtCharacter;
-  var link;
-  var now;
-  var content;
-  var tokenize;
-  var exit;
+  let self;
+  let subvalue;
+  let length;
+  let index;
+  let queue;
+  let character;
+  let hasAtCharacter;
+  let link;
+  let now;
+  let content;
+  let tokenize;
+  let exit;
 
   if (value.charAt(0) !== C_LT) {
     return;

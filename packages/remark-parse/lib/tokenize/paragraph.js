@@ -6,36 +6,34 @@
  * @fileoverview Tokenise a paragraph.
  */
 
-'use strict';
+import trim from 'trim';
+import decimal from 'is-decimal';
+import trimTrailingLines from 'trim-trailing-lines';
+import interrupt from '../util/interrupt';
 
-var trim = require('trim');
-var decimal = require('is-decimal');
-var trimTrailingLines = require('trim-trailing-lines');
-var interrupt = require('../util/interrupt');
+export default paragraph;
 
-module.exports = paragraph;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-
-var TAB_SIZE = 4;
+const TAB_SIZE = 4;
 
 /* Tokenise paragraph. */
 function paragraph(eat, value, silent) {
-  var self = this;
-  var settings = self.options;
-  var commonmark = settings.commonmark;
-  var gfm = settings.gfm;
-  var tokenizers = self.blockTokenizers;
-  var interruptors = self.interruptParagraph;
-  var index = value.indexOf(C_NEWLINE);
-  var length = value.length;
-  var position;
-  var subvalue;
-  var character;
-  var size;
-  var now;
+  const self = this;
+  const settings = self.options;
+  const commonmark = settings.commonmark;
+  const gfm = settings.gfm;
+  const tokenizers = self.blockTokenizers;
+  const interruptors = self.interruptParagraph;
+  let index = value.indexOf(C_NEWLINE);
+  const length = value.length;
+  let position;
+  let subvalue;
+  let character;
+  let size;
+  let now;
 
   while (index < length) {
     /* Eat everything if there’s no following newline. */

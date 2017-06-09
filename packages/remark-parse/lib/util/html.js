@@ -6,24 +6,22 @@
  * @fileoverview HTML regexes.
  */
 
-'use strict';
+const attributeName = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
+const unquoted = '[^"\'=<>`\\u0000-\\u0020]+';
+const singleQuoted = '\'[^\']*\'';
+const doubleQuoted = '"[^"]*"';
+const attributeValue = '(?:' + unquoted + '|' + singleQuoted + '|' + doubleQuoted + ')';
+const attribute = '(?:\\s+' + attributeName + '(?:\\s*=\\s*' + attributeValue + ')?)';
+const openTag = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
+const closeTag = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
+const comment = '<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->';
+const processing = '<[?].*?[?]>';
+const declaration = '<![A-Za-z]+\\s+[^>]*>';
+const cdata = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
 
-var attributeName = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
-var unquoted = '[^"\'=<>`\\u0000-\\u0020]+';
-var singleQuoted = '\'[^\']*\'';
-var doubleQuoted = '"[^"]*"';
-var attributeValue = '(?:' + unquoted + '|' + singleQuoted + '|' + doubleQuoted + ')';
-var attribute = '(?:\\s+' + attributeName + '(?:\\s*=\\s*' + attributeValue + ')?)';
-var openTag = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
-var closeTag = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
-var comment = '<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->';
-var processing = '<[?].*?[?]>';
-var declaration = '<![A-Za-z]+\\s+[^>]*>';
-var cdata = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
+export default new RegExp('^(?:' + openTag + '|' + closeTag + ')');
 
-exports.openCloseTag = new RegExp('^(?:' + openTag + '|' + closeTag + ')');
-
-exports.tag = new RegExp('^(?:' +
+export const tag = new RegExp('^(?:' +
   openTag + '|' +
   closeTag + '|' +
   comment + '|' +

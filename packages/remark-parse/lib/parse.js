@@ -6,23 +6,21 @@
  * @fileoverview Parse the document
  */
 
-'use strict';
+import xtend from 'xtend';
+import removePosition from 'unist-util-remove-position';
 
-var xtend = require('xtend');
-var removePosition = require('unist-util-remove-position');
+export default parse;
 
-module.exports = parse;
-
-var C_NEWLINE = '\n';
-var EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
+const C_NEWLINE = '\n';
+const EXPRESSION_LINE_BREAKS = /\r\n|\r/g;
 
 /* Parse the bound file. */
 function parse() {
-  var self = this;
-  var value = String(self.file);
-  var start = {line: 1, column: 1, offset: 0};
-  var content = xtend(start);
-  var node;
+  const self = this;
+  let value = String(self.file);
+  const start = {line: 1, column: 1, offset: 0};
+  const content = xtend(start);
+  let node;
 
   /* Clean non-unix newlines: `\r\n` and `\r` are all
    * changed to `\n`.  This should not affect positional
@@ -40,7 +38,7 @@ function parse() {
     type: 'root',
     children: self.tokenizeBlock(value, content),
     position: {
-      start: start,
+      start,
       end: self.eof || xtend(start)
     }
   };

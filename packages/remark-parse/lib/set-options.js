@@ -6,20 +6,18 @@
  * @fileoverview Markdown parser.
  */
 
-'use strict';
+import xtend from 'xtend';
+import escapes from 'markdown-escapes';
+import defaults from './defaults';
 
-var xtend = require('xtend');
-var escapes = require('markdown-escapes');
-var defaults = require('./defaults');
-
-module.exports = setOptions;
+export default setOptions;
 
 /* Set options. */
 function setOptions(options) {
-  var self = this;
-  var current = self.options;
-  var key;
-  var value;
+  const self = this;
+  const current = self.options;
+  let key;
+  let value;
 
   if (options == null) {
     options = {};

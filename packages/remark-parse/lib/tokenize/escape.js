@@ -6,18 +6,16 @@
  * @fileoverview Tokenise an escape.
  */
 
-'use strict';
+import locate from '../locate/escape';
 
-var locate = require('../locate/escape');
-
-module.exports = escape;
+export default escape;
 escape.locator = locate;
 
 /* Tokenise an escape. */
 function escape(eat, value, silent) {
-  var self = this;
-  var character;
-  var node;
+  const self = this;
+  let character;
+  let node;
 
   if (value.charAt(0) === '\\') {
     character = value.charAt(1);

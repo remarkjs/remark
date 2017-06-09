@@ -5,17 +5,14 @@
  * @module remark:parse
  * @fileoverview Markdown parser.
  */
+import xtend from 'xtend';
+import toggle from 'state-toggle';
+import vfileLocation from 'vfile-location';
+import unescape from './unescape';
+import decode from './decode';
+import tokenizer from './tokenizer';
 
-'use strict';
-
-var xtend = require('xtend');
-var toggle = require('state-toggle');
-var vfileLocation = require('vfile-location');
-var unescape = require('./unescape');
-var decode = require('./decode');
-var tokenizer = require('./tokenizer');
-
-module.exports = Parser;
+export default Parser;
 
 /* Construct a new parser. */
 function Parser(doc, file) {
@@ -35,7 +32,7 @@ function Parser(doc, file) {
 }
 
 /* Prototype. */
-var proto = Parser.prototype;
+const proto = Parser.prototype;
 
 /* Expose core. */
 proto.setOptions = require('./set-options');
@@ -151,8 +148,8 @@ proto.tokenizeFactory = tokenizer;
 
 /* Get all keys in `value`. */
 function keys(value) {
-  var result = [];
-  var key;
+  const result = [];
+  let key;
 
   for (key in value) {
     result.push(key);

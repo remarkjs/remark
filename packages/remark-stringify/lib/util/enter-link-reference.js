@@ -6,13 +6,11 @@
  * @fileoverview Enter a reference.
  */
 
-'use strict';
-
 /* Dependencies. */
-var returner = require('./returner');
+import returner from './returner';
 
 /* Expose. */
-module.exports = enter;
+export default enter;
 
 /**
  * Shortcut and collapsed link references need no escaping
@@ -29,9 +27,9 @@ module.exports = enter;
  * @return {Function} - Exit state.
  */
 function enter(compiler, node) {
-  var encode = compiler.encode;
-  var escape = compiler.escape;
-  var exit = compiler.enterLink();
+  const encode = compiler.encode;
+  const escape = compiler.escape;
+  const exit = compiler.enterLink();
 
   if (
     node.referenceType !== 'shortcut' &&

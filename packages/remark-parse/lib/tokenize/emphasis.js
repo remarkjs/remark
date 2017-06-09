@@ -6,31 +6,29 @@
  * @fileoverview Tokenise emphasis.
  */
 
-'use strict';
+import trim from 'trim';
+import word from 'is-word-character';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/emphasis';
 
-var trim = require('trim');
-var word = require('is-word-character');
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/emphasis');
-
-module.exports = emphasis;
+export default emphasis;
 emphasis.locator = locate;
 
-var C_ASTERISK = '*';
-var C_UNDERSCORE = '_';
+const C_ASTERISK = '*';
+const C_UNDERSCORE = '_';
 
 /* Tokenise emphasis. */
 function emphasis(eat, value, silent) {
-  var self = this;
-  var index = 0;
-  var character = value.charAt(index);
-  var now;
-  var pedantic;
-  var marker;
-  var queue;
-  var subvalue;
-  var length;
-  var prev;
+  const self = this;
+  let index = 0;
+  let character = value.charAt(index);
+  let now;
+  let pedantic;
+  let marker;
+  let queue;
+  let subvalue;
+  let length;
+  let prev;
 
   if (character !== C_ASTERISK && character !== C_UNDERSCORE) {
     return;

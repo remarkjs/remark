@@ -6,10 +6,8 @@
  * @fileoverview Unescape escapes.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = factory;
+export default factory;
 
 /* Factory to de-escape a value, based on a list at `key`
  * in `ctx`. */
@@ -19,11 +17,11 @@ function factory(ctx, key) {
   /* De-escape a string using the expression at `key`
    * in `ctx`. */
   function unescape(value) {
-    var prev = 0;
-    var index = value.indexOf('\\');
-    var escape = ctx[key];
-    var queue = [];
-    var character;
+    let prev = 0;
+    let index = value.indexOf('\\');
+    const escape = ctx[key];
+    const queue = [];
+    let character;
 
     while (index !== -1) {
       queue.push(value.slice(prev, index));

@@ -7,23 +7,21 @@
  *   into markdown syntax.
  */
 
-'use strict';
-
 /* Dependencies. */
-var decimal = require('is-decimal');
-var alphanumeric = require('is-alphanumeric');
-var whitespace = require('is-whitespace-character');
-var escapes = require('markdown-escapes');
-var prefix = require('./util/entity-prefix-length');
+import decimal from 'is-decimal';
+import alphanumeric from 'is-alphanumeric';
+import whitespace from 'is-whitespace-character';
+import escapes from 'markdown-escapes';
+import prefix from './util/entity-prefix-length';
 
 /* Expose. */
-module.exports = factory;
+export default factory;
 
 /* Constants. */
-var BACKSLASH = '\\';
-var BULLETS = ['*', '-', '+'];
-var ALLIGNMENT = [':', '-', ' ', '|'];
-var entities = {'<': '&lt;', ':': '&#x3A;', '&': '&amp;', '|': '&#x7C;', '~': '&#x7E;'};
+const BACKSLASH = '\\';
+const BULLETS = ['*', '-', '+'];
+const ALLIGNMENT = [':', '-', ' ', '|'];
+const entities = {'<': '&lt;', ':': '&#x3A;', '&': '&amp;', '|': '&#x7C;', '~': '&#x7E;'};
 
 /**
  * Factory to escape characters.
@@ -49,26 +47,26 @@ function factory(options) {
    * @return {string} - Escaped `value`.
    */
   function escape(value, node, parent) {
-    var self = this;
-    var gfm = options.gfm;
-    var commonmark = options.commonmark;
-    var pedantic = options.pedantic;
-    var markers = commonmark ? ['.', ')'] : ['.'];
-    var siblings = parent && parent.children;
-    var index = siblings && siblings.indexOf(node);
-    var prev = siblings && siblings[index - 1];
-    var next = siblings && siblings[index + 1];
-    var length = value.length;
-    var escapable = escapes(options);
-    var position = -1;
-    var queue = [];
-    var escaped = queue;
-    var afterNewLine;
-    var character;
-    var wordCharBefore;
-    var wordCharAfter;
-    var offset;
-    var replace;
+    const self = this;
+    const gfm = options.gfm;
+    const commonmark = options.commonmark;
+    const pedantic = options.pedantic;
+    const markers = commonmark ? ['.', ')'] : ['.'];
+    const siblings = parent && parent.children;
+    const index = siblings && siblings.indexOf(node);
+    const prev = siblings && siblings[index - 1];
+    let next = siblings && siblings[index + 1];
+    let length = value.length;
+    const escapable = escapes(options);
+    let position = -1;
+    const queue = [];
+    const escaped = queue;
+    let afterNewLine;
+    let character;
+    let wordCharBefore;
+    let wordCharAfter;
+    let offset;
+    let replace;
 
     if (prev) {
       afterNewLine = text(prev) && /\n\s*$/.test(prev.value);
@@ -252,8 +250,8 @@ function factory(options) {
  * Check if `index` in `value` is inside an alignment row.
  */
 function alignment(value, index) {
-  var start = value.lastIndexOf('\n', index);
-  var end = value.indexOf('\n', index);
+  let start = value.lastIndexOf('\n', index);
+  let end = value.indexOf('\n', index);
 
   start = start === -1 ? -1 : start;
   end = end === -1 ? value.length : end;
@@ -278,6 +276,6 @@ function text(node) {
  * Check if `value` ends in a protocol.
  */
 function protocol(value) {
-  var val = value.slice(-6).toLowerCase();
+  const val = value.slice(-6).toLowerCase();
   return val === 'mailto' || val.slice(-5) === 'https' || val.slice(-4) === 'http';
 }

@@ -6,28 +6,26 @@
  * @fileoverview Tokenise a thematic break.
  */
 
-'use strict';
+export default thematicBreak;
 
-module.exports = thematicBreak;
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_ASTERISK = '*';
+const C_UNDERSCORE = '_';
+const C_DASH = '-';
 
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_ASTERISK = '*';
-var C_UNDERSCORE = '_';
-var C_DASH = '-';
-
-var THEMATIC_BREAK_MARKER_COUNT = 3;
+const THEMATIC_BREAK_MARKER_COUNT = 3;
 
 /* Tokenise a thematic break. */
 function thematicBreak(eat, value, silent) {
-  var index = -1;
-  var length = value.length + 1;
-  var subvalue = '';
-  var character;
-  var marker;
-  var markerCount;
-  var queue;
+  let index = -1;
+  const length = value.length + 1;
+  let subvalue = '';
+  let character;
+  let marker;
+  let markerCount;
+  let queue;
 
   while (++index < length) {
     character = value.charAt(index);

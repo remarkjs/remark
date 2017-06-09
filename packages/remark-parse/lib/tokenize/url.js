@@ -6,50 +6,48 @@
  * @fileoverview Tokenise a URL.
  */
 
-'use strict';
+import decode from 'parse-entities';
+import whitespace from 'is-whitespace-character';
+import locate from '../locate/url';
 
-var decode = require('parse-entities');
-var whitespace = require('is-whitespace-character');
-var locate = require('../locate/url');
-
-module.exports = url;
+export default url;
 url.locator = locate;
 url.notInLink = true;
 
-var C_BRACKET_OPEN = '[';
-var C_BRACKET_CLOSE = ']';
-var C_PAREN_OPEN = '(';
-var C_PAREN_CLOSE = ')';
-var C_LT = '<';
-var C_AT_SIGN = '@';
+const C_BRACKET_OPEN = '[';
+const C_BRACKET_CLOSE = ']';
+const C_PAREN_OPEN = '(';
+const C_PAREN_CLOSE = ')';
+const C_LT = '<';
+const C_AT_SIGN = '@';
 
-var HTTP_PROTOCOL = 'http://';
-var HTTPS_PROTOCOL = 'https://';
-var MAILTO_PROTOCOL = 'mailto:';
+const HTTP_PROTOCOL = 'http://';
+const HTTPS_PROTOCOL = 'https://';
+const MAILTO_PROTOCOL = 'mailto:';
 
-var PROTOCOLS = [
+const PROTOCOLS = [
   HTTP_PROTOCOL,
   HTTPS_PROTOCOL,
   MAILTO_PROTOCOL
 ];
 
-var PROTOCOLS_LENGTH = PROTOCOLS.length;
+const PROTOCOLS_LENGTH = PROTOCOLS.length;
 
 /* Tokenise a URL. */
 function url(eat, value, silent) {
-  var self = this;
-  var subvalue;
-  var content;
-  var character;
-  var index;
-  var position;
-  var protocol;
-  var match;
-  var length;
-  var queue;
-  var parenCount;
-  var nextCharacter;
-  var exit;
+  const self = this;
+  let subvalue;
+  let content;
+  let character;
+  let index;
+  let position;
+  let protocol;
+  let match;
+  let length;
+  let queue;
+  let parenCount;
+  let nextCharacter;
+  let exit;
 
   if (!self.options.gfm) {
     return;

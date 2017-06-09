@@ -6,13 +6,11 @@
  * @fileoverview Stringify yaml.
  */
 
-'use strict';
-
 /* Dependencies. */
-var repeat = require('repeat-string');
+import repeat from 'repeat-string';
 
 /* Expose. */
-module.exports = yaml;
+export default yaml;
 
 /**
  * Stringify `yaml`.
@@ -21,6 +19,6 @@ module.exports = yaml;
  * @return {string} - Markdown yaml.
  */
 function yaml(node) {
-  var marker = repeat('-', 3);
+  const marker = repeat('-', 3);
   return marker + (node.value ? '\n' + node.value : '') + '\n' + marker;
 }

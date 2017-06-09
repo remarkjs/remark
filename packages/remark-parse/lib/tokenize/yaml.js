@@ -6,24 +6,22 @@
  * @fileoverview Tokenise YAML.
  */
 
-'use strict';
-
-module.exports = yaml;
+export default yaml;
 yaml.onlyAtStart = true;
 
-var FENCE = '---';
-var C_DASH = '-';
-var C_NEWLINE = '\n';
+const FENCE = '---';
+const C_DASH = '-';
+const C_NEWLINE = '\n';
 
 /* Tokenise YAML. */
 function yaml(eat, value, silent) {
-  var self = this;
-  var subvalue;
-  var content;
-  var index;
-  var length;
-  var character;
-  var queue;
+  const self = this;
+  let subvalue;
+  let content;
+  let index;
+  let length;
+  let character;
+  let queue;
 
   if (
     !self.options.yaml ||

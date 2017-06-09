@@ -9,7 +9,7 @@
 'use strict';
 
 /* Expose. */
-module.exports = strikethrough;
+export default strikethrough;
 
 /**
  * Stringify a `delete`.

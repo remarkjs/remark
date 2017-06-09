@@ -6,18 +6,16 @@
  * @fileoverview Stringify code.
  */
 
-'use strict';
-
 /* Dependencies. */
-var streak = require('longest-streak');
-var repeat = require('repeat-string');
-var pad = require('../util/pad');
+import streak from 'longest-streak';
+import repeat from 'repeat-string';
+import pad from '../util/pad';
 
 /* Expose. */
-module.exports = code;
+export default code;
 
 /* Constants. */
-var FENCE = /([`~])\1{2}/;
+const FENCE = /([`~])\1{2}/;
 
 /**
  * Stringify code.
@@ -57,12 +55,12 @@ var FENCE = /([`~])\1{2}/;
  * @return {string} - Markdown code.
  */
 function code(node, parent) {
-  var self = this;
-  var value = node.value;
-  var options = self.options;
-  var marker = options.fence;
-  var language = self.encode(node.lang || '', node);
-  var fence;
+  const self = this;
+  let value = node.value;
+  const options = self.options;
+  const marker = options.fence;
+  const language = self.encode(node.lang || '', node);
+  let fence;
 
   /* Without (needed) fences. */
   if (!language && !options.fences && value) {

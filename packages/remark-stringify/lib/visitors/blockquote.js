@@ -6,10 +6,8 @@
  * @fileoverview Stringify a blockquote.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = blockquote;
+export default blockquote;
 
 /**
  * Stringify a blockquote.
@@ -18,11 +16,11 @@ module.exports = blockquote;
  * @return {string} - Markdown blockquote.
  */
 function blockquote(node) {
-  var values = this.block(node).split('\n');
-  var result = [];
-  var length = values.length;
-  var index = -1;
-  var value;
+  const values = this.block(node).split('\n');
+  const result = [];
+  const length = values.length;
+  let index = -1;
+  let value;
 
   while (++index < length) {
     value = values[index];

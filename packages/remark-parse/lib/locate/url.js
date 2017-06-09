@@ -6,17 +6,15 @@
  * @fileoverview Locate a URL.
  */
 
-'use strict';
+export default locate;
 
-module.exports = locate;
-
-var PROTOCOLS = ['https://', 'http://', 'mailto:'];
+const PROTOCOLS = ['https://', 'http://', 'mailto:'];
 
 function locate(value, fromIndex) {
-  var length = PROTOCOLS.length;
-  var index = -1;
-  var min = -1;
-  var position;
+  const length = PROTOCOLS.length;
+  let index = -1;
+  let min = -1;
+  let position;
 
   if (!this.options.gfm) {
     return -1;

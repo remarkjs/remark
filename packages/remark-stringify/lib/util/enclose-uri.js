@@ -6,16 +6,14 @@
  * @fileoverview Wrap `url` in angle brackets when needed.
  */
 
-'use strict';
-
 /* Dependencies. */
-var count = require('ccount');
+import count from 'ccount';
 
 /* Expose. */
-module.exports = enclose;
+export default enclose;
 
 /* Constants. */
-var re = /\s/;
+const re = /\s/;
 
 /**
  * Wrap `url` in angle brackets when needed, or when

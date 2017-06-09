@@ -6,20 +6,18 @@
  * @fileoverview Set configuration.
  */
 
-'use strict';
-
 /* Dependencies. */
-var xtend = require('xtend');
-var encode = require('stringify-entities');
-var defaults = require('./defaults');
-var escapeFactory = require('./escape');
-var returner = require('./util/returner');
+import xtend from 'xtend';
+import encode from 'stringify-entities';
+import defaults from './defaults';
+import escapeFactory from './escape';
+import returner from './util/returner';
 
 /* Expose. */
-module.exports = setOptions;
+export default setOptions;
 
 /* Map of applicable enum's. */
-var maps = {
+const maps = {
   entities: {true: true, false: true, numbers: true, escape: true},
   bullet: {'*': true, '-': true, '+': true},
   rule: {'-': true, _: true, '*': true},
@@ -30,7 +28,7 @@ var maps = {
 };
 
 /* Expose `validate`. */
-var validate = {
+const validate = {
   boolean: validateBoolean,
   string: validateString,
   number: validateNumber
@@ -46,10 +44,10 @@ var validate = {
  * @return {Compiler} - `self`.
  */
 function setOptions(options) {
-  var self = this;
-  var current = self.options;
-  var ruleRepetition;
-  var key;
+  const self = this;
+  const current = self.options;
+  let ruleRepetition;
+  let key;
 
   if (options == null) {
     options = {};
@@ -100,7 +98,7 @@ function raise(value, name) {
  * @param {boolean} def - Default value.
  */
 function validateBoolean(context, name, def) {
-  var value = context[name];
+  let value = context[name];
 
   if (value == null) {
     value = def;
@@ -125,7 +123,7 @@ function validateBoolean(context, name, def) {
  * @param {number} def - Default value.
  */
 function validateNumber(context, name, def) {
-  var value = context[name];
+  let value = context[name];
 
   if (value == null) {
     value = def;
@@ -151,7 +149,7 @@ function validateNumber(context, name, def) {
  * @param {Object} map - Enum.
  */
 function validateString(context, name, def, map) {
-  var value = context[name];
+  let value = context[name];
 
   if (value == null) {
     value = def;
@@ -180,7 +178,7 @@ function validateString(context, name, def, map) {
  *   takes a value and returns its encoded version.
  */
 function encodeFactory(type) {
-  var options = {};
+  const options = {};
 
   if (type === 'false') {
     return returner;

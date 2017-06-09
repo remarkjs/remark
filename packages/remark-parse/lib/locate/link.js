@@ -6,13 +6,11 @@
  * @fileoverview Locate a link.
  */
 
-'use strict';
-
-module.exports = locate;
+export default locate;
 
 function locate(value, fromIndex) {
-  var link = value.indexOf('[', fromIndex);
-  var image = value.indexOf('![', fromIndex);
+  const link = value.indexOf('[', fromIndex);
+  const image = value.indexOf('![', fromIndex);
 
   if (image === -1) {
     return link;

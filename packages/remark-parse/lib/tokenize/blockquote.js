@@ -6,40 +6,38 @@
  * @fileoverview Tokenise blockquote.
  */
 
-'use strict';
+import trim from 'trim';
+import interrupt from '../util/interrupt';
 
-var trim = require('trim');
-var interrupt = require('../util/interrupt');
+export default blockquote;
 
-module.exports = blockquote;
-
-var C_NEWLINE = '\n';
-var C_TAB = '\t';
-var C_SPACE = ' ';
-var C_GT = '>';
+const C_NEWLINE = '\n';
+const C_TAB = '\t';
+const C_SPACE = ' ';
+const C_GT = '>';
 
 /* Tokenise a blockquote. */
 function blockquote(eat, value, silent) {
-  var self = this;
-  var offsets = self.offset;
-  var tokenizers = self.blockTokenizers;
-  var interruptors = self.interruptBlockquote;
-  var now = eat.now();
-  var currentLine = now.line;
-  var length = value.length;
-  var values = [];
-  var contents = [];
-  var indents = [];
-  var add;
-  var index = 0;
-  var character;
-  var rest;
-  var nextIndex;
-  var content;
-  var line;
-  var startIndex;
-  var prefixed;
-  var exit;
+  const self = this;
+  const offsets = self.offset;
+  const tokenizers = self.blockTokenizers;
+  const interruptors = self.interruptBlockquote;
+  const now = eat.now();
+  let currentLine = now.line;
+  let length = value.length;
+  const values = [];
+  let contents = [];
+  const indents = [];
+  let add;
+  let index = 0;
+  let character;
+  let rest;
+  let nextIndex;
+  let content;
+  let line;
+  let startIndex;
+  let prefixed;
+  let exit;
 
   while (index < length) {
     character = value.charAt(index);

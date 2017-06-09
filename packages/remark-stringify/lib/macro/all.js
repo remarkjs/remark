@@ -6,10 +6,8 @@
  * @fileoverview Stringify children in a node.
  */
 
-'use strict';
-
 /* Expose. */
-module.exports = all;
+export default all;
 
 /**
  * Visit all children of `parent`.
@@ -18,11 +16,11 @@ module.exports = all;
  * @return {Array.<string>} - List of compiled children.
  */
 function all(parent) {
-  var self = this;
-  var children = parent.children;
-  var length = children.length;
-  var results = [];
-  var index = -1;
+  const self = this;
+  const children = parent.children;
+  const length = children.length;
+  const results = [];
+  let index = -1;
 
   while (++index < length) {
     results[index] = self.visit(children[index], parent);

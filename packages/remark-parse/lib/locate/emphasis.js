@@ -6,13 +6,11 @@
  * @fileoverview Locate italics / emphasis.
  */
 
-'use strict';
-
-module.exports = locate;
+export default locate;
 
 function locate(value, fromIndex) {
-  var asterisk = value.indexOf('*', fromIndex);
-  var underscore = value.indexOf('_', fromIndex);
+  const asterisk = value.indexOf('*', fromIndex);
+  const underscore = value.indexOf('_', fromIndex);
 
   if (underscore === -1) {
     return asterisk;

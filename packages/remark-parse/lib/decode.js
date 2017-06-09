@@ -6,11 +6,9 @@
  * @fileoverview Decode entities.
  */
 
-'use strict';
+import entities from 'parse-entities';
 
-var entities = require('parse-entities');
-
-module.exports = factory;
+export default factory;
 
 /* Factory to create an entity decoder. */
 function factory(ctx) {
@@ -20,9 +18,9 @@ function factory(ctx) {
 
   /* Normalize `position` to add an `indent`. */
   function normalize(position) {
-    var offsets = ctx.offset;
-    var line = position.line;
-    var result = [];
+    const offsets = ctx.offset;
+    let line = position.line;
+    const result = [];
 
     while (++line) {
       if (!(line in offsets)) {

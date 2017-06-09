@@ -6,19 +6,17 @@
  * @fileoverview Tokenise a newline.
  */
 
-'use strict';
+import whitespace from 'is-whitespace-character';
 
-var whitespace = require('is-whitespace-character');
-
-module.exports = newline;
+export default newline;
 
 /* Tokenise newline. */
 function newline(eat, value, silent) {
-  var character = value.charAt(0);
-  var length;
-  var subvalue;
-  var queue;
-  var index;
+  let character = value.charAt(0);
+  let length;
+  let subvalue;
+  let queue;
+  let index;
 
   if (character !== '\n') {
     return;

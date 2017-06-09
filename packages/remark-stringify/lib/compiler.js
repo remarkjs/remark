@@ -6,14 +6,12 @@
  * @fileoverview Markdown compiler
  */
 
-'use strict';
-
 /* Dependencies. */
-var xtend = require('xtend');
-var toggle = require('state-toggle');
+import xtend from 'xtend';
+import toggle from 'state-toggle';
 
 /* Expose. */
-module.exports = Compiler;
+export default Compiler;
 
 /**
  * Construct a new compiler.
@@ -32,7 +30,7 @@ function Compiler(tree, file) {
 }
 
 /* Cache prototype. */
-var proto = Compiler.prototype;
+const proto = Compiler.prototype;
 
 /* Enter and exit helpers. */
 proto.enterLink = toggle('inLink', false);
