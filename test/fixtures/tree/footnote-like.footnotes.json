@@ -94,23 +94,40 @@
       "type": "paragraph",
       "children": [
         {
+          "type": "footnoteReference",
+          "identifier": "both",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 38
+            },
+            "end": {
+              "line": 3,
+              "column": 8,
+              "offset": 45
+            },
+            "indent": []
+          }
+        },
+        {
           "type": "linkReference",
           "identifier": "invalid",
-          "referenceType": "full",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
-              "value": "^both",
+              "value": "invalid",
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 3,
-                  "offset": 40
+                  "column": 9,
+                  "offset": 46
                 },
                 "end": {
                   "line": 3,
-                  "column": 8,
-                  "offset": 45
+                  "column": 16,
+                  "offset": 53
                 },
                 "indent": []
               }
@@ -119,8 +136,8 @@
           "position": {
             "start": {
               "line": 3,
-              "column": 1,
-              "offset": 38
+              "column": 8,
+              "offset": 45
             },
             "end": {
               "line": 3,
@@ -148,23 +165,21 @@
           }
         },
         {
-          "type": "linkReference",
-          "identifier": "^this too",
-          "referenceType": "collapsed",
+          "type": "footnote",
           "children": [
             {
               "type": "text",
-              "value": "^this too",
+              "value": "this too",
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 21,
-                  "offset": 58
+                  "column": 30,
+                  "offset": 67
                 },
                 "end": {
                   "line": 3,
-                  "column": 30,
-                  "offset": 67
+                  "column": 38,
+                  "offset": 75
                 },
                 "indent": []
               }
@@ -178,20 +193,20 @@
             },
             "end": {
               "line": 3,
-              "column": 32,
-              "offset": 69
+              "column": 30,
+              "offset": 67
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "[].",
           "position": {
             "start": {
               "line": 3,
-              "column": 32,
-              "offset": 69
+              "column": 30,
+              "offset": 67
             },
             "end": {
               "line": 3,

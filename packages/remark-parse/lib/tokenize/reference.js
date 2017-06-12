@@ -122,7 +122,8 @@ function reference(eat, value, silent) {
 
   character = value.charAt(index);
 
-  if (character === C_BRACKET_OPEN) {
+  /* Inline footnotes cannot have an identifier. */
+  if (type !== T_FOOTNOTE && character === C_BRACKET_OPEN) {
     identifier = '';
     queue += character;
     index++;
@@ -166,13 +167,6 @@ function reference(eat, value, silent) {
   /* Brackets cannot be inside the identifier. */
   if (referenceType !== REFERENCE_TYPE_FULL && bracketed) {
     return;
-  }
-
-  /* Inline footnotes cannot have an identifier. */
-  if (type === T_FOOTNOTE && referenceType !== REFERENCE_TYPE_SHORTCUT) {
-    type = T_LINK;
-    intro = C_BRACKET_OPEN + C_CARET;
-    content = C_CARET + content;
   }
 
   subvalue = intro + subvalue;

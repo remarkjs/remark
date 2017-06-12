@@ -1,0 +1,4 @@
+1. [foo][bar]
+2. [^foo][bar]
+3. [foo][^bar]
+4. [^foo][^bar]

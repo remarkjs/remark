@@ -384,28 +384,8 @@
               "type": "paragraph",
               "children": [
                 {
-                  "type": "linkReference",
-                  "identifier": "^foo",
-                  "referenceType": "full",
-                  "children": [
-                    {
-                      "type": "text",
-                      "value": "^foo",
-                      "position": {
-                        "start": {
-                          "line": 15,
-                          "column": 6,
-                          "offset": 83
-                        },
-                        "end": {
-                          "line": 15,
-                          "column": 10,
-                          "offset": 87
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
+                  "type": "footnoteReference",
+                  "identifier": "foo",
                   "position": {
                     "start": {
                       "line": 15,
@@ -413,13 +393,47 @@
                       "offset": 81
                     },
                     "end": {
+                      "line": 15,
+                      "column": 10,
+                      "offset": 87
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "text",
+                  "value": "\n",
+                  "position": {
+                    "start": {
+                      "line": 15,
+                      "column": 10,
+                      "offset": 87
+                    },
+                    "end": {
                       "line": 16,
-                      "column": 7,
-                      "offset": 94
+                      "column": 1,
+                      "offset": 88
                     },
                     "indent": [
                       1
                     ]
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "foo",
+                  "position": {
+                    "start": {
+                      "line": 16,
+                      "column": 1,
+                      "offset": 88
+                    },
+                    "end": {
+                      "line": 16,
+                      "column": 7,
+                      "offset": 94
+                    },
+                    "indent": []
                   }
                 },
                 {
