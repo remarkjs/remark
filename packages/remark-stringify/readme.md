@@ -49,80 +49,125 @@ process.stdin
 
 ## API
 
-### `processor.use(stringify)`
+### `processor.use(stringify[, options])`
 
 Configure the `processor` to stringify [**MDAST**][mdast] syntax trees
 to markdown.
 
-###### `options`
+##### `options`
 
-Options are passed later through [`processor.stringify()`][stringify],
-[`processor.process()`][process], or [`processor.pipe()`][pipe].
-The following settings are supported:
+Options are passed directly, or passed later through [`processor.data()`][data].
 
-*   `gfm` (`boolean`, default: `true`):
-    *   Escape pipes (`|`, for tables)
-    *   Escape colons (`:`, for literal URLs)
-    *   Escape tildes (`~`, for strike-through)
-*   `commonmark` (`boolean`, default: `false`):
-    *   Compile adjacent blockquotes separately
-    *   Escape more characters using slashes, instead of as entities
-*   `pedantic` (`boolean`, default: `false`):
-    *   Escape underscores in words
-*   `entities` (`string` or `boolean`, default: `false`):
+###### `options.gfm`
 
-    *   `true` — Entities are generated for special HTML characters
-        (`&` > `&amp;`) and non-ASCII characters (`©` > `&copy;`).
-        If named entities are not (widely) supported, numbered character
-        references are used (`’` > `&#x2019;`)
+Stringify with the required escapes for GFM compatible markdown (`boolean`,
+default: `true`).
 
-    *   `'numbers'` — Numbered entities are generated (`&` > `&#x26;`)
-        for special HTML characters and non-ASCII characters
+*   Escape pipes (`|`, for tables)
+*   Escape colons (`:`, for literal URLs)
+*   Escape tildes (`~`, for strike-through)
 
-    *   `'escape'` — Special HTML characters are encoded (`&` >
-        `&amp;`, `’` > `&#x2019;`), non-ASCII characters not (ö persists)
+###### `options.gfm`
 
-*   `setext` (`boolean`, default: `false`)
-    — Compile headings, when possible, in Setext-style: using `=` for
-    level one headings and `-` for level two headings.  Other heading
-    levels are compiled as ATX (respecting `closeAtx`)
-*   `closeAtx` (`boolean`, default: `false`)
-    — Compile ATX headings with the same amount of closing hashes as
-    opening hashes
-*   `looseTable` (`boolean`, default: `false`)
-    — Create tables without fences (initial and final pipes)
-*   `spacedTable` (`boolean`, default: `true`)
-    — Create tables without spacing between pipes and content
-*   `paddedTable` (`boolean`, default: `true`)
-    — Create tables with padding in each cell so that they are the same size
-*   `fence` (`'~'` or ``'`'``, default: ``'`'``)
-    — Fence marker to use for code blocks
-*   `fences` (`boolean`, default: `false`)
-    — Stringify code blocks without language with fences
-*   `bullet` (`'-'`, `'*'`, or `'+'`, default: `'-'`)
-    — Bullet marker to use for unordered list items
-*   `listItemIndent` (`'tab'`, `'mixed'` or `'1'`, default: `'tab'`)
+Stringify for CommonMark compatible markdown (`boolean`, default: `false`).
 
-    How to indent the content from list items:
+*   Compile adjacent blockquotes separately
+*   Escape more characters using slashes, instead of as entities
 
-    *   `'tab'`: use tab stops (4 spaces)
-    *   `'1'`: use one space
-    *   `'mixed'`: use `1` for tight and `tab` for loose list items
+###### `options.pedantic`
 
-*   `incrementListMarker` (`boolean`, default: `true`)
-    — Whether to increment ordered list item bullets
-*   `rule` (`'-'`, `'*'`, or `'_'`, default: `'*'`)
-    — Marker to use for thematic breaks (horizontal rules)
-*   `ruleRepetition` (`number`, default: `3`)
-    — Number of markers to use for thematic breaks (horizontal rules).
-    Should be `3` or more
-*   `ruleSpaces` (`boolean`, default `true`)
-    — Whether to pad thematic break (horizontal rule) markers with
-    spaces
-*   `strong` (`'_'` or `'*'`, default `'*'`)
-    — Marker to use for importance
-*   `emphasis` (`'_'` or `'*'`, default `'_'`)
-    — Marker to use for emphasis
+Stringify for pedantic compatible markdown (`boolean`, default: `false`).
+
+*   Escape underscores in words
+
+###### `options.entities`
+
+How to stringify entities (`string` or `boolean`, default: `false`):
+
+*   `true` — Entities are generated for special HTML characters
+    (`&` > `&amp;`) and non-ASCII characters (`©` > `&copy;`).
+    If named entities are not (widely) supported, numbered character
+    references are used (`’` > `&#x2019;`)
+*   `'numbers'` — Numbered entities are generated (`&` > `&#x26;`)
+    for special HTML characters and non-ASCII characters
+*   `'escape'` — Special HTML characters are encoded (`&` >
+    `&amp;`, `’` > `&#x2019;`), non-ASCII characters not (ö persists)
+
+###### `options.setext`
+
+Compile headings, when possible, in Setext-style (`boolean`, default: `false`).
+Uses `=` for level one headings and `-` for level two headings.  Other heading
+levels are compiled as ATX (respecting `closeAtx`).
+
+###### `options.closeAtx`
+
+Compile ATX headings with the same amount of closing hashes as opening hashes
+(`boolean`, default: `false`).
+
+###### `options.looseTable`
+
+Create tables without fences: initial and final pipes (`boolean`, default:
+`false`).
+
+###### `options.spacedTable`
+
+Create tables without spacing between pipes and content (`boolean`, default:
+`true`).
+
+###### `options.paddedTable`
+
+Create tables with padding in each cell so that they are the same size
+(`boolean`, default: `true`).
+
+###### `options.fence`
+
+Fence marker to use for code blocks (`'~'` or ``'`'``, default: ``'`'``).
+
+###### `options.fences`
+
+Stringify code blocks without language with fences (`boolean`, default:
+`false`).
+
+###### `options.bullet`
+
+Bullet marker to use for unordered list items (`'-'`, `'*'`, or `'+'`,
+default: `'-'`).
+
+###### `options.listItemIndent`
+
+How to indent the content from list items (`'tab'`, `'mixed'` or `'1'`,
+default: `'tab'`).
+
+*   `'tab'`: use tab stops (4 spaces)
+*   `'1'`: use one space
+*   `'mixed'`: use `1` for tight and `tab` for loose list items
+
+###### `options.incrementListMarker`
+
+Whether to increment ordered list item bullets (`boolean`, default: `true`).
+
+###### `options.rule`
+
+Marker to use for thematic breaks / horizontal rules (`'-'`, `'*'`, or `'_'`,
+default: `'*'`).
+
+###### `options.ruleRepetition`
+
+Number of markers to use for thematic breaks / horizontal rules (`number`,
+default: `3`).  Should be `3` or more.
+
+###### `options.ruleSpaces`
+
+Whether to pad thematic break (horizontal rule) markers with spaces (`boolean`,
+default `true`).
+
+###### `options.strong`
+
+Marker to use for importance (`'_'` or `'*'`, default `'*'`).
+
+###### `options.emphasis`
+
+Marker to use for emphasis (`'_'` or `'*'`, default `'_'`).
 
 ### `stringify.Compiler`
 
@@ -198,11 +243,7 @@ Stringify `node`.
 
 [processor]: https://github.com/wooorm/remark
 
-[stringify]: https://github.com/wooorm/unified#processorstringifynode-filevalue-options
-
-[process]: https://github.com/wooorm/unified#processorprocessfilevalue-options-done
-
-[pipe]: https://github.com/wooorm/unified#processorpipestream-options
+[data]: https://github.com/unifiedjs/unified#processordatakey-value
 
 [compiler]: https://github.com/wooorm/unified#processorcompiler
 

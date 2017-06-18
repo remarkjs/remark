@@ -50,25 +50,14 @@ process.stdin
 
 ## API
 
-### `processor.use(parse)`
+### `processor.use(parse[, options])`
 
 Configure the `processor` to read markdown as input and process an
 [**MDAST**][mdast] syntax tree.
 
-#### `options`
+##### `options`
 
-Options are passed later through [`processor.parse()`][parse],
-[`processor.process()`][process], or [`processor.pipe()`][pipe].
-The following settings are supported:
-
-*   [`gfm`][options-gfm] (`boolean`, default: `true`)
-*   [`yaml`][options-yaml] (`boolean`, default: `true`)
-*   [`commonmark`][options-commonmark] (`boolean`, default: `false`)
-*   [`footnotes`][options-footnotes] (`boolean`, default: `false`)
-*   [`pedantic`][options-pedantic] (`boolean`, default: `false`)
-*   [`breaks`][options-breaks] (`boolean`, default: `false`)
-*   [`blocks`][options-blocks] (`Array.<string>`, default: list of block HTML
-    elements)
+Options are passed directly, or passed later through [`processor.data()`][data].
 
 ##### `options.gfm`
 
@@ -76,7 +65,7 @@ The following settings are supported:
 hello ~~hi~~ world
 ```
 
-GFM mode (default: `true`) turns on:
+GFM mode (`boolean`, default: `true`) turns on:
 
 *   [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks)
 *   [Autolinking of URLs](https://help.github.com/articles/github-flavored-markdown/#url-autolinking)
@@ -94,8 +83,8 @@ title: YAML is Cool
 # YAML is Cool
 ```
 
-YAML mode (default: `true`) enables raw YAML front matter to be detected
-at the top.
+YAML mode (`boolean`, default: `true`) enables raw YAML front matter to be
+detected at the top.
 
 ##### `options.commonmark`
 
@@ -104,7 +93,7 @@ This is a paragraph
     and this is also part of the preceding paragraph.
 ```
 
-CommonMark mode (default: `false`) allows:
+CommonMark mode (`boolean`, default: `false`) allows:
 
 *   Empty lines to split blockquotes
 *   Parentheses (`(` and `)`) around for link and image titles
@@ -136,8 +125,8 @@ And something else[^1].
     * ...and a list
 ```
 
-Footnotes mode (default: `false`) enables reference footnotes and inline
-footnotes.  Both are wrapped in square brackets and preceded by a caret
+Footnotes mode (`boolean`, default: `false`) enables reference footnotes and
+inline footnotes.  Both are wrapped in square brackets and preceded by a caret
 (`^`), and can be referenced from inside other footnotes.
 
 ##### `options.breaks`
@@ -147,7 +136,7 @@ This is a
 paragraph.
 ```
 
-Breaks mode (default: `false`) exposes newline characters inside
+Breaks mode (`boolean`, default: `false`) exposes newline characters inside
 paragraphs as breaks.
 
 ##### `options.blocks`
@@ -157,8 +146,8 @@ paragraphs as breaks.
 </block>
 ```
 
-Blocks (default: a list of HTML block elements) exposes
-let’s users define block-level HTML elements.
+Blocks (`Array.<string>`, default: list of [block HTML elements][blocks])
+exposes let’s users define block-level HTML elements.
 
 ##### `options.pedantic`
 
@@ -166,7 +155,7 @@ let’s users define block-level HTML elements.
 Check out some_file_name.txt
 ```
 
-Pedantic mode (default: `false`) turns on:
+Pedantic mode (`boolean`, default: `false`) turns on:
 
 *   Emphasis (`_alpha_`) and importance (`__bravo__`) with underscores
     in words
@@ -187,9 +176,9 @@ the desired output.  Sometimes, mainly when introducing new syntactic
 entities with a certain level of precedence, interfacing with the parser
 is necessary.
 
-If this plug-in is used, it adds a [`Parser`][parser] constructor to
-the `processor`.  Other plug-ins can add tokenizers to the parser’s
-prototype to change how markdown is parsed.
+If the `remark-parse` plug-in is used, it adds a [`Parser`][parser] constructor
+to the `processor`.  Other plug-ins can add tokenizers to the parser’s prototype
+to change how markdown is parsed.
 
 The below plug-in adds a [tokenizer][] for at-mentions.
 
@@ -405,11 +394,7 @@ The given `node`.
 
 [unified]: https://github.com/wooorm/unified
 
-[parse]: https://github.com/wooorm/unified#processorparsefilevalue-options
-
-[process]: https://github.com/wooorm/unified#processorprocessfilevalue-options-done
-
-[pipe]: https://github.com/wooorm/unified#processorpipestream-options
+[data]: https://github.com/unifiedjs/unified#processordatakey-value
 
 [processor]: https://github.com/wooorm/remark/blob/master/packages/remark
 
@@ -420,20 +405,6 @@ The given `node`.
 [node]: https://github.com/wooorm/unist#node
 
 [location]: https://github.com/wooorm/unist#location
-
-[options-gfm]: #optionsgfm
-
-[options-yaml]: #optionsyaml
-
-[options-commonmark]: #optionscommonmark
-
-[options-footnotes]: #optionsfootnotes
-
-[options-pedantic]: #optionspedantic
-
-[options-breaks]: #optionsbreaks
-
-[options-blocks]: #optionsblocks
 
 [parser]: https://github.com/wooorm/unified#processorparser
 
@@ -446,3 +417,5 @@ The given `node`.
 [eat]: #eatsubvalue
 
 [add]: #addnode-parent
+
+[blocks]: https://github.com/wooorm/remark/blob/master/packages/remark-parse/lib/block-elements.json
