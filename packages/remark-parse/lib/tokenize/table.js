@@ -11,7 +11,6 @@
 var whitespace = require('is-whitespace-character');
 
 module.exports = table;
-table.notInList = true;
 
 var C_BACKSLASH = '\\';
 var C_TICK = '`';
