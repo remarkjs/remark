@@ -2,10 +2,7 @@
 
 # Plugins
 
-**remark** plug-ins lie at the core of **remark**’s vision.  As they work
-on the same syntax tree, no start-up time penalty is inflicted when using
-more than one plug-in: something which traditional tools, which need to
-re-compile to markdown to connect together need.
+**remark** is an ecosystem of [plug-ins][plugins].
 
 See [tools built with remark »][products].
 
@@ -17,6 +14,8 @@ See [tools built with remark »][products].
 *   [Creating plugins](#creating-plugins)
 
 ## List of Plugins
+
+Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 
 *   [`remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings
@@ -122,11 +121,11 @@ See [tools built with remark »][products].
 ## List of Utilities
 
 See [**MDAST**][mdast-util] for a list of utilities for working with
-the AST.  See [`unist`][unist-util] for other utilities which work with
+the syntax tree.  See [`unist`][unist-util] for other utilities which work with
 **MDAST** nodes, too.
 
-And finally, see [`wooorm/vfile`][vfile-util] for a list of utilities
-for working with virtual files and
+And finally, see [**vfile**][vfile-util] for a list of utilities working with
+virtual files.
 
 ## Using plugins
 
@@ -138,22 +137,19 @@ or specify it in a [configuration file][config-file-use].
 
 ## Creating plugins
 
-First, read up on the [concept of plug-ins][unified-plugins].
-Then, I suggest taking one of existing [plug-ins][plugins], which looks
-similar to what you’re about to do, and work from there.  If you get
-stuck, [issues][] and [Gitter][] are good places to get help.
+First, read up on the [concept of plug-ins][unified-plugins].  Then, read the
+[guide on “Creating a plugin with unified”][guide].  Finally, take one of
+existing [plug-ins][plugins], which looks similar to what you’re about to do,
+and work from there.  If you get stuck, [issues][] and [Gitter][] are good
+places to get help.
 
-A good place for publishing plug-ins is [npm][npm-publish].
+You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
 
-You should pick a name prefixed by `"remark-"`, such as
-[`remark-lint`][remark-lint].  The reasoning here is that they can be
-used on the CLI without this prefix, but can still be meaningful.  For
-example, `lint` was not available, but instead of opting for `liiint`
-or some other weird form, using `remark-lint` ensured a unique name on
-package managers, while still being meaningful to users.
-
-When publishing a plug-in, you should use the package manager’s keywords
-functionality and include `"remark"` in the list.
+Note that, if the thing you create cannot be given to `remark().use()`,
+it isn’t a “plug-in”.  Don’t use the `remark-` prefix as that could
+confuse users.  If it works with the HAST tree, use `'mdast-util-'`, if
+it works with any Unist tree, use `unist-util-`, if it works with virtual
+files, use `vfile-`.
 
 <!--Definitions:-->
 
@@ -177,10 +173,8 @@ functionality and include `"remark"` in the list.
 
 [unified-plugins]: https://github.com/wooorm/unified#plugin
 
-[npm-publish]: https://docs.npmjs.com/getting-started/publishing-npm-packages
-
-[remark-lint]: https://www.npmjs.com/package/remark-toc
-
 [issues]: https://github.com/wooorm/remark/issues
 
 [gitter]: https://gitter.im/wooorm/remark
+
+[guide]: https://unifiedjs.github.io/create-a-plugin.html
