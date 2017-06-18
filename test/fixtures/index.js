@@ -11,13 +11,13 @@
 /* Dependencies. */
 var fs = require('fs');
 var path = require('path');
-var has = require('has');
 var camelcase = require('camelcase');
 var clone = require('clone');
 var parseDefaults = require('../../packages/remark-parse/lib/defaults.js');
 var stringifyDefaults = require('../../packages/remark-stringify/lib/defaults.js');
 
 /* Methods. */
+var own = {}.hasOwnProperty;
 var read = fs.readFileSync;
 var exists = fs.existsSync;
 var stat = fs.statSync;
@@ -70,7 +70,7 @@ function augment(key, value) {
 
   key = camelcase(key);
 
-  if (has(augment, key)) {
+  if (own.call(augment, key)) {
     value = augment[key](value);
   }
 

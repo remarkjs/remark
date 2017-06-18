@@ -25,7 +25,6 @@
   ],
   "dependencies": {
     "collapse-white-space": "^1.0.2",
-    "has": "^1.0.1",
     "is-alphabetical": "^1.0.0",
     "is-decimal": "^1.0.0",
     "is-whitespace-character": "^1.0.0",

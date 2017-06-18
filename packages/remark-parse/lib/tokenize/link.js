@@ -8,12 +8,13 @@
 
 'use strict';
 
-var has = require('has');
 var whitespace = require('is-whitespace-character');
 var locate = require('../locate/link');
 
 module.exports = link;
 link.locator = locate;
+
+var own = {}.hasOwnProperty;
 
 var C_BACKSLASH = '\\';
 var C_BRACKET_OPEN = '[';
@@ -224,7 +225,7 @@ function link(eat, value, silent) {
     while (index < length) {
       character = value.charAt(index);
 
-      if (subqueue && has(markers, character)) {
+      if (subqueue && own.call(markers, character)) {
         break;
       }
 
@@ -282,7 +283,7 @@ function link(eat, value, silent) {
   subvalue += queue;
 
   /* Eat the title. */
-  if (queue && has(markers, character)) {
+  if (queue && own.call(markers, character)) {
     index++;
     subvalue += character;
     queue = '';

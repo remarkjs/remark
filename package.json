@@ -16,7 +16,6 @@
     "esprima": "^4.0.0",
     "execa": "^0.7.0",
     "extend": "^3.0.0",
-    "has": "^1.0.1",
     "lerna": "2.0.0-rc.5",
     "mdast-util-assert": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
