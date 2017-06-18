@@ -12,6 +12,8 @@ all kinds of things: [check markdown code style][remark-lint],
 [add a table of contents][remark-toc], or
 [compile to man pages][remark-man].
 
+It’s built on [unified][], make sure to read it and its [website][] too.
+
 *   [`remark`][api] — Programmatic interface
 *   [`remark-cli`][cli] — Command-line interface
 
@@ -54,3 +56,7 @@ Oh, and [plug-ins][plugins]?!
 [remark-man]: https://github.com/wooorm/remark-man
 
 [getting-started]: https://github.com/wooorm/remark/tree/master/doc/getting-started.md
+
+[unified]: https://github.com/unifiedjs/unified
+
+[website]: https://unifiedjs.github.io

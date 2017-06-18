@@ -5,6 +5,8 @@
 **remark** transforms markdown.  It’s an ecosystem of [plug-ins][plugins].
 If you get stuck, [issues][] and [Gitter][] are good places to get help.
 
+It’s built on [unified][], make sure to read it and its [website][] too.
+
 ## Table of Contents
 
 *   [Introduction](#introduction)
@@ -14,8 +16,8 @@ If you get stuck, [issues][] and [Gitter][] are good places to get help.
 
 ## Introduction
 
-Out of the box, **remark** transpiles markdown:
-markdown is given, reformatted, and written:
+Out of the box, **remark** transpiles markdown: markdown is given, reformatted,
+and written:
 
 ```md
 # Alpha #
@@ -204,7 +206,9 @@ remark()
 
 [plugins]: https://github.com/wooorm/remark/tree/master/doc/plugins.md
 
-[unified]: https://github.com/wooorm/unified
+[unified]: https://github.com/unifiedjs/unified
+
+[website]: https://unifiedjs.github.io
 
 [unified-args]: https://github.com/wooorm/unified-args
 
