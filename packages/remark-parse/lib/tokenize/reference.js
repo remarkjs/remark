@@ -122,7 +122,7 @@ function reference(eat, value, silent) {
 
   character = value.charAt(index);
 
-  if (character === C_BRACKET_OPEN) {
+  if ((self.options.footnotes && type !== T_FOOTNOTE) && character === C_BRACKET_OPEN) {
     identifier = '';
     queue += character;
     index++;
