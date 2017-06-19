@@ -1,0 +1,894 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo charlie",
+          "children": [
+            {
+              "type": "text",
+              "value": "alpha",
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 2,
+                  "offset": 1
+                },
+                "end": {
+                  "line": 1,
+                  "column": 7,
+                  "offset": 6
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 43,
+              "offset": 42
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 43,
+              "offset": 42
+            },
+            "end": {
+              "line": 1,
+              "column": 44,
+              "offset": 43
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 44,
+          "offset": 43
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo\tcharlie",
+          "children": [
+            {
+              "type": "text",
+              "value": "alpha",
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 2,
+                  "offset": 46
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 51
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 45
+            },
+            "end": {
+              "line": 3,
+              "column": 43,
+              "offset": 87
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 43,
+              "offset": 87
+            },
+            "end": {
+              "line": 3,
+              "column": 44,
+              "offset": 88
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 45
+        },
+        "end": {
+          "line": 3,
+          "column": 44,
+          "offset": 88
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo\ncharlie",
+          "children": [
+            {
+              "type": "text",
+              "value": "alpha",
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 2,
+                  "offset": 91
+                },
+                "end": {
+                  "line": 5,
+                  "column": 7,
+                  "offset": 96
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 90
+            },
+            "end": {
+              "line": 6,
+              "column": 9,
+              "offset": 132
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 9,
+              "offset": 132
+            },
+            "end": {
+              "line": 6,
+              "column": 10,
+              "offset": 133
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 90
+        },
+        "end": {
+          "line": 6,
+          "column": 10,
+          "offset": 133
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "url": "https://example.com?bravo charlie",
+          "alt": "alpha",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 1,
+              "offset": 135
+            },
+            "end": {
+              "line": 8,
+              "column": 44,
+              "offset": 178
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 44,
+              "offset": 178
+            },
+            "end": {
+              "line": 8,
+              "column": 45,
+              "offset": 179
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 8,
+          "column": 1,
+          "offset": 135
+        },
+        "end": {
+          "line": 8,
+          "column": 45,
+          "offset": 179
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "url": "https://example.com?bravo\tcharlie",
+          "alt": "alpha",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1,
+              "offset": 181
+            },
+            "end": {
+              "line": 10,
+              "column": 44,
+              "offset": 224
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 44,
+              "offset": 224
+            },
+            "end": {
+              "line": 10,
+              "column": 45,
+              "offset": 225
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 181
+        },
+        "end": {
+          "line": 10,
+          "column": 45,
+          "offset": 225
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "image",
+          "title": null,
+          "url": "https://example.com?bravo\ncharlie",
+          "alt": "alpha",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 1,
+              "offset": 227
+            },
+            "end": {
+              "line": 13,
+              "column": 9,
+              "offset": 270
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 9,
+              "offset": 270
+            },
+            "end": {
+              "line": 13,
+              "column": 10,
+              "offset": 271
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 12,
+          "column": 1,
+          "offset": 227
+        },
+        "end": {
+          "line": 13,
+          "column": 10,
+          "offset": 271
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 1,
+              "offset": 273
+            },
+            "end": {
+              "line": 15,
+              "column": 2,
+              "offset": 274
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 15,
+                  "column": 2,
+                  "offset": 274
+                },
+                "end": {
+                  "line": 15,
+                  "column": 27,
+                  "offset": 299
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 2,
+              "offset": 274
+            },
+            "end": {
+              "line": 15,
+              "column": 27,
+              "offset": 299
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " charlie>.",
+          "position": {
+            "start": {
+              "line": 15,
+              "column": 27,
+              "offset": 299
+            },
+            "end": {
+              "line": 15,
+              "column": 37,
+              "offset": 309
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 15,
+          "column": 1,
+          "offset": 273
+        },
+        "end": {
+          "line": 15,
+          "column": 37,
+          "offset": 309
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 1,
+              "offset": 311
+            },
+            "end": {
+              "line": 17,
+              "column": 2,
+              "offset": 312
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 17,
+                  "column": 2,
+                  "offset": 312
+                },
+                "end": {
+                  "line": 17,
+                  "column": 27,
+                  "offset": 337
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 2,
+              "offset": 312
+            },
+            "end": {
+              "line": 17,
+              "column": 27,
+              "offset": 337
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\tcharlie>.",
+          "position": {
+            "start": {
+              "line": 17,
+              "column": 27,
+              "offset": 337
+            },
+            "end": {
+              "line": 17,
+              "column": 37,
+              "offset": 347
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 17,
+          "column": 1,
+          "offset": 311
+        },
+        "end": {
+          "line": 17,
+          "column": 37,
+          "offset": 347
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "<",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 1,
+              "offset": 349
+            },
+            "end": {
+              "line": 19,
+              "column": 2,
+              "offset": 350
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 19,
+                  "column": 2,
+                  "offset": 350
+                },
+                "end": {
+                  "line": 19,
+                  "column": 27,
+                  "offset": 375
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 2,
+              "offset": 350
+            },
+            "end": {
+              "line": 19,
+              "column": 27,
+              "offset": 375
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\ncharlie>.",
+          "position": {
+            "start": {
+              "line": 19,
+              "column": 27,
+              "offset": 375
+            },
+            "end": {
+              "line": 20,
+              "column": 10,
+              "offset": 385
+            },
+            "indent": [
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 19,
+          "column": 1,
+          "offset": 349
+        },
+        "end": {
+          "line": 20,
+          "column": 10,
+          "offset": 385
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 22,
+                  "column": 1,
+                  "offset": 387
+                },
+                "end": {
+                  "line": 22,
+                  "column": 26,
+                  "offset": 412
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 1,
+              "offset": 387
+            },
+            "end": {
+              "line": 22,
+              "column": 26,
+              "offset": 412
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " charlie.",
+          "position": {
+            "start": {
+              "line": 22,
+              "column": 26,
+              "offset": 412
+            },
+            "end": {
+              "line": 22,
+              "column": 35,
+              "offset": 421
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 22,
+          "column": 1,
+          "offset": 387
+        },
+        "end": {
+          "line": 22,
+          "column": 35,
+          "offset": 421
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 24,
+                  "column": 1,
+                  "offset": 423
+                },
+                "end": {
+                  "line": 24,
+                  "column": 26,
+                  "offset": 448
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 1,
+              "offset": 423
+            },
+            "end": {
+              "line": 24,
+              "column": 26,
+              "offset": 448
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\tcharlie.",
+          "position": {
+            "start": {
+              "line": 24,
+              "column": 26,
+              "offset": 448
+            },
+            "end": {
+              "line": 24,
+              "column": 35,
+              "offset": 457
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 24,
+          "column": 1,
+          "offset": 423
+        },
+        "end": {
+          "line": 24,
+          "column": 35,
+          "offset": 457
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://example.com?bravo",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://example.com?bravo",
+              "position": {
+                "start": {
+                  "line": 26,
+                  "column": 1,
+                  "offset": 459
+                },
+                "end": {
+                  "line": 26,
+                  "column": 26,
+                  "offset": 484
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 26,
+              "column": 1,
+              "offset": 459
+            },
+            "end": {
+              "line": 26,
+              "column": 26,
+              "offset": 484
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\ncharlie.",
+          "position": {
+            "start": {
+              "line": 26,
+              "column": 26,
+              "offset": 484
+            },
+            "end": {
+              "line": 27,
+              "column": 9,
+              "offset": 493
+            },
+            "indent": [
+              1
+            ]
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 26,
+          "column": 1,
+          "offset": 459
+        },
+        "end": {
+          "line": 27,
+          "column": 9,
+          "offset": 493
+        },
+        "indent": [
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 28,
+      "column": 1,
+      "offset": 494
+    }
+  }
+}

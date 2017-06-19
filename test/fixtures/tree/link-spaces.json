@@ -77,15 +77,32 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "delta\n.com",
+          "type": "imageReference",
+          "identifier": "charlie",
+          "referenceType": "shortcut",
           "alt": "charlie",
           "position": {
             "start": {
               "line": 3,
               "column": 1,
               "offset": 16
+            },
+            "end": {
+              "line": 3,
+              "column": 11,
+              "offset": 26
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " (delta\n.com)",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 11,
+              "offset": 26
             },
             "end": {
               "line": 4,

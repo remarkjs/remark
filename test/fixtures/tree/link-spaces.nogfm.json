@@ -135,9 +135,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "echo",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": null,
+          "url": "http://foxtrot.golf",
           "children": [
             {
               "type": "text",
@@ -162,23 +162,6 @@
               "line": 6,
               "column": 1,
               "offset": 41
-            },
-            "end": {
-              "line": 6,
-              "column": 7,
-              "offset": 47
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "\t(http://foxtrot.golf)",
-          "position": {
-            "start": {
-              "line": 6,
-              "column": 7,
-              "offset": 47
             },
             "end": {
               "line": 6,
@@ -207,32 +190,15 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hotel",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": null,
+          "url": "india.com/juliett",
           "alt": "hotel",
           "position": {
             "start": {
               "line": 8,
               "column": 1,
               "offset": 71
-            },
-            "end": {
-              "line": 8,
-              "column": 9,
-              "offset": 79
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "   (india.com/juliett)",
-          "position": {
-            "start": {
-              "line": 8,
-              "column": 9,
-              "offset": 79
             },
             "end": {
               "line": 8,

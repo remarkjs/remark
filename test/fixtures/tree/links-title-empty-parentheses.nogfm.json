@@ -5,9 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html ()",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -35,20 +35,20 @@
             },
             "end": {
               "line": 1,
-              "column": 25,
-              "offset": 24
+              "column": 8,
+              "offset": 7
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./world.html ()).",
           "position": {
             "start": {
               "line": 1,
-              "column": 25,
-              "offset": 24
+              "column": 8,
+              "offset": 7
             },
             "end": {
               "line": 1,
@@ -149,9 +149,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.html ()",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
@@ -161,20 +161,20 @@
             },
             "end": {
               "line": 5,
-              "column": 26,
-              "offset": 81
+              "column": 9,
+              "offset": 64
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./world.html ()).",
           "position": {
             "start": {
               "line": 5,
-              "column": 26,
-              "offset": 81
+              "column": 9,
+              "offset": 64
             },
             "end": {
               "line": 5,

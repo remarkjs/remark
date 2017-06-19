@@ -5,9 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./wo\nrld.html",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -34,30 +34,30 @@
               "offset": 0
             },
             "end": {
-              "line": 2,
-              "column": 10,
-              "offset": 22
+              "line": 1,
+              "column": 8,
+              "offset": 7
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./wo\nrld.html).",
           "position": {
             "start": {
-              "line": 2,
-              "column": 10,
-              "offset": 22
+              "line": 1,
+              "column": 8,
+              "offset": 7
             },
             "end": {
               "line": 2,
               "column": 11,
               "offset": 23
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],
@@ -157,9 +157,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./wo\nrld.png",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
@@ -168,30 +168,30 @@
               "offset": 52
             },
             "end": {
-              "line": 8,
+              "line": 7,
               "column": 9,
-              "offset": 74
+              "offset": 60
             },
-            "indent": [
-              1
-            ]
+            "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "(./wo\nrld.png).",
           "position": {
             "start": {
-              "line": 8,
+              "line": 7,
               "column": 9,
-              "offset": 74
+              "offset": 60
             },
             "end": {
               "line": 8,
               "column": 10,
               "offset": 75
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
         }
       ],

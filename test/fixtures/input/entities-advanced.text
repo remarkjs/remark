@@ -6,8 +6,7 @@
 > alert('Hello');
 > ```
 
-> And in an auto-link: <http://e
-> xample&copyxample.com>
+> And in an auto-link: <http://example&copyxample.com>
 
 > Foo and bar and http://example&copyxample.com and baz.
 

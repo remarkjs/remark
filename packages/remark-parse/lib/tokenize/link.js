@@ -48,6 +48,7 @@ function link(eat, value, silent) {
   var subvalue = '';
   var index = 0;
   var character = value.charAt(0);
+  var pedantic = self.options.pedantic;
   var commonmark = self.options.commonmark;
   var gfm = self.options.gfm;
   var closed;
@@ -135,7 +136,7 @@ function link(eat, value, silent) {
       } else {
         /* Allow white-space between content and
          * url in GFM mode. */
-        if (gfm) {
+        if (!pedantic) {
           while (index < length) {
             character = value.charAt(index + 1);
 
@@ -230,7 +231,7 @@ function link(eat, value, silent) {
       }
 
       if (whitespace(character)) {
-        if (commonmark) {
+        if (!pedantic) {
           break;
         }
 

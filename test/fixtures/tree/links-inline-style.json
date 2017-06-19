@@ -382,9 +382,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "/url/has space",
+          "type": "linkReference",
+          "identifier": "url and title",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -412,20 +412,20 @@
             },
             "end": {
               "line": 11,
-              "column": 34,
-              "offset": 252
+              "column": 16,
+              "offset": 234
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "( /url/has space ).",
           "position": {
             "start": {
               "line": 11,
-              "column": 34,
-              "offset": 252
+              "column": 16,
+              "offset": 234
             },
             "end": {
               "line": 11,
@@ -454,9 +454,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "url has space and title",
-          "url": "/url/has space/",
+          "type": "linkReference",
+          "identifier": "url and title",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -484,20 +484,20 @@
             },
             "end": {
               "line": 13,
-              "column": 60,
-              "offset": 314
+              "column": 16,
+              "offset": 270
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ".",
+          "value": "( /url/has space/ \"url has space and title\").",
           "position": {
             "start": {
               "line": 13,
-              "column": 60,
-              "offset": 314
+              "column": 16,
+              "offset": 270
             },
             "end": {
               "line": 13,

@@ -1180,9 +1180,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html (and text)",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1207,6 +1207,23 @@
               "line": 45,
               "column": 1,
               "offset": 1759
+            },
+            "end": {
+              "line": 45,
+              "column": 8,
+              "offset": 1766
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and text))",
+          "position": {
+            "start": {
+              "line": 45,
+              "column": 8,
+              "offset": 1766
             },
             "end": {
               "line": 45,
@@ -1235,9 +1252,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html (and (matching delimiters))",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1262,6 +1279,23 @@
               "line": 47,
               "column": 1,
               "offset": 1793
+            },
+            "end": {
+              "line": 47,
+              "column": 8,
+              "offset": 1800
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and (matching delimiters)))",
+          "position": {
+            "start": {
+              "line": 47,
+              "column": 8,
+              "offset": 1800
             },
             "end": {
               "line": 47,
@@ -1362,9 +1396,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html (and (escapes))",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1389,6 +1423,91 @@
               "line": 51,
               "column": 1,
               "offset": 1896
+            },
+            "end": {
+              "line": 51,
+              "column": 8,
+              "offset": 1903
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 8,
+              "offset": 1903
+            },
+            "end": {
+              "line": 51,
+              "column": 27,
+              "offset": 1922
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 27,
+              "offset": 1922
+            },
+            "end": {
+              "line": 51,
+              "column": 29,
+              "offset": 1924
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "escapes",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 29,
+              "offset": 1924
+            },
+            "end": {
+              "line": 51,
+              "column": 36,
+              "offset": 1931
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 36,
+              "offset": 1931
+            },
+            "end": {
+              "line": 51,
+              "column": 38,
+              "offset": 1933
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 38,
+              "offset": 1933
             },
             "end": {
               "line": 51,
@@ -1417,9 +1536,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html (and (named entities))",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1444,6 +1563,91 @@
               "line": 53,
               "column": 1,
               "offset": 1937
+            },
+            "end": {
+              "line": 53,
+              "column": 8,
+              "offset": 1944
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and ",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 8,
+              "offset": 1944
+            },
+            "end": {
+              "line": 53,
+              "column": 27,
+              "offset": 1963
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 27,
+              "offset": 1963
+            },
+            "end": {
+              "line": 53,
+              "column": 33,
+              "offset": 1969
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "named entities",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 33,
+              "offset": 1969
+            },
+            "end": {
+              "line": 53,
+              "column": 47,
+              "offset": 1983
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 47,
+              "offset": 1983
+            },
+            "end": {
+              "line": 53,
+              "column": 53,
+              "offset": 1989
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 53,
+              "column": 53,
+              "offset": 1989
             },
             "end": {
               "line": 53,
@@ -1472,9 +1676,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "./world.html (and (numbered entities))",
+          "type": "linkReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1499,6 +1703,91 @@
               "line": 55,
               "column": 1,
               "offset": 1993
+            },
+            "end": {
+              "line": 55,
+              "column": 8,
+              "offset": 2000
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.html (and ",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 8,
+              "offset": 2000
+            },
+            "end": {
+              "line": 55,
+              "column": 27,
+              "offset": 2019
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 27,
+              "offset": 2019
+            },
+            "end": {
+              "line": 55,
+              "column": 33,
+              "offset": 2025
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "numbered entities",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 33,
+              "offset": 2025
+            },
+            "end": {
+              "line": 55,
+              "column": 50,
+              "offset": 2042
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 50,
+              "offset": 2042
+            },
+            "end": {
+              "line": 55,
+              "column": 56,
+              "offset": 2048
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 55,
+              "column": 56,
+              "offset": 2048
             },
             "end": {
               "line": 55,
@@ -2115,15 +2404,32 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.png (and text)",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 89,
               "column": 1,
               "offset": 2700
+            },
+            "end": {
+              "line": 89,
+              "column": 9,
+              "offset": 2708
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and text))",
+          "position": {
+            "start": {
+              "line": 89,
+              "column": 9,
+              "offset": 2708
             },
             "end": {
               "line": 89,
@@ -2152,15 +2458,32 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.png (and (matching delimiters))",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 91,
               "column": 1,
               "offset": 2734
+            },
+            "end": {
+              "line": 91,
+              "column": 9,
+              "offset": 2742
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and (matching delimiters)))",
+          "position": {
+            "start": {
+              "line": 91,
+              "column": 9,
+              "offset": 2742
             },
             "end": {
               "line": 91,
@@ -2243,15 +2566,100 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.png (and (escapes))",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 95,
               "column": 1,
               "offset": 2837
+            },
+            "end": {
+              "line": 95,
+              "column": 9,
+              "offset": 2845
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and ",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 9,
+              "offset": 2845
+            },
+            "end": {
+              "line": 95,
+              "column": 27,
+              "offset": 2863
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 27,
+              "offset": 2863
+            },
+            "end": {
+              "line": 95,
+              "column": 29,
+              "offset": 2865
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "escapes",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 29,
+              "offset": 2865
+            },
+            "end": {
+              "line": 95,
+              "column": 36,
+              "offset": 2872
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 36,
+              "offset": 2872
+            },
+            "end": {
+              "line": 95,
+              "column": 38,
+              "offset": 2874
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 95,
+              "column": 38,
+              "offset": 2874
             },
             "end": {
               "line": 95,
@@ -2280,15 +2688,100 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.png (and (named entities))",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 97,
               "column": 1,
               "offset": 2878
+            },
+            "end": {
+              "line": 97,
+              "column": 9,
+              "offset": 2886
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and ",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 9,
+              "offset": 2886
+            },
+            "end": {
+              "line": 97,
+              "column": 27,
+              "offset": 2904
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 27,
+              "offset": 2904
+            },
+            "end": {
+              "line": 97,
+              "column": 33,
+              "offset": 2910
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "named entities",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 33,
+              "offset": 2910
+            },
+            "end": {
+              "line": 97,
+              "column": 47,
+              "offset": 2924
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 47,
+              "offset": 2924
+            },
+            "end": {
+              "line": 97,
+              "column": 53,
+              "offset": 2930
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 97,
+              "column": 53,
+              "offset": 2930
             },
             "end": {
               "line": 97,
@@ -2317,15 +2810,100 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": null,
-          "url": "./world.png (and (numbered entities))",
+          "type": "imageReference",
+          "identifier": "hello",
+          "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
             "start": {
               "line": 99,
               "column": 1,
               "offset": 2934
+            },
+            "end": {
+              "line": 99,
+              "column": 9,
+              "offset": 2942
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(./world.png (and ",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 9,
+              "offset": 2942
+            },
+            "end": {
+              "line": 99,
+              "column": 27,
+              "offset": 2960
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "(",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 27,
+              "offset": 2960
+            },
+            "end": {
+              "line": 99,
+              "column": 33,
+              "offset": 2966
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "numbered entities",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 33,
+              "offset": 2966
+            },
+            "end": {
+              "line": 99,
+              "column": 50,
+              "offset": 2983
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ")",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 50,
+              "offset": 2983
+            },
+            "end": {
+              "line": 99,
+              "column": 56,
+              "offset": 2989
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "))",
+          "position": {
+            "start": {
+              "line": 99,
+              "column": 56,
+              "offset": 2989
             },
             "end": {
               "line": 99,

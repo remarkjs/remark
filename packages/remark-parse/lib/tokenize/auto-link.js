@@ -8,6 +8,7 @@
 
 'use strict';
 
+var whitespace = require('is-whitespace-character');
 var decode = require('parse-entities');
 var locate = require('../locate/tag');
 
@@ -56,7 +57,7 @@ function autoLink(eat, value, silent) {
     character = value.charAt(index);
 
     if (
-      character === ' ' ||
+      whitespace(character) ||
       character === C_GT ||
       character === C_AT_SIGN ||
       (character === ':' && value.charAt(index + 1) === C_SLASH)
@@ -96,7 +97,7 @@ function autoLink(eat, value, silent) {
   while (index < length) {
     character = value.charAt(index);
 
-    if (character === ' ' || character === C_GT) {
+    if (whitespace(character) || character === C_GT) {
       break;
     }
 
