@@ -33,7 +33,8 @@ var maps = {
 var validate = {
   boolean: validateBoolean,
   string: validateString,
-  number: validateNumber
+  number: validateNumber,
+  function: validateFunction
 };
 
 /**
@@ -160,6 +161,23 @@ function validateString(context, name, def, map) {
   value = String(value);
 
   if (!(value in map)) {
+    raise(value, 'options.' + name);
+  }
+
+  context[name] = value;
+}
+
+/* Validate a value to be function. Defaults to `def`.
+ * Raises an exception with `context[name]` when not
+ * a function. */
+function validateFunction(context, name, def) {
+  var value = context[name];
+
+  if (value == null) {
+    value = def;
+  }
+
+  if (typeof value !== 'function') {
     raise(value, 'options.' + name);
   }
 

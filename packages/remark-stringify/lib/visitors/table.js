@@ -40,9 +40,11 @@ module.exports = table;
  */
 function table(node) {
   var self = this;
-  var loose = self.options.looseTable;
-  var spaced = self.options.spacedTable;
-  var pad = self.options.paddedTable;
+  var options = self.options;
+  var loose = options.looseTable;
+  var spaced = options.spacedTable;
+  var pad = options.paddedTable;
+  var stringLength = options.stringLength;
   var rows = node.children;
   var index = rows.length;
   var exit = self.enterTable();
@@ -72,6 +74,7 @@ function table(node) {
     pad: pad,
     start: start,
     end: end,
+    stringLength: stringLength,
     delimiter: spaced ? ' | ' : '|'
   });
 }

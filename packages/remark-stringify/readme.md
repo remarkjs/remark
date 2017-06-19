@@ -119,6 +119,11 @@ Create tables without spacing between pipes and content (`boolean`, default:
 Create tables with padding in each cell so that they are the same size
 (`boolean`, default: `true`).
 
+###### `options.stringLength`
+
+Function passed to [`markdown-table`][markdown-table] to detect the length of a
+table cell (`Function`, default: [`s => s.length`][string-length]).
+
 ###### `options.fence`
 
 Fence marker to use for code blocks (`'~'` or ``'`'``, default: ``'`'``).
@@ -254,3 +259,7 @@ Stringify `node`.
 [extend]: #extending-the-compiler
 
 [visitor]: #function-visitornode-parent
+
+[markdown-table]: https://github.com/wooorm/markdown-table
+
+[string-length]: https://github.com/wooorm/markdown-table#stringlengthcell

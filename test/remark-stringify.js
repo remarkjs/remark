@@ -10,6 +10,7 @@
 
 /* Dependencies. */
 var test = require('tape');
+var wcwidth = require('wcwidth');
 var remark = require('../packages/remark');
 var Compiler = require('../packages/remark-stringify').Compiler;
 
@@ -209,6 +210,47 @@ test('remark().stringify(ast, file)', function (t) {
     'should throw when `options.paddedTable` is not a boolean'
   );
 
+  t.throws(
+    function () {
+      remark().data('settings', {stringLength: 1}).stringify(empty());
+    },
+    /options\.stringLength/,
+    'should throw when `options.stringLength` is not a function'
+  );
+
+  t.test('should support `stringLength`', function (st) {
+    st.plan(2);
+
+    var example = [
+      '| alpha | bravo   |',
+      '| ----- | ------- |',
+      '| 中文  | charlie |',
+      ''
+    ].join('\n');
+
+    st.equal(
+      remark().processSync(example).toString(),
+      [
+        '| alpha | bravo   |',
+        '| ----- | ------- |',
+        '| 中文    | charlie |',
+        ''
+      ].join('\n'),
+      'baseline'
+    );
+
+    st.equal(
+      remark().use({settings: {stringLength: wcwidth}}).processSync(example).toString(),
+      [
+        '| alpha | bravo   |',
+        '| ----- | ------- |',
+        '| 中文  | charlie |',
+        ''
+      ].join('\n'),
+      'custom `stringLength`'
+    );
+  });
+
   t.test('should support valid strings', function (st) {
     var compiler = new Compiler();
     st.equal(compiler.options.listItemIndent, 'tab');
@@ -239,6 +281,15 @@ test('remark().stringify(ast, file)', function (t) {
     compiler.setOptions({strong: '_'});
     st.equal(compiler.options.strong, '_');
     st.end();
+  });
+
+  t.test('should support valid functions', function (st) {
+    var compiler = new Compiler();
+    compiler.setOptions({stringLength: stringLength});
+    st.equal(compiler.options.stringLength, stringLength);
+    st.end();
+
+    function stringLength() {}
   });
 
   t.test('should be able to set options', function (st) {

@@ -27,6 +27,7 @@
     "unist-util-remove-position": "^1.1.0",
     "unist-util-visit": "^1.1.0",
     "vfile": "^2.0.0",
+    "wcwidth": "^1.0.1",
     "xo": "^0.18.0"
   },
   "scripts": {
@@ -65,6 +66,8 @@
     ]
   },
   "remarkConfig": {
-    "plugins": ["preset-wooorm"]
+    "plugins": [
+      "preset-wooorm"
+    ]
   }
 }

@@ -18,6 +18,7 @@ module.exports = {
   looseTable: false,
   spacedTable: true,
   paddedTable: true,
+  stringLength: stringLength,
   incrementListMarker: true,
   fences: false,
   fence: '`',
@@ -29,3 +30,7 @@ module.exports = {
   strong: '*',
   emphasis: '_'
 };
+
+function stringLength(value) {
+  return value.length;
+}
