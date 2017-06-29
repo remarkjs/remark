@@ -371,9 +371,9 @@ The given `node`.
 ### Turning off a tokenizer
 
 In rare situations, you may want to turn off a tokenizer to avoid parsing
-that syntactic feature. This can be done by deleting the tokenzier from your
-Parser's [blockTokenizers](#parserblocktokenizers) or
-[inlineTokenizers](#parserinlinetokenizers).
+that syntactic feature.  This can be done by deleting the tokenzier from
+your Parser’s `blockTokenizers` (or `blockMethods`) or `inlineTokenizers`
+(or `inlineMethods`).
 
 The following example turns off indented code blocks:
 
