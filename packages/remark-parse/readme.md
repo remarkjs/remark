@@ -368,6 +368,19 @@ for list items
 
 The given `node`.
 
+### Turning off a tokenizer
+
+In rare situations, you may want to turn off a tokenizer to avoid parsing
+that syntactic feature. This can be done by deleting the tokenzier from your
+Parser's [blockTokenizers](#parserblocktokenizers) or
+[inlineTokenizers](#parserinlinetokenizers).
+
+The following example turns off indented code blocks:
+
+```js
+delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
+```
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
