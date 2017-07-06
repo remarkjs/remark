@@ -67,7 +67,7 @@ default: `true`).
 *   Escape colons (`:`, for literal URLs)
 *   Escape tildes (`~`, for strike-through)
 
-###### `options.gfm`
+###### `options.commonmark`
 
 Stringify for CommonMark compatible markdown (`boolean`, default: `false`).
 
