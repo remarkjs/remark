@@ -33,6 +33,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Inject a given table of contributors
 *   [`remark-defsplit`](https://github.com/eush77/remark-defsplit)
     — Extract inline link and image destinations as separate definitions
+*   [`remark-embed-images`](https://github.com/dherges/remark-embed-images)
+    — Embed images with data: URIs, inlining base64-encoded sources
 *   [`remark-emoji`](https://github.com/rhysd/remark-emoji)
     — Transform unicode emoji to Gemoji shortcodes
 *   [`remark-emoji-to-gemoji`](https://github.com/jackycute/remark-emoji-to-gemoji)
