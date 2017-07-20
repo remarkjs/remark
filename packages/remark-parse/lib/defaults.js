@@ -12,7 +12,6 @@
 module.exports = {
   position: true,
   gfm: true,
-  yaml: true,
   commonmark: false,
   footnotes: false,
   pedantic: false,

@@ -60,7 +60,6 @@ proto.visitors = {
   list: require('./visitors/list'),
   listItem: require('./visitors/list-item'),
   inlineCode: require('./visitors/inline-code'),
-  yaml: require('./visitors/yaml'),
   code: require('./visitors/code'),
   html: require('./visitors/html'),
   thematicBreak: require('./visitors/thematic-break'),

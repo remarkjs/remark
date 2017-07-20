@@ -81,14 +81,6 @@ test('remark().parse(file)', function (t) {
     'should throw when `options.pedantic` is not a boolean'
   );
 
-  t.throws(
-    function () {
-      remark().data('settings', {yaml: [true]}).parse('');
-    },
-    /options.yaml/,
-    'should throw when `options.yaml` is not a boolean'
-  );
-
   t.deepEqual(
     remark().data('settings', {position: false}).parse('<foo></foo>'),
     {

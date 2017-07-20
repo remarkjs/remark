@@ -109,7 +109,6 @@ proto.interruptBlockquote = [
 
 /* Handlers. */
 proto.blockTokenizers = {
-  yamlFrontMatter: require('./tokenize/yaml'),
   newline: require('./tokenize/newline'),
   indentedCode: require('./tokenize/code-indented'),
   fencedCode: require('./tokenize/code-fenced'),

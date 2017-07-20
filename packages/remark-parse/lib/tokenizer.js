@@ -101,7 +101,7 @@ function factory(type) {
 
         if (
           method &&
-          (!method.onlyAtStart || self.atStart) &&
+          /* istanbul ignore next */ (!method.onlyAtStart || self.atStart) &&
           (!method.notInList || !self.inList) &&
           (!method.notInBlock || !self.inBlock) &&
           (!method.notInLink || !self.inLink)

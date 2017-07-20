@@ -73,19 +73,6 @@ GFM mode (`boolean`, default: `true`) turns on:
 *   [Task lists](https://help.github.com/articles/writing-on-github/#task-lists)
 *   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables)
 
-##### `options.yaml`
-
-```md
----
-title: YAML is Cool
----
-
-# YAML is Cool
-```
-
-YAML mode (`boolean`, default: `true`) enables raw YAML front matter to be
-detected at the top.
-
 ##### `options.commonmark`
 
 ```md
