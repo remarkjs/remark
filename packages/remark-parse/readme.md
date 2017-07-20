@@ -33,7 +33,7 @@ process.stdin
 ## Table of Contents
 
 *   [API](#api)
-    *   [processor.use(parse)](#processoruseparse)
+    *   [processor.use(parse\[, options\])](#processoruseparse-options)
     *   [parse.Parser](#parseparser)
 *   [Extending the Parser](#extending-the-parser)
     *   [Parser#blockTokenizers](#parserblocktokenizers)
@@ -46,6 +46,7 @@ process.stdin
     *   [add(node\[, parent\])](#addnode-parent)
     *   [add.test()](#addtest)
     *   [add.reset(node\[, parent\])](#addresetnode-parent)
+    *   [Turning off a tokenizer](#turning-off-a-tokenizer)
 *   [License](#license)
 
 ## API

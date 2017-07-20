@@ -40,7 +40,7 @@ process.stdin
 ## Table of Contents
 
 *   [API](#api)
-    *   [processor.use(stringify)](#processorusestringify)
+    *   [processor.use(stringify\[, options\])](#processorusestringify-options)
     *   [stringify.Compiler](#stringifycompiler)
 *   [Extending the Compiler](#extending-the-compiler)
     *   [Compiler#visitors](#compilervisitors)

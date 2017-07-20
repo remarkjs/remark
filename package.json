@@ -32,7 +32,7 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap",
-    "build-md": "packages/remark-cli/cli.js . --frail --quiet",
+    "build-md": "packages/remark-cli/cli.js . -qfo",
     "build-bundle": "node script/build-bundle.js",
     "build": "npm run build-md && npm run build-bundle",
     "lint": "xo",
