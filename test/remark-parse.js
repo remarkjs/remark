@@ -67,14 +67,6 @@ test('remark().parse(file)', function (t) {
 
   t.throws(
     function () {
-      remark().data('settings', {breaks: 'unicorn'}).parse('');
-    },
-    /options.breaks/,
-    'should throw when `options.breaks` is not a boolean'
-  );
-
-  t.throws(
-    function () {
       remark().data('settings', {pedantic: {}}).parse('');
     },
     /options.pedantic/,

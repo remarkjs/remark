@@ -1,10 +1,10 @@
-In `breaks: true` mode, the following newline characters are exposed as `break` nodes:
+These are not breaks:
 
 Look at the
 pretty line
 breaks.
 
-In `breaks: false` mode, double spaces before a newline character are needed to expose `break` nodes:
+These are breaks:
 
 Look at the  
 pretty line  

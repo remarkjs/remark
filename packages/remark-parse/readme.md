@@ -116,16 +116,6 @@ Footnotes mode (`boolean`, default: `false`) enables reference footnotes and
 inline footnotes.  Both are wrapped in square brackets and preceded by a caret
 (`^`), and can be referenced from inside other footnotes.
 
-##### `options.breaks`
-
-```md
-This is a
-paragraph.
-```
-
-Breaks mode (`boolean`, default: `false`) exposes newline characters inside
-paragraphs as breaks.
-
 ##### `options.blocks`
 
 ```md

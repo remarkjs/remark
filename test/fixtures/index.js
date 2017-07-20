@@ -145,17 +145,9 @@ sources.forEach(function (source) {
 
   source = options.source;
 
-  /*
-   * Breaks are such a tiny feature, but almost
-   * certainly result in duplicate fixtures,
-   * that I've ignored it for the virtual
-   * options.
-   *
-   * Same for `position`, and `blocks`.
-   */
-
+  /* `position` and `blocks` are such a tiny feature, but result in lots of
+   * duplicate fixtures, that I've ignored it for the virtual options. */
   if (
-    options.parse.breaks !== defaults.parse.breaks ||
     options.parse.position !== defaults.parse.position ||
     options.parse.blocks !== defaults.parse.blocks
   ) {

@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "In ",
+          "value": "These are not breaks:",
           "position": {
             "start": {
               "line": 1,
@@ -15,76 +15,8 @@
             },
             "end": {
               "line": 1,
-              "column": 4,
-              "offset": 3
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "breaks: true",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 4,
-              "offset": 3
-            },
-            "end": {
-              "line": 1,
-              "column": 18,
-              "offset": 17
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " mode, the following newline characters are exposed as ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 18,
-              "offset": 17
-            },
-            "end": {
-              "line": 1,
-              "column": 73,
-              "offset": 72
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "break",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 73,
-              "offset": 72
-            },
-            "end": {
-              "line": 1,
-              "column": 80,
-              "offset": 79
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " nodes:",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 80,
-              "offset": 79
-            },
-            "end": {
-              "line": 1,
-              "column": 87,
-              "offset": 86
+              "column": 22,
+              "offset": 21
             },
             "indent": []
           }
@@ -98,8 +30,8 @@
         },
         "end": {
           "line": 1,
-          "column": 87,
-          "offset": 86
+          "column": 22,
+          "offset": 21
         },
         "indent": []
       }
@@ -114,12 +46,12 @@
             "start": {
               "line": 3,
               "column": 1,
-              "offset": 88
+              "offset": 23
             },
             "end": {
               "line": 5,
               "column": 8,
-              "offset": 119
+              "offset": 54
             },
             "indent": [
               1,
@@ -132,12 +64,12 @@
         "start": {
           "line": 3,
           "column": 1,
-          "offset": 88
+          "offset": 23
         },
         "end": {
           "line": 5,
           "column": 8,
-          "offset": 119
+          "offset": 54
         },
         "indent": [
           1,
@@ -150,85 +82,17 @@
       "children": [
         {
           "type": "text",
-          "value": "In ",
+          "value": "These are breaks:",
           "position": {
             "start": {
               "line": 7,
               "column": 1,
-              "offset": 121
+              "offset": 56
             },
             "end": {
               "line": 7,
-              "column": 4,
-              "offset": 124
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "breaks: false",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 4,
-              "offset": 124
-            },
-            "end": {
-              "line": 7,
-              "column": 19,
-              "offset": 139
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " mode, double spaces before a newline character are needed to expose ",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 19,
-              "offset": 139
-            },
-            "end": {
-              "line": 7,
-              "column": 88,
-              "offset": 208
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "break",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 88,
-              "offset": 208
-            },
-            "end": {
-              "line": 7,
-              "column": 95,
-              "offset": 215
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " nodes:",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 95,
-              "offset": 215
-            },
-            "end": {
-              "line": 7,
-              "column": 102,
-              "offset": 222
+              "column": 18,
+              "offset": 73
             },
             "indent": []
           }
@@ -238,12 +102,12 @@
         "start": {
           "line": 7,
           "column": 1,
-          "offset": 121
+          "offset": 56
         },
         "end": {
           "line": 7,
-          "column": 102,
-          "offset": 222
+          "column": 18,
+          "offset": 73
         },
         "indent": []
       }
@@ -258,12 +122,12 @@
             "start": {
               "line": 9,
               "column": 1,
-              "offset": 224
+              "offset": 75
             },
             "end": {
               "line": 9,
               "column": 12,
-              "offset": 235
+              "offset": 86
             },
             "indent": []
           }
@@ -274,12 +138,12 @@
             "start": {
               "line": 9,
               "column": 12,
-              "offset": 235
+              "offset": 86
             },
             "end": {
               "line": 10,
               "column": 1,
-              "offset": 238
+              "offset": 89
             },
             "indent": [
               1
@@ -293,12 +157,12 @@
             "start": {
               "line": 10,
               "column": 1,
-              "offset": 238
+              "offset": 89
             },
             "end": {
               "line": 10,
               "column": 12,
-              "offset": 249
+              "offset": 100
             },
             "indent": []
           }
@@ -309,12 +173,12 @@
             "start": {
               "line": 10,
               "column": 12,
-              "offset": 249
+              "offset": 100
             },
             "end": {
               "line": 11,
               "column": 1,
-              "offset": 252
+              "offset": 103
             },
             "indent": [
               1
@@ -328,12 +192,12 @@
             "start": {
               "line": 11,
               "column": 1,
-              "offset": 252
+              "offset": 103
             },
             "end": {
               "line": 11,
               "column": 8,
-              "offset": 259
+              "offset": 110
             },
             "indent": []
           }
@@ -343,12 +207,12 @@
         "start": {
           "line": 9,
           "column": 1,
-          "offset": 224
+          "offset": 75
         },
         "end": {
           "line": 11,
           "column": 8,
-          "offset": 259
+          "offset": 110
         },
         "indent": [
           1,
@@ -366,12 +230,12 @@
             "start": {
               "line": 13,
               "column": 1,
-              "offset": 261
+              "offset": 112
             },
             "end": {
               "line": 13,
               "column": 4,
-              "offset": 264
+              "offset": 115
             },
             "indent": []
           }
@@ -383,12 +247,12 @@
             "start": {
               "line": 13,
               "column": 4,
-              "offset": 264
+              "offset": 115
             },
             "end": {
               "line": 13,
               "column": 22,
-              "offset": 282
+              "offset": 133
             },
             "indent": []
           }
@@ -400,12 +264,12 @@
             "start": {
               "line": 13,
               "column": 22,
-              "offset": 282
+              "offset": 133
             },
             "end": {
               "line": 13,
               "column": 74,
-              "offset": 334
+              "offset": 185
             },
             "indent": []
           }
@@ -417,12 +281,12 @@
             "start": {
               "line": 13,
               "column": 74,
-              "offset": 334
+              "offset": 185
             },
             "end": {
               "line": 13,
               "column": 81,
-              "offset": 341
+              "offset": 192
             },
             "indent": []
           }
@@ -434,12 +298,12 @@
             "start": {
               "line": 13,
               "column": 81,
-              "offset": 341
+              "offset": 192
             },
             "end": {
               "line": 13,
               "column": 87,
-              "offset": 347
+              "offset": 198
             },
             "indent": []
           }
@@ -449,12 +313,12 @@
         "start": {
           "line": 13,
           "column": 1,
-          "offset": 261
+          "offset": 112
         },
         "end": {
           "line": 13,
           "column": 87,
-          "offset": 347
+          "offset": 198
         },
         "indent": []
       }
@@ -469,12 +333,12 @@
             "start": {
               "line": 15,
               "column": 1,
-              "offset": 349
+              "offset": 200
             },
             "end": {
               "line": 17,
               "column": 8,
-              "offset": 382
+              "offset": 233
             },
             "indent": [
               1,
@@ -487,12 +351,12 @@
         "start": {
           "line": 15,
           "column": 1,
-          "offset": 349
+          "offset": 200
         },
         "end": {
           "line": 17,
           "column": 8,
-          "offset": 382
+          "offset": 233
         },
         "indent": [
           1,
@@ -510,7 +374,7 @@
     "end": {
       "line": 18,
       "column": 1,
-      "offset": 383
+      "offset": 234
     }
   }
 }

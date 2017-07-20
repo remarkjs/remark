@@ -17,8 +17,6 @@ var MIN_BREAK_LENGTH = 2;
 
 /* Tokenise a break. */
 function hardBreak(eat, value, silent) {
-  var self = this;
-  var breaks = self.options.breaks;
   var length = value.length;
   var index = -1;
   var queue = '';
@@ -28,7 +26,7 @@ function hardBreak(eat, value, silent) {
     character = value.charAt(index);
 
     if (character === '\n') {
-      if (!breaks && index < MIN_BREAK_LENGTH) {
+      if (index < MIN_BREAK_LENGTH) {
         return;
       }
 
