@@ -51,6 +51,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Gemoji short-code support in remark
 *   [`remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
     — Transform Gemoji shortcodes to Unicode emoji
+*   [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
+    — Commonmark generic directive extension
 *   [`remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
 *   [`remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
