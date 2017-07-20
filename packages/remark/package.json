@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "7.0.1",
+  "version": "8.0.0",
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
@@ -14,8 +14,8 @@
     "process"
   ],
   "dependencies": {
-    "remark-parse": "^3.0.0",
-    "remark-stringify": "^3.0.0",
+    "remark-parse": "^4.0.0",
+    "remark-stringify": "^4.0.0",
     "unified": "^6.0.0"
   },
   "homepage": "http://remark.js.org",

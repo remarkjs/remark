@@ -1,6 +1,6 @@
 {
   "name": "remark-cli",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "description": "CLI to process markdown with remark using plugins",
   "license": "MIT",
   "keywords": [
@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "markdown-extensions": "^1.1.0",
-    "remark": "^7.0.0",
+    "remark": "^8.0.0",
     "unified-args": "^4.0.0"
   },
   "homepage": "http://remark.js.org",
