@@ -23,6 +23,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     – Link manager for Markdown files
 *   [`remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
     – Add an id, classes, and data attributes to `<span>` tags in markdown
+*   [`remark-breaks`](https://github.com/wooorm/remark-breaks)
+    – Breaks support, without needing spaces
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
     — Make a section collapsible
 *   [`remark-comment-blocks`](https://github.com/ben-eb/remark-comment-blocks)
