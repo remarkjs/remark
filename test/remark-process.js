@@ -1,18 +1,8 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for `remark.process()`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var remark = require('../packages/remark');
 
-/* Test `remark`. */
 test('remark().processSync(value)', function (t) {
   t.equal(
     remark().processSync('*foo*').toString(),

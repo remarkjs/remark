@@ -1,26 +1,15 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:link
- * @fileoverview Stringify a link.
- */
-
 'use strict';
 
-/* Dependencies. */
 var uri = require('../util/enclose-uri');
 var title = require('../util/enclose-title');
 
-/* Expose. */
 module.exports = link;
 
 /* Expression for a protocol:
  * http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax */
 var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
 
-/**
- * Stringify a link.
+/* Stringify a link.
  *
  * When no title exists, the compiled `children` equal
  * `url`, and `url` starts with a protocol, an auto
@@ -34,11 +23,7 @@ var PROTOCOL = /^[a-z][a-z+.-]+:\/?/i;
  *    [foo](<foo at bar dot com> 'An "example" e-mail')
  *
  * Supports named entities in the `url` and `title` when
- * in `settings.encode` mode.
- *
- * @param {Object} node - `link` node.
- * @return {string} - Markdown link.
- */
+ * in `settings.encode` mode. */
 function link(node) {
   var self = this;
   var content = self.encode(node.url || '', node);

@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:tokenize:reference
- * @fileoverview Tokenise a reference.
- */
-
 'use strict';
 
 var whitespace = require('is-whitespace-character');
@@ -26,7 +18,6 @@ var C_BACKSLASH = '\\';
 var C_BRACKET_OPEN = '[';
 var C_BRACKET_CLOSE = ']';
 
-/* Tokenise a reference. */
 function reference(eat, value, silent) {
   var self = this;
   var character = value.charAt(0);

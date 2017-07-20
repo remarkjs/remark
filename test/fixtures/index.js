@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Get fixtures.
- */
-
 'use strict';
 
-/* Dependencies. */
 var fs = require('fs');
 var path = require('path');
 var camelcase = require('camelcase');
@@ -16,7 +7,6 @@ var clone = require('clone');
 var parseDefaults = require('../../packages/remark-parse/lib/defaults.js');
 var stringifyDefaults = require('../../packages/remark-stringify/lib/defaults.js');
 
-/* Methods. */
 var own = {}.hasOwnProperty;
 var read = fs.readFileSync;
 var exists = fs.existsSync;
@@ -52,13 +42,7 @@ keys.forEach(function (key) {
   }));
 });
 
-/**
- * Parse a `string` `value` into a javascript value.
- *
- * @param {string} key - Name of setting.
- * @param {string} value - Associated value.
- * @return {Object} - Parsed value.
- */
+/* Parse a `string` `value` into a javascript value. */
 function augment(key, value) {
   if (!value) {
     value = key.slice(0, 2) !== 'no';
@@ -79,12 +63,7 @@ function augment(key, value) {
 
 augment.ruleRepetition = Number;
 
-/**
- * Parse options from a filename.
- *
- * @param {string} name - File-name to parse.
- * @return {Object} - Configuration.
- */
+/* Parse options from a filename. */
 function parseOptions(name) {
   var index = -1;
   var parts = name.split('.');
@@ -159,16 +138,10 @@ sources.forEach(function (source) {
   all[source] = options.parse;
 });
 
-/**
- * Get the difference between two objects.  Greatly
+/* Get the difference between two objects.  Greatly
  * simplified because `options` and `compate` consist
  * solely of booleans, and all properties exist in
- * both.
- *
- * @param {Object} options - Configuration.
- * @param {Object} compare - Object to compare to.
- * @return {number} - Difference.
- */
+ * both. */
 function difference(options, compare) {
   var count = 0;
 
@@ -181,15 +154,8 @@ function difference(options, compare) {
   return count;
 }
 
-/**
- * Find the closest fixture for a `source` in all
- * `fixtures`.  Returns a key of a fixture.
- *
- * @param {string} source - File-name to resolve.
- * @param {Object} fixtures - Available fixtures.
- * @param {Object} options - Configuration.
- * @return {string} - Resolved file-name.
- */
+/* Find the closest fixture for a `source` in all
+ * `fixtures`.  Returns a key of a fixture. */
 function resolveFixture(source, fixtures, options) {
   var minimum = Infinity;
   var resolved;
@@ -207,14 +173,8 @@ function resolveFixture(source, fixtures, options) {
   return resolved;
 }
 
-/**
- * Find the closest fixture for all `options`.  Returns
- * an object mapping options sources to fixture names.
- *
- * @param {Object} fixtures - Map of fixtures.
- * @param {Object} options - Configuration.
- * @return {Object} - Resolved fixtures.
- */
+/* Find the closest fixture for all `options`.  Returns
+ * an object mapping options sources to fixture names. */
 function resolveFixtures(fixtures, options) {
   var resolved = {};
 

@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:tokenize:url
- * @fileoverview Tokenise a URL.
- */
-
 'use strict';
 
 var decode = require('parse-entities');
@@ -35,7 +27,6 @@ var PROTOCOLS = [
 
 var PROTOCOLS_LENGTH = PROTOCOLS.length;
 
-/* Tokenise a URL. */
 function url(eat, value, silent) {
   var self = this;
   var subvalue;

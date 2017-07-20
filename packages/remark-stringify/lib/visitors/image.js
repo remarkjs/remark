@@ -1,22 +1,11 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:image
- * @fileoverview Stringify an image.
- */
-
 'use strict';
 
-/* Dependencies. */
 var uri = require('../util/enclose-uri');
 var title = require('../util/enclose-title');
 
-/* Expose. */
 module.exports = image;
 
-/**
- * Stringify an image.
+/* Stringify an image.
  *
  * Is smart about enclosing `url` (see `encloseURI()`) and
  * `title` (see `encloseTitle()`).
@@ -25,9 +14,6 @@ module.exports = image;
  *
  * Supports named entities in `url`, `alt`, and `title`
  * when in `settings.encode` mode.
- *
- * @param {Object} node - `image` node.
- * @return {string} - Markdown image.
  */
 function image(node) {
   var self = this;

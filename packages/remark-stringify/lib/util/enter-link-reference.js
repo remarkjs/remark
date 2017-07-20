@@ -1,21 +1,10 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:util:enter-link-reference
- * @fileoverview Enter a reference.
- */
-
 'use strict';
 
-/* Dependencies. */
 var returner = require('./returner');
 
-/* Expose. */
 module.exports = enter;
 
-/**
- * Shortcut and collapsed link references need no escaping
+/* Shortcut and collapsed link references need no escaping
  * and encoding during the processing of child nodes (it
  * must be implied from identifier).
  *
@@ -23,10 +12,6 @@ module.exports = enter;
  * and collapsed references.
  *
  * Implies `enterLink`.
- *
- * @param {Compiler} compiler - Compiler instance.
- * @param {LinkReference} node - LinkReference node.
- * @return {Function} - Exit state.
  */
 function enter(compiler, node) {
   var encode = compiler.encode;

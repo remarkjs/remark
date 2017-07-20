@@ -1,23 +1,7 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:macro:one
- * @fileoverview Stringify a node.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = one;
 
-/**
- * Visit a node.
- *
- * @param {Object} node - Node.
- * @param {Object?} [parent] - `node`s parent.
- * @return {string} - Compiled `node`.
- */
 function one(node, parent) {
   var self = this;
   var visitors = self.visitors;

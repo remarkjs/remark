@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse
- * @fileoverview Markdown parser.
- */
-
 'use strict';
 
 var xtend = require('xtend');
@@ -17,7 +9,6 @@ var tokenizer = require('./tokenizer');
 
 module.exports = Parser;
 
-/* Construct a new parser. */
 function Parser(doc, file) {
   this.file = file;
   this.offset = {};
@@ -34,7 +25,6 @@ function Parser(doc, file) {
   this.decode = decode(this);
 }
 
-/* Prototype. */
 var proto = Parser.prototype;
 
 /* Expose core. */

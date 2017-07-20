@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:defaults
- * @fileoverview Default options for `stringify`.
- */
-
 'use strict';
 
 module.exports = {

@@ -1,27 +1,12 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:macro:block
- * @fileoverview Stringify a block.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = block;
 
-/**
- * Stringify a block node with block children (e.g., `root`
+/* Stringify a block node with block children (e.g., `root`
  * or `blockquote`).
- *
  * Knows about code following a list, or adjacent lists
  * with similar bullets, and places an extra newline
- * between them.
- *
- * @param {Object} node
- * @return {string} - Compiled children.
- */
+ * between them. */
 function block(node) {
   var self = this;
   var values = [];

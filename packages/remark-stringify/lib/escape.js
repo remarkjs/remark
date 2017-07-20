@@ -1,53 +1,23 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:escape
- * @fileoverview Escape text to prevent it turning
- *   into markdown syntax.
- */
-
 'use strict';
 
-/* Dependencies. */
 var decimal = require('is-decimal');
 var alphanumeric = require('is-alphanumeric');
 var whitespace = require('is-whitespace-character');
 var escapes = require('markdown-escapes');
 var prefix = require('./util/entity-prefix-length');
 
-/* Expose. */
 module.exports = factory;
 
-/* Constants. */
 var BACKSLASH = '\\';
 var BULLETS = ['*', '-', '+'];
 var ALLIGNMENT = [':', '-', ' ', '|'];
 var entities = {'<': '&lt;', ':': '&#x3A;', '&': '&amp;', '|': '&#x7C;', '~': '&#x7E;'};
 
-/**
- * Factory to escape characters.
- *
- * @example
- *   var escape = escapeFactory({ commonmark: true });
- *   escape('x*x', { type: 'text', value: 'x*x' }) // 'x\\*x'
- *
- * @param {Object} options - Compiler options.
- * @return {function(value, node, parent): string} - Function which
- *   takes a value and a node and (optionally) its parent and returns
- *   its escaped value.
- */
+/* Factory to escape characters. */
 function factory(options) {
   return escape;
 
-  /**
-   * Escape punctuation characters in a node's value.
-   *
-   * @param {string} value - Value to escape.
-   * @param {Object} node - Node in which `value` exists.
-   * @param {Object} [parent] - Parent of `node`.
-   * @return {string} - Escaped `value`.
-   */
+  /* Escape punctuation characters in a node's value. */
   function escape(value, node, parent) {
     var self = this;
     var gfm = options.gfm;
@@ -248,9 +218,7 @@ function factory(options) {
   }
 }
 
-/**
- * Check if `index` in `value` is inside an alignment row.
- */
+/* Check if `index` in `value` is inside an alignment row. */
 function alignment(value, index) {
   var start = value.lastIndexOf('\n', index);
   var end = value.indexOf('\n', index);
@@ -267,16 +235,12 @@ function alignment(value, index) {
   return true;
 }
 
-/**
- * Check if `node` is a text node.
- */
+/* Check if `node` is a text node. */
 function text(node) {
   return node && node.type === 'text';
 }
 
-/**
- * Check if `value` ends in a protocol.
- */
+/* Check if `value` ends in a protocol. */
 function protocol(value) {
   var val = value.slice(-6).toLowerCase();
   return val === 'mailto' || val.slice(-5) === 'https' || val.slice(-4) === 'http';

@@ -1,22 +1,11 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for remark-cli.
- */
-
 'use strict';
 
-/* Dependencies. */
 var path = require('path');
 var execa = require('execa');
 var test = require('tape');
 
-/* Methods. */
 var join = path.join;
 
-/* Tests. */
 test('remark-cli', function (t) {
   t.plan(2);
 

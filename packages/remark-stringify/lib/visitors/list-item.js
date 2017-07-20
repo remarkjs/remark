@@ -1,18 +1,8 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:list-item
- * @fileoverview Stringify a list item.
- */
-
 'use strict';
 
-/* Dependencies. */
 var repeat = require('repeat-string');
 var pad = require('../util/pad');
 
-/* Expose. */
 module.exports = listItem;
 
 /* Which checkbox to use. */
@@ -23,8 +13,7 @@ var CHECKBOX_MAP = {
   false: '[ ] '
 };
 
-/**
- * Stringify a list item.
+/* Stringify a list item.
  *
  * Prefixes the content with a checked checkbox when
  * `checked: true`:
@@ -35,13 +24,6 @@ var CHECKBOX_MAP = {
  * `checked: false`:
  *
  *     [ ] foo
- *
- * @param {Object} node - `listItem` node.
- * @param {Object} parent - `list` node.
- * @param {number} position - Index of `node` in `parent`.
- * @param {string} bullet - Bullet to use.  This, and the
- *   `listItemIndent` setting define the used indent.
- * @return {string} - Markdown list item.
  */
 function listItem(node, parent, position, bullet) {
   var self = this;

@@ -1,21 +1,10 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:table
- * @fileoverview Stringify a table.
- */
-
 'use strict';
 
-/* Dependencies. */
 var markdownTable = require('markdown-table');
 
-/* Expose. */
 module.exports = table;
 
-/**
- * Stringify table.
+/* Stringify table.
  *
  * Creates a fenced table by default, but not in
  * `looseTable: true` mode:
@@ -34,9 +23,6 @@ module.exports = table;
  *     |Foo|Bar|
  *     |:-:|---|
  *     |Baz|Qux|
- *
- * @param {Object} node - `table` node.
- * @return {string} - Markdown table.
  */
 function table(node) {
   var self = this;

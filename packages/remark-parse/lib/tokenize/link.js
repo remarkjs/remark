@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:tokenize:link
- * @fileoverview Tokenise a link.
- */
-
 'use strict';
 
 var whitespace = require('is-whitespace-character');
@@ -42,7 +34,6 @@ COMMONMARK_LINK_MARKERS[C_DOUBLE_QUOTE] = C_DOUBLE_QUOTE;
 COMMONMARK_LINK_MARKERS[C_SINGLE_QUOTE] = C_SINGLE_QUOTE;
 COMMONMARK_LINK_MARKERS[C_PAREN_OPEN] = C_PAREN_CLOSE;
 
-/* Tokenise a link. */
 function link(eat, value, silent) {
   var self = this;
   var subvalue = '';

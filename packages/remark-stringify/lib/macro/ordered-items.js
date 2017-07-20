@@ -1,18 +1,8 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:macro:ordered-items
- * @fileoverview Stringify ordered list items.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = orderedItems;
 
-/**
- * Visit ordered list items.
+/* Visit ordered list items.
  *
  * Starts the list with
  * `node.start` and increments each following list item
@@ -26,13 +16,6 @@ module.exports = orderedItems;
  *
  *     1. foo
  *     1. bar
- *
- * Adds an extra line after an item if it has
- * `loose: true`.
- *
- * @param {Object} node - `list` node with
- *   `ordered: true`.
- * @return {string} - Compiled children.
  */
 function orderedItems(node) {
   var self = this;

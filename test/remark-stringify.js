@@ -1,25 +1,14 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for `remark.stringify()`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var wcwidth = require('wcwidth');
 var remark = require('../packages/remark');
 var Compiler = require('../packages/remark-stringify').Compiler;
 
-/* Construct an empty node. */
 function empty() {
   return {type: 'root', children: []};
 }
 
-/* Test `remark-stringify`. */
 test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {

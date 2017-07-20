@@ -1,25 +1,14 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for escaping in `remark-stringify`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var u = require('unist-builder');
 var visit = require('unist-util-visit');
 var remark = require('../packages/remark');
 
-/* Constants. */
 var commonmark = {commonmark: true};
 var pedantic = {pedantic: true};
 var uncollapsable = {start: {line: 1, column: NaN}, end: {line: 1, column: NaN}};
 
-/* Test `remark-stringify`. */
 test('stringify escapes', function (t) {
   t.equal(stringify('a\\b'), 'a\\\\b', '`\\`');
   t.equal(stringify('a`b'), 'a\\`b', '`` ` ``');

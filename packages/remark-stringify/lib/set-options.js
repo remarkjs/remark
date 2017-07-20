@@ -1,21 +1,11 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:set-options
- * @fileoverview Set configuration.
- */
-
 'use strict';
 
-/* Dependencies. */
 var xtend = require('xtend');
 var encode = require('stringify-entities');
 var defaults = require('./defaults');
 var escapeFactory = require('./escape');
 var returner = require('./util/returner');
 
-/* Expose. */
 module.exports = setOptions;
 
 /* Map of applicable enum's. */
@@ -37,15 +27,8 @@ var validate = {
   function: validateFunction
 };
 
-/**
- * Set options.  Does not overwrite previously set
- * options.
- *
- * @this {Compiler}
- * @throws {Error} - When an option is invalid.
- * @param {Object?} [options] - Stringify settings.
- * @return {Compiler} - `self`.
- */
+/* Set options.  Does not overwrite previously set
+ * options. */
 function setOptions(options) {
   var self = this;
   var current = self.options;
@@ -78,28 +61,15 @@ function setOptions(options) {
   return self;
 }
 
-/**
- * Throw an exception with in its `message` `value`
- * and `name`.
- *
- * @param {*} value - Invalid value.
- * @param {string} name - Setting name.
- */
+/* Throw an exception with in its `message` `value`
+ * and `name`. */
 function raise(value, name) {
   throw new Error('Invalid value `' + value + '` for setting `' + name + '`');
 }
 
-/**
- * Validate a value to be boolean. Defaults to `def`.
+/* Validate a value to be boolean. Defaults to `def`.
  * Raises an exception with `context[name]` when not
- * a boolean.
- *
- * @throws {Error} - When a setting is neither omitted nor
- *   a boolean.
- * @param {Object} context - Settings.
- * @param {string} name - Setting name.
- * @param {boolean} def - Default value.
- */
+ * a boolean. */
 function validateBoolean(context, name, def) {
   var value = context[name];
 
@@ -114,17 +84,9 @@ function validateBoolean(context, name, def) {
   context[name] = value;
 }
 
-/**
- * Validate a value to be boolean. Defaults to `def`.
+/* Validate a value to be boolean. Defaults to `def`.
  * Raises an exception with `context[name]` when not
- * a boolean.
- *
- * @throws {Error} - When a setting is neither omitted nor
- *   a number.
- * @param {Object} context - Settings.
- * @param {string} name - Setting name.
- * @param {number} def - Default value.
- */
+ * a boolean. */
 function validateNumber(context, name, def) {
   var value = context[name];
 
@@ -139,18 +101,9 @@ function validateNumber(context, name, def) {
   context[name] = value;
 }
 
-/**
- * Validate a value to be in `map`. Defaults to `def`.
+/* Validate a value to be in `map`. Defaults to `def`.
  * Raises an exception with `context[name]` when not
- * in `map`.
- *
- * @throws {Error} - When a setting is neither omitted nor
- *   in `map`.
- * @param {Object} context - Settings.
- * @param {string} name - Setting name.
- * @param {string} def - Default value.
- * @param {Object} map - Enum.
- */
+ * in `map`. */
 function validateString(context, name, def, map) {
   var value = context[name];
 
@@ -184,19 +137,12 @@ function validateFunction(context, name, def) {
   context[name] = value;
 }
 
-/**
- * Factory to encode HTML entities.
+/* Factory to encode HTML entities.
  * Creates a no-operation function when `type` is
  * `'false'`, a function which encodes using named
  * references when `type` is `'true'`, and a function
  * which encodes using numbered references when `type` is
- * `'numbers'`.
- *
- * @param {string} type - Either `'true'`, `'false'`, or
- *   `'numbers'`.
- * @return {function(string): string} - Function which
- *   takes a value and returns its encoded version.
- */
+ * `'numbers'`. */
 function encodeFactory(type) {
   var options = {};
 
@@ -215,13 +161,7 @@ function encodeFactory(type) {
 
   return wrapped;
 
-  /**
-   * Encode HTML entities using the bound options.
-   *
-   * @param {string} value - Content.
-   * @param {Object} [node] - Node which is compiled.
-   * @return {string} - Encoded content.
-   */
+  /* Encode HTML entities using the bound options. */
   function wrapped(value) {
     return encode(value, options);
   }

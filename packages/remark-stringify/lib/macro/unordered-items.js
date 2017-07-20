@@ -1,24 +1,9 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:macro:unordered-items
- * @fileoverview Stringify unordered list items.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = unorderedItems;
 
-/**
- * Visit unordered list items.
- *
+/* Visit unordered list items.
  * Uses `options.bullet` as each item's bullet.
- *
- * @param {Object} node - `list` node with
- *   `ordered: false`.
- * @return {string} - Compiled children.
  */
 function unorderedItems(node) {
   var self = this;

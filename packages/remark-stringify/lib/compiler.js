@@ -1,27 +1,11 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify
- * @fileoverview Markdown compiler
- */
-
 'use strict';
 
-/* Dependencies. */
 var xtend = require('xtend');
 var toggle = require('state-toggle');
 
-/* Expose. */
 module.exports = Compiler;
 
-/**
- * Construct a new compiler.
- *
- * @constructor
- * @class {Compiler}
- * @param {File} file - Virtual file.
- */
+/* Construct a new compiler. */
 function Compiler(tree, file) {
   this.inLink = false;
   this.inTable = false;
@@ -31,7 +15,6 @@ function Compiler(tree, file) {
   this.setOptions({});
 }
 
-/* Cache prototype. */
 var proto = Compiler.prototype;
 
 /* Enter and exit helpers. */

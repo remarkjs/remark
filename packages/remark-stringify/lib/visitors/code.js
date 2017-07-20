@@ -1,27 +1,14 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:code
- * @fileoverview Stringify code.
- */
-
 'use strict';
 
-/* Dependencies. */
 var streak = require('longest-streak');
 var repeat = require('repeat-string');
 var pad = require('../util/pad');
 
-/* Expose. */
 module.exports = code;
 
-/* Constants. */
 var FENCE = /([`~])\1{2}/;
 
-/**
- * Stringify code.
- *
+/* Stringify code.
  * Creates indented code when:
  *
  * - No language tag exists;
@@ -48,13 +35,6 @@ var FENCE = /([`~])\1{2}/;
  *     foo
  *     ```
  *     ````
- *
- * Supports named entities in the language flag with
- * `settings.encode` mode.
- *
- * @param {Object} node - `code` node.
- * @param {Object} parent - Parent of `node`.
- * @return {string} - Markdown code.
  */
 function code(node, parent) {
   var self = this;
@@ -74,10 +54,7 @@ function code(node, parent) {
       options.listItemIndent !== 'tab' &&
       options.pedantic
     ) {
-      self.file.fail(
-        'Cannot indent code properly. See http://git.io/vgFvT',
-        node.position
-      );
+      self.file.fail('Cannot indent code properly. See http://git.io/vgFvT', node.position);
     }
 
     return pad(value, 1);

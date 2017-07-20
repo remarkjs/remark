@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for `remark.parse()`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var path = require('path');
 var fs = require('fs');
 var test = require('tape');
@@ -16,7 +7,6 @@ var vfile = require('vfile');
 var remark = require('../packages/remark');
 var Parser = require('../packages/remark-parse').Parser;
 
-/* Test `remark-parse`. */
 test('remark().parse(file)', function (t) {
   t.equal(
     remark().parse('Alfred').children.length,

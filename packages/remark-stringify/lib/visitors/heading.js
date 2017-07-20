@@ -1,21 +1,10 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:heading
- * @fileoverview Stringify a heading.
- */
-
 'use strict';
 
-/* Dependencies. */
 var repeat = require('repeat-string');
 
-/* Expose. */
 module.exports = heading;
 
-/**
- * Stringify heading.
+/* Stringify a heading.
  *
  * In `setext: true` mode and when `depth` is smaller than
  * three, creates a setext header:
@@ -31,9 +20,6 @@ module.exports = heading;
  * hashes:
  *
  *     ### Foo ###
- *
- * @param {Object} node - `heading` node.
- * @return {string} - Markdown heading.
  */
 function heading(node) {
   var self = this;

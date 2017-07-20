@@ -1,15 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark
- * @fileoverview Test suite for remark, remark-parse,
- *   and remark-stringify.
- */
-
 'use strict';
 
-/* Dependencies. */
 var test = require('tape');
 var extend = require('extend');
 var remove = require('unist-util-remove-position');
@@ -18,8 +8,6 @@ var mdast = require('mdast-util-assert');
 var remark = require('../packages/remark');
 var fixtures = require('./fixtures');
 
-/* Methods. */
-/* Test all fixtures. */
 test('fixtures', function (t) {
   var index = -1;
 

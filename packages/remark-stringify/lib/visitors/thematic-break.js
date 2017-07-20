@@ -1,22 +1,10 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:visitors:thematic-break
- * @fileoverview Stringify a thematic-break.
- */
-
 'use strict';
 
-/* Dependencies. */
 var repeat = require('repeat-string');
 
-/* Expose. */
 module.exports = thematic;
 
-/**
- * Stringify a `thematic-break`.
- *
+/* Stringify a `thematic-break`.
  * The character used is configurable through `rule`: (`'_'`)
  *
  *     ___
@@ -30,8 +18,6 @@ module.exports = thematic;
  * through `ruleSpaces`: (`true`)
  *
  *     * * *
- *
- * @return {string} - Markdown thematic break.
  */
 function thematic() {
   var options = this.options;

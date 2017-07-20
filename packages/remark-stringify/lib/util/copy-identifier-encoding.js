@@ -1,41 +1,19 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:util:copy-identifier-encoding
- * @fileoverview Encode based on the identifier.
- */
-
 'use strict';
 
-/* Dependencies. */
 var entityPrefixLength = require('./entity-prefix-length');
 
-/* Expose. */
 module.exports = copy;
 
-/* Punctuation characters. */
 var PUNCTUATION = /[-!"#$%&'()*+,./:;<=>?@[\\\]^`{|}~_]/;
 
-/**
- * For shortcut and collapsed reference links, the contents
+/* For shortcut and collapsed reference links, the contents
  * is also an identifier, so we need to restore the original
  * encoding and escaping that were present in the source
  * string.
  *
  * This function takes the unescaped & unencoded value from
  * shortcut's child nodes and the identifier and encodes
- * the former according to the latter.
- *
- * @example
- *   copyIdentifierEncoding('a*b', 'a\\*b*c')
- *   // 'a\\*b*c'
- *
- * @param {string} value - Unescaped and unencoded stringified
- *   link value.
- * @param {string} identifier - Link identifier.
- * @return {string} - Encoded link value.
- */
+ * the former according to the latter. */
 function copy(value, identifier) {
   var length = value.length;
   var count = identifier.length;

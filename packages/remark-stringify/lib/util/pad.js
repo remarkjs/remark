@@ -1,33 +1,13 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:util:pad
- * @fileoverview Pad a given value.
- */
-
 'use strict';
 
-/* Dependencies. */
 var repeat = require('repeat-string');
 
-/* Expose. */
 module.exports = pad;
 
-/* Constants. */
 var INDENT = 4;
 
-/**
- * Pad `value` with `level * INDENT` spaces.  Respects
- * lines. Ignores empty lines.
- *
- * @example
- *   pad('foo', 1) // '    foo'
- *
- * @param {string} value - Content.
- * @param {number} level - Indentation level.
- * @return {string} - Padded `value`.
- */
+/* Pad `value` with `level * INDENT` spaces.  Respects
+ * lines. Ignores empty lines. */
 function pad(value, level) {
   var index;
   var padding;

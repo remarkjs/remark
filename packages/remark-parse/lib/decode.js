@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:decode
- * @fileoverview Decode entities.
- */
-
 'use strict';
 
 var entities = require('parse-entities');

@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:tokenize:definition
- * @fileoverview Tokenise a definition.
- */
-
 'use strict';
 
 var whitespace = require('is-whitespace-character');
@@ -29,7 +21,6 @@ var C_COLON = ':';
 var C_LT = '<';
 var C_GT = '>';
 
-/* Tokenise a definition. */
 function definition(eat, value, silent) {
   var self = this;
   var commonmark = self.options.commonmark;

@@ -1,22 +1,8 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:stringify:macro:all
- * @fileoverview Stringify children in a node.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = all;
 
-/**
- * Visit all children of `parent`.
- *
- * @param {Object} parent - Parent node of children.
- * @return {Array.<string>} - List of compiled children.
- */
+/* Visit all children of `parent`. */
 function all(parent) {
   var self = this;
   var children = parent.children;

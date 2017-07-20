@@ -1,22 +1,10 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:script
- * @fileoverview Regenerate all fixtures according to their
- *   configuration (found in each filename), useful when
- *   the parser is modified to output different syntax trees.
- */
-
 'use strict';
 
-/* Dependencies. */
 var fs = require('fs');
 var path = require('path');
 var remark = require('../packages/remark');
 var fixtures = require('../test/fixtures');
 
-/* Regenerate. */
 fixtures.forEach(function (fixture) {
   var input = fixture.input;
   var name = fixture.name;

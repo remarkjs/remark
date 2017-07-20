@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:script
- * @fileoverview Bundle and mangle `remark`.
- */
-
 'use strict';
 
-/* Dependencies. */
 var fs = require('fs');
 var path = require('path');
 var chalk = require('chalk');
@@ -19,7 +10,6 @@ var esmangle = require('esmangle');
 var escodegen = require('escodegen');
 var pack = require('../packages/remark/package.json');
 
-/* Methods. */
 var write = fs.writeFileSync;
 
 var comment = [

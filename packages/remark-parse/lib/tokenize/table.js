@@ -1,11 +1,3 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:tokenize:table
- * @fileoverview Tokenise a table.
- */
-
 'use strict';
 
 var whitespace = require('is-whitespace-character');
@@ -29,7 +21,6 @@ var TABLE_ALIGN_CENTER = 'center';
 var TABLE_ALIGN_RIGHT = 'right';
 var TABLE_ALIGN_NONE = null;
 
-/* Tokenise a table. */
 function table(eat, value, silent) {
   var self = this;
   var index;

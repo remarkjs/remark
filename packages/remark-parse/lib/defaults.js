@@ -1,14 +1,5 @@
-/**
- * @author Titus Wormer
- * @copyright 2015 Titus Wormer
- * @license MIT
- * @module remark:parse:defaults
- * @fileoverview Default options for `parse`.
- */
-
 'use strict';
 
-/* Expose. */
 module.exports = {
   position: true,
   gfm: true,
