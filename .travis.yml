@@ -1,7 +1,7 @@
 language: node_js
 node_js:
 - '4.0'
-- '7.0'
+- '8.0'
 after_success: bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
@@ -13,4 +13,4 @@ deploy:
       - "remark.min.js"
     on:
       tags: true
-      node: '7.0'
+      node: '8.0'
