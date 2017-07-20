@@ -45,6 +45,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Automatically adds the target and rel attributes to external links
 *   [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — Replacing the first heading in a document
+*   [`remark-frontmatter`](https://github.com/wooorm/remark-frontmatter)
+    – Frontmatter (yaml, toml, and more) support
 *   [`remark-gemoji`](https://github.com/wooorm/remark-gemoji)
     — Gemoji short-code support in remark
 *   [`remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
