@@ -17,6 +17,13 @@ See [tools built with remark »][products].
 
 Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 
+*   [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-abbr)
+    — Custom syntax to handle abbreviations, custom mdast inline node type
+    `abbr`.  Rehype compatible (`<abbr title="bar">foo</abbr>`)
+*   [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-align)
+    — Custom syntax to handle text/block alignment, custom mdast block node
+    type `CenterAligned`, `RightAligned`.  Rehype compatible (wraps in `div`s
+    with alignment as configurable CSS class)
 *   [`remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings
 *   [`remark-bookmarks`](https://github.com/ben-eb/remark-bookmarks)
@@ -31,10 +38,17 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Wrap Markdown with a comment block
 *   [`remark-comment-config`](https://github.com/wooorm/remark-comment-config)
     — Configure remark with comments
+*   [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-comments)
+    — Configurable custom syntax to ignore parts of the Markdown input
 *   [`remark-contributors`](https://github.com/hughsk/remark-contributors)
     — Inject a given table of contributors
+*   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-custom-blocks)
+    — Configurable custom syntax to parse custom blocks, creating new mdast
+    node types.  Rehype compatible
 *   [`remark-defsplit`](https://github.com/eush77/remark-defsplit)
     — Extract inline link and image destinations as separate definitions
+*   [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers)
+    — Disable any or all remark’s `blockTokenizers` and `inlineTokenizers`
 *   [`remark-embed-images`](https://github.com/dherges/remark-embed-images)
     — Embed images with data: URIs, inlining base64-encoded sources
 *   [`remark-emoji`](https://github.com/rhysd/remark-emoji)
@@ -45,6 +59,9 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Automatically adds the target and rel attributes to external links
 *   [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — Replacing the first heading in a document
+*   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-fix-guillemets)
+    — For weird typographic reasons, this fixes `<<a>>` being parsed as
+      `<` + html tag `<a>` + `>` and instead replaces this with text `<<a>>`
 *   [`remark-frontmatter`](https://github.com/wooorm/remark-frontmatter)
     – Frontmatter (yaml, toml, and more) support
 *   [`remark-gemoji`](https://github.com/wooorm/remark-gemoji)
@@ -55,6 +72,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Commonmark generic directive extension
 *   [`remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
+*   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
+    — Custom Markdown syntax to describe tables.  Rehype compatible
 *   [`remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
     — Adjust the gap between headings
 *   [`remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
@@ -66,10 +85,16 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Transform unicode emoji to HTML images
 *   [`remark-html-katex`](https://github.com/rokt33r/remark-math/blob/master/packages/remark-html-katex/readme.md)
     — Transform math inline and block nodes to styled HTML equations with [KaTeX](https://github.com/Khan/KaTeX)
+*   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-iframes)
+    — Custom syntax with fully configurable iframe providers, following a
+    whitelist approach.  Rehype compatible
 *   [`remark-inline-links`](https://github.com/wooorm/remark-inline-links)
     — Transform references and definitions to normal links and images
 *   [`remark-inline-math`](https://github.com/bizen241/remark-inline-math)
     — Inline math support
+*   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-kbd)
+    — Custom syntax, parses `||foo||` into a new mdast inline node type `kbd`.
+    Rehype compatible (`<kbd>foo</kbd>`)
 *   [`remark-license`](https://github.com/wooorm/remark-license)
     — Add a license section
 *   [`remark-lint`](https://github.com/wooorm/remark-lint)
@@ -84,6 +109,9 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas)
 *   [`remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
     — Ensure at most one top-level heading is in the document
+*   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
+    — Custom syntax, parses `@user`, `@**first last**`, configurable existance
+    check.  Rehype compatible
 *   [`remark-react`](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react)
 *   [`remark-react-lowlight`](https://github.com/bebraw/remark-react-lowlight)
@@ -104,6 +132,9 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Remove badges (such as `shields.io`)
 *   [`remark-squeeze-paragraphs`](https://github.com/eush77/remark-squeeze-paragraphs)
     — Remove empty paragraphs
+*   [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-sub-super)
+    — Custom syntax to parse subscript and superscript.  Rehype compatible
+    (using `<sub>` and `<sup>`)
 *   [`remark-swagger`](https://github.com/yoshuawuyts/remark-swagger)
     — Insert a swagger specification
 *   [`remark-textr`](https://github.com/denysdovhan/remark-textr)
