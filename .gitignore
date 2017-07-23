@@ -1,7 +1,8 @@
 .DS_Store
-.nyc_output
 *.log
-node_modules
-coverage
+.nyc_output/
+coverage/
+dest/
+node_modules/
 /remark.js
 /remark.min.js

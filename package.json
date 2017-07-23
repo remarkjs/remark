@@ -6,16 +6,20 @@
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {},
   "devDependencies": {
+    "cssnano": "^3.10.0",
+    "postcss-cli": "^4.1.0",
     "rehype-cli": "^3.0.0",
-    "rehype-format": "^2.1.0",
     "rehype-highlight": "^2.0.0",
+    "rehype-preset-minify": "^2.0.0",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "^17.0.0",
     "xo": "^0.18.2"
   },
   "scripts": {
-    "build:html": "rehype -u highlight -u format src/index.html -o index.html",
-    "build": "npm run build:html",
+    "build:mv": "cp -r src/* dest",
+    "build:html": "rehype -u highlight -u preset-minify src -o dest",
+    "build:css": "postcss src/index.css > dest/index.css",
+    "build": "npm run build:mv && npm run build:css && npm run build:html",
     "lint": "xo && stylelint index.css",
     "test": "npm run build && npm run lint"
   },
@@ -25,5 +29,12 @@
   "xo": {
     "space": true,
     "esnext": false
+  },
+  "postcss": {
+    "plugins": {
+      "cssnano": {
+        "preset": "default"
+      }
+    }
   }
 }
