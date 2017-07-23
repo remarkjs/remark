@@ -6,11 +6,11 @@
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {},
   "devDependencies": {
-    "rehype-cli": "^2.0.0",
+    "rehype-cli": "^3.0.0",
     "rehype-format": "^2.1.0",
     "rehype-highlight": "^2.0.0",
-    "stylelint": "^7.10.1",
-    "stylelint-config-standard": "^16.0.0",
+    "stylelint": "^8.0.0",
+    "stylelint-config-standard": "^17.0.0",
     "xo": "^0.18.2"
   },
   "scripts": {
