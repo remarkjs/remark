@@ -19,6 +19,7 @@
     "lerna": "2.0.0",
     "mdast-util-assert": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
+    "mdast-zone": "^3.0.1",
     "nyc": "^11.0.0",
     "remark-preset-wooorm": "^3.0.0",
     "tape": "^4.5.1",
@@ -67,6 +68,7 @@
   },
   "remarkConfig": {
     "plugins": [
+      "./script/list-of-methods",
       "preset-wooorm"
     ]
   }

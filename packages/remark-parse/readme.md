@@ -182,10 +182,31 @@ An object mapping tokenizer names to [tokenizer][]s.  These
 tokenizers (for example: `fencedCode`, `table`, and `paragraph`) eat
 from the start of a value to a line ending.
 
+See `#blockMethods` below for a list of methods that are included by
+default.
+
 ### `Parser#blockMethods`
 
 Array of `blockTokenizers` names (`string`) specifying the order in
 which they run.
+
+<!--methods-block start-->
+
+*   `newline`
+*   `indentedCode`
+*   `fencedCode`
+*   `blockquote`
+*   `atxHeading`
+*   `thematicBreak`
+*   `list`
+*   `setextHeading`
+*   `html`
+*   `footnote`
+*   `definition`
+*   `table`
+*   `paragraph`
+
+<!--methods-block end-->
 
 ### `Parser#inlineTokenizers`
 
@@ -193,10 +214,30 @@ An object mapping tokenizer names to [tokenizer][]s.  These tokenizers
 (for example: `url`, `reference`, and `emphasis`) eat from the start
 of a value.  To increase performance, they depend on [locator][]s.
 
+See `#inlineMethods` below for a list of methods that are included by
+default.
+
 ### `Parser#inlineMethods`
 
 Array of `inlineTokenizers` names (`string`) specifying the order in
 which they run.
+
+<!--methods-inline start-->
+
+*   `escape`
+*   `autoLink`
+*   `url`
+*   `html`
+*   `link`
+*   `reference`
+*   `strong`
+*   `emphasis`
+*   `deletion`
+*   `code`
+*   `break`
+*   `text`
+
+<!--methods-inline end-->
 
 ### `function tokenizer(eat, value, silent)`
 
