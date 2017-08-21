@@ -77,7 +77,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
     — Custom Markdown syntax to describe tables.  Rehype compatible
 *   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
-    — Replaces graphs defined in `dot` with rendered SVGs.
+    — Replaces graphs defined in `dot` with rendered SVGs
 *   [`remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
     — Adjust the gap between headings
 *   [`remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
