@@ -72,8 +72,12 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Commonmark generic directive extension
 *   [`remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
+*   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact) 
+    — Download artifacts from GitLab projects to live alongside your Markdown
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
     — Custom Markdown syntax to describe tables.  Rehype compatible
+*   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
+    — Replace `dot` graphs with rendered SVGs
 *   [`remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
     — Adjust the gap between headings
 *   [`remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
@@ -109,6 +113,9 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas)
 *   [`remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
     — Ensure at most one top-level heading is in the document
+*   [`remark-openapi`](https://github.com/temando/remark-openapi)
+    — Convert links to local or remote OpenAPI definition to tables with
+    summaries of all paths
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
     — Custom syntax, parses `@user`, `@**first last**`, configurable existance
     check.  Rehype compatible
