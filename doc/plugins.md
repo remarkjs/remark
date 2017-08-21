@@ -9,6 +9,7 @@ See [tools built with remark »][products].
 ## Table of Contents
 
 *   [List of Plugins](#list-of-plugins)
+*   [List of Presets](#list-of-presets)
 *   [List of Utilities](#list-of-utilities)
 *   [Using plugins](#using-plugins)
 *   [Creating plugins](#creating-plugins)
@@ -164,6 +165,10 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-yaml-config`](https://github.com/wooorm/remark-yaml-config)
     — Configure remark with YAML
 
+## List of Presets
+
+See [npm search][preset-search] for available and often inspirational presets.
+
 ## List of Utilities
 
 See [**MDAST**][mdast-util] for a list of utilities for working with
@@ -224,3 +229,5 @@ files, use `vfile-`.
 [gitter]: https://gitter.im/wooorm/remark
 
 [guide]: https://unifiedjs.github.io/create-a-plugin.html
+
+[preset-search]: https://www.npmjs.com/search?q=remark-preset
