@@ -160,7 +160,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 
 ## List of Presets
 
-Search for available presets on npm [here](https://www.npmjs.com/search?q=remark-preset&page=1).
+See [npm search][preset-search] for available and often inspirational presets.
 
 ## List of Utilities
 
@@ -222,3 +222,5 @@ files, use `vfile-`.
 [gitter]: https://gitter.im/wooorm/remark
 
 [guide]: https://unifiedjs.github.io/create-a-plugin.html
+
+[preset-search]: https://www.npmjs.com/search?q=remark-preset
