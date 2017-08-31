@@ -75,7 +75,7 @@ See [plug-ins][plugins] for a list of plugins and utilities.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
 
 [remark]: https://github.com/wooorm/remark
 

@@ -73,7 +73,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Commonmark generic directive extension
 *   [`remark-github`](https://github.com/wooorm/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
-*   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact) 
+*   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
     — Download artifacts from GitLab projects to live alongside your Markdown
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
     — Custom Markdown syntax to describe tables.  Rehype compatible
@@ -204,7 +204,7 @@ files, use `vfile-`.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
 
 [plugins]: #list-of-plugins
 

@@ -192,7 +192,7 @@ remark()
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
 
 [issues]: https://github.com/wooorm/remark/issues
 

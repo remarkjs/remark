@@ -27,7 +27,7 @@ Oh, and [plug-ins][plugins]?!
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/6ecac20/logo.svg
+[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
 
 [build-badge]: https://img.shields.io/travis/wooorm/remark.svg
 
