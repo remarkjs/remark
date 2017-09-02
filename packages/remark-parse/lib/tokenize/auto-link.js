@@ -27,7 +27,7 @@ function autoLink(eat, value, silent) {
   var link;
   var now;
   var content;
-  var tokenize;
+  var tokenizers;
   var exit;
 
   if (value.charAt(0) !== C_LT) {
@@ -125,14 +125,16 @@ function autoLink(eat, value, silent) {
     }
   }
 
-  /* Temporarily remove support for escapes in autolinks. */
-  tokenize = self.inlineTokenizers.escape;
-  self.inlineTokenizers.escape = null;
+  /* Temporarily remove all tokenizers except text in autolinks. */
+  tokenizers = self.inlineTokenizers;
+  self.inlineTokenizers = {
+    text: tokenizers.text
+  };
   exit = self.enterLink();
 
   content = self.tokenizeInline(content, now);
 
-  self.inlineTokenizers.escape = tokenize;
+  self.inlineTokenizers = tokenizers;
   exit();
 
   return eat(subvalue)({
