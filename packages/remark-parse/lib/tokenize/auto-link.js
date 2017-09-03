@@ -127,9 +127,8 @@ function autoLink(eat, value, silent) {
 
   /* Temporarily remove all tokenizers except text in autolinks. */
   tokenizers = self.inlineTokenizers;
-  self.inlineTokenizers = {
-    text: tokenizers.text
-  };
+  self.inlineTokenizers = {text: tokenizers.text};
+
   exit = self.enterLink();
 
   content = self.tokenizeInline(content, now);
