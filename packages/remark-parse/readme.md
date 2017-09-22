@@ -143,6 +143,17 @@ Pedantic mode (`boolean`, default: `false`) turns on:
 *   And pedantic mode removes less spaces in list-items (at most four,
     instead of the whole indent)
 
+##### `options.decodeHtmlEntities`
+
+```md
+&lt;div&gt;
+```
+
+Decode HTML entities (`boolean`, default: `true`)
+Allows HTML entity decoding to be switched off.  This may produce unexpected
+results with different configurations - only turn off if you know what you’re
+doing!
+
 ### `parse.Parser`
 
 Access to the [parser][], if you need it.
