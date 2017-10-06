@@ -193,12 +193,10 @@ module.exports = gap;
 function gap() {
   var Compiler = this.Compiler;
   var visitors = Compiler.prototype.visitors;
-  var heading = visitors.heading;
+  var original = visitors.heading;
 
-  visitors.heading = heading;
-
-  function heading(node) {
-    return (node.depth === 2 ? '\n' : '') + heading.apply(this, arguments);
+  visitors.heading = function heading(node) {
+    return (node.depth === 2 ? '\n' : '') + original.apply(this, arguments);
   }
 }
 ```
