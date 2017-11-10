@@ -108,6 +108,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Compile Markdown to Man pages (roff)
 *   [`remark-math`](https://github.com/rokt33r/remark-math)
     — Math inline and block support
+*   [`remark-mermaid`](https://github.com/temando/remark-mermaid)
+    — Replace [mermaid](https://mermaidjs.github.io/) graphs with rendered SVGs
 *   [`remark-message-control`](https://github.com/wooorm/remark-message-control)
     — Enable, disable, and ignore messages
 *   [`remark-midas`](https://github.com/ben-eb/remark-midas)
