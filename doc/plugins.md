@@ -31,13 +31,13 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     – Link manager for Markdown files
 *   [`remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
     – Add an id, classes, and data attributes to `<span>` tags in markdown
-*   [`remark-breaks`](https://github.com/wooorm/remark-breaks)
+*   [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
     – Breaks support, without needing spaces
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
     — Make a section collapsible
 *   [`remark-comment-blocks`](https://github.com/ben-eb/remark-comment-blocks)
     — Wrap Markdown with a comment block
-*   [`remark-comment-config`](https://github.com/wooorm/remark-comment-config)
+*   [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
     — Configure remark with comments
 *   [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-comments)
     — Configurable custom syntax to ignore parts of the Markdown input
@@ -63,15 +63,15 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-fix-guillemets)
     — For weird typographic reasons, this fixes `<<a>>` being parsed as
       `<` + html tag `<a>` + `>` and instead replaces this with text `<<a>>`
-*   [`remark-frontmatter`](https://github.com/wooorm/remark-frontmatter)
+*   [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – Frontmatter (yaml, toml, and more) support
-*   [`remark-gemoji`](https://github.com/wooorm/remark-gemoji)
+*   [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
     — Gemoji short-code support in remark
 *   [`remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
     — Transform Gemoji shortcodes to Unicode emoji
 *   [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — Commonmark generic directive extension
-*   [`remark-github`](https://github.com/wooorm/remark-github)
+*   [`remark-github`](https://github.com/remarkjs/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
 *   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
     — Download artifacts from GitLab projects to live alongside your Markdown
@@ -84,7 +84,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
     — Highlight code blocks in Markdown files with
     [highlight.js](https://github.com/isagalaev/highlight.js)
-*   [`remark-html`](https://github.com/wooorm/remark-html)
+*   [`remark-html`](https://github.com/remarkjs/remark-html)
     — Compile Markdown to HTML documents
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
     — Transform unicode emoji to HTML images
@@ -93,24 +93,24 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-iframes)
     — Custom syntax with fully configurable iframe providers, following a
     whitelist approach.  Rehype compatible
-*   [`remark-inline-links`](https://github.com/wooorm/remark-inline-links)
+*   [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
     — Transform references and definitions to normal links and images
 *   [`remark-inline-math`](https://github.com/bizen241/remark-inline-math)
     — Inline math support
 *   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-kbd)
     — Custom syntax, parses `||foo||` into a new mdast inline node type `kbd`.
     Rehype compatible (`<kbd>foo</kbd>`)
-*   [`remark-license`](https://github.com/wooorm/remark-license)
+*   [`remark-license`](https://github.com/remarkjs/remark-license)
     — Add a license section
-*   [`remark-lint`](https://github.com/wooorm/remark-lint)
+*   [`remark-lint`](https://github.com/remarkjs/remark-lint)
     — Markdown code style linter
-*   [`remark-man`](https://github.com/wooorm/remark-man)
+*   [`remark-man`](https://github.com/remarkjs/remark-man)
     — Compile Markdown to Man pages (roff)
 *   [`remark-math`](https://github.com/rokt33r/remark-math)
     — Math inline and block support
 *   [`remark-mermaid`](https://github.com/temando/remark-mermaid)
     — Replace [mermaid](https://mermaidjs.github.io/) graphs with rendered SVGs
-*   [`remark-message-control`](https://github.com/wooorm/remark-message-control)
+*   [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — Enable, disable, and ignore messages
 *   [`remark-midas`](https://github.com/ben-eb/remark-midas)
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas)
@@ -128,19 +128,19 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Syntax highlighting for
     [remark-react](https://github.com/mapbox/remark-react) through
     [lowlight](https://github.com/wooorm/lowlight)
-*   [`remark-reference-links`](https://github.com/wooorm/remark-reference-links)
+*   [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
     — Transform links and images to references and definitions
-*   [`remark-rehype`](https://github.com/wooorm/remark-rehype)
-    — [rehype](https://github.com/wooorm/rehype) support
-*   [`remark-retext`](https://github.com/wooorm/remark-retext)
-    — [retext](https://github.com/wooorm/retext) support
+*   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
+    — [rehype](https://github.com/rehypejs/rehype) support
+*   [`remark-retext`](https://github.com/remarkjs/remark-retext)
+    — [retext](https://github.com/retextjs/retext) support
 *   [`remark-rewrite-headers`](https://github.com/strugee/remark-rewrite-headers)
     — Change heading levels
 *   [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
     — Parses custom Wordpress/Hugo-like shortcodes inside your Markdown
-*   [`remark-slug`](https://github.com/wooorm/remark-slug)
+*   [`remark-slug`](https://github.com/remarkjs/remark-slug)
     — Add slugs to headings
-*   [`remark-strip-badges`](https://github.com/wooorm/remark-strip-badges)
+*   [`remark-strip-badges`](https://github.com/remarkjs/remark-strip-badges)
     — Remove badges (such as `shields.io`)
 *   [`remark-squeeze-paragraphs`](https://github.com/eush77/remark-squeeze-paragraphs)
     — Remove empty paragraphs
@@ -154,19 +154,19 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     framework
 *   [`remark-title`](https://github.com/RichardLitt/remark-title)
     — Check and inject the title of a markdown as the first element.
-*   [`remark-toc`](https://github.com/wooorm/remark-toc)
+*   [`remark-toc`](https://github.com/remarkjs/remark-toc)
     — Generate a Table of Contents (TOC) for Markdown files
 *   [`remark-unlink`](https://github.com/eush77/remark-unlink)
     — Remove all links, references and definitions
-*   [`remark-usage`](https://github.com/wooorm/remark-usage)
+*   [`remark-usage`](https://github.com/remarkjs/remark-usage)
     — Add a usage example to your readme
-*   [`remark-validate-links`](https://github.com/wooorm/remark-validate-links)
+*   [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
     — Validate links point to existing headings and files
-*   [`remark-vdom`](https://github.com/wooorm/remark-vdom)
+*   [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
     — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
 *   [`remark-yaml-annotations`](https://github.com/sfrdmn/remark-yaml-annotations)
     — Extend Markdown with YAML-based annotation syntax
-*   [`remark-yaml-config`](https://github.com/wooorm/remark-yaml-config)
+*   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — Configure remark with YAML
 
 ## List of Presets
@@ -208,29 +208,29 @@ files, use `vfile-`.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
+[logo]: https://cdn.rawgit.com/remarkjs/remark/ee78519/logo.svg
 
 [plugins]: #list-of-plugins
 
-[products]: https://github.com/wooorm/remark/blob/master/doc/products.md
+[products]: https://github.com/remarkjs/remark/blob/master/doc/products.md
 
-[mdast-util]: https://github.com/wooorm/mdast#list-of-utilities
+[mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
 
-[unist-util]: https://github.com/wooorm/unist#unist-node-utilties
+[unist-util]: https://github.com/syntax-tree/unist#unist-node-utilties
 
-[vfile-util]: https://github.com/wooorm/vfile#related-tools
+[vfile-util]: https://github.com/vfile/vfile#related-tools
 
-[unified-use]: https://github.com/wooorm/unified#processoruseplugin-options
+[unified-use]: https://github.com/unifiedjs/unified#processoruseplugin-options
 
-[unified-args-use]: https://github.com/wooorm/unified-args#--use-plugin
+[unified-args-use]: https://github.com/unifiedjs/unified-args#--use-plugin
 
-[config-file-use]: https://github.com/wooorm/unified-engine/blob/master/doc/configure.md#plugins
+[config-file-use]: https://github.com/unifiedjs/unified-engine/blob/master/doc/configure.md#plugins
 
-[unified-plugins]: https://github.com/wooorm/unified#plugin
+[unified-plugins]: https://github.com/unifiedjs/unified#plugin
 
-[issues]: https://github.com/wooorm/remark/issues
+[issues]: https://github.com/remarkjs/remark/issues
 
-[gitter]: https://gitter.im/wooorm/remark
+[gitter]: https://gitter.im/remarkjs/Lobby
 
 [guide]: https://unifiedjs.github.io/create-a-plugin.html
 

@@ -224,35 +224,35 @@ Stringify `node`.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/wooorm/remark
+[build-status]: https://travis-ci.org/remarkjs/remark
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/remark
+[coverage-status]: https://codecov.io/github/remarkjs/remark
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/wooorm/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[unified]: https://github.com/wooorm/unified
+[unified]: https://github.com/unifiedjs/unified
 
-[processor]: https://github.com/wooorm/remark
+[processor]: https://github.com/remarkjs/remark
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
 
-[compiler]: https://github.com/wooorm/unified#processorcompiler
+[compiler]: https://github.com/unifiedjs/unified#processorcompiler
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
-[node]: https://github.com/wooorm/unist#node
+[node]: https://github.com/syntax-tree/unist#node
 
 [extend]: #extending-the-compiler
 

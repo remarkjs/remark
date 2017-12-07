@@ -113,12 +113,12 @@ prevent you from doing unnecessary work.
 
 [unified]: https://github.com/unifiedjs/unified
 
-[remark]: https://github.com/wooorm/remark
+[remark]: https://github.com/remarkjs/remark
 
 [mdast]: https://github.com/syntax-tree/mdast
 
 [mdast-util-to-hast]: https://github.com/syntax-tree/mdast-util-to-hast
 
-[remark-rehype]: https://github.com/wooorm/remark-rehype
+[remark-rehype]: https://github.com/remarkjs/remark-rehype
 
 [unit-test]: https://twitter.com/sindresorhus/status/579306280495357953

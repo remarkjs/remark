@@ -27,35 +27,35 @@ Oh, and [plug-ins][plugins]?!
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
+[logo]: https://cdn.rawgit.com/remarkjs/remark/ee78519/logo.svg
 
-[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/wooorm/remark
+[build-status]: https://travis-ci.org/remarkjs/remark
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/remark
+[coverage-status]: https://codecov.io/github/remarkjs/remark
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[chat]: https://gitter.im/remarkjs/Lobby
 
-[api]: https://github.com/wooorm/remark/tree/master/packages/remark
+[api]: https://github.com/remarkjs/remark/tree/master/packages/remark
 
-[cli]: https://github.com/wooorm/remark/tree/master/packages/remark-cli
+[cli]: https://github.com/remarkjs/remark/tree/master/packages/remark-cli
 
-[plugins]: https://github.com/wooorm/remark/tree/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/tree/master/doc/plugins.md
 
-[remark-lint]: https://github.com/wooorm/remark-lint
+[remark-lint]: https://github.com/remarkjs/remark-lint
 
 [remark-react]: https://github.com/mapbox/remark-react
 
-[remark-toc]: https://github.com/wooorm/remark-toc
+[remark-toc]: https://github.com/remarkjs/remark-toc
 
-[remark-man]: https://github.com/wooorm/remark-man
+[remark-man]: https://github.com/remarkjs/remark-man
 
-[getting-started]: https://github.com/wooorm/remark/tree/master/doc/getting-started.md
+[getting-started]: https://github.com/remarkjs/remark/tree/master/doc/getting-started.md
 
 [unified]: https://github.com/unifiedjs/unified
 

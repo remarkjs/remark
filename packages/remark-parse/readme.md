@@ -406,39 +406,39 @@ delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/wooorm/remark
+[build-status]: https://travis-ci.org/remarkjs/remark
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/remark
+[coverage-status]: https://codecov.io/github/remarkjs/remark
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/wooorm/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[unified]: https://github.com/wooorm/unified
+[unified]: https://github.com/unifiedjs/unified
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
 
-[processor]: https://github.com/wooorm/remark/blob/master/packages/remark
+[processor]: https://github.com/unifiedjs/remark/blob/master/packages/remark
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
 [escapes]: http://spec.commonmark.org/0.25/#backslash-escapes
 
-[node]: https://github.com/wooorm/unist#node
+[node]: https://github.com/syntax-tree/unist#node
 
-[location]: https://github.com/wooorm/unist#location
+[location]: https://github.com/syntax-tree/unist#location
 
-[parser]: https://github.com/wooorm/unified#processorparser
+[parser]: https://github.com/unifiedjs/unified#processorparser
 
 [extend]: #extending-the-parser
 
@@ -450,4 +450,4 @@ delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
 
 [add]: #addnode-parent
 
-[blocks]: https://github.com/wooorm/remark/blob/master/packages/remark-parse/lib/block-elements.json
+[blocks]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.json

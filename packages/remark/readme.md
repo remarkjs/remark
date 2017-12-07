@@ -51,34 +51,34 @@ Yields:
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/wooorm/remark
+[build-status]: https://travis-ci.org/remarkjs/remark
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/remark
+[coverage-status]: https://codecov.io/github/remarkjs/remark
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/wooorm/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[remark]: https://github.com/wooorm/remark
+[remark]: https://github.com/remarkjs/remark
 
-[unified]: https://github.com/wooorm/unified
+[unified]: https://github.com/unifiedjs/unified
 
-[mdast]: https://github.com/wooorm/mdast
+[mdast]: https://github.com/syntax-tree/mdast
 
-[parse]: https://github.com/wooorm/remark/blob/master/packages/remark-parse
+[parse]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse
 
-[stringify]: https://github.com/wooorm/remark/blob/master/packages/remark-stringify
+[stringify]: https://github.com/remarkjs/remark/blob/master/packages/remark-stringify
 
-[plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md
 
-[unified-usage]: https://github.com/wooorm/unified#usage
+[unified-usage]: https://github.com/unifiedjs/unified#usage

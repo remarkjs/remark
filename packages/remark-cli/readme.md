@@ -80,32 +80,32 @@ Examples:
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/wooorm/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/wooorm/remark
+[build-status]: https://travis-ci.org/remarkjs/remark
 
-[coverage-badge]: https://img.shields.io/codecov/c/github/wooorm/remark.svg
+[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/wooorm/remark
+[coverage-status]: https://codecov.io/github/remarkjs/remark
 
-[chat-badge]: https://img.shields.io/gitter/room/wooorm/remark.svg
+[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
-[chat]: https://gitter.im/wooorm/remark
+[chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/wooorm/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
 
 [author]: http://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[remark]: https://github.com/wooorm/remark
+[remark]: https://github.com/remarkjs/remark
 
-[plugins]: https://github.com/wooorm/remark/blob/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md
 
 [markdown-extensions]: https://github.com/sindresorhus/markdown-extensions
 
-[config-file]: https://github.com/wooorm/unified-engine/blob/master/doc/configure.md
+[config-file]: https://github.com/unifiedjs/unified-engine/blob/master/doc/configure.md
 
-[ignore-file]: https://github.com/wooorm/unified-engine/blob/master/doc/ignore.md
+[ignore-file]: https://github.com/unifiedjs/unified-engine/blob/master/doc/ignore.md
 
-[unified-args]: https://github.com/wooorm/unified-args#cli
+[unified-args]: https://github.com/unifiedjs/unified-args#cli

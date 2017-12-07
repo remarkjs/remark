@@ -192,34 +192,34 @@ remark()
 
 <!-- Definitions -->
 
-[logo]: https://cdn.rawgit.com/wooorm/remark/ee78519/logo.svg
+[logo]: https://cdn.rawgit.com/remarkjs/remark/ee78519/logo.svg
 
-[issues]: https://github.com/wooorm/remark/issues
+[issues]: https://github.com/remarkjs/remark/issues
 
-[gitter]: https://gitter.im/wooorm/remark
+[gitter]: https://gitter.im/remarkjs/remark
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[api]: https://github.com/wooorm/remark/tree/master/packages/remark
+[api]: https://github.com/remarkjs/remark/tree/master/packages/remark
 
-[cli]: https://github.com/wooorm/remark/tree/master/packages/remark-cli
+[cli]: https://github.com/remarkjs/remark/tree/master/packages/remark-cli
 
-[plugins]: https://github.com/wooorm/remark/tree/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/tree/master/doc/plugins.md
 
 [unified]: https://github.com/unifiedjs/unified
 
 [website]: https://unifiedjs.github.io
 
-[unified-args]: https://github.com/wooorm/unified-args
+[unified-args]: https://github.com/unifiedjs/unified-args
 
-[frail]: https://github.com/wooorm/unified-args#--frail
+[frail]: https://github.com/unifiedjs/unified-args#--frail
 
-[quiet]: https://github.com/wooorm/unified-args#--quiet
+[quiet]: https://github.com/unifiedjs/unified-args#--quiet
 
-[parse]: https://github.com/wooorm/remark/tree/master/packages/remark-parse
+[parse]: https://github.com/remarkjs/remark/tree/master/packages/remark-parse
 
-[stringify]: https://github.com/wooorm/remark/tree/master/packages/remark-stringify
+[stringify]: https://github.com/remarkjs/remark/tree/master/packages/remark-stringify
 
-[preset]: https://github.com/wooorm/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide
+[preset]: https://github.com/remarkjs/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide
 
-[html]: https://github.com/wooorm/remark-html
+[html]: https://github.com/remarkjs/remark-html

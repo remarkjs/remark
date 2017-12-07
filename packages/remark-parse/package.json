@@ -12,8 +12,8 @@
     "parse"
   ],
   "homepage": "http://remark.js.org",
-  "repository": "https://github.com/wooorm/remark/tree/master/packages/remark-parse",
-  "bugs": "https://github.com/wooorm/remark/issues",
+  "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-parse",
+  "bugs": "https://github.com/remarkjs/remark/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",

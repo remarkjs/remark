@@ -2,8 +2,8 @@
   "private": true,
   "license": "MIT",
   "homepage": "http://remark.js.org",
-  "repository": "https://github.com/wooorm/remark",
-  "bugs": "https://github.com/wooorm/remark/issues",
+  "repository": "https://github.com/remarkjs/remark",
+  "bugs": "https://github.com/remarkjs/remark/issues",
   "devDependencies": {
     "bail": "^1.0.0",
     "browserify": "^14.0.0",
