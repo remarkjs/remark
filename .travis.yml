@@ -6,6 +6,7 @@ after_success: bash <(curl -s https://codecov.io/bash)
 sudo: false
 deploy:
   - provider: releases
+    skip_cleanup: true
     api_key:
       secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
     file:
