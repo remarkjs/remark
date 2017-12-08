@@ -180,11 +180,11 @@ Access to the raw [compiler][], if you need it.
 
 ## Extending the Compiler
 
-If this plug-in is used, it adds a [`Compiler`][compiler] constructor
-to the `processor`.  Other plug-ins can change and add visitors on
+If this plugin is used, it adds a [`Compiler`][compiler] constructor
+to the `processor`.  Other plugins can change and add visitors on
 the compiler’s prototype to change how markdown is stringified.
 
-The below plug-in modifies a [visitor][] to add an extra blank line
+The below plugin modifies a [visitor][] to add an extra blank line
 before level two headings.
 
 ```js

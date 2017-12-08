@@ -2,7 +2,7 @@
 
 # Getting Started
 
-**remark** transforms markdown.  It’s an ecosystem of [plug-ins][plugins].
+**remark** transforms markdown.  It’s an ecosystem of [plugins][].
 If you get stuck, [issues][] and [Gitter][] are good places to get help.
 
 It’s built on [unified][], make sure to read it and its [website][] too.
@@ -39,7 +39,7 @@ Bravo charlie **delta** **echo**.
 -   Hotel
 ```
 
-But, much more can be done, [through plug-ins][plugins].
+But, much more can be done, [through plugins][plugins].
 
 ## Command-line
 
@@ -155,7 +155,7 @@ is found, and [`--quiet`][quiet] hides successful files from the report.
 ## Programmatic usage
 
 The programmatic interface of **remark** is provided by
-[**unified**][unified].  In fact, [`remark`][api] is two plug-ins:
+[**unified**][unified].  In fact, [`remark`][api] is two plugins:
 [`remark-parse`][parse] and [`remark-stringify`][stringify].
 
 Install [`remark`][api] and dependencies with [npm][]:

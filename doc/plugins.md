@@ -2,7 +2,7 @@
 
 # Plugins
 
-**remark** is an ecosystem of [plug-ins][plugins].
+**remark** is an ecosystem of [plugins][plugins].
 
 See [tools built with remark »][products].
 
@@ -184,24 +184,24 @@ virtual files.
 
 ## Using plugins
 
-To use a plug-in programmatically, invoke the [`use()`][unified-use]
+To use a plugin programmatically, invoke the [`use()`][unified-use]
 function.
 
-To use plug-in with `remark-cli`, pass a [`--use` flag][unified-args-use]
+To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use]
 or specify it in a [configuration file][config-file-use].
 
 ## Creating plugins
 
-First, read up on the [concept of plug-ins][unified-plugins].  Then, read the
+First, read up on the [concept of plugins][unified-plugins].  Then, read the
 [guide on “Creating a plugin with unified”][guide].  Finally, take one of
-existing [plug-ins][plugins], which looks similar to what you’re about to do,
+existing [plugins][], which looks similar to what you’re about to do,
 and work from there.  If you get stuck, [issues][] and [Gitter][] are good
 places to get help.
 
 You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
 
 Note that, if the thing you create cannot be given to `remark().use()`,
-it isn’t a “plug-in”.  Don’t use the `remark-` prefix as that could
+it isn’t a “plugin”.  Don’t use the `remark-` prefix as that could
 confuse users.  If it works with the HAST tree, use `'mdast-util-'`, if
 it works with any Unist tree, use `unist-util-`, if it works with virtual
 files, use `vfile-`.

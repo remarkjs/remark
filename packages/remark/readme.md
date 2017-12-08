@@ -1,12 +1,12 @@
 # remark [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
 The [**remark**][remark] processor is a markdown processor powered by
-[plug-ins][plugins].
+[plugins][].
 
 *   Interface by [**unified**][unified]
 *   [**MDAST**][mdast] syntax tree
 *   Parses markdown to the tree with [**remark-parse**][parse]
-*   [Plug-ins][plugins] transform the tree
+*   [Plugins][] transform the tree
 *   Compiles the tree to markdown using [**remark-stringify**][stringify]
 
 Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].

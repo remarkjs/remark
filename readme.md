@@ -4,7 +4,7 @@
 [![Coverage Status][coverage-badge]][coverage-status]
 [![Chat][chat-badge]][chat]
 
-**remark** is an ecosystem of [plug-ins][plugins] for processing markdown.
+**remark** is an ecosystem of [plugins][] for processing markdown.
 It’s not another markdown to HTML compiler.  It can generate
 and reformat markdown too.  Powered by [plugins][] to do
 all kinds of things: [check markdown code style][remark-lint],
@@ -17,7 +17,7 @@ It’s built on [unified][], make sure to read it and its [website][] too.
 *   [`remark`][api] — Programmatic interface
 *   [`remark-cli`][cli] — Command-line interface
 
-Oh, and [plug-ins][plugins]?!
+Oh, and [plugins][]?!
 
 [Get started »][getting-started]
 

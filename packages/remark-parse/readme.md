@@ -154,11 +154,11 @@ the desired output.  Sometimes, mainly when introducing new syntactic
 entities with a certain level of precedence, interfacing with the parser
 is necessary.
 
-If the `remark-parse` plug-in is used, it adds a [`Parser`][parser] constructor
-to the `processor`.  Other plug-ins can add tokenizers to the parser’s prototype
+If the `remark-parse` plugin is used, it adds a [`Parser`][parser] constructor
+to the `processor`.  Other plugins can add tokenizers to the parser’s prototype
 to change how markdown is parsed.
 
-The below plug-in adds a [tokenizer][] for at-mentions.
+The below plugin adds a [tokenizer][] for at-mentions.
 
 ```js
 module.exports = mentions;

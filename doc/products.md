@@ -4,7 +4,7 @@
 
 List of tools using [**remark**][remark] internally.
 
-See [plug-ins][plugins] for a list of plugins and utilities.
+See [plugins][] for a list of plugins and utilities.
 
 ## List of products using remark
 
