@@ -216,9 +216,9 @@ files, use `vfile-`.
 
 [mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
 
-[unist-util]: https://github.com/syntax-tree/unist#unist-node-utilties
+[unist-util]: https://github.com/syntax-tree/unist#unist-utilities
 
-[vfile-util]: https://github.com/vfile/vfile#related-tools
+[vfile-util]: https://github.com/vfile/vfile#utilities
 
 [unified-use]: https://github.com/unifiedjs/unified#processoruseplugin-options
 
