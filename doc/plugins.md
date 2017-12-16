@@ -120,7 +120,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Convert links to local or remote OpenAPI definition to tables with
     summaries of all paths
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
-    — Custom syntax, parses `@user`, `@**first last**`, configurable existance
+    — Custom syntax, parses `@user`, `@**first last**`, configurable existence
     check.  Rehype compatible
 *   [`remark-react`](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react)
