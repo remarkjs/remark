@@ -70,6 +70,7 @@ proto.interruptParagraph = [
  * In the above example, the thematic break “interupts”
  * the list. */
 proto.interruptList = [
+  ['atxHeading', {pedantic: false}],
   ['fencedCode', {pedantic: false}],
   ['thematicBreak', {pedantic: false}],
   ['definition', {commonmark: false}],
