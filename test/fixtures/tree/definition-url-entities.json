@@ -1,0 +1,36 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "definition",
+      "identifier": "baz",
+      "title": null,
+      "url": "http://www.example.com?param=1&region=here",
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 50,
+          "offset": 49
+        },
+        "indent": []
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 2,
+      "column": 1,
+      "offset": 50
+    }
+  }
+}

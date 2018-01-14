@@ -175,7 +175,7 @@
             {
               "type": "link",
               "title": null,
-              "url": "http://example©xample.com",
+              "url": "http://example&copyxample.com",
               "children": [
                 {
                   "type": "text",
@@ -299,7 +299,7 @@
             {
               "type": "link",
               "title": null,
-              "url": "http://example©xample.com",
+              "url": "http://example&copyxample.com",
               "children": [
                 {
                   "type": "text",
@@ -440,7 +440,7 @@
             {
               "type": "link",
               "title": "in some pl©ce",
-              "url": "~/some©file",
+              "url": "~/some&copyfile",
               "children": [
                 {
                   "type": "text",
@@ -570,7 +570,7 @@
             {
               "type": "link",
               "title": "in some pl©ce",
-              "url": "~/some©file",
+              "url": "~/some&copyfile",
               "children": [
                 {
                   "type": "text",
@@ -703,7 +703,7 @@
             {
               "type": "image",
               "title": "in some pl©ce",
-              "url": "~/some©file",
+              "url": "~/some&copyfile",
               "alt": "\n  l©nks\n",
               "position": {
                 "start": {
@@ -803,7 +803,7 @@
             {
               "type": "image",
               "title": "in some pl©ce",
-              "url": "~/some©file",
+              "url": "~/some&copyfile",
               "alt": "l©lnks",
               "position": {
                 "start": {
@@ -1002,7 +1002,7 @@
             {
               "type": "link",
               "title": null,
-              "url": "http://example©xample.com",
+              "url": "http://example&copyxample.com",
               "children": [
                 {
                   "type": "text",
@@ -1226,7 +1226,7 @@
             {
               "type": "link",
               "title": null,
-              "url": "http://example©xample.com",
+              "url": "http://example&copyxample.com",
               "children": [
                 {
                   "type": "text",

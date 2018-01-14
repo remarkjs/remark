@@ -1,5 +1,6 @@
 'use strict';
 
+var xtend = require('xtend');
 var entities = require('parse-entities');
 
 module.exports = factory;
@@ -54,10 +55,10 @@ function factory(ctx) {
   }
 
   /* Decode `value` (at `position`) into a string. */
-  function decodeRaw(value, position) {
-    return entities(value, {
+  function decodeRaw(value, position, options) {
+    return entities(value, xtend(options, {
       position: normalize(position),
       warning: handleWarning
-    });
+    }));
   }
 }
