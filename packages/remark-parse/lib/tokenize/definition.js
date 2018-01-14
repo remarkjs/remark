@@ -245,7 +245,7 @@ function definition(eat, value, silent) {
     }
 
     beforeURL = eat(beforeURL).test().end;
-    url = self.decode.raw(self.unescape(url), beforeURL);
+    url = self.decode.raw(self.unescape(url), beforeURL, {nonTerminated: false});
 
     if (title) {
       beforeTitle = eat(beforeTitle).test().end;

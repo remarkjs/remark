@@ -138,7 +138,7 @@ function url(eat, value, silent) {
   return eat(subvalue)({
     type: 'link',
     title: null,
-    url: decode(subvalue),
+    url: decode(subvalue, {nonTerminated: false}),
     children: content
   });
 }
