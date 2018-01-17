@@ -15,7 +15,7 @@
     "escodegen": "^1.7.0",
     "esmangle": "^1.0.0",
     "esprima": "^4.0.0",
-    "execa": "^0.8.0",
+    "execa": "^0.9.0",
     "extend": "^3.0.0",
     "lerna": "^2.0.0",
     "mdast-util-assert": "^1.0.0",
