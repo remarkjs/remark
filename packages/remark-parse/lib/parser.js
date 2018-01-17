@@ -73,7 +73,8 @@ proto.interruptList = [
   ['fencedCode', {pedantic: false}],
   ['thematicBreak', {pedantic: false}],
   ['definition', {commonmark: false}],
-  ['footnote', {commonmark: false}]
+  ['footnote', {commonmark: false}],
+  ['atxHeading', {commonmark: true}]
 ];
 
 /* Nodes that can interupt a blockquote:
