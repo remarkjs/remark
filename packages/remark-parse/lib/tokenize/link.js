@@ -367,7 +367,7 @@ function link(eat, value, silent) {
 
   subvalue += C_PAREN_CLOSE;
 
-  url = self.decode.raw(self.unescape(url), eat(beforeURL).test().end);
+  url = self.decode.raw(self.unescape(url), eat(beforeURL).test().end, {nonTerminated: false});
 
   if (title) {
     beforeTitle = eat(beforeTitle).test().end;

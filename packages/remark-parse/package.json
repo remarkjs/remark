@@ -30,7 +30,7 @@
     "is-whitespace-character": "^1.0.0",
     "is-word-character": "^1.0.0",
     "markdown-escapes": "^1.0.0",
-    "parse-entities": "^1.0.2",
+    "parse-entities": "^1.1.0",
     "repeat-string": "^1.5.4",
     "state-toggle": "^1.0.0",
     "trim": "0.0.1",

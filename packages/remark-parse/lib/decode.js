@@ -54,10 +54,10 @@ function factory(ctx) {
   }
 
   /* Decode `value` (at `position`) into a string. */
-  function decodeRaw(value, position) {
-    return entities(value, {
+  function decodeRaw(value, position, options) {
+    return entities(value, Object.assign({}, options, {
       position: normalize(position),
       warning: handleWarning
-    });
+    }));
   }
 }
