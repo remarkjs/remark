@@ -63,6 +63,14 @@ test('remark().parse(file)', function (t) {
     'should throw when `options.pedantic` is not a boolean'
   );
 
+  t.throws(
+    function () {
+      remark().data('settings', {decodeHtmlEntities: {}}).parse('');
+    },
+    /options.decodeHtmlEntities/,
+    'should throw when `options.decodeHtmlEntities` is not a boolean'
+  );
+
   t.deepEqual(
     remark().data('settings', {position: false}).parse('<foo></foo>'),
     {

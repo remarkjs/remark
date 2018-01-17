@@ -22,6 +22,12 @@ test('remark().processSync(value)', function (t) {
     'should accept stringify options'
   );
 
+  t.equal(
+    remark().data('settings', {decodeHtmlEntities: false}).processSync('&lt;test&gt;').toString(),
+    '&amp;lt;test&amp;gt;\n',
+    'should optionally disable html entity decoding'
+  );
+
   t.throws(
     function () {
       remark().data('settings', {pedantic: true, listItemIndent: '1'}).processSync([

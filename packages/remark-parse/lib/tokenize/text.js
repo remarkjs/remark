@@ -47,12 +47,20 @@ function text(eat, value, silent) {
   }
 
   subvalue = value.slice(0, min);
-  now = eat.now();
 
-  self.decode(subvalue, now, function (content, position, source) {
-    eat(source || content)({
-      type: 'text',
-      value: content
+  if (this.options.decodeHtmlEntities) {
+    now = eat.now();
+
+    self.decode(subvalue, now, function (content, position, source) {
+      eat(source || content)({
+        type: 'text',
+        value: content
+      });
     });
-  });
+  } else {
+    eat(subvalue)({
+      type: 'text',
+      value: subvalue
+    });
+  }
 }
