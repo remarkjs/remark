@@ -2,7 +2,9 @@ language: node_js
 node_js:
 - '6.0'
 - '9.0'
-after_success: bash <(curl -s https://codecov.io/bash)
+script:
+  - "if [ \"$TRAVIS_NODE_VERSION\" != \"9.0\" ]; then npm run test-api; fi"
+  - "if [ \"$TRAVIS_NODE_VERSION\" = \"9.0\" ]; then npm run test && bash <(curl -s https://codecov.io/bash); fi"
 sudo: false
 deploy:
   - provider: releases
