@@ -22,7 +22,7 @@
     "mdast-util-compact": "^1.0.0",
     "mdast-zone": "^3.0.1",
     "nyc": "^11.0.0",
-    "remark-preset-wooorm": "^3.0.0",
+    "remark-preset-wooorm": "^4.0.0",
     "tape": "^4.5.1",
     "uglify-js": "^3.0.28",
     "unist-builder": "^1.0.2",
