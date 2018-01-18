@@ -1,13 +1,13 @@
 # remark [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
 
-The [**remark**][remark] processor is a markdown processor powered by
+The [`remark`][remark] processor is a markdown processor powered by
 [plugins][].
 
-*   Interface by [**unified**][unified]
+*   Interface by [`unified`][unified]
 *   [**MDAST**][mdast] syntax tree
-*   Parses markdown to the tree with [**remark-parse**][parse]
+*   Parses markdown to the tree with [`remark-parse`][parse]
 *   [Plugins][] transform the tree
-*   Compiles the tree to markdown using [**remark-stringify**][stringify]
+*   Compiles the tree to markdown using [`remark-stringify`][stringify]
 
 Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
 
@@ -20,6 +20,10 @@ npm install remark
 ```
 
 ## Usage
+
+###### Common example
+
+This example lints markdown and turns it into HTML.
 
 ```js
 var remark = require('remark');
@@ -42,7 +46,56 @@ Yields:
 1:1  warning  Missing newline character at end of file  final-newline  remark-lint
 
 ⚠ 1 warning
+```
+
+```html
 <h2>Hello world!</h2>
+```
+
+###### Settings through data
+
+This example prettifies markdown and configures [`remark-parse`][parse] and
+[`remark-stringify`][stringify] through [data][].
+
+```js
+var remark = require('remark');
+
+remark()
+  .data('settings', {commonmark: true, emphasis: '*', strong: '*'})
+  .process('_Emphasis_ and __importance__', function (err, file) {
+    if (err) throw err;
+    console.log(String(file));
+  });
+```
+
+Yields:
+
+```markdown
+*Emphasis* and **importance**
+```
+
+###### Settings through a preset
+
+This example prettifies markdown and configures [`remark-parse`][parse] and
+[`remark-stringify`][stringify] through a [preset][].
+
+```js
+var remark = require('remark');
+
+remark()
+  .use({
+    settings: {commonmark: true, emphasis: '*', strong: '*'}
+  })
+  .process('_Emphasis_ and __importance__', function (err, file) {
+    if (err) throw err;
+    console.log(String(file));
+  });
+```
+
+Yields:
+
+```markdown
+*Emphasis* and **importance**
 ```
 
 ## License
@@ -82,3 +135,7 @@ Yields:
 [plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md
 
 [unified-usage]: https://github.com/unifiedjs/unified#usage
+
+[preset]: https://github.com/unifiedjs/unified#preset
+
+[data]: https://github.com/unifiedjs/unified#processordatakey-value
