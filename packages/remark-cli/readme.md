@@ -48,15 +48,16 @@ Options:
   -s  --setting <settings>  specify settings
   -e  --ext <extensions>    specify extensions
   -u  --use <plugins>       use plugins
-  -p  --preset <presets>    use presets
   -w  --watch               watch for changes and reprocess
   -q  --quiet               output only warnings and errors
   -S  --silent              output only errors
   -f  --frail               exit with 1 on warnings
   -t  --tree                specify input and output as syntax tree
+      --report <reporter>   specify reporter
       --file-path <path>    specify path to process as
       --tree-in             specify input as syntax tree
       --tree-out            output syntax tree
+      --inspect             output formatted syntax tree
       --[no-]stdout         specify writing to stdout (on by default)
       --[no-]color          specify color in report (on by default)
       --[no-]config         search for configuration files (on by default)

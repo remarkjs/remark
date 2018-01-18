@@ -41,6 +41,7 @@ test('remark-cli', function (t) {
           '      --file-path <path>    specify path to process as',
           '      --tree-in             specify input as syntax tree',
           '      --tree-out            output syntax tree',
+          '      --inspect             output formatted syntax tree',
           '      --[no-]stdout         specify writing to stdout (on by default)',
           '      --[no-]color          specify color in report (on by default)',
           '      --[no-]config         search for configuration files (on by default)',
