@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "remark-parse": "^5.0.0",
-    "remark-stringify": "^4.0.0",
+    "remark-stringify": "^5.0.0",
     "unified": "^6.0.0"
   },
   "homepage": "http://remark.js.org",
