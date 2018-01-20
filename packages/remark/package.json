@@ -14,7 +14,7 @@
     "process"
   ],
   "dependencies": {
-    "remark-parse": "^4.0.0",
+    "remark-parse": "^5.0.0",
     "remark-stringify": "^4.0.0",
     "unified": "^6.0.0"
   },
