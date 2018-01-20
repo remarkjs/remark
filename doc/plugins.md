@@ -112,6 +112,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Replace [mermaid](https://mermaidjs.github.io/) graphs with rendered SVGs
 *   [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — Enable, disable, and ignore messages
+*   [`remark-metadata`](https://github.com/temando/remark-metadata)
+    — Add metadata about the processed file as front matter
 *   [`remark-midas`](https://github.com/ben-eb/remark-midas)
     — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas)
 *   [`remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
@@ -119,11 +121,17 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-openapi`](https://github.com/temando/remark-openapi)
     — Convert links to local or remote OpenAPI definition to tables with
     summaries of all paths
+*   [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
+    — Parse YAML blocks into structured data
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
     — Custom syntax, parses `@user`, `@**first last**`, configurable existence
     check.  Rehype compatible
 *   [`remark-react`](https://github.com/mapbox/remark-react)
     — Compile Markdown to [React](https://github.com/facebook/react)
+*   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
+    — Syntax highlighting for
+    [remark-react](https://github.com/mapbox/remark-react) through
+    [CodeMirror](https://codemirror.net)
 *   [`remark-react-lowlight`](https://github.com/bebraw/remark-react-lowlight)
     — Syntax highlighting for
     [remark-react](https://github.com/mapbox/remark-react) through
@@ -142,6 +150,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Add slugs to headings
 *   [`remark-strip-badges`](https://github.com/remarkjs/remark-strip-badges)
     — Remove badges (such as `shields.io`)
+*   [`remark-strip-html`](https://github.com/craftzdog/remark-strip-html)
+    — Remove html formatting
 *   [`remark-squeeze-paragraphs`](https://github.com/eush77/remark-squeeze-paragraphs)
     — Remove empty paragraphs
 *   [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-sub-super)
@@ -164,6 +174,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Validate links point to existing headings and files
 *   [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
     — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
+*   [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
+    — Parse and render wiki links
 *   [`remark-yaml-annotations`](https://github.com/sfrdmn/remark-yaml-annotations)
     — Extend Markdown with YAML-based annotation syntax
 *   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
