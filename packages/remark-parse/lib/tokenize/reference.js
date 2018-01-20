@@ -52,11 +52,13 @@ function reference(eat, value, silent) {
   queue = '';
 
   /* Check whether we’re eating a footnote. */
-  if (
-    self.options.footnotes &&
-    type === T_LINK &&
-    value.charAt(index) === C_CARET
-  ) {
+  if (self.options.footnotes && value.charAt(index) === C_CARET) {
+    /* Exit if `![^` is found, so the `!` will be seen as text after this,
+     * and we’ll enter this function again when `[^` is found. */
+    if (type === T_IMAGE) {
+      return;
+    }
+
     intro += C_CARET;
     index++;
     type = T_FOOTNOTE;

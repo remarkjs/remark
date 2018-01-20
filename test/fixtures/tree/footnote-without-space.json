@@ -148,28 +148,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "^abc",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "^abc",
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 2,
-                  "offset": 31
-                },
-                "end": {
-                  "line": 3,
-                  "column": 6,
-                  "offset": 35
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "And some more tests for “image like” footnotes, related to:\n",
           "position": {
             "start": {
               "line": 3,
@@ -177,26 +157,65 @@
               "offset": 30
             },
             "end": {
-              "line": 3,
-              "column": 7,
-              "offset": 36
+              "line": 4,
+              "column": 1,
+              "offset": 90
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/remarkjs/remark/issues/283",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://github.com/remarkjs/remark/issues/283",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 2,
+                  "offset": 91
+                },
+                "end": {
+                  "line": 4,
+                  "column": 47,
+                  "offset": 136
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1,
+              "offset": 90
+            },
+            "end": {
+              "line": 4,
+              "column": 48,
+              "offset": 137
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": ": Baz baz",
+          "value": ":",
           "position": {
             "start": {
-              "line": 3,
-              "column": 7,
-              "offset": 36
+              "line": 4,
+              "column": 48,
+              "offset": 137
             },
             "end": {
-              "line": 3,
-              "column": 16,
-              "offset": 45
+              "line": 4,
+              "column": 49,
+              "offset": 138
             },
             "indent": []
           }
@@ -209,9 +228,252 @@
           "offset": 30
         },
         "end": {
-          "line": 3,
+          "line": 4,
+          "column": 49,
+          "offset": 138
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Hello",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1,
+              "offset": 140
+            },
+            "end": {
+              "line": 6,
+              "column": 6,
+              "offset": 145
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^footnote",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^footnote",
+              "position": {
+                "start": {
+                  "line": 6,
+                  "column": 7,
+                  "offset": 146
+                },
+                "end": {
+                  "line": 6,
+                  "column": 16,
+                  "offset": 155
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 6,
+              "offset": 145
+            },
+            "end": {
+              "line": 6,
+              "column": 17,
+              "offset": 156
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nHello",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 17,
+              "offset": 156
+            },
+            "end": {
+              "line": 7,
+              "column": 6,
+              "offset": 162
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "imageReference",
+          "identifier": "^footnote",
+          "referenceType": "shortcut",
+          "alt": "^footnote",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 6,
+              "offset": 162
+            },
+            "end": {
+              "line": 7,
+              "column": 18,
+              "offset": 174
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nHello! ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 18,
+              "offset": 174
+            },
+            "end": {
+              "line": 8,
+              "column": 8,
+              "offset": 182
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "^footnote",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^footnote",
+              "position": {
+                "start": {
+                  "line": 8,
+                  "column": 9,
+                  "offset": 183
+                },
+                "end": {
+                  "line": 8,
+                  "column": 18,
+                  "offset": 192
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 8,
+              "offset": 182
+            },
+            "end": {
+              "line": 8,
+              "column": 19,
+              "offset": 193
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 140
+        },
+        "end": {
+          "line": 8,
+          "column": 19,
+          "offset": 193
+        },
+        "indent": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "linkReference",
+          "identifier": "^abc",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^abc",
+              "position": {
+                "start": {
+                  "line": 10,
+                  "column": 2,
+                  "offset": 196
+                },
+                "end": {
+                  "line": 10,
+                  "column": 6,
+                  "offset": 200
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 1,
+              "offset": 195
+            },
+            "end": {
+              "line": 10,
+              "column": 7,
+              "offset": 201
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ": Baz baz",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 7,
+              "offset": 201
+            },
+            "end": {
+              "line": 10,
+              "column": 16,
+              "offset": 210
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 10,
+          "column": 1,
+          "offset": 195
+        },
+        "end": {
+          "line": 10,
           "column": 16,
-          "offset": 45
+          "offset": 210
         },
         "indent": []
       }
@@ -223,14 +485,86 @@
       "url": "Baz",
       "position": {
         "start": {
-          "line": 5,
+          "line": 12,
           "column": 1,
-          "offset": 47
+          "offset": 212
         },
         "end": {
-          "line": 5,
+          "line": 12,
           "column": 12,
-          "offset": 58
+          "offset": 223
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "linkReference",
+          "identifier": "^footnote",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "^footnote",
+              "position": {
+                "start": {
+                  "line": 14,
+                  "column": 2,
+                  "offset": 226
+                },
+                "end": {
+                  "line": 14,
+                  "column": 11,
+                  "offset": 235
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 1,
+              "offset": 225
+            },
+            "end": {
+              "line": 14,
+              "column": 12,
+              "offset": 236
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ": Some definition.",
+          "position": {
+            "start": {
+              "line": 14,
+              "column": 12,
+              "offset": 236
+            },
+            "end": {
+              "line": 14,
+              "column": 30,
+              "offset": 254
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 14,
+          "column": 1,
+          "offset": 225
+        },
+        "end": {
+          "line": 14,
+          "column": 30,
+          "offset": 254
         },
         "indent": []
       }
@@ -243,9 +577,9 @@
       "offset": 0
     },
     "end": {
-      "line": 6,
+      "line": 15,
       "column": 1,
-      "offset": 59
+      "offset": 255
     }
   }
 }
