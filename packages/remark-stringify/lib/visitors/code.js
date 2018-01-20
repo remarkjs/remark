@@ -6,8 +6,6 @@ var pad = require('../util/pad');
 
 module.exports = code;
 
-var FENCE = /([`~])\1{2}/;
-
 /* Stringify code.
  * Creates indented code when:
  *
@@ -27,12 +25,11 @@ var FENCE = /([`~])\1{2}/;
  *     foo();
  *     ~~~
  *
- * Knows about internal fences (Note: GitHub/Kramdown does
- * not support this):
+ * Knows about internal fences:
  *
- *     ````javascript
- *     ```markdown
- *     foo
+ *     ````markdown
+ *     ```javascript
+ *     foo();
  *     ```
  *     ````
  */
@@ -60,18 +57,7 @@ function code(node, parent) {
     return pad(value, 1);
   }
 
-  fence = streak(value, marker) + 1;
-
-  /* Fix GFM / RedCarpet bug, where fence-like characters
-   * inside fenced code can exit a code-block.
-   * Yes, even when the outer fence uses different
-   * characters, or is longer.
-   * Thus, we can only pad the code to make it work. */
-  if (FENCE.test(value)) {
-    value = pad(value, 1);
-  }
-
-  fence = repeat(marker, Math.max(fence, 3));
+  fence = repeat(marker, Math.max(streak(value, marker) + 1, 3));
 
   return fence + language + '\n' + value + '\n' + fence;
 }

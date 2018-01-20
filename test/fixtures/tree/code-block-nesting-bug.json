@@ -45,7 +45,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Note that this bug does not occur on indented code-blocks.",
+          "value": "Note: not any more! ",
           "position": {
             "start": {
               "line": 4,
@@ -54,8 +54,62 @@
             },
             "end": {
               "line": 4,
-              "column": 59,
-              "offset": 192
+              "column": 21,
+              "offset": 154
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "link",
+          "title": null,
+          "url": "https://github.com/remarkjs/remark/issues/323",
+          "children": [
+            {
+              "type": "text",
+              "value": "https://github.com/remarkjs/remark/issues/323",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 22,
+                  "offset": 155
+                },
+                "end": {
+                  "line": 4,
+                  "column": 67,
+                  "offset": 200
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 21,
+              "offset": 154
+            },
+            "end": {
+              "line": 4,
+              "column": 68,
+              "offset": 201
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": ".",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 68,
+              "offset": 201
+            },
+            "end": {
+              "line": 4,
+              "column": 69,
+              "offset": 202
             },
             "indent": []
           }
@@ -69,8 +123,43 @@
         },
         "end": {
           "line": 4,
+          "column": 69,
+          "offset": 202
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Note that this bug does not occur on indented code-blocks.",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 1,
+              "offset": 204
+            },
+            "end": {
+              "line": 6,
+              "column": 59,
+              "offset": 262
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 204
+        },
+        "end": {
+          "line": 6,
           "column": 59,
-          "offset": 192
+          "offset": 262
         },
         "indent": []
       }
@@ -81,14 +170,14 @@
       "value": "```bar\nbaz\n```",
       "position": {
         "start": {
-          "line": 6,
+          "line": 8,
           "column": 1,
-          "offset": 194
+          "offset": 264
         },
         "end": {
-          "line": 10,
+          "line": 12,
           "column": 5,
-          "offset": 221
+          "offset": 291
         },
         "indent": [
           1,
@@ -106,14 +195,14 @@
           "value": "Even with a different fence marker:",
           "position": {
             "start": {
-              "line": 12,
+              "line": 14,
               "column": 1,
-              "offset": 223
+              "offset": 293
             },
             "end": {
-              "line": 12,
+              "line": 14,
               "column": 36,
-              "offset": 258
+              "offset": 328
             },
             "indent": []
           }
@@ -121,14 +210,14 @@
       ],
       "position": {
         "start": {
-          "line": 12,
+          "line": 14,
           "column": 1,
-          "offset": 223
+          "offset": 293
         },
         "end": {
-          "line": 12,
+          "line": 14,
           "column": 36,
-          "offset": 258
+          "offset": 328
         },
         "indent": []
       }
@@ -139,14 +228,14 @@
       "value": "~~~bar\nbaz\n~~~",
       "position": {
         "start": {
-          "line": 14,
+          "line": 16,
           "column": 1,
-          "offset": 260
+          "offset": 330
         },
         "end": {
-          "line": 18,
+          "line": 20,
           "column": 5,
-          "offset": 287
+          "offset": 357
         },
         "indent": [
           1,
@@ -164,14 +253,14 @@
           "value": "And reversed:",
           "position": {
             "start": {
-              "line": 20,
+              "line": 22,
               "column": 1,
-              "offset": 289
+              "offset": 359
             },
             "end": {
-              "line": 20,
+              "line": 22,
               "column": 14,
-              "offset": 302
+              "offset": 372
             },
             "indent": []
           }
@@ -179,14 +268,14 @@
       ],
       "position": {
         "start": {
-          "line": 20,
+          "line": 22,
           "column": 1,
-          "offset": 289
+          "offset": 359
         },
         "end": {
-          "line": 20,
+          "line": 22,
           "column": 14,
-          "offset": 302
+          "offset": 372
         },
         "indent": []
       }
@@ -197,14 +286,14 @@
       "value": "~~~bar\nbaz\n~~~",
       "position": {
         "start": {
-          "line": 22,
+          "line": 24,
           "column": 1,
-          "offset": 304
+          "offset": 374
         },
         "end": {
-          "line": 26,
+          "line": 28,
           "column": 5,
-          "offset": 331
+          "offset": 401
         },
         "indent": [
           1,
@@ -220,14 +309,14 @@
       "value": "```bar\nbaz\n```",
       "position": {
         "start": {
-          "line": 28,
+          "line": 30,
           "column": 1,
-          "offset": 333
+          "offset": 403
         },
         "end": {
-          "line": 32,
+          "line": 34,
           "column": 5,
-          "offset": 360
+          "offset": 430
         },
         "indent": [
           1,
@@ -245,9 +334,9 @@
       "offset": 0
     },
     "end": {
-      "line": 33,
+      "line": 35,
       "column": 1,
-      "offset": 361
+      "offset": 431
     }
   }
 }
