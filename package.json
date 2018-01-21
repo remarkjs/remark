@@ -8,11 +8,11 @@
   "devDependencies": {
     "cssnano": "^3.10.0",
     "postcss-cli": "^4.1.0",
-    "rehype-cli": "^3.0.0",
+    "rehype-cli": "^4.0.0",
     "rehype-highlight": "^2.0.0",
     "rehype-preset-minify": "^2.0.0",
     "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^17.0.0",
+    "stylelint-config-standard": "^18.0.0",
     "xo": "^0.18.2"
   },
   "scripts": {
