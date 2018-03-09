@@ -139,7 +139,7 @@ function list(eat, value, silent) {
 
   character = value.charAt(++index);
 
-  if (character !== C_SPACE && character !== C_TAB) {
+  if (character !== C_SPACE && character !== C_TAB && (!commonmark || character !== C_NEWLINE)) {
     return;
   }
 
