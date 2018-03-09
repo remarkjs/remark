@@ -141,12 +141,11 @@ function list(eat, value, silent) {
 
   character = value.charAt(++index);
 
-  delimiters = {
-    [C_SPACE]: true,
-    [C_TAB]: true,
-    [C_NEWLINE]: commonmark,
-    [C_EMPTY]: commonmark
-  }
+  delimiters = {};
+  delimiters[C_SPACE] = true;
+  delimiters[C_TAB] = true;
+  delimiters[C_NEWLINE] = commonmark;
+  delimiters[C_EMPTY] = commonmark;
 
   if (!delimiters[character]) {
     return;
