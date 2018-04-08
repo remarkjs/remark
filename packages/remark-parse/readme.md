@@ -428,7 +428,7 @@ delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
 
-[processor]: https://github.com/unifiedjs/remark/blob/master/packages/remark
+[processor]: https://github.com/remarkjs/remark/blob/master/packages/remark
 
 [mdast]: https://github.com/syntax-tree/mdast
 
