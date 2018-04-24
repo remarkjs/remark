@@ -1,6 +1,7 @@
 'use strict';
 
 var whitespace = require('is-whitespace-character');
+var parseAttr = require('md-attr-parser');
 var locate = require('../locate/link');
 
 module.exports = link;
@@ -42,6 +43,7 @@ function link(eat, value, silent) {
   var pedantic = self.options.pedantic;
   var commonmark = self.options.commonmark;
   var gfm = self.options.gfm;
+  var parsedAttr;
   var closed;
   var count;
   var opening;
@@ -367,6 +369,11 @@ function link(eat, value, silent) {
 
   subvalue += C_PAREN_CLOSE;
 
+  if (index + 1 < length && value.charAt(index + 1) === '{' && !gfm && !commonmark) {
+    parsedAttr = parseAttr(value, index + 1);
+    subvalue += parsedAttr.eaten;
+  }
+
   url = self.decode.raw(self.unescape(url), eat(beforeURL).test().end, {nonTerminated: false});
 
   if (title) {
@@ -379,6 +386,9 @@ function link(eat, value, silent) {
     title: title || null,
     url: url
   };
+  if (parsedAttr) {
+    node.data = {hProperties: parsedAttr.prop};
+  }
 
   if (isImage) {
     node.alt = self.decode.raw(self.unescape(content), now) || null;
