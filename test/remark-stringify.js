@@ -306,7 +306,7 @@ test('remark().stringify(ast, file)', function (t) {
 
       processor.Compiler.prototype.visitors.html = replacement;
 
-      /* Set option when an HMTL comment occurs */
+      /* Set option when an HTML comment occurs */
       function replacement(node) {
         var value = node.value;
         var result = /<!--\s*(.*?)\s*-->/g.exec(value);
