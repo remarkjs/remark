@@ -26,7 +26,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     type `CenterAligned`, `RightAligned`.  Rehype compatible (wraps in `div`s
     with alignment as configurable CSS class)
 *   [`remark-attr`](https://github.com/arobase-che/remark-attr)
-    — Custom attributes support, extended markdown syntax.
+    — Add support for custom attributes to markdown
 *   [`remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings
 *   [`remark-bookmarks`](https://github.com/ben-eb/remark-bookmarks)
