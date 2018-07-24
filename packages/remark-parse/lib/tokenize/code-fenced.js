@@ -230,7 +230,8 @@ function fencedCode(eat, value, silent) {
 
   return eat(subvalue)({
     type: 'code',
-    lang: flag || null,
+    lang: flag.replace(/[\s].*/, '') || null,
+    info: flag.replace(/^[^\s]+/, '').trim() || null,
     value: trim(exdentedContent)
   });
 }

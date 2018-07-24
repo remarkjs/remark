@@ -92,6 +92,7 @@ function indentedCode(eat, value, silent) {
     return eat(subvalue)({
       type: 'code',
       lang: null,
+      info: null,
       value: trim(content)
     });
   }
