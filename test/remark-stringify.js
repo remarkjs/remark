@@ -207,6 +207,28 @@ test('remark().stringify(ast, file)', function (t) {
     'should throw when `options.stringLength` is not a function'
   );
 
+  t.test('should handle underscores in emphasis in pedantic mode', function (st) {
+    st.plan(2);
+
+    var example = '*alpha_bravo*\n';
+
+    /* Without pedantic mode, emphasis always defaults to underscores */
+    st.equal(
+      remark().processSync(example).toString(),
+      '_alpha_bravo_\n',
+      'baseline'
+    );
+
+    /* With pedantic mode, emphasis will default to asterisks if the text to be
+     * emphasized contains underscores
+     */
+    st.equal(
+      remark().use({settings: {pedantic: true}}).processSync(example).toString(),
+      '*alpha\\_bravo*\n',
+      'pedantic'
+    );
+  });
+
   t.test('should support `stringLength`', function (st) {
     st.plan(2);
 
