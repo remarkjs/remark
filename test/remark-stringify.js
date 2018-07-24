@@ -229,6 +229,32 @@ test('remark().stringify(ast, file)', function (t) {
     );
   });
 
+  t.test('emphasis in pedantic mode should support a variety of contained inline content', function (st) {
+    /* data-driven tests in the format: [name, input, expected] */
+    var tests = [
+      ["words with asterisks", "*inner content*", "_inner content_\n"],
+      ["words with underscores", "_inner content_", "_inner content_\n"],
+      ["links", "*[](http://some_url.com)*", "*[](http://some_url.com)*\n"],
+      ["underscores inside asterisks", "*inner content _with_ emphasis*", "*inner content _with_ emphasis*\n"],
+      ["asterisks inside underscores", "_inner content *with* emphasis_", "*inner content _with_ emphasis*\n"],
+      ["images", "*![](http://some_url.com/img.jpg)*", "*![](http://some_url.com/img.jpg)*\n"],
+      ["inline code with asterisks", "*content `with` code*", "_content `with` code_\n"],
+      ["inline code with underscores", "_content `with` code_", "_content `with` code_\n"],
+    ];
+
+    st.plan(tests.length);
+    tests.forEach(function (test) {
+      st.equal(
+        remark()
+          .use({settings: {pedantic: true}})
+          .processSync(test[1])
+          .toString(),
+        test[2],
+        test[0]
+      );
+    });
+  });
+
   t.test('should support `stringLength`', function (st) {
     st.plan(2);
 
