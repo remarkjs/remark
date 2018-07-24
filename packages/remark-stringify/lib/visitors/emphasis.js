@@ -19,10 +19,15 @@ function emphasis(node) {
   var marker = this.options.emphasis;
   var content = this.all(node).join('');
 
-  if (this.options.pedantic) {
-    if (marker === '_' && content.indexOf(marker) !== -1) {
-      marker = '*';
-    }
+  /* When in pedantic mode, prevent using underscore as the marker when
+   * there are underscores in the content.
+   */
+  if (
+    this.options.pedantic &&
+    marker === '_' &&
+    content.indexOf(marker) !== -1
+  ) {
+    marker = '*';
   }
 
   return marker + content + marker;
