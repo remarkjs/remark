@@ -531,6 +531,7 @@
             {
               "type": "code",
               "lang": null,
+              "info": null,
               "value": "line 1\nline 2",
               "position": {
                 "start": {
@@ -695,6 +696,7 @@
                     {
                       "type": "code",
                       "lang": "erb",
+                      "info": null,
                       "value": "some code here",
                       "position": {
                         "start": {
@@ -811,6 +813,7 @@
                     {
                       "type": "code",
                       "lang": "erb",
+                      "info": null,
                       "value": "foo\n---\nbar\n---\nfoo\nbar",
                       "position": {
                         "start": {
@@ -937,6 +940,7 @@
                     {
                       "type": "code",
                       "lang": "html",
+                      "info": null,
                       "value": "---\nfoo\nfoo\n---\nbar",
                       "position": {
                         "start": {
@@ -1061,6 +1065,7 @@
                     {
                       "type": "code",
                       "lang": null,
+                      "info": null,
                       "value": "foo\n---\nbar",
                       "position": {
                         "start": {

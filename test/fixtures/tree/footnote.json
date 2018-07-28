@@ -432,6 +432,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "This footnote has a second [paragraph].",
       "position": {
         "start": {

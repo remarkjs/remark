@@ -94,6 +94,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "<div>\n\tfoo\n</div>",
       "position": {
         "start": {
@@ -150,6 +151,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "<div>foo</div>",
       "position": {
         "start": {
@@ -370,6 +372,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "<!-- Comment -->",
       "position": {
         "start": {
@@ -475,6 +478,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "<hr>",
       "position": {
         "start": {

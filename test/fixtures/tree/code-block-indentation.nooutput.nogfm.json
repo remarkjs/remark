@@ -118,6 +118,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "...which is not exdented.",
       "position": {
         "start": {
@@ -296,6 +297,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "...is.",
       "position": {
         "start": {

@@ -5,12 +5,12 @@ Normal with language tag:
 
 With white space:
 
-``` bash infoString
+``` bash info
 ```
 
 With curly braces:
 
-``````lang{infoString}
+``````lang{info}
 ``````
 
 With nothing:

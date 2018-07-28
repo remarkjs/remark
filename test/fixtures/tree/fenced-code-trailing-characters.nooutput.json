@@ -4,6 +4,7 @@
     {
       "type": "code",
       "lang": "js",
+      "info": null,
       "value": "foo();\n```bash",
       "position": {
         "start": {

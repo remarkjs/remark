@@ -7,6 +7,7 @@
         {
           "type": "code",
           "lang": null,
+          "info": null,
           "value": "foo",
           "position": {
             "start": {
@@ -40,6 +41,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "bar",
       "position": {
         "start": {

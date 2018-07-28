@@ -831,6 +831,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "Test code",
       "position": {
         "start": {

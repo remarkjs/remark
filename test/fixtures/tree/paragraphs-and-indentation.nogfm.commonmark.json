@@ -279,6 +279,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "and this is code",
       "position": {
         "start": {
@@ -402,6 +403,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "***",
       "position": {
         "start": {

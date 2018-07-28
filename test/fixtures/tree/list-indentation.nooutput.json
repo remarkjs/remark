@@ -767,6 +767,7 @@
             {
               "type": "code",
               "lang": null,
+              "info": null,
               "value": "Hello 5a",
               "position": {
                 "start": {
@@ -844,6 +845,7 @@
             {
               "type": "code",
               "lang": null,
+              "info": null,
               "value": "Hello 5b\n\nWorld 5b.",
               "position": {
                 "start": {

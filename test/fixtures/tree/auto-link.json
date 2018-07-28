@@ -694,6 +694,7 @@
     {
       "type": "code",
       "lang": null,
+      "info": null,
       "value": "or here: <http://example.com/>",
       "position": {
         "start": {
