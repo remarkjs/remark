@@ -1,0 +1,19 @@
+Normal with language tag:
+
+```js this is an info string
+```
+
+With white space:
+
+``` bash infoString
+```
+
+With curly braces:
+
+``````lang{infoString}
+``````
+
+With nothing:
+
+```
+```
