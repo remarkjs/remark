@@ -55,18 +55,6 @@ function indentation(value, maximum) {
         index--;
       }
 
-      /*
-      if (
-        trim(values[position]).length !== 0 &&
-        minIndent &&
-        index !== minIndent
-      ) {
-        padding = C_TAB;
-      } else {
-        padding = '';
-      }
-      */
-
       values[position] = values[position].slice(
         index in stops ? stops[index] + 1 : 0
       );
