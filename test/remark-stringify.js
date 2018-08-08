@@ -255,6 +255,30 @@ test('remark().stringify(ast, file)', function (t) {
     });
   });
 
+  t.test('undefined references should fallback to original', function (st) {
+    /* Data-driven tests in the format: [name, input, expected] */
+    var tests = [
+      ['capitalized link references - full', '[alpha][Bravo]'],
+      ['capitalized link references - collapsed', '[Bravo][]'],
+      ['capitalized link references - shortcut', '[Bravo]'],
+      ['capitalized image references - full', '![alpha][Bravo]'],
+      ['capitalized image references - collapsed', '![Bravo][]'],
+      ['capitalized image references - shortcut', '![Bravo]'],
+      ['capitalized footnote references', '[^Alpha]'],
+    ];
+
+    st.plan(tests.length);
+    tests.forEach(function (test) {
+      st.equal(
+        remark()
+          .processSync(test[1])
+          .toString(),
+        test[1] + '\n',
+        test[0]
+      );
+    });
+  });
+
   t.test('should support `stringLength`', function (st) {
     st.plan(2);
 

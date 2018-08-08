@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "tostring",
+          "reference": "toString",
           "referenceType": "full",
           "children": [
             {
