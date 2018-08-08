@@ -21,7 +21,6 @@ function indentation(value, maximum) {
   var index;
   var indentation;
   var stops;
-  var padding;
 
   values.unshift(repeat(C_SPACE, maximum) + '!');
 
@@ -56,6 +55,7 @@ function indentation(value, maximum) {
         index--;
       }
 
+      /*
       if (
         trim(values[position]).length !== 0 &&
         minIndent &&
@@ -65,8 +65,9 @@ function indentation(value, maximum) {
       } else {
         padding = '';
       }
+      */
 
-      values[position] = padding + values[position].slice(
+      values[position] = values[position].slice(
         index in stops ? stops[index] + 1 : 0
       );
     }

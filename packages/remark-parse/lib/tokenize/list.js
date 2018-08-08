@@ -432,7 +432,8 @@ function normalListItem(ctx, value, position) {
 
   lines = value.split(C_NEWLINE);
 
-  trimmedLines = removeIndent(value, getIndent(max).indent).split(C_NEWLINE);
+  var maxIndent = getIndent(max);
+  trimmedLines = removeIndent(value, maxIndent.indent).split(C_NEWLINE);
 
   /* We replaced the initial bullet with something
    * else above, which was used to trick
@@ -467,7 +468,7 @@ function normalListItem(ctx, value, position) {
       $2 = C_SPACE + $2;
     }
 
-    max = $1 + repeat(C_SPACE, $2.length) + $3;
+    max = $1 + repeat(C_SPACE, Math.max($2.length, TAB_SIZE)) + $3;
 
     return max + rest;
   }
