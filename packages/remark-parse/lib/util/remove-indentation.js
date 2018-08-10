@@ -8,7 +8,6 @@ module.exports = indentation;
 
 var C_SPACE = ' ';
 var C_NEWLINE = '\n';
-var C_TAB = '\t';
 
 /* Remove the minimum indent from every line in `value`.
  * Supports both tab, spaced, and mixed indentation (as
