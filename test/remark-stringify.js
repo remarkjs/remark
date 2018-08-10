@@ -264,7 +264,7 @@ test('remark().stringify(ast, file)', function (t) {
       ['capitalized image references - full', '![alpha][Bravo]'],
       ['capitalized image references - collapsed', '![Bravo][]'],
       ['capitalized image references - shortcut', '![Bravo]'],
-      ['capitalized footnote references', '[^Alpha]'],
+      ['capitalized footnote references', '[^Alpha]']
     ];
 
     st.plan(tests.length);
