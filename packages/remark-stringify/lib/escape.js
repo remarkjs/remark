@@ -74,9 +74,9 @@ function factory(options) {
           position > 0 &&
           position < length - 1 &&
           (
-              pedantic ||
-              !alphanumeric(value.charAt(position - 1)) ||
-              !alphanumeric(value.charAt(position + 1))
+            pedantic ||
+            !alphanumeric(value.charAt(position - 1)) ||
+            !alphanumeric(value.charAt(position + 1))
           )
         ) ||
         (gfm && !self.inLink && character === ':' && protocol(queue.join('')))
