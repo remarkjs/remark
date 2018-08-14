@@ -120,7 +120,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This is a paragraph with some asterisks",
+          "value": "This is a paragraph",
           "position": {
             "start": {
               "line": 9,
@@ -129,8 +129,8 @@
             },
             "end": {
               "line": 9,
-              "column": 40,
-              "offset": 156
+              "column": 20,
+              "offset": 136
             },
             "indent": []
           }
@@ -144,8 +144,78 @@
         },
         "end": {
           "line": 9,
+          "column": 20,
+          "offset": 136
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "and this is a new paragraph",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 1,
+              "offset": 142
+            },
+            "end": {
+              "line": 11,
+              "column": 28,
+              "offset": 169
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 11,
+          "column": 1,
+          "offset": 142
+        },
+        "end": {
+          "line": 11,
+          "column": 28,
+          "offset": 169
+        },
+        "indent": []
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "This is a paragraph with some asterisks",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 1,
+              "offset": 171
+            },
+            "end": {
+              "line": 13,
+              "column": 40,
+              "offset": 210
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 13,
+          "column": 1,
+          "offset": 171
+        },
+        "end": {
+          "line": 13,
           "column": 40,
-          "offset": 156
+          "offset": 210
         },
         "indent": []
       }
@@ -156,14 +226,14 @@
       "value": "***",
       "position": {
         "start": {
-          "line": 10,
+          "line": 14,
           "column": 1,
-          "offset": 157
+          "offset": 211
         },
         "end": {
-          "line": 10,
+          "line": 14,
           "column": 8,
-          "offset": 164
+          "offset": 218
         },
         "indent": []
       }
@@ -176,14 +246,14 @@
           "value": "This is a paragraph followed by a horizontal rule",
           "position": {
             "start": {
-              "line": 12,
+              "line": 16,
               "column": 1,
-              "offset": 166
+              "offset": 220
             },
             "end": {
-              "line": 12,
+              "line": 16,
               "column": 50,
-              "offset": 215
+              "offset": 269
             },
             "indent": []
           }
@@ -191,14 +261,14 @@
       ],
       "position": {
         "start": {
-          "line": 12,
+          "line": 16,
           "column": 1,
-          "offset": 166
+          "offset": 220
         },
         "end": {
-          "line": 12,
+          "line": 16,
           "column": 50,
-          "offset": 215
+          "offset": 269
         },
         "indent": []
       }
@@ -207,14 +277,14 @@
       "type": "thematicBreak",
       "position": {
         "start": {
-          "line": 13,
+          "line": 17,
           "column": 1,
-          "offset": 216
+          "offset": 270
         },
         "end": {
-          "line": 13,
+          "line": 17,
           "column": 7,
-          "offset": 222
+          "offset": 276
         },
         "indent": []
       }
@@ -228,14 +298,14 @@
           "value": "With lines.",
           "position": {
             "start": {
-              "line": 15,
+              "line": 19,
               "column": 3,
-              "offset": 226
+              "offset": 280
             },
             "end": {
-              "line": 15,
+              "line": 19,
               "column": 14,
-              "offset": 237
+              "offset": 291
             },
             "indent": []
           }
@@ -243,14 +313,14 @@
       ],
       "position": {
         "start": {
-          "line": 15,
+          "line": 19,
           "column": 1,
-          "offset": 224
+          "offset": 278
         },
         "end": {
-          "line": 15,
+          "line": 19,
           "column": 14,
-          "offset": 237
+          "offset": 291
         },
         "indent": []
       }
@@ -263,14 +333,14 @@
           "value": "This is a paragraph",
           "position": {
             "start": {
-              "line": 17,
+              "line": 21,
               "column": 1,
-              "offset": 239
+              "offset": 293
             },
             "end": {
-              "line": 17,
+              "line": 21,
               "column": 20,
-              "offset": 258
+              "offset": 312
             },
             "indent": []
           }
@@ -278,14 +348,14 @@
       ],
       "position": {
         "start": {
-          "line": 17,
+          "line": 21,
           "column": 1,
-          "offset": 239
+          "offset": 293
         },
         "end": {
-          "line": 17,
+          "line": 21,
           "column": 20,
-          "offset": 258
+          "offset": 312
         },
         "indent": []
       }
@@ -296,14 +366,14 @@
       "value": "and this is code",
       "position": {
         "start": {
-          "line": 19,
+          "line": 23,
           "column": 1,
-          "offset": 260
+          "offset": 314
         },
         "end": {
-          "line": 19,
+          "line": 23,
           "column": 21,
-          "offset": 280
+          "offset": 334
         },
         "indent": []
       }
@@ -316,14 +386,14 @@
           "value": "This is a paragraph",
           "position": {
             "start": {
-              "line": 21,
+              "line": 25,
               "column": 1,
-              "offset": 282
+              "offset": 336
             },
             "end": {
-              "line": 21,
+              "line": 25,
               "column": 20,
-              "offset": 301
+              "offset": 355
             },
             "indent": []
           }
@@ -331,14 +401,14 @@
       ],
       "position": {
         "start": {
-          "line": 21,
+          "line": 25,
           "column": 1,
-          "offset": 282
+          "offset": 336
         },
         "end": {
-          "line": 21,
+          "line": 25,
           "column": 20,
-          "offset": 301
+          "offset": 355
         },
         "indent": []
       }
@@ -351,14 +421,14 @@
           "value": "   and this is a new paragraph",
           "position": {
             "start": {
-              "line": 23,
+              "line": 27,
               "column": 1,
-              "offset": 303
+              "offset": 357
             },
             "end": {
-              "line": 23,
+              "line": 27,
               "column": 31,
-              "offset": 333
+              "offset": 387
             },
             "indent": []
           }
@@ -366,14 +436,14 @@
       ],
       "position": {
         "start": {
-          "line": 23,
+          "line": 27,
           "column": 1,
-          "offset": 303
+          "offset": 357
         },
         "end": {
-          "line": 23,
+          "line": 27,
           "column": 31,
-          "offset": 333
+          "offset": 387
         },
         "indent": []
       }
@@ -386,14 +456,14 @@
           "value": "This is a paragraph with some asterisks in a code block",
           "position": {
             "start": {
-              "line": 25,
+              "line": 29,
               "column": 1,
-              "offset": 335
+              "offset": 389
             },
             "end": {
-              "line": 25,
+              "line": 29,
               "column": 56,
-              "offset": 390
+              "offset": 444
             },
             "indent": []
           }
@@ -401,14 +471,14 @@
       ],
       "position": {
         "start": {
-          "line": 25,
+          "line": 29,
           "column": 1,
-          "offset": 335
+          "offset": 389
         },
         "end": {
-          "line": 25,
+          "line": 29,
           "column": 56,
-          "offset": 390
+          "offset": 444
         },
         "indent": []
       }
@@ -419,14 +489,14 @@
       "value": "***",
       "position": {
         "start": {
-          "line": 27,
+          "line": 31,
           "column": 1,
-          "offset": 392
+          "offset": 446
         },
         "end": {
-          "line": 27,
+          "line": 31,
           "column": 8,
-          "offset": 399
+          "offset": 453
         },
         "indent": []
       }
@@ -439,14 +509,14 @@
           "value": "This is a paragraph followed by a horizontal rule",
           "position": {
             "start": {
-              "line": 29,
+              "line": 33,
               "column": 1,
-              "offset": 401
+              "offset": 455
             },
             "end": {
-              "line": 29,
+              "line": 33,
               "column": 50,
-              "offset": 450
+              "offset": 504
             },
             "indent": []
           }
@@ -454,14 +524,14 @@
       ],
       "position": {
         "start": {
-          "line": 29,
+          "line": 33,
           "column": 1,
-          "offset": 401
+          "offset": 455
         },
         "end": {
-          "line": 29,
+          "line": 33,
           "column": 50,
-          "offset": 450
+          "offset": 504
         },
         "indent": []
       }
@@ -470,14 +540,14 @@
       "type": "thematicBreak",
       "position": {
         "start": {
-          "line": 31,
+          "line": 35,
           "column": 1,
-          "offset": 452
+          "offset": 506
         },
         "end": {
-          "line": 31,
+          "line": 35,
           "column": 7,
-          "offset": 458
+          "offset": 512
         },
         "indent": []
       }
@@ -490,9 +560,9 @@
       "offset": 0
     },
     "end": {
-      "line": 33,
+      "line": 37,
       "column": 1,
-      "offset": 460
+      "offset": 514
     }
   }
 }
