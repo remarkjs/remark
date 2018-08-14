@@ -62,7 +62,7 @@ function paragraph(eat, value, silent) {
         position++;
       }
 
-      if (size >= TAB_SIZE) {
+      if (size >= TAB_SIZE && character !== C_NEWLINE) {
         index = value.indexOf(C_NEWLINE, index + 1);
         continue;
       }
