@@ -1,19 +1,15 @@
 language: node_js
 node_js:
-- '6.0'
-- '9.0'
-script:
-  - "if [ \"$TRAVIS_NODE_VERSION\" != \"9.0\" ]; then npm run test-api; fi"
-  - "if [ \"$TRAVIS_NODE_VERSION\" = \"9.0\" ]; then npm run test && bash <(curl -s https://codecov.io/bash); fi"
+- lts/boron
+- node
 sudo: false
 deploy:
-  - provider: releases
-    skip_cleanup: true
-    api_key:
-      secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
-    file:
-      - "remark.js"
-      - "remark.min.js"
-    on:
-      tags: true
-      node: '9.0'
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
+  file:
+    - "remark.js"
+    - "remark.min.js"
+  on:
+    tags: true
