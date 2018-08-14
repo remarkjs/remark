@@ -5,3 +5,4 @@ node_modules
 coverage
 /remark.js
 /remark.min.js
+yarn.lock
