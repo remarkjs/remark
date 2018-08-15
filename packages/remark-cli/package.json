@@ -12,7 +12,7 @@
   "dependencies": {
     "markdown-extensions": "^1.1.0",
     "remark": "^9.0.0",
-    "unified-args": "^5.0.0"
+    "unified-args": "^6.0.0"
   },
   "homepage": "http://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-cli",

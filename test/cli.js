@@ -14,7 +14,7 @@ test('remark-cli', function (t) {
 
     st.plan(1);
 
-    execa.stderr(bin, ['--help']).then(function (result) {
+    execa.stdout(bin, ['--help']).then(function (result) {
       st.equal(
         result,
         [
@@ -68,7 +68,7 @@ test('remark-cli', function (t) {
 
     st.plan(2);
 
-    execa.stderr(bin, ['--version']).then(function (result) {
+    execa.stdout(bin, ['--version']).then(function (result) {
       st.ok(
         /remark: \d+\.\d+\.\d+/.test(result),
         'should include remark version'
