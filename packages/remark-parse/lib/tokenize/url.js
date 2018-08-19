@@ -40,6 +40,7 @@ function url(eat, value, silent) {
   var queue;
   var parenCount;
   var nextCharacter;
+  var tokenizers;
   var exit;
 
   if (!self.options.gfm) {
@@ -132,7 +133,14 @@ function url(eat, value, silent) {
   }
 
   exit = self.enterLink();
+
+  /* Temporarily remove all tokenizers except text in url. */
+  tokenizers = self.inlineTokenizers;
+  self.inlineTokenizers = {text: tokenizers.text};
+
   content = self.tokenizeInline(content, eat.now());
+
+  self.inlineTokenizers = tokenizers;
   exit();
 
   return eat(subvalue)({
