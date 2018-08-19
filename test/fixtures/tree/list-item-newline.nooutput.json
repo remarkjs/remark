@@ -72,12 +72,12 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "   Bar",
+                  "value": "Bar",
                   "position": {
                     "start": {
                       "line": 3,
-                      "column": 2,
-                      "offset": 11
+                      "column": 5,
+                      "offset": 14
                     },
                     "end": {
                       "line": 3,
@@ -91,8 +91,8 @@
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 2,
-                  "offset": 11
+                  "column": 5,
+                  "offset": 14
                 },
                 "end": {
                   "line": 3,

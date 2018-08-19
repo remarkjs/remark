@@ -787,12 +787,12 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "   World 5a.",
+                  "value": "World 5a.",
                   "position": {
                     "start": {
                       "line": 35,
-                      "column": 3,
-                      "offset": 238
+                      "column": 6,
+                      "offset": 241
                     },
                     "end": {
                       "line": 35,
@@ -806,8 +806,8 @@
               "position": {
                 "start": {
                   "line": 35,
-                  "column": 3,
-                  "offset": 238
+                  "column": 6,
+                  "offset": 241
                 },
                 "end": {
                   "line": 35,
@@ -844,7 +844,7 @@
             {
               "type": "code",
               "lang": null,
-              "value": "Hello 5b\n\nWorld 5b.",
+              "value": "Hello 5b",
               "position": {
                 "start": {
                   "line": 37,
@@ -852,14 +852,46 @@
                   "offset": 254
                 },
                 "end": {
+                  "line": 37,
+                  "column": 15,
+                  "offset": 266
+                },
+                "indent": []
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": " World 5b.",
+                  "position": {
+                    "start": {
+                      "line": 39,
+                      "column": 6,
+                      "offset": 273
+                    },
+                    "end": {
+                      "line": 39,
+                      "column": 16,
+                      "offset": 283
+                    },
+                    "indent": []
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 39,
+                  "column": 6,
+                  "offset": 273
+                },
+                "end": {
                   "line": 39,
                   "column": 16,
                   "offset": 283
                 },
-                "indent": [
-                  1,
-                  3
-                ]
+                "indent": []
               }
             }
           ],

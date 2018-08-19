@@ -318,8 +318,8 @@
                   "position": {
                     "start": {
                       "line": 4,
-                      "column": 3,
-                      "offset": 63
+                      "column": 5,
+                      "offset": 65
                     },
                     "end": {
                       "line": 4,
@@ -333,8 +333,8 @@
               "position": {
                 "start": {
                   "line": 4,
-                  "column": 3,
-                  "offset": 63
+                  "column": 5,
+                  "offset": 65
                 },
                 "end": {
                   "line": 4,

@@ -426,13 +426,14 @@ function normalListItem(ctx, value, position) {
   var trimmedLines;
   var index;
   var length;
+  var maxIndent;
 
   /* Remove the list-item’s bullet. */
   value = value.replace(EXPRESSION_BULLET, replacer);
 
   lines = value.split(C_NEWLINE);
 
-  var maxIndent = getIndent(max);
+  maxIndent = getIndent(max);
   trimmedLines = removeIndent(value, maxIndent.indent).split(C_NEWLINE);
 
   /* We replaced the initial bullet with something

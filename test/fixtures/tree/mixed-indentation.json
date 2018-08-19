@@ -53,7 +53,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long\n\t\t\tparagraph",
+                  "value": "Very long\n\tparagraph",
                   "position": {
                     "start": {
                       "line": 3,
@@ -66,7 +66,7 @@
                       "offset": 48
                     },
                     "indent": [
-                      0
+                      2
                     ]
                   }
                 }
@@ -83,7 +83,7 @@
                   "offset": 48
                 },
                 "indent": [
-                  0
+                  2
                 ]
               }
             }
@@ -221,7 +221,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long\n\tparagraph",
+                  "value": "Very long\nparagraph",
                   "position": {
                     "start": {
                       "line": 9,
@@ -234,7 +234,7 @@
                       "offset": 99
                     },
                     "indent": [
-                      2
+                      3
                     ]
                   }
                 }
@@ -251,7 +251,7 @@
                   "offset": 99
                 },
                 "indent": [
-                  2
+                  3
                 ]
               }
             }
@@ -305,7 +305,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "Very long\n\tparagraph",
+                  "value": "Very long\nparagraph",
                   "position": {
                     "start": {
                       "line": 12,
@@ -318,7 +318,7 @@
                       "offset": 125
                     },
                     "indent": [
-                      2
+                      3
                     ]
                   }
                 }
@@ -335,7 +335,7 @@
                   "offset": 125
                 },
                 "indent": [
-                  2
+                  3
                 ]
               }
             }
