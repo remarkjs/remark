@@ -21,6 +21,7 @@ var C_NEWLINE = '\n';
 var C_TAB = '\t';
 var C_PAREN_CLOSE = ')';
 var C_X_LOWER = 'x';
+var C_EMPTY = '';
 
 var TAB_SIZE = 4;
 var EXPRESSION_LOOSE_LIST_ITEM = /\n\n(?!\s*$)/;
@@ -57,6 +58,7 @@ function list(eat, value, silent) {
   var tokenizers = self.blockTokenizers;
   var interuptors = self.interruptList;
   var markers;
+  var delimiters;
   var index = 0;
   var length = value.length;
   var start = null;
@@ -139,7 +141,13 @@ function list(eat, value, silent) {
 
   character = value.charAt(++index);
 
-  if (character !== C_SPACE && character !== C_TAB) {
+  delimiters = {};
+  delimiters[C_SPACE] = true;
+  delimiters[C_TAB] = true;
+  delimiters[C_NEWLINE] = commonmark;
+  delimiters[C_EMPTY] = commonmark;
+
+  if (!delimiters[character]) {
     return;
   }
 
