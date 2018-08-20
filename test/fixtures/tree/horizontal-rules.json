@@ -103,7 +103,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "---",
       "position": {
         "start": {
@@ -186,7 +186,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "- - -",
       "position": {
         "start": {
@@ -304,7 +304,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "***",
       "position": {
         "start": {
@@ -387,7 +387,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "* * *",
       "position": {
         "start": {
@@ -505,7 +505,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "___",
       "position": {
         "start": {
@@ -588,7 +588,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "_ _ _",
       "position": {
         "start": {

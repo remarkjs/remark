@@ -39,7 +39,7 @@
     {
       "type": "code",
       "lang": "js",
-      "info": "this is an info string",
+      "meta": "this is an info string",
       "value": "",
       "position": {
         "start": {
@@ -95,7 +95,7 @@
     {
       "type": "code",
       "lang": "bash",
-      "info": "info",
+      "meta": "info",
       "value": "",
       "position": {
         "start": {
@@ -151,7 +151,7 @@
     {
       "type": "code",
       "lang": "lang{info}",
-      "info": null,
+      "meta": null,
       "value": "",
       "position": {
         "start": {
@@ -207,7 +207,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "",
       "position": {
         "start": {

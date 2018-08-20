@@ -188,7 +188,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "this code block is indented by one tab",
       "position": {
         "start": {
@@ -242,7 +242,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "\tthis code block is indented by two tabs",
       "position": {
         "start": {
@@ -296,7 +296,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "+\tthis is an example list item\n\tindented with tabs\n\n+   this is an example list item\n    indented with spaces",
       "position": {
         "start": {

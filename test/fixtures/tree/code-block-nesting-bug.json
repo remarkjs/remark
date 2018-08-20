@@ -167,7 +167,7 @@
     {
       "type": "code",
       "lang": "foo",
-      "info": null,
+      "meta": null,
       "value": "```bar\nbaz\n```",
       "position": {
         "start": {
@@ -226,7 +226,7 @@
     {
       "type": "code",
       "lang": "foo",
-      "info": null,
+      "meta": null,
       "value": "~~~bar\nbaz\n~~~",
       "position": {
         "start": {
@@ -285,7 +285,7 @@
     {
       "type": "code",
       "lang": "foo",
-      "info": null,
+      "meta": null,
       "value": "~~~bar\nbaz\n~~~",
       "position": {
         "start": {
@@ -309,7 +309,7 @@
     {
       "type": "code",
       "lang": "foo",
-      "info": null,
+      "meta": null,
       "value": "```bar\nbaz\n```",
       "position": {
         "start": {

@@ -1817,7 +1817,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "Hello;",
               "position": {
                 "start": {
@@ -1856,7 +1856,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "World;",
               "position": {
                 "start": {
@@ -2089,7 +2089,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "Hello;",
               "position": {
                 "start": {
@@ -2128,7 +2128,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "World;",
               "position": {
                 "start": {
@@ -2190,7 +2190,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "Foo.",
               "position": {
                 "start": {
@@ -2229,7 +2229,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "Bar.",
               "position": {
                 "start": {
@@ -2329,7 +2329,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "    Hello;",
               "position": {
                 "start": {
@@ -2389,7 +2389,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "World;",
               "position": {
                 "start": {
@@ -2449,7 +2449,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "\tHello;",
               "position": {
                 "start": {

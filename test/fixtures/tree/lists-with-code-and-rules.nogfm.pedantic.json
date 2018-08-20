@@ -1455,7 +1455,7 @@
                     {
                       "type": "code",
                       "lang": null,
-                      "info": null,
+                      "meta": null,
                       "value": "foo\n---\nbar",
                       "position": {
                         "start": {

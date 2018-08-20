@@ -7,7 +7,7 @@
         {
           "type": "code",
           "lang": null,
-          "info": null,
+          "meta": null,
           "value": "aNormalCodeBlockInABlockqoute();",
           "position": {
             "start": {
@@ -85,7 +85,7 @@
         {
           "type": "code",
           "lang": null,
-          "info": null,
+          "meta": null,
           "value": "thisIsAlsoSomeCodeInABlockquote();",
           "position": {
             "start": {
@@ -163,7 +163,7 @@
         {
           "type": "code",
           "lang": null,
-          "info": null,
+          "meta": null,
           "value": "aNonTerminatedCodeBlockInABlockquote();",
           "position": {
             "start": {
@@ -220,7 +220,7 @@
         {
           "type": "code",
           "lang": null,
-          "info": null,
+          "meta": null,
           "value": "",
           "position": {
             "start": {
@@ -332,7 +332,7 @@
         {
           "type": "code",
           "lang": null,
-          "info": null,
+          "meta": null,
           "value": "aNewCodeBlock();",
           "position": {
             "start": {

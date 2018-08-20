@@ -4,7 +4,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "code block on the first line",
       "position": {
         "start": {
@@ -60,7 +60,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "code block indented by spaces",
       "position": {
         "start": {
@@ -114,7 +114,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "the lines in this block  \nall contain trailing spaces  ",
       "position": {
         "start": {
@@ -170,7 +170,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "code block on the last line",
       "position": {
         "start": {

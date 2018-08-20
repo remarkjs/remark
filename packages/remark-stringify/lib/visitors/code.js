@@ -38,7 +38,7 @@ function code(node, parent) {
   var value = node.value;
   var options = self.options;
   var marker = options.fence;
-  var info = self.encode([node.lang, node.info].join(' ').trim(), node);
+  var info = self.encode([node.lang, node.meta].join(' ').trim(), node);
   var fence;
 
   /* Without (needed) fences. */

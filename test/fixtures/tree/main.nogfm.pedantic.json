@@ -1389,7 +1389,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "Code goes here.\nLots of it...",
       "position": {
         "start": {

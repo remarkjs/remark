@@ -1645,7 +1645,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "Backslash: \\\\\n\nBacktick: \\`\n\nAsterisk: \\*\n\nUnderscore: \\_\n\nLeft brace: \\{\n\nRight brace: \\}\n\nLeft bracket: \\[\n\nRight bracket: \\]\n\nLeft paren: \\(\n\nRight paren: \\)\n\nGreater-than: \\>\n\nHash: \\#\n\nPeriod: \\.\n\nBang: \\!\n\nPlus: \\+\n\nMinus: \\-",
       "position": {
         "start": {
@@ -1748,7 +1748,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "Pipe: \\|\n\nTilde: \\~",
       "position": {
         "start": {
@@ -1823,7 +1823,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "Quote: \\\"\n\nDollar: \\$\n\nPercentage: \\%\n\nAmpersand: \\&\n\nSingle quote: \\'\n\nComma: \\,\n\nForward slash: \\/\n\nColon: \\:\n\nSemicolon: \\;\n\nLess-than: \\<\n\nEquals: \\=\n\nQuestion mark: \\?\n\nAt-sign: \\@\n\nCaret: \\^\n\nNew line: \\\nonly works in paragraphs.",
       "position": {
         "start": {

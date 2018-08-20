@@ -45,7 +45,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "    This is a code block...\n        \n    ...which is not exdented.",
       "position": {
         "start": {
@@ -104,7 +104,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "  This one...\n      \n  ...is.",
       "position": {
         "start": {
@@ -163,7 +163,7 @@
     {
       "type": "code",
       "lang": null,
-      "info": null,
+      "meta": null,
       "value": "So is this...\n      \n  ...one.",
       "position": {
         "start": {

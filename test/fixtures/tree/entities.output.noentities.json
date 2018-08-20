@@ -145,7 +145,7 @@
     {
       "type": "code",
       "lang": "AT&T",
-      "info": null,
+      "meta": null,
       "value": "Something in the AT&amp;T language",
       "position": {
         "start": {
@@ -167,7 +167,7 @@
     {
       "type": "code",
       "lang": "AT&T",
-      "info": null,
+      "meta": null,
       "value": "Something in the AT&#x26;T language",
       "position": {
         "start": {

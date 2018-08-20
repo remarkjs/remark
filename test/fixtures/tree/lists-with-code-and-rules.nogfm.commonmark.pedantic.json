@@ -180,7 +180,7 @@
             {
               "type": "code",
               "lang": null,
-              "info": null,
+              "meta": null,
               "value": "- two\n    - three\n    - four\n    - five",
               "position": {
                 "start": {
@@ -1154,7 +1154,7 @@
                     {
                       "type": "code",
                       "lang": null,
-                      "info": null,
+                      "meta": null,
                       "value": "foo\n---\nbar",
                       "position": {
                         "start": {
