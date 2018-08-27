@@ -28,6 +28,8 @@ function paragraph(eat, value, silent) {
   var character;
   var size;
   var now;
+  var children;
+  var add;
 
   while (index < length) {
     /* Eat everything if there’s no following newline. */
@@ -115,8 +117,19 @@ function paragraph(eat, value, silent) {
   now = eat.now();
   subvalue = trimTrailingLines(subvalue);
 
-  return eat(subvalue)({
+  children = self.tokenizeInline(subvalue, now);
+  add = eat(subvalue);
+
+  /* Paragraphs in a loose list are wrapped in <p> tags, while paragraphs in a
+   * tight list are not */
+  if (self.inTightList) {
+    return children.map(function (child) {
+      return add(child);
+    });
+  }
+
+  return add({
     type: 'paragraph',
-    children: self.tokenizeInline(subvalue, now)
+    children: children
   });
 }
