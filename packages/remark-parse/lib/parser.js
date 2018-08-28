@@ -16,6 +16,7 @@ function Parser(doc, file) {
   this.setOptions({});
 
   this.inList = false;
+  this.inTightList = false;
   this.inBlock = false;
   this.inLink = false;
   this.atStart = true;
@@ -37,6 +38,7 @@ proto.options = require('./defaults');
 /* Enter and exit helpers. */
 proto.exitStart = toggle('atStart', true);
 proto.enterList = toggle('inList', false);
+proto.enterTightList = toggle('inTightList', false);
 proto.enterLink = toggle('inLink', false);
 proto.enterBlock = toggle('inBlock', false);
 

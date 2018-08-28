@@ -373,6 +373,9 @@ function listItem(ctx, value, position) {
   var checked = null;
   var task;
   var indent;
+  var loose;
+  var children;
+  var exit;
 
   value = fn.apply(null, arguments);
 
@@ -387,12 +390,24 @@ function listItem(ctx, value, position) {
     }
   }
 
+  loose = EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
+    value.charAt(value.length - 1) === C_NEWLINE;
+
+  if (!loose) {
+    exit = ctx.enterTightList();
+  }
+
+  children = ctx.tokenizeBlock(value, position);
+
+  if (!loose) {
+    exit();
+  }
+
   return {
     type: 'listItem',
-    loose: EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
-      value.charAt(value.length - 1) === C_NEWLINE,
+    loose: loose,
     checked: checked,
-    children: ctx.tokenizeBlock(value, position)
+    children: children
   };
 }
 
