@@ -20,6 +20,7 @@ var C_BRACKET_CLOSE = ']';
 
 function reference(eat, value, silent) {
   var self = this;
+  var commonmark = self.options.commonmark;
   var character = value.charAt(0);
   var index = 0;
   var length = value.length;
@@ -102,15 +103,20 @@ function reference(eat, value, silent) {
   subvalue += character;
   queue = '';
 
-  while (index < length) {
-    character = value.charAt(index);
+  if (!commonmark) {
+    /* The original markdown syntax definition explicitly allows for whitespace
+     * between the link text and link label; commonmark departs from this, in
+     * part to improve support for shortcut reference links */
+    while (index < length) {
+      character = value.charAt(index);
 
-    if (!whitespace(character)) {
-      break;
+      if (!whitespace(character)) {
+        break;
+      }
+
+      queue += character;
+      index++;
     }
-
-    queue += character;
-    index++;
   }
 
   character = value.charAt(index);
