@@ -138,6 +138,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Syntax highlighting for
     [remark-react](https://github.com/mapbox/remark-react) through
     [lowlight](https://github.com/wooorm/lowlight)
+*   [`remark-redact`](https://github.com/seafoam6/remark-redact)
+    — Conceal portions of text with a █
 *   [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
     — Transform links and images to references and definitions
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
