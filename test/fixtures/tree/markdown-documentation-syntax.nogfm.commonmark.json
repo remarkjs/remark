@@ -1905,8 +1905,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "1",
-          "referenceType": "full",
+          "identifier": "setext",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1934,6 +1934,60 @@
             },
             "end": {
               "line": 51,
+              "column": 30,
+              "offset": 1742
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 30,
+              "offset": 1742
+            },
+            "end": {
+              "line": 51,
+              "column": 31,
+              "offset": 1743
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "1",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "1",
+              "position": {
+                "start": {
+                  "line": 51,
+                  "column": 32,
+                  "offset": 1744
+                },
+                "end": {
+                  "line": 51,
+                  "column": 33,
+                  "offset": 1745
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 31,
+              "offset": 1743
+            },
+            "end": {
+              "line": 51,
               "column": 34,
               "offset": 1746
             },
@@ -1959,8 +2013,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "2",
-          "referenceType": "full",
+          "identifier": "atx",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1988,6 +2042,60 @@
             },
             "end": {
               "line": 51,
+              "column": 41,
+              "offset": 1753
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 41,
+              "offset": 1753
+            },
+            "end": {
+              "line": 51,
+              "column": 42,
+              "offset": 1754
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "2",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "2",
+              "position": {
+                "start": {
+                  "line": 51,
+                  "column": 43,
+                  "offset": 1755
+                },
+                "end": {
+                  "line": 51,
+                  "column": 44,
+                  "offset": 1756
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 42,
+              "offset": 1754
+            },
+            "end": {
+              "line": 51,
               "column": 45,
               "offset": 1757
             },
@@ -2013,8 +2121,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "3",
-          "referenceType": "full",
+          "identifier": "textile",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -2042,6 +2150,60 @@
             },
             "end": {
               "line": 51,
+              "column": 56,
+              "offset": 1768
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 56,
+              "offset": 1768
+            },
+            "end": {
+              "line": 51,
+              "column": 57,
+              "offset": 1769
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "3",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "3",
+              "position": {
+                "start": {
+                  "line": 51,
+                  "column": 58,
+                  "offset": 1770
+                },
+                "end": {
+                  "line": 51,
+                  "column": 59,
+                  "offset": 1771
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 57,
+              "offset": 1769
+            },
+            "end": {
+              "line": 51,
               "column": 60,
               "offset": 1772
             },
@@ -2067,8 +2229,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "4",
-          "referenceType": "full",
+          "identifier": "restructuredtext",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -2093,6 +2255,60 @@
               "line": 51,
               "column": 62,
               "offset": 1774
+            },
+            "end": {
+              "line": 51,
+              "column": 80,
+              "offset": 1792
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 80,
+              "offset": 1792
+            },
+            "end": {
+              "line": 51,
+              "column": 81,
+              "offset": 1793
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "4",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "4",
+              "position": {
+                "start": {
+                  "line": 51,
+                  "column": 82,
+                  "offset": 1794
+                },
+                "end": {
+                  "line": 51,
+                  "column": 83,
+                  "offset": 1795
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 51,
+              "column": 81,
+              "offset": 1793
             },
             "end": {
               "line": 51,
@@ -2123,8 +2339,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "5",
-          "referenceType": "full",
+          "identifier": "grutatext",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -2149,6 +2365,60 @@
               "line": 52,
               "column": 1,
               "offset": 1798
+            },
+            "end": {
+              "line": 52,
+              "column": 12,
+              "offset": 1809
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 12,
+              "offset": 1809
+            },
+            "end": {
+              "line": 52,
+              "column": 13,
+              "offset": 1810
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "5",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "5",
+              "position": {
+                "start": {
+                  "line": 52,
+                  "column": 14,
+                  "offset": 1811
+                },
+                "end": {
+                  "line": 52,
+                  "column": 15,
+                  "offset": 1812
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 13,
+              "offset": 1810
             },
             "end": {
               "line": 52,
@@ -2177,8 +2447,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "6",
-          "referenceType": "full",
+          "identifier": "ettext",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -2203,6 +2473,60 @@
               "line": 52,
               "column": 22,
               "offset": 1819
+            },
+            "end": {
+              "line": 52,
+              "column": 30,
+              "offset": 1827
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 30,
+              "offset": 1827
+            },
+            "end": {
+              "line": 52,
+              "column": 31,
+              "offset": 1828
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "6",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "6",
+              "position": {
+                "start": {
+                  "line": 52,
+                  "column": 32,
+                  "offset": 1829
+                },
+                "end": {
+                  "line": 52,
+                  "column": 33,
+                  "offset": 1830
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 52,
+              "column": 31,
+              "offset": 1828
             },
             "end": {
               "line": 52,
@@ -5090,8 +5414,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "1",
-          "referenceType": "full",
+          "identifier": "setext",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -5116,6 +5440,60 @@
               "line": 211,
               "column": 42,
               "offset": 7634
+            },
+            "end": {
+              "line": 211,
+              "column": 50,
+              "offset": 7642
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 211,
+              "column": 50,
+              "offset": 7642
+            },
+            "end": {
+              "line": 211,
+              "column": 51,
+              "offset": 7643
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "1",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "1",
+              "position": {
+                "start": {
+                  "line": 211,
+                  "column": 52,
+                  "offset": 7644
+                },
+                "end": {
+                  "line": 211,
+                  "column": 53,
+                  "offset": 7645
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 211,
+              "column": 51,
+              "offset": 7643
             },
             "end": {
               "line": 211,
@@ -5144,8 +5522,8 @@
         },
         {
           "type": "linkReference",
-          "identifier": "2",
-          "referenceType": "full",
+          "identifier": "atx",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -5170,6 +5548,60 @@
               "line": 211,
               "column": 59,
               "offset": 7651
+            },
+            "end": {
+              "line": 211,
+              "column": 64,
+              "offset": 7656
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 211,
+              "column": 64,
+              "offset": 7656
+            },
+            "end": {
+              "line": 211,
+              "column": 65,
+              "offset": 7657
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "linkReference",
+          "identifier": "2",
+          "referenceType": "shortcut",
+          "children": [
+            {
+              "type": "text",
+              "value": "2",
+              "position": {
+                "start": {
+                  "line": 211,
+                  "column": 66,
+                  "offset": 7658
+                },
+                "end": {
+                  "line": 211,
+                  "column": 67,
+                  "offset": 7659
+                },
+                "indent": []
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 211,
+              "column": 65,
+              "offset": 7657
             },
             "end": {
               "line": 211,
