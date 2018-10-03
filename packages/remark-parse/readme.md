@@ -390,15 +390,17 @@ The given `node`.
 ### Turning off a tokenizer
 
 In rare situations, you may want to turn off a tokenizer to avoid parsing
-that syntactic feature.  This can be done by deleting the tokenizer from
+that syntactic feature.  This can be done by replacing the tokenizer from
 your Parser’s `blockTokenizers` (or `blockMethods`) or `inlineTokenizers`
 (or `inlineMethods`).
 
 The following example turns off indented code blocks:
 
 ```js
-delete remarkParse.Parser.prototype.blockTokenizers.indentedCode;
+remarkParse.Parser.prototype.blockTokenizers.indentedCode = function () { return true };
 ```
+
+Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers).
 
 ## License
 
