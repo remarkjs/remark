@@ -5,11 +5,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": true,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -58,41 +58,19 @@
               "offset": 0
             },
             "end": {
-              "line": 2,
-              "column": 4,
-              "offset": 10
+              "line": 3,
+              "column": 1,
+              "offset": 11
             },
             "indent": [
+              1,
               1
             ]
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 1,
-          "column": 1,
-          "offset": 0
         },
-        "end": {
-          "line": 2,
-          "column": 4,
-          "offset": 10
-        },
-        "indent": [
-          1
-        ]
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 1,
-      "loose": false,
-      "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -164,45 +142,21 @@
               "offset": 13
             },
             "end": {
-              "line": 8,
-              "column": 4,
-              "offset": 37
+              "line": 9,
+              "column": 1,
+              "offset": 38
             },
             "indent": [
+              1,
               1,
               1,
               1
             ]
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 5,
-          "column": 1,
-          "offset": 13
         },
-        "end": {
-          "line": 8,
-          "column": 4,
-          "offset": 37
-        },
-        "indent": [
-          1,
-          1,
-          1
-        ]
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 1,
-      "loose": false,
-      "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -343,41 +297,19 @@
               "offset": 40
             },
             "end": {
-              "line": 12,
-              "column": 25,
-              "offset": 75
+              "line": 13,
+              "column": 1,
+              "offset": 76
             },
             "indent": [
+              1,
               1
             ]
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 11,
-          "column": 1,
-          "offset": 40
         },
-        "end": {
-          "line": 12,
-          "column": 25,
-          "offset": 75
-        },
-        "indent": [
-          1
-        ]
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 1,
-      "loose": false,
-      "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -530,9 +462,9 @@
       ],
       "position": {
         "start": {
-          "line": 15,
+          "line": 1,
           "column": 1,
-          "offset": 78
+          "offset": 0
         },
         "end": {
           "line": 16,
@@ -540,6 +472,20 @@
           "offset": 104
         },
         "indent": [
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
+          1,
           1
         ]
       }

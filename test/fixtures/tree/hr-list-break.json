@@ -5,11 +5,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -64,7 +64,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -224,11 +224,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -283,7 +283,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -338,7 +338,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -432,11 +432,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -491,7 +491,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -546,26 +546,67 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
               "type": "list",
               "ordered": false,
               "start": null,
-              "loose": false,
+              "spread": false,
               "children": [
                 {
                   "type": "listItem",
-                  "loose": false,
+                  "spread": false,
                   "checked": null,
                   "children": [
                     {
-                      "type": "paragraph",
+                      "type": "list",
+                      "ordered": false,
+                      "start": null,
+                      "spread": false,
                       "children": [
                         {
-                          "type": "text",
-                          "value": "*\nyou today?",
+                          "type": "listItem",
+                          "spread": false,
+                          "checked": null,
+                          "children": [
+                            {
+                              "type": "paragraph",
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "value": "you today?",
+                                  "position": {
+                                    "start": {
+                                      "line": 19,
+                                      "column": 1,
+                                      "offset": 191
+                                    },
+                                    "end": {
+                                      "line": 19,
+                                      "column": 11,
+                                      "offset": 201
+                                    },
+                                    "indent": []
+                                  }
+                                }
+                              ],
+                              "position": {
+                                "start": {
+                                  "line": 19,
+                                  "column": 1,
+                                  "offset": 191
+                                },
+                                "end": {
+                                  "line": 19,
+                                  "column": 11,
+                                  "offset": 201
+                                },
+                                "indent": []
+                              }
+                            }
+                          ],
                           "position": {
                             "start": {
                               "line": 18,
@@ -673,11 +714,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -732,7 +773,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {

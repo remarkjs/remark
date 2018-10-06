@@ -2,11 +2,16 @@
   "type": "root",
   "children": [
     {
-      "type": "paragraph",
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "spread": false,
       "children": [
         {
-          "type": "text",
-          "value": "1.\n2.\n3.\n4.",
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [],
           "position": {
             "start": {
               "line": 1,
@@ -14,15 +19,68 @@
               "offset": 0
             },
             "end": {
+              "line": 1,
+              "column": 3,
+              "offset": 2
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [],
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1,
+              "offset": 3
+            },
+            "end": {
+              "line": 2,
+              "column": 3,
+              "offset": 5
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 6
+            },
+            "end": {
+              "line": 3,
+              "column": 3,
+              "offset": 8
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [],
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1,
+              "offset": 9
+            },
+            "end": {
               "line": 4,
               "column": 3,
               "offset": 11
             },
-            "indent": [
-              1,
-              1,
-              1
-            ]
+            "indent": []
           }
         }
       ],

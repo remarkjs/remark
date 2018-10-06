@@ -229,6 +229,211 @@ test('remark().stringify(ast, file)', function (t) {
     );
   });
 
+  t.test('should support optional list fields', function (st) {
+    st.equal(
+      stringify({
+        type: 'list',
+        children: [{
+          type: 'listItem',
+          children: [{
+            type: 'paragraph',
+            children: [{type: 'text', value: 'alpha'}]
+          }]
+        }]
+      }),
+      '-   alpha',
+      'no ordered, start, or spread'
+    );
+
+    st.equal(
+      stringify({
+        type: 'list',
+        start: 2,
+        children: [{
+          type: 'listItem',
+          children: [{
+            type: 'paragraph',
+            children: [{type: 'text', value: 'bravo'}]
+          }]
+        }]
+      }),
+      '-   bravo',
+      'start; no ordered or spread'
+    );
+
+    st.equal(
+      stringify({
+        type: 'list',
+        spread: true,
+        children: [
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'charlie'}]
+            }]
+          },
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'delta'}]
+            }]
+          }
+        ]
+      }),
+      '-   charlie\n\n-   delta',
+      'spread; no ordered or start'
+    );
+
+    st.equal(
+      stringify({
+        type: 'list',
+        ordered: true,
+        children: [{
+          type: 'listItem',
+          children: [{
+            type: 'paragraph',
+            children: [{type: 'text', value: 'echo'}]
+          }]
+        }]
+      }),
+      '1.  echo',
+      'ordered; no start or spread'
+    );
+
+    st.equal(
+      stringify({
+        type: 'list',
+        ordered: true,
+        spread: true,
+        children: [
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'foxtrot'}]
+            }]
+          },
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'golf'}]
+            }]
+          }
+        ]
+      }),
+      '1.  foxtrot\n\n2.  golf',
+      'ordered and spread; no start'
+    );
+
+    st.equal(
+      stringify({
+        type: 'list',
+        ordered: true,
+        spread: true,
+        start: 3,
+        children: [
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'hotel'}]
+            }]
+          },
+          {
+            type: 'listItem',
+            children: [{
+              type: 'paragraph',
+              children: [{type: 'text', value: 'india'}]
+            }]
+          }
+        ]
+      }),
+      '3.  hotel\n\n4.  india',
+      'ordered, spread, and start'
+    );
+
+    st.end();
+
+    function stringify(value) {
+      return String(remark().stringify(value));
+    }
+  });
+
+  t.test('should support optional list item fields', function (st) {
+    var children = [
+      {
+        type: 'paragraph',
+        children: [{type: 'text', value: 'alpha'}]
+      },
+      {
+        type: 'blockquote',
+        children: [{
+          type: 'paragraph',
+          children: [{type: 'text', value: 'bravo'}]
+        }]
+      }
+    ];
+
+    st.equal(
+      stringify({type: 'listItem', children: children}),
+      '-   alpha\n\n    > bravo',
+      'no checked or spread'
+    );
+
+    st.equal(
+      stringify({type: 'listItem', checked: true, children: children}),
+      '-   [x] alpha\n\n    > bravo',
+      'checked; no spread'
+    );
+
+    st.equal(
+      stringify({type: 'listItem', spread: true, children: children}),
+      '-   alpha\n\n    > bravo',
+      'spread: true; no checked'
+    );
+
+    st.equal(
+      stringify({type: 'listItem', spread: false, children: children}),
+      '-   alpha\n    > bravo',
+      'spread: false; no checked'
+    );
+
+    st.equal(
+      stringify({type: 'listItem', checked: false, spread: false, children: children}),
+      '-   [ ] alpha\n    > bravo',
+      'spread and checked'
+    );
+
+    st.end();
+
+    function stringify(value) {
+      return String(remark().stringify(value));
+    }
+  });
+
+  t.test('should support empty list items', function (st) {
+    st.equal(
+      stringify({type: 'listItem', children: []}),
+      '-',
+      'no checked'
+    );
+
+    st.equal(
+      stringify({type: 'listItem', checked: true, children: []}),
+      '-   [x] ',
+      'checked'
+    );
+
+    st.end();
+
+    function stringify(value) {
+      return String(remark().stringify(value));
+    }
+  });
+
   t.test('emphasis in pedantic mode should support a variety of contained inline content', function (st) {
     /* Data-driven tests in the format: [name, input, expected] */
     var tests = [

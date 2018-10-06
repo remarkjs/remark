@@ -18,5 +18,5 @@ function unorderedItems(node) {
     values[index] = fn.call(self, children[index], node, index, bullet);
   }
 
-  return values.join('\n');
+  return values.join(node.spread ? '\n\n' : '\n');
 }

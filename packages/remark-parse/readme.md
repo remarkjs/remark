@@ -33,9 +33,11 @@ process.stdin
 ## Table of Contents
 
 *   [API](#api)
+
     *   [processor.use(parse\[, options\])](#processoruseparse-options)
     *   [parse.Parser](#parseparser)
 *   [Extending the Parser](#extending-the-parser)
+
     *   [Parser#blockTokenizers](#parserblocktokenizers)
     *   [Parser#blockMethods](#parserblockmethods)
     *   [Parser#inlineTokenizers](#parserinlinetokenizers)

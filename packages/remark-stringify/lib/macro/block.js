@@ -2,6 +2,11 @@
 
 module.exports = block;
 
+var newline = '\n';
+var double = newline + newline;
+var triple = double + newline;
+var comment = double + '<!---->' + double;
+
 /* Stringify a block node with block children (e.g., `root`
  * or `blockquote`).
  * Knows about code following a list, or adjacent lists
@@ -9,36 +14,43 @@ module.exports = block;
  * between them. */
 function block(node) {
   var self = this;
+  var options = self.options;
+  var fences = options.fences;
+  var gap = options.commonmark ? comment : triple;
   var values = [];
   var children = node.children;
   var length = children.length;
   var index = -1;
-  var child;
   var prev;
+  var child;
 
   while (++index < length) {
+    prev = child;
     child = children[index];
 
     if (prev) {
-      /* Duplicate nodes, such as a list
-       * directly following another list,
-       * often need multiple new lines.
-       *
-       * Additionally, code blocks following a list
-       * might easily be mistaken for a paragraph
-       * in the list itself. */
-      if (child.type === prev.type && prev.type === 'list') {
-        values.push(prev.ordered === child.ordered ? '\n\n\n' : '\n\n');
-      } else if (prev.type === 'list' && child.type === 'code' && !child.lang) {
-        values.push('\n\n\n');
+      // A list preceding another list that are equally ordered, or a
+      // list preceding an indented code block, need a gap between them,
+      // so as not to see them as one list, or content of the list,
+      // respectively.
+      //
+      // In commonmark, only something that breaks both up can do that,
+      // so we opt for an empty, invisible comment.  In other flavours,
+      // two blank lines are fine.
+      if (
+        prev.type === 'list' &&
+        (
+          (child.type === 'list' && prev.ordered === child.ordered) ||
+          (child.type === 'code' && (!child.lang && !fences))
+        )
+      ) {
+        values.push(gap);
       } else {
-        values.push('\n\n');
+        values.push(double);
       }
     }
 
     values.push(self.visit(child, node));
-
-    prev = child;
   }
 
   return values.join('');

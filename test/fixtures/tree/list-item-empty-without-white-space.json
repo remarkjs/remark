@@ -3,8 +3,8 @@
   "children": [
     {
       "type": "list",
-      "ordered": true,
-      "start": 1,
+      "ordered": false,
+      "start": null,
       "spread": false,
       "children": [
         {
@@ -20,8 +20,8 @@
             },
             "end": {
               "line": 1,
-              "column": 3,
-              "offset": 2
+              "column": 2,
+              "offset": 1
             },
             "indent": []
           }
@@ -35,8 +35,8 @@
         },
         "end": {
           "line": 1,
-          "column": 3,
-          "offset": 2
+          "column": 2,
+          "offset": 1
         },
         "indent": []
       }
@@ -49,8 +49,8 @@
       "offset": 0
     },
     "end": {
-      "line": 1,
-      "column": 3,
+      "line": 2,
+      "column": 1,
       "offset": 2
     }
   }

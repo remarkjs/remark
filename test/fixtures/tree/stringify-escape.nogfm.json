@@ -441,11 +441,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -585,7 +585,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -725,7 +725,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1508,11 +1508,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1587,7 +1587,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1696,7 +1696,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1771,7 +1771,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1880,7 +1880,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1989,7 +1989,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2209,11 +2209,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2268,7 +2268,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2323,7 +2323,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2412,7 +2412,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2912,11 +2912,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3022,7 +3022,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3077,7 +3077,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3183,7 +3183,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {

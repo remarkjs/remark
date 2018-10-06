@@ -9,5 +9,6 @@ var ORDERED_MAP = {
 };
 
 function list(node) {
-  return this[ORDERED_MAP[node.ordered]](node);
+  var ordered = node.ordered;
+  return this[ORDERED_MAP[ordered == null ? false : ordered]](node);
 }
