@@ -17,3 +17,18 @@ With nothing:
 
 ```
 ```
+
+With several streaks of white space:
+
+``` bash info string
+```
+
+With tabs as white space:
+
+``` bash		info
+```
+
+With spaces as white space:
+
+``` bash  info
+```
