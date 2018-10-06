@@ -59,6 +59,7 @@
     {
       "type": "definition",
       "identifier": "hi",
+      "label": "HI",
       "title": null,
       "url": "/url",
       "position": {

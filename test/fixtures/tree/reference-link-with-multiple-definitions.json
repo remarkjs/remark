@@ -59,6 +59,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "first",
       "position": {
@@ -78,6 +79,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "second",
       "position": {

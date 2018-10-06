@@ -481,6 +481,7 @@
     {
       "type": "definition",
       "identifier": "^xyz",
+      "label": "^xyz",
       "title": null,
       "url": "Baz",
       "position": {

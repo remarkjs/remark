@@ -302,6 +302,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "http://google.com",
       "position": {

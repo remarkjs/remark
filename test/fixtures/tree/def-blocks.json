@@ -200,6 +200,7 @@
     {
       "type": "definition",
       "identifier": "2",
+      "label": "2",
       "title": null,
       "url": "hello",
       "position": {
@@ -465,6 +466,7 @@
     {
       "type": "definition",
       "identifier": "4",
+      "label": "4",
       "title": null,
       "url": "hello",
       "position": {
@@ -543,6 +545,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": null,
       "url": "foo",
       "position": {

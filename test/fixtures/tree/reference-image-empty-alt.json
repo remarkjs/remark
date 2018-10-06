@@ -41,6 +41,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": null,
       "url": "/xyz.png",
       "position": {

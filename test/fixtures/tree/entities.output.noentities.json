@@ -1682,6 +1682,7 @@
     {
       "type": "definition",
       "identifier": "favicon",
+      "label": "favicon",
       "title": "ATT favicon",
       "url": "http://att.com/fav.ico",
       "position": {
@@ -2038,6 +2039,7 @@
     {
       "type": "definition",
       "identifier": "foo&bar",
+      "label": "foo&bar",
       "title": null,
       "url": "http://example.com",
       "position": {
@@ -2057,6 +2059,7 @@
     {
       "type": "definition",
       "identifier": "foo&amp;bar",
+      "label": "foo&amp;bar",
       "title": null,
       "url": "http://example.com",
       "position": {

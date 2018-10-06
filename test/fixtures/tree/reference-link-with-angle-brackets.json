@@ -59,6 +59,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "./url with spaces",
       "position": {

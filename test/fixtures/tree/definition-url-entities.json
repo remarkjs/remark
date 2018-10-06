@@ -4,6 +4,7 @@
     {
       "type": "definition",
       "identifier": "baz",
+      "label": "baz",
       "title": null,
       "url": "http://www.example.com?param=1&region=here",
       "position": {

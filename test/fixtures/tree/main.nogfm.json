@@ -4,6 +4,7 @@
     {
       "type": "definition",
       "identifier": "test",
+      "label": "test",
       "title": "Google",
       "url": "http://google.com/",
       "position": {

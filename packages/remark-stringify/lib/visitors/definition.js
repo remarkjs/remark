@@ -19,5 +19,5 @@ function definition(node) {
     content += ' ' + title(node.title);
   }
 
-  return '[' + node.identifier + ']: ' + content;
+  return '[' + (node.label || node.identifier) + ']: ' + content;
 }

@@ -291,6 +291,7 @@
     {
       "type": "definition",
       "identifier": "baz",
+      "label": "baz",
       "title": "foo\nbar",
       "url": "/url",
       "position": {
@@ -312,6 +313,7 @@
     {
       "type": "definition",
       "identifier": "baz",
+      "label": "baz",
       "title": "foo\nbar",
       "url": "/url",
       "position": {

@@ -569,6 +569,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": null,
       "url": "http://example.com/?foo=1&bar=2",
       "position": {
@@ -588,6 +589,7 @@
     {
       "type": "definition",
       "identifier": "2",
+      "label": "2",
       "title": "AT&T",
       "url": "http://att.com/",
       "position": {

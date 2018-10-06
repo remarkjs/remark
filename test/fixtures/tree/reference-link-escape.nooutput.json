@@ -412,6 +412,7 @@
     {
       "type": "definition",
       "identifier": "b\\*r*",
+      "label": "b\\*r*",
       "title": null,
       "url": "http://google.com",
       "position": {

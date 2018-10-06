@@ -1777,6 +1777,7 @@
     {
       "type": "definition",
       "identifier": "src",
+      "label": "src",
       "title": null,
       "url": "/projects/markdown/syntax.text",
       "position": {
@@ -2580,6 +2581,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": null,
       "url": "http://docutils.sourceforge.net/mirror/setext.html",
       "position": {
@@ -2599,6 +2601,7 @@
     {
       "type": "definition",
       "identifier": "2",
+      "label": "2",
       "title": null,
       "url": "http://www.aaronsw.com/2002/atx/",
       "position": {
@@ -2618,6 +2621,7 @@
     {
       "type": "definition",
       "identifier": "3",
+      "label": "3",
       "title": null,
       "url": "http://textism.com/tools/textile/",
       "position": {
@@ -2637,6 +2641,7 @@
     {
       "type": "definition",
       "identifier": "4",
+      "label": "4",
       "title": null,
       "url": "http://docutils.sourceforge.net/rst.html",
       "position": {
@@ -2656,6 +2661,7 @@
     {
       "type": "definition",
       "identifier": "5",
+      "label": "5",
       "title": null,
       "url": "http://www.triptico.com/software/grutatxt.html",
       "position": {
@@ -2675,6 +2681,7 @@
     {
       "type": "definition",
       "identifier": "6",
+      "label": "6",
       "title": null,
       "url": "http://ettext.taint.org/doc/",
       "position": {
@@ -5348,6 +5355,7 @@
     {
       "type": "definition",
       "identifier": "bq",
+      "label": "bq",
       "title": null,
       "url": "#blockquote",
       "position": {
@@ -5367,6 +5375,7 @@
     {
       "type": "definition",
       "identifier": "l",
+      "label": "l",
       "title": null,
       "url": "#list",
       "position": {

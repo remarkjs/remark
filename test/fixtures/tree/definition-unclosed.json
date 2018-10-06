@@ -76,6 +76,7 @@
     {
       "type": "definition",
       "identifier": "bar",
+      "label": "bar",
       "title": null,
       "url": "</url",
       "position": {

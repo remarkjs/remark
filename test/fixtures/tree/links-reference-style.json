@@ -275,6 +275,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": "Title",
       "url": "/url/",
       "position": {
@@ -790,6 +791,7 @@
     {
       "type": "definition",
       "identifier": "once",
+      "label": "once",
       "title": null,
       "url": "/url",
       "position": {
@@ -809,6 +811,7 @@
     {
       "type": "definition",
       "identifier": "twice",
+      "label": "twice",
       "title": null,
       "url": "/url",
       "position": {
@@ -828,6 +831,7 @@
     {
       "type": "definition",
       "identifier": "thrice",
+      "label": "thrice",
       "title": null,
       "url": "/url",
       "position": {
@@ -866,6 +870,7 @@
     {
       "type": "definition",
       "identifier": "b",
+      "label": "b",
       "title": null,
       "url": "/url/",
       "position": {
@@ -1966,6 +1971,7 @@
     {
       "type": "definition",
       "identifier": "this",
+      "label": "this",
       "title": null,
       "url": "foo",
       "position": {
@@ -2191,6 +2197,7 @@
     {
       "type": "definition",
       "identifier": "link breaks",
+      "label": "link breaks",
       "title": null,
       "url": "/url/",
       "position": {
