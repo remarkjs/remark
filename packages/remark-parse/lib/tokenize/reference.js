@@ -197,6 +197,10 @@ function reference(eat, value, silent) {
   };
 
   if (type === T_LINK || type === T_IMAGE) {
+    if (referenceType === 'full' && node.identifier !== identifier) {
+      node.reference = identifier;
+    }
+
     node.referenceType = referenceType;
   }
 
