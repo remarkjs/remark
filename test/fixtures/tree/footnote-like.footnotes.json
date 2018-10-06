@@ -97,6 +97,7 @@
         {
           "type": "footnoteReference",
           "identifier": "both",
+          "label": "both",
           "position": {
             "start": {
               "line": 3,

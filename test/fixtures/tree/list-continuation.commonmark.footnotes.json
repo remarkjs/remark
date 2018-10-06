@@ -422,6 +422,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 15,
@@ -458,6 +459,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 16,

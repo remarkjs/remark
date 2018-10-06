@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "1",
+          "label": "1",
           "position": {
             "start": {
               "line": 1,
@@ -93,6 +94,7 @@
         {
           "type": "footnoteReference",
           "identifier": "2",
+          "label": "2",
           "position": {
             "start": {
               "line": 3,
@@ -219,6 +221,7 @@
             {
               "type": "footnoteReference",
               "identifier": "3",
+              "label": "3",
               "position": {
                 "start": {
                   "line": 5,

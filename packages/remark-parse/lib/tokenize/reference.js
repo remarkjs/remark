@@ -193,11 +193,11 @@ function reference(eat, value, silent) {
 
   node = {
     type: type + 'Reference',
-    identifier: normalize(identifier)
+    identifier: normalize(identifier),
+    label: identifier
   };
 
   if (type === T_LINK || type === T_IMAGE) {
-    node.label = identifier;
     node.referenceType = referenceType;
   }
 

@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "wiki",
+          "label": "wiki",
           "position": {
             "start": {
               "line": 1,

@@ -25,6 +25,7 @@
         {
           "type": "footnoteReference",
           "identifier": "wiki",
+          "label": "wiki",
           "position": {
             "start": {
               "line": 1,
@@ -77,6 +78,7 @@
         {
           "type": "footnoteReference",
           "identifier": "wiki",
+          "label": "wiki",
           "position": {
             "start": {
               "line": 3,
@@ -94,6 +96,7 @@
         {
           "type": "footnoteReference",
           "identifier": "wiki2",
+          "label": "wiki2",
           "position": {
             "start": {
               "line": 3,
@@ -128,6 +131,7 @@
         {
           "type": "footnoteReference",
           "identifier": "name",
+          "label": "name",
           "position": {
             "start": {
               "line": 3,
@@ -145,6 +149,7 @@
         {
           "type": "footnoteReference",
           "identifier": "consecutive",
+          "label": "consecutive",
           "position": {
             "start": {
               "line": 3,

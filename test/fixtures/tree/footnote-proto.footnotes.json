@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "tostring",
+          "label": "toString",
           "position": {
             "start": {
               "line": 1,
@@ -58,6 +59,7 @@
         {
           "type": "footnoteReference",
           "identifier": "__proto__",
+          "label": "__proto__",
           "position": {
             "start": {
               "line": 1,
@@ -92,6 +94,7 @@
         {
           "type": "footnoteReference",
           "identifier": "constructor",
+          "label": "constructor",
           "position": {
             "start": {
               "line": 1,

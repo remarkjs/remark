@@ -233,6 +233,7 @@
             {
               "type": "footnoteReference",
               "identifier": "foo",
+              "label": "foo",
               "position": {
                 "start": {
                   "line": 11,

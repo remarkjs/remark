@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "somesamplefootnote",
+          "label": "somesamplefootnote",
           "position": {
             "start": {
               "line": 1,
@@ -203,6 +204,7 @@
         {
           "type": "footnoteReference",
           "identifier": "documentdetails",
+          "label": "documentdetails",
           "position": {
             "start": {
               "line": 5,

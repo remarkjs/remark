@@ -94,6 +94,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 2,
@@ -263,6 +264,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 4,
@@ -280,6 +282,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "position": {
                     "start": {
                       "line": 4,

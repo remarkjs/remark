@@ -3,5 +3,5 @@
 module.exports = footnoteReference;
 
 function footnoteReference(node) {
-  return '[^' + node.identifier + ']';
+  return '[^' + (node.label || node.identifier) + ']';
 }
