@@ -7,6 +7,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "shortcut",
           "children": [
             {
@@ -79,6 +80,7 @@
         {
           "type": "linkReference",
           "identifier": "foo",
+          "label": "foo",
           "referenceType": "shortcut",
           "children": [
             {
@@ -151,6 +153,7 @@
         {
           "type": "linkReference",
           "identifier": "bar",
+          "label": "bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -223,6 +226,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "shortcut",
           "children": [
             {
@@ -295,6 +299,7 @@
         {
           "type": "linkReference",
           "identifier": "foo",
+          "label": "foo",
           "referenceType": "shortcut",
           "children": [
             {
@@ -367,6 +372,7 @@
         {
           "type": "linkReference",
           "identifier": "bar",
+          "label": "bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -439,6 +445,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "shortcut",
           "children": [
             {
@@ -545,6 +552,7 @@
         {
           "type": "linkReference",
           "identifier": "foo",
+          "label": "foo",
           "referenceType": "shortcut",
           "children": [
             {
@@ -651,6 +659,7 @@
         {
           "type": "linkReference",
           "identifier": "bar",
+          "label": "bar",
           "referenceType": "shortcut",
           "children": [
             {

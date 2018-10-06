@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "simple case",
+          "label": "simple case",
           "referenceType": "shortcut",
           "children": [
             {
@@ -133,6 +134,7 @@
         {
           "type": "linkReference",
           "identifier": "line break",
+          "label": "line\nbreak",
           "referenceType": "shortcut",
           "children": [
             {
@@ -228,6 +230,7 @@
         {
           "type": "linkReference",
           "identifier": "line break",
+          "label": "line \nbreak",
           "referenceType": "shortcut",
           "children": [
             {
@@ -326,6 +329,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "full",
           "children": [
             {
@@ -380,6 +384,7 @@
         {
           "type": "linkReference",
           "identifier": "other",
+          "label": "other",
           "referenceType": "shortcut",
           "children": [
             {

@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^foo",
+          "label": "^foo",
           "referenceType": "full",
           "children": [
             {
@@ -113,6 +114,7 @@
         {
           "type": "linkReference",
           "identifier": "invalid",
+          "label": "invalid",
           "referenceType": "shortcut",
           "children": [
             {

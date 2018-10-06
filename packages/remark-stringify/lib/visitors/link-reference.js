@@ -14,7 +14,7 @@ function linkReference(node) {
   exit();
 
   if (type === 'shortcut' || type === 'collapsed') {
-    value = copy(value, node.identifier);
+    value = copy(value, node.label || node.identifier);
   }
 
   return '[' + value + ']' + label(node);

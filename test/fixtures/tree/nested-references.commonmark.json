@@ -42,6 +42,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "full",
           "children": [
             {
@@ -134,6 +135,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "full",
           "children": [
             {
@@ -224,6 +226,7 @@
         {
           "type": "linkReference",
           "identifier": "baz",
+          "label": "baz",
           "referenceType": "full",
           "children": [
             {
@@ -319,6 +322,7 @@
         {
           "type": "linkReference",
           "identifier": "^foo",
+          "label": "^foo",
           "referenceType": "shortcut",
           "children": [
             {

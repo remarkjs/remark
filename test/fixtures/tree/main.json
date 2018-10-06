@@ -83,6 +83,7 @@
         {
           "type": "linkReference",
           "identifier": "test",
+          "label": "test",
           "referenceType": "full",
           "children": [
             {

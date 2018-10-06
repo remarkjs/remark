@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -113,6 +114,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -202,6 +204,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -315,6 +318,7 @@
         {
           "type": "linkReference",
           "identifier": "b",
+          "label": "b",
           "referenceType": "full",
           "children": [
             {
@@ -455,6 +459,7 @@
         {
           "type": "linkReference",
           "identifier": "once",
+          "label": "once",
           "referenceType": "collapsed",
           "children": [
             {
@@ -544,6 +549,7 @@
         {
           "type": "linkReference",
           "identifier": "twice",
+          "label": "twice",
           "referenceType": "collapsed",
           "children": [
             {
@@ -633,6 +639,7 @@
         {
           "type": "linkReference",
           "identifier": "thrice",
+          "label": "thrice",
           "referenceType": "collapsed",
           "children": [
             {
@@ -722,6 +729,7 @@
         {
           "type": "linkReference",
           "identifier": "four",
+          "label": "four",
           "referenceType": "collapsed",
           "children": [
             {
@@ -909,6 +917,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "full",
           "children": [
             {
@@ -998,6 +1007,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "full",
           "children": [
             {
@@ -1087,6 +1097,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1176,6 +1187,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1265,6 +1277,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1354,6 +1367,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1443,6 +1457,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1532,6 +1547,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1621,6 +1637,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1710,6 +1727,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2027,6 +2045,7 @@
         {
           "type": "linkReference",
           "identifier": "link breaks",
+          "label": "link\nbreaks",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2122,6 +2141,7 @@
         {
           "type": "linkReference",
           "identifier": "link breaks",
+          "label": "link \nbreaks",
           "referenceType": "shortcut",
           "children": [
             {

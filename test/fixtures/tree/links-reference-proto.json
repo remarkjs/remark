@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "tostring",
+          "label": "toString",
           "referenceType": "full",
           "children": [
             {
@@ -78,6 +79,7 @@
         {
           "type": "linkReference",
           "identifier": "constructor",
+          "label": "constructor",
           "referenceType": "full",
           "children": [
             {
@@ -132,6 +134,7 @@
         {
           "type": "linkReference",
           "identifier": "__proto__",
+          "label": "__proto__",
           "referenceType": "full",
           "children": [
             {

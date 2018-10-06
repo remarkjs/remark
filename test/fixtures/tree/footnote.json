@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^somesamplefootnote",
+          "label": "^somesamplefootnote",
           "referenceType": "shortcut",
           "children": [
             {
@@ -96,6 +97,7 @@
         {
           "type": "linkReference",
           "identifier": "^somesamplefootnote",
+          "label": "^somesamplefootnote",
           "referenceType": "shortcut",
           "children": [
             {
@@ -185,6 +187,7 @@
         {
           "type": "linkReference",
           "identifier": "paragraph",
+          "label": "paragraph",
           "referenceType": "shortcut",
           "children": [
             {
@@ -239,6 +242,7 @@
         {
           "type": "linkReference",
           "identifier": "^documentdetails",
+          "label": "^documentdetails",
           "referenceType": "shortcut",
           "children": [
             {
@@ -311,6 +315,7 @@
         {
           "type": "linkReference",
           "identifier": "^documentdetails",
+          "label": "^documentdetails",
           "referenceType": "shortcut",
           "children": [
             {

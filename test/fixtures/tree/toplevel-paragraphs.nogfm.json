@@ -590,6 +590,7 @@
         {
           "type": "linkReference",
           "identifier": "how",
+          "label": "how",
           "referenceType": "full",
           "children": [
             {

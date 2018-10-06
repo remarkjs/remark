@@ -1740,6 +1740,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&bar",
+          "label": "foo&bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1794,6 +1795,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&bar",
+          "label": "foo&bar",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1848,6 +1850,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&amp;bar",
+          "label": "foo&amp;bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1936,6 +1939,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&amp;bar",
+          "label": "foo&amp;bar",
           "referenceType": "collapsed",
           "children": [
             {

@@ -45,6 +45,7 @@
             {
               "type": "linkReference",
               "identifier": "1",
+              "label": "1",
               "referenceType": "shortcut",
               "children": [
                 {
@@ -289,6 +290,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "3",
+                  "label": "3",
                   "referenceType": "shortcut",
                   "children": [
                     {

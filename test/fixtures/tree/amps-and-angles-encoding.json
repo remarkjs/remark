@@ -233,6 +233,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -322,6 +323,7 @@
         {
           "type": "linkReference",
           "identifier": "2",
+          "label": "2",
           "referenceType": "full",
           "children": [
             {

@@ -29,6 +29,7 @@
             {
               "type": "linkReference",
               "identifier": "1",
+              "label": "1",
               "referenceType": "shortcut",
               "children": [
                 {
@@ -158,6 +159,7 @@
             {
               "type": "linkReference",
               "identifier": "2",
+              "label": "2",
               "referenceType": "shortcut",
               "children": [
                 {
@@ -315,6 +317,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "3",
+                  "label": "3",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -449,6 +452,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "4",
+                  "label": "4",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -580,6 +584,7 @@
             {
               "type": "linkReference",
               "identifier": "1",
+              "label": "1",
               "referenceType": "shortcut",
               "children": [
                 {

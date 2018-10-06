@@ -148,6 +148,7 @@
         {
           "type": "linkReference",
           "identifier": "paragraph",
+          "label": "paragraph",
           "referenceType": "shortcut",
           "children": [
             {
@@ -363,6 +364,7 @@
             {
               "type": "linkReference",
               "identifier": "paragraph",
+              "label": "paragraph",
               "referenceType": "shortcut",
               "children": [
                 {

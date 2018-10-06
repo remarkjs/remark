@@ -207,6 +207,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "collapsed",
                   "children": [
                     {
@@ -323,6 +324,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^foo",
+                  "label": "^foo",
                   "referenceType": "full",
                   "children": [
                     {

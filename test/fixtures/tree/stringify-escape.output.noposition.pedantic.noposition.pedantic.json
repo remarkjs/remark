@@ -226,6 +226,7 @@
         {
           "type": "linkReference",
           "identifier": "ref",
+          "label": "ref",
           "referenceType": "shortcut",
           "children": [
             {
@@ -259,6 +260,7 @@
         {
           "type": "linkReference",
           "identifier": "ref",
+          "label": "ref",
           "referenceType": "shortcut",
           "children": [
             {
@@ -397,6 +399,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "two*three",
+                  "label": "two*three",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -420,6 +423,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "two\\*three",
+                  "label": "two\\*three",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -451,6 +455,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "a\\a",
+                  "label": "a\\a",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -474,6 +479,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "a\\\\a",
+                  "label": "a\\\\a",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -505,6 +511,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "a\\\\\\a",
+                  "label": "a\\\\\\a",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -536,6 +543,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "a_a\\_a",
+                  "label": "a_a\\_a",
                   "referenceType": "shortcut",
                   "children": [
                     {

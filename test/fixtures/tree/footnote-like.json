@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^foo",
+          "label": "^foo",
           "referenceType": "full",
           "children": [
             {
@@ -96,6 +97,7 @@
         {
           "type": "linkReference",
           "identifier": "invalid",
+          "label": "invalid",
           "referenceType": "full",
           "children": [
             {
@@ -150,6 +152,7 @@
         {
           "type": "linkReference",
           "identifier": "^this too",
+          "label": "^this too",
           "referenceType": "collapsed",
           "children": [
             {

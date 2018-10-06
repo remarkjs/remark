@@ -59,6 +59,7 @@
         {
           "type": "linkReference",
           "identifier": "world",
+          "label": "world",
           "referenceType": "shortcut",
           "children": [
             {

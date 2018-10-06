@@ -1182,6 +1182,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1254,6 +1255,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1326,6 +1328,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1398,6 +1401,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1538,6 +1542,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1678,6 +1683,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {

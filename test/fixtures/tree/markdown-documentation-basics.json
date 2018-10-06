@@ -126,6 +126,7 @@
         {
           "type": "linkReference",
           "identifier": "s",
+          "label": "s",
           "referenceType": "full",
           "children": [
             {
@@ -226,6 +227,7 @@
         {
           "type": "linkReference",
           "identifier": "d",
+          "label": "d",
           "referenceType": "full",
           "children": [
             {
@@ -358,6 +360,7 @@
         {
           "type": "linkReference",
           "identifier": "src",
+          "label": "src",
           "referenceType": "full",
           "children": [
             {

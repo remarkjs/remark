@@ -10,7 +10,7 @@ module.exports = label;
  * changes. */
 function label(node) {
   var type = node.referenceType;
-  var value = type === 'full' ? node.identifier : '';
+  var value = type === 'full' ? node.label || node.identifier : '';
 
   return type === 'shortcut' ? value : '[' + value + ']';
 }

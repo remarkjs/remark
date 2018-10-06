@@ -18,6 +18,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "referenceType": "full",
                   "children": [
                     {
@@ -110,6 +111,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -185,6 +187,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^bar",
+                  "label": "^bar",
                   "referenceType": "full",
                   "children": [
                     {
