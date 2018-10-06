@@ -1559,6 +1559,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T with entity",
           "position": {
@@ -1595,6 +1596,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T with numeric entity",
           "position": {
@@ -1631,6 +1633,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T without entity",
           "position": {

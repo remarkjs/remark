@@ -319,6 +319,7 @@
         {
           "type": "imageReference",
           "identifier": "^footnote",
+          "label": "^footnote",
           "referenceType": "shortcut",
           "alt": "^footnote",
           "position": {

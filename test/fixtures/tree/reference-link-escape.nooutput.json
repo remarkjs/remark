@@ -292,6 +292,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "full",
           "alt": "foo",
           "position": {
@@ -328,6 +329,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "collapsed",
           "alt": "b*r*",
           "position": {
@@ -364,6 +366,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "shortcut",
           "alt": "b*r*",
           "position": {

@@ -392,6 +392,7 @@
         {
           "type": "imageReference",
           "identifier": "alpha",
+          "label": "alpha",
           "referenceType": "shortcut",
           "alt": "alpha",
           "position": {
@@ -500,6 +501,7 @@
         {
           "type": "imageReference",
           "identifier": "alpha",
+          "label": "alpha",
           "referenceType": "shortcut",
           "alt": "alpha",
           "position": {
@@ -608,6 +610,7 @@
         {
           "type": "imageReference",
           "identifier": "alpha",
+          "label": "alpha",
           "referenceType": "shortcut",
           "alt": "alpha",
           "position": {

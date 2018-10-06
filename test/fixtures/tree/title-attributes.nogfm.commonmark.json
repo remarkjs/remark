@@ -1710,6 +1710,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -1764,6 +1765,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -2002,6 +2004,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -2056,6 +2059,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {

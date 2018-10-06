@@ -80,6 +80,7 @@
         {
           "type": "imageReference",
           "identifier": "charlie",
+          "label": "charlie",
           "referenceType": "shortcut",
           "alt": "charlie",
           "position": {

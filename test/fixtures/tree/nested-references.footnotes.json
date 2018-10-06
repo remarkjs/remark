@@ -48,6 +48,7 @@
             {
               "type": "imageReference",
               "identifier": "bar",
+              "label": "bar",
               "referenceType": "full",
               "alt": "Foo",
               "position": {

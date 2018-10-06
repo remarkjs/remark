@@ -749,6 +749,7 @@
             {
               "type": "imageReference",
               "identifier": "12",
+              "label": "12",
               "referenceType": "full",
               "alt": "\n  l©nks\n",
               "position": {

@@ -332,6 +332,7 @@
         {
           "type": "imageReference",
           "identifier": "world",
+          "label": "World",
           "referenceType": "shortcut",
           "alt": "World",
           "position": {
