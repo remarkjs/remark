@@ -255,6 +255,93 @@ test('remark().stringify(ast, file)', function (t) {
     });
   });
 
+  t.test('should process references with casing properly', function (st) {
+    /* Data-driven tests in the format: [name, value] */
+    var tests = [
+      ['capitalized link references - full', '[alpha][Bravo]'],
+      ['capitalized link references - collapsed', '[Bravo][]'],
+      ['capitalized link references - shortcut', '[Bravo]'],
+      ['capitalized image references - full', '![alpha][Bravo]'],
+      ['capitalized image references - collapsed', '![Bravo][]'],
+      ['capitalized image references - shortcut', '![Bravo]'],
+      ['capitalized footnote references', '[^Alpha]']
+    ];
+
+    tests.forEach(each);
+
+    st.end();
+
+    function each(test) {
+      st.equal(
+        remark()
+          .processSync(test[1])
+          .toString(),
+        test[1] + '\n',
+        test[0]
+      );
+    }
+  });
+
+  t.test('should process associations without label', function (st) {
+    st.equal(
+      stringify({
+        type: 'definition',
+        identifier: 'a',
+        url: 'example.com'
+      }),
+      '[a]: example.com',
+      'definition'
+    );
+
+    st.equal(
+      stringify({
+        type: 'footnoteDefinition',
+        identifier: 'a',
+        children: [{
+          type: 'paragraph',
+          children: [{type: 'text', value: 'b'}]
+        }]
+      }),
+      '[^a]: b',
+      'footnote definition'
+    );
+
+    st.equal(
+      stringify({
+        type: 'linkReference',
+        identifier: 'a',
+        children: [{type: 'text', value: 'a'}]
+      }),
+      '[a][]',
+      'link reference'
+    );
+
+    st.equal(
+      stringify({
+        type: 'imageReference',
+        identifier: 'a',
+        alt: 'a'
+      }),
+      '![a][]',
+      'image reference'
+    );
+
+    st.equal(
+      stringify({
+        type: 'footnoteReference',
+        identifier: 'a'
+      }),
+      '[^a]',
+      'footnote reference'
+    );
+
+    st.end();
+
+    function stringify(value) {
+      return String(remark().stringify(value));
+    }
+  });
+
   t.test('should support `stringLength`', function (st) {
     st.plan(2);
 
