@@ -38,8 +38,14 @@ function code(node, parent) {
   var value = node.value;
   var options = self.options;
   var marker = options.fence;
-  var info = self.encode([node.lang, node.meta].join(' ').trim(), node);
+  var info = node.lang || '';
   var fence;
+
+  if (info && node.meta) {
+    info += ' ' + node.meta;
+  }
+
+  info = self.encode(info, node);
 
   /* Without (needed) fences. */
   if (!info && !options.fences && value) {
