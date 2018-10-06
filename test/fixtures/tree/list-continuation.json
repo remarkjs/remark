@@ -172,6 +172,7 @@
     {
       "type": "code",
       "lang": "js",
+      "meta": null,
       "value": "code();",
       "position": {
         "start": {

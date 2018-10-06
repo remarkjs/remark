@@ -349,6 +349,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "and this is code",
       "position": {
         "start": {
@@ -472,6 +473,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "***",
       "position": {
         "start": {

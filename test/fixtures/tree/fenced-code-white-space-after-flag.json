@@ -4,6 +4,7 @@
     {
       "type": "code",
       "lang": "js",
+      "meta": null,
       "value": "foo();",
       "position": {
         "start": {
@@ -25,6 +26,7 @@
     {
       "type": "code",
       "lang": "bash",
+      "meta": null,
       "value": "echo \"hello, ${WORLD}\"",
       "position": {
         "start": {

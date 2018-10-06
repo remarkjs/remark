@@ -39,6 +39,7 @@
     {
       "type": "code",
       "lang": "javascript",
+      "meta": null,
       "value": "alert('Hello World!');",
       "position": {
         "start": {

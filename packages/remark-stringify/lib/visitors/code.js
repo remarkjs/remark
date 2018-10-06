@@ -38,11 +38,17 @@ function code(node, parent) {
   var value = node.value;
   var options = self.options;
   var marker = options.fence;
-  var language = self.encode(node.lang || '', node);
+  var info = node.lang || '';
   var fence;
 
+  if (info && node.meta) {
+    info += ' ' + node.meta;
+  }
+
+  info = self.encode(info, node);
+
   /* Without (needed) fences. */
-  if (!language && !options.fences && value) {
+  if (!info && !options.fences && value) {
     /* Throw when pedantic, in a list item which
      * isn’t compiled using a tab. */
     if (
@@ -59,5 +65,5 @@ function code(node, parent) {
 
   fence = repeat(marker, Math.max(streak(value, marker) + 1, 3));
 
-  return fence + language + '\n' + value + '\n' + fence;
+  return fence + info + '\n' + value + '\n' + fence;
 }

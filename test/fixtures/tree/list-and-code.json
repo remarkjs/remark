@@ -80,6 +80,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "This is code",
       "position": {
         "start": {

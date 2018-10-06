@@ -496,6 +496,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "1.   Second sublist.",
       "position": {
         "start": {
@@ -625,6 +626,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "And this is code();",
       "position": {
         "start": {

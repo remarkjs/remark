@@ -23,6 +23,8 @@ function fencedCode(eat, value, silent) {
   var marker;
   var character;
   var flag;
+  var lang;
+  var meta;
   var queue;
   var content;
   var exdentedContent;
@@ -228,9 +230,26 @@ function fencedCode(eat, value, silent) {
 
   subvalue += content + closing;
 
+  index = -1;
+  length = flag.length;
+
+  while (++index < length) {
+    character = flag.charAt(index);
+
+    if (character === C_SPACE || character === C_TAB) {
+      if (!lang) {
+        lang = flag.slice(0, index);
+      }
+    } else if (lang) {
+      meta = flag.slice(index);
+      break;
+    }
+  }
+
   return eat(subvalue)({
     type: 'code',
-    lang: flag || null,
+    lang: lang || flag || null,
+    meta: meta || null,
     value: trim(exdentedContent)
   });
 }

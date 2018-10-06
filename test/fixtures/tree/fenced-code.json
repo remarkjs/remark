@@ -4,6 +4,7 @@
     {
       "type": "code",
       "lang": "js",
+      "meta": null,
       "value": "var a = 'hello';\nconsole.log(a + ' world');",
       "position": {
         "start": {
@@ -26,6 +27,7 @@
     {
       "type": "code",
       "lang": "bash",
+      "meta": null,
       "value": "echo \"hello, ${WORLD}\"",
       "position": {
         "start": {
@@ -47,6 +49,7 @@
     {
       "type": "code",
       "lang": "longfence",
+      "meta": null,
       "value": "Q: What do you call a tall person who sells stolen goods?",
       "position": {
         "start": {
@@ -68,6 +71,7 @@
     {
       "type": "code",
       "lang": "ManyTildes",
+      "meta": null,
       "value": "A longfence!",
       "position": {
         "start": {

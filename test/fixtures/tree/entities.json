@@ -563,6 +563,7 @@
     {
       "type": "code",
       "lang": "some—language",
+      "meta": null,
       "value": "alert('Hello');",
       "position": {
         "start": {
@@ -817,6 +818,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "C&Ouml;DE block.",
       "position": {
         "start": {

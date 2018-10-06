@@ -39,6 +39,7 @@
     {
       "type": "code",
       "lang": "js",
+      "meta": null,
       "value": "",
       "position": {
         "start": {
@@ -94,6 +95,7 @@
     {
       "type": "code",
       "lang": "bash",
+      "meta": null,
       "value": "",
       "position": {
         "start": {
@@ -149,6 +151,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "",
       "position": {
         "start": {
@@ -204,6 +207,7 @@
     {
       "type": "code",
       "lang": null,
+      "meta": null,
       "value": "",
       "position": {
         "start": {

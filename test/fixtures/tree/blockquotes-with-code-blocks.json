@@ -42,6 +42,7 @@
         {
           "type": "code",
           "lang": null,
+          "meta": null,
           "value": "sub status {\n    print \"working\";\n}",
           "position": {
             "start": {
@@ -98,6 +99,7 @@
         {
           "type": "code",
           "lang": null,
+          "meta": null,
           "value": "sub status {\n    return \"working\";\n}",
           "position": {
             "start": {
