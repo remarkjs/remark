@@ -310,9 +310,9 @@ test('remark().stringify(ast, file)', function (t) {
       stringify({
         type: 'linkReference',
         identifier: 'a',
-        children: [{type: 'text', value: 'a'}]
+        children: [{type: 'text', value: 'b'}]
       }),
-      '[a][]',
+      '[b][a]',
       'link reference'
     );
 
@@ -320,9 +320,9 @@ test('remark().stringify(ast, file)', function (t) {
       stringify({
         type: 'imageReference',
         identifier: 'a',
-        alt: 'a'
+        alt: 'b'
       }),
-      '![a][]',
+      '![b][a]',
       'image reference'
     );
 
