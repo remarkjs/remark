@@ -141,6 +141,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "tostring",
+      "label": "toString",
       "children": [
         {
           "type": "paragraph",
@@ -229,6 +230,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "constructor",
+      "label": "constructor",
       "children": [
         {
           "type": "paragraph",
@@ -317,6 +319,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "__proto__",
+      "label": "__proto__",
       "children": [
         {
           "type": "paragraph",

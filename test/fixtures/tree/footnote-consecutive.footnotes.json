@@ -229,6 +229,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "wiki",
+      "label": "wiki",
       "children": [
         {
           "type": "paragraph",
@@ -283,6 +284,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "wiki2",
+      "label": "wiki2",
       "children": [
         {
           "type": "paragraph",
@@ -337,6 +339,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "name",
+      "label": "name",
       "children": [
         {
           "type": "paragraph",
@@ -391,6 +394,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "consecutive",
+      "label": "consecutive",
       "children": [
         {
           "type": "paragraph",

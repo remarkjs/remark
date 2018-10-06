@@ -73,6 +73,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "1",
+      "label": "1",
       "children": [
         {
           "type": "paragraph",

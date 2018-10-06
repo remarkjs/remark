@@ -327,6 +327,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "abc",
+      "label": "abc",
       "children": [
         {
           "type": "paragraph",
@@ -381,6 +382,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "xyz",
+      "label": "xyz",
       "children": [
         {
           "type": "paragraph",
@@ -435,6 +437,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "footnote",
+      "label": "footnote",
       "children": [
         {
           "type": "paragraph",

@@ -73,6 +73,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "wiki",
+      "label": "wiki",
       "children": [
         {
           "type": "paragraph",
@@ -127,6 +128,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "wiki",
+      "label": "wiki",
       "children": [
         {
           "type": "paragraph",

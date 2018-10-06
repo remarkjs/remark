@@ -142,6 +142,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "1",
+      "label": "1",
       "children": [
         {
           "type": "paragraph",
@@ -361,6 +362,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "2",
+      "label": "2",
       "children": [
         {
           "type": "paragraph",
@@ -467,6 +469,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "3",
+      "label": "3",
       "children": [
         {
           "type": "paragraph",

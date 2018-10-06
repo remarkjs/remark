@@ -73,6 +73,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "somesamplefootnote",
+      "label": "somesamplefootnote",
       "children": [
         {
           "type": "paragraph",
@@ -250,6 +251,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "documentdetails",
+      "label": "documentdetails",
       "children": [
         {
           "type": "paragraph",

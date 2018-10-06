@@ -398,6 +398,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "foo",
+      "label": "foo",
       "children": [
         {
           "type": "paragraph",

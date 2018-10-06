@@ -93,7 +93,7 @@ function footnoteDefinition(eat, value, silent) {
     return true;
   }
 
-  identifier = normalize(queue);
+  identifier = queue;
   subvalue += queue + C_BRACKET_CLOSE + C_COLON;
   index = subvalue.length;
 
@@ -179,7 +179,8 @@ function footnoteDefinition(eat, value, silent) {
 
   return add({
     type: 'footnoteDefinition',
-    identifier: identifier,
+    identifier: normalize(identifier),
+    label: identifier,
     children: content
   });
 }

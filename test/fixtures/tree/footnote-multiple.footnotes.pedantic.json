@@ -161,6 +161,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "wiki",
+      "label": "wiki",
       "children": [
         {
           "type": "paragraph",
