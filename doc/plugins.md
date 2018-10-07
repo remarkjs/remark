@@ -29,6 +29,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Add support for custom attributes to markdown
 *   [`remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
     — Automatically add GitHub style links to headings
+*   [`remark-behead`](https://github.com/mrzmmr/remark-behead)
+    — Increase or decrease heading depth
 *   [`remark-bookmarks`](https://github.com/ben-eb/remark-bookmarks)
     – Link manager for Markdown files
 *   [`remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
@@ -146,8 +148,6 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — [rehype](https://github.com/rehypejs/rehype) support
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — [retext](https://github.com/retextjs/retext) support
-*   [`remark-rewrite-headers`](https://github.com/strugee/remark-rewrite-headers)
-    — Change heading levels
 *   [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
     — Parses custom Wordpress/Hugo-like shortcodes inside your Markdown
 *   [`remark-slug`](https://github.com/remarkjs/remark-slug)
