@@ -125,6 +125,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-openapi`](https://github.com/temando/remark-openapi)
     — Convert links to local or remote OpenAPI definition to tables with
     summaries of all paths
+*   [`remark-outer-toc`](https://github.com/Jaredk3nt/remark-outer-toc)
+    — Generates a list of headers for external table of contents
 *   [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
     — Parse YAML blocks into structured data
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
