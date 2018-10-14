@@ -80,7 +80,7 @@ function list(eat, value, silent) {
   var item;
   var enterTop;
   var exitBlockquote;
-  var isLoose;
+  var spread = false;
   var node;
   var now;
   var end;
@@ -143,7 +143,7 @@ function list(eat, value, silent) {
   if (
     character !== C_SPACE &&
     character !== C_TAB &&
-    (!commonmark || (character !== C_NEWLINE && character !== C_EMPTY))
+    (pedantic || (character !== C_NEWLINE && character !== C_EMPTY))
   ) {
     return;
   }
@@ -282,7 +282,7 @@ function list(eat, value, silent) {
     }
 
     prevEmpty = empty;
-    empty = !trim(content).length;
+    empty = !prefixed && !trim(content).length;
 
     if (indented && item) {
       item.value = item.value.concat(emptyLines, line);
@@ -290,6 +290,7 @@ function list(eat, value, silent) {
       emptyLines = [];
     } else if (prefixed) {
       if (emptyLines.length !== 0) {
+        spread = true;
         item.value.push('');
         item.trail = emptyLines.concat();
       }
@@ -304,7 +305,7 @@ function list(eat, value, silent) {
       allLines = allLines.concat(emptyLines, line);
       emptyLines = [];
     } else if (empty) {
-      if (prevEmpty) {
+      if (prevEmpty && !commonmark) {
         break;
       }
 
@@ -330,13 +331,12 @@ function list(eat, value, silent) {
     type: 'list',
     ordered: ordered,
     start: start,
-    loose: null,
+    spread: spread,
     children: []
   });
 
   enterTop = self.enterList();
   exitBlockquote = self.enterBlock();
-  isLoose = false;
   index = -1;
   length = items.length;
 
@@ -344,11 +344,7 @@ function list(eat, value, silent) {
     item = items[index].value.join(C_NEWLINE);
     now = eat.now();
 
-    item = eat(item)(listItem(self, item, now), node);
-
-    if (item.loose) {
-      isLoose = true;
-    }
+    eat(item)(listItem(self, item, now), node);
 
     item = items[index].trail.join(C_NEWLINE);
 
@@ -361,8 +357,6 @@ function list(eat, value, silent) {
 
   enterTop();
   exitBlockquote();
-
-  node.loose = isLoose;
 
   return node;
 }
@@ -389,8 +383,7 @@ function listItem(ctx, value, position) {
 
   return {
     type: 'listItem',
-    loose: EXPRESSION_LOOSE_LIST_ITEM.test(value) ||
-      value.charAt(value.length - 1) === C_NEWLINE,
+    spread: EXPRESSION_LOOSE_LIST_ITEM.test(value),
     checked: checked,
     children: ctx.tokenizeBlock(value, position)
   };

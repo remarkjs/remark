@@ -249,11 +249,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": true,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -308,7 +308,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -392,39 +392,18 @@
               "offset": 58
             },
             "end": {
-              "line": 11,
-              "column": 13,
-              "offset": 70
+              "line": 12,
+              "column": 1,
+              "offset": 71
             },
-            "indent": []
+            "indent": [
+              1
+            ]
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 10,
-          "column": 1,
-          "offset": 50
         },
-        "end": {
-          "line": 11,
-          "column": 13,
-          "offset": 70
-        },
-        "indent": [
-          1
-        ]
-      }
-    },
-    {
-      "type": "list",
-      "ordered": false,
-      "start": null,
-      "loose": false,
-      "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -541,9 +520,9 @@
       ],
       "position": {
         "start": {
-          "line": 14,
+          "line": 10,
           "column": 1,
-          "offset": 73
+          "offset": 50
         },
         "end": {
           "line": 15,
@@ -551,6 +530,10 @@
           "offset": 91
         },
         "indent": [
+          1,
+          1,
+          1,
+          1,
           1
         ]
       }

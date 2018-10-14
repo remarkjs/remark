@@ -28,10 +28,12 @@ function orderedItems(node) {
   var index = -1;
   var bullet;
 
+  start = start == null ? 1 : start;
+
   while (++index < length) {
     bullet = (increment ? start + index : start) + '.';
     values[index] = fn.call(self, children[index], node, index, bullet);
   }
 
-  return values.join('\n');
+  return values.join(node.spread ? '\n\n' : '\n');
 }

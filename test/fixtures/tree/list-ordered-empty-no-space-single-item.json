@@ -2,11 +2,16 @@
   "type": "root",
   "children": [
     {
-      "type": "paragraph",
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "spread": false,
       "children": [
         {
-          "type": "text",
-          "value": "1.",
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [],
           "position": {
             "start": {
               "line": 1,

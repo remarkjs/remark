@@ -5,11 +5,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": true,
+      "spread": true,
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "spread": true,
           "checked": null,
           "children": [
             {
@@ -271,7 +271,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "spread": true,
           "checked": null,
           "children": [
             {

@@ -41,11 +41,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": true,
+      "spread": true,
       "children": [
         {
           "type": "listItem",
-          "loose": true,
+          "spread": true,
           "checked": null,
           "children": [
             {
@@ -90,11 +90,11 @@
                   "type": "list",
                   "ordered": false,
                   "start": null,
-                  "loose": false,
+                  "spread": false,
                   "children": [
                     {
                       "type": "listItem",
-                      "loose": false,
+                      "spread": false,
                       "checked": null,
                       "children": [
                         {
@@ -225,7 +225,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "spread": true,
           "checked": null,
           "children": [
             {
@@ -310,7 +310,7 @@
         },
         {
           "type": "listItem",
-          "loose": true,
+          "spread": true,
           "checked": null,
           "children": [
             {
@@ -352,11 +352,11 @@
               "type": "list",
               "ordered": true,
               "start": 1,
-              "loose": true,
+              "spread": true,
               "children": [
                 {
                   "type": "listItem",
-                  "loose": true,
+                  "spread": true,
                   "checked": null,
                   "children": [
                     {
@@ -473,7 +473,7 @@
                 },
                 {
                   "type": "listItem",
-                  "loose": true,
+                  "spread": true,
                   "checked": null,
                   "children": [
                     {
@@ -600,7 +600,7 @@
                 },
                 {
                   "type": "listItem",
-                  "loose": true,
+                  "spread": true,
                   "checked": null,
                   "children": [
                     {
@@ -725,7 +725,7 @@
                 },
                 {
                   "type": "listItem",
-                  "loose": true,
+                  "spread": true,
                   "checked": null,
                   "children": [
                     {
@@ -842,7 +842,7 @@
                 },
                 {
                   "type": "listItem",
-                  "loose": false,
+                  "spread": false,
                   "checked": null,
                   "children": [
                     {

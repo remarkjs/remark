@@ -43,11 +43,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -123,7 +123,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -218,11 +218,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -298,7 +298,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -431,11 +431,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [],
           "position": {
@@ -454,7 +454,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [],
           "position": {
@@ -492,11 +492,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [],
           "position": {
@@ -515,7 +515,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [],
           "position": {
@@ -591,11 +591,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [],
           "position": {
@@ -614,7 +614,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [],
           "position": {
@@ -652,11 +652,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [],
           "position": {
@@ -675,7 +675,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [],
           "position": {
@@ -751,11 +751,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -848,7 +848,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -960,11 +960,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1057,7 +1057,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -1207,11 +1207,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1266,7 +1266,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1340,11 +1340,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -1399,7 +1399,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -1511,11 +1511,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1570,7 +1570,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1644,11 +1644,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -1703,7 +1703,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -1815,11 +1815,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1858,7 +1858,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -1916,11 +1916,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -1975,7 +1975,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -2087,11 +2087,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -2130,7 +2130,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -2188,11 +2188,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -2231,7 +2231,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -2327,11 +2327,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -2387,11 +2387,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -2447,11 +2447,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -2490,7 +2490,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": false,
           "children": [
             {
@@ -2564,11 +2564,11 @@
       "type": "list",
       "ordered": true,
       "start": 2,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": true,
           "children": [
             {
@@ -2678,11 +2678,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2802,11 +2802,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -2964,11 +2964,11 @@
       "type": "list",
       "ordered": false,
       "start": null,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3078,11 +3078,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3183,7 +3183,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -3276,7 +3276,7 @@
         },
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {

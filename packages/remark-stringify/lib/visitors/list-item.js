@@ -5,14 +5,6 @@ var pad = require('../util/pad');
 
 module.exports = listItem;
 
-/* Which checkbox to use. */
-var CHECKBOX_MAP = {
-  undefined: '',
-  null: '',
-  true: '[x] ',
-  false: '[ ] '
-};
-
 /* Stringify a list item.
  *
  * Prefixes the content with a checked checkbox when
@@ -28,7 +20,9 @@ var CHECKBOX_MAP = {
 function listItem(node, parent, position, bullet) {
   var self = this;
   var style = self.options.listItemIndent;
-  var loose = node.loose;
+  var marker = bullet || self.options.bullet;
+  var spread = node.spread == null ? true : node.spread;
+  var checked = node.checked;
   var children = node.children;
   var length = children.length;
   var values = [];
@@ -41,21 +35,22 @@ function listItem(node, parent, position, bullet) {
     values[index] = self.visit(children[index], node);
   }
 
-  value = CHECKBOX_MAP[node.checked] + values.join(loose ? '\n\n' : '\n');
+  value = values.join(spread ? '\n\n' : '\n');
+
+  if (typeof checked === 'boolean') {
+    // Note: I’d like to be able to only add the space between the check and
+    // the value, but unfortunately github does not support empty list-items
+    // with a checkbox :(
+    value = '[' + (checked ? 'x' : ' ') + '] ' + value;
+  }
 
   if (style === '1' || (style === 'mixed' && value.indexOf('\n') === -1)) {
-    indent = bullet.length + 1;
+    indent = marker.length + 1;
     spacing = ' ';
   } else {
-    indent = Math.ceil((bullet.length + 1) / 4) * 4;
-    spacing = repeat(' ', indent - bullet.length);
+    indent = Math.ceil((marker.length + 1) / 4) * 4;
+    spacing = repeat(' ', indent - marker.length);
   }
 
-  value = bullet + spacing + pad(value, indent / 4).slice(indent);
-
-  if (loose && parent.children.length - 1 !== position) {
-    value += '\n';
-  }
-
-  return value;
+  return value ? marker + spacing + pad(value, indent / 4).slice(indent) : marker;
 }

@@ -40,9 +40,11 @@ process.stdin
 ## Table of Contents
 
 *   [API](#api)
+
     *   [processor.use(stringify\[, options\])](#processorusestringify-options)
     *   [stringify.Compiler](#stringifycompiler)
 *   [Extending the Compiler](#extending-the-compiler)
+
     *   [Compiler#visitors](#compilervisitors)
     *   [function visitor(node\[, parent\])](#function-visitornode-parent)
 *   [License](#license)

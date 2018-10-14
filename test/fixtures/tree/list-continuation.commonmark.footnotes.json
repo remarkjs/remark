@@ -5,11 +5,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -97,11 +97,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": false,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -195,11 +195,11 @@
       "type": "list",
       "ordered": true,
       "start": 1,
-      "loose": false,
+      "spread": true,
       "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -379,41 +379,19 @@
               "offset": 40
             },
             "end": {
-              "line": 12,
-              "column": 25,
-              "offset": 75
+              "line": 13,
+              "column": 1,
+              "offset": 76
             },
             "indent": [
+              1,
               1
             ]
           }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 11,
-          "column": 1,
-          "offset": 40
         },
-        "end": {
-          "line": 12,
-          "column": 25,
-          "offset": 75
-        },
-        "indent": [
-          1
-        ]
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 1,
-      "loose": false,
-      "children": [
         {
           "type": "listItem",
-          "loose": false,
+          "spread": false,
           "checked": null,
           "children": [
             {
@@ -528,9 +506,9 @@
       ],
       "position": {
         "start": {
-          "line": 15,
+          "line": 11,
           "column": 1,
-          "offset": 78
+          "offset": 40
         },
         "end": {
           "line": 16,
@@ -538,6 +516,10 @@
           "offset": 104
         },
         "indent": [
+          1,
+          1,
+          1,
+          1,
           1
         ]
       }
