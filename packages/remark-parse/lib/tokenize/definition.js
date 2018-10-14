@@ -255,6 +255,7 @@ function definition(eat, value, silent) {
     return eat(subvalue)({
       type: 'definition',
       identifier: normalize(identifier),
+      label: identifier,
       title: title || null,
       url: url
     });

@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "abc",
+          "label": "abc",
           "position": {
             "start": {
               "line": 1,
@@ -58,6 +59,7 @@
         {
           "type": "footnoteReference",
           "identifier": "xyz",
+          "label": "xyz",
           "position": {
             "start": {
               "line": 1,
@@ -220,6 +222,7 @@
         {
           "type": "footnoteReference",
           "identifier": "footnote",
+          "label": "footnote",
           "position": {
             "start": {
               "line": 6,
@@ -256,6 +259,7 @@
         {
           "type": "footnoteReference",
           "identifier": "footnote",
+          "label": "footnote",
           "position": {
             "start": {
               "line": 7,
@@ -292,6 +296,7 @@
         {
           "type": "footnoteReference",
           "identifier": "footnote",
+          "label": "footnote",
           "position": {
             "start": {
               "line": 8,
@@ -327,6 +332,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "abc",
+      "label": "abc",
       "children": [
         {
           "type": "paragraph",
@@ -381,6 +387,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "xyz",
+      "label": "xyz",
       "children": [
         {
           "type": "paragraph",
@@ -435,6 +442,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "footnote",
+      "label": "footnote",
       "children": [
         {
           "type": "paragraph",

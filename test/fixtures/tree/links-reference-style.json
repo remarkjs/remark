@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -113,6 +114,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -202,6 +204,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "full",
           "children": [
             {
@@ -275,6 +278,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": "Title",
       "url": "/url/",
       "position": {
@@ -314,6 +318,7 @@
         {
           "type": "linkReference",
           "identifier": "b",
+          "label": "b",
           "referenceType": "full",
           "children": [
             {
@@ -454,6 +459,7 @@
         {
           "type": "linkReference",
           "identifier": "once",
+          "label": "once",
           "referenceType": "collapsed",
           "children": [
             {
@@ -543,6 +549,7 @@
         {
           "type": "linkReference",
           "identifier": "twice",
+          "label": "twice",
           "referenceType": "collapsed",
           "children": [
             {
@@ -632,6 +639,7 @@
         {
           "type": "linkReference",
           "identifier": "thrice",
+          "label": "thrice",
           "referenceType": "collapsed",
           "children": [
             {
@@ -721,6 +729,7 @@
         {
           "type": "linkReference",
           "identifier": "four",
+          "label": "four",
           "referenceType": "collapsed",
           "children": [
             {
@@ -790,6 +799,7 @@
     {
       "type": "definition",
       "identifier": "once",
+      "label": "once",
       "title": null,
       "url": "/url",
       "position": {
@@ -809,6 +819,7 @@
     {
       "type": "definition",
       "identifier": "twice",
+      "label": "twice",
       "title": null,
       "url": "/url",
       "position": {
@@ -828,6 +839,7 @@
     {
       "type": "definition",
       "identifier": "thrice",
+      "label": "thrice",
       "title": null,
       "url": "/url",
       "position": {
@@ -866,6 +878,7 @@
     {
       "type": "definition",
       "identifier": "b",
+      "label": "b",
       "title": null,
       "url": "/url/",
       "position": {
@@ -904,6 +917,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "full",
           "children": [
             {
@@ -993,6 +1007,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "full",
           "children": [
             {
@@ -1082,6 +1097,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1171,6 +1187,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1260,6 +1277,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1349,6 +1367,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1438,6 +1457,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1527,6 +1547,7 @@
         {
           "type": "linkReference",
           "identifier": "that",
+          "label": "that",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1616,6 +1637,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "collapsed",
           "children": [
             {
@@ -1705,6 +1727,7 @@
         {
           "type": "linkReference",
           "identifier": "this",
+          "label": "this",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1966,6 +1989,7 @@
     {
       "type": "definition",
       "identifier": "this",
+      "label": "this",
       "title": null,
       "url": "foo",
       "position": {
@@ -2021,6 +2045,7 @@
         {
           "type": "linkReference",
           "identifier": "link breaks",
+          "label": "link\nbreaks",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2116,6 +2141,7 @@
         {
           "type": "linkReference",
           "identifier": "link breaks",
+          "label": "link \nbreaks",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2191,6 +2217,7 @@
     {
       "type": "definition",
       "identifier": "link breaks",
+      "label": "link breaks",
       "title": null,
       "url": "/url/",
       "position": {

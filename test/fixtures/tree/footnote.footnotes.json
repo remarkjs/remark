@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "somesamplefootnote",
+          "label": "somesamplefootnote",
           "position": {
             "start": {
               "line": 1,
@@ -73,6 +74,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "somesamplefootnote",
+      "label": "somesamplefootnote",
       "children": [
         {
           "type": "paragraph",
@@ -147,6 +149,7 @@
         {
           "type": "linkReference",
           "identifier": "paragraph",
+          "label": "paragraph",
           "referenceType": "shortcut",
           "children": [
             {
@@ -201,6 +204,7 @@
         {
           "type": "footnoteReference",
           "identifier": "documentdetails",
+          "label": "documentdetails",
           "position": {
             "start": {
               "line": 5,
@@ -250,6 +254,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "documentdetails",
+      "label": "documentdetails",
       "children": [
         {
           "type": "paragraph",
@@ -361,6 +366,7 @@
             {
               "type": "linkReference",
               "identifier": "paragraph",
+              "label": "paragraph",
               "referenceType": "shortcut",
               "children": [
                 {
@@ -448,6 +454,7 @@
     {
       "type": "definition",
       "identifier": "paragraph",
+      "label": "paragraph",
       "title": null,
       "url": "http://example.com",
       "position": {

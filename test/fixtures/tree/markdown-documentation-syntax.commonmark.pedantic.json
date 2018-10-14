@@ -1706,6 +1706,7 @@
         {
           "type": "linkReference",
           "identifier": "src",
+          "label": "src",
           "referenceType": "full",
           "children": [
             {
@@ -1777,6 +1778,7 @@
     {
       "type": "definition",
       "identifier": "src",
+      "label": "src",
       "title": null,
       "url": "/projects/markdown/syntax.text",
       "position": {
@@ -1906,6 +1908,7 @@
         {
           "type": "linkReference",
           "identifier": "setext",
+          "label": "Setext",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1960,6 +1963,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2014,6 +2018,7 @@
         {
           "type": "linkReference",
           "identifier": "atx",
+          "label": "atx",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2068,6 +2073,7 @@
         {
           "type": "linkReference",
           "identifier": "2",
+          "label": "2",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2122,6 +2128,7 @@
         {
           "type": "linkReference",
           "identifier": "textile",
+          "label": "Textile",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2176,6 +2183,7 @@
         {
           "type": "linkReference",
           "identifier": "3",
+          "label": "3",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2230,6 +2238,7 @@
         {
           "type": "linkReference",
           "identifier": "restructuredtext",
+          "label": "reStructuredText",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2284,6 +2293,7 @@
         {
           "type": "linkReference",
           "identifier": "4",
+          "label": "4",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2340,6 +2350,7 @@
         {
           "type": "linkReference",
           "identifier": "grutatext",
+          "label": "Grutatext",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2394,6 +2405,7 @@
         {
           "type": "linkReference",
           "identifier": "5",
+          "label": "5",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2448,6 +2460,7 @@
         {
           "type": "linkReference",
           "identifier": "ettext",
+          "label": "EtText",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2502,6 +2515,7 @@
         {
           "type": "linkReference",
           "identifier": "6",
+          "label": "6",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2580,6 +2594,7 @@
     {
       "type": "definition",
       "identifier": "1",
+      "label": "1",
       "title": null,
       "url": "http://docutils.sourceforge.net/mirror/setext.html",
       "position": {
@@ -2599,6 +2614,7 @@
     {
       "type": "definition",
       "identifier": "2",
+      "label": "2",
       "title": null,
       "url": "http://www.aaronsw.com/2002/atx/",
       "position": {
@@ -2618,6 +2634,7 @@
     {
       "type": "definition",
       "identifier": "3",
+      "label": "3",
       "title": null,
       "url": "http://textism.com/tools/textile/",
       "position": {
@@ -2637,6 +2654,7 @@
     {
       "type": "definition",
       "identifier": "4",
+      "label": "4",
       "title": null,
       "url": "http://docutils.sourceforge.net/rst.html",
       "position": {
@@ -2656,6 +2674,7 @@
     {
       "type": "definition",
       "identifier": "5",
+      "label": "5",
       "title": null,
       "url": "http://www.triptico.com/software/grutatxt.html",
       "position": {
@@ -2675,6 +2694,7 @@
     {
       "type": "definition",
       "identifier": "6",
+      "label": "6",
       "title": null,
       "url": "http://ettext.taint.org/doc/",
       "position": {
@@ -5219,6 +5239,7 @@
         {
           "type": "linkReference",
           "identifier": "bq",
+          "label": "bq",
           "referenceType": "full",
           "children": [
             {
@@ -5273,6 +5294,7 @@
         {
           "type": "linkReference",
           "identifier": "l",
+          "label": "l",
           "referenceType": "full",
           "children": [
             {
@@ -5348,6 +5370,7 @@
     {
       "type": "definition",
       "identifier": "bq",
+      "label": "bq",
       "title": null,
       "url": "#blockquote",
       "position": {
@@ -5367,6 +5390,7 @@
     {
       "type": "definition",
       "identifier": "l",
+      "label": "l",
       "title": null,
       "url": "#list",
       "position": {
@@ -5423,6 +5447,7 @@
         {
           "type": "linkReference",
           "identifier": "setext",
+          "label": "Setext",
           "referenceType": "shortcut",
           "children": [
             {
@@ -5477,6 +5502,7 @@
         {
           "type": "linkReference",
           "identifier": "1",
+          "label": "1",
           "referenceType": "shortcut",
           "children": [
             {
@@ -5531,6 +5557,7 @@
         {
           "type": "linkReference",
           "identifier": "atx",
+          "label": "atx",
           "referenceType": "shortcut",
           "children": [
             {
@@ -5585,6 +5612,7 @@
         {
           "type": "linkReference",
           "identifier": "2",
+          "label": "2",
           "referenceType": "shortcut",
           "children": [
             {
@@ -8903,6 +8931,7 @@
         {
           "type": "linkReference",
           "identifier": "square brackets",
+          "label": "square brackets",
           "referenceType": "shortcut",
           "children": [
             {
@@ -10272,6 +10301,7 @@
         {
           "type": "linkReference",
           "identifier": "daring fireball",
+          "label": "Daring Fireball",
           "referenceType": "shortcut",
           "children": [
             {

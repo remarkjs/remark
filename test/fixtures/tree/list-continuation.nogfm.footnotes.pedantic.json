@@ -211,6 +211,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "collapsed",
                   "children": [
                     {
@@ -293,6 +294,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "http://google.com",
       "position": {
@@ -326,6 +328,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 15,
@@ -388,6 +391,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "foo",
+      "label": "foo",
       "children": [
         {
           "type": "paragraph",

@@ -18,6 +18,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "referenceType": "full",
                   "children": [
                     {
@@ -93,6 +94,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 2,
@@ -110,6 +112,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -185,6 +188,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^bar",
+                  "label": "^bar",
                   "referenceType": "full",
                   "children": [
                     {
@@ -260,6 +264,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 4,
@@ -277,6 +282,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "bar",
+                  "label": "bar",
                   "position": {
                     "start": {
                       "line": 4,

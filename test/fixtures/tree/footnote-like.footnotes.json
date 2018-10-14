@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^foo",
+          "label": "^foo",
           "referenceType": "full",
           "children": [
             {
@@ -96,6 +97,7 @@
         {
           "type": "footnoteReference",
           "identifier": "both",
+          "label": "both",
           "position": {
             "start": {
               "line": 3,
@@ -113,6 +115,7 @@
         {
           "type": "linkReference",
           "identifier": "invalid",
+          "label": "invalid",
           "referenceType": "shortcut",
           "children": [
             {

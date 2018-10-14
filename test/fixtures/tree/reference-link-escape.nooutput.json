@@ -7,6 +7,7 @@
         {
           "type": "linkReference",
           "identifier": "b\\-r",
+          "label": "b\\-r",
           "referenceType": "full",
           "children": [
             {
@@ -95,6 +96,7 @@
         {
           "type": "linkReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "collapsed",
           "children": [
             {
@@ -183,6 +185,7 @@
         {
           "type": "linkReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "shortcut",
           "children": [
             {
@@ -289,6 +292,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "full",
           "alt": "foo",
           "position": {
@@ -325,6 +329,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "collapsed",
           "alt": "b*r*",
           "position": {
@@ -361,6 +366,7 @@
         {
           "type": "imageReference",
           "identifier": "b\\*r*",
+          "label": "b\\*r*",
           "referenceType": "shortcut",
           "alt": "b*r*",
           "position": {
@@ -412,6 +418,7 @@
     {
       "type": "definition",
       "identifier": "b\\*r*",
+      "label": "b\\*r*",
       "title": null,
       "url": "http://google.com",
       "position": {

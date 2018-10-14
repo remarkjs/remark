@@ -505,6 +505,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -577,6 +578,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -905,6 +907,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -977,6 +980,7 @@
         {
           "type": "linkReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "children": [
             {
@@ -1706,6 +1710,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -1760,6 +1765,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -1998,6 +2004,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {
@@ -2052,6 +2059,7 @@
         {
           "type": "imageReference",
           "identifier": "hello",
+          "label": "Hello",
           "referenceType": "shortcut",
           "alt": "Hello",
           "position": {

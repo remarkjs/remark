@@ -590,6 +590,7 @@
         {
           "type": "linkReference",
           "identifier": "how",
+          "label": "how",
           "referenceType": "full",
           "children": [
             {
@@ -642,6 +643,7 @@
     {
       "type": "definition",
       "identifier": "how",
+      "label": "how",
       "title": null,
       "url": "/are/you",
       "position": {

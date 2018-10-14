@@ -626,6 +626,7 @@
         {
           "type": "linkReference",
           "identifier": "how",
+          "label": "how",
           "referenceType": "full",
           "children": [
             {
@@ -682,6 +683,7 @@
         {
           "type": "linkReference",
           "identifier": "how",
+          "label": "how",
           "referenceType": "shortcut",
           "children": [
             {

@@ -207,6 +207,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "collapsed",
                   "children": [
                     {
@@ -263,6 +264,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -419,6 +421,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 15,
@@ -455,6 +458,7 @@
                 {
                   "type": "footnoteReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "position": {
                     "start": {
                       "line": 16,

@@ -207,6 +207,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "collapsed",
                   "children": [
                     {
@@ -289,6 +290,7 @@
     {
       "type": "definition",
       "identifier": "foo",
+      "label": "foo",
       "title": null,
       "url": "http://google.com",
       "position": {
@@ -322,6 +324,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^foo",
+                  "label": "^foo",
                   "referenceType": "full",
                   "children": [
                     {

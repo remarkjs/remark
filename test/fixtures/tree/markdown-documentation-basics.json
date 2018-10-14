@@ -126,6 +126,7 @@
         {
           "type": "linkReference",
           "identifier": "s",
+          "label": "s",
           "referenceType": "full",
           "children": [
             {
@@ -226,6 +227,7 @@
         {
           "type": "linkReference",
           "identifier": "d",
+          "label": "d",
           "referenceType": "full",
           "children": [
             {
@@ -358,6 +360,7 @@
         {
           "type": "linkReference",
           "identifier": "src",
+          "label": "src",
           "referenceType": "full",
           "children": [
             {
@@ -429,6 +432,7 @@
     {
       "type": "definition",
       "identifier": "s",
+      "label": "s",
       "title": "Markdown Syntax",
       "url": "/projects/markdown/syntax",
       "position": {
@@ -448,6 +452,7 @@
     {
       "type": "definition",
       "identifier": "d",
+      "label": "d",
       "title": "Markdown Dingus",
       "url": "/projects/markdown/dingus",
       "position": {
@@ -467,6 +472,7 @@
     {
       "type": "definition",
       "identifier": "src",
+      "label": "src",
       "title": null,
       "url": "/projects/markdown/basics.text",
       "position": {

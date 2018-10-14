@@ -24,6 +24,7 @@
         {
           "type": "footnoteReference",
           "identifier": "tostring",
+          "label": "toString",
           "position": {
             "start": {
               "line": 1,
@@ -58,6 +59,7 @@
         {
           "type": "footnoteReference",
           "identifier": "__proto__",
+          "label": "__proto__",
           "position": {
             "start": {
               "line": 1,
@@ -92,6 +94,7 @@
         {
           "type": "footnoteReference",
           "identifier": "constructor",
+          "label": "constructor",
           "position": {
             "start": {
               "line": 1,
@@ -141,6 +144,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "tostring",
+      "label": "toString",
       "children": [
         {
           "type": "paragraph",
@@ -229,6 +233,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "constructor",
+      "label": "constructor",
       "children": [
         {
           "type": "paragraph",
@@ -317,6 +322,7 @@
     {
       "type": "footnoteDefinition",
       "identifier": "__proto__",
+      "label": "__proto__",
       "children": [
         {
           "type": "paragraph",

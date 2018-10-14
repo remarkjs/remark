@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^wi\\-ki",
+          "label": "^wi\\-ki",
           "referenceType": "shortcut",
           "children": [
             {
@@ -130,6 +131,7 @@
         {
           "type": "linkReference",
           "identifier": "^wi\\-ki",
+          "label": "^wi\\-ki",
           "referenceType": "shortcut",
           "children": [
             {

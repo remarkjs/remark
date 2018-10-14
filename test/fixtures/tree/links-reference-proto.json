@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "tostring",
+          "label": "toString",
           "referenceType": "full",
           "children": [
             {
@@ -78,6 +79,7 @@
         {
           "type": "linkReference",
           "identifier": "constructor",
+          "label": "constructor",
           "referenceType": "full",
           "children": [
             {
@@ -132,6 +134,7 @@
         {
           "type": "linkReference",
           "identifier": "__proto__",
+          "label": "__proto__",
           "referenceType": "full",
           "children": [
             {
@@ -201,6 +204,7 @@
     {
       "type": "definition",
       "identifier": "tostring",
+      "label": "toString",
       "title": null,
       "url": "http://primary.com",
       "position": {
@@ -220,6 +224,7 @@
     {
       "type": "definition",
       "identifier": "__proto__",
+      "label": "__proto__",
       "title": null,
       "url": "http://tertiary.com",
       "position": {
@@ -239,6 +244,7 @@
     {
       "type": "definition",
       "identifier": "constructor",
+      "label": "constructor",
       "title": null,
       "url": "http://secondary.com",
       "position": {

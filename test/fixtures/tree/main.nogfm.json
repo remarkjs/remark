@@ -4,6 +4,7 @@
     {
       "type": "definition",
       "identifier": "test",
+      "label": "test",
       "title": "Google",
       "url": "http://google.com/",
       "position": {
@@ -82,6 +83,7 @@
         {
           "type": "linkReference",
           "identifier": "test",
+          "label": "test",
           "referenceType": "full",
           "children": [
             {

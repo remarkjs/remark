@@ -220,6 +220,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "collapsed",
                   "children": [
                     {
@@ -276,6 +277,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "foo",
+                  "label": "foo",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -395,6 +397,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^foo",
+                  "label": "^foo",
                   "referenceType": "shortcut",
                   "children": [
                     {
@@ -451,6 +454,7 @@
                 {
                   "type": "linkReference",
                   "identifier": "^foo",
+                  "label": "^foo",
                   "referenceType": "shortcut",
                   "children": [
                     {

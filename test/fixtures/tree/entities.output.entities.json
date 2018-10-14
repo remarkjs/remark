@@ -1797,6 +1797,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T with entity",
           "position": {
@@ -1833,6 +1834,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T with numeric entity",
           "position": {
@@ -1869,6 +1871,7 @@
         {
           "type": "imageReference",
           "identifier": "favicon",
+          "label": "favicon",
           "referenceType": "full",
           "alt": "AT&T without entity",
           "position": {
@@ -1920,6 +1923,7 @@
     {
       "type": "definition",
       "identifier": "favicon",
+      "label": "favicon",
       "title": "ATT favicon",
       "url": "http://att.com/fav.ico",
       "position": {
@@ -1977,6 +1981,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&bar",
+          "label": "foo&bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2031,6 +2036,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&bar",
+          "label": "foo&bar",
           "referenceType": "collapsed",
           "children": [
             {
@@ -2085,6 +2091,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&amp;bar",
+          "label": "foo&amp;bar",
           "referenceType": "shortcut",
           "children": [
             {
@@ -2173,6 +2180,7 @@
         {
           "type": "linkReference",
           "identifier": "foo&amp;bar",
+          "label": "foo&amp;bar",
           "referenceType": "collapsed",
           "children": [
             {
@@ -2276,6 +2284,7 @@
     {
       "type": "definition",
       "identifier": "foo&bar",
+      "label": "foo&bar",
       "title": null,
       "url": "http://example.com",
       "position": {
@@ -2295,6 +2304,7 @@
     {
       "type": "definition",
       "identifier": "foo&amp;bar",
+      "label": "foo&amp;bar",
       "title": null,
       "url": "http://example.com",
       "position": {

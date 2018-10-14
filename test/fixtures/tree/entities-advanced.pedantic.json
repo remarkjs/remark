@@ -749,6 +749,7 @@
             {
               "type": "imageReference",
               "identifier": "12",
+              "label": "12",
               "referenceType": "full",
               "alt": "\n  l©nks\n",
               "position": {
@@ -792,6 +793,7 @@
             {
               "type": "linkReference",
               "identifier": "1",
+              "label": "1",
               "referenceType": "shortcut",
               "children": [
                 {
@@ -990,6 +992,7 @@
             {
               "type": "linkReference",
               "identifier": " 1 ",
+              "label": "\n  1\n",
               "referenceType": "shortcut",
               "children": [
                 {

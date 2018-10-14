@@ -24,6 +24,7 @@
         {
           "type": "linkReference",
           "identifier": "^abc",
+          "label": "^abc",
           "referenceType": "shortcut",
           "children": [
             {
@@ -78,6 +79,7 @@
         {
           "type": "linkReference",
           "identifier": "^xyz",
+          "label": "^xyz",
           "referenceType": "shortcut",
           "children": [
             {
@@ -260,6 +262,7 @@
         {
           "type": "linkReference",
           "identifier": "^footnote",
+          "label": "^footnote",
           "referenceType": "shortcut",
           "children": [
             {
@@ -316,6 +319,7 @@
         {
           "type": "imageReference",
           "identifier": "^footnote",
+          "label": "^footnote",
           "referenceType": "shortcut",
           "alt": "^footnote",
           "position": {
@@ -354,6 +358,7 @@
         {
           "type": "linkReference",
           "identifier": "^footnote",
+          "label": "^footnote",
           "referenceType": "shortcut",
           "children": [
             {
@@ -412,6 +417,7 @@
         {
           "type": "linkReference",
           "identifier": "^abc",
+          "label": "^abc",
           "referenceType": "shortcut",
           "children": [
             {
@@ -481,6 +487,7 @@
     {
       "type": "definition",
       "identifier": "^xyz",
+      "label": "^xyz",
       "title": null,
       "url": "Baz",
       "position": {
@@ -503,6 +510,7 @@
         {
           "type": "linkReference",
           "identifier": "^footnote",
+          "label": "^footnote",
           "referenceType": "shortcut",
           "children": [
             {

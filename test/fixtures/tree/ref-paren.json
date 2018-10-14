@@ -7,6 +7,7 @@
         {
           "type": "linkReference",
           "identifier": "hi",
+          "label": "hi",
           "referenceType": "shortcut",
           "children": [
             {
@@ -59,6 +60,7 @@
     {
       "type": "definition",
       "identifier": "hi",
+      "label": "hi",
       "title": "there",
       "url": "/url",
       "position": {

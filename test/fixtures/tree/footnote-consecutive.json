@@ -25,6 +25,7 @@
         {
           "type": "linkReference",
           "identifier": "^wiki",
+          "label": "^wiki",
           "referenceType": "shortcut",
           "children": [
             {
@@ -97,6 +98,7 @@
         {
           "type": "linkReference",
           "identifier": "^wiki2",
+          "label": "^wiki2",
           "referenceType": "full",
           "children": [
             {
@@ -151,6 +153,7 @@
         {
           "type": "linkReference",
           "identifier": "^consecutive",
+          "label": "^consecutive",
           "referenceType": "full",
           "children": [
             {
@@ -258,6 +261,7 @@
         {
           "type": "linkReference",
           "identifier": "^wiki",
+          "label": "^wiki",
           "referenceType": "shortcut",
           "children": [
             {
@@ -314,6 +318,7 @@
         {
           "type": "linkReference",
           "identifier": "^wiki2",
+          "label": "^wiki2",
           "referenceType": "shortcut",
           "children": [
             {
@@ -370,6 +375,7 @@
         {
           "type": "linkReference",
           "identifier": "^name",
+          "label": "^name",
           "referenceType": "shortcut",
           "children": [
             {
@@ -426,6 +432,7 @@
         {
           "type": "linkReference",
           "identifier": "^consecutive",
+          "label": "^consecutive",
           "referenceType": "shortcut",
           "children": [
             {
