@@ -30,7 +30,7 @@
     "unist-util-visit": "^1.1.0",
     "vfile": "^3.0.0",
     "wcwidth": "^1.0.1",
-    "xo": "^0.22.0"
+    "xo": "^0.23.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap",

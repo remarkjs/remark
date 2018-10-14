@@ -94,12 +94,12 @@ test('remark().parse(file)', function (t) {
 
     try {
       processor.parse('Hello *World*!');
-    } catch (err) {
-      st.equal(err.file, '', 'should pass a filename');
-      st.equal(err.line, 1, 'should set `line`');
-      st.equal(err.column, 7, 'should set `column`');
-      st.equal(err.reason, 'Found it!', 'should set `reason`');
-      st.equal(err.toString(), '1:7: Found it!', 'should set `message`');
+    } catch (error) {
+      st.equal(error.file, '', 'should pass a filename');
+      st.equal(error.line, 1, 'should set `line`');
+      st.equal(error.column, 7, 'should set `column`');
+      st.equal(error.reason, 'Found it!', 'should set `reason`');
+      st.equal(error.toString(), '1:7: Found it!', 'should set `message`');
     }
 
     function plugin() {

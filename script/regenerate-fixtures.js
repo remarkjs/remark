@@ -18,9 +18,9 @@ fixtures.forEach(function (fixture) {
       result = remark()
         .data('settings', fixture.possibilities[key])
         .parse(input);
-    } catch (err) {
+    } catch (error) {
       console.log('Could not regenerate `' + filename + '`');
-      throw err;
+      throw error;
     }
 
     result = JSON.stringify(result, null, 2) + '\n';
