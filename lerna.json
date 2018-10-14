@@ -1,4 +1,9 @@
 {
   "lerna": "2.0.0",
-  "version": "independent"
+  "version": "independent",
+  "command": {
+  "bootstrap": {
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  }
 }
