@@ -26,7 +26,7 @@ Oh, and [plugins][]?!
 ## Contribute
 
 **remark** is built by people just like you!  Check out
-[`contribute.md`][contribute] for ways to get started.
+[`contributing.md`][contribute] for ways to get started.
 
 This project has a [Code of Conduct][coc].  By interacting with this repository,
 organisation, or community you agree to abide by its terms.
