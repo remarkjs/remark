@@ -256,8 +256,6 @@ footer {
 .hljs-meta { color: hsl(40, 58%, 35%); }
 .hljs-name { color: hsl(114, 28%, 35%); }
 .hljs-attr { color: hsl(264, 50%, 50%); }
-.hljs-addition { color: hsl(102, 53%, 42%); }
-.hljs-deletion { color: hsl(14, 100%, 37%); }
 .hljs-bullet { color: hsl(14, 83%, 60%); }
 .hljs-tag { color: #777; }
 .hljs-selector-tag { color: hsl(114, 28%, 55%); }
@@ -265,5 +263,13 @@ footer {
 .language-html .hljs-attr { color: hsl(264, 50%, 70%); }
 .language-html .hljs-string { color: hsl(225, 72%, 75%); }
 .hljs-comment { color: #aaa; }
-.hljs-addition { background-color: hsl(120, 100%, 96%); }
-.hljs-deletion { background-color: hsl(0, 100%, 96%); }
+
+.hljs-addition {
+  color: hsl(102, 53%, 42%);
+  background-color: hsl(120, 100%, 96%);
+}
+
+.hljs-deletion {
+  color: hsl(14, 100%, 37%);
+  background-color: hsl(0, 100%, 96%);
+}

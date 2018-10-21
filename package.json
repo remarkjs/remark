@@ -6,35 +6,48 @@
   "author": "Titus Wormer <tituswormer@gmail.com>",
   "dependencies": {},
   "devDependencies": {
-    "cssnano": "^3.10.0",
-    "postcss-cli": "^4.1.0",
-    "rehype-cli": "^4.0.0",
-    "rehype-highlight": "^2.0.0",
+    "cssnano": "^4.1.5",
+    "imagemin-cli": "^3.0.0",
+    "imagemin-jpegtran": "^5.0.2",
+    "postcss-cli": "^6.0.0",
+    "postcss-preset-env": "^6.1.2",
+    "rehype-cli": "^6.0.0",
+    "rehype-highlight": "^2.2.0",
     "rehype-preset-minify": "^2.0.0",
-    "stylelint": "^8.0.0",
-    "stylelint-config-standard": "^18.0.0",
-    "xo": "^0.18.2"
+    "rehype-prevent-favicon-request": "^1.0.0",
+    "stylelint": "^9.6.0",
+    "stylelint-config-standard": "^18.0.0"
   },
   "scripts": {
-    "build:mv": "cp -r src/* dest",
-    "build:html": "rehype -u highlight -u preset-minify src -o dest",
+    "format": "stylelint src/index.css --fix",
+    "build:asset": "cp -r src dest",
+    "build:img": "imagemin src/*.jpg -o dest -p jpegtran",
     "build:css": "postcss src/index.css > dest/index.css",
-    "build": "npm run build:mv && npm run build:css && npm run build:html",
-    "lint": "xo && stylelint index.css",
-    "test": "npm run build && npm run lint"
+    "build:html": "rehype src -qfo -o dest",
+    "build": "npm run build:asset && npm run build:img && npm run build:css && npm run build:html",
+    "test": "npm run build && npm run format"
   },
   "stylelint": {
     "extends": "stylelint-config-standard"
   },
-  "xo": {
-    "space": true,
-    "esnext": false
-  },
   "postcss": {
     "plugins": {
+      "postcss-preset-env": {},
       "cssnano": {
         "preset": "default"
       }
     }
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-wooorm"
+    ]
+  },
+  "rehype": {
+    "plugins": [
+      "highlight",
+      "preset-minify",
+      "prevent-favicon-request"
+    ]
   }
 }
