@@ -226,7 +226,7 @@ files, use `vfile-`.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/remarkjs/remark/ee78519/logo.svg
+[logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
 
 [plugins]: #list-of-plugins
 

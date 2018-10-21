@@ -75,7 +75,7 @@ See [plugins][] for a list of plugins and utilities.
 
 <!--Definitions:-->
 
-[logo]: https://cdn.rawgit.com/remarkjs/remark/ee78519/logo.svg
+[logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
 
 [remark]: https://github.com/remarkjs/remark
 
