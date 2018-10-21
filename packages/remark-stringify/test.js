@@ -2,17 +2,24 @@
 
 var test = require('tape')
 var wcwidth = require('wcwidth')
-var remark = require('../packages/remark')
-var Compiler = require('../packages/remark-stringify').Compiler
+var u = require('unist-builder')
+var visit = require('unist-util-visit')
+var unified = require('unified')
+var parse = require('../remark-parse')
+var stringify = require('.')
 
-function empty() {
-  return {type: 'root', children: []}
-}
+var Compiler = stringify.Compiler
+
+var commonmark = {commonmark: true}
+var pedantic = {pedantic: true}
+var uncollapsable = {start: {line: 1, column: NaN}, end: {line: 1, column: NaN}}
 
 test('remark().stringify(ast, file)', function(t) {
   t.throws(
     function() {
-      remark().stringify(false)
+      unified()
+        .use(stringify)
+        .stringify(false)
     },
     /false/,
     'should throw when `ast` is not an object'
@@ -48,7 +55,9 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark().stringify({type: 'unicorn'})
+      unified()
+        .use(stringify)
+        .stringify({type: 'unicorn'})
     },
     /unicorn/,
     'should throw when `ast` is not a valid node'
@@ -56,7 +65,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {bullet: true})
         .stringify(empty())
     },
@@ -66,7 +76,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {listItemIndent: 'foo'})
         .stringify(empty())
     },
@@ -76,7 +87,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {rule: true})
         .stringify(empty())
     },
@@ -86,7 +98,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {ruleSpaces: 1})
         .stringify(empty())
     },
@@ -96,7 +109,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {ruleRepetition: 1})
         .stringify(empty())
     },
@@ -106,7 +120,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {ruleRepetition: NaN})
         .stringify(empty())
     },
@@ -116,7 +131,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {ruleRepetition: true})
         .stringify(empty())
     },
@@ -126,7 +142,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {emphasis: '-'})
         .stringify(empty())
     },
@@ -136,7 +153,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {strong: '-'})
         .stringify(empty())
     },
@@ -146,7 +164,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {setext: 0})
         .stringify(empty())
     },
@@ -156,7 +175,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {incrementListMarker: -1})
         .stringify(empty())
     },
@@ -166,7 +186,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {fences: NaN})
         .stringify(empty())
     },
@@ -176,7 +197,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {fence: '-'})
         .stringify(empty())
     },
@@ -186,7 +208,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {closeAtx: NaN})
         .stringify(empty())
     },
@@ -196,7 +219,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {looseTable: '!'})
         .stringify(empty())
     },
@@ -206,7 +230,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {spacedTable: '?'})
         .stringify(empty())
     },
@@ -216,7 +241,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {paddedTable: '.'})
         .stringify(empty())
     },
@@ -226,7 +252,8 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(stringify)
         .data('settings', {stringLength: 1})
         .stringify(empty())
     },
@@ -243,7 +270,9 @@ test('remark().stringify(ast, file)', function(t) {
 
     // Without pedantic mode, emphasis always defaults to underscores.
     st.equal(
-      remark()
+      unified()
+        .use(parse)
+        .use(stringify)
         .processSync(example)
         .toString(),
       '_alpha_bravo_\n',
@@ -253,7 +282,9 @@ test('remark().stringify(ast, file)', function(t) {
     // With pedantic mode, emphasis will default to asterisks if the text to be
     // emphasized contains underscores.
     st.equal(
-      remark()
+      unified()
+        .use(parse)
+        .use(stringify)
         .use({settings: {pedantic: true}})
         .processSync(example)
         .toString(),
@@ -264,7 +295,7 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.test('should support optional list fields', function(st) {
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         children: [
           {
@@ -283,7 +314,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         start: 2,
         children: [
@@ -303,7 +334,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         spread: true,
         children: [
@@ -332,7 +363,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         ordered: true,
         children: [
@@ -352,7 +383,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         ordered: true,
         spread: true,
@@ -382,7 +413,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'list',
         ordered: true,
         spread: true,
@@ -414,8 +445,12 @@ test('remark().stringify(ast, file)', function(t) {
 
     st.end()
 
-    function stringify(value) {
-      return String(remark().stringify(value))
+    function toString(value) {
+      return String(
+        unified()
+          .use(stringify)
+          .stringify(value)
+      )
     }
   })
 
@@ -437,31 +472,31 @@ test('remark().stringify(ast, file)', function(t) {
     ]
 
     st.equal(
-      stringify({type: 'listItem', children: children}),
+      toString({type: 'listItem', children: children}),
       '-   alpha\n\n    > bravo',
       'no checked or spread'
     )
 
     st.equal(
-      stringify({type: 'listItem', checked: true, children: children}),
+      toString({type: 'listItem', checked: true, children: children}),
       '-   [x] alpha\n\n    > bravo',
       'checked; no spread'
     )
 
     st.equal(
-      stringify({type: 'listItem', spread: true, children: children}),
+      toString({type: 'listItem', spread: true, children: children}),
       '-   alpha\n\n    > bravo',
       'spread: true; no checked'
     )
 
     st.equal(
-      stringify({type: 'listItem', spread: false, children: children}),
+      toString({type: 'listItem', spread: false, children: children}),
       '-   alpha\n    > bravo',
       'spread: false; no checked'
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'listItem',
         checked: false,
         spread: false,
@@ -473,24 +508,32 @@ test('remark().stringify(ast, file)', function(t) {
 
     st.end()
 
-    function stringify(value) {
-      return String(remark().stringify(value))
+    function toString(value) {
+      return String(
+        unified()
+          .use(stringify)
+          .stringify(value)
+      )
     }
   })
 
   t.test('should support empty list items', function(st) {
-    st.equal(stringify({type: 'listItem', children: []}), '-', 'no checked')
+    st.equal(toString({type: 'listItem', children: []}), '-', 'no checked')
 
     st.equal(
-      stringify({type: 'listItem', checked: true, children: []}),
+      toString({type: 'listItem', checked: true, children: []}),
       '-   [x] ',
       'checked'
     )
 
     st.end()
 
-    function stringify(value) {
-      return String(remark().stringify(value))
+    function toString(value) {
+      return String(
+        unified()
+          .use(stringify)
+          .stringify(value)
+      )
     }
   })
 
@@ -532,7 +575,9 @@ test('remark().stringify(ast, file)', function(t) {
       st.plan(tests.length)
       tests.forEach(function(test) {
         st.equal(
-          remark()
+          unified()
+            .use(parse)
+            .use(stringify)
             .use({settings: {pedantic: true}})
             .processSync(test[1])
             .toString(),
@@ -561,7 +606,9 @@ test('remark().stringify(ast, file)', function(t) {
 
     function each(test) {
       st.equal(
-        remark()
+        unified()
+          .use(parse)
+          .use(stringify)
           .processSync(test[1])
           .toString(),
         test[1] + '\n',
@@ -572,7 +619,7 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.test('should process associations without label', function(st) {
     st.equal(
-      stringify({
+      toString({
         type: 'definition',
         identifier: 'a',
         url: 'example.com'
@@ -582,7 +629,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'footnoteDefinition',
         identifier: 'a',
         children: [
@@ -597,7 +644,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'linkReference',
         identifier: 'a',
         children: [{type: 'text', value: 'b'}]
@@ -607,7 +654,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'imageReference',
         identifier: 'a',
         alt: 'b'
@@ -617,7 +664,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      stringify({
+      toString({
         type: 'footnoteReference',
         identifier: 'a'
       }),
@@ -627,8 +674,12 @@ test('remark().stringify(ast, file)', function(t) {
 
     st.end()
 
-    function stringify(value) {
-      return String(remark().stringify(value))
+    function toString(value) {
+      return String(
+        unified()
+          .use(stringify)
+          .stringify(value)
+      )
     }
   })
 
@@ -643,7 +694,9 @@ test('remark().stringify(ast, file)', function(t) {
     ].join('\n')
 
     st.equal(
-      remark()
+      unified()
+        .use(parse)
+        .use(stringify)
         .processSync(example)
         .toString(),
       [
@@ -656,7 +709,9 @@ test('remark().stringify(ast, file)', function(t) {
     )
 
     st.equal(
-      remark()
+      unified()
+        .use(parse)
+        .use(stringify)
         .use({settings: {stringLength: wcwidth}})
         .processSync(example)
         .toString(),
@@ -703,6 +758,9 @@ test('remark().stringify(ast, file)', function(t) {
   })
 
   t.test('should support valid functions', function(st) {
+    // Coverage:
+    stringLength()
+
     var compiler = new Compiler()
     compiler.setOptions({stringLength: stringLength})
     st.equal(compiler.options.stringLength, stringLength)
@@ -712,7 +770,11 @@ test('remark().stringify(ast, file)', function(t) {
   })
 
   t.test('should be able to set options', function(st) {
-    var processor = remark().use(plugin)
+    var processor = unified()
+      .use(parse)
+      .use(stringify)
+      .use(plugin)
+
     var tree = processor.parse(
       ['<!-- setext -->', '', '# Hello World', ''].join('\n')
     )
@@ -733,11 +795,9 @@ test('remark().stringify(ast, file)', function(t) {
         var result = /<!--\s*(.*?)\s*-->/g.exec(value)
         var options = {}
 
-        if (result) {
-          options[result[1]] = true
+        options[result[1]] = true
 
-          this.setOptions(options)
-        }
+        this.setOptions(options)
 
         return html.apply(this, arguments)
       }
@@ -748,3 +808,477 @@ test('remark().stringify(ast, file)', function(t) {
 
   t.end()
 })
+
+test('stringify escapes', function(t) {
+  t.equal(toString('a\\b'), 'a\\\\b', '`\\`')
+  t.equal(toString('a`b'), 'a\\`b', '`` ` ``')
+  t.equal(toString('a*b'), 'a\\*b', '`*`')
+  t.equal(toString('a[b'), 'a\\[b', '`[`')
+  t.equal(toString('a<b'), 'a&lt;b', '`<`')
+  t.equal(toString('a<b', commonmark), 'a\\<b', '`<` (commonmark)')
+
+  t.equal(toString('a&b'), 'a&b', '`&`')
+  t.equal(toString('a&amp;b'), 'a&amp;amp;b', 'entities')
+  t.equal(toString('a&amp;b', commonmark), 'a\\&amp;b', 'entities (commonmark)')
+
+  t.equal(toString('a]b'), 'a]b', '`]`')
+
+  t.equal(
+    toString(u('link', [u('text', 'a]b')])),
+    '[a\\]b](<>)',
+    '`]` (in links)'
+  )
+
+  t.equal(toString(u('image', {alt: 'a]b'})), '![a\\]b](<>)', '`]` (in images)')
+
+  t.equal(toString('a~b'), 'a~b', '`~`')
+  t.equal(toString('a~~b'), 'a\\~~b', '`~~`')
+
+  t.equal(toString('a|b'), 'a|b', '`|`')
+  t.equal(toString('| -- |'), '\\| -- \\|', '`|` (table-like)')
+
+  t.equal(
+    toString(u('table', [u('tableRow', [u('tableCell', [u('text', 'a|b')])])])),
+    '| a\\|b |\n| ---- |',
+    '`|` (in cells)'
+  )
+
+  t.equal(toString('a_b'), 'a_b', '`_` (in words)')
+  t.equal(toString('a_b', pedantic), 'a\\_b', '`_` (in words, pedantic)')
+  t.equal(toString(' _b'), ' \\_b', '`_` after `\\b`')
+  t.equal(toString('a_ '), 'a\\_ ', '`_` before `\\b`')
+
+  t.equal(toString('a:b'), 'a:b', '`:`')
+  t.equal(toString('http:b'), 'http&#x3A;b', '`:` (in `http:`)')
+  t.equal(
+    toString('http:b', commonmark),
+    'http\\:b',
+    '`:` (in `http:`, commonmark)'
+  )
+  t.equal(toString('https:b'), 'https&#x3A;b', '`:` (in `https:`)')
+  t.equal(
+    toString('https:b', commonmark),
+    'https\\:b',
+    '`:` (in `https:`, commonmark)'
+  )
+  t.equal(toString('mailto:b'), 'mailto&#x3A;b', '`:` (in `mailto:`)')
+  t.equal(
+    toString('mailto:b', commonmark),
+    'mailto\\:b',
+    '`:` (in `mailto:`, commonmark)'
+  )
+
+  t.equal(toString('>a'), '\\>a', '`>` (without parent)')
+  t.equal(
+    toString(u('paragraph', [u('text', '>a')])),
+    '\\>a',
+    '`>` (in paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '>a')])),
+    '**>a**',
+    '`>` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '>b')])),
+    '**a>b**',
+    '`>` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '>b')])),
+    '**\n\\>b**',
+    '`>` (after newline)'
+  )
+
+  t.equal(toString('#a'), '\\#a', '`#` (without parent)')
+  t.equal(
+    toString(u('paragraph', [u('text', '#a')])),
+    '\\#a',
+    '`#` (in paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '#a')])),
+    '**#a**',
+    '`#` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '#b')])),
+    '**a#b**',
+    '`#` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '#b')])),
+    '**\n\\#b**',
+    '`#` (after newline)'
+  )
+
+  // Both bullet and emphasis marker.
+  t.equal(toString('*a'), '\\*a', '`*` (without parent)')
+  t.equal(
+    toString(u('paragraph', [u('text', '*a')])),
+    '\\*a',
+    '`*` (in paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '*a')])),
+    '**\\*a**',
+    '`*` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '*b')])),
+    '**a\\*b**',
+    '`*` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '*b')])),
+    '**\n\\*b**',
+    '`*` (after newline)'
+  )
+
+  t.equal(toString('-a'), '\\-a', '`-` (without parent)')
+  t.equal(
+    toString(u('paragraph', [u('text', '-a')])),
+    '\\-a',
+    '`-` (in paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '-a')])),
+    '**-a**',
+    '`-` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '-b')])),
+    '**a-b**',
+    '`-` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '-b')])),
+    '**\n\\-b**',
+    '`-` (after newline)'
+  )
+
+  t.equal(toString('+a'), '\\+a', '`+` (without parent)')
+  t.equal(
+    toString(u('paragraph', [u('text', '+a')])),
+    '\\+a',
+    '`+` (in paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '+a')])),
+    '**+a**',
+    '`+` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '+b')])),
+    '**a+b**',
+    '`+` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '+b')])),
+    '**\n\\+b**',
+    '`+` (after newline)'
+  )
+
+  t.equal(toString('.a'), '.a', '`.`')
+  t.equal(toString('1.a'), '1.a', '`.` (without parent, without space)')
+  t.equal(toString('1. '), '1\\. ', '`.` (without parent, with space)')
+  t.equal(toString('1.\t'), '1\\.\t', '`.` (without parent, with tab)')
+  t.equal(toString('1.\n'), '1\\.\n', '`.` (without parent, with newline)')
+  t.equal(toString('1.'), '1\\.', '`.` (without parent, with EOF)')
+  t.equal(
+    toString(u('paragraph', [u('text', '1.a')])),
+    '1.a',
+    '`1.` (in paragraph, without space)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1. ')])),
+    '1\\. ',
+    '`1.` (in paragraph, with space)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1.\t')])),
+    '1\\.\t',
+    '`1.` (in paragraph, with tab)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1.\n')])),
+    '1\\.\n',
+    '`1.` (in paragraph, with newline)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1.')])),
+    '1\\.',
+    '`1.` (in paragraph, with EOF)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '1.a')])),
+    '**1.a**',
+    '`1.` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '1.b')])),
+    '**a1.b**',
+    '`1.` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1.b')])),
+    '**\n1.b**',
+    '`1.` (after newline)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1. ')])),
+    '**\n1\\. **',
+    '`1.` (after newline, with space)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1.\t')])),
+    '**\n1\\.\t**',
+    '`1.` (after newline, with tab)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1.\n')])),
+    '**\n1\\.\n**',
+    '`1.` (after newline, with newline)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1.')])),
+    '**\n1\\.**',
+    '`1.` (after newline, with EOL)'
+  )
+
+  t.equal(toString(')a'), ')a', '`)`')
+  t.equal(toString('1)a'), '1)a', '`)` (default)')
+  t.equal(
+    toString('1)a', commonmark),
+    '1)a',
+    '`)` (commonmark, without parent)'
+  )
+  t.equal(
+    toString('1) ', commonmark),
+    '1\\) ',
+    '`)` (commonmark, without parent, with space)'
+  )
+  t.equal(
+    toString('1)\t', commonmark),
+    '1\\)\t',
+    '`)` (commonmark, without parent, with tab)'
+  )
+  t.equal(
+    toString('1)\n', commonmark),
+    '1\\)\n',
+    '`)` (commonmark, without parent, with newline)'
+  )
+  t.equal(
+    toString('1)', commonmark),
+    '1\\)',
+    '`)` (commonmark, without parent, with EOL)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1)a')]), commonmark),
+    '1)a',
+    '`1)` (in paragraph)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1) ')]), commonmark),
+    '1\\) ',
+    '`1)` (in paragraph, with space)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1)\t')]), commonmark),
+    '1\\)\t',
+    '`1)` (in paragraph, with tab)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1)\n')]), commonmark),
+    '1\\)\n',
+    '`1)` (in paragraph, with newline)'
+  )
+  t.equal(
+    toString(u('paragraph', [u('text', '1)')]), commonmark),
+    '1\\)',
+    '`1)` (in paragraph, with EOL)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '1)a')]), commonmark),
+    '**1)a**',
+    '`1)` (in non-paragraph)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', 'a'), u('text', '1)b')]), commonmark),
+    '**a1)b**',
+    '`1)` (after sibling)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1)b')]), commonmark),
+    '**\n1)b**',
+    '`1)` (after newline)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1) ')]), commonmark),
+    '**\n1\\) **',
+    '`1)` (after newline, with space)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1)\t')]), commonmark),
+    '**\n1\\)\t**',
+    '`1)` (after newline, with tab)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1)\n')]), commonmark),
+    '**\n1\\)\n**',
+    '`1)` (after newline, with newline)'
+  )
+  t.equal(
+    toString(u('strong', [u('text', '\n'), u('text', '1)')]), commonmark),
+    '**\n1\\)**',
+    '`1)` (after newline, with EOL)'
+  )
+
+  t.equal(
+    toString(
+      u('paragraph', [
+        u(
+          'linkReference',
+          {
+            identifier: 'foo',
+            referenceType: 'shortcut'
+          },
+          [u('text', 'a')]
+        ),
+        u('text', '(b')
+      ])
+    ),
+    '[a]\\(b',
+    '`(` after shortcut link-reference'
+  )
+
+  t.equal(
+    toString(
+      u('paragraph', [
+        u(
+          'linkReference',
+          {
+            identifier: 'foo',
+            referenceType: 'shortcut'
+          },
+          [u('text', 'a')]
+        ),
+        u('text', ' \t(b')
+      ])
+    ),
+    '[a] \t\\(b',
+    '`(` after spaced shortcut link-reference'
+  )
+
+  t.equal(
+    toString(
+      u('paragraph', [
+        u(
+          'linkReference',
+          {
+            identifier: 'foo',
+            referenceType: 'shortcut'
+          },
+          [u('text', 'a')]
+        ),
+        u('text', ':b')
+      ])
+    ),
+    '[a]&#x3A;b',
+    '`:` after shortcut link-reference'
+  )
+
+  t.equal(
+    toString(
+      u('paragraph', [
+        u(
+          'linkReference',
+          {
+            identifier: 'foo',
+            referenceType: 'shortcut'
+          },
+          [u('text', 'a')]
+        ),
+        u('text', ' \t:b')
+      ])
+    ),
+    '[a] \t&#x3A;b',
+    '`:` after spaced shortcut link-reference'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', 'http'), u('text', ':')])),
+    'http&#x3A;',
+    '`:` with protocol in previous node'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', '&'), u('text', 'amp;')])),
+    '&amp;amp;',
+    '`&` with entity in next node'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', 'a~'), u('text', '~b')])),
+    'a\\~~b',
+    '`~~` split over two nodes'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', 'a'), u('text', '_'), u('text', 'b')])),
+    'a_b',
+    '`_` split over nodes'
+  )
+
+  t.equal(
+    toString(
+      u('paragraph', [u('text', 'a'), u('text', '_'), u('text', 'b')]),
+      pedantic
+    ),
+    'a\\_b',
+    '`_` split over nodes (pedantic)'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', ' '), u('text', '_'), u('text', 'b')])),
+    ' \\_b',
+    '`_` split over nodes (no word character before)'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', ' _'), u('text', 'b')])),
+    ' \\_b',
+    '`_` split over nodes (no word character before, #2)'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', 'a'), u('text', '_'), u('text', ' ')])),
+    'a\\_ ',
+    '`_` split over nodes (no word character after)'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', 'a'), u('text', '_ ')])),
+    'a\\_ ',
+    '`_` split over nodes (no word character after, #2)'
+  )
+
+  t.end()
+})
+
+function toString(value, options) {
+  var tree = typeof value === 'string' ? u('text', value) : value
+
+  visit(tree, function(node) {
+    node.position = uncollapsable
+  })
+
+  return unified()
+    .use(stringify)
+    .data('settings', options || {})
+    .stringify(tree)
+}
+
+function empty() {
+  return {type: 'root', children: []}
+}

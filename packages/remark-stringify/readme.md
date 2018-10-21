@@ -1,4 +1,4 @@
-# remark-stringify [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# remark-stringify [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
 
 [Compiler][] for [**unified**][unified].  Stringifies an
 [**MDAST**][mdast] syntax tree to markdown.  Used in the [**remark**
@@ -233,6 +233,14 @@ Stringify `node`.
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
 [coverage-status]: https://codecov.io/github/remarkjs/remark
+
+[dl-badge]: https://img.shields.io/npm/dm/remark-stringify.svg
+
+[dl]: https://www.npmjs.com/package/remark-stringify
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-stringify.svg
+
+[size]: https://bundlephobia.com/result?p=remark-stringify
 
 [chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 

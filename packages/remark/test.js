@@ -1,7 +1,7 @@
 'use strict'
 
 var test = require('tape')
-var remark = require('../packages/remark')
+var remark = require('.')
 
 test('remark().processSync(value)', function(t) {
   t.equal(

@@ -9,10 +9,7 @@
     "browserify": "^16.0.0",
     "bundle-collapser": "^1.3.0",
     "camelcase": "^5.0.0",
-    "chalk": "^2.0.0",
     "clone": "^2.0.0",
-    "execa": "^1.0.0",
-    "extend": "^3.0.0",
     "lerna": "^3.0.0",
     "mdast-util-assert": "^1.0.0",
     "mdast-util-compact": "^1.0.0",
@@ -24,9 +21,6 @@
     "tinyify": "^2.4.3",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "unist-util-visit": "^1.1.0",
-    "vfile": "^3.0.0",
-    "wcwidth": "^1.0.1",
     "xo": "^0.23.0"
   },
   "scripts": {
@@ -35,10 +29,9 @@
     "build-bundle": "browserify packages/remark -s remark > remark.js",
     "build-mangle": "browserify packages/remark -s remark -p tinyify > remark.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
-    "test-api": "node test/api",
-    "test-api-extensive": "TEST_EXTENDED=true node test/api",
-    "test-cli": "node test/cli.js",
-    "test-coverage": "nyc --reporter lcov tape test",
+    "test-api": "tape packages/*/test.js test/index.js",
+    "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
+    "test-coverage": "nyc --reporter lcov tape \"test/index.js\" \"packages/*/test.js\"",
     "test": "npm run format && npm run build && npm run test-coverage"
   },
   "nyc": {

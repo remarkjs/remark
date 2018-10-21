@@ -4,19 +4,24 @@ var path = require('path')
 var fs = require('fs')
 var test = require('tape')
 var vfile = require('vfile')
-var remark = require('../packages/remark')
-var Parser = require('../packages/remark-parse').Parser
+var unified = require('unified')
+var parse = require('.')
+
+var Parser = parse.Parser
 
 test('remark().parse(file)', function(t) {
   t.equal(
-    remark().parse('Alfred').children.length,
+    unified()
+      .use(parse)
+      .parse('Alfred').children.length,
     1,
     'should accept a `string`'
   )
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(parse)
         .data('settings', {position: 0})
         .parse('')
     },
@@ -40,7 +45,8 @@ test('remark().parse(file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(parse)
         .data('settings', {gfm: Infinity})
         .parse('')
     },
@@ -50,7 +56,8 @@ test('remark().parse(file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(parse)
         .data('settings', {footnotes: 1})
         .parse('')
     },
@@ -60,7 +67,8 @@ test('remark().parse(file)', function(t) {
 
   t.throws(
     function() {
-      remark()
+      unified()
+        .use(parse)
         .data('settings', {pedantic: {}})
         .parse('')
     },
@@ -69,7 +77,8 @@ test('remark().parse(file)', function(t) {
   )
 
   t.deepEqual(
-    remark()
+    unified()
+      .use(parse)
       .data('settings', {position: false})
       .parse('<foo></foo>'),
     {
@@ -88,7 +97,8 @@ test('remark().parse(file)', function(t) {
   )
 
   t.deepEqual(
-    remark()
+    unified()
+      .use(parse)
       .data('settings', {position: false, blocks: ['foo']})
       .parse('<foo></foo>'),
     {
@@ -99,7 +109,9 @@ test('remark().parse(file)', function(t) {
   )
 
   t.test('should throw parse errors', function(st) {
-    var processor = remark().use(plugin)
+    var processor = unified()
+      .use(parse)
+      .use(plugin)
 
     st.plan(5)
 
@@ -130,7 +142,9 @@ test('remark().parse(file)', function(t) {
   })
 
   t.test('should warn when missing locators', function(st) {
-    var processor = remark().use(plugin)
+    var processor = unified()
+      .use(parse)
+      .use(plugin)
 
     st.throws(function() {
       processor.parse(vfile('Hello *World*!'))
@@ -161,7 +175,9 @@ test('remark().parse(file)', function(t) {
     var notTerminated =
       'Named character references must be terminated by a semicolon'
 
-    remark().parse(file)
+    unified()
+      .use(parse)
+      .parse(file)
 
     st.deepEqual(file.messages.map(String), [
       '1:13: Named character references must be known',
@@ -187,7 +203,8 @@ test('remark().parse(file)', function(t) {
   })
 
   t.test('should be able to set options', function(st) {
-    var tree = remark()
+    var tree = unified()
+      .use(parse)
       .use(plugin)
       .parse(['<!-- commonmark -->', '', '1)   Hello World', ''].join('\n'))
 

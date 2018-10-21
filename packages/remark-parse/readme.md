@@ -1,4 +1,4 @@
-# remark-parse [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# remark-parse [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
 
 [Parser][] for [**unified**][unified].  Parses markdown to an
 [**MDAST**][mdast] syntax tree.  Used in the [**remark**
@@ -420,6 +420,14 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
 [coverage-status]: https://codecov.io/github/remarkjs/remark
+
+[dl-badge]: https://img.shields.io/npm/dm/remark-parse.svg
+
+[dl]: https://www.npmjs.com/package/remark-parse
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-parse.svg
+
+[size]: https://bundlephobia.com/result?p=remark-parse
 
 [chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 

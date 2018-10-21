@@ -1,4 +1,4 @@
-# remark [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# remark [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
 
 The [`remark`][remark] processor is a markdown processor powered by
 [plugins][].
@@ -111,6 +111,14 @@ Yields:
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
 [coverage-status]: https://codecov.io/github/remarkjs/remark
+
+[dl-badge]: https://img.shields.io/npm/dm/remark.svg
+
+[dl]: https://www.npmjs.com/package/remark
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark.svg
+
+[size]: https://bundlephobia.com/result?p=remark
 
 [chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 

@@ -9,11 +9,6 @@
     "cli",
     "bin"
   ],
-  "dependencies": {
-    "markdown-extensions": "^1.1.0",
-    "remark": "^9.0.0",
-    "unified-args": "^6.0.0"
-  },
   "homepage": "http://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-cli",
   "bugs": "https://github.com/remarkjs/remark/issues",
@@ -27,6 +22,17 @@
   "files": [
     "cli.js"
   ],
-  "scripts": {},
+  "dependencies": {
+    "markdown-extensions": "^1.1.0",
+    "remark": "^9.0.0",
+    "unified-args": "^6.0.0"
+  },
+  "devDependencies": {
+    "execa": "^1.0.0",
+    "tape": "^4.9.1"
+  },
+  "scripts": {
+    "test": "tape test.js"
+  },
   "xo": false
 }

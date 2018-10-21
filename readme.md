@@ -1,7 +1,9 @@
 # ![remark][logo]
 
-[![Build Status][build-badge]][build-status]
-[![Coverage Status][coverage-badge]][coverage-status]
+[![Travis][build-badge]][build-status]
+[![Coverage][coverage-badge]][coverage-status]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
 [![Chat][chat-badge]][chat]
 
 **remark** is an ecosystem of [plugins][] for processing markdown.
@@ -50,6 +52,14 @@ an issue in the [`remarkjs/ideas`][ideas] repository!
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
 [coverage-status]: https://codecov.io/github/remarkjs/remark
+
+[downloads-badge]: https://img.shields.io/npm/dm/remark.svg
+
+[downloads]: https://www.npmjs.com/package/remark
+
+[size-badge]: https://img.shields.io/bundlephobia/minzip/remark.svg
+
+[size]: https://bundlephobia.com/result?p=remark
 
 [chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 

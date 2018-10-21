@@ -1,4 +1,4 @@
-# remark-cli [![Build Status][build-badge]][build-status] [![Coverage Status][coverage-badge]][coverage-status] [![Chat][chat-badge]][chat]
+# remark-cli [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Chat][chat-badge]][chat]
 
 Command-line interface for [**remark**][remark].
 
@@ -88,6 +88,10 @@ Examples:
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
 [coverage-status]: https://codecov.io/github/remarkjs/remark
+
+[dl-badge]: https://img.shields.io/npm/dm/remark-cli.svg
+
+[dl]: https://www.npmjs.com/package/remark-cli
 
 [chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
 
