@@ -65,7 +65,7 @@ function code(node, parent) {
       options.pedantic
     ) {
       self.file.fail(
-        'Cannot indent code properly. See http://git.io/vgFvT',
+        'Cannot indent code properly. See https://git.io/fxKR8',
         node.position
       )
     }

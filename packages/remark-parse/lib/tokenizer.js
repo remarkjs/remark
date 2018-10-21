@@ -145,7 +145,7 @@ function factory(type) {
         // Capture stack-trace.
         self.file.fail(
           new Error(
-            'Incorrectly eaten value: please report this warning on http://git.io/vg5Ft'
+            'Incorrectly eaten value: please report this warning on https://git.io/vg5Ft'
           ),
           now()
         )

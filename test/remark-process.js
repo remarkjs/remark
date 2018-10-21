@@ -36,7 +36,7 @@ test('remark().processSync(value)', function(t) {
         .data('settings', {pedantic: true, listItemIndent: '1'})
         .processSync(['* List', '', '        code()'].join('\n'))
     },
-    /Cannot indent code properly. See http:\/\/git.io\/vgFvT/,
+    /Cannot indent code properly. See https:\/\/git.io\/fxKR8/,
     'should throw when `pedantic` is `true`, `listItemIndent` is not `tab`, and compiling code in a list-item'
   )
 
