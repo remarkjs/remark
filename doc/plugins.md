@@ -75,6 +75,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Transform Gemoji shortcodes to Unicode emoji
 *   [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — Commonmark generic directive extension
+*   [`remark-git-contributors`](https://github.com/vweevers/remark-git-contributors)
+    — Asynchronous plugin to inject Git contributors into a table
 *   [`remark-github`](https://github.com/remarkjs/remark-github)
     — Auto-link references like in GitHub issues, PRs, and comments
 *   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
