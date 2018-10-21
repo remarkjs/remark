@@ -20,7 +20,7 @@
   },
   "scripts": {
     "format": "stylelint src/index.css --fix",
-    "build:asset": "cp -r src dest",
+    "build:asset": "cp -r src/* dest",
     "build:img": "imagemin src/*.jpg -o dest -p jpegtran",
     "build:css": "postcss src/index.css > dest/index.css",
     "build:html": "rehype src -qfo -o dest",
