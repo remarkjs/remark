@@ -81,7 +81,7 @@ Examples:
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark/master.svg
 
 [build-status]: https://travis-ci.org/remarkjs/remark
 

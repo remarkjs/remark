@@ -45,7 +45,7 @@ an issue in the [`remarkjs/ideas`][ideas] repository!
 
 [logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark/master.svg
 
 [build-status]: https://travis-ci.org/remarkjs/remark
 
