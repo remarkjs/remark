@@ -116,7 +116,7 @@ Yields:
 
 [chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/license
 
 [author]: http://wooorm.com
 

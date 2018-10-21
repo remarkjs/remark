@@ -425,7 +425,7 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 [chat]: https://gitter.im/remarkjs/Lobby
 
-[license]: https://github.com/remarkjs/remark/blob/master/LICENSE
+[license]: https://github.com/remarkjs/remark/blob/master/license
 
 [author]: http://wooorm.com
 
