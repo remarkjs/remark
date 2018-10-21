@@ -110,6 +110,8 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
     — Add a license section
 *   [`remark-lint`](https://github.com/remarkjs/remark-lint)
     — Markdown code style linter
+*   [`remark-macro`](https://github.com/dimerapp/remark-macro)
+    — Support for block macros
 *   [`remark-man`](https://github.com/remarkjs/remark-man)
     — Compile Markdown to Man pages (roff)
 *   [`remark-math`](https://github.com/rokt33r/remark-math)
