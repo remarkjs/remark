@@ -1,32 +1,31 @@
-'use strict';
+'use strict'
 
-module.exports = block;
+module.exports = block
 
-var newline = '\n';
-var double = newline + newline;
-var triple = double + newline;
-var comment = double + '<!---->' + double;
+var lineFeed = '\n'
 
-/* Stringify a block node with block children (e.g., `root`
- * or `blockquote`).
- * Knows about code following a list, or adjacent lists
- * with similar bullets, and places an extra newline
- * between them. */
+var blank = lineFeed + lineFeed
+var triple = blank + lineFeed
+var comment = blank + '<!---->' + blank
+
+// Stringify a block node with block children (e.g., `root` or `blockquote`).
+// Knows about code following a list, or adjacent lists with similar bullets,
+// and places an extra line feed between them.
 function block(node) {
-  var self = this;
-  var options = self.options;
-  var fences = options.fences;
-  var gap = options.commonmark ? comment : triple;
-  var values = [];
-  var children = node.children;
-  var length = children.length;
-  var index = -1;
-  var prev;
-  var child;
+  var self = this
+  var options = self.options
+  var fences = options.fences
+  var gap = options.commonmark ? comment : triple
+  var values = []
+  var children = node.children
+  var length = children.length
+  var index = -1
+  var prev
+  var child
 
   while (++index < length) {
-    prev = child;
-    child = children[index];
+    prev = child
+    child = children[index]
 
     if (prev) {
       // A list preceding another list that are equally ordered, or a
@@ -39,19 +38,17 @@ function block(node) {
       // two blank lines are fine.
       if (
         prev.type === 'list' &&
-        (
-          (child.type === 'list' && prev.ordered === child.ordered) ||
-          (child.type === 'code' && (!child.lang && !fences))
-        )
+        ((child.type === 'list' && prev.ordered === child.ordered) ||
+          (child.type === 'code' && (!child.lang && !fences)))
       ) {
-        values.push(gap);
+        values.push(gap)
       } else {
-        values.push(double);
+        values.push(blank)
       }
     }
 
-    values.push(self.visit(child, node));
+    values.push(self.visit(child, node))
   }
 
-  return values.join('');
+  return values.join('')
 }

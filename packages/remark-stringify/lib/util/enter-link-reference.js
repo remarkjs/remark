@@ -1,36 +1,33 @@
-'use strict';
+'use strict'
 
-var returner = require('./returner');
+var identity = require('./identity')
 
-module.exports = enter;
+module.exports = enter
 
-/* Shortcut and collapsed link references need no escaping
- * and encoding during the processing of child nodes (it
- * must be implied from identifier).
- *
- * This toggler turns encoding and escaping off for shortcut
- * and collapsed references.
- *
- * Implies `enterLink`.
- */
+// Shortcut and collapsed link references need no escaping and encoding during
+// the processing of child nodes (it must be implied from identifier).
+//
+// This toggler turns encoding and escaping off for shortcut and collapsed
+// references.
+//
+// Implies `enterLink`.
 function enter(compiler, node) {
-  var encode = compiler.encode;
-  var escape = compiler.escape;
-  var exit = compiler.enterLink();
+  var encode = compiler.encode
+  var escape = compiler.escape
+  var exitLink = compiler.enterLink()
 
-  if (
-    node.referenceType !== 'shortcut' &&
-    node.referenceType !== 'collapsed'
-  ) {
-    return exit;
+  if (node.referenceType !== 'shortcut' && node.referenceType !== 'collapsed') {
+    return exitLink
   }
 
-  compiler.escape = returner;
-  compiler.encode = returner;
+  compiler.escape = identity
+  compiler.encode = identity
 
-  return function () {
-    compiler.encode = encode;
-    compiler.escape = escape;
-    exit();
-  };
+  return exit
+
+  function exit() {
+    compiler.encode = encode
+    compiler.escape = escape
+    exitLink()
+  }
 }

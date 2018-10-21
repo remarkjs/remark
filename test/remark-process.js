@@ -1,39 +1,44 @@
-'use strict';
+'use strict'
 
-var test = require('tape');
-var remark = require('../packages/remark');
+var test = require('tape')
+var remark = require('../packages/remark')
 
-test('remark().processSync(value)', function (t) {
+test('remark().processSync(value)', function(t) {
   t.equal(
-    remark().processSync('*foo*').toString(),
+    remark()
+      .processSync('*foo*')
+      .toString(),
     '_foo_\n',
     'should parse and stringify a file'
-  );
+  )
 
   t.equal(
-    remark().data('settings', {commonmark: true}).processSync('1)  foo').toString(),
+    remark()
+      .data('settings', {commonmark: true})
+      .processSync('1)  foo')
+      .toString(),
     '1.  foo\n',
     'should accept parse options'
-  );
+  )
 
   t.equal(
-    remark().data('settings', {closeAtx: true}).processSync('# foo').toString(),
+    remark()
+      .data('settings', {closeAtx: true})
+      .processSync('# foo')
+      .toString(),
     '# foo #\n',
     'should accept stringify options'
-  );
+  )
 
   t.throws(
-    function () {
-      remark().data('settings', {pedantic: true, listItemIndent: '1'}).processSync([
-        '* List',
-        '',
-        '        code()'
-      ].join('\n'));
+    function() {
+      remark()
+        .data('settings', {pedantic: true, listItemIndent: '1'})
+        .processSync(['* List', '', '        code()'].join('\n'))
     },
     /Cannot indent code properly. See http:\/\/git.io\/vgFvT/,
-    'should throw when `pedantic` is `true`, `listItemIndent` ' +
-    'is not `tab`, and compiling code in a list-item'
-  );
+    'should throw when `pedantic` is `true`, `listItemIndent` is not `tab`, and compiling code in a list-item'
+  )
 
-  t.end();
-});
+  t.end()
+})

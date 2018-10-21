@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   gfm: true,
@@ -21,8 +21,8 @@ module.exports = {
   ruleRepetition: 3,
   strong: '*',
   emphasis: '_'
-};
+}
 
 function stringLength(value) {
-  return value.length;
+  return value.length
 }

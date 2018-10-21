@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-'use strict';
+'use strict'
 
-var start = require('unified-args');
-var extensions = require('markdown-extensions');
-var processor = require('remark');
-var proc = require('remark/package.json');
-var cli = require('./package.json');
+var start = require('unified-args')
+var extensions = require('markdown-extensions')
+var processor = require('remark')
+var proc = require('remark/package.json')
+var cli = require('./package.json')
 
 start({
   processor: processor,
@@ -21,4 +21,4 @@ start({
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',
   extensions: extensions
-});
+})

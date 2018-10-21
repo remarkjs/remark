@@ -1,23 +1,36 @@
-'use strict';
+'use strict'
 
-var uri = require('../util/enclose-uri');
-var title = require('../util/enclose-title');
+var uri = require('../util/enclose-uri')
+var title = require('../util/enclose-title')
 
-module.exports = definition;
+module.exports = definition
 
-/* Stringify an URL definition.
- *
- * Is smart about enclosing `url` (see `encloseURI()`) and
- * `title` (see `encloseTitle()`).
- *
- *    [foo]: <foo at bar dot com> 'An "example" e-mail'
- */
+var space = ' '
+var colon = ':'
+var leftSquareBracket = '['
+var rightSquareBracket = ']'
+
+// Stringify an URL definition.
+//
+// Is smart about enclosing `url` (see `encloseURI()`) and `title` (see
+// `encloseTitle()`).
+//
+// ```markdown
+// [foo]: <foo at bar dot com> 'An "example" e-mail'
+// ```
 function definition(node) {
-  var content = uri(node.url);
+  var content = uri(node.url)
 
   if (node.title) {
-    content += ' ' + title(node.title);
+    content += space + title(node.title)
   }
 
-  return '[' + (node.label || node.identifier) + ']: ' + content;
+  return (
+    leftSquareBracket +
+    (node.label || node.identifier) +
+    rightSquareBracket +
+    colon +
+    space +
+    content
+  )
 }

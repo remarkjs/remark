@@ -18,6 +18,7 @@
     "mdast-util-compact": "^1.0.0",
     "mdast-zone": "^3.0.1",
     "nyc": "^13.0.0",
+    "prettier": "^1.14.3",
     "remark-preset-wooorm": "^4.0.0",
     "tape": "^4.5.1",
     "tinyify": "^2.4.3",
@@ -30,16 +31,15 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
-    "build-md": "packages/remark-cli/cli.js . -qfo",
+    "format": "packages/remark-cli/cli.js . -qfo && prettier --write '**/*.js' && xo --fix",
     "build-bundle": "browserify packages/remark -s remark > remark.js",
     "build-mangle": "browserify packages/remark -s remark -p tinyify > remark.min.js",
-    "build": "npm run build-md && npm run build-bundle && npm run build-mangle",
-    "lint": "xo",
+    "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "node test/api",
     "test-api-extensive": "TEST_EXTENDED=true node test/api",
     "test-cli": "node test/cli.js",
     "test-coverage": "nyc --reporter lcov tape test",
-    "test": "npm run build && npm run lint && npm run test-coverage"
+    "test": "npm run format && npm run build && npm run test-coverage"
   },
   "nyc": {
     "check-coverage": true,
@@ -47,8 +47,16 @@
     "functions": 100,
     "branches": 100
   },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
   "xo": {
-    "space": true,
+    "prettier": true,
     "esnext": false,
     "rules": {
       "import/no-unassigned-import": "off",

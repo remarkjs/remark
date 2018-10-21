@@ -1,7 +1,11 @@
-'use strict';
+'use strict'
 
-module.exports = strikethrough;
+module.exports = strikethrough
+
+var tilde = '~'
+
+var fence = tilde + tilde
 
 function strikethrough(node) {
-  return '~~' + this.all(node).join('') + '~~';
+  return fence + this.all(node).join('') + fence
 }

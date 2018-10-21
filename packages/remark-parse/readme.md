@@ -16,18 +16,16 @@ npm install remark-parse
 ## Usage
 
 ```js
-var unified = require('unified');
-var createStream = require('unified-stream');
-var markdown = require('remark-parse');
-var html = require('remark-html');
+var unified = require('unified')
+var createStream = require('unified-stream')
+var markdown = require('remark-parse')
+var html = require('remark-html')
 
 var processor = unified()
   .use(markdown, {commonmark: true})
   .use(html)
 
-process.stdin
-  .pipe(createStream(processor))
-  .pipe(process.stdout);
+process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 ```
 
 ## Table of Contents
@@ -163,18 +161,18 @@ to change how markdown is parsed.
 The below plugin adds a [tokenizer][] for at-mentions.
 
 ```js
-module.exports = mentions;
+module.exports = mentions
 
 function mentions() {
-  var Parser = this.Parser;
-  var tokenizers = Parser.prototype.inlineTokenizers;
-  var methods = Parser.prototype.inlineMethods;
+  var Parser = this.Parser
+  var tokenizers = Parser.prototype.inlineTokenizers
+  var methods = Parser.prototype.inlineMethods
 
-  /* Add an inline tokenizer (defined in the following example). */
-  tokenizers.mention = tokenizeMention;
+  // Add an inline tokenizer (defined in the following example).
+  tokenizers.mention = tokenizeMention
 
-  /* Run it just before `text`. */
-  methods.splice(methods.indexOf('text'), 0, 'mention');
+  // Run it just before `text`.
+  methods.splice(methods.indexOf('text'), 0, 'mention')
 }
 ```
 
@@ -244,22 +242,22 @@ which they run.
 ### `function tokenizer(eat, value, silent)`
 
 ```js
-tokenizeMention.notInLink = true;
-tokenizeMention.locator = locateMention;
+tokenizeMention.notInLink = true
+tokenizeMention.locator = locateMention
 
 function tokenizeMention(eat, value, silent) {
-  var match = /^@(\w+)/.exec(value);
+  var match = /^@(\w+)/.exec(value)
 
   if (match) {
     if (silent) {
-      return true;
+      return true
     }
 
     return eat(match[0])({
       type: 'link',
       url: 'https://social-network/' + match[1],
       children: [{type: 'text', value: match[0]}]
-    });
+    })
   }
 }
 ```
@@ -308,7 +306,7 @@ information on where the next entity may occur.
 
 ```js
 function locateMention(value, fromIndex) {
-  return value.indexOf('@', fromIndex);
+  return value.indexOf('@', fromIndex)
 }
 ```
 
@@ -330,7 +328,7 @@ Index at which an entity may start, and `-1` otherwise.
 ### `eat(subvalue)`
 
 ```js
-var add = eat('foo');
+var add = eat('foo')
 ```
 
 Eat `subvalue`, which is a string at the start of the
@@ -348,8 +346,9 @@ value is eaten).
 ### `add(node[, parent])`
 
 ```js
-var add = eat('foo');
-add({type: 'text', value: 'foo'});
+var add = eat('foo')
+
+add({type: 'text', value: 'foo'})
 ```
 
 Add [positional information][location] to `node` and add it to `parent`.
@@ -399,7 +398,11 @@ your Parser’s `blockTokenizers` (or `blockMethods`) or `inlineTokenizers`
 The following example turns off indented code blocks:
 
 ```js
-remarkParse.Parser.prototype.blockTokenizers.indentedCode = function () { return true };
+remarkParse.Parser.prototype.blockTokenizers.indentedCode = indentedCode
+
+function indentedCode() {
+  return true
+}
 ```
 
 Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers).

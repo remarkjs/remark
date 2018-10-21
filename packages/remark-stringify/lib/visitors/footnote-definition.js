@@ -1,11 +1,30 @@
-'use strict';
+'use strict'
 
-var repeat = require('repeat-string');
+var repeat = require('repeat-string')
 
-module.exports = footnoteDefinition;
+var lineFeed = '\n'
+var space = ' '
+var colon = ':'
+var leftSquareBracket = '['
+var rightSquareBracket = ']'
+var caret = '^'
+
+var tabSize = 4
+var blank = lineFeed + lineFeed
+var indent = repeat(space, tabSize)
+
+module.exports = footnoteDefinition
 
 function footnoteDefinition(node) {
-  var content = this.all(node).join('\n\n' + repeat(' ', 4));
+  var content = this.all(node).join(blank + indent)
 
-  return '[^' + (node.label || node.identifier) + ']: ' + content;
+  return (
+    leftSquareBracket +
+    caret +
+    (node.label || node.identifier) +
+    rightSquareBracket +
+    colon +
+    space +
+    content
+  )
 }

@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
-require('./api');
-require('./cli');
+require('./api')
+require('./cli')

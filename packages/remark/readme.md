@@ -26,18 +26,18 @@ npm install remark
 This example lints markdown and turns it into HTML.
 
 ```js
-var remark = require('remark');
-var recommended = require('remark-preset-lint-recommended');
-var html = require('remark-html');
-var report = require('vfile-reporter');
+var remark = require('remark')
+var recommended = require('remark-preset-lint-recommended')
+var html = require('remark-html')
+var report = require('vfile-reporter')
 
 remark()
   .use(recommended)
   .use(html)
-  .process('## Hello world!', function (err, file) {
-    console.error(report(err || file));
-    console.log(String(file));
-  });
+  .process('## Hello world!', function(err, file) {
+    console.error(report(err || file))
+    console.log(String(file))
+  })
 ```
 
 Yields:
@@ -58,14 +58,14 @@ This example prettifies markdown and configures [`remark-parse`][parse] and
 [`remark-stringify`][stringify] through [data][].
 
 ```js
-var remark = require('remark');
+var remark = require('remark')
 
 remark()
   .data('settings', {commonmark: true, emphasis: '*', strong: '*'})
-  .process('_Emphasis_ and __importance__', function (err, file) {
-    if (err) throw err;
-    console.log(String(file));
-  });
+  .process('_Emphasis_ and __importance__', function(err, file) {
+    if (err) throw err
+    console.log(String(file))
+  })
 ```
 
 Yields:
@@ -80,16 +80,16 @@ This example prettifies markdown and configures [`remark-parse`][parse] and
 [`remark-stringify`][stringify] through a [preset][].
 
 ```js
-var remark = require('remark');
+var remark = require('remark')
 
 remark()
   .use({
     settings: {commonmark: true, emphasis: '*', strong: '*'}
   })
-  .process('_Emphasis_ and __importance__', function (err, file) {
-    if (err) throw err;
-    console.log(String(file));
-  });
+  .process('_Emphasis_ and __importance__', function(err, file) {
+    if (err) throw err
+    console.log(String(file))
+  })
 ```
 
 Yields:

@@ -1,7 +1,16 @@
-'use strict';
+'use strict'
 
-module.exports = footnoteReference;
+module.exports = footnoteReference
+
+var leftSquareBracket = '['
+var rightSquareBracket = ']'
+var caret = '^'
 
 function footnoteReference(node) {
-  return '[^' + (node.label || node.identifier) + ']';
+  return (
+    leftSquareBracket +
+    caret +
+    (node.label || node.identifier) +
+    rightSquareBracket
+  )
 }

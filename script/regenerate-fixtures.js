@@ -1,35 +1,32 @@
-'use strict';
+'use strict'
 
-var fs = require('fs');
-var path = require('path');
-var remark = require('../packages/remark');
-var fixtures = require('../test/fixtures');
+var fs = require('fs')
+var path = require('path')
+var remark = require('../packages/remark')
+var fixtures = require('../test/fixtures')
 
-fixtures.forEach(function (fixture) {
-  var input = fixture.input;
-  var name = fixture.name;
-  var mapping = fixture.mapping;
+fixtures.forEach(function(fixture) {
+  var input = fixture.input
+  var name = fixture.name
+  var mapping = fixture.mapping
 
-  Object.keys(mapping).forEach(function (key) {
-    var filename = name + (key ? '.' + key : key) + '.json';
-    var result;
+  Object.keys(mapping).forEach(function(key) {
+    var filename = name + (key ? '.' + key : key) + '.json'
+    var result
 
     try {
       result = remark()
         .data('settings', fixture.possibilities[key])
-        .parse(input);
+        .parse(input)
     } catch (error) {
-      console.log('Could not regenerate `' + filename + '`');
-      throw error;
+      console.log('Cannot regenerate `' + filename + '`')
+      throw error
     }
 
-    result = JSON.stringify(result, null, 2) + '\n';
+    result = JSON.stringify(result, null, 2) + '\n'
 
-    filename = filename.replace(/\*/g, '-asterisk-');
+    filename = filename.replace(/\*/g, '-asterisk-')
 
-    fs.writeFileSync(
-      path.join('test', 'fixtures', 'tree', filename),
-      result
-    );
-  });
-});
+    fs.writeFileSync(path.join('test', 'fixtures', 'tree', filename), result)
+  })
+})

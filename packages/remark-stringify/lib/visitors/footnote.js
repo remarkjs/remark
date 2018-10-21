@@ -1,7 +1,13 @@
-'use strict';
+'use strict'
 
-module.exports = footnote;
+module.exports = footnote
+
+var leftSquareBracket = '['
+var rightSquareBracket = ']'
+var caret = '^'
 
 function footnote(node) {
-  return '[^' + this.all(node).join('') + ']';
+  return (
+    leftSquareBracket + caret + this.all(node).join('') + rightSquareBracket
+  )
 }

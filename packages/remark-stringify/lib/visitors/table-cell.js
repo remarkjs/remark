@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-module.exports = tableCell;
+module.exports = tableCell
 
 function tableCell(node) {
-  return this.all(node).join('');
+  return this.all(node).join('')
 }

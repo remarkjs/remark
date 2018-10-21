@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 module.exports = {
   position: true,
@@ -7,4 +7,4 @@ module.exports = {
   footnotes: false,
   pedantic: false,
   blocks: require('./block-elements.json')
-};
+}

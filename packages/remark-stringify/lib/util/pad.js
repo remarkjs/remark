@@ -1,27 +1,26 @@
-'use strict';
+'use strict'
 
-var repeat = require('repeat-string');
+var repeat = require('repeat-string')
 
-module.exports = pad;
+module.exports = pad
 
-var INDENT = 4;
+var lineFeed = '\n'
+var space = ' '
 
-/* Pad `value` with `level * INDENT` spaces.  Respects
- * lines. Ignores empty lines. */
+var tabSize = 4
+
+// Pad `value` with `level * tabSize` spaces.  Respects lines.  Ignores empty
+// lines.
 function pad(value, level) {
-  var index;
-  var padding;
-
-  value = value.split('\n');
-
-  index = value.length;
-  padding = repeat(' ', level * INDENT);
+  var values = value.split(lineFeed)
+  var index = values.length
+  var padding = repeat(space, level * tabSize)
 
   while (index--) {
-    if (value[index].length !== 0) {
-      value[index] = padding + value[index];
+    if (values[index].length !== 0) {
+      values[index] = padding + values[index]
     }
   }
 
-  return value.join('\n');
+  return values.join(lineFeed)
 }

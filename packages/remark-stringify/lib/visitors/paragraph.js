@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-module.exports = paragraph;
+module.exports = paragraph
 
 function paragraph(node) {
-  return this.all(node).join('');
+  return this.all(node).join('')
 }

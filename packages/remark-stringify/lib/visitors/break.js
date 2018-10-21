@@ -1,9 +1,14 @@
-'use strict';
+'use strict'
 
-module.exports = lineBreak;
+module.exports = lineBreak
 
-var map = {true: '\\\n', false: '  \n'};
+var backslash = '\\'
+var lineFeed = '\n'
+var space = ' '
+
+var commonmark = backslash + lineFeed
+var normal = space + space + lineFeed
 
 function lineBreak() {
-  return map[this.options.commonmark];
+  return this.options.commonmark ? commonmark : normal
 }

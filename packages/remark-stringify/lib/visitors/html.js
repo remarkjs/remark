@@ -1,7 +1,7 @@
-'use strict';
+'use strict'
 
-module.exports = html;
+module.exports = html
 
 function html(node) {
-  return node.value;
+  return node.value
 }

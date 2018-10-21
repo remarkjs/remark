@@ -16,11 +16,11 @@ npm install remark-stringify
 ## Usage
 
 ```js
-var unified = require('unified');
-var createStream = require('unified-stream');
-var parse = require('remark-parse');
-var toc = require('remark-toc');
-var stringify = require('remark-stringify');
+var unified = require('unified')
+var createStream = require('unified-stream')
+var parse = require('remark-parse')
+var toc = require('remark-toc')
+var stringify = require('remark-stringify')
 
 var processor = unified()
   .use(parse)
@@ -30,11 +30,9 @@ var processor = unified()
     fence: '~',
     fences: true,
     incrementListMarker: false
-  });
+  })
 
-process.stdin
-  .pipe(createStream(processor))
-  .pipe(process.stdout);
+process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 ```
 
 ## Table of Contents
@@ -190,15 +188,17 @@ The below plugin modifies a [visitor][] to add an extra blank line
 before level two headings.
 
 ```js
-module.exports = gap;
+module.exports = gap
 
 function gap() {
-  var Compiler = this.Compiler;
-  var visitors = Compiler.prototype.visitors;
-  var original = visitors.heading;
+  var Compiler = this.Compiler
+  var visitors = Compiler.prototype.visitors
+  var original = visitors.heading
 
-  visitors.heading = function heading(node) {
-    return (node.depth === 2 ? '\n' : '') + original.apply(this, arguments);
+  visitors.heading = heading
+
+  function heading(node) {
+    return (node.depth === 2 ? '\n' : '') + original.apply(this, arguments)
   }
 }
 ```
