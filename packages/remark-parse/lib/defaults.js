@@ -6,5 +6,5 @@ module.exports = {
   commonmark: false,
   footnotes: false,
   pedantic: false,
-  blocks: require('./block-elements.json')
+  blocks: require('./block-elements')
 }

@@ -465,4 +465,4 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 [add]: #addnode-parent
 
-[blocks]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.json
+[blocks]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.js
