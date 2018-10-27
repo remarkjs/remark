@@ -153,7 +153,7 @@ Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
     — [rehype](https://github.com/rehypejs/rehype) support
 *   [`remark-relative-links`](https://github.com/zslabs/remark-relative-links)
-    - Rewrites absolute URLs to relative ones
+    — Rewrites absolute URLs to relative ones
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — [retext](https://github.com/retextjs/retext) support
 *   [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
