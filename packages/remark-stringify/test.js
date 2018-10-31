@@ -806,6 +806,43 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
+  t.test('should be normal stringify in mail link', function(st) {
+    st.plan(3)
+
+    var example = '[example@foo.com](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      example + '\n',
+      "title is equals with 'mailto:' + {link}"
+    )
+
+    example = '[mailto:example@foo.com](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      '<mailto:example@foo.com>\n',
+      'title is equals with link'
+    )
+
+    example = '[example](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      example + '\n',
+      'title is not equals with link'
+    )
+  })
+
   t.end()
 })
 

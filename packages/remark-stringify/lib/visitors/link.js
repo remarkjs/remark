@@ -11,8 +11,6 @@ var rightSquareBracket = ']'
 var leftParenthesis = '('
 var rightParenthesis = ')'
 
-var mailto = 'mailto:'
-
 // Expression for a protocol:
 // See <http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax>.
 var protocol = /^[a-z][a-z+.-]+:\/?/i
@@ -45,11 +43,7 @@ function link(node) {
 
   exit()
 
-  if (
-    node.title == null &&
-    protocol.test(content) &&
-    (escaped === value || escaped === mailto + value)
-  ) {
+  if (node.title == null && protocol.test(content) && escaped === value) {
     // Backslash escapes do not work in autolinks, so we do not escape.
     return uri(self.encode(node.url), true)
   }
