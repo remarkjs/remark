@@ -15,7 +15,6 @@ next to their day job: you are not entitled to free customer service.
 *   [Ecosystem](#ecosystem)
 *   [Questions](#questions)
 *   [Contributions](#contributions)
-
     *   [Improve documentation](#improve-documentation)
     *   [Improve issues](#improve-issues)
     *   [Give feedback on issues](#give-feedback-on-issues)
