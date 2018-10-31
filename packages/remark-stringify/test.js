@@ -806,6 +806,43 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
+  t.test('should stringify mailto links properly', function(st) {
+    st.plan(3)
+
+    var example = '[example@foo.com](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      example + '\n',
+      'url is `mailto:` plus link text'
+    )
+
+    example = '[mailto:example@foo.com](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      '<mailto:example@foo.com>\n',
+      'url is link text'
+    )
+
+    example = '[example](mailto:example@foo.com)'
+    st.equal(
+      unified()
+        .use(parse)
+        .use(stringify)
+        .processSync(example)
+        .toString(),
+      example + '\n',
+      'url is not link text'
+    )
+  })
+
   t.end()
 })
 
