@@ -93,9 +93,9 @@ Examples:
 
 [dl]: https://www.npmjs.com/package/remark-cli
 
-[chat-badge]: https://img.shields.io/gitter/room/remarkjs/Lobby.svg
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
-[chat]: https://gitter.im/remarkjs/Lobby
+[chat]: https://spectrum.chat/unified/remark
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 

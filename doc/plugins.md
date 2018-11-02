@@ -16,7 +16,7 @@ See [tools built with remark »][products].
 
 ## List of Plugins
 
-Have a good idea for a new plugin?  Let’s [chat][gitter] and make it happen!
+Have a good idea for a new plugin?  Let’s [chat][spectrum] and make it happen!
 
 *   [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-abbr)
     — Custom syntax to handle abbreviations, custom mdast inline node type
@@ -219,7 +219,7 @@ or specify it in a [configuration file][config-file-use].
 First, read up on the [concept of plugins][unified-plugins].  Then, read the
 [guide on “Creating a plugin with unified”][guide].  Finally, take one of
 existing [plugins][], which looks similar to what you’re about to do,
-and work from there.  If you get stuck, [issues][] and [Gitter][] are good
+and work from there.  If you get stuck, [issues][] and [Spectrum][] are good
 places to get help.
 
 You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
@@ -254,7 +254,7 @@ files, use `vfile-`.
 
 [issues]: https://github.com/remarkjs/remark/issues
 
-[gitter]: https://gitter.im/remarkjs/Lobby
+[spectrum]: https://spectrum.chat/unified/remark
 
 [guide]: https://unifiedjs.github.io/create-a-plugin.html
 

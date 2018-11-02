@@ -1,6 +1,6 @@
 ### Subject of the issue
 
-Describe your issue here.  Remember, this is _not_ a place to ask questions.  For that, go to [Gitter](https://gitter.im/remarkjs/Lobby)
+Describe your issue here.  Remember, this is _not_ a place to ask questions.  For that, go to [Gitter](https://spectrum.chat/unified/remark)
 
 ### Your environment
 

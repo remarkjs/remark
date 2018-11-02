@@ -3,7 +3,7 @@
 # Getting Started
 
 **remark** transforms markdown.  It’s an ecosystem of [plugins][].
-If you get stuck, [issues][] and [Gitter][] are good places to get help.
+If you get stuck, [issues][] and [Spectrum][] are good places to get help.
 
 It’s built on [unified][], make sure to read it and its [website][] too.
 
@@ -196,7 +196,7 @@ remark()
 
 [issues]: https://github.com/remarkjs/remark/issues
 
-[gitter]: https://gitter.im/remarkjs/remark
+[spectrum]: https://spectrum.chat/unified/remark
 
 [npm]: https://docs.npmjs.com/cli/install
 
