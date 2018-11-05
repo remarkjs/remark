@@ -1300,6 +1300,12 @@ test('stringify escapes', function(t) {
     '`_` split over nodes (no word character after, #2)'
   )
 
+  t.equal(
+    toString(u('paragraph', [u('text', '!'), u('link', [u('text', 'a')])])),
+    '\\![a](<>)',
+    '! immediately followed by a link'
+  )
+
   t.end()
 })
 

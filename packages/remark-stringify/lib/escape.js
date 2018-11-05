@@ -29,6 +29,7 @@ var underscore = '_'
 var graveAccent = '`'
 var verticalBar = '|'
 var tilde = '~'
+var exclamationMark = '!'
 
 var entities = {
   '<': '&lt;',
@@ -199,6 +200,15 @@ function factory(options) {
         prefix(ampersand + next.value) !== 0
       ) {
         escaped[escaped.length - 1] = one(ampersand)
+      }
+
+      // Escape exclamation marks immediately followed by links.
+      if (
+        next &&
+        next.type === 'link' &&
+        value.charAt(length - 1) === exclamationMark
+      ) {
+        escaped[escaped.length - 1] = one(exclamationMark)
       }
 
       // Escape double tildes in GFM.
