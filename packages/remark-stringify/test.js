@@ -868,6 +868,8 @@ test('stringify escapes', function(t) {
 
   t.equal(toString(u('image', {alt: 'a]b'})), '![a\\]b](<>)', '`]` (in images)')
 
+  t.equal(toString('![a'), '\\!\\[a', '`!` before `[`')
+
   t.equal(toString('a~b'), 'a~b', '`~`')
   t.equal(toString('a~~b'), 'a\\~~b', '`~~`')
 
@@ -1298,6 +1300,12 @@ test('stringify escapes', function(t) {
     toString(u('paragraph', [u('text', 'a'), u('text', '_ ')])),
     'a\\_ ',
     '`_` split over nodes (no word character after, #2)'
+  )
+
+  t.equal(
+    toString(u('paragraph', [u('text', '!'), u('link', [u('text', 'a')])])),
+    '\\![a](<>)',
+    '! immediately followed by a link'
   )
 
   t.end()
