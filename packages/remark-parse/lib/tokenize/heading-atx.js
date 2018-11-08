@@ -104,6 +104,9 @@ function atxHeading(eat, value, silent) {
       character = value.charAt(++index)
     }
 
+    if (!pedantic && character === numberSign && !queue.endsWith(space) && !queue.endsWith(tab) && content !== '') {
+      return
+    }
     while (character === numberSign) {
       queue += character
       character = value.charAt(++index)
