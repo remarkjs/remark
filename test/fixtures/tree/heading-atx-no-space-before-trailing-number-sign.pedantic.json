@@ -1,0 +1,89 @@
+{
+    "type": "root",
+    "children": [
+        {
+            "type": "heading",
+            "depth": 1,
+            "children": [
+                {
+                    "type": "text",
+                    "value": "awd",
+                    "position": {
+                        "start": {
+                            "line": 1,
+                            "column": 3,
+                            "offset": 2
+                        },
+                        "end": {
+                            "line": 1,
+                            "column": 6,
+                            "offset": 5
+                        },
+                        "indent": []
+                    }
+                }
+            ],
+            "position": {
+                "start": {
+                    "line": 1,
+                    "column": 1,
+                    "offset": 0
+                },
+                "end": {
+                    "line": 1,
+                    "column": 7,
+                    "offset": 6
+                },
+                "indent": []
+            }
+        },
+        {
+            "type": "heading",
+            "depth": 2,
+            "children": [
+                {
+                    "type": "text",
+                    "value": "dwa",
+                    "position": {
+                        "start": {
+                            "line": 2,
+                            "column": 4,
+                            "offset": 11
+                        },
+                        "end": {
+                            "line": 2,
+                            "column": 7,
+                            "offset": 14
+                        },
+                        "indent": []
+                    }
+                }
+            ],
+            "position": {
+                "start": {
+                    "line": 2,
+                    "column": 1,
+                    "offset": 8
+                },
+                "end": {
+                    "line": 2,
+                    "column": 10,
+                    "offset": 17
+                },
+                "indent": []
+            }
+        }
+    ],
+    "position": {
+        "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+        },
+        "end": {
+            "line": 3,
+            "column": 1,
+            "offset": 19
+        }
+    }
+}
