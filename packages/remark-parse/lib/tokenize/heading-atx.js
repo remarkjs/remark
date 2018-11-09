@@ -104,17 +104,32 @@ function atxHeading(eat, value, silent) {
       character = value.charAt(++index)
     }
 
-    if (!pedantic && character === numberSign && !queue.endsWith(space) && !queue.endsWith(tab) && content !== '') {
-      return
-    }
-    while (character === numberSign) {
-      queue += character
-      character = value.charAt(++index)
-    }
+    if (
+      !pedantic &&
+      character === numberSign &&
+      !queue.endsWith(space) &&
+      !queue.endsWith(tab) &&
+      content !== ''
+    ) {
+      while (character === numberSign) {
+        content += character
+        character = value.charAt(++index)
+      }
 
-    while (character === space || character === tab) {
-      queue += character
-      character = value.charAt(++index)
+      while (character === space || character === tab) {
+        content += character
+        character = value.charAt(++index)
+      }
+    } else {
+      while (character === numberSign) {
+        queue += character
+        character = value.charAt(++index)
+      }
+
+      while (character === space || character === tab) {
+        queue += character
+        character = value.charAt(++index)
+      }
     }
 
     index--
