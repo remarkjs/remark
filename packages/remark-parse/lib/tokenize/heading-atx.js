@@ -115,21 +115,16 @@ function atxHeading(eat, value, silent) {
         content += character
         character = value.charAt(++index)
       }
-
-      while (character === space || character === tab) {
-        content += character
-        character = value.charAt(++index)
-      }
     } else {
       while (character === numberSign) {
         queue += character
         character = value.charAt(++index)
       }
+    }
 
-      while (character === space || character === tab) {
-        queue += character
-        character = value.charAt(++index)
-      }
+    while (character === space || character === tab) {
+      queue += character
+      character = value.charAt(++index)
     }
 
     index--
