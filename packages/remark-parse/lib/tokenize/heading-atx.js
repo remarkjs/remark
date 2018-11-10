@@ -104,6 +104,12 @@ function atxHeading(eat, value, silent) {
       character = value.charAt(++index)
     }
 
+    // `#` without a queue is part of the content.
+    if (!pedantic && content && !queue && character === numberSign) {
+      content += character
+      continue
+    }
+
     while (character === numberSign) {
       queue += character
       character = value.charAt(++index)
