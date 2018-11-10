@@ -26,7 +26,7 @@ function factory(ctx, key) {
         queue.push(backslash)
       }
 
-      index = value.indexOf(backslash, prev)
+      index = value.indexOf(backslash, prev + 1)
     }
 
     queue.push(value.slice(prev))

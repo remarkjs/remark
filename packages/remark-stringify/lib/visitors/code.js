@@ -53,7 +53,7 @@ function code(node, parent) {
     info += space + node.meta
   }
 
-  info = self.encode(info, node)
+  info = self.encode(self.escape(info, node))
 
   // Without (needed) fences.
   if (!info && !options.fences && value) {
