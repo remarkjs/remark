@@ -108,6 +108,8 @@ Have a good idea for a new plugin?  Let’s [chat][spectrum] and make it happen!
     Rehype compatible (`<kbd>foo</kbd>`)
 *   [`remark-license`](https://github.com/remarkjs/remark-license)
     — Add a license section
+*   [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
+    — Create links for each occurrence of a regex
 *   [`remark-lint`](https://github.com/remarkjs/remark-lint)
     — Markdown code style linter
 *   [`remark-macro`](https://github.com/dimerapp/remark-macro)
