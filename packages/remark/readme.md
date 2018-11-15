@@ -1,15 +1,52 @@
 # remark [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
 
-The [`remark`][remark] processor is a markdown processor powered by
-[plugins][].
+[**remark**][remark] is a markdown processor powered by [plugins][] part of the
+[unified][] [collective][].
 
-*   Interface by [`unified`][unified]
-*   [**MDAST**][mdast] syntax tree
+*   API by [`unified`][unified]
 *   Parses markdown to the tree with [`remark-parse`][parse]
+*   [**mdast**][mdast] syntax tree
 *   [Plugins][] transform the tree
 *   Compiles the tree to markdown using [`remark-stringify`][stringify]
 
 Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
+
+* * *
+
+**Announcing the unified collective!  🎉
+[Read more about it on Medium »][announcement]**
+
+## Sponsors
+
+<!--lint ignore no-html maximum-line-length-->
+
+<table>
+  <tr valign="top">
+    <td width="20%" align="center">
+      <a href="https://zeit.co"><img src="https://avatars1.githubusercontent.com/u/14985020?s=400&v=4"></a>
+      <br><br>🥇
+      <a href="https://zeit.co">ZEIT</a>
+    </td>
+    <td width="20%" align="center">
+      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=400&v=4"></a>
+      <br><br>🥇
+      <a href="https://www.gatsbyjs.org">Gatsby</a></td>
+    <td width="20%" align="center">
+      <a href="https://compositor.io"><img src="https://avatars1.githubusercontent.com/u/19245838?s=400&v=4"></a>
+      <br><br>🥉
+      <a href="https://compositor.io">Compositor</a>
+    </td>
+    <td width="20%" align="center">
+      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=400&v=4"></a>
+      <br><br>
+      <a href="https://www.holloway.com">Holloway</a>
+    </td>
+    <td width="20%" align="center">
+      <br><br><br><br>
+      <a href="https://opencollective.com/unified"><strong>You?</strong>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
@@ -147,3 +184,7 @@ Yields:
 [preset]: https://github.com/unifiedjs/unified#preset
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
+
+[collective]: https://opencollective.com/unified
+
+[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc

@@ -1,9 +1,47 @@
 # remark-parse [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
 
-[Parser][] for [**unified**][unified].  Parses markdown to an
-[**MDAST**][mdast] syntax tree.  Used in the [**remark**
-processor][processor].  Can be [extended][extend] to change how
-markdown is parsed.
+[Parser][] for [**unified**][unified].
+Parses markdown to [**mdast**][mdast] syntax trees.
+Used in the [**remark** processor][processor] but can be used on its own as
+well.
+Can be [extended][extend] to change how markdown is parsed.
+
+* * *
+
+**Announcing the unified collective!  🎉
+[Read more about it on Medium »][announcement]**
+
+## Sponsors
+
+<!--lint ignore no-html maximum-line-length-->
+
+<table>
+  <tr valign="top">
+    <td width="20%" align="center">
+      <a href="https://zeit.co"><img src="https://avatars1.githubusercontent.com/u/14985020?s=400&v=4"></a>
+      <br><br>🥇
+      <a href="https://zeit.co">ZEIT</a>
+    </td>
+    <td width="20%" align="center">
+      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=400&v=4"></a>
+      <br><br>🥇
+      <a href="https://www.gatsbyjs.org">Gatsby</a></td>
+    <td width="20%" align="center">
+      <a href="https://compositor.io"><img src="https://avatars1.githubusercontent.com/u/19245838?s=400&v=4"></a>
+      <br><br>🥉
+      <a href="https://compositor.io">Compositor</a>
+    </td>
+    <td width="20%" align="center">
+      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=400&v=4"></a>
+      <br><br>
+      <a href="https://www.holloway.com">Holloway</a>
+    </td>
+    <td width="20%" align="center">
+      <br><br><br><br>
+      <a href="https://opencollective.com/unified"><strong>You?</strong>
+    </td>
+  </tr>
+</table>
 
 ## Installation
 
@@ -51,8 +89,8 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 ### `processor.use(parse[, options])`
 
-Configure the `processor` to read markdown as input and process an
-[**MDAST**][mdast] syntax tree.
+Configure the `processor` to read markdown as input and process
+[**mdast**][mdast] syntax trees.
 
 ##### `options`
 
@@ -464,3 +502,5 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 [add]: #addnode-parent
 
 [blocks]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.js
+
+[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc

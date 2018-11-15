@@ -107,9 +107,9 @@ The `--save-dev` option stores the dependencies in our `package.json`:
    "name": "my-package",
    "version": "1.0.0",
 +  "devDependencies": {
-+    "remark-cli": "^3.0.0",
-+    "remark-html": "^6.0.0",
-+    "remark-preset-lint-markdown-style-guide": "^1.0.0"
++    "remark-cli": "^6.0.0",
++    "remark-html": "^8.0.0",
++    "remark-preset-lint-markdown-style-guide": "^2.0.0"
 +  },
    "scripts": {
      "test": "node test.js"
@@ -125,9 +125,9 @@ configuration:
    "name": "my-package",
    "version": "1.0.0",
    "devDependencies": {
-     "remark-cli": "^3.0.0",
-     "remark-html": "^6.0.0",
-     "remark-preset-lint-markdown-style-guide": "^1.0.0"
+     "remark-cli": "^6.0.0",
+     "remark-html": "^8.0.0",
+     "remark-preset-lint-markdown-style-guide": "^2.0.0"
    },
    "scripts": {
 -    "test": "node test.js"
@@ -167,18 +167,18 @@ npm install vfile-reporter remark remark-html remark-preset-lint-markdown-style-
 `index.js` contains:
 
 ```js
-var remark = require('remark');
-var styleGuide = require('remark-preset-lint-markdown-style-guide');
-var html = require('remark-html');
-var report = require('vfile-reporter');
+var remark = require('remark')
+var styleGuide = require('remark-preset-lint-markdown-style-guide')
+var html = require('remark-html')
+var report = require('vfile-reporter')
 
 remark()
   .use(styleGuide)
   .use(html)
-  .process('_Hello_.', function (err, file) {
-    console.error(report(err || file));
-    console.log(String(file));
-  });
+  .process('_Hello_.', function(err, file) {
+    console.error(report(err || file))
+    console.log(String(file))
+  })
 ```
 
 `node index.js` yields:

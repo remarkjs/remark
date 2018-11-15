@@ -1,12 +1,12 @@
 ### Subject of the issue
 
-Describe your issue here.  Remember, this is _not_ a place to ask questions.  For that, go to [Gitter](https://spectrum.chat/unified/remark)
+Describe your issue here.  Remember, this is _not_ a place to ask questions.  For that, go to [spectrum](https://spectrum.chat/unified/remark)
 
 ### Your environment
 
 *   Name and version of operating system
 *   Names and version of required packages
-*   Version of node and npm, or names and versions of browser
+*   Version of node, npm, yarn, or names and versions of browser
 
 ### Steps to reproduce
 
@@ -16,8 +16,8 @@ Tell us how to reproduce this issue.  Please provide a working and simplified ex
 
 ### Expected behaviour
 
-Describe what should happen
+What should happen?
 
 ### Actual behaviour
 
-Describe what happens instead
+What happens instead?
