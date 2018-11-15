@@ -1,7 +1,7 @@
 {
   "private": true,
   "license": "MIT",
-  "homepage": "http://remark.js.org",
+  "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark",
   "bugs": "https://github.com/remarkjs/remark/issues",
   "devDependencies": {

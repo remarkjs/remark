@@ -2,9 +2,8 @@
 
 # Plugins
 
-**remark** is an ecosystem of [plugins][plugins].
-
-See [tools built with remark »][products].
+**remark** is a markdown processor powered by plugins part of the [unified][]
+[collective][].
 
 ## Table of Contents
 
@@ -16,196 +15,183 @@ See [tools built with remark »][products].
 
 ## List of Plugins
 
-Have a good idea for a new plugin?  Let’s [chat][spectrum] and make it happen!
+See [awesome remark][awesome] for the most awesome projects in the ecosystem.
+More plugins can be found on GitHub tagged with the
+[`remark-plugin` topic][topic].
+
+Have a good idea for a new plugin?
+See [Creating plugins][create] below.
 
 *   [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-abbr)
-    — Custom syntax to handle abbreviations, custom mdast inline node type
-    `abbr`.  Rehype compatible (`<abbr title="bar">foo</abbr>`)
+    — custom syntax for abbreviations (new node type, rehype compatible)
 *   [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-align)
-    — Custom syntax to handle text/block alignment, custom mdast block node
-    type `CenterAligned`, `RightAligned`.  Rehype compatible (wraps in `div`s
-    with alignment as configurable CSS class)
+    — custom syntax to align text or blocks (new node types, rehype compatible)
 *   [`remark-attr`](https://github.com/arobase-che/remark-attr)
-    — Add support for custom attributes to markdown
-*   [`remark-autolink-headings`](https://github.com/ben-eb/remark-autolink-headings)
-    — Automatically add GitHub style links to headings
+    — custom syntax to add attributes to markdown
+*   [`remark-autolink-headings`](https://github.com/remarkjs/remark-autolink-headings)
+    — add GitHub-style links to headings
 *   [`remark-behead`](https://github.com/mrzmmr/remark-behead)
-    — Increase or decrease heading depth
-*   [`remark-bookmarks`](https://github.com/ben-eb/remark-bookmarks)
-    – Link manager for Markdown files
+    — increase or decrease heading depth
+*   [`remark-bookmarks`](https://github.com/remarkjs/remark-bookmarks)
+    – automatic link manager
 *   [`remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
-    – Add an id, classes, and data attributes to `<span>` tags in markdown
+    – custom syntax for id’s, classes, and data attributes to spans of text
 *   [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
-    – Breaks support, without needing spaces
+    – support hard breaks without needing spaces (like on issues)
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
-    — Make a section collapsible
-*   [`remark-comment-blocks`](https://github.com/ben-eb/remark-comment-blocks)
-    — Wrap Markdown with a comment block
+    — make a section collapsible
+*   [`remark-comment-blocks`](https://github.com/remarkjs/remark-comment-blocks)
+    — wrap the document in a comment block
 *   [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
-    — Configure remark with comments
+    — configure remark with comments
 *   [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-comments)
-    — Configurable custom syntax to ignore parts of the Markdown input
+    — custom syntax to ignore things
 *   [`remark-contributors`](https://github.com/hughsk/remark-contributors)
-    — Inject a given table of contributors
+    — add a table of contributors
 *   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-custom-blocks)
-    — Configurable custom syntax to parse custom blocks, creating new mdast
-    node types.  Rehype compatible
-*   [`remark-defsplit`](https://github.com/eush77/remark-defsplit)
-    — Extract inline link and image destinations as separate definitions
+    — custom syntax for custom blocks (new node types, rehype compatible)
+*   [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
+    — change links and images to references with separate definitions
 *   [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers)
-    — Disable any or all remark’s `blockTokenizers` and `inlineTokenizers`
-*   [`remark-embed-images`](https://github.com/dherges/remark-embed-images)
-    — Embed images with data: URIs, inlining base64-encoded sources
+    — turn some or all remark’s tokenizers on or off
+*   [`remark-embed-images`](https://github.com/remarkjs/remark-embed-images)
+    — embed local images as base64-encoded data URIs
 *   [`remark-emoji`](https://github.com/rhysd/remark-emoji)
-    — Transform unicode emoji to Gemoji shortcodes
+    — transform Gemoji short-codes to emoji
 *   [`remark-emoji-to-gemoji`](https://github.com/jackycute/remark-emoji-to-gemoji)
-    — Transform Gemoji shortcodes to unicode emoji
-*   [`remark-external-links`](https://github.com/xuopled/remark-external-links)
-    — Automatically adds the target and rel attributes to external links
+    — transform emoji to Gemoji short-codes
+*   [`remark-external-links`](https://github.com/remarkjs/remark-external-links)
+    — add target and rel attributes to external links
 *   [`remark-first-heading`](https://github.com/laat/remark-first-heading)
-    — Replacing the first heading in a document
+    — replace the first heading in a document
 *   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-fix-guillemets)
-    — For weird typographic reasons, this fixes `<<a>>` being parsed as
-      `<` + html tag `<a>` + `>` and instead replaces this with text `<<a>>`
+    — support ASCII guillements (`<<`, `>>`) mapping them to HTML
 *   [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
-    – Frontmatter (yaml, toml, and more) support
+    – support frontmatter (yaml, toml, and more)
 *   [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
-    — Gemoji short-code support in remark
+    — better support for Gemoji short-codes
 *   [`remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
-    — Transform Gemoji shortcodes to Unicode emoji
+    — transform Gemoji short-codes to emoji
 *   [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
-    — Commonmark generic directive extension
+    — custom syntax for the commonmark generic directive extension
 *   [`remark-git-contributors`](https://github.com/vweevers/remark-git-contributors)
-    — Asynchronous plugin to inject Git contributors into a table
+    — add a table of contributors based on Git history, options, and more
 *   [`remark-github`](https://github.com/remarkjs/remark-github)
-    — Auto-link references like in GitHub issues, PRs, and comments
+    — add support for autolink references like in issues, PRs, and comments
 *   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
-    — Download artifacts from GitLab projects to live alongside your Markdown
+    — download artifacts from GitLab projects to live alongside your docs
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
-    — Custom Markdown syntax to describe tables.  Rehype compatible
+    — custom syntax to describe tables (rehype compatible)
 *   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
-    — Replace `dot` graphs with rendered SVGs
-*   [`remark-heading-gap`](https://github.com/ben-eb/remark-heading-gap)
-    — Adjust the gap between headings
-*   [`remark-highlight.js`](https://github.com/ben-eb/remark-highlight.js)
-    — Highlight code blocks in Markdown files with
-    [highlight.js](https://github.com/isagalaev/highlight.js)
+    — transform [graphviz](http://www.graphviz.org) dot graphs to SVG
+*   [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
+    — stringify with more spacing between headings
+*   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
+    — highlight code blocks with [highlight.js](https://github.com/isagalaev/highlight.js)
+    (rehype compatible)
 *   [`remark-html`](https://github.com/remarkjs/remark-html)
-    — Compile Markdown to HTML documents
+    — stringify markdown as HTML
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
-    — Transform unicode emoji to HTML images
+    — transform emoji to images
 *   [`remark-html-katex`](https://github.com/rokt33r/remark-math/blob/master/packages/remark-html-katex/readme.md)
-    — Transform math inline and block nodes to styled HTML equations with [KaTeX](https://github.com/Khan/KaTeX)
+    — change inline and block math to equations with [KaTeX](https://github.com/Khan/KaTeX)
 *   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-iframes)
-    — Custom syntax with fully configurable iframe providers, following a
-    whitelist approach.  Rehype compatible
+    — custom syntax to create iframes (new node type, rehype compatible)
 *   [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
-    — Transform references and definitions to normal links and images
-*   [`remark-inline-math`](https://github.com/bizen241/remark-inline-math)
-    — Inline math support
+    — change references and definitions to links and images
 *   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-kbd)
-    — Custom syntax, parses `||foo||` into a new mdast inline node type `kbd`.
-    Rehype compatible (`<kbd>foo</kbd>`)
+    — custom syntax for keyboard keys (new node type, rehype compatible)
 *   [`remark-license`](https://github.com/remarkjs/remark-license)
-    — Add a license section
+    — add a license section
 *   [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
-    — Create links for each occurrence of a regex
+    — change text matching a regex to links
 *   [`remark-lint`](https://github.com/remarkjs/remark-lint)
-    — Markdown code style linter
+    — check markdown code style
 *   [`remark-macro`](https://github.com/dimerapp/remark-macro)
-    — Support for block macros
+    — support for block macros (new node types, rehype compatible)
 *   [`remark-man`](https://github.com/remarkjs/remark-man)
-    — Compile Markdown to Man pages (roff)
+    — stringify markdown as man pages (roff)
 *   [`remark-math`](https://github.com/rokt33r/remark-math)
-    — Math inline and block support
+    — custom syntax for math (new node types, rehype compatible)
 *   [`remark-mermaid`](https://github.com/temando/remark-mermaid)
-    — Replace [mermaid](https://mermaidjs.github.io/) graphs with rendered SVGs
+    — transform [mermaid](https://mermaidjs.github.io/) graphs to SVG
 *   [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
-    — Enable, disable, and ignore messages
+    — turn some or all messages on or off
 *   [`remark-metadata`](https://github.com/temando/remark-metadata)
-    — Add metadata about the processed file as front matter
+    — add metadata about the processed file as front matter
 *   [`remark-midas`](https://github.com/ben-eb/remark-midas)
-    — Highlight CSS in Markdown files with [midas](https://github.com/ben-eb/midas)
+    — highlight CSS code blocks with [midas](https://github.com/ben-eb/midas)
+    (rehype compatible)
 *   [`remark-normalize-headings`](https://github.com/eush77/remark-normalize-headings)
-    — Ensure at most one top-level heading is in the document
+    — make sure at most one top-level heading exists
 *   [`remark-openapi`](https://github.com/temando/remark-openapi)
-    — Convert links to local or remote OpenAPI definition to tables with
-    summaries of all paths
-*   [`remark-outer-toc`](https://github.com/Jaredk3nt/remark-outer-toc)
-    — Generates a list of headers for external table of contents
+    — transform links to local or remote OpenAPI definitions to tables
 *   [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
-    — Parse YAML blocks into structured data
+    — parse YAML nodes and expose their value as `parsedValue`
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping)
-    — Custom syntax, parses `@user`, `@**first last**`, configurable existence
-    check.  Rehype compatible
+    — custom syntax for mentions with configurable existence check (new node
+    type, rehype compatible)
 *   [`remark-react`](https://github.com/mapbox/remark-react)
-    — Compile Markdown to [React](https://github.com/facebook/react)
+    — “stringify” markdown as [React](https://github.com/facebook/react)
 *   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
-    — Syntax highlighting for
-    [remark-react](https://github.com/mapbox/remark-react) through
-    [CodeMirror](https://codemirror.net)
+    — highlight code blocks for **remark-react** with [CodeMirror](https://codemirror.net)
 *   [`remark-react-lowlight`](https://github.com/bebraw/remark-react-lowlight)
-    — Syntax highlighting for
-    [remark-react](https://github.com/mapbox/remark-react) through
-    [lowlight](https://github.com/wooorm/lowlight)
+    — highlight code blocks for **remark-react** with [lowlight](https://github.com/wooorm/lowlight)
 *   [`remark-redact`](https://github.com/seafoam6/remark-redact)
-    — Conceal portions of text with a █
+    — conceal text matching a regex
 *   [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
-    — Transform links and images to references and definitions
+    — change links and images to references and definitions
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
-    — [rehype](https://github.com/rehypejs/rehype) support
+    — transform to [rehype](https://github.com/rehypejs/rehype)
 *   [`remark-relative-links`](https://github.com/zslabs/remark-relative-links)
-    — Rewrites absolute URLs to relative ones
+    — change absolute URLs to relative ones
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
-    — [retext](https://github.com/retextjs/retext) support
+    — transform to [retext](https://github.com/retextjs/retext)
 *   [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
-    — Parses custom Wordpress/Hugo-like shortcodes inside your Markdown
+    — custom syntax Wordpress- and Hugo-like shortcodes (new node type)
 *   [`remark-slug`](https://github.com/remarkjs/remark-slug)
-    — Add slugs to headings
+    — add slugs to headings
 *   [`remark-strip-badges`](https://github.com/remarkjs/remark-strip-badges)
-    — Remove badges (such as `shields.io`)
+    — remove badges (such as `shields.io`)
 *   [`remark-strip-html`](https://github.com/craftzdog/remark-strip-html)
-    — Remove html formatting
-*   [`remark-squeeze-paragraphs`](https://github.com/eush77/remark-squeeze-paragraphs)
-    — Remove empty paragraphs
+    — remove HTML
+*   [`remark-squeeze-paragraphs`](https://github.com/remarkjs/remark-squeeze-paragraphs)
+    — remove empty paragraphs
 *   [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-sub-super)
-    — Custom syntax to parse subscript and superscript.  Rehype compatible
-    (using `<sub>` and `<sup>`)
+    — custom syntax for super- and subscript (new node types, rehype compatible)
 *   [`remark-swagger`](https://github.com/yoshuawuyts/remark-swagger)
-    — Insert a swagger specification
+    — add a swagger specification
 *   [`remark-textr`](https://github.com/denysdovhan/remark-textr)
-    — [`Textr`](https://github.com/shuvalov-anton/textr), a modular typographic
-    framework
+    — transform text with [`Textr`](https://github.com/shuvalov-anton/textr)
 *   [`remark-title`](https://github.com/RichardLitt/remark-title)
-    — Check and inject the title of a markdown as the first element.
+    — check and add the document title
 *   [`remark-toc`](https://github.com/remarkjs/remark-toc)
-    — Generate a Table of Contents (TOC) for Markdown files
-*   [`remark-unlink`](https://github.com/eush77/remark-unlink)
-    — Remove all links, references and definitions
+    — add a table of contents
+*   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
+    — remove all links, references, and definitions
 *   [`remark-usage`](https://github.com/remarkjs/remark-usage)
-    — Add a usage example to your readme
+    — add a usage example
 *   [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
-    — Validate links point to existing headings and files
+    — check links to headings and files
 *   [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
-    — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
+    — “stringify” markdown as [VDOM](https://github.com/Matt-Esch/virtual-dom/)
 *   [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
-    — Parse and render wiki links
-*   [`remark-yaml-annotations`](https://github.com/sfrdmn/remark-yaml-annotations)
-    — Extend Markdown with YAML-based annotation syntax
+    — custom syntax for wiki links (rehype compatible)
 *   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
-    — Configure remark with YAML
+    — configure remark with YAML
 
 ## List of Presets
 
-See [npm search][preset-search] for available and often inspirational presets.
+See [npm search][npm-preset-search] or [github search][github-preset-search]
+for available and often inspirational presets.
 
 ## List of Utilities
 
-See [**MDAST**][mdast-util] for a list of utilities for working with
-the syntax tree.  See [`unist`][unist-util] for other utilities which work with
-**MDAST** nodes, too.
-
-And finally, see [**vfile**][vfile-util] for a list of utilities working with
+See [**mdast**][mdast-util] for a list of utilities for working with the syntax
+tree.
+See [`unist`][unist-util] for other utilities which work with **mdast**
+nodes, too.
+Finally, see [**vfile**][vfile-util] for a list of utilities working with
 virtual files.
 
 ## Using plugins
@@ -218,27 +204,26 @@ or specify it in a [configuration file][config-file-use].
 
 ## Creating plugins
 
-First, read up on the [concept of plugins][unified-plugins].  Then, read the
-[guide on “Creating a plugin with unified”][guide].  Finally, take one of
-existing [plugins][], which looks similar to what you’re about to do,
-and work from there.  If you get stuck, [issues][] and [Spectrum][] are good
-places to get help.
+Have an idea for a plugin?
+Post it on [spectrum][] or in [ideas][] and make it happen!
+
+To create a plugin, first read up on the [concept of plugins][unified-plugins].
+Then, read the [guide on “Creating a plugin with unified”][guide].
+Finally, take one of existing plugins, which looks similar to what you’re about
+to make, and work from there.
+If you get stuck, [spectrum][], [ideas][], and [issues][] are good places to get
+help.
 
 You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
 
-Note that, if the thing you create cannot be given to `remark().use()`,
-it isn’t a “plugin”.  Don’t use the `remark-` prefix as that could
-confuse users.  If it works with the HAST tree, use `'mdast-util-'`, if
-it works with any Unist tree, use `unist-util-`, if it works with virtual
-files, use `vfile-`.
+**Do not use the `remark-` prefix** if the thing you create doesn’t work with
+`remark().use()`: it isn’t a “plugin” and will confuse users.
+If it works with mdast, use `'mdast-util-'`, if it works with any unist tree,
+use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 <!--Definitions:-->
 
 [logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
-
-[plugins]: #list-of-plugins
-
-[products]: https://github.com/remarkjs/remark/blob/master/doc/products.md
 
 [mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
 
@@ -260,4 +245,18 @@ files, use `vfile-`.
 
 [guide]: https://unifiedjs.github.io/create-a-plugin.html
 
-[preset-search]: https://www.npmjs.com/search?q=remark-preset
+[npm-preset-search]: https://www.npmjs.com/search?q=remark-preset
+
+[github-preset-search]: https://github.com/topics/remark-preset
+
+[awesome]: https://github.com/remarkjs/awesome
+
+[ideas]: https://github.com/remarkjs/ideas
+
+[topic]: https://github.com/topics/remark-plugin
+
+[unified]: https://github.com/unifiedjs/unified
+
+[collective]: https://opencollective.com/unified
+
+[create]: #creating-plugins

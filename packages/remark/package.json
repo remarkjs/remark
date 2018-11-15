@@ -13,12 +13,12 @@
     "stringify",
     "process"
   ],
-  "homepage": "http://remark.js.org",
+  "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark",
   "bugs": "https://github.com/remarkjs/remark/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)"
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "files": [
     "index.js"

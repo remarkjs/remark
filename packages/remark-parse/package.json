@@ -11,12 +11,12 @@
     "ast",
     "parse"
   ],
-  "homepage": "http://remark.js.org",
+  "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-parse",
   "bugs": "https://github.com/remarkjs/remark/issues",
-  "author": "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
   "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (http://wooorm.com)",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
     "Eugene Sharygin <eush77@gmail.com>",
     "Junyoung Choi <fluke8259@gmail.com>",
     "Elijah Hamovitz <elijahhamovitz@gmail.com>",
