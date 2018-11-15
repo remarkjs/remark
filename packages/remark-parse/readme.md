@@ -433,7 +433,7 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 
-[author]: http://wooorm.com
+[author]: https://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
 
@@ -445,7 +445,7 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 [mdast]: https://github.com/syntax-tree/mdast
 
-[escapes]: http://spec.commonmark.org/0.25/#backslash-escapes
+[escapes]: https://spec.commonmark.org/0.28/#backslash-escapes
 
 [node]: https://github.com/syntax-tree/unist#node
 
