@@ -11,7 +11,7 @@
     "camelcase": "^5.0.0",
     "clone": "^2.0.0",
     "lerna": "^3.0.0",
-    "mdast-util-assert": "^1.0.0",
+    "mdast-util-assert": "^2.0.0",
     "mdast-util-compact": "^1.0.0",
     "mdast-zone": "^3.0.1",
     "nyc": "^13.0.0",
