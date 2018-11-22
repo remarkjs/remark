@@ -1,4 +1,12 @@
-# remark-stringify [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
+# remark-stringify
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Chat][chat-badge]][chat]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
 
 [Compiler][] for [**unified**][unified].
 Stringifies [**mdast**][mdast] syntax trees to markdown.
@@ -262,17 +270,17 @@ Stringify `node`.
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark/master.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/remarkjs/remark
+[build]: https://travis-ci.org/remarkjs/remark
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/remarkjs/remark
+[coverage]: https://codecov.io/github/remarkjs/remark
 
-[dl-badge]: https://img.shields.io/npm/dm/remark-stringify.svg
+[downloads-badge]: https://img.shields.io/npm/dm/remark-stringify.svg
 
-[dl]: https://www.npmjs.com/package/remark-stringify
+[downloads]: https://www.npmjs.com/package/remark-stringify
 
 [size-badge]: https://img.shields.io/bundlephobia/minzip/remark-stringify.svg
 
@@ -281,6 +289,12 @@ Stringify `node`.
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 

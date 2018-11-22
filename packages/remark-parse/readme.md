@@ -1,4 +1,12 @@
-# remark-parse [![Travis][build-badge]][build-status] [![Coverage][coverage-badge]][coverage-status] [![Downloads][dl-badge]][dl] [![Size][size-badge]][size] [![Chat][chat-badge]][chat]
+# remark-parse
+
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Chat][chat-badge]][chat]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
 
 [Parser][] for [**unified**][unified].
 Parses markdown to [**mdast**][mdast] syntax trees.
@@ -449,17 +457,17 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark/master.svg
+[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
 
-[build-status]: https://travis-ci.org/remarkjs/remark
+[build]: https://travis-ci.org/remarkjs/remark
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
-[coverage-status]: https://codecov.io/github/remarkjs/remark
+[coverage]: https://codecov.io/github/remarkjs/remark
 
-[dl-badge]: https://img.shields.io/npm/dm/remark-parse.svg
+[downloads-badge]: https://img.shields.io/npm/dm/remark-parse.svg
 
-[dl]: https://www.npmjs.com/package/remark-parse
+[downloads]: https://www.npmjs.com/package/remark-parse
 
 [size-badge]: https://img.shields.io/bundlephobia/minzip/remark-parse.svg
 
@@ -468,6 +476,12 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 
