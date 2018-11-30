@@ -65,7 +65,8 @@ contents][remark-toc], or [compile to man pages][remark-man].
 This repository contains the following projects:
 
 *   [`remark-parse`][parse] — Parse a markdown document to a syntax tree
-*   [`remark-stringify`][stringify] — Stringify a syntax tree to a markdown document
+*   [`remark-stringify`][stringify]
+    — Stringify a syntax tree to a markdown document
 *   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
 *   [`remark-cli`][cli] — Command-line interface wrapping `remark`
 
