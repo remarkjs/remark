@@ -64,8 +64,9 @@ contents][remark-toc], or [compile to man pages][remark-man].
 
 This repository contains the following projects:
 
-*   [`remark-parse`][api] — Parse a markdown document to a syntax tree
-*   [`remark-stringify`][api] — Stringify a syntax tree to a markdown document
+*   [`remark-parse`][parse] — Parse a markdown document to a syntax tree
+*   [`remark-stringify`][stringify]
+    — Stringify a syntax tree to a markdown document
 *   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
 *   [`remark-cli`][cli] — Command-line interface wrapping `remark`
 
@@ -119,6 +120,10 @@ creating an issue in the [`remarkjs/ideas`][ideas] repository!
 [backers-badge]: https://opencollective.com/unified/backers/badge.svg
 
 [api]: https://github.com/remarkjs/remark/tree/master/packages/remark
+
+[parse]: https://github.com/remarkjs/remark/tree/master/packages/remark-parse
+
+[stringify]: https://github.com/remarkjs/remark/tree/master/packages/remark-stringify
 
 [cli]: https://github.com/remarkjs/remark/tree/master/packages/remark-cli
 
