@@ -139,6 +139,9 @@ See [Creating plugins][create] below.
     — highlight code blocks for **remark-react** with [lowlight](https://github.com/wooorm/lowlight)
 *   [`remark-redact`](https://github.com/seafoam6/remark-redact)
     — conceal text matching a regex
+*   [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
+    — write plugins to redact content from a markdown document,
+    then restore it later
 *   [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
     — change links and images to references and definitions
 *   [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
