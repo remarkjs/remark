@@ -395,7 +395,7 @@ var add = eat('foo')
 add({type: 'text', value: 'foo'})
 ```
 
-Add [positional information][location] to `node` and add it to `parent`.
+Add [positional information][position] to `node` and add it to `parent`.
 
 ###### Parameters
 
@@ -409,16 +409,16 @@ The given `node`.
 
 ### `add.test()`
 
-Get the [positional information][location] which would be patched on
+Get the [positional information][position] which would be patched on
 `node` by `add`.
 
 ###### Returns
 
-[`Location`][location].
+[`Position`][position].
 
 ### `add.reset(node[, parent])`
 
-`add`, but resets the internal location.  Useful for example in
+`add`, but resets the internal position.  Useful for example in
 lists, where the same content is first eaten for a list, and later
 for list items
 
@@ -501,7 +501,7 @@ Preferably, just use [this plugin](https://github.com/zestedesavoir/zmarkdown/tr
 
 [node]: https://github.com/syntax-tree/unist#node
 
-[location]: https://github.com/syntax-tree/unist#location
+[position]: https://github.com/syntax-tree/unist#position
 
 [parser]: https://github.com/unifiedjs/unified#processorparser
 
