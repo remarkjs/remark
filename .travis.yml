@@ -8,8 +8,9 @@ jobs:
       name: 'Node LTS/Boron'
       node_js: lts/boron
     - name: 'Node Stable'
-      node_js: node
+      node_js: 10
     - name: Type information Tests
+      node_js: 10
       script: lerna run test:types
 
 deploy:
