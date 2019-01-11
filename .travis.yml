@@ -7,7 +7,11 @@ sudo: false
 jobs:
   include:
     - stage: Tests
-    - stage: Type information Tests
+      name: 'Node LTS/Boron'
+      node_js: lts/boron
+    - name: 'Node Stable'
+      node_js: node
+    - name: Type information Tests
       script: lerna run test:types
 
 deploy:
