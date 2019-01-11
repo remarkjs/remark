@@ -1,10 +1,8 @@
 language: node_js
-node_js:
-  - lts/boron
-  - node
 sudo: false
 
 jobs:
+  fail_fast: true
   include:
     - stage: Tests
       name: 'Node LTS/Boron'
