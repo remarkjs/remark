@@ -23,6 +23,7 @@
     "index.js",
     "lib"
   ],
+  "types": "types/index.d.ts",
   "dependencies": {
     "ccount": "^1.0.0",
     "is-alphanumeric": "^1.0.0",
@@ -40,6 +41,7 @@
     "xtend": "^4.0.1"
   },
   "devDependencies": {
+    "dtslint": "^0.4.2",
     "tape": "^4.9.1",
     "unified": "^7.0.0",
     "unist-builder": "^1.0.3",
@@ -47,7 +49,8 @@
     "wcwidth": "^1.0.1"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "tape test.js",
+    "test:types": "dtslint types"
   },
   "xo": false
 }

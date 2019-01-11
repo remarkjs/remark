@@ -1,15 +1,22 @@
 language: node_js
 node_js:
-- lts/boron
-- node
+  - lts/boron
+  - node
 sudo: false
+
+jobs:
+  include:
+    - stage: Tests
+    - stage: Type information Tests
+      script: lerna run test:types
+
 deploy:
   provider: releases
   skip_cleanup: true
   api_key:
     secure: GCfTZxoqpp1tMmslM5MTI13BLv+bvFhZUuhX+dQFbcVYODQKUjnUj9EBF10PJSTpYqm3GnGpxEoQ6RAUVxlH7rBQUFm4czaZPPgCDSZT3B8pszmQkl1aRyvdmXFoKfyNhFUwBUSsoBpM92wp/UrgIZ/CI0jLoIZbCwn4KH02rf8=
   file:
-    - "remark.js"
-    - "remark.min.js"
+    - 'remark.js'
+    - 'remark.min.js'
   on:
     tags: true

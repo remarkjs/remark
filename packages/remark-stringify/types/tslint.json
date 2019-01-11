@@ -1,0 +1,9 @@
+{
+  "extends": "dtslint/dtslint.json", // Or "dtslint/dt.json" if on DefinitelyTyped
+  "rules": {
+    "semicolon": false,
+    "indent": false,
+    "whitespace": false,
+    "no-single-declare-module": false
+  }
+}
