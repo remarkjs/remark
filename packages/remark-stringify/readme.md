@@ -81,6 +81,26 @@ var processor = unified()
 process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 ```
 
+Here is how you parse, assign the tree to a variable, log it, then render it back to markdown and log it again:
+
+```js
+import unified from "unified";
+import markdown from "remark-parse";
+import stringify from "remark-stringify";
+
+const tree = unified()
+  .use(markdown)
+  .parse("# Some title");
+
+console.log(`tree = ${JSON.stringify(tree, null, 4)}`);
+
+const doc = unified()
+  .use(stringify)
+  .stringify(tree);
+
+console.log(`doc = ${doc}`);
+```
+
 ## Table of Contents
 
 *   [API](#api)
