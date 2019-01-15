@@ -1,9 +1,14 @@
 {
-  "extends": "dtslint/dtslint.json", // Or "dtslint/dt.json" if on DefinitelyTyped
+  "extends": "dtslint/dtslint.json",
   "rules": {
+    "callable-types": false,
+    "max-line-length": false,
+    "no-redundant-jsdoc": false,
+    "no-void-expression": false,
+    "only-arrow-functions": false,
     "semicolon": false,
-    "indent": false,
+    "unified-signatures": false,
     "whitespace": false,
-    "no-single-declare-module": false
+    "interface-over-type-literal": false
   }
 }

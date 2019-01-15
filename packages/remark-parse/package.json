@@ -25,7 +25,8 @@
   ],
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "types/index.d.ts"
   ],
   "dependencies": {
     "collapse-white-space": "^1.0.2",
@@ -52,7 +53,7 @@
   },
   "scripts": {
     "test": "tape test.js",
-    "test:types": "dtslint types"
+    "test-types": "dtslint types"
   },
   "xo": false
 }
