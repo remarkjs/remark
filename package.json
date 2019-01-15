@@ -25,14 +25,15 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
-    "format": "packages/remark-cli/cli.js . -qfo && prettier --write '**/*.js' && xo --fix",
+    "format": "packages/remark-cli/cli.js . -qfo && prettier --write '**/*.{js,ts}' && xo --fix",
     "build-bundle": "browserify packages/remark -s remark > remark.js",
     "build-mangle": "browserify packages/remark -s remark -p tinyify > remark.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "tape packages/*/test.js test/index.js",
     "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
     "test-coverage": "nyc --reporter lcov tape \"test/index.js\" \"packages/*/test.js\"",
-    "test": "npm run format && npm run build && npm run test-coverage"
+    "test-types": "lerna run test-types --parallel",
+    "test": "npm run format && npm run build && npm run test-coverage && npm run test-types"
   },
   "nyc": {
     "check-coverage": true,

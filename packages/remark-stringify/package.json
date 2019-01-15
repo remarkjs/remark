@@ -21,7 +21,8 @@
   ],
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "types/index.d.ts"
   ],
   "types": "types/index.d.ts",
   "dependencies": {
@@ -50,7 +51,7 @@
   },
   "scripts": {
     "test": "tape test.js",
-    "test:types": "dtslint types"
+    "test-types": "dtslint types"
   },
   "xo": false
 }
