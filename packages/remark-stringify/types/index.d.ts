@@ -1,6 +1,14 @@
 // TypeScript Version: 3.0
 
-declare module 'remark-stringify/types' {
+import {Attacher, Compiler, Processor} from 'unified'
+import {Node} from 'unist'
+
+declare namespace remarkStringify {
+  interface Stringify extends Attacher {
+    Compiler: Compiler
+    (this: Processor, options?: Partial<RemarkStringifyOptions>): void
+  }
+
   interface RemarkStringifyOptions {
     gfm: boolean
     commonmark: boolean
@@ -24,15 +32,6 @@ declare module 'remark-stringify/types' {
   }
 }
 
-declare module 'remark-stringify' {
-  import {RemarkStringifyOptions} from 'remark-stringify/types'
-  import {Attacher, Compiler, Processor} from 'unified'
-  import {Node} from 'unist'
+declare const remarkStringify: remarkStringify.Stringify
 
-  interface Stringify extends Attacher {
-    Compiler: Compiler
-    (this: Processor, options?: Partial<RemarkStringifyOptions>): void
-  }
-  const stringify: Stringify
-  export = stringify
-}
+export = remarkStringify
