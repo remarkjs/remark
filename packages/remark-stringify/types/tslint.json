@@ -1,4 +1,4 @@
-	{
+{
   "extends": "dtslint/dtslint.json",
   "rules": {
     "callable-types": false,
