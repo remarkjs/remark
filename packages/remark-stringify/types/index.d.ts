@@ -1,13 +1,21 @@
 // TypeScript Version: 3.0
 
 import {Attacher, Compiler, Processor} from 'unified'
-import {Node} from 'unist'
+import {Node, Parent} from 'unist'
+
+declare class RemarkCompiler extends Compiler {
+  visitors: {
+    [key: string]: remarkStringify.Visitor
+  }
+}
 
 declare namespace remarkStringify {
   interface Stringify extends Attacher {
-    Compiler: Compiler
+    Compiler: typeof RemarkCompiler
     (this: Processor, options?: Partial<RemarkStringifyOptions>): void
   }
+
+  type Compiler = RemarkCompiler
 
   interface RemarkStringifyOptions {
     gfm: boolean
@@ -30,6 +38,8 @@ declare namespace remarkStringify {
     strong: '_' | '*'
     emphasis: '_' | '*'
   }
+
+  type Visitor = (node: Node, parent?: Parent) => string
 }
 
 declare const remarkStringify: remarkStringify.Stringify
