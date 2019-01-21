@@ -1,19 +1,36 @@
 // TypeScript Version: 3.0
 
-declare module 'remark-parse/types' {
-  import {Parser} from 'unified'
-  import {Node, Position} from 'unist'
+import {Node, Parent, Position} from 'unist'
+import {Parser, Attacher} from 'unified'
+
+declare class RemarkParser extends Parser {
+  blockMethods: string[]
+  inlineTokenizers: {
+    [key: string]: remarkParse.Tokenizer
+  }
+  inlineMethods: string[]
+}
+
+declare namespace remarkParse {
+  interface Parse extends Attacher {
+    (options: RemarkParseOptions): void
+    Parser: typeof RemarkParser
+  }
+
+  type Parser = RemarkParser
 
   interface RemarkParseOptions {
     gfm: boolean
     commonmark: boolean
     footnotes: boolean
+    blocks: string[]
     pedantic: boolean
   }
+
   interface Add {
-    (n: Node, parent?: Node): Node
+    (node: Node, parent?: Parent): Node
     test(): Position
-    reset(n: Node, parent?: Node): Node
+    reset(node: Node, parent?: Node): Node
   }
 
   type Eat = (value: string) => Add
@@ -21,31 +38,15 @@ declare module 'remark-parse/types' {
   type Locator = (value: string, fromIndex: number) => number
 
   interface Tokenizer {
-    (e: Eat, value: string, silent: true): boolean
-    (e: Eat, value: string): Node
+    (eat: Eat, value: string, silent: true): boolean | void
+    (eat: Eat, value: string): Node | void
     locator: Locator
-    onlyAtStart: boolean
-    notInBlock: boolean
-    notInList: boolean
-    notInLink: boolean
-  }
-
-  class MDParser extends Parser {
-    blockMethods: string[]
-    inlineTokenizers: {
-      [k: string]: Tokenizer
-    }
+    onlyAtStart?: boolean
+    notInBlock?: boolean
+    notInList?: boolean
+    notInLink?: boolean
   }
 }
+declare const remarkParse: remarkParse.Parse
 
-declare module 'remark-parse' {
-  import {MDParser, RemarkParseOptions} from 'remark-parse/types'
-  import {Attacher} from 'unified'
-
-  interface Parse extends Attacher {
-    (options: RemarkParseOptions): void
-    Parser: MDParser
-  }
-  const parse: Parse
-  export = parse
-}
+export = remarkParse
