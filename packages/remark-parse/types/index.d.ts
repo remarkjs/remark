@@ -40,7 +40,7 @@ declare namespace remarkParse {
   interface Tokenizer {
     (eat: Eat, value: string, silent: true): boolean | void
     (eat: Eat, value: string): Node | void
-    locator: Locator
+    locator?: Locator
     onlyAtStart?: boolean
     notInBlock?: boolean
     notInList?: boolean
