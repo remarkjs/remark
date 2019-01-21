@@ -38,6 +38,8 @@ See [Creating plugins][create] below.
     – custom syntax for id’s, classes, and data attributes to spans of text
 *   [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
     – support hard breaks without needing spaces (like on issues)
+*   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
+    – turn code blocks into carbon.now.sh screenshots
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
     — make a section collapsible
 *   [`remark-comment-blocks`](https://github.com/remarkjs/remark-comment-blocks)
@@ -174,6 +176,8 @@ See [Creating plugins][create] below.
     — remove all links, references, and definitions
 *   [`remark-usage`](https://github.com/remarkjs/remark-usage)
     — add a usage example
+*   [`remark-utf8`](https://github.com/Swizec/remark-utf8)
+    — turn bolds, italics, and code into UTF-8 special characters
 *   [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
     — check links to headings and files
 *   [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
