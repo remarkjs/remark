@@ -1,8 +1,7 @@
-import * as remarkStringify from 'remark-stringify'
-import {RemarkStringifyOptions} from 'remark-stringify/types'
-import * as unified from 'unified'
+import remarkStringify = require('remark-stringify')
+import unified = require('unified')
 
-const stringifyOptions: Partial<RemarkStringifyOptions> = {
+const stringifyOptions: Partial<remarkStringify.RemarkStringifyOptions> = {
   gfm: true,
   bullet: '*',
   fences: true,
@@ -12,7 +11,7 @@ const stringifyOptions: Partial<RemarkStringifyOptions> = {
 
 unified().use(remarkStringify, stringifyOptions)
 
-const badStringifyOptions: Partial<RemarkStringifyOptions> = {
+const badStringifyOptions: Partial<remarkStringify.RemarkStringifyOptions> = {
   // $ExpectError
   gfm: 'true'
 }
