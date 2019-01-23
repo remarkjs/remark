@@ -38,6 +38,9 @@ See [Creating plugins][create] below.
     – custom syntax for id’s, classes, and data attributes to spans of text
 *   [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
     – support hard breaks without needing spaces (like on issues)
+*   [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
+    – transform all titles with
+    [title.sh](https://github.com/zeit/title)
 *   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
     – turn code blocks into carbon.now.sh screenshots
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
