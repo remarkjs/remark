@@ -155,6 +155,9 @@ See [Creating plugins][create] below.
     — change absolute URLs to relative ones
 *   [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — transform to [retext](https://github.com/retextjs/retext)
+*   [`remark-sectionize`](https://github.com/jake-low/remark-sectionize)
+    — wrap headings and subsequent content in section tags (new node type,
+    rehype compatible)
 *   [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
     — custom syntax Wordpress- and Hugo-like shortcodes (new node type)
 *   [`remark-slug`](https://github.com/remarkjs/remark-slug)
