@@ -164,6 +164,14 @@ test('remark().parse(file)', function(t) {
     }
   })
 
+  t.test('should handle leading tabs', function(st) {
+    var tabbedInput = `- 123\n\t- 456`
+    var spaceInput = `- 123\n  - 456`
+    st.deepEqual(unified().use(parse).parse(tabbedInput), unified().use(parse).parse(spaceInput))
+
+    st.end()
+  })
+
   t.test('should warn about entities', function(st) {
     var filePath = path.join(
       'test',
