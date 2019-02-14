@@ -165,9 +165,9 @@ test('remark().parse(file)', function(t) {
   })
 
   t.test('should handle leading tabs', function(st) {
-    var tabbedInput = `- 123\n\t- 456`
-    var spaceInput = `- 123\n  - 456`
-    st.deepEqual(unified().use(parse).parse(tabbedInput), unified().use(parse).parse(spaceInput))
+    var tabbedInput = `- 123\n\t\t- 456\t789\n\t\n`
+    var spacedInput = `- 123\n    - 456\t789\n  \n`
+    st.deepEqual(unified().use(parse).parse(tabbedInput), unified().use(parse).parse(spacedInput))
 
     st.end()
   })
