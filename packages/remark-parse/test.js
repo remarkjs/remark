@@ -164,12 +164,29 @@ test('remark().parse(file)', function(t) {
     }
   })
 
-  t.test('should handle leading tabs', function(st) {
-    var tabbedInput = `- 123\n\t\t- 456\t789\n\t\n`
-    var spacedInput = `- 123\n    - 456\t789\n  \n`
-    st.deepEqual(unified().use(parse).parse(tabbedInput), unified().use(parse).parse(spacedInput))
+  t.test('should handle leading tabs in list items', function(st) {
+    var tabbedInput = `- 123\n\t- 456\n\t789`
+    var spacedInput = `- 123\n  - 456\n\t789`
+    var tabbedOutput = unified().use(parse).parse(tabbedInput)
+    var spacedOutput = unified().use(parse).parse(spacedInput)
+    
+    st.deepEqual(removePositionalInfo(tabbedOutput), removePositionalInfo(spacedOutput))
 
     st.end()
+
+    // Remove positional info which should be different
+    function removePositionalInfo(output) {
+      if (output.children) {
+        for(var i = 0; i < output.children.length; i++) {
+          output.children[i] = removePositionalInfo(output.children[i])
+        }
+      }
+      if (output.position) {
+        output.position = null
+      }
+
+      return output
+    }
   })
 
   t.test('should warn about entities', function(st) {

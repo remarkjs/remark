@@ -2,13 +2,10 @@
 
 var xtend = require('xtend')
 var removePosition = require('unist-util-remove-position')
-var vfile = require('vfile')
-var vfileLocation = require('vfile-location')
 
 module.exports = parse
 
 var lineFeed = '\n'
-var tab = '\t'
 var lineBreaksExpression = /\r\n|\r/g
 
 // Parse the bound file.
@@ -21,15 +18,7 @@ function parse() {
 
   // Clean non-unix newlines: `\r\n` and `\r` are all changed to `\n`.
   // This should not affect positional information.
-  var newValue = value.replace(lineBreaksExpression, lineFeed)
-  
-  newValue = cleanLeadingTabs(value)
-
-  if (newValue != value) {
-    value = newValue
-    // Need to reset the offset to match the updated values
-    self.toOffset = vfileLocation(vfile(value)).toOffset
-  }
+  value = value.replace(lineBreaksExpression, lineFeed)
 
   // BOM.
   if (value.charCodeAt(0) === 0xfeff) {
@@ -50,27 +39,4 @@ function parse() {
   }
 
   return node
-}
-
-// Replace any leading tabs on a newline with spaces.
-// This should not affect positional information.
-function cleanLeadingTabs(value) {
-  var occurence = value.indexOf(lineFeed + tab)
-  while (occurence != -1) {
-    var startOfTabs = occurence + 1
-    var endOfTabs = occurence + 2
-    var replacementString = "  "
-
-    // Find ALL leading tabs
-    while (value.substring(endOfTabs, endOfTabs + 1) == '\t') {
-      endOfTabs += 1
-      replacementString += "  "
-    }
-
-    // Replace tabs with spaces and start search over.
-    value = value.substr(0, startOfTabs) + replacementString + value.substr(endOfTabs)
-    occurence = value.indexOf(lineFeed + tab, occurence + 1)
-  }
-  
-  return value
 }

@@ -445,7 +445,7 @@ function normalListItem(ctx, value, position) {
       $2 = space + $2
     }
 
-    max = $1 + repeat(space, $2.length) + $3
+    max = $1 + repeat(space, Math.max($2.length, tabSize)) + $3
 
     return max + rest
   }
