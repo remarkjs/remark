@@ -6,6 +6,7 @@ var getIndent = require('./get-indentation')
 
 module.exports = indentation
 
+var tab = '\t'
 var lineFeed = '\n'
 var space = ' '
 var exclamationMark = '!'
@@ -20,6 +21,7 @@ function indentation(value, maximum) {
   var index
   var indentation
   var stops
+  var padding
 
   values.unshift(repeat(space, maximum) + exclamationMark)
 
@@ -54,8 +56,18 @@ function indentation(value, maximum) {
         index--
       }
 
+      if (
+        trim(values[position]).length !== 0 &&
+        minIndent &&
+        index !== minIndent
+      ) {
+        padding = tab
+      } else {
+        padding = ''
+      }
+
       values[position] =
-        values[position].slice(index in stops ? stops[index] + 1 : 0)
+        padding + values[position].slice(index in stops ? stops[index] + 1 : 0)
     }
   }
 
