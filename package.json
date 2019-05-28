@@ -1,4 +1,5 @@
 {
+  "name": "remark",
   "private": true,
   "license": "MIT",
   "homepage": "https://remark.js.org",
