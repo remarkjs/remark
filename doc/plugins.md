@@ -178,6 +178,10 @@ See [Creating plugins][create] below.
     — check and add the document title
 *   [`remark-toc`](https://github.com/remarkjs/remark-toc)
     — add a table of contents
+*   [`remark-tree-sitter`](https://github.com/samlanning/remark-tree-sitter)
+    — highlight code blocks in markdown files using
+    [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
+    (rehype compatible)
 *   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — remove all links, references, and definitions
 *   [`remark-usage`](https://github.com/remarkjs/remark-usage)
