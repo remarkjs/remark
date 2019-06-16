@@ -180,7 +180,8 @@ See [Creating plugins][create] below.
     — add a table of contents
 *   [`remark-tree-sitter`](https://github.com/samlanning/remark-tree-sitter)
     — highlight code blocks in markdown files using
-    [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) (rehype compatible)
+    [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
+    (rehype compatible)
 *   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — remove all links, references, and definitions
 *   [`remark-usage`](https://github.com/remarkjs/remark-usage)
