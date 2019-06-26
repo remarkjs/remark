@@ -53,10 +53,14 @@
     "prettier": true,
     "esnext": false,
     "rules": {
-      "import/no-unassigned-import": "off",
       "unicorn/prefer-type-error": "off",
-      "unicorn/escape-case": "off",
-      "eqeqeq": "off",
+      "eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
       "guard-for-in": "off",
       "max-depth": "off",
       "complexity": "off",
