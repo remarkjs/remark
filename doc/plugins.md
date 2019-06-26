@@ -88,7 +88,7 @@ See [Creating plugins][create] below.
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables)
     — custom syntax to describe tables (rehype compatible)
 *   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
-    — transform [graphviz](http://www.graphviz.org) dot graphs to SVG
+    — transform [graphviz](https://www.graphviz.org) dot graphs to SVG
 *   [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
     — stringify with more spacing between headings
 *   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
