@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "tape": "^4.9.1",
-    "unified": "^7.0.0",
+    "unified": "^8.0.0",
     "unist-builder": "^1.0.3",
     "unist-util-visit": "^1.4.0",
     "wcwidth": "^1.0.1"

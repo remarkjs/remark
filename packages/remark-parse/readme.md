@@ -310,9 +310,9 @@ The parser knows two types of tokenizers: block level and inline level.
 Block level tokenizers are the same as inline level tokenizers, with
 the exception that the latter must have a [locator][].
 
-Tokenizers _test_ whether a document starts with a certain syntactic
-entity.  In _silent_ mode, they return whether that test passes.
-In _normal_ mode, they consume that token, a process which is called
+Tokenizers *test* whether a document starts with a certain syntactic
+entity.  In *silent* mode, they return whether that test passes.
+In *normal* mode, they consume that token, a process which is called
 “eating”.  Locators enable tokenizers to function faster by providing
 information on where the next entity may occur.
 
@@ -343,8 +343,8 @@ information on where the next entity may occur.
 
 ###### Returns
 
-*   In _silent_ mode, whether a node can be found at the start of `value`
-*   In _normal_ mode, a node if it can be found at the start of `value`
+*   In *silent* mode, whether a node can be found at the start of `value`
+*   In *normal* mode, a node if it can be found at the start of `value`
 
 ### `tokenizer.locator(value, fromIndex)`
 

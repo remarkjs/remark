@@ -15,14 +15,14 @@
     "mdast-util-assert": "^2.0.0",
     "mdast-util-compact": "^1.0.0",
     "mdast-zone": "^3.0.1",
-    "nyc": "^13.0.0",
+    "nyc": "^14.0.0",
     "prettier": "^1.14.3",
-    "remark-preset-wooorm": "^4.0.0",
+    "remark-preset-wooorm": "^5.0.0",
     "tape": "^4.5.1",
     "tinyify": "^2.4.3",
     "unist-builder": "^1.0.2",
     "unist-util-remove-position": "^1.1.0",
-    "xo": "^0.23.0"
+    "xo": "^0.24.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
