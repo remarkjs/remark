@@ -1,9 +1,14 @@
 {
   "name": "remark-stringify",
   "version": "6.0.4",
-  "description": "Markdown compiler for remark",
+  "description": "remark plugin to compile Markdown",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
+    "plugin",
+    "markdown",
+    "mdast",
     "markdown",
     "abstract",
     "syntax",

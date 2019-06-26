@@ -4,7 +4,10 @@
   "description": "Markdown processor powered by plugins",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
     "markdown",
+    "mdast",
     "abstract",
     "syntax",
     "tree",

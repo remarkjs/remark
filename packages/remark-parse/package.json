@@ -1,10 +1,14 @@
 {
   "name": "remark-parse",
   "version": "6.0.3",
-  "description": "Markdown parser for remark",
+  "description": "remark plugin to parse Markdown",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
+    "plugin",
     "markdown",
+    "mdast",
     "abstract",
     "syntax",
     "tree",
