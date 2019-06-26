@@ -26,7 +26,7 @@
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
-    "format": "packages/remark-cli/cli.js . -qfo && prettier --write '**/*.js' && xo --fix",
+    "format": "packages/remark-cli/cli.js . -qfo && prettier --write \"**/*.js\" && xo --fix",
     "build-bundle": "browserify packages/remark -s remark > remark.js",
     "build-mangle": "browserify packages/remark -s remark -p tinyify > remark.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
