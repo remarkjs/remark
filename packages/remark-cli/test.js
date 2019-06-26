@@ -20,7 +20,7 @@ test('remark-cli', function(t) {
         [
           'Usage: remark [options] [path | glob ...]',
           '',
-          '  CLI to process markdown with remark using plugins',
+          '  CLI to process Markdown with remark using plugins',
           '',
           'Options:',
           '',

@@ -4,25 +4,23 @@
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
-[![Chat][chat-badge]][chat]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-[**remark**][remark] is a markdown processor powered by [plugins][] part of the
-[unified][] [collective][].
+[**unified**][unified] processor to parse and compile Markdown.
+Powered by [plugins][].
+Part of the [unified][] collective.
 
-*   API by [`unified`][unified]
-*   Parses markdown to the tree with [`remark-parse`][parse]
+*   API by [**unified**][unified]
+*   Parses Markdown to a syntax tree with [`remark-parse`][parse]
 *   [**mdast**][mdast] syntax tree
 *   [Plugins][] transform the tree
-*   Compiles the tree to markdown using [`remark-stringify`][stringify]
+*   Stringifies syntax trees to Markdown with [`remark-stringify`][stringify]
 
-Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
-
-* * *
-
-**Announcing the unified collective!  🎉
-[Read more about it on Medium »][announcement]**
+Don’t need the parser?
+Or compiler?
+[That’s OK: use **unified** directly][unified-usage].
 
 ## Sponsors
 
@@ -56,7 +54,9 @@ Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
   </tr>
 </table>
 
-## Installation
+[**Read more about the unified collective on Medium »**][announcement]
+
+## Install
 
 [npm][]:
 
@@ -64,11 +64,11 @@ Don’t need the parser?  Or the compiler?  [That’s OK][unified-usage].
 npm install remark
 ```
 
-## Usage
+## Use
 
 ###### Common example
 
-This example lints markdown and turns it into HTML.
+This example lints Markdown and turns it into HTML.
 
 ```js
 var remark = require('remark')
@@ -99,7 +99,7 @@ Yields:
 
 ###### Settings through data
 
-This example prettifies markdown and configures [`remark-parse`][parse] and
+This example prettifies Markdown and configures [`remark-parse`][parse] and
 [`remark-stringify`][stringify] through [data][].
 
 ```js
@@ -121,7 +121,7 @@ Yields:
 
 ###### Settings through a preset
 
-This example prettifies markdown and configures [`remark-parse`][parse] and
+This example prettifies Markdown and configures [`remark-parse`][parse] and
 [`remark-stringify`][stringify] through a [preset][].
 
 ```js
@@ -142,6 +142,24 @@ Yields:
 ```markdown
 *Emphasis* and **importance**
 ```
+
+## API
+
+[See **unified** for API docs »][unified]
+
+## Contribute
+
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
+
+A curated list of awesome remark resources can be found in [**awesome
+remark**][awesome].
+
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
 
 ## License
 
@@ -165,21 +183,33 @@ Yields:
 
 [size]: https://bundlephobia.com/result?p=remark
 
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
 [chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+[health]: https://github.com/remarkjs/.github
 
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+
+[ideas]: https://github.com/remarkjs/ideas
+
+[awesome]: https://github.com/remarkjs/awesome-remark
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 
 [author]: https://wooorm.com
 
 [npm]: https://docs.npmjs.com/cli/install
-
-[remark]: https://github.com/remarkjs/remark
 
 [unified]: https://github.com/unifiedjs/unified
 
@@ -196,7 +226,5 @@ Yields:
 [preset]: https://github.com/unifiedjs/unified#preset
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
-
-[collective]: https://opencollective.com/unified
 
 [announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
