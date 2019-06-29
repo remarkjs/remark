@@ -41,6 +41,8 @@ See [Creating plugins][create] below.
 *   [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
     – transform all titles with
     [title.sh](https://github.com/zeit/title)
+*   [`remark-code-extra`](https://github.com/samlanning/remark-code-extra)
+    — Add to or transform the HTML output of code blocks (rehype compatible)
 *   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
     – turn code blocks into carbon.now.sh screenshots
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
