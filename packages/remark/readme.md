@@ -66,6 +66,8 @@ npm install remark
 
 ## Use
 
+[See **unified** for more examples »][unified]
+
 ###### Common example
 
 This example lints Markdown and turns it into HTML.

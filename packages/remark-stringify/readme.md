@@ -77,6 +77,8 @@ var processor = unified()
 process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 ```
 
+[See **unified** for more examples »][unified]
+
 ## Table of Contents
 
 *   [API](#api)
