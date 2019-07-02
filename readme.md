@@ -4,17 +4,34 @@
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
 [![Size][size-badge]][size]
-[![Chat][chat-badge]][chat]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-**remark** is a markdown processor powered by [plugins][] part of the
-[unified][] [collective][].
+**remark** is a Markdown processor powered by [plugins][] part of the
+[unified][] collective.
 
-* * *
+## Intro
 
-**Announcing the unified collective!  🎉
-[Read more about it on Medium »][announcement]**
+**remark** is not another Markdown to HTML compiler.
+It can generate and reformat Markdown too.
+Powered by plugins to do all kinds of things: [check Markdown code
+style][remark-lint], [transform safely to React][remark-react], [add a table of
+contents][remark-toc], or [compile to man pages][remark-man].
+
+*   Visit [`unified.js.org`][website] and try its [guides][] for an overview
+*   Read [unified][]’s readme for a technical intro
+*   Browse [awesome remark][awesome] to find out more about the ecosystem
+*   Follow us on [Medium][] and [Twitter][] to see what we’re up to
+*   Check out [Contribute][] below to find out how to help out
+
+This repository contains the following projects:
+
+*   [`remark-parse`][parse] — Parse Markdown documents to syntax trees
+*   [`remark-stringify`][stringify] — Stringify syntax trees to Markdown
+    documents
+*   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
+*   [`remark-cli`][cli] — Command-line interface wrapping `remark`
 
 ## Sponsors
 
@@ -48,44 +65,22 @@
   </tr>
 </table>
 
-## Intro
-
-**remark** not another markdown to HTML compiler.
-It can generate and reformat markdown too.
-Powered by plugins to do all kinds of things: [check markdown code
-style][remark-lint], [transform safely to React][remark-react], [add a table of
-contents][remark-toc], or [compile to man pages][remark-man].
-
-*   Visit [`unified.js.org`][website] and try its [guides][] for an overview
-*   Read [unified][]’s readme for a technical intro
-*   Browse [awesome remark][awesome] to find out more about the ecosystem
-*   Follow us on [Medium][] and [Twitter][] to see what we’re up to
-*   Check out [Contribute][] below to find out how to help out
-
-This repository contains the following projects:
-
-*   [`remark-parse`][parse] — Parse a markdown document to a syntax tree
-*   [`remark-stringify`][stringify]
-    — Stringify a syntax tree to a markdown document
-*   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
-*   [`remark-cli`][cli] — Command-line interface wrapping `remark`
+[**Read more about the unified collective on Medium »**][announcement]
 
 ## Contribute
 
-**remark** is built by people just like you!
-Check out [`contributing.md`][contributing] for ways to get started.
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
+Join us in [spectrum][chat] to chat with the community and contributors.
+
+A curated list of awesome resources can be found in [**awesome
+remark**][awesome].
 
 This project has a [Code of Conduct][coc].
 By interacting with this repository, organisation, or community you agree to
 abide by its terms.
-
-Want to chat with the community and contributors?
-Join us in [spectrum][chat]!
-
-Have an idea for a cool new utility or tool?
-That’s great!
-If you want feedback, help, or just to share it with the world you can do so by
-creating an issue in the [`remarkjs/ideas`][ideas] repository!
 
 ## License
 
@@ -145,13 +140,17 @@ creating an issue in the [`remarkjs/ideas`][ideas] repository!
 
 [contribute]: #contribute
 
-[contributing]: contributing.md
+[health]: https://github.com/remarkjs/.github
 
-[coc]: code-of-conduct.md
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
 
 [ideas]: https://github.com/remarkjs/ideas
 
-[awesome]: https://github.com/remarkjs/awesome
+[awesome]: https://github.com/remarkjs/awesome-remark
 
 [collective]: https://opencollective.com/unified
 

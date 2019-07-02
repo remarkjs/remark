@@ -3,23 +3,18 @@
 [![Build][build-badge]][build]
 [![Coverage][coverage-badge]][coverage]
 [![Downloads][downloads-badge]][downloads]
-[![Chat][chat-badge]][chat]
 [![Sponsors][sponsors-badge]][collective]
 [![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-Command-line interface for [**remark**][remark].
+Command line interface for [**remark**][remark].
 
 *   Loads [`remark-` plugins][plugins]
-*   Searches for [markdown extensions][markdown-extensions]
+*   Searches for [Markdown extensions][markdown-extensions]
 *   Ignores paths found in [`.remarkignore` files][ignore-file]
 *   Loads configuration from [`.remarkrc`, `.remarkrc.js` files][config-file]
 *   Uses configuration from [`remarkConfig` fields in `package.json`
     files][config-file]
-
-* * *
-
-**Announcing the unified collective!  🎉
-[Read more about it on Medium »][announcement]**
 
 ## Sponsors
 
@@ -53,7 +48,9 @@ Command-line interface for [**remark**][remark].
   </tr>
 </table>
 
-## Installation
+[**Read more about the unified collective on Medium »**][announcement]
+
+## Install
 
 [npm][]:
 
@@ -61,7 +58,7 @@ Command-line interface for [**remark**][remark].
 npm install remark-cli
 ```
 
-## Usage
+## Use
 
 ```sh
 # Add a table of contents to `readme.md`
@@ -74,13 +71,13 @@ $ remark . --use preset-lint-markdown-style-guide
 
 ## CLI
 
-See [**unified-args**][unified-args], which provides the interface,
-for more information on all available options.
+See [`unified-args`][unified-args], which provides the interface, for more
+info on all available options.
 
 ```txt
 Usage: remark [options] [path | glob ...]
 
-  CLI to process markdown with remark using plugins
+  CLI to process Markdown with remark using plugins
 
 Options:
 
@@ -119,6 +116,20 @@ Examples:
   $ remark . -o
 ```
 
+## Contribute
+
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
+
+A curated list of awesome remark resources can be found in [**awesome
+remark**][awesome].
+
+This project has a [Code of Conduct][coc].
+By interacting with this repository, organisation, or community you agree to
+abide by its terms.
+
 ## License
 
 [MIT][license] © [Titus Wormer][author]
@@ -137,15 +148,27 @@ Examples:
 
 [downloads]: https://www.npmjs.com/package/remark-cli
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
-
-[chat]: https://spectrum.chat/unified/remark
-
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
 [backers-badge]: https://opencollective.com/unified/backers/badge.svg
 
 [collective]: https://opencollective.com/unified
+
+[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+
+[chat]: https://spectrum.chat/unified/remark
+
+[health]: https://github.com/remarkjs/.github
+
+[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+
+[support]: https://github.com/remarkjs/.github/blob/master/support.md
+
+[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+
+[ideas]: https://github.com/remarkjs/ideas
+
+[awesome]: https://github.com/remarkjs/awesome-remark
 
 [license]: https://github.com/remarkjs/remark/blob/master/license
 

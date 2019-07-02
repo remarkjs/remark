@@ -1,7 +1,5 @@
 'use strict'
 
-/* eslint-disable max-params */
-
 var trim = require('trim')
 var repeat = require('repeat-string')
 var decimal = require('is-decimal')
@@ -434,6 +432,7 @@ function normalListItem(ctx, value, position) {
 
   return trimmedLines.join(lineFeed)
 
+  /* eslint-disable-next-line max-params */
   function replacer($0, $1, $2, $3, $4) {
     bullet = $1 + $2 + $3
     rest = $4

@@ -12,7 +12,7 @@ var leftParenthesis = '('
 var rightParenthesis = ')'
 
 // Expression for a protocol:
-// See <http://en.wikipedia.org/wiki/URI_scheme#Generic_syntax>.
+// See <https://en.wikipedia.org/wiki/Uniform_Resource_Identifier#Generic_syntax>.
 var protocol = /^[a-z][a-z+.-]+:\/?/i
 
 // Stringify a link.

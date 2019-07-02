@@ -1,10 +1,14 @@
 {
   "name": "remark-parse",
   "version": "6.0.3",
-  "description": "Markdown parser for remark",
+  "description": "remark plugin to parse Markdown",
   "license": "MIT",
   "keywords": [
+    "unified",
+    "remark",
+    "plugin",
     "markdown",
+    "mdast",
     "abstract",
     "syntax",
     "tree",
@@ -47,8 +51,8 @@
   },
   "devDependencies": {
     "tape": "^4.9.1",
-    "unified": "^7.0.0",
-    "vfile": "^3.0.0"
+    "unified": "^8.0.0",
+    "vfile": "^4.0.0"
   },
   "scripts": {
     "test": "tape test.js"

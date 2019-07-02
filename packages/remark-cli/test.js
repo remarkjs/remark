@@ -14,13 +14,13 @@ test('remark-cli', function(t) {
 
     st.plan(1)
 
-    execa.stdout(bin, ['--help']).then(function(result) {
+    execa(bin, ['--help']).then(function(result) {
       st.equal(
-        result,
+        result.stdout,
         [
           'Usage: remark [options] [path | glob ...]',
           '',
-          '  CLI to process markdown with remark using plugins',
+          '  CLI to process Markdown with remark using plugins',
           '',
           'Options:',
           '',
@@ -68,14 +68,14 @@ test('remark-cli', function(t) {
 
     st.plan(2)
 
-    execa.stdout(bin, ['--version']).then(function(result) {
+    execa(bin, ['--version']).then(function(result) {
       st.ok(
-        /remark: \d+\.\d+\.\d+/.test(result),
+        /remark: \d+\.\d+\.\d+/.test(result.stdout),
         'should include remark version'
       )
 
       st.ok(
-        /remark-cli: \d+\.\d+\.\d+/.test(result),
+        /remark-cli: \d+\.\d+\.\d+/.test(result.stdout),
         'should include remark-cli version'
       )
     })
