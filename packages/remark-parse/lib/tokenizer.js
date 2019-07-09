@@ -304,7 +304,7 @@ function mergeText(prev, node) {
 
 // Merge two blockquotes: `node` into `prev`, unless in CommonMark mode.
 function mergeBlockquote(prev, node) {
-  if (this.options.commonmark) {
+  if (this.options.commonmark || this.options.gfm) {
     return node
   }
 
