@@ -302,9 +302,9 @@ function mergeText(prev, node) {
   return prev
 }
 
-// Merge two blockquotes: `node` into `prev`, unless in CommonMark mode.
+// Merge two blockquotes: `node` into `prev`, unless in CommonMark or gfm modes.
 function mergeBlockquote(prev, node) {
-  if (this.options.commonmark) {
+  if (this.options.commonmark || this.options.gfm) {
     return node
   }
 

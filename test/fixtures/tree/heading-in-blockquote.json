@@ -135,7 +135,27 @@
               1
             ]
           }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 6,
+          "column": 1,
+          "offset": 58
         },
+        "end": {
+          "line": 7,
+          "column": 4,
+          "offset": 123
+        },
+        "indent": [
+          1
+        ]
+      }
+    },
+    {
+      "type": "blockquote",
+      "children": [
         {
           "type": "heading",
           "depth": 2,
@@ -177,9 +197,9 @@
       ],
       "position": {
         "start": {
-          "line": 6,
+          "line": 9,
           "column": 1,
-          "offset": 58
+          "offset": 125
         },
         "end": {
           "line": 10,
@@ -187,9 +207,6 @@
           "offset": 158
         },
         "indent": [
-          1,
-          1,
-          1,
           1
         ]
       }

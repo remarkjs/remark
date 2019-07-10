@@ -62,7 +62,7 @@
           "children": [
             {
               "type": "text",
-              "value": "This is, in commonmark mode, another blockquote.",
+              "value": "This is, in commonmark mode and gfm mode, another blockquote.",
               "position": {
                 "start": {
                   "line": 3,
@@ -71,8 +71,8 @@
                 },
                 "end": {
                   "line": 3,
-                  "column": 51,
-                  "offset": 75
+                  "column": 64,
+                  "offset": 88
                 },
                 "indent": []
               }
@@ -86,8 +86,8 @@
             },
             "end": {
               "line": 3,
-              "column": 51,
-              "offset": 75
+              "column": 64,
+              "offset": 88
             },
             "indent": []
           }
@@ -101,8 +101,8 @@
         },
         "end": {
           "line": 3,
-          "column": 51,
-          "offset": 75
+          "column": 64,
+          "offset": 88
         },
         "indent": []
       }
@@ -117,7 +117,7 @@
     "end": {
       "line": 4,
       "column": 1,
-      "offset": 76
+      "offset": 89
     }
   }
 }
