@@ -12,8 +12,8 @@ declare class RemarkParser extends Parser {
 }
 
 declare namespace remarkParse {
-  interface Parse extends Attacher {
-    (options: RemarkParseOptions): void
+  interface Parse extends Attacher<Partial<RemarkParseOptions>> {
+    (options: Partial<RemarkParseOptions>): void
     Parser: typeof RemarkParser
   }
 

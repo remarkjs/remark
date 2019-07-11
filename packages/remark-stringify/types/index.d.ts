@@ -10,7 +10,7 @@ declare class RemarkCompiler extends Compiler {
 }
 
 declare namespace remarkStringify {
-  interface Stringify extends Attacher {
+  interface Stringify extends Attacher<Partial<RemarkStringifyOptions>> {
     Compiler: typeof RemarkCompiler
     (this: Processor, options?: Partial<RemarkStringifyOptions>): void
   }

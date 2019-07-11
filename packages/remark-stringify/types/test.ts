@@ -2,20 +2,34 @@ import remarkStringify = require('remark-stringify')
 import unified = require('unified')
 import {Node, Parent} from 'unist'
 
-const stringifyOptions: Partial<remarkStringify.RemarkStringifyOptions> = {
+const inferredStringifyOptions = {
   gfm: true,
-  bullet: '*',
   fences: true,
-  fence: '`',
   incrementListMarker: false
 }
 
-unified().use(remarkStringify, stringifyOptions)
+unified().use(remarkStringify, inferredStringifyOptions)
 
-const badStringifyOptions: Partial<remarkStringify.RemarkStringifyOptions> = {
-  // $ExpectError
+// These cannot be automatically inferred by TypeScript
+const nonInferredStringifyOptions: Partial<
+  remarkStringify.RemarkStringifyOptions
+> = {
+  fence: '~',
+  bullet: '+',
+  listItemIndent: 'tab',
+  rule: '-',
+  strong: '_',
+  emphasis: '*'
+}
+
+unified().use(remarkStringify, nonInferredStringifyOptions)
+
+const badStringifyOptions = {
   gfm: 'true'
 }
+
+// $ExpectError
+unified().use(remarkStringify, badStringifyOptions)
 
 function gap(this: unified.Processor) {
   const Compiler = this.Compiler as typeof remarkStringify.Compiler
@@ -24,7 +38,11 @@ function gap(this: unified.Processor) {
 
   visitors.heading = heading
 
-  function heading(this: unified.Processor, node: Node, parent?: Parent) {
+  function heading(
+    this: unified.Processor,
+    node: Node & {depth: number},
+    parent?: Parent
+  ) {
     return (node.depth === 2 ? '\n' : '') + original.apply(this, [node, parent])
   }
 }

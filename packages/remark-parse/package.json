@@ -51,7 +51,7 @@
   },
   "devDependencies": {
     "tape": "^4.9.1",
-    "unified": "^8.0.0",
+    "unified": "^8.1.0",
     "vfile": "^4.0.0"
   },
   "scripts": {

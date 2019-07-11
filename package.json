@@ -35,7 +35,7 @@
     "test-api": "tape packages/*/test.js test/index.js",
     "test-api-extensive": "TEST_EXTENDED=true npm run test-api",
     "test-coverage": "nyc --reporter lcov tape \"test/index.js\" \"packages/*/test.js\"",
-    "test-types": "dtslint packages/remark-parse/types && dtslint packages/remark-stringify/types",
+    "test-types": "dtslint packages/remark-parse/types && dtslint packages/remark-stringify/types && dtslint packages/remark/types",
     "test": "npm run format && npm run build && npm run test-coverage && npm run test-types"
   },
   "nyc": {
