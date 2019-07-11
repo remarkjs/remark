@@ -187,9 +187,9 @@
               "children": [
                 {
                   "type": "linkReference",
-                  "identifier": "^bar",
-                  "label": "^bar",
-                  "referenceType": "full",
+                  "identifier": "foo",
+                  "label": "foo",
+                  "referenceType": "shortcut",
                   "children": [
                     {
                       "type": "text",
@@ -214,6 +214,24 @@
                       "line": 3,
                       "column": 4,
                       "offset": 32
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 9,
+                      "offset": 37
+                    },
+                    "indent": []
+                  }
+                },
+                {
+                  "type": "footnoteReference",
+                  "identifier": "bar",
+                  "label": "bar",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 9,
+                      "offset": 37
                     },
                     "end": {
                       "line": 3,

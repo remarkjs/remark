@@ -23,6 +23,7 @@ var caret = '^'
 function reference(eat, value, silent) {
   var self = this
   var commonmark = self.options.commonmark
+  var footnotes = self.options.footnotes
   var character = value.charAt(0)
   var index = 0
   var length = value.length
@@ -55,7 +56,7 @@ function reference(eat, value, silent) {
   queue = ''
 
   // Check whether we’re eating a footnote.
-  if (self.options.footnotes && value.charAt(index) === caret) {
+  if (footnotes && value.charAt(index) === caret) {
     // Exit if `![^` is found, so the `!` will be seen as text after this,
     // and we’ll enter this function again when `[^` is found.
     if (type === image) {
@@ -123,8 +124,13 @@ function reference(eat, value, silent) {
 
   character = value.charAt(index)
 
-  // Inline footnotes cannot have an identifier.
-  if (type !== footnote && character === leftSquareBracket) {
+  // Inline footnotes cannot have a label.
+  // If footnotes are enabled, link labels cannot start with a caret.
+  if (
+    type !== footnote &&
+    character === leftSquareBracket &&
+    (!footnotes || value.charAt(index + 1) !== caret)
+  ) {
     identifier = ''
     queue += character
     index++
