@@ -23,9 +23,9 @@
         },
         {
           "type": "linkReference",
-          "identifier": "^foo",
-          "label": "^foo",
-          "referenceType": "full",
+          "identifier": "defined",
+          "label": "defined",
+          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -50,6 +50,24 @@
               "line": 1,
               "column": 21,
               "offset": 20
+            },
+            "end": {
+              "line": 1,
+              "column": 30,
+              "offset": 29
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "footnoteReference",
+          "identifier": "foo",
+          "label": "foo",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 30,
+              "offset": 29
             },
             "end": {
               "line": 1,
