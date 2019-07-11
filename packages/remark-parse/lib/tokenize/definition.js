@@ -4,8 +4,6 @@ var whitespace = require('is-whitespace-character')
 var normalize = require('../util/normalize')
 
 module.exports = definition
-definition.notInList = true
-definition.notInBlock = true
 
 var quotationMark = '"'
 var apostrophe = "'"
