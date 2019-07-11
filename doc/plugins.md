@@ -43,6 +43,8 @@ See [Creating plugins][create] below.
     [title.sh](https://github.com/zeit/title)
 *   [`remark-code-extra`](https://github.com/samlanning/remark-code-extra)
     — Add to or transform the HTML output of code blocks (rehype compatible)
+*   [`remark-code-frontmatter`](https://github.com/samlanning/remark-code-frontmatter)
+    — Extract frontmatter from markdown code blocks    
 *   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
     – turn code blocks into carbon.now.sh screenshots
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
