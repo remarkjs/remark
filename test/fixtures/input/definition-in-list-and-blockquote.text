@@ -1,0 +1,9 @@
+[alpha][1], [bravo][2].
+
+* Definition in list:
+
+  [1]: alpha
+
+> Definition in blockquote:
+>
+> [2]: bravo
