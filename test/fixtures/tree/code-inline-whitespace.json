@@ -1,0 +1,107 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "Markdown strips regular whitespaces: ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 38,
+              "offset": 37
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "hello",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 38,
+              "offset": 37
+            },
+            "end": {
+              "line": 1,
+              "column": 51,
+              "offset": 50
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nHowever it preserves non-breaking whitespaces: ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 51,
+              "offset": 50
+            },
+            "end": {
+              "line": 2,
+              "column": 48,
+              "offset": 98
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "   hello   ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 48,
+              "offset": 98
+            },
+            "end": {
+              "line": 2,
+              "column": 61,
+              "offset": 111
+            },
+            "indent": []
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 61,
+          "offset": 111
+        },
+        "indent": [
+          1
+        ]
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 3,
+      "column": 1,
+      "offset": 112
+    }
+  }
+}
