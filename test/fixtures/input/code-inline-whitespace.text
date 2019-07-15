@@ -1,0 +1,3 @@
+Markdown strips regular whitespaces: `   hello   `
+Including tabs: `	hello	`
+However it preserves non-breaking whitespaces: `   hello   `
