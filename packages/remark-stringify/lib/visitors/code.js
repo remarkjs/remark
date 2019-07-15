@@ -58,7 +58,13 @@ function code(node, parent) {
   info = self.encode(self.escape(info, node))
 
   // Without (needed) fences.
-  if (!info && !options.fences && value) {
+  if (
+    !info &&
+    !options.fences &&
+    value &&
+    value.charAt(0) !== lineFeed &&
+    value.charAt(value.length - 1) !== lineFeed
+  ) {
     // Throw when pedantic, in a list item which isn’t compiled using a tab.
     if (
       parent &&
