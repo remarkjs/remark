@@ -1,7 +1,5 @@
 'use strict'
 
-var trim = require('trim-trailing-lines')
-
 module.exports = fencedCode
 
 var lineFeed = '\n'
@@ -142,6 +140,7 @@ function fencedCode(eat, value, silent) {
   exdentedClosing = ''
   content = ''
   exdentedContent = ''
+  var skip = true
 
   // Eat content.
   while (index < length) {
@@ -158,13 +157,13 @@ function fencedCode(eat, value, silent) {
       continue
     }
 
-    // Add the newline to `subvalue` if its the first character.  Otherwise,
-    // add it to the `closing` queue.
-    if (content) {
+    // The first line feed is ignored. Others aren’t.
+    if (skip) {
+      subvalue += character
+      skip = false
+    } else {
       closing += character
       exdentedClosing += character
-    } else {
-      subvalue += character
     }
 
     queue = ''
@@ -250,6 +249,6 @@ function fencedCode(eat, value, silent) {
     type: 'code',
     lang: lang || flag || null,
     meta: meta || null,
-    value: trim(exdentedContent)
+    value: exdentedContent
   })
 }
