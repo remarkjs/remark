@@ -40,7 +40,7 @@
         },
         {
           "type": "text",
-          "value": "\nHowever it preserves non-breaking whitespaces: ",
+          "value": "\nIncluding tabs: ",
           "position": {
             "start": {
               "line": 1,
@@ -49,8 +49,44 @@
             },
             "end": {
               "line": 2,
+              "column": 17,
+              "offset": 67
+            },
+            "indent": [
+              1
+            ]
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "hello",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 17,
+              "offset": 67
+            },
+            "end": {
+              "line": 2,
+              "column": 26,
+              "offset": 76
+            },
+            "indent": []
+          }
+        },
+        {
+          "type": "text",
+          "value": "\nHowever it preserves non-breaking whitespaces: ",
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 26,
+              "offset": 76
+            },
+            "end": {
+              "line": 3,
               "column": 48,
-              "offset": 98
+              "offset": 124
             },
             "indent": [
               1
@@ -62,14 +98,14 @@
           "value": "   hello   ",
           "position": {
             "start": {
-              "line": 2,
+              "line": 3,
               "column": 48,
-              "offset": 98
+              "offset": 124
             },
             "end": {
-              "line": 2,
+              "line": 3,
               "column": 61,
-              "offset": 111
+              "offset": 137
             },
             "indent": []
           }
@@ -82,11 +118,12 @@
           "offset": 0
         },
         "end": {
-          "line": 2,
+          "line": 3,
           "column": 61,
-          "offset": 111
+          "offset": 137
         },
         "indent": [
+          1,
           1
         ]
       }
@@ -99,9 +136,9 @@
       "offset": 0
     },
     "end": {
-      "line": 3,
+      "line": 4,
       "column": 1,
-      "offset": 112
+      "offset": 138
     }
   }
 }

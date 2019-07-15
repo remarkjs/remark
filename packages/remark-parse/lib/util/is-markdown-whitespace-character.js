@@ -10,6 +10,7 @@ var carriageReturn = 13 // '\r'
 var space = 32 // ' '
 
 function whitespace(char) {
+  /* istanbul ignore next - `number` handling for future */
   var code = typeof char === 'number' ? char : char.charCodeAt(0)
 
   switch (code) {
