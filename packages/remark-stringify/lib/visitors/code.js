@@ -8,6 +8,8 @@ module.exports = code
 
 var lineFeed = '\n'
 var space = ' '
+var tilde = '~'
+var graveAccent = '`'
 
 // Stringify code.
 // Creates indented code when:
@@ -71,6 +73,12 @@ function code(node, parent) {
     }
 
     return pad(value, 1)
+  }
+
+  // Backticks in the info string don’t work with backtick fenced code.
+  // Backticks (and tildes) are fine in tilde fenced code.
+  if (marker === graveAccent && info.indexOf(graveAccent) !== -1) {
+    marker = tilde
   }
 
   fence = repeat(marker, Math.max(streak(value, marker) + 1, 3))

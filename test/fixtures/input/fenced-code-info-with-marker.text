@@ -1,0 +1,28 @@
+If the info string comes after a backtick fence, it may not contain any backtick
+characters.
+The reason for this restriction is that otherwise some inline code would be
+incorrectly interpreted as the beginning of a fenced code block.
+
+Tildes in info strings are fine:
+
+```js filename=~/.bashrc
+console.log(1)
+```
+
+Tildes in info strings are fine after tilde fences:
+
+~~~js filename=~/.bashrc
+console.log(1)
+~~~
+
+Backticks in info strings are fine after tilde fences:
+
+~~~js title=`.bashrc`
+console.log(1)
+~~~
+
+Backticks in info strings are **not** fine after backtick fences:
+
+```js title=`.bashrc`
+console.log(1)
+```
