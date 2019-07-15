@@ -100,8 +100,7 @@ function fencedCode(eat, value, silent) {
 
     if (
       character === lineFeed ||
-      character === tilde ||
-      character === graveAccent
+      (marker === graveAccent && character === marker)
     ) {
       break
     }
