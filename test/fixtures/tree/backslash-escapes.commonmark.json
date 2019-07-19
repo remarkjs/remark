@@ -3967,7 +3967,7 @@
         },
         {
           "type": "inlineCode",
-          "value": "\\",
+          "value": "\\\n",
           "position": {
             "start": {
               "line": 218,

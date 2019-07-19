@@ -644,8 +644,8 @@
               "type": "tableCell",
               "children": [
                 {
-                  "type": "inlineCode",
-                  "value": "",
+                  "type": "text",
+                  "value": "``",
                   "position": {
                     "start": {
                       "line": 17,
@@ -749,8 +749,8 @@
               "type": "tableCell",
               "children": [
                 {
-                  "type": "inlineCode",
-                  "value": "",
+                  "type": "text",
+                  "value": "``",
                   "position": {
                     "start": {
                       "line": 18,
@@ -784,8 +784,8 @@
               "type": "tableCell",
               "children": [
                 {
-                  "type": "inlineCode",
-                  "value": "",
+                  "type": "text",
+                  "value": "``",
                   "position": {
                     "start": {
                       "line": 18,

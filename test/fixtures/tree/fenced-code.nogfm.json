@@ -90,7 +90,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "longfence\nQ: What do you call a tall person who sells stolen goods?",
+          "value": "longfence\nQ: What do you call a tall person who sells stolen goods?\n",
           "position": {
             "start": {
               "line": 10,

@@ -315,7 +315,7 @@
         },
         {
           "type": "inlineCode",
-          "value": "|    |\n| b |",
+          "value": "|    |\n| b |  ",
           "position": {
             "start": {
               "line": 17,
@@ -334,7 +334,7 @@
         },
         {
           "type": "text",
-          "value": " | ",
+          "value": " | `",
           "position": {
             "start": {
               "line": 18,
@@ -343,42 +343,25 @@
             },
             "end": {
               "line": 18,
-              "column": 14,
-              "offset": 266
+              "column": 15,
+              "offset": 267
             },
             "indent": []
           }
         },
         {
           "type": "inlineCode",
-          "value": "",
+          "value": "|\n| c |   ",
           "position": {
             "start": {
               "line": 18,
-              "column": 14,
-              "offset": 266
-            },
-            "end": {
-              "line": 18,
-              "column": 16,
-              "offset": 268
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " |\n| c |    ",
-          "position": {
-            "start": {
-              "line": 18,
-              "column": 16,
-              "offset": 268
+              "column": 15,
+              "offset": 267
             },
             "end": {
               "line": 19,
-              "column": 10,
-              "offset": 280
+              "column": 11,
+              "offset": 281
             },
             "indent": [
               1
@@ -386,35 +369,35 @@
           }
         },
         {
-          "type": "inlineCode",
-          "value": "|",
+          "type": "text",
+          "value": " | ",
           "position": {
             "start": {
               "line": 19,
-              "column": 10,
-              "offset": 280
+              "column": 11,
+              "offset": 281
             },
             "end": {
               "line": 19,
-              "column": 15,
-              "offset": 285
+              "column": 14,
+              "offset": 284
             },
             "indent": []
           }
         },
         {
-          "type": "text",
-          "value": "  |\n| d |     ",
+          "type": "inlineCode",
+          "value": " |\n| d |    ",
           "position": {
             "start": {
               "line": 19,
-              "column": 15,
-              "offset": 285
+              "column": 14,
+              "offset": 284
             },
             "end": {
               "line": 20,
-              "column": 11,
-              "offset": 299
+              "column": 12,
+              "offset": 300
             },
             "indent": [
               1
@@ -422,35 +405,35 @@
           }
         },
         {
-          "type": "inlineCode",
+          "type": "text",
           "value": "|",
           "position": {
             "start": {
               "line": 20,
-              "column": 11,
-              "offset": 299
+              "column": 12,
+              "offset": 300
             },
             "end": {
               "line": 20,
-              "column": 14,
-              "offset": 302
+              "column": 13,
+              "offset": 301
             },
             "indent": []
           }
         },
         {
-          "type": "text",
-          "value": "   |\n| e | ",
+          "type": "inlineCode",
+          "value": "  |\n| e |",
           "position": {
             "start": {
               "line": 20,
-              "column": 14,
-              "offset": 302
+              "column": 13,
+              "offset": 301
             },
             "end": {
               "line": 21,
-              "column": 7,
-              "offset": 313
+              "column": 8,
+              "offset": 314
             },
             "indent": [
               1
@@ -458,30 +441,13 @@
           }
         },
         {
-          "type": "inlineCode",
-          "value": "\\|",
-          "position": {
-            "start": {
-              "line": 21,
-              "column": 7,
-              "offset": 313
-            },
-            "end": {
-              "line": 21,
-              "column": 11,
-              "offset": 317
-            },
-            "indent": []
-          }
-        },
-        {
           "type": "text",
-          "value": " |    |\n| f |   \\| |    |",
+          "value": "\\|` |    |\n| f |   \\| |    |",
           "position": {
             "start": {
               "line": 21,
-              "column": 11,
-              "offset": 317
+              "column": 8,
+              "offset": 314
             },
             "end": {
               "line": 22,

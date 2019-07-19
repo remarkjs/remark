@@ -4,7 +4,7 @@ Fix for backticks within HTML tag: <span attr='`ticks`'>like this</span>
 
 Here's how you put `` `backticks` `` in a code span.
 
-Additionally, empty code spans are also supported: ``.
+Empty code spans are not supported: ``.
 
 Here’s an example, `` foo ` bar  ``.
 
@@ -20,3 +20,10 @@ So is this `foo   bar
 And this `foo `` bar`
 
 And `this\`but this is text`.
+
+Whitespace only: ` `.
+
+Whitespace only: `    `.
+
+Whitespace only: `
+`.

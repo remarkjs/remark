@@ -223,7 +223,7 @@
             },
             {
               "type": "text",
-              "value": "\naNewCodeBlockFollowingTheBlockQuote();\n`",
+              "value": "\naNewCodeBlockFollowingTheBlockQuote();\n```",
               "position": {
                 "start": {
                   "line": 15,
@@ -232,30 +232,13 @@
                 },
                 "end": {
                   "line": 17,
-                  "column": 2,
-                  "offset": 214
+                  "column": 4,
+                  "offset": 216
                 },
                 "indent": [
                   1,
                   1
                 ]
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "",
-              "position": {
-                "start": {
-                  "line": 17,
-                  "column": 2,
-                  "offset": 214
-                },
-                "end": {
-                  "line": 17,
-                  "column": 4,
-                  "offset": 216
-                },
-                "indent": []
               }
             }
           ],

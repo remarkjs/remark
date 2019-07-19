@@ -5,8 +5,10 @@ var repeat = require('repeat-string')
 
 module.exports = inlineCode
 
-var space = ' '
-var graveAccent = '`'
+var graveAccentChar = '`'
+var lineFeed = 10 //  '\n'
+var space = 32 // ' '
+var graveAccent = 96 //  '`'
 
 // Stringify inline code.
 //
@@ -25,17 +27,37 @@ var graveAccent = '`'
 // ```
 function inlineCode(node) {
   var value = node.value
-  var ticks = repeat(graveAccent, streak(value, graveAccent) + 1)
+  var ticks = repeat(graveAccentChar, streak(value, graveAccentChar) + 1)
   var start = ticks
   var end = ticks
+  var head = value.charCodeAt(0)
+  var tail = value.charCodeAt(value.length - 1)
+  var wrap = false
+  var index
+  var length
 
-  if (value.charAt(0) === graveAccent) {
-    start += space
+  if (head === graveAccent || tail === graveAccent) {
+    wrap = true
+  } else if (value.length > 2 && ws(head) && ws(tail)) {
+    index = 1
+    length = value.length - 1
+
+    while (++index < length) {
+      if (!ws(value.charCodeAt(index))) {
+        wrap = true
+        break
+      }
+    }
   }
 
-  if (value.charAt(value.length - 1) === graveAccent) {
-    end = space + end
+  if (wrap) {
+    start += ' '
+    end = ' ' + end
   }
 
   return start + value + end
+}
+
+function ws(code) {
+  return code === lineFeed || code === space
 }

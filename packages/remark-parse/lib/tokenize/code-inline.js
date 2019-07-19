@@ -6,73 +6,63 @@ var whitespace = require('../util/is-markdown-whitespace-character')
 module.exports = inlineCode
 inlineCode.locator = locate
 
-var graveAccent = '`'
+var lineFeed = 10 //  '\n'
+var space = 32 // ' '
+var graveAccent = 96 //  '`'
 
 function inlineCode(eat, value, silent) {
   var length = value.length
   var index = 0
-  var queue = ''
-  var tickQueue = ''
-  var contentQueue
-  var subqueue
-  var count
-  var openingCount
-  var subvalue
-  var character
-  var found
+  var openingFenceEnd
+  var closingFenceStart
+  var closingFenceEnd
+  var code
   var next
+  var found
 
   while (index < length) {
-    if (value.charAt(index) !== graveAccent) {
+    if (value.charCodeAt(index) !== graveAccent) {
       break
     }
 
-    queue += graveAccent
     index++
   }
 
-  if (!queue) {
+  if (index === 0 || index === length) {
     return
   }
 
-  subvalue = queue
-  openingCount = index
-  queue = ''
-  next = value.charAt(index)
-  count = 0
+  openingFenceEnd = index
+  next = value.charCodeAt(index)
 
   while (index < length) {
-    character = next
-    next = value.charAt(index + 1)
+    code = next
+    next = value.charCodeAt(index + 1)
 
-    if (character === graveAccent) {
-      count++
-      tickQueue += character
-    } else {
-      count = 0
-      queue += character
-    }
+    if (code === graveAccent) {
+      if (closingFenceStart === undefined) {
+        closingFenceStart = index
+      }
 
-    if (count && next !== graveAccent) {
-      if (count === openingCount) {
-        subvalue += queue + tickQueue
+      closingFenceEnd = index + 1
+
+      if (
+        next !== graveAccent &&
+        closingFenceEnd - closingFenceStart === openingFenceEnd
+      ) {
         found = true
         break
       }
-
-      queue += tickQueue
-      tickQueue = ''
+    } else if (closingFenceStart !== undefined) {
+      closingFenceStart = undefined
+      closingFenceEnd = undefined
     }
 
     index++
   }
 
   if (!found) {
-    if (openingCount % 2 !== 0) {
-      return
-    }
-
-    queue = ''
+    return
   }
 
   /* istanbul ignore if - never used (yet) */
@@ -80,29 +70,41 @@ function inlineCode(eat, value, silent) {
     return true
   }
 
-  contentQueue = ''
-  subqueue = ''
-  length = queue.length
-  index = -1
+  // Remove the initial and final space (or line feed), iff they exist and there
+  // are non-space characters in the content.
+  index = openingFenceEnd
+  length = closingFenceStart
+  code = value.charCodeAt(index)
+  next = value.charCodeAt(length - 1)
+  found = false
 
-  while (++index < length) {
-    character = queue.charAt(index)
+  if (
+    length - index > 2 &&
+    (code === space || code === lineFeed) &&
+    (next === space || next === lineFeed)
+  ) {
+    index++
+    length--
 
-    if (whitespace(character)) {
-      subqueue += character
-      continue
-    }
+    while (index < length) {
+      code = value.charCodeAt(index)
 
-    if (subqueue) {
-      if (contentQueue) {
-        contentQueue += subqueue
+      if (code !== space && code !== lineFeed) {
+        found = true
+        break
       }
 
-      subqueue = ''
+      index++
     }
 
-    contentQueue += character
+    if (found === true) {
+      openingFenceEnd++
+      closingFenceStart--
+    }
   }
 
-  return eat(subvalue)({type: 'inlineCode', value: contentQueue})
+  return eat(value.slice(0, closingFenceEnd))({
+    type: 'inlineCode',
+    value: value.slice(openingFenceEnd, closingFenceStart)
+  })
 }
