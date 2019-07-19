@@ -3,14 +3,15 @@
 import {Attacher, Compiler, Processor} from 'unified'
 import {Node, Parent} from 'unist'
 
-declare class RemarkCompiler extends Compiler {
+declare class RemarkCompiler implements Compiler {
+  compile(): string
   visitors: {
     [key: string]: remarkStringify.Visitor
   }
 }
 
 declare namespace remarkStringify {
-  interface Stringify extends Attacher<Partial<RemarkStringifyOptions>> {
+  interface Stringify extends Attacher<[Partial<RemarkStringifyOptions>]> {
     Compiler: typeof RemarkCompiler
     (this: Processor, options?: Partial<RemarkStringifyOptions>): void
   }

@@ -3,7 +3,8 @@
 import {Node, Parent, Position} from 'unist'
 import {Parser, Attacher} from 'unified'
 
-declare class RemarkParser extends Parser {
+declare class RemarkParser implements Parser {
+  parse(): Node
   blockMethods: string[]
   inlineTokenizers: {
     [key: string]: remarkParse.Tokenizer
@@ -12,7 +13,7 @@ declare class RemarkParser extends Parser {
 }
 
 declare namespace remarkParse {
-  interface Parse extends Attacher<Partial<RemarkParseOptions>> {
+  interface Parse extends Attacher<[Partial<RemarkParseOptions>]> {
     (options: Partial<RemarkParseOptions>): void
     Parser: typeof RemarkParser
   }

@@ -38,12 +38,13 @@ function gap(this: unified.Processor) {
 
   visitors.heading = heading
 
-  function heading(
-    this: unified.Processor,
-    node: Node & {depth: number},
-    parent?: Parent
-  ) {
-    return (node.depth === 2 ? '\n' : '') + original.apply(this, [node, parent])
+  function heading(this: unified.Processor, node: Node, parent?: Parent) {
+    // FIXME: remove need for explicit 'as' casting
+    const headingNode = node as (Node & {depth: number})
+    return (
+      (headingNode.depth === 2 ? '\n' : '') +
+      original.apply(this, [node, parent])
+    )
   }
 }
 
