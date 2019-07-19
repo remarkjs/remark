@@ -148,46 +148,12 @@
       "children": [
         {
           "type": "text",
-          "value": "[the ",
+          "value": "[the `` ",
           "position": {
             "start": {
               "line": 5,
               "column": 1,
               "offset": 58
-            },
-            "end": {
-              "line": 5,
-              "column": 6,
-              "offset": 63
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 6,
-              "offset": 63
-            },
-            "end": {
-              "line": 5,
-              "column": 8,
-              "offset": 65
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 8,
-              "offset": 65
             },
             "end": {
               "line": 5,
@@ -204,46 +170,12 @@
           "children": [
             {
               "type": "text",
-              "value": " `",
+              "value": " ``` character",
               "position": {
                 "start": {
                   "line": 5,
                   "column": 10,
                   "offset": 67
-                },
-                "end": {
-                  "line": 5,
-                  "column": 12,
-                  "offset": 69
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 12,
-                  "offset": 69
-                },
-                "end": {
-                  "line": 5,
-                  "column": 14,
-                  "offset": 71
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " character",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 14,
-                  "offset": 71
                 },
                 "end": {
                   "line": 5,

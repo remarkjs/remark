@@ -307,7 +307,7 @@
       "children": [
         {
           "type": "text",
-          "value": "`",
+          "value": "``",
           "position": {
             "start": {
               "line": 26,
@@ -316,71 +316,37 @@
             },
             "end": {
               "line": 26,
-              "column": 2,
-              "offset": 578
+              "column": 3,
+              "offset": 579
             },
             "indent": []
           }
         },
         {
           "type": "inlineCode",
-          "value": "",
-          "position": {
-            "start": {
-              "line": 26,
-              "column": 2,
-              "offset": 578
-            },
-            "end": {
-              "line": 26,
-              "column": 4,
-              "offset": 580
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
           "value": "js title=",
           "position": {
             "start": {
               "line": 26,
-              "column": 4,
-              "offset": 580
+              "column": 3,
+              "offset": 579
             },
             "end": {
               "line": 26,
-              "column": 13,
-              "offset": 589
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": ".bashrc",
-          "position": {
-            "start": {
-              "line": 26,
-              "column": 13,
-              "offset": 589
-            },
-            "end": {
-              "line": 26,
-              "column": 22,
-              "offset": 598
+              "column": 14,
+              "offset": 590
             },
             "indent": []
           }
         },
         {
           "type": "text",
-          "value": "\nconsole.log(1)",
+          "value": ".bashrc`\nconsole.log(1)",
           "position": {
             "start": {
               "line": 26,
-              "column": 22,
-              "offset": 598
+              "column": 14,
+              "offset": 590
             },
             "end": {
               "line": 27,

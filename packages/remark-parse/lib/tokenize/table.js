@@ -10,7 +10,6 @@ var space = ' '
 var dash = '-'
 var colon = ':'
 var backslash = '\\'
-var graveAccent = '`'
 var verticalBar = '|'
 
 var minColumns = 1
@@ -35,8 +34,6 @@ function table(eat, value, silent) {
   var align
   var cell
   var preamble
-  var count
-  var opening
   var now
   var position
   var lineCount
@@ -162,8 +159,6 @@ function table(eat, value, silent) {
     queue = ''
     cell = ''
     preamble = true
-    count = null
-    opening = null
 
     while (index < length) {
       character = line.charAt(index)
@@ -183,12 +178,6 @@ function table(eat, value, silent) {
         if (preamble) {
           eat(character)
         } else {
-          if (character && opening) {
-            queue += character
-            index++
-            continue
-          }
-
           if ((cell || character) && !preamble) {
             subvalue = cell
 
@@ -226,22 +215,6 @@ function table(eat, value, silent) {
         if (character === backslash && index !== length - 2) {
           cell += line.charAt(index + 1)
           index++
-        }
-
-        if (character === graveAccent) {
-          count = 1
-
-          while (line.charAt(index + 1) === character) {
-            cell += character
-            index++
-            count++
-          }
-
-          if (!opening) {
-            opening = count
-          } else if (count >= opening) {
-            opening = 0
-          }
         }
       }
 

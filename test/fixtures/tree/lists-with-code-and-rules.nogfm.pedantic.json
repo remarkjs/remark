@@ -854,46 +854,12 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "`",
+                          "value": "``` erb",
                           "position": {
                             "start": {
                               "line": 28,
                               "column": 9,
                               "offset": 265
-                            },
-                            "end": {
-                              "line": 28,
-                              "column": 10,
-                              "offset": 266
-                            },
-                            "indent": []
-                          }
-                        },
-                        {
-                          "type": "inlineCode",
-                          "value": "",
-                          "position": {
-                            "start": {
-                              "line": 28,
-                              "column": 10,
-                              "offset": 266
-                            },
-                            "end": {
-                              "line": 28,
-                              "column": 12,
-                              "offset": 268
-                            },
-                            "indent": []
-                          }
-                        },
-                        {
-                          "type": "text",
-                          "value": " erb",
-                          "position": {
-                            "start": {
-                              "line": 28,
-                              "column": 12,
-                              "offset": 268
                             },
                             "end": {
                               "line": 28,
@@ -999,7 +965,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "foo\nbar\n`",
+                          "value": "foo\nbar\n```",
                           "position": {
                             "start": {
                               "line": 33,
@@ -1008,30 +974,13 @@
                             },
                             "end": {
                               "line": 35,
-                              "column": 10,
-                              "offset": 354
+                              "column": 12,
+                              "offset": 356
                             },
                             "indent": [
                               9,
                               9
                             ]
-                          }
-                        },
-                        {
-                          "type": "inlineCode",
-                          "value": "",
-                          "position": {
-                            "start": {
-                              "line": 35,
-                              "column": 10,
-                              "offset": 354
-                            },
-                            "end": {
-                              "line": 35,
-                              "column": 12,
-                              "offset": 356
-                            },
-                            "indent": []
                           }
                         }
                       ],
@@ -1158,46 +1107,12 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "`",
+                          "value": "``` html",
                           "position": {
                             "start": {
                               "line": 39,
                               "column": 9,
                               "offset": 389
-                            },
-                            "end": {
-                              "line": 39,
-                              "column": 10,
-                              "offset": 390
-                            },
-                            "indent": []
-                          }
-                        },
-                        {
-                          "type": "inlineCode",
-                          "value": "",
-                          "position": {
-                            "start": {
-                              "line": 39,
-                              "column": 10,
-                              "offset": 390
-                            },
-                            "end": {
-                              "line": 39,
-                              "column": 12,
-                              "offset": 392
-                            },
-                            "indent": []
-                          }
-                        },
-                        {
-                          "type": "text",
-                          "value": " html",
-                          "position": {
-                            "start": {
-                              "line": 39,
-                              "column": 12,
-                              "offset": 392
                             },
                             "end": {
                               "line": 39,
@@ -1302,7 +1217,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "bar\n`",
+                          "value": "bar\n```",
                           "position": {
                             "start": {
                               "line": 44,
@@ -1311,29 +1226,12 @@
                             },
                             "end": {
                               "line": 45,
-                              "column": 10,
-                              "offset": 467
+                              "column": 12,
+                              "offset": 469
                             },
                             "indent": [
                               9
                             ]
-                          }
-                        },
-                        {
-                          "type": "inlineCode",
-                          "value": "",
-                          "position": {
-                            "start": {
-                              "line": 45,
-                              "column": 10,
-                              "offset": 467
-                            },
-                            "end": {
-                              "line": 45,
-                              "column": 12,
-                              "offset": 469
-                            },
-                            "indent": []
                           }
                         }
                       ],

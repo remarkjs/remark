@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "js\nfoo();",
+          "value": "js\nfoo();\n",
           "position": {
             "start": {
               "line": 1,
@@ -26,7 +26,7 @@
         },
         {
           "type": "text",
-          "value": "bash\n`",
+          "value": "bash\n```",
           "position": {
             "start": {
               "line": 3,
@@ -35,29 +35,12 @@
             },
             "end": {
               "line": 4,
-              "column": 2,
-              "offset": 22
+              "column": 4,
+              "offset": 24
             },
             "indent": [
               1
             ]
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "",
-          "position": {
-            "start": {
-              "line": 4,
-              "column": 2,
-              "offset": 22
-            },
-            "end": {
-              "line": 4,
-              "column": 4,
-              "offset": 24
-            },
-            "indent": []
           }
         }
       ],

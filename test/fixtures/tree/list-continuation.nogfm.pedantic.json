@@ -119,7 +119,7 @@
                 },
                 {
                   "type": "inlineCode",
-                  "value": "js\ncode();",
+                  "value": "js\ncode();\n",
                   "position": {
                     "start": {
                       "line": 6,

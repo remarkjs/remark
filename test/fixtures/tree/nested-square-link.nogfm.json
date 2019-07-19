@@ -189,80 +189,12 @@
           "children": [
             {
               "type": "text",
-              "value": "the ",
+              "value": "the `` [ ``` character",
               "position": {
                 "start": {
                   "line": 5,
                   "column": 2,
                   "offset": 59
-                },
-                "end": {
-                  "line": 5,
-                  "column": 6,
-                  "offset": 63
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 6,
-                  "offset": 63
-                },
-                "end": {
-                  "line": 5,
-                  "column": 8,
-                  "offset": 65
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " [ `",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 8,
-                  "offset": 65
-                },
-                "end": {
-                  "line": 5,
-                  "column": 12,
-                  "offset": 69
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "inlineCode",
-              "value": "",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 12,
-                  "offset": 69
-                },
-                "end": {
-                  "line": 5,
-                  "column": 14,
-                  "offset": 71
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": " character",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 14,
-                  "offset": 71
                 },
                 "end": {
                   "line": 5,

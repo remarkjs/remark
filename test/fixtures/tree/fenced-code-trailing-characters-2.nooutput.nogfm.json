@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "",
+          "value": "\n",
           "position": {
             "start": {
               "line": 1,
@@ -25,7 +25,7 @@
         },
         {
           "type": "text",
-          "value": " aaa\n`",
+          "value": " aaa\n```",
           "position": {
             "start": {
               "line": 2,
@@ -34,29 +34,12 @@
             },
             "end": {
               "line": 3,
-              "column": 2,
-              "offset": 13
+              "column": 4,
+              "offset": 15
             },
             "indent": [
               1
             ]
-          }
-        },
-        {
-          "type": "inlineCode",
-          "value": "",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 2,
-              "offset": 13
-            },
-            "end": {
-              "line": 3,
-              "column": 4,
-              "offset": 15
-            },
-            "indent": []
           }
         }
       ],

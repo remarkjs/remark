@@ -79,7 +79,7 @@
           "children": [
             {
               "type": "inlineCode",
-              "value": "some&copylanguage\nalert('Hello');",
+              "value": "some&copylanguage\nalert('Hello');\n",
               "position": {
                 "start": {
                   "line": 5,

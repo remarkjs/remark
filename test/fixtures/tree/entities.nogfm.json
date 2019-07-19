@@ -565,7 +565,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "some&mdash;language\nalert('Hello');",
+          "value": "some&mdash;language\nalert('Hello');\n",
           "position": {
             "start": {
               "line": 11,

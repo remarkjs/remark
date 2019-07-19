@@ -41,7 +41,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "js",
+          "value": "js\n",
           "position": {
             "start": {
               "line": 3,
@@ -189,7 +189,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "",
+          "value": "\n",
           "position": {
             "start": {
               "line": 13,
@@ -263,7 +263,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "",
+          "value": "\n",
           "position": {
             "start": {
               "line": 18,
