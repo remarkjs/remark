@@ -84,7 +84,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "js filename=~/.bashrc\nconsole.log(1)",
+          "value": "js filename=~/.bashrc\nconsole.log(1)\n",
           "position": {
             "start": {
               "line": 8,
@@ -398,7 +398,7 @@
       "children": [
         {
           "type": "inlineCode",
-          "value": "js title=`.bashrc`\nconsole.log(1)",
+          "value": "js title=`.bashrc`\nconsole.log(1)\n",
           "position": {
             "start": {
               "line": 26,

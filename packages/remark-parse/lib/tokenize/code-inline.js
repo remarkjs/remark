@@ -1,7 +1,6 @@
 'use strict'
 
 var locate = require('../locate/code-inline')
-var whitespace = require('../util/is-markdown-whitespace-character')
 
 module.exports = inlineCode
 inlineCode.locator = locate

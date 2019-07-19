@@ -23,7 +23,7 @@
         },
         {
           "type": "inlineCode",
-          "value": "hello",
+          "value": "  hello  ",
           "position": {
             "start": {
               "line": 1,
@@ -59,7 +59,7 @@
         },
         {
           "type": "inlineCode",
-          "value": "hello",
+          "value": "\thello\t",
           "position": {
             "start": {
               "line": 2,
