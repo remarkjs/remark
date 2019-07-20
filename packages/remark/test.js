@@ -1,6 +1,9 @@
 'use strict'
 
+/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
+/* eslint-enable import/no-extraneous-dependencies */
+
 var remark = require('.')
 
 test('remark().processSync(value)', function(t) {

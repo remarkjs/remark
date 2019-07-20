@@ -1,11 +1,14 @@
 'use strict'
 
+/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
 var wcwidth = require('wcwidth')
 var u = require('unist-builder')
 var visit = require('unist-util-visit')
 var unified = require('unified')
 var parse = require('../remark-parse')
+/* eslint-enable import/no-extraneous-dependencies */
+
 var stringify = require('.')
 
 var Compiler = stringify.Compiler

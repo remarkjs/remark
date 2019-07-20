@@ -1,8 +1,11 @@
 'use strict'
 
 var path = require('path')
+
+/* eslint-disable import/no-extraneous-dependencies */
 var execa = require('execa')
 var test = require('tape')
+/* eslint-enable import/no-extraneous-dependencies */
 
 var join = path.join
 

@@ -2,9 +2,13 @@
 
 var path = require('path')
 var fs = require('fs')
+
+/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
 var vfile = require('vfile')
 var unified = require('unified')
+/* eslint-enable import/no-extraneous-dependencies */
+
 var parse = require('.')
 
 var Parser = parse.Parser
