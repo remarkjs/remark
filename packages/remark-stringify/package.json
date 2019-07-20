@@ -26,8 +26,10 @@
   ],
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "types/index.d.ts"
   ],
+  "types": "types/index.d.ts",
   "dependencies": {
     "ccount": "^1.0.0",
     "is-alphanumeric": "^1.0.0",
@@ -46,7 +48,7 @@
   },
   "devDependencies": {
     "tape": "^4.9.1",
-    "unified": "^8.0.0",
+    "unified": "^8.2.0",
     "unist-builder": "^1.0.3",
     "unist-util-visit": "^1.4.0",
     "wcwidth": "^1.0.1"

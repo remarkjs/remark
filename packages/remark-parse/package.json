@@ -15,6 +15,7 @@
     "ast",
     "parse"
   ],
+  "types": "types/index.d.ts",
   "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-parse",
   "bugs": "https://github.com/remarkjs/remark/issues",
@@ -28,7 +29,8 @@
   ],
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "types/index.d.ts"
   ],
   "dependencies": {
     "collapse-white-space": "^1.0.2",
@@ -49,7 +51,7 @@
   },
   "devDependencies": {
     "tape": "^4.9.1",
-    "unified": "^8.0.0",
+    "unified": "^8.2.0",
     "vfile": "^4.0.0"
   },
   "scripts": {
