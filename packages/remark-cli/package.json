@@ -26,7 +26,7 @@
   ],
   "dependencies": {
     "markdown-extensions": "^1.1.0",
-    "remark": "^10.0.0",
+    "remark": "^11.0.0",
     "unified-args": "^7.0.0"
   },
   "scripts": {
