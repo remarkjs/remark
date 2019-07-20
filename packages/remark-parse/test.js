@@ -197,9 +197,7 @@ test('remark().parse(file)', function(t) {
       '29:21: ' + notTerminated,
       '27:17: ' + notTerminated,
       '32:11: ' + notTerminated,
-      '35:27: ' + notTerminated,
       '36:10: ' + notTerminated,
-      '40:25: ' + notTerminated,
       '41:10: ' + notTerminated
     ])
 
