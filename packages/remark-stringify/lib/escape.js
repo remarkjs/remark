@@ -90,8 +90,6 @@ function factory(options) {
         character === backslash ||
         character === graveAccent ||
         character === asterisk ||
-        (character === exclamationMark &&
-          value.charAt(position + 1) === leftSquareBracket) ||
         character === leftSquareBracket ||
         character === lessThan ||
         (character === ampersand && prefix(value.slice(position)) > 0) ||

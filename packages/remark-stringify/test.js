@@ -871,7 +871,7 @@ test('stringify escapes', function(t) {
 
   t.equal(toString(u('image', {alt: 'a]b'})), '![a\\]b](<>)', '`]` (in images)')
 
-  t.equal(toString('![a'), '\\!\\[a', '`!` before `[`')
+  t.equal(toString('![a'), '!\\[a', '`!` before `[`')
 
   t.equal(toString('a~b'), 'a~b', '`~`')
   t.equal(toString('a~~b'), 'a\\~~b', '`~~`')
