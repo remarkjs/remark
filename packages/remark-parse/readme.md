@@ -119,11 +119,11 @@ hello ~~hi~~ world
 
 Turns on:
 
-*   [Fenced code blocks](https://help.github.com/articles/github-flavored-markdown/#fenced-code-blocks)
-*   [Autolinking of URLs](https://help.github.com/articles/github-flavored-markdown/#url-autolinking)
-*   [Deletions (strikethrough)](https://help.github.com/articles/github-flavored-markdown/#strikethrough)
-*   [Task lists](https://help.github.com/articles/writing-on-github/#task-lists)
-*   [Tables](https://help.github.com/articles/github-flavored-markdown/#tables)
+*   [Fenced code blocks](https://help.github.com/articles/creating-and-highlighting-code-blocks#fenced-code-blocks)
+*   [Autolinking of URLs](https://help.github.com/articles/autolinked-references-and-urls)
+*   [Deletions (strikethrough)](https://help.github.com/articles/basic-writing-and-formatting-syntax#styling-text)
+*   [Task lists](https://help.github.com/articles/basic-writing-and-formatting-syntax#task-lists)
+*   [Tables](https://help.github.com/articles/organizing-information-with-tables)
 
 ###### `options.commonmark`
 
