@@ -87,6 +87,7 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 *   [Extending the Compiler](#extending-the-compiler)
     *   [`Compiler#visitors`](#compilervisitors)
     *   [`function visitor(node[, parent])`](#function-visitornode-parent)
+*   [Security](#security)
 *   [Contribute](#contribute)
 *   [License](#license)
 
@@ -275,6 +276,16 @@ Stringify `node`.
 
 `string` — Compiled given `node`.
 
+## Security
+
+As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
+When going to HTML, use remark in combination with the [**rehype**][rehype]
+ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
+
+Use of remark plugins could also open you up to other attacks.
+Carefully assess each plugin and the risks involved in using them.
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
@@ -362,3 +373,9 @@ abide by its terms.
 [markdown-table]: https://github.com/wooorm/markdown-table
 
 [string-length]: https://github.com/wooorm/markdown-table#stringlengthcell
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[rehype]: https://github.com/rehypejs/rehype
+
+[sanitize]: https://github.com/rehypejs/rehype-sanitize

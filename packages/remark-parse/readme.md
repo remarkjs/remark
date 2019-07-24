@@ -91,6 +91,7 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
     *   [`add.test()`](#addtest)
     *   [`add.reset(node[, parent])`](#addresetnode-parent)
     *   [Turning off a tokenizer](#turning-off-a-tokenizer)
+*   [Security](#security)
 *   [Contribute](#contribute)
 *   [License](#license)
 
@@ -478,6 +479,16 @@ function indentedCode() {
 }
 ```
 
+## Security
+
+As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
+When going to HTML, use remark in combination with the [**rehype**][rehype]
+ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
+
+Use of remark plugins could also open you up to other attacks.
+Carefully assess each plugin and the risks involved in using them.
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
@@ -577,3 +588,9 @@ abide by its terms.
 [announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
 
 [remark-disable-tokenizers]: https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[rehype]: https://github.com/rehypejs/rehype
+
+[sanitize]: https://github.com/rehypejs/rehype-sanitize
