@@ -1,5 +1,5 @@
 language: node_js
-node_js: 8.0
+node_js: node
 deploy:
   provider: pages
   local_dir: dest

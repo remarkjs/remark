@@ -1,8 +1,5 @@
 .DS_Store
 *.log
-.nyc_output/
-coverage/
+yarn.lock
 dest/
 node_modules/
-/remark.js
-/remark.min.js

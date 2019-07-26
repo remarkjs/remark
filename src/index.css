@@ -1,10 +1,17 @@
 html {
-  font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", sans-serif;
+  font-family: system-ui;
+  background-color: hsl(0, 0%, 97.5%);
 }
 
 body {
-  background-color: #fdfdfc;
   margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  html {
+    background-color: hsl(214, 13%, 5%);
+    color: hsl(214, 13%, 95%);
+  }
 }
 
 * {
@@ -27,7 +34,7 @@ h2 {
 
 .hl,
 a {
-  color: #e05d44;
+  color: #d80303;
 }
 
 a {
@@ -38,20 +45,27 @@ a {
 a:hover,
 a:focus,
 a:target {
-  color: initial;
+  color: inherit;
 }
 
 pre,
 code {
-  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
   font-size: small;
 }
 
 p code,
 li code {
   border-radius: 3px;
-  background-color: rgba(0, 0, 0, 0.04);
+  background-color: hsla(214, 13%, 5%, 0.04);
   padding: 0.2em 0.4em;
+}
+
+@media (prefers-color-scheme: dark) {
+  p code,
+  li code {
+    background-color: hsla(0, 0%, 97.5%, 0.08);
+  }
 }
 
 p {
@@ -73,8 +87,8 @@ footer {
 
 .cover {
   position: relative;
-  height: 100%;
-  min-height: 100vh;
+  height: 95%;
+  min-height: 95vh;
   max-width: 100%;
   color: white;
   display: flex;
@@ -106,7 +120,6 @@ footer {
 }
 
 .cover .title {
-  font-weight: 100;
   color: black;
   font-size: 6em;
   letter-spacing: 0.05em;
@@ -121,8 +134,14 @@ footer {
   margin-top: 4rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  border-top: 1px #aaa solid;
+  border-top: 1px hsl(214, 13%, 90%) solid;
   text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  footer {
+    border-top-color: hsl(214, 13%, 12.5%);
+  }
 }
 
 .window {
@@ -130,7 +149,13 @@ footer {
   border: 1px solid;
   border-radius: 3px;
   font-size: 14px;
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0 0 3px hsla(214, 13%, 5%, 0.02);
+}
+
+@media (prefers-color-scheme: dark) {
+  .window {
+    box-shadow: 0 0 0 3px hsl(214, 13%, 0%);
+  }
 }
 
 .window figcaption {
@@ -200,6 +225,26 @@ footer {
   background-color: #ccc;
 }
 
+@media (prefers-color-scheme: dark) {
+  .gist {
+    border-color: hsl(214, 13%, 12.5%);
+    color: hsl(214, 13%, 97.5%);
+    background-color: hsl(214, 13%, 7.5%);
+  }
+
+  .gist figcaption {
+    background: hsl(214, 13%, 10%);
+  }
+
+  .gist pre {
+    color: hsl(214, 13%, 97.5%);
+  }
+
+  .gist .chrome.button {
+    background-color: hsl(214, 13%, 15%);
+  }
+}
+
 .terminal {
   color: #93a1a1;
   background-color: #002b36;
@@ -241,35 +286,7 @@ footer {
   font-weight: bold;
 }
 
-.language-html { color: #222; }
-.hljs-keyword { color: hsl(332, 70%, 45%); }
-.hljs-number { color: hsl(332, 70%, 45%); }
-.hljs-built_in { color: hsl(195, 100%, 35%); }
-.hljs-attribute { color: hsl(195, 100%, 35%); }
-.hljs-literal { color: hsl(195, 100%, 35%); }
-.hljs-section { color: hsl(225, 72%, 35%); }
-.hljs-string { color: hsl(225, 72%, 35%); }
-.hljs-params { color: black; }
-.hljs-strong { color: black; }
-.hljs-code { color: hsl(264, 28%, 35%); }
-.hljs-selector-class { color: hsl(264, 28%, 35%); }
-.hljs-meta { color: hsl(40, 58%, 35%); }
-.hljs-name { color: hsl(114, 28%, 35%); }
-.hljs-attr { color: hsl(264, 50%, 50%); }
-.hljs-bullet { color: hsl(14, 83%, 60%); }
-.hljs-tag { color: #777; }
-.hljs-selector-tag { color: hsl(114, 28%, 55%); }
-.language-html .hljs-name { color: hsl(114, 28%, 55%); }
-.language-html .hljs-attr { color: hsl(264, 50%, 70%); }
-.language-html .hljs-string { color: hsl(225, 72%, 75%); }
-.hljs-comment { color: #aaa; }
-
-.hljs-addition {
-  color: hsl(102, 53%, 42%);
-  background-color: hsl(120, 100%, 96%);
-}
-
-.hljs-deletion {
-  color: hsl(14, 100%, 37%);
-  background-color: hsl(0, 100%, 96%);
+.hljs {
+  padding: 0 !important;
+  background: none !important;
 }
