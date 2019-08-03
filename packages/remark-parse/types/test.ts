@@ -1,5 +1,4 @@
 import unified = require('unified')
-import * as Unist from 'unist'
 import remarkParse = require('remark-parse')
 
 const parseOptions = {
@@ -7,6 +6,7 @@ const parseOptions = {
   pedantic: true
 }
 
+unified().use(remarkParse)
 unified().use(remarkParse, parseOptions)
 
 const badParseOptions = {

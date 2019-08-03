@@ -8,6 +8,7 @@ const inferredStringifyOptions = {
   incrementListMarker: false
 }
 
+unified().use(remarkStringify)
 unified().use(remarkStringify, inferredStringifyOptions)
 
 // These cannot be automatically inferred by TypeScript
@@ -48,4 +49,4 @@ function gap(this: unified.Processor) {
   }
 }
 
-const plugin: unified.Attacher = gap
+const plugin: unified.Plugin = gap
