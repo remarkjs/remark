@@ -1,7 +1,7 @@
 // TypeScript Version: 3.0
 
 import {Node, Parent, Position} from 'unist'
-import {Parser, Attacher} from 'unified'
+import {Parser, Plugin} from 'unified'
 
 declare class RemarkParser implements Parser {
   parse(): Node
@@ -13,7 +13,7 @@ declare class RemarkParser implements Parser {
 }
 
 declare namespace remarkParse {
-  interface Parse extends Attacher<[Partial<RemarkParseOptions>]> {
+  interface Parse extends Plugin<[Partial<RemarkParseOptions>?]> {
     (options: Partial<RemarkParseOptions>): void
     Parser: typeof RemarkParser
   }

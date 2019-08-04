@@ -1,6 +1,6 @@
 // TypeScript Version: 3.0
 
-import {Attacher, Compiler, Processor} from 'unified'
+import {Compiler, Processor, Plugin} from 'unified'
 import {Node, Parent} from 'unist'
 
 declare class RemarkCompiler implements Compiler {
@@ -11,7 +11,7 @@ declare class RemarkCompiler implements Compiler {
 }
 
 declare namespace remarkStringify {
-  interface Stringify extends Attacher<[Partial<RemarkStringifyOptions>]> {
+  interface Stringify extends Plugin<[Partial<RemarkStringifyOptions>?]> {
     Compiler: typeof RemarkCompiler
     (this: Processor, options?: Partial<RemarkStringifyOptions>): void
   }
