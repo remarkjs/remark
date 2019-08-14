@@ -19,7 +19,7 @@ Powered by plugins to do all kinds of things: [check Markdown code
 style][remark-lint], [transform safely to React][remark-react], [add a table of
 contents][remark-toc], or [compile to man pages][remark-man].
 
-*   Visit [`unified.js.org`][website] and try its [guides][] for an overview
+*   Visit [`unifiedjs.com`][website] and try its [guides][] for an overview
 *   Read [unified][]’s readme for a technical intro
 *   Browse [awesome remark][awesome] to find out more about the ecosystem
 *   Follow us on [Medium][] and [Twitter][] to see what we’re up to
@@ -147,7 +147,7 @@ abide by its terms.
 
 [website]: https://unifiedjs.github.io
 
-[guides]: https://unified.js.org/#guides
+[guides]: https://unifiedjs.com/#guides
 
 [contribute]: #contribute
 
