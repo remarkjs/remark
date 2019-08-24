@@ -2,7 +2,7 @@
 
 module.exports = tableCell
 
-var lineFeed = /\n/g
+var lineFeed = /\r?\n/g
 
 function tableCell(node) {
   return this.all(node)
