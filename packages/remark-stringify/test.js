@@ -846,6 +846,33 @@ test('remark().stringify(ast, file)', function(t) {
     )
   })
 
+  t.equal(
+    unified()
+      .use(stringify)
+      .stringify(
+        u('root', [
+          u('table', [
+            u('tableRow', [
+              u('tableCell', [u('text', 'Alpha')]),
+              u('tableCell', [u('text', 'Bravo\ncharlie')])
+            ]),
+            u('tableRow', [
+              u('tableCell', [u('text', 'Delta')]),
+              u('tableCell', [u('text', 'Echo \n foxtrott')])
+            ])
+          ])
+        ])
+      )
+      .toString(),
+    [
+      '| Alpha | Bravo charlie   |',
+      '| ----- | --------------- |',
+      '| Delta | Echo   foxtrott |',
+      ''
+    ].join('\n'),
+    'should not stringify line feeds in tables'
+  )
+
   t.end()
 })
 
