@@ -18,6 +18,18 @@ var pedantic = {pedantic: true}
 var uncollapsable = {start: {line: 1, column: NaN}, end: {line: 1, column: NaN}}
 
 test('remark().stringify(ast, file)', function(t) {
+  t.equal(
+    unified()
+      .use(stringify)
+      .stringify({
+        type: 'root',
+        children: [{type: 'html', value: '<!-- last line\n'}]
+      })
+      .toString(),
+    '<!-- last line\n',
+    'should not add more than one line feeds at the end'
+  )
+
   t.throws(
     function() {
       unified()
