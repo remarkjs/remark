@@ -33,6 +33,14 @@ test('remark().processSync(value)', function(t) {
     'should accept stringify options'
   )
 
+  t.equal(
+    remark()
+      .processSync('<!-- last line\n')
+      .toString(),
+    '<!-- last line\n',
+    'should not add more than one linefeed at the end'
+  )
+
   t.throws(
     function() {
       remark()
