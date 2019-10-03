@@ -1,7 +1,6 @@
 {
   "extends": "dtslint/dtslint.json",
   "rules": {
-    "callable-types": false,
     "max-line-length": false,
     "no-redundant-jsdoc": false,
     "no-void-expression": false,
@@ -9,6 +8,7 @@
     "semicolon": false,
     "unified-signatures": false,
     "whitespace": false,
-    "interface-over-type-literal": false
+    "no-unnecessary-generics": false,
+    "strict-export-declare-modifiers": false
   }
 }
