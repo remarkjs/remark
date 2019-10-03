@@ -105,7 +105,7 @@ function autoLink(eat, value, silent) {
 
   if (hasAtCharacter) {
     if (link.slice(0, mailtoLength).toLowerCase() === mailto) {
-      content = content.substr(mailtoLength)
+      content = content.slice(mailtoLength)
       now.column += mailtoLength
       now.offset += mailtoLength
     } else {

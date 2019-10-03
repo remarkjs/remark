@@ -141,7 +141,7 @@ function factory(type) {
     // throw on new, incorrect rules.
     function validateEat(subvalue) {
       /* istanbul ignore if */
-      if (value.substring(0, subvalue.length) !== subvalue) {
+      if (value.slice(0, subvalue.length) !== subvalue) {
         // Capture stack-trace.
         self.file.fail(
           new Error(
@@ -235,7 +235,7 @@ function factory(type) {
       reset.test = test
       apply.test = test
 
-      value = value.substring(subvalue.length)
+      value = value.slice(subvalue.length)
 
       updatePosition(subvalue)
 

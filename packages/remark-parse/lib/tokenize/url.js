@@ -125,7 +125,7 @@ function url(eat, value, silent) {
       return
     }
 
-    content = content.substr(mailto.length)
+    content = content.slice(mailto.length)
   }
 
   /* istanbul ignore if - never used (yet) */
