@@ -12,9 +12,7 @@ unified().use(remarkStringify)
 unified().use(remarkStringify, inferredStringifyOptions)
 
 // These cannot be automatically inferred by TypeScript
-const nonInferredStringifyOptions: Partial<
-  remarkStringify.RemarkStringifyOptions
-> = {
+const nonInferredStringifyOptions: Partial<remarkStringify.RemarkStringifyOptions> = {
   fence: '~',
   bullet: '+',
   listItemIndent: 'tab',
@@ -41,7 +39,7 @@ function gap(this: unified.Processor) {
 
   function heading(this: unified.Processor, node: Node, parent?: Parent) {
     // FIXME: remove need for explicit 'as' casting
-    const headingNode = node as (Node & {depth: number})
+    const headingNode = node as Node & {depth: number}
     return (
       (headingNode.depth === 2 ? '\n' : '') +
       original.apply(this, [node, parent])

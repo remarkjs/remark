@@ -39,7 +39,7 @@ function block(node) {
       if (
         prev.type === 'list' &&
         ((child.type === 'list' && prev.ordered === child.ordered) ||
-          (child.type === 'code' && (!child.lang && !fences)))
+          (child.type === 'code' && !child.lang && !fences))
       ) {
         values.push(gap)
       } else {
