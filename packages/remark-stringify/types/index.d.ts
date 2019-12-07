@@ -11,9 +11,9 @@ declare class RemarkCompiler implements Compiler {
 }
 
 declare namespace remarkStringify {
-  interface Stringify extends Plugin<[Partial<RemarkStringifyOptions>?]> {
+  interface Stringify extends Plugin<[PartialRemarkStringifyOptions?]> {
     Compiler: typeof RemarkCompiler
-    (this: Processor, options?: Partial<RemarkStringifyOptions>): void
+    (this: Processor, options?: PartialRemarkStringifyOptions): void
   }
 
   type Compiler = RemarkCompiler
@@ -39,6 +39,8 @@ declare namespace remarkStringify {
     strong: '_' | '*'
     emphasis: '_' | '*'
   }
+
+  type PartialRemarkStringifyOptions = Partial<RemarkStringifyOptions>
 
   type Visitor = (node: Node, parent?: Parent) => string
 }
