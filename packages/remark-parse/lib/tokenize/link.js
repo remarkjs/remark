@@ -107,7 +107,7 @@ function link(eat, value, silent) {
         depth--
       } else {
         // Allow white-space between content and url in GFM mode.
-        if (!pedantic) {
+        if (!pedantic && !gfm && !commonmark) {
           while (index < length) {
             character = value.charAt(index + 1)
 
