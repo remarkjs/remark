@@ -13,8 +13,8 @@ declare class RemarkParser implements Parser {
 }
 
 declare namespace remarkParse {
-  interface Parse extends Plugin<[Partial<RemarkParseOptions>?]> {
-    (options: Partial<RemarkParseOptions>): void
+  interface Parse extends Plugin<[PartialRemarkParseOptions?]> {
+    (options: PartialRemarkParseOptions): void
     Parser: typeof RemarkParser
   }
 
@@ -27,6 +27,8 @@ declare namespace remarkParse {
     blocks: string[]
     pedantic: boolean
   }
+
+  type PartialRemarkParseOptions = Partial<RemarkParseOptions>
 
   interface Add {
     (node: Node, parent?: Parent): Node

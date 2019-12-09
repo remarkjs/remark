@@ -7,10 +7,11 @@ import remarkStringify = require('remark-stringify')
 declare namespace remark {
   type RemarkOptions = remarkParse.RemarkParseOptions &
     remarkStringify.RemarkStringifyOptions
+
+  type PartialRemarkOptions = remarkParse.PartialRemarkParseOptions &
+    remarkStringify.PartialRemarkStringifyOptions
 }
 
-declare function remark<
-  P extends Partial<remark.RemarkOptions> = Partial<remark.RemarkOptions>
->(): unified.Processor<P>
+declare function remark(): unified.Processor<remark.PartialRemarkOptions>
 
 export = remark

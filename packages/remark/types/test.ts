@@ -13,3 +13,14 @@ remark().use({settings: {commonmark: true}})
 remark().use({settings: {doesNotExist: true}})
 // $ExpectError
 remark().use(plugin, {doesNotExist: 'true'})
+
+// $ExpectError
+const parseOptions: remark.RemarkOptions = {
+  gfm: true,
+  pedantic: true
+}
+
+const badParseOptionsInterface: remark.PartialRemarkOptions = {
+  // $ExpectError
+  gfm: 'true'
+}
