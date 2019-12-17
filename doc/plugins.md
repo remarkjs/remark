@@ -275,7 +275,7 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 [spectrum]: https://spectrum.chat/unified/remark
 
-[guide]: https://unifiedjs.github.io/create-a-plugin.html
+[guide]: https://unifiedjs.com/learn/guide/create-a-plugin/
 
 [npm-preset-search]: https://www.npmjs.com/search?q=remark-preset
 
