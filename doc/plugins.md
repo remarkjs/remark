@@ -195,6 +195,8 @@ See [Creating plugins][create] below.
     — highlight code blocks in Markdown files using
     [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
     (rehype compatible)
+*   [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-truncate-links)
+    — truncate/shorten urls not manually named
 *   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — remove all links, references, and definitions
 *   [`remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
