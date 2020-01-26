@@ -94,7 +94,7 @@ See [Creating plugins][create] below.
 *   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
     — transform [graphviz](https://www.graphviz.org) dot graphs to SVG
 *   [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
-    — Custom heading id support {#custom-id}
+    — Custom heading id support `{#custom-id}`
 *   [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
     — stringify with more blank lines between headings
 *   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
