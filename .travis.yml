@@ -1,6 +1,8 @@
 language: node_js
 node_js:
-  - lts/dubnium
+  - 8
+  - 10
+  - 12
   - node
 sudo: false
 deploy:

@@ -56,5 +56,10 @@
   "scripts": {
     "test": "tape test.js"
   },
-  "xo": false
+  "xo": false,
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6",
+    "yarn": ">=1"
+  }
 }

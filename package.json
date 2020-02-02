@@ -88,5 +88,10 @@
       "./script/list-of-methods",
       "preset-wooorm"
     ]
+  },
+  "engines": {
+    "node": ">=8",
+    "npm": ">=6",
+    "yarn": ">=1"
   }
 }

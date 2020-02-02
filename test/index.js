@@ -48,7 +48,7 @@ test('fixtures', function(t) {
         )
 
         markdown = remark()
-          .data('settings', Object.assign({}, fixture.stringify, parse))
+          .data('settings', {...fixture.stringify, ...parse})
           .stringify(node)
 
         if (output !== false) {
