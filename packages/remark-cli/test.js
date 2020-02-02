@@ -17,10 +17,10 @@ test('remark-cli', function(t) {
 
     st.plan(1)
 
-    var result = await execa(bin, ['--help'])
+    var {stdout} = await execa(bin, ['--help'])
 
     st.equal(
-      result.stdout,
+      stdout,
       [
         'Usage: remark [options] [path | glob ...]',
         '',
@@ -72,15 +72,15 @@ test('remark-cli', function(t) {
 
     st.plan(2)
 
-    var result = execa(bin, ['--version'])
+    var {stdout} = execa(bin, ['--version'])
 
     st.ok(
-      /remark: \d+\.\d+\.\d+/.test(result.stdout),
+      /remark: \d+\.\d+\.\d+/.test(stdout),
       'should include remark version'
     )
 
     st.ok(
-      /remark-cli: \d+\.\d+\.\d+/.test(result.stdout),
+      /remark-cli: \d+\.\d+\.\d+/.test(stdout),
       'should include remark-cli version'
     )
   })
