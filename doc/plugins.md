@@ -199,6 +199,8 @@ See [Creating plugins][create] below.
     (rehype compatible)
 *   [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-truncate-links)
     — truncate/shorten urls not manually named
+*   [`remark-twemoji`](https://github.com/madiodio/remark-twemoji)
+    — Replace unicode emoji with [Twemoji](https://github.com/twitter/twemoji)
 *   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — remove all links, references, and definitions
 *   [`remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
