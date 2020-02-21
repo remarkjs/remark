@@ -135,6 +135,10 @@ function footnoteDefinition(eat, value, silent) {
       queue += subqueue
       subqueue = ''
 
+      if (queue === lineFeed) {
+        break
+      }
+
       while (index < length) {
         character = value.charAt(index)
 
