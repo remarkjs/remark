@@ -43,5 +43,11 @@ test('remark().processSync(value)', function(t) {
     'should throw when `pedantic` is `true`, `listItemIndent` is not `tab`, and compiling code in a list-item'
   )
 
+  t.doesNotThrow(function() {
+    remark()
+      .use({settings: {commonmark: true, footnotes: true}})
+      .parse('[^1]: Footnote with trailing newline and space\n ')
+  })
+
   t.end()
 })
