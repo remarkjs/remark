@@ -97,7 +97,7 @@ proto.interruptBlockquote = [
 
 // Handlers.
 proto.blockTokenizers = {
-  newline: require('./tokenize/newline'),
+  blankLine: require('./tokenize/blank-line'),
   indentedCode: require('./tokenize/code-indented'),
   fencedCode: require('./tokenize/code-fenced'),
   blockquote: require('./tokenize/blockquote'),

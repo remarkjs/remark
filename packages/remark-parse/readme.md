@@ -252,7 +252,7 @@ Precedence of default block methods is as follows:
 
 <!--methods-block start-->
 
-*   `newline`
+*   `blankLine`
 *   `indentedCode`
 *   `fencedCode`
 *   `blockquote`
