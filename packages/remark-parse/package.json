@@ -50,7 +50,7 @@
     "trim-trailing-lines": "^1.0.0",
     "unherit": "^1.0.4",
     "unist-util-remove-position": "^2.0.0",
-    "vfile-location": "^2.0.0",
+    "vfile-location": "^3.0.0",
     "xtend": "^4.0.1"
   },
   "scripts": {
