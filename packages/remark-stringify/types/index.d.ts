@@ -25,7 +25,7 @@ declare namespace remarkStringify {
     setext: boolean
     closeAtx: boolean
     tableCellPadding: boolean
-    alignTableDelimiters: boolean
+    tablePipeAlign: boolean
     stringLength: (s: string) => number
     fence: '~' | '`'
     fences: boolean

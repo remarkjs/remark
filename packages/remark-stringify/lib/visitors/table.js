@@ -8,7 +8,7 @@ module.exports = table
 //
 // Creates a fenced table.
 // The table has aligned delimiters by default, but not in
-// `alignTableDelimiters: false`:
+// `tablePipeAlign: false`:
 //
 // ```markdown
 // | Header 1 | Header 2 |
@@ -27,7 +27,7 @@ function table(node) {
   var self = this
   var options = self.options
   var padding = options.tableCellPadding
-  var alignDelimiters = options.alignTableDelimiters
+  var alignDelimiters = options.tablePipeAlign
   var stringLength = options.stringLength
   var rows = node.children
   var index = rows.length

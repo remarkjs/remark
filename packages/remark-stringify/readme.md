@@ -157,7 +157,7 @@ Compile ATX headings with the same amount of closing hashes as opening hashes
 Create tables with a space between cell delimiters (`|`) and content (`boolean`,
 default: `true`).
 
-###### `options.alignTableDelimiters`
+###### `options.tablePipeAlign`
 
 Align the delimiters (`|`) between table cells so that they all align nicely and
 form a grid (`boolean`, default: `true`).

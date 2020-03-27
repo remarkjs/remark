@@ -232,11 +232,11 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
-        .data('settings', {alignTableDelimiters: '.'})
+        .data('settings', {tablePipeAlign: '.'})
         .stringify(empty())
     },
-    /options\.alignTableDelimiters/,
-    'should throw when `options.alignTableDelimiters` is not a boolean'
+    /options\.tablePipeAlign/,
+    'should throw when `options.tablePipeAlign` is not a boolean'
   )
 
   t.throws(
