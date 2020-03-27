@@ -16,7 +16,7 @@ module.exports = table
 // | Alpha | Bravo |
 // ```
 //
-// The table is spaced by default, but not in `spacedTable: false`:
+// The table is spaced by default, but not in `tableCellPadding: false`:
 //
 // ```markdown
 // |Foo|Bar|
@@ -26,7 +26,7 @@ module.exports = table
 function table(node) {
   var self = this
   var options = self.options
-  var spaced = options.spacedTable
+  var padding = options.tableCellPadding
   var alignDelimiters = options.alignTableDelimiters
   var stringLength = options.stringLength
   var rows = node.children
@@ -43,6 +43,7 @@ function table(node) {
   return markdownTable(result, {
     align: node.align,
     alignDelimiters: alignDelimiters,
+    padding: padding,
     stringLength: stringLength
   })
 }

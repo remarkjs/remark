@@ -221,11 +221,11 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
-        .data('settings', {spacedTable: '?'})
+        .data('settings', {tableCellPadding: '?'})
         .stringify(empty())
     },
-    /options\.spacedTable/,
-    'should throw when `options.spacedTable` is not a boolean'
+    /options\.tableCellPadding/,
+    'should throw when `options.tableCellPadding` is not a boolean'
   )
 
   t.throws(

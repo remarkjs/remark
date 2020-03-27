@@ -7,7 +7,7 @@ module.exports = {
   entities: 'false',
   setext: false,
   closeAtx: false,
-  spacedTable: true,
+  tableCellPadding: true,
   alignTableDelimiters: true,
   stringLength: stringLength,
   incrementListMarker: true,
