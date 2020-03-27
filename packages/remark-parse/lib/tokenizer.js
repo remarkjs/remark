@@ -109,7 +109,7 @@ function factory(type) {
 
       // Done.  Called when the last character is eaten to retrieve the range’s
       // offsets.
-      return function() {
+      return function () {
         var last = line + 1
 
         while (pos < last) {
@@ -160,10 +160,10 @@ function factory(type) {
 
       // Add the position to a node.
       function update(node, indent) {
-        var prev = node.position
-        var start = prev ? prev.start : before
+        var previous = node.position
+        var start = previous ? previous.start : before
         var combined = []
-        var n = prev && prev.end.line
+        var n = previous && previous.end.line
         var l = before.line
 
         node.position = new Position(start)
@@ -173,8 +173,8 @@ function factory(type) {
         // because some information, the indent between `n` and `l` wasn’t
         // tracked.  Luckily, that space is (should be?) empty, so we can
         // safely check for it now.
-        if (prev && indent && prev.indent) {
-          combined = prev.indent
+        if (previous && indent && previous.indent) {
+          combined = previous.indent
 
           if (n < l) {
             while (++n < l) {
@@ -197,21 +197,21 @@ function factory(type) {
     // possible.
     function add(node, parent) {
       var children = parent ? parent.children : tokens
-      var prev = children[children.length - 1]
+      var previous = children[children.length - 1]
       var fn
 
       if (
-        prev &&
-        node.type === prev.type &&
+        previous &&
+        node.type === previous.type &&
         (node.type === 'text' || node.type === 'blockquote') &&
-        mergeable(prev) &&
+        mergeable(previous) &&
         mergeable(node)
       ) {
         fn = node.type === 'text' ? mergeText : mergeBlockquote
-        node = fn.call(self, prev, node)
+        node = fn.call(self, previous, node)
       }
 
-      if (node !== prev) {
+      if (node !== previous) {
         children.push(node)
       }
 
@@ -296,19 +296,19 @@ function mergeable(node) {
 }
 
 // Merge two text nodes: `node` into `prev`.
-function mergeText(prev, node) {
-  prev.value += node.value
+function mergeText(previous, node) {
+  previous.value += node.value
 
-  return prev
+  return previous
 }
 
 // Merge two blockquotes: `node` into `prev`, unless in CommonMark or gfm modes.
-function mergeBlockquote(prev, node) {
+function mergeBlockquote(previous, node) {
   if (this.options.commonmark || this.options.gfm) {
     return node
   }
 
-  prev.children = prev.children.concat(node.children)
+  previous.children = previous.children.concat(node.children)
 
-  return prev
+  return previous
 }

@@ -2,7 +2,7 @@
 
 module.exports = interrupt
 
-function interrupt(interruptors, tokenizers, ctx, params) {
+function interrupt(interruptors, tokenizers, ctx, parameters) {
   var length = interruptors.length
   var index = -1
   var interruptor
@@ -26,7 +26,7 @@ function interrupt(interruptors, tokenizers, ctx, params) {
       continue
     }
 
-    if (tokenizers[interruptor[0]].apply(ctx, params)) {
+    if (tokenizers[interruptor[0]].apply(ctx, parameters)) {
       return true
     }
   }

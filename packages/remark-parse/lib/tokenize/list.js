@@ -22,7 +22,7 @@ var lowercaseX = 'x'
 
 var tabSize = 4
 var looseListItemExpression = /\n\n(?!\s*$)/
-var taskItemExpression = /^\[([ \t]|x|X)][ \t]/
+var taskItemExpression = /^\[([ X\tx])][ \t]/
 var bulletExpression = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/
 var pedanticBulletExpression = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/
 var initialIndentExpression = /^( {1,4}|\t)?/gm
@@ -47,7 +47,7 @@ function list(eat, value, silent) {
   var currentMarker
   var content
   var line
-  var prevEmpty
+  var previousEmpty
   var empty
   var items
   var allLines
@@ -262,7 +262,7 @@ function list(eat, value, silent) {
       }
     }
 
-    prevEmpty = empty
+    previousEmpty = empty
     empty = !prefixed && !trim(content).length
 
     if (indented && item) {
@@ -286,13 +286,13 @@ function list(eat, value, silent) {
       allLines = allLines.concat(emptyLines, line)
       emptyLines = []
     } else if (empty) {
-      if (prevEmpty && !commonmark) {
+      if (previousEmpty && !commonmark) {
         break
       }
 
       emptyLines.push(line)
     } else {
-      if (prevEmpty) {
+      if (previousEmpty) {
         break
       }
 

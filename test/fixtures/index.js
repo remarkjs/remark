@@ -33,13 +33,13 @@ keys.splice(keys.indexOf('blocks'), 1)
 var sources = [keys.join('.')]
 
 // Create all possible `parse` values.
-keys.forEach(function(key) {
+keys.forEach(function (key) {
   sources = [].concat.apply(
     sources,
-    sources.map(function(source) {
+    sources.map(function (source) {
       return source
         .split('.')
-        .map(function(subkey) {
+        .map(function (subkey) {
           return subkey === key ? 'no' + key : subkey
         })
         .join('.')
@@ -120,7 +120,7 @@ var virtual = {}
 var physical = {}
 var all = {}
 
-sources.forEach(function(source) {
+sources.forEach(function (source) {
   var options = parseOptions(source)
 
   source = options.source
@@ -144,7 +144,7 @@ sources.forEach(function(source) {
 function difference(options, compare) {
   var count = 0
 
-  Object.keys(options).forEach(function(key) {
+  Object.keys(options).forEach(function (key) {
     if (options[key] !== compare[key]) {
       count++
     }
@@ -160,7 +160,7 @@ function resolveFixture(source, fixtures, options) {
   var resolved
   var offset
 
-  Object.keys(fixtures).forEach(function(key) {
+  Object.keys(fixtures).forEach(function (key) {
     offset = difference(options[source], options[key])
 
     if (offset < minimum) {
@@ -177,7 +177,7 @@ function resolveFixture(source, fixtures, options) {
 function resolveFixtures(fixtures, options) {
   var resolved = {}
 
-  Object.keys(options).forEach(function(source) {
+  Object.keys(options).forEach(function (source) {
     resolved[source] = resolveFixture(source, fixtures, options)
   })
 
@@ -187,10 +187,10 @@ function resolveFixtures(fixtures, options) {
 // Gather fixtures.
 var tests = fs
   .readdirSync(join(__dirname, 'input'))
-  .filter(function(filepath) {
+  .filter(function (filepath) {
     return filepath.indexOf('.') !== 0
   })
-  .map(function(filepath) {
+  .map(function (filepath) {
     var filename = filepath.split('.').slice(0, -1)
     var name = filename.join('.').replace(/-asterisk-/g, '*')
     var settings = parseOptions(name)
@@ -199,7 +199,7 @@ var tests = fs
     var possibilities = {}
     var resolved
 
-    Object.keys(all).forEach(function(source) {
+    Object.keys(all).forEach(function (source) {
       var treename
       var tree
 

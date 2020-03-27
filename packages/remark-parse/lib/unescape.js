@@ -10,26 +10,26 @@ function factory(ctx, key) {
 
   // De-escape a string using the expression at `key` in `ctx`.
   function unescape(value) {
-    var prev = 0
+    var previous = 0
     var index = value.indexOf(backslash)
     var escape = ctx[key]
     var queue = []
     var character
 
     while (index !== -1) {
-      queue.push(value.slice(prev, index))
-      prev = index + 1
-      character = value.charAt(prev)
+      queue.push(value.slice(previous, index))
+      previous = index + 1
+      character = value.charAt(previous)
 
       // If the following character is not a valid escape, add the slash.
       if (!character || escape.indexOf(character) === -1) {
         queue.push(backslash)
       }
 
-      index = value.indexOf(backslash, prev + 1)
+      index = value.indexOf(backslash, previous + 1)
     }
 
-    queue.push(value.slice(prev))
+    queue.push(value.slice(previous))
 
     return queue.join('')
   }

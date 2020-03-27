@@ -168,7 +168,7 @@ function footnoteDefinition(eat, value, silent) {
 
   subvalue += content
 
-  content = content.replace(EXPRESSION_INITIAL_TAB, function(line) {
+  content = content.replace(EXPRESSION_INITIAL_TAB, function (line) {
     offsets[currentLine] = (offsets[currentLine] || 0) + line.length
     currentLine++
 

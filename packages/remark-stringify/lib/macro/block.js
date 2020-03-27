@@ -20,14 +20,14 @@ function block(node) {
   var children = node.children
   var length = children.length
   var index = -1
-  var prev
+  var previous
   var child
 
   while (++index < length) {
-    prev = child
+    previous = child
     child = children[index]
 
-    if (prev) {
+    if (previous) {
       // A list preceding another list that are equally ordered, or a
       // list preceding an indented code block, need a gap between them,
       // so as not to see them as one list, or content of the list,
@@ -37,8 +37,8 @@ function block(node) {
       // so we opt for an empty, invisible comment.  In other flavours,
       // two blank lines are fine.
       if (
-        prev.type === 'list' &&
-        ((child.type === 'list' && prev.ordered === child.ordered) ||
+        previous.type === 'list' &&
+        ((child.type === 'list' && previous.ordered === child.ordered) ||
           (child.type === 'code' && !child.lang && !fences))
       ) {
         values.push(gap)

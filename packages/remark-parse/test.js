@@ -2,44 +2,36 @@
 
 var path = require('path')
 var fs = require('fs')
-
-/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
 var vfile = require('vfile')
 var unified = require('unified')
-/* eslint-enable import/no-extraneous-dependencies */
 
 var parse = require('.')
 
 var Parser = parse.Parser
 
-test('remark().parse(file)', function(t) {
+test('remark().parse(file)', function (t) {
   t.equal(
-    unified()
-      .use(parse)
-      .parse('Alfred').children.length,
+    unified().use(parse).parse('Alfred').children.length,
     1,
     'should accept a `string`'
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(parse)
-        .data('settings', {position: 0})
-        .parse('')
+    function () {
+      unified().use(parse).data('settings', {position: 0}).parse('')
     },
     /options.position/,
     'should throw when `options.position` is not a boolean'
   )
 
-  t.doesNotThrow(function() {
+  t.doesNotThrow(function () {
     var parser = new Parser()
     parser.setOptions()
   }, 'should not throw when setting nothing')
 
   t.throws(
-    function() {
+    function () {
       var parser = new Parser()
       parser.setOptions(true)
     },
@@ -48,33 +40,24 @@ test('remark().parse(file)', function(t) {
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(parse)
-        .data('settings', {gfm: Infinity})
-        .parse('')
+    function () {
+      unified().use(parse).data('settings', {gfm: Infinity}).parse('')
     },
     /options.gfm/,
     'should throw when `options.gfm` is not a boolean'
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(parse)
-        .data('settings', {footnotes: 1})
-        .parse('')
+    function () {
+      unified().use(parse).data('settings', {footnotes: 1}).parse('')
     },
     /options.footnotes/,
     'should throw when `options.footnotes` is not a boolean'
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(parse)
-        .data('settings', {pedantic: {}})
-        .parse('')
+    function () {
+      unified().use(parse).data('settings', {pedantic: {}}).parse('')
     },
     /options.pedantic/,
     'should throw when `options.pedantic` is not a boolean'
@@ -112,10 +95,8 @@ test('remark().parse(file)', function(t) {
     'should support given `blocks`'
   )
 
-  t.test('should throw parse errors', function(st) {
-    var processor = unified()
-      .use(parse)
-      .use(plugin)
+  t.test('should throw parse errors', function (st) {
+    var processor = unified().use(parse).use(plugin)
 
     st.plan(5)
 
@@ -145,12 +126,10 @@ test('remark().parse(file)', function(t) {
     }
   })
 
-  t.test('should warn when missing locators', function(st) {
-    var processor = unified()
-      .use(parse)
-      .use(plugin)
+  t.test('should warn when missing locators', function (st) {
+    var processor = unified().use(parse).use(plugin)
 
-    st.throws(function() {
+    st.throws(function () {
       processor.parse(vfile('Hello *World*!'))
     }, /1:1: Missing locator: `foo`/)
 
@@ -168,7 +147,7 @@ test('remark().parse(file)', function(t) {
     }
   })
 
-  t.test('should warn about entities', function(st) {
+  t.test('should warn about entities', function (st) {
     var filePath = path.join(
       'test',
       'fixtures',
@@ -179,9 +158,7 @@ test('remark().parse(file)', function(t) {
     var notTerminated =
       'Named character references must be terminated by a semicolon'
 
-    unified()
-      .use(parse)
-      .parse(file)
+    unified().use(parse).parse(file)
 
     st.deepEqual(file.messages.map(String), [
       '1:13: Named character references must be known',
@@ -204,7 +181,7 @@ test('remark().parse(file)', function(t) {
     st.end()
   })
 
-  t.test('should be able to set options', function(st) {
+  t.test('should be able to set options', function (st) {
     var tree = unified()
       .use(parse)
       .use(plugin)

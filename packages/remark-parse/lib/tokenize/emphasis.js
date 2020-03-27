@@ -22,7 +22,7 @@ function emphasis(eat, value, silent) {
   var queue
   var subvalue
   var length
-  var prev
+  var previous
 
   if (character !== asterisk && character !== underscore) {
     return
@@ -41,14 +41,14 @@ function emphasis(eat, value, silent) {
   }
 
   while (index < length) {
-    prev = character
+    previous = character
     character = value.charAt(index)
 
-    if (character === marker && (!pedantic || !whitespace(prev))) {
+    if (character === marker && (!pedantic || !whitespace(previous))) {
       character = value.charAt(++index)
 
       if (character !== marker) {
-        if (!trim(queue) || prev === marker) {
+        if (!trim(queue) || previous === marker) {
           return
         }
 

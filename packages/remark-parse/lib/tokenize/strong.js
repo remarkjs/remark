@@ -21,7 +21,7 @@ function strong(eat, value, silent) {
   var queue
   var subvalue
   var length
-  var prev
+  var previous
 
   if (
     (character !== asterisk && character !== underscore) ||
@@ -43,13 +43,13 @@ function strong(eat, value, silent) {
   }
 
   while (index < length) {
-    prev = character
+    previous = character
     character = value.charAt(index)
 
     if (
       character === marker &&
       value.charAt(index + 1) === marker &&
-      (!pedantic || !whitespace(prev))
+      (!pedantic || !whitespace(previous))
     ) {
       character = value.charAt(index + 2)
 

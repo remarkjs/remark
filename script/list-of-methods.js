@@ -26,7 +26,7 @@ function replace(name) {
       u(
         'list',
         {ordered: false},
-        list.map(function(name) {
+        list.map(function (name) {
           return u('listItem', [u('paragraph', [u('inlineCode', name)])])
         })
       ),

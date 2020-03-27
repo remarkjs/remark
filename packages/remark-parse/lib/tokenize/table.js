@@ -183,7 +183,7 @@ function table(eat, value, silent) {
 
             if (queue.length > 1) {
               if (character) {
-                subvalue += queue.slice(0, queue.length - 1)
+                subvalue += queue.slice(0, -1)
                 queue = queue.charAt(queue.length - 1)
               } else {
                 subvalue += queue

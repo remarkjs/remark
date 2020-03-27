@@ -59,7 +59,7 @@ function factory(options) {
     var markers = commonmark ? [dot, rightParenthesis] : [dot]
     var siblings = parent && parent.children
     var index = siblings && siblings.indexOf(node)
-    var prev = siblings && siblings[index - 1]
+    var previous = siblings && siblings[index - 1]
     var next = siblings && siblings[index + 1]
     var length = value.length
     var escapable = escapes(options)
@@ -73,8 +73,8 @@ function factory(options) {
     var offset
     var replace
 
-    if (prev) {
-      afterNewLine = text(prev) && blankExpression.test(prev.value)
+    if (previous) {
+      afterNewLine = text(previous) && blankExpression.test(previous.value)
     } else {
       afterNewLine =
         !parent || parent.type === 'root' || parent.type === 'paragraph'
@@ -152,7 +152,7 @@ function factory(options) {
     if (siblings && text(node)) {
       // Check for an opening parentheses after a link-reference (which can be
       // joined by white-space).
-      if (prev && prev.referenceType === shortcut) {
+      if (previous && previous.referenceType === shortcut) {
         position = -1
         length = escaped.length
 
@@ -186,9 +186,9 @@ function factory(options) {
       if (
         gfm &&
         !self.inLink &&
-        text(prev) &&
+        text(previous) &&
         value.charAt(0) === colon &&
-        protocol(prev.value.slice(-6))
+        protocol(previous.value.slice(-6))
       ) {
         escaped[0] = one(colon)
       }
@@ -218,11 +218,11 @@ function factory(options) {
         value.charAt(length - 1) === tilde &&
         next.value.charAt(0) === tilde
       ) {
-        escaped.splice(escaped.length - 1, 0, backslash)
+        escaped.splice(-1, 0, backslash)
       }
 
       // Escape underscores, but not mid-word (unless in pedantic mode).
-      wordCharBefore = text(prev) && alphanumeric(prev.value.slice(-1))
+      wordCharBefore = text(previous) && alphanumeric(previous.value.slice(-1))
       wordCharAfter = text(next) && alphanumeric(next.value.charAt(0))
 
       if (length === 1) {
@@ -246,7 +246,7 @@ function factory(options) {
             !wordCharAfter ||
             !alphanumeric(value.charAt(length - 2)))
         ) {
-          escaped.splice(escaped.length - 1, 0, backslash)
+          escaped.splice(-1, 0, backslash)
         }
       }
     }
@@ -292,6 +292,6 @@ function text(node) {
 
 // Check if `value` ends in a protocol.
 function protocol(value) {
-  var val = value.slice(-6).toLowerCase()
-  return val === mailto || val.slice(-5) === https || val.slice(-4) === http
+  var tail = value.slice(-6).toLowerCase()
+  return tail === mailto || tail.slice(-5) === https || tail.slice(-4) === http
 }

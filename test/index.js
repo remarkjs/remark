@@ -7,7 +7,7 @@ var mdast = require('mdast-util-assert')
 var remark = require('../packages/remark')
 var fixtures = require('./fixtures')
 
-test('fixtures', function(t) {
+test('fixtures', function (t) {
   var index = -1
 
   // Check the next fixture.
@@ -21,23 +21,21 @@ test('fixtures', function(t) {
 
     setImmediate(next) // Queue next.
 
-    t.test(fixture.name, function(st) {
+    t.test(fixture.name, function (st) {
       var input = fixture.input
       var possibilities = fixture.possibilities
       var mapping = fixture.mapping
       var trees = fixture.trees
       var output = fixture.output
 
-      Object.keys(possibilities).forEach(function(key) {
+      Object.keys(possibilities).forEach(function (key) {
         var name = key || 'default'
         var parse = possibilities[key]
         var node
         var markdown
         var recompiled
 
-        node = remark()
-          .data('settings', parse)
-          .parse(input)
+        node = remark().data('settings', parse).parse(input)
 
         mdast(node)
 
@@ -52,9 +50,7 @@ test('fixtures', function(t) {
           .stringify(node)
 
         if (output !== false) {
-          recompiled = remark()
-            .data('settings', parse)
-            .parse(markdown)
+          recompiled = remark().data('settings', parse).parse(markdown)
 
           mdast(recompiled)
 

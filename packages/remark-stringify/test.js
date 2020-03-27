@@ -1,13 +1,11 @@
 'use strict'
 
-/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
 var wcwidth = require('wcwidth')
 var u = require('unist-builder')
 var visit = require('unist-util-visit')
 var unified = require('unified')
 var parse = require('../remark-parse')
-/* eslint-enable import/no-extraneous-dependencies */
 
 var stringify = require('.')
 
@@ -17,7 +15,7 @@ var commonmark = {commonmark: true}
 var pedantic = {pedantic: true}
 var uncollapsable = {start: {line: 1, column: NaN}, end: {line: 1, column: NaN}}
 
-test('remark().stringify(ast, file)', function(t) {
+test('remark().stringify(ast, file)', function (t) {
   t.equal(
     unified()
       .use(stringify)
@@ -31,22 +29,20 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(stringify)
-        .stringify(false)
+    function () {
+      unified().use(stringify).stringify(false)
     },
     /false/,
     'should throw when `ast` is not an object'
   )
 
-  t.doesNotThrow(function() {
+  t.doesNotThrow(function () {
     var compiler = new Compiler()
     compiler.setOptions()
   }, 'should not throw when setting nothing')
 
   t.throws(
-    function() {
+    function () {
       var compiler = new Compiler()
       compiler.setOptions(true)
     },
@@ -54,14 +50,14 @@ test('remark().stringify(ast, file)', function(t) {
     'should throw when setting invalid values'
   )
 
-  t.test('should ignore nully numbers', function(st) {
+  t.test('should ignore nully numbers', function (st) {
     var compiler = new Compiler()
     compiler.setOptions({ruleRepetition: null})
     st.equal(compiler.options.ruleRepetition, 3)
     st.end()
   })
 
-  t.test('should ignore nully strings', function(st) {
+  t.test('should ignore nully strings', function (st) {
     var compiler = new Compiler()
     compiler.setOptions({listItemIndent: null})
     st.equal(compiler.options.listItemIndent, 'tab')
@@ -69,17 +65,15 @@ test('remark().stringify(ast, file)', function(t) {
   })
 
   t.throws(
-    function() {
-      unified()
-        .use(stringify)
-        .stringify({type: 'unicorn'})
+    function () {
+      unified().use(stringify).stringify({type: 'unicorn'})
     },
     /unicorn/,
     'should throw when `ast` is not a valid node'
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {bullet: true})
@@ -90,7 +84,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {listItemIndent: 'foo'})
@@ -101,18 +95,15 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(stringify)
-        .data('settings', {rule: true})
-        .stringify(empty())
+    function () {
+      unified().use(stringify).data('settings', {rule: true}).stringify(empty())
     },
     /options\.rule/,
     'should throw when `options.rule` is not a valid horizontal rule bullet'
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {ruleSpaces: 1})
@@ -123,7 +114,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {ruleRepetition: 1})
@@ -134,7 +125,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {ruleRepetition: NaN})
@@ -145,7 +136,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {ruleRepetition: true})
@@ -156,7 +147,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {emphasis: '-'})
@@ -167,7 +158,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {strong: '-'})
@@ -178,18 +169,15 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(stringify)
-        .data('settings', {setext: 0})
-        .stringify(empty())
+    function () {
+      unified().use(stringify).data('settings', {setext: 0}).stringify(empty())
     },
     /options\.setext/,
     'should throw when `options.setext` is not a boolean'
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {incrementListMarker: -1})
@@ -200,7 +188,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {fences: NaN})
@@ -211,18 +199,15 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
-      unified()
-        .use(stringify)
-        .data('settings', {fence: '-'})
-        .stringify(empty())
+    function () {
+      unified().use(stringify).data('settings', {fence: '-'}).stringify(empty())
     },
     /options\.fence/,
     'should throw when `options.fence` is not a valid fence marker'
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {closeAtx: NaN})
@@ -233,7 +218,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {looseTable: '!'})
@@ -244,7 +229,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {spacedTable: '?'})
@@ -255,7 +240,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {paddedTable: '.'})
@@ -266,7 +251,7 @@ test('remark().stringify(ast, file)', function(t) {
   )
 
   t.throws(
-    function() {
+    function () {
       unified()
         .use(stringify)
         .data('settings', {stringLength: 1})
@@ -276,7 +261,7 @@ test('remark().stringify(ast, file)', function(t) {
     'should throw when `options.stringLength` is not a function'
   )
 
-  t.test('should handle underscores in emphasis in pedantic mode', function(
+  t.test('should handle underscores in emphasis in pedantic mode', function (
     st
   ) {
     st.plan(2)
@@ -285,11 +270,7 @@ test('remark().stringify(ast, file)', function(t) {
 
     // Without pedantic mode, emphasis always defaults to underscores.
     st.equal(
-      unified()
-        .use(parse)
-        .use(stringify)
-        .processSync(example)
-        .toString(),
+      unified().use(parse).use(stringify).processSync(example).toString(),
       '_alpha_bravo_\n',
       'baseline'
     )
@@ -308,7 +289,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
   })
 
-  t.test('should support optional list fields', function(st) {
+  t.test('should support optional list fields', function (st) {
     st.equal(
       toString({
         type: 'list',
@@ -461,15 +442,11 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
 
     function toString(value) {
-      return String(
-        unified()
-          .use(stringify)
-          .stringify(value)
-      )
+      return String(unified().use(stringify).stringify(value))
     }
   })
 
-  t.test('should support optional list item fields', function(st) {
+  t.test('should support optional list item fields', function (st) {
     var children = [
       {
         type: 'paragraph',
@@ -524,15 +501,11 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
 
     function toString(value) {
-      return String(
-        unified()
-          .use(stringify)
-          .stringify(value)
-      )
+      return String(unified().use(stringify).stringify(value))
     }
   })
 
-  t.test('should support empty list items', function(st) {
+  t.test('should support empty list items', function (st) {
     st.equal(toString({type: 'listItem', children: []}), '-', 'no checked')
 
     st.equal(
@@ -544,17 +517,13 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
 
     function toString(value) {
-      return String(
-        unified()
-          .use(stringify)
-          .stringify(value)
-      )
+      return String(unified().use(stringify).stringify(value))
     }
   })
 
   t.test(
     'emphasis in pedantic mode should support a variety of contained inline content',
-    function(st) {
+    function (st) {
       // Data-driven tests in the format: [name, input, expected]
       var tests = [
         ['words with asterisks', '*inner content*', '_inner content_\n'],
@@ -588,7 +557,7 @@ test('remark().stringify(ast, file)', function(t) {
       ]
 
       st.plan(tests.length)
-      tests.forEach(function(test) {
+      tests.forEach(function (test) {
         st.equal(
           unified()
             .use(parse)
@@ -603,7 +572,7 @@ test('remark().stringify(ast, file)', function(t) {
     }
   )
 
-  t.test('should process references with casing properly', function(st) {
+  t.test('should process references with casing properly', function (st) {
     // Data-driven tests in the format: [name, value]
     var tests = [
       ['capitalized link references - full', '[alpha][Bravo]'],
@@ -621,18 +590,14 @@ test('remark().stringify(ast, file)', function(t) {
 
     function each(test) {
       st.equal(
-        unified()
-          .use(parse)
-          .use(stringify)
-          .processSync(test[1])
-          .toString(),
+        unified().use(parse).use(stringify).processSync(test[1]).toString(),
         test[1] + '\n',
         test[0]
       )
     }
   })
 
-  t.test('should process associations without label', function(st) {
+  t.test('should process associations without label', function (st) {
     st.equal(
       toString({
         type: 'definition',
@@ -690,15 +655,11 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
 
     function toString(value) {
-      return String(
-        unified()
-          .use(stringify)
-          .stringify(value)
-      )
+      return String(unified().use(stringify).stringify(value))
     }
   })
 
-  t.test('should support `stringLength`', function(st) {
+  t.test('should support `stringLength`', function (st) {
     st.plan(2)
 
     var example = [
@@ -709,11 +670,7 @@ test('remark().stringify(ast, file)', function(t) {
     ].join('\n')
 
     st.equal(
-      unified()
-        .use(parse)
-        .use(stringify)
-        .processSync(example)
-        .toString(),
+      unified().use(parse).use(stringify).processSync(example).toString(),
       [
         '| alpha | bravo   |',
         '| ----- | ------- |',
@@ -740,7 +697,7 @@ test('remark().stringify(ast, file)', function(t) {
     )
   })
 
-  t.test('should support valid strings', function(st) {
+  t.test('should support valid strings', function (st) {
     var compiler = new Compiler()
     st.equal(compiler.options.listItemIndent, 'tab')
     compiler.setOptions({listItemIndent: 'mixed'})
@@ -748,7 +705,7 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
-  t.test('should support valid numbers', function(st) {
+  t.test('should support valid numbers', function (st) {
     var compiler = new Compiler()
     st.equal(compiler.options.ruleRepetition, 3)
     compiler.setOptions({ruleRepetition: 5})
@@ -756,7 +713,7 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
-  t.test('should support valid booleans', function(st) {
+  t.test('should support valid booleans', function (st) {
     var compiler = new Compiler()
     st.equal(compiler.options.looseTable, false)
     compiler.setOptions({looseTable: true})
@@ -764,7 +721,7 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
-  t.test('should support valid enums', function(st) {
+  t.test('should support valid enums', function (st) {
     var compiler = new Compiler()
     st.equal(compiler.options.strong, '*')
     compiler.setOptions({strong: '_'})
@@ -772,7 +729,7 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
-  t.test('should support valid functions', function(st) {
+  t.test('should support valid functions', function (st) {
     // Coverage:
     stringLength()
 
@@ -784,11 +741,8 @@ test('remark().stringify(ast, file)', function(t) {
     function stringLength() {}
   })
 
-  t.test('should be able to set options', function(st) {
-    var processor = unified()
-      .use(parse)
-      .use(stringify)
-      .use(plugin)
+  t.test('should be able to set options', function (st) {
+    var processor = unified().use(parse).use(stringify).use(plugin)
 
     var tree = processor.parse(
       ['<!-- setext -->', '', '# Hello World', ''].join('\n')
@@ -821,38 +775,26 @@ test('remark().stringify(ast, file)', function(t) {
     st.end()
   })
 
-  t.test('should stringify mailto links properly', function(st) {
+  t.test('should stringify mailto links properly', function (st) {
     st.plan(3)
 
     var example = '[example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified()
-        .use(parse)
-        .use(stringify)
-        .processSync(example)
-        .toString(),
+      unified().use(parse).use(stringify).processSync(example).toString(),
       example + '\n',
       'url is `mailto:` plus link text'
     )
 
     example = '[mailto:example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified()
-        .use(parse)
-        .use(stringify)
-        .processSync(example)
-        .toString(),
+      unified().use(parse).use(stringify).processSync(example).toString(),
       '<mailto:example@foo.com>\n',
       'url is link text'
     )
 
     example = '[example](mailto:example@foo.com)'
     st.equal(
-      unified()
-        .use(parse)
-        .use(stringify)
-        .processSync(example)
-        .toString(),
+      unified().use(parse).use(stringify).processSync(example).toString(),
       example + '\n',
       'url is not link text'
     )
@@ -888,7 +830,7 @@ test('remark().stringify(ast, file)', function(t) {
   t.end()
 })
 
-test('stringify escapes', function(t) {
+test('stringify escapes', function (t) {
   t.equal(toString('a\\b'), 'a\\\\b', '`\\`')
   t.equal(toString('a`b'), 'a\\`b', '`` ` ``')
   t.equal(toString('a*b'), 'a\\*b', '`*`')
@@ -1356,7 +1298,7 @@ test('stringify escapes', function(t) {
 function toString(value, options) {
   var tree = typeof value === 'string' ? u('text', value) : value
 
-  visit(tree, function(node) {
+  visit(tree, function (node) {
     node.position = uncollapsable
   })
 

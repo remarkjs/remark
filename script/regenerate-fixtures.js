@@ -5,12 +5,12 @@ var path = require('path')
 var remark = require('../packages/remark')
 var fixtures = require('../test/fixtures')
 
-fixtures.forEach(function(fixture) {
+fixtures.forEach(function (fixture) {
   var input = fixture.input
   var name = fixture.name
   var mapping = fixture.mapping
 
-  Object.keys(mapping).forEach(function(key) {
+  Object.keys(mapping).forEach(function (key) {
     var filename = name + (key ? '.' + key : key) + '.json'
     var result
 

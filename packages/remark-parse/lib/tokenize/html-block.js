@@ -18,7 +18,7 @@ var instructionCloseExpression = /\?>/
 var directiveOpenExpression = /^<![A-Za-z]/
 var directiveCloseExpression = />/
 var cdataOpenExpression = /^<!\[CDATA\[/
-var cdataCloseExpression = /\]\]>/
+var cdataCloseExpression = /]]>/
 var elementCloseExpression = /^$/
 var otherElementOpenExpression = new RegExp(openCloseTag.source + '\\s*$')
 

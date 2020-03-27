@@ -1,16 +1,11 @@
 'use strict'
 
-/* eslint-disable import/no-extraneous-dependencies */
 var test = require('tape')
-/* eslint-enable import/no-extraneous-dependencies */
-
 var remark = require('.')
 
-test('remark().processSync(value)', function(t) {
+test('remark().processSync(value)', function (t) {
   t.equal(
-    remark()
-      .processSync('*foo*')
-      .toString(),
+    remark().processSync('*foo*').toString(),
     '_foo_\n',
     'should parse and stringify a file'
   )
@@ -25,16 +20,13 @@ test('remark().processSync(value)', function(t) {
   )
 
   t.equal(
-    remark()
-      .data('settings', {closeAtx: true})
-      .processSync('# foo')
-      .toString(),
+    remark().data('settings', {closeAtx: true}).processSync('# foo').toString(),
     '# foo #\n',
     'should accept stringify options'
   )
 
   t.throws(
-    function() {
+    function () {
       remark()
         .data('settings', {pedantic: true, listItemIndent: '1'})
         .processSync(['* List', '', '        code()'].join('\n'))
@@ -43,7 +35,7 @@ test('remark().processSync(value)', function(t) {
     'should throw when `pedantic` is `true`, `listItemIndent` is not `tab`, and compiling code in a list-item'
   )
 
-  t.doesNotThrow(function() {
+  t.doesNotThrow(function () {
     remark()
       .use({settings: {commonmark: true, footnotes: true}})
       .parse('[^1]: Footnote with trailing newline and space\n ')

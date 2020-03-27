@@ -2,10 +2,6 @@
   "compilerOptions": {
     "lib": ["es2015"],
     "strict": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
     "baseUrl": ".",
     "paths": {
       "remark": ["index.d.ts"]

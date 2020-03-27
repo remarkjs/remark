@@ -14,25 +14,25 @@
     "browserify": "^16.0.0",
     "camelcase": "^5.0.0",
     "clone": "^2.0.0",
-    "dtslint": "^2.0.0",
-    "execa": "^3.0.0",
+    "dtslint": "^3.0.0",
+    "execa": "^4.0.0",
     "lerna": "^3.0.0",
-    "mdast-util-assert": "^2.0.0",
-    "mdast-util-compact": "^1.0.0",
-    "mdast-zone": "^3.0.0",
-    "nyc": "^14.0.0",
-    "prettier": "^1.0.0",
+    "mdast-util-assert": "^3.0.0",
+    "mdast-util-compact": "^2.0.0",
+    "mdast-zone": "^4.0.0",
+    "nyc": "^15.0.0",
+    "prettier": "^2.0.0",
     "remark-preset-wooorm": "^6.0.0",
     "tape": "^4.0.0",
     "tinyify": "^2.0.0",
     "typescript": "^3.0.0",
     "unified": "^8.0.0",
     "unist-builder": "^2.0.0",
-    "unist-util-remove-position": "^1.0.0",
+    "unist-util-remove-position": "^2.0.0",
     "unist-util-visit": "^2.0.0",
     "vfile": "^4.0.0",
     "wcwidth": "^1.0.0",
-    "xo": "^0.25.0"
+    "xo": "^0.28.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
@@ -64,9 +64,11 @@
     "prettier": true,
     "esnext": false,
     "rules": {
+      "unicorn/string-content": "off",
       "unicorn/prefer-type-error": "off",
       "unicorn/prefer-reflect-apply": "off",
       "unicorn/prefer-includes": "off",
+      "complexity": "off",
       "eqeqeq": [
         "error",
         "always",
@@ -76,10 +78,10 @@
       ],
       "guard-for-in": "off",
       "max-depth": "off",
-      "complexity": "off",
       "no-eq-null": "off"
     },
     "ignores": [
+      "**/types",
       "remark.js"
     ]
   },

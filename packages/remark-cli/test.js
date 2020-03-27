@@ -1,23 +1,20 @@
 'use strict'
 
 var path = require('path')
-
-/* eslint-disable import/no-extraneous-dependencies */
 var execa = require('execa')
 var test = require('tape')
-/* eslint-enable import/no-extraneous-dependencies */
 
 var join = path.join
 
-test('remark-cli', function(t) {
+test('remark-cli', function (t) {
   t.plan(2)
 
-  t.test('should show help on `--help`', function(st) {
+  t.test('should show help on `--help`', function (st) {
     var bin = join('packages', 'remark-cli', 'cli.js')
 
     st.plan(1)
 
-    execa(bin, ['--help']).then(function(result) {
+    execa(bin, ['--help']).then(function (result) {
       st.equal(
         result.stdout,
         [
@@ -67,12 +64,12 @@ test('remark-cli', function(t) {
     })
   })
 
-  t.test('should show version on `--version`', function(st) {
+  t.test('should show version on `--version`', function (st) {
     var bin = join('packages', 'remark-cli', 'cli.js')
 
     st.plan(2)
 
-    execa(bin, ['--version']).then(function(result) {
+    execa(bin, ['--version']).then(function (result) {
       st.ok(
         /remark: \d+\.\d+\.\d+/.test(result.stdout),
         'should include remark version'
