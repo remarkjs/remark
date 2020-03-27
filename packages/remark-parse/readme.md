@@ -279,6 +279,7 @@ Precedence of default inline methods is as follows:
 *   `escape`
 *   `autoLink`
 *   `url`
+*   `email`
 *   `html`
 *   `link`
 *   `reference`

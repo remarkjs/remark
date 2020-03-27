@@ -116,6 +116,7 @@ proto.inlineTokenizers = {
   escape: require('./tokenize/escape'),
   autoLink: require('./tokenize/auto-link'),
   url: require('./tokenize/url'),
+  email: require('./tokenize/email'),
   html: require('./tokenize/html-inline'),
   link: require('./tokenize/link'),
   reference: require('./tokenize/reference'),
