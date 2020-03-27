@@ -175,20 +175,10 @@ referenced from inside other footnotes.
 
 ###### `options.pedantic`
 
-Pedantic mode (`boolean`, default: `false`).
-
-```markdown
-Check out some_file_name.txt
-```
-
-Turns on:
-
-*   Emphasis (`_alpha_`) and importance (`__bravo__`) with underscores in words
-*   Unordered lists with different markers (`*`, `-`, `+`)
-*   If `commonmark` is also turned on, ordered lists with different markers
-    (`.`, `)`)
-*   And removes less spaces in list items (at most four, instead of the whole
-    indent)
+⚠️ Pedantic was previously used to mimic old-style Markdown mode: no tables, no
+fenced code, and with many bugs.
+It’s currently still “working”, but please do not use it, it’ll be removed in
+the future.
 
 ###### `options.blocks`
 
