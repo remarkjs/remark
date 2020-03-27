@@ -8,7 +8,7 @@ module.exports = {
   setext: false,
   closeAtx: false,
   spacedTable: true,
-  paddedTable: true,
+  alignTableDelimiters: true,
   stringLength: stringLength,
   incrementListMarker: true,
   fences: false,

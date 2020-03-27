@@ -157,10 +157,10 @@ Compile ATX headings with the same amount of closing hashes as opening hashes
 Create tables with a space between a pipe and content (`boolean`, default:
 `true`).
 
-###### `options.paddedTable`
+###### `options.alignTableDelimiters`
 
-Create tables with more spaces so that all cells in a column align (`boolean`,
-default: `true`).
+Align the delimiters (`|`) between table cells so that they all align nicely and
+form a grid (`boolean`, default: `true`).
 
 ###### `options.stringLength`
 
