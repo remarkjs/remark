@@ -106,20 +106,6 @@ function link(eat, value, silent) {
       if (depth) {
         depth--
       } else {
-        // Allow white-space between content and url in GFM mode.
-        if (!pedantic) {
-          while (index < length) {
-            character = value.charAt(index + 1)
-
-            if (!whitespace(character)) {
-              break
-            }
-
-            subqueue += character
-            index++
-          }
-        }
-
         if (value.charAt(index + 1) !== leftParenthesis) {
           return
         }
