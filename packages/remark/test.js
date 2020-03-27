@@ -44,7 +44,7 @@ test('remark().processSync(value)', function(t) {
   )
 
   t.doesNotThrow(function() {
-    remark()
+    remark() // 1
       .use({settings: {commonmark: true, footnotes: true}})
       .parse('[^1]: Footnote with trailing newline and space\n ')
   })
