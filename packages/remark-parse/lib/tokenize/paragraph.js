@@ -96,12 +96,6 @@ function paragraph(eat, value, silent) {
 
   subvalue = value.slice(0, index)
 
-  if (trim(subvalue) === '') {
-    eat(subvalue)
-
-    return null
-  }
-
   /* istanbul ignore if - never used (yet) */
   if (silent) {
     return true
