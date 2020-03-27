@@ -24,7 +24,6 @@ declare namespace remarkStringify {
     entities: boolean | 'numbers' | 'escape'
     setext: boolean
     closeAtx: boolean
-    looseTable: boolean
     spacedTable: boolean
     paddedTable: boolean
     stringLength: (s: string) => number

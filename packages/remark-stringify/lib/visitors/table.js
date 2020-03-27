@@ -9,17 +9,8 @@ var verticalBar = '|'
 
 // Stringify table.
 //
-// Creates a fenced table by default, but not in `looseTable: true` mode:
-//
-// ```markdown
-//  Foo | Bar
-// :-: | ---
-// Baz | Qux
-//
-// NOTE: Be careful with `looseTable: true` mode, as a loose table inside an
-// indented code block on GitHub renders as an actual table!
-//
-// Creates a spaced table by default, but not in `spacedTable: false`:
+// Creates a fenced table.
+// The table is spaced by default, but not in `spacedTable: false`:
 //
 // ```markdown
 // |Foo|Bar|
@@ -29,7 +20,6 @@ var verticalBar = '|'
 function table(node) {
   var self = this
   var options = self.options
-  var loose = options.looseTable
   var spaced = options.spacedTable
   var pad = options.paddedTable
   var stringLength = options.stringLength
@@ -46,10 +36,7 @@ function table(node) {
 
   exit()
 
-  if (loose) {
-    start = ''
-    end = ''
-  } else if (spaced) {
+  if (spaced) {
     start = verticalBar + space
     end = space + verticalBar
   } else {

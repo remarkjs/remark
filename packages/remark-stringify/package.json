@@ -41,7 +41,7 @@
     "is-whitespace-character": "^1.0.0",
     "longest-streak": "^2.0.1",
     "markdown-escapes": "^1.0.0",
-    "markdown-table": "^1.1.0",
+    "markdown-table": "^2.0.0",
     "mdast-util-compact": "^2.0.0",
     "parse-entities": "^2.0.0",
     "repeat-string": "^1.5.4",

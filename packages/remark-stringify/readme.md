@@ -152,11 +152,6 @@ Other heading levels are compiled as ATX (respecting `closeAtx`).
 Compile ATX headings with the same amount of closing hashes as opening hashes
 (`boolean`, default: `false`).
 
-###### `options.looseTable`
-
-Create tables without fences: initial and final pipes (`boolean`, default:
-`false`).
-
 ###### `options.spacedTable`
 
 Create tables with a space between a pipe and content (`boolean`, default:

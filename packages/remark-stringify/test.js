@@ -221,17 +221,6 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
-        .data('settings', {looseTable: '!'})
-        .stringify(empty())
-    },
-    /options\.looseTable/,
-    'should throw when `options.looseTable` is not a boolean'
-  )
-
-  t.throws(
-    function () {
-      unified()
-        .use(stringify)
         .data('settings', {spacedTable: '?'})
         .stringify(empty())
     },
@@ -715,9 +704,9 @@ test('remark().stringify(ast, file)', function (t) {
 
   t.test('should support valid booleans', function (st) {
     var compiler = new Compiler()
-    st.equal(compiler.options.looseTable, false)
-    compiler.setOptions({looseTable: true})
-    st.equal(compiler.options.looseTable, true)
+    st.equal(compiler.options.setext, false)
+    compiler.setOptions({setext: true})
+    st.equal(compiler.options.setext, true)
     st.end()
   })
 

@@ -7,7 +7,6 @@ module.exports = {
   entities: 'false',
   setext: false,
   closeAtx: false,
-  looseTable: false,
   spacedTable: true,
   paddedTable: true,
   stringLength: stringLength,
