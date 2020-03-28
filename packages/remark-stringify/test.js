@@ -221,33 +221,22 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
-        .data('settings', {looseTable: '!'})
+        .data('settings', {tableCellPadding: '?'})
         .stringify(empty())
     },
-    /options\.looseTable/,
-    'should throw when `options.looseTable` is not a boolean'
+    /options\.tableCellPadding/,
+    'should throw when `options.tableCellPadding` is not a boolean'
   )
 
   t.throws(
     function () {
       unified()
         .use(stringify)
-        .data('settings', {spacedTable: '?'})
+        .data('settings', {tablePipeAlign: '.'})
         .stringify(empty())
     },
-    /options\.spacedTable/,
-    'should throw when `options.spacedTable` is not a boolean'
-  )
-
-  t.throws(
-    function () {
-      unified()
-        .use(stringify)
-        .data('settings', {paddedTable: '.'})
-        .stringify(empty())
-    },
-    /options\.paddedTable/,
-    'should throw when `options.paddedTable` is not a boolean'
+    /options\.tablePipeAlign/,
+    'should throw when `options.tablePipeAlign` is not a boolean'
   )
 
   t.throws(
@@ -715,9 +704,9 @@ test('remark().stringify(ast, file)', function (t) {
 
   t.test('should support valid booleans', function (st) {
     var compiler = new Compiler()
-    st.equal(compiler.options.looseTable, false)
-    compiler.setOptions({looseTable: true})
-    st.equal(compiler.options.looseTable, true)
+    st.equal(compiler.options.setext, false)
+    compiler.setOptions({setext: true})
+    st.equal(compiler.options.setext, true)
     st.end()
   })
 

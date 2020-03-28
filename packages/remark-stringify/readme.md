@@ -153,20 +153,15 @@ Other heading levels are compiled as ATX (respecting `closeAtx`).
 Compile ATX headings with the same amount of closing hashes as opening hashes
 (`boolean`, default: `false`).
 
-###### `options.looseTable`
+###### `options.tableCellPadding`
 
-Create tables without fences: initial and final pipes (`boolean`, default:
-`false`).
-
-###### `options.spacedTable`
-
-Create tables with a space between a pipe and content (`boolean`, default:
-`true`).
-
-###### `options.paddedTable`
-
-Create tables with more spaces so that all cells in a column align (`boolean`,
+Create tables with a space between cell delimiters (`|`) and content (`boolean`,
 default: `true`).
+
+###### `options.tablePipeAlign`
+
+Align the delimiters (`|`) between table cells so that they all align nicely and
+form a grid (`boolean`, default: `true`).
 
 ###### `options.stringLength`
 
