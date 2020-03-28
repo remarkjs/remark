@@ -124,9 +124,10 @@ Stringify for CommonMark compatible Markdown (`boolean`, default: `false`).
 
 ###### `options.pedantic`
 
-Stringify for pedantic compatible markdown (`boolean`, default: `false`).
-
-*   Escape underscores in words
+⚠️ Pedantic was previously used to mimic old-style Markdown mode: no tables, no
+fenced code, and with many bugs.
+It’s currently still “working”, but please do not use it, it’ll be removed in
+the future.
 
 ###### `options.entities`
 
