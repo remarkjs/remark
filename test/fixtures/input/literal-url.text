@@ -1,0 +1,57 @@
+# Literal URLs
+
+## Extended www “autolinks”
+
+Here’s a URL: www.alpha.org.
+
+Visit www.bravo.org/help for more information.
+
+Dots cannot appear together: www..one.com and www.two..com.
+
+And www. is not a URL, neither are www.a nor www.b.
+
+Underscores cannot be used in the last two domain parts, so www.three.c_m,
+and www.fo_ur.com are not URLs, but www.fi_ve.six.com is.
+
+Valid, and the dot is not part of the link: Visit www.charlie.org.
+
+Valid, and this dot isn’t part of the link either: Visit www.delta.org/a.b.
+
+Valid, but two dots are both not part of the URL: www.example.com..
+
+Here are parens: www.echo.com/search?q=Markup+(business)
+
+The last two aren’t part of the
+link: www.foxtrot.com/search?q=golf+(hotel)))
+
+These first and last ones aren’t
+either: (www.india.com/search?q=juliett+(kilo))
+
+This last one is: (www.lima.com/search?q=mike+(november)
+
+Paren counting is only done if the last character is a closing
+paren: www.google.com/search?q=(business))+ok
+
+If it “looks” like an entity at the end, it isn’t included.
+
+This is a whole URL: www.entity.com/search?q=alpha&hl=en
+
+This is a without the semicolon: www.entity.com/search?q=bravo&;
+
+This one is without the “entity”: www.entity.com/search?q=charlie&hl;
+
+This one one too: www.entity.com/search?q=delta&copy;
+
+Only “named” ones work, numericals don’t, so this one is only without the
+semicolon: www.entity.com/search?q=delta&#x220A;
+
+`<` immediately ends an autolink: www.alpha.org/he<lp
+
+## Extended url “autolinks”
+
+http://oscar.org
+
+(Visit https://papa.romeo.com/search?q=sierra+(tango))
+
+Dots cannot appear together: http://..one.com and http://two..com, or start:
+http://.three.com
