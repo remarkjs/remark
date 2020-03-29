@@ -141,7 +141,7 @@ Allows:
 *   Parentheses (`(` and `)`) around link and image titles
 *   Any escaped [ASCII punctuation][escapes] character
 *   Closing parenthesis (`)`) as an ordered list marker
-*   URL definitions (and footnotes, when enabled) in blockquotes
+*   URL definitions in blockquotes
 
 Disallows:
 
@@ -154,24 +154,6 @@ Disallows:
     `>`)
 *   Lazy blockquote continuation, lines not preceded by a greater than character
     (`>`), for lists, code, and thematic breaks
-
-###### `options.footnotes`
-
-Footnotes mode (`boolean`, default: `false`).
-
-```markdown
-Something something[^or something?].
-
-And something else[^1].
-
-[^1]: This reference footnote contains a paragraph...
-
-    * ...and a list
-```
-
-Enables reference footnotes and inline footnotes.
-Both are wrapped in square brackets and preceded by a caret (`^`), and can be
-referenced from inside other footnotes.
 
 ###### `options.pedantic`
 
@@ -251,7 +233,6 @@ Precedence of default block methods is as follows:
 *   `list`
 *   `setextHeading`
 *   `html`
-*   `footnote`
 *   `definition`
 *   `table`
 *   `paragraph`
@@ -344,8 +325,7 @@ entity may occur.
 *   `locator` ([`Function`][locator]) — Required for inline tokenizers
 *   `onlyAtStart` (`boolean`) — Whether nodes can only be found at the beginning
     of the document
-*   `notInBlock` (`boolean`) — Whether nodes cannot be in blockquotes, lists, or
-    footnote definitions
+*   `notInBlock` (`boolean`) — Whether nodes cannot be in blockquotes or lists
 *   `notInList` (`boolean`) — Whether nodes cannot be in lists
 *   `notInLink` (`boolean`) — Whether nodes cannot be in links
 

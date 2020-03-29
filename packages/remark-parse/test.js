@@ -49,14 +49,6 @@ test('remark().parse(file)', function (t) {
 
   t.throws(
     function () {
-      unified().use(parse).data('settings', {footnotes: 1}).parse('')
-    },
-    /options.footnotes/,
-    'should throw when `options.footnotes` is not a boolean'
-  )
-
-  t.throws(
-    function () {
       unified().use(parse).data('settings', {pedantic: {}}).parse('')
     },
     /options.pedantic/,

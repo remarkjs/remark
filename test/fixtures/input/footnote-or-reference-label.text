@@ -1,5 +1,0 @@
-[alpha][^bravo]
-
-[^bravo]: Footnote definition.
-
-[alpha]: https://example.com

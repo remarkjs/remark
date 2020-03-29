@@ -9,21 +9,17 @@ reference.locator = locate
 
 var link = 'link'
 var image = 'image'
-var footnote = 'footnote'
 var shortcut = 'shortcut'
 var collapsed = 'collapsed'
 var full = 'full'
-var space = ' '
 var exclamationMark = '!'
 var leftSquareBracket = '['
 var backslash = '\\'
 var rightSquareBracket = ']'
-var caret = '^'
 
 function reference(eat, value, silent) {
   var self = this
   var commonmark = self.options.commonmark
-  var footnotes = self.options.footnotes
   var character = value.charAt(0)
   var index = 0
   var length = value.length
@@ -54,19 +50,6 @@ function reference(eat, value, silent) {
   index++
   intro += character
   queue = ''
-
-  // Check whether we’re eating a footnote.
-  if (footnotes && value.charAt(index) === caret) {
-    // Exit if `![^` is found, so the `!` will be seen as text after this,
-    // and we’ll enter this function again when `[^` is found.
-    if (type === image) {
-      return
-    }
-
-    intro += caret
-    index++
-    type = footnote
-  }
 
   // Eat the text.
   depth = 0
@@ -124,13 +107,7 @@ function reference(eat, value, silent) {
 
   character = value.charAt(index)
 
-  // Inline footnotes cannot have a label.
-  // If footnotes are enabled, link labels cannot start with a caret.
-  if (
-    type !== footnote &&
-    character === leftSquareBracket &&
-    (!footnotes || value.charAt(index + 1) !== caret)
-  ) {
+  if (character === leftSquareBracket) {
     identifier = ''
     queue += character
     index++
@@ -187,13 +164,6 @@ function reference(eat, value, silent) {
     return true
   }
 
-  if (type === footnote && content.indexOf(space) !== -1) {
-    return eat(subvalue)({
-      type: footnote,
-      children: this.tokenizeInline(content, eat.now())
-    })
-  }
-
   now = eat.now()
   now.column += intro.length
   now.offset += intro.length
@@ -202,18 +172,15 @@ function reference(eat, value, silent) {
   node = {
     type: type + 'Reference',
     identifier: normalize(identifier),
-    label: identifier
-  }
-
-  if (type === link || type === image) {
-    node.referenceType = referenceType
+    label: identifier,
+    referenceType: referenceType
   }
 
   if (type === link) {
     exit = self.enterLink()
     node.children = self.tokenizeInline(content, now)
     exit()
-  } else if (type === image) {
+  } else {
     node.alt = self.decode.raw(self.unescape(content), now) || null
   }
 

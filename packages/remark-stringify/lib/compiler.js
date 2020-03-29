@@ -55,9 +55,6 @@ proto.visitors = {
   imageReference: require('./visitors/image-reference'),
   definition: require('./visitors/definition'),
   image: require('./visitors/image'),
-  footnote: require('./visitors/footnote'),
-  footnoteReference: require('./visitors/footnote-reference'),
-  footnoteDefinition: require('./visitors/footnote-definition'),
   table: require('./visitors/table'),
   tableCell: require('./visitors/table-cell')
 }
