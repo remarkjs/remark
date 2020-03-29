@@ -9,6 +9,7 @@ declare class RemarkParser implements Parser {
   inlineTokenizers: {
     [key: string]: remarkParse.Tokenizer
   }
+
   inlineMethods: string[]
 }
 
@@ -43,7 +44,7 @@ declare namespace remarkParse {
      * * Parentheses (`(` and `)`) around link and image titles
      * * Any escaped ASCII punctuation character
      * * Closing parenthesis (`)`) as an ordered list marker
-     * * URL definitions (and footnotes, when enabled) in blockquotes
+     * * URL definitions in blockquotes
      *
      * Disallows:
      * * Indented code blocks directly following a paragraph
@@ -56,17 +57,6 @@ declare namespace remarkParse {
      * @defaultValue `false`
      */
     commonmark: boolean
-
-    /**
-     * Footnotes mode
-     *
-     * Enables reference footnotes and inline footnotes.
-     * Both are wrapped in square brackets and preceded by a caret (`^`),
-     * and can be referenced from inside other footnotes.
-     *
-     * @defaultValue `false`
-     */
-    footnotes: boolean
 
     /**
      * Defines which HTML elements are seen as block level.

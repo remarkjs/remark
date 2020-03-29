@@ -569,8 +569,7 @@ test('remark().stringify(ast, file)', function (t) {
       ['capitalized link references - shortcut', '[Bravo]'],
       ['capitalized image references - full', '![alpha][Bravo]'],
       ['capitalized image references - collapsed', '![Bravo][]'],
-      ['capitalized image references - shortcut', '![Bravo]'],
-      ['capitalized footnote references', '[^Alpha]']
+      ['capitalized image references - shortcut', '![Bravo]']
     ]
 
     tests.forEach(each)
@@ -599,21 +598,6 @@ test('remark().stringify(ast, file)', function (t) {
 
     st.equal(
       toString({
-        type: 'footnoteDefinition',
-        identifier: 'a',
-        children: [
-          {
-            type: 'paragraph',
-            children: [{type: 'text', value: 'b'}]
-          }
-        ]
-      }),
-      '[^a]: b',
-      'footnote definition'
-    )
-
-    st.equal(
-      toString({
         type: 'linkReference',
         identifier: 'a',
         children: [{type: 'text', value: 'b'}]
@@ -630,15 +614,6 @@ test('remark().stringify(ast, file)', function (t) {
       }),
       '![b][a]',
       'image reference'
-    )
-
-    st.equal(
-      toString({
-        type: 'footnoteReference',
-        identifier: 'a'
-      }),
-      '[^a]',
-      'footnote reference'
     )
 
     st.end()

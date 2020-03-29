@@ -46,11 +46,15 @@ function factory(type) {
         name = methods[index]
         method = tokenizers[name]
 
+        // Previously, we had constructs such as footnotes and YAML that used
+        // these properties.
+        // Those are now external (plus there are userland extensions), that may
+        // still use them.
         if (
           method &&
           /* istanbul ignore next */ (!method.onlyAtStart || self.atStart) &&
-          (!method.notInList || !self.inList) &&
-          (!method.notInBlock || !self.inBlock) &&
+          /* istanbul ignore next */ (!method.notInList || !self.inList) &&
+          /* istanbul ignore next */ (!method.notInBlock || !self.inBlock) &&
           (!method.notInLink || !self.inLink)
         ) {
           valueLength = value.length

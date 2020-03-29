@@ -55,8 +55,7 @@ proto.interruptParagraph = [
   ['blockquote'],
   ['html'],
   ['setextHeading', {commonmark: false}],
-  ['definition', {commonmark: false}],
-  ['footnote', {commonmark: false}]
+  ['definition', {commonmark: false}]
 ]
 
 // Nodes that can interupt a list:
@@ -71,8 +70,7 @@ proto.interruptList = [
   ['atxHeading', {pedantic: false}],
   ['fencedCode', {pedantic: false}],
   ['thematicBreak', {pedantic: false}],
-  ['definition', {commonmark: false}],
-  ['footnote', {commonmark: false}]
+  ['definition', {commonmark: false}]
 ]
 
 // Nodes that can interupt a blockquote:
@@ -91,8 +89,7 @@ proto.interruptBlockquote = [
   ['thematicBreak', {commonmark: true}],
   ['html', {commonmark: true}],
   ['list', {commonmark: true}],
-  ['definition', {commonmark: false}],
-  ['footnote', {commonmark: false}]
+  ['definition', {commonmark: false}]
 ]
 
 // Handlers.
@@ -106,7 +103,6 @@ proto.blockTokenizers = {
   list: require('./tokenize/list'),
   setextHeading: require('./tokenize/heading-setext'),
   html: require('./tokenize/html-block'),
-  footnote: require('./tokenize/footnote-definition'),
   definition: require('./tokenize/definition'),
   table: require('./tokenize/table'),
   paragraph: require('./tokenize/paragraph')
