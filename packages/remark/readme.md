@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[**unified**][unified] processor to parse and compile Markdown.
+[**unified**][unified] processor to parse and serialize Markdown.
 Powered by [plugins][].
 Part of the [unified][] collective.
 
@@ -16,7 +16,7 @@ Part of the [unified][] collective.
 *   Parses Markdown to a syntax tree with [`remark-parse`][parse]
 *   [**mdast**][mdast] syntax tree
 *   [Plugins][] transform the tree
-*   Stringifies syntax trees to Markdown with [`remark-stringify`][stringify]
+*   Serializes syntax trees to Markdown with [`remark-stringify`][stringify]
 
 Don’t need the parser?
 Or compiler?
@@ -54,8 +54,6 @@ Or compiler?
     </td>
   </tr>
 </table>
-
-[**Read more about the unified collective on Medium »**][announcement]
 
 ## Install
 
@@ -170,8 +168,8 @@ Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
 A curated list of awesome remark resources can be found in [**awesome
 remark**][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -202,7 +200,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
@@ -239,8 +237,6 @@ abide by its terms.
 [preset]: https://github.com/unifiedjs/unified#preset
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
-
-[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
 
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 

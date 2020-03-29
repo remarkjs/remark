@@ -5,15 +5,15 @@
 **remark** is a Markdown processor powered by plugins part of the [unified][]
 [collective][].
 
-## Table of Contents
+## Contents
 
-*   [List of Plugins](#list-of-plugins)
-*   [List of Presets](#list-of-presets)
-*   [List of Utilities](#list-of-utilities)
+*   [List of plugins](#list-of-plugins)
+*   [List of presets](#list-of-presets)
+*   [List of utilities](#list-of-utilities)
 *   [Using plugins](#using-plugins)
 *   [Creating plugins](#creating-plugins)
 
-## List of Plugins
+## List of plugins
 
 See [awesome remark][awesome] for the most awesome projects in the ecosystem.
 More plugins can be found on GitHub tagged with the
@@ -27,7 +27,7 @@ See [Creating plugins][create] below.
 *   [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-align#readme)
     — custom syntax to align text or blocks (new node types, rehype compatible)
 *   [`remark-attr`](https://github.com/arobase-che/remark-attr)
-    — custom syntax to add attributes to markdown
+    — custom syntax to add attributes to Markdown
 *   [`remark-autolink-headings`](https://github.com/remarkjs/remark-autolink-headings)
     — add GitHub-style links to headings
 *   [`remark-behead`](https://github.com/mrzmmr/remark-behead)
@@ -44,7 +44,7 @@ See [Creating plugins][create] below.
 *   [`remark-code-extra`](https://github.com/samlanning/remark-code-extra)
     — Add to or transform the HTML output of code blocks (rehype compatible)
 *   [`remark-code-frontmatter`](https://github.com/samlanning/remark-code-frontmatter)
-    — Extract frontmatter from markdown code blocks    
+    — Extract frontmatter from code blocks
 *   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
     – turn code blocks into carbon.now.sh screenshots
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
@@ -96,12 +96,12 @@ See [Creating plugins][create] below.
 *   [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
     — Custom heading id support `{#custom-id}`
 *   [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
-    — stringify with more blank lines between headings
+    — serialize with more blank lines between headings
 *   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks with [highlight.js](https://github.com/isagalaev/highlight.js)
     (rehype compatible)
 *   [`remark-html`](https://github.com/remarkjs/remark-html)
-    — stringify Markdown as HTML
+    — serialize Markdown as HTML
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
     — transform emoji to images
 *   [`remark-html-katex`](https://github.com/Rokt33r/remark-math/tree/master/packages/remark-html-katex#readme)
@@ -128,7 +128,7 @@ See [Creating plugins][create] below.
 *   [`remark-macro`](https://github.com/dimerapp/remark-macro)
     — support for block macros (new node types, rehype compatible)
 *   [`remark-man`](https://github.com/remarkjs/remark-man)
-    — stringify Markdown as man pages (roff)
+    — serialize Markdown as man pages (roff)
 *   [`remark-math`](https://github.com/Rokt33r/remark-math)
     — custom syntax for math (new node types, rehype compatible)
 *   [`remark-mermaid`](https://github.com/temando/remark-mermaid)
@@ -150,7 +150,7 @@ See [Creating plugins][create] below.
     — custom syntax for mentions with configurable existence check (new node
     type, rehype compatible)
 *   [`remark-react`](https://github.com/remarkjs/remark-react)
-    — “stringify” Markdown as [React](https://github.com/facebook/react)
+    — Compile Markdown to [React](https://github.com/facebook/react)
 *   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
     — highlight code blocks for **remark-react** with [CodeMirror](https://codemirror.net)
 *   [`remark-react-lowlight`](https://github.com/inlinestyle/remark-react-lowlight)
@@ -212,18 +212,18 @@ See [Creating plugins][create] below.
 *   [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
     — check links to headings and files
 *   [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
-    — “stringify” Markdown as [VDOM](https://github.com/Matt-Esch/virtual-dom/)
+    — Compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
 *   [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
     — custom syntax for wiki links (rehype compatible)
 *   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark with YAML
 
-## List of Presets
+## List of presets
 
 See [npm search][npm-preset-search] or [github search][github-preset-search]
 for available and often inspirational presets.
 
-## List of Utilities
+## List of utilities
 
 See [**mdast**][mdast-util] for a list of utilities for working with the syntax
 tree.

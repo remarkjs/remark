@@ -9,9 +9,9 @@
 [![Backers][backers-badge]][collective]
 
 [Compiler][] for [**unified**][unified].
-Stringifies [**mdast**][mdast] syntax trees to Markdown.
+Serializes [**mdast**][mdast] syntax trees to Markdown.
 Used in the [**remark** processor][remark] but can be used on its own as well.
-Can be [extended][extend] to change how Markdown is compiled.
+Can be [extended][extend] to change how Markdown is serialized.
 
 ## Sponsors
 
@@ -46,8 +46,6 @@ Can be [extended][extend] to change how Markdown is compiled.
   </tr>
 </table>
 
-[**Read more about the unified collective on Medium »**][announcement]
-
 ## Install
 
 [npm][]:
@@ -80,12 +78,12 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 [See **unified** for more examples »][unified]
 
-## Table of Contents
+## Contents
 
 *   [API](#api)
     *   [`processor().use(stringify[, options])`](#processorusestringify-options)
     *   [`stringify.Compiler`](#stringifycompiler)
-*   [Extending the Compiler](#extending-the-compiler)
+*   [Extending the `Compiler`](#extending-the-compiler)
     *   [`Compiler#visitors`](#compilervisitors)
     *   [`function visitor(node[, parent])`](#function-visitornode-parent)
 *   [Security](#security)
@@ -98,7 +96,7 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 ### `processor().use(stringify[, options])`
 
-Configure the `processor` to stringify [**mdast**][mdast] syntax trees to
+Configure the `processor` to serialize [**mdast**][mdast] syntax trees to
 Markdown.
 
 ##### `options`
@@ -108,7 +106,7 @@ Options can be passed directly, or passed later through
 
 ###### `options.gfm`
 
-Stringify with the required escapes for GFM compatible Markdown (`boolean`,
+Serialize with the required escapes for GFM compatible Markdown (`boolean`,
 default: `true`).
 
 *   Escape pipes (`|`, for tables)
@@ -117,9 +115,9 @@ default: `true`).
 
 ###### `options.commonmark`
 
-Stringify for CommonMark compatible Markdown (`boolean`, default: `false`).
+Serialize for CommonMark compatible Markdown (`boolean`, default: `false`).
 
-*   Compile adjacent blockquotes separately
+*   Serialize adjacent block quotes separately
 *   Escape more characters using slashes, instead of as entities
 
 ###### `options.pedantic`
@@ -131,7 +129,7 @@ the future.
 
 ###### `options.entities`
 
-How to stringify entities (`string` or `boolean`, default: `false`):
+How to serialize entities (`string` or `boolean`, default: `false`):
 
 *   `true` — Entities are generated for special HTML characters (`&` > `&amp;`)
     and non-ASCII characters (`©` > `&copy;`).
@@ -144,13 +142,13 @@ How to stringify entities (`string` or `boolean`, default: `false`):
 
 ###### `options.setext`
 
-Compile headings, when possible, in Setext-style (`boolean`, default: `false`).
+Serialize headings, when possible, in Setext-style (`boolean`, default: `false`).
 Uses `=` for level one headings and `-` for level two headings.
-Other heading levels are compiled as ATX (respecting `closeAtx`).
+Other heading levels are serialized as ATX (respecting `closeAtx`).
 
 ###### `options.closeAtx`
 
-Compile ATX headings with the same amount of closing hashes as opening hashes
+Serialize ATX headings with the same amount of closing hashes as opening hashes
 (`boolean`, default: `false`).
 
 ###### `options.tableCellPadding`
@@ -229,12 +227,12 @@ Marker to use for emphasis (`'_'` or `'*'`, default `'_'`).
 
 Access to the [compiler][], if you need it.
 
-## Extending the Compiler
+## Extending the `Compiler`
 
 If the `remark-stringify` plugin is used, it adds a [`Compiler`][compiler]
 constructor function to the `processor`.
 Other plugins can add visitors to its prototype to change how Markdown is
-compiled.
+serialized.
 
 The below plugin modifies a [visitor][] to add an extra blank line before
 headings with a rank of `2`.
@@ -261,7 +259,7 @@ Map of types to [visitor][]s (`Object.<Function>`).
 
 ### `function visitor(node[, parent])`
 
-Stringify `node`.
+Serialize `node`.
 
 ###### Parameters
 
@@ -271,7 +269,7 @@ Stringify `node`.
 
 ###### Returns
 
-`string` — Compiled given `node`.
+`string` — Serialized given `node`.
 
 ## Security
 
@@ -293,8 +291,8 @@ Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
 A curated list of awesome remark resources can be found in [**awesome
 remark**][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -325,7 +323,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
@@ -364,8 +362,6 @@ abide by its terms.
 [extend]: #extending-the-compiler
 
 [visitor]: #function-visitornode-parent
-
-[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
 
 [markdown-table]: https://github.com/wooorm/markdown-table
 

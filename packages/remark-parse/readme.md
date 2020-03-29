@@ -11,7 +11,7 @@
 [Parser][] for [**unified**][unified].
 Parses Markdown to [**mdast**][mdast] syntax trees.
 Used in the [**remark** processor][remark] but can be used on its own as well.
-Can be [extended][extend] to change how markdown is parsed.
+Can be [extended][extend] to change how Markdown is parsed.
 
 ## Sponsors
 
@@ -46,8 +46,6 @@ Can be [extended][extend] to change how markdown is parsed.
   </tr>
 </table>
 
-[**Read more about the unified collective on Medium »**][announcement]
-
 ## Install
 
 [npm][]:
@@ -75,12 +73,12 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 [See **unified** for more examples »][unified]
 
-## Table of Contents
+## Contents
 
 *   [API](#api)
     *   [`processor().use(parse[, options])`](#processoruseparse-options)
     *   [`parse.Parser`](#parseparser)
-*   [Extending the Parser](#extending-the-parser)
+*   [Extending the `Parser`](#extending-the-parser)
     *   [`Parser#blockTokenizers`](#parserblocktokenizers)
     *   [`Parser#blockMethods`](#parserblockmethods)
     *   [`Parser#inlineTokenizers`](#parserinlinetokenizers)
@@ -137,11 +135,11 @@ This is a paragraph
 
 Allows:
 
-*   Empty lines to split blockquotes
+*   Empty lines to split block quotes
 *   Parentheses (`(` and `)`) around link and image titles
 *   Any escaped [ASCII punctuation][escapes] character
 *   Closing parenthesis (`)`) as an ordered list marker
-*   URL definitions (and footnotes, when enabled) in blockquotes
+*   URL definitions (and footnotes, when enabled) in block quotes
 
 Disallows:
 
@@ -152,8 +150,8 @@ Disallows:
 *   Newlines in link and image titles
 *   White space in link and image URLs in auto-links (links in brackets, `<` and
     `>`)
-*   Lazy blockquote continuation, lines not preceded by a greater than character
-    (`>`), for lists, code, and thematic breaks
+*   Lazy block quote continuation, lines not preceded by a greater than
+    character (`>`), for lists, code, and thematic breaks
 
 ###### `options.footnotes`
 
@@ -195,7 +193,7 @@ Defines which HTML elements are seen as block level.
 
 Access to the [parser][], if you need it.
 
-## Extending the Parser
+## Extending the `Parser`
 
 Typically, using [*transformers*][transformer] to manipulate a syntax tree
 produces the desired output.
@@ -345,8 +343,8 @@ entity may occur.
 *   `locator` ([`Function`][locator]) — Required for inline tokenizers
 *   `onlyAtStart` (`boolean`) — Whether nodes can only be found at the beginning
     of the document
-*   `notInBlock` (`boolean`) — Whether nodes cannot be in blockquotes, lists, or
-    footnote definitions
+*   `notInBlock` (`boolean`) — Whether nodes cannot be in block quotes, lists,
+    or footnote definitions
 *   `notInList` (`boolean`) — Whether nodes cannot be in lists
 *   `notInLink` (`boolean`) — Whether nodes cannot be in links
 
@@ -491,8 +489,8 @@ Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
 A curated list of awesome remark resources can be found in [**awesome
 remark**][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -523,7 +521,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
@@ -576,8 +574,6 @@ abide by its terms.
 [eat]: #eatsubvalue
 
 [add]: #addnode-parent
-
-[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
 
 [remark-disable-tokenizers]: https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers
 
