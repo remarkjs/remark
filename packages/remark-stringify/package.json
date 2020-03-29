@@ -6,6 +6,7 @@
   "keywords": [
     "unified",
     "remark",
+    "remark-plugin",
     "plugin",
     "markdown",
     "mdast",
@@ -14,7 +15,9 @@
     "syntax",
     "tree",
     "ast",
-    "stringify"
+    "stringify",
+    "serialize",
+    "compile"
   ],
   "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-stringify",
