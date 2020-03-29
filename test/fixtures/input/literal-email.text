@@ -1,0 +1,18 @@
+example1 (1234567@example.com)
+example1 (mailto:1234567@example.com)
+
+Lorem foo@bar.baz ipsum.
+
+alpha@bravo+charlie.delta isn’t valid, but echo+foxtrot@golf.hotel is.
+
+Valid: a.b-c_d@a.b
+
+Valid, but the dot is not part of the email: a.b-c_d@a.b.
+
+Not valid: a.b-c_d@a.b-
+
+Not valid: a.b-c_d@a.b_
+
+Not valid: alpha@bravo.
+
+&lt;foo@example.com

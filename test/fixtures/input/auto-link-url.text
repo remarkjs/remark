@@ -5,3 +5,5 @@ Also, subdomain should be a part of the link (http://foo.example.com/(hello[worl
 So should this: mailto:foo@bar.com.
 
 And even with underscore http://domain.org/this_is_good.
+
+All links should work http://a.b, https://c.d, http://e.f, https://g.h.

@@ -11,7 +11,7 @@
 [Parser][] for [**unified**][unified].
 Parses Markdown to [**mdast**][mdast] syntax trees.
 Used in the [**remark** processor][remark] but can be used on its own as well.
-Can be [extended][extend] to change how markdown is parsed.
+Can be [extended][extend] to change how Markdown is parsed.
 
 ## Sponsors
 
@@ -19,34 +19,40 @@ Can be [extended][extend] to change how markdown is parsed.
 
 <table>
   <tr valign="top">
-    <td width="20%" align="center">
-      <a href="https://zeit.co"><img src="https://avatars1.githubusercontent.com/u/14985020?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://zeit.co">ZEIT</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://www.gatsbyjs.org">Gatsby</a><br>🥇<br><br>
+      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=900&v=4"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://zeit.co">ZEIT</a><br>🥇<br><br>
+      <!--OC has a sharper image-->
+      <a href="https://zeit.co"><img src="https://images.opencollective.com/zeit/d8a5bee/logo/512.png"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.netlify.com"><img src="https://avatars1.githubusercontent.com/u/7892489?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://www.netlify.com">Netlify</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://www.netlify.com">Netlify</a><br>🥇<br><br>
+      <!--OC has a sharper image-->
+      <a href="https://www.netlify.com"><img src="https://images.opencollective.com/netlify/4087de2/logo/512.png"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=400&v=4"></a>
-      <br><br>
-      <a href="https://www.holloway.com">Holloway</a>
+  </tr>
+  <tr valign="top">
+    <td width="16.67%" align="center">
+      <a href="https://www.holloway.com">Holloway</a><br><br><br>
+      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=300&v=4"></a>
     </td>
-    <td width="20%" align="center">
+    <td width="16.67%" align="center">
+      <a href="https://themeisle.com">ThemeIsle</a><br>🥉<br><br>
+      <a href="https://themeisle.com"><img src="https://twitter-avatar.now.sh/themeisle"></a>
+    </td>
+    <td width="16.67%" align="center">
+      <a href="https://boostio.co">BoostIO</a><br>🥉<br><br>
+      <a href="https://boostio.co"><img src="https://avatars1.githubusercontent.com/u/13612118?s=300&v=4"></a>
+    </td>
+    <td width="50%" align="center" colspan="3">
       <br><br><br><br>
-      <a href="https://opencollective.com/unified"><strong>You?</strong>
+      <a href="https://opencollective.com/unified"><strong>You?</strong></a>
     </td>
   </tr>
 </table>
-
-[**Read more about the unified collective on Medium »**][announcement]
 
 ## Install
 
@@ -75,12 +81,12 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 [See **unified** for more examples »][unified]
 
-## Table of Contents
+## Contents
 
 *   [API](#api)
     *   [`processor().use(parse[, options])`](#processoruseparse-options)
     *   [`parse.Parser`](#parseparser)
-*   [Extending the Parser](#extending-the-parser)
+*   [Extending the `Parser`](#extending-the-parser)
     *   [`Parser#blockTokenizers`](#parserblocktokenizers)
     *   [`Parser#blockMethods`](#parserblockmethods)
     *   [`Parser#inlineTokenizers`](#parserinlinetokenizers)
@@ -137,11 +143,11 @@ This is a paragraph
 
 Allows:
 
-*   Empty lines to split blockquotes
+*   Empty lines to split block quotes
 *   Parentheses (`(` and `)`) around link and image titles
 *   Any escaped [ASCII punctuation][escapes] character
 *   Closing parenthesis (`)`) as an ordered list marker
-*   URL definitions in blockquotes
+*   URL definitions in block quotes
 
 Disallows:
 
@@ -152,8 +158,8 @@ Disallows:
 *   Newlines in link and image titles
 *   White space in link and image URLs in auto-links (links in brackets, `<` and
     `>`)
-*   Lazy blockquote continuation, lines not preceded by a greater than character
-    (`>`), for lists, code, and thematic breaks
+*   Lazy block quote continuation, lines not preceded by a greater than
+    character (`>`), for lists, code, and thematic breaks
 
 ###### `options.pedantic`
 
@@ -177,7 +183,7 @@ Defines which HTML elements are seen as block level.
 
 Access to the [parser][], if you need it.
 
-## Extending the Parser
+## Extending the `Parser`
 
 Typically, using [*transformers*][transformer] to manipulate a syntax tree
 produces the desired output.
@@ -260,6 +266,7 @@ Precedence of default inline methods is as follows:
 *   `escape`
 *   `autoLink`
 *   `url`
+*   `email`
 *   `html`
 *   `link`
 *   `reference`
@@ -325,7 +332,7 @@ entity may occur.
 *   `locator` ([`Function`][locator]) — Required for inline tokenizers
 *   `onlyAtStart` (`boolean`) — Whether nodes can only be found at the beginning
     of the document
-*   `notInBlock` (`boolean`) — Whether nodes cannot be in blockquotes or lists
+*   `notInBlock` (`boolean`) — Whether nodes cannot be in block quotes or lists
 *   `notInList` (`boolean`) — Whether nodes cannot be in lists
 *   `notInLink` (`boolean`) — Whether nodes cannot be in links
 
@@ -470,8 +477,8 @@ Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
 A curated list of awesome remark resources can be found in [**awesome
 remark**][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -502,7 +509,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
@@ -555,8 +562,6 @@ abide by its terms.
 [eat]: #eatsubvalue
 
 [add]: #addnode-parent
-
-[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
 
 [remark-disable-tokenizers]: https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers
 

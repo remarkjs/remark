@@ -1,22 +1,23 @@
 ![remark][logo]
 
-# Getting Started
+# Getting started
 
-**remark** transforms markdown.  It’s an ecosystem of [plugins][].
+**remark** transforms Markdown.
+It’s an ecosystem of [plugins][].
 If you get stuck, [issues][] and [Spectrum][] are good places to get help.
 
 It’s built on [unified][], make sure to read it and its [website][] too.
 
-## Table of Contents
+## Contents
 
-*   [Introduction](#introduction)
+*   [Intro](#intro)
 *   [Command-line](#command-line)
 *   [Using remark in a project](#using-remark-in-a-project)
 *   [Programmatic usage](#programmatic-usage)
 
-## Introduction
+## Intro
 
-Out of the box, **remark** transpiles markdown: markdown is given, reformatted,
+Out of the box, **remark** transforms Markdown: Markdown is given, reformatted,
 and written:
 
 ```md
@@ -43,7 +44,7 @@ But, much more can be done, [through plugins][plugins].
 
 ## Command-line
 
-**remark**’s CLI is a simple way to process markdown files from the
+**remark**’s CLI is a simple way to process Markdown files from the
 command line.  Its interface is provided by [**unified-args**][unified-args].
 
 Install [`remark-cli`][cli] and dependencies (in this case a [linting
@@ -148,7 +149,7 @@ Now from the command line we can run:
 npm test
 ```
 
-This will lint all markdown files when we test the project.
+This will lint all Markdown files when we test the project.
 [`--frail`][frail] ensures the command fails if a code-style violation
 is found, and [`--quiet`][quiet] hides successful files from the report.
 
@@ -208,7 +209,7 @@ remark()
 
 [unified]: https://github.com/unifiedjs/unified
 
-[website]: https://unifiedjs.github.io
+[website]: https://unifiedjs.com
 
 [unified-args]: https://github.com/unifiedjs/unified-args
 

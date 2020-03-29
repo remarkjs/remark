@@ -88,7 +88,13 @@
   "remarkConfig": {
     "plugins": [
       "./script/list-of-methods",
-      "preset-wooorm"
+      "preset-wooorm",
+      [
+        "toc",
+        {
+          "heading": "contents"
+        }
+      ]
     ]
   }
 }

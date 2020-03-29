@@ -6,6 +6,7 @@
   "keywords": [
     "unified",
     "remark",
+    "remark-plugin",
     "plugin",
     "markdown",
     "mdast",

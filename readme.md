@@ -13,25 +13,33 @@
 
 ## Intro
 
-**remark** is not another Markdown to HTML compiler.
-It can generate and reformat Markdown too.
-Powered by plugins to do all kinds of things: [check Markdown code
-style][remark-lint], [transform safely to React][remark-react], [add a table of
-contents][remark-toc], or [compile to man pages][remark-man].
+**remark** is [the world’s most popular Markdown parser][popular]!
+And it does so much more than parse: it inspects (check, lint) and transforms
+(generate, compile) Markdown too!
 
-*   Visit [`unifiedjs.com`][website] and try its [guides][] for an overview
+Everything is possible with plugins, such as [checking Markdown code
+style (`remark-lint`)][remark-lint], [transforming safely to React
+(`remark-react`)][remark-react], [adding a table of
+contents (`remark-toc`)][remark-toc], or [compiling to man pages
+(`remark-man`)][remark-man].
+
+On top of that, remark is part of the [unified][website]
+[collective][governance].
+Learn more about us:
+
+*   Visit [`unifiedjs.com`][website] and peruse its [Learn][] section for an
+    overview
 *   Read [unified][]’s readme for a technical intro
 *   Browse [awesome remark][awesome] to find out more about the ecosystem
-*   Follow us on [Medium][] and [Twitter][] to see what we’re up to
+*   Follow us on [Twitter][] to see what we’re up to
 *   Check out [Contribute][] below to find out how to help out
 
 This repository contains the following projects:
 
-*   [`remark-parse`][parse] — Parse Markdown documents to syntax trees
-*   [`remark-stringify`][stringify] — Stringify syntax trees to Markdown
-    documents
+*   [`remark-parse`][parse] — Parse Markdown to syntax trees
+*   [`remark-stringify`][stringify] — Serialize syntax trees to Markdown
 *   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
-*   [`remark-cli`][cli] — Command-line interface wrapping `remark`
+*   [`remark-cli`][cli] — Command line interface wrapping `remark`
 
 ## Sponsors
 
@@ -39,34 +47,40 @@ This repository contains the following projects:
 
 <table>
   <tr valign="top">
-    <td width="20%" align="center">
-      <a href="https://zeit.co"><img src="https://avatars1.githubusercontent.com/u/14985020?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://zeit.co">ZEIT</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://www.gatsbyjs.org">Gatsby</a><br>🥇<br><br>
+      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=900&v=4"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.gatsbyjs.org"><img src="https://avatars1.githubusercontent.com/u/12551863?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://www.gatsbyjs.org">Gatsby</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://zeit.co">ZEIT</a><br>🥇<br><br>
+      <!--OC has a sharper image-->
+      <a href="https://zeit.co"><img src="https://images.opencollective.com/zeit/d8a5bee/logo/512.png"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.netlify.com"><img src="https://avatars1.githubusercontent.com/u/7892489?s=400&v=4"></a>
-      <br><br>🥇
-      <a href="https://www.netlify.com">Netlify</a>
+    <td width="33.33%" align="center" colspan="2">
+      <a href="https://www.netlify.com">Netlify</a><br>🥇<br><br>
+      <!--OC has a sharper image-->
+      <a href="https://www.netlify.com"><img src="https://images.opencollective.com/netlify/4087de2/logo/512.png"></a>
     </td>
-    <td width="20%" align="center">
-      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=400&v=4"></a>
-      <br><br>
-      <a href="https://www.holloway.com">Holloway</a>
+  </tr>
+  <tr valign="top">
+    <td width="16.67%" align="center">
+      <a href="https://www.holloway.com">Holloway</a><br><br><br>
+      <a href="https://www.holloway.com"><img src="https://avatars1.githubusercontent.com/u/35904294?s=300&v=4"></a>
     </td>
-    <td width="20%" align="center">
+    <td width="16.67%" align="center">
+      <a href="https://themeisle.com">ThemeIsle</a><br>🥉<br><br>
+      <a href="https://themeisle.com"><img src="https://twitter-avatar.now.sh/themeisle"></a>
+    </td>
+    <td width="16.67%" align="center">
+      <a href="https://boostio.co">BoostIO</a><br>🥉<br><br>
+      <a href="https://boostio.co"><img src="https://avatars1.githubusercontent.com/u/13612118?s=300&v=4"></a>
+    </td>
+    <td width="50%" align="center" colspan="3">
       <br><br><br><br>
-      <a href="https://opencollective.com/unified"><strong>You?</strong>
+      <a href="https://opencollective.com/unified"><strong>You?</strong></a>
     </td>
   </tr>
 </table>
-
-[**Read more about the unified collective on Medium »**][announcement]
 
 ## Security
 
@@ -89,8 +103,8 @@ Join us in [spectrum][chat] to chat with the community and contributors.
 A curated list of awesome resources can be found in [**awesome
 remark**][awesome].
 
-This project has a [Code of Conduct][coc].
-By interacting with this repository, organisation, or community you agree to
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
 abide by its terms.
 
 ## License
@@ -117,13 +131,15 @@ abide by its terms.
 
 [size]: https://bundlephobia.com/result?p=remark
 
-[chat-badge]: https://img.shields.io/badge/join%20the%20community-on%20spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
 
 [chat]: https://spectrum.chat/unified/remark
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
 [backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[popular]: https://www.npmtrends.com/remark-parse-vs-marked-vs-markdown-it
 
 [api]: https://github.com/remarkjs/remark/tree/master/packages/remark
 
@@ -145,9 +161,9 @@ abide by its terms.
 
 [unified]: https://github.com/unifiedjs/unified
 
-[website]: https://unifiedjs.github.io
+[website]: https://unifiedjs.com
 
-[guides]: https://unifiedjs.com/#guides
+[learn]: https://unifiedjs.com/learn/
 
 [contribute]: #contribute
 
@@ -165,9 +181,7 @@ abide by its terms.
 
 [collective]: https://opencollective.com/unified
 
-[medium]: https://medium.com/unifiedjs
-
-[announcement]: https://medium.com/unifiedjs/collectively-evolving-through-crowdsourcing-22c359ea95cc
+[governance]: https://github.com/unifiedjs/governance
 
 [twitter]: https://twitter.com/unifiedjs
 
