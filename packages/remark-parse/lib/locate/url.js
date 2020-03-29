@@ -2,22 +2,25 @@
 
 module.exports = locate
 
-var protocols = ['https://', 'http://', 'mailto:']
+var values = ['www.', 'http://', 'https://']
 
 function locate(value, fromIndex) {
-  var length = protocols.length
-  var index = -1
   var min = -1
+  var index
+  var length
   var position
 
   if (!this.options.gfm) {
-    return -1
+    return min
   }
 
-  while (++index < length) {
-    position = value.indexOf(protocols[index], fromIndex)
+  length = values.length
+  index = -1
 
-    if (position !== -1 && (position < min || min === -1)) {
+  while (++index < length) {
+    position = value.indexOf(values[index], fromIndex)
+
+    if (position !== -1 && (min === -1 || position < min)) {
       min = position
     }
   }
