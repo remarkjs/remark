@@ -201,6 +201,8 @@ See [Creating plugins][create] below.
     — custom syntax Wordpress- and Hugo-like shortcodes (new node type)
 *   [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
     — convert PlantUML code to images
+*   [`remark-slate`](https://github.com/hanford/remark-slate)
+    — compile Markdown to Slate [nodes](https://docs.slatejs.org/concepts/02-nodes)
 *   [`remark-slug`](https://github.com/remarkjs/remark-slug)
     — add anchors to headings using GitHub’s algorithm
 *   [`remark-smartypants`](https://github.com/silvenon/remark-smartypants)
