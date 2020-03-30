@@ -26,7 +26,7 @@
     "tape": "^4.0.0",
     "tinyify": "^2.0.0",
     "typescript": "^3.0.0",
-    "unified": "^8.0.0",
+    "unified": "^9.0.0",
     "unist-builder": "^2.0.0",
     "unist-util-remove-position": "^2.0.0",
     "unist-util-visit": "^2.0.0",
