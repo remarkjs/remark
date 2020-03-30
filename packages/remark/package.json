@@ -37,7 +37,7 @@
   "dependencies": {
     "remark-parse": "^7.0.0",
     "remark-stringify": "^7.0.0",
-    "unified": "^8.2.0"
+    "unified": "^9.0.0"
   },
   "scripts": {
     "test": "tape test.js"
