@@ -15,6 +15,7 @@ function indentation(value) {
   var character = value.charAt(index)
   var stops = {}
   var size
+  var lastIndent = 0
 
   while (character === tab || character === space) {
     size = character === tab ? tabSize : spaceSize
@@ -25,7 +26,10 @@ function indentation(value) {
       indent = Math.floor(indent / size) * size
     }
 
-    stops[indent] = index
+    while (lastIndent < indent) {
+      stops[++lastIndent] = index
+    }
+
     character = value.charAt(++index)
   }
 
