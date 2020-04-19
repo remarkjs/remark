@@ -1,0 +1,34 @@
+# Mixed spaces and tabs
+
+- (item 1.) Minimum list, equivalent to two spaces
+ - (item 2.) indented with 1 space, not enough indentation to be a subitem
+	- (item 2.1.) indented with tab
+
+
+- (item 1.) Minimum list, equivalent to two spaces
+  - (item 1.1.) indentend with 2 spaces
+	- (item 1.2.) indented with tab
+
+
+-  (item 1.) List with 1 extra space
+   - (item 1.1.) indentend with 3 spaces
+	- (item 1.2.) indented with tab
+
+
+-   (item 1.) List with 2 extra space, equivalent to 1 tab indentation
+    - (item 1.1.) indentend with 4 spaces
+	- (item 1.2.) indented with tab
+
+
+-	(item 1.) List with 1 tab, equivalent to 4 spaces
+    - (item 1.1.) indentend with 4 spaces
+	- (item 1.2.) indented with tab
+
+
+-	(item 1.) list with double indentation and mixed items
+	- (item 1.1.) normal indentation with 1 tab
+        - (item 1.1.1.) item with 4 spaces + 4 spaces
+	    - (item 1.1.2.) item with tab + 4 spaces
+    	- (item 1.1.3.) item with 4 spaces + tab
+		- (item 1.1.4.) item with tab + tab
+  	  - (item 1.1.5.) item with 2 spaces + tab + 2 spaces (nasty!)
