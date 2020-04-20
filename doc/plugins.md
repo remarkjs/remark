@@ -132,6 +132,8 @@ See [Creating plugins][create] below.
     — change references and definitions to links and images
 *   [`remark-jargon`](https://github.com/freesewing/freesewing/tree/develop/packages/remark-jargon)
     — inserts definitions for jargon terms
+*   [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
+    — remove extra space between CJK Characters.
 *   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-kbd#readme)
     — custom syntax for keyboard keys (new node type, rehype compatible)
 *   [`remark-kbd-plus`](https://github.com/twardoch/remark-kbd-plus)
@@ -255,8 +257,6 @@ See [Creating plugins][create] below.
     — custom syntax for wiki links (rehype compatible)
 *   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark with YAML
-*   [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
-    — remove extra space between CJK Characters.
 
 ## List of presets
 
