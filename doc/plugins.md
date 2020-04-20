@@ -255,6 +255,8 @@ See [Creating plugins][create] below.
     — custom syntax for wiki links (rehype compatible)
 *   [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark with YAML
+*   [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
+    — remove extra space between CJK Characters.
 
 ## List of presets
 
