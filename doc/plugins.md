@@ -237,6 +237,8 @@ See [Creating plugins][create] below.
     — replace unicode emoji with [Twemoji](https://github.com/twitter/twemoji)
 *   [`remark-typescript`](https://github.com/trevorblades/remark-typescript)
     — transform TypeScript code blocks to JavaScript
+*   [`remark-typograf`](https://github.com/mavrin/remark-typograf)
+    — transform text with [Typograf](https://github.com/typograf)
 *   [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
     — remove all links, references, and definitions
 *   [`remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
