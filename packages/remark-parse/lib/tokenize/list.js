@@ -36,7 +36,7 @@ function list(eat, value, silent) {
   var index = 0
   var length = value.length
   var start = null
-  var size = 0
+  var size
   var queue
   var ordered
   var character
@@ -64,19 +64,11 @@ function list(eat, value, silent) {
   while (index < length) {
     character = value.charAt(index)
 
-    if (character === tab) {
-      size += tabSize - (size % tabSize)
-    } else if (character === space) {
-      size++
-    } else {
+    if (character !== tab && character !== space) {
       break
     }
 
     index++
-  }
-
-  if (size >= tabSize) {
-    return
   }
 
   character = value.charAt(index)
@@ -141,7 +133,6 @@ function list(eat, value, silent) {
       nextIndex = length
     }
 
-    end = index + tabSize
     size = 0
 
     while (index < length) {
@@ -156,10 +147,6 @@ function list(eat, value, silent) {
       }
 
       index++
-    }
-
-    if (size >= tabSize) {
-      indented = true
     }
 
     if (item && size >= item.indent) {
