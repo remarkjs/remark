@@ -1,7 +1,6 @@
 'use strict'
 
 var trim = require('trim')
-var decimal = require('is-decimal')
 var trimTrailingLines = require('trim-trailing-lines')
 var interrupt = require('../util/interrupt')
 
@@ -18,7 +17,6 @@ function paragraph(eat, value, silent) {
   var self = this
   var settings = self.options
   var commonmark = settings.commonmark
-  var gfm = settings.gfm
   var tokenizers = self.blockTokenizers
   var interruptors = self.interruptParagraph
   var index = value.indexOf(lineFeed)
@@ -71,17 +69,6 @@ function paragraph(eat, value, silent) {
 
     // Check if the following code contains a possible block.
     if (interrupt(interruptors, tokenizers, self, [eat, subvalue, true])) {
-      break
-    }
-
-    // Break if the following line starts a list, when already in a list, or
-    // when in commonmark, or when in gfm mode and the bullet is *not* numeric.
-    if (
-      tokenizers.list.call(self, eat, subvalue, true) &&
-      (self.inList ||
-        commonmark ||
-        (gfm && !decimal(trim.left(subvalue).charAt(0))))
-    ) {
       break
     }
 

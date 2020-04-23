@@ -50,6 +50,7 @@ proto.enterBlock = toggle('inBlock', false)
 // In the above example, the thematic break “interupts” the paragraph.
 proto.interruptParagraph = [
   ['thematicBreak'],
+  ['list'],
   ['atxHeading'],
   ['fencedCode'],
   ['blockquote'],

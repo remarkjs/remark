@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "In Markdown 1.0.0 and earlier. Version",
+          "value": "In Markdown 1.0.0 and earlier. Version\n8. This line turns into a list item.\nBecause a hard-wrapped line in the\n123. middle of a paragraph looked like a\nlist item.",
           "position": {
             "start": {
               "line": 1,
@@ -14,11 +14,16 @@
               "offset": 0
             },
             "end": {
-              "line": 1,
-              "column": 39,
-              "offset": 38
+              "line": 5,
+              "column": 11,
+              "offset": 162
             },
-            "indent": []
+            "indent": [
+              1,
+              1,
+              1,
+              1
+            ]
           }
         }
       ],
@@ -29,154 +34,12 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 39,
-          "offset": 38
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "start": 8,
-      "spread": false,
-      "children": [
-        {
-          "type": "listItem",
-          "spread": false,
-          "checked": null,
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "This line turns into a list item.\nBecause a hard-wrapped line in the",
-                  "position": {
-                    "start": {
-                      "line": 2,
-                      "column": 4,
-                      "offset": 42
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 35,
-                      "offset": 110
-                    },
-                    "indent": [
-                      1
-                    ]
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 2,
-                  "column": 4,
-                  "offset": 42
-                },
-                "end": {
-                  "line": 3,
-                  "column": 35,
-                  "offset": 110
-                },
-                "indent": [
-                  1
-                ]
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 1,
-              "offset": 39
-            },
-            "end": {
-              "line": 3,
-              "column": 35,
-              "offset": 110
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "listItem",
-          "spread": false,
-          "checked": null,
-          "children": [
-            {
-              "type": "paragraph",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "middle of a paragraph looked like a\nlist item.",
-                  "position": {
-                    "start": {
-                      "line": 4,
-                      "column": 6,
-                      "offset": 116
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 11,
-                      "offset": 162
-                    },
-                    "indent": [
-                      1
-                    ]
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 4,
-                  "column": 6,
-                  "offset": 116
-                },
-                "end": {
-                  "line": 5,
-                  "column": 11,
-                  "offset": 162
-                },
-                "indent": [
-                  1
-                ]
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 4,
-              "column": 1,
-              "offset": 111
-            },
-            "end": {
-              "line": 5,
-              "column": 11,
-              "offset": 162
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 2,
-          "column": 1,
-          "offset": 39
-        },
-        "end": {
           "line": 5,
           "column": 11,
           "offset": 162
         },
         "indent": [
+          1,
           1,
           1,
           1
@@ -613,7 +476,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "In Markdown 1.0.0 and earlier. Version",
+                  "value": "In Markdown 1.0.0 and earlier. Version\n8. This line turns into a list item.",
                   "position": {
                     "start": {
                       "line": 20,
@@ -621,11 +484,13 @@
                       "offset": 452
                     },
                     "end": {
-                      "line": 20,
-                      "column": 42,
-                      "offset": 490
+                      "line": 21,
+                      "column": 40,
+                      "offset": 530
                     },
-                    "indent": []
+                    "indent": [
+                      4
+                    ]
                   }
                 }
               ],
@@ -636,87 +501,13 @@
                   "offset": 452
                 },
                 "end": {
-                  "line": 20,
-                  "column": 42,
-                  "offset": 490
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "list",
-              "ordered": true,
-              "start": 8,
-              "spread": false,
-              "children": [
-                {
-                  "type": "listItem",
-                  "spread": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "This line turns into a list item.",
-                          "position": {
-                            "start": {
-                              "line": 21,
-                              "column": 7,
-                              "offset": 497
-                            },
-                            "end": {
-                              "line": 21,
-                              "column": 40,
-                              "offset": 530
-                            },
-                            "indent": []
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 21,
-                          "column": 7,
-                          "offset": 497
-                        },
-                        "end": {
-                          "line": 21,
-                          "column": 40,
-                          "offset": 530
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 21,
-                      "column": 4,
-                      "offset": 494
-                    },
-                    "end": {
-                      "line": 21,
-                      "column": 40,
-                      "offset": 530
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 21,
-                  "column": 4,
-                  "offset": 494
-                },
-                "end": {
                   "line": 21,
                   "column": 40,
                   "offset": 530
                 },
-                "indent": []
+                "indent": [
+                  4
+                ]
               }
             }
           ],

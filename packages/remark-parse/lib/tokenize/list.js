@@ -100,6 +100,14 @@ function list(eat, value, silent) {
       return
     }
 
+    /* Slightly abusing `silent` mode, whose goal is to make interrupting
+     * paragraphs work.
+     * Well, that’s exactly what we want to do here: don’t interrupt:
+     * 2. here, because the “list” doesn’t start with `1`. */
+    if (silent && queue !== '1') {
+      return
+    }
+
     start = parseInt(queue, 10)
     marker = character
   }

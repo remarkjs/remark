@@ -476,7 +476,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "In Markdown 1.0.0 and earlier. Version",
+                  "value": "In Markdown 1.0.0 and earlier. Version\n8. This line turns into a list item.",
                   "position": {
                     "start": {
                       "line": 20,
@@ -484,11 +484,13 @@
                       "offset": 452
                     },
                     "end": {
-                      "line": 20,
-                      "column": 42,
-                      "offset": 490
+                      "line": 21,
+                      "column": 40,
+                      "offset": 530
                     },
-                    "indent": []
+                    "indent": [
+                      4
+                    ]
                   }
                 }
               ],
@@ -499,87 +501,13 @@
                   "offset": 452
                 },
                 "end": {
-                  "line": 20,
-                  "column": 42,
-                  "offset": 490
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "list",
-              "ordered": true,
-              "start": 8,
-              "spread": false,
-              "children": [
-                {
-                  "type": "listItem",
-                  "spread": false,
-                  "checked": null,
-                  "children": [
-                    {
-                      "type": "paragraph",
-                      "children": [
-                        {
-                          "type": "text",
-                          "value": "This line turns into a list item.",
-                          "position": {
-                            "start": {
-                              "line": 21,
-                              "column": 7,
-                              "offset": 497
-                            },
-                            "end": {
-                              "line": 21,
-                              "column": 40,
-                              "offset": 530
-                            },
-                            "indent": []
-                          }
-                        }
-                      ],
-                      "position": {
-                        "start": {
-                          "line": 21,
-                          "column": 7,
-                          "offset": 497
-                        },
-                        "end": {
-                          "line": 21,
-                          "column": 40,
-                          "offset": 530
-                        },
-                        "indent": []
-                      }
-                    }
-                  ],
-                  "position": {
-                    "start": {
-                      "line": 21,
-                      "column": 4,
-                      "offset": 494
-                    },
-                    "end": {
-                      "line": 21,
-                      "column": 40,
-                      "offset": 530
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 21,
-                  "column": 4,
-                  "offset": 494
-                },
-                "end": {
                   "line": 21,
                   "column": 40,
                   "offset": 530
                 },
-                "indent": []
+                "indent": [
+                  4
+                ]
               }
             }
           ],
