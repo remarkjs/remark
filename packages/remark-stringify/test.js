@@ -50,14 +50,14 @@ test('remark().stringify(ast, file)', function (t) {
     'should throw when setting invalid values'
   )
 
-  t.test('should ignore nully numbers', function (st) {
+  t.test('should ignore nullish numbers', function (st) {
     var compiler = new Compiler()
     compiler.setOptions({ruleRepetition: null})
     st.equal(compiler.options.ruleRepetition, 3)
     st.end()
   })
 
-  t.test('should ignore nully strings', function (st) {
+  t.test('should ignore nullish strings', function (st) {
     var compiler = new Compiler()
     compiler.setOptions({listItemIndent: null})
     st.equal(compiler.options.listItemIndent, 'tab')
