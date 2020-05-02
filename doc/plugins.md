@@ -87,6 +87,8 @@ See [Creating plugins][create] below.
     — add `target` and `rel` attributes to external links
 *   [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
+*   [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
+    — port of the pandoc extension fenced_divs in remark. (new node types, rehype compatible)
 *   [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — replace the first heading in a document
 *   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-fix-guillemets#readme)
