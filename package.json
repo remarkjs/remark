@@ -23,7 +23,7 @@
     "nyc": "^15.0.0",
     "prettier": "^2.0.0",
     "remark-preset-wooorm": "^7.0.0",
-    "tape": "^4.0.0",
+    "tape": "^5.0.0",
     "tinyify": "^2.0.0",
     "typescript": "^3.0.0",
     "unified": "^9.0.0",
@@ -32,7 +32,7 @@
     "unist-util-visit": "^2.0.0",
     "vfile": "^4.0.0",
     "wcwidth": "^1.0.0",
-    "xo": "^0.29.0"
+    "xo": "^0.30.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
@@ -64,11 +64,12 @@
     "prettier": true,
     "esnext": false,
     "rules": {
-      "unicorn/string-content": "off",
+      "unicorn/no-fn-reference-in-iterator": "off",
       "unicorn/prefer-includes": "off",
       "unicorn/prefer-number-properties": "off",
       "unicorn/prefer-type-error": "off",
       "unicorn/prefer-reflect-apply": "off",
+      "unicorn/string-content": "off",
       "complexity": "off",
       "eqeqeq": [
         "error",

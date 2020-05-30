@@ -39,7 +39,7 @@ test('fixtures', function (t) {
 
         mdast(node)
 
-        st.deepEqual(
+        st.deepLooseEqual(
           compact(node),
           compact(trees[mapping[key]]),
           'should parse `' + name + '` correctly'
