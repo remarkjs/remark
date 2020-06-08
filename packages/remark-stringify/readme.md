@@ -207,6 +207,13 @@ Increment ordered list item numbers (`boolean`, default: `true`).
 
 When `false`, all list item numbers will be the same.
 
+###### `options.tightDefinitions`
+
+Separate definitions with a single line feed (`boolean`, default: `false`).
+
+When `false`, definitions will have blank lines between them, similar to other
+blocks.
+
 ###### `options.rule`
 
 Marker to use for thematic breaks / horizontal rules (`'-'`, `'*'`, or `'_'`,

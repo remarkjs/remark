@@ -191,6 +191,17 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
+        .data('settings', {tightDefinitions: 'blank'})
+        .stringify(empty())
+    },
+    /options\.tightDefinitions/,
+    'should throw when `options.tightDefinitions` is not a boolean'
+  )
+
+  t.throws(
+    function () {
+      unified()
+        .use(stringify)
         .data('settings', {fences: NaN})
         .stringify(empty())
     },
@@ -1254,6 +1265,27 @@ test('stringify escapes', function (t) {
     toString(u('paragraph', [u('text', '!'), u('link', [u('text', 'a')])])),
     '\\![a](<>)',
     '! immediately followed by a link'
+  )
+
+  t.end()
+})
+
+test('definition separators', function (t) {
+  var tree = u('root', [
+    u('definition', {identifier: 'foo', url: 'first'}),
+    u('definition', {identifier: 'bar', url: 'second'})
+  ])
+
+  t.equal(
+    toString(tree, {tightDefinitions: false}),
+    '[foo]: first\n\n[bar]: second\n',
+    'blank line between definitions'
+  )
+
+  t.equal(
+    toString(tree, {tightDefinitions: true}),
+    '[foo]: first\n[bar]: second\n',
+    'no blank line between definitions'
   )
 
   t.end()

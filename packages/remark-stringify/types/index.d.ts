@@ -32,6 +32,7 @@ declare namespace remarkStringify {
     bullet: '-' | '*' | '+'
     listItemIndent: 'tab' | '1' | 'mixed'
     incrementListMarker: boolean
+    tightDefinitions: boolean
     rule: '-' | '_' | '*'
     ruleRepetition: number
     ruleSpaces: boolean

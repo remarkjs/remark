@@ -16,6 +16,7 @@ function block(node) {
   var options = self.options
   var fences = options.fences
   var gap = options.commonmark ? comment : triple
+  var definitionGap = options.tightDefinitions ? lineFeed : blank
   var values = []
   var children = node.children
   var length = children.length
@@ -42,6 +43,11 @@ function block(node) {
           (child.type === 'code' && !child.lang && !fences))
       ) {
         values.push(gap)
+      } else if (
+        previous.type === 'definition' &&
+        child.type === 'definition'
+      ) {
+        values.push(definitionGap)
       } else {
         values.push(blank)
       }
