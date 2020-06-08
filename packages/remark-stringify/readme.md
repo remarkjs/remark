@@ -207,6 +207,12 @@ Increment ordered list item numbers (`boolean`, default: `true`).
 
 When `false`, all list item numbers will be the same.
 
+###### `options.definitionBlankLine`
+
+Separate definitions with a blank line (`boolean`, default: `true`).
+
+When `false`, each pair of definitions will be separated by only one newline.
+
 ###### `options.rule`
 
 Marker to use for thematic breaks / horizontal rules (`'-'`, `'*'`, or `'_'`,
