@@ -191,11 +191,11 @@ test('remark().stringify(ast, file)', function (t) {
     function () {
       unified()
         .use(stringify)
-        .data('settings', {definitionBlankLine: 'blank'})
+        .data('settings', {tightDefinitions: 'blank'})
         .stringify(empty())
     },
-    /options\.definitionBlankLine/,
-    'should throw when `options.definitionBlankLine` is not a boolean'
+    /options\.tightDefinitions/,
+    'should throw when `options.tightDefinitions` is not a boolean'
   )
 
   t.throws(
@@ -1277,13 +1277,13 @@ test('definition separators', function (t) {
   ])
 
   t.equal(
-    toString(tree, {definitionBlankLine: true}),
+    toString(tree, {tightDefinitions: false}),
     '[foo]: first\n\n[bar]: second\n',
     'blank line between definitions'
   )
 
   t.equal(
-    toString(tree, {definitionBlankLine: false}),
+    toString(tree, {tightDefinitions: true}),
     '[foo]: first\n[bar]: second\n',
     'no blank line between definitions'
   )

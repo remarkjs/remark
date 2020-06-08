@@ -16,7 +16,7 @@ function block(node) {
   var options = self.options
   var fences = options.fences
   var gap = options.commonmark ? comment : triple
-  var definitionSeparator = options.definitionBlankLine ? blank : lineFeed
+  var definitionGap = options.tightDefinitions ? lineFeed : blank
   var values = []
   var children = node.children
   var length = children.length
@@ -47,7 +47,7 @@ function block(node) {
         previous.type === 'definition' &&
         child.type === 'definition'
       ) {
-        values.push(definitionSeparator)
+        values.push(definitionGap)
       } else {
         values.push(blank)
       }

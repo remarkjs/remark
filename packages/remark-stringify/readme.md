@@ -207,11 +207,12 @@ Increment ordered list item numbers (`boolean`, default: `true`).
 
 When `false`, all list item numbers will be the same.
 
-###### `options.definitionBlankLine`
+###### `options.tightDefinitions`
 
-Separate definitions with a blank line (`boolean`, default: `true`).
+Separate definitions with only one newline (`boolean`, default: `false`).
 
-When `false`, each pair of definitions will be separated by only one newline.
+When `false`, a definition is considered a block and separated from other blocks
+by a blank line.
 
 ###### `options.rule`
 

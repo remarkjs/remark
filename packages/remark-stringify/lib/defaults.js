@@ -11,7 +11,7 @@ module.exports = {
   tablePipeAlign: true,
   stringLength: stringLength,
   incrementListMarker: true,
-  definitionBlankLine: true,
+  tightDefinitions: false,
   fences: false,
   fence: '`',
   bullet: '-',
