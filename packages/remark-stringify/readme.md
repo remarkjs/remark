@@ -209,7 +209,7 @@ When `false`, all list item numbers will be the same.
 
 ###### `options.tightDefinitions`
 
-Separate definitions with only one newline (`boolean`, default: `false`).
+Separate definitions with a single line feed (`boolean`, default: `false`).
 
 When `false`, definitions will have blank lines between them, similar to other
 blocks.
