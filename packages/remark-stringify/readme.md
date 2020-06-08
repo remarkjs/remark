@@ -211,8 +211,8 @@ When `false`, all list item numbers will be the same.
 
 Separate definitions with only one newline (`boolean`, default: `false`).
 
-When `false`, a definition is considered a block and separated from other blocks
-by a blank line.
+When `false`, definitions will have blank lines between them, similar to other
+blocks.
 
 ###### `options.rule`
 
