@@ -157,8 +157,16 @@ function list(eat, value, silent) {
       index++
     }
 
-    if (item && size >= item.indent) {
-      indented = true
+    if (item) {
+      let requiredIndentCount = item.indent;
+
+      if (ordered) {
+        requiredIndentCount--;
+      }
+
+      if (size >= requiredIndentCount) {
+        indented = true
+      }
     }
 
     character = value.charAt(index)
