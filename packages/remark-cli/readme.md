@@ -203,9 +203,9 @@ abide by its terms.
 
 [markdown-extensions]: https://github.com/sindresorhus/markdown-extensions
 
-[config-file]: https://github.com/unifiedjs/unified-engine/blob/master/doc/configure.md
+[config-file]: https://github.com/unifiedjs/unified-engine/blob/main/doc/configure.md
 
-[ignore-file]: https://github.com/unifiedjs/unified-engine/blob/master/doc/ignore.md
+[ignore-file]: https://github.com/unifiedjs/unified-engine/blob/main/doc/ignore.md
 
 [unified-args]: https://github.com/unifiedjs/unified-args#cli
 
