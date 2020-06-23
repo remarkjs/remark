@@ -145,15 +145,15 @@ abide by its terms.
 
 [popular]: https://www.npmtrends.com/remark-parse-vs-marked-vs-markdown-it
 
-[api]: https://github.com/remarkjs/remark/tree/master/packages/remark
+[api]: https://github.com/remarkjs/remark/tree/main/packages/remark
 
-[parse]: https://github.com/remarkjs/remark/tree/master/packages/remark-parse
+[parse]: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
 
-[stringify]: https://github.com/remarkjs/remark/tree/master/packages/remark-stringify
+[stringify]: https://github.com/remarkjs/remark/tree/main/packages/remark-stringify
 
-[cli]: https://github.com/remarkjs/remark/tree/master/packages/remark-cli
+[cli]: https://github.com/remarkjs/remark/tree/main/packages/remark-cli
 
-[plugins]: https://github.com/remarkjs/remark/tree/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/tree/main/doc/plugins.md
 
 [remark-lint]: https://github.com/remarkjs/remark-lint
 
@@ -173,11 +173,11 @@ abide by its terms.
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/master/support.md
+[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
 
 [ideas]: https://github.com/remarkjs/ideas
 

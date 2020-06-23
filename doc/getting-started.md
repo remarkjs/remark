@@ -201,11 +201,11 @@ remark()
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[api]: https://github.com/remarkjs/remark/tree/master/packages/remark
+[api]: https://github.com/remarkjs/remark/tree/main/packages/remark
 
-[cli]: https://github.com/remarkjs/remark/tree/master/packages/remark-cli
+[cli]: https://github.com/remarkjs/remark/tree/main/packages/remark-cli
 
-[plugins]: https://github.com/remarkjs/remark/tree/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/tree/main/doc/plugins.md
 
 [unified]: https://github.com/unifiedjs/unified
 
@@ -217,10 +217,10 @@ remark()
 
 [quiet]: https://github.com/unifiedjs/unified-args#--quiet
 
-[parse]: https://github.com/remarkjs/remark/tree/master/packages/remark-parse
+[parse]: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
 
-[stringify]: https://github.com/remarkjs/remark/tree/master/packages/remark-stringify
+[stringify]: https://github.com/remarkjs/remark/tree/main/packages/remark-stringify
 
-[preset]: https://github.com/remarkjs/remark-lint/tree/master/packages/remark-preset-lint-markdown-style-guide
+[preset]: https://github.com/remarkjs/remark-lint/tree/HEAD/packages/remark-preset-lint-markdown-style-guide
 
 [html]: https://github.com/remarkjs/remark-html

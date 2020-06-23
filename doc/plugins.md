@@ -24,11 +24,11 @@ See [Creating plugins][create] below.
 
 *   [`remark-a11y-emoji`](https://github.com/florianeckerstorfer/remark-a11y-emoji)
     — accessible emoji
-*   [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-abbr#readme)
+*   [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-abbr#readme)
     — custom syntax for abbreviations (new node type, rehype compatible)
 *   [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
     — support admonitions
-*   [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-align#readme)
+*   [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
     — custom syntax to align text or blocks (new node types, rehype compatible)
 *   [`remark-attr`](https://github.com/arobase-che/remark-attr)
     — custom syntax to add attributes to Markdown
@@ -61,7 +61,7 @@ See [Creating plugins][create] below.
     — make a section collapsible
 *   [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
     — configure remark with comments
-*   [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-comments#readme)
+*   [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-comments#readme)
     — custom syntax to ignore things
 *   [`remark-container`](https://github.com/zWingz/remark-container)
     — add custom containers
@@ -69,11 +69,11 @@ See [Creating plugins][create] below.
     — add custom containers
 *   [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
-*   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-custom-blocks#readme)
+*   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — custom syntax for custom blocks (new node types, rehype compatible)
 *   [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
     — change links and images to references with separate definitions
-*   [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers#readme)
+*   [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
     — turn some or all remark’s tokenizers on or off
 *   [`remark-dropcap`](https://github.com/brev/remark-dropcap)
     — fancy and accessible drop caps
@@ -91,7 +91,7 @@ See [Creating plugins][create] below.
     — pandoc `fenced_divs` support (new node type, rehype compatible)
 *   [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — replace the first heading in a document
-*   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-fix-guillemets#readme)
+*   [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
     — support ASCII guillements (`<<`, `>>`) mapping them to HTML
 *   [`remark-footnotes`](https://github.com/remarkjs/remark-footnotes)
     – support pandoc footnotes
@@ -109,7 +109,7 @@ See [Creating plugins][create] below.
     — autolink references to commits, issues, pull-requests, and users
 *   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
     — download artifacts from GitLab projects to live alongside your docs
-*   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-grid-tables#readme)
+*   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
     — custom syntax to describe tables (rehype compatible)
 *   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
     — transform [graphviz](https://www.graphviz.org) dot graphs to SVG
@@ -124,9 +124,9 @@ See [Creating plugins][create] below.
     — serialize Markdown as HTML
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
     — transform emoji to images
-*   [`remark-html-katex`](https://github.com/Rokt33r/remark-math/tree/master/packages/remark-html-katex#readme)
+*   [`remark-html-katex`](https://github.com/Rokt33r/remark-math/tree/HEAD/packages/remark-html-katex#readme)
     — change inline and block math to equations with [KaTeX](https://github.com/Khan/KaTeX)
-*   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-iframes#readme)
+*   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
     — custom syntax to create iframes (new node type, rehype compatible)
 *   [`remark-images`](https://github.com/remarkjs/remark-images)
     — add an improved image syntax
@@ -136,7 +136,7 @@ See [Creating plugins][create] below.
     — inserts definitions for jargon terms
 *   [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
     — remove extra space between CJK Characters.
-*   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-kbd#readme)
+*   [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-kbd#readme)
     — custom syntax for keyboard keys (new node type, rehype compatible)
 *   [`remark-kbd-plus`](https://github.com/twardoch/remark-kbd-plus)
     — custom syntax for keyboard keys with plusses (new node type, rehype
@@ -174,7 +174,7 @@ See [Creating plugins][create] below.
     — inject your dependencies
 *   [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
     — parse YAML nodes and expose their value as `parsedValue`
-*   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-ping#readme)
+*   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — custom syntax for mentions with configurable existence check (new node
     type, rehype compatible)
 *   [`remark-react`](https://github.com/remarkjs/remark-react)
@@ -221,7 +221,7 @@ See [Creating plugins][create] below.
     — remove HTML
 *   [`remark-squeeze-paragraphs`](https://github.com/remarkjs/remark-squeeze-paragraphs)
     — remove empty paragraphs
-*   [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-sub-super)
+*   [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-sub-super)
     — custom syntax for super- and subscript (new node types, rehype compatible)
 *   [`remark-terms`](https://github.com/Nevenall/remark-terms)
     — add customizable syntax for special terms and phrases
@@ -235,7 +235,7 @@ See [Creating plugins][create] below.
     — highlight code blocks in Markdown files using
     [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
     (rehype compatible)
-*   [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/master/packages/remark-truncate-links)
+*   [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/HEAD/packages/remark-truncate-links)
     — truncate/shorten urls not manually named
 *   [`remark-twemoji`](https://github.com/madiodio/remark-twemoji)
     — replace unicode emoji with [Twemoji](https://github.com/twitter/twemoji)
@@ -317,7 +317,7 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 [unified-args-use]: https://github.com/unifiedjs/unified-args#--use-plugin
 
-[config-file-use]: https://github.com/unifiedjs/unified-engine/blob/master/doc/configure.md#plugins
+[config-file-use]: https://github.com/unifiedjs/unified-engine/blob/HEAD/doc/configure.md#plugins
 
 [unified-plugins]: https://github.com/unifiedjs/unified#plugin
 

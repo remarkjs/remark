@@ -19,7 +19,7 @@
     "process"
   ],
   "homepage": "https://remark.js.org",
-  "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark",
+  "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark",
   "bugs": "https://github.com/remarkjs/remark/issues",
   "funding": {
     "type": "opencollective",

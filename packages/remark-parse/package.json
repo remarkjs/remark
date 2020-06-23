@@ -18,7 +18,7 @@
   ],
   "types": "types/index.d.ts",
   "homepage": "https://remark.js.org",
-  "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-parse",
+  "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-parse",
   "bugs": "https://github.com/remarkjs/remark/issues",
   "funding": {
     "type": "opencollective",

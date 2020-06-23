@@ -61,7 +61,7 @@ declare namespace remarkParse {
     /**
      * Defines which HTML elements are seen as block level.
      *
-     * @defaultValue blocks listed in <https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.js>
+     * @defaultValue blocks listed in <https://github.com/remarkjs/remark/blob/main/packages/remark-parse/lib/block-elements.js>
      */
     blocks: string[]
 

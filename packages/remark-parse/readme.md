@@ -519,17 +519,17 @@ abide by its terms.
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/master/support.md
+[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
 
 [ideas]: https://github.com/remarkjs/ideas
 
 [awesome]: https://github.com/remarkjs/awesome-remark
 
-[license]: https://github.com/remarkjs/remark/blob/master/license
+[license]: https://github.com/remarkjs/remark/blob/main/license
 
 [author]: https://wooorm.com
 
@@ -539,9 +539,9 @@ abide by its terms.
 
 [data]: https://github.com/unifiedjs/unified#processordatakey-value
 
-[remark]: https://github.com/remarkjs/remark/tree/master/packages/remark
+[remark]: https://github.com/remarkjs/remark/tree/main/packages/remark
 
-[blocks]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse/lib/block-elements.js
+[blocks]: https://github.com/remarkjs/remark/blob/main/packages/remark-parse/lib/block-elements.js
 
 [mdast]: https://github.com/syntax-tree/mdast
 
@@ -567,7 +567,7 @@ abide by its terms.
 
 [add]: #addnode-parent
 
-[remark-disable-tokenizers]: https://github.com/zestedesavoir/zmarkdown/tree/master/packages/remark-disable-tokenizers
+[remark-disable-tokenizers]: https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers
 
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 

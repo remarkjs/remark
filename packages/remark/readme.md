@@ -218,17 +218,17 @@ abide by its terms.
 
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/master/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/master/support.md
+[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/master/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
 
 [ideas]: https://github.com/remarkjs/ideas
 
 [awesome]: https://github.com/remarkjs/awesome-remark
 
-[license]: https://github.com/remarkjs/remark/blob/master/license
+[license]: https://github.com/remarkjs/remark/blob/main/license
 
 [author]: https://wooorm.com
 
@@ -238,11 +238,11 @@ abide by its terms.
 
 [mdast]: https://github.com/syntax-tree/mdast
 
-[parse]: https://github.com/remarkjs/remark/blob/master/packages/remark-parse
+[parse]: https://github.com/remarkjs/remark/blob/main/packages/remark-parse
 
-[stringify]: https://github.com/remarkjs/remark/blob/master/packages/remark-stringify
+[stringify]: https://github.com/remarkjs/remark/blob/main/packages/remark-stringify
 
-[plugins]: https://github.com/remarkjs/remark/blob/master/doc/plugins.md
+[plugins]: https://github.com/remarkjs/remark/blob/main/doc/plugins.md
 
 [unified-usage]: https://github.com/unifiedjs/unified#usage
 

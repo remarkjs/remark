@@ -20,7 +20,7 @@
     "compile"
   ],
   "homepage": "https://remark.js.org",
-  "repository": "https://github.com/remarkjs/remark/tree/master/packages/remark-stringify",
+  "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-stringify",
   "bugs": "https://github.com/remarkjs/remark/issues",
   "funding": {
     "type": "opencollective",
