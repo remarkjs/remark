@@ -141,16 +141,9 @@ the future.
 
 ###### `options.entities`
 
-How to serialize entities (`string` or `boolean`, default: `false`):
-
-*   `true` — Entities are generated for special HTML characters (`&` > `&amp;`)
-    and non-ASCII characters (`©` > `&copy;`).
-    If named entities are not (widely) supported, numbered character references
-    are used (`’` > `&#x2019;`)
-*   `'numbers'` — Numbered entities are generated (`&` > `&#x26;`) for special
-    HTML characters and non-ASCII characters
-*   `'escape'` — Special HTML characters are encoded (`&` > `&amp;`, `’` >
-    `&#x2019;`), non-ASCII characters not (ö persists)
+⚠️ `entities` was previously used, but included bugs.
+It’s currently still “working”, but please do not use it, it’ll be removed in
+the future.
 
 ###### `options.setext`
 
