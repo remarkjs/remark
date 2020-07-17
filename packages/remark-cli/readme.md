@@ -9,6 +9,7 @@
 
 Command line interface for [**remark**][remark].
 
+*   Interface by [`unified-args`][unified-args]
 *   Loads [`remark-` plugins][plugins]
 *   Searches for [Markdown extensions][markdown-extensions]
 *   Ignores paths found in [`.remarkignore` files][ignore-file]
