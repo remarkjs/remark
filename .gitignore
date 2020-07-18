@@ -6,3 +6,4 @@ coverage
 /remark.js
 /remark.min.js
 yarn.lock
+package-lock.json
