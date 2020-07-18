@@ -8,10 +8,12 @@ declare namespace remark {
   type RemarkOptions = remarkParse.RemarkParseOptions &
     remarkStringify.RemarkStringifyOptions
 
-  type PartialRemarkOptions = remarkParse.PartialRemarkParseOptions &
-    remarkStringify.PartialRemarkStringifyOptions
+  /**
+   * @deprecated Use `RemarkOptions` instead.
+   */
+  type PartialRemarkOptions = RemarkOptions
 }
 
-declare function remark(): unified.Processor<remark.PartialRemarkOptions>
+declare function remark(): unified.Processor<remark.RemarkOptions>
 
 export = remark
