@@ -6,6 +6,7 @@ interface PluginOptions {
 
 const plugin = (options?: PluginOptions) => {}
 
+remark.parse('# Hello world!')
 remark().use(plugin)
 remark().use(plugin, {example: true})
 remark().use({settings: {commonmark: true}})
