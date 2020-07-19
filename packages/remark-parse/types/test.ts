@@ -1,7 +1,7 @@
 import unified = require('unified')
 import remarkParse = require('remark-parse')
 
-const partialParseOptions: remarkParse.PartialRemarkParseOptions = {
+const partialParseOptions: remarkParse.RemarkParseOptions = {
   gfm: true,
   pedantic: true
 }
@@ -16,13 +16,7 @@ const badParseOptions = {
 // $ExpectError
 unified().use(remarkParse, badParseOptions)
 
-// $ExpectError
-const parseOptions: remarkParse.RemarkParseOptions = {
-  gfm: true,
-  pedantic: true
-}
-
-const badParseOptionsInterface: remarkParse.PartialRemarkParseOptions = {
+const badParseOptionsInterface: remarkParse.RemarkParseOptions = {
   // $ExpectError
   gfm: 'true'
 }
