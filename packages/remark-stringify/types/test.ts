@@ -50,12 +50,6 @@ function gap(this: unified.Processor) {
 
 const plugin: unified.Plugin = gap
 
-const badPartialStringifyOptions: remarkStringify.PartialRemarkStringifyOptions = {
-  // $ExpectError
-  gfm: 'true'
-}
-
-// $ExpectError
 const incompleteStringifyOptions: remarkStringify.RemarkStringifyOptions = {
   gfm: true,
   fences: true,

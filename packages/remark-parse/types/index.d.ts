@@ -14,8 +14,8 @@ declare class RemarkParser implements Parser {
 }
 
 declare namespace remarkParse {
-  interface Parse extends Plugin<[PartialRemarkParseOptions?]> {
-    (options: PartialRemarkParseOptions): void
+  interface Parse extends Plugin<[RemarkParseOptions?]> {
+    (options: RemarkParseOptions): void
     Parser: typeof RemarkParser
   }
 
@@ -34,7 +34,7 @@ declare namespace remarkParse {
      *
      * @defaultValue `true`
      */
-    gfm: boolean
+    gfm?: boolean
 
     /**
      * CommonMark mode
@@ -56,14 +56,14 @@ declare namespace remarkParse {
      *
      * @defaultValue `false`
      */
-    commonmark: boolean
+    commonmark?: boolean
 
     /**
      * Defines which HTML elements are seen as block level.
      *
      * @defaultValue blocks listed in <https://github.com/remarkjs/remark/blob/main/packages/remark-parse/lib/block-elements.js>
      */
-    blocks: string[]
+    blocks?: string[]
 
     /**
      * Pedantic mode
@@ -77,10 +77,13 @@ declare namespace remarkParse {
      * @defaultValue `false`
      * @deprecated pedantic mode is buggy. It won’t be in micromark, which will be the basis of a future version of remark.
      */
-    pedantic: boolean
+    pedantic?: boolean
   }
 
-  type PartialRemarkParseOptions = Partial<RemarkParseOptions>
+  /**
+   * @deprecated Use `RemarkParseOptions` instead.
+   */
+  type PartialRemarkParseOptions = RemarkParseOptions
 
   interface Add {
     (node: Node, parent?: Parent): Node
