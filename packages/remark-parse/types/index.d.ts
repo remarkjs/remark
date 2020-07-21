@@ -3,7 +3,7 @@
 import {Node, Parent, Position} from 'unist'
 import {Parser, Plugin} from 'unified'
 
-declare class  implements Parser {
+declare class RemarkParser implements Parser {
   parse(): Node
   blockMethods: string[]
   inlineTokenizers: {
@@ -27,7 +27,7 @@ declare namespace remarkParse {
   interface RemarkParseOptions {
     /**
      * GFM mode
-     *RemarkParser
+     *
      * Turns on:
      * * Fenced code blocks
      * * Autolinking of URLs
