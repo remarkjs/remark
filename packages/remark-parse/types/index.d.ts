@@ -9,6 +9,9 @@ declare class RemarkParser implements Parser {
   inlineTokenizers: {
     [key: string]: remarkParse.Tokenizer
   }
+  blockTokenizers: {
+    [key: string]: remarkParse.Tokenizer
+  }
 
   inlineMethods: string[]
 }
