@@ -14,6 +14,6 @@ declare namespace remark {
   type PartialRemarkOptions = RemarkOptions
 }
 
-declare const remark: unified.Processor<remark.RemarkOptions>
+declare const remark: unified.FrozenProcessor<remark.RemarkOptions>
 
 export = remark
