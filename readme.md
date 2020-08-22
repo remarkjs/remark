@@ -102,7 +102,7 @@ See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
 to get started.
 See [`support.md`][support] for ways to get help.
 Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
-Join us in [spectrum][chat] to chat with the community and contributors.
+Join us in [Discussions][chat] to chat with the community and contributors.
 
 A curated list of awesome resources can be found in [**awesome
 remark**][awesome].
@@ -135,9 +135,9 @@ abide by its terms.
 
 [size]: https://bundlephobia.com/result?p=remark
 
-[chat-badge]: https://img.shields.io/badge/chat-spectrum-7b16ff.svg
+[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
 
-[chat]: https://spectrum.chat/unified/remark
+[chat]: https://github.com/remarkjs/remark/discussions
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 

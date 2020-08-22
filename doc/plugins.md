@@ -287,14 +287,14 @@ or specify it in a [configuration file][config-file-use].
 ## Creating plugins
 
 Have an idea for a plugin?
-Post it on [spectrum][] or in [ideas][] and make it happen!
+Post it in [ideas][] and make it happen!
 
 To create a plugin, first read up on the [concept of plugins][unified-plugins].
 Then, read the [guide on “Creating a plugin with unified”][guide].
 Finally, take one of existing plugins, which looks similar to what you’re about
 to make, and work from there.
-If you get stuck, [spectrum][], [ideas][], and [issues][] are good places to get
-help.
+If you get stuck, [ideas][], [issues][], and [discussions][] are good places to
+get help.
 
 You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
 
@@ -323,7 +323,7 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 [issues]: https://github.com/remarkjs/remark/issues
 
-[spectrum]: https://spectrum.chat/unified/remark
+[discussions]: https://github.com/remarkjs/remark/discussions
 
 [guide]: https://unifiedjs.com/learn/guide/create-a-plugin/
 
