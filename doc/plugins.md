@@ -69,6 +69,8 @@ See [Creating plugins][create] below.
     — add custom containers
 *   [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
+*   [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
+    — find and copy files linked files to a destination directory
 *   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — custom syntax for custom blocks (new node types, rehype compatible)
 *   [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
