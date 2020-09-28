@@ -170,8 +170,10 @@ See [Creating plugins][create] below.
     — make sure at most one top-level heading exists
 *   [`remark-numbered-footnote-labels`](https://github.com/jackfletch/remark-numbered-footnote-labels)
     — label footnotes with numbers
-*   [`remark-oembed`](https://github.com/agentofuser/remark-oembed)
+*   [`@agentofuser/remark-oembed`](https://github.com/agentofuser/remark-oembed)
     — transform URLs for youtube, twitter, etc. embeds
+*   [`remark-oembed`](https://github.com/sergioramos/remark-oembed)
+    — transform URLs surrounded by newlines into *asynchronously* loaded embeds
 *   [`remark-openapi`](https://github.com/temando/remark-openapi)
     — transform links to local or remote OpenAPI definitions to tables
 *   [`remark-package-dependencies`](https://github.com/unlight/remark-package-dependencies)
