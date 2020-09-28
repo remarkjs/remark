@@ -122,6 +122,8 @@ See [Creating plugins][create] below.
 *   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks with [highlight.js](https://github.com/isagalaev/highlight.js)
     (rehype compatible)
+*   [`remark-hint`](https://github.com/sergioramos/remark-hint)
+    — add hints/tips/warnings to markdown
 *   [`remark-html`](https://github.com/remarkjs/remark-html)
     — serialize Markdown as HTML
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
