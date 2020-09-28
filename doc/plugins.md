@@ -183,6 +183,9 @@ See [Creating plugins][create] below.
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — custom syntax for mentions with configurable existence check (new node
     type, rehype compatible)
+*   [`remark-prism`](https://github.com/sergioramos/remark-prism)
+    — syntax highlight using [Prism](https://prismjs.com/) with support for
+    most official plugins
 *   [`remark-react`](https://github.com/remarkjs/remark-react)
     — compile Markdown to [React](https://github.com/facebook/react)
 *   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
