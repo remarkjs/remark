@@ -14,7 +14,7 @@
     "browserify": "^16.0.0",
     "camelcase": "^6.0.0",
     "clone": "^2.0.0",
-    "dtslint": "^3.0.0",
+    "dtslint": "^4.0.0",
     "execa": "^4.0.0",
     "lerna": "^3.0.0",
     "mdast-util-assert": "^3.0.0",
