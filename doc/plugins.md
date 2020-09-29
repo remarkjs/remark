@@ -69,6 +69,8 @@ See [Creating plugins][create] below.
     — add custom containers
 *   [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
+*   [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
+    — find and copy files linked files to a destination directory
 *   [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — custom syntax for custom blocks (new node types, rehype compatible)
 *   [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
@@ -120,6 +122,8 @@ See [Creating plugins][create] below.
 *   [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks with [highlight.js](https://github.com/isagalaev/highlight.js)
     (rehype compatible)
+*   [`remark-hint`](https://github.com/sergioramos/remark-hint)
+    — add hints/tips/warnings to markdown
 *   [`remark-html`](https://github.com/remarkjs/remark-html)
     — serialize Markdown as HTML
 *   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
@@ -166,8 +170,10 @@ See [Creating plugins][create] below.
     — make sure at most one top-level heading exists
 *   [`remark-numbered-footnote-labels`](https://github.com/jackfletch/remark-numbered-footnote-labels)
     — label footnotes with numbers
-*   [`remark-oembed`](https://github.com/agentofuser/remark-oembed)
+*   [`@agentofuser/remark-oembed`](https://github.com/agentofuser/remark-oembed)
     — transform URLs for youtube, twitter, etc. embeds
+*   [`remark-oembed`](https://github.com/sergioramos/remark-oembed)
+    — transform URLs surrounded by newlines into *asynchronously* loaded embeds
 *   [`remark-openapi`](https://github.com/temando/remark-openapi)
     — transform links to local or remote OpenAPI definitions to tables
 *   [`remark-package-dependencies`](https://github.com/unlight/remark-package-dependencies)
@@ -177,6 +183,9 @@ See [Creating plugins][create] below.
 *   [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — custom syntax for mentions with configurable existence check (new node
     type, rehype compatible)
+*   [`remark-prism`](https://github.com/sergioramos/remark-prism)
+    — syntax highlight using [Prism](https://prismjs.com/) with support for
+    most official plugins
 *   [`remark-react`](https://github.com/remarkjs/remark-react)
     — compile Markdown to [React](https://github.com/facebook/react)
 *   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
