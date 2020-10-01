@@ -1,0 +1,213 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "aa_bb ",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 7,
+              "offset": 6
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "aa_bb",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 7,
+              "offset": 6
+            },
+            "end": {
+              "line": 1,
+              "column": 14,
+              "offset": 13
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 1,
+          "column": 14,
+          "offset": 13
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "aa_bb ",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 15
+            },
+            "end": {
+              "line": 3,
+              "column": 7,
+              "offset": 21
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "aa_ bb",
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 7,
+              "offset": 21
+            },
+            "end": {
+              "line": 3,
+              "column": 15,
+              "offset": 29
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 15
+        },
+        "end": {
+          "line": 3,
+          "column": 15,
+          "offset": 29
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "aa_bb ",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 31
+            },
+            "end": {
+              "line": 5,
+              "column": 7,
+              "offset": 37
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "aa _bb",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 7,
+              "offset": 37
+            },
+            "end": {
+              "line": 5,
+              "column": 15,
+              "offset": 45
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 5,
+          "column": 1,
+          "offset": 31
+        },
+        "end": {
+          "line": 5,
+          "column": 15,
+          "offset": 45
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "aa**bb ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 47
+            },
+            "end": {
+              "line": 7,
+              "column": 8,
+              "offset": 54
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "aa**bb",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 8,
+              "offset": 54
+            },
+            "end": {
+              "line": 7,
+              "column": 16,
+              "offset": 62
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 47
+        },
+        "end": {
+          "line": 7,
+          "column": 16,
+          "offset": 62
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 8,
+      "column": 1,
+      "offset": 63
+    }
+  }
+}

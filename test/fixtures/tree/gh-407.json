@@ -1,0 +1,116 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "foo\n*",
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 2,
+              "column": 2,
+              "offset": 5
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 2,
+          "offset": 5
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "foo\n+",
+          "position": {
+            "start": {
+              "line": 4,
+              "column": 1,
+              "offset": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 2,
+              "offset": 12
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 4,
+          "column": 1,
+          "offset": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 2,
+          "offset": 12
+        }
+      }
+    },
+    {
+      "type": "paragraph",
+      "children": [
+        {
+          "type": "text",
+          "value": "foo\n1.",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 1,
+              "offset": 14
+            },
+            "end": {
+              "line": 8,
+              "column": 3,
+              "offset": 20
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 7,
+          "column": 1,
+          "offset": 14
+        },
+        "end": {
+          "line": 8,
+          "column": 3,
+          "offset": 20
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 1,
+      "offset": 21
+    }
+  }
+}

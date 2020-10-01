@@ -17,8 +17,7 @@
               "line": 1,
               "column": 8,
               "offset": 7
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -39,8 +38,7 @@
                   "line": 1,
                   "column": 12,
                   "offset": 11
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -54,8 +52,7 @@
               "line": 1,
               "column": 20,
               "offset": 19
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -71,8 +68,7 @@
               "line": 1,
               "column": 21,
               "offset": 20
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -86,8 +82,7 @@
           "line": 1,
           "column": 21,
           "offset": 20
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -111,8 +106,7 @@
                   "line": 3,
                   "column": 15,
                   "offset": 36
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -126,8 +120,7 @@
               "line": 3,
               "column": 31,
               "offset": 52
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -143,8 +136,7 @@
               "line": 3,
               "column": 32,
               "offset": 53
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -158,8 +150,7 @@
           "line": 3,
           "column": 32,
           "offset": 53
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -183,8 +174,7 @@
                   "line": 5,
                   "column": 15,
                   "offset": 69
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -198,8 +188,7 @@
               "line": 5,
               "column": 55,
               "offset": 109
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -215,8 +204,7 @@
               "line": 5,
               "column": 56,
               "offset": 110
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -230,8 +218,7 @@
           "line": 5,
           "column": 56,
           "offset": 110
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -255,8 +242,7 @@
                   "line": 7,
                   "column": 15,
                   "offset": 126
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -270,8 +256,7 @@
               "line": 7,
               "column": 49,
               "offset": 160
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -287,8 +272,7 @@
               "line": 7,
               "column": 50,
               "offset": 161
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -302,8 +286,7 @@
           "line": 7,
           "column": 50,
           "offset": 161
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -327,8 +310,7 @@
                   "line": 9,
                   "column": 15,
                   "offset": 177
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -342,8 +324,7 @@
               "line": 9,
               "column": 54,
               "offset": 216
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -359,8 +340,7 @@
               "line": 9,
               "column": 55,
               "offset": 217
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -374,37 +354,15 @@
           "line": 9,
           "column": 55,
           "offset": 217
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "url and title",
-          "label": "URL and title",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "URL and title",
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 2,
-                  "offset": 220
-                },
-                "end": {
-                  "line": 11,
-                  "column": 15,
-                  "offset": 233
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[URL and title]( /url/has space ).",
           "position": {
             "start": {
               "line": 11,
@@ -413,27 +371,9 @@
             },
             "end": {
               "line": 11,
-              "column": 16,
-              "offset": 234
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "( /url/has space ).",
-          "position": {
-            "start": {
-              "line": 11,
-              "column": 16,
-              "offset": 234
-            },
-            "end": {
-              "line": 11,
               "column": 35,
               "offset": 253
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -447,37 +387,15 @@
           "line": 11,
           "column": 35,
           "offset": 253
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "url and title",
-          "label": "URL and title",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "URL and title",
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 2,
-                  "offset": 256
-                },
-                "end": {
-                  "line": 13,
-                  "column": 15,
-                  "offset": 269
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[URL and title]( /url/has space/ \"url has space and title\").",
           "position": {
             "start": {
               "line": 13,
@@ -486,27 +404,9 @@
             },
             "end": {
               "line": 13,
-              "column": 16,
-              "offset": 270
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "( /url/has space/ \"url has space and title\").",
-          "position": {
-            "start": {
-              "line": 13,
-              "column": 16,
-              "offset": 270
-            },
-            "end": {
-              "line": 13,
               "column": 61,
               "offset": 315
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -520,8 +420,7 @@
           "line": 13,
           "column": 61,
           "offset": 315
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -545,8 +444,7 @@
                   "line": 15,
                   "column": 7,
                   "offset": 323
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -560,8 +458,7 @@
               "line": 15,
               "column": 10,
               "offset": 326
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -577,8 +474,7 @@
               "line": 15,
               "column": 11,
               "offset": 327
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -592,8 +488,7 @@
           "line": 15,
           "column": 11,
           "offset": 327
-        },
-        "indent": []
+        }
       }
     }
   ],

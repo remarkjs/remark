@@ -6,9 +6,6 @@
       "children": [
         {
           "type": "linkReference",
-          "identifier": "hi",
-          "label": "hi",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -23,8 +20,7 @@
                   "line": 1,
                   "column": 4,
                   "offset": 3
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -38,9 +34,11 @@
               "line": 1,
               "column": 5,
               "offset": 4
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "hi",
+          "label": "hi",
+          "referenceType": "shortcut"
         }
       ],
       "position": {
@@ -53,8 +51,7 @@
           "line": 1,
           "column": 5,
           "offset": 4
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -73,8 +70,7 @@
           "line": 3,
           "column": 19,
           "offset": 24
-        },
-        "indent": []
+        }
       }
     }
   ],

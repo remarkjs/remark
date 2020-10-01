@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "[",
+          "value": "[test](not a link)",
           "position": {
             "start": {
               "line": 1,
@@ -15,27 +15,9 @@
             },
             "end": {
               "line": 1,
-              "column": 3,
-              "offset": 2
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "test](not a link)",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 3,
-              "offset": 2
-            },
-            "end": {
-              "line": 1,
               "column": 20,
               "offset": 19
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -49,8 +31,7 @@
           "line": 1,
           "column": 20,
           "offset": 19
-        },
-        "indent": []
+        }
       }
     }
   ],

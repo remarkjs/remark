@@ -17,10 +17,7 @@
               "line": 2,
               "column": 1,
               "offset": 12
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         },
         {
@@ -41,8 +38,7 @@
                   "line": 2,
                   "column": 20,
                   "offset": 31
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -56,8 +52,7 @@
               "line": 2,
               "column": 21,
               "offset": 32
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -71,10 +66,7 @@
           "line": 2,
           "column": 21,
           "offset": 32
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -93,10 +85,7 @@
               "line": 5,
               "column": 1,
               "offset": 46
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         },
         {
@@ -106,19 +95,18 @@
           "children": [
             {
               "type": "text",
-              "value": "somename@example.com",
+              "value": "mailto:somename@example.com",
               "position": {
                 "start": {
                   "line": 5,
-                  "column": 9,
-                  "offset": 54
+                  "column": 2,
+                  "offset": 47
                 },
                 "end": {
                   "line": 5,
                   "column": 29,
                   "offset": 74
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -132,8 +120,7 @@
               "line": 5,
               "column": 30,
               "offset": 75
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -147,10 +134,7 @@
           "line": 5,
           "column": 30,
           "offset": 75
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     }
   ],

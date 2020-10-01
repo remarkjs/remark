@@ -18,8 +18,7 @@
               "line": 1,
               "column": 15,
               "offset": 14
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -33,8 +32,7 @@
           "line": 1,
           "column": 15,
           "offset": 14
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -54,8 +52,7 @@
               "line": 3,
               "column": 28,
               "offset": 43
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -69,8 +66,7 @@
           "line": 3,
           "column": 28,
           "offset": 43
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -78,7 +74,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Here’s a URL: ",
+          "value": "Here’s a URL: www.alpha.org.",
           "position": {
             "start": {
               "line": 5,
@@ -87,64 +83,9 @@
             },
             "end": {
               "line": 5,
-              "column": 15,
-              "offset": 59
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.alpha.org",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.alpha.org",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 15,
-                  "offset": 59
-                },
-                "end": {
-                  "line": 5,
-                  "column": 28,
-                  "offset": 72
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 15,
-              "offset": 59
-            },
-            "end": {
-              "line": 5,
-              "column": 28,
-              "offset": 72
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 28,
-              "offset": 72
-            },
-            "end": {
-              "line": 5,
               "column": 29,
               "offset": 73
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -158,8 +99,7 @@
           "line": 5,
           "column": 29,
           "offset": 73
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -167,7 +107,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Visit ",
+          "value": "Visit www.bravo.org/help for more information.",
           "position": {
             "start": {
               "line": 7,
@@ -176,64 +116,9 @@
             },
             "end": {
               "line": 7,
-              "column": 7,
-              "offset": 81
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.bravo.org/help",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.bravo.org/help",
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 7,
-                  "offset": 81
-                },
-                "end": {
-                  "line": 7,
-                  "column": 25,
-                  "offset": 99
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 7,
-              "offset": 81
-            },
-            "end": {
-              "line": 7,
-              "column": 25,
-              "offset": 99
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " for more information.",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 25,
-              "offset": 99
-            },
-            "end": {
-              "line": 7,
               "column": 47,
               "offset": 121
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -247,8 +132,7 @@
           "line": 7,
           "column": 47,
           "offset": 121
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -267,8 +151,7 @@
               "line": 9,
               "column": 60,
               "offset": 182
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -282,8 +165,7 @@
           "line": 9,
           "column": 60,
           "offset": 182
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -302,8 +184,7 @@
               "line": 11,
               "column": 52,
               "offset": 235
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -317,8 +198,7 @@
           "line": 11,
           "column": 52,
           "offset": 235
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -326,7 +206,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Underscores cannot be used in the last two domain parts, so www.three.c_m,\nand www.fo_ur.com are not URLs, but ",
+          "value": "Underscores cannot be used in the last two domain parts, so www.three.c_m,\nand www.fo_ur.com are not URLs, but www.fi_ve.six.com is.",
           "position": {
             "start": {
               "line": 13,
@@ -335,66 +215,9 @@
             },
             "end": {
               "line": 14,
-              "column": 37,
-              "offset": 348
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.fi_ve.six.com",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.fi_ve.six.com",
-              "position": {
-                "start": {
-                  "line": 14,
-                  "column": 37,
-                  "offset": 348
-                },
-                "end": {
-                  "line": 14,
-                  "column": 54,
-                  "offset": 365
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 14,
-              "column": 37,
-              "offset": 348
-            },
-            "end": {
-              "line": 14,
-              "column": 54,
-              "offset": 365
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " is.",
-          "position": {
-            "start": {
-              "line": 14,
-              "column": 54,
-              "offset": 365
-            },
-            "end": {
-              "line": 14,
               "column": 58,
               "offset": 369
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -408,10 +231,7 @@
           "line": 14,
           "column": 58,
           "offset": 369
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -419,7 +239,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Valid, and the dot is not part of the link: Visit ",
+          "value": "Valid, and the dot is not part of the link: Visit www.charlie.org.",
           "position": {
             "start": {
               "line": 16,
@@ -428,64 +248,9 @@
             },
             "end": {
               "line": 16,
-              "column": 51,
-              "offset": 421
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.charlie.org",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.charlie.org",
-              "position": {
-                "start": {
-                  "line": 16,
-                  "column": 51,
-                  "offset": 421
-                },
-                "end": {
-                  "line": 16,
-                  "column": 66,
-                  "offset": 436
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 16,
-              "column": 51,
-              "offset": 421
-            },
-            "end": {
-              "line": 16,
-              "column": 66,
-              "offset": 436
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 16,
-              "column": 66,
-              "offset": 436
-            },
-            "end": {
-              "line": 16,
               "column": 67,
               "offset": 437
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -499,8 +264,7 @@
           "line": 16,
           "column": 67,
           "offset": 437
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -508,7 +272,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Valid, and this dot isn’t part of the link either: Visit ",
+          "value": "Valid, and this dot isn’t part of the link either: Visit www.delta.org/a.b.",
           "position": {
             "start": {
               "line": 18,
@@ -517,64 +281,9 @@
             },
             "end": {
               "line": 18,
-              "column": 58,
-              "offset": 496
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.delta.org/a.b",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.delta.org/a.b",
-              "position": {
-                "start": {
-                  "line": 18,
-                  "column": 58,
-                  "offset": 496
-                },
-                "end": {
-                  "line": 18,
-                  "column": 75,
-                  "offset": 513
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 18,
-              "column": 58,
-              "offset": 496
-            },
-            "end": {
-              "line": 18,
-              "column": 75,
-              "offset": 513
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 18,
-              "column": 75,
-              "offset": 513
-            },
-            "end": {
-              "line": 18,
               "column": 76,
               "offset": 514
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -588,8 +297,7 @@
           "line": 18,
           "column": 76,
           "offset": 514
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -597,7 +305,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Valid, but two dots are both not part of the URL: ",
+          "value": "Valid, but two dots are both not part of the URL: www.example.com..",
           "position": {
             "start": {
               "line": 20,
@@ -606,64 +314,9 @@
             },
             "end": {
               "line": 20,
-              "column": 51,
-              "offset": 566
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.example.com",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.example.com",
-              "position": {
-                "start": {
-                  "line": 20,
-                  "column": 51,
-                  "offset": 566
-                },
-                "end": {
-                  "line": 20,
-                  "column": 66,
-                  "offset": 581
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 20,
-              "column": 51,
-              "offset": 566
-            },
-            "end": {
-              "line": 20,
-              "column": 66,
-              "offset": 581
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "..",
-          "position": {
-            "start": {
-              "line": 20,
-              "column": 66,
-              "offset": 581
-            },
-            "end": {
-              "line": 20,
               "column": 68,
               "offset": 583
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -677,8 +330,7 @@
           "line": 20,
           "column": 68,
           "offset": 583
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -686,7 +338,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Here are parens: ",
+          "value": "Here are parens: www.echo.com/search?q=Markup+(business)",
           "position": {
             "start": {
               "line": 22,
@@ -695,47 +347,9 @@
             },
             "end": {
               "line": 22,
-              "column": 18,
-              "offset": 602
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.echo.com/search?q=Markup+(business)",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.echo.com/search?q=Markup+(business)",
-              "position": {
-                "start": {
-                  "line": 22,
-                  "column": 18,
-                  "offset": 602
-                },
-                "end": {
-                  "line": 22,
-                  "column": 57,
-                  "offset": 641
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 22,
-              "column": 18,
-              "offset": 602
-            },
-            "end": {
-              "line": 22,
               "column": 57,
               "offset": 641
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -749,8 +363,7 @@
           "line": 22,
           "column": 57,
           "offset": 641
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -758,7 +371,7 @@
       "children": [
         {
           "type": "text",
-          "value": "The last two aren’t part of the\nlink: ",
+          "value": "The last two aren’t part of the\nlink: www.foxtrot.com/search?q=golf+(hotel)))",
           "position": {
             "start": {
               "line": 24,
@@ -767,66 +380,9 @@
             },
             "end": {
               "line": 25,
-              "column": 7,
-              "offset": 681
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.foxtrot.com/search?q=golf+(hotel)",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.foxtrot.com/search?q=golf+(hotel)",
-              "position": {
-                "start": {
-                  "line": 25,
-                  "column": 7,
-                  "offset": 681
-                },
-                "end": {
-                  "line": 25,
-                  "column": 44,
-                  "offset": 718
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 25,
-              "column": 7,
-              "offset": 681
-            },
-            "end": {
-              "line": 25,
-              "column": 44,
-              "offset": 718
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 25,
-              "column": 44,
-              "offset": 718
-            },
-            "end": {
-              "line": 25,
               "column": 46,
               "offset": 720
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -840,10 +396,7 @@
           "line": 25,
           "column": 46,
           "offset": 720
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -851,7 +404,7 @@
       "children": [
         {
           "type": "text",
-          "value": "These first and last ones aren’t\neither: (",
+          "value": "These first and last ones aren’t\neither: (www.india.com/search?q=juliett+(kilo))",
           "position": {
             "start": {
               "line": 27,
@@ -860,66 +413,9 @@
             },
             "end": {
               "line": 28,
-              "column": 10,
-              "offset": 764
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.india.com/search?q=juliett+(kilo)",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.india.com/search?q=juliett+(kilo)",
-              "position": {
-                "start": {
-                  "line": 28,
-                  "column": 10,
-                  "offset": 764
-                },
-                "end": {
-                  "line": 28,
-                  "column": 47,
-                  "offset": 801
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 28,
-              "column": 10,
-              "offset": 764
-            },
-            "end": {
-              "line": 28,
-              "column": 47,
-              "offset": 801
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 28,
-              "column": 47,
-              "offset": 801
-            },
-            "end": {
-              "line": 28,
               "column": 48,
               "offset": 802
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -933,10 +429,7 @@
           "line": 28,
           "column": 48,
           "offset": 802
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -944,7 +437,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This last one is: (",
+          "value": "This last one is: (www.lima.com/search?q=mike+(november)",
           "position": {
             "start": {
               "line": 30,
@@ -953,47 +446,9 @@
             },
             "end": {
               "line": 30,
-              "column": 20,
-              "offset": 823
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.lima.com/search?q=mike+(november)",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.lima.com/search?q=mike+(november)",
-              "position": {
-                "start": {
-                  "line": 30,
-                  "column": 20,
-                  "offset": 823
-                },
-                "end": {
-                  "line": 30,
-                  "column": 57,
-                  "offset": 860
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 30,
-              "column": 20,
-              "offset": 823
-            },
-            "end": {
-              "line": 30,
               "column": 57,
               "offset": 860
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1007,8 +462,7 @@
           "line": 30,
           "column": 57,
           "offset": 860
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1016,7 +470,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Paren counting is only done if the last character is a closing\nparen: ",
+          "value": "Paren counting is only done if the last character is a closing\nparen: www.google.com/search?q=(business))+ok",
           "position": {
             "start": {
               "line": 32,
@@ -1025,49 +479,9 @@
             },
             "end": {
               "line": 33,
-              "column": 8,
-              "offset": 932
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.google.com/search?q=(business))+ok",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.google.com/search?q=(business))+ok",
-              "position": {
-                "start": {
-                  "line": 33,
-                  "column": 8,
-                  "offset": 932
-                },
-                "end": {
-                  "line": 33,
-                  "column": 46,
-                  "offset": 970
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 33,
-              "column": 8,
-              "offset": 932
-            },
-            "end": {
-              "line": 33,
               "column": 46,
               "offset": 970
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1081,10 +495,7 @@
           "line": 33,
           "column": 46,
           "offset": 970
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -1103,8 +514,7 @@
               "line": 35,
               "column": 60,
               "offset": 1031
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1118,8 +528,7 @@
           "line": 35,
           "column": 60,
           "offset": 1031
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1127,7 +536,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This is a whole URL: ",
+          "value": "This is a whole URL: www.entity.com/search?q=alpha&hl=en",
           "position": {
             "start": {
               "line": 37,
@@ -1136,47 +545,9 @@
             },
             "end": {
               "line": 37,
-              "column": 22,
-              "offset": 1054
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.entity.com/search?q=alpha&hl=en",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.entity.com/search?q=alpha&hl=en",
-              "position": {
-                "start": {
-                  "line": 37,
-                  "column": 22,
-                  "offset": 1054
-                },
-                "end": {
-                  "line": 37,
-                  "column": 57,
-                  "offset": 1089
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 37,
-              "column": 22,
-              "offset": 1054
-            },
-            "end": {
-              "line": 37,
               "column": 57,
               "offset": 1089
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1190,8 +561,7 @@
           "line": 37,
           "column": 57,
           "offset": 1089
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1199,7 +569,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This is a without the semicolon: ",
+          "value": "This is a without the semicolon: www.entity.com/search?q=bravo&;",
           "position": {
             "start": {
               "line": 39,
@@ -1208,64 +578,9 @@
             },
             "end": {
               "line": 39,
-              "column": 34,
-              "offset": 1124
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.entity.com/search?q=bravo&",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.entity.com/search?q=bravo&",
-              "position": {
-                "start": {
-                  "line": 39,
-                  "column": 34,
-                  "offset": 1124
-                },
-                "end": {
-                  "line": 39,
-                  "column": 64,
-                  "offset": 1154
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 39,
-              "column": 34,
-              "offset": 1124
-            },
-            "end": {
-              "line": 39,
-              "column": 64,
-              "offset": 1154
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ";",
-          "position": {
-            "start": {
-              "line": 39,
-              "column": 64,
-              "offset": 1154
-            },
-            "end": {
-              "line": 39,
               "column": 65,
               "offset": 1155
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1279,8 +594,7 @@
           "line": 39,
           "column": 65,
           "offset": 1155
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1288,7 +602,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This one is without the “entity”: ",
+          "value": "This one is without the “entity”: www.entity.com/search?q=charlie&hl;",
           "position": {
             "start": {
               "line": 41,
@@ -1297,64 +611,9 @@
             },
             "end": {
               "line": 41,
-              "column": 35,
-              "offset": 1191
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.entity.com/search?q=charlie",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.entity.com/search?q=charlie",
-              "position": {
-                "start": {
-                  "line": 41,
-                  "column": 35,
-                  "offset": 1191
-                },
-                "end": {
-                  "line": 41,
-                  "column": 66,
-                  "offset": 1222
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 41,
-              "column": 35,
-              "offset": 1191
-            },
-            "end": {
-              "line": 41,
-              "column": 66,
-              "offset": 1222
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "&hl;",
-          "position": {
-            "start": {
-              "line": 41,
-              "column": 66,
-              "offset": 1222
-            },
-            "end": {
-              "line": 41,
               "column": 70,
               "offset": 1226
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1368,8 +627,7 @@
           "line": 41,
           "column": 70,
           "offset": 1226
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1377,7 +635,7 @@
       "children": [
         {
           "type": "text",
-          "value": "This one one too: ",
+          "value": "This one one too: www.entity.com/search?q=delta©",
           "position": {
             "start": {
               "line": 43,
@@ -1386,64 +644,9 @@
             },
             "end": {
               "line": 43,
-              "column": 19,
-              "offset": 1246
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.entity.com/search?q=delta",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.entity.com/search?q=delta",
-              "position": {
-                "start": {
-                  "line": 43,
-                  "column": 19,
-                  "offset": 1246
-                },
-                "end": {
-                  "line": 43,
-                  "column": 48,
-                  "offset": 1275
-                },
-                "indent": []
-              }
+              "column": 53,
+              "offset": 1280
             }
-          ],
-          "position": {
-            "start": {
-              "line": 43,
-              "column": 19,
-              "offset": 1246
-            },
-            "end": {
-              "line": 43,
-              "column": 48,
-              "offset": 1275
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "©",
-          "position": {
-            "start": {
-              "line": 43,
-              "column": 48,
-              "offset": 1275
-            },
-            "end": {
-              "line": 43,
-              "column": 54,
-              "offset": 1281
-            },
-            "indent": []
           }
         }
       ],
@@ -1457,8 +660,7 @@
           "line": 43,
           "column": 54,
           "offset": 1281
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1466,7 +668,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Only “named” ones work, numericals don’t, so this one is only without the\nsemicolon: ",
+          "value": "Only “named” ones work, numericals don’t, so this one is only without the\nsemicolon: www.entity.com/search?q=delta∊",
           "position": {
             "start": {
               "line": 45,
@@ -1475,83 +677,9 @@
             },
             "end": {
               "line": 46,
-              "column": 12,
-              "offset": 1368
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.entity.com/search?q=delta&#x220A",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.entity.com/search?q=delta",
-              "position": {
-                "start": {
-                  "line": 46,
-                  "column": 12,
-                  "offset": 1368
-                },
-                "end": {
-                  "line": 46,
-                  "column": 41,
-                  "offset": 1397
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "∊",
-              "position": {
-                "start": {
-                  "line": 46,
-                  "column": 41,
-                  "offset": 1397
-                },
-                "end": {
-                  "line": 46,
-                  "column": 48,
-                  "offset": 1404
-                },
-                "indent": []
-              }
+              "column": 48,
+              "offset": 1404
             }
-          ],
-          "position": {
-            "start": {
-              "line": 46,
-              "column": 12,
-              "offset": 1368
-            },
-            "end": {
-              "line": 46,
-              "column": 48,
-              "offset": 1404
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ";",
-          "position": {
-            "start": {
-              "line": 46,
-              "column": 48,
-              "offset": 1404
-            },
-            "end": {
-              "line": 46,
-              "column": 49,
-              "offset": 1405
-            },
-            "indent": []
           }
         }
       ],
@@ -1565,10 +693,7 @@
           "line": 46,
           "column": 49,
           "offset": 1405
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -1587,13 +712,12 @@
               "line": 48,
               "column": 4,
               "offset": 1410
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "text",
-          "value": " immediately ends an autolink: ",
+          "value": " immediately ends an autolink: www.alpha.org/he<lp",
           "position": {
             "start": {
               "line": 48,
@@ -1602,64 +726,9 @@
             },
             "end": {
               "line": 48,
-              "column": 35,
-              "offset": 1441
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "http://www.alpha.org/he",
-          "children": [
-            {
-              "type": "text",
-              "value": "www.alpha.org/he",
-              "position": {
-                "start": {
-                  "line": 48,
-                  "column": 35,
-                  "offset": 1441
-                },
-                "end": {
-                  "line": 48,
-                  "column": 51,
-                  "offset": 1457
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 48,
-              "column": 35,
-              "offset": 1441
-            },
-            "end": {
-              "line": 48,
-              "column": 51,
-              "offset": 1457
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "<lp",
-          "position": {
-            "start": {
-              "line": 48,
-              "column": 51,
-              "offset": 1457
-            },
-            "end": {
-              "line": 48,
               "column": 54,
               "offset": 1460
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1673,8 +742,7 @@
           "line": 48,
           "column": 54,
           "offset": 1460
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1694,8 +762,7 @@
               "line": 50,
               "column": 28,
               "offset": 1489
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1709,36 +776,15 @@
           "line": 50,
           "column": 28,
           "offset": 1489
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": null,
-          "url": "http://oscar.org",
-          "children": [
-            {
-              "type": "text",
-              "value": "http://oscar.org",
-              "position": {
-                "start": {
-                  "line": 52,
-                  "column": 1,
-                  "offset": 1491
-                },
-                "end": {
-                  "line": 52,
-                  "column": 17,
-                  "offset": 1507
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "http://oscar.org",
           "position": {
             "start": {
               "line": 52,
@@ -1749,8 +795,7 @@
               "line": 52,
               "column": 17,
               "offset": 1507
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1764,8 +809,7 @@
           "line": 52,
           "column": 17,
           "offset": 1507
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1773,7 +817,7 @@
       "children": [
         {
           "type": "text",
-          "value": "(Visit ",
+          "value": "(Visit https://papa.romeo.com/search?q=sierra+(tango))",
           "position": {
             "start": {
               "line": 54,
@@ -1782,64 +826,9 @@
             },
             "end": {
               "line": 54,
-              "column": 8,
-              "offset": 1516
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "link",
-          "title": null,
-          "url": "https://papa.romeo.com/search?q=sierra+(tango)",
-          "children": [
-            {
-              "type": "text",
-              "value": "https://papa.romeo.com/search?q=sierra+(tango)",
-              "position": {
-                "start": {
-                  "line": 54,
-                  "column": 8,
-                  "offset": 1516
-                },
-                "end": {
-                  "line": 54,
-                  "column": 54,
-                  "offset": 1562
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 54,
-              "column": 8,
-              "offset": 1516
-            },
-            "end": {
-              "line": 54,
-              "column": 54,
-              "offset": 1562
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 54,
-              "column": 54,
-              "offset": 1562
-            },
-            "end": {
-              "line": 54,
               "column": 55,
               "offset": 1563
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1853,8 +842,7 @@
           "line": 54,
           "column": 55,
           "offset": 1563
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1873,10 +861,7 @@
               "line": 57,
               "column": 18,
               "offset": 1659
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         }
       ],
@@ -1890,10 +875,7 @@
           "line": 57,
           "column": 18,
           "offset": 1659
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     }
   ],

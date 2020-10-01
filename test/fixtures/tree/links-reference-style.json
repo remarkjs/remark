@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Foo ",
+          "value": "Foo [bar] ",
           "position": {
             "start": {
               "line": 1,
@@ -15,49 +15,46 @@
             },
             "end": {
               "line": 1,
-              "column": 5,
-              "offset": 4
-            },
-            "indent": []
+              "column": 11,
+              "offset": 10
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "1",
-          "label": "1",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
-              "value": "bar",
+              "value": "1",
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 6,
-                  "offset": 5
+                  "column": 12,
+                  "offset": 11
                 },
                 "end": {
                   "line": 1,
-                  "column": 9,
-                  "offset": 8
-                },
-                "indent": []
+                  "column": 13,
+                  "offset": 12
+                }
               }
             }
           ],
           "position": {
             "start": {
               "line": 1,
-              "column": 5,
-              "offset": 4
+              "column": 11,
+              "offset": 10
             },
             "end": {
               "line": 1,
               "column": 14,
               "offset": 13
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "1",
+          "label": "1",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -72,8 +69,7 @@
               "line": 1,
               "column": 15,
               "offset": 14
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -87,8 +83,7 @@
           "line": 1,
           "column": 15,
           "offset": 14
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -107,15 +102,11 @@
               "line": 3,
               "column": 5,
               "offset": 20
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "1",
-          "label": "1",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -130,8 +121,7 @@
                   "line": 3,
                   "column": 9,
                   "offset": 24
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -145,9 +135,11 @@
               "line": 3,
               "column": 13,
               "offset": 28
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "1",
+          "label": "1",
+          "referenceType": "full"
         },
         {
           "type": "text",
@@ -162,8 +154,7 @@
               "line": 3,
               "column": 14,
               "offset": 29
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -177,8 +168,7 @@
           "line": 3,
           "column": 14,
           "offset": 29
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -186,7 +176,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Foo ",
+          "value": "Foo [bar]\n",
           "position": {
             "start": {
               "line": 5,
@@ -194,52 +184,47 @@
               "offset": 31
             },
             "end": {
-              "line": 5,
-              "column": 5,
-              "offset": 35
-            },
-            "indent": []
+              "line": 6,
+              "column": 1,
+              "offset": 41
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "1",
-          "label": "1",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
-              "value": "bar",
+              "value": "1",
               "position": {
                 "start": {
-                  "line": 5,
-                  "column": 6,
-                  "offset": 36
+                  "line": 6,
+                  "column": 2,
+                  "offset": 42
                 },
                 "end": {
-                  "line": 5,
-                  "column": 9,
-                  "offset": 39
-                },
-                "indent": []
+                  "line": 6,
+                  "column": 3,
+                  "offset": 43
+                }
               }
             }
           ],
           "position": {
             "start": {
-              "line": 5,
-              "column": 5,
-              "offset": 35
+              "line": 6,
+              "column": 1,
+              "offset": 41
             },
             "end": {
               "line": 6,
               "column": 4,
               "offset": 44
-            },
-            "indent": [
-              1
-            ]
-          }
+            }
+          },
+          "identifier": "1",
+          "label": "1",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -254,8 +239,7 @@
               "line": 6,
               "column": 5,
               "offset": 45
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -269,10 +253,7 @@
           "line": 6,
           "column": 5,
           "offset": 45
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -291,8 +272,7 @@
           "line": 8,
           "column": 20,
           "offset": 66
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -300,7 +280,7 @@
       "children": [
         {
           "type": "text",
-          "value": "With ",
+          "value": "With [embedded [brackets]] ",
           "position": {
             "start": {
               "line": 11,
@@ -309,100 +289,46 @@
             },
             "end": {
               "line": 11,
-              "column": 6,
-              "offset": 74
-            },
-            "indent": []
+              "column": 30,
+              "offset": 98
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "b",
-          "label": "b",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
-              "value": "embedded ",
+              "value": "b",
               "position": {
                 "start": {
                   "line": 11,
-                  "column": 7,
-                  "offset": 75
+                  "column": 31,
+                  "offset": 99
                 },
                 "end": {
                   "line": 11,
-                  "column": 16,
-                  "offset": 84
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "[",
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 16,
-                  "offset": 84
-                },
-                "end": {
-                  "line": 11,
-                  "column": 18,
-                  "offset": 86
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "brackets",
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 18,
-                  "offset": 86
-                },
-                "end": {
-                  "line": 11,
-                  "column": 26,
-                  "offset": 94
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "]",
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 26,
-                  "offset": 94
-                },
-                "end": {
-                  "line": 11,
-                  "column": 28,
-                  "offset": 96
-                },
-                "indent": []
+                  "column": 32,
+                  "offset": 100
+                }
               }
             }
           ],
           "position": {
             "start": {
               "line": 11,
-              "column": 6,
-              "offset": 74
+              "column": 30,
+              "offset": 98
             },
             "end": {
               "line": 11,
               "column": 33,
               "offset": 101
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "b",
+          "label": "b",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -417,8 +343,7 @@
               "line": 11,
               "column": 34,
               "offset": 102
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -432,8 +357,7 @@
           "line": 11,
           "column": 34,
           "offset": 102
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -452,15 +376,11 @@
               "line": 14,
               "column": 10,
               "offset": 114
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "once",
-          "label": "once",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -475,8 +395,7 @@
                   "line": 14,
                   "column": 15,
                   "offset": 119
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -490,9 +409,11 @@
               "line": 14,
               "column": 18,
               "offset": 122
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "once",
+          "label": "once",
+          "referenceType": "collapsed"
         },
         {
           "type": "text",
@@ -507,8 +428,7 @@
               "line": 14,
               "column": 19,
               "offset": 123
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -522,8 +442,7 @@
           "line": 14,
           "column": 19,
           "offset": 123
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -542,15 +461,11 @@
               "line": 16,
               "column": 10,
               "offset": 134
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "twice",
-          "label": "twice",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -565,8 +480,7 @@
                   "line": 16,
                   "column": 16,
                   "offset": 140
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -580,9 +494,11 @@
               "line": 16,
               "column": 19,
               "offset": 143
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "twice",
+          "label": "twice",
+          "referenceType": "collapsed"
         },
         {
           "type": "text",
@@ -597,8 +513,7 @@
               "line": 16,
               "column": 20,
               "offset": 144
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -612,8 +527,7 @@
           "line": 16,
           "column": 20,
           "offset": 144
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -632,15 +546,11 @@
               "line": 18,
               "column": 10,
               "offset": 155
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "thrice",
-          "label": "thrice",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -655,8 +565,7 @@
                   "line": 18,
                   "column": 17,
                   "offset": 162
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -670,9 +579,11 @@
               "line": 18,
               "column": 20,
               "offset": 165
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "thrice",
+          "label": "thrice",
+          "referenceType": "collapsed"
         },
         {
           "type": "text",
@@ -687,8 +598,7 @@
               "line": 18,
               "column": 21,
               "offset": 166
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -702,8 +612,7 @@
           "line": 18,
           "column": 21,
           "offset": 166
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -711,7 +620,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Indented ",
+          "value": "Indented [four][] times.",
           "position": {
             "start": {
               "line": 20,
@@ -720,65 +629,9 @@
             },
             "end": {
               "line": 20,
-              "column": 10,
-              "offset": 177
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "four",
-          "label": "four",
-          "referenceType": "collapsed",
-          "children": [
-            {
-              "type": "text",
-              "value": "four",
-              "position": {
-                "start": {
-                  "line": 20,
-                  "column": 11,
-                  "offset": 178
-                },
-                "end": {
-                  "line": 20,
-                  "column": 15,
-                  "offset": 182
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 20,
-              "column": 10,
-              "offset": 177
-            },
-            "end": {
-              "line": 20,
-              "column": 18,
-              "offset": 185
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " times.",
-          "position": {
-            "start": {
-              "line": 20,
-              "column": 18,
-              "offset": 185
-            },
-            "end": {
-              "line": 20,
               "column": 25,
               "offset": 192
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -792,8 +645,7 @@
           "line": 20,
           "column": 25,
           "offset": 192
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -805,15 +657,14 @@
       "position": {
         "start": {
           "line": 22,
-          "column": 1,
-          "offset": 194
+          "column": 2,
+          "offset": 195
         },
         "end": {
           "line": 22,
           "column": 14,
           "offset": 207
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -825,15 +676,14 @@
       "position": {
         "start": {
           "line": 24,
-          "column": 1,
-          "offset": 209
+          "column": 3,
+          "offset": 211
         },
         "end": {
           "line": 24,
           "column": 16,
           "offset": 224
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -845,15 +695,14 @@
       "position": {
         "start": {
           "line": 26,
-          "column": 1,
-          "offset": 226
+          "column": 4,
+          "offset": 229
         },
         "end": {
           "line": 26,
           "column": 18,
           "offset": 243
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -871,8 +720,7 @@
           "line": 28,
           "column": 17,
           "offset": 261
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -891,8 +739,7 @@
           "line": 31,
           "column": 11,
           "offset": 274
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -907,8 +754,7 @@
           "line": 33,
           "column": 6,
           "offset": 281
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -916,9 +762,6 @@
       "children": [
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -933,8 +776,7 @@
                   "line": 35,
                   "column": 6,
                   "offset": 288
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -946,11 +788,65 @@
             },
             "end": {
               "line": 35,
+              "column": 7,
+              "offset": 289
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 7,
+              "offset": 289
+            },
+            "end": {
+              "line": 35,
+              "column": 8,
+              "offset": 290
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "children": [
+            {
+              "type": "text",
+              "value": "this",
+              "position": {
+                "start": {
+                  "line": 35,
+                  "column": 9,
+                  "offset": 291
+                },
+                "end": {
+                  "line": 35,
+                  "column": 13,
+                  "offset": 295
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 35,
+              "column": 8,
+              "offset": 290
+            },
+            "end": {
+              "line": 35,
               "column": 14,
               "offset": 296
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -965,8 +861,7 @@
               "line": 35,
               "column": 26,
               "offset": 308
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -980,8 +875,7 @@
           "line": 35,
           "column": 26,
           "offset": 308
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1000,15 +894,11 @@
               "line": 37,
               "column": 11,
               "offset": 320
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -1023,8 +913,7 @@
                   "line": 37,
                   "column": 16,
                   "offset": 325
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1038,9 +927,11 @@
               "line": 37,
               "column": 23,
               "offset": 332
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "full"
         },
         {
           "type": "text",
@@ -1055,8 +946,7 @@
               "line": 37,
               "column": 24,
               "offset": 333
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1070,8 +960,7 @@
           "line": 37,
           "column": 24,
           "offset": 333
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1090,15 +979,11 @@
               "line": 39,
               "column": 5,
               "offset": 339
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -1113,8 +998,7 @@
                   "line": 39,
                   "column": 10,
                   "offset": 344
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1126,27 +1010,28 @@
             },
             "end": {
               "line": 39,
-              "column": 14,
-              "offset": 348
-            },
-            "indent": []
-          }
+              "column": 11,
+              "offset": 345
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
-          "value": ".",
+          "value": " [].",
           "position": {
             "start": {
               "line": 39,
-              "column": 14,
-              "offset": 348
+              "column": 11,
+              "offset": 345
             },
             "end": {
               "line": 39,
               "column": 15,
               "offset": 349
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1160,8 +1045,7 @@
           "line": 39,
           "column": 15,
           "offset": 349
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1180,15 +1064,11 @@
               "line": 41,
               "column": 5,
               "offset": 355
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -1203,8 +1083,7 @@
                   "line": 41,
                   "column": 10,
                   "offset": 360
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1218,9 +1097,11 @@
               "line": 41,
               "column": 13,
               "offset": 363
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "collapsed"
         },
         {
           "type": "text",
@@ -1235,8 +1116,7 @@
               "line": 41,
               "column": 14,
               "offset": 364
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1250,8 +1130,7 @@
           "line": 41,
           "column": 14,
           "offset": 364
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1270,15 +1149,11 @@
               "line": 43,
               "column": 5,
               "offset": 370
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1293,8 +1168,7 @@
                   "line": 43,
                   "column": 10,
                   "offset": 375
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1308,9 +1182,11 @@
               "line": 43,
               "column": 11,
               "offset": 376
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -1325,8 +1201,7 @@
               "line": 43,
               "column": 12,
               "offset": 377
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1340,8 +1215,7 @@
           "line": 43,
           "column": 12,
           "offset": 377
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1349,7 +1223,7 @@
       "children": [
         {
           "type": "text",
-          "value": "But not ",
+          "value": "But not [that] [].",
           "position": {
             "start": {
               "line": 45,
@@ -1358,65 +1232,9 @@
             },
             "end": {
               "line": 45,
-              "column": 9,
-              "offset": 387
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "that",
-          "label": "that",
-          "referenceType": "collapsed",
-          "children": [
-            {
-              "type": "text",
-              "value": "that",
-              "position": {
-                "start": {
-                  "line": 45,
-                  "column": 10,
-                  "offset": 388
-                },
-                "end": {
-                  "line": 45,
-                  "column": 14,
-                  "offset": 392
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 45,
-              "column": 9,
-              "offset": 387
-            },
-            "end": {
-              "line": 45,
-              "column": 18,
-              "offset": 396
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 45,
-              "column": 18,
-              "offset": 396
-            },
-            "end": {
-              "line": 45,
               "column": 19,
               "offset": 397
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1430,8 +1248,7 @@
           "line": 45,
           "column": 19,
           "offset": 397
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1439,7 +1256,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Nor ",
+          "value": "Nor [that][].",
           "position": {
             "start": {
               "line": 47,
@@ -1448,65 +1265,9 @@
             },
             "end": {
               "line": 47,
-              "column": 5,
-              "offset": 403
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "that",
-          "label": "that",
-          "referenceType": "collapsed",
-          "children": [
-            {
-              "type": "text",
-              "value": "that",
-              "position": {
-                "start": {
-                  "line": 47,
-                  "column": 6,
-                  "offset": 404
-                },
-                "end": {
-                  "line": 47,
-                  "column": 10,
-                  "offset": 408
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 47,
-              "column": 5,
-              "offset": 403
-            },
-            "end": {
-              "line": 47,
-              "column": 13,
-              "offset": 411
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 47,
-              "column": 13,
-              "offset": 411
-            },
-            "end": {
-              "line": 47,
               "column": 14,
               "offset": 412
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1520,8 +1281,7 @@
           "line": 47,
           "column": 14,
           "offset": 412
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1529,7 +1289,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Nor ",
+          "value": "Nor [that].",
           "position": {
             "start": {
               "line": 49,
@@ -1538,65 +1298,9 @@
             },
             "end": {
               "line": 49,
-              "column": 5,
-              "offset": 418
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "that",
-          "label": "that",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "that",
-              "position": {
-                "start": {
-                  "line": 49,
-                  "column": 6,
-                  "offset": 419
-                },
-                "end": {
-                  "line": 49,
-                  "column": 10,
-                  "offset": 423
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 49,
-              "column": 5,
-              "offset": 418
-            },
-            "end": {
-              "line": 49,
-              "column": 11,
-              "offset": 424
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 49,
-              "column": 11,
-              "offset": 424
-            },
-            "end": {
-              "line": 49,
               "column": 12,
               "offset": 425
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1610,8 +1314,7 @@
           "line": 49,
           "column": 12,
           "offset": 425
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1630,15 +1333,11 @@
               "line": 51,
               "column": 29,
               "offset": 455
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "collapsed",
           "children": [
             {
               "type": "text",
@@ -1653,8 +1352,7 @@
                   "line": 51,
                   "column": 34,
                   "offset": 460
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1668,9 +1366,11 @@
               "line": 51,
               "column": 37,
               "offset": 463
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "collapsed"
         },
         {
           "type": "text",
@@ -1685,8 +1385,7 @@
               "line": 51,
               "column": 50,
               "offset": 476
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1700,8 +1399,7 @@
           "line": 51,
           "column": 50,
           "offset": 476
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1720,15 +1418,11 @@
               "line": 53,
               "column": 12,
               "offset": 489
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "this",
-          "label": "this",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -1743,8 +1437,7 @@
                   "line": 53,
                   "column": 17,
                   "offset": 494
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1758,9 +1451,11 @@
               "line": 53,
               "column": 18,
               "offset": 495
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -1775,8 +1470,7 @@
               "line": 53,
               "column": 20,
               "offset": 497
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1790,8 +1484,7 @@
           "line": 53,
           "column": 20,
           "offset": 497
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1810,8 +1503,7 @@
               "line": 55,
               "column": 15,
               "offset": 513
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1832,8 +1524,7 @@
                   "line": 55,
                   "column": 20,
                   "offset": 518
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1847,8 +1538,7 @@
               "line": 55,
               "column": 38,
               "offset": 536
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1864,8 +1554,7 @@
               "line": 55,
               "column": 64,
               "offset": 562
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1879,8 +1568,7 @@
           "line": 55,
           "column": 64,
           "offset": 562
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1888,7 +1576,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Backslashing should suppress ",
+          "value": "Backslashing should suppress [this] and [this].",
           "position": {
             "start": {
               "line": 57,
@@ -1897,78 +1585,9 @@
             },
             "end": {
               "line": 57,
-              "column": 30,
-              "offset": 593
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "[",
-          "position": {
-            "start": {
-              "line": 57,
-              "column": 30,
-              "offset": 593
-            },
-            "end": {
-              "line": 57,
-              "column": 32,
-              "offset": 595
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "this] and [this",
-          "position": {
-            "start": {
-              "line": 57,
-              "column": 32,
-              "offset": 595
-            },
-            "end": {
-              "line": 57,
-              "column": 47,
-              "offset": 610
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "]",
-          "position": {
-            "start": {
-              "line": 57,
-              "column": 47,
-              "offset": 610
-            },
-            "end": {
-              "line": 57,
-              "column": 49,
-              "offset": 612
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 57,
-              "column": 49,
-              "offset": 612
-            },
-            "end": {
-              "line": 57,
               "column": 50,
               "offset": 613
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1982,8 +1601,7 @@
           "line": 57,
           "column": 50,
           "offset": 613
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2002,8 +1620,7 @@
           "line": 59,
           "column": 12,
           "offset": 626
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2018,8 +1635,7 @@
           "line": 62,
           "column": 6,
           "offset": 634
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2038,15 +1654,11 @@
               "line": 64,
               "column": 22,
               "offset": 657
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "link breaks",
-          "label": "link\nbreaks",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -2061,10 +1673,7 @@
                   "line": 65,
                   "column": 7,
                   "offset": 669
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -2078,11 +1687,11 @@
               "line": 65,
               "column": 8,
               "offset": 670
-            },
-            "indent": [
-              1
-            ]
-          }
+            }
+          },
+          "identifier": "link breaks",
+          "label": "link\nbreaks",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -2097,8 +1706,7 @@
               "line": 65,
               "column": 22,
               "offset": 684
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2112,10 +1720,7 @@
           "line": 65,
           "column": 22,
           "offset": 684
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -2134,19 +1739,15 @@
               "line": 67,
               "column": 26,
               "offset": 711
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "link breaks",
-          "label": "link \nbreaks",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
-              "value": "link \nbreaks",
+              "value": "link\nbreaks",
               "position": {
                 "start": {
                   "line": 67,
@@ -2157,10 +1758,7 @@
                   "line": 68,
                   "column": 7,
                   "offset": 724
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -2174,11 +1772,11 @@
               "line": 68,
               "column": 8,
               "offset": 725
-            },
-            "indent": [
-              1
-            ]
-          }
+            }
+          },
+          "identifier": "link breaks",
+          "label": "link\nbreaks",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -2193,8 +1791,7 @@
               "line": 68,
               "column": 52,
               "offset": 769
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2208,10 +1805,7 @@
           "line": 68,
           "column": 52,
           "offset": 769
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -2230,8 +1824,7 @@
           "line": 71,
           "column": 21,
           "offset": 792
-        },
-        "indent": []
+        }
       }
     }
   ],

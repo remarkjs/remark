@@ -22,8 +22,7 @@
               "line": 1,
               "column": 3,
               "offset": 2
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -41,8 +40,7 @@
               "line": 2,
               "column": 3,
               "offset": 5
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -60,8 +58,7 @@
               "line": 3,
               "column": 3,
               "offset": 8
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -79,8 +76,7 @@
               "line": 4,
               "column": 3,
               "offset": 11
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -94,12 +90,7 @@
           "line": 4,
           "column": 3,
           "offset": 11
-        },
-        "indent": [
-          1,
-          1,
-          1
-        ]
+        }
       }
     }
   ],

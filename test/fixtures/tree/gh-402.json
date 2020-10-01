@@ -1,0 +1,107 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "One\nTwo",
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 4,
+                      "offset": 3
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 7,
+                      "offset": 13
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4,
+                  "offset": 3
+                },
+                "end": {
+                  "line": 2,
+                  "column": 7,
+                  "offset": 13
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": "bash",
+              "meta": null,
+              "value": "npm install --save sqlite3",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 2,
+                  "offset": 16
+                },
+                "end": {
+                  "line": 6,
+                  "column": 5,
+                  "offset": 57
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 6,
+              "column": 5,
+              "offset": 57
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 6,
+          "column": 5,
+          "offset": 57
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 7,
+      "column": 1,
+      "offset": 58
+    }
+  }
+}

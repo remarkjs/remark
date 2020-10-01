@@ -6,10 +6,7 @@
       "children": [
         {
           "type": "imageReference",
-          "identifier": "1",
-          "label": "1",
-          "referenceType": "full",
-          "alt": null,
+          "alt": "",
           "position": {
             "start": {
               "line": 1,
@@ -20,9 +17,11 @@
               "line": 1,
               "column": 7,
               "offset": 6
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "1",
+          "label": "1",
+          "referenceType": "full"
         }
       ],
       "position": {
@@ -35,8 +34,7 @@
           "line": 1,
           "column": 7,
           "offset": 6
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -55,8 +53,7 @@
           "line": 3,
           "column": 14,
           "offset": 21
-        },
-        "indent": []
+        }
       }
     }
   ],

@@ -24,8 +24,6 @@ and written:
 # Alpha #
 Bravo charlie **delta** __echo__.
 - Foxtrot
-*  Golf
-+ Hotel
 ```
 
 Yields:
@@ -35,14 +33,12 @@ Yields:
 
 Bravo charlie **delta** **echo**.
 
--   Foxtrot
--   Golf
--   Hotel
+*   Foxtrot
 ```
 
 But, much more can be done, [through plugins][plugins].
 
-## Command-line
+## Command line
 
 **remark**’s CLI is a simple way to process Markdown files from the
 command line.  Its interface is provided by [**unified-args**][unified-args].
@@ -108,9 +104,9 @@ The `--save-dev` option stores the dependencies in our `package.json`:
    "name": "my-package",
    "version": "1.0.0",
 +  "devDependencies": {
-+    "remark-cli": "^6.0.0",
-+    "remark-html": "^8.0.0",
-+    "remark-preset-lint-markdown-style-guide": "^2.0.0"
++    "remark-cli": "^8.0.0",
++    "remark-html": "^12.0.0",
++    "remark-preset-lint-markdown-style-guide": "^3.0.0"
 +  },
    "scripts": {
      "test": "node test.js"
@@ -126,9 +122,9 @@ configuration:
    "name": "my-package",
    "version": "1.0.0",
    "devDependencies": {
-     "remark-cli": "^6.0.0",
-     "remark-html": "^8.0.0",
-     "remark-preset-lint-markdown-style-guide": "^2.0.0"
+     "remark-cli": "^8.0.0",
+     "remark-html": "^12.0.0",
+     "remark-preset-lint-markdown-style-guide": "^3.0.0"
    },
    "scripts": {
 -    "test": "node test.js"

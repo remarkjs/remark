@@ -5,10 +5,9 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "Hello World!",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -23,8 +22,7 @@
                   "line": 1,
                   "column": 7,
                   "offset": 6
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -36,27 +34,25 @@
             },
             "end": {
               "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "indent": []
+              "column": 37,
+              "offset": 36
+            }
           }
         },
         {
           "type": "text",
-          "value": "(./world.html (Hello World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 1,
-              "column": 8,
-              "offset": 7
+              "column": 37,
+              "offset": 36
             },
             "end": {
               "line": 1,
               "column": 38,
               "offset": 37
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -70,18 +66,16 @@
           "line": 1,
           "column": 38,
           "offset": 37
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "Hello World!",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -96,8 +90,7 @@
                   "line": 3,
                   "column": 7,
                   "offset": 45
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -109,27 +102,25 @@
             },
             "end": {
               "line": 3,
-              "column": 8,
-              "offset": 46
-            },
-            "indent": []
+              "column": 39,
+              "offset": 77
+            }
           }
         },
         {
           "type": "text",
-          "value": "(<./world.html> (Hello World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 3,
-              "column": 8,
-              "offset": 46
+              "column": 39,
+              "offset": 77
             },
             "end": {
               "line": 3,
               "column": 40,
               "offset": 78
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -143,18 +134,16 @@
           "line": 3,
           "column": 40,
           "offset": 78
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "Hello World!",
+          "url": "./world.html",
           "alt": "Hello",
           "position": {
             "start": {
@@ -164,27 +153,25 @@
             },
             "end": {
               "line": 5,
-              "column": 9,
-              "offset": 88
-            },
-            "indent": []
+              "column": 38,
+              "offset": 117
+            }
           }
         },
         {
           "type": "text",
-          "value": "(./world.html (Hello World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 5,
-              "column": 9,
-              "offset": 88
+              "column": 38,
+              "offset": 117
             },
             "end": {
               "line": 5,
               "column": 39,
               "offset": 118
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -198,18 +185,16 @@
           "line": 5,
           "column": 39,
           "offset": 118
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "Hello World!",
+          "url": "./world.html",
           "alt": "Hello",
           "position": {
             "start": {
@@ -219,27 +204,25 @@
             },
             "end": {
               "line": 7,
-              "column": 9,
-              "offset": 128
-            },
-            "indent": []
+              "column": 40,
+              "offset": 159
+            }
           }
         },
         {
           "type": "text",
-          "value": "(<./world.html> (Hello World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 7,
-              "column": 9,
-              "offset": 128
+              "column": 40,
+              "offset": 159
             },
             "end": {
               "line": 7,
               "column": 41,
               "offset": 160
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -253,8 +236,7 @@
           "line": 7,
           "column": 41,
           "offset": 160
-        },
-        "indent": []
+        }
       }
     }
   ],

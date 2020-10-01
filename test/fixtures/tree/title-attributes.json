@@ -18,8 +18,7 @@
               "line": 1,
               "column": 8,
               "offset": 7
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -33,271 +32,15 @@
           "line": 1,
           "column": 8,
           "offset": 7
-        },
-        "indent": []
+        }
       }
     },
     {
-      "type": "table",
-      "align": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
+      "type": "paragraph",
       "children": [
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Implementation",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 3,
-                      "offset": 11
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 17,
-                      "offset": 25
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 3,
-                  "offset": 11
-                },
-                "end": {
-                  "line": 3,
-                  "column": 17,
-                  "offset": 25
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Characters",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 20,
-                      "offset": 28
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 30,
-                      "offset": 38
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 20,
-                  "offset": 28
-                },
-                "end": {
-                  "line": 3,
-                  "column": 30,
-                  "offset": 38
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Nested",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 33,
-                      "offset": 41
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 39,
-                      "offset": 47
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 33,
-                  "offset": 41
-                },
-                "end": {
-                  "line": 3,
-                  "column": 39,
-                  "offset": 47
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Mismatched",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 42,
-                      "offset": 50
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 52,
-                      "offset": 60
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 42,
-                  "offset": 50
-                },
-                "end": {
-                  "line": 3,
-                  "column": 52,
-                  "offset": 60
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Escaped",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 55,
-                      "offset": 63
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 62,
-                      "offset": 70
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 55,
-                  "offset": 63
-                },
-                "end": {
-                  "line": 3,
-                  "column": 62,
-                  "offset": 70
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Named Entities",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 65,
-                      "offset": 73
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 79,
-                      "offset": 87
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 65,
-                  "offset": 73
-                },
-                "end": {
-                  "line": 3,
-                  "column": 79,
-                  "offset": 87
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Numbered Entities",
-                  "position": {
-                    "start": {
-                      "line": 3,
-                      "column": 82,
-                      "offset": 90
-                    },
-                    "end": {
-                      "line": 3,
-                      "column": 99,
-                      "offset": 107
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 82,
-                  "offset": 90
-                },
-                "end": {
-                  "line": 3,
-                  "column": 99,
-                  "offset": 107
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "| Implementation | Characters | Nested | Mismatched | Escaped | Named Entities | Numbered Entities |\n| -------------- | ---------- |------- | ---------- | ------- | -------------- | ----------------- |\n| Markdown.pl    | ",
           "position": {
             "start": {
               "line": 3,
@@ -305,2378 +48,298 @@
               "offset": 9
             },
             "end": {
-              "line": 3,
-              "column": 101,
-              "offset": 109
-            },
-            "indent": []
+              "line": 5,
+              "column": 20,
+              "offset": 230
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Markdown.pl",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 3,
-                      "offset": 213
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 14,
-                      "offset": 224
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 3,
-                  "offset": 213
-                },
-                "end": {
-                  "line": 5,
-                  "column": 17,
-                  "offset": 227
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "\"",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 20,
-                      "offset": 230
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 23,
-                      "offset": 233
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 20,
-                  "offset": 230
-                },
-                "end": {
-                  "line": 5,
-                  "column": 30,
-                  "offset": 240
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 33,
-                      "offset": 243
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 36,
-                      "offset": 246
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 33,
-                  "offset": 243
-                },
-                "end": {
-                  "line": 5,
-                  "column": 39,
-                  "offset": 249
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 42,
-                      "offset": 252
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 45,
-                      "offset": 255
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 42,
-                  "offset": 252
-                },
-                "end": {
-                  "line": 5,
-                  "column": 52,
-                  "offset": 262
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 55,
-                      "offset": 265
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 57,
-                      "offset": 267
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 55,
-                  "offset": 265
-                },
-                "end": {
-                  "line": 5,
-                  "column": 62,
-                  "offset": 272
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 65,
-                      "offset": 275
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 68,
-                      "offset": 278
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 65,
-                  "offset": 275
-                },
-                "end": {
-                  "line": 5,
-                  "column": 79,
-                  "offset": 289
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 5,
-                      "column": 82,
-                      "offset": 292
-                    },
-                    "end": {
-                      "line": 5,
-                      "column": 85,
-                      "offset": 295
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 82,
-                  "offset": 292
-                },
-                "end": {
-                  "line": 5,
-                  "column": 99,
-                  "offset": 309
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "\"",
           "position": {
             "start": {
               "line": 5,
-              "column": 1,
-              "offset": 211
+              "column": 20,
+              "offset": 230
             },
             "end": {
               "line": 5,
-              "column": 101,
-              "offset": 311
-            },
-            "indent": []
+              "column": 23,
+              "offset": 233
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "GitHub",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 3,
-                      "offset": 314
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 9,
-                      "offset": 320
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 3,
-                  "offset": 314
-                },
-                "end": {
-                  "line": 6,
-                  "column": 17,
-                  "offset": 328
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "\"",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 20,
-                      "offset": 331
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 23,
-                      "offset": 334
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 20,
-                  "offset": 331
-                },
-                "end": {
-                  "line": 6,
-                  "column": 30,
-                  "offset": 341
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 33,
-                      "offset": 344
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 36,
-                      "offset": 347
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 33,
-                  "offset": 344
-                },
-                "end": {
-                  "line": 6,
-                  "column": 39,
-                  "offset": 350
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 42,
-                      "offset": 353
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 45,
-                      "offset": 356
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 42,
-                  "offset": 353
-                },
-                "end": {
-                  "line": 6,
-                  "column": 52,
-                  "offset": 363
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 55,
-                      "offset": 366
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 57,
-                      "offset": 368
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 55,
-                  "offset": 366
-                },
-                "end": {
-                  "line": 6,
-                  "column": 62,
-                  "offset": 373
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 65,
-                      "offset": 376
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 67,
-                      "offset": 378
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 65,
-                  "offset": 376
-                },
-                "end": {
-                  "line": 6,
-                  "column": 79,
-                  "offset": 390
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 6,
-                      "column": 82,
-                      "offset": 393
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 84,
-                      "offset": 395
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 6,
-                  "column": 82,
-                  "offset": 393
-                },
-                "end": {
-                  "line": 6,
-                  "column": 99,
-                  "offset": 410
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "        | Yes    | Yes        | No      | Yes            | Yes               |\n| GitHub         | ",
           "position": {
             "start": {
-              "line": 6,
-              "column": 1,
-              "offset": 312
+              "line": 5,
+              "column": 23,
+              "offset": 233
             },
             "end": {
               "line": 6,
-              "column": 101,
-              "offset": 412
-            },
-            "indent": []
+              "column": 20,
+              "offset": 331
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "CommonMark",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 3,
-                      "offset": 415
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 13,
-                      "offset": 425
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 3,
-                  "offset": 415
-                },
-                "end": {
-                  "line": 7,
-                  "column": 17,
-                  "offset": 429
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "\"",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 20,
-                      "offset": 432
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 23,
-                      "offset": 435
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 20,
-                  "offset": 432
-                },
-                "end": {
-                  "line": 7,
-                  "column": 30,
-                  "offset": 442
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 33,
-                      "offset": 445
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 35,
-                      "offset": 447
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 33,
-                  "offset": 445
-                },
-                "end": {
-                  "line": 7,
-                  "column": 39,
-                  "offset": 451
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 42,
-                      "offset": 454
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 44,
-                      "offset": 456
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 42,
-                  "offset": 454
-                },
-                "end": {
-                  "line": 7,
-                  "column": 52,
-                  "offset": 464
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 55,
-                      "offset": 467
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 58,
-                      "offset": 470
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 55,
-                  "offset": 467
-                },
-                "end": {
-                  "line": 7,
-                  "column": 62,
-                  "offset": 474
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 65,
-                      "offset": 477
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 68,
-                      "offset": 480
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 65,
-                  "offset": 477
-                },
-                "end": {
-                  "line": 7,
-                  "column": 79,
-                  "offset": 491
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 7,
-                      "column": 82,
-                      "offset": 494
-                    },
-                    "end": {
-                      "line": 7,
-                      "column": 85,
-                      "offset": 497
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 82,
-                  "offset": 494
-                },
-                "end": {
-                  "line": 7,
-                  "column": 99,
-                  "offset": 511
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "\"",
           "position": {
             "start": {
-              "line": 7,
-              "column": 1,
-              "offset": 413
+              "line": 6,
+              "column": 20,
+              "offset": 331
+            },
+            "end": {
+              "line": 6,
+              "column": 23,
+              "offset": 334
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "        | Yes    | Yes        | No      | No             | No                |\n| CommonMark     | ",
+          "position": {
+            "start": {
+              "line": 6,
+              "column": 23,
+              "offset": 334
             },
             "end": {
               "line": 7,
-              "column": 101,
-              "offset": 513
-            },
-            "indent": []
+              "column": 20,
+              "offset": 432
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Markdown.pl",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 3,
-                      "offset": 516
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 14,
-                      "offset": 527
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 3,
-                  "offset": 516
-                },
-                "end": {
-                  "line": 8,
-                  "column": 17,
-                  "offset": 530
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "'",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 20,
-                      "offset": 533
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 23,
-                      "offset": 536
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 20,
-                  "offset": 533
-                },
-                "end": {
-                  "line": 8,
-                  "column": 30,
-                  "offset": 543
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 33,
-                      "offset": 546
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 36,
-                      "offset": 549
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 33,
-                  "offset": 546
-                },
-                "end": {
-                  "line": 8,
-                  "column": 39,
-                  "offset": 552
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 42,
-                      "offset": 555
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 45,
-                      "offset": 558
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 42,
-                  "offset": 555
-                },
-                "end": {
-                  "line": 8,
-                  "column": 52,
-                  "offset": 565
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 55,
-                      "offset": 568
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 57,
-                      "offset": 570
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 55,
-                  "offset": 568
-                },
-                "end": {
-                  "line": 8,
-                  "column": 62,
-                  "offset": 575
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 65,
-                      "offset": 578
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 68,
-                      "offset": 581
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 65,
-                  "offset": 578
-                },
-                "end": {
-                  "line": 8,
-                  "column": 79,
-                  "offset": 592
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 8,
-                      "column": 82,
-                      "offset": 595
-                    },
-                    "end": {
-                      "line": 8,
-                      "column": 85,
-                      "offset": 598
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 8,
-                  "column": 82,
-                  "offset": 595
-                },
-                "end": {
-                  "line": 8,
-                  "column": 99,
-                  "offset": 612
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "\"",
           "position": {
             "start": {
-              "line": 8,
-              "column": 1,
-              "offset": 514
+              "line": 7,
+              "column": 20,
+              "offset": 432
+            },
+            "end": {
+              "line": 7,
+              "column": 23,
+              "offset": 435
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "        | No     | No         | Yes     | Yes            | Yes               |\n| Markdown.pl    | ",
+          "position": {
+            "start": {
+              "line": 7,
+              "column": 23,
+              "offset": 435
             },
             "end": {
               "line": 8,
-              "column": 101,
-              "offset": 614
-            },
-            "indent": []
+              "column": 20,
+              "offset": 533
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "GitHub",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 3,
-                      "offset": 617
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 9,
-                      "offset": 623
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 3,
-                  "offset": 617
-                },
-                "end": {
-                  "line": 9,
-                  "column": 17,
-                  "offset": 631
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "'",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 20,
-                      "offset": 634
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 23,
-                      "offset": 637
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 20,
-                  "offset": 634
-                },
-                "end": {
-                  "line": 9,
-                  "column": 30,
-                  "offset": 644
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 33,
-                      "offset": 647
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 36,
-                      "offset": 650
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 33,
-                  "offset": 647
-                },
-                "end": {
-                  "line": 9,
-                  "column": 39,
-                  "offset": 653
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 42,
-                      "offset": 656
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 45,
-                      "offset": 659
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 42,
-                  "offset": 656
-                },
-                "end": {
-                  "line": 9,
-                  "column": 52,
-                  "offset": 666
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 55,
-                      "offset": 669
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 57,
-                      "offset": 671
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 55,
-                  "offset": 669
-                },
-                "end": {
-                  "line": 9,
-                  "column": 62,
-                  "offset": 676
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 65,
-                      "offset": 679
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 67,
-                      "offset": 681
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 65,
-                  "offset": 679
-                },
-                "end": {
-                  "line": 9,
-                  "column": 79,
-                  "offset": 693
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 9,
-                      "column": 82,
-                      "offset": 696
-                    },
-                    "end": {
-                      "line": 9,
-                      "column": 84,
-                      "offset": 698
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 9,
-                  "column": 82,
-                  "offset": 696
-                },
-                "end": {
-                  "line": 9,
-                  "column": 99,
-                  "offset": 713
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "'",
           "position": {
             "start": {
-              "line": 9,
-              "column": 1,
-              "offset": 615
+              "line": 8,
+              "column": 20,
+              "offset": 533
+            },
+            "end": {
+              "line": 8,
+              "column": 23,
+              "offset": 536
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "        | Yes    | Yes        | No      | Yes            | Yes               |\n| GitHub         | ",
+          "position": {
+            "start": {
+              "line": 8,
+              "column": 23,
+              "offset": 536
             },
             "end": {
               "line": 9,
-              "column": 101,
-              "offset": 715
-            },
-            "indent": []
+              "column": 20,
+              "offset": 634
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "CommonMark",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 3,
-                      "offset": 718
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 13,
-                      "offset": 728
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 3,
-                  "offset": 718
-                },
-                "end": {
-                  "line": 10,
-                  "column": 17,
-                  "offset": 732
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "'",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 20,
-                      "offset": 735
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 23,
-                      "offset": 738
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 20,
-                  "offset": 735
-                },
-                "end": {
-                  "line": 10,
-                  "column": 30,
-                  "offset": 745
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 33,
-                      "offset": 748
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 35,
-                      "offset": 750
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 33,
-                  "offset": 748
-                },
-                "end": {
-                  "line": 10,
-                  "column": 39,
-                  "offset": 754
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 42,
-                      "offset": 757
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 44,
-                      "offset": 759
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 42,
-                  "offset": 757
-                },
-                "end": {
-                  "line": 10,
-                  "column": 52,
-                  "offset": 767
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 55,
-                      "offset": 770
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 58,
-                      "offset": 773
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 55,
-                  "offset": 770
-                },
-                "end": {
-                  "line": 10,
-                  "column": 62,
-                  "offset": 777
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 65,
-                      "offset": 780
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 68,
-                      "offset": 783
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 65,
-                  "offset": 780
-                },
-                "end": {
-                  "line": 10,
-                  "column": 79,
-                  "offset": 794
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 10,
-                      "column": 82,
-                      "offset": 797
-                    },
-                    "end": {
-                      "line": 10,
-                      "column": 85,
-                      "offset": 800
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 10,
-                  "column": 82,
-                  "offset": 797
-                },
-                "end": {
-                  "line": 10,
-                  "column": 99,
-                  "offset": 814
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "'",
           "position": {
             "start": {
-              "line": 10,
-              "column": 1,
-              "offset": 716
+              "line": 9,
+              "column": 20,
+              "offset": 634
+            },
+            "end": {
+              "line": 9,
+              "column": 23,
+              "offset": 637
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "        | Yes    | Yes        | No      | No             | No                |\n| CommonMark     | ",
+          "position": {
+            "start": {
+              "line": 9,
+              "column": 23,
+              "offset": 637
             },
             "end": {
               "line": 10,
-              "column": 101,
-              "offset": 816
-            },
-            "indent": []
+              "column": 20,
+              "offset": 735
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Markdown.pl",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 3,
-                      "offset": 819
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 14,
-                      "offset": 830
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 3,
-                  "offset": 819
-                },
-                "end": {
-                  "line": 11,
-                  "column": 17,
-                  "offset": 833
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "()",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 20,
-                      "offset": 836
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 24,
-                      "offset": 840
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 20,
-                  "offset": 836
-                },
-                "end": {
-                  "line": 11,
-                  "column": 30,
-                  "offset": 846
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 33,
-                      "offset": 849
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 34,
-                      "offset": 850
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 33,
-                  "offset": 849
-                },
-                "end": {
-                  "line": 11,
-                  "column": 39,
-                  "offset": 855
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 42,
-                      "offset": 858
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 43,
-                      "offset": 859
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 42,
-                  "offset": 858
-                },
-                "end": {
-                  "line": 11,
-                  "column": 52,
-                  "offset": 868
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 55,
-                      "offset": 871
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 56,
-                      "offset": 872
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 55,
-                  "offset": 871
-                },
-                "end": {
-                  "line": 11,
-                  "column": 62,
-                  "offset": 878
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 65,
-                      "offset": 881
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 66,
-                      "offset": 882
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 65,
-                  "offset": 881
-                },
-                "end": {
-                  "line": 11,
-                  "column": 79,
-                  "offset": 895
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 11,
-                      "column": 82,
-                      "offset": 898
-                    },
-                    "end": {
-                      "line": 11,
-                      "column": 83,
-                      "offset": 899
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 11,
-                  "column": 82,
-                  "offset": 898
-                },
-                "end": {
-                  "line": 11,
-                  "column": 99,
-                  "offset": 915
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "'",
           "position": {
             "start": {
-              "line": 11,
-              "column": 1,
-              "offset": 817
+              "line": 10,
+              "column": 20,
+              "offset": 735
+            },
+            "end": {
+              "line": 10,
+              "column": 23,
+              "offset": 738
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "        | No     | No         | Yes     | Yes            | Yes               |\n| Markdown.pl    | ",
+          "position": {
+            "start": {
+              "line": 10,
+              "column": 23,
+              "offset": 738
             },
             "end": {
               "line": 11,
-              "column": 101,
-              "offset": 917
-            },
-            "indent": []
+              "column": 20,
+              "offset": 836
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "GitHub",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 3,
-                      "offset": 920
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 9,
-                      "offset": 926
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 3,
-                  "offset": 920
-                },
-                "end": {
-                  "line": 12,
-                  "column": 17,
-                  "offset": 934
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "()",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 20,
-                      "offset": 937
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 24,
-                      "offset": 941
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 20,
-                  "offset": 937
-                },
-                "end": {
-                  "line": 12,
-                  "column": 30,
-                  "offset": 947
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 33,
-                      "offset": 950
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 34,
-                      "offset": 951
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 33,
-                  "offset": 950
-                },
-                "end": {
-                  "line": 12,
-                  "column": 39,
-                  "offset": 956
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 42,
-                      "offset": 959
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 43,
-                      "offset": 960
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 42,
-                  "offset": 959
-                },
-                "end": {
-                  "line": 12,
-                  "column": 52,
-                  "offset": 969
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 55,
-                      "offset": 972
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 56,
-                      "offset": 973
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 55,
-                  "offset": 972
-                },
-                "end": {
-                  "line": 12,
-                  "column": 62,
-                  "offset": 979
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 65,
-                      "offset": 982
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 66,
-                      "offset": 983
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 65,
-                  "offset": 982
-                },
-                "end": {
-                  "line": 12,
-                  "column": 79,
-                  "offset": 996
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "-",
-                  "position": {
-                    "start": {
-                      "line": 12,
-                      "column": 82,
-                      "offset": 999
-                    },
-                    "end": {
-                      "line": 12,
-                      "column": 83,
-                      "offset": 1000
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 12,
-                  "column": 82,
-                  "offset": 999
-                },
-                "end": {
-                  "line": 12,
-                  "column": 99,
-                  "offset": 1016
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "inlineCode",
+          "value": "()",
           "position": {
             "start": {
-              "line": 12,
-              "column": 1,
-              "offset": 918
+              "line": 11,
+              "column": 20,
+              "offset": 836
+            },
+            "end": {
+              "line": 11,
+              "column": 24,
+              "offset": 840
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "       | -      | -          | -       | -              | -                 |\n| GitHub         | ",
+          "position": {
+            "start": {
+              "line": 11,
+              "column": 24,
+              "offset": 840
             },
             "end": {
               "line": 12,
-              "column": 101,
-              "offset": 1018
-            },
-            "indent": []
+              "column": 20,
+              "offset": 937
+            }
           }
         },
         {
-          "type": "tableRow",
-          "children": [
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "CommonMark",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 3,
-                      "offset": 1021
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 13,
-                      "offset": 1031
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 3,
-                  "offset": 1021
-                },
-                "end": {
-                  "line": 13,
-                  "column": 17,
-                  "offset": 1035
-                },
-                "indent": []
-              }
+          "type": "inlineCode",
+          "value": "()",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 20,
+              "offset": 937
             },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "inlineCode",
-                  "value": "()",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 20,
-                      "offset": 1038
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 24,
-                      "offset": 1042
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 20,
-                  "offset": 1038
-                },
-                "end": {
-                  "line": 13,
-                  "column": 30,
-                  "offset": 1048
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "No",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 33,
-                      "offset": 1051
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 35,
-                      "offset": 1053
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 33,
-                  "offset": 1051
-                },
-                "end": {
-                  "line": 13,
-                  "column": 39,
-                  "offset": 1057
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 42,
-                      "offset": 1060
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 45,
-                      "offset": 1063
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 42,
-                  "offset": 1060
-                },
-                "end": {
-                  "line": 13,
-                  "column": 52,
-                  "offset": 1070
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 55,
-                      "offset": 1073
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 58,
-                      "offset": 1076
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 55,
-                  "offset": 1073
-                },
-                "end": {
-                  "line": 13,
-                  "column": 62,
-                  "offset": 1080
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 65,
-                      "offset": 1083
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 68,
-                      "offset": 1086
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 65,
-                  "offset": 1083
-                },
-                "end": {
-                  "line": 13,
-                  "column": 79,
-                  "offset": 1097
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "tableCell",
-              "children": [
-                {
-                  "type": "text",
-                  "value": "Yes",
-                  "position": {
-                    "start": {
-                      "line": 13,
-                      "column": 82,
-                      "offset": 1100
-                    },
-                    "end": {
-                      "line": 13,
-                      "column": 85,
-                      "offset": 1103
-                    },
-                    "indent": []
-                  }
-                }
-              ],
-              "position": {
-                "start": {
-                  "line": 13,
-                  "column": 82,
-                  "offset": 1100
-                },
-                "end": {
-                  "line": 13,
-                  "column": 99,
-                  "offset": 1117
-                },
-                "indent": []
-              }
+            "end": {
+              "line": 12,
+              "column": 24,
+              "offset": 941
             }
-          ],
+          }
+        },
+        {
+          "type": "text",
+          "value": "       | -      | -          | -       | -              | -                 |\n| CommonMark     | ",
+          "position": {
+            "start": {
+              "line": 12,
+              "column": 24,
+              "offset": 941
+            },
+            "end": {
+              "line": 13,
+              "column": 20,
+              "offset": 1038
+            }
+          }
+        },
+        {
+          "type": "inlineCode",
+          "value": "()",
           "position": {
             "start": {
               "line": 13,
-              "column": 1,
-              "offset": 1019
+              "column": 20,
+              "offset": 1038
+            },
+            "end": {
+              "line": 13,
+              "column": 24,
+              "offset": 1042
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "       | No     | Yes        | Yes     | Yes            | Yes               |",
+          "position": {
+            "start": {
+              "line": 13,
+              "column": 24,
+              "offset": 1042
             },
             "end": {
               "line": 13,
               "column": 101,
               "offset": 1119
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2690,19 +353,7 @@
           "line": 13,
           "column": 101,
           "offset": 1119
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -2722,8 +373,7 @@
               "line": 15,
               "column": 17,
               "offset": 1137
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2737,8 +387,7 @@
           "line": 15,
           "column": 17,
           "offset": 1137
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2762,8 +411,7 @@
                   "line": 17,
                   "column": 7,
                   "offset": 1145
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -2777,8 +425,7 @@
               "line": 17,
               "column": 33,
               "offset": 1171
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2792,36 +439,15 @@
           "line": 17,
           "column": 33,
           "offset": 1171
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "and \"matching delimiters\"",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 19,
-                  "column": 2,
-                  "offset": 1174
-                },
-                "end": {
-                  "line": 19,
-                  "column": 7,
-                  "offset": 1179
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world.html \"and \"matching delimiters\"\")",
           "position": {
             "start": {
               "line": 19,
@@ -2832,8 +458,7 @@
               "line": 19,
               "column": 50,
               "offset": 1222
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2847,36 +472,15 @@
           "line": 19,
           "column": 50,
           "offset": 1222
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "and \"mismatched delimiters",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 21,
-                  "column": 2,
-                  "offset": 1225
-                },
-                "end": {
-                  "line": 21,
-                  "column": 7,
-                  "offset": 1230
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world.html \"and \"mismatched delimiters\")",
           "position": {
             "start": {
               "line": 21,
@@ -2887,8 +491,7 @@
               "line": 21,
               "column": 51,
               "offset": 1274
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2902,8 +505,7 @@
           "line": 21,
           "column": 51,
           "offset": 1274
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2911,7 +513,7 @@
       "children": [
         {
           "type": "link",
-          "title": "and \\\"escapes\\\"",
+          "title": "and \"escapes\"",
           "url": "./world.html",
           "children": [
             {
@@ -2927,8 +529,7 @@
                   "line": 23,
                   "column": 7,
                   "offset": 1282
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -2942,8 +543,7 @@
               "line": 23,
               "column": 40,
               "offset": 1315
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -2957,8 +557,7 @@
           "line": 23,
           "column": 40,
           "offset": 1315
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -2982,8 +581,7 @@
                   "line": 25,
                   "column": 7,
                   "offset": 1323
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -2997,8 +595,7 @@
               "line": 25,
               "column": 55,
               "offset": 1371
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3012,8 +609,7 @@
           "line": 25,
           "column": 55,
           "offset": 1371
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3037,8 +633,7 @@
                   "line": 27,
                   "column": 7,
                   "offset": 1379
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3052,8 +647,7 @@
               "line": 27,
               "column": 58,
               "offset": 1430
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3067,8 +661,7 @@
           "line": 27,
           "column": 58,
           "offset": 1430
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3088,8 +681,7 @@
               "line": 29,
               "column": 17,
               "offset": 1448
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3103,8 +695,7 @@
           "line": 29,
           "column": 17,
           "offset": 1448
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3128,8 +719,7 @@
                   "line": 31,
                   "column": 7,
                   "offset": 1456
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3143,8 +733,7 @@
               "line": 31,
               "column": 33,
               "offset": 1482
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3158,36 +747,15 @@
           "line": 31,
           "column": 33,
           "offset": 1482
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "and 'matching delimiters'",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 33,
-                  "column": 2,
-                  "offset": 1485
-                },
-                "end": {
-                  "line": 33,
-                  "column": 7,
-                  "offset": 1490
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world.html 'and 'matching delimiters'')",
           "position": {
             "start": {
               "line": 33,
@@ -3198,8 +766,7 @@
               "line": 33,
               "column": 50,
               "offset": 1533
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3213,36 +780,15 @@
           "line": 33,
           "column": 50,
           "offset": 1533
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "and 'mismatched delimiters",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 35,
-                  "column": 2,
-                  "offset": 1536
-                },
-                "end": {
-                  "line": 35,
-                  "column": 7,
-                  "offset": 1541
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world.html 'and 'mismatched delimiters')",
           "position": {
             "start": {
               "line": 35,
@@ -3253,8 +799,7 @@
               "line": 35,
               "column": 51,
               "offset": 1585
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3268,8 +813,7 @@
           "line": 35,
           "column": 51,
           "offset": 1585
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3277,7 +821,7 @@
       "children": [
         {
           "type": "link",
-          "title": "and \\'escapes\\'",
+          "title": "and 'escapes'",
           "url": "./world.html",
           "children": [
             {
@@ -3293,8 +837,7 @@
                   "line": 37,
                   "column": 7,
                   "offset": 1593
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3308,8 +851,7 @@
               "line": 37,
               "column": 40,
               "offset": 1626
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3323,8 +865,7 @@
           "line": 37,
           "column": 40,
           "offset": 1626
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3348,8 +889,7 @@
                   "line": 39,
                   "column": 7,
                   "offset": 1634
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3363,8 +903,7 @@
               "line": 39,
               "column": 55,
               "offset": 1682
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3378,8 +917,7 @@
           "line": 39,
           "column": 55,
           "offset": 1682
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3403,8 +941,7 @@
                   "line": 41,
                   "column": 7,
                   "offset": 1690
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3418,8 +955,7 @@
               "line": 41,
               "column": 58,
               "offset": 1741
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3433,8 +969,7 @@
           "line": 41,
           "column": 58,
           "offset": 1741
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -3454,8 +989,7 @@
               "line": 43,
               "column": 15,
               "offset": 1757
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3469,18 +1003,16 @@
           "line": 43,
           "column": 15,
           "offset": 1757
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and text",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3495,8 +1027,7 @@
                   "line": 45,
                   "column": 7,
                   "offset": 1765
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3508,27 +1039,9 @@
             },
             "end": {
               "line": 45,
-              "column": 8,
-              "offset": 1766
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.html (and text))",
-          "position": {
-            "start": {
-              "line": 45,
-              "column": 8,
-              "offset": 1766
-            },
-            "end": {
-              "line": 45,
               "column": 33,
               "offset": 1791
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3542,18 +1055,16 @@
           "line": 45,
           "column": 33,
           "offset": 1791
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and (matching delimiters",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3568,8 +1079,7 @@
                   "line": 47,
                   "column": 7,
                   "offset": 1799
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3581,27 +1091,25 @@
             },
             "end": {
               "line": 47,
-              "column": 8,
-              "offset": 1800
-            },
-            "indent": []
+              "column": 49,
+              "offset": 1841
+            }
           }
         },
         {
           "type": "text",
-          "value": "(./world.html (and (matching delimiters)))",
+          "value": ")",
           "position": {
             "start": {
               "line": 47,
-              "column": 8,
-              "offset": 1800
+              "column": 49,
+              "offset": 1841
             },
             "end": {
               "line": 47,
               "column": 50,
               "offset": 1842
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3615,18 +1123,16 @@
           "line": 47,
           "column": 50,
           "offset": 1842
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and (mismatched delimiters",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3641,8 +1147,7 @@
                   "line": 49,
                   "column": 7,
                   "offset": 1850
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3654,27 +1159,9 @@
             },
             "end": {
               "line": 49,
-              "column": 8,
-              "offset": 1851
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.html (and (mismatched delimiters))",
-          "position": {
-            "start": {
-              "line": 49,
-              "column": 8,
-              "offset": 1851
-            },
-            "end": {
-              "line": 49,
               "column": 51,
               "offset": 1894
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3688,18 +1175,16 @@
           "line": 49,
           "column": 51,
           "offset": 1894
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and (escapes)",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3714,8 +1199,7 @@
                   "line": 51,
                   "column": 7,
                   "offset": 1902
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3727,95 +1211,9 @@
             },
             "end": {
               "line": 51,
-              "column": 8,
-              "offset": 1903
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.html (and ",
-          "position": {
-            "start": {
-              "line": 51,
-              "column": 8,
-              "offset": 1903
-            },
-            "end": {
-              "line": 51,
-              "column": 27,
-              "offset": 1922
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 51,
-              "column": 27,
-              "offset": 1922
-            },
-            "end": {
-              "line": 51,
-              "column": 29,
-              "offset": 1924
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "escapes",
-          "position": {
-            "start": {
-              "line": 51,
-              "column": 29,
-              "offset": 1924
-            },
-            "end": {
-              "line": 51,
-              "column": 36,
-              "offset": 1931
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 51,
-              "column": 36,
-              "offset": 1931
-            },
-            "end": {
-              "line": 51,
-              "column": 38,
-              "offset": 1933
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 51,
-              "column": 38,
-              "offset": 1933
-            },
-            "end": {
-              "line": 51,
               "column": 40,
               "offset": 1935
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3829,18 +1227,16 @@
           "line": 51,
           "column": 40,
           "offset": 1935
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and (named entities)",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3855,8 +1251,7 @@
                   "line": 53,
                   "column": 7,
                   "offset": 1943
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -3868,95 +1263,9 @@
             },
             "end": {
               "line": 53,
-              "column": 8,
-              "offset": 1944
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.html (and ",
-          "position": {
-            "start": {
-              "line": 53,
-              "column": 8,
-              "offset": 1944
-            },
-            "end": {
-              "line": 53,
-              "column": 27,
-              "offset": 1963
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 53,
-              "column": 27,
-              "offset": 1963
-            },
-            "end": {
-              "line": 53,
-              "column": 33,
-              "offset": 1969
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "named entities",
-          "position": {
-            "start": {
-              "line": 53,
-              "column": 33,
-              "offset": 1969
-            },
-            "end": {
-              "line": 53,
-              "column": 47,
-              "offset": 1983
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 53,
-              "column": 47,
-              "offset": 1983
-            },
-            "end": {
-              "line": 53,
-              "column": 53,
-              "offset": 1989
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 53,
-              "column": 53,
-              "offset": 1989
-            },
-            "end": {
-              "line": 53,
               "column": 55,
               "offset": 1991
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -3970,18 +1279,16 @@
           "line": 53,
           "column": 55,
           "offset": 1991
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "and (numbered entities)",
+          "url": "./world.html",
           "children": [
             {
               "type": "text",
@@ -3996,8 +1303,7 @@
                   "line": 55,
                   "column": 7,
                   "offset": 1999
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -4009,95 +1315,9 @@
             },
             "end": {
               "line": 55,
-              "column": 8,
-              "offset": 2000
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.html (and ",
-          "position": {
-            "start": {
-              "line": 55,
-              "column": 8,
-              "offset": 2000
-            },
-            "end": {
-              "line": 55,
-              "column": 27,
-              "offset": 2019
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 55,
-              "column": 27,
-              "offset": 2019
-            },
-            "end": {
-              "line": 55,
-              "column": 33,
-              "offset": 2025
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "numbered entities",
-          "position": {
-            "start": {
-              "line": 55,
-              "column": 33,
-              "offset": 2025
-            },
-            "end": {
-              "line": 55,
-              "column": 50,
-              "offset": 2042
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 55,
-              "column": 50,
-              "offset": 2042
-            },
-            "end": {
-              "line": 55,
-              "column": 56,
-              "offset": 2048
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 55,
-              "column": 56,
-              "offset": 2048
-            },
-            "end": {
-              "line": 55,
               "column": 58,
               "offset": 2050
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4111,8 +1331,7 @@
           "line": 55,
           "column": 58,
           "offset": 2050
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4132,8 +1351,7 @@
               "line": 57,
               "column": 9,
               "offset": 2060
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4147,8 +1365,7 @@
           "line": 57,
           "column": 9,
           "offset": 2060
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4168,8 +1385,7 @@
               "line": 59,
               "column": 17,
               "offset": 2078
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4183,8 +1399,7 @@
           "line": 59,
           "column": 17,
           "offset": 2078
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4205,8 +1420,7 @@
               "line": 61,
               "column": 33,
               "offset": 2112
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4220,18 +1434,15 @@
           "line": 61,
           "column": 33,
           "offset": 2112
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "and \"matching delimiters\"",
-          "url": "./world.png",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world.png \"and \"matching delimiters\"\")",
           "position": {
             "start": {
               "line": 63,
@@ -4242,8 +1453,7 @@
               "line": 63,
               "column": 50,
               "offset": 2163
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4257,18 +1467,15 @@
           "line": 63,
           "column": 50,
           "offset": 2163
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "and \"mismatched delimiters",
-          "url": "./world.png",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world.png \"and \"mismatched delimiters\")",
           "position": {
             "start": {
               "line": 65,
@@ -4279,8 +1486,7 @@
               "line": 65,
               "column": 51,
               "offset": 2215
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4294,8 +1500,7 @@
           "line": 65,
           "column": 51,
           "offset": 2215
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4303,7 +1508,7 @@
       "children": [
         {
           "type": "image",
-          "title": "and \\\"escapes\\\"",
+          "title": "and \"escapes\"",
           "url": "./world.png",
           "alt": "Hello",
           "position": {
@@ -4316,8 +1521,7 @@
               "line": 67,
               "column": 40,
               "offset": 2256
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4331,8 +1535,7 @@
           "line": 67,
           "column": 40,
           "offset": 2256
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4353,8 +1556,7 @@
               "line": 69,
               "column": 55,
               "offset": 2312
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4368,8 +1570,7 @@
           "line": 69,
           "column": 55,
           "offset": 2312
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4390,8 +1591,7 @@
               "line": 71,
               "column": 58,
               "offset": 2371
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4405,8 +1605,7 @@
           "line": 71,
           "column": 58,
           "offset": 2371
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4426,8 +1625,7 @@
               "line": 73,
               "column": 17,
               "offset": 2389
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4441,8 +1639,7 @@
           "line": 73,
           "column": 17,
           "offset": 2389
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4463,8 +1660,7 @@
               "line": 75,
               "column": 33,
               "offset": 2423
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4478,18 +1674,15 @@
           "line": 75,
           "column": 33,
           "offset": 2423
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "and 'matching delimiters'",
-          "url": "./world.png",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world.png 'and 'matching delimiters'')",
           "position": {
             "start": {
               "line": 77,
@@ -4500,8 +1693,7 @@
               "line": 77,
               "column": 50,
               "offset": 2474
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4515,18 +1707,15 @@
           "line": 77,
           "column": 50,
           "offset": 2474
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "and 'mismatched delimiters",
-          "url": "./world.png",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world.png 'and 'mismatched delimiters')",
           "position": {
             "start": {
               "line": 79,
@@ -4537,8 +1726,7 @@
               "line": 79,
               "column": 51,
               "offset": 2526
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4552,8 +1740,7 @@
           "line": 79,
           "column": 51,
           "offset": 2526
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4561,7 +1748,7 @@
       "children": [
         {
           "type": "image",
-          "title": "and \\'escapes\\'",
+          "title": "and 'escapes'",
           "url": "./world.png",
           "alt": "Hello",
           "position": {
@@ -4574,8 +1761,7 @@
               "line": 81,
               "column": 40,
               "offset": 2567
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4589,8 +1775,7 @@
           "line": 81,
           "column": 40,
           "offset": 2567
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4611,8 +1796,7 @@
               "line": 83,
               "column": 55,
               "offset": 2623
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4626,8 +1810,7 @@
           "line": 83,
           "column": 55,
           "offset": 2623
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4648,8 +1831,7 @@
               "line": 85,
               "column": 58,
               "offset": 2682
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4663,8 +1845,7 @@
           "line": 85,
           "column": 58,
           "offset": 2682
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -4684,8 +1865,7 @@
               "line": 87,
               "column": 15,
               "offset": 2698
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4699,18 +1879,16 @@
           "line": 87,
           "column": 15,
           "offset": 2698
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and text",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -4720,27 +1898,9 @@
             },
             "end": {
               "line": 89,
-              "column": 9,
-              "offset": 2708
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.png (and text))",
-          "position": {
-            "start": {
-              "line": 89,
-              "column": 9,
-              "offset": 2708
-            },
-            "end": {
-              "line": 89,
               "column": 33,
               "offset": 2732
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4754,18 +1914,16 @@
           "line": 89,
           "column": 33,
           "offset": 2732
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and (matching delimiters",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -4775,27 +1933,25 @@
             },
             "end": {
               "line": 91,
-              "column": 9,
-              "offset": 2742
-            },
-            "indent": []
+              "column": 49,
+              "offset": 2782
+            }
           }
         },
         {
           "type": "text",
-          "value": "(./world.png (and (matching delimiters)))",
+          "value": ")",
           "position": {
             "start": {
               "line": 91,
-              "column": 9,
-              "offset": 2742
+              "column": 49,
+              "offset": 2782
             },
             "end": {
               "line": 91,
               "column": 50,
               "offset": 2783
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4809,18 +1965,16 @@
           "line": 91,
           "column": 50,
           "offset": 2783
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and (mismatched delimiters",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -4830,27 +1984,9 @@
             },
             "end": {
               "line": 93,
-              "column": 9,
-              "offset": 2793
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.png (and (mismatched delimiters))",
-          "position": {
-            "start": {
-              "line": 93,
-              "column": 9,
-              "offset": 2793
-            },
-            "end": {
-              "line": 93,
               "column": 51,
               "offset": 2835
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4864,18 +2000,16 @@
           "line": 93,
           "column": 51,
           "offset": 2835
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and (escapes)",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -4885,95 +2019,9 @@
             },
             "end": {
               "line": 95,
-              "column": 9,
-              "offset": 2845
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.png (and ",
-          "position": {
-            "start": {
-              "line": 95,
-              "column": 9,
-              "offset": 2845
-            },
-            "end": {
-              "line": 95,
-              "column": 27,
-              "offset": 2863
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 95,
-              "column": 27,
-              "offset": 2863
-            },
-            "end": {
-              "line": 95,
-              "column": 29,
-              "offset": 2865
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "escapes",
-          "position": {
-            "start": {
-              "line": 95,
-              "column": 29,
-              "offset": 2865
-            },
-            "end": {
-              "line": 95,
-              "column": 36,
-              "offset": 2872
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 95,
-              "column": 36,
-              "offset": 2872
-            },
-            "end": {
-              "line": 95,
-              "column": 38,
-              "offset": 2874
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 95,
-              "column": 38,
-              "offset": 2874
-            },
-            "end": {
-              "line": 95,
               "column": 40,
               "offset": 2876
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -4987,18 +2035,16 @@
           "line": 95,
           "column": 40,
           "offset": 2876
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and (named entities)",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -5008,95 +2054,9 @@
             },
             "end": {
               "line": 97,
-              "column": 9,
-              "offset": 2886
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.png (and ",
-          "position": {
-            "start": {
-              "line": 97,
-              "column": 9,
-              "offset": 2886
-            },
-            "end": {
-              "line": 97,
-              "column": 27,
-              "offset": 2904
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 97,
-              "column": 27,
-              "offset": 2904
-            },
-            "end": {
-              "line": 97,
-              "column": 33,
-              "offset": 2910
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "named entities",
-          "position": {
-            "start": {
-              "line": 97,
-              "column": 33,
-              "offset": 2910
-            },
-            "end": {
-              "line": 97,
-              "column": 47,
-              "offset": 2924
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 97,
-              "column": 47,
-              "offset": 2924
-            },
-            "end": {
-              "line": 97,
-              "column": 53,
-              "offset": 2930
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 97,
-              "column": 53,
-              "offset": 2930
-            },
-            "end": {
-              "line": 97,
               "column": 55,
               "offset": 2932
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -5110,18 +2070,16 @@
           "line": 97,
           "column": 55,
           "offset": 2932
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "and (numbered entities)",
+          "url": "./world.png",
           "alt": "Hello",
           "position": {
             "start": {
@@ -5131,95 +2089,9 @@
             },
             "end": {
               "line": 99,
-              "column": 9,
-              "offset": 2942
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world.png (and ",
-          "position": {
-            "start": {
-              "line": 99,
-              "column": 9,
-              "offset": 2942
-            },
-            "end": {
-              "line": 99,
-              "column": 27,
-              "offset": 2960
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 99,
-              "column": 27,
-              "offset": 2960
-            },
-            "end": {
-              "line": 99,
-              "column": 33,
-              "offset": 2966
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "numbered entities",
-          "position": {
-            "start": {
-              "line": 99,
-              "column": 33,
-              "offset": 2966
-            },
-            "end": {
-              "line": 99,
-              "column": 50,
-              "offset": 2983
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ")",
-          "position": {
-            "start": {
-              "line": 99,
-              "column": 50,
-              "offset": 2983
-            },
-            "end": {
-              "line": 99,
-              "column": 56,
-              "offset": 2989
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "))",
-          "position": {
-            "start": {
-              "line": 99,
-              "column": 56,
-              "offset": 2989
-            },
-            "end": {
-              "line": 99,
               "column": 58,
               "offset": 2991
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -5233,8 +2105,7 @@
           "line": 99,
           "column": 58,
           "offset": 2991
-        },
-        "indent": []
+        }
       }
     }
   ],

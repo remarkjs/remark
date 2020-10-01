@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "Lots of entities are supported in mdast: ",
+          "value": "Lots of entities are supported in mdast:  , &, ©, Æ,\nĎ, ¾, ℋ, ⅆ,\n∲, &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\n&yuml, &aacute, &copy, and &amp.",
           "position": {
             "start": {
               "line": 1,
@@ -14,460 +14,10 @@
               "offset": 0
             },
             "end": {
-              "line": 1,
-              "column": 42,
-              "offset": 41
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": " ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 42,
-              "offset": 41
-            },
-            "end": {
-              "line": 1,
-              "column": 48,
-              "offset": 47
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 48,
-              "offset": 47
-            },
-            "end": {
-              "line": 1,
-              "column": 50,
-              "offset": 49
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "&",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 50,
-              "offset": 49
-            },
-            "end": {
-              "line": 1,
-              "column": 55,
-              "offset": 54
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 55,
-              "offset": 54
-            },
-            "end": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "©",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 57,
-              "offset": 56
-            },
-            "end": {
-              "line": 1,
-              "column": 63,
-              "offset": 62
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 63,
-              "offset": 62
-            },
-            "end": {
-              "line": 1,
-              "column": 65,
-              "offset": 64
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "Æ",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 65,
-              "offset": 64
-            },
-            "end": {
-              "line": 1,
-              "column": 72,
-              "offset": 71
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ",\n",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 72,
-              "offset": 71
-            },
-            "end": {
-              "line": 2,
-              "column": 1,
-              "offset": 73
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "text",
-          "value": "Ď",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 1,
-              "offset": 73
-            },
-            "end": {
-              "line": 2,
-              "column": 9,
-              "offset": 81
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 9,
-              "offset": 81
-            },
-            "end": {
-              "line": 2,
-              "column": 11,
-              "offset": 83
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "¾",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 11,
-              "offset": 83
-            },
-            "end": {
-              "line": 2,
-              "column": 19,
-              "offset": 91
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 19,
-              "offset": 91
-            },
-            "end": {
-              "line": 2,
-              "column": 21,
-              "offset": 93
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "ℋ",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 21,
-              "offset": 93
-            },
-            "end": {
-              "line": 2,
-              "column": 35,
-              "offset": 107
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 35,
-              "offset": 107
-            },
-            "end": {
-              "line": 2,
-              "column": 37,
-              "offset": 109
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "ⅆ",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 37,
-              "offset": 109
-            },
-            "end": {
-              "line": 2,
-              "column": 52,
-              "offset": 124
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ",\n",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 52,
-              "offset": 124
-            },
-            "end": {
-              "line": 3,
-              "column": 1,
-              "offset": 126
-            },
-            "indent": [
-              1
-            ]
-          }
-        },
-        {
-          "type": "text",
-          "value": "∲",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 1,
-              "offset": 126
-            },
-            "end": {
-              "line": 3,
-              "column": 27,
-              "offset": 152
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", &c.  Even some entities with a missing\nterminal semicolon are parsed correctly (as per the HTML5 spec):\n",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 27,
-              "offset": 152
-            },
-            "end": {
-              "line": 5,
-              "column": 1,
-              "offset": 258
-            },
-            "indent": [
-              1,
-              1
-            ]
-          }
-        },
-        {
-          "type": "text",
-          "value": "ÿ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 1,
-              "offset": 258
-            },
-            "end": {
-              "line": 5,
-              "column": 6,
-              "offset": 263
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 6,
-              "offset": 263
-            },
-            "end": {
-              "line": 5,
-              "column": 8,
-              "offset": 265
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "á",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 8,
-              "offset": 265
-            },
-            "end": {
-              "line": 5,
-              "column": 15,
-              "offset": 272
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 15,
-              "offset": 272
-            },
-            "end": {
-              "line": 5,
-              "column": 17,
-              "offset": 274
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "©",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 17,
-              "offset": 274
-            },
-            "end": {
-              "line": 5,
-              "column": 22,
-              "offset": 279
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ", and ",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 22,
-              "offset": 279
-            },
-            "end": {
-              "line": 5,
-              "column": 28,
-              "offset": 285
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "&",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 28,
-              "offset": 285
-            },
-            "end": {
-              "line": 5,
-              "column": 32,
-              "offset": 289
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 32,
-              "offset": 289
-            },
-            "end": {
               "line": 5,
               "column": 33,
               "offset": 290
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -481,13 +31,7 @@
           "line": 5,
           "column": 33,
           "offset": 290
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -506,8 +50,7 @@
               "line": 7,
               "column": 52,
               "offset": 343
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -521,8 +64,7 @@
           "line": 7,
           "column": 52,
           "offset": 343
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -541,8 +83,7 @@
               "line": 9,
               "column": 63,
               "offset": 407
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -556,8 +97,7 @@
           "line": 9,
           "column": 63,
           "offset": 407
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -575,11 +115,7 @@
           "line": 13,
           "column": 4,
           "offset": 451
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -598,8 +134,7 @@
               "line": 15,
               "column": 7,
               "offset": 459
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -609,7 +144,7 @@
           "children": [
             {
               "type": "text",
-              "value": "l",
+              "value": "línks",
               "position": {
                 "start": {
                   "line": 15,
@@ -618,44 +153,9 @@
                 },
                 "end": {
                   "line": 15,
-                  "column": 9,
-                  "offset": 461
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "í",
-              "position": {
-                "start": {
-                  "line": 15,
-                  "column": 9,
-                  "offset": 461
-                },
-                "end": {
-                  "line": 15,
-                  "column": 17,
-                  "offset": 469
-                },
-                "indent": []
-              }
-            },
-            {
-              "type": "text",
-              "value": "nks",
-              "position": {
-                "start": {
-                  "line": 15,
-                  "column": 17,
-                  "offset": 469
-                },
-                "end": {
-                  "line": 15,
                   "column": 20,
                   "offset": 472
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -669,8 +169,7 @@
               "line": 15,
               "column": 62,
               "offset": 514
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -684,8 +183,7 @@
           "line": 15,
           "column": 62,
           "offset": 514
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -704,8 +202,7 @@
               "line": 17,
               "column": 7,
               "offset": 522
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -721,10 +218,9 @@
             },
             "end": {
               "line": 17,
-              "column": 61,
-              "offset": 576
-            },
-            "indent": []
+              "column": 62,
+              "offset": 577
+            }
           }
         }
       ],
@@ -736,10 +232,9 @@
         },
         "end": {
           "line": 17,
-          "column": 61,
-          "offset": 576
-        },
-        "indent": []
+          "column": 62,
+          "offset": 577
+        }
       }
     },
     {
@@ -752,14 +247,13 @@
             "start": {
               "line": 19,
               "column": 1,
-              "offset": 578
+              "offset": 579
             },
             "end": {
               "line": 19,
               "column": 38,
-              "offset": 615
-            },
-            "indent": []
+              "offset": 616
+            }
           }
         },
         {
@@ -769,14 +263,13 @@
             "start": {
               "line": 19,
               "column": 38,
-              "offset": 615
+              "offset": 616
             },
             "end": {
               "line": 19,
               "column": 56,
-              "offset": 633
-            },
-            "indent": []
+              "offset": 634
+            }
           }
         },
         {
@@ -786,16 +279,13 @@
             "start": {
               "line": 19,
               "column": 56,
-              "offset": 633
+              "offset": 634
             },
             "end": {
               "line": 20,
               "column": 13,
-              "offset": 653
-            },
-            "indent": [
-              1
-            ]
+              "offset": 654
+            }
           }
         }
       ],
@@ -803,16 +293,13 @@
         "start": {
           "line": 19,
           "column": 1,
-          "offset": 578
+          "offset": 579
         },
         "end": {
           "line": 20,
           "column": 13,
-          "offset": 653
-        },
-        "indent": [
-          1
-        ]
+          "offset": 654
+        }
       }
     },
     {
@@ -824,14 +311,13 @@
         "start": {
           "line": 22,
           "column": 1,
-          "offset": 655
+          "offset": 656
         },
         "end": {
           "line": 22,
           "column": 18,
-          "offset": 672
-        },
-        "indent": []
+          "offset": 673
+        }
       }
     }
   ],
@@ -844,7 +330,7 @@
     "end": {
       "line": 23,
       "column": 1,
-      "offset": 673
+      "offset": 674
     }
   }
 }

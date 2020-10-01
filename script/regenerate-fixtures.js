@@ -5,28 +5,31 @@ var path = require('path')
 var remark = require('../packages/remark')
 var fixtures = require('../test/fixtures')
 
+var base = path.join('test', 'fixtures', 'tree')
+var generated = []
+
 fixtures.forEach(function (fixture) {
+  var stem = path.basename(fixture.name, path.extname(fixture.name))
   var input = fixture.input
-  var name = fixture.name
-  var mapping = fixture.mapping
+  var result
 
-  Object.keys(mapping).forEach(function (key) {
-    var filename = name + (key ? '.' + key : key) + '.json'
-    var result
+  try {
+    result = remark().parse(input)
+  } catch (error) {
+    console.log('Cannot regenerate `' + stem + '`')
+    throw error
+  }
 
-    try {
-      result = remark()
-        .data('settings', fixture.possibilities[key])
-        .parse(input)
-    } catch (error) {
-      console.log('Cannot regenerate `' + filename + '`')
-      throw error
-    }
+  fs.writeFileSync(
+    path.join(base, stem + '.json'),
+    JSON.stringify(result, null, 2) + '\n'
+  )
 
-    result = JSON.stringify(result, null, 2) + '\n'
+  generated.push(stem + '.json')
+})
 
-    filename = filename.replace(/\*/g, '-asterisk-')
-
-    fs.writeFileSync(path.join('test', 'fixtures', 'tree', filename), result)
-  })
+fs.readdirSync(base).forEach(function (basename) {
+  if (basename.charAt(0) !== '.' && !generated.includes(basename)) {
+    console.warn('Unused fixture: `%s`', basename)
+  }
 })

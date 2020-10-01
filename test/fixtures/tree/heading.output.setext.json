@@ -18,8 +18,7 @@
               "line": 1,
               "column": 10,
               "offset": 9
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -33,10 +32,7 @@
           "line": 2,
           "column": 10,
           "offset": 19
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -56,8 +52,7 @@
               "line": 4,
               "column": 10,
               "offset": 30
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -71,10 +66,7 @@
           "line": 5,
           "column": 10,
           "offset": 40
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -94,8 +86,7 @@
               "line": 7,
               "column": 14,
               "offset": 55
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -109,8 +100,7 @@
           "line": 7,
           "column": 14,
           "offset": 55
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -130,8 +120,7 @@
               "line": 9,
               "column": 15,
               "offset": 71
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -145,8 +134,7 @@
           "line": 9,
           "column": 15,
           "offset": 71
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -166,8 +154,7 @@
               "line": 11,
               "column": 16,
               "offset": 88
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -181,8 +168,7 @@
           "line": 11,
           "column": 16,
           "offset": 88
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -202,8 +188,7 @@
               "line": 13,
               "column": 17,
               "offset": 106
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -217,8 +202,7 @@
           "line": 13,
           "column": 17,
           "offset": 106
-        },
-        "indent": []
+        }
       }
     }
   ],

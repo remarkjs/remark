@@ -5,29 +5,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 2,
-                  "offset": 1
-                },
-                "end": {
-                  "line": 1,
-                  "column": 7,
-                  "offset": 6
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](",
           "position": {
             "start": {
               "line": 1,
@@ -36,27 +15,9 @@
             },
             "end": {
               "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "end": {
-              "line": 1,
               "column": 9,
               "offset": 8
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -70,37 +31,15 @@
           "line": 1,
           "column": 9,
           "offset": 8
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "world",
-          "label": "World",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "World",
-              "position": {
-                "start": {
-                  "line": 4,
-                  "column": 2,
-                  "offset": 12
-                },
-                "end": {
-                  "line": 4,
-                  "column": 7,
-                  "offset": 17
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[World](<",
           "position": {
             "start": {
               "line": 4,
@@ -109,27 +48,9 @@
             },
             "end": {
               "line": 4,
-              "column": 8,
-              "offset": 18
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(<",
-          "position": {
-            "start": {
-              "line": 4,
-              "column": 8,
-              "offset": 18
-            },
-            "end": {
-              "line": 4,
               "column": 10,
               "offset": 20
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -143,19 +64,15 @@
           "line": 4,
           "column": 10,
           "offset": 20
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](",
           "position": {
             "start": {
               "line": 7,
@@ -164,27 +81,9 @@
             },
             "end": {
               "line": 7,
-              "column": 9,
-              "offset": 31
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 9,
-              "offset": 31
-            },
-            "end": {
-              "line": 7,
               "column": 10,
               "offset": 32
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -198,19 +97,15 @@
           "line": 7,
           "column": 10,
           "offset": 32
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "world",
-          "label": "World",
-          "referenceType": "shortcut",
-          "alt": "World",
+          "type": "text",
+          "value": "![World](<",
           "position": {
             "start": {
               "line": 10,
@@ -219,27 +114,9 @@
             },
             "end": {
               "line": 10,
-              "column": 9,
-              "offset": 43
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(<",
-          "position": {
-            "start": {
-              "line": 10,
-              "column": 9,
-              "offset": 43
-            },
-            "end": {
-              "line": 10,
               "column": 11,
               "offset": 45
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -253,8 +130,7 @@
           "line": 10,
           "column": 11,
           "offset": 45
-        },
-        "indent": []
+        }
       }
     }
   ],

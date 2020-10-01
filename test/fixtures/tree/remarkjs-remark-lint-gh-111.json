@@ -1,0 +1,280 @@
+{
+  "type": "root",
+  "children": [
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 1,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Fork",
+                      "position": {
+                        "start": {
+                          "line": 1,
+                          "column": 6,
+                          "offset": 5
+                        },
+                        "end": {
+                          "line": 1,
+                          "column": 10,
+                          "offset": 9
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 1,
+                      "column": 4,
+                      "offset": 3
+                    },
+                    "end": {
+                      "line": 1,
+                      "column": 12,
+                      "offset": 11
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 1,
+                  "column": 4,
+                  "offset": 3
+                },
+                "end": {
+                  "line": 1,
+                  "column": 12,
+                  "offset": 11
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 1,
+              "column": 1,
+              "offset": 0
+            },
+            "end": {
+              "line": 1,
+              "column": 12,
+              "offset": 11
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Clone",
+                      "position": {
+                        "start": {
+                          "line": 2,
+                          "column": 6,
+                          "offset": 17
+                        },
+                        "end": {
+                          "line": 2,
+                          "column": 11,
+                          "offset": 22
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 2,
+                      "column": 4,
+                      "offset": 15
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 13,
+                      "offset": 24
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 2,
+                  "column": 4,
+                  "offset": 15
+                },
+                "end": {
+                  "line": 2,
+                  "column": 13,
+                  "offset": 24
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": null,
+              "meta": null,
+              "value": " git clone <fork_url>",
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 4,
+                  "offset": 29
+                },
+                "end": {
+                  "line": 4,
+                  "column": 29,
+                  "offset": 54
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 2,
+              "column": 1,
+              "offset": 12
+            },
+            "end": {
+              "line": 4,
+              "column": 29,
+              "offset": 54
+            }
+          }
+        },
+        {
+          "type": "listItem",
+          "spread": true,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "strong",
+                  "children": [
+                    {
+                      "type": "text",
+                      "value": "Configure remotes",
+                      "position": {
+                        "start": {
+                          "line": 5,
+                          "column": 6,
+                          "offset": 60
+                        },
+                        "end": {
+                          "line": 5,
+                          "column": 23,
+                          "offset": 77
+                        }
+                      }
+                    }
+                  ],
+                  "position": {
+                    "start": {
+                      "line": 5,
+                      "column": 4,
+                      "offset": 58
+                    },
+                    "end": {
+                      "line": 5,
+                      "column": 25,
+                      "offset": 79
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 5,
+                  "column": 4,
+                  "offset": 58
+                },
+                "end": {
+                  "line": 5,
+                  "column": 25,
+                  "offset": 79
+                }
+              }
+            },
+            {
+              "type": "code",
+              "lang": null,
+              "meta": null,
+              "value": " cd <project_dir>\n git remote add upstream <upstream_dir>",
+              "position": {
+                "start": {
+                  "line": 7,
+                  "column": 4,
+                  "offset": 84
+                },
+                "end": {
+                  "line": 8,
+                  "column": 47,
+                  "offset": 152
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 1,
+              "offset": 55
+            },
+            "end": {
+              "line": 8,
+              "column": 47,
+              "offset": 152
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 1,
+          "column": 1,
+          "offset": 0
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "offset": 152
+        }
+      }
+    }
+  ],
+  "position": {
+    "start": {
+      "line": 1,
+      "column": 1,
+      "offset": 0
+    },
+    "end": {
+      "line": 9,
+      "column": 1,
+      "offset": 153
+    }
+  }
+}

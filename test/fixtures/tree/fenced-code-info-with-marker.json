@@ -17,12 +17,7 @@
               "line": 4,
               "column": 65,
               "offset": 233
-            },
-            "indent": [
-              1,
-              1,
-              1
-            ]
+            }
           }
         }
       ],
@@ -36,12 +31,7 @@
           "line": 4,
           "column": 65,
           "offset": 233
-        },
-        "indent": [
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -60,8 +50,7 @@
               "line": 6,
               "column": 33,
               "offset": 267
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -75,8 +64,7 @@
           "line": 6,
           "column": 33,
           "offset": 267
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -94,11 +82,7 @@
           "line": 10,
           "column": 4,
           "offset": 312
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -117,8 +101,7 @@
               "line": 12,
               "column": 52,
               "offset": 365
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -132,8 +115,7 @@
           "line": 12,
           "column": 52,
           "offset": 365
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -151,11 +133,7 @@
           "line": 16,
           "column": 4,
           "offset": 410
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -174,8 +152,7 @@
               "line": 18,
               "column": 55,
               "offset": 466
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -189,8 +166,7 @@
           "line": 18,
           "column": 55,
           "offset": 466
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -208,11 +184,7 @@
           "line": 22,
           "column": 4,
           "offset": 508
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -231,8 +203,7 @@
               "line": 24,
               "column": 31,
               "offset": 540
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -251,8 +222,7 @@
                   "line": 24,
                   "column": 36,
                   "offset": 545
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -266,8 +236,7 @@
               "line": 24,
               "column": 38,
               "offset": 547
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -283,8 +252,7 @@
               "line": 24,
               "column": 66,
               "offset": 575
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -298,8 +266,7 @@
           "line": 24,
           "column": 66,
           "offset": 575
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -307,7 +274,7 @@
       "children": [
         {
           "type": "text",
-          "value": "``",
+          "value": "```js title=",
           "position": {
             "start": {
               "line": 26,
@@ -316,46 +283,41 @@
             },
             "end": {
               "line": 26,
-              "column": 3,
-              "offset": 579
-            },
-            "indent": []
+              "column": 13,
+              "offset": 589
+            }
           }
         },
         {
           "type": "inlineCode",
-          "value": "js title=",
+          "value": ".bashrc",
           "position": {
             "start": {
               "line": 26,
-              "column": 3,
-              "offset": 579
+              "column": 13,
+              "offset": 589
             },
             "end": {
               "line": 26,
-              "column": 14,
-              "offset": 590
-            },
-            "indent": []
+              "column": 22,
+              "offset": 598
+            }
           }
         },
         {
           "type": "text",
-          "value": ".bashrc`\nconsole.log(1)",
+          "value": "\nconsole.log(1)",
           "position": {
             "start": {
               "line": 26,
-              "column": 14,
-              "offset": 590
+              "column": 22,
+              "offset": 598
             },
             "end": {
               "line": 27,
               "column": 15,
               "offset": 613
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         }
       ],
@@ -369,10 +331,7 @@
           "line": 27,
           "column": 15,
           "offset": 613
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -390,10 +349,7 @@
           "line": 29,
           "column": 1,
           "offset": 618
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     }
   ],

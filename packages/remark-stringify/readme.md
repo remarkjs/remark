@@ -13,7 +13,82 @@ Serializes [**mdast**][mdast] syntax trees to Markdown.
 Used in the [**remark** processor][remark] but can be used on its own as well.
 Can be [extended][extend] to change how Markdown is serialized.
 
-## Sponsors
+## Install
+
+[npm][]:
+
+```sh
+npm install remark-stringify
+```
+
+## Use
+
+```js
+var unified = require('unified')
+var createStream = require('unified-stream')
+var html = require('rehype-parse')
+var rehype2remark = require('rehype-remark')
+var stringify = require('remark-stringify')
+
+var processor = unified().use(html).use(rehype2remark).use(stringify, {
+  bullet: '*',
+  fence: '~',
+  fences: true,
+  incrementListMarker: false
+})
+
+process.stdin.pipe(createStream(processor)).pipe(process.stdout)
+```
+
+[See **unified** for more examples »][unified]
+
+## API
+
+[See **unified** for API docs »][unified]
+
+### `processor().use(stringify[, options])`
+
+Configure the `processor` to serialize [**mdast**][mdast] syntax trees to
+Markdown.
+
+###### `options`
+
+Options can be passed directly, or passed later through
+[`processor.data()`][data].
+
+All the formatting options of [`mdast-util-to-markdown`][to-markdown-options]
+are supported and will be passed through.
+
+## Extending the compiler
+
+See [`mdast-util-to-markdown`][to-markdown].
+Then create a wrapper plugin such as `remark-gfm`.
+
+## Security
+
+As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
+When going to HTML, use remark in combination with the [**rehype**][rehype]
+ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
+
+Use of remark plugins could also open you up to other attacks.
+Carefully assess each plugin and the risks involved in using them.
+
+## Contribute
+
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
+
+A curated list of awesome remark resources can be found in [**awesome
+remark**][awesome].
+
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
+abide by its terms.
+
+## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
@@ -59,255 +134,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 </td>
 </tr>
 </table>
-
-## Install
-
-[npm][]:
-
-```sh
-npm install remark-stringify
-```
-
-## Use
-
-```js
-var unified = require('unified')
-var createStream = require('unified-stream')
-var html = require('rehype-parse')
-var rehype2remark = require('rehype-remark')
-var stringify = require('remark-stringify')
-
-var processor = unified()
-  .use(html)
-  .use(rehype2remark)
-  .use(stringify, {
-    bullet: '*',
-    fence: '~',
-    fences: true,
-    incrementListMarker: false
-  })
-
-process.stdin.pipe(createStream(processor)).pipe(process.stdout)
-```
-
-[See **unified** for more examples »][unified]
-
-## Contents
-
-*   [API](#api)
-    *   [`processor().use(stringify[, options])`](#processorusestringify-options)
-    *   [`stringify.Compiler`](#stringifycompiler)
-*   [Extending the `Compiler`](#extending-the-compiler)
-    *   [`Compiler#visitors`](#compilervisitors)
-    *   [`function visitor(node[, parent])`](#function-visitornode-parent)
-*   [Security](#security)
-*   [Contribute](#contribute)
-*   [License](#license)
-
-## API
-
-[See **unified** for API docs »][unified]
-
-### `processor().use(stringify[, options])`
-
-Configure the `processor` to serialize [**mdast**][mdast] syntax trees to
-Markdown.
-
-##### `options`
-
-Options can be passed directly, or passed later through
-[`processor.data()`][data].
-
-###### `options.gfm`
-
-Serialize with the required escapes for GFM compatible Markdown (`boolean`,
-default: `true`).
-
-*   Escape pipes (`|`, for tables)
-*   Escape colons (`:`, for literal URLs)
-*   Escape tildes (`~`, for strike-through)
-
-###### `options.commonmark`
-
-Serialize for CommonMark compatible Markdown (`boolean`, default: `false`).
-
-*   Serialize adjacent block quotes separately
-*   Escape more characters using slashes, instead of as entities
-
-###### `options.pedantic`
-
-⚠️ Pedantic was previously used to mimic old-style Markdown mode: no tables, no
-fenced code, and with many bugs.
-It’s currently still “working”, but please do not use it, it’ll be removed in
-the future.
-
-###### `options.entities`
-
-⚠️ `entities` was previously used, but included bugs.
-It’s currently still “working”, but please do not use it, it’ll be removed in
-the future.
-
-###### `options.setext`
-
-Serialize headings, when possible, in Setext-style (`boolean`, default: `false`).
-Uses `=` for level one headings and `-` for level two headings.
-Other heading levels are serialized as ATX (respecting `closeAtx`).
-
-###### `options.closeAtx`
-
-Serialize ATX headings with the same amount of closing hashes as opening hashes
-(`boolean`, default: `false`).
-
-###### `options.tableCellPadding`
-
-Create tables with a space between cell delimiters (`|`) and content (`boolean`,
-default: `true`).
-
-###### `options.tablePipeAlign`
-
-Align the delimiters (`|`) between table cells so that they all align nicely and
-form a grid (`boolean`, default: `true`).
-
-###### `options.stringLength`
-
-Function passed to [`markdown-table`][markdown-table] to detect the length of a
-table cell (`Function`, default: [`s => s.length`][string-length]).
-Used to pad tables.
-
-###### `options.fence`
-
-Marker to use for fenced code blocks (`'~'` or ``'`'``, default: ``'`'``).
-
-###### `options.fences`
-
-Create code blocks with a fence instead of indentation if they have no info
-string (`boolean`, default: `false`).
-
-When `false`, code blocks are indented.
-Code blocks with an info string are always fenced.
-
-###### `options.bullet`
-
-Marker to use for the bullet of unordered list items (`'-'`, `'*'`, or `'+'`,
-default: `'-'`).
-
-###### `options.listItemIndent`
-
-Style of indentation for list items (`'tab'`, `'mixed'` or `'1'`, default:
-`'tab'`).
-
-*   `'tab'`: use a tab stops (4 spaces)
-*   `'1'`: use one space
-*   `'mixed'`: use `1` for tight and `tab` for loose list items
-
-###### `options.incrementListMarker`
-
-Increment ordered list item numbers (`boolean`, default: `true`).
-
-When `false`, all list item numbers will be the same.
-
-###### `options.tightDefinitions`
-
-Separate definitions with a single line feed (`boolean`, default: `false`).
-
-When `false`, definitions will have blank lines between them, similar to other
-blocks.
-
-###### `options.rule`
-
-Marker to use for thematic breaks / horizontal rules (`'-'`, `'*'`, or `'_'`,
-default: `'*'`).
-
-###### `options.ruleRepetition`
-
-Number of markers to use for thematic breaks / horizontal rules (`number`,
-default: `3`).
-Musts be `3` or more.
-
-###### `options.ruleSpaces`
-
-Place a space between thematic break (horizontal rule) markers (`boolean`,
-default `true`).
-
-###### `options.strong`
-
-Marker to use for importance (`'_'` or `'*'`, default `'*'`).
-
-###### `options.emphasis`
-
-Marker to use for emphasis (`'_'` or `'*'`, default `'_'`).
-
-### `stringify.Compiler`
-
-Access to the [compiler][], if you need it.
-
-## Extending the `Compiler`
-
-If the `remark-stringify` plugin is used, it adds a [`Compiler`][compiler]
-constructor function to the `processor`.
-Other plugins can add visitors to its prototype to change how Markdown is
-serialized.
-
-The below plugin modifies a [visitor][] to add an extra blank line before
-headings with a rank of `2`.
-
-```js
-module.exports = gap
-
-function gap() {
-  var Compiler = this.Compiler
-  var visitors = Compiler.prototype.visitors
-  var original = visitors.heading
-
-  visitors.heading = heading
-
-  function heading(node) {
-    return (node.depth === 2 ? '\n' : '') + original.apply(this, arguments)
-  }
-}
-```
-
-### `Compiler#visitors`
-
-Map of types to [visitor][]s (`Object.<Function>`).
-
-### `function visitor(node[, parent])`
-
-Serialize `node`.
-
-###### Parameters
-
-*   `node` ([`Node`][node]) — Node to compile
-*   `parent` ([`Parent`][parent], optional) — Parent of `node`.
-    Not available on the root node
-
-###### Returns
-
-`string` — Serialized given `node`.
-
-## Security
-
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
-to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
-When going to HTML, use remark in combination with the [**rehype**][rehype]
-ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
-
-Use of remark plugins could also open you up to other attacks.
-Carefully assess each plugin and the risks involved in using them.
-
-## Contribute
-
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
-
-A curated list of awesome remark resources can be found in [**awesome
-remark**][awesome].
-
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
 
 ## License
 
@@ -369,20 +195,14 @@ abide by its terms.
 
 [mdast]: https://github.com/syntax-tree/mdast
 
-[node]: https://github.com/syntax-tree/unist#node
-
-[parent]: https://github.com/syntax-tree/unist#parent
-
-[extend]: #extending-the-compiler
-
-[visitor]: #function-visitornode-parent
-
-[markdown-table]: https://github.com/wooorm/markdown-table
-
-[string-length]: https://github.com/wooorm/markdown-table#stringlengthcell
-
 [xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
 [rehype]: https://github.com/rehypejs/rehype
 
 [sanitize]: https://github.com/rehypejs/rehype-sanitize
+
+[to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
+
+[to-markdown-options]: https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options
+
+[extend]: #extending-the-compiler

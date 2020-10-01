@@ -1,4 +1,0 @@
-# Foo
-
-| Name | GitHub | Twitter |
-| ---- | ------ | ------- |

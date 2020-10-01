@@ -17,8 +17,7 @@
           "line": 1,
           "column": 36,
           "offset": 35
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -38,8 +37,7 @@
               "line": 3,
               "column": 12,
               "offset": 48
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -53,8 +51,7 @@
           "line": 3,
           "column": 12,
           "offset": 48
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -73,18 +70,11 @@
               "line": 7,
               "column": 17,
               "offset": 217
-            },
-            "indent": [
-              1,
-              1
-            ]
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "test",
-          "label": "test",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -99,8 +89,7 @@
                   "line": 7,
                   "column": 30,
                   "offset": 230
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -114,9 +103,11 @@
               "line": 7,
               "column": 37,
               "offset": 237
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "test",
+          "label": "test",
+          "referenceType": "full"
         },
         {
           "type": "text",
@@ -131,8 +122,7 @@
               "line": 7,
               "column": 79,
               "offset": 279
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -146,11 +136,7 @@
           "line": 7,
           "column": 79,
           "offset": 279
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -169,8 +155,7 @@
               "line": 9,
               "column": 21,
               "offset": 301
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -184,8 +169,7 @@
           "line": 9,
           "column": 21,
           "offset": 301
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -201,10 +185,7 @@
           "line": 12,
           "column": 64,
           "offset": 413
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -234,8 +215,7 @@
                       "line": 14,
                       "column": 14,
                       "offset": 428
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -249,8 +229,7 @@
                   "line": 14,
                   "column": 14,
                   "offset": 428
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -261,13 +240,10 @@
               "offset": 415
             },
             "end": {
-              "line": 15,
-              "column": 1,
-              "offset": 429
-            },
-            "indent": [
-              1
-            ]
+              "line": 14,
+              "column": 14,
+              "offset": 428
+            }
           }
         },
         {
@@ -291,8 +267,7 @@
                       "line": 16,
                       "column": 14,
                       "offset": 443
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -306,8 +281,7 @@
                   "line": 16,
                   "column": 14,
                   "offset": 443
-                },
-                "indent": []
+                }
               }
             },
             {
@@ -337,10 +311,7 @@
                               "line": 18,
                               "column": 29,
                               "offset": 492
-                            },
-                            "indent": [
-                              5
-                            ]
+                            }
                           }
                         }
                       ],
@@ -354,10 +325,7 @@
                           "line": 18,
                           "column": 29,
                           "offset": 492
-                        },
-                        "indent": [
-                          5
-                        ]
+                        }
                       }
                     }
                   ],
@@ -371,10 +339,7 @@
                       "line": 18,
                       "column": 29,
                       "offset": 492
-                    },
-                    "indent": [
-                      3
-                    ]
+                    }
                   }
                 },
                 {
@@ -387,7 +352,7 @@
                       "children": [
                         {
                           "type": "text",
-                          "value": "New List Item 2\nAnother item\n    Code goes here.\n    Lots of it...",
+                          "value": "New List Item 2\nAnother item\nCode goes here.\nLots of it...",
                           "position": {
                             "start": {
                               "line": 19,
@@ -398,12 +363,7 @@
                               "line": 22,
                               "column": 22,
                               "offset": 575
-                            },
-                            "indent": [
-                              5,
-                              5,
-                              5
-                            ]
+                            }
                           }
                         }
                       ],
@@ -417,12 +377,7 @@
                           "line": 22,
                           "column": 22,
                           "offset": 575
-                        },
-                        "indent": [
-                          5,
-                          5,
-                          5
-                        ]
+                        }
                       }
                     }
                   ],
@@ -436,12 +391,7 @@
                       "line": 22,
                       "column": 22,
                       "offset": 575
-                    },
-                    "indent": [
-                      3,
-                      3,
-                      3
-                    ]
+                    }
                   }
                 },
                 {
@@ -465,10 +415,7 @@
                               "line": 24,
                               "column": 18,
                               "offset": 613
-                            },
-                            "indent": [
-                              5
-                            ]
+                            }
                           }
                         }
                       ],
@@ -482,10 +429,7 @@
                           "line": 24,
                           "column": 18,
                           "offset": 613
-                        },
-                        "indent": [
-                          5
-                        ]
+                        }
                       }
                     }
                   ],
@@ -499,10 +443,7 @@
                       "line": 24,
                       "column": 18,
                       "offset": 613
-                    },
-                    "indent": [
-                      3
-                    ]
+                    }
                   }
                 }
               ],
@@ -516,16 +457,7 @@
                   "line": 24,
                   "column": 18,
                   "offset": 613
-                },
-                "indent": [
-                  3,
-                  3,
-                  3,
-                  3,
-                  3,
-                  3,
-                  3
-                ]
+                }
               }
             }
           ],
@@ -536,21 +468,10 @@
               "offset": 430
             },
             "end": {
-              "line": 25,
-              "column": 1,
-              "offset": 614
-            },
-            "indent": [
-              1,
-              1,
-              1,
-              1,
-              1,
-              1,
-              1,
-              1,
-              1
-            ]
+              "line": 24,
+              "column": 18,
+              "offset": 613
+            }
           }
         },
         {
@@ -574,10 +495,7 @@
                       "line": 27,
                       "column": 16,
                       "offset": 644
-                    },
-                    "indent": [
-                      1
-                    ]
+                    }
                   }
                 }
               ],
@@ -591,10 +509,7 @@
                   "line": 27,
                   "column": 16,
                   "offset": 644
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -605,14 +520,10 @@
               "offset": 615
             },
             "end": {
-              "line": 28,
-              "column": 1,
-              "offset": 645
-            },
-            "indent": [
-              1,
-              1
-            ]
+              "line": 27,
+              "column": 16,
+              "offset": 644
+            }
           }
         },
         {
@@ -636,10 +547,7 @@
                       "line": 30,
                       "column": 21,
                       "offset": 680
-                    },
-                    "indent": [
-                      1
-                    ]
+                    }
                   }
                 }
               ],
@@ -653,10 +561,7 @@
                   "line": 30,
                   "column": 21,
                   "offset": 680
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -670,10 +575,7 @@
               "line": 30,
               "column": 21,
               "offset": 680
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         }
       ],
@@ -687,25 +589,7 @@
           "line": 30,
           "column": 21,
           "offset": 680
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -724,8 +608,7 @@
               "line": 32,
               "column": 11,
               "offset": 692
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -739,8 +622,7 @@
           "line": 32,
           "column": 11,
           "offset": 692
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -773,8 +655,7 @@
                           "line": 34,
                           "column": 14,
                           "offset": 707
-                        },
-                        "indent": []
+                        }
                       }
                     }
                   ],
@@ -788,8 +669,7 @@
                       "line": 34,
                       "column": 14,
                       "offset": 707
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -803,8 +683,7 @@
                   "line": 34,
                   "column": 14,
                   "offset": 707
-                },
-                "indent": []
+                }
               }
             },
             {
@@ -828,8 +707,7 @@
                           "line": 35,
                           "column": 14,
                           "offset": 721
-                        },
-                        "indent": []
+                        }
                       }
                     }
                   ],
@@ -843,8 +721,7 @@
                       "line": 35,
                       "column": 14,
                       "offset": 721
-                    },
-                    "indent": []
+                    }
                   }
                 },
                 {
@@ -874,8 +751,7 @@
                                   "line": 36,
                                   "column": 20,
                                   "offset": 741
-                                },
-                                "indent": []
+                                }
                               }
                             }
                           ],
@@ -889,8 +765,7 @@
                               "line": 36,
                               "column": 20,
                               "offset": 741
-                            },
-                            "indent": []
+                            }
                           }
                         }
                       ],
@@ -904,8 +779,7 @@
                           "line": 36,
                           "column": 20,
                           "offset": 741
-                        },
-                        "indent": []
+                        }
                       }
                     },
                     {
@@ -929,10 +803,7 @@
                                   "line": 38,
                                   "column": 14,
                                   "offset": 775
-                                },
-                                "indent": [
-                                  5
-                                ]
+                                }
                               }
                             }
                           ],
@@ -946,10 +817,7 @@
                               "line": 38,
                               "column": 14,
                               "offset": 775
-                            },
-                            "indent": [
-                              5
-                            ]
+                            }
                           }
                         }
                       ],
@@ -963,10 +831,7 @@
                           "line": 38,
                           "column": 14,
                           "offset": 775
-                        },
-                        "indent": [
-                          5
-                        ]
+                        }
                       }
                     }
                   ],
@@ -980,11 +845,7 @@
                       "line": 38,
                       "column": 14,
                       "offset": 775
-                    },
-                    "indent": [
-                      5,
-                      5
-                    ]
+                    }
                   }
                 }
               ],
@@ -998,12 +859,7 @@
                   "line": 38,
                   "column": 14,
                   "offset": 775
-                },
-                "indent": [
-                  3,
-                  3,
-                  3
-                ]
+                }
               }
             }
           ],
@@ -1017,13 +873,7 @@
               "line": 38,
               "column": 14,
               "offset": 775
-            },
-            "indent": [
-              3,
-              3,
-              3,
-              3
-            ]
+            }
           }
         }
       ],
@@ -1037,13 +887,7 @@
           "line": 38,
           "column": 14,
           "offset": 775
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -1058,8 +902,7 @@
           "line": 40,
           "column": 6,
           "offset": 782
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -1081,13 +924,7 @@
                   "line": 46,
                   "column": 32,
                   "offset": 897
-                },
-                "indent": [
-                  3,
-                  3,
-                  3,
-                  3
-                ]
+                }
               }
             }
           ],
@@ -1101,13 +938,7 @@
               "line": 46,
               "column": 32,
               "offset": 897
-            },
-            "indent": [
-              3,
-              3,
-              3,
-              3
-            ]
+            }
           }
         }
       ],
@@ -1121,13 +952,7 @@
           "line": 46,
           "column": 32,
           "offset": 897
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -1147,8 +972,7 @@
               "line": 48,
               "column": 16,
               "offset": 914
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1162,10 +986,7 @@
           "line": 49,
           "column": 14,
           "offset": 928
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -1184,8 +1005,7 @@
               "line": 51,
               "column": 7,
               "offset": 936
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1204,8 +1024,7 @@
                   "line": 51,
                   "column": 13,
                   "offset": 942
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1219,8 +1038,7 @@
               "line": 51,
               "column": 14,
               "offset": 943
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1236,8 +1054,7 @@
               "line": 51,
               "column": 26,
               "offset": 955
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1258,8 +1075,7 @@
                   "line": 51,
                   "column": 31,
                   "offset": 960
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -1273,8 +1089,7 @@
               "line": 51,
               "column": 41,
               "offset": 970
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1290,10 +1105,7 @@
               "line": 52,
               "column": 14,
               "offset": 985
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         },
         {
@@ -1311,8 +1123,7 @@
               "line": 52,
               "column": 35,
               "offset": 1006
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1328,17 +1139,14 @@
               "line": 53,
               "column": 42,
               "offset": 1049
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         },
         {
           "type": "image",
           "title": null,
           "url": "src",
-          "alt": null,
+          "alt": "",
           "position": {
             "start": {
               "line": 53,
@@ -1349,8 +1157,7 @@
               "line": 53,
               "column": 50,
               "offset": 1057
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -1366,8 +1173,7 @@
               "line": 53,
               "column": 51,
               "offset": 1058
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -1381,11 +1187,7 @@
           "line": 53,
           "column": 51,
           "offset": 1058
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -1403,10 +1205,7 @@
           "line": 56,
           "column": 18,
           "offset": 1097
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     }
   ],
