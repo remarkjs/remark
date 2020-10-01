@@ -23,8 +23,11 @@ style (`remark-lint`)][remark-lint], [transforming safely to React
 contents (`remark-toc`)][remark-toc], or [compiling to man pages
 (`remark-man`)][remark-man].
 
-On top of that, remark is part of the [unified][website]
-[collective][governance].
+Internally, remark now uses [**`micromark`**][micromark], a new, fast, and tiny
+CommonMark compliant Markdown tokenizer.
+It can be GFM compliant with `remark-gfm`.
+
+Finally, remark is part of the [unified][website] [collective][governance].
 Learn more about us:
 
 *   Visit [`unifiedjs.com`][website] and peruse its [Learn][] section for an
@@ -34,14 +37,41 @@ Learn more about us:
 *   Follow us on [Twitter][] to see what we’re up to
 *   Check out [Contribute][] below to find out how to help out
 
-This repository contains the following projects:
+## Packages
+
+This repository contains the following packages:
 
 *   [`remark-parse`][parse] — Parse Markdown to syntax trees
 *   [`remark-stringify`][stringify] — Serialize syntax trees to Markdown
 *   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
 *   [`remark-cli`][cli] — Command line interface wrapping `remark`
 
-## Sponsors
+## Security
+
+As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
+When going to HTML, use remark in combination with the [**rehype**][rehype]
+ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
+
+Use of remark plugins could also open you up to other attacks.
+Carefully assess each plugin and the risks involved in using them.
+
+## Contribute
+
+See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
+to get started.
+See [`support.md`][support] for ways to get help.
+Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
+Join us in [Discussions][chat] to chat with the community and contributors.
+
+A curated list of awesome resources can be found in [**awesome
+remark**][awesome].
+
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
+abide by its terms.
+
+## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
@@ -87,31 +117,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 </td>
 </tr>
 </table>
-
-## Security
-
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
-to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
-When going to HTML, use remark in combination with the [**rehype**][rehype]
-ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
-
-Use of remark plugins could also open you up to other attacks.
-Carefully assess each plugin and the risks involved in using them.
-
-## Contribute
-
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-Ideas for new plugins and tools can be posted in [`remarkjs/ideas`][ideas].
-Join us in [Discussions][chat] to chat with the community and contributors.
-
-A curated list of awesome resources can be found in [**awesome
-remark**][awesome].
-
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
 
 ## License
 
@@ -196,3 +201,5 @@ abide by its terms.
 [rehype]: https://github.com/rehypejs/rehype
 
 [sanitize]: https://github.com/rehypejs/rehype-sanitize
+
+[micromark]: https://github.com/micromark/micromark

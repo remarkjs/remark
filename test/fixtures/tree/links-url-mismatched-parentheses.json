@@ -5,29 +5,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 2,
-                  "offset": 1
-                },
-                "end": {
-                  "line": 1,
-                  "column": 7,
-                  "offset": 6
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world(and-hello(world)).",
           "position": {
             "start": {
               "line": 1,
@@ -36,27 +15,9 @@
             },
             "end": {
               "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world(and-hello(world)).",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 8,
-              "offset": 7
-            },
-            "end": {
-              "line": 1,
               "column": 35,
               "offset": 34
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -70,8 +31,7 @@
           "line": 1,
           "column": 35,
           "offset": 34
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -95,8 +55,7 @@
                   "line": 3,
                   "column": 7,
                   "offset": 42
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -110,8 +69,7 @@
               "line": 3,
               "column": 36,
               "offset": 71
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -127,8 +85,7 @@
               "line": 3,
               "column": 37,
               "offset": 72
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -142,8 +99,7 @@
           "line": 3,
           "column": 37,
           "offset": 72
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -167,8 +123,7 @@
                   "line": 5,
                   "column": 7,
                   "offset": 80
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -182,8 +137,7 @@
               "line": 5,
               "column": 32,
               "offset": 105
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -199,8 +153,7 @@
               "line": 5,
               "column": 34,
               "offset": 107
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -214,8 +167,7 @@
           "line": 5,
           "column": 34,
           "offset": 107
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -239,8 +191,7 @@
                   "line": 7,
                   "column": 7,
                   "offset": 115
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -254,8 +205,7 @@
               "line": 7,
               "column": 35,
               "offset": 143
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -271,8 +221,7 @@
               "line": 7,
               "column": 36,
               "offset": 144
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -286,19 +235,15 @@
           "line": 7,
           "column": 36,
           "offset": 144
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "hello",
-          "label": "Hello",
-          "referenceType": "shortcut",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world(and-hello(world)).",
           "position": {
             "start": {
               "line": 9,
@@ -307,27 +252,9 @@
             },
             "end": {
               "line": 9,
-              "column": 9,
-              "offset": 154
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": "(./world(and-hello(world)).",
-          "position": {
-            "start": {
-              "line": 9,
-              "column": 9,
-              "offset": 154
-            },
-            "end": {
-              "line": 9,
               "column": 36,
               "offset": 181
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -341,8 +268,7 @@
           "line": 9,
           "column": 36,
           "offset": 181
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -363,8 +289,7 @@
               "line": 11,
               "column": 37,
               "offset": 219
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -380,8 +305,7 @@
               "line": 11,
               "column": 38,
               "offset": 220
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -395,8 +319,7 @@
           "line": 11,
           "column": 38,
           "offset": 220
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -417,8 +340,7 @@
               "line": 13,
               "column": 33,
               "offset": 254
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -434,8 +356,7 @@
               "line": 13,
               "column": 35,
               "offset": 256
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -449,8 +370,7 @@
           "line": 13,
           "column": 35,
           "offset": 256
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -471,8 +391,7 @@
               "line": 15,
               "column": 36,
               "offset": 293
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -488,8 +407,7 @@
               "line": 15,
               "column": 37,
               "offset": 294
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -503,8 +421,7 @@
           "line": 15,
           "column": 37,
           "offset": 294
-        },
-        "indent": []
+        }
       }
     }
   ],

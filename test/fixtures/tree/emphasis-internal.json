@@ -17,8 +17,7 @@
               "line": 1,
               "column": 38,
               "offset": 37
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -32,8 +31,7 @@
           "line": 1,
           "column": 38,
           "offset": 37
-        },
-        "indent": []
+        }
       }
     }
   ],

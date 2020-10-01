@@ -17,15 +17,11 @@
               "line": 1,
               "column": 13,
               "offset": 12
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "simple case",
-          "label": "simple case",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -40,8 +36,7 @@
                   "line": 1,
                   "column": 25,
                   "offset": 24
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -55,9 +50,11 @@
               "line": 1,
               "column": 26,
               "offset": 25
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "simple case",
+          "label": "simple case",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -72,8 +69,7 @@
               "line": 1,
               "column": 27,
               "offset": 26
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -87,8 +83,7 @@
           "line": 1,
           "column": 27,
           "offset": 26
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -107,8 +102,7 @@
           "line": 3,
           "column": 23,
           "offset": 50
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -127,15 +121,11 @@
               "line": 7,
               "column": 16,
               "offset": 69
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "line break",
-          "label": "line\nbreak",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -150,10 +140,7 @@
                   "line": 8,
                   "column": 6,
                   "offset": 80
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -167,11 +154,11 @@
               "line": 8,
               "column": 7,
               "offset": 81
-            },
-            "indent": [
-              1
-            ]
-          }
+            }
+          },
+          "identifier": "line break",
+          "label": "line\nbreak",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -186,8 +173,7 @@
               "line": 8,
               "column": 8,
               "offset": 82
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -201,10 +187,7 @@
           "line": 8,
           "column": 8,
           "offset": 82
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -223,19 +206,15 @@
               "line": 10,
               "column": 16,
               "offset": 99
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "line break",
-          "label": "line \nbreak",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
-              "value": "line \nbreak",
+              "value": "line\nbreak",
               "position": {
                 "start": {
                   "line": 10,
@@ -246,10 +225,7 @@
                   "line": 11,
                   "column": 6,
                   "offset": 111
-                },
-                "indent": [
-                  1
-                ]
+                }
               }
             }
           ],
@@ -263,11 +239,11 @@
               "line": 11,
               "column": 7,
               "offset": 112
-            },
-            "indent": [
-              1
-            ]
-          }
+            }
+          },
+          "identifier": "line break",
+          "label": "line\nbreak",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -282,8 +258,7 @@
               "line": 11,
               "column": 33,
               "offset": 138
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -297,10 +272,7 @@
           "line": 11,
           "column": 33,
           "offset": 138
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -319,8 +291,7 @@
           "line": 13,
           "column": 19,
           "offset": 158
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -328,9 +299,6 @@
       "children": [
         {
           "type": "linkReference",
-          "identifier": "that",
-          "label": "that",
-          "referenceType": "full",
           "children": [
             {
               "type": "text",
@@ -345,8 +313,7 @@
                   "line": 16,
                   "column": 6,
                   "offset": 166
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -358,11 +325,65 @@
             },
             "end": {
               "line": 16,
+              "column": 7,
+              "offset": 167
+            }
+          },
+          "identifier": "this",
+          "label": "this",
+          "referenceType": "shortcut"
+        },
+        {
+          "type": "text",
+          "value": " ",
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 7,
+              "offset": 167
+            },
+            "end": {
+              "line": 16,
+              "column": 8,
+              "offset": 168
+            }
+          }
+        },
+        {
+          "type": "linkReference",
+          "children": [
+            {
+              "type": "text",
+              "value": "that",
+              "position": {
+                "start": {
+                  "line": 16,
+                  "column": 9,
+                  "offset": 169
+                },
+                "end": {
+                  "line": 16,
+                  "column": 13,
+                  "offset": 173
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 16,
+              "column": 8,
+              "offset": 168
+            },
+            "end": {
+              "line": 16,
               "column": 14,
               "offset": 174
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "that",
+          "label": "that",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -377,15 +398,11 @@
               "line": 16,
               "column": 23,
               "offset": 183
-            },
-            "indent": []
+            }
           }
         },
         {
           "type": "linkReference",
-          "identifier": "other",
-          "label": "other",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -400,8 +417,7 @@
                   "line": 16,
                   "column": 29,
                   "offset": 189
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -415,9 +431,11 @@
               "line": 16,
               "column": 30,
               "offset": 190
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "other",
+          "label": "other",
+          "referenceType": "shortcut"
         }
       ],
       "position": {
@@ -430,8 +448,7 @@
           "line": 16,
           "column": 30,
           "offset": 190
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -450,8 +467,7 @@
           "line": 18,
           "column": 14,
           "offset": 205
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -470,8 +486,7 @@
           "line": 19,
           "column": 14,
           "offset": 219
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -490,8 +505,7 @@
           "line": 20,
           "column": 16,
           "offset": 235
-        },
-        "indent": []
+        }
       }
     }
   ],

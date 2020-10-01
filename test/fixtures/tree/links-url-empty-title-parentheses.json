@@ -22,8 +22,7 @@
                   "line": 1,
                   "column": 7,
                   "offset": 6
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -37,8 +36,7 @@
               "line": 1,
               "column": 18,
               "offset": 17
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -54,8 +52,7 @@
               "line": 1,
               "column": 19,
               "offset": 18
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -69,8 +66,7 @@
           "line": 1,
           "column": 19,
           "offset": 18
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -94,8 +90,7 @@
                   "line": 3,
                   "column": 7,
                   "offset": 26
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -109,8 +104,7 @@
               "line": 3,
               "column": 19,
               "offset": 38
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -126,8 +120,7 @@
               "line": 3,
               "column": 20,
               "offset": 39
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -141,18 +134,16 @@
           "line": 3,
           "column": 20,
           "offset": 39
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "linkReference",
-          "identifier": "world",
-          "label": "World",
-          "referenceType": "shortcut",
+          "type": "link",
+          "title": "World!",
+          "url": "",
           "children": [
             {
               "type": "text",
@@ -167,8 +158,7 @@
                   "line": 5,
                   "column": 7,
                   "offset": 47
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -180,27 +170,25 @@
             },
             "end": {
               "line": 5,
-              "column": 8,
-              "offset": 48
-            },
-            "indent": []
+              "column": 21,
+              "offset": 61
+            }
           }
         },
         {
           "type": "text",
-          "value": "(<> (World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 5,
-              "column": 8,
-              "offset": 48
+              "column": 21,
+              "offset": 61
             },
             "end": {
               "line": 5,
               "column": 22,
               "offset": 62
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -214,8 +202,7 @@
           "line": 5,
           "column": 22,
           "offset": 62
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -236,8 +223,7 @@
               "line": 7,
               "column": 19,
               "offset": 82
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -253,8 +239,7 @@
               "line": 7,
               "column": 20,
               "offset": 83
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -268,8 +253,7 @@
           "line": 7,
           "column": 20,
           "offset": 83
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -290,8 +274,7 @@
               "line": 9,
               "column": 20,
               "offset": 104
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -307,8 +290,7 @@
               "line": 9,
               "column": 21,
               "offset": 105
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -322,18 +304,16 @@
           "line": 9,
           "column": 21,
           "offset": 105
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "imageReference",
-          "identifier": "world",
-          "label": "World",
-          "referenceType": "shortcut",
+          "type": "image",
+          "title": "World!",
+          "url": "",
           "alt": "World",
           "position": {
             "start": {
@@ -343,27 +323,25 @@
             },
             "end": {
               "line": 11,
-              "column": 9,
-              "offset": 115
-            },
-            "indent": []
+              "column": 22,
+              "offset": 128
+            }
           }
         },
         {
           "type": "text",
-          "value": "(<> (World!)).",
+          "value": ".",
           "position": {
             "start": {
               "line": 11,
-              "column": 9,
-              "offset": 115
+              "column": 22,
+              "offset": 128
             },
             "end": {
               "line": 11,
               "column": 23,
               "offset": 129
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -377,8 +355,7 @@
           "line": 11,
           "column": 23,
           "offset": 129
-        },
-        "indent": []
+        }
       }
     }
   ],

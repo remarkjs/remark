@@ -2,66 +2,11 @@
   "type": "root",
   "children": [
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "linkReference",
-          "identifier": "baz",
-          "label": "baz",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "baz",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 2,
-                  "offset": 1
-                },
-                "end": {
-                  "line": 1,
-                  "column": 5,
-                  "offset": 4
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 1,
-              "offset": 0
-            },
-            "end": {
-              "line": 1,
-              "column": 6,
-              "offset": 5
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ": /url (\n)",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 6,
-              "offset": 5
-            },
-            "end": {
-              "line": 2,
-              "column": 2,
-              "offset": 15
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
+      "type": "definition",
+      "identifier": "baz",
+      "label": "baz",
+      "title": "\n",
+      "url": "/url",
       "position": {
         "start": {
           "line": 1,
@@ -72,73 +17,15 @@
           "line": 2,
           "column": 2,
           "offset": 15
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "linkReference",
-          "identifier": "foo",
-          "label": "foo",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "foo",
-              "position": {
-                "start": {
-                  "line": 4,
-                  "column": 2,
-                  "offset": 18
-                },
-                "end": {
-                  "line": 4,
-                  "column": 5,
-                  "offset": 21
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 4,
-              "column": 1,
-              "offset": 17
-            },
-            "end": {
-              "line": 4,
-              "column": 6,
-              "offset": 22
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ": /url \"\n\"",
-          "position": {
-            "start": {
-              "line": 4,
-              "column": 6,
-              "offset": 22
-            },
-            "end": {
-              "line": 5,
-              "column": 2,
-              "offset": 32
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
+      "type": "definition",
+      "identifier": "foo",
+      "label": "foo",
+      "title": "\n",
+      "url": "/url",
       "position": {
         "start": {
           "line": 4,
@@ -149,73 +36,15 @@
           "line": 5,
           "column": 2,
           "offset": 32
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
-      "type": "paragraph",
-      "children": [
-        {
-          "type": "linkReference",
-          "identifier": "bar",
-          "label": "bar",
-          "referenceType": "shortcut",
-          "children": [
-            {
-              "type": "text",
-              "value": "bar",
-              "position": {
-                "start": {
-                  "line": 7,
-                  "column": 2,
-                  "offset": 35
-                },
-                "end": {
-                  "line": 7,
-                  "column": 5,
-                  "offset": 38
-                },
-                "indent": []
-              }
-            }
-          ],
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 1,
-              "offset": 34
-            },
-            "end": {
-              "line": 7,
-              "column": 6,
-              "offset": 39
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ": /url '\n'",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 6,
-              "offset": 39
-            },
-            "end": {
-              "line": 8,
-              "column": 2,
-              "offset": 49
-            },
-            "indent": [
-              1
-            ]
-          }
-        }
-      ],
+      "type": "definition",
+      "identifier": "bar",
+      "label": "bar",
+      "title": "\n",
+      "url": "/url",
       "position": {
         "start": {
           "line": 7,
@@ -226,10 +55,7 @@
           "line": 8,
           "column": 2,
           "offset": 49
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -248,10 +74,7 @@
           "line": 10,
           "column": 5,
           "offset": 71
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -270,10 +93,7 @@
           "line": 13,
           "column": 5,
           "offset": 94
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -292,10 +112,7 @@
           "line": 16,
           "column": 5,
           "offset": 117
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -303,9 +120,6 @@
       "children": [
         {
           "type": "linkReference",
-          "identifier": "baz",
-          "label": "baz",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -320,8 +134,7 @@
                   "line": 18,
                   "column": 5,
                   "offset": 123
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -335,9 +148,11 @@
               "line": 18,
               "column": 6,
               "offset": 124
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "baz",
+          "label": "baz",
+          "referenceType": "shortcut"
         },
         {
           "type": "text",
@@ -352,8 +167,7 @@
               "line": 18,
               "column": 17,
               "offset": 135
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -367,8 +181,7 @@
           "line": 18,
           "column": 17,
           "offset": 135
-        },
-        "indent": []
+        }
       }
     }
   ],

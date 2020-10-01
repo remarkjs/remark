@@ -1,0 +1,8 @@
+1. **Fork**
+2. **Clone**
+
+        git clone <fork_url>
+3. **Configure remotes**
+
+        cd <project_dir>
+        git remote add upstream <upstream_dir>

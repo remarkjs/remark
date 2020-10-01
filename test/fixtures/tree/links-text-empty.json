@@ -19,8 +19,7 @@
               "line": 1,
               "column": 23,
               "offset": 22
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -36,8 +35,7 @@
               "line": 1,
               "column": 24,
               "offset": 23
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -51,8 +49,7 @@
           "line": 1,
           "column": 24,
           "offset": 23
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -73,8 +70,7 @@
               "line": 3,
               "column": 25,
               "offset": 49
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -90,8 +86,7 @@
               "line": 3,
               "column": 26,
               "offset": 50
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -105,8 +100,7 @@
           "line": 3,
           "column": 26,
           "offset": 50
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -116,7 +110,7 @@
           "type": "image",
           "title": null,
           "url": "./hello-world.html",
-          "alt": null,
+          "alt": "",
           "position": {
             "start": {
               "line": 5,
@@ -127,8 +121,7 @@
               "line": 5,
               "column": 24,
               "offset": 75
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -144,8 +137,7 @@
               "line": 5,
               "column": 25,
               "offset": 76
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -159,8 +151,7 @@
           "line": 5,
           "column": 25,
           "offset": 76
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -170,7 +161,7 @@
           "type": "image",
           "title": null,
           "url": "./hello-world.html",
-          "alt": null,
+          "alt": "",
           "position": {
             "start": {
               "line": 7,
@@ -181,8 +172,7 @@
               "line": 7,
               "column": 26,
               "offset": 103
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -198,8 +188,7 @@
               "line": 7,
               "column": 27,
               "offset": 104
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -213,8 +202,7 @@
           "line": 7,
           "column": 27,
           "offset": 104
-        },
-        "indent": []
+        }
       }
     }
   ],

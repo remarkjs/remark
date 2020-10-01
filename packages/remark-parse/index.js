@@ -1,17 +1,21 @@
 'use strict'
 
-var unherit = require('unherit')
-var xtend = require('xtend')
-var Parser = require('./lib/parser.js')
-
 module.exports = parse
-parse.Parser = Parser
+
+var fromMarkdown = require('mdast-util-from-markdown')
 
 function parse(options) {
-  var settings = this.data('settings')
-  var Local = unherit(Parser)
+  var self = this
 
-  Local.prototype.options = xtend(Local.prototype.options, settings, options)
+  this.Parser = parse
 
-  this.Parser = Local
+  function parse(doc) {
+    var settings = Object.assign({}, self.data('settings'), options)
+    // Note: these options are not in the readme.
+    // The goal is for them to be set by plugins on `data` instead of being
+    // passed by users.
+    settings.extensions = settings.micromarkExtensions
+    settings.mdastExtensions = settings.fromMarkdownExtensions
+    return fromMarkdown(doc, settings)
+  }
 }

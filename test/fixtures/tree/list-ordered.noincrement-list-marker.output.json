@@ -28,8 +28,7 @@
                       "line": 1,
                       "column": 9,
                       "offset": 8
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -43,8 +42,7 @@
                   "line": 1,
                   "column": 9,
                   "offset": 8
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -58,8 +56,7 @@
               "line": 1,
               "column": 9,
               "offset": 8
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -83,8 +80,7 @@
                       "line": 2,
                       "column": 9,
                       "offset": 17
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -98,8 +94,7 @@
                   "line": 2,
                   "column": 9,
                   "offset": 17
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -113,8 +108,7 @@
               "line": 2,
               "column": 9,
               "offset": 17
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -138,8 +132,7 @@
                       "line": 3,
                       "column": 9,
                       "offset": 26
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -153,8 +146,7 @@
                   "line": 3,
                   "column": 9,
                   "offset": 26
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -168,8 +160,7 @@
               "line": 3,
               "column": 9,
               "offset": 26
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -183,11 +174,7 @@
           "line": 3,
           "column": 9,
           "offset": 26
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     }
   ],

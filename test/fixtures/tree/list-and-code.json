@@ -9,7 +9,7 @@
       "children": [
         {
           "type": "listItem",
-          "spread": false,
+          "spread": true,
           "checked": null,
           "children": [
             {
@@ -28,8 +28,7 @@
                       "line": 1,
                       "column": 24,
                       "offset": 23
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -43,8 +42,40 @@
                   "line": 1,
                   "column": 24,
                   "offset": 23
+                }
+              }
+            },
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "This is code",
+                  "position": {
+                    "start": {
+                      "line": 4,
+                      "column": 5,
+                      "offset": 30
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 17,
+                      "offset": 42
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 4,
+                  "column": 5,
+                  "offset": 30
                 },
-                "indent": []
+                "end": {
+                  "line": 4,
+                  "column": 17,
+                  "offset": 42
+                }
               }
             }
           ],
@@ -55,11 +86,10 @@
               "offset": 0
             },
             "end": {
-              "line": 1,
-              "column": 24,
-              "offset": 23
-            },
-            "indent": []
+              "line": 4,
+              "column": 17,
+              "offset": 42
+            }
           }
         }
       ],
@@ -70,30 +100,10 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 24,
-          "offset": 23
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "code",
-      "lang": null,
-      "meta": null,
-      "value": "This is code",
-      "position": {
-        "start": {
-          "line": 4,
-          "column": 1,
-          "offset": 26
-        },
-        "end": {
           "line": 4,
           "column": 17,
           "offset": 42
-        },
-        "indent": []
+        }
       }
     }
   ],

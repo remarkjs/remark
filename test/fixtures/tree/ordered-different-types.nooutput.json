@@ -28,8 +28,7 @@
                       "line": 1,
                       "column": 7,
                       "offset": 6
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -43,8 +42,7 @@
                   "line": 1,
                   "column": 7,
                   "offset": 6
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -58,8 +56,7 @@
               "line": 1,
               "column": 7,
               "offset": 6
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -72,7 +69,7 @@
               "children": [
                 {
                   "type": "text",
-                  "value": "bar\n3) baz",
+                  "value": "bar",
                   "position": {
                     "start": {
                       "line": 2,
@@ -80,13 +77,10 @@
                       "offset": 10
                     },
                     "end": {
-                      "line": 3,
+                      "line": 2,
                       "column": 7,
-                      "offset": 20
-                    },
-                    "indent": [
-                      1
-                    ]
+                      "offset": 13
+                    }
                   }
                 }
               ],
@@ -97,13 +91,10 @@
                   "offset": 10
                 },
                 "end": {
-                  "line": 3,
+                  "line": 2,
                   "column": 7,
-                  "offset": 20
-                },
-                "indent": [
-                  1
-                ]
+                  "offset": 13
+                }
               }
             }
           ],
@@ -114,13 +105,10 @@
               "offset": 7
             },
             "end": {
-              "line": 3,
+              "line": 2,
               "column": 7,
-              "offset": 20
-            },
-            "indent": [
-              1
-            ]
+              "offset": 13
+            }
           }
         }
       ],
@@ -131,14 +119,82 @@
           "offset": 0
         },
         "end": {
+          "line": 2,
+          "column": 7,
+          "offset": 13
+        }
+      }
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "start": 3,
+      "spread": false,
+      "children": [
+        {
+          "type": "listItem",
+          "spread": false,
+          "checked": null,
+          "children": [
+            {
+              "type": "paragraph",
+              "children": [
+                {
+                  "type": "text",
+                  "value": "baz",
+                  "position": {
+                    "start": {
+                      "line": 3,
+                      "column": 4,
+                      "offset": 17
+                    },
+                    "end": {
+                      "line": 3,
+                      "column": 7,
+                      "offset": 20
+                    }
+                  }
+                }
+              ],
+              "position": {
+                "start": {
+                  "line": 3,
+                  "column": 4,
+                  "offset": 17
+                },
+                "end": {
+                  "line": 3,
+                  "column": 7,
+                  "offset": 20
+                }
+              }
+            }
+          ],
+          "position": {
+            "start": {
+              "line": 3,
+              "column": 1,
+              "offset": 14
+            },
+            "end": {
+              "line": 3,
+              "column": 7,
+              "offset": 20
+            }
+          }
+        }
+      ],
+      "position": {
+        "start": {
+          "line": 3,
+          "column": 1,
+          "offset": 14
+        },
+        "end": {
           "line": 3,
           "column": 7,
           "offset": 20
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     }
   ],

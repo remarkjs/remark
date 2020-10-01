@@ -28,8 +28,7 @@
                       "line": 1,
                       "column": 8,
                       "offset": 7
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -43,8 +42,7 @@
                   "line": 1,
                   "column": 8,
                   "offset": 7
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -58,8 +56,7 @@
               "line": 1,
               "column": 8,
               "offset": 7
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -77,8 +74,7 @@
               "line": 2,
               "column": 2,
               "offset": 9
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -102,8 +98,7 @@
                       "line": 3,
                       "column": 8,
                       "offset": 17
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -117,8 +112,7 @@
                   "line": 3,
                   "column": 8,
                   "offset": 17
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -129,13 +123,10 @@
               "offset": 10
             },
             "end": {
-              "line": 4,
-              "column": 1,
-              "offset": 18
-            },
-            "indent": [
-              1
-            ]
+              "line": 3,
+              "column": 8,
+              "offset": 17
+            }
           }
         },
         {
@@ -159,8 +150,7 @@
                       "line": 5,
                       "column": 10,
                       "offset": 28
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -174,23 +164,21 @@
                   "line": 5,
                   "column": 10,
                   "offset": 28
-                },
-                "indent": []
+                }
               }
             }
           ],
           "position": {
             "start": {
               "line": 5,
-              "column": 1,
-              "offset": 19
+              "column": 3,
+              "offset": 21
             },
             "end": {
               "line": 5,
               "column": 10,
               "offset": 28
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -201,15 +189,14 @@
           "position": {
             "start": {
               "line": 6,
-              "column": 1,
-              "offset": 29
+              "column": 3,
+              "offset": 31
             },
             "end": {
               "line": 6,
               "column": 4,
               "offset": 32
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -233,8 +220,7 @@
                       "line": 7,
                       "column": 10,
                       "offset": 42
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -248,23 +234,21 @@
                   "line": 7,
                   "column": 10,
                   "offset": 42
-                },
-                "indent": []
+                }
               }
             }
           ],
           "position": {
             "start": {
               "line": 7,
-              "column": 1,
-              "offset": 33
+              "column": 3,
+              "offset": 35
             },
             "end": {
               "line": 7,
               "column": 10,
               "offset": 42
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -278,15 +262,7 @@
           "line": 7,
           "column": 10,
           "offset": 42
-        },
-        "indent": [
-          1,
-          1,
-          1,
-          1,
-          1,
-          1
-        ]
+        }
       }
     }
   ],

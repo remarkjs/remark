@@ -14,7 +14,7 @@ alert('Hello');
 
 Or in [l&iacute;nks](~/some&mdash;file "in some pl&aelig;ce")
 
-Or in ![&iacute;mages](~/an&ndash;image.png "&copy Someone")
+Or in ![&iacute;mages](~/an&ndash;image.png "&copy; Someone")
 
 But, entities are not interpreted in `inline c&ouml;de`, or in
 code blocks:

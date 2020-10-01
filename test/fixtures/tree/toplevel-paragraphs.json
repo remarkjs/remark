@@ -6,7 +6,7 @@
       "children": [
         {
           "type": "text",
-          "value": "hello world\n    how are you\n    how are you",
+          "value": "hello world\nhow are you\nhow are you",
           "position": {
             "start": {
               "line": 1,
@@ -17,11 +17,7 @@
               "line": 3,
               "column": 16,
               "offset": 43
-            },
-            "indent": [
-              1,
-              1
-            ]
+            }
           }
         }
       ],
@@ -35,11 +31,7 @@
           "line": 3,
           "column": 16,
           "offset": 43
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -58,8 +50,7 @@
               "line": 5,
               "column": 12,
               "offset": 56
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -73,8 +64,7 @@
           "line": 5,
           "column": 12,
           "offset": 56
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -92,11 +82,7 @@
           "line": 8,
           "column": 4,
           "offset": 76
-        },
-        "indent": [
-          1,
-          1
-        ]
+        }
       }
     },
     {
@@ -115,8 +101,7 @@
               "line": 10,
               "column": 12,
               "offset": 89
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -130,8 +115,7 @@
           "line": 10,
           "column": 12,
           "offset": 89
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -146,8 +130,7 @@
           "line": 11,
           "column": 6,
           "offset": 95
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -166,8 +149,7 @@
               "line": 13,
               "column": 12,
               "offset": 108
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -181,8 +163,7 @@
           "line": 13,
           "column": 12,
           "offset": 108
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -202,8 +183,7 @@
               "line": 14,
               "column": 14,
               "offset": 122
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -217,16 +197,16 @@
           "line": 14,
           "column": 14,
           "offset": 122
-        },
-        "indent": []
+        }
       }
     },
     {
-      "type": "paragraph",
+      "type": "heading",
+      "depth": 1,
       "children": [
         {
           "type": "text",
-          "value": "hello world",
+          "value": "hello world\nhow are you",
           "position": {
             "start": {
               "line": 16,
@@ -234,11 +214,10 @@
               "offset": 124
             },
             "end": {
-              "line": 16,
+              "line": 17,
               "column": 12,
-              "offset": 135
-            },
-            "indent": []
+              "offset": 147
+            }
           }
         }
       ],
@@ -249,49 +228,10 @@
           "offset": 124
         },
         "end": {
-          "line": 16,
-          "column": 12,
-          "offset": 135
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "heading",
-      "depth": 1,
-      "children": [
-        {
-          "type": "text",
-          "value": "how are you",
-          "position": {
-            "start": {
-              "line": 17,
-              "column": 1,
-              "offset": 136
-            },
-            "end": {
-              "line": 17,
-              "column": 12,
-              "offset": 147
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 17,
-          "column": 1,
-          "offset": 136
-        },
-        "end": {
           "line": 18,
           "column": 12,
           "offset": 159
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -310,8 +250,7 @@
               "line": 20,
               "column": 12,
               "offset": 172
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -325,8 +264,7 @@
           "line": 20,
           "column": 12,
           "offset": 172
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -348,8 +286,7 @@
                   "line": 21,
                   "column": 14,
                   "offset": 186
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -363,8 +300,7 @@
               "line": 21,
               "column": 14,
               "offset": 186
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -378,8 +314,7 @@
           "line": 21,
           "column": 14,
           "offset": 186
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -398,8 +333,7 @@
               "line": 23,
               "column": 12,
               "offset": 199
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -413,8 +347,7 @@
           "line": 23,
           "column": 12,
           "offset": 199
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -444,8 +377,7 @@
                       "line": 24,
                       "column": 14,
                       "offset": 213
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -459,8 +391,7 @@
                   "line": 24,
                   "column": 14,
                   "offset": 213
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -474,8 +405,7 @@
               "line": 24,
               "column": 14,
               "offset": 213
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -489,8 +419,7 @@
           "line": 24,
           "column": 14,
           "offset": 213
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -509,8 +438,7 @@
               "line": 26,
               "column": 12,
               "offset": 226
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -524,8 +452,7 @@
           "line": 26,
           "column": 12,
           "offset": 226
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -541,8 +468,7 @@
           "line": 27,
           "column": 23,
           "offset": 249
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -561,10 +487,7 @@
               "line": 30,
               "column": 1,
               "offset": 263
-            },
-            "indent": [
-              1
-            ]
+            }
           }
         },
         {
@@ -580,8 +503,7 @@
               "line": 30,
               "column": 7,
               "offset": 269
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -597,8 +519,7 @@
               "line": 30,
               "column": 18,
               "offset": 280
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -614,8 +535,7 @@
               "line": 30,
               "column": 25,
               "offset": 287
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -629,10 +549,7 @@
           "line": 30,
           "column": 25,
           "offset": 287
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     },
     {
@@ -640,7 +557,7 @@
       "children": [
         {
           "type": "text",
-          "value": "hello ",
+          "value": "hello [world][how]\n[how]: /are/you",
           "position": {
             "start": {
               "line": 32,
@@ -648,49 +565,10 @@
               "offset": 289
             },
             "end": {
-              "line": 32,
-              "column": 7,
-              "offset": 295
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "linkReference",
-          "identifier": "how",
-          "label": "how",
-          "referenceType": "full",
-          "children": [
-            {
-              "type": "text",
-              "value": "world",
-              "position": {
-                "start": {
-                  "line": 32,
-                  "column": 8,
-                  "offset": 296
-                },
-                "end": {
-                  "line": 32,
-                  "column": 13,
-                  "offset": 301
-                },
-                "indent": []
-              }
+              "line": 33,
+              "column": 16,
+              "offset": 323
             }
-          ],
-          "position": {
-            "start": {
-              "line": 32,
-              "column": 7,
-              "offset": 295
-            },
-            "end": {
-              "line": 32,
-              "column": 19,
-              "offset": 307
-            },
-            "indent": []
           }
         }
       ],
@@ -701,31 +579,10 @@
           "offset": 289
         },
         "end": {
-          "line": 32,
-          "column": 19,
-          "offset": 307
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "definition",
-      "identifier": "how",
-      "label": "how",
-      "title": null,
-      "url": "/are/you",
-      "position": {
-        "start": {
-          "line": 33,
-          "column": 1,
-          "offset": 308
-        },
-        "end": {
           "line": 33,
           "column": 16,
           "offset": 323
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -741,8 +598,7 @@
           "line": 35,
           "column": 17,
           "offset": 341
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -761,8 +617,7 @@
               "line": 37,
               "column": 7,
               "offset": 349
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -778,8 +633,7 @@
               "line": 37,
               "column": 12,
               "offset": 354
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -795,8 +649,7 @@
               "line": 37,
               "column": 19,
               "offset": 361
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -810,8 +663,7 @@
           "line": 37,
           "column": 19,
           "offset": 361
-        },
-        "indent": []
+        }
       }
     }
   ],

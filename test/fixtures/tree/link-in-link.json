@@ -23,8 +23,7 @@
                   "line": 1,
                   "column": 27,
                   "offset": 26
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -38,8 +37,7 @@
               "line": 1,
               "column": 47,
               "offset": 46
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -53,8 +51,7 @@
           "line": 1,
           "column": 47,
           "offset": 46
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -78,8 +75,7 @@
                   "line": 3,
                   "column": 36,
                   "offset": 83
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -93,8 +89,7 @@
               "line": 3,
               "column": 81,
               "offset": 128
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -108,36 +103,15 @@
           "line": 3,
           "column": 81,
           "offset": 128
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "An example",
-          "url": "http://example.com",
-          "children": [
-            {
-              "type": "text",
-              "value": "[](http://example.com \"An example\")",
-              "position": {
-                "start": {
-                  "line": 5,
-                  "column": 2,
-                  "offset": 131
-                },
-                "end": {
-                  "line": 5,
-                  "column": 37,
-                  "offset": 166
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[",
           "position": {
             "start": {
               "line": 5,
@@ -146,10 +120,43 @@
             },
             "end": {
               "line": 5,
+              "column": 2,
+              "offset": 131
+            }
+          }
+        },
+        {
+          "type": "link",
+          "title": "An example",
+          "url": "http://example.com",
+          "children": [],
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 2,
+              "offset": 131
+            },
+            "end": {
+              "line": 5,
+              "column": 37,
+              "offset": 166
+            }
+          }
+        },
+        {
+          "type": "text",
+          "value": "](http://example.com \"An example\")",
+          "position": {
+            "start": {
+              "line": 5,
+              "column": 37,
+              "offset": 166
+            },
+            "end": {
+              "line": 5,
               "column": 71,
               "offset": 200
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -163,8 +170,7 @@
           "line": 5,
           "column": 71,
           "offset": 200
-        },
-        "indent": []
+        }
       }
     }
   ],

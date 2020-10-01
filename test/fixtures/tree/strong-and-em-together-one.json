@@ -5,10 +5,10 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "strong",
+          "type": "emphasis",
           "children": [
             {
-              "type": "emphasis",
+              "type": "strong",
               "children": [
                 {
                   "type": "text",
@@ -23,23 +23,21 @@
                       "line": 1,
                       "column": 26,
                       "offset": 25
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
               "position": {
                 "start": {
                   "line": 1,
-                  "column": 3,
-                  "offset": 2
+                  "column": 2,
+                  "offset": 1
                 },
                 "end": {
                   "line": 1,
-                  "column": 27,
-                  "offset": 26
-                },
-                "indent": []
+                  "column": 28,
+                  "offset": 27
+                }
               }
             }
           ],
@@ -53,8 +51,7 @@
               "line": 1,
               "column": 29,
               "offset": 28
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -68,8 +65,7 @@
           "line": 1,
           "column": 29,
           "offset": 28
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -88,15 +84,14 @@
               "line": 3,
               "column": 7,
               "offset": 36
-            },
-            "indent": []
+            }
           }
         },
         {
-          "type": "strong",
+          "type": "emphasis",
           "children": [
             {
-              "type": "emphasis",
+              "type": "strong",
               "children": [
                 {
                   "type": "text",
@@ -111,23 +106,21 @@
                       "line": 3,
                       "column": 14,
                       "offset": 43
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
               "position": {
                 "start": {
                   "line": 3,
-                  "column": 9,
-                  "offset": 38
+                  "column": 8,
+                  "offset": 37
                 },
                 "end": {
                   "line": 3,
-                  "column": 15,
-                  "offset": 44
-                },
-                "indent": []
+                  "column": 16,
+                  "offset": 45
+                }
               }
             }
           ],
@@ -141,8 +134,7 @@
               "line": 3,
               "column": 17,
               "offset": 46
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -158,8 +150,7 @@
               "line": 3,
               "column": 23,
               "offset": 52
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -173,18 +164,17 @@
           "line": 3,
           "column": 23,
           "offset": 52
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "strong",
+          "type": "emphasis",
           "children": [
             {
-              "type": "emphasis",
+              "type": "strong",
               "children": [
                 {
                   "type": "text",
@@ -199,23 +189,21 @@
                       "line": 5,
                       "column": 26,
                       "offset": 79
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
               "position": {
                 "start": {
                   "line": 5,
-                  "column": 3,
-                  "offset": 56
+                  "column": 2,
+                  "offset": 55
                 },
                 "end": {
                   "line": 5,
-                  "column": 27,
-                  "offset": 80
-                },
-                "indent": []
+                  "column": 28,
+                  "offset": 81
+                }
               }
             }
           ],
@@ -229,8 +217,7 @@
               "line": 5,
               "column": 29,
               "offset": 82
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -244,8 +231,7 @@
           "line": 5,
           "column": 29,
           "offset": 82
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -264,15 +250,14 @@
               "line": 7,
               "column": 7,
               "offset": 90
-            },
-            "indent": []
+            }
           }
         },
         {
-          "type": "strong",
+          "type": "emphasis",
           "children": [
             {
-              "type": "emphasis",
+              "type": "strong",
               "children": [
                 {
                   "type": "text",
@@ -287,23 +272,21 @@
                       "line": 7,
                       "column": 14,
                       "offset": 97
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
               "position": {
                 "start": {
                   "line": 7,
-                  "column": 9,
-                  "offset": 92
+                  "column": 8,
+                  "offset": 91
                 },
                 "end": {
                   "line": 7,
-                  "column": 15,
-                  "offset": 98
-                },
-                "indent": []
+                  "column": 16,
+                  "offset": 99
+                }
               }
             }
           ],
@@ -317,8 +300,7 @@
               "line": 7,
               "column": 17,
               "offset": 100
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -334,8 +316,7 @@
               "line": 7,
               "column": 23,
               "offset": 106
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -349,8 +330,7 @@
           "line": 7,
           "column": 23,
           "offset": 106
-        },
-        "indent": []
+        }
       }
     }
   ],

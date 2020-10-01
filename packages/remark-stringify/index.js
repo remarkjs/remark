@@ -1,18 +1,20 @@
 'use strict'
 
-var unherit = require('unherit')
-var xtend = require('xtend')
-var Compiler = require('./lib/compiler.js')
-
 module.exports = stringify
-stringify.Compiler = Compiler
+
+var toMarkdown = require('mdast-util-to-markdown')
 
 function stringify(options) {
-  var Local = unherit(Compiler)
-  Local.prototype.options = xtend(
-    Local.prototype.options,
-    this.data('settings'),
-    options
-  )
-  this.Compiler = Local
+  var self = this
+
+  this.Compiler = compile
+
+  function compile(tree) {
+    var settings = Object.assign({}, self.data('settings'), options)
+    // Note: this option is not in the readme.
+    // The goal is for it to be set by plugins on `data` instead of being
+    // passed by users.
+    settings.extensions = settings.toMarkdownExtensions
+    return toMarkdown(tree, settings)
+  }
 }

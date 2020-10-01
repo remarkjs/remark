@@ -5,28 +5,8 @@
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "Hello \"World\" Hello!",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 1,
-                  "column": 2,
-                  "offset": 1
-                },
-                "end": {
-                  "line": 1,
-                  "column": 7,
-                  "offset": 6
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](./world.html \"Hello \"World\" Hello!\").",
           "position": {
             "start": {
               "line": 1,
@@ -35,27 +15,9 @@
             },
             "end": {
               "line": 1,
-              "column": 45,
-              "offset": 44
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 1,
-              "column": 45,
-              "offset": 44
-            },
-            "end": {
-              "line": 1,
               "column": 46,
               "offset": 45
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -69,36 +31,15 @@
           "line": 1,
           "column": 46,
           "offset": 45
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "link",
-          "title": "Hello \"World\" Hello!",
-          "url": "./world.html",
-          "children": [
-            {
-              "type": "text",
-              "value": "Hello",
-              "position": {
-                "start": {
-                  "line": 3,
-                  "column": 2,
-                  "offset": 48
-                },
-                "end": {
-                  "line": 3,
-                  "column": 7,
-                  "offset": 53
-                },
-                "indent": []
-              }
-            }
-          ],
+          "type": "text",
+          "value": "[Hello](<./world.html> \"Hello \"World\" Hello!\").",
           "position": {
             "start": {
               "line": 3,
@@ -107,27 +48,9 @@
             },
             "end": {
               "line": 3,
-              "column": 47,
-              "offset": 93
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 3,
-              "column": 47,
-              "offset": 93
-            },
-            "end": {
-              "line": 3,
               "column": 48,
               "offset": 94
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -141,18 +64,15 @@
           "line": 3,
           "column": 48,
           "offset": 94
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "Hello \"World\" Hello!",
-          "url": "./world.html",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](./world.html \"Hello \"World\" Hello!\").",
           "position": {
             "start": {
               "line": 5,
@@ -161,27 +81,9 @@
             },
             "end": {
               "line": 5,
-              "column": 46,
-              "offset": 141
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 5,
-              "column": 46,
-              "offset": 141
-            },
-            "end": {
-              "line": 5,
               "column": 47,
               "offset": 142
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -195,18 +97,15 @@
           "line": 5,
           "column": 47,
           "offset": 142
-        },
-        "indent": []
+        }
       }
     },
     {
       "type": "paragraph",
       "children": [
         {
-          "type": "image",
-          "title": "Hello \"World\" Hello!",
-          "url": "./world.html",
-          "alt": "Hello",
+          "type": "text",
+          "value": "![Hello](<./world.html> \"Hello \"World\" Hello!\").",
           "position": {
             "start": {
               "line": 7,
@@ -215,27 +114,9 @@
             },
             "end": {
               "line": 7,
-              "column": 48,
-              "offset": 191
-            },
-            "indent": []
-          }
-        },
-        {
-          "type": "text",
-          "value": ".",
-          "position": {
-            "start": {
-              "line": 7,
-              "column": 48,
-              "offset": 191
-            },
-            "end": {
-              "line": 7,
               "column": 49,
               "offset": 192
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -249,8 +130,7 @@
           "line": 7,
           "column": 49,
           "offset": 192
-        },
-        "indent": []
+        }
       }
     }
   ],

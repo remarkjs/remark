@@ -20,8 +20,7 @@
                   "line": 1,
                   "column": 8,
                   "offset": 7
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -35,8 +34,7 @@
               "line": 1,
               "column": 10,
               "offset": 9
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -52,8 +50,7 @@
               "line": 1,
               "column": 11,
               "offset": 10
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -72,8 +69,7 @@
                   "line": 1,
                   "column": 17,
                   "offset": 16
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -87,8 +83,7 @@
               "line": 1,
               "column": 18,
               "offset": 17
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -102,8 +97,7 @@
           "line": 1,
           "column": 18,
           "offset": 17
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -133,8 +127,7 @@
                       "line": 3,
                       "column": 14,
                       "offset": 32
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -148,8 +141,7 @@
                   "line": 3,
                   "column": 14,
                   "offset": 32
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -163,8 +155,7 @@
               "line": 3,
               "column": 14,
               "offset": 32
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -178,8 +169,7 @@
           "line": 3,
           "column": 14,
           "offset": 32
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -201,8 +191,7 @@
                   "line": 5,
                   "column": 8,
                   "offset": 41
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -216,8 +205,7 @@
               "line": 5,
               "column": 10,
               "offset": 43
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -233,8 +221,7 @@
               "line": 5,
               "column": 11,
               "offset": 44
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -253,8 +240,7 @@
                   "line": 5,
                   "column": 17,
                   "offset": 50
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -268,8 +254,7 @@
               "line": 5,
               "column": 18,
               "offset": 51
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -283,8 +268,7 @@
           "line": 5,
           "column": 18,
           "offset": 51
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -314,8 +298,7 @@
                       "line": 7,
                       "column": 14,
                       "offset": 66
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -329,8 +312,7 @@
                   "line": 7,
                   "column": 14,
                   "offset": 66
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -344,8 +326,7 @@
               "line": 7,
               "column": 14,
               "offset": 66
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -359,8 +340,7 @@
           "line": 7,
           "column": 14,
           "offset": 66
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -382,8 +362,7 @@
                   "line": 9,
                   "column": 8,
                   "offset": 75
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -397,8 +376,7 @@
               "line": 9,
               "column": 10,
               "offset": 77
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -414,8 +392,7 @@
               "line": 9,
               "column": 11,
               "offset": 78
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -434,8 +411,7 @@
                   "line": 9,
                   "column": 17,
                   "offset": 84
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -449,8 +425,7 @@
               "line": 9,
               "column": 18,
               "offset": 85
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -464,8 +439,7 @@
           "line": 9,
           "column": 18,
           "offset": 85
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -495,8 +469,7 @@
                       "line": 11,
                       "column": 14,
                       "offset": 100
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -510,8 +483,7 @@
                   "line": 11,
                   "column": 14,
                   "offset": 100
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -525,8 +497,7 @@
               "line": 11,
               "column": 14,
               "offset": 100
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -540,8 +511,7 @@
           "line": 11,
           "column": 14,
           "offset": 100
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -563,8 +533,7 @@
                   "line": 13,
                   "column": 8,
                   "offset": 109
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -578,8 +547,7 @@
               "line": 13,
               "column": 10,
               "offset": 111
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -595,8 +563,7 @@
               "line": 13,
               "column": 11,
               "offset": 112
-            },
-            "indent": []
+            }
           }
         },
         {
@@ -615,8 +582,7 @@
                   "line": 13,
                   "column": 17,
                   "offset": 118
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -630,8 +596,7 @@
               "line": 13,
               "column": 18,
               "offset": 119
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -645,8 +610,7 @@
           "line": 13,
           "column": 18,
           "offset": 119
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -676,8 +640,7 @@
                       "line": 15,
                       "column": 14,
                       "offset": 134
-                    },
-                    "indent": []
+                    }
                   }
                 }
               ],
@@ -691,8 +654,7 @@
                   "line": 15,
                   "column": 14,
                   "offset": 134
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -706,8 +668,7 @@
               "line": 15,
               "column": 14,
               "offset": 134
-            },
-            "indent": []
+            }
           }
         }
       ],
@@ -721,8 +682,7 @@
           "line": 15,
           "column": 14,
           "offset": 134
-        },
-        "indent": []
+        }
       }
     }
   ],

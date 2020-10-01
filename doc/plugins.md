@@ -287,11 +287,10 @@ virtual files.
 
 ## Using plugins
 
-To use a plugin programmatically, invoke the [`use()`][unified-use]
-function.
+To use a plugin programmatically, call the [`use()`][unified-use] function.
 
-To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use]
-or specify it in a [configuration file][config-file-use].
+To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use] or
+specify it in a [configuration file][config-file-use].
 
 ## Creating plugins
 

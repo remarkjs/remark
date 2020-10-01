@@ -2,11 +2,12 @@
   "type": "root",
   "children": [
     {
-      "type": "paragraph",
+      "type": "heading",
+      "depth": 1,
       "children": [
         {
           "type": "text",
-          "value": "Hello",
+          "value": "Hello\nWorld",
           "position": {
             "start": {
               "line": 1,
@@ -14,11 +15,10 @@
               "offset": 0
             },
             "end": {
-              "line": 1,
+              "line": 2,
               "column": 6,
-              "offset": 5
-            },
-            "indent": []
+              "offset": 11
+            }
           }
         }
       ],
@@ -29,49 +29,10 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 6,
-          "offset": 5
-        },
-        "indent": []
-      }
-    },
-    {
-      "type": "heading",
-      "depth": 1,
-      "children": [
-        {
-          "type": "text",
-          "value": "World",
-          "position": {
-            "start": {
-              "line": 2,
-              "column": 1,
-              "offset": 6
-            },
-            "end": {
-              "line": 2,
-              "column": 6,
-              "offset": 11
-            },
-            "indent": []
-          }
-        }
-      ],
-      "position": {
-        "start": {
-          "line": 2,
-          "column": 1,
-          "offset": 6
-        },
-        "end": {
           "line": 3,
           "column": 4,
           "offset": 15
-        },
-        "indent": [
-          1
-        ]
+        }
       }
     }
   ],

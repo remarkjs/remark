@@ -6,9 +6,6 @@
       "children": [
         {
           "type": "linkReference",
-          "identifier": "foo",
-          "label": "foo",
-          "referenceType": "shortcut",
           "children": [
             {
               "type": "text",
@@ -23,8 +20,7 @@
                   "line": 1,
                   "column": 5,
                   "offset": 4
-                },
-                "indent": []
+                }
               }
             }
           ],
@@ -38,9 +34,11 @@
               "line": 1,
               "column": 6,
               "offset": 5
-            },
-            "indent": []
-          }
+            }
+          },
+          "identifier": "foo",
+          "label": "foo",
+          "referenceType": "shortcut"
         }
       ],
       "position": {
@@ -53,8 +51,7 @@
           "line": 1,
           "column": 6,
           "offset": 5
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -73,8 +70,7 @@
           "line": 3,
           "column": 13,
           "offset": 19
-        },
-        "indent": []
+        }
       }
     },
     {
@@ -93,8 +89,7 @@
           "line": 4,
           "column": 14,
           "offset": 33
-        },
-        "indent": []
+        }
       }
     }
   ],
