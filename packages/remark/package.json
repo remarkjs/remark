@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "12.0.1",
+  "version": "13.0.0-alpha.0",
   "description": "Markdown processor powered by plugins part of the unified collective",
   "license": "MIT",
   "keywords": [
