@@ -17,10 +17,9 @@ test('remark().parse(file)', function (t) {
 
   t.test('extensions', function (st) {
     var tree = unified()
-      .use(parse, {
-        micromarkExtensions: [gfmSyntax()],
-        fromMarkdownExtensions: [gfm]
-      })
+      .data('micromarkExtensions', [gfmSyntax()])
+      .data('fromMarkdownExtensions', [gfm])
+      .use(parse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
 
     remove(tree, true)

@@ -10,11 +10,14 @@ function stringify(options) {
   this.Compiler = compile
 
   function compile(tree) {
-    var settings = Object.assign({}, self.data('settings'), options)
-    // Note: this option is not in the readme.
-    // The goal is for it to be set by plugins on `data` instead of being
-    // passed by users.
-    settings.extensions = settings.toMarkdownExtensions
-    return toMarkdown(tree, settings)
+    return toMarkdown(
+      tree,
+      Object.assign({}, self.data('settings'), options, {
+        // Note: this option is not in the readme.
+        // The goal is for it to be set by plugins on `data` instead of being
+        // passed by users.
+        extensions: self.data('toMarkdownExtensions') || []
+      })
+    )
   }
 }

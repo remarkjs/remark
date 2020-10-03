@@ -461,7 +461,8 @@ test('stringify escapes', function (t) {
 
 test('extensions', function (t) {
   var doc = unified()
-    .use(stringify, {toMarkdownExtensions: [gfm()]})
+    .data('toMarkdownExtensions', [gfm()])
+    .use(stringify)
     .stringify({
       type: 'root',
       children: [
