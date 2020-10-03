@@ -38,8 +38,6 @@ See [Creating plugins][create] below.
     — increase or decrease heading depth
 *   [`remark-bookmarks`](https://github.com/remarkjs/remark-bookmarks)
     – automatic link manager
-*   [`remark-bracketed-spans`](https://github.com/sethvincent/remark-bracketed-spans)
-    – custom syntax for id’s, classes, and data attributes to spans of text
 *   [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
     – support hard breaks without needing spaces (like on issues)
 *   [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
@@ -83,8 +81,6 @@ See [Creating plugins][create] below.
     — embed local images as base64-encoded data URIs
 *   [`remark-emoji`](https://github.com/rhysd/remark-emoji)
     — transform Gemoji short-codes to emoji
-*   [`remark-emoji-to-gemoji`](https://github.com/jackycute/remark-emoji-to-gemoji)
-    — transform emoji to Gemoji short-codes
 *   [`remark-external-links`](https://github.com/remarkjs/remark-external-links)
     — add `target` and `rel` attributes to external links
 *   [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
@@ -101,20 +97,14 @@ See [Creating plugins][create] below.
     – support frontmatter (yaml, toml, and more)
 *   [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
     — better support for Gemoji shortcodes
-*   [`remark-gemoji-to-emoji`](https://github.com/jackycute/remark-gemoji-to-emoji)
-    — transform Gemoji shortcodes to emoji
 *   [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — custom syntax for the CommonMark generic directive extension
 *   [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
     — add a table of contributors based on Git history, options, and more
 *   [`remark-github`](https://github.com/remarkjs/remark-github)
     — autolink references to commits, issues, pull-requests, and users
-*   [`remark-gitlab-artifact`](https://github.com/temando/remark-gitlab-artifact)
-    — download artifacts from GitLab projects to live alongside your docs
 *   [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
     — custom syntax to describe tables (rehype compatible)
-*   [`remark-graphviz`](https://github.com/temando/remark-graphviz)
-    — transform [graphviz](https://www.graphviz.org) dot graphs to SVG
 *   [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
     — custom heading id support `{#custom-id}`
 *   [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
@@ -126,9 +116,7 @@ See [Creating plugins][create] below.
     — add hints/tips/warnings to markdown
 *   [`remark-html`](https://github.com/remarkjs/remark-html)
     — serialize Markdown as HTML
-*   [`remark-html-emoji-image`](https://github.com/jackycute/remark-html-emoji-image)
-    — transform emoji to images
-*   [`remark-html-katex`](https://github.com/Rokt33r/remark-math/tree/HEAD/packages/remark-html-katex#readme)
+*   [`remark-html-katex`](https://github.com/remarkjs/remark-math/tree/HEAD/packages/remark-html-katex#readme)
     — change inline and block math to equations with [KaTeX](https://github.com/Khan/KaTeX)
 *   [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
     — custom syntax to create iframes (new node type, rehype compatible)
@@ -155,14 +143,10 @@ See [Creating plugins][create] below.
     — support for block macros (new node types, rehype compatible)
 *   [`remark-man`](https://github.com/remarkjs/remark-man)
     — serialize Markdown as man pages (roff)
-*   [`remark-math`](https://github.com/Rokt33r/remark-math)
+*   [`remark-math`](https://github.com/remarkjs/remark-math)
     — custom syntax for math (new node types, rehype compatible)
-*   [`remark-mermaid`](https://github.com/temando/remark-mermaid)
-    — transform [mermaid](https://mermaidjs.github.io/) graphs to SVG
 *   [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — turn some or all messages on or off
-*   [`remark-metadata`](https://github.com/temando/remark-metadata)
-    — add metadata about the processed file as front matter
 *   [`remark-midas`](https://github.com/remarkjs/remark-midas)
     — highlight CSS code blocks with [midas](https://github.com/ben-eb/midas)
     (rehype compatible)
@@ -174,8 +158,6 @@ See [Creating plugins][create] below.
     — transform URLs for youtube, twitter, etc. embeds
 *   [`remark-oembed`](https://github.com/sergioramos/remark-oembed)
     — transform URLs surrounded by newlines into *asynchronously* loaded embeds
-*   [`remark-openapi`](https://github.com/temando/remark-openapi)
-    — transform links to local or remote OpenAPI definitions to tables
 *   [`remark-package-dependencies`](https://github.com/unlight/remark-package-dependencies)
     — inject your dependencies
 *   [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
@@ -190,8 +172,6 @@ See [Creating plugins][create] below.
     — compile Markdown to [React](https://github.com/facebook/react)
 *   [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
     — highlight code blocks for **remark-react** with [CodeMirror](https://codemirror.net)
-*   [`remark-react-lowlight`](https://github.com/inlinestyle/remark-react-lowlight)
-    — highlight code blocks for **remark-react** with [lowlight](https://github.com/wooorm/lowlight)
 *   [`remark-redact`](https://github.com/seafoam6/remark-redact)
     — conceal text matching a regex
 *   [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
