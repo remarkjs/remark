@@ -24,13 +24,13 @@
     "tape": "^5.0.0",
     "tinyify": "^3.0.0",
     "typescript": "^4.0.0",
-    "unified": "^9.1.0",
+    "unified": "^9.0.0",
     "unist-util-remove-position": "^3.0.0",
     "xo": "^0.33.0"
   },
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
-    "format": "prettier . -w --loglevel warn && xo --fix",
+    "format": "./packages/remark-cli/cli.js . -qfo && prettier . -w --loglevel warn && xo --fix",
     "build-bundle": "browserify packages/remark -s remark > remark.js",
     "build-mangle": "browserify packages/remark -s remark -p tinyify > remark.min.js",
     "build": "npm run build-bundle && npm run build-mangle",
@@ -56,25 +56,7 @@
   "xo": {
     "prettier": true,
     "esnext": false,
-    "rules": {
-      "unicorn/no-fn-reference-in-iterator": "off",
-      "unicorn/prefer-includes": "off",
-      "unicorn/prefer-number-properties": "off",
-      "unicorn/prefer-type-error": "off",
-      "unicorn/prefer-reflect-apply": "off",
-      "unicorn/string-content": "off",
-      "complexity": "off",
-      "eqeqeq": [
-        "error",
-        "always",
-        {
-          "null": "ignore"
-        }
-      ],
-      "guard-for-in": "off",
-      "max-depth": "off",
-      "no-eq-null": "off"
-    },
+    "rules": {},
     "ignores": [
       "**/types",
       "remark.js"
@@ -82,13 +64,7 @@
   },
   "remarkConfig": {
     "plugins": [
-      "preset-wooorm",
-      [
-        "toc",
-        {
-          "heading": "contents"
-        }
-      ]
+      "preset-wooorm"
     ]
   }
 }

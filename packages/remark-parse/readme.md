@@ -10,7 +10,8 @@
 
 [Parser][] for [**unified**][unified].
 Parses Markdown to [**mdast**][mdast] syntax trees.
-Built on [micromark][].
+Built on [`micromark`][micromark] and
+[`mdast-util-from-markdown`][from-markdown].
 Used in the [**remark** processor][remark] but can be used on its own as well.
 Can be [extended][extend] to change how Markdown is parsed.
 
@@ -31,10 +32,7 @@ var markdown = require('remark-parse')
 var remark2rehype = require('remark-rehype')
 var html = require('rehype-stringify')
 
-var processor = unified()
-  .use(markdown)
-  .use(remark2rehype)
-  .use(html)
+var processor = unified().use(markdown).use(remark2rehype).use(html)
 
 process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 ```

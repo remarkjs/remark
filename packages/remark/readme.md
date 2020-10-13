@@ -68,8 +68,8 @@ Yields:
 
 ###### Settings through data
 
-This example prettifies Markdown and configures [`remark-parse`][parse] and
-[`remark-stringify`][stringify] through [data][].
+This example prettifies Markdown and configures [`remark-stringify`][stringify]
+through [data][].
 
 ```js
 var remark = require('remark')

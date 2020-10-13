@@ -314,11 +314,7 @@ test('remark().stringify(ast, file)', function (t) {
       ['capitalized image references - shortcut', '![Bravo]']
     ]
 
-    tests.forEach(each)
-
-    st.end()
-
-    function each(test) {
+    tests.forEach(function (test) {
       st.equal(
         unified()
           .use(parse)
@@ -328,7 +324,9 @@ test('remark().stringify(ast, file)', function (t) {
         test[1] + '\n\n[bravo]: #\n',
         test[0]
       )
-    }
+    })
+
+    st.end()
   })
 
   t.test('should process associations without label', function (st) {

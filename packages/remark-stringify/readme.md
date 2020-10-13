@@ -62,7 +62,7 @@ are supported and will be passed through.
 ## Extending the compiler
 
 See [`mdast-util-to-markdown`][to-markdown].
-Then create a wrapper plugin such as `remark-gfm`.
+Then create a wrapper plugin such as [`remark-gfm`][remark-gfm].
 
 ## Security
 
@@ -206,3 +206,5 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [to-markdown-options]: https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options
 
 [extend]: #extending-the-compiler
+
+[remark-gfm]: https://github.com/remarkjs/remark-gfm

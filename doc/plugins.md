@@ -52,7 +52,7 @@ See [Creating plugins][create] below.
 *   [`remark-code-import`](https://github.com/kevin940726/remark-code-import)
     — populate code blocks from files
 *   [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
-    – turn code blocks into carbon.now.sh screenshots
+    – turn code blocks into carbon.now\.sh screenshots
 *   [`remark-codesandbox`](https://github.com/kevin940726/remark-codesandbox)
     – create CodeSandbox from code blocks
 *   [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)

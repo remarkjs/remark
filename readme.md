@@ -8,8 +8,8 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**remark** is a Markdown processor powered by [plugins][] part of the
-[unified][] collective.
+**remark** is a Markdown processor built on [micromark][] powered by
+[plugins][] part of the [unified][] collective.
 
 ## Intro
 
@@ -25,7 +25,7 @@ contents (`remark-toc`)][remark-toc], or [compiling to man pages
 
 Internally, remark now uses [**`micromark`**][micromark], a new, fast, and tiny
 CommonMark compliant Markdown tokenizer.
-It can be GFM compliant with `remark-gfm`.
+It can be GFM compliant with [`remark-gfm`][remark-gfm].
 
 Finally, remark is part of the [unified][website] [collective][governance].
 Learn more about us:
@@ -203,3 +203,5 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [sanitize]: https://github.com/rehypejs/rehype-sanitize
 
 [micromark]: https://github.com/micromark/micromark
+
+[remark-gfm]: https://github.com/remarkjs/remark-gfm

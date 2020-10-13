@@ -11,7 +11,7 @@ It’s built on [unified][], make sure to read it and its [website][] too.
 ## Contents
 
 *   [Intro](#intro)
-*   [Command-line](#command-line)
+*   [Command line](#command-line)
 *   [Using remark in a project](#using-remark-in-a-project)
 *   [Programmatic usage](#programmatic-usage)
 
@@ -104,9 +104,9 @@ The `--save-dev` option stores the dependencies in our `package.json`:
    "name": "my-package",
    "version": "1.0.0",
 +  "devDependencies": {
-+    "remark-cli": "^8.0.0",
-+    "remark-html": "^12.0.0",
-+    "remark-preset-lint-markdown-style-guide": "^3.0.0"
++    "remark-cli": "^9.0.0",
++    "remark-html": "^13.0.0",
++    "remark-preset-lint-markdown-style-guide": "^4.0.0"
 +  },
    "scripts": {
      "test": "node test.js"
@@ -122,9 +122,9 @@ configuration:
    "name": "my-package",
    "version": "1.0.0",
    "devDependencies": {
-     "remark-cli": "^8.0.0",
-     "remark-html": "^12.0.0",
-     "remark-preset-lint-markdown-style-guide": "^3.0.0"
+     "remark-cli": "^9.0.0",
+     "remark-html": "^13.0.0",
+     "remark-preset-lint-markdown-style-guide": "^4.0.0"
    },
    "scripts": {
 -    "test": "node test.js"
@@ -172,7 +172,7 @@ var report = require('vfile-reporter')
 remark()
   .use(styleGuide)
   .use(html)
-  .process('_Hello_.', function(err, file) {
+  .process('_Hello_.', function (err, file) {
     console.error(report(err || file))
     console.log(String(file))
   })
