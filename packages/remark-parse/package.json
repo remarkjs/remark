@@ -37,7 +37,7 @@
     "types/index.d.ts"
   ],
   "dependencies": {
-    "mdast-util-from-markdown": "^0.7.0"
+    "mdast-util-from-markdown": "^0.8.0"
   },
   "scripts": {
     "test": "tape test.js"
