@@ -1,11 +1,11 @@
 // TypeScript Version: 3.0
 
-import {Compiler, Plugin} from 'unified'
+import {CompilerFunction, Plugin} from 'unified'
 import {Options} from 'mdast-util-to-markdown'
 
 declare namespace remarkStringify {
   interface Stringify extends Plugin<[RemarkStringifyOptions?]> {
-    Compiler: Compiler
+    Compiler: CompilerFunction
   }
 
   type RemarkStringifyOptions = Options
