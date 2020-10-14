@@ -30,7 +30,7 @@
   ],
   "dependencies": {
     "markdown-extensions": "^1.1.0",
-    "remark": "^13.0.0-alpha.1",
+    "remark": "^13.0.0",
     "unified-args": "^8.0.0"
   },
   "scripts": {
