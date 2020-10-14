@@ -66,10 +66,17 @@ Then create a wrapper plugin such as [`remark-gfm`][remark-gfm].
 
 ## Security
 
+`remark-stringify` will do its best to serialize markdown to match the syntax
+tree, but there are several cases where that is impossible.
+It’ll do its best, but complete roundtripping is impossible given that any
+value could be injected into the tree.
+
 As Markdown is sometimes used for HTML, and improper use of HTML can open you up
-to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
-When going to HTML, use remark in combination with the [**rehype**][rehype]
-ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.
+to a [cross-site scripting (XSS)][xss] attack, use of `remark-stringify` and
+parsing it again later can potentially be unsafe.
+When parsing Markdown afterwards, use remark in combination with the
+[**rehype**][rehype] ecosystem, and use [`rehype-sanitize`][sanitize] to make
+the tree safe.
 
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
