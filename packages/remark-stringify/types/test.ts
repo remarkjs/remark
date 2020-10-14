@@ -13,7 +13,7 @@ unified().use(remarkStringify)
 unified().use(remarkStringify, inferredStringifyOptions)
 
 // These cannot be automatically inferred by TypeScript
-const nonInferredStringifyOptions: remarkStringify.PartialRemarkStringifyOptions = {
+const nonInferredStringifyOptions: remarkStringify.RemarkStringifyOptions = {
   fence: '~',
   bullet: '+',
   listItemIndent: 'tab',
@@ -31,27 +31,7 @@ const badStringifyOptions = {
 // $ExpectError
 unified().use(remarkStringify, badStringifyOptions)
 
-function gap(this: unified.Processor) {
-  const Compiler = this.Compiler as typeof remarkStringify.Compiler
-  const visitors = Compiler.prototype.visitors
-  const original = visitors.heading
-
-  visitors.heading = heading
-
-  function heading(this: unified.Processor, node: Node, parent?: Parent) {
-    // FIXME: remove need for explicit 'as' casting
-    const headingNode = node as Node & {depth: number}
-    return (
-      (headingNode.depth === 2 ? '\n' : '') +
-      original.apply(this, [node, parent])
-    )
-  }
-}
-
-const plugin: unified.Plugin = gap
-
 const incompleteStringifyOptions: remarkStringify.RemarkStringifyOptions = {
-  gfm: true,
   fences: true,
   incrementListMarker: false
 }

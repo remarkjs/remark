@@ -1,51 +1,12 @@
 // TypeScript Version: 3.0
 
-import {Compiler, Processor, Plugin} from 'unified'
-import {Node, Parent} from 'unist'
-
-declare class RemarkCompiler implements Compiler {
-  compile(): string
-  visitors: {
-    [key: string]: remarkStringify.Visitor
-  }
-}
+import {Plugin} from 'unified'
+import {Options} from 'mdast-util-to-markdown'
 
 declare namespace remarkStringify {
-  interface Stringify extends Plugin<[RemarkStringifyOptions?]> {
-    Compiler: typeof RemarkCompiler
-    (this: Processor, options?: RemarkStringifyOptions): void
-  }
+  interface Stringify extends Plugin<[RemarkStringifyOptions?]> {}
 
-  type Compiler = RemarkCompiler
-
-  interface RemarkStringifyOptions {
-    gfm?: boolean
-    commonmark?: boolean
-    entities?: boolean | 'numbers' | 'escape'
-    setext?: boolean
-    closeAtx?: boolean
-    tableCellPadding?: boolean
-    tablePipeAlign?: boolean
-    stringLength?: (s: string) => number
-    fence?: '~' | '`'
-    fences?: boolean
-    bullet?: '-' | '*' | '+'
-    listItemIndent?: 'tab' | '1' | 'mixed'
-    incrementListMarker?: boolean
-    tightDefinitions?: boolean
-    rule?: '-' | '_' | '*'
-    ruleRepetition?: number
-    ruleSpaces?: boolean
-    strong?: '_' | '*'
-    emphasis?: '_' | '*'
-  }
-
-  /**
-   * @deprecated Use `RemarkStringifyOptions` instead.
-   */
-  type PartialRemarkStringifyOptions = RemarkStringifyOptions
-
-  type Visitor = (node: Node, parent?: Parent) => string
+  type RemarkStringifyOptions = Options
 }
 
 declare const remarkStringify: remarkStringify.Stringify
