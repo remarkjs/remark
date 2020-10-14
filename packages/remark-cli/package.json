@@ -1,6 +1,6 @@
 {
   "name": "remark-cli",
-  "version": "9.0.0-alpha.1",
+  "version": "9.0.0",
   "description": "CLI to process Markdown with remark",
   "license": "MIT",
   "keywords": [
