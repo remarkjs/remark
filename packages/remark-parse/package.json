@@ -1,6 +1,6 @@
 {
   "name": "remark-parse",
-  "version": "9.0.0-alpha.1",
+  "version": "9.0.0",
   "description": "remark plugin to parse Markdown",
   "license": "MIT",
   "keywords": [

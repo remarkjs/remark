@@ -35,7 +35,7 @@
   ],
   "types": "types/index.d.ts",
   "dependencies": {
-    "remark-parse": "^9.0.0-alpha.1",
+    "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.0-alpha.1",
     "unified": "^9.1.0"
   },
