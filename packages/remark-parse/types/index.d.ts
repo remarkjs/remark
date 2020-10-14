@@ -1,12 +1,10 @@
 // TypeScript Version: 3.0
 
-import {ParserFunction, Plugin} from 'unified'
+import {Plugin} from 'unified'
 import {Options} from 'mdast-util-from-markdown'
 
 declare namespace remarkParse {
-  interface Parse extends Plugin<[RemarkParseOptions?]> {
-    Parser: ParserFunction
-  }
+  interface Parse extends Plugin<[RemarkParseOptions?]> {}
 
   type RemarkParseOptions = Options
 }
