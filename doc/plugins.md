@@ -26,7 +26,8 @@ Some plugins are affected by the recent switch in the underlying parser of
 remark.
 Their status is encoded below as:
 
-*   🟢 This plugin **is not affected** and works the same as before, or this plugin is affected: **a new version is already released**
+*   🟢 This plugin **is not affected** and works the same as before,
+or this plugin is affected: **a new version is already released**
 *   ⚠️ This plugin is affected: it’s **currently broken** and maintainers
     have been notified
 
