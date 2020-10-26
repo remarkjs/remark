@@ -26,29 +26,28 @@ Some plugins are affected by the recent switch in the underlying parser of
 remark.
 Their status is encoded below as:
 
-*   🟢 This plugin **is not affected** and works the same as before
-*   🟡 This plugin is affected: **a new version is already released**
-*   🔴 This plugin is affected: it’s **currently broken** and maintainers
+*   🟢 This plugin **was not affected** or **a new version is already released**
+*   ⚠️ This plugin is affected: it’s **currently broken** and maintainers
     have been notified
 
 The list of plugins:
 
 *   🟢 [`remark-a11y-emoji`](https://github.com/florianeckerstorfer/remark-a11y-emoji)
     — accessible emoji
-*   🔴 [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-abbr#readme)
+*   ⚠️ [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-abbr#readme)
     — new syntax for abbreviations (new node type, rehype compatible)
-*   🔴 [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
+*   ⚠️ [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
     — new syntax for admonitions
-*   🔴 [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
+*   ⚠️ [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
     — new syntax to align text or blocks (new node types, rehype
     compatible)
-*   🔴 [`remark-attr`](https://github.com/arobase-che/remark-attr)
+*   ⚠️ [`remark-attr`](https://github.com/arobase-che/remark-attr)
     — new syntax to add attributes to Markdown
 *   🟢 [`remark-autolink-headings`](https://github.com/remarkjs/remark-autolink-headings)
     — add GitHub-style links to headings
 *   🟢 [`remark-behead`](https://github.com/mrzmmr/remark-behead)
     — increase or decrease heading depth
-*   🟡 [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
+*   🟢 [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
     – hard breaks w/o needing spaces (like on issues)
 *   🟢 [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
     – transform all titles w/ [`title.sh`](https://github.com/zeit/title)
@@ -66,23 +65,23 @@ The list of plugins:
     – create CodeSandbox from code blocks
 *   🟢 [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
     — make a section collapsible
-*   🟡 [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
+*   🟢 [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
     — configure remark w/ comments
-*   🔴 [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-comments#readme)
+*   ⚠️ [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-comments#readme)
     — new syntax to ignore things
-*   🔴 [`remark-container`](https://github.com/zWingz/remark-container)
+*   ⚠️ [`remark-container`](https://github.com/zWingz/remark-container)
     — new syntax for containers
-*   🔴 [`remark-containers`](https://github.com/Nevenall/remark-containers)
+*   ⚠️ [`remark-containers`](https://github.com/Nevenall/remark-containers)
     — new syntax for containers
 *   🟢 [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
 *   🟢 [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
     — find and copy files linked files to a destination directory
-*   🔴 [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
+*   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — new syntax for custom blocks (new node types, rehype compatible)
 *   🟢 [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
     — change links and images to references w/ separate definitions
-*   🔴 [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
+*   ⚠️ [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
     — turn some or all remark’s tokenizers on or off
 *   🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
     — fancy and accessible drop caps
@@ -94,30 +93,30 @@ The list of plugins:
     — add `target` and `rel` attributes to external links
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
-*   🔴 [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
+*   ⚠️ [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
     — new syntax for Pandoc’s `fenced_divs` support (new node type, rehype
     compatible)
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
     — support ASCII guillements (`<<`, `>>`) mapping them to HTML
-*   🟡 [`remark-footnotes`](https://github.com/remarkjs/remark-footnotes)
+*   🟢 [`remark-footnotes`](https://github.com/remarkjs/remark-footnotes)
     – support pandoc footnotes
-*   🟡 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
+*   🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – support frontmatter (yaml, toml, and more)
-*   🟡 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
+*   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
     — better support for Gemoji shortcodes
-*   🔴 [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
+*   ⚠️ [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — new syntax for the CommonMark generic directive extension
 *   🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
     — add a table of contributors based on Git history, options, and more
 *   🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
     — autolink references to commits, issues, pull-requests, and users
-*   🔴 [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
+*   ⚠️ [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
     — new syntax to describe tables (rehype compatible)
 *   🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
     — custom heading id support `{#custom-id}`
-*   🟡 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
+*   🟢 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
     — serialize w/ more blank lines between headings
 *   🟢 [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks w/ [highlight.js](https://github.com/isagalaev/highlight.js)
@@ -128,7 +127,7 @@ The list of plugins:
     — serialize Markdown as HTML
 *   🟢 [`remark-html-katex`](https://github.com/remarkjs/remark-math/tree/HEAD/packages/remark-html-katex#readme)
     — change inline and block math to equations w/ [KaTeX](https://github.com/Khan/KaTeX)
-*   🔴 [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
+*   ⚠️ [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
     — new syntax to create iframes (new node type, rehype compatible)
 *   🟢 [`remark-images`](https://github.com/remarkjs/remark-images)
     — add an improved image syntax
@@ -138,22 +137,22 @@ The list of plugins:
     — inserts definitions for jargon terms
 *   🟢 [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
     — remove extra space between CJK Characters.
-*   🔴 [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-kbd#readme)
+*   ⚠️ [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-kbd#readme)
     — new syntax for keyboard keys (new node type, rehype compatible)
-*   🔴 [`remark-kbd-plus`](https://github.com/twardoch/remark-kbd-plus)
+*   ⚠️ [`remark-kbd-plus`](https://github.com/twardoch/remark-kbd-plus)
     — new syntax for keyboard keys w/ plusses (new node type, rehype
     compatible)
 *   🟢 [`remark-license`](https://github.com/remarkjs/remark-license)
     — add a license section
 *   🟢 [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
     — change text matching a regex to links
-*   🟡 [`remark-lint`](https://github.com/remarkjs/remark-lint)
+*   🟢 [`remark-lint`](https://github.com/remarkjs/remark-lint)
     — check Markdown code style
-*   🟡 [`remark-macro`](https://github.com/dimerapp/remark-macro)
+*   🟢 [`remark-macro`](https://github.com/dimerapp/remark-macro)
     — support for block macros (new node types, rehype compatible)
 *   🟢 [`remark-man`](https://github.com/remarkjs/remark-man)
     — serialize Markdown as man pages (roff)
-*   🟡 [`remark-math`](https://github.com/remarkjs/remark-math)
+*   🟢 [`remark-math`](https://github.com/remarkjs/remark-math)
     — new syntax for math (new node types, rehype compatible)
 *   🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — turn some or all messages on or off
@@ -171,9 +170,9 @@ The list of plugins:
     embeds
 *   🟢 [`remark-package-dependencies`](https://github.com/unlight/remark-package-dependencies)
     — inject your dependencies
-*   🔴 [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
+*   ⚠️ [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
     — parse YAML nodes and expose their value as `parsedValue`
-*   🔴 [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
+*   ⚠️ [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — new syntax for mentions w/ configurable existence check (new node
     type, rehype compatible)
 *   🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
@@ -183,7 +182,7 @@ The list of plugins:
     — compile Markdown to [React](https://github.com/facebook/react)
 *   🟢 [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
     — highlight code blocks for `remark-react` w/ [CodeMirror](https://codemirror.net)
-*   🔴 [`remark-redact`](https://github.com/seafoam6/remark-redact)
+*   ⚠️ [`remark-redact`](https://github.com/seafoam6/remark-redact)
     — new syntax to conceal text matching a regex
 *   🟢 [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
     — write plugins to redact content from a Markdown document,
@@ -196,12 +195,12 @@ The list of plugins:
     — change absolute URLs to relative ones
 *   🟢 [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — transform to [retext](https://github.com/retextjs/retext)
-*   🔴 [`remark-ruby`](https://github.com/laysent/remark-ruby)
+*   ⚠️ [`remark-ruby`](https://github.com/laysent/remark-ruby)
     — new syntax for ruby (furigana)
 *   🟢 [`remark-sectionize`](https://github.com/jake-low/remark-sectionize)
     — wrap headings and subsequent content in section tags (new node type,
     rehype compatible)
-*   🔴 [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
+*   ⚠️ [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
     — new syntax for Wordpress- and Hugo-like shortcodes (new node type)
 *   🟢 [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
     — turn PlantUML code blocks to images
@@ -221,10 +220,10 @@ The list of plugins:
     — remove HTML
 *   🟢 [`remark-squeeze-paragraphs`](https://github.com/remarkjs/remark-squeeze-paragraphs)
     — remove empty paragraphs
-*   🔴 [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-sub-super)
+*   ⚠️ [`remark-sub-super`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-sub-super)
     — new syntax for super- and subscript (new node types, rehype
     compatible)
-*   🔴 [`remark-terms`](https://github.com/Nevenall/remark-terms)
+*   ⚠️ [`remark-terms`](https://github.com/Nevenall/remark-terms)
     — new customizable syntax for special terms and phrases
 *   🟢 [`remark-textr`](https://github.com/remarkjs/remark-textr)
     — transform text w/ [`Textr`](https://github.com/shuvalov-anton/textr)
@@ -254,13 +253,13 @@ The list of plugins:
     — turn bolds, italics, and code into UTF 8 special characters
 *   🟢 [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
     — check links to headings and files
-*   🔴 [`remark-variables`](https://github.com/mrzmmr/remark-variables)
+*   ⚠️ [`remark-variables`](https://github.com/mrzmmr/remark-variables)
     — new syntax for variables
 *   🟢 [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
     — compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
-*   🔴 [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
+*   ⚠️ [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
     — new syntax for wiki links (rehype compatible)
-*   🟡 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
+*   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark w/ YAML
 
 ## List of presets
