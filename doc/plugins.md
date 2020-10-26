@@ -94,6 +94,8 @@ The list of plugins:
     — add `target` and `rel` attributes to external links
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
+*   🟢 [`remark-extract-toc`](https://github.com/inokawa/remark-extract-toc)
+    — store table of contents
 *   🔴 [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
     — new syntax for Pandoc’s `fenced_divs` support (new node type, rehype
     compatible)
@@ -207,6 +209,8 @@ The list of plugins:
     — turn PlantUML code blocks to images
 *   🟢 [`remark-slate`](https://github.com/hanford/remark-slate)
     — compile Markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
+*   🟢 [`remark-slate-transformer`](https://github.com/inokawa/remark-slate-transformer)
+    — compile Markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes), and also Slate nodes to Markdown
 *   🟢 [`remark-slug`](https://github.com/remarkjs/remark-slug)
     — add anchors to headings using GitHub’s algorithm
 *   🟢 [`remark-smartypants`](https://github.com/silvenon/remark-smartypants)
