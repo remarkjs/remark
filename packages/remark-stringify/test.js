@@ -407,7 +407,7 @@ test('stringify escapes', function (t) {
     '![a\\]b]()\n',
     '`]` (in images)'
   )
-  t.equal(toString('![a'), '\\!\\[a\n', '`!` before `[`')
+  t.equal(toString('![a'), '!\\[a\n', 'the `[` in `![`')
   t.equal(toString('a~b'), 'a~b\n', '`~`')
   t.equal(toString('a|b'), 'a|b\n', '`|`')
   t.equal(toString('a_b'), 'a_b\n', '`_` (in words)')

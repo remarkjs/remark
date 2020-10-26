@@ -43,7 +43,6 @@ test('remark().parse(file)', function (t) {
                   {
                     type: 'paragraph',
                     children: [
-                      {type: 'text', value: ''},
                       {
                         type: 'link',
                         title: null,
