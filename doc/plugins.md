@@ -83,6 +83,8 @@ The list of plugins:
     — change links and images to references w/ separate definitions
 *   ⚠️ [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
     — turn some or all remark’s tokenizers on or off
+*   🟢 [`remark-directive`](https://github.com/remarkjs/remark-directive)
+    — new syntax for directives (generic extensions)
 *   🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
     — fancy and accessible drop caps
 *   🟢 [`remark-embed-images`](https://github.com/remarkjs/remark-embed-images)
@@ -108,6 +110,8 @@ The list of plugins:
     — better support for Gemoji shortcodes
 *   ⚠️ [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — new syntax for the CommonMark generic directive extension
+*   🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
+    — support GFM (tables, tasklists, strikethrough, autolink literals)
 *   🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
     — add a table of contributors based on Git history, options, and more
 *   🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
@@ -257,7 +261,7 @@ The list of plugins:
     — new syntax for variables
 *   🟢 [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
     — compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
-*   ⚠️ [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
+*   🟢 [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
     — new syntax for wiki links (rehype compatible)
 *   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark w/ YAML
