@@ -210,6 +210,9 @@ The list of plugins:
     — turn PlantUML code blocks to images
 *   🟢 [`remark-slate`](https://github.com/hanford/remark-slate)
     — compile Markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
+*   🟢 [`remark-slate-transformer`](https://github.com/inokawa/remark-slate-transformer)
+    — compile markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
+    and Slate nodes to markdown
 *   🟢 [`remark-slug`](https://github.com/remarkjs/remark-slug)
     — add anchors to headings using GitHub’s algorithm
 *   🟢 [`remark-smartypants`](https://github.com/silvenon/remark-smartypants)
