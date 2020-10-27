@@ -94,8 +94,6 @@ The list of plugins:
     — add `target` and `rel` attributes to external links
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
-*   🟢 [`remark-extract-toc`](https://github.com/inokawa/remark-extract-toc)
-    — store table of contents
 *   🔴 [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
     — new syntax for Pandoc’s `fenced_divs` support (new node type, rehype
     compatible)
