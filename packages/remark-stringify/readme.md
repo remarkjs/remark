@@ -148,9 +148,9 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 <!-- Definitions -->
 
-[build-badge]: https://img.shields.io/travis/remarkjs/remark.svg
+[build-badge]: https://github.com/remarkjs/remark/workflows/main/badge.svg
 
-[build]: https://travis-ci.org/remarkjs/remark
+[build]: https://github.com/remarkjs/remark/actions
 
 [coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
 
