@@ -197,6 +197,8 @@ The list of plugins:
     — transform to [rehype](https://github.com/rehypejs/rehype)
 *   🟢 [`remark-relative-links`](https://github.com/zslabs/remark-relative-links)
     — change absolute URLs to relative ones
+*   🟢 [`remark-remove-comments`](https://github.com/alvinometric/remark-remove-comments)
+    — remove HTML comments from the processed output
 *   🟢 [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — transform to [retext](https://github.com/retextjs/retext)
 *   ⚠️ [`remark-ruby`](https://github.com/laysent/remark-ruby)
