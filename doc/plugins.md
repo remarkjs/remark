@@ -38,6 +38,7 @@ The list of plugins:
     — new syntax for abbreviations (new node type, rehype compatible)
 *   ⚠️ [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
     — new syntax for admonitions
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   ⚠️ [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
     — new syntax to align text or blocks (new node types, rehype
     compatible)
@@ -71,14 +72,17 @@ The list of plugins:
     — new syntax to ignore things
 *   ⚠️ [`remark-container`](https://github.com/zWingz/remark-container)
     — new syntax for containers
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   ⚠️ [`remark-containers`](https://github.com/Nevenall/remark-containers)
     — new syntax for containers
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
 *   🟢 [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
     — find and copy files linked files to a destination directory
 *   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — new syntax for custom blocks (new node types, rehype compatible)
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
     — change links and images to references w/ separate definitions
 *   ⚠️ [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
@@ -98,6 +102,7 @@ The list of plugins:
 *   ⚠️ [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
     — new syntax for Pandoc’s `fenced_divs` support (new node type, rehype
     compatible)
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
@@ -110,6 +115,7 @@ The list of plugins:
     — better support for Gemoji shortcodes
 *   ⚠️ [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
     — new syntax for the CommonMark generic directive extension
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
     — support GFM (tables, tasklists, strikethrough, autolink literals)
 *   🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
@@ -201,13 +207,14 @@ The list of plugins:
     — remove HTML comments from the processed output
 *   🟢 [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — transform to [retext](https://github.com/retextjs/retext)
-*   ⚠️ [`remark-ruby`](https://github.com/laysent/remark-ruby)
+*   🟢 [`remark-ruby`](https://github.com/laysent/remark-ruby)
     — new syntax for ruby (furigana)
 *   🟢 [`remark-sectionize`](https://github.com/jake-low/remark-sectionize)
     — wrap headings and subsequent content in section tags (new node type,
     rehype compatible)
 *   ⚠️ [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
     — new syntax for Wordpress- and Hugo-like shortcodes (new node type)
+    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
     — turn PlantUML code blocks to images
 *   🟢 [`remark-slate`](https://github.com/hanford/remark-slate)
@@ -350,3 +357,5 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 [collective]: https://opencollective.com/unified
 
 [create]: #creating-plugins
+
+[d]: https://github.com/remarkjs/remark-directive
