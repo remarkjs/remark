@@ -189,7 +189,7 @@ remark()
 
 <!-- Definitions -->
 
-[logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
+[logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
 
 [issues]: https://github.com/remarkjs/remark/issues
 

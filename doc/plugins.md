@@ -320,7 +320,7 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 <!--Definitions:-->
 
-[logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
+[logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
 
 [mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
 

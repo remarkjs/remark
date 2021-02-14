@@ -124,7 +124,7 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 <!-- Definitions -->
 
-[logo]: https://raw.githubusercontent.com/remarkjs/remark/4f6b3d7/logo.svg?sanitize=true
+[logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
 
 [build-badge]: https://github.com/remarkjs/remark/workflows/main/badge.svg
 
