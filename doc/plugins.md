@@ -255,7 +255,7 @@ The list of plugins:
     — truncate/shorten urls not manually named
 *   🟢 [`remark-twemoji`](https://github.com/madiodio/remark-twemoji)
     — turn emoji into [Twemoji](https://github.com/twitter/twemoji)
-*   🟢 [`remark-typedoc-symbol-links`](https://github.com/kamranayub/remark-typedoc-symbol-links)
+*   ⚠️ [`remark-typedoc-symbol-links`](https://github.com/kamranayub/remark-typedoc-symbol-links)
     — turn Typedoc symbol link expressions into Markdown links
 *   🟢 [`remark-typescript`](https://github.com/trevorblades/remark-typescript)
     — turn TypeScript code to JavaScript
