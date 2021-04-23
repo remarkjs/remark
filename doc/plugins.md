@@ -99,10 +99,6 @@ The list of plugins:
     — add `target` and `rel` attributes to external links
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
-*   ⚠️ [`remark-fenced-divs`](https://github.com/benabel/remark-fenced-divs)
-    — new syntax for Pandoc’s `fenced_divs` support (new node type, rehype
-    compatible)
-    (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
