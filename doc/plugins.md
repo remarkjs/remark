@@ -137,6 +137,8 @@ The list of plugins:
     — new syntax to create iframes (new node type, rehype compatible)
 *   🟢 [`remark-images`](https://github.com/remarkjs/remark-images)
     — add an improved image syntax
+*   🟢 [`remark-img-links`](https://github.com/Pondorasti/remark-img-links)
+    — prefix relative image paths with an absolute URL
 *   🟢 [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
     — change references and definitions to links and images
 *   🟢 [`remark-jargon`](https://github.com/freesewing/freesewing/tree/develop/packages/remark-jargon)
