@@ -1,14 +1,27 @@
 #!/usr/bin/env node
-'use strict'
+import {createRequire} from 'node:module'
+import start from 'unified-args'
+import {remark} from 'remark'
 
-var start = require('unified-args')
-var extensions = require('markdown-extensions')
-var processor = require('remark')
-var proc = require('remark/package.json')
-var cli = require('./package.json')
+const require = createRequire(import.meta.url)
+
+const proc = require('remark/package.json')
+const cli = require('./package.json')
+
+// To do: enable `markdown-extensions` once it supports ESM.
+const extensions = [
+  'md',
+  'markdown',
+  'mdown',
+  'mkdn',
+  'mkd',
+  'mdwn',
+  'mkdown',
+  'ron'
+]
 
 start({
-  processor: processor,
+  processor: remark,
   name: proc.name,
   description: cli.description,
   version: [
@@ -20,5 +33,5 @@ start({
   packageField: proc.name + 'Config',
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',
-  extensions: extensions
+  extensions
 })

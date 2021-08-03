@@ -1,9 +1,7 @@
-'use strict'
+import test from 'tape'
+import {remark} from './index.js'
 
-var test = require('tape')
-var remark = require('.')
-
-test('remark().processSync(value)', function (t) {
+test('remark', function (t) {
   t.equal(
     remark().processSync('*foo*').toString(),
     '*foo*\n',

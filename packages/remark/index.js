@@ -1,7 +1,5 @@
-'use strict'
+import unified from 'unified'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
 
-var unified = require('unified')
-var parse = require('remark-parse')
-var stringify = require('remark-stringify')
-
-module.exports = unified().use(parse).use(stringify).freeze()
+export const remark = unified().use(remarkParse).use(remarkStringify).freeze()

@@ -29,18 +29,19 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
   "files": [
-    "index.js",
-    "types/index.d.ts"
+    "index.js"
   ],
-  "types": "types/index.d.ts",
   "dependencies": {
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.0",
     "unified": "^9.1.0"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "node --conditions development test.js"
   },
   "xo": false
 }

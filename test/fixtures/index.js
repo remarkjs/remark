@@ -1,8 +1,6 @@
-'use strict'
-
-var fs = require('fs')
-var path = require('path')
-var camelcase = require('camelcase')
+import fs from 'fs'
+import path from 'path'
+import camelcase from 'camelcase'
 
 // See <https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options>
 var defaults = {
@@ -22,16 +20,18 @@ var defaults = {
   tightDefinitions: false
 }
 
-module.exports = fs
-  .readdirSync(path.join(__dirname, 'input'))
+export const fixtures = fs
+  .readdirSync(path.join('test', 'fixtures', 'input'))
   .filter(function (filepath) {
     return filepath.indexOf('.') !== 0
   })
   .map(function (basename) {
     var stem = path.basename(basename, path.extname(basename))
     var settings = parseOptions(stem.replace(/-asterisk-/g, '*'))
-    var input = String(fs.readFileSync(path.join(__dirname, 'input', basename)))
-    var treePath = path.join(__dirname, 'tree', stem + '.json')
+    var input = String(
+      fs.readFileSync(path.join('test', 'fixtures', 'input', basename))
+    )
+    var treePath = path.join('test', 'fixtures', 'tree', stem + '.json')
     var tree
 
     if (fs.existsSync(treePath)) {
@@ -40,8 +40,8 @@ module.exports = fs
 
     return {
       name: basename,
-      input: input,
-      tree: tree,
+      input,
+      tree,
       stringify: settings.stringify,
       output: settings.output
     }
@@ -90,5 +90,5 @@ function augment(key, value) {
     value = Number(value)
   }
 
-  return {key: key, value: value}
+  return {key, value}
 }

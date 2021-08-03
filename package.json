@@ -9,6 +9,7 @@
     "type": "opencollective",
     "url": "https://opencollective.com/unified"
   },
+  "type": "module",
   "devDependencies": {
     "c8": "^7.0.0",
     "camelcase": "^6.0.0",
@@ -29,8 +30,7 @@
   "scripts": {
     "postinstall": "lerna bootstrap --no-ci",
     "format": "./packages/remark-cli/cli.js . -qfo && prettier . -w --loglevel warn && xo --fix",
-    "test-api": "tape \"packages/*/test.js\" \"test/index.js\"",
-    "test-api": "node --conditions development test/index.js",
+    "test-api": "node --conditions development test/index.js && lerna run test",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
     "test": "npm run format && npm run test-coverage"
   },
@@ -44,8 +44,10 @@
   },
   "xo": {
     "prettier": true,
-    "esnext": false,
-    "rules": {},
+    "rules": {
+      "no-var": "off",
+      "prefer-arrow-callback": "off"
+    },
     "ignores": [
       "**/types"
     ]

@@ -1,10 +1,6 @@
-'use strict'
+import fromMarkdown from 'mdast-util-from-markdown'
 
-module.exports = parse
-
-var fromMarkdown = require('mdast-util-from-markdown')
-
-function parse(options) {
+export default function remarkParse(options) {
   var self = this
 
   this.Parser = parse

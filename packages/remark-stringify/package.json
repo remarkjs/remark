@@ -31,16 +31,17 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
     "Eugene Sharygin <eush77@gmail.com>"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
   "files": [
-    "index.js",
-    "types/index.d.ts"
+    "index.js"
   ],
-  "types": "types/index.d.ts",
   "dependencies": {
     "mdast-util-to-markdown": "^0.6.0"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "node --conditions development test.js"
   },
   "xo": false
 }

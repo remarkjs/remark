@@ -1,10 +1,8 @@
-'use strict'
-
-var test = require('tape')
-var remove = require('unist-util-remove-position')
-var mdast = require('mdast-util-assert')
-var remark = require('../packages/remark/index.js')
-var fixtures = require('./fixtures/index.js')
+import test from 'tape'
+import remove from 'unist-util-remove-position'
+import mdast from 'mdast-util-assert'
+import {remark} from '../packages/remark/index.js'
+import {fixtures} from './fixtures/index.js'
 
 test('fixtures', function (t) {
   var index = -1

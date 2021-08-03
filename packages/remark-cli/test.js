@@ -1,16 +1,12 @@
-'use strict'
-
-var path = require('path')
-var execa = require('execa')
-var test = require('tape')
-
-var join = path.join
+import url from 'url'
+import execa from 'execa'
+import test from 'tape'
 
 test('remark-cli', function (t) {
   t.plan(2)
 
   t.test('should show help on `--help`', function (st) {
-    var bin = join('packages', 'remark-cli', 'cli.js')
+    const bin = url.fileURLToPath(new URL('./cli.js', import.meta.url))
 
     st.plan(1)
 
@@ -67,7 +63,7 @@ test('remark-cli', function (t) {
   })
 
   t.test('should show version on `--version`', function (st) {
-    var bin = join('packages', 'remark-cli', 'cli.js')
+    const bin = url.fileURLToPath(new URL('./cli.js', import.meta.url))
 
     st.plan(2)
 

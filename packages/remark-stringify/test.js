@@ -1,16 +1,13 @@
-'use strict'
+import test from 'tape'
+import unified from 'unified'
+import parse from '../remark-parse/index.js'
+import gfm from 'mdast-util-gfm/to-markdown.js'
+import remarkStringify from './index.js'
 
-var test = require('tape')
-var unified = require('unified')
-var parse = require('../remark-parse/index.js')
-var gfm = require('mdast-util-gfm/to-markdown')
-
-var stringify = require('.')
-
-test('remark().stringify(ast, file)', function (t) {
+test('remarkStringify', function (t) {
   t.equal(
     unified()
-      .use(stringify)
+      .use(remarkStringify)
       .stringify({
         type: 'root',
         children: [{type: 'html', value: '<!-- last line\n'}]
@@ -22,7 +19,7 @@ test('remark().stringify(ast, file)', function (t) {
 
   t.throws(
     function () {
-      unified().use(stringify).stringify(false)
+      unified().use(remarkStringify).stringify(false)
     },
     /false/,
     'should throw when `ast` is not an object'
@@ -30,7 +27,7 @@ test('remark().stringify(ast, file)', function (t) {
 
   t.throws(
     function () {
-      unified().use(stringify).stringify({type: 'unicorn'})
+      unified().use(remarkStringify).stringify({type: 'unicorn'})
     },
     /unicorn/,
     'should throw when `ast` is not a valid node'
@@ -39,7 +36,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {bullet: true})
         .stringify({type: 'listItem'})
     },
@@ -50,7 +47,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {listItemIndent: 'foo'})
         .stringify({type: 'listItem'})
     },
@@ -61,7 +58,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {rule: true})
         .stringify({type: 'thematicBreak'})
     },
@@ -72,7 +69,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {ruleRepetition: 1})
         .stringify({type: 'thematicBreak'})
     },
@@ -83,7 +80,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {ruleRepetition: true})
         .stringify({type: 'thematicBreak'})
     },
@@ -94,7 +91,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {emphasis: '-'})
         .stringify({type: 'emphasis'})
     },
@@ -105,7 +102,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {strong: '-'})
         .stringify({type: 'strong'})
     },
@@ -116,7 +113,7 @@ test('remark().stringify(ast, file)', function (t) {
   t.throws(
     function () {
       unified()
-        .use(stringify)
+        .use(remarkStringify)
         .data('settings', {fence: '-'})
         .stringify({type: 'code'})
     },
@@ -253,7 +250,7 @@ test('remark().stringify(ast, file)', function (t) {
     st.end()
 
     function toString(value) {
-      return String(unified().use(stringify).stringify(value))
+      return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
@@ -269,19 +266,19 @@ test('remark().stringify(ast, file)', function (t) {
     ]
 
     st.equal(
-      toString({type: 'listItem', children: children}),
+      toString({type: 'listItem', children}),
       '*   alpha\n\n    > bravo\n',
       'no spread'
     )
 
     st.equal(
-      toString({type: 'listItem', spread: true, children: children}),
+      toString({type: 'listItem', spread: true, children}),
       '*   alpha\n\n    > bravo\n',
       'spread: true'
     )
 
     st.equal(
-      toString({type: 'listItem', spread: false, children: children}),
+      toString({type: 'listItem', spread: false, children}),
       '*   alpha\n    > bravo\n',
       'spread: false'
     )
@@ -289,7 +286,7 @@ test('remark().stringify(ast, file)', function (t) {
     st.end()
 
     function toString(value) {
-      return String(unified().use(stringify).stringify(value))
+      return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
@@ -299,7 +296,7 @@ test('remark().stringify(ast, file)', function (t) {
     st.end()
 
     function toString(value) {
-      return String(unified().use(stringify).stringify(value))
+      return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
@@ -318,7 +315,7 @@ test('remark().stringify(ast, file)', function (t) {
       st.equal(
         unified()
           .use(parse)
-          .use(stringify)
+          .use(remarkStringify)
           .processSync(test[1] + '\n\n[bravo]: #\n')
           .toString(),
         test[1] + '\n\n[bravo]: #\n',
@@ -355,7 +352,7 @@ test('remark().stringify(ast, file)', function (t) {
     st.end()
 
     function toString(value) {
-      return String(unified().use(stringify).stringify(value))
+      return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
@@ -364,21 +361,21 @@ test('remark().stringify(ast, file)', function (t) {
 
     var example = '[example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified().use(parse).use(stringify).processSync(example).toString(),
+      unified().use(parse).use(remarkStringify).processSync(example).toString(),
       '<example@foo.com>\n',
       'url is `mailto:` plus link text'
     )
 
     example = '[mailto:example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified().use(parse).use(stringify).processSync(example).toString(),
+      unified().use(parse).use(remarkStringify).processSync(example).toString(),
       '<mailto:example@foo.com>\n',
       'url is link text'
     )
 
     example = '[example](mailto:example@foo.com)\n'
     st.equal(
-      unified().use(parse).use(stringify).processSync(example).toString(),
+      unified().use(parse).use(remarkStringify).processSync(example).toString(),
       example,
       'url is not link text'
     )
@@ -460,7 +457,7 @@ test('stringify escapes', function (t) {
 test('extensions', function (t) {
   var doc = unified()
     .data('toMarkdownExtensions', [gfm()])
-    .use(stringify)
+    .use(remarkStringify)
     .stringify({
       type: 'root',
       children: [
@@ -596,8 +593,8 @@ test('extensions', function (t) {
 function toString(value, options) {
   var tree =
     typeof value === 'string'
-      ? {type: 'paragraph', children: [{type: 'text', value: value}]}
+      ? {type: 'paragraph', children: [{type: 'text', value}]}
       : value
 
-  return unified().use(stringify, options).stringify(tree)
+  return unified().use(remarkStringify, options).stringify(tree)
 }

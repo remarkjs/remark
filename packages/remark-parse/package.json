@@ -16,7 +16,6 @@
     "ast",
     "parse"
   ],
-  "types": "types/index.d.ts",
   "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-parse",
   "bugs": "https://github.com/remarkjs/remark/issues",
@@ -32,15 +31,17 @@
     "Elijah Hamovitz <elijahhamovitz@gmail.com>",
     "Ika <ikatyang@gmail.com>"
   ],
+  "sideEffects": false,
+  "type": "module",
+  "main": "index.js",
   "files": [
-    "index.js",
-    "types/index.d.ts"
+    "index.js"
   ],
   "dependencies": {
     "mdast-util-from-markdown": "^0.8.0"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "node --conditions development test.js"
   },
   "xo": false
 }

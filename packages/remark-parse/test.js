@@ -1,16 +1,13 @@
-'use strict'
+import test from 'tape'
+import unified from 'unified'
+import gfmSyntax from 'micromark-extension-gfm'
+import gfm from 'mdast-util-gfm/from-markdown.js'
+import remove from 'unist-util-remove-position'
+import remarkParse from './index.js'
 
-var test = require('tape')
-var unified = require('unified')
-var gfmSyntax = require('micromark-extension-gfm')
-var gfm = require('mdast-util-gfm/from-markdown')
-var remove = require('unist-util-remove-position')
-
-var parse = require('.')
-
-test('remark().parse(file)', function (t) {
+test('remarkParse', function (t) {
   t.equal(
-    unified().use(parse).parse('Alfred').children.length,
+    unified().use(remarkParse).parse('Alfred').children.length,
     1,
     'should accept a `string`'
   )
@@ -19,7 +16,7 @@ test('remark().parse(file)', function (t) {
     var tree = unified()
       .data('micromarkExtensions', [gfmSyntax()])
       .data('fromMarkdownExtensions', [gfm])
-      .use(parse)
+      .use(remarkParse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
 
     remove(tree, true)

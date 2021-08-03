@@ -22,6 +22,8 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
+  "type": "module",
+  "main": "index.js",
   "bin": {
     "remark": "cli.js"
   },
@@ -29,12 +31,11 @@
     "cli.js"
   ],
   "dependencies": {
-    "markdown-extensions": "^1.1.0",
     "remark": "^13.0.0",
     "unified-args": "^8.0.0"
   },
   "scripts": {
-    "test": "tape test.js"
+    "test": "node --conditions development test.js"
   },
   "xo": false
 }

@@ -1,10 +1,6 @@
-'use strict'
+import toMarkdown from 'mdast-util-to-markdown'
 
-module.exports = stringify
-
-var toMarkdown = require('mdast-util-to-markdown')
-
-function stringify(options) {
+export default function remarkStringify(options) {
   var self = this
 
   this.Compiler = compile
