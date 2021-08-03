@@ -2,8 +2,8 @@
 
 var fs = require('fs')
 var path = require('path')
-var remark = require('../packages/remark')
-var fixtures = require('../test/fixtures')
+var remark = require('../packages/remark/index.js')
+var fixtures = require('../test/fixtures/index.js')
 
 var base = path.join('test', 'fixtures', 'tree')
 var generated = []

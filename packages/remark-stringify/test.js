@@ -2,7 +2,7 @@
 
 var test = require('tape')
 var unified = require('unified')
-var parse = require('../remark-parse')
+var parse = require('../remark-parse/index.js')
 var gfm = require('mdast-util-gfm/to-markdown')
 
 var stringify = require('.')

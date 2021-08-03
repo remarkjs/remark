@@ -3,8 +3,8 @@
 var test = require('tape')
 var remove = require('unist-util-remove-position')
 var mdast = require('mdast-util-assert')
-var remark = require('../packages/remark')
-var fixtures = require('./fixtures')
+var remark = require('../packages/remark/index.js')
+var fixtures = require('./fixtures/index.js')
 
 test('fixtures', function (t) {
   var index = -1
