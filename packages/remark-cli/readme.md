@@ -11,7 +11,7 @@ Command line interface for [**remark**][remark].
 
 *   Interface by [`unified-args`][unified-args]
 *   Loads [`remark-` plugins][plugins]
-*   Searches for [Markdown extensions][markdown-extensions]
+*   Searches for [markdown extensions][markdown-extensions]
 *   Ignores paths found in [`.remarkignore` files][ignore-file]
 *   Loads configuration from [`.remarkrc`, `.remarkrc.js` files][config-file]
 *   Uses configuration from [`remarkConfig` fields in `package.json`
@@ -31,8 +31,8 @@ npm install remark-cli
 # Add a table of contents to `readme.md`
 $ remark readme.md --use toc --output
 
-# Lint Markdown files in the current directory
-# according to the Markdown style guide.
+# Lint markdown files in the current directory
+# according to the markdown style guide.
 $ remark . --use preset-lint-markdown-style-guide
 ```
 
@@ -44,7 +44,7 @@ info on all available options.
 ```txt
 Usage: remark [options] [path | glob ...]
 
-  CLI to process Markdown with remark
+  CLI to process markdown with remark
 
 Options:
 
@@ -88,7 +88,7 @@ Examples:
 
 ## Security
 
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+As markdown is sometimes used for HTML, and improper use of HTML can open you up
 to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
 When going to HTML, use remark in combination with the [**rehype**][rehype]
 ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.

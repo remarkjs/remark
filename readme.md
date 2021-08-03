@@ -8,23 +8,23 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**remark** is a Markdown processor built on [micromark][] powered by
+**remark** is a markdown processor built on [micromark][] powered by
 [plugins][] part of the [unified][] collective.
 
 ## Intro
 
-**remark** is [the world’s most popular Markdown parser][popular]!
+**remark** is [the world’s most popular markdown parser][popular]!
 And it does so much more than parse: it inspects (check, lint) and transforms
-(generate, compile) Markdown too!
+(generate, compile) markdown too!
 
-Everything is possible with plugins, such as [checking Markdown code
+Everything is possible with plugins, such as [checking markdown code
 style (`remark-lint`)][remark-lint], [transforming safely to React
 (`remark-react`)][remark-react], [adding a table of
 contents (`remark-toc`)][remark-toc], or [compiling to man pages
 (`remark-man`)][remark-man].
 
 Internally, remark now uses [micromark][], a new, fast, and tiny CommonMark
-compliant Markdown tokenizer.
+compliant markdown tokenizer.
 It can be GFM compliant with [`remark-gfm`][remark-gfm].
 
 Finally, remark is part of the [unified][website] [collective][governance].
@@ -41,14 +41,14 @@ Learn more about us:
 
 This repository contains the following packages:
 
-*   [`remark-parse`][parse] — Parse Markdown to syntax trees
-*   [`remark-stringify`][stringify] — Serialize syntax trees to Markdown
+*   [`remark-parse`][parse] — Parse markdown to syntax trees
+*   [`remark-stringify`][stringify] — Serialize syntax trees to markdown
 *   [`remark`][api] — Programmatic interface with both `remark-parse` and `remark-stringify`
 *   [`remark-cli`][cli] — Command line interface wrapping `remark`
 
 ## Security
 
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+As markdown is sometimes used for HTML, and improper use of HTML can open you up
 to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
 When going to HTML, use remark in combination with the [**rehype**][rehype]
 ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.

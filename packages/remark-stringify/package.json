@@ -1,7 +1,7 @@
 {
   "name": "remark-stringify",
   "version": "9.0.1",
-  "description": "remark plugin to compile Markdown",
+  "description": "remark plugin to compile markdown",
   "license": "MIT",
   "keywords": [
     "unified",

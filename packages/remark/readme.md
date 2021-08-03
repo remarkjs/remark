@@ -8,22 +8,25 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-[**unified**][unified] processor to parse and serialize Markdown.
+[**unified**][unified] processor to parse and serialize markdown.
 Built on [micromark][].
 Powered by [plugins][].
 Part of the [unified][] collective.
 
 *   API by [**unified**][unified]
-*   Parses Markdown to a syntax tree with [`remark-parse`][parse]
+*   Parses markdown to a syntax tree with [`remark-parse`][parse]
 *   [**mdast**][mdast] syntax tree
 *   [Plugins][] transform the tree
-*   Serializes syntax trees to Markdown with [`remark-stringify`][stringify]
+*   Serializes syntax trees to markdown with [`remark-stringify`][stringify]
 
 Don’t need the parser?
 Or compiler?
 [That’s OK: use **unified** directly][unified-usage].
 
 ## Install
+
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
 
 [npm][]:
 
@@ -37,19 +40,20 @@ npm install remark
 
 ###### Common example
 
-This example lints Markdown and turns it into HTML.
+This example lints markdown and turns it into HTML.
 
 ```js
-var remark = require('remark')
-var recommended = require('remark-preset-lint-recommended')
-var html = require('remark-html')
-var report = require('vfile-reporter')
+import {reporter} from 'vfile-reporter'
+import {remark} from 'remark'
+import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
+import remarkHtml from 'remark-html'
 
 remark()
-  .use(recommended)
-  .use(html)
-  .process('## Hello world!', function (err, file) {
-    console.error(report(err || file))
+  .use(remarkPresetLintRecommended)
+  .use(remarkHtml)
+  .process('## Hello world!')
+  .then((file) => {
+    console.error(reporter(file))
     console.log(String(file))
   })
 ```
@@ -57,7 +61,7 @@ remark()
 Yields:
 
 ```txt
-1:1  warning  Missing newline character at end of file  final-newline  remark-lint
+  1:1  warning  Missing newline character at end of file  final-newline  remark-lint
 
 ⚠ 1 warning
 ```
@@ -68,16 +72,16 @@ Yields:
 
 ###### Settings through data
 
-This example prettifies Markdown and configures [`remark-stringify`][stringify]
+This example prettifies markdown and configures [`remark-stringify`][stringify]
 through [data][].
 
 ```js
-var remark = require('remark')
+import {remark} from 'remark'
 
 remark()
   .data('settings', {emphasis: '*', strong: '*'})
-  .process('_Emphasis_ and __importance__', function (err, file) {
-    if (err) throw err
+  .process('_Emphasis_ and __importance__')
+  .then((file) => {
     console.log(String(file))
   })
 ```
@@ -90,16 +94,16 @@ Yields:
 
 ###### Settings through a preset
 
-This example prettifies Markdown and configures [`remark-parse`][parse] and
+This example prettifies markdown and configures [`remark-parse`][parse] and
 [`remark-stringify`][stringify] through a [preset][].
 
 ```js
-var remark = require('remark')
+import {remark} from 'remark'
 
 remark()
   .use({settings: {emphasis: '*', strong: '*'}})
-  .process('_Emphasis_ and __importance__', function (err, file) {
-    if (err) throw err
+  .process('_Emphasis_ and __importance__')
+  .then((file) => {
     console.log(String(file))
   })
 ```
@@ -114,9 +118,12 @@ Yields:
 
 [See **unified** for API docs »][unified]
 
+This package exports the following identifier: `remark`.
+There is no default export.
+
 ## Security
 
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+As markdown is sometimes used for HTML, and improper use of HTML can open you up
 to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
 When going to HTML, use remark in combination with the [**rehype**][rehype]
 ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.

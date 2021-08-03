@@ -2,7 +2,7 @@
 
 # Getting started
 
-**remark** transforms Markdown.
+**remark** transforms markdown.
 It’s an ecosystem of [plugins][].
 If you get stuck, [issues][] and [Discussions][] are good places to get help.
 
@@ -17,7 +17,7 @@ It’s built on [unified][], make sure to read it and its [website][] too.
 
 ## Intro
 
-Out of the box, **remark** transforms Markdown: Markdown is given, reformatted,
+Out of the box, **remark** transforms markdown: markdown is given, reformatted,
 and written:
 
 ```md
@@ -40,7 +40,7 @@ But, much more can be done, [through plugins][plugins].
 
 ## Command line
 
-**remark**’s CLI is a simple way to process Markdown files from the
+**remark**’s CLI is a simple way to process markdown files from the
 command line.  Its interface is provided by [**unified-args**][unified-args].
 
 Install [`remark-cli`][cli] and dependencies (in this case a [linting
@@ -74,9 +74,9 @@ readme.md.md
 
 ## Using remark in a project
 
-In the previous example, `remark-cli` was installed globally.  That’s
-generally a bad idea.  Here we’re going to use the CLI to lint
-an npm package.
+In the previous example, `remark-cli` was installed globally.
+That’s generally a bad idea.
+Here we’re going to use the CLI to lint an npm package.
 
 Say we have the following `package.json`:
 
@@ -84,6 +84,7 @@ Say we have the following `package.json`:
 {
   "name": "my-package",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "test": "node test.js"
   }
@@ -103,10 +104,11 @@ The `--save-dev` option stores the dependencies in our `package.json`:
  {
    "name": "my-package",
    "version": "1.0.0",
+   "type": "module",
 +  "devDependencies": {
-+    "remark-cli": "^9.0.0",
-+    "remark-html": "^13.0.0",
-+    "remark-preset-lint-markdown-style-guide": "^4.0.0"
++    "remark-cli": "^10.0.0",
++    "remark-html": "^14.0.0",
++    "remark-preset-lint-markdown-style-guide": "^5.0.0"
 +  },
    "scripts": {
      "test": "node test.js"
@@ -121,10 +123,11 @@ configuration:
  {
    "name": "my-package",
    "version": "1.0.0",
+   "type": "module",
    "devDependencies": {
-     "remark-cli": "^9.0.0",
-     "remark-html": "^13.0.0",
-     "remark-preset-lint-markdown-style-guide": "^4.0.0"
+     "remark-cli": "^10.0.0",
+     "remark-html": "^14.0.0",
+     "remark-preset-lint-markdown-style-guide": "^5.0.0"
    },
    "scripts": {
 -    "test": "node test.js"
@@ -145,15 +148,16 @@ Now from the command line we can run:
 npm test
 ```
 
-This will lint all Markdown files when we test the project.
+This will lint all markdown files when we test the project.
 [`--frail`][frail] ensures the command fails if a code-style violation
 is found, and [`--quiet`][quiet] hides successful files from the report.
 
 ## Programmatic usage
 
 The programmatic interface of **remark** is provided by
-[**unified**][unified].  In fact, [`remark`][api] is two plugins:
-[`remark-parse`][parse] and [`remark-stringify`][stringify].
+[**unified**][unified].
+In fact, [`remark`][api] is two plugins: [`remark-parse`][parse] and
+[`remark-stringify`][stringify].
 
 Install [`remark`][api] and dependencies with [npm][]:
 
@@ -164,16 +168,17 @@ npm install vfile-reporter remark remark-html remark-preset-lint-markdown-style-
 `index.js` contains:
 
 ```js
-var remark = require('remark')
-var styleGuide = require('remark-preset-lint-markdown-style-guide')
-var html = require('remark-html')
-var report = require('vfile-reporter')
+import {reporter} from 'vfile-reporter'
+import {remark} from 'remark'
+import remarkPresetLintMarkdownStyleGuide from 'remark-preset-lint-markdown-style-guide'
+import remarkHtml from 'remark-html'
 
 remark()
-  .use(styleGuide)
-  .use(html)
-  .process('_Hello_.', function (err, file) {
-    console.error(report(err || file))
+  .use(remarkPresetLintMarkdownStyleGuide)
+  .use(remarkHtml)
+  .process('_Hello_.')
+  .then((file) => {
+    console.error(reporter(file))
     console.log(String(file))
   })
 ```

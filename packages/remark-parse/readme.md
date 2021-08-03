@@ -9,13 +9,16 @@
 [![Chat][chat-badge]][chat]
 
 [Parser][] for [**unified**][unified].
-Parses Markdown to [**mdast**][mdast] syntax trees.
+Parses markdown to [**mdast**][mdast] syntax trees.
 Built on [`micromark`][micromark] and
 [`mdast-util-from-markdown`][from-markdown].
 Used in the [**remark** processor][remark] but can be used on its own as well.
-Can be [extended][extend] to change how Markdown is parsed.
+Can be [extended][extend] to change how markdown is parsed.
 
 ## Install
+
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
 
 [npm][]:
 
@@ -26,15 +29,28 @@ npm install remark-parse
 ## Use
 
 ```js
-var unified = require('unified')
-var createStream = require('unified-stream')
-var markdown = require('remark-parse')
-var remark2rehype = require('remark-rehype')
-var html = require('rehype-stringify')
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeStringify from 'rehype-stringify'
 
-var processor = unified().use(markdown).use(remark2rehype).use(html)
+unified()
+  .use(remarkParse)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeStringify)
+  .process('# Hi\n\n*Hello*, world!')
+  .then((file) => {
+    console.log(String(file))
+  })
+```
 
-process.stdin.pipe(createStream(processor)).pipe(process.stdout)
+Yields:
+
+```html
+<h1>Hi</h1>
+<p><em>Hello</em>, world!</p>
 ```
 
 [See **unified** for more examples »][unified]
@@ -43,9 +59,12 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 [See **unified** for API docs »][unified]
 
-### `processor().use(parse)`
+This package exports no identifiers.
+The default export is `remarkParse`.
 
-Configure the `processor` to read Markdown as input and process
+### `unified().use(remarkParse)`
+
+Configure the `processor` to read markdown as input and process
 [**mdast**][mdast] syntax trees.
 
 ## Extending the parser
@@ -55,7 +74,7 @@ Then create a wrapper plugin such as [`remark-gfm`][gfm].
 
 ## Security
 
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+As markdown is sometimes used for HTML, and improper use of HTML can open you up
 to a [cross-site scripting (XSS)][xss] attack, use of remark can also be unsafe.
 When going to HTML, use remark in combination with the [**rehype**][rehype]
 ecosystem, and use [`rehype-sanitize`][sanitize] to make the tree safe.

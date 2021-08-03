@@ -9,11 +9,14 @@
 [![Backers][backers-badge]][collective]
 
 [Compiler][] for [**unified**][unified].
-Serializes [**mdast**][mdast] syntax trees to Markdown.
+Serializes [**mdast**][mdast] syntax trees to markdown.
 Used in the [**remark** processor][remark] but can be used on its own as well.
-Can be [extended][extend] to change how Markdown is serialized.
+Can be [extended][extend] to change how markdown is serialized.
 
 ## Install
+
+This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c):
+Node 12+ is needed to use it and it must be `import`ed instead of `require`d.
 
 [npm][]:
 
@@ -24,20 +27,30 @@ npm install remark-stringify
 ## Use
 
 ```js
-var unified = require('unified')
-var createStream = require('unified-stream')
-var html = require('rehype-parse')
-var rehype2remark = require('rehype-remark')
-var stringify = require('remark-stringify')
+import {unified} from 'unified'
+import rehypeParse from 'rehype-parse'
+import rehypeRemark from 'rehype-remark'
+import remarkStringify from 'remark-stringify'
 
-var processor = unified().use(html).use(rehype2remark).use(stringify, {
-  bullet: '*',
-  fence: '~',
-  fences: true,
-  incrementListMarker: false
-})
+unified()
+  .use(rehypeParse)
+  .use(rehypeRemark)
+  .use(remarkStringify, {
+    bullet: '*',
+    fence: '~',
+    fences: true,
+    incrementListMarker: false
+  })
+  .process('<h1>Hello, world!</h1>')
+  .then((file) => {
+    console.log(String(file))
+  })
+```
 
-process.stdin.pipe(createStream(processor)).pipe(process.stdout)
+Yields:
+
+```markdown
+# Hello, world!
 ```
 
 [See **unified** for more examples »][unified]
@@ -46,14 +59,17 @@ process.stdin.pipe(createStream(processor)).pipe(process.stdout)
 
 [See **unified** for API docs »][unified]
 
-### `processor().use(stringify[, options])`
+This package exports no identifiers.
+The default export is `remarkStringify`.
+
+### `unified().use(remarkStringify[, options])`
 
 Configure the `processor` to serialize [**mdast**][mdast] syntax trees to
-Markdown.
+markdown.
 
 ###### `options`
 
-Options can be passed directly, or passed later through
+Options can be passed directly or passed later through
 [`processor.data()`][data].
 
 All the formatting options of [`mdast-util-to-markdown`][to-markdown-options]
@@ -71,10 +87,10 @@ tree, but there are several cases where that is impossible.
 It’ll do its best, but complete roundtripping is impossible given that any
 value could be injected into the tree.
 
-As Markdown is sometimes used for HTML, and improper use of HTML can open you up
+As markdown is sometimes used for HTML, and improper use of HTML can open you up
 to a [cross-site scripting (XSS)][xss] attack, use of `remark-stringify` and
 parsing it again later can potentially be unsafe.
-When parsing Markdown afterwards, use remark in combination with the
+When parsing markdown afterwards, use remark in combination with the
 [**rehype**][rehype] ecosystem, and use [`rehype-sanitize`][sanitize] to make
 the tree safe.
 

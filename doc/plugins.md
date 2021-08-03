@@ -2,7 +2,7 @@
 
 # Plugins
 
-**remark** is a Markdown processor powered by plugins part of the [unified][]
+**remark** is a markdown processor powered by plugins part of the [unified][]
 [collective][].
 
 ## Contents
@@ -43,7 +43,7 @@ The list of plugins:
     — new syntax to align text or blocks (new node types, rehype
     compatible)
 *   ⚠️ [`remark-attr`](https://github.com/arobase-che/remark-attr)
-    — new syntax to add attributes to Markdown
+    — new syntax to add attributes to markdown
 *   🟢 [`remark-autolink-headings`](https://github.com/remarkjs/remark-autolink-headings)
     — add GitHub-style links to headings
 *   🟢 [`remark-behead`](https://github.com/mrzmmr/remark-behead)
@@ -130,7 +130,7 @@ The list of plugins:
 *   🟢 [`remark-hint`](https://github.com/sergioramos/remark-hint)
     — add hints/tips/warnings to markdown
 *   🟢 [`remark-html`](https://github.com/remarkjs/remark-html)
-    — serialize Markdown as HTML
+    — serialize markdown as HTML
 *   🟢 [`remark-html-katex`](https://github.com/remarkjs/remark-math/tree/HEAD/packages/remark-html-katex#readme)
     — change inline and block math to equations w/ [KaTeX](https://github.com/Khan/KaTeX)
 *   ⚠️ [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
@@ -155,11 +155,11 @@ The list of plugins:
 *   🟢 [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
     — change text matching a regex to links
 *   🟢 [`remark-lint`](https://github.com/remarkjs/remark-lint)
-    — check Markdown code style
+    — check markdown code style
 *   🟢 [`remark-macro`](https://github.com/dimerapp/remark-macro)
     — support for block macros (new node types, rehype compatible)
 *   🟢 [`remark-man`](https://github.com/remarkjs/remark-man)
-    — serialize Markdown as man pages (roff)
+    — serialize markdown as man pages (roff)
 *   🟢 [`remark-math`](https://github.com/remarkjs/remark-math)
     — new syntax for math (new node types, rehype compatible)
 *   🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
@@ -187,13 +187,13 @@ The list of plugins:
     — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
     Prism plugins)
 *   🟢 [`remark-react`](https://github.com/remarkjs/remark-react)
-    — compile Markdown to [React](https://github.com/facebook/react)
+    — compile markdown to [React](https://github.com/facebook/react)
 *   🟢 [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
     — highlight code blocks for `remark-react` w/ [CodeMirror](https://codemirror.net)
 *   ⚠️ [`remark-redact`](https://github.com/seafoam6/remark-redact)
     — new syntax to conceal text matching a regex
 *   🟢 [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
-    — write plugins to redact content from a Markdown document,
+    — write plugins to redact content from a markdown document,
     then restore it later
 *   🟢 [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
     — transform links and images into references and definitions
@@ -216,7 +216,7 @@ The list of plugins:
 *   🟢 [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
     — turn PlantUML code blocks to images
 *   🟢 [`remark-slate`](https://github.com/hanford/remark-slate)
-    — compile Markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
+    — compile markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
 *   🟢 [`remark-slate-transformer`](https://github.com/inokawa/remark-slate-transformer)
     — compile markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
     and Slate nodes to markdown
@@ -246,7 +246,7 @@ The list of plugins:
 *   🟢 [`remark-toc`](https://github.com/remarkjs/remark-toc)
     — add a table of contents
 *   🟢 [`remark-tree-sitter`](https://github.com/samlanning/remark-tree-sitter)
-    — highlight code blocks in Markdown files using
+    — highlight code blocks in markdown files using
     [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
     (rehype compatible)
 *   🟢 [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/HEAD/packages/remark-truncate-links)
@@ -254,7 +254,7 @@ The list of plugins:
 *   🟢 [`remark-twemoji`](https://github.com/madiodio/remark-twemoji)
     — turn emoji into [Twemoji](https://github.com/twitter/twemoji)
 *   🟢 [`remark-typedoc-symbol-links`](https://github.com/kamranayub/remark-typedoc-symbol-links)
-    — turn Typedoc symbol link expressions into Markdown links
+    — turn Typedoc symbol link expressions into markdown links
 *   🟢 [`remark-typescript`](https://github.com/trevorblades/remark-typescript)
     — turn TypeScript code to JavaScript
 *   🟢 [`remark-typograf`](https://github.com/mavrin/remark-typograf)
@@ -272,7 +272,7 @@ The list of plugins:
 *   ⚠️ [`remark-variables`](https://github.com/mrzmmr/remark-variables)
     — new syntax for variables
 *   🟢 [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
-    — compile Markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
+    — compile markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
 *   🟢 [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
     — new syntax for wiki links (rehype compatible)
 *   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
