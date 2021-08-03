@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "13.0.0",
+  "version": "14.0.0",
   "description": "Markdown processor powered by plugins part of the unified collective",
   "license": "MIT",
   "keywords": [
@@ -38,8 +38,8 @@
     "index.js"
   ],
   "dependencies": {
-    "remark-parse": "^9.0.0",
-    "remark-stringify": "^9.0.0",
+    "remark-parse": "^10.0.0",
+    "remark-stringify": "^10.0.0",
     "unified": "^10.0.0"
   },
   "scripts": {
