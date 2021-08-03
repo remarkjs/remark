@@ -5,8 +5,10 @@ import {fixtures} from '../test/fixtures/index.js'
 
 const base = path.join('test', 'fixtures', 'tree')
 const generated = []
+let index = -1
 
-fixtures.forEach((fixture) => {
+while (++index < fixtures.length) {
+  const fixture = fixtures[index]
   const stem = path.basename(fixture.name, path.extname(fixture.name))
   const input = fixture.input
   let result
@@ -24,10 +26,14 @@ fixtures.forEach((fixture) => {
   )
 
   generated.push(stem + '.json')
-})
+}
 
-fs.readdirSync(base).forEach((basename) => {
+const files = fs.readdirSync(base)
+index = -1
+
+while (++index < files.length) {
+  const basename = files[index]
   if (basename.charAt(0) !== '.' && !generated.includes(basename)) {
     console.warn('Unused fixture: `%s`', basename)
   }
-})
+}

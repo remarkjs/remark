@@ -310,8 +310,11 @@ test('remarkStringify', (t) => {
       ['capitalized image references - collapsed', '![Bravo][]'],
       ['capitalized image references - shortcut', '![Bravo]']
     ]
+    let index = -1
 
-    tests.forEach((test) => {
+    while (++index < tests.length) {
+      const test = tests[index]
+
       t.equal(
         unified()
           .use(remarkParse)
@@ -321,7 +324,7 @@ test('remarkStringify', (t) => {
         test[1] + '\n\n[bravo]: #\n',
         test[0]
       )
-    })
+    }
 
     t.end()
   })
