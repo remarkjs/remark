@@ -1,5 +1,2 @@
 coverage/
-remark.js
-remark.min.js
-*.json
 *.md

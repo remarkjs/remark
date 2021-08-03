@@ -2,7 +2,4 @@ node_modules/
 coverage/
 .DS_Store
 *.log
-/remark.js
-/remark.min.js
 yarn.lock
-package-lock.json
