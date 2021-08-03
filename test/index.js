@@ -1,6 +1,6 @@
 import test from 'tape'
-import remove from 'unist-util-remove-position'
-import mdast from 'mdast-util-assert'
+import {removePosition} from 'unist-util-remove-position'
+import {assert} from 'mdast-util-assert'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from './fixtures/index.js'
 
@@ -27,7 +27,7 @@ test('fixtures', function (t) {
 
       actualTree = remark().parse(fixture.input)
 
-      mdast(actualTree)
+      assert(actualTree)
 
       st.deepLooseEqual(
         actualTree,
@@ -42,9 +42,9 @@ test('fixtures', function (t) {
       if (fixture.output !== false) {
         reparsedTree = remark().parse(actualOutput)
 
-        mdast(reparsedTree)
-        remove(actualTree, true)
-        remove(reparsedTree, true)
+        assert(reparsedTree)
+        removePosition(actualTree, true)
+        removePosition(reparsedTree, true)
 
         st.deepEqual(
           actualTree,

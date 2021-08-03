@@ -1,8 +1,8 @@
 import test from 'tape'
-import unified from 'unified'
-import gfmSyntax from 'micromark-extension-gfm'
-import gfm from 'mdast-util-gfm/from-markdown.js'
-import remove from 'unist-util-remove-position'
+import {unified} from 'unified'
+import {gfm} from 'micromark-extension-gfm'
+import {gfmFromMarkdown} from 'mdast-util-gfm'
+import {removePosition} from 'unist-util-remove-position'
 import remarkParse from './index.js'
 
 test('remarkParse', function (t) {
@@ -14,12 +14,12 @@ test('remarkParse', function (t) {
 
   t.test('extensions', function (st) {
     var tree = unified()
-      .data('micromarkExtensions', [gfmSyntax()])
-      .data('fromMarkdownExtensions', [gfm])
+      .data('micromarkExtensions', [gfm()])
+      .data('fromMarkdownExtensions', [gfmFromMarkdown])
       .use(remarkParse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
 
-    remove(tree, true)
+    removePosition(tree, true)
 
     st.deepEqual(
       tree,

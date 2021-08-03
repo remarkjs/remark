@@ -1,7 +1,7 @@
 import test from 'tape'
-import unified from 'unified'
-import parse from '../remark-parse/index.js'
-import gfm from 'mdast-util-gfm/to-markdown.js'
+import {unified} from 'unified'
+import {gfmToMarkdown} from 'mdast-util-gfm'
+import remarkParse from '../remark-parse/index.js'
 import remarkStringify from './index.js'
 
 test('remarkStringify', function (t) {
@@ -314,7 +314,7 @@ test('remarkStringify', function (t) {
     tests.forEach(function (test) {
       st.equal(
         unified()
-          .use(parse)
+          .use(remarkParse)
           .use(remarkStringify)
           .processSync(test[1] + '\n\n[bravo]: #\n')
           .toString(),
@@ -361,21 +361,33 @@ test('remarkStringify', function (t) {
 
     var example = '[example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified().use(parse).use(remarkStringify).processSync(example).toString(),
+      unified()
+        .use(remarkParse)
+        .use(remarkStringify)
+        .processSync(example)
+        .toString(),
       '<example@foo.com>\n',
       'url is `mailto:` plus link text'
     )
 
     example = '[mailto:example@foo.com](mailto:example@foo.com)'
     st.equal(
-      unified().use(parse).use(remarkStringify).processSync(example).toString(),
+      unified()
+        .use(remarkParse)
+        .use(remarkStringify)
+        .processSync(example)
+        .toString(),
       '<mailto:example@foo.com>\n',
       'url is link text'
     )
 
     example = '[example](mailto:example@foo.com)\n'
     st.equal(
-      unified().use(parse).use(remarkStringify).processSync(example).toString(),
+      unified()
+        .use(remarkParse)
+        .use(remarkStringify)
+        .processSync(example)
+        .toString(),
       example,
       'url is not link text'
     )
@@ -456,7 +468,7 @@ test('stringify escapes', function (t) {
 
 test('extensions', function (t) {
   var doc = unified()
-    .data('toMarkdownExtensions', [gfm()])
+    .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(remarkStringify)
     .stringify({
       type: 'root',
