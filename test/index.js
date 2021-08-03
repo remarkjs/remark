@@ -4,14 +4,14 @@ import {assert} from 'mdast-util-assert'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from './fixtures/index.js'
 
-test('fixtures', function (t) {
-  var index = -1
+test('fixtures', (t) => {
+  let index = -1
 
   next()
 
   // Check the next fixture.
   function next() {
-    var fixture = fixtures[++index]
+    const fixture = fixtures[++index]
 
     if (!fixture) {
       t.end()
@@ -20,33 +20,29 @@ test('fixtures', function (t) {
 
     setImmediate(next) // Queue next.
 
-    t.test(fixture.name, function (st) {
-      var actualTree
-      var actualOutput
-      var reparsedTree
-
-      actualTree = remark().parse(fixture.input)
+    t.test(fixture.name, (t) => {
+      const actualTree = remark().parse(fixture.input)
 
       assert(actualTree)
 
-      st.deepLooseEqual(
+      t.deepLooseEqual(
         actualTree,
         fixture.tree,
         'should parse `' + fixture.name + '` correctly'
       )
 
-      actualOutput = remark()
+      const actualOutput = remark()
         .data('settings', fixture.stringify)
         .stringify(actualTree)
 
       if (fixture.output !== false) {
-        reparsedTree = remark().parse(actualOutput)
+        const reparsedTree = remark().parse(actualOutput)
 
         assert(reparsedTree)
         removePosition(actualTree, true)
         removePosition(reparsedTree, true)
 
-        st.deepEqual(
+        t.deepEqual(
           actualTree,
           reparsedTree,
           'should stringify `' + fixture.name + '`'
@@ -54,14 +50,14 @@ test('fixtures', function (t) {
       }
 
       if (fixture.output === true) {
-        st.equal(
+        t.equal(
           fixture.input,
           actualOutput,
           'should stringify `' + fixture.name + '` exact'
         )
       }
 
-      st.end()
+      t.end()
     })
   }
 })

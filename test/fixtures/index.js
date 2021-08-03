@@ -3,7 +3,7 @@ import path from 'path'
 import camelcase from 'camelcase'
 
 // See <https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options>
-var defaults = {
+const defaults = {
   bullet: '*',
   closeAtx: false,
   emphasis: '*',
@@ -22,17 +22,17 @@ var defaults = {
 
 export const fixtures = fs
   .readdirSync(path.join('test', 'fixtures', 'input'))
-  .filter(function (filepath) {
+  .filter((filepath) => {
     return filepath.indexOf('.') !== 0
   })
-  .map(function (basename) {
-    var stem = path.basename(basename, path.extname(basename))
-    var settings = parseOptions(stem.replace(/-asterisk-/g, '*'))
-    var input = String(
+  .map((basename) => {
+    const stem = path.basename(basename, path.extname(basename))
+    const settings = parseOptions(stem.replace(/-asterisk-/g, '*'))
+    const input = String(
       fs.readFileSync(path.join('test', 'fixtures', 'input', basename))
     )
-    var treePath = path.join('test', 'fixtures', 'tree', stem + '.json')
-    var tree
+    const treePath = path.join('test', 'fixtures', 'tree', stem + '.json')
+    let tree
 
     if (fs.existsSync(treePath)) {
       tree = JSON.parse(fs.readFileSync(treePath))
@@ -49,20 +49,16 @@ export const fixtures = fs
 
 // Parse options from a filename.
 function parseOptions(name) {
-  var index = -1
-  var parts = name.split('.')
-  var length = parts.length
-  var options = {stringify: Object.assign({}, defaults)}
-  var part
-  var augmented
-  var key
-  var value
+  const parts = name.split('.')
+  const length = parts.length
+  const options = {stringify: Object.assign({}, defaults)}
+  let index = -1
 
   while (++index < length) {
-    part = parts[index].split('=')
-    augmented = augment(part[0], part.slice(1).join('='))
-    key = augmented.key
-    value = augmented.value
+    const part = parts[index].split('=')
+    const augmented = augment(part[0], part.slice(1).join('='))
+    const key = augmented.key
+    const value = augmented.value
 
     if (key === 'output') {
       options[key] = value

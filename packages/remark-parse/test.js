@@ -5,15 +5,15 @@ import {gfmFromMarkdown} from 'mdast-util-gfm'
 import {removePosition} from 'unist-util-remove-position'
 import remarkParse from './index.js'
 
-test('remarkParse', function (t) {
+test('remarkParse', (t) => {
   t.equal(
     unified().use(remarkParse).parse('Alfred').children.length,
     1,
     'should accept a `string`'
   )
 
-  t.test('extensions', function (st) {
-    var tree = unified()
+  t.test('extensions', (t) => {
+    const tree = unified()
       .data('micromarkExtensions', [gfm()])
       .data('fromMarkdownExtensions', [gfmFromMarkdown])
       .use(remarkParse)
@@ -21,7 +21,7 @@ test('remarkParse', function (t) {
 
     removePosition(tree, true)
 
-    st.deepEqual(
+    t.deepEqual(
       tree,
       {
         type: 'root',
@@ -62,7 +62,7 @@ test('remarkParse', function (t) {
       'should work'
     )
 
-    st.end()
+    t.end()
   })
 
   t.end()

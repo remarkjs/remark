@@ -3,13 +3,13 @@ import path from 'path'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from '../test/fixtures/index.js'
 
-var base = path.join('test', 'fixtures', 'tree')
-var generated = []
+const base = path.join('test', 'fixtures', 'tree')
+const generated = []
 
-fixtures.forEach(function (fixture) {
-  var stem = path.basename(fixture.name, path.extname(fixture.name))
-  var input = fixture.input
-  var result
+fixtures.forEach((fixture) => {
+  const stem = path.basename(fixture.name, path.extname(fixture.name))
+  const input = fixture.input
+  let result
 
   try {
     result = remark().parse(input)
@@ -26,7 +26,7 @@ fixtures.forEach(function (fixture) {
   generated.push(stem + '.json')
 })
 
-fs.readdirSync(base).forEach(function (basename) {
+fs.readdirSync(base).forEach((basename) => {
   if (basename.charAt(0) !== '.' && !generated.includes(basename)) {
     console.warn('Unused fixture: `%s`', basename)
   }

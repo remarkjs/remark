@@ -1,19 +1,15 @@
 import {fromMarkdown} from 'mdast-util-from-markdown'
 
 export default function remarkParse(options) {
-  var self = this
-
-  this.Parser = parse
-
-  function parse(doc) {
+  this.Parser = (doc) => {
     return fromMarkdown(
       doc,
-      Object.assign({}, self.data('settings'), options, {
+      Object.assign({}, this.data('settings'), options, {
         // Note: these options are not in the readme.
         // The goal is for them to be set by plugins on `data` instead of being
         // passed by users.
-        extensions: self.data('micromarkExtensions') || [],
-        mdastExtensions: self.data('fromMarkdownExtensions') || []
+        extensions: this.data('micromarkExtensions') || [],
+        mdastExtensions: this.data('fromMarkdownExtensions') || []
       })
     )
   }

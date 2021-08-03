@@ -4,7 +4,7 @@ import {gfmToMarkdown} from 'mdast-util-gfm'
 import remarkParse from '../remark-parse/index.js'
 import remarkStringify from './index.js'
 
-test('remarkStringify', function (t) {
+test('remarkStringify', (t) => {
   t.equal(
     unified()
       .use(remarkStringify)
@@ -18,7 +18,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified().use(remarkStringify).stringify(false)
     },
     /false/,
@@ -26,7 +26,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified().use(remarkStringify).stringify({type: 'unicorn'})
     },
     /unicorn/,
@@ -34,7 +34,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {bullet: true})
@@ -45,7 +45,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {listItemIndent: 'foo'})
@@ -56,7 +56,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {rule: true})
@@ -67,7 +67,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {ruleRepetition: 1})
@@ -78,7 +78,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {ruleRepetition: true})
@@ -89,7 +89,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {emphasis: '-'})
@@ -100,7 +100,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {strong: '-'})
@@ -111,7 +111,7 @@ test('remarkStringify', function (t) {
   )
 
   t.throws(
-    function () {
+    () => {
       unified()
         .use(remarkStringify)
         .data('settings', {fence: '-'})
@@ -121,8 +121,8 @@ test('remarkStringify', function (t) {
     'should throw when `options.fence` is not a valid fence marker'
   )
 
-  t.test('should support optional list fields', function (st) {
-    st.equal(
+  t.test('should support optional list fields', (t) => {
+    t.equal(
       toString({
         type: 'list',
         children: [
@@ -138,7 +138,7 @@ test('remarkStringify', function (t) {
       'no ordered, start, or spread'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'list',
         start: 2,
@@ -155,7 +155,7 @@ test('remarkStringify', function (t) {
       'start; no ordered or spread'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'list',
         spread: true,
@@ -178,7 +178,7 @@ test('remarkStringify', function (t) {
       'spread; no ordered or start'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -198,7 +198,7 @@ test('remarkStringify', function (t) {
       'ordered; no start or spread'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -222,7 +222,7 @@ test('remarkStringify', function (t) {
       'ordered and spread; no start'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -247,15 +247,15 @@ test('remarkStringify', function (t) {
       'ordered, spread, and start'
     )
 
-    st.end()
+    t.end()
 
     function toString(value) {
       return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
-  t.test('should support optional list item fields', function (st) {
-    var children = [
+  t.test('should support optional list item fields', (t) => {
+    const children = [
       {type: 'paragraph', children: [{type: 'text', value: 'alpha'}]},
       {
         type: 'blockquote',
@@ -265,44 +265,44 @@ test('remarkStringify', function (t) {
       }
     ]
 
-    st.equal(
+    t.equal(
       toString({type: 'listItem', children}),
       '*   alpha\n\n    > bravo\n',
       'no spread'
     )
 
-    st.equal(
+    t.equal(
       toString({type: 'listItem', spread: true, children}),
       '*   alpha\n\n    > bravo\n',
       'spread: true'
     )
 
-    st.equal(
+    t.equal(
       toString({type: 'listItem', spread: false, children}),
       '*   alpha\n    > bravo\n',
       'spread: false'
     )
 
-    st.end()
+    t.end()
 
     function toString(value) {
       return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
-  t.test('should support empty list items', function (st) {
-    st.equal(toString({type: 'listItem', children: []}), '*\n')
+  t.test('should support empty list items', (t) => {
+    t.equal(toString({type: 'listItem', children: []}), '*\n')
 
-    st.end()
+    t.end()
 
     function toString(value) {
       return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
-  t.test('should process references with casing properly', function (st) {
+  t.test('should process references with casing properly', (t) => {
     // Data-driven tests in the format: [name, value]
-    var tests = [
+    const tests = [
       ['capitalized link references - full', '[alpha][Bravo]'],
       ['capitalized link references - collapsed', '[Bravo][]'],
       ['capitalized link references - shortcut', '[Bravo]'],
@@ -311,8 +311,8 @@ test('remarkStringify', function (t) {
       ['capitalized image references - shortcut', '![Bravo]']
     ]
 
-    tests.forEach(function (test) {
-      st.equal(
+    tests.forEach((test) => {
+      t.equal(
         unified()
           .use(remarkParse)
           .use(remarkStringify)
@@ -323,17 +323,17 @@ test('remarkStringify', function (t) {
       )
     })
 
-    st.end()
+    t.end()
   })
 
-  t.test('should process associations without label', function (st) {
-    st.equal(
+  t.test('should process associations without label', (t) => {
+    t.equal(
       toString({type: 'definition', identifier: 'a', url: 'example.com'}),
       '[a]: example.com\n',
       'definition'
     )
 
-    st.equal(
+    t.equal(
       toString({
         type: 'linkReference',
         identifier: 'a',
@@ -343,52 +343,49 @@ test('remarkStringify', function (t) {
       'link reference'
     )
 
-    st.equal(
+    t.equal(
       toString({type: 'imageReference', identifier: 'a', alt: 'b'}),
       '![b][a]\n',
       'image reference'
     )
 
-    st.end()
+    t.end()
 
     function toString(value) {
       return String(unified().use(remarkStringify).stringify(value))
     }
   })
 
-  t.test('should stringify mailto links properly', function (st) {
-    st.plan(3)
+  t.test('should stringify mailto links properly', (t) => {
+    t.plan(3)
 
-    var example = '[example@foo.com](mailto:example@foo.com)'
-    st.equal(
+    t.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
-        .processSync(example)
+        .processSync('[example@foo.com](mailto:example@foo.com)')
         .toString(),
       '<example@foo.com>\n',
       'url is `mailto:` plus link text'
     )
 
-    example = '[mailto:example@foo.com](mailto:example@foo.com)'
-    st.equal(
+    t.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
-        .processSync(example)
+        .processSync('[mailto:example@foo.com](mailto:example@foo.com)')
         .toString(),
       '<mailto:example@foo.com>\n',
       'url is link text'
     )
 
-    example = '[example](mailto:example@foo.com)\n'
-    st.equal(
+    t.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
-        .processSync(example)
+        .processSync('[example](mailto:example@foo.com)\n')
         .toString(),
-      example,
+      '[example](mailto:example@foo.com)\n',
       'url is not link text'
     )
   })
@@ -396,7 +393,7 @@ test('remarkStringify', function (t) {
   t.end()
 })
 
-test('stringify escapes', function (t) {
+test('stringify escapes', (t) => {
   t.equal(toString('a\\b'), 'a\\b\n', '`\\`')
   t.equal(toString('a\\-b'), 'a\\\\-b\n', '`\\` followed by punctuation')
   t.equal(toString('a`b'), 'a\\`b\n', '`` ` ``')
@@ -466,8 +463,8 @@ test('stringify escapes', function (t) {
   t.end()
 })
 
-test('extensions', function (t) {
-  var doc = unified()
+test('extensions', (t) => {
+  const doc = unified()
     .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(remarkStringify)
     .stringify({
@@ -603,7 +600,7 @@ test('extensions', function (t) {
 })
 
 function toString(value, options) {
-  var tree =
+  const tree =
     typeof value === 'string'
       ? {type: 'paragraph', children: [{type: 'text', value}]}
       : value

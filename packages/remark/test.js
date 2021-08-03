@@ -1,7 +1,7 @@
 import test from 'tape'
 import {remark} from './index.js'
 
-test('remark', function (t) {
+test('remark', (t) => {
   t.equal(
     remark().processSync('*foo*').toString(),
     '*foo*\n',

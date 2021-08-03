@@ -2,16 +2,16 @@ import url from 'url'
 import execa from 'execa'
 import test from 'tape'
 
-test('remark-cli', function (t) {
+test('remark-cli', (t) => {
   t.plan(2)
 
-  t.test('should show help on `--help`', function (st) {
+  t.test('should show help on `--help`', (t) => {
     const bin = url.fileURLToPath(new URL('./cli.js', import.meta.url))
 
-    st.plan(1)
+    t.plan(1)
 
-    execa(bin, ['--help']).then(function (result) {
-      st.equal(
+    execa(bin, ['--help']).then((result) => {
+      t.equal(
         result.stdout,
         [
           'Usage: remark [options] [path | glob ...]',
@@ -62,18 +62,18 @@ test('remark-cli', function (t) {
     })
   })
 
-  t.test('should show version on `--version`', function (st) {
+  t.test('should show version on `--version`', (t) => {
     const bin = url.fileURLToPath(new URL('./cli.js', import.meta.url))
 
-    st.plan(2)
+    t.plan(2)
 
-    execa(bin, ['--version']).then(function (result) {
-      st.ok(
+    execa(bin, ['--version']).then((result) => {
+      t.ok(
         /remark: \d+\.\d+\.\d+/.test(result.stdout),
         'should include remark version'
       )
 
-      st.ok(
+      t.ok(
         /remark-cli: \d+\.\d+\.\d+/.test(result.stdout),
         'should include remark-cli version'
       )
