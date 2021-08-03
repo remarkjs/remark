@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
-import remark from '../packages/remark/index.js'
-import fixtures from '../test/fixtures/index.js'
+import {remark} from '../packages/remark/index.js'
+import {fixtures} from '../test/fixtures/index.js'
 
 var base = path.join('test', 'fixtures', 'tree')
 var generated = []

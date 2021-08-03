@@ -38,7 +38,7 @@
   "dependencies": {
     "remark-parse": "^9.0.0",
     "remark-stringify": "^9.0.0",
-    "unified": "^9.1.0"
+    "unified": "^10.0.0"
   },
   "scripts": {
     "test": "node --conditions development test.js"

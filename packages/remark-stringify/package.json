@@ -38,7 +38,7 @@
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-to-markdown": "^0.6.0"
+    "mdast-util-to-markdown": "^1.0.0"
   },
   "scripts": {
     "test": "node --conditions development test.js"

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import {createRequire} from 'node:module'
-import start from 'unified-args'
+import {args} from 'unified-args'
 import {remark} from 'remark'
 
 const require = createRequire(import.meta.url)
@@ -20,7 +20,7 @@ const extensions = [
   'ron'
 ]
 
-start({
+args({
   processor: remark,
   name: proc.name,
   description: cli.description,

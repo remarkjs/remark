@@ -1,4 +1,4 @@
-import fromMarkdown from 'mdast-util-from-markdown'
+import {fromMarkdown} from 'mdast-util-from-markdown'
 
 export default function remarkParse(options) {
   var self = this

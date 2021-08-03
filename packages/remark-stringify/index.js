@@ -1,4 +1,4 @@
-import toMarkdown from 'mdast-util-to-markdown'
+import {toMarkdown} from 'mdast-util-to-markdown'
 
 export default function remarkStringify(options) {
   var self = this

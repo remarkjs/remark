@@ -13,9 +13,9 @@
           "offset": 0
         },
         "end": {
-          "line": 1,
-          "column": 30,
-          "offset": 29
+          "line": 2,
+          "column": 2,
+          "offset": 31
         }
       }
     },
