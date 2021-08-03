@@ -1,4 +1,4 @@
-import {URL, fileURLToPath} from 'url'
+import {URL, fileURLToPath} from 'node:url'
 import execa from 'execa'
 import test from 'tape'
 

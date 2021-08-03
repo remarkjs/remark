@@ -1,7 +1,7 @@
 /** @typedef {import('mdast').Root} Root */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import camelcase from 'camelcase'
 
 // See <https://github.com/syntax-tree/mdast-util-to-markdown#formatting-options>
@@ -25,9 +25,7 @@ const defaults = {
 
 export const fixtures = fs
   .readdirSync(path.join('test', 'fixtures', 'input'))
-  .filter((filepath) => {
-    return filepath.indexOf('.') !== 0
-  })
+  .filter((filepath) => filepath.indexOf('.') !== 0)
   .map((basename) => {
     const stem = path.basename(basename, path.extname(basename))
     const settings = parseOptions(stem.replace(/-asterisk-/g, '*'))

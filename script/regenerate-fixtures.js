@@ -1,7 +1,7 @@
 /** @typedef {import('mdast').Root} Root */
 
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from '../test/fixtures/index.js'
 
