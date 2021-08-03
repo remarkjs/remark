@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "browserify": "^17.0.0",
+    "c8": "^7.0.0",
     "camelcase": "^6.0.0",
     "dtslint": "^4.0.0",
     "execa": "^5.0.0",
@@ -18,7 +19,6 @@
     "mdast-util-assert": "^3.0.0",
     "mdast-util-gfm": "^0.1.0",
     "micromark-extension-gfm": "^0.3.0",
-    "nyc": "^15.0.0",
     "prettier": "^2.0.0",
     "remark-preset-wooorm": "^8.0.0",
     "tape": "^5.0.0",
@@ -35,9 +35,9 @@
     "build-mangle": "browserify packages/remark -s remark -o remark.min.js -p tinyify",
     "build": "npm run build-bundle && npm run build-mangle",
     "test-api": "tape \"packages/*/test.js\" \"test/index.js\"",
-    "test-coverage": "nyc --reporter lcov tape \"packages/*/test.js\" \"test/index.js\"",
-    "test-types": "dtslint packages/remark-parse/types && dtslint packages/remark-stringify/types && dtslint packages/remark/types",
-    "test": "npm run format && npm run build && npm run test-coverage && npm run test-types"
+    "test-api": "node --conditions development test/index.js",
+    "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
+    "test": "npm run format && npm run build && npm run test-coverage"
   },
   "nyc": {
     "check-coverage": true,
