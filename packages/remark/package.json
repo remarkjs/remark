@@ -32,7 +32,9 @@
   "sideEffects": false,
   "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
+    "index.d.ts",
     "index.js"
   ],
   "dependencies": {
@@ -41,7 +43,14 @@
     "unified": "^10.0.0"
   },
   "scripts": {
-    "test": "node --conditions development test.js"
+    "test": "node --conditions development test.js",
+    "build": "rimraf \"*.d.ts\" && tsc && type-coverage"
   },
-  "xo": false
+  "xo": false,
+  "typeCoverage": {
+    "atLeast": 100,
+    "detail": true,
+    "strict": true,
+    "ignoreCatch": true
+  }
 }

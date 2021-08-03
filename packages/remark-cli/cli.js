@@ -21,6 +21,7 @@ const extensions = [
 ]
 
 args({
+  // @ts-expect-error: fine.
   processor: remark,
   name: proc.name,
   description: cli.description,

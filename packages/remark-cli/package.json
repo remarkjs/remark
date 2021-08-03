@@ -35,7 +35,14 @@
     "unified-args": "^9.0.0"
   },
   "scripts": {
+    "build": "rimraf \"*.d.ts\" && tsc && type-coverage",
     "test": "node --conditions development test.js"
   },
-  "xo": false
+  "xo": false,
+  "typeCoverage": {
+    "atLeast": 100,
+    "detail": true,
+    "strict": true,
+    "ignoreCatch": true
+  }
 }

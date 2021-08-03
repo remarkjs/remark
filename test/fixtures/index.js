@@ -1,3 +1,5 @@
+/** @typedef {import('mdast').Root} Root */
+
 import fs from 'fs'
 import path from 'path'
 import camelcase from 'camelcase'
@@ -12,9 +14,10 @@ const defaults = {
   incrementListMarker: true,
   listItemIndent: 'tab',
   quote: '"',
+  resourceLink: false,
   rule: '*',
-  ruleSpaces: true,
   ruleRepetition: 3,
+  ruleSpaces: true,
   setext: false,
   strong: '*',
   tightDefinitions: false
@@ -32,10 +35,11 @@ export const fixtures = fs
       fs.readFileSync(path.join('test', 'fixtures', 'input', basename))
     )
     const treePath = path.join('test', 'fixtures', 'tree', stem + '.json')
+    /** @type {Root|undefined} */
     let tree
 
     if (fs.existsSync(treePath)) {
-      tree = JSON.parse(fs.readFileSync(treePath))
+      tree = JSON.parse(String(fs.readFileSync(treePath)))
     }
 
     return {
@@ -47,21 +51,29 @@ export const fixtures = fs
     }
   })
 
-// Parse options from a filename.
+/**
+ * Parse options from a filename.
+ *
+ * @param {string} name
+ */
 function parseOptions(name) {
   const parts = name.split('.')
-  const length = parts.length
-  const options = {stringify: Object.assign({}, defaults)}
+  const options = {
+    /** @type {boolean|undefined} */
+    output: undefined,
+    /** @type {Record<string, string|number|boolean>} */
+    stringify: Object.assign({}, defaults)
+  }
   let index = -1
 
-  while (++index < length) {
+  while (++index < parts.length) {
     const part = parts[index].split('=')
     const augmented = augment(part[0], part.slice(1).join('='))
     const key = augmented.key
     const value = augmented.value
 
     if (key === 'output') {
-      options[key] = value
+      options[key] = Boolean(value)
     } else if (key in defaults && value !== options.stringify[key]) {
       options.stringify[key] = value
     }
@@ -70,8 +82,16 @@ function parseOptions(name) {
   return options
 }
 
-// Parse a `string` `value` into a javascript value.
-function augment(key, value) {
+/**
+ * Parse a `string` `value` into a javascript value.
+ *
+ * @param {string} key
+ * @param {string} input
+ */
+function augment(key, input) {
+  /** @type {string|boolean|number} */
+  let value = input
+
   if (!value) {
     value = key.slice(0, 2) !== 'no'
 

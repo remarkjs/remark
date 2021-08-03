@@ -1,9 +1,12 @@
+/** @typedef {import('mdast').Root} Root */
+
 import fs from 'fs'
 import path from 'path'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from '../test/fixtures/index.js'
 
 const base = path.join('test', 'fixtures', 'tree')
+/** @type {string[]} */
 const generated = []
 let index = -1
 
@@ -11,6 +14,7 @@ while (++index < fixtures.length) {
   const fixture = fixtures[index]
   const stem = path.basename(fixture.name, path.extname(fixture.name))
   const input = fixture.input
+  /** @type {Root} */
   let result
 
   try {

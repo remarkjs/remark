@@ -34,14 +34,26 @@
   "sideEffects": false,
   "type": "module",
   "main": "index.js",
+  "types": "index.d.ts",
   "files": [
+    "lib/",
+    "index.d.ts",
     "index.js"
   ],
   "dependencies": {
-    "mdast-util-from-markdown": "^1.0.0"
+    "@types/mdast": "^3.0.0",
+    "mdast-util-from-markdown": "^1.0.0",
+    "unified": "^10.0.0"
   },
   "scripts": {
-    "test": "node --conditions development test.js"
+    "test": "node --conditions development test.js",
+    "build": "rimraf \"test.d.ts\" \"lib/**/*.d.ts\" && tsc && type-coverage"
   },
-  "xo": false
+  "xo": false,
+  "typeCoverage": {
+    "atLeast": 100,
+    "detail": true,
+    "strict": true,
+    "ignoreCatch": true
+  }
 }

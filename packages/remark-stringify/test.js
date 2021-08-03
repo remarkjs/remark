@@ -1,3 +1,10 @@
+/**
+ * @typedef {import('mdast').Root} Root
+ * @typedef {import('mdast').Content} Content
+ * @typedef {import('mdast').BlockContent} BlockContent
+ * @typedef {import('./index.js').Options} Options
+ */
+
 import test from 'tape'
 import {unified} from 'unified'
 import {gfmToMarkdown} from 'mdast-util-gfm'
@@ -19,6 +26,7 @@ test('remarkStringify', (t) => {
 
   t.throws(
     () => {
+      // @ts-expect-error: not a node.
       unified().use(remarkStringify).stringify(false)
     },
     /false/,
@@ -27,6 +35,7 @@ test('remarkStringify', (t) => {
 
   t.throws(
     () => {
+      // @ts-expect-error: not a known node.
       unified().use(remarkStringify).stringify({type: 'unicorn'})
     },
     /unicorn/,
@@ -38,7 +47,12 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {bullet: true})
-        .stringify({type: 'listItem'})
+        .stringify({
+          type: 'root',
+          children: [
+            {type: 'list', children: [{type: 'listItem', children: []}]}
+          ]
+        })
     },
     /options\.bullet/,
     'should throw when `options.bullet` is not a valid list bullet'
@@ -49,7 +63,12 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {listItemIndent: 'foo'})
-        .stringify({type: 'listItem'})
+        .stringify({
+          type: 'root',
+          children: [
+            {type: 'list', children: [{type: 'listItem', children: []}]}
+          ]
+        })
     },
     /options\.listItemIndent/,
     'should throw when `options.listItemIndent` is not a valid constant'
@@ -60,7 +79,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {rule: true})
-        .stringify({type: 'thematicBreak'})
+        .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
     /options\.rule/,
     'should throw when `options.rule` is not a valid horizontal rule bullet'
@@ -71,7 +90,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {ruleRepetition: 1})
-        .stringify({type: 'thematicBreak'})
+        .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
     /options\.ruleRepetition/,
     'should throw when `options.ruleRepetition` is too low'
@@ -82,7 +101,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {ruleRepetition: true})
-        .stringify({type: 'thematicBreak'})
+        .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
     /options\.ruleRepetition/,
     'should throw when `options.ruleRepetition` is not a number'
@@ -93,7 +112,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {emphasis: '-'})
-        .stringify({type: 'emphasis'})
+        .stringify({type: 'root', children: [{type: 'emphasis', children: []}]})
     },
     /options\.emphasis/,
     'should throw when `options.emphasis` is not a valid emphasis marker'
@@ -104,7 +123,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {strong: '-'})
-        .stringify({type: 'strong'})
+        .stringify({type: 'root', children: [{type: 'strong', children: []}]})
     },
     /options\.strong/,
     'should throw when `options.strong` is not a valid emphasis marker'
@@ -115,7 +134,7 @@ test('remarkStringify', (t) => {
       unified()
         .use(remarkStringify)
         .data('settings', {fence: '-'})
-        .stringify({type: 'code'})
+        .stringify({type: 'root', children: [{type: 'code', value: ''}]})
     },
     /options\.fence/,
     'should throw when `options.fence` is not a valid fence marker'
@@ -248,13 +267,10 @@ test('remarkStringify', (t) => {
     )
 
     t.end()
-
-    function toString(value) {
-      return String(unified().use(remarkStringify).stringify(value))
-    }
   })
 
   t.test('should support optional list item fields', (t) => {
+    /** @type {BlockContent[]} */
     const children = [
       {type: 'paragraph', children: [{type: 'text', value: 'alpha'}]},
       {
@@ -284,20 +300,12 @@ test('remarkStringify', (t) => {
     )
 
     t.end()
-
-    function toString(value) {
-      return String(unified().use(remarkStringify).stringify(value))
-    }
   })
 
   t.test('should support empty list items', (t) => {
     t.equal(toString({type: 'listItem', children: []}), '*\n')
 
     t.end()
-
-    function toString(value) {
-      return String(unified().use(remarkStringify).stringify(value))
-    }
   })
 
   t.test('should process references with casing properly', (t) => {
@@ -340,6 +348,7 @@ test('remarkStringify', (t) => {
       toString({
         type: 'linkReference',
         identifier: 'a',
+        referenceType: 'full',
         children: [{type: 'text', value: 'b'}]
       }),
       '[b][a]\n',
@@ -347,16 +356,17 @@ test('remarkStringify', (t) => {
     )
 
     t.equal(
-      toString({type: 'imageReference', identifier: 'a', alt: 'b'}),
+      toString({
+        type: 'imageReference',
+        referenceType: 'full',
+        identifier: 'a',
+        alt: 'b'
+      }),
       '![b][a]\n',
       'image reference'
     )
 
     t.end()
-
-    function toString(value) {
-      return String(unified().use(remarkStringify).stringify(value))
-    }
   })
 
   t.test('should stringify mailto links properly', (t) => {
@@ -407,12 +417,12 @@ test('stringify escapes', (t) => {
   t.equal(toString('a&amp;b'), 'a\\&amp;b\n', 'entities')
   t.equal(toString('a]b'), 'a]b\n', '`]`')
   t.equal(
-    toString({type: 'link', children: [{type: 'text', value: 'a]b'}]}),
+    toString({type: 'link', url: '', children: [{type: 'text', value: 'a]b'}]}),
     '[a\\]b]()\n',
     '`]` (in links)'
   )
   t.equal(
-    toString({type: 'image', alt: 'a]b'}),
+    toString({type: 'image', url: '', alt: 'a]b'}),
     '![a\\]b]()\n',
     '`]` (in images)'
   )
@@ -456,7 +466,7 @@ test('stringify escapes', (t) => {
       type: 'paragraph',
       children: [
         {type: 'text', value: '!'},
-        {type: 'link', children: [{type: 'text', value: 'a'}]}
+        {type: 'link', url: '', children: [{type: 'text', value: 'a'}]}
       ]
     }),
     '\\![a]()\n',
@@ -549,7 +559,7 @@ test('extensions', (t) => {
         {
           type: 'list',
           ordered: false,
-          start: null,
+          start: undefined,
           spread: false,
           children: [
             {
@@ -602,11 +612,19 @@ test('extensions', (t) => {
   t.end()
 })
 
+/**
+ * @param {Root|Content|string} value
+ * @param {Options} [options]
+ * @returns {string}
+ */
 function toString(value, options) {
-  const tree =
-    typeof value === 'string'
-      ? {type: 'paragraph', children: [{type: 'text', value}]}
-      : value
+  if (typeof value === 'string') {
+    value = {type: 'paragraph', children: [{type: 'text', value}]}
+  }
 
-  return unified().use(remarkStringify, options).stringify(tree)
+  if (value.type !== 'root') {
+    value = {type: 'root', children: [value]}
+  }
+
+  return unified().use(remarkStringify, options).stringify(value)
 }
