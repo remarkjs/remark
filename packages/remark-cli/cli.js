@@ -21,7 +21,6 @@ const extensions = [
 ]
 
 args({
-  // @ts-expect-error: fine.
   processor: remark,
   name: proc.name,
   description: cli.description,
@@ -30,7 +29,6 @@ args({
     cli.name + ': ' + cli.version
   ].join(', '),
   pluginPrefix: proc.name,
-  presetPrefix: proc.name + '-preset',
   packageField: proc.name + 'Config',
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',
