@@ -57,7 +57,7 @@
   <a name=plugins></a>
   <h2 id=core>Core</h2>
   <p>
-    remark is a Markdown processor powered by
+    remark is a markdown processor powered by
     <a href=https://github.com/remarkjs/remark/blob/HEAD/doc/plugins.md#list-of-plugins>plugins</a>
     part of the
     <a href=https://unifiedjs.com>unified</a>
@@ -66,18 +66,15 @@
     <a href=https://github.com/remarkjs/remark/tree/HEAD/packages/remark-parse#readme>parses</a>
     and
     <a href=https://github.com/remarkjs/remark/tree/HEAD/packages/remark-stringify#readme>compiles</a>
-    Markdown, and lets programs process Markdown without ever compiling to
+    markdown, and lets programs process markdown without ever compiling to
     HTML (<a href=https://github.com/remarkjs/remark-html>it can though</a>).
     Powered by
     <a href=https://github.com/remarkjs/remark/blob/HEAD/doc/plugins.md#list-of-plugins>plugins</a>
     to do all kinds of things: check
-    <a href=https://github.com/remarkjs/remark-lint>Markdown code style</a>,
-    transform <a href=https://github.com/mapbox/remark-react>safely to React</a>,
+    <a href=https://github.com/remarkjs/remark-lint>markdown code style</a>,
     add a <a href=https://github.com/remarkjs/remark-toc>table of contents</a>,
     or compile to <a href=https://github.com/remarkjs/remark-man>man pages</a>.
   </p>
-  <p>It aims to do for Markdown what Esprima did for JavaScript and PostCSS for CSS: bring Markdown into the tooling age.</p>
-  <p>remark has lots of <a href=https://travis-ci.org/remarkjs/remark>tests</a> (1k+), great <a href=https://codecov.io/github/remarkjs/remark>coverage</a> (100%), and a free <a href=https://opensource.org/licenses/MIT>license</a>.</p>
   <p>
     View the project on <a href=https://github.com/remarkjs/remark>GitHub</a>
     or inspect the syntax tree on
@@ -155,17 +152,18 @@
       <span class="chrome button fullscreen"></span>
       <span class="chrome title">index.js</span>
     </figcaption>
-    <pre><code class="hljs language-js">var remark = require('remark')
-var guide = require('remark-preset-lint-markdown-style-guide')
-var html = require('remark-html')
-var report = require('vfile-reporter')
+    <pre><code class="hljs language-js">import {reporter} from 'vfile-reporter'
+import {remark} from 'remark'
+import remarkPresetLintMarkdownStyleGuide from 'remark-preset-lint-markdown-style-guide'
+import remarkHtml from 'remark-html'
 
 remark()
-  .use(guide)
-  .use(html)
-  .process('*emphasis* and _importance_', function (err, file) {
+  .use(remarkPresetLintMarkdownStyleGuide)
+  .use(remarkHtml)
+  .process('*emphasis* and _importance_')
+  .then((file) => {
     console.log(String(file))
-    console.error(report(err || file))
+    console.error(reporter(file))
   })</code></pre>
   </figure>
 
@@ -183,10 +181,10 @@ remark()
     </figcaption>
     <pre><span class=command>npm install remark vfile-reporter remark-html remark-preset-lint-markdown-style-guide</span><span class=output>
 /Users/tilde/example
-├── remark@11.0.0
-├── remark-html@10.0.0
-├── remark-preset-lint-markdown-style-guide@2.1.3
-└── vfile-reporter@6.0.0</span>
+├── remark@14.0.1
+├── remark-html@14.0.0
+├── remark-preset-lint-markdown-style-guide@5.0.0
+└── vfile-reporter@7.0.1</span>
 
 <span class=command>node index.js</span><span class=output>
 &lt;p>&lt;em>emphasis&lt;/em> and &lt;em>importance&lt;/em>&lt;/p>
@@ -224,25 +222,28 @@ remark()
       <span class="chrome button fullscreen"></span>
       <span class="chrome title">index.js</span>
     </figcaption>
-    <pre><code class="hljs language-js">var unified = require('unified')
-var stream = require('unified-stream')
-var markdown = require('remark-parse')
-var toc = require('remark-toc')
-var remark2rehype = require('remark-rehype')
-var doc = require('rehype-document')
-var format = require('rehype-format')
-var html = require('rehype-stringify')
+    <pre><code class="hljs language-js">import {unified} from 'unified'
+import stream from 'unified-stream'
+import remarkParse from 'remark-parse'
+import remarkToc from 'remark-toc'
+import remarkRehype from 'remark-rehype'
+import rehypeDocument from 'rehype-document'
+import rehypeFormat from 'rehype-format'
+import rehypeStringify from 'rehype-stringify'
 
-var processor = unified()
-  .use(markdown)
-  .use(toc)
-  .use(remark2rehype)
-  .use(doc, {title: 'Contents'})
-  .use(format)
-  .use(html)
+const input = '## Markdown'
 
-process.stdin.pipe(stream(processor)).pipe(process.stdout)
-</code></pre>
+unified()
+  .use(remarkParse)
+  .use(remarkToc)
+  .use(remarkRehype)
+  .use(rehypeDocument, {title: 'Contents'})
+  .use(rehypeFormat)
+  .use(rehypeStringify)
+  .process(input)
+  .then((file) => {
+    console.log(file)
+  })</code></pre>
   </figure>
 
   <p>
