@@ -2,7 +2,7 @@ name: main
 on:
   push:
     branches:
-      - main
+      - website
 jobs:
   main:
     runs-on: ubuntu-latest
