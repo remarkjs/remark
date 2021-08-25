@@ -16,7 +16,6 @@
     "c8": "^7.0.0",
     "camelcase": "^6.0.0",
     "execa": "^5.0.0",
-    "lerna": "^4.0.0",
     "mdast-util-assert": "^4.0.0",
     "mdast-util-gfm": "^1.0.0",
     "micromark-extension-gfm": "^1.0.0",
@@ -30,11 +29,16 @@
     "unist-util-remove-position": "^4.0.0",
     "xo": "^0.44.0"
   },
+  "workspaces": [
+    "packages/remark-parse",
+    "packages/remark-stringify",
+    "packages/remark",
+    "packages/remark-cli"
+  ],
   "scripts": {
-    "postinstall": "lerna bootstrap --no-ci",
-    "build": "lerna run build && rimraf \"*.d.ts\" \"{test,script}/**/*.d.ts\" && tsc && type-coverage",
+    "build": "npm run build --workspaces && rimraf \"*.d.ts\" \"{test,script}/**/*.d.ts\" && tsc && type-coverage",
     "format": "./packages/remark-cli/cli.js . -qfo && prettier . -w --loglevel warn && xo --fix",
-    "test-api": "lerna run test && node --conditions development test/index.js",
+    "test-api": "npm run test --workspaces && node --conditions development test/index.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
     "test": "npm run build && npm run format && npm run test-coverage"
   },
