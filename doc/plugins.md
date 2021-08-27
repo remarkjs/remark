@@ -245,6 +245,8 @@ The list of plugins:
     — check and add the document title
 *   🟢 [`remark-toc`](https://github.com/remarkjs/remark-toc)
     — add a table of contents
+*   🟢 [`remark-torchlight`](https://github.com/torchlight-api/remark-torchlight)
+    — syntax highlighting powered by [torchlight.dev](https://torchlight.dev)
 *   🟢 [`remark-tree-sitter`](https://github.com/samlanning/remark-tree-sitter)
     — highlight code blocks in markdown files using
     [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
