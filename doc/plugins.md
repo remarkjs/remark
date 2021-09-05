@@ -52,6 +52,8 @@ The list of plugins:
     – hard breaks w/o needing spaces (like on issues)
 *   🟢 [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
     – transform all titles w/ [`title.sh`](https://github.com/zeit/title)
+*   🟢 [`remark-cite`](https://github.com/benrbray/remark-cite)
+    – new syntax for Pandoc-style citations
 *   🟢 [`remark-code-blocks`](https://github.com/mrzmmr/remark-code-blocks)
     — select and store code blocks
 *   🟢 [`remark-code-extra`](https://github.com/samlanning/remark-code-extra)
