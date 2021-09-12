@@ -85,6 +85,8 @@ The list of plugins:
 *   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — new syntax for custom blocks (new node types, rehype compatible)
     (**note: [`remark-directive`][d] is similar and up to date**)
+*   🟢 [`remark-definition-list`](https://github.com/wataru-chocola/remark-definition-list)
+    — support definition lists
 *   🟢 [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
     — change links and images to references w/ separate definitions
 *   ⚠️ [`remark-disable-tokenizers`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-disable-tokenizers#readme)
