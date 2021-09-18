@@ -429,7 +429,7 @@ test('stringify escapes', (t) => {
   t.equal(toString('![a'), '!\\[a\n', 'the `[` in `![`')
   t.equal(toString('a~b'), 'a~b\n', '`~`')
   t.equal(toString('a|b'), 'a|b\n', '`|`')
-  t.equal(toString('a_b'), 'a_b\n', '`_` (in words)')
+  t.equal(toString('a_b'), 'a\\_b\n', '`_` (in words)')
   t.equal(toString('a _b'), 'a \\_b\n', '`_` after `\\b`')
   t.equal(toString('a_ b'), 'a\\_ b\n', '`_` before `\\b`')
   t.equal(toString('a:b'), 'a:b\n', '`:`')
