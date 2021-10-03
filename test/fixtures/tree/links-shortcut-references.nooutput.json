@@ -52,8 +52,8 @@
               "offset": 25
             }
           },
-          "identifier": "simple case",
           "label": "simple case",
+          "identifier": "simple case",
           "referenceType": "shortcut"
         },
         {
@@ -156,8 +156,8 @@
               "offset": 81
             }
           },
-          "identifier": "line break",
           "label": "line\nbreak",
+          "identifier": "line break",
           "referenceType": "shortcut"
         },
         {
@@ -241,8 +241,8 @@
               "offset": 112
             }
           },
+          "label": "line \nbreak",
           "identifier": "line break",
-          "label": "line\nbreak",
           "referenceType": "shortcut"
         },
         {
@@ -329,8 +329,8 @@
               "offset": 167
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -381,8 +381,8 @@
               "offset": 174
             }
           },
-          "identifier": "that",
           "label": "that",
+          "identifier": "that",
           "referenceType": "shortcut"
         },
         {
@@ -433,8 +433,8 @@
               "offset": 190
             }
           },
-          "identifier": "other",
           "label": "other",
+          "identifier": "other",
           "referenceType": "shortcut"
         }
       ],

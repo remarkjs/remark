@@ -52,8 +52,8 @@
               "offset": 21
             }
           },
-          "identifier": "tostring",
           "label": "toString",
+          "identifier": "tostring",
           "referenceType": "full"
         },
         {
@@ -104,8 +104,8 @@
               "offset": 47
             }
           },
-          "identifier": "constructor",
           "label": "constructor",
+          "identifier": "constructor",
           "referenceType": "full"
         },
         {
@@ -156,8 +156,8 @@
               "offset": 74
             }
           },
-          "identifier": "__proto__",
           "label": "__proto__",
+          "identifier": "__proto__",
           "referenceType": "full"
         },
         {

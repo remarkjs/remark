@@ -55,8 +55,8 @@
                   "offset": 44
                 }
               },
-              "identifier": "bar",
               "label": "bar",
+              "identifier": "bar",
               "referenceType": "full"
             }
           ],
@@ -72,8 +72,8 @@
               "offset": 50
             }
           },
-          "identifier": "baz",
           "label": "baz",
+          "identifier": "baz",
           "referenceType": "full"
         }
       ],
@@ -174,8 +174,8 @@
               "offset": 98
             }
           },
-          "identifier": "bar",
           "label": "bar",
+          "identifier": "bar",
           "referenceType": "full"
         },
         {
@@ -226,8 +226,8 @@
               "offset": 104
             }
           },
-          "identifier": "baz",
           "label": "baz",
+          "identifier": "baz",
           "referenceType": "shortcut"
         }
       ],

@@ -36,8 +36,8 @@
               "offset": 5
             }
           },
-          "identifier": "foo",
           "label": "foo",
+          "identifier": "foo",
           "referenceType": "shortcut"
         }
       ],

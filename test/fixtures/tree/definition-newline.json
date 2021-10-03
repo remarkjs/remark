@@ -150,8 +150,8 @@
               "offset": 124
             }
           },
-          "identifier": "baz",
           "label": "baz",
+          "identifier": "baz",
           "referenceType": "shortcut"
         },
         {

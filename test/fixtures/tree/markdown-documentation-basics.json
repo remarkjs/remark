@@ -136,8 +136,8 @@
               "offset": 700
             }
           },
-          "identifier": "s",
           "label": "s",
+          "identifier": "s",
           "referenceType": "shortcut"
         },
         {
@@ -221,8 +221,8 @@
               "offset": 1050
             }
           },
-          "identifier": "d",
           "label": "d",
+          "identifier": "d",
           "referenceType": "shortcut"
         },
         {
@@ -339,8 +339,8 @@
               "offset": 1278
             }
           },
-          "identifier": "src",
           "label": "src",
+          "identifier": "src",
           "referenceType": "shortcut"
         },
         {

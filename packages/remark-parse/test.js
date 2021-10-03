@@ -15,7 +15,7 @@ test('remarkParse', (t) => {
   t.test('extensions', (t) => {
     const tree = unified()
       .data('micromarkExtensions', [gfm()])
-      .data('fromMarkdownExtensions', [gfmFromMarkdown])
+      .data('fromMarkdownExtensions', [gfmFromMarkdown()])
       .use(remarkParse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
 

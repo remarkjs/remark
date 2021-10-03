@@ -52,8 +52,8 @@
               "offset": 13
             }
           },
-          "identifier": "1",
           "label": "1",
+          "identifier": "1",
           "referenceType": "shortcut"
         },
         {
@@ -137,8 +137,8 @@
               "offset": 28
             }
           },
-          "identifier": "1",
           "label": "1",
+          "identifier": "1",
           "referenceType": "full"
         },
         {
@@ -222,8 +222,8 @@
               "offset": 44
             }
           },
-          "identifier": "1",
           "label": "1",
+          "identifier": "1",
           "referenceType": "shortcut"
         },
         {
@@ -326,8 +326,8 @@
               "offset": 101
             }
           },
-          "identifier": "b",
           "label": "b",
+          "identifier": "b",
           "referenceType": "shortcut"
         },
         {
@@ -411,8 +411,8 @@
               "offset": 122
             }
           },
-          "identifier": "once",
           "label": "once",
+          "identifier": "once",
           "referenceType": "collapsed"
         },
         {
@@ -496,8 +496,8 @@
               "offset": 143
             }
           },
-          "identifier": "twice",
           "label": "twice",
+          "identifier": "twice",
           "referenceType": "collapsed"
         },
         {
@@ -581,8 +581,8 @@
               "offset": 165
             }
           },
-          "identifier": "thrice",
           "label": "thrice",
+          "identifier": "thrice",
           "referenceType": "collapsed"
         },
         {
@@ -792,8 +792,8 @@
               "offset": 289
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -844,8 +844,8 @@
               "offset": 296
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -929,8 +929,8 @@
               "offset": 332
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "full"
         },
         {
@@ -1014,8 +1014,8 @@
               "offset": 345
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -1099,8 +1099,8 @@
               "offset": 363
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "collapsed"
         },
         {
@@ -1184,8 +1184,8 @@
               "offset": 376
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -1368,8 +1368,8 @@
               "offset": 463
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "collapsed"
         },
         {
@@ -1453,8 +1453,8 @@
               "offset": 495
             }
           },
-          "identifier": "this",
           "label": "this",
+          "identifier": "this",
           "referenceType": "shortcut"
         },
         {
@@ -1689,8 +1689,8 @@
               "offset": 670
             }
           },
-          "identifier": "link breaks",
           "label": "link\nbreaks",
+          "identifier": "link breaks",
           "referenceType": "shortcut"
         },
         {
@@ -1774,8 +1774,8 @@
               "offset": 725
             }
           },
+          "label": "link \nbreaks",
           "identifier": "link breaks",
-          "label": "link\nbreaks",
           "referenceType": "shortcut"
         },
         {
