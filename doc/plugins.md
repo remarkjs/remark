@@ -107,8 +107,6 @@ The list of plugins:
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
     — support ASCII guillements (`<<`, `>>`) mapping them to HTML
-*   🟢 [`remark-footnotes`](https://github.com/remarkjs/remark-footnotes)
-    – support pandoc footnotes
 *   🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – support frontmatter (yaml, toml, and more)
 *   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
@@ -117,7 +115,7 @@ The list of plugins:
     — new syntax for the CommonMark generic directive extension
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
-    — support GFM (tables, tasklists, strikethrough, autolink literals)
+    — support GFM (autolink literals, footnotes, strikethrough, tables, tasklists)
 *   🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
     — add a table of contributors based on Git history, options, and more
 *   🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
