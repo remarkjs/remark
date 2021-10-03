@@ -115,7 +115,8 @@ The list of plugins:
     — new syntax for the CommonMark generic directive extension
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
-    — support GFM (autolink literals, footnotes, strikethrough, tables, tasklists)
+    — support GFM (autolink literals, footnotes, strikethrough, tables,
+    tasklists)
 *   🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
     — add a table of contributors based on Git history, options, and more
 *   🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
