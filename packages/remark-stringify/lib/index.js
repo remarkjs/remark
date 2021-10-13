@@ -1,6 +1,7 @@
 /**
  * @typedef {import('mdast').Root|import('mdast').Content} Node
- * @typedef {import('mdast-util-to-markdown').Options} Options
+ * @typedef {import('mdast-util-to-markdown').Options} ToMarkdownOptions
+ * @typedef {Omit<ToMarkdownOptions, 'extensions'>} Options
  */
 
 import {toMarkdown} from 'mdast-util-to-markdown'
@@ -18,7 +19,10 @@ export default function remarkStringify(options) {
         // Note: this option is not in the readme.
         // The goal is for it to be set by plugins on `data` instead of being
         // passed by users.
-        extensions: this.data('toMarkdownExtensions') || []
+        extensions:
+          /** @type {ToMarkdownOptions['extensions']} */ (
+            this.data('toMarkdownExtensions')
+          ) || []
       })
     )
   }
