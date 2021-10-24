@@ -44,8 +44,6 @@ The list of plugins:
     compatible)
 *   ⚠️ [`remark-attr`](https://github.com/arobase-che/remark-attr)
     — new syntax to add attributes to markdown
-*   🟢 [`remark-autolink-headings`](https://github.com/remarkjs/remark-autolink-headings)
-    — add GitHub-style links to headings
 *   🟢 [`remark-behead`](https://github.com/mrzmmr/remark-behead)
     — increase or decrease heading depth
 *   🟢 [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
@@ -99,8 +97,6 @@ The list of plugins:
     — embed local images as base64-encoded data URIs
 *   🟢 [`remark-emoji`](https://github.com/rhysd/remark-emoji)
     — transform Gemoji short-codes to emoji
-*   🟢 [`remark-external-links`](https://github.com/remarkjs/remark-external-links)
-    — add `target` and `rel` attributes to external links
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
@@ -134,8 +130,6 @@ The list of plugins:
     — add hints/tips/warnings to markdown
 *   🟢 [`remark-html`](https://github.com/remarkjs/remark-html)
     — serialize markdown as HTML
-*   🟢 [`remark-html-katex`](https://github.com/remarkjs/remark-math/tree/HEAD/packages/remark-html-katex#readme)
-    — change inline and block math to equations w/ [KaTeX](https://github.com/Khan/KaTeX)
 *   ⚠️ [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
     — new syntax to create iframes (new node type, rehype compatible)
 *   🟢 [`remark-images`](https://github.com/remarkjs/remark-images)
@@ -167,9 +161,6 @@ The list of plugins:
     — new syntax for math (new node types, rehype compatible)
 *   🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — turn some or all messages on or off
-*   🟢 [`remark-midas`](https://github.com/remarkjs/remark-midas)
-    — highlight CSS code blocks w/ [midas](https://github.com/ben-eb/midas)
-    (rehype compatible)
 *   🟢 [`remark-normalize-headings`](https://github.com/remarkjs/remark-normalize-headings)
     — make sure at most one top-level heading exists
 *   🟢 [`remark-numbered-footnote-labels`](https://github.com/jackfletch/remark-numbered-footnote-labels)
@@ -189,10 +180,6 @@ The list of plugins:
 *   🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
     — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
     Prism plugins)
-*   🟢 [`remark-react`](https://github.com/remarkjs/remark-react)
-    — compile markdown to [React](https://github.com/facebook/react)
-*   🟢 [`remark-react-codemirror`](https://github.com/craftzdog/remark-react-codemirror)
-    — highlight code blocks for `remark-react` w/ [CodeMirror](https://codemirror.net)
 *   ⚠️ [`remark-redact`](https://github.com/seafoam6/remark-redact)
     — new syntax to conceal text matching a regex
 *   🟢 [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
@@ -223,8 +210,6 @@ The list of plugins:
 *   🟢 [`remark-slate-transformer`](https://github.com/inokawa/remark-slate-transformer)
     — compile markdown to [Slate nodes](https://docs.slatejs.org/concepts/02-nodes)
     and Slate nodes to markdown
-*   🟢 [`remark-slug`](https://github.com/remarkjs/remark-slug)
-    — add anchors to headings using GitHub’s algorithm
 *   🟢 [`remark-smartypants`](https://github.com/silvenon/remark-smartypants)
     — SmartyPants
 *   🟢 [`remark-smcat`](https://github.com/shedali/remark-smcat)
