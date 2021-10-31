@@ -97,6 +97,8 @@ The list of plugins:
     — embed local images as base64-encoded data URIs
 *   🟢 [`remark-emoji`](https://github.com/rhysd/remark-emoji)
     — transform Gemoji short-codes to emoji
+*   🟢 [`remark-extended-table`](https://github.com/wataru-chocola/remark-extended-table)
+    — extended table syntax allowing colspan / rowspan 
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
