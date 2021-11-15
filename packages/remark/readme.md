@@ -19,6 +19,9 @@ serializing markdown as output.
 *   [Use](#use)
 *   [API](#api)
     *   [`remark()`](#remark-1)
+*   [Examples](#examples)
+    *   [Example: checking markdown](#example-checking-markdown)
+    *   [Example: passing options to `remark-stringify`](#example-passing-options-to-remark-stringify)
 *   [Syntax](#syntax)
 *   [Syntax tree](#syntax-tree)
 *   [Types](#types)
@@ -124,6 +127,75 @@ There is no default export.
 Create a new (unfrozen) unified processor that already uses `remark-parse` and
 `remark-stringify` and you can add more plugins to.
 See [`unified`][unified] for more information.
+
+## Examples
+
+### Example: checking markdown
+
+The following example checks that markdown code style is consistent and follows
+some best practices:
+
+```js
+import {reporter} from 'vfile-reporter'
+import {remark} from 'remark'
+import remarkPresetLintConsistent from 'remark-preset-lint-consistent'
+import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
+
+main()
+
+async function main() {
+  const file = await remark()
+    .use(remarkPresetLintConsistent)
+    .use(remarkPresetLintRecommended)
+    .process('1) Hello, _Jupiter_ and *Neptune*!')
+
+  console.error(reporter(file))
+}
+```
+
+Yields:
+
+```txt
+        1:1  warning  Missing newline character at end of file  final-newline              remark-lint
+   1:1-1:35  warning  Marker style should be `.`                ordered-list-marker-style  remark-lint
+        1:4  warning  Incorrect list-item indent: add 1 space   list-item-indent           remark-lint
+  1:25-1:34  warning  Emphasis should use `_` as a marker       emphasis-marker            remark-lint
+
+⚠ 4 warnings
+```
+
+### Example: passing options to `remark-stringify`
+
+When you use `remark-stringify` manually you can pass options to `use`.
+Because `remark-stringify` is already used in `remark`, that’s not possible.
+To define options for `remark-stringify`, you can instead pass options to
+`data`:
+
+```js
+import {remark} from 'remark'
+
+main()
+
+async function main() {
+  const file = await remark()
+    .data('settings', {bullet: '*', setext: true, listItemIndent: 'one'})
+    .process('# Moons of Neptune\n\n- Naiad\n- Thalassa\n- Despine\n- …')
+
+  console.log(String(file))
+}
+```
+
+Yields:
+
+```markdown
+Moons of Neptune
+================
+
+* Naiad
+* Thalassa
+* Despine
+* …
+```
 
 ## Syntax
 
