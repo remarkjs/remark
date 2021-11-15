@@ -190,7 +190,7 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
 > 👉 **Note**: you must remove the comments in the above examples when
 > copy/pasting them, as comments are not supported in `package.json` files.
 
-Finally, you can run the npm script to check and format the markdown in your
+Finally, you can run the npm script to check and format markdown files in your
 project:
 
 ```sh
@@ -201,9 +201,9 @@ npm run format
 
 In the previous example, we saw that `remark-cli` was configured from within a
 `package.json` file.
-That’s a good place when the configuration is relatively short, when you have
-`package.json` files, and don’t care about comments (which are not possible in
-`package.json` files).
+That’s a good place when the configuration is relatively short, when you have a
+`package.json`, and when you don’t need comments (which are not allowed in
+JSON).
 
 You can also define configuration in separate files in different languages.
 With the `package.json` config is inspiration, here’s a JavaScript example that
