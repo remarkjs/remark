@@ -261,11 +261,12 @@ folder/
 ```
 
 When `folder/subfolder/file.md` is processed, the closest config file is used:
-`.remarkrc.json`.
-For `folder/readme.md`, it’s `.remarkrc.js`.
+`folder/subfolder/.remarkrc.json`.
+For `folder/readme.md`, it’s `folder/.remarkrc.js`.
 
-The order of precedence is as follows (earlier wins, so in the above example
-`folder/.remarkrc.js` wins over `folder/package.json`):
+The order of precedence is as follows.
+Earlier wins (so in the above file structure `folder/.remarkrc.js` wins over
+`folder/package.json`):
 
 1.  `.remarkc` (JSON)
 2.  `.remarkc.json` (JSON)
