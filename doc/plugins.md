@@ -287,7 +287,6 @@ files.
 ## Use plugins
 
 To use a plugin programmatically, call the [`use()`][unified-use] function.
-
 To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use] or
 specify it in a [configuration file][config-file-use].
 
@@ -306,7 +305,8 @@ If it works with mdast, use `'mdast-util-'`, if it works with any unist tree,
 use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 Use default exports to expose plugins from your packages, add `remark-plugin`
-keywords in `package.json`, and add a `remark-plugin` to your repo on GitHub.
+keywords in `package.json`, and add a `remark-plugin` topic to your repo on
+GitHub.
 
 <!--Definitions:-->
 
