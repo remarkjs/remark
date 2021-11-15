@@ -260,7 +260,7 @@ folder/
 └─ readme.md
 ```
 
-When `folder/subfolder/file.md` is processed, the closest config file is used:
+When `folder/subfolder/file.md` is processed, the closest config file is
 `folder/subfolder/.remarkrc.json`.
 For `folder/readme.md`, it’s `folder/.remarkrc.js`.
 

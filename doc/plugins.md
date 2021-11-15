@@ -37,7 +37,7 @@ The list of plugins:
 *   ⚠️ [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-abbr#readme)
     — new syntax for abbreviations (new node type, rehype compatible)
 *   ⚠️ [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
-    — new syntax for admonitions
+    — new syntax for admonitions\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   ⚠️ [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
     — new syntax to align text or blocks (new node types, rehype
@@ -71,17 +71,17 @@ The list of plugins:
 *   ⚠️ [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-comments#readme)
     — new syntax to ignore things
 *   ⚠️ [`remark-container`](https://github.com/zWingz/remark-container)
-    — new syntax for containers
+    — new syntax for containers\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   ⚠️ [`remark-containers`](https://github.com/Nevenall/remark-containers)
-    — new syntax for containers
+    — new syntax for containers\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
     — add a table of contributors
 *   🟢 [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
     — find and copy files linked files to a destination directory
 *   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
-    — new syntax for custom blocks (new node types, rehype compatible)
+    — new syntax for custom blocks (new node types, rehype compatible)\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-definition-list`](https://github.com/wataru-chocola/remark-definition-list)
     — support definition lists
@@ -110,7 +110,7 @@ The list of plugins:
 *   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
     — better support for Gemoji shortcodes
 *   ⚠️ [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
-    — new syntax for the CommonMark generic directive extension
+    — new syntax for the CommonMark generic directive extension\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
     — support GFM (autolink literals, footnotes, strikethrough, tables,
@@ -203,7 +203,7 @@ The list of plugins:
     — wrap headings and subsequent content in section tags (new node type,
     rehype compatible)
 *   ⚠️ [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
-    — new syntax for Wordpress- and Hugo-like shortcodes (new node type)
+    — new syntax for Wordpress- and Hugo-like shortcodes (new node type)\
     (**note: [`remark-directive`][d] is similar and up to date**)
 *   🟢 [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
     — turn PlantUML code blocks to images
