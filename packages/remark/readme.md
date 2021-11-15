@@ -45,10 +45,11 @@ Please see [the monorepo readme][remark] for what the remark ecosystem is.
 
 You can use this package when you want to use unified, have markdown as input,
 and want markdown as output.
-You can alternatively use unified itself and use [`remark-parse`][remark-parse]
-and [`remark-stringify`][remark-stringify] to do the same.
-You should also use unified directly with either of those plugins when the input
-you have or output you want is not markdown.
+It’s a shortcut for `unified().use(remarkParse).use(remarkStringify)`, which
+you can also do manually.
+When the input isn’t markdown (meaning you don’t need `remark-parse`) or the
+output is not markdown (you don’t need `remark-stringify`), it’s recommended to
+use unified directly.
 
 When you want to inspect and format markdown files in a project on the command
 line, you can use [`remark-cli`][remark-cli].
