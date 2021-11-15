@@ -18,6 +18,7 @@ Command line interface to inspect and change markdown files with **[remark][]**.
 *   [CLI](#cli)
 *   [Examples](#examples)
     *   [Example: checking and formatting markdown on the CLI](#example-checking-and-formatting-markdown-on-the-cli)
+    *   [Example: config files (JSON, YAML, JS)](#example-config-files-json-yaml-js)
 *   [Compatibility](#compatibility)
 *   [Security](#security)
 *   [Contribute](#contribute)
@@ -172,7 +173,13 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
     "plugins": [
       "remark-preset-lint-consistent", // Check that markdown is consistent.
       "remark-preset-lint-recommended", // Few recommended rules.
-      "remark-toc" // Generate a table of contents in `## Table of contents`
+      [
+        // Generate a table of contents in `## Table of contents`
+        "remark-toc",
+        {
+          "heading": "contents"
+        }
+      ]
     ]
   },
   /* … */
@@ -187,6 +194,84 @@ project:
 ```sh
 npm run format
 ```
+
+### Example: config files (JSON, YAML, JS)
+
+In the previous example, we saw that `remark-cli` was configured from within a
+`package.json` file.
+That’s a good place when the configuration is relatively short, when you have
+`package.json` files, and don’t care about comments (which are not possible in
+`package.json` files).
+
+You can also define configuration in separate files in different languages.
+With the `package.json` config is inspiration, here’s a JavaScript example that
+can be placed in `.remarkrc.js`:
+
+```js
+import remarkPresetLintConsistent from 'remark-preset-lint-consistent'
+import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
+import remarkToc from 'remark-toc'
+
+const remarkConfig = {
+  settings: {
+    bullet: '*', // Use `*` for list item bullets (default)
+    // see <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
+  },
+  plugins: [
+    remarkPresetLintConsistent, // Check that markdown is consistent.
+    remarkPresetLintRecommended, // Few recommended rules.
+    // Generate a table of contents in `## Table of contents`
+    [remarkToc, {heading: 'contents'}]
+  ]
+}
+
+export default remarkConfig
+```
+
+Here’s a YAML example that can be placed in `.remarkrc.yml`:
+
+```yml
+settings:
+  bullet: "*"
+plugins:
+  # Check that markdown is consistent.
+  - remark-preset-lint-consistent
+  # Few recommended rules.
+  - remark-preset-lint-recommended
+  # Generate a table of contents in `## Table of contents`
+  - - remark-toc
+    - heading: contents
+```
+
+When `remark-cli` is about to process a markdown file, it’ll first search
+the file system upwards.
+It starts at the folder where that file is in.
+Take the following file structure as an illustration:
+
+```txt
+folder/
+├─ subfolder/
+│  ├─ .remarkrc.json
+│  └─ file.md
+├─ .remarkrc.js
+├─ package.json
+└─ readme.md
+```
+
+When `folder/subfolder/file.md` is processed, the closest config file is used:
+`.remarkrc.json`.
+For `folder/readme.md`, it’s `.remarkrc.js`.
+
+The order of precedence is as follows (earlier wins, so in the above example
+`folder/.remarkrc.js` wins over `folder/package.json`):
+
+1.  `.remarkc` (JSON)
+2.  `.remarkc.json` (JSON)
+3.  `.remarkc.cjs` (CJS)
+4.  `.remarkc.mjs` (ESM)
+5.  `.remarkc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
+6.  `.remarkc.yaml` (YAML)
+7.  `.remarkc.yml` (YAML)
 
 ## Compatibility
 
