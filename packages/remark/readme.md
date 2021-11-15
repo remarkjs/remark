@@ -34,19 +34,18 @@ This package is a [unified][] processor with support for parsing markdown input
 and serializing markdown as output by using unified with
 [`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
 
-Please see [the monorepo readme][remark] for what the remark ecosystem is.
-
 **unified** is a project that transforms content with abstract syntax trees
 (ASTs).
 **remark** adds support for markdown to unified.
 **mdast** is the markdown AST that remark uses.
+Please see [the monorepo readme][remark] for what the remark ecosystem is.
 
 ## When should I use this?
 
 You can use this package when you want to use unified, have markdown as input,
 and want markdown as output.
-It’s a shortcut for `unified().use(remarkParse).use(remarkStringify)`, which
-you can also do manually.
+This package is a shortcut for
+`unified().use(remarkParse).use(remarkStringify)`.
 When the input isn’t markdown (meaning you don’t need `remark-parse`) or the
 output is not markdown (you don’t need `remark-stringify`), it’s recommended to
 use unified directly.
