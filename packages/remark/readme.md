@@ -34,7 +34,7 @@ This package is a [unified][] processor with support for parsing markdown input
 and serializing markdown as output by using unified with
 [`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
 
-Please see the [monorepo readme][remark] for what the remark ecosystem is.
+Please see [the monorepo readme][remark] for what the remark ecosystem is.
 
 **unified** is a project that transforms content with abstract syntax trees
 (ASTs).

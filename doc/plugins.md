@@ -2,33 +2,33 @@
 
 # Plugins
 
-**remark** is a markdown processor powered by plugins part of the [unified][]
-[collective][].
+**remark** is a tool that transforms markdown with plugins.
+See [the monorepo readme][remark] for info on what the remark ecosystem is.
+This page lists existing plugins.
 
 ## Contents
 
 *   [List of plugins](#list-of-plugins)
 *   [List of presets](#list-of-presets)
 *   [List of utilities](#list-of-utilities)
-*   [Using plugins](#using-plugins)
-*   [Creating plugins](#creating-plugins)
+*   [Use plugins](#use-plugins)
+*   [Create plugins](#create-plugins)
 
 ## List of plugins
 
-See [awesome remark][awesome] for the most awesome projects in the ecosystem.
+See [`awesome-remark`][awesome-remark] for the most awesome projects in the
+ecosystem.
 More plugins can be found on GitHub tagged with the
 [`remark-plugin` topic][topic].
 
-Have a good idea for a new plugin?
-See [Creating plugins][create] below.
+> 👉 **Note**: some plugins don’t work with recent versions of remark due to
+> changes in its underlying parser (micromark).
+> Plugins that are up to date or unaffected are marked with `🟢` while plugins
+> that are **currently broken** are marked with `⚠️`.
 
-Some plugins are affected by the recent switch in the underlying parser of
-remark.
-Their status is encoded below as:
-
-*   🟢 This plugin **was not affected** or **a new version is already released**
-*   ⚠️ This plugin is affected: it’s **currently broken** and maintainers
-    have been notified
+> 💡 **Tip**: remark plugins work with markdown and **rehype** plugins work with
+> HTML.
+> See rehype’s [List of plugins][rehype-plugins] for more plugins.
 
 The list of plugins:
 
@@ -272,47 +272,55 @@ The list of plugins:
 
 ## List of presets
 
-See [npm search][npm-preset-search] or [github search][github-preset-search]
-for available and often inspirational presets.
+Use [GitHub search][github-preset-search] to find available and often
+inspirational presets.
 
 ## List of utilities
 
-See [**mdast**][mdast-util] for a list of utilities for working with the syntax
+See [mdast][mdast-util] for a list of utilities that work with the syntax
 tree.
-See [`unist`][unist-util] for other utilities which work with **mdast**
-nodes, too.
-Finally, see [**vfile**][vfile-util] for a list of utilities working with
-virtual files.
+See [unist][unist-util] for other utilities which work with **mdast** and other
+syntax trees too.
+Finally, see [vfile][vfile-util] for a list of utilities working with virtual
+files.
 
-## Using plugins
+## Use plugins
 
 To use a plugin programmatically, call the [`use()`][unified-use] function.
 
 To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use] or
 specify it in a [configuration file][config-file-use].
 
-## Creating plugins
-
-Have an idea for a plugin?
-Post it in [ideas][] and make it happen!
+## Create plugins
 
 To create a plugin, first read up on the [concept of plugins][unified-plugins].
 Then, read the [guide on “Creating a plugin with unified”][guide].
 Finally, take one of existing plugins, which looks similar to what you’re about
 to make, and work from there.
-If you get stuck, [ideas][], [issues][], and [discussions][] are good places to
-get help.
+If you get stuck, [discussions][] is a good place to get help.
 
-You should pick a name prefixed by `'remark-'`, such as `remark-lint`.
-
+You should pick a name prefixed by `'remark-'` (such as `remark-lint`).
 **Do not use the `remark-` prefix** if the thing you create doesn’t work with
 `remark().use()`: it isn’t a “plugin” and will confuse users.
 If it works with mdast, use `'mdast-util-'`, if it works with any unist tree,
 use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
+Use default exports to expose plugins from your packages, add `remark-plugin`
+keywords in `package.json`, and add a `remark-plugin` to your repo on GitHub.
+
 <!--Definitions:-->
 
 [logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
+
+[d]: https://github.com/remarkjs/remark-directive
+
+[remark]: https://github.com/remarkjs/remark
+
+[awesome-remark]: https://github.com/remarkjs/awesome-remark
+
+[topic]: https://github.com/topics/remark-plugin
+
+[github-preset-search]: https://github.com/topics/remark-preset
 
 [mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
 
@@ -328,26 +336,8 @@ use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 [unified-plugins]: https://github.com/unifiedjs/unified#plugin
 
-[issues]: https://github.com/remarkjs/remark/issues
+[guide]: https://unifiedjs.com/learn/guide/create-a-plugin/
 
 [discussions]: https://github.com/remarkjs/remark/discussions
 
-[guide]: https://unifiedjs.com/learn/guide/create-a-plugin/
-
-[npm-preset-search]: https://www.npmjs.com/search?q=remark-preset
-
-[github-preset-search]: https://github.com/topics/remark-preset
-
-[awesome]: https://github.com/remarkjs/awesome
-
-[ideas]: https://github.com/remarkjs/ideas
-
-[topic]: https://github.com/topics/remark-plugin
-
-[unified]: https://github.com/unifiedjs/unified
-
-[collective]: https://opencollective.com/unified
-
-[create]: #creating-plugins
-
-[d]: https://github.com/remarkjs/remark-directive
+[rehype-plugins]: https://github.com/rehypejs/rehype/blob/main/doc/plugins.md#list-of-plugins
