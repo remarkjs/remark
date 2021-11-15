@@ -214,8 +214,8 @@ Whether to add spaces between markers in thematic breaks (`boolean`, default:
 Whether to use setext headings when possible (`boolean`, default: `false`).
 The default is to always use ATX headings (`# heading`) instead of setext
 headings (`heading\n=======`).
-Setext headings can’t be used for headings with a rank of three or more or when
-they’re empty.
+Setext headings can’t be used for empty headings or headings with a rank of
+three or more.
 
 ###### `options.strong`
 
@@ -223,7 +223,8 @@ Marker to use for strong (`'*'` or `'_'`, default: `'*'`).
 
 ###### `options.tightDefinitions`
 
-Whether to join definitions w/o a blank line (`boolean`, default: `false`).
+Whether to join definitions without a blank line (`boolean`, default: `false`).
+The default is to add blank lines between any flow (“block”) construct.
 
 ###### `options.handlers`
 
