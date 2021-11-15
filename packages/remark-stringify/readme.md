@@ -169,8 +169,8 @@ Marker to use to serialize fenced code (``'`'`` or `'~'`, default: ``'`'``).
 ###### `options.fences`
 
 Whether to use fenced code always (`boolean`, default: `false`).
-The default is to fenced code if there is a language defined, if the code is
-empty, or if it starts or ends in empty lines.
+The default is to use fenced code if there is a language defined, if the code is
+empty, or if it starts or ends in blank lines.
 
 ###### `options.incrementListMarker`
 
