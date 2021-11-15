@@ -230,7 +230,7 @@ const remarkConfig = {
 export default remarkConfig
 ```
 
-Here’s a YAML example that can be placed in `.remarkrc.yml`:
+This is the same configuration in YAML, which can be placed in `.remarkrc.yml`:
 
 ```yml
 settings:
@@ -245,9 +245,9 @@ plugins:
     - heading: contents
 ```
 
-When `remark-cli` is about to process a markdown file, it’ll first search
-the file system upwards.
-It starts at the folder where that file is in.
+When `remark-cli` is about to process a markdown file it’ll search the file
+system upwards for configuration files starting at the folder where that file
+exists.
 Take the following file structure as an illustration:
 
 ```txt
