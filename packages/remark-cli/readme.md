@@ -187,8 +187,8 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
   /* … */
 ```
 
-Note that you must remove the comments in the above examples when copy/pasting
-them, as comments are not supported in a `package.json` file.
+> 👉 **Note**: you must remove the comments in the above examples when
+> copy/pasting them, as comments are not supported in `package.json` files.
 
 Finally, you can run the npm script to check and format the markdown in your
 project:
