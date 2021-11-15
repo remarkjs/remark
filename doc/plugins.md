@@ -92,8 +92,7 @@ The list of plugins:
 *   🟢 [`remark-directive`](https://github.com/remarkjs/remark-directive)
     — new syntax for directives (generic extensions)
 *   🟢 [`remark-directive-rehype`](https://github.com/IGassmann/remark-directive-rehype)
-    — enable Markdown directives to be parsed as HTML with
-    [`remark-directive`][d] and [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
+    — turn [directives][d] into HTML custom elements (rehype compatible)
 *   🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
     — fancy and accessible drop caps
 *   🟢 [`remark-embed-images`](https://github.com/remarkjs/remark-embed-images)
