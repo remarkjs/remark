@@ -176,7 +176,7 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
       "remark-preset-lint-consistent", // Check that markdown is consistent.
       "remark-preset-lint-recommended", // Few recommended rules.
       [
-        // Generate a table of contents in `## Table of contents`
+        // Generate a table of contents in `## Contents`
         "remark-toc",
         {
           "heading": "contents"
@@ -222,7 +222,7 @@ const remarkConfig = {
   plugins: [
     remarkPresetLintConsistent, // Check that markdown is consistent.
     remarkPresetLintRecommended, // Few recommended rules.
-    // Generate a table of contents in `## Table of contents`
+    // Generate a table of contents in `## Contents`
     [remarkToc, {heading: 'contents'}]
   ]
 }
@@ -240,7 +240,7 @@ plugins:
   - remark-preset-lint-consistent
   # Few recommended rules.
   - remark-preset-lint-recommended
-  # Generate a table of contents in `## Table of contents`
+  # Generate a table of contents in `## Contents`
   - - remark-toc
     - heading: contents
 ```
