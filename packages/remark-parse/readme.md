@@ -175,9 +175,9 @@ Yields:
 Man pages (short for manual pages) are a way to document CLIs (example: type
 `man git-log` in your terminal).
 They use an old markup format called roff.
-There’s a remark plugin, `remark-man`, that can serialize as roff.
+There’s a remark plugin, [`remark-man`][remark-man], that can serialize as roff.
 The following example turns markdown into man pages by using unified with
-`remark-parse` and [`remark-man`][remark-man]:
+`remark-parse` and `remark-man`:
 
 ```js
 import {unified} from 'unified'
