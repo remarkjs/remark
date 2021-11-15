@@ -160,11 +160,11 @@ heading as the opening sequence (`boolean`, default: `false`).
 
 ###### `options.emphasis`
 
-Marker to use to serialize emphasis (`'*'` or `'_'`, default: `'*'`).
+Marker to use for emphasis (`'*'` or `'_'`, default: `'*'`).
 
 ###### `options.fence`
 
-Marker to use to serialize fenced code (``'`'`` or `'~'`, default: ``'`'``).
+Marker to use for fenced code (``'`'`` or `'~'`, default: ``'`'``).
 
 ###### `options.fences`
 
@@ -174,25 +174,26 @@ empty, or if it starts or ends in blank lines.
 
 ###### `options.incrementListMarker`
 
-Whether to increment the value of bullets of items in ordered lists (`boolean`,
-default: `true`).
+Whether to increment the counter of ordered lists items (`boolean`, default:
+`true`).
 
 ###### `options.listItemIndent`
 
-Whether to indent the content of list items with the size of the bullet plus one
-space (when `'one'`) or a tab stop (`'tab'`), or depending on the item and its
-parent list (`'mixed'`, uses `'one'` if the item and list are tight and `'tab'`
-otherwise) (`'one'`, `'tab'`, or `'mixed'`, default: `'tab'`).
+How to indent the content of list items (`'one'`, `'tab'`, or `'mixed'`,
+default: `'tab'`).
+Either with the size of the bullet plus one space (when `'one'`), a tab stop
+(`'tab'`), or depending on the item and its parent list (`'mixed'`, uses `'one'`
+if the item and list are tight and `'tab'` otherwise).
 
 ###### `options.quote`
 
-Marker to use to serialize titles (`'"'` or `"'"`, default: `'"'`).
+Marker to use for titles (`'"'` or `"'"`, default: `'"'`).
 
 ###### `options.resourceLink`
 
-Whether to use resource links (`[text](url)`) always (`boolean`, default:
-`false`).
-The default is to use autolinks (`<https://example.com>`) when possible.
+Whether to always use resource links (`boolean`, default: `false`).
+The default is to use autolinks (`<https://example.com>`) when possible
+and resource links (`[text](url)`) otherwise.
 
 ###### `options.rule`
 
@@ -211,12 +212,14 @@ Whether to add spaces between markers in thematic breaks (`boolean`, default:
 ###### `options.setext`
 
 Whether to use setext headings when possible (`boolean`, default: `false`).
-Setext headings are not possible for headings with a rank more than 2 or when
+The default is to always use ATX headings (`# heading`) instead of setext
+headings (`heading\n=======`).
+Setext headings can’t be used for headings with a rank of three or more or when
 they’re empty.
 
 ###### `options.strong`
 
-Marker to use to serialize strong (`'*'` or `'_'`, default: `'*'`).
+Marker to use for strong (`'*'` or `'_'`, default: `'*'`).
 
 ###### `options.tightDefinitions`
 
