@@ -118,8 +118,8 @@ Examples:
   $ remark . -o
 ```
 
-More information on all these options is available in detail at
-[`unified-args`][unified-args], which does most of the work.
+More information on all these options is available at
+[`unified-args`][unified-args], which does the work.
 `remark-cli` is `unified-args` preconfigured to:
 
 *   Load `remark-` plugins
