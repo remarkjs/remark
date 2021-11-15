@@ -135,9 +135,9 @@ More information on all these options is available at
 
 ### Example: checking and formatting markdown on the CLI
 
-The following example checks and formats markdown with `remark-cli`.
+This example checks and formats markdown with `remark-cli`.
+It assumes you’re in a Node.js package.
 
-This example assumes you’re in a Node.js package.
 First, install the CLI and plugins:
 
 ```sh
@@ -156,8 +156,10 @@ Now, add an npm script in your `package.json`:
   /* … */
 ```
 
+> 💡 **Tip**: add ESLint and such in the `format` script too.
+
 Observe that the above change adds a `format` script, which can be run with
-`npm run format` (tip: add eslint and such there as well).
+`npm run format`.
 It runs remark on all markdown files (`.`) and rewrites them (`--output`).
 Run `./node_modules/.bin/remark --help` for more info on the CLI.
 
