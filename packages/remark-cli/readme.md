@@ -170,7 +170,7 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
   "remarkConfig": {
     "settings": {
       "bullet": "*", // Use `*` for list item bullets (default)
-      // see <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
+      // See <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
     },
     "plugins": [
       "remark-preset-lint-consistent", // Check that markdown is consistent.
@@ -206,7 +206,7 @@ That’s a good place when the configuration is relatively short, when you have 
 JSON).
 
 You can also define configuration in separate files in different languages.
-With the `package.json` config is inspiration, here’s a JavaScript example that
+With the `package.json` config as inspiration, here’s a JavaScript version that
 can be placed in `.remarkrc.js`:
 
 ```js
@@ -217,7 +217,7 @@ import remarkToc from 'remark-toc'
 const remarkConfig = {
   settings: {
     bullet: '*', // Use `*` for list item bullets (default)
-    // see <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
+    // See <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
   },
   plugins: [
     remarkPresetLintConsistent, // Check that markdown is consistent.
