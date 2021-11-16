@@ -269,6 +269,8 @@ case you should use [`rehype-sanitize`][rehype-sanitize].
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
 
+For info on how to submit a report, see our [security policy][security].
+
 ## Contribute
 
 See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
@@ -380,13 +382,15 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [chat]: https://github.com/remarkjs/remark/discussions
 
+[security]: https://github.com/remarkjs/.github/blob/main/security.md
+
 [health]: https://github.com/remarkjs/.github
 
-[contributing]: https://github.com/remarkjs/.github/blob/HEAD/contributing.md
+[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
 
-[support]: https://github.com/remarkjs/.github/blob/HEAD/support.md
+[support]: https://github.com/remarkjs/.github/blob/main/support.md
 
-[coc]: https://github.com/remarkjs/.github/blob/HEAD/code-of-conduct.md
+[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
 [license]: https://github.com/remarkjs/remark/blob/main/license
 
