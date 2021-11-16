@@ -338,8 +338,12 @@ npm run format
 ## Syntax
 
 remark follows CommonMark, which standardizes the differences between markdown
-implementations, to the letter by default.
+implementations, by default.
 Some syntax extensions are supported through plugins.
+
+We use [`micromark`][micromark] for our parsing.
+See its documentation for more information on markdown, CommonMark, and
+extensions.
 
 ## Syntax tree
 
