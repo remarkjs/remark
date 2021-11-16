@@ -30,7 +30,7 @@ Command line interface to inspect and change markdown files with **[remark][]**.
 This package is a command line interface (CLI) that you can use in your terminal
 or in npm scripts and the like to inspect and change markdown files.
 This CLI is built around remark, which is a very popular ecosystem of plugins
-that work with markdown as structured data: ASTs (short for abstract syntax
+that work with markdown as structured data, specifically ASTs (abstract syntax
 trees).
 You can choose from the 150+ plugins that already exist or make your own.
 
