@@ -56,9 +56,6 @@ use unified directly.
 When you want to inspect and format markdown files in a project on the command
 line, you can use [`remark-cli`][remark-cli].
 
-If you *just* want to turn markdown into HTML (with maybe a few extensions),
-we recommend [`micromark`][micromark] instead.
-
 ## Install
 
 This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
@@ -368,8 +365,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [typescript]: https://www.typescriptlang.org
 
 [rehype]: https://github.com/rehypejs/rehype
-
-[micromark]: https://github.com/micromark/micromark
 
 [remark]: https://github.com/remarkjs/remark
 
