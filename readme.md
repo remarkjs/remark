@@ -22,7 +22,7 @@ You can use remark on the server, the client, CLIs, deno, etc.
 ## Intro
 
 remark is a very popular ecosystem of plugins that work with markdown as
-structured data: ASTs (short for abstract syntax trees).
+structured data, specifically ASTs (abstract syntax trees).
 ASTs make it easy for programs to deal with markdown.
 We call those programs plugins.
 Plugins inspect and change trees.
