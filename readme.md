@@ -110,8 +110,8 @@ This GitHub repository is a monorepo that contains the following packages:
 *   [`remark-stringify`][remark-stringify]
     — plugin to take a syntax tree (mdast) and turn it into markdown as output
 *   [`remark`][remark-core]
-    — unified with both `remark-parse` and `remark-stringify`, useful when input
-    and output are markdown
+    — unified, `remark-parse`, and `remark-stringify`, useful when input and
+    output are markdown
 *   [`remark-cli`][remark-cli]
     — CLI around `remark` to inspect and format markdown in scripts
 
@@ -126,7 +126,7 @@ Depending on the input you have and output you want, you can use different parts
 of remark.
 If the input is markdown, you can use `remark-parse` with `unified`.
 If the output is markdown, you can use `remark-stringify` with `unified`
-If both the input and output are markdown, you can use `remark` itself.
+If both the input and output are markdown, you can use `remark` on its own.
 When you want to inspect and format markdown files in a project, you can use
 `remark-cli`.
 
@@ -136,13 +136,13 @@ remark plugins deal with markdown.
 Some popular examples are:
 
 *   [`remark-gfm`][remark-gfm]
-    — adds support for GFM (GitHub flavored markdown)
+    — add support for GFM (GitHub flavored markdown)
 *   [`remark-lint`][remark-lint]
-    — inspects markdown and warns about inconsistencies
+    — inspect markdown and warns about inconsistencies
 *   [`remark-toc`][remark-toc]
-    — generates a table of contents
+    — generate a table of contents
 *   [`remark-html`][remark-html]
-    — turns the syntax tree into serialized HTML
+    — turn the syntax tree into serialized HTML
 
 These plugins are exemplary because what they do and how they do it is quite
 different, respectively to extend markdown syntax, inspect trees, change trees,
@@ -169,7 +169,7 @@ remark plugins too.
 ### Example: turning markdown into HTML
 
 remark is an ecosystem around markdown.
-A different ecosystem is that but for HTML: [rehype][].
+A different ecosystem is for HTML: [rehype][].
 The following example turns markdown into HTML by combining both ecosystems with
 [`remark-rehype`][remark-rehype]:
 
@@ -202,10 +202,10 @@ Yields:
 
 ### Example: support for GFM and frontmatter
 
-We support CommonMark by default.
+remark supports CommonMark by default.
 Non-standard markdown extensions can be enabled with plugins.
-The following example adds support for GFM features (autolink literals,
-footnotes, strikethrough, tables, tasklists) and frontmatter (YAML):
+The following example adds support for GFM (autolink literals, footnotes,
+strikethrough, tables, tasklists) and frontmatter (YAML):
 
 ```js
 import {unified} from 'unified'
@@ -239,7 +239,7 @@ Yields:
 ### Example: checking markdown
 
 The following example checks that markdown code style is consistent and follows
-some best practices:
+recommended best practices:
 
 ```js
 import {reporter} from 'vfile-reporter'
@@ -294,6 +294,8 @@ Now, add an npm script in your `package.json`:
   /* … */
 ```
 
+> 💡 **Tip**: add ESLint and such in the `format` script too.
+
 Observe that the above change adds a `format` script, which can be run with
 `npm run format` (tip: add eslint and such there as well).
 It runs remark on all markdown files (`.`) and rewrites them (`--output`).
@@ -306,21 +308,27 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
   "remarkConfig": {
     "settings": {
       "bullet": "*", // Use `*` for list item bullets (default)
-      // see <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
+      // See <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
     },
     "plugins": [
       "remark-preset-lint-consistent", // Check that markdown is consistent.
       "remark-preset-lint-recommended", // Few recommended rules.
-      "remark-toc" // Generate a table of contents in `## Table of contents`
+      [
+        // Generate a table of contents in `## Contents`
+        "remark-toc",
+        {
+          "heading": "contents"
+        }
+      ]
     ]
   },
   /* … */
 ```
 
-Note that you must remove the comments in the above examples when copy/pasting
-them, as comments are not supported in a `package.json` file.
+> 👉 **Note**: you must remove the comments in the above examples when
+> copy/pasting them, as comments are not supported in `package.json` files.
 
-Finally, you can run the npm script to check and format the markdown in your
+Finally, you can run the npm script to check and format markdown files in your
 project:
 
 ```sh
