@@ -54,8 +54,8 @@ This plugin adds support to unified for parsing markdown.
 You can alternatively use [`remark`][remark-core] instead, which combines
 unified, this plugin, and [`remark-stringify`][remark-stringify].
 
-You can combine `remark-parse` with other plugins to add syntax extensions.
-Notable examples that deeply integrate with `remark-parse` are
+You can combine this plugin with other plugins to add syntax extensions.
+Notable examples that deeply integrate with it are
 [`remark-gfm`][remark-gfm],
 [`remark-frontmatter`][remark-frontmatter],
 [`remark-math`][remark-math], and

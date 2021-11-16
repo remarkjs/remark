@@ -48,8 +48,8 @@ This plugin adds support to unified for serializing markdown.
 You can alternatively use [`remark`][remark-core] instead, which combines
 unified, [`remark-parse`][remark-parse], and this plugin.
 
-You can combine `remark-stringify` with other plugins to add syntax extensions.
-Notable examples that deeply integrate with `remark-stringify` are
+You can combine this plugin with other plugins to add syntax extensions.
+Notable examples that deeply integrate with it are
 [`remark-gfm`][remark-gfm],
 [`remark-frontmatter`][remark-frontmatter],
 [`remark-math`][remark-math], and
