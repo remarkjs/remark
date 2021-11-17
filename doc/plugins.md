@@ -163,6 +163,8 @@ The list of plugins:
     — serialize markdown as man pages (roff)
 *   🟢 [`remark-math`](https://github.com/remarkjs/remark-math)
     — new syntax for math (new node types, rehype compatible)
+*   🟢 [`remark-mdx`](https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx)
+    — support MDX (JSX, expressions, ESM)
 *   🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
     — turn some or all messages on or off
 *   🟢 [`remark-normalize-headings`](https://github.com/remarkjs/remark-normalize-headings)

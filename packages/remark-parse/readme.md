@@ -57,6 +57,7 @@ unified, this plugin, and [`remark-stringify`][remark-stringify].
 You can combine this plugin with other plugins to add syntax extensions.
 Notable examples that deeply integrate with it are
 [`remark-gfm`][remark-gfm],
+[`remark-mdx`][remark-mdx],
 [`remark-frontmatter`][remark-frontmatter],
 [`remark-math`][remark-math], and
 [`remark-directive`][remark-directive].
@@ -391,6 +392,8 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [micromark-extend]: https://github.com/micromark/micromark#extensions
 
 [remark-gfm]: https://github.com/remarkjs/remark-gfm
+
+[remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
 
 [remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
 
