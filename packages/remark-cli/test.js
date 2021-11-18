@@ -16,7 +16,7 @@ test('remark-cli', (t) => {
         [
           'Usage: remark [options] [path | glob ...]',
           '',
-          '  CLI to process markdown with remark',
+          '  Command line interface to inspect and change markdown files with remark',
           '',
           'Options:',
           '',
