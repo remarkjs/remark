@@ -21,7 +21,7 @@
     "@types/tape": "^4.0.0",
     "c8": "^7.0.0",
     "camelcase": "^6.0.0",
-    "execa": "^5.0.0",
+    "execa": "^6.0.0",
     "mdast-util-assert": "^4.0.0",
     "mdast-util-gfm": "^2.0.0",
     "micromark-extension-gfm": "^2.0.0",

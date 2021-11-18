@@ -1,5 +1,5 @@
 import {URL, fileURLToPath} from 'node:url'
-import execa from 'execa'
+import {execa} from 'execa'
 import test from 'tape'
 
 test('remark-cli', (t) => {
