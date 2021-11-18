@@ -275,6 +275,7 @@ Earlier wins (so in the above file structure `folder/.remarkrc.js` wins over
 5.  `.remarkc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
 6.  `.remarkc.yaml` (YAML)
 7.  `.remarkc.yml` (YAML)
+8.  `package.json` with `remarkConfig` field
 
 ## Compatibility
 
