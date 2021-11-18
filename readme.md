@@ -297,7 +297,7 @@ Now, add an npm script in your `package.json`:
 > 💡 **Tip**: add ESLint and such in the `format` script too.
 
 Observe that the above change adds a `format` script, which can be run with
-`npm run format` (tip: add eslint and such there as well).
+`npm run format`.
 It runs remark on all markdown files (`.`) and rewrites them (`--output`).
 Run `./node_modules/.bin/remark --help` for more info on the CLI.
 
