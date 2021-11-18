@@ -1,6 +1,6 @@
 {
   "name": "remark",
-  "version": "14.0.1",
+  "version": "14.0.2",
   "description": "unified processor with support for parsing markdown input and serializing markdown as output",
   "license": "MIT",
   "keywords": [
