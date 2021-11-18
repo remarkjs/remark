@@ -309,8 +309,8 @@ If it works with mdast, use `'mdast-util-'`, if it works with any unist tree,
 use `unist-util-`, and if it works with virtual files, use `vfile-`.
 
 Use default exports to expose plugins from your packages, add `remark-plugin`
-keywords in `package.json`, and add a `remark-plugin` topic to your repo on
-GitHub.
+keywords in `package.json`, add a `remark-plugin` topic to your repo on GitHub,
+and create a pull request to add the plugin here on this page!
 
 <!--Definitions:-->
 
