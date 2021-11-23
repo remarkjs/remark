@@ -184,7 +184,7 @@ The list of plugins:
     — new syntax for mentions w/ configurable existence check (new node
     type, rehype compatible)
 *   🟢 [`remark-prettier`](https://github.com/remcohaszing/remark-prettier)
-    — Check and format markdown using Prettier as a remark plugin
+    — check and format markdown using Prettier
 *   🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
     — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
     Prism plugins)
