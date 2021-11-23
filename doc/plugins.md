@@ -183,6 +183,8 @@ The list of plugins:
 *   ⚠️ [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — new syntax for mentions w/ configurable existence check (new node
     type, rehype compatible)
+*   🟢 [`remark-prettier`](https://github.com/remcohaszing/remark-prettier)
+    — check and format markdown using Prettier
 *   🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
     — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
     Prism plugins)
