@@ -138,7 +138,7 @@ Some popular examples are:
 *   [`remark-gfm`][remark-gfm]
     — add support for GFM (GitHub flavored markdown)
 *   [`remark-lint`][remark-lint]
-    — inspect markdown and warns about inconsistencies
+    — inspect markdown and warn about inconsistencies
 *   [`remark-toc`][remark-toc]
     — generate a table of contents
 *   [`remark-html`][remark-html]
