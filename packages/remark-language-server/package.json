@@ -1,0 +1,40 @@
+{
+  "name": "remark-language-server",
+  "version": "1.0.0",
+  "description": "A language server for markdown using remark",
+  "homepage": "https://remark.js.org",
+  "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-language-server",
+  "bugs": "https://github.com/remarkjs/remark-language-serve/issues",
+  "bin": "remark-language-server.js",
+  "author": "Remco Haszing <remcohaszing@gmail.com>",
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "remark-language-server.js"
+  ],
+  "scripts": {
+    "format": "remark . -qfo && prettier . -w --loglevel warn && xo --fix",
+    "test": "tsc && npm run format"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "bracketSpacing": false,
+    "semi": false,
+    "trailingComma": "none"
+  },
+  "keywords": [
+    "unified",
+    "remark",
+    "markdown",
+    "mdast",
+    "lsp",
+    "languageserver",
+    "language server",
+    "cli"
+  ],
+  "dependencies": {
+    "unified-language-server": "^1.0.0"
+  }
+}

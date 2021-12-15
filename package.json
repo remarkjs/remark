@@ -14,7 +14,8 @@
     "packages/remark-parse",
     "packages/remark-stringify",
     "packages/remark",
-    "packages/remark-cli"
+    "packages/remark-cli",
+    "packages/remark-language-server"
   ],
   "devDependencies": {
     "@types/mdast": "^3.0.0",
