@@ -24,7 +24,7 @@ A language server to lint and format markdown files with **[remark][]**.
 ## What is this?
 
 This package is a [language server][] which can lint and format markdown files
-using remark.
+directly in your editor using remark.
 
 You can choose from the 150+ plugins that already exist or make your own.
 
