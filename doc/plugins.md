@@ -127,6 +127,8 @@ The list of plugins:
     — custom heading id support `{#custom-id}`
 *   🟢 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
     — serialize w/ more blank lines between headings
+*   🟢 [`remark-headings`](https://github.com/vcarl/remark-headings)
+    - extract a list of headings as data
 *   🟢 [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks w/ [highlight.js](https://github.com/isagalaev/highlight.js)
     (rehype compatible)
