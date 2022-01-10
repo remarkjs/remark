@@ -66,6 +66,8 @@ The list of plugins:
     – create CodeSandbox from code blocks
 *   🟢 [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
     — make a section collapsible
+*   🟢 [`remark-comment`](https://github.com/leebyron/remark-comment)
+    — Ignore HTML comments (compatible with MDX)
 *   🟢 [`remark-comment-config`](https://github.com/remarkjs/remark-comment-config)
     — configure remark w/ comments
 *   ⚠️ [`remark-comments`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-comments#readme)
