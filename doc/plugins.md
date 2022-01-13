@@ -93,6 +93,8 @@ The list of plugins:
     — new syntax for directives (generic extensions)
 *   🟢 [`remark-directive-rehype`](https://github.com/IGassmann/remark-directive-rehype)
     — turn [directives][d] into HTML custom elements (rehype compatible)
+*   🟢 [`remark-docx`](https://github.com/inokawa/remark-docx)
+    — compile markdown to docx
 *   🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
     — fancy and accessible drop caps
 *   🟢 [`remark-embed-images`](https://github.com/remarkjs/remark-embed-images)
@@ -184,6 +186,8 @@ The list of plugins:
     — inject your dependencies
 *   ⚠️ [`remark-parse-yaml`](https://github.com/landakram/remark-parse-yaml)
     — parse YAML nodes and expose their value as `parsedValue`
+*   🟢 [`remark-pdf`](https://github.com/inokawa/remark-pdf)
+    — compile markdown to pdf
 *   ⚠️ [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
     — new syntax for mentions w/ configurable existence check (new node
     type, rehype compatible)
