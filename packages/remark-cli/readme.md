@@ -268,13 +268,13 @@ The order of precedence is as follows.
 Earlier wins (so in the above file structure `folder/.remarkrc.js` wins over
 `folder/package.json`):
 
-1.  `.remarkc` (JSON)
-2.  `.remarkc.json` (JSON)
-3.  `.remarkc.cjs` (CJS)
-4.  `.remarkc.mjs` (ESM)
-5.  `.remarkc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
-6.  `.remarkc.yaml` (YAML)
-7.  `.remarkc.yml` (YAML)
+1.  `.remarkrc` (JSON)
+2.  `.remarkrc.json` (JSON)
+3.  `.remarkrc.cjs` (CJS)
+4.  `.remarkrc.mjs` (ESM)
+5.  `.remarkrc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
+6.  `.remarkrc.yaml` (YAML)
+7.  `.remarkrc.yml` (YAML)
 8.  `package.json` with `remarkConfig` field
 
 ## Compatibility
