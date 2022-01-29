@@ -5,4 +5,5 @@ import type {Options} from './lib/index.js'
 
 declare const remarkParse: Plugin<[Options?] | void[], string, Root>
 export default remarkParse
-export type {Options}
+
+export {Options} from './lib/index.js'

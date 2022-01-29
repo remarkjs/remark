@@ -5,4 +5,5 @@ import type {Options} from './lib/index.js'
 
 declare const remarkStringify: Plugin<[Options?] | void[], Root, string>
 export default remarkStringify
-export type {Options}
+
+export {Options} from './lib/index.js'

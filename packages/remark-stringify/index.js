@@ -1,3 +1,1 @@
-import remarkStringify from './lib/index.js'
-
-export default remarkStringify
+export {default} from './lib/index.js'

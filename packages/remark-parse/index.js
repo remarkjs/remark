@@ -1,3 +1,1 @@
-import remarkParse from './lib/index.js'
-
-export default remarkParse
+export {default} from './lib/index.js'
