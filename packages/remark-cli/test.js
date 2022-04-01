@@ -6,7 +6,7 @@ test('remark-cli', (t) => {
   t.plan(2)
 
   t.test('should show help on `--help`', (t) => {
-    const bin = fileURLToPath(new URL('./cli.js', import.meta.url))
+    const bin = fileURLToPath(new URL('cli.js', import.meta.url))
 
     t.plan(1)
 
@@ -63,7 +63,7 @@ test('remark-cli', (t) => {
   })
 
   t.test('should show version on `--version`', (t) => {
-    const bin = fileURLToPath(new URL('./cli.js', import.meta.url))
+    const bin = fileURLToPath(new URL('cli.js', import.meta.url))
 
     t.plan(2)
 
