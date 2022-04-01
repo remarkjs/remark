@@ -77,17 +77,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark-parse
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkParse from 'https://cdn.skypack.dev/remark-parse@10?dts'
+import remarkParse from 'https://esm.sh/remark-parse@10'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkParse from 'https://cdn.skypack.dev/remark-parse@10?min'
+  import remarkParse from 'https://esm.sh/remark-parse@10?bundle'
 </script>
 ```
 
@@ -371,7 +371,7 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [unified]: https://github.com/unifiedjs/unified
 

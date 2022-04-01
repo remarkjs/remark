@@ -69,17 +69,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark-stringify
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkStringify from 'https://cdn.skypack.dev/remark-stringify@10?dts'
+import remarkStringify from 'https://esm.sh/remark-stringify@10'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkStringify from 'https://cdn.skypack.dev/remark-stringify@10?min'
+  import remarkStringify from 'https://esm.sh/remark-stringify@10?bundle'
 </script>
 ```
 
@@ -401,7 +401,7 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [unified]: https://github.com/unifiedjs/unified
 

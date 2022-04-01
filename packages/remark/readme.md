@@ -65,17 +65,17 @@ In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
 npm install remark
 ```
 
-In Deno with [Skypack][]:
+In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {remark} from 'https://cdn.skypack.dev/remark@14?dts'
+import {remark} from 'https://esm.sh/remark@14'
 ```
 
-In browsers with [Skypack][]:
+In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {remark} from 'https://cdn.skypack.dev/remark@14?min'
+  import {remark} from 'https://esm.sh/remark@14?bundle'
 </script>
 ```
 
@@ -356,7 +356,7 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[skypack]: https://www.skypack.dev
+[esmsh]: https://esm.sh
 
 [unified]: https://github.com/unifiedjs/unified
 
