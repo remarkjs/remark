@@ -123,6 +123,8 @@ The list of plugins:
     — add a table of contributors based on Git history, options, and more
 *   🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
     — autolink references to commits, issues, pull-requests, and users
+*   🟢 [`remark-github-beta-blockquote-admonitions`](https://github.com/myl7/remark-github-beta-blockquote-admonitions)
+    — [GitHub beta blockquote-based admonitions](https://github.com/github/feedback/discussions/16925)
 *   ⚠️ [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
     — new syntax to describe tables (rehype compatible)
 *   🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
