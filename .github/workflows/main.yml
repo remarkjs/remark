@@ -18,8 +18,8 @@ jobs:
     strategy:
       matrix:
         node:
-          - lts/erbium
-          - node
+          - lts/fermium
+          - lts/gallium
   canary:
     name: canary / ${{matrix.package}} / ${{matrix.node}} on ${{matrix.os}}
     runs-on: ${{matrix.os}}
