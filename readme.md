@@ -379,7 +379,7 @@ Types for mdast are available in [`@types/mdast`][types-mdast].
 
 Projects maintained by the unified collective are compatible with all maintained
 versions of Node.js.
-As of now, that is Node.js 14.14+, and 16.0+.
+As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
 Our projects sometimes work with older versions, but this is not guaranteed.
 
 ## Security
