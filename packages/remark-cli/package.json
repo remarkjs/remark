@@ -32,7 +32,7 @@
   ],
   "dependencies": {
     "remark": "^14.0.0",
-    "unified-args": "^9.0.0"
+    "unified-args": "^10.0.0"
   },
   "scripts": {
     "build": "rimraf \"*.d.ts\" && tsc && type-coverage",
