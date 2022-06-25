@@ -375,6 +375,31 @@ The remark organization and the unified collective as a whole is fully typed
 with [TypeScript][].
 Types for mdast are available in [`@types/mdast`][types-mdast].
 
+For TypeScript to work, it is particularly important to type your plugins
+correctly.
+We strongly recommend using the `Plugin` type from `unified` with its generics
+and to use the node types for the syntax trees provided by `@types/mdast`.
+
+```js
+/**
+ * @typedef {import('mdast').Root} Root
+ *
+ * @typedef Options
+ *   Configuration (optional).
+ * @property {boolean} [someField]
+ *   Some option.
+ */
+
+// To type options and that the it works with `mdast`:
+/** @type {import('unified').Plugin<[Options?], Root>} */
+export function myRemarkPluginAcceptingOptions(options) {
+  // `options` is `Options?`.
+  return function (tree, file) {
+    // `tree` is `Root`.
+  }
+}
+```
+
 ## Compatibility
 
 Projects maintained by the unified collective are compatible with all maintained
