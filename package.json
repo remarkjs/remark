@@ -36,7 +36,7 @@
     "xo": "^0.50.0"
   },
   "scripts": {
-    "build": "npm run build --workspaces && rimraf \"*.d.ts\" \"{test,script}/**/*.d.ts\" && tsc && type-coverage",
+    "build": "npm run build --workspaces && rimraf \"*.d.ts\" \"{test,script}/**/*.d.ts\" && tsc && node ./script/convert-shallow-path-remark-parse.js && type-coverage",
     "format": "./packages/remark-cli/cli.js . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "npm run test --workspaces && node --conditions development test/index.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
