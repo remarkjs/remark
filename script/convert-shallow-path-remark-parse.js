@@ -11,7 +11,7 @@ if (!fs.existsSync(targetTypeFile)) {
   throw new Error('Cannot find `' + targetTypeFile + '`')
 }
 
-const content = fs.readFileSync(targetTypeFile, 'utf-8')
+const content = fs.readFileSync(targetTypeFile, 'utf8')
 
 /**
  * NOTE: In ../packages/remark-parse/lib/index.js , we use `typedef` specify the import path as "mdast-util-from-markdown",
