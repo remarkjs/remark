@@ -148,8 +148,6 @@ The list of plugins:
     — prefix relative image paths with an absolute URL
 *   🟢 [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
     — change references and definitions to links and images
-*   🟢 [`remark-jargon`](https://github.com/freesewing/freesewing/tree/develop/packages/remark-jargon)
-    — inserts definitions for jargon terms
 *   🟢 [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
     — remove extra space between CJK Characters.
 *   ⚠️ [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-kbd#readme)
