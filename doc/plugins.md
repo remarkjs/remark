@@ -50,6 +50,9 @@ The list of plugins:
     – hard breaks w/o needing spaces (like on issues)
 *   🟢 [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
     – transform all titles w/ [`title.sh`](https://github.com/zeit/title)
+*   🟢 [`remark-capitalize-headings`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-capitalize-headings)
+    – selectively capitalize headings
+    (👉 **note**: alternative to [`remark-capitalize`](https://github.com/zeit/remark-capitalize))
 *   🟢 [`remark-cite`](https://github.com/benrbray/remark-cite)
     – new syntax for Pandoc-style citations
 *   🟢 [`remark-code-blocks`](https://github.com/mrzmmr/remark-code-blocks)
@@ -142,6 +145,8 @@ The list of plugins:
     — serialize markdown as HTML
 *   ⚠️ [`remark-iframes`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-iframes#readme)
     — new syntax to create iframes (new node type, rehype compatible)
+*   🟢 [`remark-ignore`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-ignore)
+    — use comments to exclude nodes from transformation
 *   🟢 [`remark-images`](https://github.com/remarkjs/remark-images)
     — add an improved image syntax
 *   🟢 [`remark-img-links`](https://github.com/Pondorasti/remark-img-links)
@@ -209,6 +214,12 @@ The list of plugins:
     — change absolute URLs to relative ones
 *   🟢 [`remark-remove-comments`](https://github.com/alvinometric/remark-remove-comments)
     — remove HTML comments from the processed output
+*   🟢 [`remark-remove-unused-definitions`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-remove-unused-definitions)
+    — remove unused reference-style link definitions
+*   🟢 [`remark-remove-url-trailing-slash`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-remove-url-trailing-slash)
+    — remove trailing slashes from the ends of all URL paths
+*   🟢 [`remark-renumber-references`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-renumber-references)
+    — renumber numeric reference-style link ids contiguously starting from 1
 *   🟢 [`remark-retext`](https://github.com/remarkjs/remark-retext)
     — transform to [retext](https://github.com/retextjs/retext)
 *   🟢 [`remark-ruby`](https://github.com/laysent/remark-ruby)
@@ -230,6 +241,8 @@ The list of plugins:
     — SmartyPants
 *   🟢 [`remark-smcat`](https://github.com/shedali/remark-smcat)
     — state machine cat
+*   🟢 [`remark-sort-definitions`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-sort-definitions)
+    — reorder reference-style link definitions
 *   🟢 [`remark-sources`](https://github.com/unlight/remark-sources)
     — insert source code
 *   🟢 [`remark-strip-badges`](https://github.com/remarkjs/remark-strip-badges)
@@ -245,6 +258,8 @@ The list of plugins:
     — new customizable syntax for special terms and phrases
 *   🟢 [`remark-textr`](https://github.com/remarkjs/remark-textr)
     — transform text w/ [`Textr`](https://github.com/shuvalov-anton/textr)
+*   🟢 [`remark-tight-comments`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-tight-comments)
+    — selectively remove newlines around comments
 *   🟢 [`remark-title`](https://github.com/RichardLitt/remark-title)
     — check and add the document title
 *   🟢 [`remark-toc`](https://github.com/remarkjs/remark-toc)
