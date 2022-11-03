@@ -41,6 +41,7 @@ test('remark-cli', function (t) {
           '      --file-path <path>                  specify path to process as',
           '      --ignore-path-resolve-from dir|cwd  resolve patterns in `ignore-path` from its directory or cwd',
           '      --ignore-pattern <globs>            specify ignore patterns',
+          '      --silently-ignore                   do not fail when given ignored files',
           '      --tree-in                           specify input as syntax tree',
           '      --tree-out                          output syntax tree',
           '      --inspect                           output formatted syntax tree',

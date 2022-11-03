@@ -23,7 +23,8 @@ var lowercaseX = 'x'
 var tabSize = 4
 var looseListItemExpression = /\n\n(?!\s*$)/
 var taskItemExpression = /^\[([ X\tx])][ \t]/
-var bulletExpression = /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/
+var bulletExpression =
+  /^([ \t]*)([*+-]|\d+[.)])( {1,4}(?! )| |\t|$|(?=\n))([^\n]*)/
 var pedanticBulletExpression = /^([ \t]*)([*+-]|\d+[.)])([ \t]+)/
 var initialIndentExpression = /^( {1,4}|\t)?/gm
 

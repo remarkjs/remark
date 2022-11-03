@@ -13,14 +13,15 @@ unified().use(remarkStringify)
 unified().use(remarkStringify, inferredStringifyOptions)
 
 // These cannot be automatically inferred by TypeScript
-const nonInferredStringifyOptions: remarkStringify.PartialRemarkStringifyOptions = {
-  fence: '~',
-  bullet: '+',
-  listItemIndent: 'tab',
-  rule: '-',
-  strong: '_',
-  emphasis: '*'
-}
+const nonInferredStringifyOptions: remarkStringify.PartialRemarkStringifyOptions =
+  {
+    fence: '~',
+    bullet: '+',
+    listItemIndent: 'tab',
+    rule: '-',
+    strong: '_',
+    emphasis: '*'
+  }
 
 unified().use(remarkStringify, nonInferredStringifyOptions)
 
@@ -50,10 +51,11 @@ function gap(this: unified.Processor) {
 
 const plugin: unified.Plugin = gap
 
-const badPartialStringifyOptions: remarkStringify.PartialRemarkStringifyOptions = {
-  // $ExpectError
-  gfm: 'true'
-}
+const badPartialStringifyOptions: remarkStringify.PartialRemarkStringifyOptions =
+  {
+    // $ExpectError
+    gfm: 'true'
+  }
 
 // $ExpectError
 const incompleteStringifyOptions: remarkStringify.RemarkStringifyOptions = {

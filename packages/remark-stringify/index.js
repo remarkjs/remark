@@ -2,7 +2,7 @@
 
 var unherit = require('unherit')
 var xtend = require('xtend')
-var Compiler = require('./lib/compiler.js')
+var Compiler = require('./lib/compiler')
 
 module.exports = stringify
 stringify.Compiler = Compiler

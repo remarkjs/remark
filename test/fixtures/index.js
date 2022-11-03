@@ -4,8 +4,8 @@ var fs = require('fs')
 var path = require('path')
 var camelcase = require('camelcase')
 var clone = require('clone')
-var parseDefaults = require('../../packages/remark-parse/lib/defaults.js')
-var stringifyDefaults = require('../../packages/remark-stringify/lib/defaults.js')
+var parseDefaults = require('../../packages/remark-parse/lib/defaults')
+var stringifyDefaults = require('../../packages/remark-stringify/lib/defaults')
 
 var own = {}.hasOwnProperty
 var read = fs.readFileSync

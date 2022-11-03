@@ -2,7 +2,7 @@
 
 var unherit = require('unherit')
 var xtend = require('xtend')
-var Parser = require('./lib/parser.js')
+var Parser = require('./lib/parser')
 
 module.exports = parse
 parse.Parser = Parser

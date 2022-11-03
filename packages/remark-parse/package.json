@@ -48,7 +48,7 @@
     "parse-entities": "^2.0.0",
     "repeat-string": "^1.5.4",
     "state-toggle": "^1.0.0",
-    "trim": "0.0.1",
+    "trim": "1.0.1",
     "trim-trailing-lines": "^1.0.0",
     "unherit": "^1.0.4",
     "unist-util-remove-position": "^2.0.0",
