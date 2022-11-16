@@ -7,14 +7,14 @@ jobs:
     name: ${{matrix.node}}
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: dcodeIO/setup-node-nvm@master
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node}}
       - run: npm install -g npm
       - run: npm install
       - run: npm test
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v3
     strategy:
       matrix:
         node:
@@ -25,9 +25,9 @@ jobs:
     runs-on: ${{matrix.os}}
     steps:
       - name: checkout remark
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: setup node
-        uses: dcodeIO/setup-node-nvm@master
+        uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node}}
       - name: setup remark
@@ -36,7 +36,7 @@ jobs:
           npm install
           npm run build
       - name: checkout ${{matrix.package}}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: ${{matrix.package}}
           path: canary/${{matrix.package}}
