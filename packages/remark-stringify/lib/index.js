@@ -6,7 +6,10 @@
 
 import {toMarkdown} from 'mdast-util-to-markdown'
 
-/** @type {import('unified').Plugin<[Options]|void[], Node, string>} */
+/**
+ * @this {import('unified').Processor}
+ * @type {import('unified').Plugin<[Options]|void[], Node, string>}
+ */
 export default function remarkStringify(options) {
   /** @type {import('unified').CompilerFunction<Node, string>} */
   const compiler = (tree) => {

@@ -5,7 +5,10 @@
 
 import {fromMarkdown} from 'mdast-util-from-markdown'
 
-/** @type {import('unified').Plugin<[Options?] | void[], string, Root>} */
+/**
+ * @this {import('unified').Processor}
+ * @type {import('unified').Plugin<[Options?] | void[], string, Root>}
+ */
 export default function remarkParse(options) {
   /** @type {import('unified').ParserFunction<Root>} */
   const parser = (doc) => {
