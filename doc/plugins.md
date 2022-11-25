@@ -298,6 +298,8 @@ The list of plugins:
     — new syntax for wiki links (rehype compatible)
 *   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark w/ YAML
+*   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
+    — add titles to code blocks
 
 ## List of presets
 
