@@ -55,6 +55,8 @@ The list of plugins:
     (👉 **note**: alternative to [`remark-capitalize`](https://github.com/zeit/remark-capitalize))
 *   🟢 [`remark-cite`](https://github.com/benrbray/remark-cite)
     – new syntax for Pandoc-style citations
+*   🟢 [`remark-cloudinary-docusaurus`](https://github.com/johnnyreilly/remark-cloudinary-docusaurus)
+    - allows Docusaurus to use Cloudinary to serve optimised images
 *   🟢 [`remark-code-blocks`](https://github.com/mrzmmr/remark-code-blocks)
     — select and store code blocks
 *   🟢 [`remark-code-extra`](https://github.com/samlanning/remark-code-extra)
