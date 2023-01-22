@@ -301,7 +301,7 @@ The list of plugins:
 *   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
     — add titles to code blocks
 *   🟢 [`remark-flexible-code-titles`](https://github.com/ipikuka/remark-flexible-code-titles)
-    — add titles / or containers / or both for code blocks with customizable attributes
+    — add titles or/and containers for code blocks with customizable attributes
 
 ## List of presets
 
