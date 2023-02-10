@@ -114,6 +114,8 @@ The list of plugins:
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
     — support ASCII guillements (`<<`, `>>`) mapping them to HTML
+*   🟢 [`remark-flexible-code-titles`](https://github.com/ipikuka/remark-flexible-code-titles)
+    — add titles or/and containers for code blocks with customizable attributes
 *   🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – support frontmatter (yaml, toml, and more)
 *   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
