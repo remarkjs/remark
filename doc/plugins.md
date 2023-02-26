@@ -118,6 +118,8 @@ The list of plugins:
     — add titles or/and containers for code blocks with customizable attributes
 *   🟢 [`remark-flexible-containers`](https://github.com/ipikuka/remark-flexible-containers)
     — add custom/flexible containers with customizable properties
+*   🟢 [`remark-flexible-paragraphs`](https://github.com/ipikuka/remark-flexible-paragraphs)
+    — add custom/flexible paragraphs with customizable properties
 *   🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – support frontmatter (yaml, toml, and more)
 *   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
