@@ -116,6 +116,8 @@ The list of plugins:
     — support ASCII guillements (`<<`, `>>`) mapping them to HTML
 *   🟢 [`remark-flexible-code-titles`](https://github.com/ipikuka/remark-flexible-code-titles)
     — add titles or/and containers for code blocks with customizable attributes
+*   🟢 [`remark-flexible-containers`](https://github.com/ipikuka/remark-flexible-containers)
+    — add custom/flexible containers with customizable properties
 *   🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
     – support frontmatter (yaml, toml, and more)
 *   🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
