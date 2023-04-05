@@ -196,6 +196,8 @@ The list of plugins:
     — label footnotes w/ numbers
 *   🟢 [`@agentofuser/remark-oembed`](https://github.com/agentofuser/remark-oembed)
     — transform URLs for youtube, twitter, etc. embeds
+*   🟢 [`remark-obsidian-callout`](https://github.com/escwxyz/remark-obsidian-callout)
+    — parse Obsidian's callout syntax for further customizations
 *   🟢 [`remark-oembed`](https://github.com/sergioramos/remark-oembed)
     — transform URLs surrounded by newlines into *asynchronously* loading
     embeds
