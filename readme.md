@@ -56,6 +56,7 @@ You can use the many existing plugins or you can make your own.
 ## What is this?
 
 You can use plugins to turn markdown into HTML.
+
 **In**:
 
 ```markdown
@@ -69,6 +70,7 @@ You can use plugins to turn markdown into HTML.
 ```
 
 You can use plugins to change markdown.
+
 **In**:
 
 ```markdown
