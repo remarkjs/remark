@@ -57,13 +57,13 @@ You can use the many existing plugins or you can make your own.
 
 You can use plugins to turn markdown into HTML.
 
-**In**:
+This markdown:
 
 ```markdown
 # Hello, *Mercury*!
 ```
 
-**Out**:
+yields the following HTML:
 
 ```html
 <h1>Hello, <em>Mercury</em>!</h1>
@@ -71,13 +71,13 @@ You can use plugins to turn markdown into HTML.
 
 You can use plugins to change markdown.
 
-**In**:
+This markdown:
 
 ```markdown
 # Hi, Saturn!
 ```
 
-**Plugin**:
+with this plugin:
 
 ```js
 import {visit} from 'unist-util-visit'
@@ -94,7 +94,7 @@ function myRemarkPluginToIncreaseHeadings() {
 }
 ```
 
-**Out**:
+yields the following HTML:
 
 ```markdown
 ## Hi, Saturn!
@@ -351,13 +351,14 @@ extensions.
 
 The syntax tree format used in remark is [mdast][].
 It represents markdown constructs as JSON objects.
-**In**:
+
+This markdown:
 
 ```markdown
 ## Hello *Pluto*!
 ```
 
-**Out**:
+yields the following tree:
 
 ```js
 {
