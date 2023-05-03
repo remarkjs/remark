@@ -55,32 +55,62 @@ You can use the many existing plugins or you can make your own.
 
 ## What is this?
 
-You can use plugins to turn markdown into HTML.
-
-This markdown:
+With this project and a plugin, you can turn this markdown:
 
 ```markdown
 # Hello, *Mercury*!
 ```
 
-yields the following HTML:
+…into the following HTML:
 
 ```html
 <h1>Hello, <em>Mercury</em>!</h1>
 ```
 
-You can use plugins to change markdown.
+<details><summary>Show example code</summary>
 
-This markdown:
+```js
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkHtml from 'remark-html'
+
+const file = await unified()
+    .use(remarkParse)
+    .use(remarkHtml)
+    .process('# Hello, *Mercury*!')
+
+console.log(String(file)) // => '<h1>Hello, <em>Mercury</em>!</h1>'
+```
+
+</details>
+
+With another plugin, you can turn this markdown:
 
 ```markdown
 # Hi, Saturn!
 ```
 
-with this plugin:
+…into the following markdown:
+
+```markdown
+## Hi, Saturn!
+```
+
+<details><summary>Show example code</summary>
 
 ```js
+import {unified} from 'unified'
+import remarkParse from 'remark-parse'
+import remarkStringify from 'remark-stringify'
 import {visit} from 'unist-util-visit'
+
+const file = await unified()
+    .use(remarkParse)
+    .use(myRemarkPluginToIncreaseHeadings)
+    .use(remarkStringify)
+    .process('# Hi, Saturn!')
+
+console.log(String(file)) // => '## Hi, Saturn!'
 
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 function myRemarkPluginToIncreaseHeadings() {
@@ -94,11 +124,7 @@ function myRemarkPluginToIncreaseHeadings() {
 }
 ```
 
-yields the following HTML:
-
-```markdown
-## Hi, Saturn!
-```
+</details>
 
 You can use remark for many different things.
 **[unified][]** is the core project that transforms content with ASTs.
