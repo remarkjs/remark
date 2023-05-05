@@ -55,7 +55,7 @@
   },
   "remarkConfig": {
     "plugins": [
-      "remark-preset-wooorm",
+      "preset-wooorm",
       [
         "remark-lint-no-html",
         false
