@@ -54,10 +54,12 @@
     "prettier": true
   },
   "remarkConfig": {
-    "remark-preset-wooorm",
-    [
-      "remark-lint-no-html",
-      false
+   "plugins": [
+      "remark-preset-wooorm",
+      [
+        "remark-lint-no-html",
+        false
+      ]
     ]
   },
   "typeCoverage": {
