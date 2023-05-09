@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import {createRequire} from 'node:module'
 import {args} from 'unified-args'
+// eslint-disable-next-line import/order
 import {remark} from 'remark'
 
 const require = createRequire(import.meta.url)
