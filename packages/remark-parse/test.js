@@ -1,18 +1,19 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {unified} from 'unified'
 import {gfm} from 'micromark-extension-gfm'
 import {gfmFromMarkdown} from 'mdast-util-gfm'
 import {removePosition} from 'unist-util-remove-position'
 import remarkParse from './index.js'
 
-test('remarkParse', (t) => {
-  t.equal(
+test('remarkParse', async (t) => {
+  assert.equal(
     unified().use(remarkParse).parse('Alfred').children.length,
     1,
     'should accept a `string`'
   )
 
-  t.test('extensions', (t) => {
+  await t.test('extensions', () => {
     const tree = unified()
       .data('micromarkExtensions', [gfm()])
       .data('fromMarkdownExtensions', [gfmFromMarkdown()])
@@ -21,7 +22,7 @@ test('remarkParse', (t) => {
 
     removePosition(tree, true)
 
-    t.deepEqual(
+    assert.deepEqual(
       tree,
       {
         type: 'root',
@@ -61,9 +62,5 @@ test('remarkParse', (t) => {
       },
       'should work'
     )
-
-    t.end()
   })
-
-  t.end()
 })

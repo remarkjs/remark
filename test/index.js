@@ -1,31 +1,23 @@
-import test from 'tape'
+import assert from 'node:assert/strict'
+import test from 'node:test'
 import {removePosition} from 'unist-util-remove-position'
-import {assert} from 'mdast-util-assert'
+import {assert as mdastAssert} from 'mdast-util-assert'
 import {remark} from '../packages/remark/index.js'
 import {fixtures} from './fixtures/index.js'
 
-test('fixtures', (t) => {
+test('fixtures', async (t) => {
   let index = -1
 
-  next()
+  while (++index < fixtures.length) {
+    const fixture = fixtures[index]
 
-  // Check the next fixture.
-  function next() {
-    const fixture = fixtures[++index]
-
-    if (!fixture) {
-      t.end()
-      return
-    }
-
-    setImmediate(next) // Queue next.
-
-    t.test(fixture.name, (t) => {
+    // eslint-disable-next-line no-await-in-loop
+    await t.test(fixture.name, () => {
       const actualTree = remark().parse(fixture.input)
 
-      assert(actualTree)
+      mdastAssert(actualTree)
 
-      t.deepLooseEqual(
+      assert.deepEqual(
         actualTree,
         fixture.tree,
         'should parse `' + fixture.name + '` correctly'
@@ -42,7 +34,7 @@ test('fixtures', (t) => {
         removePosition(actualTree, true)
         removePosition(reparsedTree, true)
 
-        t.deepEqual(
+        assert.deepEqual(
           actualTree,
           reparsedTree,
           'should stringify `' + fixture.name + '`'
@@ -50,14 +42,12 @@ test('fixtures', (t) => {
       }
 
       if (fixture.output === true) {
-        t.equal(
+        assert.equal(
           fixture.input,
           actualOutput,
           'should stringify `' + fixture.name + '` exact'
         )
       }
-
-      t.end()
     })
   }
 })
