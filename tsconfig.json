@@ -1,13 +1,22 @@
 {
-  "include": ["script/**/*.js", "test/**/*.js"],
   "compilerOptions": {
-    "target": "es2021",
-    "lib": ["es2021"],
-    "module": "node16",
+    "customConditions": ["development"],
     "checkJs": true,
     "declaration": true,
     "emitDeclarationOnly": true,
-    "skipLibCheck": true,
-    "strict": true
-  }
+    "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2020"],
+    "module": "node16",
+    "newLine": "lf",
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "es2020"
+  },
+  "exclude": ["**/coverage/", "**/node_modules/"],
+  "include": [
+    "**/*.js",
+    "packages/remark-parse/index.d.ts",
+    "packages/remark-stringify/index.d.ts"
+  ]
 }

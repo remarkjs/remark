@@ -46,8 +46,7 @@
     "unified": "^10.0.0"
   },
   "scripts": {
-    "test": "node --conditions development test.js",
-    "build": "rimraf \"test.d.ts\" \"lib/**/*.d.ts\" && tsc && type-coverage"
+    "test": "node --conditions development test.js"
   },
   "xo": false,
   "typeCoverage": {

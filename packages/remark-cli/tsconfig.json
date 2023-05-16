@@ -1,7 +1,4 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["*.js"],
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
+  "references": [{"path": "../remark/"}]
 }

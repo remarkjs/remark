@@ -11,10 +11,10 @@
   },
   "type": "module",
   "workspaces": [
-    "packages/remark-parse",
-    "packages/remark-stringify",
-    "packages/remark",
-    "packages/remark-cli"
+    "packages/remark-parse/",
+    "packages/remark-stringify/",
+    "packages/remark/",
+    "packages/remark-cli/"
   ],
   "devDependencies": {
     "@types/mdast": "^3.0.0",
@@ -36,7 +36,8 @@
     "xo": "^0.54.0"
   },
   "scripts": {
-    "build": "npm run build --workspaces && rimraf \"*.d.ts\" \"{test,script}/**/*.d.ts\" && tsc && type-coverage",
+    "prepack": "npm run build && npm run format",
+    "build": "tsc --build --clean && tsc --build && type-coverage",
     "format": "./packages/remark-cli/cli.js . -qfo && prettier . -w --loglevel warn && xo --fix",
     "test-api": "npm run test --workspaces && node --conditions development test/index.js",
     "test-coverage": "c8 --check-coverage --branches 100 --functions 100 --lines 100 --statements 100 --reporter lcov npm run test-api",
