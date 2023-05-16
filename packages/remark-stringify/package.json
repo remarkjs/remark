@@ -1,6 +1,6 @@
 {
   "name": "remark-stringify",
-  "version": "10.0.2",
+  "version": "10.0.3",
   "description": "remark plugin to add support for serializing markdown",
   "license": "MIT",
   "keywords": [
