@@ -1,18 +1,17 @@
-import test from 'tape'
+import {test} from 'node:test'
+import assert from 'node:assert/strict'
 import {remark} from './index.js'
 
-test('remark', (t) => {
-  t.equal(
+test('remark', () => {
+  assert.equal(
     remark().processSync('*foo*').toString(),
     '*foo*\n',
     'should parse and stringify a file'
   )
 
-  t.equal(
+  assert.equal(
     remark().data('settings', {closeAtx: true}).processSync('# foo').toString(),
     '# foo #\n',
     'should accept stringify options'
   )
-
-  t.end()
 })

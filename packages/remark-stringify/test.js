@@ -5,14 +5,15 @@
  * @typedef {import('./index.js').Options} Options
  */
 
-import test from 'tape'
+import {test} from 'node:test'
+import assert from 'node:assert/strict'
 import {unified} from 'unified'
 import {gfmToMarkdown} from 'mdast-util-gfm'
 import remarkParse from '../remark-parse/index.js'
 import remarkStringify from './index.js'
 
 test('remarkStringify', (t) => {
-  t.equal(
+  assert.equal(
     unified()
       .use(remarkStringify)
       .stringify({
@@ -24,7 +25,7 @@ test('remarkStringify', (t) => {
     'should not add more than one line feeds at the end'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       // @ts-expect-error: not a node.
       unified().use(remarkStringify).stringify(false)
@@ -33,7 +34,7 @@ test('remarkStringify', (t) => {
     'should throw when `ast` is not an object'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       // @ts-expect-error: not a known node.
       unified().use(remarkStringify).stringify({type: 'unicorn'})
@@ -42,7 +43,7 @@ test('remarkStringify', (t) => {
     'should throw when `ast` is not a valid node'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -58,7 +59,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.bullet` is not a valid list bullet'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -74,7 +75,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.listItemIndent` is not a valid constant'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -85,7 +86,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.rule` is not a valid horizontal rule bullet'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -96,7 +97,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.ruleRepetition` is too low'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -107,7 +108,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.ruleRepetition` is not a number'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -118,7 +119,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.emphasis` is not a valid emphasis marker'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -129,7 +130,7 @@ test('remarkStringify', (t) => {
     'should throw when `options.strong` is not a valid emphasis marker'
   )
 
-  t.throws(
+  assert.throws(
     () => {
       unified()
         .use(remarkStringify)
@@ -140,8 +141,8 @@ test('remarkStringify', (t) => {
     'should throw when `options.fence` is not a valid fence marker'
   )
 
-  t.test('should support optional list fields', (t) => {
-    t.equal(
+  t.test('should support optional list fields', () => {
+    assert.equal(
       toString({
         type: 'list',
         children: [
@@ -157,7 +158,7 @@ test('remarkStringify', (t) => {
       'no ordered, start, or spread'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'list',
         start: 2,
@@ -174,7 +175,7 @@ test('remarkStringify', (t) => {
       'start; no ordered or spread'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'list',
         spread: true,
@@ -197,7 +198,7 @@ test('remarkStringify', (t) => {
       'spread; no ordered or start'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -217,7 +218,7 @@ test('remarkStringify', (t) => {
       'ordered; no start or spread'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -241,7 +242,7 @@ test('remarkStringify', (t) => {
       'ordered and spread; no start'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'list',
         ordered: true,
@@ -265,11 +266,9 @@ test('remarkStringify', (t) => {
       '3.  hotel\n\n4.  india\n',
       'ordered, spread, and start'
     )
-
-    t.end()
   })
 
-  t.test('should support optional list item fields', (t) => {
+  t.test('should support optional list item fields', () => {
     /** @type {BlockContent[]} */
     const children = [
       {type: 'paragraph', children: [{type: 'text', value: 'alpha'}]},
@@ -281,34 +280,30 @@ test('remarkStringify', (t) => {
       }
     ]
 
-    t.equal(
+    assert.equal(
       toString({type: 'listItem', children}),
       '*   alpha\n\n    > bravo\n',
       'no spread'
     )
 
-    t.equal(
+    assert.equal(
       toString({type: 'listItem', spread: true, children}),
       '*   alpha\n\n    > bravo\n',
       'spread: true'
     )
 
-    t.equal(
+    assert.equal(
       toString({type: 'listItem', spread: false, children}),
       '*   alpha\n    > bravo\n',
       'spread: false'
     )
-
-    t.end()
   })
 
-  t.test('should support empty list items', (t) => {
-    t.equal(toString({type: 'listItem', children: []}), '*\n')
-
-    t.end()
+  t.test('should support empty list items', () => {
+    assert.equal(toString({type: 'listItem', children: []}), '*\n')
   })
 
-  t.test('should process references with casing properly', (t) => {
+  t.test('should process references with casing properly', () => {
     // Data-driven tests in the format: [name, value]
     const tests = [
       ['capitalized link references - full', '[alpha][Bravo]'],
@@ -323,7 +318,7 @@ test('remarkStringify', (t) => {
     while (++index < tests.length) {
       const test = tests[index]
 
-      t.equal(
+      assert.equal(
         unified()
           .use(remarkParse)
           .use(remarkStringify)
@@ -333,18 +328,16 @@ test('remarkStringify', (t) => {
         test[0]
       )
     }
-
-    t.end()
   })
 
-  t.test('should process associations without label', (t) => {
-    t.equal(
+  t.test('should process associations without label', () => {
+    assert.equal(
       toString({type: 'definition', identifier: 'a', url: 'example.com'}),
       '[a]: example.com\n',
       'definition'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'linkReference',
         identifier: 'a',
@@ -355,7 +348,7 @@ test('remarkStringify', (t) => {
       'link reference'
     )
 
-    t.equal(
+    assert.equal(
       toString({
         type: 'imageReference',
         referenceType: 'full',
@@ -365,14 +358,10 @@ test('remarkStringify', (t) => {
       '![b][a]\n',
       'image reference'
     )
-
-    t.end()
   })
 
-  t.test('should stringify mailto links properly', (t) => {
-    t.plan(3)
-
-    t.equal(
+  t.test('should stringify mailto links properly', () => {
+    assert.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
@@ -382,7 +371,7 @@ test('remarkStringify', (t) => {
       'url is `mailto:` plus link text'
     )
 
-    t.equal(
+    assert.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
@@ -392,7 +381,7 @@ test('remarkStringify', (t) => {
       'url is link text'
     )
 
-    t.equal(
+    assert.equal(
       unified()
         .use(remarkParse)
         .use(remarkStringify)
@@ -402,65 +391,67 @@ test('remarkStringify', (t) => {
       'url is not link text'
     )
   })
-
-  t.end()
 })
 
-test('stringify escapes', (t) => {
-  t.equal(toString('a\\b'), 'a\\b\n', '`\\`')
-  t.equal(toString('a\\-b'), 'a\\\\-b\n', '`\\` followed by punctuation')
-  t.equal(toString('a`b'), 'a\\`b\n', '`` ` ``')
-  t.equal(toString('a*b'), 'a\\*b\n', '`*`')
-  t.equal(toString('a[b'), 'a\\[b\n', '`[`')
-  t.equal(toString('a<b'), 'a\\<b\n', '`<`')
-  t.equal(toString('a&b'), 'a\\&b\n', '`&`')
-  t.equal(toString('a&amp;b'), 'a\\&amp;b\n', 'entities')
-  t.equal(toString('a]b'), 'a]b\n', '`]`')
-  t.equal(
+test('stringify escapes', () => {
+  assert.equal(toString('a\\b'), 'a\\b\n', '`\\`')
+  assert.equal(toString('a\\-b'), 'a\\\\-b\n', '`\\` followed by punctuation')
+  assert.equal(toString('a`b'), 'a\\`b\n', '`` ` ``')
+  assert.equal(toString('a*b'), 'a\\*b\n', '`*`')
+  assert.equal(toString('a[b'), 'a\\[b\n', '`[`')
+  assert.equal(toString('a<b'), 'a\\<b\n', '`<`')
+  assert.equal(toString('a&b'), 'a\\&b\n', '`&`')
+  assert.equal(toString('a&amp;b'), 'a\\&amp;b\n', 'entities')
+  assert.equal(toString('a]b'), 'a]b\n', '`]`')
+  assert.equal(
     toString({type: 'link', url: '', children: [{type: 'text', value: 'a]b'}]}),
     '[a\\]b]()\n',
     '`]` (in links)'
   )
-  t.equal(
+  assert.equal(
     toString({type: 'image', url: '', alt: 'a]b'}),
     '![a\\]b]()\n',
     '`]` (in images)'
   )
-  t.equal(toString('![a'), '!\\[a\n', 'the `[` in `![`')
-  t.equal(toString('a~b'), 'a~b\n', '`~`')
-  t.equal(toString('a|b'), 'a|b\n', '`|`')
-  t.equal(toString('a_b'), 'a\\_b\n', '`_` (in words)')
-  t.equal(toString('a _b'), 'a \\_b\n', '`_` after `\\b`')
-  t.equal(toString('a_ b'), 'a\\_ b\n', '`_` before `\\b`')
-  t.equal(toString('a:b'), 'a:b\n', '`:`')
-  t.equal(toString('>a'), '\\>a\n', '`>` (at the start of a line)')
-  t.equal(toString('a>b'), 'a>b\n', '`>` (in phrasing)')
-  t.equal(toString('#a'), '\\#a\n', '`#` (at the start of a line)')
-  t.equal(toString('a#b'), 'a#b\n', '`#` (in phrasing)')
-  t.equal(toString('*a'), '\\*a\n', '`*` (at the start of a line)')
-  t.equal(toString('a*b'), 'a\\*b\n', '`*` (in content)')
-  t.equal(toString('- a'), '\\- a\n', '`-` (at the start of a line)')
-  t.equal(toString('a-b'), 'a-b\n', '`-` (in phrasing)')
-  t.equal(toString('+ a'), '\\+ a\n', '`+` (at the start of the line)')
-  t.equal(toString('.a'), '.a\n', '`.`')
-  t.equal(toString('1.a'), '1.a\n', '`.` (after digit before letter)')
-  t.equal(toString('1. '), '1\\.&#x20;\n', '`.` (after digit, with space)')
-  t.equal(toString('1.\t'), '1\\.&#x9;\n', '`.` (after digit, with tab)')
-  t.equal(toString('1.\n'), '1\\.\n', '`.` (after digit, with newline)')
-  t.equal(toString('1.'), '1\\.\n', '`.` (after digit, with EOF)')
-  t.equal(toString('1.a'), '1.a\n', '`1.` (after digit, before letter)')
-  t.equal(toString('1. '), '1\\.&#x20;\n', '`1.` (after digit, with space)')
-  t.equal(toString('1.\t'), '1\\.&#x9;\n', '`1.` (after digit, with tab)')
-  t.equal(toString('1.\n'), '1\\.\n', '`1.` (after digit, with newline)')
-  t.equal(toString('1.'), '1\\.\n', '`1.` (after digit, with EOF)')
-  t.equal(toString(')a'), ')a\n', '`)`')
-  t.equal(toString('1)a'), '1\\)a\n', '`)` (after digit)')
-  t.equal(toString('1) '), '1\\)&#x20;\n', '`)` (after digit, with space)')
-  t.equal(toString('1)\t'), '1\\)&#x9;\n', '`)` (after digit, with tab)')
-  t.equal(toString('1)\n'), '1\\)\n', '`)` (after digit, with newline)')
-  t.equal(toString('1)'), '1\\)\n', '`)` (after digit, with EOL)')
-  t.equal(toString('a](b'), 'a]\\(b\n', '`(` after `]`')
-  t.equal(
+  assert.equal(toString('![a'), '!\\[a\n', 'the `[` in `![`')
+  assert.equal(toString('a~b'), 'a~b\n', '`~`')
+  assert.equal(toString('a|b'), 'a|b\n', '`|`')
+  assert.equal(toString('a_b'), 'a\\_b\n', '`_` (in words)')
+  assert.equal(toString('a _b'), 'a \\_b\n', '`_` after `\\b`')
+  assert.equal(toString('a_ b'), 'a\\_ b\n', '`_` before `\\b`')
+  assert.equal(toString('a:b'), 'a:b\n', '`:`')
+  assert.equal(toString('>a'), '\\>a\n', '`>` (at the start of a line)')
+  assert.equal(toString('a>b'), 'a>b\n', '`>` (in phrasing)')
+  assert.equal(toString('#a'), '\\#a\n', '`#` (at the start of a line)')
+  assert.equal(toString('a#b'), 'a#b\n', '`#` (in phrasing)')
+  assert.equal(toString('*a'), '\\*a\n', '`*` (at the start of a line)')
+  assert.equal(toString('a*b'), 'a\\*b\n', '`*` (in content)')
+  assert.equal(toString('- a'), '\\- a\n', '`-` (at the start of a line)')
+  assert.equal(toString('a-b'), 'a-b\n', '`-` (in phrasing)')
+  assert.equal(toString('+ a'), '\\+ a\n', '`+` (at the start of the line)')
+  assert.equal(toString('.a'), '.a\n', '`.`')
+  assert.equal(toString('1.a'), '1.a\n', '`.` (after digit before letter)')
+  assert.equal(toString('1. '), '1\\.&#x20;\n', '`.` (after digit, with space)')
+  assert.equal(toString('1.\t'), '1\\.&#x9;\n', '`.` (after digit, with tab)')
+  assert.equal(toString('1.\n'), '1\\.\n', '`.` (after digit, with newline)')
+  assert.equal(toString('1.'), '1\\.\n', '`.` (after digit, with EOF)')
+  assert.equal(toString('1.a'), '1.a\n', '`1.` (after digit, before letter)')
+  assert.equal(
+    toString('1. '),
+    '1\\.&#x20;\n',
+    '`1.` (after digit, with space)'
+  )
+  assert.equal(toString('1.\t'), '1\\.&#x9;\n', '`1.` (after digit, with tab)')
+  assert.equal(toString('1.\n'), '1\\.\n', '`1.` (after digit, with newline)')
+  assert.equal(toString('1.'), '1\\.\n', '`1.` (after digit, with EOF)')
+  assert.equal(toString(')a'), ')a\n', '`)`')
+  assert.equal(toString('1)a'), '1\\)a\n', '`)` (after digit)')
+  assert.equal(toString('1) '), '1\\)&#x20;\n', '`)` (after digit, with space)')
+  assert.equal(toString('1)\t'), '1\\)&#x9;\n', '`)` (after digit, with tab)')
+  assert.equal(toString('1)\n'), '1\\)\n', '`)` (after digit, with newline)')
+  assert.equal(toString('1)'), '1\\)\n', '`)` (after digit, with EOL)')
+  assert.equal(toString('a](b'), 'a]\\(b\n', '`(` after `]`')
+  assert.equal(
     toString({
       type: 'paragraph',
       children: [
@@ -471,11 +462,9 @@ test('stringify escapes', (t) => {
     '\\![a]()\n',
     '! immediately followed by a link'
   )
-
-  t.end()
 })
 
-test('extensions', (t) => {
+test('extensions', () => {
   const doc = unified()
     .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(remarkStringify)
@@ -582,7 +571,7 @@ test('extensions', (t) => {
       ]
     })
 
-  t.equal(
+  assert.equal(
     doc,
     [
       '# GFM',
@@ -607,8 +596,6 @@ test('extensions', (t) => {
       ''
     ].join('\n')
   )
-
-  t.end()
 })
 
 /**
