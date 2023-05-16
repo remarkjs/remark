@@ -11,15 +11,14 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{matrix.node}}
-      - run: npm install -g npm
       - run: npm install
       - run: npm test
       - uses: codecov/codecov-action@v3
     strategy:
       matrix:
         node:
-          - lts/fermium
           - lts/gallium
+          - node
   canary:
     name: canary / ${{matrix.package}} / ${{matrix.node}} on ${{matrix.os}}
     runs-on: ${{matrix.os}}
@@ -55,7 +54,7 @@ jobs:
         os:
           - ubuntu-latest
         node:
-          - lts/gallium
+          - node
         package:
           - remarkjs/remark-gfm
           - remarkjs/react-markdown
