@@ -313,7 +313,7 @@ The list of plugins:
 *   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
     — add titles to code blocks
 *   🟢 [`remark-shaku-code-annotate`](https://github.com/JSerZANP/shaku/tree/main/packages/remark-shaku-code-annotate)
-    — annotate code snippet in seprate context with highlight, underlines, callout .etc.
+    — annotate code block in seprate context
 ## List of presets
 
 Use [GitHub search][github-preset-search] to find available and often
