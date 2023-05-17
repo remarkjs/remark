@@ -314,6 +314,7 @@ The list of plugins:
     — add titles to code blocks
 *   🟢 [`remark-shaku-code-annotate`](https://github.com/JSerZANP/shaku/tree/main/packages/remark-shaku-code-annotate)
     — annotate code block in seprate context
+
 ## List of presets
 
 Use [GitHub search][github-preset-search] to find available and often
