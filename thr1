@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Presentation</title>
+    <meta charset="utf-8">
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Roboto+Slab:400,700|Roboto:400,700,400italic);
+      body { font-family: 'Roboto', sans-serif; }
+      h1, h2 { font-family: 'Roboto Slab', serif; }
+      .remark-slide-content { font-size: 30px; }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+    </textarea>
+    <script src="https://gnab.github.io/remark/downloads/remark-latest.min.js"></script>
+    <script>
+      var slideshow = remark.create({
+        sourceUrl: 'index.md'
+      });
+    </script>
+  </body>
+</html>
+# Create a slide layout with a title and content placeholder
+slide_layout = presentation.slide_layouts[0]
+
+# Create a new slide using the slide layout
+slide = presentation.slides.add_slide(slide_layout)
+
+# Access the title placeholder and set the title
+title_placeholder = slide.shapes.title
+title_placeholder.text = "CAS Auto's International Strategy"
+
+# Access the content placeholder and set the current date
+content_placeholder = slide.placeholders[1]
+content_placeholder.text = datetime.datetime.now().strftime("%B %d, %Y")
+# Create a new slide using the slide layout
+slide = presentation.slides.add_slide(slide_layout)
+
+# Access the title placeholder and set the title
+title_placeholder = slide.shapes.title
+title_placeholder.text = "Summary"
+
+# Access the content placeholder and set the summary text
+content_placeholder = slide.placeholders[1]
+content_placeholder.text = "CAS Auto's goal is to reach $500m in sales revenue by Year 5 of operations."
+# List of yearly goals
+yearly_goals = [
+    {"year": "Year 1", "goals": "Expand into 3 new international markets"},
+    {"year": "Year 2", "goals": "Increase market share by 20%"},
+    {"year": "Year 3", "goals": "Establish a manufacturing facility in Asia"},
+    
