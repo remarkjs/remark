@@ -186,6 +186,8 @@ The list of plugins:
     — new syntax for math (new node types, rehype compatible)
 *   🟢 [`remark-mdx`](https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx)
     — support MDX (JSX, expressions, ESM)
+*   🟢 [`remark-mentions`](https://github.com/FinnRG/remark-mentions)
+    — replace @ mentions with links
 *   🟢 [`remark-mermaidjs`](https://github.com/remcohaszing/remark-mermaidjs)
     — transform mermaid code blocks into inline SVGs
 *   🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
