@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 import {createRequire} from 'node:module'
+import extensions from 'markdown-extensions'
 import {args} from 'unified-args'
 // eslint-disable-next-line import/order
 import {remark} from 'remark'
@@ -8,18 +9,6 @@ const require = createRequire(import.meta.url)
 
 const proc = require('remark/package.json')
 const cli = require('./package.json')
-
-// To do: enable `markdown-extensions` once it supports ESM.
-const extensions = [
-  'md',
-  'markdown',
-  'mdown',
-  'mkdn',
-  'mkd',
-  'mdwn',
-  'mkdown',
-  'ron'
-]
 
 args({
   processor: remark,

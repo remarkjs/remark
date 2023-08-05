@@ -31,6 +31,7 @@
     "cli.js"
   ],
   "dependencies": {
+    "markdown-extensions": "^2.0.0",
     "remark": "^14.0.0",
     "unified-args": "^10.0.0"
   },
