@@ -88,6 +88,8 @@ The list of plugins:
 *   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — new syntax for custom blocks (new node types, rehype compatible)
     (👉 **note**: [`remark-directive`][d] is similar and up to date)
+*   🟢 [`remark-d2`](https://github.com/mech-a/remark-d2)
+    — turn [d2](https://d2lang.com/) diagram code blocks into images
 *   🟢 [`remark-definition-list`](https://github.com/wataru-chocola/remark-definition-list)
     — support definition lists
 *   🟢 [`remark-defsplit`](https://github.com/remarkjs/remark-defsplit)
