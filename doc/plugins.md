@@ -163,6 +163,8 @@ The list of plugins:
     — prefix relative image paths with an absolute URL
 *   🟢 [`remark-inline-links`](https://github.com/remarkjs/remark-inline-links)
     — change references and definitions to links and images
+*   🟢 [`remark-link-rewrite`](https://github.com/rjanjic/remark-link-rewrite)
+    — customize link URLs dynamically
 *   🟢 [`remark-ins`](https://github.com/ipikuka/remark-ins)
     — add ins element for inserted texts opposite to deleted texts
 *   🟢 [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
