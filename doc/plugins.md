@@ -174,6 +174,8 @@ The list of plugins:
     compatible)
 *   🟢 [`remark-license`](https://github.com/remarkjs/remark-license)
     — add a license section
+*   🟢 [`remark-link-rewrite`](https://github.com/rjanjic/remark-link-rewrite)
+    — customize link URLs dynamically
 *   🟢 [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
     — change text matching a regex to links
 *   🟢 [`remark-lint`](https://github.com/remarkjs/remark-lint)
