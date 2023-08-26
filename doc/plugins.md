@@ -110,6 +110,8 @@ The list of plugins:
     — extended table syntax allowing colspan / rowspan
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
+*   🟢 [`remark-figure-caption`](https://github.com/Microflash/remark-figure-caption)
+    — transform image element to figure with caption element
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
