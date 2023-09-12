@@ -16,13 +16,15 @@ import {args} from 'unified-args'
 /** @type {Pack} */
 const proc = JSON.parse(
   String(
-    // To do: this will break when we add export maps.
-    await fs.readFile(new URL(resolve('remark/package.json', import.meta.url)))
+    await fs.readFile(
+      new URL('package.json', resolve('remark', import.meta.url))
+    )
   )
 )
+
 /** @type {Pack} */
 const cli = JSON.parse(
-  String(await fs.readFile(new URL(resolve('./package.json', import.meta.url))))
+  String(await fs.readFile(new URL('package.json', import.meta.url)))
 )
 
 args({
