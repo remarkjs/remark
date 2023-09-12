@@ -1,9 +1,28 @@
-// This wrapper exists because JS in TS can’t export a `@type` of a function.
 import type {Root} from 'mdast'
 import type {Plugin} from 'unified'
 import type {Options} from './lib/index.js'
 
-declare const remarkStringify: Plugin<[(Options | undefined)?], Root, string>
+export type {Options} from './lib/index.js'
+
+/**
+ * Add support for serializing as HTML.
+ *
+ * @this
+ *   Unified processor.
+ * @param
+ *   Configuration (optional).
+ * @returns
+ *   Nothing.
+ */
+declare const remarkStringify: Plugin<
+  [(Readonly<Options> | null | undefined)?],
+  Root,
+  string
+>
 export default remarkStringify
 
-export type {Options} from './lib/index.js'
+// To do: register types.
+// // Add custom settings supported when `remark-stringify` is added.
+// declare module 'unified' {
+//   interface Settings extends Options {}
+// }

@@ -53,6 +53,19 @@
     "strict": true
   },
   "xo": {
-    "prettier": true
+    "overrides": [
+      {
+        "files": [
+          "**/*.ts"
+        ],
+        "rules": {
+          "@typescript-eslint/ban-types": "off"
+        }
+      }
+    ],
+    "prettier": true,
+    "rules": {
+      "unicorn/no-this-assignment": "off"
+    }
   }
 }

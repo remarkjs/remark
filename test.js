@@ -13,30 +13,33 @@ import {removePosition} from 'unist-util-remove-position'
 
 const exec = promisify(execCb)
 
-test('remark', () => {
-  assert.equal(
-    remark().processSync('*foo*').toString(),
-    '*foo*\n',
-    'should parse and stringify a file'
-  )
+test('remark', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('remark')).sort(), ['remark'])
+  })
 
-  assert.equal(
-    remark()
-      // @ts-expect-error: to do: type settings.
-      .data('settings', {closeAtx: true})
-      .processSync('# foo')
-      .toString(),
-    '# foo #\n',
-    'should accept stringify options'
-  )
+  await t.test('should process a file', async function () {
+    assert.equal(remark().processSync('*foo*').toString(), '*foo*\n')
+  })
+
+  await t.test('should accept settings', async function () {
+    assert.equal(
+      remark()
+        // @ts-expect-error: to do: type settings.
+        .data('settings', {closeAtx: true})
+        .processSync('# foo')
+        .toString(),
+      '# foo #\n'
+    )
+  })
 })
 
-test('remark-cli', async (t) => {
+test('remark-cli', async function (t) {
   const bin = fileURLToPath(
     new URL('packages/remark-cli/cli.js', import.meta.url)
   )
 
-  await t.test('should show help on `--help`', async () => {
+  await t.test('should show help on `--help`', async function () {
     const result = await exec(bin + ' --help')
 
     assert.equal(
@@ -90,7 +93,7 @@ test('remark-cli', async (t) => {
     )
   })
 
-  await t.test('should show version on `--version`', async () => {
+  await t.test('should show version on `--version`', async function () {
     const result = await exec(bin + ' --version')
 
     assert.match(result.stdout, /remark: \d+\.\d+\.\d+/)
@@ -98,14 +101,43 @@ test('remark-cli', async (t) => {
   })
 })
 
-test('remark-parse', async (t) => {
-  assert.equal(
-    unified().use(remarkParse).parse('Alfred').children.length,
-    1,
-    'should accept a `string`'
-  )
+test('remark-parse', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('remark-parse')).sort(), [
+      'default'
+    ])
+  })
 
-  await t.test('extensions', () => {
+  await t.test('should parse', async function () {
+    assert.deepEqual(unified().use(remarkParse).parse('Alfred'), {
+      type: 'root',
+      children: [
+        {
+          type: 'paragraph',
+          children: [
+            {
+              type: 'text',
+              value: 'Alfred',
+              position: {
+                start: {line: 1, column: 1, offset: 0},
+                end: {line: 1, column: 7, offset: 6}
+              }
+            }
+          ],
+          position: {
+            start: {line: 1, column: 1, offset: 0},
+            end: {line: 1, column: 7, offset: 6}
+          }
+        }
+      ],
+      position: {
+        start: {line: 1, column: 1, offset: 0},
+        end: {line: 1, column: 7, offset: 6}
+      }
+    })
+  })
+
+  await t.test('should support extensions', function () {
     const tree = unified()
       // @ts-expect-error: to do: type settings.
       .data('micromarkExtensions', [gfm()])
@@ -116,17 +148,172 @@ test('remark-parse', async (t) => {
 
     removePosition(tree, {force: true})
 
-    assert.deepEqual(
-      tree,
-      {
+    assert.deepEqual(tree, {
+      type: 'root',
+      children: [
+        {
+          type: 'list',
+          ordered: false,
+          start: null,
+          spread: false,
+          children: [
+            {
+              type: 'listItem',
+              spread: false,
+              checked: true,
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'link',
+                      title: null,
+                      url: 'mailto:contact@example.com',
+                      children: [{type: 'text', value: 'contact@example.com'}]
+                    },
+                    {type: 'text', value: ' '},
+                    {
+                      type: 'delete',
+                      children: [{type: 'text', value: 'strikethrough'}]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    })
+  })
+})
+
+test('remark-stringify', async function (t) {
+  await t.test('should expose the public api', async function () {
+    assert.deepEqual(Object.keys(await import('remark-stringify')).sort(), [
+      'default'
+    ])
+  })
+
+  await t.test('should serialize', async function () {
+    assert.equal(
+      unified()
+        .use(remarkStringify)
+        .stringify({
+          type: 'root',
+          children: [
+            {type: 'paragraph', children: [{type: 'text', value: 'Alfred'}]}
+          ]
+        }),
+      'Alfred\n'
+    )
+  })
+
+  await t.test('should support extensions', async function () {
+    const result = unified()
+      // @ts-expect-error: to do: type settings.
+      .data('toMarkdownExtensions', [gfmToMarkdown()])
+      .use(remarkStringify)
+      .stringify({
         type: 'root',
         children: [
           {
+            type: 'heading',
+            depth: 1,
+            children: [{type: 'text', value: 'GFM'}]
+          },
+          {
+            type: 'heading',
+            depth: 2,
+            children: [{type: 'text', value: 'Autolink literals'}]
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'link',
+                title: null,
+                url: 'http://www.example.com',
+                children: [{type: 'text', value: 'www.example.com'}]
+              },
+              {type: 'text', value: ', '},
+              {
+                type: 'link',
+                title: null,
+                url: 'https://example.com',
+                children: [{type: 'text', value: 'https://example.com'}]
+              },
+              {type: 'text', value: ', and '},
+              {
+                type: 'link',
+                title: null,
+                url: 'mailto:contact@example.com',
+                children: [{type: 'text', value: 'contact@example.com'}]
+              },
+              {type: 'text', value: '.'}
+            ]
+          },
+          {
+            type: 'heading',
+            depth: 2,
+            children: [{type: 'text', value: 'Strikethrough'}]
+          },
+          {
+            type: 'paragraph',
+            children: [
+              {
+                type: 'delete',
+                children: [{type: 'text', value: 'one'}]
+              },
+              {type: 'text', value: ' or '},
+              {
+                type: 'delete',
+                children: [{type: 'text', value: 'two'}]
+              },
+              {type: 'text', value: ' tildes.'}
+            ]
+          },
+          {
+            type: 'heading',
+            depth: 2,
+            children: [{type: 'text', value: 'Table'}]
+          },
+          {
+            type: 'table',
+            align: [null, 'left', 'right', 'center'],
+            children: [
+              {
+                type: 'tableRow',
+                children: [
+                  {type: 'tableCell', children: [{type: 'text', value: 'a'}]},
+                  {type: 'tableCell', children: [{type: 'text', value: 'b'}]},
+                  {type: 'tableCell', children: [{type: 'text', value: 'c'}]},
+                  {type: 'tableCell', children: [{type: 'text', value: 'd'}]}
+                ]
+              }
+            ]
+          },
+          {
+            type: 'heading',
+            depth: 2,
+            children: [{type: 'text', value: 'Tasklist'}]
+          },
+          {
             type: 'list',
             ordered: false,
-            start: null,
+            start: undefined,
             spread: false,
             children: [
+              {
+                type: 'listItem',
+                spread: false,
+                checked: false,
+                children: [
+                  {
+                    type: 'paragraph',
+                    children: [{type: 'text', value: 'to do'}]
+                  }
+                ]
+              },
               {
                 type: 'listItem',
                 spread: false,
@@ -134,162 +321,39 @@ test('remark-parse', async (t) => {
                 children: [
                   {
                     type: 'paragraph',
-                    children: [
-                      {
-                        type: 'link',
-                        title: null,
-                        url: 'mailto:contact@example.com',
-                        children: [{type: 'text', value: 'contact@example.com'}]
-                      },
-                      {type: 'text', value: ' '},
-                      {
-                        type: 'delete',
-                        children: [{type: 'text', value: 'strikethrough'}]
-                      }
-                    ]
+                    children: [{type: 'text', value: 'done'}]
                   }
                 ]
               }
             ]
           }
         ]
-      },
-      'should work'
+      })
+
+    assert.equal(
+      result,
+      [
+        '# GFM',
+        '',
+        '## Autolink literals',
+        '',
+        '[www.example.com](http://www.example.com), <https://example.com>, and <contact@example.com>.',
+        '',
+        '## Strikethrough',
+        '',
+        '~~one~~ or ~~two~~ tildes.',
+        '',
+        '## Table',
+        '',
+        '| a | b  |  c |  d  |',
+        '| - | :- | -: | :-: |',
+        '',
+        '## Tasklist',
+        '',
+        '* [ ] to do',
+        '* [x] done',
+        ''
+      ].join('\n')
     )
   })
-})
-
-test('remark-stringify', async () => {
-  const doc = unified()
-    // @ts-expect-error: to do: type settings.
-    .data('toMarkdownExtensions', [gfmToMarkdown()])
-    .use(remarkStringify)
-    .stringify({
-      type: 'root',
-      children: [
-        {type: 'heading', depth: 1, children: [{type: 'text', value: 'GFM'}]},
-        {
-          type: 'heading',
-          depth: 2,
-          children: [{type: 'text', value: 'Autolink literals'}]
-        },
-        {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'link',
-              title: null,
-              url: 'http://www.example.com',
-              children: [{type: 'text', value: 'www.example.com'}]
-            },
-            {type: 'text', value: ', '},
-            {
-              type: 'link',
-              title: null,
-              url: 'https://example.com',
-              children: [{type: 'text', value: 'https://example.com'}]
-            },
-            {type: 'text', value: ', and '},
-            {
-              type: 'link',
-              title: null,
-              url: 'mailto:contact@example.com',
-              children: [{type: 'text', value: 'contact@example.com'}]
-            },
-            {type: 'text', value: '.'}
-          ]
-        },
-        {
-          type: 'heading',
-          depth: 2,
-          children: [{type: 'text', value: 'Strikethrough'}]
-        },
-        {
-          type: 'paragraph',
-          children: [
-            {
-              type: 'delete',
-              children: [{type: 'text', value: 'one'}]
-            },
-            {type: 'text', value: ' or '},
-            {
-              type: 'delete',
-              children: [{type: 'text', value: 'two'}]
-            },
-            {type: 'text', value: ' tildes.'}
-          ]
-        },
-        {type: 'heading', depth: 2, children: [{type: 'text', value: 'Table'}]},
-        {
-          type: 'table',
-          align: [null, 'left', 'right', 'center'],
-          children: [
-            {
-              type: 'tableRow',
-              children: [
-                {type: 'tableCell', children: [{type: 'text', value: 'a'}]},
-                {type: 'tableCell', children: [{type: 'text', value: 'b'}]},
-                {type: 'tableCell', children: [{type: 'text', value: 'c'}]},
-                {type: 'tableCell', children: [{type: 'text', value: 'd'}]}
-              ]
-            }
-          ]
-        },
-        {
-          type: 'heading',
-          depth: 2,
-          children: [{type: 'text', value: 'Tasklist'}]
-        },
-        {
-          type: 'list',
-          ordered: false,
-          start: undefined,
-          spread: false,
-          children: [
-            {
-              type: 'listItem',
-              spread: false,
-              checked: false,
-              children: [
-                {type: 'paragraph', children: [{type: 'text', value: 'to do'}]}
-              ]
-            },
-            {
-              type: 'listItem',
-              spread: false,
-              checked: true,
-              children: [
-                {type: 'paragraph', children: [{type: 'text', value: 'done'}]}
-              ]
-            }
-          ]
-        }
-      ]
-    })
-
-  assert.equal(
-    doc,
-    [
-      '# GFM',
-      '',
-      '## Autolink literals',
-      '',
-      '[www.example.com](http://www.example.com), <https://example.com>, and <contact@example.com>.',
-      '',
-      '## Strikethrough',
-      '',
-      '~~one~~ or ~~two~~ tildes.',
-      '',
-      '## Table',
-      '',
-      '| a | b  |  c |  d  |',
-      '| - | :- | -: | :-: |',
-      '',
-      '## Tasklist',
-      '',
-      '* [ ] to do',
-      '* [x] done',
-      ''
-    ].join('\n')
-  )
 })

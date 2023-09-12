@@ -114,8 +114,8 @@ console.log(String(file)) // => '## Hi, Saturn!'
 
 /** @type {import('unified').Plugin<[], import('mdast').Root>} */
 function myRemarkPluginToIncreaseHeadings() {
-  return (tree) => {
-    visit(tree, (node) => {
+  return function (tree) {
+    visit(tree, function (node) {
       if (node.type === 'heading') {
         node.depth++
       }

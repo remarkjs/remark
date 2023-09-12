@@ -175,7 +175,7 @@ main()
 
 async function main() {
   const file = await remark()
-    .data('settings', {bullet: '*', setext: true, listItemIndent: 'one'})
+    .data('settings', {bullet: '*', listItemIndent: 'one', setext: true})
     .process('# Moons of Neptune\n\n- Naiad\n- Thalassa\n- Despine\n- …')
 
   console.log(String(file))

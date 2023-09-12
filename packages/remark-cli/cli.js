@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 /**
  * @typedef Pack
  * @property {string} name
@@ -25,16 +26,16 @@ const cli = JSON.parse(
 )
 
 args({
-  processor: remark,
-  name: proc.name,
   description: cli.description,
+  extensions: markdownExtensions,
+  ignoreName: '.' + proc.name + 'ignore',
+  name: proc.name,
+  packageField: proc.name + 'Config',
+  pluginPrefix: proc.name,
+  processor: remark,
+  rcName: '.' + proc.name + 'rc',
   version: [
     proc.name + ': ' + proc.version,
     cli.name + ': ' + cli.version
-  ].join(', '),
-  pluginPrefix: proc.name,
-  packageField: proc.name + 'Config',
-  rcName: '.' + proc.name + 'rc',
-  ignoreName: '.' + proc.name + 'ignore',
-  extensions: markdownExtensions
+  ].join(', ')
 })
