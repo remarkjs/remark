@@ -1,3 +1,0 @@
-_emphasis_.
-
-**strong**.

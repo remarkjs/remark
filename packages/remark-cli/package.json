@@ -36,9 +36,7 @@
     "remark": "^14.0.0",
     "unified-args": "^11.0.0"
   },
-  "scripts": {
-    "test": "node --conditions development test.js"
-  },
+  "scripts": {},
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,

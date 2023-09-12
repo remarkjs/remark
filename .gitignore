@@ -6,8 +6,7 @@ packages/remark-parse/lib/*.d.ts
 packages/remark-parse/test.d.ts
 packages/remark-stringify/lib/*.d.ts
 packages/remark-stringify/test.d.ts
-script/**/*.d.ts
-test/**/*.d.ts
+test.d.ts
 .DS_Store
 *.log
 yarn.lock

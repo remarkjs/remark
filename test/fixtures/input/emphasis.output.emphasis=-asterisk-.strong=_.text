@@ -1,3 +1,0 @@
-*emphasis*.
-
-__strong__.

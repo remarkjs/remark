@@ -20,9 +20,6 @@
     "@types/mdast": "^4.0.0",
     "@types/node": "^20.0.0",
     "c8": "^8.0.0",
-    "camelcase": "^8.0.0",
-    "execa": "^8.0.0",
-    "mdast-util-assert": "^5.0.0",
     "mdast-util-gfm": "^3.0.0",
     "micromark-extension-gfm": "^3.0.0",
     "prettier": "^3.0.0",
@@ -39,7 +36,7 @@
     "format": "prettier . --log-level warn --write && xo --fix",
     "prepack": "npm run build && npm run format",
     "test": "npm run build && npm run format && npm run test-coverage",
-    "test-api": "npm run test --workspaces && node --conditions development test/index.js",
+    "test-api": "node --conditions development test.js",
     "test-coverage": "c8 --100 --reporter lcov npm run test-api"
   },
   "prettier": {
