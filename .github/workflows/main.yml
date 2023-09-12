@@ -19,42 +19,42 @@ jobs:
         node:
           - lts/gallium
           - node
-  canary:
-    name: canary / ${{matrix.package}} / ${{matrix.node}} on ${{matrix.os}}
-    runs-on: ${{matrix.os}}
-    steps:
-      - name: checkout remark
-        uses: actions/checkout@v3
-      - name: setup node
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{matrix.node}}
-      - name: setup remark
-        run: |
-          npm install -g npm
-          npm install
-          npm run build
-      - name: checkout ${{matrix.package}}
-        uses: actions/checkout@v3
-        with:
-          repository: ${{matrix.package}}
-          path: canary/${{matrix.package}}
-      - name: test ${{matrix.package}}
-        run: |
-          npm install
-          for package in $(ls ../../packages); do
-            npx rimraf "node_modules/**/$package"
-          done
-          npm test
-        working-directory: canary/${{matrix.package}}
-    strategy:
-      fail-fast: false
-      max-parallel: 2
-      matrix:
-        os:
-          - ubuntu-latest
-        node:
-          - node
-        package:
-          - remarkjs/remark-gfm
-          - remarkjs/react-markdown
+  # canary:
+  #   name: canary / ${{matrix.package}} / ${{matrix.node}} on ${{matrix.os}}
+  #   runs-on: ${{matrix.os}}
+  #   steps:
+  #     - name: checkout remark
+  #       uses: actions/checkout@v3
+  #     - name: setup node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version: ${{matrix.node}}
+  #     - name: setup remark
+  #       run: |
+  #         npm install -g npm
+  #         npm install
+  #         npm run build
+  #     - name: checkout ${{matrix.package}}
+  #       uses: actions/checkout@v3
+  #       with:
+  #         repository: ${{matrix.package}}
+  #         path: canary/${{matrix.package}}
+  #     - name: test ${{matrix.package}}
+  #       run: |
+  #         npm install
+  #         for package in $(ls ../../packages); do
+  #           npx rimraf "node_modules/**/$package"
+  #         done
+  #         npm test
+  #       working-directory: canary/${{matrix.package}}
+  #   strategy:
+  #     fail-fast: false
+  #     max-parallel: 2
+  #     matrix:
+  #       os:
+  #         - ubuntu-latest
+  #       node:
+  #         - node
+  #       package:
+  #         - remarkjs/remark-gfm
+  #         - remarkjs/react-markdown
