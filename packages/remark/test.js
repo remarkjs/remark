@@ -10,7 +10,11 @@ test('remark', () => {
   )
 
   assert.equal(
-    remark().data('settings', {closeAtx: true}).processSync('# foo').toString(),
+    remark()
+      // @ts-expect-error: to do: type settings.
+      .data('settings', {closeAtx: true})
+      .processSync('# foo')
+      .toString(),
     '# foo #\n',
     'should accept stringify options'
   )

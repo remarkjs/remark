@@ -11,7 +11,7 @@ import {toMarkdown} from 'mdast-util-to-markdown'
  * @type {import('unified').Plugin<[Options?]|void[], Node, string>}
  */
 export default function remarkStringify(options) {
-  /** @type {import('unified').CompilerFunction<Node, string>} */
+  /** @type {import('unified').Compiler<Node, string>} */
   const compiler = (tree) => {
     // Assume options.
     const settings = /** @type {Options} */ (this.data('settings'))
@@ -23,7 +23,9 @@ export default function remarkStringify(options) {
         // The goal is for it to be set by plugins on `data` instead of being
         // passed by users.
         extensions:
+          // @ts-expect-error: to do: type.
           /** @type {ToMarkdownOptions['extensions']} */ (
+            // @ts-expect-error: to do: type.
             this.data('toMarkdownExtensions')
           ) || []
       })

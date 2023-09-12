@@ -41,9 +41,9 @@
     "index.js"
   ],
   "dependencies": {
-    "@types/mdast": "^3.0.0",
-    "mdast-util-from-markdown": "^1.0.0",
-    "unified": "^10.0.0"
+    "@types/mdast": "^4.0.0",
+    "mdast-util-from-markdown": "^2.0.0",
+    "unified": "^11.0.0"
   },
   "scripts": {
     "test": "node --conditions development test.js"

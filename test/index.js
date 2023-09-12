@@ -31,8 +31,8 @@ test('fixtures', async (t) => {
         const reparsedTree = remark().parse(actualOutput)
 
         assert(reparsedTree)
-        removePosition(actualTree, true)
-        removePosition(reparsedTree, true)
+        removePosition(actualTree, {force: true})
+        removePosition(reparsedTree, {force: true})
 
         assert.deepEqual(
           actualTree,

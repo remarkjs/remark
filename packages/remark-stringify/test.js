@@ -47,6 +47,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {bullet: true})
         .stringify({
           type: 'root',
@@ -63,6 +64,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {listItemIndent: 'foo'})
         .stringify({
           type: 'root',
@@ -79,6 +81,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {rule: true})
         .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
@@ -90,6 +93,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {ruleRepetition: 1})
         .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
@@ -101,6 +105,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {ruleRepetition: true})
         .stringify({type: 'root', children: [{type: 'thematicBreak'}]})
     },
@@ -112,6 +117,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {emphasis: '-'})
         .stringify({type: 'root', children: [{type: 'emphasis', children: []}]})
     },
@@ -123,6 +129,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {strong: '-'})
         .stringify({type: 'root', children: [{type: 'strong', children: []}]})
     },
@@ -134,6 +141,7 @@ test('remarkStringify', async (t) => {
     () => {
       unified()
         .use(remarkStringify)
+        // @ts-expect-error: to do: type settings.
         .data('settings', {fence: '-'})
         .stringify({type: 'root', children: [{type: 'code', value: ''}]})
     },
@@ -154,7 +162,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '*   alpha\n',
+      '* alpha\n',
       'no ordered, start, or spread'
     )
 
@@ -171,7 +179,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '*   bravo\n',
+      '* bravo\n',
       'start; no ordered or spread'
     )
 
@@ -194,7 +202,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '*   charlie\n\n*   delta\n',
+      '* charlie\n\n* delta\n',
       'spread; no ordered or start'
     )
 
@@ -214,7 +222,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '1.  echo\n',
+      '1. echo\n',
       'ordered; no start or spread'
     )
 
@@ -238,7 +246,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '1.  foxtrot\n\n2.  golf\n',
+      '1. foxtrot\n\n2. golf\n',
       'ordered and spread; no start'
     )
 
@@ -263,7 +271,7 @@ test('remarkStringify', async (t) => {
           }
         ]
       }),
-      '3.  hotel\n\n4.  india\n',
+      '3. hotel\n\n4. india\n',
       'ordered, spread, and start'
     )
   })
@@ -282,19 +290,19 @@ test('remarkStringify', async (t) => {
 
     assert.equal(
       toString({type: 'listItem', children}),
-      '*   alpha\n\n    > bravo\n',
+      '* alpha\n\n  > bravo\n',
       'no spread'
     )
 
     assert.equal(
       toString({type: 'listItem', spread: true, children}),
-      '*   alpha\n\n    > bravo\n',
+      '* alpha\n\n  > bravo\n',
       'spread: true'
     )
 
     assert.equal(
       toString({type: 'listItem', spread: false, children}),
-      '*   alpha\n    > bravo\n',
+      '* alpha\n  > bravo\n',
       'spread: false'
     )
   })
@@ -466,6 +474,7 @@ test('stringify escapes', () => {
 
 test('extensions', () => {
   const doc = unified()
+    // @ts-expect-error: to do: type settings.
     .data('toMarkdownExtensions', [gfmToMarkdown()])
     .use(remarkStringify)
     .stringify({
@@ -591,8 +600,8 @@ test('extensions', () => {
       '',
       '## Tasklist',
       '',
-      '*   [ ] to do',
-      '*   [x] done',
+      '* [ ] to do',
+      '* [x] done',
       ''
     ].join('\n')
   )

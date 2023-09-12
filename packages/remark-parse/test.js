@@ -15,12 +15,14 @@ test('remarkParse', async (t) => {
 
   await t.test('extensions', () => {
     const tree = unified()
+      // @ts-expect-error: to do: type settings.
       .data('micromarkExtensions', [gfm()])
+      // @ts-expect-error: to do: type settings.
       .data('fromMarkdownExtensions', [gfmFromMarkdown()])
       .use(remarkParse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
 
-    removePosition(tree, true)
+    removePosition(tree, {force: true})
 
     assert.deepEqual(
       tree,
