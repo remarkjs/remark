@@ -34,21 +34,21 @@
     "xo": "^0.56.0"
   },
   "scripts": {
-    "#": "./packages/remark-cli/cli.js . -qfo",
-    "prepack": "npm run build && npm run format",
+    "#": "./packages/remark-cli/cli.js . --frail --output --quiet",
     "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "prettier . -w --log-level warn && xo --fix",
+    "format": "prettier . --log-level warn --write && xo --fix",
+    "prepack": "npm run build && npm run format",
+    "test": "npm run build && npm run format && npm run test-coverage",
     "test-api": "npm run test --workspaces && node --conditions development test/index.js",
-    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
-    "test": "npm run build && npm run format && npm run test-coverage"
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api"
   },
   "prettier": {
-    "tabWidth": 2,
-    "useTabs": false,
-    "singleQuote": true,
     "bracketSpacing": false,
+    "singleQuote": true,
     "semi": false,
-    "trailingComma": "none"
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "remarkConfig": {
     "plugins": [
@@ -62,8 +62,8 @@
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "strict": true,
-    "ignoreCatch": true
+    "ignoreCatch": true,
+    "strict": true
   },
   "xo": {
     "prettier": true,

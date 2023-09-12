@@ -4,19 +4,19 @@
   "description": "unified processor with support for parsing markdown input and serializing markdown as output",
   "license": "MIT",
   "keywords": [
-    "unified",
-    "remark",
+    "abstract",
+    "ast",
+    "compile",
     "markdown",
     "mdast",
-    "abstract",
+    "parse",
+    "process",
+    "remark",
+    "serialize",
+    "stringify",
     "syntax",
     "tree",
-    "ast",
-    "parse",
-    "stringify",
-    "serialize",
-    "compile",
-    "process"
+    "unified"
   ],
   "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark",
@@ -49,8 +49,8 @@
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "strict": true,
-    "ignoreCatch": true
+    "ignoreCatch": true,
+    "strict": true
   },
   "xo": {
     "prettier": true

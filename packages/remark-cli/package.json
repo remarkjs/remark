@@ -4,12 +4,12 @@
   "description": "Command line interface to inspect and change markdown files with remark",
   "license": "MIT",
   "keywords": [
-    "unified",
-    "remark",
+    "bin",
+    "cli",
     "markdown",
     "mdast",
-    "cli",
-    "bin"
+    "remark",
+    "unified"
   ],
   "homepage": "https://remark.js.org",
   "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-cli",
@@ -42,8 +42,8 @@
   "typeCoverage": {
     "atLeast": 100,
     "detail": true,
-    "strict": true,
-    "ignoreCatch": true
+    "ignoreCatch": true,
+    "strict": true
   },
   "xo": {
     "prettier": true
