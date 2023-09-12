@@ -1,14 +1,28 @@
 #!/usr/bin/env node
-import {createRequire} from 'node:module'
-import extensions from 'markdown-extensions'
-import {args} from 'unified-args'
-// eslint-disable-next-line import/order
+/**
+ * @typedef Pack
+ * @property {string} name
+ * @property {string} version
+ * @property {string} description
+ */
+
+import fs from 'node:fs/promises'
+import {resolve} from 'import-meta-resolve'
+import markdownExtensions from 'markdown-extensions'
 import {remark} from 'remark'
+import {args} from 'unified-args'
 
-const require = createRequire(import.meta.url)
-
-const proc = require('remark/package.json')
-const cli = require('./package.json')
+/** @type {Pack} */
+const proc = JSON.parse(
+  String(
+    // To do: this will break when we add export maps.
+    await fs.readFile(new URL(resolve('remark/package.json', import.meta.url)))
+  )
+)
+/** @type {Pack} */
+const cli = JSON.parse(
+  String(await fs.readFile(new URL(resolve('./package.json', import.meta.url))))
+)
 
 args({
   processor: remark,
@@ -22,5 +36,5 @@ args({
   packageField: proc.name + 'Config',
   rcName: '.' + proc.name + 'rc',
   ignoreName: '.' + proc.name + 'ignore',
-  extensions
+  extensions: markdownExtensions
 })

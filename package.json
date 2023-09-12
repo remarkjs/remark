@@ -27,7 +27,6 @@
     "micromark-extension-gfm": "^3.0.0",
     "prettier": "^3.0.0",
     "remark-preset-wooorm": "^9.0.0",
-    "rimraf": "^3.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "unified": "^11.0.0",
