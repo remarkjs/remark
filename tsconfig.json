@@ -13,6 +13,7 @@
   "exclude": ["**/coverage/", "**/node_modules/"],
   "include": [
     "**/*.js",
+    "packages/remark/index.d.ts",
     "packages/remark-parse/index.d.ts",
     "packages/remark-stringify/index.d.ts"
   ]

@@ -1,3 +1,4 @@
+// Note: types exposed from `index.d.ts`
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'

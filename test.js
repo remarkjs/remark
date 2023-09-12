@@ -25,7 +25,6 @@ test('remark', async function (t) {
   await t.test('should accept settings', async function () {
     assert.equal(
       remark()
-        // @ts-expect-error: to do: type settings.
         .data('settings', {closeAtx: true})
         .processSync('# foo')
         .toString(),
@@ -139,9 +138,7 @@ test('remark-parse', async function (t) {
 
   await t.test('should support extensions', function () {
     const tree = unified()
-      // @ts-expect-error: to do: type settings.
       .data('micromarkExtensions', [gfm()])
-      // @ts-expect-error: to do: type settings.
       .data('fromMarkdownExtensions', [gfmFromMarkdown()])
       .use(remarkParse)
       .parse('* [x] contact@example.com ~~strikethrough~~')
@@ -210,7 +207,6 @@ test('remark-stringify', async function (t) {
 
   await t.test('should support extensions', async function () {
     const result = unified()
-      // @ts-expect-error: to do: type settings.
       .data('toMarkdownExtensions', [gfmToMarkdown()])
       .use(remarkStringify)
       .stringify({

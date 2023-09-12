@@ -30,21 +30,13 @@ export default function remarkStringify(options) {
    * @type {Compiler}
    */
   function compiler(tree) {
-    // To do: remove cast when typed.
-    // Assume options.
-    const settings = /** @type {Options} */ (self.data('settings'))
-
-    /** @type {ToMarkdownOptions} */
-    const resolvedOptions = {
-      ...settings,
+    return toMarkdown(tree, {
+      ...self.data('settings'),
       ...options,
       // Note: this option is not in the readme.
       // The goal is for it to be set by plugins on `data` instead of being
       // passed by users.
-      // @ts-expect-error: to do: type.
       extensions: self.data('toMarkdownExtensions') || []
-    }
-
-    return toMarkdown(tree, resolvedOptions)
+    })
   }
 }

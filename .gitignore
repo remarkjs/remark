@@ -4,5 +4,6 @@ node_modules/
 *.d.ts
 *.log
 yarn.lock
+!/packages/remark/index.d.ts
 !/packages/remark-parse/index.d.ts
 !/packages/remark-stringify/index.d.ts

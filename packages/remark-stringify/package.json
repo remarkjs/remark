@@ -59,7 +59,8 @@
           "**/*.ts"
         ],
         "rules": {
-          "@typescript-eslint/ban-types": "off"
+          "@typescript-eslint/ban-types": "off",
+          "@typescript-eslint/consistent-type-definitions": "off"
         }
       }
     ],

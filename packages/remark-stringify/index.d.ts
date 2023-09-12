@@ -1,4 +1,5 @@
 import type {Root} from 'mdast'
+import type {Options as Extension} from 'mdast-util-to-markdown'
 import type {Plugin} from 'unified'
 import type {Options} from './lib/index.js'
 
@@ -21,8 +22,11 @@ declare const remarkStringify: Plugin<
 >
 export default remarkStringify
 
-// To do: register types.
-// // Add custom settings supported when `remark-stringify` is added.
-// declare module 'unified' {
-//   interface Settings extends Options {}
-// }
+// Add custom settings supported when `remark-stringify` is added.
+declare module 'unified' {
+  interface Settings extends Options {}
+
+  interface Data {
+    toMarkdownExtensions?: Extension[]
+  }
+}

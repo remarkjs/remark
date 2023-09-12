@@ -30,23 +30,14 @@ export default function remarkParse(options) {
    * @type {Parser}
    */
   function parser(doc) {
-    // To do: remove cast when typed.
-    // Assume options.
-    const settings = /** @type {Options} */ (self.data('settings'))
-
-    /** @type {FromMarkdownOptions} */
-    const resolvedOptions = {
-      ...settings,
+    return fromMarkdown(doc, {
+      ...self.data('settings'),
       ...options,
       // Note: these options are not in the readme.
       // The goal is for them to be set by plugins on `data` instead of being
       // passed by users.
-      // @ts-expect-error: to do: type.
       extensions: self.data('micromarkExtensions') || [],
-      // @ts-expect-error: to do: type.
       mdastExtensions: self.data('fromMarkdownExtensions') || []
-    }
-
-    return fromMarkdown(doc, resolvedOptions)
+    })
   }
 }
