@@ -14,15 +14,19 @@ You can use remark on the server, the client, CLIs, deno, etc.
 
 ## Feature highlights
 
-*   [x] **[popular][]** (world’s most popular markdown parser)
-*   [x] **[compliant][syntax]** (100% to CommonMark, 100% to GFM with a plugin)
-*   [x] **[plugins][]** (150+ plugins you can pick and choose from)
-*   [x] **[ASTs][syntax-tree]** (inspecting and changing content made easy)
+*   [x] **[compliant][syntax]**
+    — 100% to CommonMark, 100% to GFM or MDX with a plugin
+*   [x] **[ASTs][syntax-tree]**
+    — inspecting and changing content made easy
+*   [x] **[popular][]**
+    — world’s most popular markdown parser
+*   [x] **[plugins][]**
+    — 150+ plugins you can pick and choose from
 
 ## Intro
 
-remark is a very popular ecosystem of plugins that work with markdown as
-structured data, specifically ASTs (abstract syntax trees).
+remark is an ecosystem of plugins that work with markdown as structured data,
+specifically ASTs (abstract syntax trees).
 ASTs make it easy for programs to deal with markdown.
 We call those programs plugins.
 Plugins inspect and change trees.
@@ -70,14 +74,16 @@ With this project and a plugin, you can turn this markdown:
 <details><summary>Show example code</summary>
 
 ```js
-import {unified} from 'unified'
+import rehypeStringify from 'rehype-stringify'
 import remarkParse from 'remark-parse'
-import remarkHtml from 'remark-html'
+import remarkRehype from 'remark-rehype'
+import {unified} from 'unified'
 
 const file = await unified()
-    .use(remarkParse)
-    .use(remarkHtml)
-    .process('# Hello, *Mercury*!')
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeStringify)
+  .process('# Hello, *Mercury*!')
 
 console.log(String(file)) // => '<h1>Hello, <em>Mercury</em>!</h1>'
 ```
@@ -99,21 +105,23 @@ With another plugin, you can turn this markdown:
 <details><summary>Show example code</summary>
 
 ```js
-import {unified} from 'unified'
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
+import {unified} from 'unified'
 import {visit} from 'unist-util-visit'
 
 const file = await unified()
-    .use(remarkParse)
-    .use(myRemarkPluginToIncreaseHeadings)
-    .use(remarkStringify)
-    .process('# Hi, Saturn!')
+  .use(remarkParse)
+  .use(myRemarkPluginToIncreaseHeadings)
+  .use(remarkStringify)
+  .process('# Hi, Saturn!')
 
 console.log(String(file)) // => '## Hi, Saturn!'
 
-/** @type {import('unified').Plugin<[], import('mdast').Root>} */
 function myRemarkPluginToIncreaseHeadings() {
+  /**
+   * @param {import('mdast').Root} tree
+   */
   return function (tree) {
     visit(tree, function (node) {
       if (node.type === 'heading') {
@@ -138,25 +146,27 @@ This GitHub repository is a monorepo that contains the following packages:
 *   [`remark-stringify`][remark-stringify]
     — plugin to take a syntax tree (mdast) and turn it into markdown as output
 *   [`remark`][remark-core]
-    — unified, `remark-parse`, and `remark-stringify`, useful when input and
+    — `unified`, `remark-parse`, and `remark-stringify`, useful when input and
     output are markdown
 *   [`remark-cli`][remark-cli]
     — CLI around `remark` to inspect and format markdown in scripts
 
 ## When should I use this?
 
-If you *just* want to turn markdown into HTML (with maybe a few extensions),
-we recommend [`micromark`][micromark] instead.
-remark can also do that but it focusses on ASTs and providing an interface for
-plugins to transform them.
-
-Depending on the input you have and output you want, you can use different parts
-of remark.
+Depending on the input you have and output you want, you can use different
+parts of remark.
 If the input is markdown, you can use `remark-parse` with `unified`.
 If the output is markdown, you can use `remark-stringify` with `unified`
 If both the input and output are markdown, you can use `remark` on its own.
 When you want to inspect and format markdown files in a project, you can use
 `remark-cli`.
+
+If you *just* want to turn markdown into HTML (with maybe a few extensions),
+we recommend [`micromark`][micromark] instead.
+
+If you don’t use plugins and want to deal with syntax trees manually, you can
+use [`mdast-util-from-markdown`][mdast-util-from-markdown] and
+[`mdast-util-to-markdown`][mdast-util-to-markdown].
 
 ## Plugins
 
@@ -169,12 +179,12 @@ Some popular examples are:
     — inspect markdown and warn about inconsistencies
 *   [`remark-toc`][remark-toc]
     — generate a table of contents
-*   [`remark-html`][remark-html]
-    — turn the syntax tree into serialized HTML
+*   [`remark-rehype`][remark-rehype]
+    — turn markdown into HTML
 
 These plugins are exemplary because what they do and how they do it is quite
 different, respectively to extend markdown syntax, inspect trees, change trees,
-and define other output formats.
+and transform to other syntax trees.
 
 You can choose from the 150+ plugins that already exist.
 Here are three good ways to find plugins:
@@ -202,24 +212,20 @@ The following example turns markdown into HTML by combining both ecosystems with
 [`remark-rehype`][remark-rehype]:
 
 ```js
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
-import remarkRehype from 'remark-rehype'
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeStringify from 'rehype-stringify'
+import remarkParse from 'remark-parse'
+import remarkRehype from 'remark-rehype'
+import {unified} from 'unified'
 
-main()
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkRehype)
+  .use(rehypeSanitize)
+  .use(rehypeStringify)
+  .process('# Hello, Neptune!')
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkRehype)
-    .use(rehypeSanitize)
-    .use(rehypeStringify)
-    .process('# Hello, Neptune!')
-
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
 Yields:
@@ -236,26 +242,29 @@ The following example adds support for GFM (autolink literals, footnotes,
 strikethrough, tables, tasklists) and frontmatter (YAML):
 
 ```js
-import {unified} from 'unified'
-import remarkParse from 'remark-parse'
+import rehypeStringify from 'rehype-stringify'
 import remarkFrontmatter from 'remark-frontmatter'
 import remarkGfm from 'remark-gfm'
+import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
-import rehypeStringify from 'rehype-stringify'
+import {unified} from 'unified'
 
-main()
+const doc = `---
+layout: solar-system
+---
 
-async function main() {
-  const file = await unified()
-    .use(remarkParse)
-    .use(remarkFrontmatter)
-    .use(remarkGfm)
-    .use(remarkRehype)
-    .use(rehypeStringify)
-    .process('---\nlayout: home\n---\n\n# Hi ~~Mars~~Venus!')
+# Hi ~~Mars~~Venus!
+`
 
-  console.log(String(file))
-}
+const file = await unified()
+  .use(remarkParse)
+  .use(remarkFrontmatter)
+  .use(remarkGfm)
+  .use(remarkRehype)
+  .use(rehypeStringify)
+  .process(doc)
+
+console.log(String(file))
 ```
 
 Yields:
@@ -270,30 +279,26 @@ The following example checks that markdown code style is consistent and follows
 recommended best practices:
 
 ```js
-import {reporter} from 'vfile-reporter'
 import {remark} from 'remark'
 import remarkPresetLintConsistent from 'remark-preset-lint-consistent'
 import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
+import {reporter} from 'vfile-reporter'
 
-main()
+const file = await remark()
+  .use(remarkPresetLintConsistent)
+  .use(remarkPresetLintRecommended)
+  .process('1) Hello, _Jupiter_ and *Neptune*!')
 
-async function main() {
-  const file = await remark()
-    .use(remarkPresetLintConsistent)
-    .use(remarkPresetLintRecommended)
-    .process('1) Hello, _Jupiter_ and *Neptune*!')
-
-  console.error(reporter(file))
-}
+console.error(reporter(file))
 ```
 
 Yields:
 
 ```txt
-        1:1  warning  Missing newline character at end of file  final-newline              remark-lint
-   1:1-1:35  warning  Marker style should be `.`                ordered-list-marker-style  remark-lint
-        1:4  warning  Incorrect list-item indent: add 1 space   list-item-indent           remark-lint
-  1:25-1:34  warning  Emphasis should use `_` as a marker       emphasis-marker            remark-lint
+          warning Missing newline character at end of file final-newline             remark-lint
+1:1-1:35  warning Marker style should be `.`               ordered-list-marker-style remark-lint
+1:4       warning Incorrect list-item indent: add 1 space  list-item-indent          remark-lint
+1:25-1:34 warning Emphasis should use `_` as a marker      emphasis-marker           remark-lint
 
 ⚠ 4 warnings
 ```
@@ -307,10 +312,10 @@ This example assumes you’re in a Node.js package.
 First, install the CLI and plugins:
 
 ```sh
-npm install remark-cli remark-toc remark-preset-lint-consistent remark-preset-lint-recommended --save-dev
+npm install remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc --save-dev
 ```
 
-Now, add an npm script in your `package.json`:
+…then add an npm script in your `package.json`:
 
 ```js
   /* … */
@@ -324,7 +329,7 @@ Now, add an npm script in your `package.json`:
 
 > 💡 **Tip**: add ESLint and such in the `format` script too.
 
-Observe that the above change adds a `format` script, which can be run with
+The above change adds a `format` script, which can be run with
 `npm run format`.
 It runs remark on all markdown files (`.`) and rewrites them (`--output`).
 Run `./node_modules/.bin/remark --help` for more info on the CLI.
@@ -354,7 +359,7 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
 ```
 
 > 👉 **Note**: you must remove the comments in the above examples when
-> copy/pasting them, as comments are not supported in `package.json` files.
+> copy/pasting them as comments are not supported in `package.json` files.
 
 Finally, you can run the npm script to check and format markdown files in your
 project:
@@ -365,9 +370,8 @@ npm run format
 
 ## Syntax
 
-remark follows CommonMark, which standardizes the differences between markdown
-implementations, by default.
-Some syntax extensions are supported through plugins.
+Markdown is parsed and serialized according to CommonMark.
+Other plugins can add support for syntax extensions.
 
 We use [`micromark`][micromark] for our parsing.
 See its documentation for more information on markdown, CommonMark, and
@@ -375,7 +379,7 @@ extensions.
 
 ## Syntax tree
 
-The syntax tree format used in remark is [mdast][].
+The syntax tree used in remark is [mdast][].
 It represents markdown constructs as JSON objects.
 
 This markdown:
@@ -384,7 +388,7 @@ This markdown:
 ## Hello *Pluto*!
 ```
 
-yields the following tree:
+…yields the following tree (positional info remove for brevity):
 
 ```js
 {
@@ -404,44 +408,62 @@ The remark organization and the unified collective as a whole is fully typed
 with [TypeScript][].
 Types for mdast are available in [`@types/mdast`][types-mdast].
 
-For TypeScript to work, it is particularly important to type your plugins
-correctly.
-We strongly recommend using the `Plugin` type from `unified` with its generics
-and to use the node types for the syntax trees provided by `@types/mdast`.
+For TypeScript to work, it is important to type your plugins.
+For example:
 
 ```js
 /**
  * @typedef {import('mdast').Root} Root
- *
- * @typedef Options
- *   Configuration (optional).
- * @property {boolean} [someField]
- *   Some option.
+ * @typedef {import('vfile').VFile} VFile
  */
 
-// To type options and that the it works with `mdast`:
-/** @type {import('unified').Plugin<[Options?], Root>} */
+/**
+ * @typedef Options
+ *   Configuration.
+ * @property {boolean | null | undefined} [someField]
+ *   Some option (optional).
+ */
+
+/**
+ * My plugin.
+ *
+ * @param {Options | null | undefined} [options]
+ *   Configuration (optional).
+ * @returns
+ *   Transform.
+ */
 export function myRemarkPluginAcceptingOptions(options) {
-  // `options` is `Options?`.
+  /**
+   * Transform.
+   *
+   * @param {Root} tree
+   *   Tree.
+   * @param {VFile} file
+   *   File
+   * @returns {undefined}
+   *   Nothing.
+   */
   return function (tree, file) {
-    // `tree` is `Root`.
+    // Do things.
   }
 }
 ```
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line compatible with Node.js 12.
 
 ## Security
 
 As markdown can be turned into HTML and improper use of HTML can open you up to
 [cross-site scripting (XSS)][xss] attacks, use of remark can be unsafe.
-When going to HTML, you will likely combine remark with **[rehype][]**, in which
-case you should use [`rehype-sanitize`][rehype-sanitize].
+When going to HTML, you will combine remark with **[rehype][]**, in which case
+you should use [`rehype-sanitize`][rehype-sanitize].
 
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
@@ -462,8 +484,6 @@ abide by its terms.
 ## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
-
-<!--lint ignore no-html-->
 
 <table>
 <tr valign="middle">
@@ -552,17 +572,19 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [downloads]: https://www.npmjs.com/package/remark
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark
 
-[size]: https://bundlephobia.com/result?p=remark
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/remarkjs/remark/discussions
+[size]: https://bundlejs.com/?q=remark
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
 [backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
+[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
+
+[chat]: https://github.com/remarkjs/remark/discussions
 
 [security]: https://github.com/remarkjs/.github/blob/main/security.md
 
@@ -573,10 +595,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [support]: https://github.com/remarkjs/.github/blob/main/support.md
 
 [coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
-
-[collective]: https://opencollective.com/unified
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
 [typescript]: https://www.typescriptlang.org
 
@@ -592,35 +610,41 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [types-mdast]: https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/mdast
 
-[unified]: https://github.com/unifiedjs/unified
+[mdast]: https://github.com/syntax-tree/mdast
 
-[remark-gfm]: https://github.com/remarkjs/remark-gfm
+[mdast-util-from-markdown]: https://github.com/syntax-tree/mdast-util-from-markdown
 
-[remark-toc]: https://github.com/remarkjs/remark-toc
+[mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
 
-[remark-rehype]: https://github.com/remarkjs/remark-rehype
-
-[remark-html]: https://github.com/remarkjs/remark-html
-
-[remark-lint]: https://github.com/remarkjs/remark-lint
-
-[awesome-remark]: https://github.com/remarkjs/awesome-remark
+[micromark]: https://github.com/micromark/micromark
 
 [rehype]: https://github.com/rehypejs/rehype
 
 [rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
 
-[mdast]: https://github.com/syntax-tree/mdast
-
-[micromark]: https://github.com/micromark/micromark
-
-[remark-parse]: packages/remark-parse/
-
-[remark-stringify]: packages/remark-stringify/
+[remark-cli]: packages/remark-cli/
 
 [remark-core]: packages/remark/
 
-[remark-cli]: packages/remark-cli/
+[remark-gfm]: https://github.com/remarkjs/remark-gfm
+
+[remark-html]: https://github.com/remarkjs/remark-html
+
+[remark-lint]: https://github.com/remarkjs/remark-lint
+
+[remark-parse]: packages/remark-parse/
+
+[remark-rehype]: https://github.com/remarkjs/remark-rehype
+
+[remark-stringify]: packages/remark-stringify/
+
+[remark-toc]: https://github.com/remarkjs/remark-toc
+
+[awesome-remark]: https://github.com/remarkjs/awesome-remark
+
+[unified]: https://github.com/unifiedjs/unified
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
 
 [list-of-plugins]: doc/plugins.md#list-of-plugins
 

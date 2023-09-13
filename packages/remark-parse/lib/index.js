@@ -6,7 +6,7 @@
  */
 
 /**
- * @typedef {Omit<FromMarkdownOptions, 'extensions' | 'fromMarkdownExtensions'>} Options
+ * @typedef {Omit<FromMarkdownOptions, 'extensions' | 'mdastExtensions'>} Options
  */
 
 import {fromMarkdown} from 'mdast-util-from-markdown'

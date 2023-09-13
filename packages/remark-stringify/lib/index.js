@@ -12,7 +12,7 @@
 import {toMarkdown} from 'mdast-util-to-markdown'
 
 /**
- * Add support for serializing as markdown.
+ * Add support for serializing to markdown.
  *
  * @param {Readonly<Options> | null | undefined} [options]
  *   Configuration (optional).

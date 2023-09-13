@@ -8,7 +8,7 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[remark][]** plugin to add support for serializing markdown.
+**[remark][]** plugin to add support for serializing to markdown.
 
 ## Contents
 
@@ -30,23 +30,22 @@
 
 This package is a [unified][] ([remark][]) plugin that defines how to take a
 syntax tree as input and turn it into serialized markdown.
+When it’s used, markdown is serialized as the final result.
 
-This plugin is built on [`mdast-util-to-markdown`][mdast-util-to-markdown],
-which turns [mdast][] syntax trees into a string.
-remark focusses on making it easier to transform content by abstracting such
-internals away.
-
-**unified** is a project that transforms content with abstract syntax trees
-(ASTs).
-**remark** adds support for markdown to unified.
-**mdast** is the markdown AST that remark uses.
-This is a remark plugin that defines how mdast is turned into markdown.
+See [the monorepo readme][remark] for info on what the remark ecosystem is.
 
 ## When should I use this?
 
 This plugin adds support to unified for serializing markdown.
-You can alternatively use [`remark`][remark-core] instead, which combines
-unified, [`remark-parse`][remark-parse], and this plugin.
+If you also need to parse markdown, you can alternatively use
+[`remark`][remark-core], which combines unified,
+[`remark-parse`][remark-parse], and this plugin.
+
+If you don’t use plugins and have access to a syntax tree, you can directly use
+[`mdast-util-to-markdown`][mdast-util-to-markdown], which is used inside this
+plugin.
+remark focusses on making it easier to transform content by abstracting these
+internals away.
 
 You can combine this plugin with other plugins to add syntax extensions.
 Notable examples that deeply integrate with it are
@@ -55,15 +54,13 @@ Notable examples that deeply integrate with it are
 [`remark-frontmatter`][remark-frontmatter],
 [`remark-math`][remark-math], and
 [`remark-directive`][remark-directive].
-You can also use any other [remark plugin][plugin] before `remark-stringify`.
-
-If you want to handle syntax trees manually, you can use
-[`mdast-util-to-markdown`][mdast-util-to-markdown].
+You can also use any other [remark plugin][remark-plugin] before
+`remark-stringify`.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark-stringify
@@ -88,186 +85,159 @@ In browsers with [`esm.sh`][esmsh]:
 Say we have the following module `example.js`:
 
 ```js
-import {unified} from 'unified'
 import rehypeParse from 'rehype-parse'
 import rehypeRemark from 'rehype-remark'
 import remarkStringify from 'remark-stringify'
+import {unified} from 'unified'
 
-main()
+const doc = `
+<h1>Uranus</h1>
+<p><b>Uranus</b> is the seventh
+<a href="/wiki/Planet" title="Planet">planet</a> from the Sun and is a gaseous
+cyan <a href="/wiki/Ice_giant" title="Ice giant">ice giant</a>.</p>
+`
 
-async function main() {
-  const file = await unified()
-    .use(rehypeParse)
-    .use(rehypeRemark)
-    .use(remarkStringify, {
-      bullet: '*',
-      fence: '~',
-      fences: true,
-      incrementListMarker: false
-    })
-    .process('<h1>Hello, world!</h1>')
+const file = await unified()
+  .use(rehypeParse)
+  .use(rehypeRemark)
+  .use(remarkStringify)
+  .process(doc)
 
-  console.log(String(file))
-}
+console.log(String(file))
 ```
 
-Running that with `node example.js` yields:
+…then running `node example.js` yields:
 
 ```markdown
-# Hello, world!
+# Uranus
+
+**Uranus** is the seventh [planet](/wiki/Planet "Planet") from the Sun and is a gaseous cyan [ice giant](/wiki/Ice_giant "Ice giant").
 ```
 
 ## API
 
 This package exports no identifiers.
-The default export is `remarkStringify`.
+The default export is [`remarkStringify`][api-remark-stringify].
 
 ### `unified().use(remarkStringify[, options])`
 
-Add support for serializing markdown.
-Options are passed to [`mdast-util-to-markdown`][mdast-util-to-markdown]:
-all formatting options are supported.
+Add support for serializing to markdown.
 
-##### `options`
+###### Parameters
 
-Configuration (optional).
+*   `options` ([`Options`][api-options], optional)
+    — configuration
 
-###### `options.bullet`
+###### Returns
 
-Marker to use for bullets of items in unordered lists (`'*'`, `'+'`, or `'-'`,
-default: `'*'`).
+Nothing (`undefined`).
 
-###### `options.bulletOther`
+### `Options`
 
-Marker to use in certain cases where the primary bullet doesn’t work (`'*'`,
-`'+'`, or `'-'`, default: depends).
-See [`mdast-util-to-markdown`][mdast-util-to-markdown] for more information.
+Configuration (TypeScript type).
 
-###### `options.bulletOrdered`
+###### Fields
 
-Marker to use for bullets of items in ordered lists (`'.'` or `')'`, default:
-`'.'`).
+*   `bullet` (`'*'`, `'+'`, or `'-'`, default: `'*'`)
+    — marker to use for bullets of items in unordered lists
+*   `bulletOther` (`'*'`, `'+'`, or `'-'`, default: `'-'` when `bullet` is
+    `'*'`, `'*'` otherwise)
+    — marker to use in certain cases where the primary bullet doesn’t work;
+    cannot be equal to `bullet`
+*   `bulletOrdered` (`'.'` or `')'`, default: `'.'`)
+    — marker to use for bullets of items in ordered lists
+*   `closeAtx` (`boolean`, default: `false`)
+    — add the same number of number signs (`#`) at the end of an ATX heading as
+    the opening sequence
+*   `emphasis` (`'*'` or `'_'`, default: `'*'`)
+    — marker to use for emphasis
+*   `fence` (``'`'`` or `'~'`, default: ``'`'``)
+    — marker to use for fenced code
+*   `fences` (`boolean`, default: `true`)
+    — use fenced code always; when `false`, uses fenced code if there is a
+    language defined, if the code is empty, or if it starts or ends in blank
+    lines
+*   `handlers` (`Handlers`, optional)
+    — handle particular nodes;
+    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+*   `incrementListMarker` (`boolean`, default: `true`)
+    — increment the counter of ordered lists items
+*   `join` (`Array<Join>`, optional)
+    — how to join blocks;
+    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+*   `listItemIndent` (`'mixed'`, `'one'`, or `'tab'`, default: `'one'`)
+    — how to indent the content of list items;
+    either with the size of the bullet plus one space (when `'one'`), a tab
+    stop (`'tab'`), or depending on the item and its parent list: `'mixed'`
+    uses `'one'` if the item and list are tight and `'tab'` otherwise
+*   `quote` (`'"'` or `"'"`, default: `'"'`)
+    — marker to use for titles
+*   `resourceLink` (`boolean`, default: `false`)
+    — always use resource links (`[text](url)`);
+    when `false`, uses autolinks (`<https://example.com>`) when possible
+*   `rule` (`'*'`, `'-'`, or `'_'`, default: `'*'`)
+    — marker to use for thematic breaks
+*   `ruleRepetition` (`number`, default: `3`, min: `3`)
+    — number of markers to use for thematic breaks
+*   `ruleSpaces` (`boolean`, default: `false`)
+    — add spaces between markers in thematic breaks
+*   `setext` (`boolean`, default: `false`)
+    — use setext headings when possible;
+    when `true`, uses setext headings (`heading\n=======`) for non-empty rank 1
+    or 2 headings
+*   `strong` (`'*'` or `'_'`, default: `'*'`)
+    — marker to use for strong
+*   `tightDefinitions` (`boolean`, default: `false`)
+    — join definitions without a blank line
+*   `unsafe` (`Array<Unsafe>`, optional)
+    — schemas that define when characters cannot occur;
+    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
 
-###### `options.bulletOrderedOther`
-
-Marker to use in certain cases where the primary bullet for ordered items
-doesn’t work (`'.'` or `')'`, default: none).
-See [`mdast-util-to-markdown`][mdast-util-to-markdown] for more information.
-
-###### `options.closeAtx`
-
-Whether to add the same number of number signs (`#`) at the end of an ATX
-heading as the opening sequence (`boolean`, default: `false`).
-
-###### `options.emphasis`
-
-Marker to use for emphasis (`'*'` or `'_'`, default: `'*'`).
-
-###### `options.fence`
-
-Marker to use for fenced code (``'`'`` or `'~'`, default: ``'`'``).
-
-###### `options.fences`
-
-Whether to use fenced code always (`boolean`, default: `false`).
-The default is to use fenced code if there is a language defined, if the code is
-empty, or if it starts or ends in blank lines.
-
-###### `options.incrementListMarker`
-
-Whether to increment the counter of ordered lists items (`boolean`, default:
-`true`).
-
-###### `options.listItemIndent`
-
-How to indent the content of list items (`'one'`, `'tab'`, or `'mixed'`,
-default: `'tab'`).
-Either with the size of the bullet plus one space (when `'one'`), a tab stop
-(`'tab'`), or depending on the item and its parent list (`'mixed'`, uses `'one'`
-if the item and list are tight and `'tab'` otherwise).
-
-###### `options.quote`
-
-Marker to use for titles (`'"'` or `"'"`, default: `'"'`).
-
-###### `options.resourceLink`
-
-Whether to always use resource links (`boolean`, default: `false`).
-The default is to use autolinks (`<https://example.com>`) when possible
-and resource links (`[text](url)`) otherwise.
-
-###### `options.rule`
-
-Marker to use for thematic breaks (`'*'`, `'-'`, or `'_'`, default: `'*'`).
-
-###### `options.ruleRepetition`
-
-Number of markers to use for thematic breaks (`number`, default:
-`3`, min: `3`).
-
-###### `options.ruleSpaces`
-
-Whether to add spaces between markers in thematic breaks (`boolean`, default:
-`false`).
-
-###### `options.setext`
-
-Whether to use setext headings when possible (`boolean`, default: `false`).
-The default is to always use ATX headings (`# heading`) instead of setext
-headings (`heading\n=======`).
-Setext headings can’t be used for empty headings or headings with a rank of
-three or more.
-
-###### `options.strong`
-
-Marker to use for strong (`'*'` or `'_'`, default: `'*'`).
-
-###### `options.tightDefinitions`
-
-Whether to join definitions without a blank line (`boolean`, default: `false`).
-The default is to add blank lines between any flow (“block”) construct.
-
-###### `options.handlers`
-
-This option is a bit advanced as it requires knowledge of ASTs, so we defer
-to the documentation available in
-[`mdast-util-to-markdown`][mdast-util-to-markdown].
-
-###### `options.join`
-
-This option is a bit advanced as it requires knowledge of ASTs, so we defer
-to the documentation available in
-[`mdast-util-to-markdown`][mdast-util-to-markdown].
-
-###### `options.unsafe`
-
-This option is a bit advanced as it requires deep knowledge of markdown, so we
-defer to the documentation available in
-[`mdast-util-to-markdown`][mdast-util-to-markdown].
+<!-- Note: `extensions` intentionally not supported/documented. -->
 
 ## Syntax
 
-Markdown is serialized according to CommonMark but care is taken to format in
-such a way that the resulting markdown should work with most markdown parsers.
+Markdown is serialized according to CommonMark but care is taken to format in a
+way that works with most markdown parsers.
 Other plugins can add support for syntax extensions.
 
 ## Syntax tree
 
-The syntax tree format used in remark is [mdast][].
+The syntax tree used in remark is [mdast][].
 
 ## Types
 
 This package is fully typed with [TypeScript][].
-An `Options` type is exported, which models the interface of accepted options.
+It exports the additional type [`Options`][api-options].
+
+It also registers `Settings` with `unified`.
+If you’re passing options with `.data('settings', …)`, make sure to import this
+package somewhere in your types, as that registers the fields.
+
+```js
+/// <reference types="remark-stringify" />
+
+import {unified} from 'unified'
+
+// @ts-expect-error: `thisDoesNotExist` is not a valid option.
+unified().data('settings', {thisDoesNotExist: false})
+```
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with maintained
+versions of Node.js.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark-stringify@^10`,
+compatible with Node.js 12.
 
 ## Security
 
-As markdown can be turned into HTML and improper use of HTML can open you up to
-[cross-site scripting (XSS)][xss] attacks, use of remark can be unsafe.
-When going to HTML, you will likely combine remark with **[rehype][]**, in which
-case you should use [`rehype-sanitize`][rehype-sanitize].
+Use of `remark-stringify` is safe.
 
-Use of remark plugins could also open you up to other attacks.
+Use of remark plugins can open you up to attacks.
 Carefully assess each plugin and the risks involved in using them.
 
 For info on how to submit a report, see our [security policy][security].
@@ -286,8 +256,6 @@ abide by its terms.
 ## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
-
-<!--lint ignore no-html-->
 
 <table>
 <tr valign="middle">
@@ -374,9 +342,9 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [downloads]: https://www.npmjs.com/package/remark-stringify
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark-stringify.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark-stringify
 
-[size]: https://bundlephobia.com/result?p=remark-stringify
+[size]: https://bundlejs.com/?q=remark-stringify
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -404,36 +372,36 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
 [esmsh]: https://esm.sh
-
-[unified]: https://github.com/unifiedjs/unified
-
-[remark]: https://github.com/remarkjs/remark
 
 [mdast]: https://github.com/syntax-tree/mdast
 
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[typescript]: https://www.typescriptlang.org
-
-[rehype]: https://github.com/rehypejs/rehype
-
-[rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
-
 [mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
 
-[remark-gfm]: https://github.com/remarkjs/remark-gfm
-
-[remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
-
-[remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
-
-[remark-math]: https://github.com/remarkjs/remark-math
-
-[remark-directive]: https://github.com/remarkjs/remark-directive
-
-[remark-parse]: ../remark-parse/
+[remark]: https://github.com/remarkjs/remark
 
 [remark-core]: ../remark/
 
-[plugin]: https://github.com/remarkjs/remark#plugin
+[remark-directive]: https://github.com/remarkjs/remark-directive
+
+[remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
+
+[remark-gfm]: https://github.com/remarkjs/remark-gfm
+
+[remark-math]: https://github.com/remarkjs/remark-math
+
+[remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
+
+[remark-parse]: ../remark-parse/
+
+[remark-plugin]: https://github.com/remarkjs/remark#plugin
+
+[typescript]: https://www.typescriptlang.org
+
+[unified]: https://github.com/unifiedjs/unified
+
+[api-options]: #options
+
+[api-remark-stringify]: #unifieduseremarkstringify-options

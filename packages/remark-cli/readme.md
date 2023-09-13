@@ -29,10 +29,9 @@ Command line interface to inspect and change markdown files with **[remark][]**.
 
 This package is a command line interface (CLI) that you can use in your terminal
 or in npm scripts and the like to inspect and change markdown files.
-This CLI is built around remark, which is a very popular ecosystem of plugins
-that work with markdown as structured data, specifically ASTs (abstract syntax
-trees).
-You can choose from the 150+ plugins that already exist or make your own.
+This CLI is built around remark, which is an ecosystem of plugins that work with
+markdown as structured data, specifically ASTs (abstract syntax trees).
+You can choose from the 150+ existing plugins or make your own.
 
 See [the monorepo readme][remark] for info on what the remark ecosystem is.
 
@@ -46,8 +45,8 @@ If not, you can always use [`remark`][remark-core] itself manually in a script.
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark-cli
@@ -58,7 +57,7 @@ npm install remark-cli
 Add a table of contents with [`remark-toc`][remark-toc] to `readme.md`:
 
 ```sh
-remark readme.md --use remark-toc --output
+remark readme.md --output --use remark-toc
 ```
 
 Lint all markdown files in the current directory according to the markdown style
@@ -80,31 +79,32 @@ Usage: remark [options] [path | glob ...]
 
 Options:
 
-  -h  --help                              output usage information
-  -v  --version                           output version number
-  -o  --output [path]                     specify output location
-  -r  --rc-path <path>                    specify configuration file
-  -i  --ignore-path <path>                specify ignore file
-  -s  --setting <settings>                specify settings
-  -e  --ext <extensions>                  specify extensions
-  -u  --use <plugins>                     use plugins
-  -w  --watch                             watch for changes and reprocess
-  -q  --quiet                             output only warnings and errors
-  -S  --silent                            output only errors
-  -f  --frail                             exit with 1 on warnings
-  -t  --tree                              specify input and output as syntax tree
-      --report <reporter>                 specify reporter
-      --file-path <path>                  specify path to process as
-      --ignore-path-resolve-from dir|cwd  resolve patterns in `ignore-path` from its directory or cwd
-      --ignore-pattern <globs>            specify ignore patterns
-      --silently-ignore                   do not fail when given ignored files
-      --tree-in                           specify input as syntax tree
-      --tree-out                          output syntax tree
-      --inspect                           output formatted syntax tree
-      --[no-]stdout                       specify writing to stdout (on by default)
       --[no-]color                        specify color in report (on by default)
       --[no-]config                       search for configuration files (on by default)
+  -e  --ext <extensions>                  specify extensions
+      --file-path <path>                  specify path to process as
+  -f  --frail                             exit with 1 on warnings
+  -h  --help                              output usage information
       --[no-]ignore                       search for ignore files (on by default)
+  -i  --ignore-path <path>                specify ignore file
+      --ignore-path-resolve-from cwd|dir  resolve patterns in `ignore-path` from its directory or cwd
+      --ignore-pattern <globs>            specify ignore patterns
+      --inspect                           output formatted syntax tree
+  -o  --output [path]                     specify output location
+  -q  --quiet                             output only warnings and errors
+  -r  --rc-path <path>                    specify configuration file
+      --report <reporter>                 specify reporter
+  -s  --setting <settings>                specify settings
+  -S  --silent                            output only errors
+      --silently-ignore                   do not fail when given ignored files
+      --[no-]stdout                       specify writing to stdout (on by default)
+  -t  --tree                              specify input and output as syntax tree
+      --tree-in                           specify input as syntax tree
+      --tree-out                          output syntax tree
+  -u  --use <plugins>                     use plugins
+      --verbose                           report extra info for messages
+  -v  --version                           output version number
+  -w  --watch                             watch for changes and reprocess
 
 Examples:
 
@@ -118,17 +118,17 @@ Examples:
   $ remark . -o
 ```
 
-More information on all these options is available at
-[`unified-args`][unified-args], which does the work.
+More info on all these options is available at [`unified-args`][unified-args],
+which does the work.
 `remark-cli` is `unified-args` preconfigured to:
 
-*   Load `remark-` plugins
-*   Search for markdown extensions
+*   load `remark-` plugins
+*   search for markdown extensions
     ([`.md`, `.markdown`, etc][markdown-extensions])
-*   Ignore paths found in [`.remarkignore` files][ignore-file]
-*   Load configuration from
+*   ignore paths found in [`.remarkignore` files][ignore-file]
+*   load configuration from
     [`.remarkrc`, `.remarkrc.js`, etc files][config-file]
-*   Use configuration from
+*   use configuration from
     [`remarkConfig` fields in `package.json` files][config-file]
 
 ## Examples
@@ -138,13 +138,13 @@ More information on all these options is available at
 This example checks and formats markdown with `remark-cli`.
 It assumes you’re in a Node.js package.
 
-First, install the CLI and plugins:
+Install the CLI and plugins:
 
 ```sh
-npm install remark-cli remark-toc remark-preset-lint-consistent remark-preset-lint-recommended --save-dev
+npm install remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc --save-dev
 ```
 
-Now, add an npm script in your `package.json`:
+…then add an npm script in your `package.json`:
 
 ```js
   /* … */
@@ -158,7 +158,7 @@ Now, add an npm script in your `package.json`:
 
 > 💡 **Tip**: add ESLint and such in the `format` script too.
 
-Observe that the above change adds a `format` script, which can be run with
+The above change adds a `format` script, which can be run with
 `npm run format`.
 It runs remark on all markdown files (`.`) and rewrites them (`--output`).
 Run `./node_modules/.bin/remark --help` for more info on the CLI.
@@ -188,7 +188,7 @@ Then, add a `remarkConfig` to your `package.json` to configure remark:
 ```
 
 > 👉 **Note**: you must remove the comments in the above examples when
-> copy/pasting them, as comments are not supported in `package.json` files.
+> copy/pasting them as comments are not supported in `package.json` files.
 
 Finally, you can run the npm script to check and format markdown files in your
 project:
@@ -269,20 +269,23 @@ Earlier wins (so in the above file structure `folder/.remarkrc.js` wins over
 `folder/package.json`):
 
 1.  `.remarkrc` (JSON)
-2.  `.remarkrc.json` (JSON)
 3.  `.remarkrc.cjs` (CJS)
-4.  `.remarkrc.mjs` (ESM)
 5.  `.remarkrc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
+2.  `.remarkrc.json` (JSON)
+4.  `.remarkrc.mjs` (ESM)
 6.  `.remarkrc.yaml` (YAML)
 7.  `.remarkrc.yml` (YAML)
 8.  `package.json` with `remarkConfig` field
 
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark-cli@^11`,
+compatible with Node.js 12.
 
 ## Security
 
@@ -310,8 +313,6 @@ abide by its terms.
 ## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
-
-<!--lint ignore no-html-->
 
 <table>
 <tr valign="middle">
@@ -424,7 +425,9 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[markdown-extensions]: https://github.com/sindresorhus/markdown-extensions
 
 [rehype]: https://github.com/rehypejs/rehype
 
@@ -432,16 +435,16 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [remark]: https://github.com/remarkjs/remark
 
-[markdown-extensions]: https://github.com/sindresorhus/markdown-extensions
-
-[config-file]: https://github.com/unifiedjs/unified-engine/blob/main/doc/configure.md
-
-[ignore-file]: https://github.com/unifiedjs/unified-engine/blob/main/doc/ignore.md
-
-[unified-args]: https://github.com/unifiedjs/unified-args#cli
-
-[remark-core]: ../remark
+[remark-core]: ../remark/
 
 [remark-toc]: https://github.com/remarkjs/remark-toc
 
+[config-file]: https://github.com/unifiedjs/unified-engine#config-files
+
+[ignore-file]: https://github.com/unifiedjs/unified-engine#ignore-files
+
+[unified-args]: https://github.com/unifiedjs/unified-args#cli
+
 [markdown-style-guide]: https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-markdown-style-guide
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting

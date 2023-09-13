@@ -8,8 +8,8 @@
 [![Backers][backers-badge]][collective]
 [![Chat][chat-badge]][chat]
 
-**[unified][]** processor with support for parsing markdown input and
-serializing markdown as output.
+**[unified][]** processor with support for parsing from markdown and
+serializing to markdown.
 
 ## Contents
 
@@ -33,15 +33,11 @@ serializing markdown as output.
 
 ## What is this?
 
-This package is a [unified][] processor with support for parsing markdown input
-and serializing markdown as output by using unified with
+This package is a [unified][] processor with support for parsing markdown as
+input and serializing markdown as output by using unified with
 [`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
 
-**unified** is a project that transforms content with abstract syntax trees
-(ASTs).
-**remark** adds support for markdown to unified.
-**mdast** is the markdown AST that remark uses.
-Please see [the monorepo readme][remark] for what the remark ecosystem is.
+See [the monorepo readme][remark] for info on what the remark ecosystem is.
 
 ## When should I use this?
 
@@ -51,15 +47,15 @@ This package is a shortcut for
 `unified().use(remarkParse).use(remarkStringify)`.
 When the input isn’t markdown (meaning you don’t need `remark-parse`) or the
 output is not markdown (you don’t need `remark-stringify`), it’s recommended to
-use unified directly.
+use `unified` directly.
 
 When you want to inspect and format markdown files in a project on the command
 line, you can use [`remark-cli`][remark-cli].
 
 ## Install
 
-This package is [ESM only](https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c).
-In Node.js (version 12.20+, 14.14+, or 16.0+), install with [npm][]:
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
 
 ```sh
 npm install remark
@@ -85,44 +81,86 @@ Say we have the following module `example.js`:
 
 ```js
 import {remark} from 'remark'
-import remarkGfm from 'remark-gfm'
 import remarkToc from 'remark-toc'
 
-main()
+const doc = `
+# Pluto
 
-async function main() {
-  const file = await remark()
-    .use(remarkGfm)
-    .use(remarkToc)
-    .process('# Hi\n\n## Table of contents\n\n## Hello\n\n*Some* ~more~ _things_.')
+Pluto is a dwarf planet in the Kuiper belt.
 
-  console.error(String(file))
-}
+## Contents
+
+## History
+
+### Discovery
+
+In the 1840s, Urbain Le Verrier used Newtonian mechanics to predict the position of…
+
+### Name and symbol
+
+The name Pluto is for the Roman god of the underworld, from a Greek epithet for Hades…
+
+### Planet X disproved
+
+Once Pluto was found, its faintness and lack of a viewable disc cast doubt…
+
+## Orbit
+
+Pluto's orbital period is about 248 years…
+`
+
+const file = await remark()
+  .use(remarkToc, {heading: 'contents', tight: true})
+  .process(doc)
+
+console.error(String(file))
 ```
 
-Running that with `node example.js` yields:
+…running that with `node example.js` yields:
 
 ```markdown
-# Hi
+# Pluto
 
-## Table of contents
+Pluto is a dwarf planet in the Kuiper belt.
 
-*   [Hello](#hello)
+## Contents
 
-## Hello
+* [History](#history)
+  * [Discovery](#discovery)
+  * [Name and symbol](#name-and-symbol)
+  * [Planet X disproved](#planet-x-disproved)
+* [Orbit](#orbit)
 
-*Some* ~~more~~ *things*.
+## History
+
+### Discovery
+
+In the 1840s, Urbain Le Verrier used Newtonian mechanics to predict the position of…
+
+### Name and symbol
+
+The name Pluto is for the Roman god of the underworld, from a Greek epithet for Hades…
+
+### Planet X disproved
+
+Once Pluto was found, its faintness and lack of a viewable disc cast doubt…
+
+## Orbit
+
+Pluto's orbital period is about 248 years…
 ```
 
 ## API
 
-This package exports the following identifier: `remark`.
+This package exports the identifier [`remark`][api-remark].
 There is no default export.
 
 ### `remark()`
 
-Create a new (unfrozen) unified processor that already uses `remark-parse` and
-`remark-stringify` and you can add more plugins to.
+Create a new unified processor that already uses
+[`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
+
+You can add more plugins with `use`.
 See [`unified`][unified] for more information.
 
 ## Examples
@@ -133,30 +171,26 @@ The following example checks that markdown code style is consistent and follows
 some best practices:
 
 ```js
-import {reporter} from 'vfile-reporter'
 import {remark} from 'remark'
 import remarkPresetLintConsistent from 'remark-preset-lint-consistent'
 import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
+import {reporter} from 'vfile-reporter'
 
-main()
+const file = await remark()
+  .use(remarkPresetLintConsistent)
+  .use(remarkPresetLintRecommended)
+  .process('1) Hello, _Jupiter_ and *Neptune*!')
 
-async function main() {
-  const file = await remark()
-    .use(remarkPresetLintConsistent)
-    .use(remarkPresetLintRecommended)
-    .process('1) Hello, _Jupiter_ and *Neptune*!')
-
-  console.error(reporter(file))
-}
+console.error(reporter(file))
 ```
 
 Yields:
 
 ```txt
-        1:1  warning  Missing newline character at end of file  final-newline              remark-lint
-   1:1-1:35  warning  Marker style should be `.`                ordered-list-marker-style  remark-lint
-        1:4  warning  Incorrect list-item indent: add 1 space   list-item-indent           remark-lint
-  1:25-1:34  warning  Emphasis should use `_` as a marker       emphasis-marker            remark-lint
+          warning Missing newline character at end of file final-newline             remark-lint
+1:1-1:35  warning Marker style should be `.`               ordered-list-marker-style remark-lint
+1:4       warning Incorrect list-item indent: add 1 space  list-item-indent          remark-lint
+1:25-1:34 warning Emphasis should use `_` as a marker      emphasis-marker           remark-lint
 
 ⚠ 4 warnings
 ```
@@ -171,15 +205,24 @@ To define options for `remark-stringify`, you can instead pass options to
 ```js
 import {remark} from 'remark'
 
-main()
+const doc = `
+# Moons of Neptune
 
-async function main() {
-  const file = await remark()
-    .data('settings', {bullet: '*', listItemIndent: 'one', setext: true})
-    .process('# Moons of Neptune\n\n- Naiad\n- Thalassa\n- Despine\n- …')
+1. Naiad
+2. Thalassa
+3. Despine
+4. …
+`
 
-  console.log(String(file))
-}
+const file = await remark()
+  .data('settings', {
+    bulletOrdered: ')',
+    incrementListMarker: false,
+    setext: true
+  })
+  .process(doc)
+
+console.log(String(file))
 ```
 
 Yields:
@@ -188,10 +231,10 @@ Yields:
 Moons of Neptune
 ================
 
-* Naiad
-* Thalassa
-* Despine
-* …
+1) Naiad
+1) Thalassa
+1) Despine
+1) …
 ```
 
 ## Syntax
@@ -201,26 +244,42 @@ Other plugins can add support for syntax extensions.
 
 ## Syntax tree
 
-The syntax tree format used in remark is [mdast][].
+The syntax tree used in remark is [mdast][].
 
 ## Types
 
 This package is fully typed with [TypeScript][].
 There are no extra exported types.
 
+It also registers `Settings` with `unified`.
+If you’re passing options with `.data('settings', …)`, make sure to import this
+package somewhere in your types, as that registers the fields.
+
+```js
+/// <reference types="remark" />
+
+import {unified} from 'unified'
+
+// @ts-expect-error: `thisDoesNotExist` is not a valid option.
+unified().data('settings', {thisDoesNotExist: false})
+```
+
 ## Compatibility
 
-Projects maintained by the unified collective are compatible with all maintained
+Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
-As of now, that is Node.js 12.20+, 14.14+, and 16.0+.
-Our projects sometimes work with older versions, but this is not guaranteed.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line, `remark@^14`, compatible
+with Node.js 12.
 
 ## Security
 
 As markdown can be turned into HTML and improper use of HTML can open you up to
 [cross-site scripting (XSS)][xss] attacks, use of remark can be unsafe.
-When going to HTML, you will likely combine remark with **[rehype][]**, in which
-case you should use [`rehype-sanitize`][rehype-sanitize].
+When going to HTML, you will combine remark with **[rehype][]**, in which case
+you should use [`rehype-sanitize`][rehype-sanitize].
 
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
@@ -241,8 +300,6 @@ abide by its terms.
 ## Sponsor
 
 Support this effort and give back by sponsoring on [OpenCollective][collective]!
-
-<!--lint ignore no-html-->
 
 <table>
 <tr valign="middle">
@@ -329,9 +386,9 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [downloads]: https://www.npmjs.com/package/remark
 
-[size-badge]: https://img.shields.io/bundlephobia/minzip/remark.svg
+[size-badge]: https://img.shields.io/bundlejs/size/remark
 
-[size]: https://bundlephobia.com/result?p=remark
+[size]: https://bundlejs.com/?q=remark
 
 [sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
 
@@ -359,24 +416,28 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 [npm]: https://docs.npmjs.com/cli/install
 
-[esmsh]: https://esm.sh
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
-[unified]: https://github.com/unifiedjs/unified
+[esmsh]: https://esm.sh
 
 [mdast]: https://github.com/syntax-tree/mdast
 
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[typescript]: https://www.typescriptlang.org
-
 [rehype]: https://github.com/rehypejs/rehype
 
-[remark]: https://github.com/remarkjs/remark
-
 [rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
+
+[remark]: https://github.com/remarkjs/remark
 
 [remark-parse]: ../remark-parse
 
 [remark-stringify]: ../remark-stringify
 
 [remark-cli]: ../remark-cli
+
+[typescript]: https://www.typescriptlang.org
+
+[unified]: https://github.com/unifiedjs/unified
+
+[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
+
+[api-remark]: #remark-1
