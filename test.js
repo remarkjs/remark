@@ -46,7 +46,7 @@ test('remark-cli', async function (t) {
       [
         'Usage: remark [options] [path | glob ...]',
         '',
-        '  Command line interface to inspect and change markdown files with remark',
+        '  CLI to process markdown with remark',
         '',
         'Options:',
         '',

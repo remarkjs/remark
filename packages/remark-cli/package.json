@@ -1,7 +1,7 @@
 {
   "name": "remark-cli",
   "version": "11.0.0",
-  "description": "Command line interface to inspect and change markdown files with remark",
+  "description": "CLI to process markdown with remark",
   "license": "MIT",
   "keywords": [
     "bin",
