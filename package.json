@@ -28,8 +28,10 @@
     "typescript": "^5.0.0",
     "unified": "^11.0.0",
     "unist-util-remove-position": "^5.0.0",
+    "vfile": "^6.0.0",
     "xo": "^0.56.0"
   },
+  "#": "to do: remove `vfile` above when dust settles, it’s not needed, other that for TS build bugs currently",
   "scripts": {
     "#": "./packages/remark-cli/cli.js . --frail --output --quiet",
     "build": "tsc --build --clean && tsc --build && type-coverage",
