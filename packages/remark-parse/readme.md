@@ -72,14 +72,14 @@ npm install remark-parse
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkParse from 'https://esm.sh/remark-parse@10'
+import remarkParse from 'https://esm.sh/remark-parse@11'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkParse from 'https://esm.sh/remark-parse@10?bundle'
+  import remarkParse from 'https://esm.sh/remark-parse@11?bundle'
 </script>
 ```
 

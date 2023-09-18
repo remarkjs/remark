@@ -38,7 +38,7 @@
   ],
   "dependencies": {
     "@types/mdast": "^4.0.0",
-    "remark-parse": "^10.0.0",
+    "remark-parse": "^11.0.0",
     "remark-stringify": "^10.0.0",
     "unified": "^11.0.0"
   },
