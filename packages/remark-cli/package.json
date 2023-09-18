@@ -33,7 +33,7 @@
   "dependencies": {
     "import-meta-resolve": "^3.0.0",
     "markdown-extensions": "^2.0.0",
-    "remark": "^14.0.0",
+    "remark": "^15.0.0",
     "unified-args": "^11.0.0"
   },
   "scripts": {},

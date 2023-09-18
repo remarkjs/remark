@@ -64,14 +64,14 @@ npm install remark
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {remark} from 'https://esm.sh/remark@14'
+import {remark} from 'https://esm.sh/remark@15'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {remark} from 'https://esm.sh/remark@14?bundle'
+  import {remark} from 'https://esm.sh/remark@15?bundle'
 </script>
 ```
 
