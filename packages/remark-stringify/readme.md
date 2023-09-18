@@ -69,14 +69,14 @@ npm install remark-stringify
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import remarkStringify from 'https://esm.sh/remark-stringify@10'
+import remarkStringify from 'https://esm.sh/remark-stringify@11'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import remarkStringify from 'https://esm.sh/remark-stringify@10?bundle'
+  import remarkStringify from 'https://esm.sh/remark-stringify@11?bundle'
 </script>
 ```
 
