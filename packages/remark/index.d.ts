@@ -1,7 +1,7 @@
 /// <reference types="remark-parse" />
 /// <reference types="remark-stringify" />
 
-import type {Root} from 'hast'
+import type {Root} from 'mdast'
 import type {Processor} from 'unified'
 
 /**
