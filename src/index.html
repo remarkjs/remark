@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang=en prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#" itemscope itemtype=http://schema.org/TechArticle>
 <meta charset=utf8>
+<script src="https://cdn.jsdelivr.net/gh/cferdinandi/smooth-scroll@15.0.0/dist/smooth-scroll.polyfills.min.js"></script>
 <title>remark - markdown processor powered by plugins</title>
 <meta name=viewport content=width=device-width,initial-scale=1>
 <link rel=stylesheet href=index.css>
@@ -45,10 +46,18 @@
 <meta itemprop=image content=https://raw.githubusercontent.com/remarkjs/remark/website/screenshot.png>
 <meta itemprop=dateCreated content=2017-05-20>
 <meta itemprop=datePublished content=2019-07-26>
+<script>
+ //create smoothscroll from scrollbutton to core
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    speed: 500,
+    speedAsDuration: true
+  });
+</script>
 <article class=cover>
   <div class=cover-inner>
     <h1 class=title>re<span class=hl>mark</span></h1>
     <p class=byline>Markdown processor powered by plugins</p>
+    <a class=scrollbutton href=#core></a>
   </div>
 </article>
 <article>

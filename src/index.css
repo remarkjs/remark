@@ -30,7 +30,9 @@ h2 {
   text-align: center;
 }
 
-.hl.unified { color: hsl(212, 97%, 43%); }
+.hl.unified {
+  color: hsl(212, 97%, 43%);
+}
 
 .hl,
 a {
@@ -87,8 +89,8 @@ footer {
 
 .cover {
   position: relative;
-  height: 95%;
-  min-height: 95vh;
+  height: 100%;
+  min-height: 100vh;
   max-width: 100%;
   color: white;
   display: flex;
@@ -101,8 +103,8 @@ footer {
   background-position: center;
 }
 
-.cover::after {
-  content: '';
+.scrollbutton {
+  content: "";
   position: absolute;
   left: 50%;
   bottom: 1em;
@@ -171,7 +173,7 @@ footer {
   padding: 7px 12px;
   margin: 0;
   line-height: 1.6;
-  overflow: scroll;
+  overflow: auto;
 }
 
 .chrome.button {
@@ -258,7 +260,7 @@ footer {
 
 .terminal .command::before,
 .terminal .input::before {
-  content: '$ ';
+  content: "$ ";
   font-weight: bold;
 }
 
