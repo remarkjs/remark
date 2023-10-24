@@ -316,6 +316,8 @@ The list of plugins:
     — configure remark w/ YAML
 *   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
     — add titles to code blocks
+*   🟢 [`remark-hexo`](https://github.com/bennycode/remark-hexo)
+    — renders [Hexo tags](https://hexo.io/docs/tag-plugins)
 
 ## List of presets
 
