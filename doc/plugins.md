@@ -67,6 +67,8 @@ The list of plugins:
     — populate code blocks from files
 *   🟢 [`remark-code-screenshot`](https://github.com/Swizec/remark-code-screenshot)
     – turn code blocks into `carbon.now.sh` screenshots
+*   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
+    — add titles to code blocks
 *   🟢 [`remark-codesandbox`](https://github.com/kevin940726/remark-codesandbox)
     – create CodeSandbox from code blocks
 *   🟢 [`remark-collapse`](https://github.com/Rokt33r/remark-collapse)
@@ -146,6 +148,8 @@ The list of plugins:
     — serialize w/ more blank lines between headings
 *   🟢 [`@vcarl/remark-headings`](https://github.com/vcarl/remark-headings)
     — extract a list of headings as data
+*   🟢 [`remark-hexo`](https://github.com/bennycode/remark-hexo)
+    — renders [Hexo tags](https://hexo.io/docs/tag-plugins)
 *   🟢 [`remark-highlight.js`](https://github.com/remarkjs/remark-highlight.js)
     — highlight code blocks w/ [highlight.js](https://github.com/isagalaev/highlight.js)
     (rehype compatible)
@@ -314,8 +318,6 @@ The list of plugins:
     — new syntax for wiki links (rehype compatible)
 *   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
     — configure remark w/ YAML
-*   🟢 [`remark-code-title`](https://github.com/kevinzunigacuellar/remark-code-title)
-    — add titles to code blocks
 
 ## List of presets
 
