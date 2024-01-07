@@ -1,6 +1,7 @@
 html {
   font-family: system-ui;
   background-color: hsl(0, 0%, 97.5%);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -97,14 +98,14 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: #eee;
-  background-image: url("./cover.jpg");
+  background-image: url('./cover.jpg');
   background-size: 100%;
   background-size: cover;
   background-position: center;
 }
 
 .scrollbutton {
-  content: "";
+  content: '';
   position: absolute;
   left: 50%;
   bottom: 1em;
@@ -260,7 +261,7 @@ footer {
 
 .terminal .command::before,
 .terminal .input::before {
-  content: "$ ";
+  content: '$ ';
   font-weight: bold;
 }
 
