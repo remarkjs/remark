@@ -44,6 +44,8 @@ The list of plugins:
     compatible)
 *   ⚠️ [`remark-attr`](https://github.com/arobase-che/remark-attr)
     — new syntax to add attributes to markdown
+*   🟢 [`remark-auto-ads`](https://github.com/Robot-Inventor/remark-auto-ads)
+*   — insert an ad code for each specified number of paragraphs
 *   🟢 [`remark-behead`](https://github.com/mrzmmr/remark-behead)
     — increase or decrease heading depth
 *   🟢 [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
