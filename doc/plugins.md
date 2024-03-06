@@ -267,6 +267,8 @@ The list of plugins:
     — reorder reference-style link definitions
 *   🟢 [`remark-sources`](https://github.com/unlight/remark-sources)
     — insert source code
+*   🟢 [`remark-steps`](https://github.com/lit-ui/remark-steps)
+    — Rebuild steps style into DOM
 *   🟢 [`remark-strip-badges`](https://github.com/remarkjs/remark-strip-badges)
     — remove badges (such as `shields.io`)
 *   🟢 [`remark-strip-html`](https://github.com/craftzdog/remark-strip-html)
