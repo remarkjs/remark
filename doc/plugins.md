@@ -87,6 +87,10 @@ The list of plugins:
     — add a table of contributors
 *   🟢 [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
     — find and copy files linked files to a destination directory
+*   🟢 [`remark-corebc`](https://github.com/bchainhub/remark-corebc)
+    - transforms Core Blockchain notations into markdown links
+*   🟢 [`remark-corepass`](https://github.com/bchainhub/remark-corepass)
+    - transform CorePass notations into markdown links
 *   ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
     — new syntax for custom blocks (new node types, rehype compatible)
     (👉 **note**: [`remark-directive`][d] is similar and up to date)
@@ -112,6 +116,8 @@ The list of plugins:
     — extended table syntax allowing colspan / rowspan
 *   🟢 [`remark-extract-frontmatter`](https://github.com/mrzmmr/remark-extract-frontmatter)
     — store front matter in vfiles
+*   🟢 [`remark-fediverse-user`](https://github.com/bchainhub/remark-fediverse-user)
+    — transform Fediverse user notations into markdown links
 *   🟢 [`remark-first-heading`](https://github.com/laat/remark-first-heading)
     — change the first heading in a document
 *   🟢 [`remark-fix-guillemets`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-fix-guillemets#readme)
