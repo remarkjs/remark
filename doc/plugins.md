@@ -316,6 +316,8 @@ The list of plugins:
     — new syntax for variables
 *   🟢 [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
     — compile markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
+*   🟢 [`remark-videos`](https://github.com/chailotl/remark-videos)
+    — embed videos w/ `![]()`
 *   🟢 [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
     — new syntax for wiki links (rehype compatible)
 *   🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
