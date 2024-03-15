@@ -142,6 +142,8 @@ The list of plugins:
     — convert GitHub's blockquote-based admonitions syntax to directives syntax
 *   🟢 [`remark-github-beta-blockquote-admonitions`](https://github.com/myl7/remark-github-beta-blockquote-admonitions)
     — [GitHub beta blockquote-based admonitions](https://github.com/github/feedback/discussions/16925)
+*   🟢 [`remark-github-blockquote-alert`](https://github.com/myl7/remark-github-blockquote-alert)
+    — remark plugin to add support for [GitHub Alert](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#alerts)
 *   ⚠️ [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
     — new syntax to describe tables (rehype compatible)
 *   🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
