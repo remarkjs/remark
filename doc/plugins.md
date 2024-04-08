@@ -106,6 +106,8 @@ The list of plugins:
     — fancy and accessible drop caps
 *   🟢 [`remark-embed-images`](https://github.com/remarkjs/remark-embed-images)
     — embed local images as base64-encoded data URIs
+*   🟢 [`remark-embed-tag`](https://github.com/Reimirno/remark-embed-tag)
+    — intuitive, hexo-tag-style markdown syntax for video/music/games/etc embeds
 *   🟢 [`remark-emoji`](https://github.com/rhysd/remark-emoji)
     — transform Gemoji short-codes to emoji
 *   🟢 [`remark-extended-table`](https://github.com/wataru-chocola/remark-extended-table)
