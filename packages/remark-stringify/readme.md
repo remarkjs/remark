@@ -12,19 +12,21 @@
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [API](#api)
-    *   [`unified().use(remarkStringify[, options])`](#unifieduseremarkstringify-options)
-*   [Syntax](#syntax)
-*   [Syntax tree](#syntax-tree)
-*   [Types](#types)
-*   [Security](#security)
-*   [Contribute](#contribute)
-*   [Sponsor](#sponsor)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [API](#api)
+  * [`unified().use(remarkStringify[, options])`](#unifieduseremarkstringify-options)
+  * [`Options`](#options)
+* [Syntax](#syntax)
+* [Syntax tree](#syntax-tree)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Contribute](#contribute)
+* [Sponsor](#sponsor)
+* [License](#license)
 
 ## What is this?
 
@@ -125,8 +127,8 @@ Add support for serializing to markdown.
 
 ###### Parameters
 
-*   `options` ([`Options`][api-options], optional)
-    — configuration
+* `options` ([`Options`][api-options], optional)
+  — configuration
 
 ###### Returns
 
@@ -138,60 +140,60 @@ Configuration (TypeScript type).
 
 ###### Fields
 
-*   `bullet` (`'*'`, `'+'`, or `'-'`, default: `'*'`)
-    — marker to use for bullets of items in unordered lists
-*   `bulletOther` (`'*'`, `'+'`, or `'-'`, default: `'-'` when `bullet` is
-    `'*'`, `'*'` otherwise)
-    — marker to use in certain cases where the primary bullet doesn’t work;
-    cannot be equal to `bullet`
-*   `bulletOrdered` (`'.'` or `')'`, default: `'.'`)
-    — marker to use for bullets of items in ordered lists
-*   `closeAtx` (`boolean`, default: `false`)
-    — add the same number of number signs (`#`) at the end of an ATX heading as
-    the opening sequence
-*   `emphasis` (`'*'` or `'_'`, default: `'*'`)
-    — marker to use for emphasis
-*   `fence` (``'`'`` or `'~'`, default: ``'`'``)
-    — marker to use for fenced code
-*   `fences` (`boolean`, default: `true`)
-    — use fenced code always; when `false`, uses fenced code if there is a
-    language defined, if the code is empty, or if it starts or ends in blank
-    lines
-*   `handlers` (`Handlers`, optional)
-    — handle particular nodes;
-    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
-*   `incrementListMarker` (`boolean`, default: `true`)
-    — increment the counter of ordered lists items
-*   `join` (`Array<Join>`, optional)
-    — how to join blocks;
-    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
-*   `listItemIndent` (`'mixed'`, `'one'`, or `'tab'`, default: `'one'`)
-    — how to indent the content of list items;
-    either with the size of the bullet plus one space (when `'one'`), a tab
-    stop (`'tab'`), or depending on the item and its parent list: `'mixed'`
-    uses `'one'` if the item and list are tight and `'tab'` otherwise
-*   `quote` (`'"'` or `"'"`, default: `'"'`)
-    — marker to use for titles
-*   `resourceLink` (`boolean`, default: `false`)
-    — always use resource links (`[text](url)`);
-    when `false`, uses autolinks (`<https://example.com>`) when possible
-*   `rule` (`'*'`, `'-'`, or `'_'`, default: `'*'`)
-    — marker to use for thematic breaks
-*   `ruleRepetition` (`number`, default: `3`, min: `3`)
-    — number of markers to use for thematic breaks
-*   `ruleSpaces` (`boolean`, default: `false`)
-    — add spaces between markers in thematic breaks
-*   `setext` (`boolean`, default: `false`)
-    — use setext headings when possible;
-    when `true`, uses setext headings (`heading\n=======`) for non-empty rank 1
-    or 2 headings
-*   `strong` (`'*'` or `'_'`, default: `'*'`)
-    — marker to use for strong
-*   `tightDefinitions` (`boolean`, default: `false`)
-    — join definitions without a blank line
-*   `unsafe` (`Array<Unsafe>`, optional)
-    — schemas that define when characters cannot occur;
-    see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+* `bullet` (`'*'`, `'+'`, or `'-'`, default: `'*'`)
+  — marker to use for bullets of items in unordered lists
+* `bulletOther` (`'*'`, `'+'`, or `'-'`, default: `'-'` when `bullet` is
+  `'*'`, `'*'` otherwise)
+  — marker to use in certain cases where the primary bullet doesn’t work;
+  cannot be equal to `bullet`
+* `bulletOrdered` (`'.'` or `')'`, default: `'.'`)
+  — marker to use for bullets of items in ordered lists
+* `closeAtx` (`boolean`, default: `false`)
+  — add the same number of number signs (`#`) at the end of an ATX heading as
+  the opening sequence
+* `emphasis` (`'*'` or `'_'`, default: `'*'`)
+  — marker to use for emphasis
+* `fence` (``'`'`` or `'~'`, default: ``'`'``)
+  — marker to use for fenced code
+* `fences` (`boolean`, default: `true`)
+  — use fenced code always; when `false`, uses fenced code if there is a
+  language defined, if the code is empty, or if it starts or ends in blank
+  lines
+* `handlers` (`Handlers`, optional)
+  — handle particular nodes;
+  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+* `incrementListMarker` (`boolean`, default: `true`)
+  — increment the counter of ordered lists items
+* `join` (`Array<Join>`, optional)
+  — how to join blocks;
+  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+* `listItemIndent` (`'mixed'`, `'one'`, or `'tab'`, default: `'one'`)
+  — how to indent the content of list items;
+  either with the size of the bullet plus one space (when `'one'`), a tab
+  stop (`'tab'`), or depending on the item and its parent list: `'mixed'`
+  uses `'one'` if the item and list are tight and `'tab'` otherwise
+* `quote` (`'"'` or `"'"`, default: `'"'`)
+  — marker to use for titles
+* `resourceLink` (`boolean`, default: `false`)
+  — always use resource links (`[text](url)`);
+  when `false`, uses autolinks (`<https://example.com>`) when possible
+* `rule` (`'*'`, `'-'`, or `'_'`, default: `'*'`)
+  — marker to use for thematic breaks
+* `ruleRepetition` (`number`, default: `3`, min: `3`)
+  — number of markers to use for thematic breaks
+* `ruleSpaces` (`boolean`, default: `false`)
+  — add spaces between markers in thematic breaks
+* `setext` (`boolean`, default: `false`)
+  — use setext headings when possible;
+  when `true`, uses setext headings (`heading\n=======`) for non-empty rank 1
+  or 2 headings
+* `strong` (`'*'` or `'_'`, default: `'*'`)
+  — marker to use for strong
+* `tightDefinitions` (`boolean`, default: `false`)
+  — join definitions without a blank line
+* `unsafe` (`Array<Unsafe>`, optional)
+  — schemas that define when characters cannot occur;
+  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
 
 <!-- Note: `extensions` intentionally not supported/documented. -->
 

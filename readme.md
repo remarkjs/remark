@@ -14,14 +14,14 @@ You can use remark on the server, the client, CLIs, deno, etc.
 
 ## Feature highlights
 
-*   [x] **[compliant][syntax]**
-    — 100% to CommonMark, 100% to GFM or MDX with a plugin
-*   [x] **[ASTs][syntax-tree]**
-    — inspecting and changing content made easy
-*   [x] **[popular][]**
-    — world’s most popular markdown parser
-*   [x] **[plugins][]**
-    — 150+ plugins you can pick and choose from
+* [x] **[compliant][syntax]**
+  — 100% to CommonMark, 100% to GFM or MDX with a plugin
+* [x] **[ASTs][syntax-tree]**
+  — inspecting and changing content made easy
+* [x] **[popular][]**
+  — world’s most popular markdown parser
+* [x] **[plugins][]**
+  — 150+ plugins you can pick and choose from
 
 ## Intro
 
@@ -32,30 +32,30 @@ We call those programs plugins.
 Plugins inspect and change trees.
 You can use the many existing plugins or you can make your own.
 
-*   to learn markdown, see this [cheatsheet and tutorial][cheat]
-*   for more about us, see [`unifiedjs.com`][site]
-*   for updates, see [Twitter][]
-*   for questions, see [support][]
-*   to help, see [contribute][] or [sponsor][] below
+* to learn markdown, see this [cheatsheet and tutorial][cheat]
+* for more about us, see [`unifiedjs.com`][site]
+* for updates, see [Twitter][]
+* for questions, see [support][]
+* to help, see [contribute][] or [sponsor][] below
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Plugins](#plugins)
-*   [Examples](#examples)
-    *   [Example: turning markdown into HTML](#example-turning-markdown-into-html)
-    *   [Example: support for GFM and frontmatter](#example-support-for-gfm-and-frontmatter)
-    *   [Example: checking markdown](#example-checking-markdown)
-    *   [Example: checking and formatting markdown on the CLI](#example-checking-and-formatting-markdown-on-the-cli)
-*   [Syntax](#syntax)
-*   [Syntax tree](#syntax-tree)
-*   [Types](#types)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Contribute](#contribute)
-*   [Sponsor](#sponsor)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Plugins](#plugins)
+* [Examples](#examples)
+  * [Example: turning markdown into HTML](#example-turning-markdown-into-html)
+  * [Example: support for GFM and frontmatter](#example-support-for-gfm-and-frontmatter)
+  * [Example: checking markdown](#example-checking-markdown)
+  * [Example: checking and formatting markdown on the CLI](#example-checking-and-formatting-markdown-on-the-cli)
+* [Syntax](#syntax)
+* [Syntax tree](#syntax-tree)
+* [Types](#types)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Contribute](#contribute)
+* [Sponsor](#sponsor)
+* [License](#license)
 
 ## What is this?
 
@@ -141,15 +141,15 @@ You can use remark for many different things.
 
 This GitHub repository is a monorepo that contains the following packages:
 
-*   [`remark-parse`][remark-parse]
-    — plugin to take markdown as input and turn it into a syntax tree (mdast)
-*   [`remark-stringify`][remark-stringify]
-    — plugin to take a syntax tree (mdast) and turn it into markdown as output
-*   [`remark`][remark-core]
-    — `unified`, `remark-parse`, and `remark-stringify`, useful when input and
-    output are markdown
-*   [`remark-cli`][remark-cli]
-    — CLI around `remark` to inspect and format markdown in scripts
+* [`remark-parse`][remark-parse]
+  — plugin to take markdown as input and turn it into a syntax tree (mdast)
+* [`remark-stringify`][remark-stringify]
+  — plugin to take a syntax tree (mdast) and turn it into markdown as output
+* [`remark`][remark-core]
+  — `unified`, `remark-parse`, and `remark-stringify`, useful when input and
+  output are markdown
+* [`remark-cli`][remark-cli]
+  — CLI around `remark` to inspect and format markdown in scripts
 
 ## When should I use this?
 
@@ -173,14 +173,14 @@ use [`mdast-util-from-markdown`][mdast-util-from-markdown] and
 remark plugins deal with markdown.
 Some popular examples are:
 
-*   [`remark-gfm`][remark-gfm]
-    — add support for GFM (GitHub flavored markdown)
-*   [`remark-lint`][remark-lint]
-    — inspect markdown and warn about inconsistencies
-*   [`remark-toc`][remark-toc]
-    — generate a table of contents
-*   [`remark-rehype`][remark-rehype]
-    — turn markdown into HTML
+* [`remark-gfm`][remark-gfm]
+  — add support for GFM (GitHub flavored markdown)
+* [`remark-lint`][remark-lint]
+  — inspect markdown and warn about inconsistencies
+* [`remark-toc`][remark-toc]
+  — generate a table of contents
+* [`remark-rehype`][remark-rehype]
+  — turn markdown into HTML
 
 These plugins are exemplary because what they do and how they do it is quite
 different, respectively to extend markdown syntax, inspect trees, change trees,
@@ -189,12 +189,12 @@ and transform to other syntax trees.
 You can choose from the 150+ plugins that already exist.
 Here are three good ways to find plugins:
 
-*   [`awesome-remark`][awesome-remark]
-    — selection of the most awesome projects
-*   [List of plugins][list-of-plugins]
-    — list of all plugins
-*   [`remark-plugin` topic][topic]
-    — any tagged repo on GitHub
+* [`awesome-remark`][awesome-remark]
+  — selection of the most awesome projects
+* [List of plugins][list-of-plugins]
+  — list of all plugins
+* [`remark-plugin` topic][topic]
+  — any tagged repo on GitHub
 
 Some plugins are maintained by us here in the `@remarkjs` organization while
 others are maintained by folks elsewhere.
@@ -627,8 +627,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [remark-core]: packages/remark/
 
 [remark-gfm]: https://github.com/remarkjs/remark-gfm
-
-[remark-html]: https://github.com/remarkjs/remark-html
 
 [remark-lint]: https://github.com/remarkjs/remark-lint
 

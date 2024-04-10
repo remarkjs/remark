@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import {exec as execCb} from 'node:child_process'
+import {exec as execCallback} from 'node:child_process'
 import test from 'node:test'
 import {promisify} from 'node:util'
 import {fileURLToPath} from 'node:url'
@@ -11,7 +11,7 @@ import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'
 import {removePosition} from 'unist-util-remove-position'
 
-const exec = promisify(execCb)
+const exec = promisify(execCallback)
 
 test('remark', async function (t) {
   await t.test('should expose the public api', async function () {
@@ -34,12 +34,12 @@ test('remark', async function (t) {
 })
 
 test('remark-cli', async function (t) {
-  const bin = fileURLToPath(
+  const binary = fileURLToPath(
     new URL('packages/remark-cli/cli.js', import.meta.url)
   )
 
   await t.test('should show help on `--help`', async function () {
-    const result = await exec(bin + ' --help')
+    const result = await exec(binary + ' --help')
 
     assert.equal(
       result.stdout,
@@ -93,7 +93,7 @@ test('remark-cli', async function (t) {
   })
 
   await t.test('should show version on `--version`', async function () {
-    const result = await exec(bin + ' --version')
+    const result = await exec(binary + ' --version')
 
     assert.match(result.stdout, /remark: \d+\.\d+\.\d+/)
     assert.match(result.stdout, /remark-cli: \d+\.\d+\.\d+/)

@@ -14,7 +14,7 @@ import {remark} from 'remark'
 import {args} from 'unified-args'
 
 /** @type {Pack} */
-const proc = JSON.parse(
+const process_ = JSON.parse(
   String(
     await fs.readFile(
       new URL('package.json', resolve('remark', import.meta.url))
@@ -30,14 +30,14 @@ const cli = JSON.parse(
 args({
   description: cli.description,
   extensions: markdownExtensions,
-  ignoreName: '.' + proc.name + 'ignore',
-  name: proc.name,
-  packageField: proc.name + 'Config',
-  pluginPrefix: proc.name,
+  ignoreName: '.' + process_.name + 'ignore',
+  name: process_.name,
+  packageField: process_.name + 'Config',
+  pluginPrefix: process_.name,
   processor: remark,
-  rcName: '.' + proc.name + 'rc',
+  rcName: '.' + process_.name + 'rc',
   version: [
-    proc.name + ': ' + proc.version,
+    process_.name + ': ' + process_.version,
     cli.name + ': ' + cli.version
   ].join(', ')
 })

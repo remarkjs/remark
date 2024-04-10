@@ -11,19 +11,19 @@ Command line interface to inspect and change markdown files with **[remark][]**.
 
 ## Contents
 
-*   [What is this?](#what-is-this)
-*   [When should I use this?](#when-should-i-use-this)
-*   [Install](#install)
-*   [Use](#use)
-*   [CLI](#cli)
-*   [Examples](#examples)
-    *   [Example: checking and formatting markdown on the CLI](#example-checking-and-formatting-markdown-on-the-cli)
-    *   [Example: config files (JSON, YAML, JS)](#example-config-files-json-yaml-js)
-*   [Compatibility](#compatibility)
-*   [Security](#security)
-*   [Contribute](#contribute)
-*   [Sponsor](#sponsor)
-*   [License](#license)
+* [What is this?](#what-is-this)
+* [When should I use this?](#when-should-i-use-this)
+* [Install](#install)
+* [Use](#use)
+* [CLI](#cli)
+* [Examples](#examples)
+  * [Example: checking and formatting markdown on the CLI](#example-checking-and-formatting-markdown-on-the-cli)
+  * [Example: config files (JSON, YAML, JS)](#example-config-files-json-yaml-js)
+* [Compatibility](#compatibility)
+* [Security](#security)
+* [Contribute](#contribute)
+* [Sponsor](#sponsor)
+* [License](#license)
 
 ## What is this?
 
@@ -122,14 +122,14 @@ More info on all these options is available at [`unified-args`][unified-args],
 which does the work.
 `remark-cli` is `unified-args` preconfigured to:
 
-*   load `remark-` plugins
-*   search for markdown extensions
-    ([`.md`, `.markdown`, etc][markdown-extensions])
-*   ignore paths found in [`.remarkignore` files][ignore-file]
-*   load configuration from
-    [`.remarkrc`, `.remarkrc.js`, etc files][config-file]
-*   use configuration from
-    [`remarkConfig` fields in `package.json` files][config-file]
+* load `remark-` plugins
+* search for markdown extensions
+  ([`.md`, `.markdown`, etc][markdown-extensions])
+* ignore paths found in [`.remarkignore` files][ignore-file]
+* load configuration from
+  [`.remarkrc`, `.remarkrc.js`, etc files][config-file]
+* use configuration from
+  [`remarkConfig` fields in `package.json` files][config-file]
 
 ## Examples
 
@@ -268,14 +268,14 @@ The order of precedence is as follows.
 Earlier wins (so in the above file structure `folder/.remarkrc.js` wins over
 `folder/package.json`):
 
-1.  `.remarkrc` (JSON)
-3.  `.remarkrc.cjs` (CJS)
-5.  `.remarkrc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
-2.  `.remarkrc.json` (JSON)
-4.  `.remarkrc.mjs` (ESM)
-6.  `.remarkrc.yaml` (YAML)
-7.  `.remarkrc.yml` (YAML)
-8.  `package.json` with `remarkConfig` field
+1. `.remarkrc` (JSON)
+2. `.remarkrc.cjs` (CJS)
+3. `.remarkrc.js` (CJS or ESM, depending on `type: 'module'` in `package.json`)
+4. `.remarkrc.json` (JSON)
+5. `.remarkrc.mjs` (ESM)
+6. `.remarkrc.yaml` (YAML)
+7. `.remarkrc.yml` (YAML)
+8. `package.json` with `remarkConfig` field
 
 ## Compatibility
 

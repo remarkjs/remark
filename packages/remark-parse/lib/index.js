@@ -29,8 +29,8 @@ export default function remarkParse(options) {
   /**
    * @type {Parser}
    */
-  function parser(doc) {
-    return fromMarkdown(doc, {
+  function parser(document) {
+    return fromMarkdown(document, {
       ...self.data('settings'),
       ...options,
       // Note: these options are not in the readme.
