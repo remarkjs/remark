@@ -118,6 +118,9 @@ The list of plugins:
   ](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
   — new syntax for custom blocks (new node types, rehype compatible)
   (👉 **note**: [`remark-directive`][d] is similar and up to date)
+* 🟢 [`remark-custom-header-id`
+  ](https://github.com/sindresorhus/remark-custom-header-id)
+  — add custom ID attribute to headers (`{#some-id}`)
 * 🟢 [`remark-definition-list`
   ](https://github.com/wataru-chocola/remark-definition-list)
   — support definition lists
