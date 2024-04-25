@@ -91,6 +91,9 @@ The list of plugins:
 * 🟢 [`remark-codesandbox`
   ](https://github.com/kevin940726/remark-codesandbox)
   – create CodeSandbox from code blocks
+* 🟢 [`remark-codesandbox-sandpack`
+  ](https://github.com/fwx5618177/remark-codesandbox-sandpack)
+  – create CodeSandbox from code blocks on both browser and Node
 * 🟢 [`remark-collapse`
   ](https://github.com/Rokt33r/remark-collapse)
   — make a section collapsible
