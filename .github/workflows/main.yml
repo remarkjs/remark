@@ -18,7 +18,7 @@ jobs:
       matrix:
         node:
           - lts/gallium
-          - node
+          - lts/iron
   # canary:
   #   name: canary / ${{matrix.package}} / ${{matrix.node}} on ${{matrix.os}}
   #   runs-on: ${{matrix.os}}
