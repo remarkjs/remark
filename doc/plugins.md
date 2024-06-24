@@ -46,6 +46,9 @@ The list of plugins:
   ](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
   — new syntax to align text or blocks (new node types, rehype
   compatible)
+* 🟢 [`remark-api`
+  ](https://github.com/wooorm/remark-api)
+  — generate an API section
 * ⚠️ [`remark-attr`
   ](https://github.com/arobase-che/remark-attr)
   — new syntax to add attributes to markdown
