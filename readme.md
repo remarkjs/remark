@@ -413,8 +413,8 @@ For example:
 
 ```js
 /**
- * @typedef {import('mdast').Root} Root
- * @typedef {import('vfile').VFile} VFile
+ * @import {Root} from 'mdast'
+ * @import {VFile} from 'vfile'
  */
 
 /**

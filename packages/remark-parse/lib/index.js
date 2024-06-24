@@ -1,8 +1,7 @@
 /**
- * @typedef {import('mdast').Root} Root
- * @typedef {import('mdast-util-from-markdown').Options} FromMarkdownOptions
- * @typedef {import('unified').Parser<Root>} Parser
- * @typedef {import('unified').Processor<Root>} Processor
+ * @import {Root} from 'mdast'
+ * @import {Options as FromMarkdownOptions} from 'mdast-util-from-markdown'
+ * @import {Parser, Processor} from 'unified'
  */
 
 /**
@@ -20,14 +19,14 @@ import {fromMarkdown} from 'mdast-util-from-markdown'
  *   Nothing.
  */
 export default function remarkParse(options) {
-  /** @type {Processor} */
+  /** @type {Processor<Root>} */
   // @ts-expect-error: TS in JSDoc generates wrong types if `this` is typed regularly.
   const self = this
 
   self.parser = parser
 
   /**
-   * @type {Parser}
+   * @type {Parser<Root>}
    */
   function parser(document) {
     return fromMarkdown(document, {

@@ -1,8 +1,7 @@
 /**
- * @typedef {import('mdast').Root} Root
- * @typedef {import('mdast-util-to-markdown').Options} ToMarkdownOptions
- * @typedef {import('unified').Compiler<Root, string>} Compiler
- * @typedef {import('unified').Processor<undefined, undefined, undefined, Root, string>} Processor
+ * @import {Root} from 'mdast'
+ * @import {Options as ToMarkdownOptions} from 'mdast-util-to-markdown'
+ * @import {Compiler, Processor} from 'unified'
  */
 
 /**
@@ -20,14 +19,14 @@ import {toMarkdown} from 'mdast-util-to-markdown'
  *   Nothing.
  */
 export default function remarkStringify(options) {
-  /** @type {Processor} */
+  /** @type {Processor<undefined, undefined, undefined, Root, string>} */
   // @ts-expect-error: TS in JSDoc generates wrong types if `this` is typed regularly.
   const self = this
 
   self.compiler = compiler
 
   /**
-   * @type {Compiler}
+   * @type {Compiler<Root, string>}
    */
   function compiler(tree) {
     return toMarkdown(tree, {
