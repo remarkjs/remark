@@ -105,6 +105,10 @@ With another plugin, you can turn this markdown:
 <details><summary>Show example code</summary>
 
 ```js
+/**
+ * @import {Root} from 'mdast'
+ */
+
 import remarkParse from 'remark-parse'
 import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'
@@ -120,7 +124,7 @@ console.log(String(file)) // => '## Hi, Saturn!'
 
 function myRemarkPluginToIncreaseHeadings() {
   /**
-   * @param {import('mdast').Root} tree
+   * @param {Root} tree
    */
   return function (tree) {
     visit(tree, function (node) {
