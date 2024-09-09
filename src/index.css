@@ -1,6 +1,6 @@
 html {
   font-family: system-ui;
-  background-color: hsl(0, 0%, 97.5%);
+  background-color: hsl(0deg 0% 97.5%);
 }
 
 body {
@@ -9,8 +9,8 @@ body {
 
 @media (prefers-color-scheme: dark) {
   html {
-    background-color: hsl(214, 13%, 5%);
-    color: hsl(214, 13%, 95%);
+    background-color: hsl(214deg 13% 5%);
+    color: hsl(214deg 13% 95%);
   }
 }
 
@@ -30,7 +30,7 @@ h2 {
   text-align: center;
 }
 
-.hl.unified { color: hsl(212, 97%, 43%); }
+.hl.unified { color: hsl(212deg 97% 43%); }
 
 .hl,
 a {
@@ -50,21 +50,21 @@ a:target {
 
 pre,
 code {
-  font-family: SFMono-Regular, Consolas, Liberation Mono, Menlo, monospace;
+  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
   font-size: small;
 }
 
 p code,
 li code {
   border-radius: 3px;
-  background-color: hsla(214, 13%, 5%, 0.04);
+  background-color: hsl(214deg 13% 5% / 4%);
   padding: 0.2em 0.4em;
 }
 
 @media (prefers-color-scheme: dark) {
   p code,
   li code {
-    background-color: hsla(0, 0%, 97.5%, 0.08);
+    background-color: hsl(0deg 0% 97.5% / 8%);
   }
 }
 
@@ -115,7 +115,7 @@ footer {
 }
 
 .cover-inner {
-  -webkit-user-select: none;
+  user-select: none;
   text-align: center;
 }
 
@@ -134,13 +134,13 @@ footer {
   margin-top: 4rem;
   padding-top: 4rem;
   padding-bottom: 4rem;
-  border-top: 1px hsl(214, 13%, 90%) solid;
+  border-top: 1px hsl(214deg 13% 90%) solid;
   text-align: center;
 }
 
 @media (prefers-color-scheme: dark) {
   footer {
-    border-top-color: hsl(214, 13%, 12.5%);
+    border-top-color: hsl(214deg 13% 12.5%);
   }
 }
 
@@ -149,17 +149,16 @@ footer {
   border: 1px solid;
   border-radius: 3px;
   font-size: 14px;
-  box-shadow: 0 0 0 3px hsla(214, 13%, 5%, 0.02);
+  box-shadow: 0 0 0 3px hsl(214deg 13% 5% / 2%);
 }
 
 @media (prefers-color-scheme: dark) {
   .window {
-    box-shadow: 0 0 0 3px hsl(214, 13%, 0%);
+    box-shadow: 0 0 0 3px hsl(214deg 13% 0%);
   }
 }
 
 .window figcaption {
-  display: -webkit-flex;
   display: flex;
   letter-spacing: 1px;
   border-bottom: 1px solid;
@@ -196,7 +195,6 @@ footer {
 }
 
 .chrome.title {
-  -webkit-flex: 1;
   flex: 1;
   text-align: center;
   line-height: 36px;
@@ -227,21 +225,21 @@ footer {
 
 @media (prefers-color-scheme: dark) {
   .gist {
-    border-color: hsl(214, 13%, 12.5%);
-    color: hsl(214, 13%, 97.5%);
-    background-color: hsl(214, 13%, 7.5%);
+    border-color: hsl(214deg 13% 12.5%);
+    color: hsl(214deg 13% 97.5%);
+    background-color: hsl(214deg 13% 7.5%);
   }
 
   .gist figcaption {
-    background: hsl(214, 13%, 10%);
+    background: hsl(214deg 13% 10%);
   }
 
   .gist pre {
-    color: hsl(214, 13%, 97.5%);
+    color: hsl(214deg 13% 97.5%);
   }
 
   .gist .chrome.button {
-    background-color: hsl(214, 13%, 15%);
+    background-color: hsl(214deg 13% 15%);
   }
 }
 
