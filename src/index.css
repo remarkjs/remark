@@ -30,7 +30,9 @@ h2 {
   text-align: center;
 }
 
-.hl.unified { color: hsl(212deg 97% 43%); }
+.hl.unified {
+  color: hsl(212deg 97% 43%);
+}
 
 .hl,
 a {
@@ -50,7 +52,7 @@ a:target {
 
 pre,
 code {
-  font-family: SFMono-Regular, Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: SFMono-Regular, Consolas, 'Liberation Mono', Menlo, monospace;
   font-size: small;
 }
 
@@ -95,7 +97,7 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: #eee;
-  background-image: url("./cover.jpg");
+  background-image: url('./cover.jpg');
   background-size: 100%;
   background-size: cover;
   background-position: center;

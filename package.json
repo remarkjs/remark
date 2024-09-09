@@ -9,11 +9,11 @@
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
-  "dependencies": {},
   "devDependencies": {
     "cssnano": "^7.0.0",
     "postcss-cli": "^11.0.0",
     "postcss-preset-env": "^10.0.0",
+    "prettier": "^3.0.0",
     "rehype-cli": "^12.0.0",
     "rehype-highlight": "^7.0.0",
     "rehype-preset-minify": "^7.0.0",
@@ -32,6 +32,14 @@
         "preset": "default"
       }
     }
+  },
+  "prettier": {
+    "bracketSpacing": false,
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "none",
+    "useTabs": false
   },
   "private": true,
   "rehype": {
@@ -54,7 +62,7 @@
     "build:img": "cp -r src/cover.jpg dest",
     "build:theme": "cp node_modules/highlight.js/styles/github.css dest/day.css && cp node_modules/highlight.js/styles/nord.css dest/night.css",
     "build": "npm run build:css && npm run build:html && npm run build:theme && npm run build:asset && npm run build:img",
-    "format": "remark . -qfo && stylelint src/index.css --fix",
+    "format": "remark . -qfo && prettier . -w --log-level warn && stylelint src/index.css --fix",
     "test": "npm run format && npm run build"
   },
   "stylelint": {
