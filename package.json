@@ -1,10 +1,11 @@
 {
-  "name": "www-remark",
-  "private": true,
-  "license": "MIT",
-  "repository": "remarkjs/remark",
-  "bugs": "https://github.com/remarkjs/remark/issues",
   "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "bugs": "https://github.com/remarkjs/remark/issues",
   "contributors": [
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
@@ -24,24 +25,8 @@
     "stylelint": "^13.0.0",
     "stylelint-config-standard": "^22.0.0"
   },
-  "scripts": {
-    "format": "remark . -qfo && stylelint src/index.css --fix",
-    "build:css": "postcss src/index.css -o dest/index.css",
-    "build:html": "rehype src -o dest",
-    "build:theme": "cp node_modules/highlight.js/styles/github.css dest/day.css && cp node_modules/highlight.js/styles/nord.css dest/night.css",
-    "build:asset": "cp -r src/CNAME dest",
-    "build:img": "imagemin src/*.jpg -p jpegtran --out-dir dest",
-    "build": "npm run build:css && npm run build:html && npm run build:theme && npm run build:asset && npm run build:img",
-    "test": "npm run format && npm run build"
-  },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ],
+  "license": "MIT",
+  "name": "www-remark",
   "postcss": {
     "plugins": {
       "postcss-preset-env": {},
@@ -50,16 +35,31 @@
       }
     }
   },
-  "remarkConfig": {
-    "plugins": [
-      "preset-wooorm"
-    ]
-  },
+  "private": true,
   "rehype": {
     "plugins": [
-      "highlight",
-      "preset-minify",
-      "prevent-favicon-request"
+      "rehype-highlight",
+      "rehype-preset-minify",
+      "rehype-prevent-favicon-request"
     ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-wooorm"
+    ]
+  },
+  "repository": "remarkjs/remark",
+  "scripts": {
+    "build:asset": "cp -r src/CNAME dest",
+    "build:css": "postcss src/index.css -o dest/index.css",
+    "build:html": "rehype src -o dest",
+    "build:img": "imagemin src/*.jpg -p jpegtran --out-dir dest",
+    "build:theme": "cp node_modules/highlight.js/styles/github.css dest/day.css && cp node_modules/highlight.js/styles/nord.css dest/night.css",
+    "build": "npm run build:css && npm run build:html && npm run build:theme && npm run build:asset && npm run build:img",
+    "format": "remark . -qfo && stylelint src/index.css --fix",
+    "test": "npm run format && npm run build"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }

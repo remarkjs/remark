@@ -1,5 +1,5 @@
+dest/
+node_modules/
 .DS_Store
 *.log
 yarn.lock
-dest/
-node_modules/
