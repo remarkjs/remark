@@ -160,7 +160,7 @@ This GitHub repository is a monorepo that contains the following packages:
 Depending on the input you have and output you want, you can use different
 parts of remark.
 If the input is markdown, you can use `remark-parse` with `unified`.
-If the output is markdown, you can use `remark-stringify` with `unified`
+If the output is markdown, you can use `remark-stringify` with `unified`.
 If both the input and output are markdown, you can use `remark` on its own.
 When you want to inspect and format markdown files in a project, you can use
 `remark-cli`.
