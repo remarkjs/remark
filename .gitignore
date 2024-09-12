@@ -3,6 +3,7 @@ node_modules/
 .DS_Store
 *.d.ts
 *.log
+*.tsbuildinfo
 yarn.lock
 !/packages/remark/index.d.ts
 !/packages/remark-parse/index.d.ts
