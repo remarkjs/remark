@@ -1,5 +1,8 @@
 dest/
 node_modules/
-.DS_Store
+*.d.ts.map
+*.d.ts
 *.log
+*.tsbuildinfo
+.DS_Store
 yarn.lock

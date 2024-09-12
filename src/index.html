@@ -1,264 +1,114 @@
 <!doctype html>
-<html lang=en prefix="og: http://ogp.me/ns# article: http://ogp.me/ns/article# profile: http://ogp.me/ns/profile#" itemscope itemtype=http://schema.org/TechArticle>
+<html itemscope itemtype=http://schema.org/TechArticle lang=en>
 <meta charset=utf8>
 <title>remark - markdown processor powered by plugins</title>
-<meta name=viewport content=width=device-width,initial-scale=1>
-<link rel=stylesheet href=index.css>
+<meta content=width=device-width,initial-scale=1 name=viewport>
+<link href=index.css rel=stylesheet>
 <link href=//esm.sh/@wooorm/starry-night@3/style/both.css rel=stylesheet>
-<meta name=theme-color content=#e05d44>
-<meta name=author content="Titus Wormer">
-<meta name=description content="Markdown processor powered by plugins part of the unified collective">
-<meta name=keywords content=markdown,ast,javascript,unified>
-<meta property=article:tag content=markdown>
-<meta property=article:tag content=ast>
-<meta property=article:tag content=javascript>
-<meta property=article:tag content=unified>
-<meta property=article:section content=Technology>
-<meta property=article:section content="Computer Science">
-<meta name=copyright content="© 2014 Titus Wormer">
-<meta name=twitter:card content=summary_large_image>
-<meta name=twitter:site content=@wooorm>
-<meta name=twitter:creator content=@wooorm>
-<meta property=twitter:account_id content=3269048996>
-<meta name=twitter:title content=remark>
-<meta name=twitter:description content="Markdown processor powered by plugins.">
-<meta name=twitter:image content=https://raw.githubusercontent.com/remarkjs/remark/website/screenshot.png>
-<meta name=al:web:url content=https://remark.js.org>
-<meta property=og:url content=https://remark.js.org>
-<meta property=og:title content=remark>
-<meta property=og:site_name content=remark>
-<meta property=og:locale content=en>
-<meta property=og:type content=article>
-<meta property=og:description content="Markdown processor powered by plugins">
-<meta property=og:image content=https://raw.githubusercontent.com/remarkjs/remark/website/screenshot.png>
-<meta property=author content="Titus Wormer">
-<meta property=profile:username content=wooorm>
-<meta property=profile:first_name content=Titus>
-<meta property=profile:last_name content=Wormer>
-<meta property=article:published_time content=2019-07-26T00:00:00.000+02:00>
-<meta itemprop=name content=remark>
-<meta itemprop=headline content="Markdown processor powered by plugins">
-<meta itemprop=url content=https://remark.js.org>
-<meta itemprop=publisher content="Titus Wormer" itemscope itemtype=https://schema.org/Person>
-<meta itemprop=description content="Markdown processor powered by plugins">
-<meta itemprop=image content=https://raw.githubusercontent.com/remarkjs/remark/website/screenshot.png>
-<meta itemprop=dateCreated content=2017-05-20>
-<meta itemprop=datePublished content=2019-07-26>
-<article class=cover>
-  <div class=cover-inner>
-    <h1 class=title>re<span class=hl>mark</span></h1>
-    <p class=byline>Markdown processor powered by plugins</p>
+<meta content="Titus Wormer" name=author>
+<meta content="Markdown processor powered by plugins part of the unified collective" name=description>
+<meta content=ast,javascript,markdown,unified name=keywords>
+<meta content=#d80303  name=theme-color>
+<meta content=ast property=article:tag>
+<meta content=javascript property=article:tag>
+<meta content=markdown property=article:tag>
+<meta content=unified property=article:tag>
+<meta content="Computer Science" property=article:section>
+<meta content=Technology property=article:section>
+<meta content="© Titus Wormer" name=copyright>
+<meta content=//remark.js.org property=og:url>
+<meta content=remark property=og:title>
+<meta content=remark property=og:site_name>
+<meta content=en property=og:locale>
+<meta content=article property=og:type>
+<meta content="Markdown processor powered by plugins" property=og:description>
+<meta content=//raw.githubusercontent.com/remarkjs/remark/website/screenshot.png property=og:image>
+<meta content="Titus Wormer" property=author>
+<meta content=wooorm property=profile:username>
+<meta content=Titus property=profile:first_name>
+<meta content=Wormer property=profile:last_name>
+<meta content=2019-07-26T00:00:00.000+02:00 property=article:published_time>
+<meta content=remark itemprop=name>
+<meta content="Markdown processor powered by plugins" itemprop=headline>
+<meta content=//remark.js.org itemprop=url>
+<meta content="Titus Wormer" itemscope itemtype=https://schema.org/Person itemprop=publisher>
+<meta content="Markdown processor powered by plugins" itemprop=description>
+<meta content=//raw.githubusercontent.com/remarkjs/remark/website/screenshot.png itemprop=image>
+<meta content=2017-05-20 itemprop=dateCreated>
+<meta content=2019-07-26 itemprop=datePublished>
+<header class=container>
+  <div class=row>
+    <h1 class=flex><a class=remark href><span class=hl>re</span>mark</a></h1>
+    <ol class="row justify-end">
+      <li>
+        <a class="tap-target" href=//github.com/remarkjs/remark>
+          <svg
+            aria-label=GitHub
+            height=24
+            role=img
+            viewBox="0 0 16 16"
+            width=24
+          >
+            <path d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" fill="currentcolor" fill-rule="evenodd" clip-rule="evenodd"></path>
+          </svg>
+        </a>
+      </li>
+    </ol>
   </div>
-</article>
-<article>
-  <!--Legacy IDs-->
-  <a name=introduction></a>
-  <a name=plugins></a>
-  <h2 id=core>Core</h2>
-  <p>
-    remark is a markdown processor powered by
-    <a href=https://github.com/remarkjs/remark/blob/HEAD/doc/plugins.md#list-of-plugins>plugins</a>
-    part of the
-    <a href=https://unifiedjs.com>unified</a>
-    collective.
-    The project
-    <a href=https://github.com/remarkjs/remark/tree/HEAD/packages/remark-parse#readme>parses</a>
-    and
-    <a href=https://github.com/remarkjs/remark/tree/HEAD/packages/remark-stringify#readme>compiles</a>
-    markdown, and lets programs process markdown without ever compiling to
-    HTML (<a href=https://github.com/remarkjs/remark-html>it can though</a>).
-    Powered by
-    <a href=https://github.com/remarkjs/remark/blob/HEAD/doc/plugins.md#list-of-plugins>plugins</a>
-    to do all kinds of things: check
-    <a href=https://github.com/remarkjs/remark-lint>markdown code style</a>,
-    add a <a href=https://github.com/remarkjs/remark-toc>table of contents</a>,
-    or compile to <a href=https://github.com/remarkjs/remark-man>man pages</a>.
-  </p>
-  <p>
-    View the project on <a href=https://github.com/remarkjs/remark>GitHub</a>
-    or inspect the syntax tree on
-    <a href=https://astexplorer.net/#/gist/0a92bbf654aca4fdfb3f139254cf0bad/ffe102014c188434c027e43661dbe6ec30042ee2>AST Explorer</a>.
-  </p>
-</article>
-
-<article>
-  <h2 id=cli>CLI</h2>
-  <p>
-    The Command Line Interface is powerful, it supports all settings the
-    API provides and has built-in support for regenerating markdown files
-    in a project according to a given style-guide, and emits warnings
-    triggered by plugins in a beautiful fashion.
-  </p>
-
-  <p>Say <code>example.md</code> looks as follows:</p>
-
-  <figure class="gist window">
-    <figcaption>
-      <span class="chrome button close"></span>
-      <span class="chrome button minimize"></span>
-      <span class="chrome button fullscreen"></span>
-      <span class="chrome title">example.md</span>
-    </figcaption>
-    <pre><code class="hljs language-markdown">* Hello
-
-[World][]
-</code></pre>
-  </figure>
-
-  <p>Now, by running remark in a terminal we’ll see the following:</p>
-
-  <figure class="terminal window">
-    <figcaption>
-      <span class="chrome button close"></span>
-      <span class="chrome button minimize"></span>
-      <span class="chrome button fullscreen"></span>
-      <span class="chrome title">sh</span>
-    </figcaption>
-    <pre><span class=command>remark example.md --use remark-preset-lint-recommended</span><span class=output>
-<span class=hl>example.md</span>
-   1:3  <span class=hl>warning</span>  Incorrect list-item indent: add 2 spaces  list-item-indent
-3:1-3:10  <span class=hl>warning</span>  Found reference to undefined definition   no-undefined-references
-
-<span class=hl>⚠</span> 2 warnings</span></pre>
-  </figure>
-
-  <p>
-    Read more about the CLI in its <a href=https://github.com/remarkjs/remark/tree/HEAD/packages/remark-cli><code>readme</code></a>.
-  </p>
-</article>
-
-<article>
-  <h2 id=api>API</h2>
-  <p>
-    The Application Programming Interface is the gist of remark and the CLI.
-    It’s provided by <code>unified</code> so head to its
-    <a href=https://github.com/unifiedjs/unified#api>API documentation</a>
-    for more info.
-  </p>
-
-  <p>
-    Say we have the following <code>index.js</code> file using
-    remark,
-    <a href=https://github.com/remarkjs/remark-lint/tree/HEAD/packages/remark-preset-lint-markdown-style-guide><code>remark-preset-lint-markdown-style-guide</code></a>,
-    <a href=https://github.com/remarkjs/remark-html><code>remark-html</code></a>,
-    and <a href=https://github.com/vfile/vfile-reporter><code>vfile-reporter</code></a>:
-  </p>
-
-  <figure class="gist window">
-    <figcaption>
-      <span class="chrome button close"></span>
-      <span class="chrome button minimize"></span>
-      <span class="chrome button fullscreen"></span>
-      <span class="chrome title">index.js</span>
-    </figcaption>
-    <pre><code class="hljs language-js">import {reporter} from 'vfile-reporter'
-import {remark} from 'remark'
-import remarkPresetLintMarkdownStyleGuide from 'remark-preset-lint-markdown-style-guide'
-import remarkHtml from 'remark-html'
-
-remark()
-  .use(remarkPresetLintMarkdownStyleGuide)
-  .use(remarkHtml)
-  .process('*emphasis* and _importance_')
-  .then((file) => {
-    console.log(String(file))
-    console.error(reporter(file))
-  })</code></pre>
-  </figure>
-
-  <p>
-    Now, after installing dependencies and running <code>index.js</code>
-    with Node, you’ll see the following:
-  </p>
-
-  <figure class="terminal window">
-    <figcaption>
-      <span class="chrome button close"></span>
-      <span class="chrome button minimize"></span>
-      <span class="chrome button fullscreen"></span>
-      <span class="chrome title">sh</span>
-    </figcaption>
-    <pre><span class=command>npm install remark vfile-reporter remark-html remark-preset-lint-markdown-style-guide</span><span class=output>
-/Users/tilde/example
-├── remark@14.0.1
-├── remark-html@14.0.0
-├── remark-preset-lint-markdown-style-guide@5.0.0
-└── vfile-reporter@7.0.1</span>
-
-<span class=command>node index.js</span><span class=output>
-&lt;p>&lt;em>emphasis&lt;/em> and &lt;em>importance&lt;/em>&lt;/p>
-<span class=hl>example.md</span>
-1:16-1:28  <span class=hl>warning</span>  Emphasis should use `*` as a marker  emphasis-marker
-
-<span class=hl>⚠</span> 1 warning</span>
-</pre>
-  </figure>
-</article>
-
-<article>
-  <h2 id=unified><span class="hl unified">uni</span>fied</h2>
-  <p>
-    unified is an interface for processing text with syntax trees and
-    transforming between them.
-    Three syntaxes are connected to unified, each coming with a syntax
-    tree definition, and a parser and stringifier:
-    <a href=https://github.com/syntax-tree/mdast>mdast</a> with remark for
-    markdown, <a href=https://github.com/syntax-tree/nlcst>nlcst</a> with
-    <a href=https://github.com/retextjs/retext>retext</a> for prose, and
-    <a href=https://github.com/syntax-tree/hast>hast</a> with
-    <a href=https://github.com/rehypejs/rehype>rehype</a> for HTML.
-  </p>
-
-  <p>
-    unified also bridges between syntaxes, such as between markdown and HTML,
-    as can be seen below:
-  </p>
-
-  <figure class="gist window">
-    <figcaption>
-      <span class="chrome button close"></span>
-      <span class="chrome button minimize"></span>
-      <span class="chrome button fullscreen"></span>
-      <span class="chrome title">index.js</span>
-    </figcaption>
-    <pre><code class="hljs language-js">import {unified} from 'unified'
-import stream from 'unified-stream'
-import remarkParse from 'remark-parse'
-import remarkToc from 'remark-toc'
-import remarkRehype from 'remark-rehype'
-import rehypeDocument from 'rehype-document'
-import rehypeFormat from 'rehype-format'
-import rehypeStringify from 'rehype-stringify'
-
-const input = '## Markdown'
-
-unified()
-  .use(remarkParse)
-  .use(remarkToc)
-  .use(remarkRehype)
-  .use(rehypeDocument, {title: 'Contents'})
-  .use(rehypeFormat)
-  .use(rehypeStringify)
-  .process(input)
-  .then((file) => {
-    console.log(file)
-  })</code></pre>
-  </figure>
-
-  <p>
-    View the unified project on
-    <a href=https://github.com/unifiedjs/unified>GitHub</a> or peruse
-    the <a href=https://unifiedjs.com>website</a>.
-  </p>
-</article>
-
-<footer>
-  <p>
-    made by <a href=https://github.com/wooorm>@wooorm</a> and
-    <a href=https://github.com/remarkjs/remark/graphs/contributors>contributors</a>
-  </p>
-  <p>
-    view the project on <a href=https://github.com/remarkjs/remark>GitHub</a>
-  </p>
-  <p><a href=https://github.com/remarkjs/remark/tree/website>fork this site</a></p>
-</footer>
+</header>
+<section class=container>
+  <div class=landing>
+    <div class=article>
+      <h2>markdown processor powered by plugins</h2>
+      <ul>
+        <li><strong>compliant</strong> — 100% to CommonMark, 100% to GFM or MDX with a plugin</li>
+        <li><strong>ASTs</strong> — inspecting and changing content made easy</li>
+        <li><strong>popular</strong> — world’s most popular markdown parser</li>
+        <li><strong>plugins</strong> — 150+ plugins you can pick and choose from</li>
+      </ul>
+    </div>
+  </div>
+</section>
+<main class=container>
+  <div class="article content">
+    <p>
+      <strong>remark</strong> is an ecosystem of plugins that work with markdown as structured data, specifically ASTs (abstract syntax trees).
+      ASTs make it easy for programs to deal with markdown.
+      We call those programs plugins.
+      Plugins inspect and change trees.
+      You can use the many existing plugins or you can make your own.
+    </p>
+    <p>
+      To learn markdown, see this
+      <a href=//commonmark.org/help>cheatsheet and tutorial</a>.
+      For more about who makes remark, see
+      <a href=//unifiedjs.com><code>unifiedjs.com</code></a>.
+      To support our efforts financially, sponsor us on
+      <a href=//github.com/sponsors/unifiedjs>GitHub</a>,
+      <a href=//thanks.dev><code>thanks.dev</code></a>, or
+      <a href=//opencollective.com/unified>OpenCollective</a>.
+      This lets us spend more time maintaining our projects and developing new ones.
+    </p>
+    <h2>Playground</h2>
+    <p>
+      Here you can see how remark does things.
+      Write some markdown to find out what it turns into.
+      You can see the the generated code and the intermediary ASTs.
+      This can be helpful for debugging or exploring.
+    </p>
+  </div>
+</main>
+<div id=js-editor></div>
+<div class=container>
+  <footer class="article content">
+    <hr>
+    <p class="center">
+      <a href=//github.com/remarkjs/remark>GitHub</a> •
+      <a href=//github.com/remarkjs/remark/tree/website>Fork this site</a> •
+      <a href=//github.com/remarkjs/remark/blob/main/license>MIT</a> •
+      <a href=//github.com/wooorm>@wooorm</a>
+    </p>
+  </footer>
+</div>
+<script type=module src=index.module.js></script>
+<script nomodule src=index.nomodule.js></script>

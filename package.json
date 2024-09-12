@@ -10,18 +10,43 @@
     "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
   ],
   "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@wooorm/starry-night": "^3.0.0",
     "cssnano": "^7.0.0",
+    "esbuild": "^0.23.0",
+    "eslint-config-xo-react": "^0.27.0",
+    "hast-util-to-jsx-runtime": "^2.0.0",
     "postcss-cli": "^11.0.0",
     "postcss-preset-env": "^10.0.0",
     "prettier": "^3.0.0",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-error-boundary": "^4.0.0",
     "rehype-cli": "^12.0.0",
+    "rehype-format": "^5.0.0",
     "rehype-preset-minify": "^7.0.0",
     "rehype-prevent-favicon-request": "^4.0.0",
-    "rehype-starry-night": "^2.0.0",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "rehype-slug": "^6.0.0",
+    "rehype-stringify": "^10.0.0",
     "remark-cli": "^12.0.0",
+    "remark-directive": "^3.0.0",
+    "remark-frontmatter": "^5.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-math": "^6.0.0",
+    "remark-parse": "^11.0.0",
     "remark-preset-wooorm": "^10.0.0",
+    "remark-rehype": "^11.0.0",
+    "remark-stringify": "^11.0.0",
+    "remark-toc": "^9.0.0",
     "stylelint": "^16.0.0",
-    "stylelint-config-standard": "^36.0.0"
+    "stylelint-config-standard": "^36.0.0",
+    "type-coverage": "^2.0.0",
+    "typescript": "^5.0.0",
+    "unified": "^11.0.0",
+    "xo": "^0.59.0"
   },
   "license": "MIT",
   "name": "www-remark",
@@ -42,13 +67,6 @@
     "useTabs": false
   },
   "private": true,
-  "rehype": {
-    "plugins": [
-      "rehype-starry-night",
-      "rehype-preset-minify",
-      "rehype-prevent-favicon-request"
-    ]
-  },
   "remarkConfig": {
     "plugins": [
       "remark-preset-wooorm"
@@ -56,15 +74,45 @@
   },
   "repository": "remarkjs/remark",
   "scripts": {
-    "build:asset": "cp -r src/CNAME dest",
-    "build:css": "postcss src/index.css -o dest/index.css",
-    "build:html": "rehype src -o dest",
-    "build:img": "cp -r src/cover.jpg dest",
-    "build": "npm run build:css && npm run build:html && npm run build:asset && npm run build:img",
-    "format": "remark . -qfo && prettier . -w --log-level warn && stylelint src/index.css --fix",
-    "test": "npm run format && npm run build"
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "format": "remark --frail --output --quiet -- . && prettier --log-level warn --write -- . && xo && stylelint src/index.css --fix",
+    "generate:asset": "mkdir --parents dest/ && cp --recursive --target-directory dest/ -- src/CNAME",
+    "generate:css": "postcss --output dest/index.css -- src/index.css",
+    "generate:html": "rehype --output dest/ --use rehype-preset-minify --use rehype-prevent-favicon-request -- src/",
+    "generate:js:module": "esbuild src/index.js --bundle --conditions=browser,production --define:process.env.NODE_ENV=\\\"production\\\" --format=esm --loader:.js=jsx --log-level=warning --minify --outfile=dest/index.module.js --target=es2020",
+    "generate:js:nomodule": "esbuild src/index.js --bundle --conditions=browser,production --define:process.env.NODE_ENV=\\\"production\\\" --loader:.js=jsx --log-level=warning --minify --outfile=dest/index.nomodule.js --target=es6",
+    "generate:js": "npm run generate:js:module && npm run generate:js:nomodule",
+    "generate": "npm run generate:asset && npm run generate:css && npm run generate:html && npm run generate:js",
+    "test": "npm run build && npm run format && npm run generate"
   },
   "stylelint": {
-    "extends": "stylelint-config-standard"
+    "extends": [
+      "stylelint-config-standard"
+    ],
+    "rules": {
+      "no-descending-specificity": null
+    }
+  },
+  "typeCoverage": {
+    "atLeast": 100,
+    "strict": true
+  },
+  "type": "module",
+  "xo": {
+    "envs": [
+      "browser"
+    ],
+    "extends": "xo-react",
+    "ignores": [
+      "dest/"
+    ],
+    "prettier": true,
+    "rules": {
+      "complexity": "off",
+      "react/jsx-no-bind": "off",
+      "react/react-in-jsx-scope": "off",
+      "unicorn/prefer-query-selector": "off",
+      "unicorn/prefer-string-replace-all": "off"
+    }
   }
 }
