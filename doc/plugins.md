@@ -264,6 +264,8 @@ The list of plugins:
 * 🟢 [`remark-sectionize`](https://github.com/jake-low/remark-sectionize)
   — wrap headings and subsequent content in section tags (new node type,
   rehype compatible)
+* 🟢 [`remark-semantic-blockquotes`](https://github.com/nikitarevenco/remark-semantic-blockquotes)
+  — extend blockquote syntax to make it simple to mention/cite sources in a semantically correct way
 * ⚠️ [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
   — new syntax for Wordpress- and Hugo-like shortcodes (new node type)
   (👉 **note**: [`remark-directive`][d] is similar and up to date)
