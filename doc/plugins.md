@@ -233,6 +233,8 @@ The list of plugins:
 * ⚠️ [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
   — new syntax for mentions w/ configurable existence check (new node
   type, rehype compatible)
+* 🟢 [`remark-prepend-url`](https://github.com/alxjpzmn/remark-prepend-url)
+  —  prepend an absolute url to relative links
 * 🟢 [`remark-prettier`](https://github.com/remcohaszing/remark-prettier)
   — check and format markdown using Prettier
 * 🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
