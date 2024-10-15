@@ -5,6 +5,10 @@ import type {Options} from './lib/index.js'
 
 export type {Options} from './lib/index.js'
 
+// Note: we have to use manual types here,
+// instead of getting them from `lib/index.js`,
+// because TS generates wrong types for functions that use `this`.
+// TS makes them into classes which is incorrect.
 /**
  * Add support for serializing to markdown.
  *

@@ -1,7 +1,7 @@
 /**
  * @import {Root} from 'mdast'
  * @import {Options as ToMarkdownOptions} from 'mdast-util-to-markdown'
- * @import {Compiler, Processor} from 'unified'
+ * @import {Processor} from 'unified'
  */
 
 /**
@@ -13,22 +13,21 @@ import {toMarkdown} from 'mdast-util-to-markdown'
 /**
  * Add support for serializing to markdown.
  *
+ * @this {Processor<undefined, undefined, undefined, Root, string>}
+ *   Processor instance.
  * @param {Readonly<Options> | null | undefined} [options]
  *   Configuration (optional).
  * @returns {undefined}
  *   Nothing.
  */
 export default function remarkStringify(options) {
-  /** @type {Processor<undefined, undefined, undefined, Root, string>} */
-  // @ts-expect-error: TS in JSDoc generates wrong types if `this` is typed regularly.
   const self = this
 
-  self.compiler = compiler
-
   /**
-   * @type {Compiler<Root, string>}
+   * @param {Root} tree
+   * @returns {string}
    */
-  function compiler(tree) {
+  self.compiler = function (tree) {
     return toMarkdown(tree, {
       ...self.data('settings'),
       ...options,

@@ -217,7 +217,9 @@ If you’re passing options with `.data('settings', …)`, make sure to import t
 package somewhere in your types, as that registers the fields.
 
 ```js
-/// <reference types="remark-stringify" />
+/**
+ * @import {} from 'remark-stringify'
+ */
 
 import {unified} from 'unified'
 

@@ -1,7 +1,7 @@
 /**
  * @import {Root} from 'mdast'
  * @import {Options as FromMarkdownOptions} from 'mdast-util-from-markdown'
- * @import {Parser, Processor} from 'unified'
+ * @import {Processor} from 'unified'
  */
 
 /**
@@ -13,22 +13,21 @@ import {fromMarkdown} from 'mdast-util-from-markdown'
 /**
  * Aadd support for parsing from markdown.
  *
+ * @this {Processor<Root>}
+ *   Processor instance.
  * @param {Readonly<Options> | null | undefined} [options]
  *   Configuration (optional).
  * @returns {undefined}
  *   Nothing.
  */
 export default function remarkParse(options) {
-  /** @type {Processor<Root>} */
-  // @ts-expect-error: TS in JSDoc generates wrong types if `this` is typed regularly.
   const self = this
 
-  self.parser = parser
-
   /**
-   * @type {Parser<Root>}
+   * @param {string} document
+   * @returns {Root}
    */
-  function parser(document) {
+  self.parser = function (document) {
     return fromMarkdown(document, {
       ...self.data('settings'),
       ...options,
