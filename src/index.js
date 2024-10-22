@@ -259,7 +259,6 @@ function Playground() {
                     JSON.stringify(ast, undefined, 2),
                     'source.json'
                   ),
-                  // @ts-expect-error: to do: fix in `hast-util-to-jsx-runtime`.
                   {Fragment, jsx, jsxs}
                 )}
               </code>
@@ -276,7 +275,6 @@ function Playground() {
                   result,
                   outputFormatHtml ? 'text.html.basic' : 'text.md'
                 ),
-                // @ts-expect-error: to do: fix in `hast-util-to-jsx-runtime`.
                 {Fragment, jsx, jsxs}
               )}
             </code>
@@ -430,11 +428,11 @@ function Playground() {
           <div className="playground-cell playground-input-area">
             <div className="playground-input-area-group">
               <div className="playground-input-area-draw">
-                {toJsxRuntime(
-                  starryNight.highlight(value, 'text.md'),
-                  // @ts-expect-error: to do: fix in `hast-util-to-jsx-runtime`.
-                  {Fragment, jsx, jsxs}
-                )}
+                {toJsxRuntime(starryNight.highlight(value, 'text.md'), {
+                  Fragment,
+                  jsx,
+                  jsxs
+                })}
                 {/* Trailing whitespace in a `textarea` is shown, but not in a `div`
                     with `white-space: pre-wrap`.
                     Add a `br` to make the last newline explicit. */}
@@ -723,7 +721,6 @@ function Playground() {
                   'npm install --save ' + names.toSorted().join(' '),
                   'source.shell'
                 ),
-                // @ts-expect-error: to do: fix in `hast-util-to-jsx-runtime`.
                 {Fragment, jsx, jsxs}
               )}
             </code>
@@ -733,11 +730,11 @@ function Playground() {
           </p>
           <pre className="language-js">
             <code>
-              {toJsxRuntime(
-                starryNight.highlight(code, 'source.js'),
-                // @ts-expect-error: to do: fix in `hast-util-to-jsx-runtime`.
-                {Fragment, jsx, jsxs}
-              )}
+              {toJsxRuntime(starryNight.highlight(code, 'source.js'), {
+                Fragment,
+                jsx,
+                jsxs
+              })}
             </code>
           </pre>
           <p>…you‘d get the above output as shown in the playground.</p>

@@ -14,7 +14,7 @@
     "@types/react-dom": "^18.0.0",
     "@wooorm/starry-night": "^3.0.0",
     "cssnano": "^7.0.0",
-    "esbuild": "^0.23.0",
+    "esbuild": "^0.24.0",
     "eslint-config-xo-react": "^0.27.0",
     "hast-util-to-jsx-runtime": "^2.0.0",
     "postcss-cli": "^11.0.0",
