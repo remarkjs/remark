@@ -737,7 +737,7 @@ function Playground() {
               })}
             </code>
           </pre>
-          <p>…you‘d get the above output as shown in the playground.</p>
+          <p>…you’d get the above output as shown in the playground.</p>
         </div>
       </div>
     </>
