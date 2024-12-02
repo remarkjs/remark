@@ -201,8 +201,6 @@ The list of plugins:
   — change text matching a regex to links
 * 🟢 [`remark-lint`](https://github.com/remarkjs/remark-lint)
   — check markdown code style
-* 🟢 [`remark-macro`](https://github.com/dimerapp/remark-macro)
-  — support for block macros (new node types, rehype compatible)
 * 🟢 [`remark-man`](https://github.com/remarkjs/remark-man)
   — serialize markdown as man pages (roff)
 * 🟢 [`remark-math`](https://github.com/remarkjs/remark-math)
