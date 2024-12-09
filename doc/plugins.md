@@ -136,6 +136,8 @@ The list of plugins:
   — add custom/flexible paragraphs with customizable properties
 * 🟢 [`remark-flexible-toc`](https://github.com/ipikuka/remark-flexible-toc)
   — expose the table of contents (toc) via Vfile.data or an option reference
+* 🟢 [`remark-footnotes-extra`](https://github.com/miaobuao/remark-footnotes-extra)
+  — add footnotes via short syntax
 * 🟢 [`remark-frontmatter`](https://github.com/remarkjs/remark-frontmatter)
   – support frontmatter (yaml, toml, and more)
 * 🟢 [`remark-gemoji`](https://github.com/remarkjs/remark-gemoji)
