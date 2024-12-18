@@ -240,6 +240,8 @@ The list of plugins:
 * 🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
   — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
   Prism plugins)
+* 🟢 [`@handlewithcare/remark-prosemirror`](https://github.com/handlewithcarecollective/remark-prosemirror)
+  — compile markdown to [ProseMirror](https://prosemirror.net/) documents
 * ⚠️ [`remark-redact`](https://github.com/seafoam6/remark-redact)
   — new syntax to conceal text matching a regex
 * 🟢 [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
