@@ -161,7 +161,8 @@ The list of plugins:
 * ⚠️ [`remark-grid-tables`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-grid-tables#readme)
   — new syntax to describe tables (rehype compatible)
 * 🟢 [`@adobe/remark-grid-tables`](https://github.com/adobe/remark-gridtables)
-  — [pandoc compatible syntax](https://pandoc.org/chunkedhtml-demo/8.9-tables.html#extension-grid_tables) to describe tables (rehype compatible)  
+  — pandoc compatible grid-table syntax. 
+  to describe tables (rehype compatible)  
 * 🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
   — custom heading id support `{#custom-id}`
 * 🟢 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
