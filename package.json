@@ -28,7 +28,7 @@
     "typescript": "^5.0.0",
     "unified": "^11.0.0",
     "unist-util-remove-position": "^5.0.0",
-    "xo": "^0.59.0"
+    "xo": "^0.60.0"
   },
   "scripts": {
     "build": "tsc --build --clean && tsc --build && type-coverage",
