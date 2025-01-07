@@ -83,7 +83,7 @@ Say we have the following module `example.js`:
 import {remark} from 'remark'
 import remarkToc from 'remark-toc'
 
-const doc = `
+const value = `
 # Pluto
 
 Pluto is a dwarf planet in the Kuiper belt.
@@ -109,9 +109,7 @@ Once Pluto was found, its faintness and lack of a viewable disc cast doubt…
 Pluto's orbital period is about 248 years…
 `
 
-const file = await remark()
-  .use(remarkToc, {heading: 'contents', tight: true})
-  .process(doc)
+const file = await remark().use(remarkToc, {tight: true}).process(value)
 
 console.error(String(file))
 ```
@@ -187,12 +185,13 @@ console.error(reporter(file))
 Yields:
 
 ```txt
-          warning Missing newline character at end of file final-newline             remark-lint
-1:1-1:35  warning Marker style should be `.`               ordered-list-marker-style remark-lint
-1:4       warning Incorrect list-item indent: add 1 space  list-item-indent          remark-lint
-1:25-1:34 warning Emphasis should use `_` as a marker      emphasis-marker           remark-lint
+1:2           warning Unexpected ordered list marker `)`, expected `.`                                     ordered-list-marker-style remark-lint
+1:25-1:34     warning Unexpected emphasis marker `*`, expected `_`                                         emphasis-marker           remark-lint
+  [cause]:
+    1:11-1:20 info    Emphasis marker style `'_'` first defined for `'consistent'` here                    emphasis-marker           remark-lint
+1:35          warning Unexpected missing final newline character, expected line feed (`\n`) at end of file final-newline             remark-lint
 
-⚠ 4 warnings
+⚠ 3 warnings
 ```
 
 ### Example: passing options to `remark-stringify`
@@ -205,7 +204,7 @@ To define options for `remark-stringify`, you can instead pass options to
 ```js
 import {remark} from 'remark'
 
-const doc = `
+const value = `
 # Moons of Neptune
 
 1. Naiad
@@ -220,7 +219,7 @@ const file = await remark()
     incrementListMarker: false,
     setext: true
   })
-  .process(doc)
+  .process(value)
 
 console.log(String(file))
 ```

@@ -94,7 +94,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import {unified} from 'unified'
 
-const doc = `
+const value = `
 # Mercury
 
 **Mercury** is the first planet from the [Sun](https://en.wikipedia.org/wiki/Sun)
@@ -106,7 +106,7 @@ const file = await unified()
   .use(remarkGfm)
   .use(remarkRehype)
   .use(rehypeStringify)
-  .process(doc)
+  .process(value)
 
 console.log(String(file))
 ```
@@ -208,7 +208,7 @@ console.log(String(file))
 Yields:
 
 ```roff
-.TH "TITAN" "7" "September 2023" "" ""
+.TH "TITAN" "7" "January 2025" "" ""
 .SH "NAME"
 \fBtitan\fR - largest moon of saturn
 .P

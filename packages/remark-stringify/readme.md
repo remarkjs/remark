@@ -92,7 +92,7 @@ import rehypeRemark from 'rehype-remark'
 import remarkStringify from 'remark-stringify'
 import {unified} from 'unified'
 
-const doc = `
+const value = `
 <h1>Uranus</h1>
 <p><b>Uranus</b> is the seventh
 <a href="/wiki/Planet" title="Planet">planet</a> from the Sun and is a gaseous
@@ -103,7 +103,7 @@ const file = await unified()
   .use(rehypeParse)
   .use(rehypeRemark)
   .use(remarkStringify)
-  .process(doc)
+  .process(value)
 
 console.log(String(file))
 ```

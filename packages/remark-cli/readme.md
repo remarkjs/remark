@@ -57,14 +57,14 @@ npm install remark-cli
 Add a table of contents with [`remark-toc`][remark-toc] to `readme.md`:
 
 ```sh
-remark readme.md --output --use remark-toc
+remark --output --use remark-toc readme.md
 ```
 
 Lint all markdown files in the current directory according to the markdown style
 guide with [`remark-preset-lint-markdown-style-guide`][markdown-style-guide].
 
 ```sh
-remark . --use remark-preset-lint-markdown-style-guide
+remark --use remark-preset-lint-markdown-style-guide .
 ```
 
 ## CLI
@@ -141,7 +141,7 @@ It assumes you’re in a Node.js package.
 Install the CLI and plugins:
 
 ```sh
-npm install remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc --save-dev
+npm install --save-dev remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc
 ```
 
 …then add an npm script in your `package.json`:
@@ -215,16 +215,16 @@ import remarkPresetLintRecommended from 'remark-preset-lint-recommended'
 import remarkToc from 'remark-toc'
 
 const remarkConfig = {
-  settings: {
-    bullet: '*', // Use `*` for list item bullets (default)
-    // See <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
-  },
   plugins: [
     remarkPresetLintConsistent, // Check that markdown is consistent.
     remarkPresetLintRecommended, // Few recommended rules.
     // Generate a table of contents in `## Contents`
     [remarkToc, {heading: 'contents'}]
-  ]
+  ],
+  settings: {
+    bullet: '*' // Use `*` for list item bullets (default)
+    // See <https://github.com/remarkjs/remark/tree/main/packages/remark-stringify> for more options.
+  }
 }
 
 export default remarkConfig
@@ -233,8 +233,6 @@ export default remarkConfig
 This is the same configuration in YAML, which can be placed in `.remarkrc.yml`:
 
 ```yml
-settings:
-  bullet: "*"
 plugins:
   # Check that markdown is consistent.
   - remark-preset-lint-consistent
@@ -243,6 +241,8 @@ plugins:
   # Generate a table of contents in `## Contents`
   - - remark-toc
     - heading: contents
+settings:
+  bullet: "*"
 ```
 
 When `remark-cli` is about to process a markdown file it’ll search the file

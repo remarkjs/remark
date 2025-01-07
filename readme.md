@@ -253,7 +253,7 @@ import remarkParse from 'remark-parse'
 import remarkRehype from 'remark-rehype'
 import {unified} from 'unified'
 
-const doc = `---
+const value = `---
 layout: solar-system
 ---
 
@@ -266,7 +266,7 @@ const file = await unified()
   .use(remarkGfm)
   .use(remarkRehype)
   .use(rehypeStringify)
-  .process(doc)
+  .process(value)
 
 console.log(String(file))
 ```
@@ -299,12 +299,13 @@ console.error(reporter(file))
 Yields:
 
 ```txt
-          warning Missing newline character at end of file final-newline             remark-lint
-1:1-1:35  warning Marker style should be `.`               ordered-list-marker-style remark-lint
-1:4       warning Incorrect list-item indent: add 1 space  list-item-indent          remark-lint
-1:25-1:34 warning Emphasis should use `_` as a marker      emphasis-marker           remark-lint
+1:2           warning Unexpected ordered list marker `)`, expected `.`                                     ordered-list-marker-style remark-lint
+1:25-1:34     warning Unexpected emphasis marker `*`, expected `_`                                         emphasis-marker           remark-lint
+  [cause]:
+    1:11-1:20 info    Emphasis marker style `'_'` first defined for `'consistent'` here                    emphasis-marker           remark-lint
+1:35          warning Unexpected missing final newline character, expected line feed (`\n`) at end of file final-newline             remark-lint
 
-⚠ 4 warnings
+⚠ 3 warnings
 ```
 
 ### Example: checking and formatting markdown on the CLI
@@ -316,7 +317,7 @@ This example assumes you’re in a Node.js package.
 First, install the CLI and plugins:
 
 ```sh
-npm install remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc --save-dev
+npm install --save-dev remark-cli remark-preset-lint-consistent remark-preset-lint-recommended remark-toc
 ```
 
 …then add an npm script in your `package.json`:
