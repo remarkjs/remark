@@ -108,6 +108,8 @@ The list of plugins:
   — new syntax for directives (generic extensions)
 * 🟢 [`remark-directive-rehype`](https://github.com/IGassmann/remark-directive-rehype)
   — turn [directives][d] into HTML custom elements (rehype compatible)
+* 🟢 [`remark-directive-sugar`](https://github.com/lin-stephanie/remark-directive-sugar)
+  — provide predefined directives for customizable badges, links, video embeds, and more
 * 🟢 [`remark-docx`](https://github.com/inokawa/remark-docx)
   — compile markdown to docx
 * 🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
