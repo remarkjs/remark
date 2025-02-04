@@ -34,7 +34,6 @@ You can use the many existing plugins or you can make your own.
 
 * to learn markdown, see this [cheatsheet and tutorial][cheat]
 * for more about us, see [`unifiedjs.com`][site]
-* for updates, see [Twitter][]
 * for questions, see [support][]
 * to help, see [contribute][] or [sponsor][] below
 
@@ -604,8 +603,6 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 [typescript]: https://www.typescriptlang.org
 
 [cheat]: https://commonmark.org/help/
-
-[twitter]: https://twitter.com/unifiedjs
 
 [site]: https://unifiedjs.com
 
