@@ -50,6 +50,8 @@ The list of plugins:
   — increase or decrease heading depth
 * 🟢 [`remark-breaks`](https://github.com/remarkjs/remark-breaks)
   – hard breaks w/o needing spaces (like on issues)
+* 🟢 [`remark-callouts`](https://github.com/flowershow/remark-callouts)
+  - Remark plugin to add support for blockquote-based callouts/admonitions similar to the approach of Obsidian and Microsoft Learn style.
 * 🟢 [`remark-capitalize`](https://github.com/zeit/remark-capitalize)
   – transform all titles w/ [`title.sh`](https://github.com/zeit/title)
 * 🟢 [`remark-capitalize-headings`](https://github.com/Xunnamius/unified-utils/blob/main/packages/remark-capitalize-headings)
@@ -342,6 +344,8 @@ The list of plugins:
   — compile markdown to [VDOM](https://github.com/Matt-Esch/virtual-dom/)
 * 🟢 [`remark-wiki-link`](https://github.com/landakram/remark-wiki-link)
   — new syntax for wiki links (rehype compatible)
+* 🟢 [`remark-wiki-link-plus`](https://github.com/flowershow/remark-wiki-link-plus)
+  - Parse and render wiki-style links in markdown especially Obsidian style links `[[...]]`
 * 🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
   — configure remark w/ YAML
 
