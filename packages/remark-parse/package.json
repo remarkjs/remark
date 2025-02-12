@@ -1,8 +1,31 @@
 {
-  "name": "remark-parse",
-  "version": "11.0.0",
+  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
+  "bugs": "https://github.com/remarkjs/remark/issues",
+  "contributors": [
+    "Elijah Hamovitz <elijahhamovitz@gmail.com>",
+    "Eugene Sharygin <eush77@gmail.com>",
+    "Ika <ikatyang@gmail.com>",
+    "Junyoung Choi <fluke8259@gmail.com>",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
+  "dependencies": {
+    "@types/mdast": "^4.0.0",
+    "mdast-util-from-markdown": "^2.0.0",
+    "micromark-util-types": "^2.0.0",
+    "unified": "^11.0.0"
+  },
   "description": "remark plugin to add support for parsing markdown input",
-  "license": "MIT",
+  "exports": "./index.js",
+  "files": [
+    "index.d.ts",
+    "index.js",
+    "lib/"
+  ],
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
+  "homepage": "https://remark.js.org",
   "keywords": [
     "abstract",
     "ast",
@@ -16,51 +39,40 @@
     "tree",
     "unified"
   ],
-  "homepage": "https://remark.js.org",
+  "license": "MIT",
+  "name": "remark-parse",
   "repository": "https://github.com/remarkjs/remark/tree/main/packages/remark-parse",
-  "bugs": "https://github.com/remarkjs/remark/issues",
-  "funding": {
-    "type": "opencollective",
-    "url": "https://opencollective.com/unified"
-  },
-  "author": "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
-  "contributors": [
-    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)",
-    "Eugene Sharygin <eush77@gmail.com>",
-    "Junyoung Choi <fluke8259@gmail.com>",
-    "Elijah Hamovitz <elijahhamovitz@gmail.com>",
-    "Ika <ikatyang@gmail.com>"
-  ],
-  "sideEffects": false,
-  "type": "module",
-  "exports": "./index.js",
-  "files": [
-    "lib/",
-    "index.d.ts",
-    "index.js"
-  ],
-  "dependencies": {
-    "@types/mdast": "^4.0.0",
-    "mdast-util-from-markdown": "^2.0.0",
-    "micromark-util-types": "^2.0.0",
-    "unified": "^11.0.0"
-  },
   "scripts": {},
+  "sideEffects": false,
   "typeCoverage": {
     "atLeast": 100,
-    "detail": true,
-    "ignoreCatch": true,
     "strict": true
   },
+  "type": "module",
+  "version": "11.0.0",
   "xo": {
     "overrides": [
       {
         "files": [
-          "**/*.ts"
+          "**/*.d.ts"
         ],
         "rules": {
-          "@typescript-eslint/ban-types": "off",
-          "@typescript-eslint/consistent-type-definitions": "off"
+          "@typescript-eslint/array-type": [
+            "error",
+            {
+              "default": "generic"
+            }
+          ],
+          "@typescript-eslint/ban-types": [
+            "error",
+            {
+              "extendDefaults": true
+            }
+          ],
+          "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+          ]
         }
       }
     ],

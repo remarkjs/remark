@@ -32,11 +32,10 @@
   },
   "scripts": {
     "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "./packages/remark-cli/cli.js . --frail --output --quiet && prettier . --log-level warn --write && xo --fix",
-    "prepack": "npm run build && npm run format",
-    "test": "npm run build && npm run format && npm run test-coverage",
+    "format": "./packages/remark-cli/cli.js --frail --output --quiet -- . && prettier --log-level warn --write -- . && xo --fix",
     "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --100 --reporter lcov npm run test-api"
+    "test-coverage": "c8 --100 --reporter lcov -- npm run test-api",
+    "test": "npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {
     "bracketSpacing": false,
@@ -57,8 +56,6 @@
   },
   "typeCoverage": {
     "atLeast": 100,
-    "detail": true,
-    "ignoreCatch": true,
     "strict": true
   },
   "xo": {

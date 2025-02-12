@@ -37,9 +37,9 @@ declare module 'unified' {
      * This type is registered by `remark-stringify`.
      * Values can be registered by remark plugins that extend
      * `mdast-util-to-markdown`.
-     * See {@link ToMarkdownExtension | `Options`} from
-     * {@link https://github.com/syntax-tree/mdast-util-to-markdown#options | `mdast-util-to-markdown`}.
+     * See {@linkcode ToMarkdownExtension | Options} from
+     * {@linkcode https://github.com/syntax-tree/mdast-util-to-markdown#options | mdast-util-to-markdown}.
      */
-    toMarkdownExtensions?: ToMarkdownExtension[]
+    toMarkdownExtensions?: Array<ToMarkdownExtension>
   }
 }

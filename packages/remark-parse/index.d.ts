@@ -38,10 +38,10 @@ declare module 'unified' {
      * This type is registered by `remark-parse`.
      * Values can be registered by remark plugins that extend `micromark` and
      * `mdast-util-from-markdown`.
-     * See {@link MicromarkExtension | `Extension`} from
-     * {@link https://github.com/micromark/micromark/tree/main/packages/micromark-util-types | `micromark-util-types`}.
+     * See {@linkcode MicromarkExtension | Extension} from
+     * {@linkcode https://github.com/micromark/micromark/tree/main/packages/micromark-util-types | micromark-util-types}.
      */
-    micromarkExtensions?: MicromarkExtension[]
+    micromarkExtensions?: Array<MicromarkExtension>
 
     /**
      * List of `mdast-util-from-markdown` extensions to use.
@@ -49,11 +49,11 @@ declare module 'unified' {
      * This type is registered by `remark-parse`.
      * Values can be registered by remark plugins that extend `micromark` and
      * `mdast-util-from-markdown`.
-     * See {@link FromMarkdownExtension | `Extension`} from
-     * {@link https://github.com/syntax-tree/mdast-util-from-markdown#extension | `mdast-util-from-markdown`}.
+     * See {@linkcode FromMarkdownExtension | Extension} from
+     * {@linkcode https://github.com/syntax-tree/mdast-util-from-markdown#extension | mdast-util-from-markdown}.
      */
     fromMarkdownExtensions?: Array<
-      FromMarkdownExtension[] | FromMarkdownExtension
+      Array<FromMarkdownExtension> | FromMarkdownExtension
     >
   }
 }
