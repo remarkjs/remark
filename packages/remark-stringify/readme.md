@@ -1,14 +1,11 @@
 # remark-stringify
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
-**[remark][]** plugin to add support for serializing to markdown.
+**[remark][github-remark]** plugin to add support for serializing to markdown.
 
 ## Contents
 
@@ -30,39 +27,45 @@
 
 ## What is this?
 
-This package is a [unified][] ([remark][]) plugin that defines how to take a
-syntax tree as input and turn it into serialized markdown.
-When it’s used, markdown is serialized as the final result.
+This package is a [unified][github-unified] ([remark][github-remark]) plugin
+that defines how to take a syntax tree as input and turn it into serialized
+markdown.
+When it’s used,
+markdown is serialized as the final result.
 
-See [the monorepo readme][remark] for info on what the remark ecosystem is.
+See [the monorepo readme][github-remark] for info on what the remark ecosystem
+is.
 
 ## When should I use this?
 
 This plugin adds support to unified for serializing markdown.
-If you also need to parse markdown, you can alternatively use
-[`remark`][remark-core], which combines unified,
-[`remark-parse`][remark-parse], and this plugin.
+If you also need to parse markdown,
+you can alternatively use [`remark`][github-remark-core],
+which combines `unified`,
+[`remark-parse`][github-remark-parse],
+and this plugin.
 
-If you don’t use plugins and have access to a syntax tree, you can directly use
-[`mdast-util-to-markdown`][mdast-util-to-markdown], which is used inside this
-plugin.
+If you don’t use plugins and have access to a syntax tree,
+you can directly use [`mdast-util-to-markdown`][github-mdast-util-to-markdown],
+which is used inside this plugin.
 remark focusses on making it easier to transform content by abstracting these
 internals away.
 
 You can combine this plugin with other plugins to add syntax extensions.
 Notable examples that deeply integrate with it are
-[`remark-gfm`][remark-gfm],
-[`remark-mdx`][remark-mdx],
-[`remark-frontmatter`][remark-frontmatter],
-[`remark-math`][remark-math], and
-[`remark-directive`][remark-directive].
-You can also use any other [remark plugin][remark-plugin] before
-`remark-stringify`.
+[`remark-gfm`][github-remark-gfm],
+[`remark-mdx`][github-remark-mdx],
+[`remark-frontmatter`][github-remark-frontmatter],
+[`remark-math`][github-remark-math],
+and [`remark-directive`][github-remark-directive].
+You can also use any other [remark plugin][github-remark-plugins]
+before `remark-stringify`.
 
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+In Node.js (version 16+),
+install with [npm][npm-install]:
 
 ```sh
 npm install remark-stringify
@@ -127,7 +130,8 @@ Add support for serializing to markdown.
 
 ###### Parameters
 
-* `options` ([`Options`][api-options], optional)
+* `options`
+  ([`Options`][api-options], optional)
   — configuration
 
 ###### Returns
@@ -156,22 +160,25 @@ Configuration (TypeScript type).
 * `fence` (``'`'`` or `'~'`, default: ``'`'``)
   — marker to use for fenced code
 * `fences` (`boolean`, default: `true`)
-  — use fenced code always; when `false`, uses fenced code if there is a
-  language defined, if the code is empty, or if it starts or ends in blank
-  lines
+  — use fenced code always;
+  when `false`,
+  uses fenced code if there is a language defined,
+  if the code is empty,
+  or if it starts or ends in blank lines
 * `handlers` (`Handlers`, optional)
   — handle particular nodes;
-  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+  see [`mdast-util-to-markdown`][github-mdast-util-to-markdown] for more info
 * `incrementListMarker` (`boolean`, default: `true`)
   — increment the counter of ordered lists items
 * `join` (`Array<Join>`, optional)
   — how to join blocks;
-  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+  see [`mdast-util-to-markdown`][github-mdast-util-to-markdown] for more info
 * `listItemIndent` (`'mixed'`, `'one'`, or `'tab'`, default: `'one'`)
   — how to indent the content of list items;
-  either with the size of the bullet plus one space (when `'one'`), a tab
-  stop (`'tab'`), or depending on the item and its parent list: `'mixed'`
-  uses `'one'` if the item and list are tight and `'tab'` otherwise
+  either with the size of the bullet plus one space (when `'one'`),
+  a tab stop (`'tab'`),
+  or depending on the item and its parent list: `'mixed'` uses `'one'` if the
+  item and list are tight and `'tab'` otherwise
 * `quote` (`'"'` or `"'"`, default: `'"'`)
   — marker to use for titles
 * `resourceLink` (`boolean`, default: `false`)
@@ -193,7 +200,7 @@ Configuration (TypeScript type).
   — join definitions without a blank line
 * `unsafe` (`Array<Unsafe>`, optional)
   — schemas that define when characters cannot occur;
-  see [`mdast-util-to-markdown`][mdast-util-to-markdown] for more info
+  see [`mdast-util-to-markdown`][github-mdast-util-to-markdown] for more info
 
 <!-- Note: `extensions` intentionally not supported/documented. -->
 
@@ -205,7 +212,7 @@ Other plugins can add support for syntax extensions.
 
 ## Syntax tree
 
-The syntax tree used in remark is [mdast][].
+The syntax tree used in remark is [mdast][github-mdast].
 
 ## Types
 
@@ -213,8 +220,9 @@ This package is fully typed with [TypeScript][].
 It exports the additional type [`Options`][api-options].
 
 It also registers `Settings` with `unified`.
-If you’re passing options with `.data('settings', …)`, make sure to import this
-package somewhere in your types, as that registers the fields.
+If you’re passing options with `.data('settings', …)`,
+make sure to import this package somewhere in your types,
+as that registers the fields.
 
 ```js
 /**
@@ -232,9 +240,10 @@ unified().data('settings', {thisDoesNotExist: false})
 Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
 
-When we cut a new major release, we drop support for unmaintained versions of
-Node.
-This means we try to keep the current release line, `remark-stringify@^11`,
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`remark-stringify@11`,
 compatible with Node.js 16.
 
 ## Security
@@ -244,22 +253,23 @@ Use of `remark-stringify` is safe.
 Use of remark plugins can open you up to attacks.
 Carefully assess each plugin and the risks involved in using them.
 
-For info on how to submit a report, see our [security policy][security].
+For info on how to submit a report,
+see our [security policy][health-security].
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-Join us in [Discussions][chat] to chat with the community and contributors.
+See [`contributing.md`][health-contributing] in [`remarkjs/.github`][health]
+for ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+This project has a [code of conduct][health-coc].
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## Sponsor
 
-Support this effort and give back by sponsoring on [OpenCollective][collective]!
+Support this effort and give back by sponsoring on [OpenCollective][]!
 
 <table>
 <tr valign="middle">
@@ -330,82 +340,74 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][author]
 
 <!-- Definitions -->
 
-[build-badge]: https://github.com/remarkjs/remark/workflows/main/badge.svg
+[api-options]: #options
 
-[build]: https://github.com/remarkjs/remark/actions
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
-
-[coverage]: https://codecov.io/github/remarkjs/remark
-
-[downloads-badge]: https://img.shields.io/npm/dm/remark-stringify.svg
-
-[downloads]: https://www.npmjs.com/package/remark-stringify
-
-[size-badge]: https://img.shields.io/bundlejs/size/remark-stringify
-
-[size]: https://bundlejs.com/?q=remark-stringify
-
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
-
-[collective]: https://opencollective.com/unified
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/remarkjs/remark/discussions
-
-[security]: https://github.com/remarkjs/.github/blob/main/security.md
-
-[health]: https://github.com/remarkjs/.github
-
-[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
-
-[support]: https://github.com/remarkjs/.github/blob/main/support.md
-
-[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
-
-[license]: https://github.com/remarkjs/remark/blob/main/license
+[api-remark-stringify]: #unifieduseremarkstringify-options
 
 [author]: https://wooorm.com
 
-[npm]: https://docs.npmjs.com/cli/install
+[badge-build-image]: https://github.com/remarkjs/remark/workflows/main/badge.svg
+
+[badge-build-url]: https://github.com/remarkjs/remark/actions
+
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
+
+[badge-coverage-url]: https://codecov.io/github/remarkjs/remark
+
+[badge-downloads-image]: https://img.shields.io/npm/dm/remark-stringify.svg
+
+[badge-downloads-url]: https://www.npmjs.com/package/remark-stringify
+
+[badge-size-image]: https://img.shields.io/bundlejs/size/remark-stringify
+
+[badge-size-url]: https://bundlejs.com/?q=remark-stringify
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
 [esmsh]: https://esm.sh
 
-[mdast]: https://github.com/syntax-tree/mdast
+[file-license]: license
 
-[mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
+[github-mdast]: https://github.com/syntax-tree/mdast
 
-[remark]: https://github.com/remarkjs/remark
+[github-mdast-util-to-markdown]: https://github.com/syntax-tree/mdast-util-to-markdown
 
-[remark-core]: ../remark/
+[github-remark]: https://github.com/remarkjs/remark
 
-[remark-directive]: https://github.com/remarkjs/remark-directive
+[github-remark-core]: https://github.com/remarkjs/remark/tree/main/packages/remark
 
-[remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
+[github-remark-directive]: https://github.com/remarkjs/remark-directive
 
-[remark-gfm]: https://github.com/remarkjs/remark-gfm
+[github-remark-frontmatter]: https://github.com/remarkjs/remark-frontmatter
 
-[remark-math]: https://github.com/remarkjs/remark-math
+[github-remark-gfm]: https://github.com/remarkjs/remark-gfm
 
-[remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
+[github-remark-math]: https://github.com/remarkjs/remark-math
 
-[remark-parse]: ../remark-parse/
+[github-remark-mdx]: https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx
 
-[remark-plugin]: https://github.com/remarkjs/remark#plugin
+[github-remark-parse]: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
+
+[github-remark-plugins]: https://github.com/remarkjs/remark#plugins
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[health]: https://github.com/remarkjs/.github
+
+[health-coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
+
+[health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
+
+[health-security]: https://github.com/remarkjs/.github/blob/main/security.md
+
+[health-support]: https://github.com/remarkjs/.github/blob/main/support.md
+
+[npm-install]: https://docs.npmjs.com/cli/install
+
+[opencollective]: https://opencollective.com/unified
 
 [typescript]: https://www.typescriptlang.org
-
-[unified]: https://github.com/unifiedjs/unified
-
-[api-options]: #options
-
-[api-remark-stringify]: #unifieduseremarkstringify-options

@@ -1,15 +1,12 @@
 # remark
 
-[![Build][build-badge]][build]
-[![Coverage][coverage-badge]][coverage]
-[![Downloads][downloads-badge]][downloads]
-[![Size][size-badge]][size]
-[![Sponsors][sponsors-badge]][collective]
-[![Backers][backers-badge]][collective]
-[![Chat][chat-badge]][chat]
+[![Build][badge-build-image]][badge-build-url]
+[![Coverage][badge-coverage-image]][badge-coverage-url]
+[![Downloads][badge-downloads-image]][badge-downloads-url]
+[![Size][badge-size-image]][badge-size-url]
 
-**[unified][]** processor with support for parsing from markdown and
-serializing to markdown.
+**[unified][github-unified]** processor with support for parsing from markdown
+and serializing to markdown.
 
 ## Contents
 
@@ -33,29 +30,34 @@ serializing to markdown.
 
 ## What is this?
 
-This package is a [unified][] processor with support for parsing markdown as
-input and serializing markdown as output by using unified with
-[`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
+This package is a [unified][github-unified] processor with support for parsing
+markdown as input and serializing markdown as output by using unified with
+[`remark-parse`][github-remark-parse] and
+[`remark-stringify`][github-remark-stringify].
 
-See [the monorepo readme][remark] for info on what the remark ecosystem is.
+See [the monorepo readme][github-remark] for info on what the remark ecosystem
+is.
 
 ## When should I use this?
 
-You can use this package when you want to use unified, have markdown as input,
+You can use this package when you want to use unified,
+have markdown as input,
 and want markdown as output.
 This package is a shortcut for
 `unified().use(remarkParse).use(remarkStringify)`.
 When the input isn’t markdown (meaning you don’t need `remark-parse`) or the
-output is not markdown (you don’t need `remark-stringify`), it’s recommended to
-use `unified` directly.
+output is not markdown (you don’t need `remark-stringify`),
+it’s recommended to use `unified` directly.
 
 When you want to inspect and format markdown files in a project on the command
-line, you can use [`remark-cli`][remark-cli].
+line,
+you can use [`remark-cli`][github-remark-cli].
 
 ## Install
 
 This package is [ESM only][esm].
-In Node.js (version 16+), install with [npm][]:
+In Node.js (version 16+),
+install with [npm][npm-install]:
 
 ```sh
 npm install remark
@@ -109,7 +111,7 @@ Once Pluto was found, its faintness and lack of a viewable disc cast doubt…
 Pluto's orbital period is about 248 years…
 `
 
-const file = await remark().use(remarkToc, {tight: true}).process(value)
+const file = await remark().use(remarkToc).process(value)
 
 console.error(String(file))
 ```
@@ -156,10 +158,11 @@ There is no default export.
 ### `remark()`
 
 Create a new unified processor that already uses
-[`remark-parse`][remark-parse] and [`remark-stringify`][remark-stringify].
+[`remark-parse`][github-remark-parse] and
+[`remark-stringify`][github-remark-stringify].
 
 You can add more plugins with `use`.
-See [`unified`][unified] for more information.
+See [`unified`][github-unified] for more information.
 
 ## Examples
 
@@ -184,7 +187,7 @@ console.error(reporter(file))
 
 Yields:
 
-```txt
+```text
 1:2           warning Unexpected ordered list marker `)`, expected `.`                                     ordered-list-marker-style remark-lint
 1:25-1:34     warning Unexpected emphasis marker `*`, expected `_`                                         emphasis-marker           remark-lint
   [cause]:
@@ -197,9 +200,9 @@ Yields:
 ### Example: passing options to `remark-stringify`
 
 When you use `remark-stringify` manually you can pass options to `use`.
-Because `remark-stringify` is already used in `remark`, that’s not possible.
-To define options for `remark-stringify`, you can instead pass options to
-`data`:
+Because `remark-stringify` is already used in `remark` that’s not possible.
+To define options for `remark-stringify`,
+you can instead pass options to `data`:
 
 ```js
 import {remark} from 'remark'
@@ -243,7 +246,7 @@ Other plugins can add support for syntax extensions.
 
 ## Syntax tree
 
-The syntax tree used in remark is [mdast][].
+The syntax tree used in remark is [mdast][github-mdast].
 
 ## Types
 
@@ -251,8 +254,9 @@ This package is fully typed with [TypeScript][].
 There are no extra exported types.
 
 It also registers `Settings` with `unified`.
-If you’re passing options with `.data('settings', …)`, make sure to import this
-package somewhere in your types, as that registers the fields.
+If you’re passing options with `.data('settings', …)`,
+make sure to import this package somewhere in your types,
+as that registers the fields.
 
 ```js
 /**
@@ -270,37 +274,41 @@ unified().data('settings', {thisDoesNotExist: false})
 Projects maintained by the unified collective are compatible with maintained
 versions of Node.js.
 
-When we cut a new major release, we drop support for unmaintained versions of
-Node.
-This means we try to keep the current release line, `remark@^15`, compatible
-with Node.js 16.
+When we cut a new major release,
+we drop support for unmaintained versions of Node.
+This means we try to keep the current release line,
+`remark@15`,
+compatible with Node.js 16.
 
 ## Security
 
 As markdown can be turned into HTML and improper use of HTML can open you up to
-[cross-site scripting (XSS)][xss] attacks, use of remark can be unsafe.
-When going to HTML, you will combine remark with **[rehype][]**, in which case
-you should use [`rehype-sanitize`][rehype-sanitize].
+[cross-site scripting (XSS)][wikipedia-xss] attacks,
+use of remark can be unsafe.
+When going to HTML,
+you will combine remark with **[rehype][github-rehype]**,
+in which case you should use [`rehype-sanitize`][github-rehype-sanitize].
 
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
 
-For info on how to submit a report, see our [security policy][security].
+For info on how to submit a report,
+see our [security policy][health-security].
 
 ## Contribute
 
-See [`contributing.md`][contributing] in [`remarkjs/.github`][health] for ways
-to get started.
-See [`support.md`][support] for ways to get help.
-Join us in [Discussions][chat] to chat with the community and contributors.
+See [`contributing.md`][health-contributing] in [`remarkjs/.github`][health]
+for ways to get started.
+See [`support.md`][health-support] for ways to get help.
 
-This project has a [code of conduct][coc].
-By interacting with this repository, organization, or community you agree to
-abide by its terms.
+This project has a [code of conduct][health-coc].
+By interacting with this repository,
+organization,
+or community you agree to abide by its terms.
 
 ## Sponsor
 
-Support this effort and give back by sponsoring on [OpenCollective][collective]!
+Support this effort and give back by sponsoring on [OpenCollective][]!
 
 <table>
 <tr valign="middle">
@@ -371,74 +379,66 @@ Support this effort and give back by sponsoring on [OpenCollective][collective]!
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][file-license] © [Titus Wormer][author]
 
 <!-- Definitions -->
 
-[build-badge]: https://github.com/remarkjs/remark/workflows/main/badge.svg
-
-[build]: https://github.com/remarkjs/remark/actions
-
-[coverage-badge]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
-
-[coverage]: https://codecov.io/github/remarkjs/remark
-
-[downloads-badge]: https://img.shields.io/npm/dm/remark.svg
-
-[downloads]: https://www.npmjs.com/package/remark
-
-[size-badge]: https://img.shields.io/bundlejs/size/remark
-
-[size]: https://bundlejs.com/?q=remark
-
-[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
-
-[backers-badge]: https://opencollective.com/unified/backers/badge.svg
-
-[collective]: https://opencollective.com/unified
-
-[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
-
-[chat]: https://github.com/remarkjs/remark/discussions
-
-[security]: https://github.com/remarkjs/.github/blob/main/security.md
-
-[health]: https://github.com/remarkjs/.github
-
-[contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
-
-[support]: https://github.com/remarkjs/.github/blob/main/support.md
-
-[coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
-
-[license]: https://github.com/remarkjs/remark/blob/main/license
+[api-remark]: #remark-1
 
 [author]: https://wooorm.com
 
-[npm]: https://docs.npmjs.com/cli/install
+[badge-build-image]: https://github.com/remarkjs/remark/workflows/main/badge.svg
+
+[badge-build-url]: https://github.com/remarkjs/remark/actions
+
+[badge-coverage-image]: https://img.shields.io/codecov/c/github/remarkjs/remark.svg
+
+[badge-coverage-url]: https://codecov.io/github/remarkjs/remark
+
+[badge-downloads-image]: https://img.shields.io/npm/dm/remark.svg
+
+[badge-downloads-url]: https://www.npmjs.com/package/remark
+
+[badge-size-image]: https://img.shields.io/bundlejs/size/remark
+
+[badge-size-url]: https://bundlejs.com/?q=remark
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
 [esmsh]: https://esm.sh
 
-[mdast]: https://github.com/syntax-tree/mdast
+[file-license]: license
 
-[rehype]: https://github.com/rehypejs/rehype
+[github-mdast]: https://github.com/syntax-tree/mdast
 
-[rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
+[github-rehype]: https://github.com/rehypejs/rehype
 
-[remark]: https://github.com/remarkjs/remark
+[github-rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
 
-[remark-parse]: ../remark-parse
+[github-remark]: https://github.com/remarkjs/remark
 
-[remark-stringify]: ../remark-stringify
+[github-remark-cli]: https://github.com/remarkjs/remark/tree/main/packages/remark-cli
 
-[remark-cli]: ../remark-cli
+[github-remark-parse]: https://github.com/remarkjs/remark/tree/main/packages/remark-parse
+
+[github-remark-stringify]: https://github.com/remarkjs/remark/tree/main/packages/remark-stringify
+
+[github-unified]: https://github.com/unifiedjs/unified
+
+[health]: https://github.com/remarkjs/.github
+
+[health-coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
+
+[health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
+
+[health-security]: https://github.com/remarkjs/.github/blob/main/security.md
+
+[health-support]: https://github.com/remarkjs/.github/blob/main/support.md
+
+[npm-install]: https://docs.npmjs.com/cli/install
+
+[opencollective]: https://opencollective.com/unified
 
 [typescript]: https://www.typescriptlang.org
 
-[unified]: https://github.com/unifiedjs/unified
-
-[xss]: https://en.wikipedia.org/wiki/Cross-site_scripting
-
-[api-remark]: #remark-1
+[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting

@@ -1,34 +1,40 @@
-![remark][logo]
+![remark][file-logo]
 
 # Plugins
 
 **remark** is a tool that transforms markdown with plugins.
-See [the monorepo readme][remark] for info on what the remark ecosystem is.
+See [the monorepo readme][github-remark] for info on what the remark ecosystem
+is.
 This page lists existing plugins.
 
 ## Contents
 
 * [List of plugins](#list-of-plugins)
-* [List of presets](#list-of-presets)
 * [List of utilities](#list-of-utilities)
 * [Use plugins](#use-plugins)
 * [Create plugins](#create-plugins)
 
 ## List of plugins
 
-See [`awesome-remark`][awesome-remark] for the most awesome projects in the
-ecosystem.
-More plugins can be found on GitHub tagged with the
-[`remark-plugin` topic][topic].
+<a id="list-of-presets"></a>
 
-> 👉 **Note**: some plugins don’t work with recent versions of remark due to
-> changes in its underlying parser (micromark).
+For the most awesome projects in the ecosystem,
+see [`remarkjs/awesome-remark`][github-remark-awesome-remark].
+More plugins can be found on GitHub tagged with the
+[`remark-plugin` topic][github-topic-remark-plugin].
+
+> 👉 **Note**:
+> some plugins don’t work with recent versions of remark due to changes in its
+> underlying parser (micromark).
 > Plugins that are up to date or unaffected are marked with `🟢` while plugins
 > that are **currently broken** are marked with `⚠️`.
 
-> 💡 **Tip**: remark plugins work with markdown and **rehype** plugins work with
-> HTML.
-> See rehype’s [List of plugins][rehype-plugins] for more plugins.
+> 💡 **Tip**:
+> remark plugins work with markdown and **rehype** plugins work with HTML.
+> See [*§ List of plugins* in `rehypejs/rehype`][github-rehype-plugins] for more
+> plugins.
+
+<!--lint disable media-style-->
 
 The list of plugins:
 
@@ -38,7 +44,8 @@ The list of plugins:
   — new syntax for abbreviations (new node type, rehype compatible)
 * ⚠️ [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
   — new syntax for admonitions
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * ⚠️ [`remark-align`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-align#readme)
   — new syntax to align text or blocks (new node types, rehype
   compatible)
@@ -81,10 +88,12 @@ The list of plugins:
   — new syntax to ignore things
 * ⚠️ [`remark-container`](https://github.com/zWingz/remark-container)
   — new syntax for containers
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * ⚠️ [`remark-containers`](https://github.com/Nevenall/remark-containers)
   — new syntax for containers
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * 🟢 [`remark-contributors`](https://github.com/remarkjs/remark-contributors)
   — add a table of contributors
 * 🟢 [`remark-copy-linked-files`](https://github.com/sergioramos/remark-copy-linked-files)
@@ -95,7 +104,8 @@ The list of plugins:
   — transform CorePass notations into markdown links
 * ⚠️ [`remark-custom-blocks`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-custom-blocks#readme)
   — new syntax for custom blocks (new node types, rehype compatible)
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * 🟢 [`remark-custom-header-id`](https://github.com/sindresorhus/remark-custom-header-id)
   — add custom ID attribute to headers (`{#some-id}`)
 * 🟢 [`remark-definition-list`](https://github.com/wataru-chocola/remark-definition-list)
@@ -107,7 +117,8 @@ The list of plugins:
 * 🟢 [`remark-directive`](https://github.com/remarkjs/remark-directive)
   — new syntax for directives (generic extensions)
 * 🟢 [`remark-directive-rehype`](https://github.com/IGassmann/remark-directive-rehype)
-  — turn [directives][d] into HTML custom elements (rehype compatible)
+  — turn [directives][github-remark-directive] into HTML custom elements
+  (rehype compatible)
 * 🟢 [`remark-directive-sugar`](https://github.com/lin-stephanie/remark-directive-sugar)
   — predefined directives for customizable badges, links, video embeds, and more
 * 🟢 [`remark-docx`](https://github.com/inokawa/remark-docx)
@@ -146,7 +157,8 @@ The list of plugins:
   — better support for Gemoji shortcodes
 * ⚠️ [`remark-generic-extensions`](https://github.com/medfreeman/remark-generic-extensions)
   — new syntax for the CommonMark generic directive extension
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * 🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
   — support GFM (autolink literals, footnotes, strikethrough, tables,
   tasklists)
@@ -274,7 +286,8 @@ The list of plugins:
   rehype compatible)
 * ⚠️ [`remark-shortcodes`](https://github.com/djm/remark-shortcodes)
   — new syntax for Wordpress- and Hugo-like shortcodes (new node type)
-  (👉 **note**: [`remark-directive`][d] is similar and up to date)
+  (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
+  to date)
 * 🟢 [`remark-simple-plantuml`](https://github.com/akebifiky/remark-simple-plantuml)
   — turn PlantUML code blocks to images
 * 🟢 [`remark-slate`](https://github.com/hanford/remark-slate)
@@ -345,74 +358,79 @@ The list of plugins:
 * 🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
   — configure remark w/ YAML
 
-## List of presets
-
-Use [GitHub search][github-preset-search] to find available and often
-inspirational presets.
+<!--lint enable media-style-->
 
 ## List of utilities
 
-See [mdast][mdast-util] for a list of utilities that work with the syntax
-tree.
-See [unist][unist-util] for other utilities which work with **mdast** and other
-syntax trees too.
-Finally, see [vfile][vfile-util] for a list of utilities working with virtual
-files.
+For things that work with the syntax tree used in remark for markdown,
+see [*§ List of utilities* in `syntax-tree/mdast`][github-mdast-utilities].
+For tools that work with **mdast** and other syntax trees,
+see [*§ List of utilities* in `syntax-tree/unist`][github-unist-utilities].
+For tools that work with the virtual file format used in remark,
+see [*§ List of utilities* in `vfile/vfile`][github-vfile-utilities].
 
 ## Use plugins
 
-To use a plugin programmatically, call the [`use()`][unified-use] function.
-To use plugin with `remark-cli`, pass a [`--use` flag][unified-args-use] or
-specify it in a [configuration file][config-file-use].
+To use a plugin programmatically (from JavaScript),
+call the [`use()`][github-unified-use] method.
+To use plugin with `remark-cli` (from the terminal),
+pass a [`--use` flag][github-unified-args-use] or
+specify it in a
+[configuration file][github-unified-engine-config-files].
 
 ## Create plugins
 
-To create a plugin, first read up on the [concept of plugins][unified-plugins].
-Then, read the [guide on “Creating a plugin with unified”][guide].
-Finally, take one of existing plugins, which looks similar to what you’re about
-to make, and work from there.
-If you get stuck, [discussions][] is a good place to get help.
+To create a plugin,
+first read up on what they are in
+[*§ Plugin* in `unifiedjs/unified`][github-unified-plugin].
+After that read
+[*§ Create a remark plugin* on `unifiedjs.com`][unifiedjs-create-a-plugin]
+for a practical introduction.
+Finally take one of the existing plugins,
+which looks similar to what you’re about to make,
+and work from there.
+If you get stuck,
+[discussions][health-discussions] is a good place to get help.
 
-You should pick a name prefixed by `'remark-'` (such as `remark-lint`).
+You should pick a name prefixed by `remark-` (such as `remark-lint`).
 **Do not use the `remark-` prefix** if the thing you create doesn’t work with
-`remark().use()`: it isn’t a “plugin” and will confuse users.
-If it works with mdast, use `'mdast-util-'`, if it works with any unist tree,
-use `unist-util-`, and if it works with virtual files, use `vfile-`.
+`remark().use()`:
+it isn’t a “plugin” and will confuse users.
+If it works with mdast use `mdast-util-`.
+If it works with any unist tree use `unist-util-`.
+If it works with virtual files use `vfile-`.
 
-Use default exports to expose plugins from your packages, add `remark-plugin`
-keywords in `package.json`, add a `remark-plugin` topic to your repo on GitHub,
-and create a pull request to add the plugin here on this page!
+Use default exports to expose plugins from your packages.
+Add `remark-plugin` keywords in `package.json`.
+Add a `remark-plugin` topic to your repo on GitHub.
+Create a pull request to add the plugin here on this page!
 
-<!--Definitions:-->
+[file-logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
 
-[logo]: https://raw.githubusercontent.com/remarkjs/remark/1f338e72/logo.svg?sanitize=true
+[github-mdast-utilities]: https://github.com/syntax-tree/mdast#list-of-utilities
 
-[d]: https://github.com/remarkjs/remark-directive
+[github-rehype-plugins]: https://github.com/rehypejs/rehype/blob/main/doc/plugins.md#list-of-plugins
 
-[remark]: https://github.com/remarkjs/remark
+[github-remark]: https://github.com/remarkjs/remark
 
-[awesome-remark]: https://github.com/remarkjs/awesome-remark
+[github-remark-awesome-remark]: https://github.com/remarkjs/awesome-remark
 
-[topic]: https://github.com/topics/remark-plugin
+[github-remark-directive]: https://github.com/remarkjs/remark-directive
 
-[github-preset-search]: https://github.com/topics/remark-preset
+[github-topic-remark-plugin]: https://github.com/topics/remark-plugin
 
-[mdast-util]: https://github.com/syntax-tree/mdast#list-of-utilities
+[github-unified-args-use]: https://github.com/unifiedjs/unified-args#--use-plugin
 
-[unist-util]: https://github.com/syntax-tree/unist#unist-utilities
+[github-unified-engine-config-files]: https://github.com/unifiedjs/unified-engine#config-files
 
-[vfile-util]: https://github.com/vfile/vfile#utilities
+[github-unified-plugin]: https://github.com/unifiedjs/unified#plugin
 
-[unified-use]: https://github.com/unifiedjs/unified#processoruseplugin-options
+[github-unified-use]: https://github.com/unifiedjs/unified#processoruseplugin-options
 
-[unified-args-use]: https://github.com/unifiedjs/unified-args#--use-plugin
+[github-unist-utilities]: https://github.com/syntax-tree/unist#unist-utilities
 
-[config-file-use]: https://github.com/unifiedjs/unified-engine/blob/HEAD/doc/configure.md#plugins
+[github-vfile-utilities]: https://github.com/vfile/vfile#list-of-utilities
 
-[unified-plugins]: https://github.com/unifiedjs/unified#plugin
+[health-discussions]: https://github.com/remarkjs/remark/discussions
 
-[guide]: https://unifiedjs.com/learn/guide/create-a-plugin/
-
-[discussions]: https://github.com/remarkjs/remark/discussions
-
-[rehype-plugins]: https://github.com/rehypejs/rehype/blob/main/doc/plugins.md#list-of-plugins
+[unifiedjs-create-a-plugin]: https://unifiedjs.com/learn/guide/create-a-remark-plugin/
