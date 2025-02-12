@@ -248,13 +248,7 @@ compatible with Node.js 16.
 
 ## Security
 
-Use of `remark-stringify` is safe.
-
-Use of remark plugins can open you up to attacks.
-Carefully assess each plugin and the risks involved in using them.
-
-For info on how to submit a report,
-see our [security policy][health-security].
+See [*§ Security* in `remarkjs/remark`][github-remark-security].
 
 ## Contribute
 
@@ -394,6 +388,8 @@ Support this effort and give back by sponsoring on [OpenCollective][]!
 
 [github-remark-plugins]: https://github.com/remarkjs/remark#plugins
 
+[github-remark-security]: https://github.com/remarkjs/remark#security
+
 [github-unified]: https://github.com/unifiedjs/unified
 
 [health]: https://github.com/remarkjs/.github
@@ -401,8 +397,6 @@ Support this effort and give back by sponsoring on [OpenCollective][]!
 [health-coc]: https://github.com/remarkjs/.github/blob/main/code-of-conduct.md
 
 [health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
-
-[health-security]: https://github.com/remarkjs/.github/blob/main/security.md
 
 [health-support]: https://github.com/remarkjs/.github/blob/main/support.md
 

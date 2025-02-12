@@ -302,19 +302,7 @@ compatible with Node.js 16.
 
 ## Security
 
-As markdown can be turned into HTML and improper use of HTML can open you up to
-[cross-site scripting (XSS)][wikipedia-xss] attacks,
-use of remark can be unsafe.
-When going to HTML,
-you will likely combine remark with **[rehype][github-rehype]**,
-in which case you should use
-[`rehype-sanitize`][github-rehype-sanitize].
-
-Use of remark plugins could also open you up to other attacks.
-Carefully assess each plugin and the risks involved in using them.
-
-For info on how to submit a report,
-see our [security policy][health-security].
+See [*§ Security* in `remarkjs/remark`][github-remark-security].
 
 ## Contribute
 
@@ -426,13 +414,11 @@ Support this effort and give back by sponsoring on [OpenCollective][]!
 
 [github-markdown-style-guide]: https://github.com/remarkjs/remark-lint/tree/main/packages/remark-preset-lint-markdown-style-guide
 
-[github-rehype]: https://github.com/rehypejs/rehype
-
-[github-rehype-sanitize]: https://github.com/rehypejs/rehype-sanitize
-
 [github-remark]: https://github.com/remarkjs/remark
 
 [github-remark-core]: https://github.com/remarkjs/remark/tree/main/packages/remark
+
+[github-remark-security]: https://github.com/remarkjs/remark#security
 
 [github-remark-toc]: https://github.com/remarkjs/remark-toc
 
@@ -448,12 +434,8 @@ Support this effort and give back by sponsoring on [OpenCollective][]!
 
 [health-contributing]: https://github.com/remarkjs/.github/blob/main/contributing.md
 
-[health-security]: https://github.com/remarkjs/.github/blob/main/security.md
-
 [health-support]: https://github.com/remarkjs/.github/blob/main/support.md
 
 [npm-install]: https://docs.npmjs.com/cli/install
 
 [opencollective]: https://opencollective.com/unified
-
-[wikipedia-xss]: https://en.wikipedia.org/wiki/Cross-site_scripting

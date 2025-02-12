@@ -496,6 +496,15 @@ When going to HTML,
 you will combine remark with **[rehype][github-rehype]**,
 in which case you should use [`rehype-sanitize`][github-rehype-sanitize].
 
+Another security aspect is DDoS attacks.
+An attacker could cause a crash or slow down with big files.
+Crashes can also originate from smaller payloads,
+often when thousands of things (such as lists or links) are opened.
+It is wise to cap the accepted size of input
+(500kb can hold a big book)
+and to process content in a different thread or worker so that it can be
+stopped when needed.
+
 Use of remark plugins could also open you up to other attacks.
 Carefully assess each plugin and the risks involved in using them.
 
