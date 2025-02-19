@@ -211,6 +211,8 @@ The list of plugins:
 * ⚠️ [`remark-kbd-plus`](https://github.com/twardoch/remark-kbd-plus)
   — new syntax for keyboard keys w/ plusses (new node type, rehype
   compatible)
+* 🟢 [`remark-kroki`](https://github.com/show-docs/remark-kroki)
+  — transform kroki code blocks into diagrams
 * 🟢 [`remark-license`](https://github.com/remarkjs/remark-license)
   — add a license section
 * 🟢 [`remark-link-rewrite`](https://github.com/rjanjic/remark-link-rewrite)
