@@ -263,6 +263,8 @@ The list of plugins:
 * 🟢 [`remark-redactable`](https://github.com/code-dot-org/remark-redactable)
   — write plugins to redact content from a markdown document,
   then restore it later
+* 🟢 [`remark-refer-plantuml`](https://github.com/PrinOrange/remark-refer-plantuml)
+  — a Unified/Remark plugin to automatically refer PlantUML diagrams into embeddable image URLs.
 * 🟢 [`remark-reference-links`](https://github.com/remarkjs/remark-reference-links)
   — transform links and images into references and definitions
 * 🟢 [`remark-rehype`](https://github.com/remarkjs/remark-rehype)
