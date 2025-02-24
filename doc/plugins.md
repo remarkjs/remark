@@ -227,6 +227,8 @@ The list of plugins:
   — support MDX (JSX, expressions, ESM)
 * 🟢 [`remark-mentions`](https://github.com/FinnRG/remark-mentions)
   — replace @ mentions with links
+* 🟢 [`remark-merge-data`](https://github.com/s-h-a-d-o-w/remark-merge-data)
+  — merge globally defined data with data declared across code blocks
 * 🟢 [`remark-mermaidjs`](https://github.com/remcohaszing/remark-mermaidjs)
   — transform mermaid code blocks into inline SVGs
 * 🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
