@@ -64,6 +64,10 @@ The list of plugins:
   (👉 **note**: alternative to [`remark-capitalize`](https://github.com/zeit/remark-capitalize))
 * 🟢 [`remark-cite`](https://github.com/benrbray/remark-cite)
   – new syntax for Pandoc-style citations
+* 🟢 [`remark-cjk-friendly`](https://github.com/tats-u/markdown-cjk-friendly/tree/main/packages/remark-cjk-friendly)
+  – recognize emphasis in CJK languages ​​more reliably
+* 🟢 [`remark-cjk-friendly-gfm-strikethrough`](https://github.com/tats-u/markdown-cjk-friendly/tree/main/packages/remark-cjk-friendly-gfm-strikethrough)
+  – recognize GFM strikethrough in CJK languages ​​more reliably
 * 🟢 [`remark-cloudinary-docusaurus`](https://github.com/johnnyreilly/remark-cloudinary-docusaurus)
   – allows Docusaurus to use Cloudinary to serve optimised images
 * 🟢 [`remark-code-blocks`](https://github.com/mrzmmr/remark-code-blocks)
