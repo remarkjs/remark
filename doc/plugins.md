@@ -361,6 +361,8 @@ The list of plugins:
   — new syntax for wiki links (rehype compatible)
 * 🟢 [`remark-yaml-config`](https://github.com/remarkjs/remark-yaml-config)
   — configure remark w/ YAML
+* 🟢 [`remark-react-liquid-tag`](https://github.com/alfredosalzillo/remark-react-liquid-tag)
+  — add support for custom embeds using liquid tag syntax
 
 <!--lint enable media-style-->
 
