@@ -123,7 +123,7 @@ The list of plugins:
   — predefined directives for customizable badges, links, video embeds, and more
 * 🟢 [`remark-docx`](https://github.com/inokawa/remark-docx)
   — compile markdown to docx (WIP)
-* 🟢 [`@m2d/remark-docx`](https://github.com/tiny-md/mdast2docx/tree/main/m2d/remark-docx)
+* 🟢 [`@m2d/remark-docx`](https://github.com/md2docx/remark-docx)
   — compile markdown to docx with support for GFM, tables, html, and more.
 * 🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
   — fancy and accessible drop caps
