@@ -235,8 +235,8 @@ The list of plugins:
   — replace @ mentions with links
 * 🟢 [`remark-merge-data`](https://github.com/s-h-a-d-o-w/remark-merge-data)
   — merge globally defined data with data declared across code blocks
-* 🟢 [`remark-mermaidjs`](https://github.com/remcohaszing/remark-mermaidjs)
-  — transform mermaid code blocks into inline SVGs
+* ⚠️ [`remark-mermaidjs`](https://github.com/remcohaszing/remark-mermaidjs)
+  — **(deprecated)** transform mermaid code blocks into inline SVGs
 * 🟢 [`remark-message-control`](https://github.com/remarkjs/remark-message-control)
   — turn some or all messages on or off
 * 🟢 [`remark-normalize-headings`](https://github.com/remarkjs/remark-normalize-headings)
