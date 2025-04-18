@@ -351,8 +351,6 @@ The list of plugins:
   — transform text w/ [Typograf](https://github.com/typograf)
 * 🟢 [`remark-unlink`](https://github.com/remarkjs/remark-unlink)
   — remove all links, references, and definitions
-* 🟢 [`remark-unwrap-images`](https://github.com/remarkjs/remark-unwrap-images)
-  — remove the wrapping paragraph for images
 * 🟢 [`remark-usage`](https://github.com/remarkjs/remark-usage)
   — add a usage example
 * 🟢 [`remark-utf8`](https://github.com/Swizec/remark-utf8)
