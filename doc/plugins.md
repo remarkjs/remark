@@ -51,6 +51,8 @@ The list of plugins:
   compatible)
 * 🟢 [`remark-api`](https://github.com/wooorm/remark-api)
   — generate an API section
+* 🟢 [`remark-arrow`](https://sr.ht/~liliace/remark-arrow)
+  — replace ASCII arrows with Unicode arrows
 * ⚠️ [`remark-attr`](https://github.com/arobase-che/remark-attr)
   — new syntax to add attributes to markdown
 * 🟢 [`remark-behead`](https://github.com/mrzmmr/remark-behead)
