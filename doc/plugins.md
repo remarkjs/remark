@@ -210,6 +210,8 @@ The list of plugins:
   — change references and definitions to links and images
 * 🟢 [`remark-ins`](https://github.com/ipikuka/remark-ins)
   — add ins element for inserted texts opposite to deleted texts
+* 🟢 [`remark-insert-headings`](https://github.com/tgreyuk/remark-insert-headings)
+  — inserts one or more specified headings if they are not already present
 * 🟢 [`remark-join-cjk-lines`](https://github.com/purefun/remark-join-cjk-lines)
   — remove extra space between CJK Characters.
 * ⚠️ [`remark-kbd`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-kbd#readme)
