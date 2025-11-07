@@ -607,7 +607,7 @@ Support this effort and give back by sponsoring on [OpenCollective][]!
 
 [badge-coverage-url]: https://codecov.io/github/remarkjs/remark
 
-[badge-downloads-image]: https://img.shields.io/npm/dm/remark.svg
+[badge-downloads-image]: https://img.shields.io/npm/dm/remark
 
 [badge-downloads-url]: https://www.npmjs.com/package/remark
 
