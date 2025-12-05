@@ -120,6 +120,9 @@ The list of plugins:
   — turn some or all remark’s tokenizers on or off
 * 🟢 [`remark-directive`](https://github.com/remarkjs/remark-directive)
   — new syntax for directives (generic extensions)
+* 🟢 [`remark-directive-mdx`](https://github.com/re-xyr/remark-directive-mdx)
+  — turn [directives][github-remark-directive] into JSX elements (MDX
+  compatible)
 * 🟢 [`remark-directive-rehype`](https://github.com/IGassmann/remark-directive-rehype)
   — turn [directives][github-remark-directive] into HTML custom elements
   (rehype compatible)
