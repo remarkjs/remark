@@ -126,7 +126,7 @@ The list of plugins:
 * 🟢 [`remark-directive-sugar`](https://github.com/lin-stephanie/remark-directive-sugar)
   — predefined directives for customizable badges, links, video embeds, and more
 * 🟢 [`remark-docx`](https://github.com/inokawa/remark-docx)
-  — compile markdown to docx (WIP)
+  — compile markdown to docx
 * 🟢 [`@m2d/remark-docx`](https://github.com/md2docx/remark-docx)
   — compile markdown to docx with support for GFM, tables, html, and more.
 * 🟢 [`remark-dropcap`](https://github.com/brev/remark-dropcap)
