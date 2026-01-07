@@ -358,7 +358,7 @@ The list of plugins:
 * 🟢 [`remark-validate-links`](https://github.com/remarkjs/remark-validate-links)
   — check links to headings and files
 * 🟢 [`remark-validate-relative-links`](https://github.com/webpro/remark-validate-relative-links)
-  — check links in local files and heading
+  — check links in local files and headings
 * ⚠️ [`remark-variables`](https://github.com/mrzmmr/remark-variables)
   — new syntax for variables
 * 🟢 [`remark-vdom`](https://github.com/remarkjs/remark-vdom)
