@@ -257,6 +257,8 @@ The list of plugins:
 * ⚠️ [`remark-ping`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-ping#readme)
   — new syntax for mentions w/ configurable existence check (new node
   type, rehype compatible)
+* 🟢 [`remark-plugin-autonbsp`](https://github.com/denisinvader/remark-plugin-autonbsp)
+  —  replace whitespace with non-breaking spaces to avoid hanging articles, prepositions and digits
 * 🟢 [`remark-prepend-url`](https://github.com/alxjpzmn/remark-prepend-url)
   —  prepend an absolute url to relative links
 * 🟢 [`remark-prettier`](https://github.com/remcohaszing/remark-prettier)
