@@ -266,6 +266,8 @@ The list of plugins:
   —  prepend an absolute url to relative links
 * 🟢 [`remark-prettier`](https://github.com/remcohaszing/remark-prettier)
   — check and format markdown using Prettier
+* 🟢 [`remark-preview-to-markdown`](https://github.com/mohsen-w-elsisi/remark-preview-to-frontmatter)
+  — add text from the beginning of a document to a property in frontmatter.
 * 🟢 [`remark-prism`](https://github.com/sergioramos/remark-prism)
   — highlight code blocks w/ [Prism](https://prismjs.com/) (supporting most
   Prism plugins)
