@@ -168,6 +168,9 @@ The list of plugins:
 * 🟢 [`remark-gfm`](https://github.com/remarkjs/remark-gfm)
   — support GFM (autolink literals, footnotes, strikethrough, tables,
   tasklists)
+* 🟢 [`@it-service-npm/remark-gfm-admonition`](https://github.com/IT-Service-NPM/remark-gfm-admonition)
+  — support GFM admonition, enabling to read GitHub admonitions from Markdown
+  and to **write them back to Markdown** files.
 * 🟢 [`remark-git-contributors`](https://github.com/remarkjs/remark-git-contributors)
   — add a table of contributors based on Git history, options, and more
 * 🟢 [`remark-github`](https://github.com/remarkjs/remark-github)
@@ -182,6 +185,8 @@ The list of plugins:
   — new syntax to describe tables (rehype compatible)
 * 🟢 [`@adobe/remark-grid-tables`](https://github.com/adobe/remark-gridtables)
   — pandoc compatible grid-table syntax
+* 🟢 [`@it-service-npm/remark-heading-adjustment`](https://github.com/IT-Service-NPM/remark-heading-adjustment)
+  — adjusting the depth of headings with `settings.topHeadingDepth` or `processor.data().topHeadingDepth`
 * 🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
   — custom heading id support `{#custom-id}`
 * 🟢 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
