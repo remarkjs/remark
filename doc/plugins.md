@@ -225,6 +225,10 @@ The list of plugins:
   — customize link URLs dynamically
 * 🟢 [`remark-linkify-regex`](https://gitlab.com/staltz/remark-linkify-regex)
   — change text matching a regex to links
+* 🟢 [`@recallnet/remark-lint-docs-freshness`](https://github.com/recallnet/remark-ai/tree/main/packages/remark-lint-docs-freshness)
+  — lint docs frontmatter `reviewed` dates against repo-defined freshness policy
+* 🟢 [`@recallnet/remark-lint-docs-reachability`](https://github.com/recallnet/remark-ai/tree/main/packages/remark-lint-docs-reachability)
+  — lint docs that are not reachable from policy-defined root documents
 * 🟢 [`remark-lint`](https://github.com/remarkjs/remark-lint)
   — check markdown code style
 * 🟢 [`remark-man`](https://github.com/remarkjs/remark-man)
