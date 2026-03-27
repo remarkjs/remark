@@ -182,6 +182,8 @@ The list of plugins:
   — new syntax to describe tables (rehype compatible)
 * 🟢 [`@adobe/remark-grid-tables`](https://github.com/adobe/remark-gridtables)
   — pandoc compatible grid-table syntax
+* 🟢 [`@it-service-npm/remark-heading-adjustment`](https://github.com/IT-Service-NPM/remark-heading-adjustment)
+  — adjusting the depth of headings with `settings.topHeadingDepth` or `processor.data().topHeadingDepth`
 * 🟢 [`remark-heading-id`](https://github.com/imcuttle/remark-heading-id)
   — custom heading id support `{#custom-id}`
 * 🟢 [`remark-heading-gap`](https://github.com/remarkjs/remark-heading-gap)
