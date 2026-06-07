@@ -231,6 +231,8 @@ The list of plugins:
   — serialize markdown as man pages (roff)
 * 🟢 [`remark-math`](https://github.com/remarkjs/remark-math)
   — new syntax for math (new node types, rehype compatible)
+* 🟢 [`@webc.site/math-remark`](https://github.com/webc-site/math/tree/dev/plugin/remark)
+  — compile math to native browser MathML
 * 🟢 [`remark-mdx`](https://github.com/mdx-js/mdx/tree/main/packages/remark-mdx)
   — support MDX (JSX, expressions, ESM)
 * 🟢 [`remark-mentions`](https://github.com/FinnRG/remark-mentions)
