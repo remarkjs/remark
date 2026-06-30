@@ -11,7 +11,7 @@
 import {fromMarkdown} from 'mdast-util-from-markdown'
 
 /**
- * Aadd support for parsing from markdown.
+ * Add support for parsing from markdown.
  *
  * @this {Processor<Root>}
  *   Processor instance.
