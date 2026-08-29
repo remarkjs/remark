@@ -205,6 +205,83 @@ test('remark-stringify', async function (t) {
     )
   })
 
+  await t.test(
+    'should not serialize a trailing break as a backslash (#1477)',
+    async function () {
+      const md = unified()
+        .use(remarkStringify)
+        .stringify({
+          type: 'root',
+          children: [
+            {
+              type: 'paragraph',
+              children: [{type: 'text', value: 'test'}, {type: 'break'}]
+            }
+          ]
+        })
+
+      assert.equal(md, 'test\n')
+
+      const tree = unified().use(remarkParse).parse(md)
+      removePosition(tree, {force: true})
+
+      assert.deepEqual(tree, {
+        type: 'root',
+        children: [
+          {type: 'paragraph', children: [{type: 'text', value: 'test'}]}
+        ]
+      })
+    }
+  )
+
+  await t.test(
+    'should still serialize a break between phrasing',
+    async function () {
+      assert.equal(
+        unified()
+          .use(remarkStringify)
+          .stringify({
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {type: 'text', value: 'alpha'},
+                  {type: 'break'},
+                  {type: 'text', value: 'bravo'}
+                ]
+              }
+            ]
+          }),
+        'alpha\\\nbravo\n'
+      )
+    }
+  )
+
+  await t.test(
+    'should not serialize multiple trailing breaks as backslashes',
+    async function () {
+      assert.equal(
+        unified()
+          .use(remarkStringify)
+          .stringify({
+            type: 'root',
+            children: [
+              {
+                type: 'paragraph',
+                children: [
+                  {type: 'text', value: 'test'},
+                  {type: 'break'},
+                  {type: 'break'}
+                ]
+              }
+            ]
+          }),
+        'test\n'
+      )
+    }
+  )
+
   await t.test('should support extensions', async function () {
     const result = unified()
       .data('toMarkdownExtensions', [gfmToMarkdown()])
