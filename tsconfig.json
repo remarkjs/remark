@@ -9,7 +9,8 @@
     "lib": ["es2022"],
     "module": "node16",
     "strict": true,
-    "target": "es2022"
+    "target": "es2022",
+    "types": ["node"]
   },
   "exclude": ["**/coverage/", "**/node_modules/"],
   "include": [
