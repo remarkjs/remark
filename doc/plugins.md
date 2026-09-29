@@ -41,7 +41,9 @@ The list of plugins:
 * [`remark-a11y-emoji`](https://github.com/florianeckerstorfer/remark-a11y-emoji)
   — accessible emoji
 * ⚠️ [`remark-abbr`](https://github.com/zestedesavoir/zmarkdown/tree/HEAD/packages/remark-abbr#readme)
-  — new syntax for abbreviations (new node type, rehype compatible)
+  — new syntax for abbreviations (new node type, rehype compatible)  
+* 🟢 [`@syenchuk/remark-abbr`](https://github.com/syenchuk/remark-abbr)
+  — adds support for Markdown abbreviations (up to date, rehype compatible)
 * ⚠️ [`remark-admonitions`](https://github.com/elviswolcott/remark-admonitions)
   — new syntax for admonitions
   (👉 **note**: [`remark-directive`][github-remark-directive] is similar and up
