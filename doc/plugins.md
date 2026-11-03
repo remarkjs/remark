@@ -350,6 +350,8 @@ The list of plugins:
   (rehype compatible)
 * 🟢 [`remark-truncate-links`](https://github.com/GaiAma/Coding4GaiAma/tree/HEAD/packages/remark-truncate-links)
   — truncate/shorten urls not manually named
+* 🟢 [`remark-tsquare`](https://github.com/tsquare-js/markdown/tree/main/packages/remark-tsquare)
+  — turn `tsquare` code blocks into UI wireframe images
 * 🟢 [`remark-twemoji`](https://github.com/madiodio/remark-twemoji)
   — turn emoji into [Twemoji](https://github.com/twitter/twemoji)
 * 🟢 [`remark-typedoc-symbol-links`](https://github.com/kamranayub/remark-typedoc-symbol-links)
